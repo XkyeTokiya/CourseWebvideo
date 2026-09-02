@@ -1,0 +1,4 @@
+interface:
+  display_name: "Course Narration Rewriter"
+  short_description: "从冻结任务包隔离重写连续口播，并在批准后编译一 A 一页的自包含生产契约"
+  default_prompt: "Use $rewrite-course-narration to rewrite course narration from a frozen task package, then compile approved narration into A-page v2."

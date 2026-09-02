@@ -1,0 +1,244 @@
+/* quantity-to-quality · A002 split-compare-with-pivot
+   mechanism: compare-and-reweight — 两栏空间持续，权重随口播从左栏移向右栏；
+   中央判据引导比较，不把 pivot 画成第三个过程节点（R002）。
+   prefix: qq- */
+
+.qq-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── 论点标题 ─────────────────────────────────────────── */
+
+.qq-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: qq-rise 620ms var(--ease-quart) backwards;
+}
+
+.qq-thesis em {
+  font-style: normal;
+  color: var(--theme-process);
+  border-bottom: 6px solid var(--theme-process);
+  padding-bottom: 4px;
+}
+
+/* ── 主区：左栏（量的积累）｜中央判据｜右栏（质的提升）── */
+
+.qq-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 360px 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.qq-col {
+  padding: 26px 32px;
+  background: var(--surface-2);
+}
+
+.qq-col--quantity {
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.qq-col--quality {
+  border: 3px solid var(--theme-process);
+  box-shadow: var(--card-shadow);
+}
+
+.qq-col-kicker {
+  margin: 0 0 6px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.qq-col-title {
+  margin: 0 0 18px;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.qq-col--quality .qq-col-title {
+  color: var(--theme-process);
+}
+
+/* ── 行结构 ──────────────────────────────────────────── */
+
+.qq-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.qq-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 18px;
+  background: var(--surface-3);
+}
+
+.qq-row-mark {
+  font-size: 30px;
+  color: var(--theme-structural);
+}
+
+.qq-row-label {
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+.qq-row-note {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  color: var(--text-mute);
+}
+
+.qq-row--quality {
+  background: var(--theme-process-surface);
+}
+
+.qq-row-dot {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.qq-row--quality .qq-row-label {
+  color: var(--theme-process);
+}
+
+.qq-col-result {
+  margin: 16px 0 0;
+  padding: 12px 18px;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--theme-process);
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-process);
+}
+
+.qq-col[data-on="on"] .qq-col-result {
+  animation: qq-rise 520ms var(--ease-quart) 760ms backwards;
+}
+
+/* ── 权重推移：右栏就位后左栏弱化 ────────────────────── */
+
+.qq-col {
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.qq-col--quantity.is-muted {
+  opacity: 0.55;
+  filter: grayscale(0.45);
+}
+
+.qq-col[data-on="waiting"] {
+  background: transparent;
+  border: 3px dashed var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+.qq-col[data-on="waiting"] .qq-col-body {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.qq-col-body {
+  transition: opacity 320ms var(--ease-soft);
+}
+
+/* ── 行入场（随所在栏 data-on 触发，错峰）────────────── */
+
+.qq-col[data-on="on"] .qq-row {
+  animation: qq-stamp 520ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--qq-i) * 150ms + 100ms);
+}
+
+/* ── 中央判据（不画成第三个过程节点）─────────────────── */
+
+.qq-pivot {
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+
+.qq-pivot.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.qq-pivot-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 30px 26px;
+  text-align: center;
+}
+
+.qq-pivot-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--theme-warning);
+}
+
+.qq-pivot-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--theme-structural);
+}
+
+.qq-pivot-hero em {
+  font-style: normal;
+  display: block;
+  margin-top: 6px;
+  font-size: 30px;
+  color: var(--theme-process);
+  border-bottom: 5px solid var(--theme-process);
+  padding-bottom: 4px;
+}
+
+.qq-pivot-note {
+  margin: 0;
+  font-size: 21px;
+  color: var(--text-2);
+}
+
+/* ── 共享 keyframes ──────────────────────────────────── */
+
+@keyframes qq-rise {
+  0%   { opacity: 0; transform: translateY(28px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes qq-stamp {
+  0%   { opacity: 0; transform: translateY(24px) scale(1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}

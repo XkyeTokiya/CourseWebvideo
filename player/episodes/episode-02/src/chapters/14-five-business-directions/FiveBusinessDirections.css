@@ -1,0 +1,309 @@
+/* ─────────────────────────────────────────────────────────────
+ * 14-five-business-directions · A014 image-with-summary-rail
+ * mechanism: persistent-media-reading — 主图承担多业务落点场景
+ *   感（柔性产线四工位巡检演示），summary rail 按"共同基础—
+ *   两组模式—共同条件"编号阅读，主图不承担机制解释；
+ *   final-judgment 槽收束"五种方向表现不同，闭环条件相同"
+ * prefix: fv-
+ * ───────────────────────────────────────────────────────────── */
+
+.fv-scene {
+  justify-content: center;
+  gap: 40px;
+}
+
+/* ── 论点标题 ── */
+.fv-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: fv-rise 640ms var(--ease-quart) backwards;
+}
+.fv-title-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--theme-process-surface);
+}
+.fv-title-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.fv-title-text em {
+  font-style: normal;
+  border-bottom: 7px solid var(--theme-process);
+  padding-bottom: 3px;
+}
+@keyframes fv-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fv-main {
+  display: flex;
+  gap: 44px;
+  align-items: center;
+}
+
+/* ── 主图（左）：M004 占位 + 柔性产线巡检演示 ── */
+.fv-media {
+  width: 990px;
+  height: 557px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.fv-canvas {
+  position: relative;
+  flex: 1;
+  background: var(--surface);
+}
+
+.fv-line {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 56%;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+}
+
+.fv-stations {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 32%;
+  display: flex;
+  gap: 70px;
+}
+.fv-station {
+  width: 140px;
+  height: 96px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 8px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  position: relative;
+}
+.fv-station::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -21px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--theme-dashed-line);
+  animation: fv-sweep 3.6s var(--ease-soft) infinite;
+  animation-delay: calc(var(--fv-s) * 0.9s);
+}
+@keyframes fv-sweep {
+  0%,
+  100% {
+    background: var(--theme-dashed-line);
+  }
+  18%,
+  30% {
+    background: var(--theme-process);
+  }
+}
+
+.fv-cap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 24px;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+  background: var(--surface-2);
+}
+.fv-cap-mark {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--theme-structural);
+  background: var(--theme-cool-surface);
+  padding: 4px 14px;
+  border-radius: 6px;
+}
+.fv-cap-desc {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: var(--text-mute);
+}
+
+/* ── 编号 summary rail（右）── */
+.fv-rail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fv-item {
+  position: relative;
+  padding: 12px 24px;
+  border: var(--rule-w) dashed transparent;
+  border-radius: 12px;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    background-color var(--dur-slow) var(--ease-soft),
+    border-color var(--dur-slow) var(--ease-soft),
+    box-shadow var(--dur-slow) var(--ease-soft);
+}
+.fv-item.is-ghost {
+  opacity: 0.85;
+  border-color: var(--theme-dashed-line);
+}
+.fv-item.is-on {
+  animation: fv-item-in 620ms var(--ease-overshoot) backwards;
+  background: var(--surface-2);
+  border-color: var(--theme-structural);
+  border-style: solid;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+@keyframes fv-item-in {
+  0% {
+    opacity: 0;
+    transform: translateX(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fv-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.fv-item.is-on .fv-slot {
+  opacity: 0;
+}
+
+.fv-item-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.fv-item.is-on .fv-item-body {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 140ms;
+}
+
+.fv-item-no {
+  width: 54px;
+  height: 54px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--theme-paper);
+  background: var(--theme-process);
+  border-radius: 10px;
+}
+
+.fv-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 2px;
+}
+.fv-item-name {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.fv-item-desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+/* ── final-judgment 槽：预留 → 收束 ── */
+.fv-judgment {
+  position: relative;
+  height: 108px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fv-judgment-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+  opacity: 0.55;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.fv-judgment[data-on="true"] .fv-judgment-slot {
+  opacity: 0;
+}
+.fv-judgment-body {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 16px 44px;
+  background: var(--theme-process-surface);
+  border: var(--rule-w) solid var(--theme-process);
+  border-radius: var(--r-card);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.fv-judgment[data-on="true"] .fv-judgment-body {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fv-judgment-mark {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  background: var(--theme-process);
+}
+.fv-judgment-text {
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}

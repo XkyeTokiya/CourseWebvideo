@@ -1,0 +1,267 @@
+/* ─────────────────────────────────────────────────────────────
+ * 07-four-duties-chain · A007 parallel-cards-with-takeaway
+ * mechanism: equal-weight-accumulation（职责/缺位双面槽位）—
+ *   四卡等权并列，职责面与缺位面分两拍在固定槽位内补齐；
+ *   安全卡标"覆盖整条协同"并与其余三卡等高；
+ *   takeaway 槽收束协同链并以两端 chip 点明生产现场/数字空间
+ * prefix: fd-
+ * ───────────────────────────────────────────────────────────── */
+
+.fd-scene {
+  justify-content: space-between;
+  gap: 36px;
+}
+
+/* ── 论点标题 ── */
+.fd-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: fd-rise 640ms var(--ease-quart) backwards;
+}
+.fd-title-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--theme-process-surface);
+}
+.fd-title-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.fd-title-text em {
+  font-style: normal;
+  border-bottom: 7px solid var(--theme-warning);
+  padding-bottom: 3px;
+}
+@keyframes fd-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── 四张等权双面卡 ── */
+.fd-cards {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+  align-items: stretch;
+}
+
+.fd-card {
+  min-height: 470px;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fd-stamp 620ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--fd-i) * 150ms + 200ms);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+@keyframes fd-stamp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.is-closed .fd-card {
+  opacity: 0.72;
+  transform: scale(0.99);
+}
+
+.fd-card-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-bottom: 16px;
+  border-bottom: var(--rule-w) dashed var(--theme-dashed-line);
+}
+.fd-card-name {
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.04em;
+}
+.fd-duty-chip {
+  font-family: var(--font-body);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--theme-paper);
+  background: var(--theme-process);
+  border-radius: 8px;
+  padding: 4px 14px;
+}
+.fd-span-tag {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.06em;
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  border: var(--rule-w) solid var(--theme-warning);
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+
+/* 双面槽位：职责面 / 缺位面 */
+.fd-face {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+.fd-face-label {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.12em;
+}
+.fd-face-desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.fd-face-desc[data-on="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fd-duty {
+  background: var(--theme-process-surface);
+  border: var(--rule-w) solid var(--theme-process);
+}
+.fd-duty .fd-face-label {
+  color: var(--theme-process);
+}
+.fd-duty .fd-face-desc {
+  color: var(--theme-structural);
+}
+
+.fd-missing {
+  background: transparent;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  transition: background-color var(--dur-slow) var(--ease-soft),
+    border-color var(--dur-slow) var(--ease-soft);
+}
+.fd-missing .fd-face-label {
+  color: var(--text-faint);
+  transition: color var(--dur-base) var(--ease-soft);
+}
+.fd-missing .fd-face-desc {
+  color: var(--theme-warning);
+}
+.fd-missing.is-on {
+  background: var(--theme-warning-surface);
+  border: var(--rule-w) solid var(--theme-warning);
+}
+.fd-missing.is-on .fd-face-label {
+  color: var(--theme-warning);
+}
+
+/* ── takeaway 槽：协同链 + 两端 ── */
+.fd-takeaway {
+  position: relative;
+  height: 124px;
+  display: flex;
+  align-items: center;
+}
+.fd-takeaway-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+  opacity: 0.7;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.fd-takeaway[data-on="true"] .fd-takeaway-slot {
+  opacity: 0;
+}
+.fd-takeaway-body {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  padding: 20px 36px;
+  background: var(--surface-2);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.fd-takeaway[data-on="true"] .fd-takeaway-body {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fd-takeaway-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--theme-process-surface);
+}
+.fd-takeaway-text {
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+  flex: 1;
+  text-align: center;
+}
+.fd-end-chip {
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.08em;
+  color: var(--theme-structural);
+  border: var(--rule-w) dashed var(--theme-structural);
+  border-radius: 8px;
+  padding: 6px 16px;
+  flex: none;
+}
+.fd-takeaway .fd-end-chip {
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.fd-takeaway[data-on="true"] .fd-end-chip {
+  opacity: 1;
+}
+.fd-takeaway[data-on="true"] .fd-end-chip:first-child {
+  transition-delay: 240ms;
+}
+.fd-takeaway[data-on="true"] .fd-end-chip:last-of-type {
+  transition-delay: 240ms;
+}

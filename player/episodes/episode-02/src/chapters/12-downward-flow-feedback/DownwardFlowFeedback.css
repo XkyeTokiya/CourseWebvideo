@@ -1,0 +1,343 @@
+/* ─────────────────────────────────────────────────────────────
+ * 12-downward-flow-feedback · A012 linear-steps-to-result
+ * mechanism: ordered-progression — 四步按"判断→行动→新信息→
+ *   再上行"单向推进，双阶段标签"决策下行/再次上行"；
+ *   末步 terminal-result，不画回第一步；
+ *   K-A012-01 accent 承载全集主机制判断（低成本全屏强调）
+ * prefix: df-
+ * ───────────────────────────────────────────────────────────── */
+
+.df-scene {
+  justify-content: center;
+  gap: 36px;
+}
+
+/* ── 论点标题 ── */
+.df-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: df-rise 640ms var(--ease-quart) backwards;
+}
+.df-title-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--theme-process-surface);
+}
+.df-title-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.df-title-text em {
+  font-style: normal;
+  border-bottom: 7px solid var(--theme-process);
+  padding-bottom: 3px;
+}
+@keyframes df-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── 双阶段标签 ── */
+.df-phases {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+}
+.df-phase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  animation: df-rise 560ms var(--ease-quart) 160ms backwards;
+}
+.df-phase::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+}
+.df-phase-down {
+  color: var(--theme-structural);
+}
+.df-phase-down::before {
+  background: var(--theme-structural);
+}
+.df-phase-up {
+  color: var(--theme-process);
+}
+.df-phase-up::before {
+  background: var(--theme-process);
+}
+
+/* ── 四步单向轨道 ── */
+.df-track {
+  display: flex;
+  align-items: stretch;
+}
+
+.df-step-slot {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+}
+
+.df-chevron {
+  width: 34px;
+  flex: none;
+  position: relative;
+  align-self: center;
+  height: 18px;
+  opacity: 0.45;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.df-chevron::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  width: 16px;
+  height: var(--rule-w);
+  background: var(--theme-dashed-line);
+  transform: translateY(-50%);
+}
+.df-chevron::after {
+  content: "";
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 10px solid var(--theme-dashed-line);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+.df-chevron[data-on="true"]::before {
+  background: var(--theme-process);
+}
+.df-chevron[data-on="true"]::after {
+  border-left-color: var(--theme-process);
+}
+
+.df-step {
+  flex: 1;
+  min-height: 440px;
+  padding: 30px 28px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    background-color var(--dur-slow) var(--ease-soft),
+    border-color var(--dur-slow) var(--ease-soft),
+    box-shadow var(--dur-slow) var(--ease-soft);
+}
+.df-step.is-ghost {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  opacity: 0.85;
+}
+.df-step.is-ghost::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: inherit;
+}
+.df-step.is-active {
+  animation: df-wipe 620ms var(--ease-overshoot) backwards;
+  border-color: var(--theme-structural);
+}
+.df-step.df-terminal.is-active {
+  box-shadow: var(--card-shadow), 0 0 0 8px var(--accent-glow);
+}
+@keyframes df-wipe {
+  0% {
+    opacity: 0;
+    transform: translateX(-26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.df-step.is-past {
+  background: var(--theme-process-surface);
+  border-color: var(--theme-process);
+  box-shadow: none;
+  transform: scale(0.985);
+}
+
+.df-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.df-step.is-lit .df-slot {
+  opacity: 0;
+}
+
+.df-step-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.df-step.is-lit .df-step-body {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 140ms;
+}
+
+.df-step-head {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 16px;
+  border-bottom: var(--rule-w) dashed var(--theme-dashed-line);
+}
+.df-step-no {
+  font-size: 38px;
+  color: var(--theme-process);
+}
+.df-step-name {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.df-step.is-past .df-step-name {
+  color: var(--theme-process);
+}
+
+.df-step-desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.df-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.df-chip {
+  font-family: var(--font-body);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: var(--rule-w) solid var(--theme-structural);
+  border-radius: 8px;
+  padding: 8px 16px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+  transition-delay: calc(var(--df-j) * 200ms + 260ms);
+}
+.df-step.is-lit .df-chip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── K-A012-01 accent：低成本全屏强调，不重复轨道内容 ── */
+.df-accent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 44px;
+}
+.df-accent-kicker {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.24em;
+  color: var(--theme-paper);
+  background: var(--theme-structural);
+  padding: 10px 24px;
+  border-radius: 8px;
+  animation: df-accent-in 560ms var(--ease-overshoot) backwards;
+}
+.df-accent-chips {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.df-accent-chip {
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  padding: 16px 34px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  animation: df-accent-in 620ms var(--ease-overshoot) backwards;
+}
+.df-accent-chip:nth-child(1) {
+  animation-delay: 200ms;
+  border: var(--rule-w) solid var(--theme-process);
+  color: var(--theme-process);
+}
+.df-accent-chip:nth-child(2) {
+  animation-delay: 380ms;
+  border: var(--rule-w) solid var(--theme-structural);
+  color: var(--theme-structural);
+}
+.df-accent-chip:nth-child(3) {
+  animation-delay: 560ms;
+  border: var(--rule-w) solid var(--theme-warning);
+  color: var(--theme-warning);
+}
+.df-accent-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+  animation: df-accent-in 620ms var(--ease-quart) 740ms backwards;
+}
+.df-accent-line em {
+  font-style: normal;
+  color: var(--theme-process);
+  border-bottom: 7px solid var(--theme-process);
+  padding-bottom: 3px;
+}
+@keyframes df-accent-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

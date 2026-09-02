@@ -1,0 +1,320 @@
+/* ─────────────────────────────────────────────────────────────
+ * 06-security-full-path · A006 layered-bands-with-side-notes
+ * mechanism: ordered-bands-with-side-notes — 四条无连线有序文字
+ *   带持续呈现保障范围，性质句按叙述顺序补入侧栏两卡；
+ *   boundary 标注"从连接开始，到行动运行全程"，
+ *   takeaway 槽收束"安全不是流程末端的一道门"
+ * prefix: sf-
+ * ───────────────────────────────────────────────────────────── */
+
+.sf-scene {
+  justify-content: space-between;
+  gap: 36px;
+}
+
+/* ── 论点标题 ── */
+.sf-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: sf-rise 640ms var(--ease-quart) backwards;
+}
+.sf-title-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--theme-process-surface);
+}
+.sf-title-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.sf-title-text em {
+  font-style: normal;
+  border-bottom: 7px solid var(--theme-warning);
+  padding-bottom: 3px;
+}
+@keyframes sf-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sf-main {
+  flex: 1;
+  display: flex;
+  gap: 48px;
+  align-items: stretch;
+  min-height: 0;
+}
+
+/* ── 左列：保障边界条 + 四条有序文字带 ── */
+.sf-bands-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.sf-boundary {
+  border: var(--rule-w) dashed var(--theme-warning);
+  border-radius: 10px;
+  padding: 12px 24px;
+  animation: sf-rise 560ms var(--ease-quart) 120ms backwards;
+}
+.sf-boundary-label {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--theme-warning);
+}
+
+.sf-bands {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sf-band {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 0 34px;
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-structural);
+  border-radius: 12px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  animation: sf-band-in 560ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--sf-i) * 130ms + 220ms);
+}
+@keyframes sf-band-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.sf-band-no {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--theme-process);
+}
+.sf-band-name {
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.04em;
+}
+.sf-band-mark {
+  margin-left: auto;
+  width: 16px;
+  height: 16px;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--theme-process-surface);
+}
+
+/* ── 右列：两张性质短卡 ── */
+.sf-side {
+  width: 560px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sf-side-card {
+  flex: 1;
+  padding: 26px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    background-color var(--dur-slow) var(--ease-soft),
+    border-color var(--dur-slow) var(--ease-soft),
+    box-shadow var(--dur-slow) var(--ease-soft);
+}
+.sf-side-card.is-ghost {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  opacity: 0.85;
+}
+.sf-side-card.is-ghost::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: inherit;
+}
+.sf-side-card.is-on {
+  animation: sf-card-in 620ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--sf-d) * 480ms);
+}
+@keyframes sf-card-in {
+  0% {
+    opacity: 0;
+    transform: translateX(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.sf-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.sf-side-card.is-on .sf-slot {
+  opacity: 0;
+}
+
+.sf-side-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+  transition-delay: calc(var(--sf-d) * 480ms + 120ms);
+}
+.sf-side-card.is-on .sf-side-body {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sf-side-name {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.03em;
+  padding-bottom: 12px;
+  border-bottom: var(--rule-w) dashed var(--theme-dashed-line);
+}
+
+.sf-prop {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.sf-prop[data-on="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+.sf-prop-term {
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--theme-process);
+  flex: none;
+}
+.sf-prop-desc {
+  font-family: var(--font-body);
+  font-size: 21px;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+/* ── takeaway 槽：预留 → 收束 ── */
+.sf-takeaway {
+  position: relative;
+  height: 118px;
+  display: flex;
+  align-items: center;
+  transition: opacity var(--dur-slow) var(--ease-soft);
+}
+.is-closed .sf-takeaway-slot {
+  opacity: 0;
+}
+.sf-takeaway-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+  opacity: 0.7;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.sf-takeaway-body {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  width: 100%;
+  padding: 22px 40px;
+  background: var(--surface-2);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.sf-takeaway[data-on="true"] .sf-takeaway-body {
+  opacity: 1;
+  transform: translateY(0);
+}
+.sf-takeaway-mark {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  background: var(--theme-warning);
+  box-shadow: 0 0 0 3px var(--theme-warning-surface);
+}
+.sf-takeaway-text {
+  display: flex;
+  align-items: baseline;
+  gap: 22px;
+}
+.sf-takeaway-main {
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.sf-takeaway-sub {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-2);
+}

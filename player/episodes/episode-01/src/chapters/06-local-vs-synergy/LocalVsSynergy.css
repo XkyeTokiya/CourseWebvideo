@@ -1,0 +1,237 @@
+/* ─────────────────────────────────────────────────────────────
+ * 06-local-vs-synergy · A006 split-compare-with-thesis
+ * mechanism: compare-and-reweight — 两侧空间持续，权重与判断推进
+ * prefix: vs-
+ * ───────────────────────────────────────────────────────────── */
+
+.vs-scene {
+  justify-content: center;
+  gap: 48px;
+}
+
+.vs-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 96px 1fr;
+  align-items: stretch;
+  min-height: 0;
+}
+
+/* ── 两张大卡 ── */
+.vs-card {
+  border-radius: var(--r-card);
+  padding: 44px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    background var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-soft);
+}
+
+.vs-card-label {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.24em;
+  color: var(--text-mute);
+}
+.vs-card-title {
+  font-family: var(--font-display-cn);
+  font-size: 68px;
+  font-weight: 900;
+  line-height: 1.15;
+}
+.vs-card-desc {
+  font-family: var(--font-body);
+  font-size: 26px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+/* 左卡：局部侧 */
+.vs-card.is-left {
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+.vs-card.is-left .vs-card-title {
+  color: var(--theme-structural);
+}
+.is-contrast-both .vs-card.is-left,
+.is-question-raised .vs-card.is-left,
+.is-thesis-formed .vs-card.is-left {
+  opacity: 0.78;
+  transform: scale(0.985);
+}
+
+/* 右卡：协同侧，先虚线幽灵再实化 */
+.vs-card.is-right {
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  background: transparent;
+  opacity: 0.35;
+}
+.vs-card.is-right[data-on="true"] {
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 1;
+  animation: vs-materialize 680ms var(--ease-quart);
+}
+@keyframes vs-materialize {
+  0% {
+    opacity: 0.35;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.vs-card.is-right .vs-card-title {
+  color: var(--theme-process);
+}
+.vs-card.is-right[data-on="false"] .vs-card-title,
+.vs-card.is-right[data-on="false"] .vs-card-desc {
+  visibility: hidden;
+}
+.is-question-raised .vs-card.is-right,
+.is-thesis-formed .vs-card.is-right {
+  border-color: var(--theme-process);
+  box-shadow: 0 0 0 8px var(--accent-glow);
+}
+
+/* ── 中缝分隔 ── */
+.vs-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vs-divider::before {
+  content: "";
+  position: absolute;
+  top: 8%;
+  bottom: 8%;
+  left: 50%;
+  border-left: var(--rule-w) dashed var(--theme-dashed-line);
+}
+.vs-divider-badge {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+  background: var(--surface);
+  border: var(--rule-w) solid var(--rule);
+  border-radius: 50%;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── 右卡内部短语链：顺序点亮，不绘制流程图 ── */
+.vs-chain {
+  display: flex;
+  gap: 16px;
+  margin: 6px 0;
+}
+.vs-chain i {
+  font-style: normal;
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: var(--rule-w) solid var(--theme-process);
+  border-radius: 12px;
+  padding: 6px 26px;
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+}
+.vs-chain[data-on="true"] i {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: vs-chain-in 520ms var(--ease-overshoot) backwards;
+}
+.vs-chain[data-on="true"] i:nth-child(1) { animation-delay: 120ms; }
+.vs-chain[data-on="true"] i:nth-child(2) { animation-delay: 480ms; }
+.vs-chain[data-on="true"] i:nth-child(3) { animation-delay: 840ms; }
+@keyframes vs-chain-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.vs-chain[data-on="false"] i {
+  opacity: 0.15;
+}
+
+/* ── 底部判断条：槽位常驻，末拍收束 ── */
+.vs-thesis {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 26px 38px;
+  border-radius: var(--r-card);
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  transition: background var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-soft);
+}
+.vs-thesis-tag {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.3em;
+  color: var(--text-mute);
+}
+.vs-thesis-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.vs-thesis-main {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-mute);
+  transition: color var(--dur-base) var(--ease-soft);
+}
+.vs-thesis-ext {
+  font-family: var(--font-body);
+  font-size: 24px;
+  line-height: 1.55;
+  color: var(--text-2);
+  animation: vs-ext-in 620ms var(--ease-quart) 200ms backwards;
+}
+@keyframes vs-ext-in {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.vs-thesis[data-strong="true"] {
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+.vs-thesis[data-strong="true"] .vs-thesis-tag {
+  color: var(--theme-warning);
+}
+.vs-thesis[data-strong="true"] .vs-thesis-main {
+  color: var(--theme-structural);
+}

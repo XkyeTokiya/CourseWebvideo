@@ -1,0 +1,319 @@
+/* transformation-boundary · A002 layered-bands-with-side-notes
+   mechanism: cumulative-assembly — 固定带与侧注结构内逐层组装定义、范围与持续性，不换构图
+   prefix: tb- */
+
+.tb-scene {
+  justify-content: flex-start;
+  gap: 40px;
+}
+
+/* ── 判断方向 headline（持续元素） ────────────────────── */
+
+.tb-head {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: tb-rise 640ms var(--ease-quart) backwards;
+}
+
+.tb-head em {
+  font-style: normal;
+  border-bottom: 8px solid var(--theme-process);
+  padding-bottom: 4px;
+}
+
+@keyframes tb-rise {
+  0%   { opacity: 0; transform: translateY(26px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 主区：两条有序文字带 + 侧注栏 ────────────────────── */
+
+.tb-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 56px;
+  align-items: stretch;
+}
+
+.tb-bands {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.tb-band {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 32px 38px;
+  transition: opacity 560ms var(--ease-soft),
+    transform 560ms var(--ease-soft),
+    background-color 560ms var(--ease-soft),
+    border-color 560ms var(--ease-soft),
+    box-shadow 560ms var(--ease-soft);
+}
+
+.tb-band[data-on="on"] {
+  animation: tb-stamp-in 620ms var(--ease-overshoot) backwards;
+}
+
+@keyframes tb-stamp-in {
+  0%   { opacity: 0; transform: translateY(34px) scale(1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.tb-band[data-on="waiting"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+.tb-band[data-on="waiting"] .tb-band-head,
+.tb-band[data-on="waiting"] .tb-scope {
+  opacity: 0.35;
+}
+
+.tb-band-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+
+.tb-band-idx {
+  font-size: 44px;
+  color: var(--theme-process);
+}
+
+.tb-band-label {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+/* band-1：否定段 + 重组演示 */
+
+.tb-def {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.tb-not {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 36px;
+  padding: 16px 24px;
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+}
+
+.tb-not p {
+  margin: 0;
+  font-size: 26px;
+  color: var(--theme-warning);
+  letter-spacing: 0.01em;
+}
+
+.tb-join {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.tb-chip {
+  padding: 14px 28px;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.tb-chip-tech {
+  animation: tb-slide-left 620ms var(--ease-overshoot) 200ms backwards;
+}
+
+.tb-chip-biz {
+  animation: tb-slide-right 620ms var(--ease-overshoot) 200ms backwards;
+}
+
+@keyframes tb-slide-left {
+  0%   { opacity: 0; transform: translateX(-44px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes tb-slide-right {
+  0%   { opacity: 0; transform: translateX(44px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.tb-plus {
+  font-family: var(--font-mono);
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--theme-process);
+  animation: tb-rise 480ms var(--ease-overshoot) 520ms backwards;
+}
+
+.tb-arrow {
+  width: 54px;
+  height: 3px;
+  background: var(--theme-structural);
+  position: relative;
+  animation: tb-rise 480ms var(--ease-quart) 820ms backwards;
+}
+
+.tb-arrow::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border-top: 3px solid var(--theme-structural);
+  border-right: 3px solid var(--theme-structural);
+  transform: translateY(-50%) rotate(45deg) translate(-4px, 0);
+}
+
+.tb-merged {
+  padding: 14px 28px;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 3px solid var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  animation: tb-stamp-in 560ms var(--ease-overshoot) 1020ms backwards;
+}
+
+/* band-2：范围四项依次就位（等权累计，无当前选中项） */
+
+.tb-scope {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 34px;
+}
+
+.tb-scope-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.tb-scope-no {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--theme-process);
+}
+
+.tb-band[data-on="on"] .tb-scope-item {
+  animation: tb-stamp-in 520ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--tb-i) * 190ms);
+}
+
+/* ── 侧注栏：随讲随钉的纸标签 ─────────────────────────── */
+
+.tb-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 26px;
+  border-left: 2px dashed var(--theme-dashed-line);
+  padding-left: 34px;
+}
+
+.tb-rail-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.tb-note {
+  padding: 26px 30px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  transition: opacity 560ms var(--ease-soft);
+}
+
+/* 状态相关动画挂在 data-on 态：waiting 时不计时，切换才触发 */
+.tb-note[data-on="on"] {
+  animation: tb-stamp-in 560ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--tb-i) * 260ms + 420ms);
+}
+
+.tb-note[data-on="waiting"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+.tb-note[data-on="waiting"] .tb-note-tag,
+.tb-note[data-on="waiting"] h2,
+.tb-note[data-on="waiting"] p {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.tb-note-tag {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.2em;
+  color: var(--theme-process);
+}
+
+.tb-note h2 {
+  margin: 0 0 10px;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.tb-note p:not(.tb-note-tag):not(.tb-boundary) {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.tb-note-line {
+  margin: 0 0 12px;
+}
+
+.tb-boundary {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  display: inline-block;
+  border-bottom: 6px solid var(--theme-warning);
+  padding-bottom: 4px;
+}
+
+/* 边界判断收束：只在 note-2 就位后升起 */
+.tb-note[data-on="on"] .tb-boundary {
+  animation: tb-rise 560ms var(--ease-quart) backwards;
+  animation-delay: calc(var(--tb-i) * 260ms + 900ms);
+}

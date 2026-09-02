@@ -1,0 +1,160 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "courseplay-a-page-v4",
+  "title": "Courseplay A Page v4",
+  "$comment": "冻结 v4 兼容契约；v5 screen-source 继续服务既有 episode，新生产使用同目录的 courseplay-a-page-v6.schema.json。",
+  "description": "一条 A 严格对应一页，只冻结口播、教学语义、证据、关系和时间；视觉决策由独立视觉粗设承担。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "document_kind",
+    "episode_id",
+    "approved_text",
+    "timing_model",
+    "evidence_catalog",
+    "pages"
+  ],
+  "properties": {
+    "schema_version": { "const": "courseplay-a-page/v4" },
+    "document_kind": { "const": "production" },
+    "episode_id": { "type": "string", "minLength": 1 },
+    "approved_text": { "type": "string", "minLength": 1 },
+    "timing_model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "han_weight",
+        "fullwidth_punctuation_weight",
+        "other_non_whitespace_weight",
+        "chars_per_minute"
+      ],
+      "properties": {
+        "han_weight": { "const": 1 },
+        "fullwidth_punctuation_weight": { "const": 0 },
+        "other_non_whitespace_weight": { "const": 0.5 },
+        "chars_per_minute": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["minimum", "target", "maximum"],
+          "properties": {
+            "minimum": { "const": 220 },
+            "target": { "const": 230 },
+            "maximum": { "const": 240 }
+          }
+        }
+      }
+    },
+    "evidence_catalog": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/evidence" }
+    },
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/page" }
+    }
+  },
+  "definitions": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "claim_or_asset",
+        "source_locator",
+        "verification_status",
+        "allowed_use"
+      ],
+      "properties": {
+        "evidence_id": { "type": "string", "pattern": "^E\\d{3}$" },
+        "claim_or_asset": { "type": "string", "minLength": 1 },
+        "source_locator": { "type": "string", "minLength": 1 },
+        "verification_status": { "type": "string", "minLength": 1 },
+        "allowed_use": { "type": "string", "minLength": 1 }
+      }
+    },
+    "must_visible": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semantic_item_id", "meaning", "evidence_refs"],
+      "properties": {
+        "semantic_item_id": { "type": "string", "pattern": "^V\\d{3}$" },
+        "meaning": { "type": "string", "minLength": 1 },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^E\\d{3}$" }
+        }
+      }
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["relation_id", "from", "relation", "to", "direction"],
+      "properties": {
+        "relation_id": { "type": "string", "pattern": "^R\\d{3}$" },
+        "from": { "type": "string", "minLength": 1 },
+        "relation": { "type": "string", "minLength": 1 },
+        "to": { "type": "string", "minLength": 1 },
+        "direction": { "type": "string", "minLength": 1 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "char_equivalent",
+        "min_seconds",
+        "target_seconds",
+        "max_seconds",
+        "short_page_reason"
+      ],
+      "properties": {
+        "char_equivalent": { "type": "number", "minimum": 0 },
+        "min_seconds": { "type": "integer", "minimum": 0 },
+        "target_seconds": { "type": "integer", "minimum": 0 },
+        "max_seconds": { "type": "integer", "minimum": 0 },
+        "short_page_reason": { "type": ["string", "null"] }
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "a_id",
+        "callback_a_ids",
+        "nx",
+        "teaching_purpose",
+        "single_message",
+        "must_visible",
+        "protected_relations",
+        "entry_condition",
+        "exit_condition",
+        "timing"
+      ],
+      "properties": {
+        "a_id": { "type": "string", "pattern": "^A\\d{3}$" },
+        "callback_a_ids": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^A\\d{3}$" }
+        },
+        "nx": { "type": "string", "minLength": 1 },
+        "teaching_purpose": { "type": "string", "minLength": 1 },
+        "single_message": { "type": "string", "minLength": 1 },
+        "must_visible": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/must_visible" }
+        },
+        "protected_relations": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/relation" }
+        },
+        "entry_condition": { "type": "string", "minLength": 1 },
+        "exit_condition": { "type": "string", "minLength": 1 },
+        "timing": { "$ref": "#/definitions/timing" }
+      }
+    }
+  }
+}

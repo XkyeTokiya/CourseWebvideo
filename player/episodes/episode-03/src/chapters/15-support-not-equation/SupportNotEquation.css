@@ -1,0 +1,167 @@
+/* support-not-equation · A015 split-compare-with-thesis
+   mechanism: compare-and-reweight — 两栏空间持续，视觉权重随口播从左栏移向
+   底部判断；R025 由两栏对象与“不等号”判断表达，R026 由左栏支撑职责与右栏
+   更广目标域表达；两栏之间无中转状态或因果路径。
+   prefix: se- */
+
+.se-scene {
+  justify-content: flex-start;
+  gap: 28px;
+}
+
+/* ── 论点标题 ─────────────────────────────────────────── */
+
+.se-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: se-rise 620ms var(--ease-quart) backwards;
+}
+
+.se-thesis em {
+  font-style: normal;
+  color: var(--theme-warning);
+  border-bottom: 6px solid var(--theme-warning);
+  padding-bottom: 4px;
+}
+
+/* ── 两栏对照：支撑域（左）｜目标域（右）──────────────── */
+
+.se-cols {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+  align-items: center;
+  transition: opacity var(--dur-slow) var(--ease-soft);
+}
+
+.se-scene.is-judged .se-cols {
+  opacity: 0.72;
+}
+
+.se-col {
+  min-height: 380px;
+  padding: 28px 32px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  animation: se-stamp 580ms var(--ease-overshoot) backwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.se-col--support {
+  border-color: var(--theme-process);
+  animation-delay: 80ms;
+}
+
+.se-col--goal {
+  animation-delay: 240ms;
+}
+
+.se-col-kicker {
+  margin: 0 0 18px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.se-col--support .se-col-kicker {
+  color: var(--theme-process);
+}
+
+.se-col-lead {
+  margin: 0 0 16px;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.se-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.se-chip {
+  padding: 12px 20px;
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+}
+
+.se-col--goal .se-chip {
+  background: var(--surface-3);
+  border-color: var(--theme-structural);
+}
+
+.se-col-note {
+  margin: 22px 0 0;
+  padding-top: 16px;
+  font-size: 24px;
+  line-height: 1.55;
+  color: var(--text-2);
+  border-top: 2px dashed var(--theme-dashed-line);
+}
+
+.se-col-note i {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+/* ── 底部不等号 thesis（拍 2 权重落点）────────────────── */
+
+.se-bar {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 22px 34px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-warning);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+
+.se-bar.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.se-neq {
+  font-size: 72px;
+  color: var(--theme-warning);
+}
+
+.se-bar-lines p {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--theme-structural);
+}
+
+/* ── 共享 keyframes ──────────────────────────────────── */
+
+@keyframes se-rise {
+  0%   { opacity: 0; transform: translateY(28px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes se-stamp {
+  0%   { opacity: 0; transform: translateY(26px) scale(1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}

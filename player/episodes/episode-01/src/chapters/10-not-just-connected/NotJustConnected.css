@@ -1,0 +1,140 @@
+/* ─────────────────────────────────────────────────────────────
+ * 10-not-just-connected · A010 split-compare-with-thesis
+ * mechanism: compare-and-reweight — 两个否定边界对照 + 正面条件收束
+ * prefix: nj-
+ * ───────────────────────────────────────────────────────────── */
+
+.nj-scene {
+  justify-content: center;
+  gap: 52px;
+}
+
+.nj-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: stretch;
+  min-height: 0;
+}
+
+/* ── 否定边界卡 ── */
+.nj-card {
+  border-radius: var(--r-card);
+  padding: 46px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 26px;
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-quart);
+}
+.nj-card[data-on="false"] {
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  background: transparent;
+  box-shadow: none;
+  opacity: 0.35;
+}
+.nj-card[data-on="true"] {
+  animation: nj-materialize 640ms var(--ease-quart);
+}
+@keyframes nj-materialize {
+  0% {
+    opacity: 0.35;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nj-card[data-on="false"] .nj-card-headline,
+.nj-card[data-on="false"] .nj-card-desc {
+  visibility: hidden;
+}
+
+.nj-card-tag {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.32em;
+  color: var(--theme-danger);
+  border-bottom: 4px solid var(--theme-danger);
+  padding-bottom: 6px;
+}
+
+.nj-card-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.nj-card-claim {
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  line-height: 1.2;
+}
+.nj-card-neq {
+  font-size: 64px;
+  color: var(--theme-danger);
+  line-height: 1;
+  margin: 4px 0;
+  animation: nj-neq-pop 520ms var(--ease-overshoot) 260ms backwards;
+}
+@keyframes nj-neq-pop {
+  0% {
+    opacity: 0;
+    transform: scale(2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.nj-card-desc {
+  font-family: var(--font-body);
+  font-size: 24px;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+
+/* ── 底部正面条件条：灰置 → 末拍工业绿收束 ── */
+.nj-bottom {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 26px 38px;
+  border-radius: var(--r-card);
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  font-family: var(--font-body);
+  font-size: 27px;
+  line-height: 1.5;
+  color: var(--text-mute);
+  transition: color var(--dur-base) var(--ease-soft),
+    background var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-soft);
+}
+.nj-bottom-mark {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  background: var(--theme-dashed-line);
+  transition: background var(--dur-base) var(--ease-soft);
+}
+.nj-bottom[data-strong="true"] {
+  color: var(--theme-structural);
+  font-weight: 700;
+  background: var(--theme-process-surface);
+  border: var(--rule-w) solid var(--theme-process);
+  box-shadow: var(--card-shadow);
+}
+.nj-bottom[data-strong="true"] .nj-bottom-mark {
+  background: var(--theme-process);
+}

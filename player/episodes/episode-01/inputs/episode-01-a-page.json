@@ -1,0 +1,572 @@
+{
+  "schema_version": "courseplay-a-page/v4",
+  "document_kind": "production",
+  "episode_id": "episode-01",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "第 01 集标题、来源范围、概念责任、相邻边界和动态风险",
+      "source_locator": "course-video-architecture.md，“模块一”第 01、02 集及“全局职责与去重规则”第 1–2 条",
+      "verification_status": "not applicable",
+      "allowed_use": "控制本集范围与去重"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "教材以 2012 年 GE 提出工业互联网概念为历史起点，并将其定义为连接人、数据和机器的开放、全球化网络",
+      "source_locator": "1.1 工业互联网认知.md，1.1.1“1. 工业互联网的产生”首段",
+      "verification_status": "not applicable",
+      "allowed_use": "作为有教材归属的历史叙述"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "GE 航空发动机通过传感器采集飞行数据、传回数据中心分析，并用于预测性维护",
+      "source_locator": "同上，首段",
+      "verification_status": "not applicable",
+      "allowed_use": "解释 2012 年概念背后的工程问题"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "工业互联网推动传统工业从单点信息技术应用向全面数字化、网络化、智能化演进",
+      "source_locator": "同上，第二段及图 1-1“工业互联网的产生”",
+      "verification_status": "not applicable",
+      "allowed_use": "解释概念产生的长期背景"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "工业互联网是新一代信息通信技术与制造业深度融合形成的新型基础设施、应用模式和产业生态，通过人、机、物互联覆盖产业链与价值链",
+      "source_locator": "1.1 工业互联网认知.md，1.1.1“2. 工业互联网的理解”前两段",
+      "verification_status": "not applicable",
+      "allowed_use": "给出正式概念和边界"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "单点系统可以完成局部任务，但难以支持跨设备、跨系统、跨环节持续协同",
+      "source_locator": "E003–E005 的忠实归纳",
+      "verification_status": "not applicable",
+      "allowed_use": "将历史案例转化为核心认知问题"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "想象一下2012年前后的一个工业现场。设备已经在运行，控制系统能够下达指令，管理软件也能安排生产、记录订单。既然这些信息技术都已经存在，为什么工业领域还要提出“工业互联网”这个新概念？答案不在于工厂过去没有数字工具，而在于这些工具往往只解决各自的一小段工作。真正的问题是，人、机器和数据之间，能不能跨过设备、系统和环节的界线，持续配合起来。\n\n",
+      "teaching_purpose": "建立“已有局部系统却仍需工业互联网”的问题场景。",
+      "single_message": "工业现场已有设备、控制系统和管理软件，但这些局部工具仍未让人、机器和数据跨过边界持续配合。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V001",
+          "meaning": "2012 年前后的工业现场已有设备、控制系统和管理软件",
+          "evidence_refs": [
+            "E001",
+            "E002"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "设备、控制系统和管理软件",
+          "relation": "各自解决局部工作",
+          "to": "人、机器和数据仍未形成持续协同",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众进入一个已经使用局部信息技术的工业现场。",
+      "exit_condition": "观众理解“已有数字工具”与“跨要素协同”之间存在问题。",
+      "timing": {
+        "char_equivalent": 151,
+        "min_seconds": 38,
+        "target_seconds": 39,
+        "max_seconds": 42,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": [
+        "A001"
+      ],
+      "nx": "以2012年为时间坐标：通用电气，也就是GE，正是在这一年提出了“工业互联网”的概念。把这一年作为起点，不是要宣称全球唯一的首创，而是要为这个概念的出现确定一个重要的时间节点。工业互联网指的是一个连接人、数据和机器的开放、全球化网络。这个定义的关键，不只是“互联网”三个字，而是原来分开管理的人、数据和机器，开始进入同一个工业问题的框架。\n\n",
+      "teaching_purpose": "固定工业互联网概念产生的历史锚点，并建立其早期定义关系。",
+      "single_message": "2012 年 GE 提出工业互联网概念；它被描述为连接人、数据和机器的开放、全球化网络。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V002",
+          "meaning": "2012 年作为通用电气（GE）提出工业互联网概念的历史锚点",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        {
+          "semantic_item_id": "V003",
+          "meaning": "工业互联网被描述为开放、全球化、连接人、数据和机器的网络",
+          "evidence_refs": [
+            "E002"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R002",
+          "from": "2012 年 GE 提出工业互联网概念",
+          "relation": "标记历史节点",
+          "to": "工业互联网的产生问题",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R003",
+          "from": "工业互联网",
+          "relation": "连接",
+          "to": "人、数据和机器",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已看到局部系统彼此分开的工业现场。",
+      "exit_condition": "观众理解本集讨论的概念及其历史限定，不把它扩展成全球唯一首创。",
+      "timing": {
+        "char_equivalent": 147,
+        "min_seconds": 37,
+        "target_seconds": 38,
+        "max_seconds": 41,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": [],
+      "nx": "航空发动机可以把这个变化讲得很具体。发动机上的传感器采集飞行数据，数据传回数据中心进行分析，分析结果再用于预测性维护。这样一来，发动机的运行状态不再只留在机器内部。机器提供真实的运行信息，数据分析帮助人判断设备状态，维护人员据此安排维护。机器、数据和人之间就有了可以追踪的协作关系。\n\n",
+      "teaching_purpose": "用航空发动机案例呈现从机器状态到维护用途的数据路径。",
+      "single_message": "传感器采集飞行数据，数据传回数据中心分析，分析结果支持预测性维护。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V004",
+          "meaning": "航空发动机及其传感器采集飞行数据",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        {
+          "semantic_item_id": "V005",
+          "meaning": "飞行数据传回数据中心并进行分析",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        {
+          "semantic_item_id": "V006",
+          "meaning": "分析结果用于预测性维护",
+          "evidence_refs": [
+            "E003",
+            "E006"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R004",
+          "from": "航空发动机传感器",
+          "relation": "采集",
+          "to": "飞行数据",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R005",
+          "from": "飞行数据",
+          "relation": "传回并由其分析支持",
+          "to": "数据中心与预测性维护",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已知道工业互联网要连接人、数据和机器。",
+      "exit_condition": "观众能复述机器、数据中心和维护行动之间的关系。",
+      "timing": {
+        "char_equivalent": 130,
+        "min_seconds": 33,
+        "target_seconds": 34,
+        "max_seconds": 36,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": [
+        "A003"
+      ],
+      "nx": "先把具体机型、传感器数量和算法放在一边，沿着信息流继续看：当机器产生的信息能够被采集、分析，并服务于行动时，工业现场就不再只是“机器自己运行”。信息开始跨过机器和人的边界，进入一个更大的工作过程。工业互联网的概念，正是从这样的实际需求中变得清晰起来。\n\n",
+      "teaching_purpose": "从案例路径提炼工业互联网的协同含义，同时守住案例工程细节边界。",
+      "single_message": "案例的重点不是具体机型、数量或算法，而是机器信息被采集、分析并服务于人的行动，进入更大的工业工作过程。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V007",
+          "meaning": "机器产生的信息跨过机器与人的边界，进入采集、分析和行动过程",
+          "evidence_refs": [
+            "E003",
+            "E006"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R006",
+          "from": "机器产生的信息",
+          "relation": "被采集、分析并服务于",
+          "to": "人的维护行动",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R007",
+          "from": "机器、数据和人",
+          "relation": "形成",
+          "to": "可追踪的协作关系",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已经看到发动机数据路径的完整关系。",
+      "exit_condition": "观众理解案例说明的是跨机器、数据和人的工业协作，而不是某项未给出的工程实现。",
+      "timing": {
+        "char_equivalent": 112,
+        "min_seconds": 28,
+        "target_seconds": 29,
+        "max_seconds": 31,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": [],
+      "nx": "再回到许多工业企业原有的信息化状态。设备控制可能有一套系统，生产管理可能有另一套系统，订单、库存和质量也可能分别由不同系统负责。每套系统都能把自己的局部任务做得更快、更准，但这并不保证设备状态能够及时进入生产安排，也不保证生产信息能够被其他环节理解和使用。局部环节已经数字化，不等于整个工业过程已经互联。\n\n",
+      "teaching_purpose": "回到传统工业信息化，呈现局部系统各自有效但彼此分开的状态。",
+      "single_message": "设备控制、生产管理、订单、库存和质量可以分别由不同系统负责，各自改善局部任务。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V008",
+          "meaning": "设备控制、生产管理以及订单、库存、质量等局部系统各自承担任务",
+          "evidence_refs": [
+            "E004"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R008",
+          "from": "局部信息系统",
+          "relation": "改善各自任务",
+          "to": "设备控制、生产管理、订单、库存和质量",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已经从航空发动机案例看到一个完整的数据协作关系。",
+      "exit_condition": "观众能区分单个系统的局部改进与整个工业过程的状态。",
+      "timing": {
+        "char_equivalent": 141,
+        "min_seconds": 36,
+        "target_seconds": 37,
+        "max_seconds": 39,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": [
+        "A005"
+      ],
+      "nx": "这就是单点信息技术应用与工业互联网之间的差别。前者改善一个环节的效率，后者要面对跨设备、跨系统、跨环节的协同问题。一个环节产生的数据，能不能被另一个环节接住、理解，并用于下一步行动？这个问题的答案，决定了信息技术能不能从局部工具，变成工业过程中的共同支撑。问题也因此从“单台设备能不能工作得更好”，扩展成“不同工业要素能不能围绕同一个目标持续配合”。\n\n",
+      "teaching_purpose": "把局部数字化与工业互联网所要解决的跨环节协同问题明确对照起来。",
+      "single_message": "局部环节数字化不等于整体互联，关键问题是一个环节的数据能否被另一个环节接住、理解并用于下一步行动。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V009",
+          "meaning": "局部环节数字化不等于整个工业过程已经互联",
+          "evidence_refs": [
+            "E004",
+            "E006"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R009",
+          "from": "局部数字化",
+          "relation": "不自动形成",
+          "to": "跨设备、跨系统、跨环节协同",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R010",
+          "from": "一个环节产生的数据",
+          "relation": "被另一个环节接住、理解并使用",
+          "to": "下一步工业行动",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已经看到局部系统各自承担任务。",
+      "exit_condition": "观众能说明单点信息技术应用与工业互联网之间的核心差别。",
+      "timing": {
+        "char_equivalent": 157,
+        "min_seconds": 40,
+        "target_seconds": 41,
+        "max_seconds": 43,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": [],
+      "nx": "把视野拉远一些，还能看到两条变化。互联网原本更多服务于消费等场景，后来不断向产业活动延伸。工业自身也从单点信息技术应用，逐步走向更全面的数字化、网络化和智能化。两条路径在2012年前后相遇，工业互联网因此获得了清晰的时代位置。比年份本身更重要的，是工业需求和信息技术在同一个问题上汇合。\n\n",
+      "teaching_purpose": "建立互联网向产业延伸与工业走向数字化、网络化、智能化的历史交汇。",
+      "single_message": "互联网向产业活动延伸，工业也从单点信息技术应用走向更全面的数字化、网络化和智能化，两条路径在 2012 年前后相遇。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V010",
+          "meaning": "互联网从消费等场景不断向产业活动延伸",
+          "evidence_refs": [
+            "E004"
+          ]
+        },
+        {
+          "semantic_item_id": "V011",
+          "meaning": "工业从单点信息技术应用走向更全面的数字化、网络化和智能化，并在 2012 年前后与前一路径相遇",
+          "evidence_refs": [
+            "E002",
+            "E004"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R011",
+          "from": "互联网发展路径",
+          "relation": "从消费等场景延伸到",
+          "to": "产业活动",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R012",
+          "from": "工业信息技术应用",
+          "relation": "从单点走向",
+          "to": "数字化、网络化和智能化",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R013",
+          "from": "两条路径",
+          "relation": "在 2012 年前后交汇",
+          "to": "工业互联网的时代位置",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已经理解单点信息化的协同局限。",
+      "exit_condition": "观众理解工业互联网处在工业需求与信息技术演进交汇的时代背景中。",
+      "timing": {
+        "char_equivalent": 130,
+        "min_seconds": 33,
+        "target_seconds": 34,
+        "max_seconds": 36,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": [],
+      "nx": "新一代信息通信技术为这种汇合提供了条件，但技术本身并不会自动产生工业互联网。关键在于，信息技术要与工业知识、工业设备、工业流程深度融合。它要面对真实的生产过程，也要服务于生产、运维、协同和优化等目标。对工业来说，增加一条通信线路只是开始，能不能让信息进入正确的工作关系，才决定连接有没有实际意义。\n\n",
+      "teaching_purpose": "建立工业互联网的成立条件，说明技术条件必须进入工业知识、设备和流程。",
+      "single_message": "新一代信息通信技术只是条件，只有与工业知识、工业设备和工业流程深度融合并服务工业目标，连接才具有实际意义。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V012",
+          "meaning": "新一代信息通信技术为工业互联网提供条件，但需要与工业知识、设备和流程深度融合",
+          "evidence_refs": [
+            "E005",
+            "E006"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R014",
+          "from": "新一代信息通信技术",
+          "relation": "与工业知识、设备和流程深度融合",
+          "to": "生产、运维、协同和优化目标",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已经看到工业互联网产生的历史背景。",
+      "exit_condition": "观众理解通信技术本身不是工业互联网，深度融合才是成立条件。",
+      "timing": {
+        "char_equivalent": 134,
+        "min_seconds": 34,
+        "target_seconds": 35,
+        "max_seconds": 37,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": [
+        "A008"
+      ],
+      "nx": "因此，工业互联网可以这样理解：新一代信息通信技术与制造业深度融合，形成新的基础设施和应用方式，也带来更广泛的产业协作关系。通过人、机、物的全面互联，它把制造与服务活动延伸到产业链和价值链更大的范围。这里的“人、机、物”不是几个孤立的名词，而是说人的判断、机器的状态和数据所表达的信息，能够在工业过程中彼此关联。\n\n",
+      "teaching_purpose": "给出工业互联网的正式定义及其覆盖范围。",
+      "single_message": "工业互联网是新一代信息通信技术与制造业深度融合形成的新基础设施和应用方式，通过人、机、物全面互联连接产业链和价值链上的制造与服务活动。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V013",
+          "meaning": "新一代信息通信技术与制造业深度融合，形成新的基础设施、应用方式和产业协作关系",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        {
+          "semantic_item_id": "V014",
+          "meaning": "通过人、机、物的全面互联，连接产业链和价值链上的制造与服务活动",
+          "evidence_refs": [
+            "E005"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R015",
+          "from": "新一代信息通信技术",
+          "relation": "与制造业深度融合",
+          "to": "新的基础设施、应用方式和产业协作关系",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R016",
+          "from": "人、机、物",
+          "relation": "全面互联并覆盖",
+          "to": "产业链和价值链上的制造与服务活动",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已经理解技术与工业流程融合的成立条件。",
+      "exit_condition": "观众能用人机物互联和产业链、价值链范围复述工业互联网定义。",
+      "timing": {
+        "char_equivalent": 138,
+        "min_seconds": 35,
+        "target_seconds": 36,
+        "max_seconds": 38,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A010",
+      "callback_a_ids": [
+        "A009"
+      ],
+      "nx": "不过，设备接入网络，并不自动等于工业互联网。如果数据仍然停留在一个孤立系统里，跨环节的协同没有发生，原来的问题就还在。另一方面，工业互联网也不是把消费互联网的做法原样搬进工厂。工业现场有真实的设备、生产流程和运行目标，连接必须围绕这些条件发生，不能只停留在“连上了”这个动作上。\n\n",
+      "teaching_purpose": "划清工业互联网与普通设备联网、消费互联网直接照搬之间的边界。",
+      "single_message": "设备接入网络不是工业互联网的充分条件，消费互联网的做法也不能脱离工业设备、流程和运行目标直接搬入工厂。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V015",
+          "meaning": "设备接入网络不自动等于工业互联网",
+          "evidence_refs": [
+            "E005",
+            "E006"
+          ]
+        },
+        {
+          "semantic_item_id": "V016",
+          "meaning": "消费互联网做法不能不加区分地直接搬进工厂",
+          "evidence_refs": [
+            "E005",
+            "E006"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R017",
+          "from": "设备接入网络",
+          "relation": "不自动等于",
+          "to": "工业互联网",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R018",
+          "from": "消费互联网做法",
+          "relation": "不能原样搬入",
+          "to": "真实工业设备、流程和运行目标",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已经掌握工业互联网的正面定义和覆盖范围。",
+      "exit_condition": "观众能用两个否定边界判断“连上了”是否具有工业互联网意义。",
+      "timing": {
+        "char_equivalent": 125,
+        "min_seconds": 32,
+        "target_seconds": 33,
+        "max_seconds": 35,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A011",
+      "callback_a_ids": [
+        "A001",
+        "A006"
+      ],
+      "nx": "最后，回到开场的问题。工业企业并不是在完全没有信息技术的情况下，才遇到工业互联网。它是在单点系统已经发挥作用之后，发现局部工具仍然难以支撑跨设备、跨系统、跨环节的持续协同。工业互联网的价值所在，就是让人、机器和数据在工业过程中形成更广范围的联系。让机器产生的信息能够被看见、被理解，并服务于真实的工业行动。判断一个系统是不是工业互联网，不能只看设备有没有联网，还要看连接是否真正进入了工业过程。",
+      "teaching_purpose": "回扣开场问题，收束从局部工具到人机物互联的本集认知路径。",
+      "single_message": "工业互联网的核心不是设备单独联网，而是让人、机器和数据在工业过程中形成更广范围的联系并服务真实行动。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V017",
+          "meaning": "单点系统发挥作用后仍需跨设备、跨系统、跨环节的持续协同，并走向人、机器和数据的更广范围联系",
+          "evidence_refs": [
+            "E001",
+            "E004",
+            "E006"
+          ]
+        },
+        {
+          "semantic_item_id": "V018",
+          "meaning": "判断工业互联网不能只看设备有没有联网，还要看连接是否进入真实工业过程",
+          "evidence_refs": [
+            "E001",
+            "E006"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R019",
+          "from": "单点信息技术应用",
+          "relation": "走向",
+          "to": "跨设备、跨系统、跨环节持续协同",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R020",
+          "from": "人、机器和数据的联系",
+          "relation": "服务于",
+          "to": "真实工业行动",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已经掌握正式定义及两个否定边界。",
+      "exit_condition": "观众能够回到开场问题，并用“是否进入工业过程”而非“是否联网”作出核心判断。",
+      "timing": {
+        "char_equivalent": 180,
+        "min_seconds": 45,
+        "target_seconds": 47,
+        "max_seconds": 50,
+        "short_page_reason": null
+      }
+    }
+  ]
+}

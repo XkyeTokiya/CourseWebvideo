@@ -1,0 +1,133 @@
+{
+  "schema_version": "web-video-courseplay-chapter-handoff/v1",
+  "episode_id": "episode-09",
+  "chapter": {
+    "index": 10,
+    "id": "reconnect-same-object",
+    "title": "围绕同一对象重新连接",
+    "a_page_id": "A010",
+    "step_count": 4
+  },
+  "theme": {
+    "id": "active-identification-note",
+    "nameZh": "主动标识工程笔记",
+    "descriptionZh": "工程方格纸上的工业教学视觉系统：深海军蓝建立粗结构，工业绿表达主动流动与改善，陶土橙承担风险提示，低位硬投影形成可靠的工程贴纸质感。",
+    "mood": [
+      "light",
+      "industrial",
+      "engineering",
+      "technical",
+      "educational",
+      "structured",
+      "tactile"
+    ],
+    "bestFor": [
+      "工业互联网与智能制造",
+      "工程技术与设备原理讲解",
+      "企业技术培训",
+      "生产流程和闭环控制",
+      "B2B 解决方案演示",
+      "职业教育与教材信息图",
+      "数据驱动的运营汇报"
+    ]
+  },
+  "a_page": {
+    "a_id": "A010",
+    "callback_a_ids": [
+      "A005",
+      "A007",
+      "A008"
+    ],
+    "nx": "【本期总结】\n回到开头那台发动机。ERP、MES、WMS 继续管理各自的业务，统一标识把同一台发动机的基本、装配、工艺、质量、物流和售后记录串成可追溯链。这里的共同规律是：分散数据要围绕同一对象重新连接。真正产生价值的，不是某个系统名称，而是企业对相关数据的治理、分析和协同。",
+    "teaching_purpose": "回扣开头的发动机问题，收束系统分工、统一标识和数据价值条件之间的关系。",
+    "single_message": "各系统各司其职，统一标识围绕同一发动机串起记录，价值来自后续治理、分析和协同。",
+    "must_visible": [
+      {
+        "semantic_item_id": "V022",
+        "meaning": "ERP、MES、WMS 继续各自管理业务，并围绕同一台发动机保留基本、装配、工艺、质量、物流和售后记录。",
+        "evidence_refs": [
+          "E006",
+          "E007",
+          "E010"
+        ]
+      },
+      {
+        "semantic_item_id": "V023",
+        "meaning": "同一对象、共同锚点、跨系统追溯，以及数据价值依赖治理、分析和协同的收束关系。",
+        "evidence_refs": [
+          "E010"
+        ]
+      }
+    ],
+    "protected_relations": [
+      {
+        "relation_id": "R022",
+        "from": "ERP、MES、WMS",
+        "relation": "继续管理",
+        "to": "各自的业务",
+        "direction": "保持业务系统原有分工"
+      },
+      {
+        "relation_id": "R023",
+        "from": "统一标识",
+        "relation": "把同一台发动机的记录串成",
+        "to": "可追溯链",
+        "direction": "从共同锚点连接基本、装配、工艺、质量、物流和售后记录"
+      }
+    ],
+    "entry_condition": "观众已经掌握关联机制、售后回查和价值实现条件。",
+    "exit_condition": "观众能用同一对象和共同锚点概括本集的追溯链逻辑。",
+    "timing": {
+      "char_equivalent": 114.5,
+      "min_seconds": 29,
+      "target_seconds": 30,
+      "max_seconds": 32,
+      "short_page_reason": null
+    }
+  },
+  "narration": {
+    "authority": "a_page.nx",
+    "beats": [
+      "【本期总结】\n回到开头那台发动机。ERP、MES、WMS 继续管理各自的业务，",
+      "统一标识把同一台发动机的基本、装配、工艺、质量、物流和售后记录串成可追溯链。",
+      "这里的共同规律是：分散数据要围绕同一对象重新连接。",
+      "真正产生价值的，不是某个系统名称，而是企业对相关数据的治理、分析和协同。"
+    ]
+  },
+  "outline": {
+    "chapter_markdown": "## 10. reconnect-same-object — 围绕同一对象重新连接（4 steps · ~30s）\n\n**A-page / Chapter**：`A010`\n**基础场景**：`S-A010` — M004 收束主图 + 总结带前两条（系统分工、统一标识串起记录）；final judgment 收束区由 `K-A010-01` accent 替代，base-scene 不再重复该判断\n**页面配方**：`image-with-summary-rail`\n**核心判断**：各系统各司其职，统一标识围绕同一发动机串起记录，价值来自后续治理、分析和协同。\n**结构指纹**：`主图媒体区（M004）| 总结带 1（系统各司其职）| 总结带 2（统一标识串起记录）| final judgment（accent 承载）`\n**语义关系**：收束回扣——系统分工、共同锚点、价值条件的分层阅读\n**关系机制**：`persistent-media-reading` — M004 主图持续，总结带按\"系统分工—共同锚点—价值条件\"推进；图片不叠加系统拓扑、链路或软件界面，总结带承担全部语义说明（R022 并列列举不画互连；R023 共同对象分组不画网络节点）\n**持续元素**：论点标题、M004 主图、总结带 1/2\n**内容槽位**：`media-scene`（M004）；`band-1 系统各司其职`（V022/R022）；`band-2 统一标识串起记录`（V022/R023）；`band-3/final-judgment`（V023 价值条件——由 accent 承载）\n**强调页**：`K-A010-01` — \"真正产生价值的，不是某个系统名称，而是企业对相关数据的治理、分析和协同。\"（最终判断，替代配方 final judgment 收束区）\n**额外复杂场景**：`none`\n**可见标题**：`保留`\n**信息池**（主动设计：源为冻结 A-page / visual rough / evidence_catalog）：\n- 媒体：M004 photorealistic_ai 收束回扣现场图 —— visual rough A010（待提供；不承担系统关系或数据展示）\n- 语义项：V022 系统各司其职并保留记录；V023 共同锚点与价值条件收束 —— A-page A010 must_visible（E006/E007/E010）\n- 关系：R022 保持业务系统原有分工；R023 统一标识串成可追溯链 —— A-page A010 protected_relations\n**beat 切分**：N=3，N_eff=3，4 拍（N_eff+1，合规）。扩张：final judgment 独立口播句以 accent 全屏呈现；并入：\"【本期总结】回到开头那台发动机\"回扣句无组锚点，并入拍 1；拍 1→2 句内切分落在\"，统一标识\"（强分隔标点，两侧分属系统分工/串记录组锚点）。\n\n| Step | Narration focus | Scene · Semantic state | 本步场景指令 |\n|---|---|---|---|\n| 1 | 回到发动机：系统各司其职 | `S-A010 · systems-and-own-records` (~7s) | 建立 M004 收束主图；总结带 1 出现（ERP/MES/WMS 继续各自管理业务并保留发动机记录，V022/R022），并列列举不画互连；回扣句并入本拍 |\n| 2 | 统一标识串成可追溯链 | `S-A010 · chain-formed` (~9s) | 主图与带 1 保持；带 2 出现（基本、装配、工艺、质量、物流、售后记录围绕同一台发动机串成可追溯链，R023），共同对象分组表达，不画网络节点 |\n| 3 | 共同规律：围绕同一对象重新连接 | `S-A010 · pattern-named` (~6s) | 主图与带 1/2 保持；规律句落在论点标题判断上（分散数据围绕同一对象重新连接，V023），由标题与已立总结带共同承载；价值条件不在 base 提前出现 |\n| 4 | 最终判断 | `K-A010-01 · accent` (~8s) | 切换低成本全屏强调页，只承载最终判断句与短 kicker；价值条件由 accent 唯一承载，base-scene 不再重复 |\n\n**口播节选**：\"真正产生价值的，不是某个系统名称，而是企业对相关数据的治理、分析和协同。\"",
+    "schedule": {
+      "previous": "| A009 | `evidence-cards-with-provenance-boundary` | 证据归属与边界 | `cumulative-assembly` | 来源带 + 三张证据卡 + 缺口/边界组 | 无 | none | 证据卡 + 来源带结构 |",
+      "current": "| A010 | `image-with-summary-rail` | 收束回扣 | `persistent-media-reading` | 主图（M004）+ 总结带 | `K-A010-01` accent（最终判断） | M004 | 收束页：主图 + 总结带，判断切至 accent |",
+      "next": null
+    },
+    "materials_markdown": "### A010\n- ⚠️ `M004`：photorealistic_ai — 收束回扣的售后业务现场图；不叠加系统拓扑、链路或软件界面（待提供 / placeholder）"
+  },
+  "visual_rough_markdown": "## A010｜围绕同一对象重新连接\n\n- **内容角色**：案例回扣——收束系统分工、共同锚点、追溯链和价值条件。\n- **页面配方**：`image-with-summary-rail`\n- **论点标题**：[V023] 分散数据围绕同一对象重新连接，才形成可协作的追溯关系\n- **辅助句**：`none`\n- **媒体需求**：`M004` / `photorealistic_ai`\n- **媒体作用**：回扣发动机售后问题的业务现场，帮助学习者把系统分工、对象身份和追溯用途重新落到同一案例；图片不承担系统关系或数据展示。\n- **教材证据**：`none`\n- **逻辑图**：`no`\n- **逻辑图理由**：`none`\n\n### 上屏内容组\n\n1. [V022][R022] **系统各司其职**：ERP、MES、WMS 继续管理各自业务，并保留各自产生的发动机记录。\n2. [V022][R023] **统一标识串起记录**：基本、装配、工艺、质量、物流和售后记录围绕同一台发动机形成可追溯链。\n3. [V023] **价值仍需后续工作**：数据价值来自企业持续的治理、分析和业务协同，而不是某个系统名称本身。\n\n### 页面骨架\n\n- 主图与三条总结带并列，按“系统分工—共同锚点—价值条件”阅读。\n- 图片不叠加系统拓扑、链路或软件界面；总结带承担全部语义说明。\n- final judgment 收束：真正产生价值的，是围绕同一对象对相关数据持续治理、分析和协同。\n\n### 关系保真\n\n- [R022] ERP、MES、WMS 保持原有分工由总结带 1 的并列列举表达，不画系统互连关系。\n- [R023] 统一标识把同一发动机记录串成追溯链，由总结带 2 的共同对象分组表达；不把记录机械画成网络节点。",
+  "sources": {
+    "a_page": {
+      "path": "episodes/episode-09/episode-09-a-page.json",
+      "sha256": "8fb764141c77def8fbb003f376ab2d4d47f38a6d05d4528d2a11e3a4562f25be"
+    },
+    "visual_rough": {
+      "path": "episodes/episode-09/episode-09-visual-rough.md",
+      "sha256": "908aa37daf366132fafa02f66069f18d209b7099dd7e462b492a6a7c26e4d230"
+    },
+    "outline": {
+      "path": "episodes/episode-09/outline.md",
+      "sha256": "963e00798cfd0dd9322e9b0ba04b3a5e5da92b9f558c8c3fac56ccd64c37b6b9"
+    },
+    "script": {
+      "path": "episodes/episode-09/script.md",
+      "sha256": "add821ff31cd497c48f03a05250eeda88d67d09e16ace9f629d1a24eb34ad6ea"
+    },
+    "approved_text": {
+      "path": "episodes/episode-09/approved-spoken-text.txt",
+      "sha256": "e07682c0eaeae79123476216b63fd9450d5a854b1d6080c0604a44438a6e4f25"
+    },
+    "theme": {
+      "path": ".agents/skills/web-video-presentation/themes/active-identification-note/theme.json",
+      "sha256": "868de872b3c03d359b3c808ac69aa98c6a0a0b9e3e45ed0dc33f592d5a9f6997"
+    }
+  }
+}

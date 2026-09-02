@@ -1,0 +1,930 @@
+{
+  "schema_version": "courseplay-a-page/v4",
+  "document_kind": "production",
+  "episode_id": "episode-03",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "第 03 集来源范围、Policy and development 类型、前置关系、相邻边界和高动态风险",
+      "source_locator": "course-video-architecture.md，第 5 节第 03 集；第 6 节规则 1–2；第 7 节政策核验门槛",
+      "verification_status": "not applicable",
+      "allowed_use": "确定本集责任和动态核验要求"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "新型工业化概念始于 2002 年；以信息化带动工业化、以工业化促进信息化，以及科技含量、效益、资源、环境和人力资源方面的基本取向",
+      "source_locator": "1.1 工业互联网认知.md，1.1.2“新型工业化”首段",
+      "verification_status": "not applicable",
+      "allowed_use": "作为历史起点和概念演进背景"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "工业互联网是新一代信息技术与制造业深度融合的产物，是新工业革命和“互联网+先进制造业”的重要支撑",
+      "source_locator": "同上，1.1.2 第 2 段",
+      "verification_status": "not applicable",
+      "allowed_use": "建立工业互联网与新型工业化的教材关系"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "工业互联网连接工业要素、汇聚能力、以数据支持分析优化和业务协同",
+      "source_locator": "同上，1.1.1“2. 工业互联网的理解”“4. 工业互联网体系构成”",
+      "verification_status": "not applicable",
+      "allowed_use": "解释工业互联网能提供哪些支撑能力"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "推进新型工业化；推动制造业高端化、智能化、绿色化；加快新一代信息技术全方位全链条普及应用，发展工业互联网",
+      "source_locator": "权威补充来源，第（9）项“健全促进实体经济和数字经济深度融合制度”",
+      "verification_status": "verified",
+      "allowed_use": "核验政策方向及工业互联网的制度位置"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "新型工业化是长期战略任务；工业发展处于由大变强关键期；锚定 2035 年基本实现新型工业化；坚持智能化、绿色化、融合化方向",
+      "source_locator": "权威补充来源，标题下第 1–4 段",
+      "verification_status": "verified",
+      "allowed_use": "核验当期阶段、长期目标和方向"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "新型工业化规定目标方向，工业互联网提供连接、数据、能力复用和协同支撑；二者是“目标—支撑”关系而非同义关系",
+      "source_locator": "E003–E006",
+      "verification_status": "not applicable",
+      "allowed_use": "作为本集核心结论和叙事组织"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "同一制造企业面对质量波动、设备异常、能耗变化和订单调整，但信息分散于不同系统和岗位",
+      "source_locator": "本任务包原创",
+      "verification_status": "not applicable",
+      "allowed_use": "用于具体化“方向如何转为能力”的问题"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "我们先设想一家制造企业。新设备添置了，信息系统也增加了，可质量记录、设备状态、能耗和订单信息仍分散在不同位置。工具变多，工业体系的能力就一定变强了吗？如果信息不能相互支持，企业可能只是增加了局部工具，还没有形成更好的整体运行能力。这正是理解新型工业化与工业互联网关系的入口。\n\n",
+      "teaching_purpose": "用设想情境区分局部工具增加与工业体系能力提升。",
+      "single_message": "设备和系统增加后，质量、设备、能耗和订单信息仍可能分散，工具变多不自动带来整体运行能力。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V001",
+          "meaning": "明确标注为设想的制造企业，以及新增设备和信息系统",
+          "evidence_refs": [
+            "E008"
+          ]
+        },
+        {
+          "semantic_item_id": "V002",
+          "meaning": "质量、设备状态、能耗和订单信息仍分散，局部工具增加不等于体系能力增强",
+          "evidence_refs": [
+            "E001",
+            "E008"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "设备和信息系统数量增加",
+          "relation": "不自动形成",
+          "to": "更好的工业体系整体运行能力",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众进入一个不对应真实企业的制造情境。",
+      "exit_condition": "观众能区分技术投入数量与体系能力。",
+      "timing": {
+        "char_equivalent": 125,
+        "min_seconds": 32,
+        "target_seconds": 33,
+        "max_seconds": 35,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": [
+        "A001"
+      ],
+      "nx": "新型工业化关心的，不只是工业规模和投入继续增加，还包括创新、生产、资源利用和协同等方面的质量提升。工业发展要从量的积累转向质的提升，关键在于能不能形成更好的整体运行能力。\n\n",
+      "teaching_purpose": "给出新型工业化从量的积累转向质的提升的核心关注。",
+      "single_message": "新型工业化关注创新、生产、资源利用和协同等方面的质量提升，关键是形成更好的整体运行能力。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V003",
+          "meaning": "工业发展从规模和投入的量的积累转向创新、生产、资源利用和协同的质的提升",
+          "evidence_refs": [
+            "E002"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R002",
+          "from": "工业规模和投入继续增加",
+          "relation": "转向并服务于",
+          "to": "创新、生产、资源利用和协同的质量提升",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已看到局部工具增加却没有形成整体能力。",
+      "exit_condition": "观众理解后续历史与政策坐标讨论的是工业发展质量。",
+      "timing": {
+        "char_equivalent": 78,
+        "min_seconds": 20,
+        "target_seconds": 20,
+        "max_seconds": 22,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": [],
+      "nx": "回看2002年的相关历史论述，新型工业化体现为一条双向关系：信息化带动工业化，工业化促进信息化。信息技术、工业技术、资源利用和人的能力，不是彼此分开的几件事，而要共同进入工业发展的过程。\n\n",
+      "teaching_purpose": "建立 2002 年历史起点及信息化与工业化的双向关系。",
+      "single_message": "2002 年相关历史论述强调信息化带动工业化、工业化促进信息化，并让技术、资源和人的能力共同进入工业发展。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V004",
+          "meaning": "2002 年新型工业化历史起点",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        {
+          "semantic_item_id": "V005",
+          "meaning": "信息化带动工业化与工业化促进信息化的双向关系",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        {
+          "semantic_item_id": "V006",
+          "meaning": "信息技术、工业技术、资源利用和人的能力共同进入发展过程",
+          "evidence_refs": [
+            "E002"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R003",
+          "from": "信息化",
+          "relation": "带动",
+          "to": "工业化",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R004",
+          "from": "工业化",
+          "relation": "促进",
+          "to": "信息化",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已理解新型工业化重在质的提升。",
+      "exit_condition": "观众能说明两化互动不是单向技术替代。",
+      "timing": {
+        "char_equivalent": 82,
+        "min_seconds": 21,
+        "target_seconds": 21,
+        "max_seconds": 23,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": [
+        "A003"
+      ],
+      "nx": "这条思路在今天有了更明确的政策坐标。2024年7月18日，中央通过了《中共中央关于进一步全面深化改革　推进中国式现代化的决定》。这份文件提出推进新型工业化，推动制造业高端化、智能化、绿色化发展，并提出发展工业互联网。这里的“高端化、智能化、绿色化”，是2024年这份文件提出的方向表述。\n\n",
+      "teaching_purpose": "核验 2024 年中央《决定》中的制造业方向和工业互联网位置。",
+      "single_message": "2024 年 7 月 18 日通过的中央《决定》提出推进新型工业化，推动制造业高端化、智能化、绿色化，并提出发展工业互联网。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V007",
+          "meaning": "2024 年 7 月 18 日中央《决定》这一来源和时间身份",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        {
+          "semantic_item_id": "V008",
+          "meaning": "2024 来源下的高端化、智能化、绿色化方向及发展工业互联网部署",
+          "evidence_refs": [
+            "E005"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R005",
+          "from": "2024 年中央《决定》",
+          "relation": "提出",
+          "to": "推进新型工业化与发展工业互联网",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R006",
+          "from": "2024 年制造业方向",
+          "relation": "包括",
+          "to": "高端化、智能化、绿色化",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已看到 2002 年两化互动起点。",
+      "exit_condition": "观众掌握 2024 年来源及其方向词组，未与 2026 表述混合。",
+      "timing": {
+        "char_equivalent": 120.5,
+        "min_seconds": 31,
+        "target_seconds": 31,
+        "max_seconds": 33,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": [
+        "A004"
+      ],
+      "nx": "2026年6月5日的国务院常务会议政策解读，则把推进新型工业化表述为长期战略任务，指出工业发展处于由大变强的关键期。解读提出的目标是：到2035年基本实现新型工业化。2035年是要达到的目标年份，不是已经完成的状态。这份解读强调的是“智能化、绿色化、融合化”。两组方向有联系，但来源和语境分别保留，不能拼成一句没有出处的话。\n\n这些方向必须落到工业现场。",
+      "teaching_purpose": "核验 2026 年阶段判断、2035 年目标及方向，并与 2024 表述分开；从政策坐标过渡到工业现场能力要求。",
+      "single_message": "2026 年 6 月 5 日政策解读把新型工业化表述为长期战略任务和由大变强关键期，以 2035 年基本实现为目标，并强调智能化、绿色化、融合化。 智能化、绿色化和融合化方向都必须落实到工业现场。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V009",
+          "meaning": "2026 年 6 月 5 日国务院常务会议政策解读及由大变强关键期",
+          "evidence_refs": [
+            "E006"
+          ]
+        },
+        {
+          "semantic_item_id": "V010",
+          "meaning": "2035 年基本实现新型工业化是目标而非当前完成状态",
+          "evidence_refs": [
+            "E006"
+          ]
+        },
+        {
+          "semantic_item_id": "V011",
+          "meaning": "2026 来源下的智能化、绿色化、融合化表述，与 2024 词组分别保留",
+          "evidence_refs": [
+            "E005",
+            "E006"
+          ]
+        },
+        {
+          "semantic_item_id": "V012",
+          "meaning": "政策方向需要进入工业现场而非停留在宏观表述",
+          "evidence_refs": [
+            "E005",
+            "E006"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R007",
+          "from": "2026 年阶段判断",
+          "relation": "锚定",
+          "to": "2035 年基本实现新型工业化目标",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R008",
+          "from": "2024 与 2026 两组方向",
+          "relation": "分别归属于",
+          "to": "各自来源和语境",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R009",
+          "from": "新型工业化方向",
+          "relation": "必须落实到",
+          "to": "工业现场运行",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "2024 来源、方向和工业互联网位置已经建立。",
+      "exit_condition": "观众开始追问现场需要什么运行能力。",
+      "timing": {
+        "char_equivalent": 152,
+        "min_seconds": 38,
+        "target_seconds": 40,
+        "max_seconds": 42,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": [
+        "A005"
+      ],
+      "nx": "智能化需要真实、连续的运行信息来支持判断。绿色化需要看见能源、物料和排放随着生产过程怎样变化。融合化需要设备、系统、部门和上下游企业能够配合行动。如果信息被锁在一台机器、一个系统或一家企业内部，宏观方向就很难转成稳定的运行能力。\n\n",
+      "teaching_purpose": "把智能化、绿色化、融合化转译为现场信息与协作要求。",
+      "single_message": "智能化需要连续运行信息，绿色化需要资源过程可见，融合化需要多环节协作；局部信息封闭会阻断这些能力。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V013",
+          "meaning": "智能化对应真实连续运行信息，绿色化对应能源物料排放过程可见，融合化对应跨设备系统部门和企业协作",
+          "evidence_refs": [
+            "E003",
+            "E004",
+            "E005",
+            "E006",
+            "E007"
+          ]
+        },
+        {
+          "semantic_item_id": "V014",
+          "meaning": "单机、单系统、单企业的信息封闭形成共同能力断点",
+          "evidence_refs": [
+            "E003",
+            "E004",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R010",
+          "from": "智能化、绿色化、融合化",
+          "relation": "分别要求",
+          "to": "连续信息、过程可见和跨环节协作",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R011",
+          "from": "局部信息封闭",
+          "relation": "阻碍",
+          "to": "方向转化为稳定运行能力",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "政策方向已经转向工业现场。",
+      "exit_condition": "观众能解释宏观方向为什么产生共同的信息能力缺口。",
+      "timing": {
+        "char_equivalent": 104,
+        "min_seconds": 26,
+        "target_seconds": 27,
+        "max_seconds": 29,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": [
+        "A006"
+      ],
+      "nx": "工业互联网提供的，就是把这些要素组织起来的关键支撑。它是新一代信息技术与制造业深度融合的产物，也提供数字基础设施和融合应用支撑。",
+      "teaching_purpose": "建立工业互联网作为关键支撑的身份和目标—支撑关系。",
+      "single_message": "工业互联网源于新一代信息技术与制造业深度融合，提供数字基础设施和融合应用支撑，以组织分散工业要素。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V015",
+          "meaning": "工业互联网是新一代信息技术与制造业深度融合的产物，并提供数字基础设施和融合应用支撑",
+          "evidence_refs": [
+            "E003",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R012",
+          "from": "工业互联网",
+          "relation": "提供关键支撑以组织",
+          "to": "分散的工业要素",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已看到三项方向在现场遭遇的信息断点。",
+      "exit_condition": "观众理解工业互联网位于目标之下的支撑层。",
+      "timing": {
+        "char_equivalent": 60,
+        "min_seconds": 15,
+        "target_seconds": 16,
+        "max_seconds": 17,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": [
+        "A007"
+      ],
+      "nx": "通过它，人、机器、产品、业务系统以及产业链相关环节能够连接起来。连接不只是让对象出现在同一张连接关系图里，而是让分散的工业要素能够被共同感知和组织。\n\n",
+      "teaching_purpose": "解释第一类支撑：连接工业要素并共同感知和组织。",
+      "single_message": "人、机器、产品、业务系统和产业链相关环节被纳入可通信环境，连接为后续贯通与协同提供基础。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V016",
+          "meaning": "人、机器、产品、业务系统和产业链相关环节的广泛连接",
+          "evidence_refs": [
+            "E003",
+            "E004",
+            "E007"
+          ]
+        },
+        {
+          "semantic_item_id": "V017",
+          "meaning": "连接的意义是共同感知和组织分散工业要素，而非只画连接线",
+          "evidence_refs": [
+            "E003",
+            "E004",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R013",
+          "from": "分散工业要素",
+          "relation": "经广泛连接进入",
+          "to": "可共同感知和组织的环境",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "工业互联网的关键支撑身份已经建立。",
+      "exit_condition": "观众理解连接是基础但不是最终结果。",
+      "timing": {
+        "char_equivalent": 67,
+        "min_seconds": 17,
+        "target_seconds": 17,
+        "max_seconds": 19,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": [
+        "A008"
+      ],
+      "nx": "连接之后，还要让数据真正参与运行。状态、质量、能耗和业务信息可以被汇聚、分析，再反馈到判断和行动中。异常信息可以帮助维护人员判断问题，质量变化可以提醒生产环节检查过程，订单变化可以为计划调整提供依据。数据的价值，体现在它能支持下一步的运行调整，而不只是被保存。\n\n",
+      "teaching_purpose": "解释第二类支撑：让数据参与判断和运行调整。",
+      "single_message": "状态、质量、能耗和业务信息被汇聚分析并反馈到判断与行动，价值在于支持下一步调整而非仅保存。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V018",
+          "meaning": "状态、质量、能耗和业务信息从汇聚分析到判断与行动",
+          "evidence_refs": [
+            "E003",
+            "E004",
+            "E007"
+          ]
+        },
+        {
+          "semantic_item_id": "V019",
+          "meaning": "数据支持维护、生产检查和计划调整等判断，不承诺具体收益",
+          "evidence_refs": [
+            "E003",
+            "E004",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R014",
+          "from": "工业数据",
+          "relation": "经汇聚分析反馈到",
+          "to": "判断与行动",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R015",
+          "from": "数据价值",
+          "relation": "体现为支持",
+          "to": "下一步运行调整",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "工业要素已经进入可通信环境。",
+      "exit_condition": "观众理解数据贯通必须进入运行而不是停在存储。",
+      "timing": {
+        "char_equivalent": 117,
+        "min_seconds": 30,
+        "target_seconds": 31,
+        "max_seconds": 32,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A010",
+      "callback_a_ids": [],
+      "nx": "工业经验也不能只停留在某个人、某台设备或某个软件里。数据处理方法、工业模型和应用经验经过整理，可以沉淀为能力，在不同设备、产线或工厂中复用。局部位置形成的改进，才有机会变成更大范围可以借鉴的做法。\n\n",
+      "teaching_purpose": "解释第三类支撑：工业经验和应用能力的沉淀与复用。",
+      "single_message": "数据处理方法、工业模型和应用经验经过整理，可在不同设备、产线或工厂中复用，使局部改进进入组织能力。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V020",
+          "meaning": "数据处理方法、工业模型和应用经验被组织为可复用能力",
+          "evidence_refs": [
+            "E003",
+            "E004",
+            "E007"
+          ]
+        },
+        {
+          "semantic_item_id": "V021",
+          "meaning": "能力从局部位置扩展到不同设备、产线或工厂",
+          "evidence_refs": [
+            "E003",
+            "E004",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R016",
+          "from": "工业经验与应用",
+          "relation": "经整理沉淀为",
+          "to": "可复用能力",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R017",
+          "from": "局部改进",
+          "relation": "扩展为",
+          "to": "更大范围可借鉴做法",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "连接与数据贯通两类支撑已经建立。",
+      "exit_condition": "观众理解能力复用不等同于新增未给出的平台组件。",
+      "timing": {
+        "char_equivalent": 89,
+        "min_seconds": 23,
+        "target_seconds": 23,
+        "max_seconds": 25,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A011",
+      "callback_a_ids": [],
+      "nx": "制造活动还常常涉及研发、采购、生产、物流和服务等多个主体。工业互联网可以为必要信息的协作提供基础，但信息流动必须在授权范围内进行，不是无条件开放。相关主体在合适的权限和边界下共享必要信息，才能围绕订单、产能、质量和服务协调安排。\n\n",
+      "teaching_purpose": "解释第四类支撑：授权范围内的跨主体协同。",
+      "single_message": "研发、采购、生产、物流和服务主体只有在权限与边界内共享必要信息，才能围绕订单、产能、质量和服务协调安排。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V022",
+          "meaning": "研发、采购、生产、物流和服务等多主体协作范围",
+          "evidence_refs": [
+            "E003",
+            "E004",
+            "E007"
+          ]
+        },
+        {
+          "semantic_item_id": "V023",
+          "meaning": "必要信息流动受授权、权限和边界约束，不是无条件开放",
+          "evidence_refs": [
+            "E003",
+            "E004",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R018",
+          "from": "必要信息",
+          "relation": "在授权范围内流动以支持",
+          "to": "订单、产能、质量和服务协同",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "前三类支撑已从对象连接推进到能力复用。",
+      "exit_condition": "观众理解跨主体协同必须保留授权边界。",
+      "timing": {
+        "char_equivalent": 103,
+        "min_seconds": 26,
+        "target_seconds": 27,
+        "max_seconds": 29,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A012",
+      "callback_a_ids": [
+        "A004",
+        "A005",
+        "A008",
+        "A009",
+        "A010",
+        "A011"
+      ],
+      "nx": "把这些支撑放回政策方向，关系就清楚了。连接和数据贯通，为智能化提供连续的工业信息；过程数据和分析能力，让绿色化能够落实到资源过程的观察与调整；能力复用和跨主体协同，为融合化提供共同基础。工业互联网的作用，是把发展方向接到工业运行上。\n\n",
+      "teaching_purpose": "把四类支撑重新映射到智能化、绿色化和融合化方向；提炼目标—支撑映射的中间结论。",
+      "single_message": "连接与数据贯通支撑智能化，过程数据与分析支撑绿色化，能力复用与跨主体协同支撑融合化。 工业互联网的作用是把发展方向接到工业运行上。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V024",
+          "meaning": "连接和数据贯通与智能化的支撑关系",
+          "evidence_refs": [
+            "E005",
+            "E006",
+            "E007"
+          ]
+        },
+        {
+          "semantic_item_id": "V025",
+          "meaning": "过程数据和分析能力与绿色化的支撑关系",
+          "evidence_refs": [
+            "E005",
+            "E006",
+            "E007"
+          ]
+        },
+        {
+          "semantic_item_id": "V026",
+          "meaning": "能力复用和跨主体协同与融合化的支撑关系",
+          "evidence_refs": [
+            "E005",
+            "E006",
+            "E007"
+          ]
+        },
+        {
+          "semantic_item_id": "V027",
+          "meaning": "新型工业化发展方向通过工业互联网支撑进入日常工业运行",
+          "evidence_refs": [
+            "E005",
+            "E006",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R019",
+          "from": "连接和数据贯通",
+          "relation": "支撑",
+          "to": "智能化",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R020",
+          "from": "过程数据和分析",
+          "relation": "支撑",
+          "to": "绿色化",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R021",
+          "from": "能力复用和跨主体协同",
+          "relation": "支撑",
+          "to": "融合化",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R022",
+          "from": "工业互联网支撑",
+          "relation": "把发展方向连接到",
+          "to": "工业运行",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "四类工业互联网支撑已逐项建立。",
+      "exit_condition": "观众准备回到开篇情境观察运行变化。",
+      "timing": {
+        "char_equivalent": 106,
+        "min_seconds": 27,
+        "target_seconds": 28,
+        "max_seconds": 29,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A013",
+      "callback_a_ids": [
+        "A001",
+        "A012"
+      ],
+      "nx": "再回到开头的设想。如果质量、设备状态、能耗和订单信息，能在授权条件下形成共同视图，异常就不必停留在一个岗位里。相关人员可以共同判断，生产、维护和供应环节也能围绕变化协调行动。这个设想不对应某一家真实企业，也不承诺具体收益。它只是帮助我们看清：工业体系的能力，要在日常运行中被观察、判断和持续调整。\n\n",
+      "teaching_purpose": "回扣开篇情境，展示授权共同视图和协同行动。",
+      "single_message": "四类信息在授权条件下形成共同视图后，相关人员可共同判断，生产、维护和供应环节可围绕变化协同行动；情境不代表真实企业或收益承诺。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V028",
+          "meaning": "质量、设备状态、能耗和订单信息在授权条件下形成共同视图",
+          "evidence_refs": [
+            "E008"
+          ]
+        },
+        {
+          "semantic_item_id": "V029",
+          "meaning": "相关人员共同判断，生产、维护和供应环节围绕变化协同行动",
+          "evidence_refs": [
+            "E007",
+            "E008"
+          ]
+        },
+        {
+          "semantic_item_id": "V030",
+          "meaning": "教学情境不对应真实企业且不承诺具体收益",
+          "evidence_refs": [
+            "E008"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R023",
+          "from": "授权下的共同视图",
+          "relation": "支持",
+          "to": "共同判断与跨环节协同行动",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "发展方向已通过四类支撑连接到工业运行。",
+      "exit_condition": "观众看到体系能力必须在日常运行中被观察、判断和调整。",
+      "timing": {
+        "char_equivalent": 133,
+        "min_seconds": 34,
+        "target_seconds": 35,
+        "max_seconds": 37,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A014",
+      "callback_a_ids": [
+        "A013"
+      ],
+      "nx": "还要守住一个边界。新型工业化是更广泛的国家工业发展目标，还涉及产业结构、科技创新、绿色发展、制度和人才等任务。",
+      "teaching_purpose": "从运行变化过渡到新型工业化的更广目标边界。",
+      "single_message": "新型工业化是更广泛的国家工业发展目标，还包括产业结构、科技创新、绿色发展、制度和人才等任务。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V031",
+          "meaning": "新型工业化目标域还涵盖产业结构、科技创新、绿色发展、制度和人才",
+          "evidence_refs": [
+            "E005",
+            "E006",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R024",
+          "from": "新型工业化",
+          "relation": "作为更广国家工业发展目标涵盖",
+          "to": "产业结构、科技创新、绿色发展、制度和人才",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "教学情境已说明支撑如何进入日常运行。",
+      "exit_condition": "观众准备区分更广目标与工业互联网支撑域。",
+      "timing": {
+        "char_equivalent": 49,
+        "min_seconds": 13,
+        "target_seconds": 13,
+        "max_seconds": 14,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A015",
+      "callback_a_ids": [
+        "A014"
+      ],
+      "nx": "工业互联网能够提供重要的连接、数据、能力复用和协同支撑，却不是新型工业化的全部，也不是唯一条件。把两者画成等号，会夸大技术作用；只看见目标而忽略支撑，又会低估工业互联网在工业运行中的位置。\n\n",
+      "teaching_purpose": "明确工业互联网是关键支撑但不是全部或唯一条件。",
+      "single_message": "工业互联网提供连接、数据、能力复用和协同支撑；把它与新型工业化画等号会夸大技术，忽略支撑又会低估其位置。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V032",
+          "meaning": "工业互联网提供连接、数据、能力复用和协同支撑，但不是新型工业化全部或唯一条件",
+          "evidence_refs": [
+            "E005",
+            "E006",
+            "E007"
+          ]
+        },
+        {
+          "semantic_item_id": "V033",
+          "meaning": "新型工业化目标与工业互联网支撑之间是不等号和支撑箭头关系",
+          "evidence_refs": [
+            "E005",
+            "E006",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R025",
+          "from": "工业互联网",
+          "relation": "关键支撑但不等于",
+          "to": "新型工业化",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R026",
+          "from": "工业互联网支撑",
+          "relation": "服务于但不覆盖全部",
+          "to": "新型工业化目标",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "更广的新型工业化目标域已经展开。",
+      "exit_condition": "观众不会把目标和技术支撑手段画成等号。",
+      "timing": {
+        "char_equivalent": 85,
+        "min_seconds": 22,
+        "target_seconds": 22,
+        "max_seconds": 24,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A016",
+      "callback_a_ids": [
+        "A002",
+        "A003",
+        "A004",
+        "A005",
+        "A012",
+        "A015"
+      ],
+      "nx": "本期总结：设备和系统增加，并不自动意味着工业体系已经变强。新型工业化给出工业发展的长期方向。2002年的历史起点，说明了信息化与工业化相互促进的思路。2024年的中央《决定》和2026年的国务院常务会议政策解读，则分别给出了方向和发展阶段判断，并明确了2035年目标。工业互联网通过连接工业要素、贯通数据、复用能力、支持授权范围内的协同，把这些方向转成可运行、可反馈、可持续优化的能力。它是关键支撑，但不等于新型工业化。",
+      "teaching_purpose": "综合历史、政策、四类支撑与概念边界，形成全期结论。",
+      "single_message": "新型工业化给出长期方向；工业互联网通过连接、贯通、复用和授权协同把方向转化为可运行、可反馈、可持续优化的能力，但两者不等同。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V034",
+          "meaning": "2002 年两化相互促进的历史起点",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        {
+          "semantic_item_id": "V035",
+          "meaning": "2024 与 2026 来源分别提供方向、阶段判断和 2035 目标",
+          "evidence_refs": [
+            "E005",
+            "E006"
+          ]
+        },
+        {
+          "semantic_item_id": "V036",
+          "meaning": "连接工业要素、贯通数据、复用能力和授权协同把方向转成运行能力",
+          "evidence_refs": [
+            "E007"
+          ]
+        },
+        {
+          "semantic_item_id": "V037",
+          "meaning": "工业互联网是关键支撑但不等于新型工业化",
+          "evidence_refs": [
+            "E005",
+            "E006",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R027",
+          "from": "新型工业化长期方向",
+          "relation": "经工业互联网四类支撑转化为",
+          "to": "可运行、可反馈、可持续优化的能力",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R028",
+          "from": "工业互联网",
+          "relation": "是关键支撑但不等于",
+          "to": "新型工业化",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "目标与支撑的边界已经明确。",
+      "exit_condition": "观众能从历史、政策和运行能力三个层次回答为什么需要工业互联网。",
+      "timing": {
+        "char_equivalent": 182,
+        "min_seconds": 46,
+        "target_seconds": 47,
+        "max_seconds": 50,
+        "short_page_reason": null
+      }
+    }
+  ]
+}

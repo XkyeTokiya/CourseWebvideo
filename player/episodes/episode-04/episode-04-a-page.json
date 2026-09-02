@@ -1,0 +1,715 @@
+{
+  "schema_version": "courseplay-a-page/v6",
+  "document_kind": "production",
+  "episode_id": "episode-04",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "第 04 集标题、前置关系、范围和相邻边界",
+      "source_locator": "已确认课程架构，Episode Architecture 第 04 集及第 01–06 集责任",
+      "verification_status": "not applicable",
+      "allowed_use": "控制单集范围、去重与时长"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "数字化转型强调创新、价值创造与系统性变革，且是长期动态过程",
+      "source_locator": "主教材，1.1.3“1.数字化转型定义”",
+      "verification_status": "not applicable",
+      "allowed_use": "概括共同含义，不逐条背诵机构定义"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "连接、数据、智能的含义、依赖关系和示例用途",
+      "source_locator": "主教材，1.1.3“2.核心要素”",
+      "verification_status": "not applicable",
+      "allowed_use": "作为本集机制主线"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "工业互联网平台支持生产透明、流程优化、个性化生产、创新与绿色制造",
+      "source_locator": "主教材，1.1.3“3.工业互联网助力中小企业数字化转型”",
+      "verification_status": "not applicable",
+      "allowed_use": "作为链条的业务落点"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "传统垂直分层架构的四类局限与全互联开放架构的四个构筑维度",
+      "source_locator": "主教材，1.1.3“4.基于工业互联网平台的数字化转型架构”",
+      "verification_status": "not verified—version unspecified",
+      "allowed_use": "只按“教材引述的参考架构”进行对照"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "图 1-3 中传统产业链/企业/工厂层级与新架构中工业软件、平台、边缘、控制感知、装备的关系",
+      "source_locator": "教材图 1-3 原始资产，图 1-3",
+      "verification_status": "not applicable",
+      "allowed_use": "可整图展示或忠实语义重绘"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "已部署多套系统却仍靠人工汇总与协调的工厂情境",
+      "source_locator": "本任务包的已批准情境说明",
+      "verification_status": "not applicable",
+      "allowed_use": "用于提出“部署技术不等于转型”的问题"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "“连接—数据—智能—行动—反馈”的教学链条",
+      "source_locator": "E002–E004",
+      "verification_status": "not applicable",
+      "allowed_use": "压缩三要素依赖关系并形成可讲机制"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "设想一家工厂。设备已经接入网络，车间有生产系统，计划、质量和供应链也各自装上了软件。可一旦生产节奏变化，现场数据还要人工汇总，异常还要靠电话协调，各套系统里的信息彼此等候。技术部署了不少，为什么业务改善没有同步发生？\n\n",
+      "teaching_purpose": "用一个明确标注的设想情境，建立技术已经部署但业务改善仍然迟缓的核心问题。",
+      "single_message": "设备联网和多套软件并存，仍可能留下人工搬运与信息等待；技术部署本身不等于数字化转型完成。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S001",
+          "guidance_text": "以“技术已部署”作为问题表面，追问业务改善为何未同步",
+          "usage_policy": "reference",
+          "evidence_refs": ["E002", "E007"]
+        },
+        "groups": [
+          {
+            "group_id": "G001",
+            "items": [
+              {
+                "screen_item_id": "S002",
+                "guidance_text": "设想工厂同时具备联网设备、生产系统与计划、质量、供应链软件",
+                "usage_policy": "reference",
+                "evidence_refs": ["E007"]
+              },
+              {
+                "screen_item_id": "S003",
+                "guidance_text": "单独标出“设想情境”，让场景承担问题引入而非事实案例",
+                "usage_policy": "reference",
+                "evidence_refs": ["E007"]
+              }
+            ]
+          },
+          {
+            "group_id": "G002",
+            "items": [
+              {
+                "screen_item_id": "S004",
+                "guidance_text": "把人工汇总、电话协调和系统间信息等待放在同一矛盾面上",
+                "usage_policy": "reference",
+                "evidence_refs": ["E007"]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [],
+      "silent_constraints": [
+        {
+          "constraint_id": "C001",
+          "instruction": "场景只用于提出教学问题，不得包装成真实企业、教材案例或行业统计。",
+          "evidence_refs": ["E007"]
+        }
+      ],
+      "entry_condition": "观众知道企业可能同时部署设备、网络和多套业务软件。",
+      "exit_condition": "观众意识到技术部署与业务改善之间仍存在需要解释的转型问题。",
+      "timing": {
+        "char_equivalent": 97.0,
+        "min_seconds": 25,
+        "target_seconds": 25,
+        "max_seconds": 27,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": [],
+      "nx": "因为数字化转型不是把更多软件装进企业，也不是把纸面流程原样搬到屏幕上。它要把数字技术和原有的业务要素重新组合，改变产品、服务、运营和组织方式，并体现为业务价值。这种变化也会进入业务流程和人员分工，并随目标和工作方式持续调整，不会在一次上线后结束。\n\n",
+      "teaching_purpose": "界定数字化转型的业务与时间边界，并引出连接、数据、智能这条解释路径。",
+      "single_message": "数字化转型是数字技术与业务要素的持续重组，以业务价值为方向，而不是一次软件上线。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S005",
+          "guidance_text": "数字化转型以业务价值为方向，而非软件数量",
+          "usage_policy": "reference",
+          "evidence_refs": ["E002"]
+        },
+        "groups": [
+          {
+            "group_id": "G003",
+            "items": [
+              {
+                "screen_item_id": "S006",
+                "guidance_text": "数字技术与既有业务要素重新组合",
+                "usage_policy": "reference",
+                "evidence_refs": ["E002"]
+              }
+            ]
+          },
+          {
+            "group_id": "G004",
+            "items": [
+              {
+                "screen_item_id": "S007",
+                "guidance_text": "变化进入产品、服务、运营和组织方式",
+                "usage_policy": "reference",
+                "evidence_refs": ["E002"]
+              }
+            ]
+          },
+          {
+            "group_id": "G005",
+            "items": [
+              {
+                "screen_item_id": "S008",
+                "guidance_text": "业务价值是转型判断的落点",
+                "usage_policy": "reference",
+                "evidence_refs": ["E002"]
+              },
+              {
+                "screen_item_id": "S009",
+                "guidance_text": "业务流程、人员分工和工作方式随目标持续调整",
+                "usage_policy": "reference",
+                "evidence_refs": ["E002", "E003"]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [],
+      "silent_constraints": [
+        {
+          "constraint_id": "C002",
+          "instruction": "只概括教材定义的共同含义，不逐条背诵机构定义，也不引入当前政策或机构现状。",
+          "evidence_refs": ["E002"]
+        }
+      ],
+      "entry_condition": "观众已经看到技术部署与业务改善之间的矛盾。",
+      "exit_condition": "观众接受以业务价值和持续变化理解数字化转型，并准备进入三要素机制。",
+      "timing": {
+        "char_equivalent": 113.0,
+        "min_seconds": 29,
+        "target_seconds": 29,
+        "max_seconds": 31,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": [],
+      "nx": "要看清这条路径，可以从连接、数据和智能说起。连接是起点。设备、系统、流程和人员能够通信，运行状态和业务信息才有机会被采集、传递，最终到达需要它的环节。传感器能感知状态，执行器能接收指令，不同环节也能交换信息。连接解决的是信息能不能到达。\n\n但连上不等于用好了。设备日志留在设备端，质量结果留在质量系统，库存和计划又各自封闭，企业看到的仍然只是几个局部片段。只有让信息持续进入收集、分析和应用，连接才会转化为数据能力。\n\n",
+      "teaching_purpose": "说明连接的基础职责及其局限，建立从信息到达转向数据能力的断点。",
+      "single_message": "连接让信息有机会到达，但只有信息持续进入收集、分析和应用，才会形成数据能力。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S010",
+          "guidance_text": "连接先让信息到达，再暴露孤立断点",
+          "usage_policy": "reference",
+          "evidence_refs": ["E003", "E008"]
+        },
+        "groups": [
+          {
+            "group_id": "G006",
+            "items": [
+              {
+                "screen_item_id": "S011",
+                "guidance_text": "设备、系统、流程和人员能够通信；传感器感知状态、执行器接收指令，不同环节交换信息",
+                "usage_policy": "reference",
+                "evidence_refs": ["E003"]
+              }
+            ]
+          },
+          {
+            "group_id": "G007",
+            "items": [
+              {
+                "screen_item_id": "S012",
+                "guidance_text": "运行状态和业务信息沿环节被采集、传递，最终到达需要它的环节",
+                "usage_policy": "reference",
+                "evidence_refs": ["E003"]
+              }
+            ]
+          },
+          {
+            "group_id": "G008",
+            "items": [
+              {
+                "screen_item_id": "S013",
+                "guidance_text": "日志、质量、库存和计划各自封闭时，信息到达仍停在局部片段；持续收集、分析和应用才形成数据能力",
+                "usage_policy": "reference",
+                "evidence_refs": ["E003", "E008"]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "连接",
+          "relation": "为数据采集与传输提供基础",
+          "to": "数据能力",
+          "direction": "forward"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C003",
+          "instruction": "不展开协议、网络拓扑或技术实现；只保留连接对信息到达的职责。",
+          "evidence_refs": ["E003"]
+        },
+        {
+          "constraint_id": "C004",
+          "instruction": "不要把设备和系统已经连通写成数字化转型已经完成。",
+          "evidence_refs": ["E002", "E003"]
+        }
+      ],
+      "entry_condition": "观众已理解转型不是一次上线，而是以业务价值为方向的持续变化。",
+      "exit_condition": "观众能区分连接提供到达条件与数据能力形成之间的差别。",
+      "timing": {
+        "char_equivalent": 184.0,
+        "min_seconds": 46,
+        "target_seconds": 48,
+        "max_seconds": 51,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": [],
+      "nx": "数据的价值，也不在于数量越多越好，而在于能不能回答业务问题。设备日志、性能指标、质量结果、生产计划、库存和供应链信息，记录生产经营的变化。实时监控和历史分析可以发现异常、瓶颈和库存变化，为维护、质量改进和生产优化提供依据。\n\n假设这家工厂出现生产异常。设备状态、质量结果和生产计划围绕异常关联起来，管理者看到的就不再是三份孤立报表，而是异常在哪里、影响什么、可以调整什么。数据由此从零散记录变成连续证据。\n\n",
+      "teaching_purpose": "把多类业务数据围绕一个异常关联起来，说明数据如何成为智能判断的依据。",
+      "single_message": "数据的价值在于围绕业务问题形成连续证据。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S014",
+          "guidance_text": "数据围绕业务问题形成连续证据",
+          "usage_policy": "reference",
+          "evidence_refs": ["E003", "E008"]
+        },
+        "groups": [
+          {
+            "group_id": "G009",
+            "items": [
+              {
+                "screen_item_id": "S015",
+                "guidance_text": "数据来源可包括设备日志、性能指标、质量结果、生产计划、库存和供应链信息",
+                "usage_policy": "reference",
+                "evidence_refs": ["E003"]
+              }
+            ]
+          },
+          {
+            "group_id": "G010",
+            "items": [
+              {
+                "screen_item_id": "S016",
+                "guidance_text": "实时监控与历史分析帮助识别异常、瓶颈和库存变化",
+                "usage_policy": "reference",
+                "evidence_refs": ["E003"]
+              },
+              {
+                "screen_item_id": "S017",
+                "guidance_text": "这些分析结果为维护、质量改进和生产优化提供依据",
+                "usage_policy": "reference",
+                "evidence_refs": ["E003"]
+              }
+            ]
+          },
+          {
+            "group_id": "G011",
+            "items": [
+              {
+                "screen_item_id": "S018",
+                "guidance_text": "设备状态、质量结果和生产计划围绕同一异常关联，形成连续证据",
+                "usage_policy": "reference",
+                "evidence_refs": ["E007", "E008"]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [],
+      "silent_constraints": [
+        {
+          "constraint_id": "C005",
+          "instruction": "数据类型只作教材支持的通用示例，不添加字段、数值或算法输出。",
+          "evidence_refs": ["E003"]
+        }
+      ],
+      "entry_condition": "观众已经区分连接的到达条件与数据能力。",
+      "exit_condition": "观众理解多源信息必须围绕业务问题关联，才能成为连续证据并准备进入智能处理。",
+      "timing": {
+        "char_equivalent": 179.0,
+        "min_seconds": 45,
+        "target_seconds": 47,
+        "max_seconds": 49,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": [],
+      "nx": "有了相关数据，智能才有发挥作用的条件。这里的智能可以包括人工智能、机器学习、数据分析和优化算法等处理手段。它们帮助人从数据中提取有用信息，支持预测性维护、质量控制、能源管理和生产调度等判断。智能解决的是怎样从数据走向更合适的判断。\n\n判断还要进入行动，价值才会真正出现。企业可能据此调整生产节奏、安排维护、修改物料计划，或者优化服务方式。行动会改变现场状态，新的状态又被连接感知，成为后续数据。这样，技术、信息和业务行动才连成了持续改进的过程。\n\n",
+      "teaching_purpose": "解释智能如何把相关数据转为判断，并把判断落实为业务行动和持续改进的下一步。",
+      "single_message": "智能只有通过判断进入业务行动，才会改变现场并产生可继续改进的数据。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S019",
+          "guidance_text": "智能把相关数据带入判断，行动才让价值出现",
+          "usage_policy": "reference",
+          "evidence_refs": ["E003", "E004"]
+        },
+        "groups": [
+          {
+            "group_id": "G012",
+            "items": [
+              {
+                "screen_item_id": "S020",
+                "guidance_text": "处理手段包括人工智能、机器学习、数据分析和优化算法",
+                "usage_policy": "reference",
+                "evidence_refs": ["E003"]
+              },
+              {
+                "screen_item_id": "S021",
+                "guidance_text": "处理这些数据并提取有用信息，支持预测性维护、质量控制、能源管理和生产调度等判断",
+                "usage_policy": "reference",
+                "evidence_refs": ["E003"]
+              }
+            ]
+          },
+          {
+            "group_id": "G013",
+            "items": [
+              {
+                "screen_item_id": "S022",
+                "guidance_text": "判断可以落实为调整生产节奏、安排维护、修改物料计划或优化服务方式",
+                "usage_policy": "reference",
+                "evidence_refs": ["E004", "E008"]
+              },
+              {
+                "screen_item_id": "S023",
+                "guidance_text": "行动改变现场状态，新的状态被连接感知并成为后续数据",
+                "usage_policy": "reference",
+                "evidence_refs": ["E008"]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R002",
+          "from": "数据",
+          "relation": "为智能分析与业务判断提供原材料",
+          "to": "智能",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R003",
+          "from": "智能",
+          "relation": "支持判断并经行动落到业务价值",
+          "to": "业务变化",
+          "direction": "forward"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C006",
+          "instruction": "不把分析结果写成自动控制必然发生；只呈现判断进入业务行动的可能路径。",
+          "evidence_refs": ["E003", "E004"]
+        },
+        {
+          "constraint_id": "C007",
+          "instruction": "新状态只作为持续改进的后续数据语境，不重讲上一集完整闭环。",
+          "evidence_refs": ["E008"]
+        }
+      ],
+      "entry_condition": "观众已经理解数据能围绕问题形成证据。",
+      "exit_condition": "观众能沿来源、依据、判断、行动和后续状态理解三要素如何产生业务变化。",
+      "timing": {
+        "char_equivalent": 198.0,
+        "min_seconds": 50,
+        "target_seconds": 52,
+        "max_seconds": 54,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": [],
+      "nx": "反过来看，三项要素之间的依赖关系就很清楚了。只有连接，得到的只是通道；有连接和数据，却没有分析与判断，信息可能不断堆积；有智能，却没有稳定数据和业务行动，结果也只能停留在演示。连接提供来源，数据形成依据，智能支持判断，行动把判断落到业务变化。它们不是三个互不相干的标签。\n\n",
+      "teaching_purpose": "用三种断链结果反向确认连接、数据、智能与行动之间的依赖关系。",
+      "single_message": "连接、数据、智能和行动任一环节脱开，都会失去业务价值；完整链条必须接续。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S024",
+          "guidance_text": "三项要素必须接续，断开就只剩通道、堆积或演示",
+          "usage_policy": "reference",
+          "evidence_refs": ["E003", "E008"]
+        },
+        "groups": [
+          {
+            "group_id": "G014",
+            "items": [
+              {
+                "screen_item_id": "S025",
+                "guidance_text": "只有连接时，结果只是通道；连接和数据没有分析判断时，信息可能不断堆积",
+                "usage_policy": "reference",
+                "evidence_refs": ["E003", "E008"]
+              },
+              {
+                "screen_item_id": "S026",
+                "guidance_text": "有智能却没有稳定数据和业务行动时，结果停留在演示",
+                "usage_policy": "reference",
+                "evidence_refs": ["E003", "E008"]
+              }
+            ]
+          },
+          {
+            "group_id": "G015",
+            "items": [
+              {
+                "screen_item_id": "S027",
+                "guidance_text": "连接提供来源，数据形成依据，智能支持判断，行动落到业务变化",
+                "usage_policy": "reference",
+                "evidence_refs": ["E003", "E008"]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R004",
+          "from": "连接—数据—智能—行动",
+          "relation": "必须接续",
+          "to": "业务价值与持续改进",
+          "direction": "forward"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C008",
+          "instruction": "断链比较只用于说明三项要素的依赖，不扩展为工业互联网四体系或技术实现图。",
+          "evidence_refs": ["E003", "E008"]
+        }
+      ],
+      "entry_condition": "观众已经看到智能判断需要通过业务行动产生变化。",
+      "exit_condition": "观众能用三个断链结果解释为什么三项要素不能作为孤立标签。",
+      "timing": {
+        "char_equivalent": 120.0,
+        "min_seconds": 30,
+        "target_seconds": 31,
+        "max_seconds": 33,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": [],
+      "nx": "这也说明，承载这条链的架构需要变化。传统工业 IT 架构通常按产业链、企业和工厂垂直分层，多套系统分别建设，容易形成层级多；数据孤岛；垂直紧耦合；知识分散。局部系统可以工作，跨层、跨环节的信息却难以流动。\n\n在参考性架构对照中，另一种全互联开放方向，把工业装备、控制与感知、边缘计算、工业互联网平台、工业软件和工业 APP，放在一条更容易互相连接的路径上。这条路径的承载思路，可以概括为新应用体系、全互联互通、统一数据湖、智能新生产几个维度。重点不是记住固定方案，而是看见：三项要素需要共同承载，才能减少孤岛，让判断进入业务。\n\n",
+      "teaching_purpose": "通过教材引述的架构对照，解释共同承载路径如何回应传统孤岛并服务三要素链条。",
+      "single_message": "全互联开放方向把装备、控制感知、边缘、平台、软件和 APP 放入共同承载路径，并以四个维度概括其方向。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S028",
+          "guidance_text": "从垂直孤岛转向共同承载路径",
+          "usage_policy": "reference",
+          "evidence_refs": ["E005", "E006"]
+        },
+        "groups": [
+          {
+            "group_id": "G016",
+            "items": [
+              {
+                "screen_item_id": "S029",
+                "guidance_text": "传统侧按产业链、企业、工厂垂直分层，多套系统分别建设并形成孤立",
+                "usage_policy": "reference",
+                "evidence_refs": ["E005", "E006"]
+              },
+              {
+                "screen_item_id": "S030",
+                "guidance_text": "传统侧局限集中为层级多、数据孤岛、垂直紧耦合和知识分散",
+                "usage_policy": "reference",
+                "evidence_refs": ["E005"]
+              }
+            ]
+          },
+          {
+            "group_id": "G017",
+            "items": [
+              {
+                "screen_item_id": "S031",
+                "guidance_text": "新方向从工业装备，经控制与感知、边缘计算、工业互联网平台到工业软件与工业 APP",
+                "usage_policy": "reference",
+                "evidence_refs": ["E005", "E006"]
+              },
+              {
+                "screen_item_id": "S032",
+                "guidance_text": "四个构筑维度：新应用体系、全互联互通、统一数据湖、智能新生产",
+                "usage_policy": "exact",
+                "evidence_refs": ["E005"]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R005",
+          "from": "传统工业 IT 的垂直分层与多套系统",
+          "relation": "形成并伴随",
+          "to": "层级多、数据孤岛、垂直紧耦合、知识分散",
+          "direction": "left-to-right"
+        },
+        {
+          "relation_id": "R006",
+          "from": "教材引述的全互联开放方向",
+          "relation": "概括为",
+          "to": "新应用体系、全互联互通、统一数据湖、智能新生产",
+          "direction": "left-to-right"
+        },
+        {
+          "relation_id": "R007",
+          "from": "工业装备—控制与感知—边缘计算—平台—工业软件与 APP 的层次路径",
+          "relation": "提供共同承载",
+          "to": "连接、数据、智能的业务链条",
+          "direction": "bottom-to-top"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C009",
+          "instruction": "必须先以教材图 1-3 的原图建立归属；读图或放大不得改写左右两侧层次、节点和关系。",
+          "evidence_refs": ["E006"]
+        },
+        {
+          "constraint_id": "C010",
+          "instruction": "只称教材引述的参考架构，不使用现行、最新或行业统一架构等当前有效性表述。",
+          "evidence_refs": ["E005"]
+        },
+        {
+          "constraint_id": "C011",
+          "instruction": "不为四类传统局限与四个新架构维度建立教材未给出的一一对应。",
+          "evidence_refs": ["E005", "E006"]
+        }
+      ],
+      "entry_condition": "观众已经理解三项要素和行动链条需要共同的承载方式。",
+      "exit_condition": "观众能把教材图示的两侧读作不同承载方向，并理解三要素需要共同承载。",
+      "timing": {
+        "char_equivalent": 225.5,
+        "min_seconds": 57,
+        "target_seconds": 59,
+        "max_seconds": 62,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": ["A001"],
+      "nx": "沿着这条路径，平台可以帮助企业提高生产透明度、发现流程瓶颈，支持柔性化、个性化生产，也能为产品创新、服务创新和绿色制造创新提供数据依据。但这些价值不会因为接入平台就自动发生。企业仍然要从具体业务目标出发，决定连接什么、使用什么数据、形成什么判断，以及怎样把判断落实到流程中。\n\n回到开头的工厂。真正的转型，不是再增加孤立系统，而是围绕同一业务问题：让对象连接，信息变成数据，智能形成判断，再落实为行动，并根据结果调整。这个过程会持续变化，技术只是条件，业务价值才是方向。\n\n本期总结，连接让信息能够到达，数据让分散信息围绕业务问题形成依据，智能帮助人作出判断，行动让判断变成真实的业务变化。四者相互衔接，才可能带来持续改进。所以，判断企业是否完成数字化转型，不能只看部署了多少设备和软件，更要看这些技术有没有持续改变业务。\n",
+      "teaching_purpose": "把三要素链条落到平台支持的业务价值，回扣开篇场景并收束长期改进方向。",
+      "single_message": "平台只是条件，业务目标驱动的连接、数据、智能和行动，才可能形成持续业务改进。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S033",
+          "guidance_text": "平台价值要由业务目标驱动，并在行动后继续改进",
+          "usage_policy": "reference",
+          "evidence_refs": ["E004", "E008"]
+        },
+        "groups": [
+          {
+            "group_id": "G018",
+            "items": [
+              {
+                "screen_item_id": "S034",
+                "guidance_text": "可见落点包括生产透明度与流程瓶颈识别",
+                "usage_policy": "reference",
+                "evidence_refs": ["E004"]
+              }
+            ]
+          },
+          {
+            "group_id": "G019",
+            "items": [
+              {
+                "screen_item_id": "S035",
+                "guidance_text": "还可支持柔性化、个性化生产，以及产品、服务和绿色制造创新",
+                "usage_policy": "reference",
+                "evidence_refs": ["E004"]
+              }
+            ]
+          },
+          {
+            "group_id": "G020",
+            "items": [
+              {
+                "screen_item_id": "S036",
+                "guidance_text": "从业务目标决定连接什么、使用什么数据、形成什么判断，再把判断落实为行动",
+                "usage_policy": "reference",
+                "evidence_refs": ["E002", "E003", "E004"]
+              },
+              {
+                "screen_item_id": "S037",
+                "guidance_text": "行动结果进入下一轮改进；跨企业协同只留下“是否为同一对象”的问题",
+                "usage_policy": "reference",
+                "evidence_refs": ["E001", "E008"]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R008",
+          "from": "业务行动结果",
+          "relation": "进入",
+          "to": "下一轮改进",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R009",
+          "from": "跨企业协同",
+          "relation": "引出",
+          "to": "对象一致性问题",
+          "direction": "forward"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C012",
+          "instruction": "五类业务价值只作教材支持的可能落点，不承诺平台接入自动实现或添加量化效果。",
+          "evidence_refs": ["E004"]
+        },
+        {
+          "constraint_id": "C013",
+          "instruction": "结尾只提出跨企业对象一致性问题，不提前解释工业互联网标识、私码、编码或解析。",
+          "evidence_refs": ["E001", "E008"]
+        }
+      ],
+      "entry_condition": "观众已经看到共同承载路径如何回应传统架构问题。",
+      "exit_condition": "观众能回到开篇问题，理解业务目标驱动的持续改进，并保留下一集的对象一致性疑问。",
+      "timing": {
+        "char_equivalent": 321.0,
+        "min_seconds": 81,
+        "target_seconds": 84,
+        "max_seconds": 88,
+        "short_page_reason": null
+      }
+    }
+  ]
+}

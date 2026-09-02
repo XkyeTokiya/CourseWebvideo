@@ -1,0 +1,314 @@
+/* ─────────────────────────────────────────────────────────────
+ * 01-open-loop-line · A001 issue-cards-with-image
+ * mechanism: observed-gap-buildup — 主图情境持续，观察卡按
+ *   "联网—人工—缺口"顺序成立，对照推进到缺口判断；
+ *   末拍结论以遮罩落在媒体区上
+ * prefix: ol-
+ * ───────────────────────────────────────────────────────────── */
+
+.ol-scene {
+  gap: 40px;
+}
+
+.ol-main {
+  flex: 1;
+  display: flex;
+  gap: 44px;
+  align-items: center;
+  min-height: 0;
+}
+
+/* ── 媒体占位：真实 16:9 留位 + 产线上行情境演示 ── */
+.ol-media {
+  width: 1120px;
+  height: 630px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.ol-canvas {
+  position: relative;
+  flex: 1;
+  background: var(--surface);
+}
+
+.ol-ping {
+  position: absolute;
+  bottom: 24%;
+  width: 15px;
+  height: 15px;
+  background: var(--theme-process);
+  opacity: 0;
+  animation: ol-rise 2.8s linear infinite;
+  animation-delay: calc(var(--ol-i) * 560ms);
+}
+.ol-ping:nth-child(1) { left: 18%; }
+.ol-ping:nth-child(2) { left: 30%; }
+.ol-ping:nth-child(3) { left: 42%; }
+.ol-ping:nth-child(4) { left: 54%; }
+.ol-ping:nth-child(5) { left: 66%; }
+@keyframes ol-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  14% {
+    opacity: 0.9;
+  }
+  78% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-340px);
+    opacity: 0;
+  }
+}
+
+.ol-edge {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  top: 44%;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+}
+.ol-edge-label {
+  position: absolute;
+  right: 0;
+  top: -36px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+
+.ol-rack {
+  position: absolute;
+  left: 9%;
+  right: 9%;
+  bottom: 9%;
+  display: flex;
+  justify-content: center;
+  gap: 110px;
+}
+.ol-machine {
+  width: 140px;
+  height: 94px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 6px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  position: relative;
+}
+.ol-machine::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 12px;
+  height: 12px;
+  background: var(--theme-process);
+}
+
+.ol-cap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 24px;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+  background: var(--surface-2);
+}
+.ol-cap-mark {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--theme-structural);
+  background: var(--theme-cool-surface);
+  padding: 4px 14px;
+  border-radius: 6px;
+}
+.ol-cap-desc {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: var(--text-mute);
+}
+
+/* ── 末拍：媒体遮罩上的收束结论 ── */
+.ol-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+  padding: 0 80px;
+  background: rgba(22, 56, 109, 0.92);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-slow) var(--ease-soft);
+}
+.ol-mask[data-on="true"] {
+  opacity: 1;
+}
+.ol-mask-kicker {
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.22em;
+  color: var(--theme-dashed-line);
+}
+.ol-mask-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 900;
+  color: var(--theme-paper);
+  letter-spacing: 0.02em;
+}
+.ol-mask-text strong {
+  font-weight: 900;
+  color: var(--theme-warning);
+  border-bottom: 7px solid var(--theme-warning);
+  padding-bottom: 2px;
+}
+
+/* ── 观察卡列：ghost 预留 → 交叉淡入成立 ── */
+.ol-cards {
+  flex: 1;
+  height: 630px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+.is-closed .ol-cards {
+  opacity: 0.55;
+  transform: scale(0.985);
+  filter: grayscale(0.5);
+}
+
+.ol-card {
+  flex: 1;
+  padding: 24px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    background-color var(--dur-slow) var(--ease-soft),
+    border-color var(--dur-slow) var(--ease-soft),
+    box-shadow var(--dur-slow) var(--ease-soft);
+}
+.ol-card.is-ghost {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  opacity: 0.85;
+}
+.ol-card.is-ghost::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: inherit;
+}
+.ol-card.is-on {
+  animation: ol-stamp 620ms var(--ease-overshoot) backwards;
+}
+@keyframes ol-stamp {
+  0% {
+    opacity: 0;
+    transform: translateY(26px) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ol-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.ol-card.is-on .ol-slot {
+  opacity: 0;
+}
+
+.ol-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.ol-card.is-on .ol-card-body {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 140ms;
+}
+
+.ol-card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+.ol-card-no {
+  font-size: 40px;
+  color: var(--theme-process);
+}
+.ol-card-name {
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+
+.ol-flag {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.08em;
+  padding: 5px 14px;
+  border-radius: 6px;
+}
+.ol-flag-up {
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: var(--rule-w) solid var(--theme-process);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.ol-flag-up[data-on="true"] {
+  opacity: 1;
+}
+.ol-flag-gap {
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  border: var(--rule-w) solid var(--theme-warning);
+}
+
+.ol-card-desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--text-2);
+}

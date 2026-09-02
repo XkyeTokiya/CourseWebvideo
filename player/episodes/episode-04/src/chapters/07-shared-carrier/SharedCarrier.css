@@ -1,0 +1,303 @@
+/* shared-carrier · A007 image-with-reading-notes
+   mechanism: persistent-media-reading — 教材原图持续在位，读图焦点从传统侧迁移到新方向
+   连续表意：读图区两段整句陈述，路径为连续链；要点区 exact 四维度
+   prefix: sc- */
+
+.sc-scene {
+  justify-content: flex-start;
+  gap: 32px;
+}
+
+/* ── 标题区（S028 判断方向） ──────────────────────────── */
+
+.sc-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: sc-rise 640ms var(--ease-quart) backwards;
+}
+
+.sc-title em {
+  font-style: normal;
+  border-bottom: 8px solid var(--theme-process);
+  padding-bottom: 4px;
+}
+
+@keyframes sc-rise {
+  0%   { opacity: 0; transform: translateY(26px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 三区：原图 | 读图注解 | 要点区 ───────────────────── */
+
+.sc-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 600px 1fr 350px;
+  gap: 44px;
+  align-items: stretch;
+}
+
+.sc-media {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.sc-photo {
+  padding: 12px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  animation: sc-rise 640ms var(--ease-soft) 160ms backwards;
+}
+
+.sc-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* 读图注解区：先读传统侧 → 再读新方向 */
+
+.sc-reading {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 24px;
+}
+
+.sc-block {
+  padding: 24px 28px;
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+  transition: opacity 640ms var(--ease-soft), border-color 640ms var(--ease-soft);
+}
+
+.sc-block-legacy {
+  animation: sc-stage-in 560ms var(--ease-overshoot) backwards;
+  animation-delay: 300ms;
+}
+
+/* 读图焦点迁移：再读新方向时传统侧安静让位 */
+.sc-scene[data-phase="open-path-read"] .sc-block-legacy {
+  opacity: 0.55;
+}
+
+.sc-block-open {
+  border: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 480ms var(--ease-soft), visibility 0s 480ms;
+}
+
+.sc-block-open.is-on {
+  opacity: 1;
+  visibility: visible;
+  border-color: var(--theme-process);
+  background: var(--theme-process-surface);
+  transition: opacity 480ms var(--ease-soft), visibility 0s;
+  animation: sc-stage-in 560ms var(--ease-overshoot) backwards;
+}
+
+@keyframes sc-stage-in {
+  0%   { opacity: 0; transform: translateX(26px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.sc-order-tag {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.sc-order-open {
+  color: var(--theme-process);
+}
+
+.sc-line {
+  margin: 0 0 10px;
+  font-size: 25px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.sc-line-strong {
+  margin: 0 0 10px;
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--theme-structural);
+}
+
+/* 四类局限：2×2 紧凑网格，替代顿号连排 */
+
+.sc-limits {
+  margin: 4px 0 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+}
+
+.sc-limits span {
+  position: relative;
+  padding-left: 22px;
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+.sc-limits span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 11px;
+  height: 11px;
+  background: var(--theme-warning);
+}
+
+/* 五层路径：竖排连续链（脊柱 + 圆点），替代行内箭头连排 */
+
+.sc-pathflow {
+  position: relative;
+  margin-top: 6px;
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sc-pathflow::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  background: var(--theme-structural);
+}
+
+.sc-pathstep {
+  margin: 0;
+  position: relative;
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: var(--theme-structural);
+}
+
+.sc-pathstep::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-process);
+  box-sizing: border-box;
+  transform: translateY(-50%);
+}
+
+/* 要点区：exact 四维度（新应用体系、全互联互通、统一数据湖、智能新生产） */
+
+.sc-keys {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  border-left: 2px dashed var(--theme-dashed-line);
+  padding-left: 34px;
+}
+
+.sc-keys-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+
+.sc-dims {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.sc-dims li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 480ms var(--ease-soft), visibility 0s 480ms;
+}
+
+.sc-dims li.is-on {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 480ms var(--ease-soft), visibility 0s;
+  animation: sc-stage-in 520ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--sc-i) * 200ms + 420ms);
+}
+
+.sc-dims li i {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  background: var(--theme-process);
+}
+
+/* 收束判断：全宽底带 */
+
+.sc-takeaway {
+  padding: 20px 30px;
+  background: var(--theme-process-surface);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 480ms var(--ease-soft), visibility 0s 480ms;
+}
+
+.sc-takeaway.is-on {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 480ms var(--ease-soft), visibility 0s;
+  animation: sc-rise 560ms var(--ease-quart) 1400ms backwards;
+}
+
+.sc-takeaway-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 900;
+  text-align: center;
+  color: var(--theme-structural);
+}
+
+.sc-takeaway-line em {
+  font-style: normal;
+  color: var(--theme-process);
+}

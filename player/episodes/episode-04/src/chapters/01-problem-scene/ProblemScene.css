@@ -1,0 +1,248 @@
+/* problem-scene · A001 time-anchor-opening
+   mechanism: premise-to-question — 时间锚与设想现场持续，矛盾面落位后前提弱化，问题句成为视觉中心
+   prefix: ps- */
+
+.ps-scene {
+  justify-content: flex-start;
+  gap: 44px;
+}
+
+/* ── 时间锚 + 设想情境标注（持续元素） ────────────────── */
+
+.ps-anchor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.ps-anchor.is-weak {
+  opacity: 0.32;
+  filter: grayscale(0.55);
+  /* 用户修订(验收指示):等第二条 context line 完全落位并停顿一拍后再弱化 */
+  transition-delay: 2600ms;
+}
+
+.ps-anchor-time {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.ps-anchor-t0 {
+  font-size: 52px;
+  color: var(--theme-process);
+  animation: ps-t0-in 520ms var(--ease-overshoot) backwards;
+}
+
+@keyframes ps-t0-in {
+  0%   { opacity: 0; transform: translateY(20px) scale(1.06); }
+  100% { opacity: 1; transform: none; }
+}
+
+.ps-fiction-badge {
+  padding: 10px 22px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  animation: ps-badge-in 560ms var(--ease-overshoot) 420ms backwards;
+}
+
+@keyframes ps-badge-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── 主区：现场图（情境）+ 两条 context line ──────────── */
+
+.ps-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 880px 1fr;
+  gap: 64px;
+  align-items: center;
+  transform-origin: left center;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.ps-main.is-weak {
+  opacity: 0.3;
+  transform: scale(0.96);
+  filter: grayscale(0.55);
+  /* 同上:弱化延后到卡片 02 落位之后;离开弱化态走基础规则无延迟 */
+  transition-delay: 2600ms;
+}
+
+.ps-media {
+  margin: 0;
+}
+
+.ps-photo {
+  position: relative;
+  padding: 14px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  animation: ps-photo-in 640ms var(--ease-soft) 160ms backwards;
+}
+
+@keyframes ps-photo-in {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.ps-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.ps-lines {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.ps-line {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 30px 36px;
+  transition: opacity 560ms var(--ease-soft),
+    transform 560ms var(--ease-soft),
+    background-color 560ms var(--ease-soft),
+    border-color 560ms var(--ease-soft),
+    box-shadow 560ms var(--ease-soft);
+}
+
+.ps-line[data-on="on"] {
+  animation: ps-stamp-in 620ms var(--ease-overshoot) backwards;
+  animation-delay: calc(300ms + var(--ps-i) * 240ms);
+}
+
+@keyframes ps-stamp-in {
+  0%   { opacity: 0; transform: translateY(36px) scale(1.04); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ps-line[data-on="waiting"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+.ps-line[data-on="waiting"] .ps-idx,
+.ps-line[data-on="waiting"] .ps-line-body {
+  opacity: 0.35;
+}
+
+.ps-idx {
+  font-size: 48px;
+  color: var(--theme-process);
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.ps-line[data-tone="friction"] .ps-idx {
+  color: var(--theme-warning);
+}
+
+.ps-line-body {
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.ps-line-body h2 {
+  margin: 0 0 10px;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.ps-line[data-tone="friction"] .ps-line-body h2 {
+  color: var(--theme-warning);
+}
+
+.ps-line-body p {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* ── 问题层：前提弱化后，问题句成为视觉中心 ───────────── */
+
+.ps-q {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-slow) var(--ease-soft);
+}
+
+.ps-q.is-on {
+  opacity: 1;
+}
+
+.ps-q-plate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 66px 92px;
+  box-shadow: var(--card-shadow);
+}
+
+/* 用户修订(验收指示):动画必须挂在 is-on 态——挂在元素本身会在
+   mount 时跑完一次,step 2 时序锚定失效;挂到 is-on 才随状态切换重新计时 */
+.ps-q.is-on .ps-q-plate {
+  animation: ps-plate-in 720ms var(--ease-quart) 2600ms backwards;
+}
+
+@keyframes ps-plate-in {
+  0%   { opacity: 0; transform: translateY(44px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.ps-q-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.2em;
+  color: var(--theme-process);
+}
+
+.ps-q-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 80px;
+  font-weight: 900;
+  line-height: 1.22;
+  text-align: center;
+  color: var(--theme-structural);
+}
+
+.ps-q-hero em {
+  font-style: normal;
+  border-bottom: 8px solid var(--theme-warning);
+  padding-bottom: 6px;
+}

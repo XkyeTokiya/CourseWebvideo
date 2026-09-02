@@ -1,0 +1,146 @@
+{
+  "schema_version": "web-video-courseplay-chapter-handoff/v1",
+  "episode_id": "episode-09",
+  "chapter": {
+    "index": 7,
+    "id": "feedback-with-identity",
+    "title": "售后反馈带着身份回查",
+    "a_page_id": "A007",
+    "step_count": 4
+  },
+  "theme": {
+    "id": "active-identification-note",
+    "nameZh": "主动标识工程笔记",
+    "descriptionZh": "工程方格纸上的工业教学视觉系统：深海军蓝建立粗结构，工业绿表达主动流动与改善，陶土橙承担风险提示，低位硬投影形成可靠的工程贴纸质感。",
+    "mood": [
+      "light",
+      "industrial",
+      "engineering",
+      "technical",
+      "educational",
+      "structured",
+      "tactile"
+    ],
+    "bestFor": [
+      "工业互联网与智能制造",
+      "工程技术与设备原理讲解",
+      "企业技术培训",
+      "生产流程和闭环控制",
+      "B2B 解决方案演示",
+      "职业教育与教材信息图",
+      "数据驱动的运营汇报"
+    ]
+  },
+  "a_page": {
+    "a_id": "A007",
+    "callback_a_ids": [
+      "A005",
+      "A006"
+    ],
+    "nx": "售后环节最能看出这种关联的作用。售后人员扫描发动机标识，可以获取产品基本信息，并通过互动服务发起故障报修、提交意见反馈。售后反馈带有明确的发动机身份，能和前面的装配、工艺、质量、物流记录对应起来。锁定问题对象后，可以沿着关联记录向前查：确认异常涉及哪台发动机、对应哪一段装配、工艺或质量记录，再定位相关问题环节。这里说的是业务层面的定位，不涉及用什么算法判定缺陷。\n\n",
+    "teaching_purpose": "让售后查询和反馈端到端地接回发动机的生产与质量关联记录。",
+    "single_message": "售后反馈带着发动机身份，便能回查关联记录并定位业务问题环节，而非判定缺陷算法。",
+    "must_visible": [
+      {
+        "semantic_item_id": "V014",
+        "meaning": "教学情境中的售后扫描同一发动机标识并获取产品基本信息。",
+        "evidence_refs": [
+          "E007",
+          "E011"
+        ]
+      },
+      {
+        "semantic_item_id": "V015",
+        "meaning": "通过互动服务发起故障报修、提交意见反馈，并保留明确的发动机身份。",
+        "evidence_refs": [
+          "E007",
+          "E010"
+        ]
+      },
+      {
+        "semantic_item_id": "V016",
+        "meaning": "从问题对象回查装配、工艺、质量、物流关联记录的业务定位边界，不展示缺陷判定算法。",
+        "evidence_refs": [
+          "E010"
+        ]
+      }
+    ],
+    "protected_relations": [
+      {
+        "relation_id": "R014",
+        "from": "售后反馈",
+        "relation": "带有明确的身份并对应",
+        "to": "同一发动机的装配、工艺、质量、物流记录",
+        "direction": "从售后端回查前序记录"
+      },
+      {
+        "relation_id": "R015",
+        "from": "异常涉及的发动机",
+        "relation": "对应",
+        "to": "相关装配、工艺或质量记录",
+        "direction": "从问题对象定位到相关记录"
+      },
+      {
+        "relation_id": "R016",
+        "from": "业务层面的定位",
+        "relation": "不涉及",
+        "to": "缺陷判定算法",
+        "direction": "明确事实边界"
+      }
+    ],
+    "entry_condition": "观众已经掌握同一发动机标识关联五类信息的机制。",
+    "exit_condition": "观众理解售后反馈如何带着对象身份回查问题环节。",
+    "timing": {
+      "char_equivalent": 164,
+      "min_seconds": 41,
+      "target_seconds": 43,
+      "max_seconds": 45,
+      "short_page_reason": null
+    }
+  },
+  "narration": {
+    "authority": "a_page.nx",
+    "beats": [
+      "售后环节最能看出这种关联的作用。售后人员扫描发动机标识，可以获取产品基本信息，并通过互动服务发起故障报修、提交意见反馈。",
+      "售后反馈带有明确的发动机身份，能和前面的装配、工艺、质量、物流记录对应起来。",
+      "锁定问题对象后，可以沿着关联记录向前查：确认异常涉及哪台发动机、对应哪一段装配、工艺或质量记录，再定位相关问题环节。",
+      "这里说的是业务层面的定位，不涉及用什么算法判定缺陷。"
+    ]
+  },
+  "outline": {
+    "chapter_markdown": "## 7. feedback-with-identity — 售后反馈带着身份回查（4 steps · ~43s）\n\n**A-page / Chapter**：`A007`\n**基础场景**：`S-A007` — M003 场景图 + insight rail 四阅读项；本配方不另设 final judgment 或底部总结栏\n**页面配方**：`image-with-insight-rail`\n**核心判断**：售后反馈带着发动机身份，便能回查关联记录并定位业务问题环节，而非判定缺陷算法。\n**结构指纹**：`场景图媒体区（M003）| insight rail 四阅读项（确认对象｜提交反馈｜回查记录｜事实边界）`\n**语义关系**：售后业务的顺序阅读过程（确认对象→提交反馈→回查记录→事实边界）\n**关系机制**：`persistent-media-reading` — M003 场景图全程持续，四条阅读项依次完成；阅读项 2→3 的先后阅读表达\"反馈对应前序记录\"（R014），不画售后端返回生产端的长距离回流线；图上不叠加完整句、回流路径或虚构系统界面\n**持续元素**：论点标题、M003 场景图、四条阅读项\n**内容槽位**：`media-scene`（M003）；`item-1 确认对象`；`item-2 提交反馈`；`item-3 回查记录`；`item-4 事实边界`\n**强调页**：`none`\n**额外复杂场景**：`none`\n**可见标题**：`保留`\n**信息池**（主动设计：源为冻结 A-page / visual rough / evidence_catalog）：\n- 媒体：M003 photorealistic_ai 售后查询与反馈现场图 —— visual rough A007（待提供；不显示缺陷判定结果、软件界面或可读业务数据）\n- 语义项：V014 扫描获取基本信息；V015 互动服务反馈并保留身份；V016 业务定位边界（不展示算法） —— A-page A007 must_visible（E007/E010/E011）\n- 关系：R014 反馈带身份对应前序记录；R015 问题对象对应相关记录；R016 不涉及算法 —— A-page A007 protected_relations\n**beat 切分**：N=4，N_eff=4，4 拍（=N）。并入：\"售后环节最能看出这种关联的作用\"引入句并入拍 1；拍 1 内先后完成阅读项 1 与 2（两项口播同句相连），拍 1 结束画面为两项完成。\n\n| Step | Narration focus | Scene · Semantic state | 本步场景指令 |\n|---|---|---|---|\n| 1 | 扫描获取基本信息 + 发起报修/反馈 | `S-A007 · feedback-submitted` (~14s) | 建立 M003 场景图（售后查询与反馈现场）；阅读项 1（扫描同一标识、获取产品基本信息，V014）与阅读项 2（互动服务发起故障报修/意见反馈并保留发动机身份，V015）在本拍内先后完成 |\n| 2 | 反馈身份对应前序记录 | `S-A007 · identity-correspondence` (~9s) | 场景图与项 1/2 保持；阅读焦点转向\"反馈带明确发动机身份、与前序装配/工艺/质量/物流记录对应\"（R014）；阅读项 3 语境开始 |\n| 3 | 沿关联记录向前查、定位问题环节 | `S-A007 · problem-located` (~14s) | 前序保持；阅读项 3 完成（从问题对象查对应装配/工艺/质量记录、定位相关业务环节，R015）；保持\"从对象查相关记录\"句式，不扩展为缺陷因果 |\n| 4 | 业务定位边界 | `S-A007 · fact-boundary-stated` (~6s) | 前序保持；阅读项 4 出现（业务层面定位，不涉及用什么算法判定缺陷，R016），保持在主体阅读区 |\n\n**口播节选**：\"售后反馈带有明确的发动机身份，能和前面的装配、工艺、质量、物流记录对应起来。\"",
+    "schedule": {
+      "previous": "| A006 | `common-anchor-association-groups` | 共享锚点下的关联组 | `anchor-group-nesting` | 锚点围合区 + 五类信息组 + 平台组 | 无 | none | 围合关联组结构，区别于台账 |",
+      "current": "| A007 | `image-with-insight-rail` | 售后业务顺序阅读 | `persistent-media-reading` | 场景图（M003）+ 图侧四阅读项 | 无 | M003 | 场景图回归，阅读项轨道 |",
+      "next": "| A008 | `split-compare-with-thesis` | 前后对照 | `compare-and-reweight` | 左右两栏 + bottom thesis 条 | 无（判断保留在底栏） | none | 两栏对照结构首次出现 |"
+    },
+    "materials_markdown": "### A007\n- ⚠️ `M003`：photorealistic_ai — 发动机售后查询与反馈现场图；不显示缺陷判定结果、软件界面或可读业务数据（待提供 / placeholder）"
+  },
+  "visual_rough_markdown": "## A007｜售后反馈带着身份回查\n\n- **内容角色**：业务演示——让售后扫描、反馈、回查和定位形成一次可读的工作过程。\n- **页面配方**：`image-with-insight-rail`\n- **论点标题**：[V015] 售后反馈带着明确的发动机身份，才接得回前序记录\n- **辅助句**：`none`\n- **媒体需求**：`M003` / `photorealistic_ai`\n- **媒体作用**：锚定教学设想中的发动机售后查询与反馈现场；图片不显示缺陷判定结果、软件界面或可读业务数据。\n- **教材证据**：`none`\n- **逻辑图**：`no`\n- **逻辑图理由**：`none`\n\n### 上屏内容组\n\n1. [V014] **阅读项 1｜确认对象**：扫描同一发动机标识，获取产品基本信息。\n2. [V015][R014] **阅读项 2｜提交反馈**：通过互动服务发起故障报修或意见反馈，并保留明确的发动机身份。\n3. [V016][R014][R015] **阅读项 3｜回查记录**：从问题对象查找对应的装配、工艺、质量和物流记录，定位相关业务环节。\n4. [V016][R016] **阅读项 4｜事实边界**：这里完成的是业务层面的定位，不展示也不承诺缺陷判定算法。\n\n### 页面骨架\n\n- 场景图与四条图侧阅读项共同组成从确认对象到业务定位的阅读顺序。\n- insight rail 内完成本页洞察，不另设 final judgment 或底部总结栏。\n- 不在图片上叠加完整句、回流路径或虚构系统界面。\n\n### 关系保真\n\n- [R014] 售后反馈与前序记录的对应关系由阅读项 2 到阅读项 3 的先后阅读表达，不画从售后端返回生产端的长距离回流线。\n- [R015] 问题对象与装配、工艺、质量记录的对应由阅读项 3 的“从对象查相关记录”句式表达，不扩展为缺陷因果。\n- [R016] 业务定位与算法判定的边界由阅读项 4 明示，保持在主体阅读区。",
+  "sources": {
+    "a_page": {
+      "path": "episodes/episode-09/episode-09-a-page.json",
+      "sha256": "8fb764141c77def8fbb003f376ab2d4d47f38a6d05d4528d2a11e3a4562f25be"
+    },
+    "visual_rough": {
+      "path": "episodes/episode-09/episode-09-visual-rough.md",
+      "sha256": "908aa37daf366132fafa02f66069f18d209b7099dd7e462b492a6a7c26e4d230"
+    },
+    "outline": {
+      "path": "episodes/episode-09/outline.md",
+      "sha256": "963e00798cfd0dd9322e9b0ba04b3a5e5da92b9f558c8c3fac56ccd64c37b6b9"
+    },
+    "script": {
+      "path": "episodes/episode-09/script.md",
+      "sha256": "add821ff31cd497c48f03a05250eeda88d67d09e16ace9f629d1a24eb34ad6ea"
+    },
+    "approved_text": {
+      "path": "episodes/episode-09/approved-spoken-text.txt",
+      "sha256": "e07682c0eaeae79123476216b63fd9450d5a854b1d6080c0604a44438a6e4f25"
+    },
+    "theme": {
+      "path": ".agents/skills/web-video-presentation/themes/active-identification-note/theme.json",
+      "sha256": "868de872b3c03d359b3c808ac69aa98c6a0a0b9e3e45ed0dc33f592d5a9f6997"
+    }
+  }
+}

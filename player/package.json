@@ -1,0 +1,33 @@
+{
+  "name": "webvideo-studio",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node tools/dev.mjs",
+    "build": "pnpm run episode:check && pnpm run typecheck && vite build",
+    "lint": "oxlint src/app src/catalog src/runtime src/shared src/studio tools",
+    "typecheck": "tsc --noEmit",
+    "episode:new": "node tools/create-episode.mjs",
+    "episode:catalog": "node tools/generate-catalog.mjs",
+    "episode:check": "node tools/validate-episodes.mjs",
+    "courseplay:handoff": "node tools/courseplay-handoff.mjs",
+    "audio:extract": "node tools/extract-narrations.mjs",
+    "audio:synthesize": "node tools/synthesize-audio.mjs",
+    "audio:providers": "node tools/synthesize-audio.mjs --list-providers",
+    "test:tools": "node --test --test-isolation=none tools/tests/*.test.mjs"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.1.0",
+    "oxlint": "^1.79.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.2"
+  }
+}

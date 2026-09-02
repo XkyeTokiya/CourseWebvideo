@@ -1,0 +1,790 @@
+{
+  "schema_version": "courseplay-a-page/v4",
+  "document_kind": "production",
+  "episode_id": "episode-02",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "第 02 集负责网络、平台、数据、安全及数据闭环；第 01、03–06 集的相邻边界",
+      "source_locator": "course-video-architecture.md，第 5 节第 02 集；第 6 节规则 1–3",
+      "verification_status": "not applicable",
+      "allowed_use": "确定本集责任、前置和排除范围"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "网络是基础、平台是关键、数据是核心、安全是保障及各自职责",
+      "source_locator": "1.1 工业互联网认知.md，1.1.1“4. 工业互联网体系构成”四个项目符号",
+      "verification_status": "not applicable",
+      "allowed_use": "解释四体系的功能边界"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "物理系统与数字空间协同；设备资产、生产系统、管理系统、供应链条贯通；IT 与 OT 融合",
+      "source_locator": "同上，“4. 工业互联网体系构成”末段前半",
+      "verification_status": "not applicable",
+      "allowed_use": "解释四体系协同后的整体作用"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "感知控制、数字模型、决策优化三个层次；上行信息流和下行决策流构成优化闭环",
+      "source_locator": "同上，“4. 工业互联网体系构成”末句",
+      "verification_status": "not applicable",
+      "allowed_use": "建立本集闭环主机制"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "智能化生产、网络化协同、服务化延伸、个性化定制、数字化管理五类应用模式",
+      "source_locator": "1.1 工业互联网认知.md，1.1.1“3. 工业互联网的意义”表 1-1",
+      "verification_status": "not applicable",
+      "allowed_use": "作为闭环落点的压缩式概览"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "四体系不是四个并列名词，而是一条从连接、承载、数据驱动到安全保障的协同链",
+      "source_locator": "E002–E004",
+      "verification_status": "not applicable",
+      "allowed_use": "组织讲稿与关系图"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "“产线已联网、数据持续上报，但异常仍靠人工发现”的开篇情境",
+      "source_locator": "本任务包原创",
+      "verification_status": "not applicable",
+      "allowed_use": "用于提出“连接为何还没有形成闭环”的问题"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "教材图像实际为工业互联网产生时间轴",
+      "source_locator": "教材配图，全图",
+      "verification_status": "not applicable",
+      "allowed_use": "仅用于识别重复标图风险"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "设想一条已经联网的产线。设备不断上传状态信息，可一旦出现异常，还是要等现场人员发现，再打电话沟通，由不同的人和系统分头处理。信息已经传出去了，生产过程却没有因此得到及时改善。问题在哪里？连接只能让信息开始流动，还需要有人接住信息、理解变化，并把判断带回生产现场。\n\n",
+      "teaching_purpose": "以教学情境暴露“已联网但未改善”的开环问题。",
+      "single_message": "信息已经从产线传出，但异常仍靠人工发现和分头处理，说明连接本身不等于闭环。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V001",
+          "meaning": "明确标注为教学情境的已联网产线、持续上传状态与仍靠人工处置",
+          "evidence_refs": [
+            "E007"
+          ]
+        },
+        {
+          "semantic_item_id": "V002",
+          "meaning": "信息上行而返回生产的行动路径尚未建立",
+          "evidence_refs": [
+            "E001",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "产线状态信息",
+          "relation": "持续上传但未形成",
+          "to": "返回生产现场的及时行动",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众进入一条已联网产线的设想情境。",
+      "exit_condition": "观众能区分信息传出与生产闭环。",
+      "timing": {
+        "char_equivalent": 118,
+        "min_seconds": 30,
+        "target_seconds": 31,
+        "max_seconds": 33,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": [
+        "A001"
+      ],
+      "nx": "这就带来一个关键问题：设备和业务系统联网以后，网络、平台、数据和安全怎样配合，才能让信息变成行动，再从行动中产生新的信息？理解这件事，可以沿着一次真实的生产变化来观察。\n\n",
+      "teaching_purpose": "把开环情境收束为本集要追踪的协同问题。",
+      "single_message": "网络、平台、数据和安全必须共同让信息变成行动，并让行动产生的新信息再次回流。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V003",
+          "meaning": "网络、平台、数据、安全共同参与从信息到行动再到新信息的路径",
+          "evidence_refs": [
+            "E001",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R002",
+          "from": "信息",
+          "relation": "被理解并转化为",
+          "to": "行动",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R003",
+          "from": "行动",
+          "relation": "产生",
+          "to": "新的生产信息",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已看到联网产线仍依赖人工处置。",
+      "exit_condition": "观众带着四体系如何形成闭环的问题进入机制解释。",
+      "timing": {
+        "char_equivalent": 75,
+        "min_seconds": 19,
+        "target_seconds": 20,
+        "max_seconds": 21,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": [],
+      "nx": "网络提供了这条路径的基础。它把工厂内外的设备、生产系统、管理系统，以及供应链中相关的环节连接起来。设备状态和业务活动只有能够持续传递，生产过程的变化才不会被困在某个局部。没有连接，后面的理解和判断就失去了入口。\n\n",
+      "teaching_purpose": "建立网络作为信息路径基础的职责。",
+      "single_message": "网络连接工厂内外对象并持续传递状态与业务信息，为后续理解和判断提供入口。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V004",
+          "meaning": "网络连接设备、生产系统、管理系统和供应链相关环节",
+          "evidence_refs": [
+            "E002",
+            "E003"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R004",
+          "from": "工业对象与相关环节",
+          "relation": "经网络连接并传递",
+          "to": "状态和业务信息",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已明确要追踪信息如何变成行动。",
+      "exit_condition": "观众理解没有网络连接就没有后续处理入口。",
+      "timing": {
+        "char_equivalent": 96,
+        "min_seconds": 24,
+        "target_seconds": 25,
+        "max_seconds": 27,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": [
+        "A003"
+      ],
+      "nx": "信息进入共同环境之后，还需要平台来承接。平台可以理解成把资源和能力组织起来的共同空间。它汇聚制造资源与能力，为数据处理、数字模型、应用服务和业务协同提供支撑。这样，分散在不同环节的能力才有机会被放在一起使用，而不是各自保存、各自处理。\n\n",
+      "teaching_purpose": "建立平台对资源和能力的共同承载职责。",
+      "single_message": "平台汇聚制造资源与能力，为处理、模型、应用和协同提供共同空间。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V005",
+          "meaning": "平台汇聚制造资源与能力，并承载数据处理、数字模型、应用服务和业务协同",
+          "evidence_refs": [
+            "E002",
+            "E003"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R005",
+          "from": "网络送来的工业要素",
+          "relation": "由平台汇聚并组织",
+          "to": "处理、模型、应用与协同能力",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已看到信息能够从局部持续传递。",
+      "exit_condition": "观众理解平台不是单纯存放数据，而是组织可复用能力。",
+      "timing": {
+        "char_equivalent": 106,
+        "min_seconds": 27,
+        "target_seconds": 28,
+        "max_seconds": 29,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": [],
+      "nx": "数据是这条路径中的核心。设备状态、生产过程和业务活动会不断形成信息。这些信息经过持续采集、处理、必要的治理和使用，才可能被人和系统理解。数据不是停在某个环节的记录，而是贯穿感知、建模、判断和反馈的主线。这里关注的是它如何推动理解和优化，不展开数据分类、共享制度或具体建模方法。\n\n",
+      "teaching_purpose": "建立数据贯穿感知、建模、判断和反馈的核心职责。",
+      "single_message": "持续形成的信息经采集、处理、必要治理和使用后，才能成为理解与优化的依据。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V006",
+          "meaning": "数据从采集、处理、必要治理到使用，并贯穿感知、建模、判断和反馈",
+          "evidence_refs": [
+            "E002",
+            "E004"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R006",
+          "from": "生产与业务信息",
+          "relation": "经采集处理和必要治理后支持",
+          "to": "理解、判断与反馈",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已理解网络和平台提供路径与承载。",
+      "exit_condition": "观众理解数据是驱动后续机制的核心主线。",
+      "timing": {
+        "char_equivalent": 124,
+        "min_seconds": 31,
+        "target_seconds": 32,
+        "max_seconds": 34,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": [
+        "A005"
+      ],
+      "nx": "安全则要一直在场。设备、网络、应用和数据都需要受到保护。可靠性让信息和服务能够持续工作；保密性防止不该看到的内容被暴露；完整性保证信息没有被不当改变；可用性保证需要时能够正常使用。安全不是流程结束时才加上的一道门，而是让整条信息路径能够可信运行的条件。\n\n",
+      "teaching_purpose": "建立安全覆盖全程而非末端补充的保障职责。",
+      "single_message": "可靠性、保密性、完整性和可用性共同保障设备、网络、应用和数据可信运行。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V007",
+          "meaning": "安全覆盖设备、网络、应用和数据，并保护可靠性、保密性、完整性和可用性",
+          "evidence_refs": [
+            "E002",
+            "E004"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R007",
+          "from": "安全保障",
+          "relation": "全过程覆盖",
+          "to": "设备、网络、应用和数据",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已看到数据贯穿处理与反馈。",
+      "exit_condition": "观众理解安全必须从连接开始持续在场。",
+      "timing": {
+        "char_equivalent": 116,
+        "min_seconds": 29,
+        "target_seconds": 30,
+        "max_seconds": 32,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": [],
+      "nx": "把这几项职责放在一起看，它们并不是互不相干的名词。网络负责连接和传递；平台负责汇聚资源与能力；数据让系统有了理解和优化的依据；安全让整个过程能够稳定、可信地持续运行。少了网络，信息传不上来；少了平台，分散的能力难以协同；少了数据，判断没有根据；少了安全，信息和行动就难以放心地持续运行。\n\n生产现场与数字空间也在这条路径上相互配合。",
+      "teaching_purpose": "把四项职责合成为协同链并呈现缺失后果；从四体系协同链过渡到生产现场与数字空间的配合。",
+      "single_message": "网络连接、平台汇聚、数据驱动、安全保障相互依赖，任一缺位都会造成闭环断点。 四体系的协同最终连接生产现场与数字空间。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V008",
+          "meaning": "网络、平台、数据、安全的完整职责链",
+          "evidence_refs": [
+            "E002",
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "semantic_item_id": "V009",
+          "meaning": "四项职责分别缺失时对应的信息、能力、判断或可信运行断点",
+          "evidence_refs": [
+            "E002",
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "semantic_item_id": "V010",
+          "meaning": "生产现场与数字空间位于同一协同路径的两端",
+          "evidence_refs": [
+            "E003"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R008",
+          "from": "网络连接与平台汇聚",
+          "relation": "为数据驱动提供",
+          "to": "信息路径和能力承载",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R009",
+          "from": "安全",
+          "relation": "贯穿保障",
+          "to": "整个协同链",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R010",
+          "from": "生产现场",
+          "relation": "通过四体系协同连接",
+          "to": "数字空间",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "四项职责已分别建立。",
+      "exit_condition": "观众准备观察物理状态如何进入数字空间。",
+      "timing": {
+        "char_equivalent": 148,
+        "min_seconds": 37,
+        "target_seconds": 39,
+        "max_seconds": 41,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": [
+        "A007"
+      ],
+      "nx": "设备资产、生产系统、管理系统和供应链环节，提供的是正在发生的运行状态与业务活动。数字空间把这些信息组织起来，支持描述、分析和决策。这里说的 IT 与 OT 融合，可以先用一句人话理解：信息与管理能力，开始和工业现场的运行能力协同工作，不再各自孤立。\n\n",
+      "teaching_purpose": "建立物理系统、数字空间及 IT/OT 高层协同关系。",
+      "single_message": "工业对象提供运行与业务状态，数字空间组织信息并支持描述、分析和决策，IT 与 OT 因而不再孤立。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V011",
+          "meaning": "工业对象提供运行状态与业务活动，数字空间组织信息并支持描述、分析和决策",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        {
+          "semantic_item_id": "V012",
+          "meaning": "IT 与 OT 只表达信息管理能力和工业现场运行能力的高层协同",
+          "evidence_refs": [
+            "E003"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R011",
+          "from": "工业对象的运行与业务状态",
+          "relation": "进入并由其组织",
+          "to": "数字空间",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R012",
+          "from": "信息与管理能力",
+          "relation": "协同",
+          "to": "工业现场运行能力",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已看到生产现场与数字空间进入同一协同路径。",
+      "exit_condition": "观众理解三层数据功能发生在物理与数字协同的边界上。",
+      "timing": {
+        "char_equivalent": 106,
+        "min_seconds": 27,
+        "target_seconds": 28,
+        "max_seconds": 29,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": [],
+      "nx": "为了看清数据怎样发挥作用，可以把它分成三个相互衔接的层次。感知控制负责获取物理对象和生产过程的信息，也承接行动回到现场。数字模型把分散的信息组织成可以描述和分析的数字对象。",
+      "teaching_purpose": "建立感知控制与数字模型两个基础层次。",
+      "single_message": "感知控制取得现场信息并承接行动回落，数字模型把分散信息组织成可描述、可分析的对象。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V013",
+          "meaning": "感知控制连接物理对象和生产过程",
+          "evidence_refs": [
+            "E004"
+          ]
+        },
+        {
+          "semantic_item_id": "V014",
+          "meaning": "数字模型把分散信息组织为可描述、可分析的数字对象",
+          "evidence_refs": [
+            "E004"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R013",
+          "from": "物理对象和生产过程",
+          "relation": "由感知控制获取信息并连接到",
+          "to": "数字模型",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "物理系统与数字空间的协同关系已建立。",
+      "exit_condition": "观众能区分感知控制和数字模型的职责。",
+      "timing": {
+        "char_equivalent": 81,
+        "min_seconds": 21,
+        "target_seconds": 21,
+        "max_seconds": 23,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A010",
+      "callback_a_ids": [
+        "A009"
+      ],
+      "nx": "决策优化则根据分析结果，形成面向生产和业务目标的判断。三个层次合在一起，才有可能让信息从现场出发，经过理解，转化成对生产有用的行动。\n\n",
+      "teaching_purpose": "补全决策优化层并把三个层次连成行动路径。",
+      "single_message": "决策优化依据分析形成判断，三个层次共同让现场信息经过理解转化为行动。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V015",
+          "meaning": "决策优化依据分析结果形成面向生产和业务目标的判断",
+          "evidence_refs": [
+            "E004"
+          ]
+        },
+        {
+          "semantic_item_id": "V016",
+          "meaning": "感知控制、数字模型、决策优化依次支撑从现场信息到行动",
+          "evidence_refs": [
+            "E004"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R014",
+          "from": "感知控制",
+          "relation": "经数字模型支持",
+          "to": "决策优化",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R015",
+          "from": "三个层次",
+          "relation": "共同转化",
+          "to": "现场信息到生产行动",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "感知控制与数字模型已可辨认。",
+      "exit_condition": "观众准备沿实际信息流追踪三层机制。",
+      "timing": {
+        "char_equivalent": 60,
+        "min_seconds": 15,
+        "target_seconds": 16,
+        "max_seconds": 17,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A011",
+      "callback_a_ids": [],
+      "nx": "先沿着自下而上的信息流观察。设备资产、生产系统、管理系统和供应链环节不断产生状态与业务信息。网络把这些信息传到共同环境，平台承接处理和模型能力。数字空间于是能够观察生产正在发生什么，也能够形成对变化的理解。到这里，系统已经可以看见和分析，但如果结果只停在报表或提示上，生产现场仍然没有得到改变。\n\n",
+      "teaching_purpose": "沿自下而上的信息流解释系统如何看见和理解生产。",
+      "single_message": "工业对象产生信息，经网络和平台进入数字空间；若结果只停在报表或提示上，仍未闭环。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V017",
+          "meaning": "设备资产、生产系统、管理系统和供应链信息经网络与平台向上流动",
+          "evidence_refs": [
+            "E003",
+            "E004"
+          ]
+        },
+        {
+          "semantic_item_id": "V018",
+          "meaning": "数字空间完成观察和分析，但报表或提示尚未改变生产现场",
+          "evidence_refs": [
+            "E003",
+            "E004"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R016",
+          "from": "工业状态与业务信息",
+          "relation": "自下而上经网络和平台进入",
+          "to": "数字空间",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R017",
+          "from": "只停在报表或提示的结果",
+          "relation": "尚未作用于",
+          "to": "生产现场",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "三个数据功能层次已建立。",
+      "exit_condition": "观众理解上行信息流完成看见和分析但尚非闭环。",
+      "timing": {
+        "char_equivalent": 135,
+        "min_seconds": 34,
+        "target_seconds": 35,
+        "max_seconds": 37,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A012",
+      "callback_a_ids": [
+        "A011"
+      ],
+      "nx": "真正的作用还需要一条自上而下的决策流。判断可以转化为调度、协同、服务或控制行动，再作用于生产过程。行动会改变设备或业务运行的状态，新的状态又形成新的信息，继续向上流动。这样，系统能够比较行动后的变化，修正原来的判断，再形成下一次行动。信息上行、决策下行、结果再次反馈，正是持续优化所需要的往复过程。\n\n",
+      "teaching_purpose": "补全自上而下的决策流和结果反馈。",
+      "single_message": "判断转化为调度、协同、服务或控制行动，改变生产状态；新状态再次形成上行信息，才可持续优化。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V019",
+          "meaning": "判断向下转化为调度、协同、服务或控制行动并作用于生产",
+          "evidence_refs": [
+            "E003",
+            "E004",
+            "E006"
+          ]
+        },
+        {
+          "semantic_item_id": "V020",
+          "meaning": "行动改变状态，新状态产生新信息并重新上行",
+          "evidence_refs": [
+            "E003",
+            "E004",
+            "E006"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R018",
+          "from": "数字空间中的判断",
+          "relation": "自上而下转化为",
+          "to": "生产行动",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R019",
+          "from": "行动后的新状态",
+          "relation": "再次产生并上行",
+          "to": "新信息",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "上行信息流已到达分析端且返回路径仍断开。",
+      "exit_condition": "观众能复述信息上行、决策下行、结果再反馈的完整往复。",
+      "timing": {
+        "char_equivalent": 133,
+        "min_seconds": 34,
+        "target_seconds": 35,
+        "max_seconds": 37,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A013",
+      "callback_a_ids": [
+        "A012"
+      ],
+      "nx": "这也说明，数据回到生产，并不等于每个场景都必须全自动控制。有时返回的是调度安排，有时是跨环节协同，有时是服务响应，也可能是现场控制。重要的是，数字空间中的判断确实能够作用于生产过程，而生产过程的变化又能回到信息系统中。IT 与 OT 的协同，正体现在这种相互连接、相互反馈的关系里。\n\n",
+      "teaching_purpose": "限定决策回落形式并收束 IT/OT 协同含义。",
+      "single_message": "反馈不等于所有场景全自动控制；调度、协同、服务或控制都可让判断作用于现场，并由现场变化回到系统。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V021",
+          "meaning": "决策回落可表现为调度、协同、服务或控制，不等同于必然全自动",
+          "evidence_refs": [
+            "E003",
+            "E004",
+            "E006"
+          ]
+        },
+        {
+          "semantic_item_id": "V022",
+          "meaning": "IT 与 OT 协同表现为数字判断作用于生产、生产变化回到信息系统",
+          "evidence_refs": [
+            "E003",
+            "E004",
+            "E006"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R020",
+          "from": "数字空间判断",
+          "relation": "可通过多种行动作用于",
+          "to": "生产过程",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R021",
+          "from": "生产过程变化",
+          "relation": "反馈到",
+          "to": "信息系统",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "完整双向闭环已经建立。",
+      "exit_condition": "观众理解闭环的关键是确实反馈，而非所有场景自动控制。",
+      "timing": {
+        "char_equivalent": 123,
+        "min_seconds": 31,
+        "target_seconds": 32,
+        "max_seconds": 34,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A014",
+      "callback_a_ids": [],
+      "nx": "同一套机制可以服务不同的业务方向。它可以支持智能化生产，让生产过程得到更及时的理解和调整；支持网络化协同，让不同环节围绕业务行动配合起来。它还可以支持服务化延伸、个性化定制和数字化管理：让产品和服务延伸到持续的服务应用，让生产活动面向具体需求组织，让运营过程获得持续的信息支持。五种方向的表现不同，共同条件却很清楚：数据要跨环节流动，判断要能够返回业务行动，行动后的新状态还要重新进入这条信息路径。\n\n",
+      "teaching_purpose": "从完整机制转向五类业务落点；展开五类应用模式并提炼共同条件。",
+      "single_message": "同一套数据闭环机制可以服务不同业务方向。 智能化生产、网络化协同、服务化延伸、个性化定制和数字化管理形式不同，都要求数据流动、判断回到行动、新状态再反馈。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V023",
+          "meaning": "完整闭环作为五类业务方向的共同机制基础",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        {
+          "semantic_item_id": "V024",
+          "meaning": "智能化生产、网络化协同、服务化延伸、个性化定制、数字化管理五类模式",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        {
+          "semantic_item_id": "V025",
+          "meaning": "五类模式共同依赖数据跨环节流动、判断返回行动和新状态重新入流",
+          "evidence_refs": [
+            "E005",
+            "E006"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R022",
+          "from": "数据闭环机制",
+          "relation": "可服务",
+          "to": "不同业务方向",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R023",
+          "from": "完整数据闭环",
+          "relation": "支持",
+          "to": "五类业务模式",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R024",
+          "from": "业务行动后的新状态",
+          "relation": "重新进入",
+          "to": "信息路径",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "观众已掌握完整双向闭环及其边界。",
+      "exit_condition": "观众理解五类模式是机制落点而非五套新增技术实现。",
+      "timing": {
+        "char_equivalent": 184,
+        "min_seconds": 46,
+        "target_seconds": 48,
+        "max_seconds": 51,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A015",
+      "callback_a_ids": [
+        "A001",
+        "A014"
+      ],
+      "nx": "本期总结：再回到开场那条产线。设备联网，只解决了信息能不能传递；平台让资源和能力有地方汇聚；数据让生产状态能够被理解并支持判断；安全让信息和行动能够可信地运行。当自下而上的信息流遇到自上而下的决策流，判断回到现场，现场变化再次形成信息，生产才真正获得持续优化的可能。这就是网络、平台、数据与安全共同作用的意义。",
+      "teaching_purpose": "回扣开篇产线并收束四体系共同形成持续优化的结论。",
+      "single_message": "联网只解决传递；平台、数据和安全共同支撑理解与可信行动，双向流相接后生产才获得持续优化的可能。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V026",
+          "meaning": "开篇产线从单向上报转为信息上行、决策下行和结果反馈的完整路径",
+          "evidence_refs": [
+            "E001",
+            "E005",
+            "E006",
+            "E007"
+          ]
+        },
+        {
+          "semantic_item_id": "V027",
+          "meaning": "网络、平台、数据、安全分别承担连接、汇聚、驱动和保障职责",
+          "evidence_refs": [
+            "E001",
+            "E006",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R025",
+          "from": "自下而上的信息流",
+          "relation": "与",
+          "to": "自上而下的决策流相接",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R026",
+          "from": "现场变化",
+          "relation": "再次形成",
+          "to": "持续优化所需的新信息",
+          "direction": "forward"
+        }
+      ],
+      "entry_condition": "五类业务落点及共同闭环条件已经建立。",
+      "exit_condition": "观众能用四体系和双向流解释数据闭环何时真正形成。",
+      "timing": {
+        "char_equivalent": 141,
+        "min_seconds": 36,
+        "target_seconds": 37,
+        "max_seconds": 39,
+        "short_page_reason": null
+      }
+    }
+  ]
+}

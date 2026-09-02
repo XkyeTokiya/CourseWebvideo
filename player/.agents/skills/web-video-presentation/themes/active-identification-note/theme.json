@@ -1,0 +1,31 @@
+{
+  "id": "active-identification-note",
+  "name": "Active Identification Note",
+  "nameZh": "主动标识工程笔记",
+  "description": "An engineering-notebook visual system with graph paper, deep navy structure, industrial green process semantics, clay warning cues, and sturdy offset paper shadows.",
+  "descriptionZh": "工程方格纸上的工业教学视觉系统：深海军蓝建立粗结构，工业绿表达主动流动与改善，陶土橙承担风险提示，低位硬投影形成可靠的工程贴纸质感。",
+  "mood": [
+    "light",
+    "industrial",
+    "engineering",
+    "technical",
+    "educational",
+    "structured",
+    "tactile"
+  ],
+  "bestFor": [
+    "工业互联网与智能制造",
+    "工程技术与设备原理讲解",
+    "企业技术培训",
+    "生产流程和闭环控制",
+    "B2B 解决方案演示",
+    "职业教育与教材信息图",
+    "数据驱动的运营汇报"
+  ],
+  "preview": {
+    "shell": "#e6eef5",
+    "surface": "#f3f8fb",
+    "text": "#16386d",
+    "accent": "#0e7f57"
+  }
+}

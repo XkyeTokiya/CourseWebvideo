@@ -1,0 +1,147 @@
+{
+  "schema_version": "web-video-courseplay-chapter-handoff/v1",
+  "episode_id": "episode-09",
+  "chapter": {
+    "index": 8,
+    "id": "lookup-changed",
+    "title": "改变的是查找方式",
+    "a_page_id": "A008",
+    "step_count": 3
+  },
+  "theme": {
+    "id": "active-identification-note",
+    "nameZh": "主动标识工程笔记",
+    "descriptionZh": "工程方格纸上的工业教学视觉系统：深海军蓝建立粗结构，工业绿表达主动流动与改善，陶土橙承担风险提示，低位硬投影形成可靠的工程贴纸质感。",
+    "mood": [
+      "light",
+      "industrial",
+      "engineering",
+      "technical",
+      "educational",
+      "structured",
+      "tactile"
+    ],
+    "bestFor": [
+      "工业互联网与智能制造",
+      "工程技术与设备原理讲解",
+      "企业技术培训",
+      "生产流程和闭环控制",
+      "B2B 解决方案演示",
+      "职业教育与教材信息图",
+      "数据驱动的运营汇报"
+    ]
+  },
+  "a_page": {
+    "a_id": "A008",
+    "callback_a_ids": [
+      "A005",
+      "A007"
+    ],
+    "nx": "改造前后，数据本来就存在，改变的是查找方式：过去要在各个业务系统中分散查找，现在可以围绕同一对象追溯。统一标识像一个共同的路标，让查询、反馈和分析沿着生命周期找到关联记录。售后发现的问题，可以带着发动机身份回到生产和质量记录；生产侧的改进，也服务于后续产品质量。统一标识只负责把关系串起来，数据能不能产生价值，还取决于企业后续的治理、分析和业务协同。\n\n",
+    "teaching_purpose": "对比改造前后的查找方式，并说明统一标识之外仍需要治理、分析和协同。",
+    "single_message": "改造改变的是围绕同一对象查找记录的方式，价值仍依赖后续治理、分析和协同。",
+    "must_visible": [
+      {
+        "semantic_item_id": "V017",
+        "meaning": "改造前在各业务系统中分散查找，与改造后围绕同一发动机追溯的对比。",
+        "evidence_refs": [
+          "E002",
+          "E004",
+          "E010"
+        ]
+      },
+      {
+        "semantic_item_id": "V018",
+        "meaning": "售后发现的问题带着发动机身份回到生产和质量记录，生产改进服务后续产品质量。",
+        "evidence_refs": [
+          "E006",
+          "E007",
+          "E010"
+        ]
+      },
+      {
+        "semantic_item_id": "V019",
+        "meaning": "统一标识只串联关系，数据价值仍取决于企业后续治理、分析和业务协同。",
+        "evidence_refs": [
+          "E010"
+        ]
+      }
+    ],
+    "protected_relations": [
+      {
+        "relation_id": "R017",
+        "from": "售后发现的问题",
+        "relation": "带着发动机身份回到",
+        "to": "生产和质量记录",
+        "direction": "从售后反馈端回到生产和质量"
+      },
+      {
+        "relation_id": "R018",
+        "from": "生产侧的改进",
+        "relation": "服务于",
+        "to": "后续产品质量",
+        "direction": "从生产侧改进指向后续质量"
+      },
+      {
+        "relation_id": "R019",
+        "from": "统一标识",
+        "relation": "只负责串联",
+        "to": "记录之间的关系",
+        "direction": "与后续治理、分析、协同共同构成价值条件"
+      }
+    ],
+    "entry_condition": "观众已经理解售后反馈能回查发动机的关联记录。",
+    "exit_condition": "观众能区分关联能力与数据价值实现所需的后续工作。",
+    "timing": {
+      "char_equivalent": 159,
+      "min_seconds": 40,
+      "target_seconds": 41,
+      "max_seconds": 44,
+      "short_page_reason": null
+    }
+  },
+  "narration": {
+    "authority": "a_page.nx",
+    "beats": [
+      "改造前后，数据本来就存在，改变的是查找方式：过去要在各个业务系统中分散查找，",
+      "现在可以围绕同一对象追溯。统一标识像一个共同的路标，让查询、反馈和分析沿着生命周期找到关联记录。售后发现的问题，可以带着发动机身份回到生产和质量记录；生产侧的改进，也服务于后续产品质量。",
+      "统一标识只负责把关系串起来，数据能不能产生价值，还取决于企业后续的治理、分析和业务协同。"
+    ]
+  },
+  "outline": {
+    "chapter_markdown": "## 8. lookup-changed — 改变的是查找方式（3 steps · ~41s）\n\n**A-page / Chapter**：`A008`\n**基础场景**：`S-A008` — 左右两栏前后对照 + bottom thesis 收束条\n**页面配方**：`split-compare-with-thesis`\n**核心判断**：改造改变的是围绕同一对象查找记录的方式，价值仍依赖后续治理、分析和协同。\n**结构指纹**：`改造前栏（按系统分散查找）| 改造后栏（围绕同一发动机追溯）| bottom thesis 收束条`\n**语义关系**：前后对照\n**关系机制**：`compare-and-reweight` — 两栏空间持续，视觉权重随口播从左栏移向右栏；两栏间不加中转状态、断桥或回流箭头；R017/R018 用句内先后与栏内第二层结果表达，不跨栏画线\n**持续元素**：两栏框架、bottom thesis\n**内容槽位**：`col-before`（数据本来就有，但按系统分散查找、反复确认）；`col-after`（围绕同一发动机追溯：售后问题带身份回生产和质量记录 R017；生产改进服务后续质量 R018）；`thesis-bar`（只串联关系，价值靠治理/分析/协同 R019）\n**强调页**：`none`（bottom thesis 保留在 base-scene 底部判断条，与本配方骨架一致）\n**额外复杂场景**：`none`\n**可见标题**：`none`\n**省略理由**：左右两栏已经完整表达查找方式的前后变化，bottom thesis 已表达数据价值仍依赖治理、分析和业务协同；删除标题不改变对照结构或底栏内容。\n**信息池**（主动设计：源为冻结 A-page / visual rough / evidence_catalog）：\n- 语义项：V017 改造前后查找方式对比；V018 反馈回生产质量、改进服务后续质量；V019 只串联关系、价值靠后续工作 —— A-page A008 must_visible（E002/E004/E006/E007/E010）\n- 关系：R017 售后问题回到生产和质量记录；R018 生产改进服务后续质量；R019 统一标识只串联关系 —— A-page A008 protected_relations\n- 证据：E010 用一个对象串联案例的数据变化 —— evidence_catalog\n**beat 切分**：N=2，N_eff=2，3 拍（N_eff+1，合规）。扩张：bottom thesis 独立口播句且收束条为新稳定画面，独立成拍；并入：\"改造前后，数据本来就存在，改变的是查找方式：\"无组锚点，并入拍 1；拍 1→2 句内切分落在\"，现在\"（强分隔标点，两侧分属改造前/改造后组锚点）。\n\n| Step | Narration focus | Scene · Semantic state | 本步场景指令 |\n|---|---|---|---|\n| 1 | 改造前：按系统分散查找 | `S-A008 · before-column-set` (~9s) | 建立两栏对照框架；左栏立\"数据本来就存在，但要在各业务系统分别寻找、反复确认\"（V017）；thesis 引入句并入本拍 |\n| 2 | 改造后：围绕同一发动机追溯 | `S-A008 · after-column-complete` (~22s) | 左栏保持、权重移向右栏；右栏补齐\"围绕同一对象追溯\"与两层结果（售后问题带发动机身份回到生产和质量记录，R017；生产侧改进服务后续产品质量，R018）；第二层结果不伪装成统计成效 |\n| 3 | 只串联关系，价值靠后续工作 | `S-A008 · thesis-stated` (~10s) | 两栏保持；bottom thesis 收束条出现（统一标识只负责串联记录关系，数据能否产生价值仍取决于治理、分析和业务协同，R019）；V019 判断仅由 bottom thesis 承载，页面不设置标题区或第二处判断 |\n\n**口播节选**：\"统一标识只负责把关系串起来，数据能不能产生价值，还取决于企业后续的治理、分析和业务协同。\"",
+    "schedule": {
+      "previous": "| A007 | `image-with-insight-rail` | 售后业务顺序阅读 | `persistent-media-reading` | 场景图（M003）+ 图侧四阅读项 | 无 | M003 | 场景图回归，阅读项轨道 |",
+      "current": "| A008 | `split-compare-with-thesis` | 前后对照 | `compare-and-reweight` | 左右两栏 + bottom thesis 条 | 无（判断保留在底栏） | none | 两栏对照结构首次出现 |",
+      "next": "| A009 | `evidence-cards-with-provenance-boundary` | 证据归属与边界 | `cumulative-assembly` | 来源带 + 三张证据卡 + 缺口/边界组 | 无 | none | 证据卡 + 来源带结构 |"
+    },
+    "materials_markdown": null
+  },
+  "visual_rough_markdown": "## A008｜改变的是查找方式\n\n- **内容角色**：前后对照——区分统一标识带来的关联变化与数据价值仍需的后续条件。\n- **页面配方**：`split-compare-with-thesis`\n- **论点标题**：[V017][V019] 统一标识改变记录查找方式，数据价值仍要靠治理、分析和协同\n- **辅助句**：`none`\n- **媒体需求**：`none`\n- **媒体作用**：`none`\n- **教材证据**：`none`\n- **逻辑图**：`no`\n- **逻辑图理由**：`none`\n\n### 上屏内容组\n\n1. [V017] **改造前｜按系统分散查找**：数据本来就存在，但需要在各业务系统中分别寻找和反复确认。\n2. [V017][V018][R017][R018] **改造后｜围绕同一发动机追溯**：售后问题带着发动机身份回到生产和质量记录；生产侧改进服务后续产品质量。\n\n### 页面骨架\n\n- 左右两栏只对照查找方式，不把“改造后”包装成自动产生价值。\n- 不在两栏之间增加中转状态、断桥或回流箭头。\n- bottom thesis 收束：统一标识只负责串联记录关系，数据能否产生价值仍取决于治理、分析和业务协同。\n\n### 关系保真\n\n- [R017] 售后问题回到生产和质量记录的关系放在改造后栏内，用句内先后表达，不跨栏画回流线。\n- [R018] 生产改进服务后续质量作为改造后栏的第二层结果读取，不伪装成统计成效。\n- [R019] 统一标识只串联关系、价值仍依赖后续条件，由论点标题和 bottom thesis 共同重申；必须语义已由标题 [V019] 覆盖。",
+  "sources": {
+    "a_page": {
+      "path": "episodes/episode-09/episode-09-a-page.json",
+      "sha256": "8fb764141c77def8fbb003f376ab2d4d47f38a6d05d4528d2a11e3a4562f25be"
+    },
+    "visual_rough": {
+      "path": "episodes/episode-09/episode-09-visual-rough.md",
+      "sha256": "908aa37daf366132fafa02f66069f18d209b7099dd7e462b492a6a7c26e4d230"
+    },
+    "outline": {
+      "path": "episodes/episode-09/outline.md",
+      "sha256": "963e00798cfd0dd9322e9b0ba04b3a5e5da92b9f558c8c3fac56ccd64c37b6b9"
+    },
+    "script": {
+      "path": "episodes/episode-09/script.md",
+      "sha256": "add821ff31cd497c48f03a05250eeda88d67d09e16ace9f629d1a24eb34ad6ea"
+    },
+    "approved_text": {
+      "path": "episodes/episode-09/approved-spoken-text.txt",
+      "sha256": "e07682c0eaeae79123476216b63fd9450d5a854b1d6080c0604a44438a6e4f25"
+    },
+    "theme": {
+      "path": ".agents/skills/web-video-presentation/themes/active-identification-note/theme.json",
+      "sha256": "868de872b3c03d359b3c808ac69aa98c6a0a0b9e3e45ed0dc33f592d5a9f6997"
+    }
+  }
+}

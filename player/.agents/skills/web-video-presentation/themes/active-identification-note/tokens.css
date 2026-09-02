@@ -1,0 +1,92 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * Theme · active-identification-note
+ *   Engineering notebook for industrial education and technical systems.
+ *   Deep navy carries hierarchy and structure; industrial green expresses
+ *   active flow, trustworthy operation, and improvement; clay orange marks
+ *   risk and attention. SIGNATURE: a 48px engineering grid combined with
+ *   heavy navy structure and low offset paper shadows.
+ * ───────────────────────────────────────────────────────────────────── */
+:root {
+  /* ─── standard compatibility palette ─── */
+  --shell:        #e6eef5;
+  --surface:      #f3f8fb;
+  --surface-2:    #ffffff;
+  --surface-3:    #eaf1f8;
+  --text:         #16386d;
+  --text-2:       #4d6a86;
+  --text-mute:    #5f7890;
+  --text-faint:   #5b748b;
+  --rule:         #b8cde0;
+  --accent:       #0e7f57;
+  --accent-soft:  rgba(14, 127, 87, 0.10);
+  --accent-glow:  rgba(14, 127, 87, 0.24);
+
+  /* ─── narrow identity layer: recurring source semantics ─── */
+  --theme-structural:       #16386d;
+  --theme-process:          #0e7f57;
+  --theme-warning:          #dd8a5d;
+  --theme-danger:           #c94f4a;
+  --theme-process-surface:  #eef7f2;
+  --theme-warning-surface:  #fdf4ee;
+  --theme-danger-surface:   #fbeae6;
+  --theme-cool-surface:     #eaf1f8;
+  --theme-paper:            #ffffff;
+  --theme-grid-line:        #dde9f2;
+  --theme-dashed-line:      #b8cde0;
+  --theme-offset-shadow:    rgba(22, 56, 109, 0.16);
+
+  /* compatibility aliases for extracted source components */
+  --industrial-navy:       var(--theme-structural);
+  --industrial-blue:       var(--theme-structural);
+  --industrial-green:      var(--theme-process);
+  --industrial-orange:     var(--theme-warning);
+  --industrial-cyan:       var(--theme-cool-surface);
+  --industrial-mint:       var(--theme-process-surface);
+  --industrial-amber:      var(--theme-warning-surface);
+  --industrial-soft:       var(--theme-paper);
+  --industrial-green-line: #a9d9c9;
+  --industrial-warm-line:  #e7b997;
+
+  /* ─── fonts: preserve the source fallback order ─── */
+  --font-display-cn: "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", Arial, sans-serif;
+  --font-display-en: Georgia, "Times New Roman", serif;
+  --font-body:       "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", Arial, sans-serif;
+  --font-mono:       ui-monospace, "JetBrains Mono", "Cascadia Mono", Consolas, "Courier New", monospace;
+  --font-features:   "tnum";
+
+  /* ─── measured, mechanical motion baseline ─── */
+  --dur-base:       520ms;
+  --dur-slow:       760ms;
+  --dur-cinematic:  1100ms;
+
+  /* ─── identity: sturdy paper labels and engineering structure ─── */
+  --r-card:           16px;
+  --r-stage:          0;
+  --rule-w:           2px;
+  --rule-style:       dashed;
+  --hero-num-font:    var(--font-mono);
+  --hero-num-style:   normal;
+  --hero-num-weight:  900;
+  --hero-num-track:   -0.03em;
+  --stage-pad-x:      110px;
+  --stage-pad-y:      84px;
+  --card-shadow:
+    0 0 0 3px var(--theme-structural),
+    7px 8px 0 var(--theme-offset-shadow);
+  --card-glass-bg:     rgba(255, 255, 255, 0.92);
+  --card-glass-border: rgba(22, 56, 109, 0.22);
+  --shadow-stage:
+    0 44px 120px rgba(22, 56, 109, 0.20),
+    0 0 0 1px rgba(22, 56, 109, 0.08);
+  --stage-border: none;
+
+  /* ─── SIGNATURE: engineering graph-paper grid ─── */
+  --surface-pattern:
+    linear-gradient(var(--theme-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--theme-grid-line) 1px, transparent 1px);
+  --surface-pattern-size: 48px 48px, 48px 48px;
+  --surface-pattern-blend: normal;
+  --surface-pattern-opacity: 1;
+  --surface-vignette: none;
+  --text-shadow: none;
+}

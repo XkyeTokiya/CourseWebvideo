@@ -1,0 +1,138 @@
+/* ─────────────────────────────────────────────────────────────
+ * 09-official-definition · A009 layered-bands-with-side-notes
+ * mechanism: cumulative-assembly — 无连线文字带逐层组装定义与范围
+ * prefix: od-
+ * ───────────────────────────────────────────────────────────── */
+
+.od-scene {
+  justify-content: center;
+  gap: 40px;
+}
+
+.od-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  gap: 56px;
+  min-height: 0;
+}
+
+/* ── 主区：三条无连线有序文字带 ── */
+.od-bands {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  min-height: 0;
+}
+
+.od-band {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 34px 10px;
+  border-bottom: var(--rule-w) dashed var(--theme-dashed-line);
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-quart);
+  transition-delay: calc(var(--od-i) * 260ms);
+}
+.od-band:last-child {
+  border-bottom: 0;
+}
+.od-band[data-on="true"] {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.od-band-no {
+  font-size: 60px;
+  color: var(--theme-process);
+  line-height: 1;
+  flex: none;
+}
+.od-band-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.od-band-tag {
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+.od-band-text {
+  font-family: var(--font-body);
+  font-size: 25px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+/* ── 侧栏：“人机物”解释短卡 ── */
+.od-side {
+  align-self: center;
+  border-radius: var(--r-card);
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  padding: 36px 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-quart),
+    background var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-soft);
+}
+.od-side[data-on="true"] {
+  opacity: 1;
+  transform: translateY(0);
+  background: var(--theme-process-surface);
+  border: var(--rule-w) solid var(--theme-process);
+  box-shadow: var(--card-shadow);
+}
+.od-side-title {
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+.od-side-desc {
+  font-family: var(--font-body);
+  font-size: 23px;
+  line-height: 1.65;
+  color: var(--text-2);
+}
+
+/* ── 底部范围收束 ── */
+.od-bottom {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 24px 36px;
+  border-radius: var(--r-card);
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-quart);
+}
+.od-bottom[data-on="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+.od-bottom-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-process);
+}

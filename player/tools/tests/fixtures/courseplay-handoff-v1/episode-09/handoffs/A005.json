@@ -1,0 +1,135 @@
+{
+  "schema_version": "web-video-courseplay-chapter-handoff/v1",
+  "episode_id": "episode-09",
+  "chapter": {
+    "index": 5,
+    "id": "identity-as-anchor",
+    "title": "统一标识只做关联锚点",
+    "a_page_id": "A005",
+    "step_count": 3
+  },
+  "theme": {
+    "id": "active-identification-note",
+    "nameZh": "主动标识工程笔记",
+    "descriptionZh": "工程方格纸上的工业教学视觉系统：深海军蓝建立粗结构，工业绿表达主动流动与改善，陶土橙承担风险提示，低位硬投影形成可靠的工程贴纸质感。",
+    "mood": [
+      "light",
+      "industrial",
+      "engineering",
+      "technical",
+      "educational",
+      "structured",
+      "tactile"
+    ],
+    "bestFor": [
+      "工业互联网与智能制造",
+      "工程技术与设备原理讲解",
+      "企业技术培训",
+      "生产流程和闭环控制",
+      "B2B 解决方案演示",
+      "职业教育与教材信息图",
+      "数据驱动的运营汇报"
+    ]
+  },
+  "a_page": {
+    "a_id": "A005",
+    "callback_a_ids": [
+      "A002"
+    ],
+    "nx": "落到实施上，关键做法是给发动机赋予统一标识，把它作为跨系统的关联锚点。统一标识不取代 ERP、MES、WMS，也不把全部业务数据塞进一段编码。各系统继续承担原有职责，统一标识用于确认这些分散记录是否属于同一台发动机。\n\n",
+    "teaching_purpose": "准确界定统一标识的作用，消除其替换系统或容纳全部数据的误解。",
+    "single_message": "统一标识是跨系统关联锚点，既不替代业务系统，也不是数据容器。",
+    "must_visible": [
+      {
+        "semantic_item_id": "V009",
+        "meaning": "同一台发动机的统一标识及其作为跨系统关联锚点的角色。",
+        "evidence_refs": [
+          "E006"
+        ]
+      },
+      {
+        "semantic_item_id": "V010",
+        "meaning": "ERP、MES、WMS 保持原有职责；统一标识不等于装入全部业务数据的编码。",
+        "evidence_refs": [
+          "E006"
+        ]
+      }
+    ],
+    "protected_relations": [
+      {
+        "relation_id": "R008",
+        "from": "统一标识",
+        "relation": "作为关联锚点确认记录是否属于",
+        "to": "同一台发动机",
+        "direction": "从统一标识连接到分散记录"
+      },
+      {
+        "relation_id": "R009",
+        "from": "统一标识",
+        "relation": "不取代",
+        "to": "ERP、MES、WMS",
+        "direction": "明确排除替换业务系统的解释"
+      },
+      {
+        "relation_id": "R010",
+        "from": "统一标识",
+        "relation": "不等于承载",
+        "to": "企业全部业务数据",
+        "direction": "明确排除把数据塞入编码的解释"
+      }
+    ],
+    "entry_condition": "观众已理解跨系统记录缺少共同线索。",
+    "exit_condition": "观众准确掌握统一标识的关联边界。",
+    "timing": {
+      "char_equivalent": 93.5,
+      "min_seconds": 24,
+      "target_seconds": 24,
+      "max_seconds": 26,
+      "short_page_reason": null
+    }
+  },
+  "narration": {
+    "authority": "a_page.nx",
+    "beats": [
+      "落到实施上，关键做法是给发动机赋予统一标识，把它作为跨系统的关联锚点。",
+      "统一标识不取代 ERP、MES、WMS，也不把全部业务数据塞进一段编码。",
+      "各系统继续承担原有职责，统一标识用于确认这些分散记录是否属于同一台发动机。"
+    ]
+  },
+  "outline": {
+    "chapter_markdown": "## 5. identity-as-anchor — 统一标识只做关联锚点（3 steps · ~24s）\n\n**A-page / Chapter**：`A005`\n**基础场景**：`S-A005` — 职责台账（共同条件行 + 职责列 + 边界列）；本配方不强制 takeaway，两列读完即完成判断\n**页面配方**：`scope-responsibility-ledger`\n**核心判断**：统一标识是跨系统关联锚点，既不替代业务系统，也不是数据容器。\n**结构指纹**：`共同条件行（同一台发动机）| 职责列（统一标识｜ERP/MES/WMS 组）| 边界列（不取代｜不承载）`\n**语义关系**：职责与边界的定义/定界对照\n**关系机制**：`cumulative-assembly` — 固定台账结构内逐行组装：先立共同条件，再按批准口播顺序补边界列、职责列；两列同帧呈现、允许不对称，不用空槽或破折号补齐表面结构\n**持续元素**：台账框架、共同条件行\n**内容槽位**：`condition-row`（跨系统核对都围绕同一台发动机）；`duty-col`（统一标识确认记录归属；ERP/MES/WMS 继续原有职责）；`boundary-col`（不取代系统；不等于装进一段编码）\n**强调页**：`none`\n**额外复杂场景**：`none`\n**可见标题**：`none`\n**省略理由**：共同条件行和职责列已经完整表达统一标识用于确认分散记录是否属于同一台发动机；删除标题不新增文案、槽位或语义，也不改变职责台账配方。\n**口播顺序说明**：批准口播先边界句、后职责句；台账两列同帧，场景指令按口播顺序先补边界列、后补职责列，最终两列并置完成定界\n**信息池**（主动设计：源为冻结 A-page / visual rough / evidence_catalog）：\n- 语义项：V009 统一标识及关联锚点角色；V010 系统保持原职责、标识不等于数据容器 —— A-page A005 must_visible（E006）\n- 关系：R008 关联锚点确认记录归属；R009 不取代 ERP/MES/WMS；R010 不承载全部业务数据 —— A-page A005 protected_relations\n- 证据：E006 项目方案（赋码、标识关联、二级节点） —— evidence_catalog\n**beat 切分**：N=3，N_eff=3，3 拍（=N），无偏离。\n\n| Step | Narration focus | Scene · Semantic state | 本步场景指令 |\n|---|---|---|---|\n| 1 | 赋予统一标识作跨系统关联锚点 | `S-A005 · ledger-anchored` (~8s) | 建立台账框架与共同条件行（跨系统核对都围绕同一台发动机，V009）；统一标识行出现并作为关联锚点（R008）；不画标识到各系统的连线 |\n| 2 | 不取代系统、不装下全部数据 | `S-A005 · boundaries-set` (~7s) | 台账保持；边界列补齐两行（不取代 ERP/MES/WMS，R009；不等于把企业全部业务数据装进一段编码，R010），正常字号呈现，不缩成角注 |\n| 3 | 各系统原有职责 + 归属确认 | `S-A005 · duties-complete` (~9s) | 台账保持；职责列补齐（ERP/MES/WMS 作为同一职责组列出、继续原有职责；统一标识用于确认分散记录是否属于同一台发动机），两列并置完成定界 |\n\n**口播节选**：\"统一标识不取代 ERP、MES、WMS，也不把全部业务数据塞进一段编码。\"",
+    "schedule": {
+      "previous": "| A004 | `lifecycle-identity-continuity` | 恒定对象 × 阶段范围 | `constant-anchor-band-unfold` | 身份锚点 + 七阶段无连线阶段带 | 无 | none | 无连线阶段带首次出现，无媒体 |",
+      "current": "| A005 | `scope-responsibility-ledger` | 职责与边界定界 | `cumulative-assembly` | 台账：共同条件行 + 职责列 + 边界列 | 无 | none | 台账行核对结构，替代阶段带 |",
+      "next": "| A006 | `common-anchor-association-groups` | 共享锚点下的关联组 | `anchor-group-nesting` | 锚点围合区 + 五类信息组 + 平台组 | 无 | none | 围合关联组结构，区别于台账 |"
+    },
+    "materials_markdown": null
+  },
+  "visual_rough_markdown": "## A005｜统一标识只做关联锚点\n\n- **内容角色**：职责定界——核对统一标识与 ERP、MES、WMS 的职责和两项排除边界。\n- **页面配方**：`scope-responsibility-ledger`\n- **论点标题**：[V009] 统一标识负责确认分散记录是否属于同一台发动机\n- **辅助句**：`none`\n- **媒体需求**：`none`\n- **媒体作用**：`none`\n- **教材证据**：`none`\n- **逻辑图**：`no`\n- **逻辑图理由**：`none`\n\n### 上屏内容组\n\n1. [V009][R008] **共同条件**：跨系统核对都围绕同一台发动机展开，讨论对象保持一致。\n2. [V009][V010][R008][R009] **职责列**：统一标识负责确认记录归属；ERP、MES、WMS 继续承担各自原有业务职责。\n3. [V010][R009][R010] **边界列**：统一标识不替代原有业务系统，也不等于把企业全部业务数据装进一段编码。\n\n### 页面骨架\n\n- 共同条件只建立“同一台发动机”这一全局前提，不重复第一项职责；随后按行核对统一标识和业务系统各自负责什么、边界在哪里。\n- ERP、MES、WMS 作为同一职责组列出；职责列与边界列允许不对称，不用空槽或破折号补齐表面结构。\n- 本配方不强制 takeaway；责任行、职责列和边界列读完即完成判断。\n\n### 关系保真\n\n- [R008] 统一标识与同一台发动机记录的关联由共同条件行明确说明，不画从标识到各系统的连线。\n- [R009] “不取代 ERP、MES、WMS”由业务系统职责行和统一标识职责行的同行对照表达。\n- [R010] “不承载企业全部业务数据”由独立边界行正常字号呈现，不缩成角注或只放结构性结论。",
+  "sources": {
+    "a_page": {
+      "path": "episodes/episode-09/episode-09-a-page.json",
+      "sha256": "8fb764141c77def8fbb003f376ab2d4d47f38a6d05d4528d2a11e3a4562f25be"
+    },
+    "visual_rough": {
+      "path": "episodes/episode-09/episode-09-visual-rough.md",
+      "sha256": "908aa37daf366132fafa02f66069f18d209b7099dd7e462b492a6a7c26e4d230"
+    },
+    "outline": {
+      "path": "episodes/episode-09/outline.md",
+      "sha256": "963e00798cfd0dd9322e9b0ba04b3a5e5da92b9f558c8c3fac56ccd64c37b6b9"
+    },
+    "script": {
+      "path": "episodes/episode-09/script.md",
+      "sha256": "add821ff31cd497c48f03a05250eeda88d67d09e16ace9f629d1a24eb34ad6ea"
+    },
+    "approved_text": {
+      "path": "episodes/episode-09/approved-spoken-text.txt",
+      "sha256": "e07682c0eaeae79123476216b63fd9450d5a854b1d6080c0604a44438a6e4f25"
+    },
+    "theme": {
+      "path": ".agents/skills/web-video-presentation/themes/active-identification-note/theme.json",
+      "sha256": "868de872b3c03d359b3c808ac69aa98c6a0a0b9e3e45ed0dc33f592d5a9f6997"
+    }
+  }
+}

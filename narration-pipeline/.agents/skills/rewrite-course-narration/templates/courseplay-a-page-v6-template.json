@@ -1,0 +1,62 @@
+{
+  "schema_version": "courseplay-a-page/v6",
+  "document_kind": "production",
+  "episode_id": "episode-XX",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {"minimum": 220, "target": 230, "maximum": 240}
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "支撑本页 guidance 的冻结证据",
+      "source_locator": "冻结任务包中的精确定位",
+      "verification_status": "verified",
+      "allowed_use": "仅支撑当前页声明"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "批准母版中的连续原文",
+      "teaching_purpose": "本页认知任务",
+      "single_message": "本页唯一信息",
+      "screen": {
+        "title": {
+          "screen_item_id": "S001",
+          "guidance_text": "标题方向，不是下游必须复刻的标题",
+          "usage_policy": "reference",
+          "evidence_refs": ["E001"]
+        },
+        "groups": [
+          {
+            "group_id": "G001",
+            "items": [
+              {
+                "screen_item_id": "S002",
+                "guidance_text": "制作时必须考虑的具体对象、条件或结果",
+                "usage_policy": "reference",
+                "evidence_refs": ["E001"]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [],
+      "silent_constraints": [],
+      "entry_condition": "进入前观众已经理解什么",
+      "exit_condition": "离开前必须建立什么理解",
+      "timing": {
+        "char_equivalent": 10,
+        "min_seconds": 3,
+        "target_seconds": 3,
+        "max_seconds": 3,
+        "short_page_reason": "模板示例仅用于展示字段结构"
+      }
+    }
+  ]
+}

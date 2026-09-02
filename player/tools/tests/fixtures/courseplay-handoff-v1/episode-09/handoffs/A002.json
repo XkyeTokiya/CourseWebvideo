@@ -1,0 +1,120 @@
+{
+  "schema_version": "web-video-courseplay-chapter-handoff/v1",
+  "episode_id": "episode-09",
+  "chapter": {
+    "index": 2,
+    "id": "records-without-chain",
+    "title": "有记录，还没有追溯链",
+    "a_page_id": "A002",
+    "step_count": 2
+  },
+  "theme": {
+    "id": "active-identification-note",
+    "nameZh": "主动标识工程笔记",
+    "descriptionZh": "工程方格纸上的工业教学视觉系统：深海军蓝建立粗结构，工业绿表达主动流动与改善，陶土橙承担风险提示，低位硬投影形成可靠的工程贴纸质感。",
+    "mood": [
+      "light",
+      "industrial",
+      "engineering",
+      "technical",
+      "educational",
+      "structured",
+      "tactile"
+    ],
+    "bestFor": [
+      "工业互联网与智能制造",
+      "工程技术与设备原理讲解",
+      "企业技术培训",
+      "生产流程和闭环控制",
+      "B2B 解决方案演示",
+      "职业教育与教材信息图",
+      "数据驱动的运营汇报"
+    ]
+  },
+  "a_page": {
+    "a_id": "A002",
+    "callback_a_ids": [
+      "A001"
+    ],
+    "nx": "先看旧状态。发动机的基本信息、生产装配信息和质量信息，分别记录在三个业务系统里。企业资源计划（Enterprise Resource Planning，ERP）、制造执行系统（Manufacturing Execution System，MES）和仓库管理系统（Warehouse Management System，WMS）都在记录相关信息。各系统都有记录，仍不代表同一台发动机已经形成完整的追溯链。系统有数据，和能顺着数据找到问题，是两回事。\n\n",
+    "teaching_purpose": "说明旧状态下多个系统分别留存记录，却没有形成面向同一发动机的追溯链。",
+    "single_message": "系统有数据，并不等于能顺着数据定位发动机问题。",
+    "must_visible": [
+      {
+        "semantic_item_id": "V003",
+        "meaning": "发动机的基本、生产装配和质量信息分别存在于多个业务系统。",
+        "evidence_refs": [
+          "E002"
+        ]
+      },
+      {
+        "semantic_item_id": "V004",
+        "meaning": "企业资源计划（Enterprise Resource Planning，ERP）、制造执行系统（Manufacturing Execution System，MES）、仓库管理系统（Warehouse Management System，WMS）的首次全称与缩写。",
+        "evidence_refs": [
+          "E002"
+        ]
+      }
+    ],
+    "protected_relations": [
+      {
+        "relation_id": "R003",
+        "from": "ERP、MES、WMS",
+        "relation": "分别记录",
+        "to": "发动机相关信息",
+        "direction": "从各业务系统指向各自持有的记录"
+      }
+    ],
+    "entry_condition": "观众已看到一台发动机需要追查多个记录。",
+    "exit_condition": "观众理解分散留存不等于已经具备完整追溯能力。",
+    "timing": {
+      "char_equivalent": 153,
+      "min_seconds": 39,
+      "target_seconds": 40,
+      "max_seconds": 42,
+      "short_page_reason": null
+    }
+  },
+  "narration": {
+    "authority": "a_page.nx",
+    "beats": [
+      "先看旧状态。发动机的基本信息、生产装配信息和质量信息，分别记录在三个业务系统里。企业资源计划（Enterprise Resource Planning，ERP）、制造执行系统（Manufacturing Execution System，MES）和仓库管理系统（Warehouse Management System，WMS）都在记录相关信息。",
+      "各系统都有记录，仍不代表同一台发动机已经形成完整的追溯链。系统有数据，和能顺着数据找到问题，是两回事。"
+    ]
+  },
+  "outline": {
+    "chapter_markdown": "## 2. records-without-chain — 有记录，还没有追溯链（2 steps · ~40s）\n\n**A-page / Chapter**：`A002`\n**基础场景**：`S-A002` — 三张同构系统卡并列的旧状态页；骨架 takeaway 判断条由 `K-A002-01` accent 替代，base-scene 不再重复该判断\n**页面配方**：`parallel-cards-with-takeaway`\n**核心判断**：系统有数据，并不等于能顺着数据定位发动机问题。\n**结构指纹**：`三张同构系统卡（ERP｜MES｜WMS）| 中文全称 + 英文全称 + 缩写首现行 | 收束判断（accent 承载）`\n**语义关系**：三系统并列等权、各自保留记录\n**关系机制**：`equal-weight-accumulation` — 三卡同构等权、同一语法（系统各自保留发动机相关记录），允许同一拍内依次补齐，完成后不留当前选中项；卡间不加因果箭头或数据流（R003）\n**持续元素**：论点标题、三张系统卡\n**内容槽位**：`card-erp`（企业资源计划 ERP·相关业务记录）；`card-mes`（制造执行系统 MES·生产现场记录）；`card-wms`（仓库管理系统 WMS·仓储业务记录）\n**强调页**：`K-A002-01` — \"系统有数据，和能顺着数据找到问题，是两回事。\"（概念判断，替代骨架 takeaway 判断条）\n**额外复杂场景**：`none`\n**可见标题**：`保留`\n**信息池**（主动设计：源为冻结 A-page / visual rough / evidence_catalog）：\n- 语义项：V003 基本、生产装配、质量信息分散在多个系统 —— A-page A002 must_visible（E002）\n- 语义项：V004 ERP/MES/WMS 首次中文全称、英文全称与缩写 —— A-page A002 must_visible\n- 关系：R003 三系统分别记录发动机相关信息 —— A-page A002 protected_relations\n- 证据：E002 应用背景（记录分散、查询反馈链条长） —— evidence_catalog\n**beat 切分**：N=3，N_eff=3，2 拍（N_eff−1，合规）。合并 3→1：三系统全称句为单句连续枚举，句内仅顿号与括号内逗号，无强分隔切分点，无法按组落拍；并入：\"先看旧状态\"\"发动机的基本信息……三个业务系统里\"引入句无组锚点，并入拍 1；扩张（accent）：拍 2 判断句独立成拍并切换 `K-A002-01`。\n\n| Step | Narration focus | Scene · Semantic state | 本步场景指令 |\n|---|---|---|---|\n| 1 | 旧状态：三个系统各自记录 | `S-A002 · three-systems-recorded` (~28s) | 建立三张同构系统卡（等权、同语法）；本拍内依次补齐 ERP/MES/WMS 首次全称与缩写及各自记录说明（V004/R003）；只表达\"各自有记录\"，不分配 A-page 未给出的字段归属 |\n| 2 | 有数据 ≠ 有追溯链 | `K-A002-01 · accent` (~12s) | 切换低成本全屏强调页，只承载核心句与必要短 kicker；\"各系统都有记录……\"一句作为引入口播落在同一帧；判断仅由 accent 承载，base-scene 不再重复 |\n\n**口播节选**：\"系统有数据，和能顺着数据找到问题，是两回事。\"",
+    "schedule": {
+      "previous": "| A001 | `issue-cards-with-image` | 前提汇聚为四类待查问题 | `premise-to-question` | 现场图（M001）+ 四张问题卡 | 无 | M001 | 开篇正文页：现场图建立情境，区别于封面 |",
+      "current": "| A002 | `parallel-cards-with-takeaway` | 三系统并列等权 | `equal-weight-accumulation` | 三张同构系统卡 | `K-A002-01` accent（收束判断） | none | 去图改卡：三卡并列，判断切至 accent |",
+      "next": "| A003 | `image-with-reading-notes` | 读图（四段分段关系与断点） | `persistent-media-reading` | 教材原图（M002）+ 图外阅读注 | 无 | M002 | 原图证据页：注在图外，区别于并列卡 |"
+    },
+    "materials_markdown": null
+  },
+  "visual_rough_markdown": "## A002｜有记录，还没有追溯链\n\n- **内容角色**：旧状态拆解——说明 ERP、MES、WMS 各自留有记录，但记录尚未围绕同一对象形成链条。\n- **页面配方**：`parallel-cards-with-takeaway`\n- **论点标题**：[V003] 基本、生产装配和质量信息分散在多个系统，有数据不等于有追溯链\n- **辅助句**：`none`\n- **媒体需求**：`none`\n- **媒体作用**：`none`\n- **教材证据**：`none`\n- **逻辑图**：`no`\n- **逻辑图理由**：`none`\n\n### 上屏内容组\n\n1. [V004][R003] **企业资源计划（Enterprise Resource Planning，ERP）**：保留与发动机相关的业务记录。\n2. [V004][R003] **制造执行系统（Manufacturing Execution System，MES）**：保留与发动机相关的生产现场记录。\n3. [V004][R003] **仓库管理系统（Warehouse Management System，WMS）**：保留与发动机相关的仓储业务记录。\n\n### 页面骨架\n\n- 三张同构系统卡并列，完整保留首次出现的中文全称、英文全称和缩写。\n- 卡片只说明“各自有记录”，不擅自分配 A-page 未明确给出的字段归属。\n- takeaway 收束：各系统都有记录，仍不代表同一台发动机已经形成完整追溯链。\n\n### 关系保真\n\n- [R003] 三张卡使用同一语法“系统各自保留发动机相关记录”，表达 ERP、MES、WMS 分别记录信息；卡间不增加因果箭头或数据流。",
+  "sources": {
+    "a_page": {
+      "path": "episodes/episode-09/episode-09-a-page.json",
+      "sha256": "8fb764141c77def8fbb003f376ab2d4d47f38a6d05d4528d2a11e3a4562f25be"
+    },
+    "visual_rough": {
+      "path": "episodes/episode-09/episode-09-visual-rough.md",
+      "sha256": "908aa37daf366132fafa02f66069f18d209b7099dd7e462b492a6a7c26e4d230"
+    },
+    "outline": {
+      "path": "episodes/episode-09/outline.md",
+      "sha256": "963e00798cfd0dd9322e9b0ba04b3a5e5da92b9f558c8c3fac56ccd64c37b6b9"
+    },
+    "script": {
+      "path": "episodes/episode-09/script.md",
+      "sha256": "add821ff31cd497c48f03a05250eeda88d67d09e16ace9f629d1a24eb34ad6ea"
+    },
+    "approved_text": {
+      "path": "episodes/episode-09/approved-spoken-text.txt",
+      "sha256": "e07682c0eaeae79123476216b63fd9450d5a854b1d6080c0604a44438a6e4f25"
+    },
+    "theme": {
+      "path": ".agents/skills/web-video-presentation/themes/active-identification-note/theme.json",
+      "sha256": "868de872b3c03d359b3c808ac69aa98c6a0a0b9e3e45ed0dc33f592d5a9f6997"
+    }
+  }
+}

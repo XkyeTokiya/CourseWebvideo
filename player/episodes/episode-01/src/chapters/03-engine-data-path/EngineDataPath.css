@@ -1,0 +1,214 @@
+/* ─────────────────────────────────────────────────────────────
+ * 03-engine-data-path · A003 image-with-summary-rail
+ * mechanism: ordered-progression — 编号带按真实顺序 active/past/upcoming
+ * prefix: ed-
+ * ───────────────────────────────────────────────────────────── */
+
+.ed-scene {
+  gap: 36px;
+}
+
+.ed-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 620px;
+  gap: 72px;
+  min-height: 0;
+}
+
+/* ── 左：编号总结带 + 纵向进度线 ── */
+.ed-rail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  padding-left: 46px;
+  min-height: 0;
+}
+.ed-rail-progress {
+  position: absolute;
+  left: 17px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--theme-process);
+  transition: height var(--dur-slow) var(--ease-quart);
+}
+.ed-rail::before {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--theme-dashed-line);
+  opacity: 0.5;
+}
+
+.ed-band {
+  display: flex;
+  align-items: flex-start;
+  gap: 26px;
+  border-radius: var(--r-card);
+  padding: 26px 34px;
+  transition: opacity var(--dur-base) var(--ease-soft),
+    filter var(--dur-base) var(--ease-soft),
+    background var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft);
+  border: var(--rule-w) solid transparent;
+}
+
+.ed-band-no {
+  font-size: 72px;
+  color: var(--text-faint);
+  line-height: 0.9;
+  flex: none;
+  transition: color var(--dur-base) var(--ease-soft);
+}
+
+.ed-band-title {
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  line-height: 1.2;
+}
+.ed-band-desc {
+  margin-top: 8px;
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+.ed-band-note {
+  margin-top: 14px;
+  font-family: var(--font-body);
+  font-size: 22px;
+  color: var(--theme-warning);
+  animation: ed-note-in 560ms var(--ease-quart) backwards;
+}
+@keyframes ed-note-in {
+  0% {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* upcoming：虚线预留 */
+.ed-band.is-upcoming {
+  opacity: 0.45;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+}
+.ed-band.is-upcoming .ed-band-title,
+.ed-band.is-upcoming .ed-band-desc {
+  visibility: hidden;
+}
+
+/* active：白卡 + 绿左缘 + 掀入 */
+.ed-band.is-active {
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  animation: ed-band-in 640ms var(--ease-quart) backwards;
+}
+.ed-band.is-active .ed-band-no {
+  color: var(--theme-process);
+}
+@keyframes ed-band-in {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+}
+
+/* past：完成态，绿号 + 轻灰 */
+.ed-band.is-past {
+  background: var(--theme-process-surface);
+  border: var(--rule-w) solid var(--theme-process);
+  opacity: 0.82;
+}
+.ed-band.is-past .ed-band-no {
+  color: var(--theme-process);
+}
+.ed-band.is-past .ed-band-title {
+  color: var(--text-2);
+}
+
+/* ── 右：发动机媒体占位（持续不卸载） ── */
+.ed-media {
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  background: var(--surface-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 0;
+  animation: ed-fade 700ms var(--ease-quart) backwards;
+}
+.ed-media-mark {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+}
+.ed-media-desc {
+  font-family: var(--font-body);
+  font-size: 21px;
+  color: var(--text-faint);
+}
+@keyframes ed-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ── 底部强调句：常驻，末拍强化 ── */
+.ed-bottom {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 32px;
+  border-radius: var(--r-card);
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  font-family: var(--font-body);
+  font-size: 27px;
+  color: var(--text-mute);
+  transition: color var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft),
+    background var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-soft);
+}
+.ed-bottom-mark {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  background: var(--theme-dashed-line);
+  transition: background var(--dur-base) var(--ease-soft);
+}
+.ed-bottom[data-strong="true"] {
+  color: var(--theme-structural);
+  font-weight: 700;
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-structural);
+  box-shadow: 0 0 0 6px var(--accent-glow);
+}
+.ed-bottom[data-strong="true"] .ed-bottom-mark {
+  background: var(--theme-process);
+}

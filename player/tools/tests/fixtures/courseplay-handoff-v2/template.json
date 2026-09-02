@@ -1,0 +1,56 @@
+{
+  "schema_version": "web-video-courseplay-chapter-handoff/v2",
+  "episode_id": "episode-XX",
+  "chapter": {
+    "index": 1,
+    "id": "chapter-id",
+    "title": "章节标题",
+    "a_page_id": "A001",
+    "step_count": 2
+  },
+  "narration": {
+    "authority": "a_page.nx",
+    "beats": ["批准口播第一拍。", "批准口播第二拍。"]
+  },
+  "screen_source": {
+    "title": {
+      "screen_item_id": "S001",
+      "source_text": "上游提供的标题",
+      "edit_policy": "adaptable",
+      "evidence_refs": ["E001"]
+    },
+    "groups": [
+      {
+        "group_id": "G001",
+        "items": [
+          {
+            "screen_item_id": "S002",
+            "source_text": "上游提供的内容",
+            "edit_policy": "adaptable",
+            "evidence_refs": ["E001"]
+          }
+        ]
+      }
+    ],
+    "protected_relations": []
+  },
+  "presentation": {
+    "recipe_id": "registered-recipe",
+    "slot_bindings": ["headline <- S001", "body <- G001"],
+    "media": [],
+    "relation_carriers": []
+  },
+  "steps": [
+    {
+      "index": 1,
+      "scene_state": "S-A001 · first-state",
+      "show_refs": ["G001"],
+      "keep_refs": [],
+      "focus_refs": [],
+      "instruction": "建立主体槽位"
+    }
+  ],
+  "silent_constraints": [],
+  "materials_markdown": null,
+  "sources": {}
+}

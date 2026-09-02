@@ -1,0 +1,128 @@
+{
+  "schema_version": "web-video-courseplay-chapter-handoff/v1",
+  "episode_id": "episode-09",
+  "chapter": {
+    "index": 1,
+    "id": "after-scan",
+    "title": "认出发动机之后",
+    "a_page_id": "A001",
+    "step_count": 3
+  },
+  "theme": {
+    "id": "active-identification-note",
+    "nameZh": "主动标识工程笔记",
+    "descriptionZh": "工程方格纸上的工业教学视觉系统：深海军蓝建立粗结构，工业绿表达主动流动与改善，陶土橙承担风险提示，低位硬投影形成可靠的工程贴纸质感。",
+    "mood": [
+      "light",
+      "industrial",
+      "engineering",
+      "technical",
+      "educational",
+      "structured",
+      "tactile"
+    ],
+    "bestFor": [
+      "工业互联网与智能制造",
+      "工程技术与设备原理讲解",
+      "企业技术培训",
+      "生产流程和闭环控制",
+      "B2B 解决方案演示",
+      "职业教育与教材信息图",
+      "数据驱动的运营汇报"
+    ]
+  },
+  "a_page": {
+    "a_id": "A001",
+    "callback_a_ids": [],
+    "nx": "先设想一个场景：一台发动机在售后出了问题。服务人员扫到它身上的标识，设备确实认出了它。可接下来还要查几个问题：它来自哪个订单？经历过怎样的装配和工艺控制？质量记录在哪里？又经过了哪些仓储物流？要把这些记录接起来，光扫到标识还不够。记录明明都在，为什么查起来还是费劲？本节借这个发动机案例，看看统一标识怎样把分散系统串成一条可定位问题的追溯链。\n\n",
+    "teaching_purpose": "用售后异常的教学情境建立“识别对象不等于定位问题”的学习动机。",
+    "single_message": "扫描能认出发动机，却不能自动接出它的完整追溯记录。",
+    "must_visible": [
+      {
+        "semantic_item_id": "V001",
+        "meaning": "教学情境中的同一台发动机、售后服务人员和扫描标识动作。",
+        "evidence_refs": [
+          "E007",
+          "E011"
+        ]
+      },
+      {
+        "semantic_item_id": "V002",
+        "meaning": "围绕这台发动机待查的订单、装配与工艺控制、质量记录、仓储物流四类问题。",
+        "evidence_refs": [
+          "E007",
+          "E011"
+        ]
+      }
+    ],
+    "protected_relations": [
+      {
+        "relation_id": "R001",
+        "from": "发动机标识",
+        "relation": "用于识别",
+        "to": "售后问题对象",
+        "direction": "从扫描动作指向同一台发动机"
+      },
+      {
+        "relation_id": "R002",
+        "from": "订单、装配、质量和物流记录",
+        "relation": "需要围绕同一对象建立关联",
+        "to": "发动机",
+        "direction": "从分散待查记录汇向发动机"
+      }
+    ],
+    "entry_condition": "观众只知道售后人员能扫描到一台发动机。",
+    "exit_condition": "观众理解识别发动机只是追溯问题的起点。",
+    "timing": {
+      "char_equivalent": 156,
+      "min_seconds": 39,
+      "target_seconds": 41,
+      "max_seconds": 43,
+      "short_page_reason": null
+    }
+  },
+  "narration": {
+    "authority": "a_page.nx",
+    "beats": [
+      "先设想一个场景：一台发动机在售后出了问题。服务人员扫到它身上的标识，设备确实认出了它。可接下来还要查几个问题：它来自哪个订单？经历过怎样的装配和工艺控制？",
+      "质量记录在哪里？又经过了哪些仓储物流？",
+      "要把这些记录接起来，光扫到标识还不够。记录明明都在，为什么查起来还是费劲？本节借这个发动机案例，看看统一标识怎样把分散系统串成一条可定位问题的追溯链。"
+    ]
+  },
+  "outline": {
+    "chapter_markdown": "## 1. after-scan — 认出发动机之后（3 steps · ~41s）\n\n**A-page / Chapter**：`A001`\n**基础场景**：`S-A001` — M001 现场图媒体区 + 四张问题卡阅读列 + takeaway 收束线，全章持续\n**页面配方**：`issue-cards-with-image`\n**核心判断**：扫描能认出发动机，却不能自动接出它的完整追溯记录。\n**结构指纹**：`现场图媒体区 | 四张问题卡（订单｜装配与工艺｜质量｜仓储物流）| takeaway 收束线`\n**语义关系**：售后识别前提汇聚为四类待查问题（前提→问题）\n**关系机制**：`premise-to-question` — 现场图与\"已扫描、已认出\"前提持续存在，视觉中心随口播从扫描情境转移到问题卡，再落到收束判断；问题卡顺序只用于阅读，不画汇聚箭头或追溯网络\n**持续元素**：论点标题、M001 现场图、四张问题卡、takeaway 收束线\n**内容槽位**：`media-scene`（M001）；`card-1 订单`；`card-2 装配与工艺`；`card-3 质量`；`card-4 仓储物流`；`takeaway`\n**强调页**：`none`\n**额外复杂场景**：`none`\n**可见标题**：`保留`\n**信息池**（主动设计：源为冻结 A-page / visual rough / evidence_catalog）：\n- 语义项：V001 教学情境中的同一台发动机、售后服务人员和扫描标识动作 —— A-page A001 must_visible（E007/E011）\n- 语义项：V002 订单、装配与工艺控制、质量记录、仓储物流四类待查问题 —— A-page A001 must_visible\n- 关系：R001 标识用于识别售后问题对象；R002 四类记录需围绕同一对象建立关联 —— A-page A001 protected_relations\n- 媒体：M001 photorealistic_ai 售后服务现场图 —— visual rough A001（待提供）\n**beat 切分**：N=4，N_eff=4，3 拍（N_eff−1，合规）。合并 4→2：四问为\"可接下来还要查几个问题：\"后单句连续枚举，按组拆分各拍 <4s，按阅读顺序 2+2 落拍；并入：开篇情境句（V001 画面）无内容组锚点，并入拍 1；扩张：骨架 takeaway\"识别对象只是起点\"有独立口播句（\"要把这些记录接起来，光扫到标识还不够……\"）且收束线为新稳定画面，独立成拍；并入：\"本节借这个发动机案例……\"过渡句并入拍 3。\n\n| Step | Narration focus | Scene · Semantic state | 本步场景指令 |\n|---|---|---|---|\n| 1 | 售后情境：已认出发动机，先抛订单、装配与工艺两问 | `S-A001 · scene-and-first-questions` (~18s) | 建立 M001 现场图媒体区与\"已扫描、已认出\"前提（V001，开篇情境句并入本拍）；问题卡列立起前两槽（订单、装配与工艺）；扫描动作只表达识别，不把标识画成数据容器（R001） |\n| 2 | 质量与仓储物流两问 | `S-A001 · all-questions-visible` (~4s) | 保持现场图与前两卡，按阅读顺序补齐质量、仓储物流两卡；四卡共享\"同一台发动机\"讨论对象（V002/R002），只表阅读顺序 |\n| 3 | 光扫到标识还不够 + 本节引入 | `S-A001 · recognition-gap-stated` (~18s) | 四卡与现场图保持；takeaway 收束线出现（识别对象只是起点）；本节引入句并入本拍，画面随阅读关系把四类记录收向同一台发动机（R002），不新增连接线 |\n\n**口播节选**：\"要把这些记录接起来，光扫到标识还不够。\"／\"看看统一标识怎样把分散系统串成一条可定位问题的追溯链。\"",
+    "schedule": {
+      "previous": null,
+      "current": "| A001 | `issue-cards-with-image` | 前提汇聚为四类待查问题 | `premise-to-question` | 现场图（M001）+ 四张问题卡 | 无 | M001 | 开篇正文页：现场图建立情境，区别于封面 |",
+      "next": "| A002 | `parallel-cards-with-takeaway` | 三系统并列等权 | `equal-weight-accumulation` | 三张同构系统卡 | `K-A002-01` accent（收束判断） | none | 去图改卡：三卡并列，判断切至 accent |"
+    },
+    "materials_markdown": "### A001\n- ⚠️ `M001`：photorealistic_ai — 发动机售后服务现场图，锚定\"已扫描、已认出对象\"前提；不承担数据、界面或系统关系说明（待提供 / placeholder）"
+  },
+  "visual_rough_markdown": "## A001｜认出发动机之后\n\n- **内容角色**：开篇教学情境——用售后扫描后仍有四类待查问题建立追溯动机。\n- **页面配方**：`issue-cards-with-image`\n- **论点标题**：[V001] 扫描认出同一台发动机，追溯问题才刚刚开始\n- **辅助句**：`none`\n- **媒体需求**：`M001` / `photorealistic_ai`\n- **媒体作用**：锚定教学设想中的发动机售后服务现场，使“对象已经被识别”获得具体场景落点；图片不承担数据、界面或系统关系说明。\n- **教材证据**：`none`\n- **逻辑图**：`no`\n- **逻辑图理由**：`none`\n\n### 上屏内容组\n\n1. [V002][R002] **订单**：它来自哪个订单？\n2. [V002][R002] **装配与工艺**：经历过怎样的装配和工艺控制？\n3. [V002][R002] **质量**：对应的质量记录在哪里？\n4. [V002][R002] **仓储物流**：又经过了哪些仓储和物流环节？\n\n### 页面骨架\n\n- 现场图负责建立“已扫描、已认出对象”的前提，四张问题卡按业务阅读顺序排列。\n- 问题卡不叠加在图片上，不出现虚构系统界面或可读数据。\n- takeaway 收束：识别对象只是起点，完整追溯还要让四类记录重新围绕同一台发动机建立关联。\n\n### 关系保真\n\n- [R001] “发动机标识用于识别售后问题对象”由论点标题和现场情境共同表达：先确认扫描动作已经锁定同一台发动机，不把标识画成数据容器。\n- [R002] 四张问题卡共享“同一台发动机”这一讨论对象，卡片顺序只用于阅读，不画汇聚箭头或追溯网络。",
+  "sources": {
+    "a_page": {
+      "path": "episodes/episode-09/episode-09-a-page.json",
+      "sha256": "8fb764141c77def8fbb003f376ab2d4d47f38a6d05d4528d2a11e3a4562f25be"
+    },
+    "visual_rough": {
+      "path": "episodes/episode-09/episode-09-visual-rough.md",
+      "sha256": "908aa37daf366132fafa02f66069f18d209b7099dd7e462b492a6a7c26e4d230"
+    },
+    "outline": {
+      "path": "episodes/episode-09/outline.md",
+      "sha256": "963e00798cfd0dd9322e9b0ba04b3a5e5da92b9f558c8c3fac56ccd64c37b6b9"
+    },
+    "script": {
+      "path": "episodes/episode-09/script.md",
+      "sha256": "add821ff31cd497c48f03a05250eeda88d67d09e16ace9f629d1a24eb34ad6ea"
+    },
+    "approved_text": {
+      "path": "episodes/episode-09/approved-spoken-text.txt",
+      "sha256": "e07682c0eaeae79123476216b63fd9450d5a854b1d6080c0604a44438a6e4f25"
+    },
+    "theme": {
+      "path": ".agents/skills/web-video-presentation/themes/active-identification-note/theme.json",
+      "sha256": "868de872b3c03d359b3c808ac69aa98c6a0a0b9e3e45ed0dc33f592d5a9f6997"
+    }
+  }
+}

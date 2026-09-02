@@ -1,0 +1,212 @@
+[
+  {
+    "chapter": "why-concept",
+    "step": 1,
+    "text": "想象一下2012年前后的一个工业现场。设备已经在运行，控制系统能够下达指令，管理软件也能安排生产、记录订单。",
+    "audio": "why-concept/1.mp3"
+  },
+  {
+    "chapter": "why-concept",
+    "step": 2,
+    "text": "既然这些信息技术都已经存在，为什么工业领域还要提出“工业互联网”这个新概念？答案不在于工厂过去没有数字工具，而在于这些工具往往只解决各自的一小段工作。",
+    "audio": "why-concept/2.mp3"
+  },
+  {
+    "chapter": "why-concept",
+    "step": 3,
+    "text": "真正的问题是，人、机器和数据之间，能不能跨过设备、系统和环节的界线，持续配合起来。",
+    "audio": "why-concept/3.mp3"
+  },
+  {
+    "chapter": "anchor-2012",
+    "step": 1,
+    "text": "以2012年为时间坐标：通用电气，也就是GE，正是在这一年提出了“工业互联网”的概念。",
+    "audio": "anchor-2012/1.mp3"
+  },
+  {
+    "chapter": "anchor-2012",
+    "step": 2,
+    "text": "把这一年作为起点，不是要宣称全球唯一的首创，而是要为这个概念的出现确定一个重要的时间节点。",
+    "audio": "anchor-2012/2.mp3"
+  },
+  {
+    "chapter": "anchor-2012",
+    "step": 3,
+    "text": "工业互联网指的是一个连接人、数据和机器的开放、全球化网络。这个定义的关键，不只是“互联网”三个字，而是原来分开管理的人、数据和机器，开始进入同一个工业问题的框架。",
+    "audio": "anchor-2012/3.mp3"
+  },
+  {
+    "chapter": "engine-data-path",
+    "step": 1,
+    "text": "航空发动机可以把这个变化讲得很具体。发动机上的传感器采集飞行数据，数据传回数据中心进行分析，",
+    "audio": "engine-data-path/1.mp3"
+  },
+  {
+    "chapter": "engine-data-path",
+    "step": 2,
+    "text": "分析结果再用于预测性维护。这样一来，发动机的运行状态不再只留在机器内部。",
+    "audio": "engine-data-path/2.mp3"
+  },
+  {
+    "chapter": "engine-data-path",
+    "step": 3,
+    "text": "机器提供真实的运行信息，数据分析帮助人判断设备状态，维护人员据此安排维护。机器、数据和人之间就有了可以追踪的协作关系。",
+    "audio": "engine-data-path/3.mp3"
+  },
+  {
+    "chapter": "collab-not-params",
+    "step": 1,
+    "text": "先把具体机型、传感器数量和算法放在一边，沿着信息流继续看：当机器产生的信息能够被采集、分析，",
+    "audio": "collab-not-params/1.mp3"
+  },
+  {
+    "chapter": "collab-not-params",
+    "step": 2,
+    "text": "并服务于行动时，工业现场就不再只是“机器自己运行”。",
+    "audio": "collab-not-params/2.mp3"
+  },
+  {
+    "chapter": "collab-not-params",
+    "step": 3,
+    "text": "信息开始跨过机器和人的边界，进入一个更大的工作过程。",
+    "audio": "collab-not-params/3.mp3"
+  },
+  {
+    "chapter": "collab-not-params",
+    "step": 4,
+    "text": "工业互联网的概念，正是从这样的实际需求中变得清晰起来。",
+    "audio": "collab-not-params/4.mp3"
+  },
+  {
+    "chapter": "local-systems",
+    "step": 1,
+    "text": "再回到许多工业企业原有的信息化状态。设备控制可能有一套系统，生产管理可能有另一套系统，",
+    "audio": "local-systems/1.mp3"
+  },
+  {
+    "chapter": "local-systems",
+    "step": 2,
+    "text": "订单、库存和质量也可能分别由不同系统负责。每套系统都能把自己的局部任务做得更快、更准，但这并不保证设备状态能够及时进入生产安排，也不保证生产信息能够被其他环节理解和使用。",
+    "audio": "local-systems/2.mp3"
+  },
+  {
+    "chapter": "local-systems",
+    "step": 3,
+    "text": "局部环节已经数字化，不等于整个工业过程已经互联。",
+    "audio": "local-systems/3.mp3"
+  },
+  {
+    "chapter": "local-vs-synergy",
+    "step": 1,
+    "text": "这就是单点信息技术应用与工业互联网之间的差别。前者改善一个环节的效率，",
+    "audio": "local-vs-synergy/1.mp3"
+  },
+  {
+    "chapter": "local-vs-synergy",
+    "step": 2,
+    "text": "后者要面对跨设备、跨系统、跨环节的协同问题。",
+    "audio": "local-vs-synergy/2.mp3"
+  },
+  {
+    "chapter": "local-vs-synergy",
+    "step": 3,
+    "text": "一个环节产生的数据，能不能被另一个环节接住、理解，并用于下一步行动？",
+    "audio": "local-vs-synergy/3.mp3"
+  },
+  {
+    "chapter": "local-vs-synergy",
+    "step": 4,
+    "text": "这个问题的答案，决定了信息技术能不能从局部工具，变成工业过程中的共同支撑。问题也因此从“单台设备能不能工作得更好”，扩展成“不同工业要素能不能围绕同一个目标持续配合”。",
+    "audio": "local-vs-synergy/4.mp3"
+  },
+  {
+    "chapter": "two-paths-meet",
+    "step": 1,
+    "text": "把视野拉远一些，还能看到两条变化。互联网原本更多服务于消费等场景，后来不断向产业活动延伸。",
+    "audio": "two-paths-meet/1.mp3"
+  },
+  {
+    "chapter": "two-paths-meet",
+    "step": 2,
+    "text": "工业自身也从单点信息技术应用，逐步走向更全面的数字化、网络化和智能化。",
+    "audio": "two-paths-meet/2.mp3"
+  },
+  {
+    "chapter": "two-paths-meet",
+    "step": 3,
+    "text": "两条路径在2012年前后相遇，工业互联网因此获得了清晰的时代位置。比年份本身更重要的，是工业需求和信息技术在同一个问题上汇合。",
+    "audio": "two-paths-meet/3.mp3"
+  },
+  {
+    "chapter": "condition-fusion",
+    "step": 1,
+    "text": "新一代信息通信技术为这种汇合提供了条件，但技术本身并不会自动产生工业互联网。",
+    "audio": "condition-fusion/1.mp3"
+  },
+  {
+    "chapter": "condition-fusion",
+    "step": 2,
+    "text": "关键在于，信息技术要与工业知识、工业设备、工业流程深度融合。",
+    "audio": "condition-fusion/2.mp3"
+  },
+  {
+    "chapter": "condition-fusion",
+    "step": 3,
+    "text": "它要面对真实的生产过程，也要服务于生产、运维、协同和优化等目标。对工业来说，增加一条通信线路只是开始，能不能让信息进入正确的工作关系，才决定连接有没有实际意义。",
+    "audio": "condition-fusion/3.mp3"
+  },
+  {
+    "chapter": "official-definition",
+    "step": 1,
+    "text": "因此，工业互联网可以这样理解：新一代信息通信技术与制造业深度融合，形成新的基础设施和应用方式，也带来更广泛的产业协作关系。",
+    "audio": "official-definition/1.mp3"
+  },
+  {
+    "chapter": "official-definition",
+    "step": 2,
+    "text": "通过人、机、物的全面互联，它把制造与服务活动延伸到产业链和价值链更大的范围。这里的“人、机、物”不是几个孤立的名词，而是说人的判断、机器的状态和数据所表达的信息，能够在工业过程中彼此关联。",
+    "audio": "official-definition/2.mp3"
+  },
+  {
+    "chapter": "not-just-connected",
+    "step": 1,
+    "text": "不过，设备接入网络，并不自动等于工业互联网。如果数据仍然停留在一个孤立系统里，跨环节的协同没有发生，原来的问题就还在。",
+    "audio": "not-just-connected/1.mp3"
+  },
+  {
+    "chapter": "not-just-connected",
+    "step": 2,
+    "text": "另一方面，工业互联网也不是把消费互联网的做法原样搬进工厂。",
+    "audio": "not-just-connected/2.mp3"
+  },
+  {
+    "chapter": "not-just-connected",
+    "step": 3,
+    "text": "工业现场有真实的设备、生产流程和运行目标，连接必须围绕这些条件发生，不能只停留在“连上了”这个动作上。",
+    "audio": "not-just-connected/3.mp3"
+  },
+  {
+    "chapter": "enter-the-process",
+    "step": 1,
+    "text": "最后，回到开场的问题。工业企业并不是在完全没有信息技术的情况下，才遇到工业互联网。它是在单点系统已经发挥作用之后，",
+    "audio": "enter-the-process/1.mp3"
+  },
+  {
+    "chapter": "enter-the-process",
+    "step": 2,
+    "text": "发现局部工具仍然难以支撑跨设备、跨系统、跨环节的持续协同。",
+    "audio": "enter-the-process/2.mp3"
+  },
+  {
+    "chapter": "enter-the-process",
+    "step": 3,
+    "text": "工业互联网的价值所在，就是让人、机器和数据在工业过程中形成更广范围的联系。让机器产生的信息能够被看见、被理解，并服务于真实的工业行动。",
+    "audio": "enter-the-process/3.mp3"
+  },
+  {
+    "chapter": "enter-the-process",
+    "step": 4,
+    "text": "判断一个系统是不是工业互联网，不能只看设备有没有联网，还要看连接是否真正进入了工业过程。",
+    "audio": "enter-the-process/4.mp3"
+  }
+]

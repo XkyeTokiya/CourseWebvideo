@@ -1,0 +1,630 @@
+{
+  "schema_version": "courseplay-a-page/v4",
+  "document_kind": "production",
+  "episode_id": "episode-08",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "第 08 集标题、来源范围、前置关系、相邻边界和动态风险",
+      "source_locator": "已确认课程架构：第 08 集及相邻集责任",
+      "verification_status": "not applicable",
+      "allowed_use": "控制范围、去重和时长"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "标识对象由物理产品延伸到模型、算法、工艺等数字对象",
+      "source_locator": "主教材，1.2.3 首段及“从对象看”",
+      "verification_status": "not applicable",
+      "allowed_use": "建立对象尺度的贯通机制"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "标识解析支持从标识到地址及关联数据的查询",
+      "source_locator": "主教材，1.2.3 首段",
+      "verification_status": "not applicable",
+      "allowed_use": "承接前置内容并解释身份锚点如何通向数据"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "标识解析可连接异构系统，并围绕产品生产、质检、仓储运输、配送和售后形成全生命周期管理",
+      "source_locator": "主教材，1.2.3“从环节来看”",
+      "verification_status": "not applicable",
+      "allowed_use": "建立环节尺度的记录关联"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "标识解析支持跨地域、跨行业、跨企业的信息查询与共享，服务产业链上下游协同",
+      "source_locator": "主教材，1.2.3“从产业看”及图 1-7 前一段",
+      "verification_status": "not applicable",
+      "allowed_use": "建立产业链尺度的主体协作"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "教材图 1-7 用全生命周期、标识解析体系及产业链主体连接表达“横向全生命周期、纵向产业链协同”",
+      "source_locator": "教材图 1-7 原始资产",
+      "verification_status": "not verified—version unspecified",
+      "allowed_use": "仅作教材表达方式和语义重绘的证据锚点"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "“对象身份→环节记录→产业链主体”的三层贯通框架",
+      "source_locator": "教学归纳：E002–E005",
+      "verification_status": "not applicable",
+      "allowed_use": "作为本集叙事主轴和案例观察框架"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "通用工业泵出现运行异常后，服务人员需要关联设计、制造、质检、交付和维护信息",
+      "source_locator": "教学情境（经净化的编译输入）",
+      "verification_status": "not applicable",
+      "allowed_use": "用一个对象贯穿三个观察尺度"
+    },
+    {
+      "evidence_id": "E009",
+      "claim_or_asset": "编码回答“查谁”，解析回答“去哪里查、得到什么”，结果受可提供信息与访问方式限制",
+      "source_locator": "直接技术前置归纳",
+      "verification_status": "not applicable",
+      "allowed_use": "建立本集的标识、解析与贯通边界"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "假设一台已经交付使用的工业泵，某天突然出现运行异常。检修人员拿着扫码终端，对着设备上的标识扫了一下，很快确认了是哪一台设备。可要判断问题出在哪里，光知道这一点还不够。设计、批次、质检、交付、维护，这些信息他都需要。可这些资料生成时间不同、存放系统不同，有些甚至由不同企业保管。设备认出来了，问题需要的信息却还散落在各处。这个落差，正是今天要解决的问题。\n\n",
+      "teaching_purpose": "以工业泵异常情境揭示“已识别对象但关键资料分散”的问题。",
+      "single_message": "识别出具体设备，不等于已经能获得解决问题所需的关联信息。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V001",
+          "meaning": "通用工业泵、现场标识和服务人员，以及设计、批次、质检、交付、维护五类分散资料；明确其为教学情境。",
+          "evidence_refs": [
+            "E008"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "现场工业泵",
+          "relation": "通过设备标识被确认为",
+          "to": "具体对象身份",
+          "direction": "对象→身份"
+        },
+        {
+          "relation_id": "R002",
+          "from": "关键业务资料",
+          "relation": "仍分散在",
+          "to": "多个时间、系统和主体",
+          "direction": "资料→分散位置"
+        }
+      ],
+      "entry_condition": "观众尚未建立本集的查询贯通问题。",
+      "exit_condition": "理解对象识别后，关键资料仍可能分散。",
+      "timing": {
+        "char_equivalent": 156,
+        "min_seconds": 39,
+        "target_seconds": 41,
+        "max_seconds": 43,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": [
+        "A001"
+      ],
+      "nx": "先说清楚一个前提。标识解决的是“查谁”，解析解决的是“去哪儿查、能得到什么”。有了这两样，还能再往前走一步：让分散的系统和不同的主体，围绕同一个对象身份，找到彼此愿意提供的信息，或者对应的访问入口。这一步，就是贯通。先给贯通划条边界：不是把各家企业的数据都搬进同一个数据库，也不是谁拿手机一扫就能看到全部信息。建立可关联、可查询的关系，后面的协同才有共同的起点。\n\n",
+      "teaching_purpose": "承接信息分散的问题，区分标识、解析与贯通，并给贯通划出能力边界。",
+      "single_message": "贯通建立围绕同一身份的可查询关系，而不是集中所有数据或对所有人开放。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V002",
+          "meaning": "“标识：查的是谁”“解析：到哪里查、得到什么”，以及围绕同一身份找到可提供的信息或访问入口；同时保留不同库、非全开放两项边界。",
+          "evidence_refs": [
+            "E003",
+            "E005",
+            "E009"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R003",
+          "from": "标识",
+          "relation": "回答",
+          "to": "查谁",
+          "direction": "标识→对象"
+        },
+        {
+          "relation_id": "R004",
+          "from": "解析",
+          "relation": "指向",
+          "to": "可提供的信息或访问入口",
+          "direction": "解析→查询资源"
+        },
+        {
+          "relation_id": "R005",
+          "from": "贯通",
+          "relation": "不等于",
+          "to": "集中所有数据或向所有人开放",
+          "direction": "能力边界→排除项"
+        }
+      ],
+      "entry_condition": "已理解对象识别后仍有信息分散的问题。",
+      "exit_condition": "能区分标识、解析与贯通的作用边界。",
+      "timing": {
+        "char_equivalent": 159,
+        "min_seconds": 40,
+        "target_seconds": 41,
+        "max_seconds": 44,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": [
+        "A002"
+      ],
+      "nx": "先从对象说起。可识别的对象，不只是产品、设备、零部件这些物理对象，还包括模型、算法、工艺这类数字对象。物理设备想进入数字世界，得先有一个稳定的身份；这些数字资源也一样，需要明确指向具体的对象。这样一来，系统里讨论的不再是模糊的“同类设备”，而是某一台具体设备，还有和它相关的数字资源。\n\n",
+      "teaching_purpose": "建立对象尺度的身份关系，明确物理对象与数字对象都必须落到具体对象。",
+      "single_message": "稳定身份使物理设备及其相关数字资源能够被明确关联到同一个具体对象。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V003",
+          "meaning": "物理对象包括产品、设备、零部件；数字对象包括模型、算法、工艺；两类对象都需明确指向具体对象。",
+          "evidence_refs": [
+            "E002"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R006",
+          "from": "物理对象与数字对象",
+          "relation": "都需要",
+          "to": "明确且稳定的对象身份",
+          "direction": "对象→身份"
+        },
+        {
+          "relation_id": "R007",
+          "from": "数字资源",
+          "relation": "明确指向",
+          "to": "具体对象",
+          "direction": "数字资源→对象"
+        }
+      ],
+      "entry_condition": "已理解贯通以同一对象身份为共同起点。",
+      "exit_condition": "理解系统讨论的是具体设备及其相关数字资源。",
+      "timing": {
+        "char_equivalent": 124,
+        "min_seconds": 31,
+        "target_seconds": 32,
+        "max_seconds": 34,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": [
+        "A001",
+        "A003"
+      ],
+      "nx": "还是以那台工业泵为例。泵上的标识，本身不装资料，它只当身份锚点用。现场这台设备，连同设计资料、制造记录和服务档案，都因为标识而指向同一个对象。只要系统能认出这层关系，查询时就能从这台具体的泵出发，而不是在一大堆相似记录里靠人工去猜。\n\n",
+      "teaching_purpose": "用工业泵说明标识作为身份锚点如何让资料围绕同一个对象关联。",
+      "single_message": "标识不是资料容器，而是把设备和相关资料稳定指向同一对象的锚点。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V004",
+          "meaning": "工业泵的现场标识作为身份锚点，设计资料、制造记录和服务档案共同指向同一个对象，资料仍不装在标识里。",
+          "evidence_refs": [
+            "E003",
+            "E008"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R008",
+          "from": "设备标识",
+          "relation": "是",
+          "to": "身份锚点，而非资料容器",
+          "direction": "标识→边界"
+        },
+        {
+          "relation_id": "R009",
+          "from": "设计资料、制造记录和服务档案",
+          "relation": "共同指向",
+          "to": "同一个对象",
+          "direction": "记录→对象"
+        }
+      ],
+      "entry_condition": "已了解具体对象需要稳定身份，也已见到工业泵情境。",
+      "exit_condition": "理解查询可从具体工业泵出发而非人工猜测相似记录。",
+      "timing": {
+        "char_equivalent": 105,
+        "min_seconds": 27,
+        "target_seconds": 27,
+        "max_seconds": 29,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": [
+        "A004"
+      ],
+      "nx": "对象身份稳定下来，接下来看业务环节。一件工业产品会经历不少环节：研发设计、生产制造、质量检验、仓储运输、配送交付、售后服务。每个环节都会留下自己的记录，而这些记录可能存放在不同的系统里，有的放在生命周期管理软件里，有的放在制造执行、仓储或者服务系统里。系统彼此不统一，并不妨碍记录围绕同一个对象身份建立起清楚的关联。\n\n",
+      "teaching_purpose": "展开环节尺度，说明生命周期各环节都会形成各自系统中的对象记录。",
+      "single_message": "不同系统中的环节记录可以围绕同一对象身份建立关联。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V005",
+          "meaning": "研发设计、生产制造、质量检验、仓储运输、配送交付、售后服务六个环节，以及各环节记录分处不同系统。",
+          "evidence_refs": [
+            "E004"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R010",
+          "from": "研发设计、生产制造、质量检验、仓储运输、配送交付和售后服务",
+          "relation": "依次形成",
+          "to": "围绕同一对象的生命周期记录",
+          "direction": "环节→记录"
+        },
+        {
+          "relation_id": "R011",
+          "from": "不同系统",
+          "relation": "可以保留",
+          "to": "各自的环节记录",
+          "direction": "系统→记录"
+        }
+      ],
+      "entry_condition": "已建立标识把设备及相关资料指向同一对象的认识。",
+      "exit_condition": "理解生命周期记录既分处不同系统，又可围绕对象关联。",
+      "timing": {
+        "char_equivalent": 142,
+        "min_seconds": 36,
+        "target_seconds": 37,
+        "max_seconds": 39,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": [
+        "A005"
+      ],
+      "nx": "这样的关联，把原本一段一段的记录，串成一条可以追溯的生命周期线索。想了解这台设备当初按什么标准做的，看设计资料；出厂时是否合格，查生产和质检记录；它是怎么流转到客户手里的，看仓储配送记录；交付后的情况，看售后记录。每类记录都留在原来的系统里，查询时沿着对象身份找过去就行，不用再逐环节人工比对。\n\n",
+      "teaching_purpose": "说明围绕对象身份的关联如何把分段记录转化为可查询的生命周期线索。",
+      "single_message": "查询沿着同一对象身份进入原有系统，就能连接各类生命周期记录。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V006",
+          "meaning": "设计要求、生产和质检记录、仓储和配送记录、售后历史分别留在原有系统；查询沿同一对象身份到达可提供的信息或入口。",
+          "evidence_refs": [
+            "E003",
+            "E004",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R012",
+          "from": "同一对象身份",
+          "relation": "把",
+          "to": "分段记录关联为可追溯的生命周期线索",
+          "direction": "身份→记录线索"
+        },
+        {
+          "relation_id": "R013",
+          "from": "查询",
+          "relation": "沿着",
+          "to": "对象身份到达原有系统中的记录",
+          "direction": "查询→记录"
+        }
+      ],
+      "entry_condition": "已了解不同系统会留下不同环节的记录。",
+      "exit_condition": "理解不搬迁原有记录也能按对象查询形成追溯线索。",
+      "timing": {
+        "char_equivalent": 133,
+        "min_seconds": 34,
+        "target_seconds": 35,
+        "max_seconds": 37,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": [
+        "A006"
+      ],
+      "nx": "再把视野拉到产业链。供应商、制造企业、物流服务商、经销或者使用单位，通常各自维护着自己的本地系统和业务数据。标识解析在这里能做的，不是让大家换成同一套软件。它做的是另一件事：在跨地域、跨行业、跨企业的协作里，先弄清楚各方说的是哪个对象，再顺着解析关系，找到对应的信息服务范围。\n\n",
+      "teaching_purpose": "建立产业链尺度，说明多主体以共同对象身份协作而不必替换本地系统。",
+      "single_message": "产业链主体保留各自系统，仍可围绕同一对象身份查询对应的信息服务范围。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V007",
+          "meaning": "供应商、制造企业、物流服务商、经销或使用单位通过实物交接构成产业链并各有本地系统；共同对象身份支持跨地域、跨行业、跨企业地找到对应信息服务范围。",
+          "evidence_refs": [
+            "E005",
+            "E006"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R014",
+          "from": "各方本地系统",
+          "relation": "不必替换为",
+          "to": "同一套软件",
+          "direction": "边界→系统"
+        },
+        {
+          "relation_id": "R029",
+          "from": "供应商、制造企业、物流服务商、经销或使用单位",
+          "relation": "通过实物交接形成",
+          "to": "产业链主体协作关系",
+          "direction": "主体→交接"
+        },
+        {
+          "relation_id": "R015",
+          "from": "共同对象身份",
+          "relation": "支持",
+          "to": "跨地域、跨行业、跨企业的查询与共享",
+          "direction": "身份→协作"
+        },
+        {
+          "relation_id": "R016",
+          "from": "解析关系",
+          "relation": "指向",
+          "to": "对应的信息服务范围",
+          "direction": "解析→信息服务"
+        }
+      ],
+      "entry_condition": "已了解同一对象身份可连接生命周期中的分段记录。",
+      "exit_condition": "理解产业链协作不要求各方采用同一套软件。",
+      "timing": {
+        "char_equivalent": 123,
+        "min_seconds": 31,
+        "target_seconds": 32,
+        "max_seconds": 34,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": [
+        "A003",
+        "A005",
+        "A007"
+      ],
+      "nx": "三个尺度，各有各的作用。对象这一层，身份把物理对象和数字资源对上号；环节这一层，不同系统的记录绕着对象串成生命周期线索；产业链这一层，不同主体靠着同一个身份做跨系统的查询与共享。标识负责稳定指向，解析负责在系统之间寻找联系，业务应用再拿这些信息去支持具体的工作。\n\n",
+      "teaching_purpose": "汇总对象、环节和产业链三个尺度，明确标识、解析与业务应用的分工。",
+      "single_message": "对象、环节和产业链共享同一身份主线，标识、解析和业务应用各司其职。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V008",
+          "meaning": "对象身份连接物理对象与数字资源；环节记录围绕对象形成生命周期线索；产业链主体以同一身份跨系统查询与共享；标识稳定指向、解析寻找联系、业务应用支持工作。",
+          "evidence_refs": [
+            "E002",
+            "E005",
+            "E007",
+            "E009"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R017",
+          "from": "对象身份",
+          "relation": "把",
+          "to": "物理对象与数字资源对上号",
+          "direction": "身份→对象"
+        },
+        {
+          "relation_id": "R018",
+          "from": "环节记录",
+          "relation": "围绕",
+          "to": "对象身份串成生命周期线索",
+          "direction": "记录→对象"
+        },
+        {
+          "relation_id": "R019",
+          "from": "标识、解析和业务应用",
+          "relation": "分别承担",
+          "to": "稳定指向、寻找联系和支持工作",
+          "direction": "能力→作用"
+        }
+      ],
+      "entry_condition": "已分别理解对象、环节和产业链三个尺度。",
+      "exit_condition": "能把三个尺度和三类能力归入同一条对象身份主线。",
+      "timing": {
+        "char_equivalent": 120,
+        "min_seconds": 30,
+        "target_seconds": 31,
+        "max_seconds": 33,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": [
+        "A001",
+        "A004",
+        "A007",
+        "A008"
+      ],
+      "nx": "我们把视线拉回开头那台工业泵。检修人员从设备标识确认对象后，顺着已有的查询关系，把和这台泵有关的设计、批次、质检、交付、维护资料找出来。有些资料在内部系统里，有些由上游主体掌握，解析关系就继续指向上游能提供的信息或者访问入口。这么一来，设备现场的异常、过往的记录、参与的各方，都围绕同一个对象汇成一条看得懂的工作线索。\n\n",
+      "teaching_purpose": "回扣工业泵情境，演示对象、环节和产业链三层关系怎样共同支撑一次检修查询。",
+      "single_message": "从设备标识确认对象后，解析关系把分散资料和上游可提供的信息连接成工作线索。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V009",
+          "meaning": "现场工业泵和服务人员从设备标识确认对象，关联设计、批次、质检、交付、维护资料；内部系统与上游主体提供的信息或访问入口汇成一条工作线索。",
+          "evidence_refs": [
+            "E002",
+            "E005",
+            "E007",
+            "E008",
+            "E009"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R020",
+          "from": "检修查询",
+          "relation": "从",
+          "to": "设备标识确认的对象出发",
+          "direction": "查询→对象"
+        },
+        {
+          "relation_id": "R021",
+          "from": "解析关系",
+          "relation": "继续指向",
+          "to": "上游可提供的信息或访问入口",
+          "direction": "解析→上游资源"
+        },
+        {
+          "relation_id": "R022",
+          "from": "现场异常、过往记录和参与各方",
+          "relation": "围绕",
+          "to": "同一个对象汇成工作线索",
+          "direction": "信息→对象"
+        }
+      ],
+      "entry_condition": "已建立对象、环节和产业链三层机制及其分工。",
+      "exit_condition": "理解一次检修查询可在不集中资料的前提下形成可读工作线索。",
+      "timing": {
+        "char_equivalent": 143,
+        "min_seconds": 36,
+        "target_seconds": 37,
+        "max_seconds": 39,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A010",
+      "callback_a_ids": [
+        "A009"
+      ],
+      "nx": "不过要说明白，这条线索不会自动保证结果正确。贴上标识，数据不会自己变完整；企业各自独立的系统，也不会因为有了解析关系就自动互通。这里要讲清楚的，是一种基础能力：依靠大家都能识别的统一身份，加上解析建立的联系，为整个生命周期的管理、产业链上的协同，打好信息连接的基础。至于接口、数据、访问、流程这些事怎么安排，那是数据管理、系统集成、访问控制和项目实施各自的责任范围。\n\n",
+      "teaching_purpose": "限制过度承诺，明确身份与解析提供的是连接基础而非自动化结果。",
+      "single_message": "统一身份和解析联系提供信息连接基础，但数据质量、系统互通和实施安排仍各有责任边界。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V010",
+          "meaning": "不自动补全数据、不自动打通系统；统一身份和解析联系只提供基础；接口、数据、访问、流程分别存在专业责任边界。",
+          "evidence_refs": [
+            "E001",
+            "E005",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R023",
+          "from": "统一身份与解析联系",
+          "relation": "提供",
+          "to": "信息连接的基础",
+          "direction": "机制→基础"
+        },
+        {
+          "relation_id": "R024",
+          "from": "标识或解析关系",
+          "relation": "不自动保证",
+          "to": "数据完整、结果正确或系统互通",
+          "direction": "边界→非自动结果"
+        },
+        {
+          "relation_id": "R025",
+          "from": "接口、数据、访问和流程安排",
+          "relation": "分别属于",
+          "to": "数据管理、系统集成、访问控制和项目实施的责任范围",
+          "direction": "事项→责任"
+        }
+      ],
+      "entry_condition": "已看到对象身份和解析关系如何把资料组织成工作线索。",
+      "exit_condition": "理解本集机制不承诺自动的数据治理、系统集成或访问控制结果。",
+      "timing": {
+        "char_equivalent": 163,
+        "min_seconds": 41,
+        "target_seconds": 43,
+        "max_seconds": 45,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A011",
+      "callback_a_ids": [
+        "A002",
+        "A008",
+        "A010"
+      ],
+      "nx": "本期总结，回到开头那台泵。标识给对象一个稳定身份，解析在系统之间寻找联系，业务应用把找到的信息用到具体工作里。三个尺度其实遵循同一条规律：先给对象一个明确的指向，再把记录围绕对象关联起来，不同主体之间的协作也就有了共同的身份基础。对象、环节、产业链连在一起，分散的数据才有机会变成可协作的信息关系。以后判断标识解析的作用，这条主线可以反复拿来用。",
+      "teaching_purpose": "用可反复使用的观察主线收束全课，连接对象、环节、产业链和业务应用。",
+      "single_message": "先明确对象指向，再关联记录，才能让不同主体围绕共同身份形成可协作的信息关系。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V011",
+          "meaning": "工业泵回扣、稳定对象身份、解析寻找系统间联系、业务应用使用信息，以及对象—环节—产业链的可复用观察主线。",
+          "evidence_refs": [
+            "E001",
+            "E002",
+            "E005",
+            "E007",
+            "E009"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R026",
+          "from": "标识",
+          "relation": "给",
+          "to": "对象稳定身份",
+          "direction": "标识→身份"
+        },
+        {
+          "relation_id": "R027",
+          "from": "解析",
+          "relation": "在系统之间寻找",
+          "to": "可查询的联系",
+          "direction": "解析→联系"
+        },
+        {
+          "relation_id": "R028",
+          "from": "对象、环节与产业链",
+          "relation": "共同形成",
+          "to": "可协作的信息关系",
+          "direction": "尺度→协作"
+        }
+      ],
+      "entry_condition": "已理解贯通的能力边界以及对象、环节、产业链的三层机制。",
+      "exit_condition": "能够用“对象指向—记录关联—主体协作”主线判断标识解析的作用。",
+      "timing": {
+        "char_equivalent": 158,
+        "min_seconds": 40,
+        "target_seconds": 41,
+        "max_seconds": 44,
+        "short_page_reason": null
+      }
+    }
+  ]
+}

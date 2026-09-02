@@ -1,0 +1,326 @@
+/* ─────────────────────────────────────────────────────────────
+ * 05-identity-as-anchor · A005 scope-responsibility-ledger
+ * mechanism: cumulative-assembly — 固定台账结构内逐行组装：
+ *   step0 立台账框架 + 共同条件行 + 统一标识锚点行；
+ *   step1 按批准口播顺序先补边界列（不取代｜不承载）；
+ *   step2 再补职责列（统一标识确认归属；ERP/MES/WMS 同一职责组），
+ *   两列同帧并置完成定界。允许两列不对称，不用空槽或破折号补齐；
+ *   不画统一标识到各系统的连线（R008 由共同条件行说明）。
+ * prefix: ia-
+ * ───────────────────────────────────────────────────────────── */
+
+.ia-scene {
+  justify-content: center;
+  gap: 38px;
+}
+
+/* 可见标题：none（outline §5 省略授权）——页面不含标题区，
+   判断由共同条件行与职责列承载，不另设顶替元素 */
+
+/* ── 台账框架：一张职责台账 ────────────────────────────────── */
+
+.ia-ledger {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 42px 56px 52px;
+  animation: ia-rise 680ms var(--ease-quart) 140ms backwards;
+}
+
+/* 共同条件行：全宽，R008 的说明位（同一台发动机） */
+
+.ia-condition {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.ia-condition-tag {
+  flex: none;
+  padding: 9px 18px;
+  font-family: var(--font-mono);
+  font-size: 26px;
+  letter-spacing: 0.16em;
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  animation: ia-stamp 560ms var(--ease-overshoot) 420ms backwards;
+}
+
+.ia-condition-text {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  animation: ia-rise 620ms var(--ease-quart) 280ms backwards;
+}
+
+.ia-condition-text em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+.ia-condition-rule {
+  margin-top: 32px;
+}
+
+/* ── 两列区：职责（左）｜边界（右），同帧并置 ───────────────── */
+
+.ia-cols {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 47fr 53fr;
+  padding-top: 32px;
+}
+
+.ia-col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.ia-col-duty {
+  padding-right: 48px;
+}
+
+.ia-col-boundary {
+  padding-left: 48px;
+  border-left: 2px dashed var(--theme-dashed-line);
+}
+
+/* 列头 + 表头细线（固定台账结构，随框架入场） */
+
+.ia-col-top {
+  animation: ia-rise 560ms var(--ease-quart) backwards;
+}
+
+.ia-col-duty .ia-col-top {
+  animation-delay: 520ms;
+}
+
+.ia-col-boundary .ia-col-top {
+  animation-delay: 620ms;
+}
+
+.ia-col-head {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.ia-col-cn {
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--theme-structural);
+}
+
+.ia-col-en {
+  font-family: var(--font-mono);
+  font-size: 25px;
+  letter-spacing: 0.28em;
+  color: var(--text-mute);
+}
+
+.ia-col-rule {
+  margin-top: 18px;
+}
+
+/* ── 职责列 · 统一标识锚点行（step0 就位，step2 补职责行） ──── */
+
+.ia-anchor-row {
+  padding: 28px 32px;
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  animation: ia-stamp 620ms var(--ease-overshoot) 660ms backwards;
+}
+
+.ia-anchor-head {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.ia-anchor-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.ia-anchor-chip {
+  position: relative;
+  padding: 9px 18px;
+  font-family: var(--font-mono);
+  font-size: 25px;
+  letter-spacing: 0.14em;
+  color: var(--theme-process);
+  background: var(--surface-2);
+  border: 2px solid var(--theme-process);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  animation: ia-stamp 540ms var(--ease-overshoot) 920ms backwards;
+}
+
+/* 锚点行钉下后的一次性定锚环（非循环、不常驻） */
+.ia-anchor-chip::after {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  border: 3px solid var(--theme-process);
+  opacity: 0;
+  transform: scale(0.72);
+  pointer-events: none;
+  animation: ia-anchor-ping 820ms var(--ease-soft) 1560ms forwards;
+}
+
+.ia-anchor-duty {
+  margin: 20px 0 0;
+  font-size: 28px;
+  line-height: 1.55;
+  color: var(--text-2);
+  animation: ia-rise-blur 640ms var(--ease-quart) 140ms backwards;
+}
+
+/* ── 职责列 · ERP/MES/WMS 同一职责组行（step2 就位） ────────── */
+
+.ia-group-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px 32px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-structural);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  animation: ia-stamp 620ms var(--ease-overshoot) 480ms backwards;
+}
+
+.ia-group-abbr {
+  font-size: 46px;
+  color: var(--theme-process);
+}
+
+.ia-group-names {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 25px;
+  letter-spacing: 0.03em;
+  color: var(--text-mute);
+}
+
+.ia-group-duty {
+  margin: 4px 0 0;
+  font-size: 28px;
+  color: var(--text-2);
+  animation: ia-rise-blur 620ms var(--ease-quart) 760ms backwards;
+}
+
+/* ── 边界列 · 两行边界（step1 先补，正常字号，不缩角注） ────── */
+
+.ia-boundary-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 26px 28px;
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  animation: ia-stamp-rot 620ms var(--ease-overshoot) backwards;
+  animation-delay: calc(140ms + var(--ia-b) * 460ms);
+}
+
+.ia-boundary-key {
+  flex: none;
+  min-width: 128px;
+  padding: 10px 14px;
+  text-align: center;
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: var(--theme-warning);
+  background: var(--surface-2);
+  border: 2px solid var(--theme-warning);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  animation: ia-stamp-rot 540ms var(--ease-overshoot) backwards;
+  animation-delay: calc(420ms + var(--ia-b) * 460ms);
+}
+
+.ia-boundary-text {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+/* ── keyframes ─────────────────────────────────────────────── */
+
+@keyframes ia-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ia-stamp {
+  0% {
+    opacity: 0;
+    transform: translateY(34px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ia-stamp-rot {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(1.05) rotate(-1.2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes ia-rise-blur {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes ia-draw {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ia-anchor-ping {
+  0% {
+    opacity: 0.85;
+    transform: scale(0.72);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}

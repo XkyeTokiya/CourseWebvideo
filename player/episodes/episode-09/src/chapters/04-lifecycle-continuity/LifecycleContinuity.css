@@ -1,0 +1,350 @@
+/* ─────────────────────────────────────────────────────────────
+ * 04-lifecycle-continuity · A004 lifecycle-identity-continuity
+ * mechanism: constant-anchor-band-unfold — 身份锚点全页恒定，
+ *   七阶段以相同语法整体铺开；阶段顺序只说明生命周期范围，
+ *   不暗示前一步导致后一步：阶段间无连线/无箭头，完成后等权，
+ *   不做逐段 active 点亮。阅读顺序：锚点 → 阶段带 → 用途收束。
+ *   （R007 由锚点 + 阶段带 + 用途三段阅读顺序表达）
+ * prefix: lc-
+ * ───────────────────────────────────────────────────────────── */
+
+.lc-scene {
+  justify-content: flex-start;
+  gap: 28px;
+}
+
+/* ── 论点标题（可见标题：保留） ─────────────────────────────── */
+
+.lc-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  color: var(--theme-structural);
+  animation: lc-rise 620ms var(--ease-quart) backwards;
+}
+
+.lc-thesis em {
+  font-style: normal;
+}
+
+.lc-em-id {
+  padding: 0 6px;
+  background: var(--accent-soft);
+  box-shadow: 0 0 0 6px var(--accent-soft);
+}
+
+.lc-em-flow {
+  padding-bottom: 5px;
+  border-bottom: 7px solid var(--theme-process);
+}
+
+/* ── 稳定身份锚点：全页恒定的深海军蓝铭牌 ──────────────────── */
+
+.lc-anchor {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  padding: 28px 48px;
+  background: var(--theme-structural);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  animation: lc-anchor-in 660ms var(--ease-overshoot) 150ms backwards;
+}
+
+@keyframes lc-anchor-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.lc-anchor-main {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: none;
+}
+
+.lc-anchor-kicker {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 7px 16px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  color: var(--theme-paper);
+  background: var(--theme-process);
+}
+
+.lc-anchor-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 66px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--theme-paper);
+}
+
+.lc-anchor-div {
+  align-self: stretch;
+  margin-left: auto;
+  border-left: 2px dashed var(--theme-dashed-line);
+}
+
+.lc-anchor-note {
+  margin: 0;
+  max-width: 620px;
+  font-family: var(--font-body);
+  font-size: 24px;
+  line-height: 1.62;
+  color: var(--surface-3);
+}
+
+/* ── 七阶段无连线阶段带：同构等权，整体铺开（≤3s） ─────────── */
+
+.lc-band {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 24px;
+}
+
+.lc-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 30px 24px 28px;
+  animation: lc-stage-in 600ms var(--ease-overshoot) backwards;
+  animation-delay: calc(520ms + var(--lc-i) * 130ms);
+}
+
+@keyframes lc-stage-in {
+  0% {
+    opacity: 0;
+    transform: translateY(38px) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.lc-stage-no {
+  font-size: 30px;
+  color: var(--theme-process);
+}
+
+.lc-stage-name {
+  margin: 14px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: var(--theme-structural);
+}
+
+/* 记录行：每阶段同语法的三条抽象记录（无数字无假数据） */
+
+.lc-stage-rows {
+  margin-top: auto;
+  padding-top: 26px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lc-row {
+  height: 8px;
+  width: var(--lc-w);
+  background: var(--theme-process);
+  opacity: 0.5;
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: lc-row-draw 440ms var(--ease-quart) forwards;
+  animation-delay: calc(
+    520ms + var(--lc-i) * 130ms + 500ms + var(--lc-j) * 90ms
+  );
+}
+
+@keyframes lc-row-draw {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ── 带下注记：范围说明 + 每阶段产生记录 ───────────────────── */
+
+.lc-band-note {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.lc-note-mark {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.lc-note-text {
+  font-family: var(--font-body);
+  font-size: 26px;
+  letter-spacing: 0.01em;
+  color: var(--text-2);
+  animation: lc-rise 560ms var(--ease-quart) 2050ms backwards;
+}
+
+.lc-note-range {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+  animation: lc-rise 560ms var(--ease-quart) 2200ms backwards;
+}
+
+/* ── 用途行 + continuity judgment 收束（step 1 揭示，槽位预留） */
+
+.lc-close {
+  height: 142px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 18px;
+}
+
+.lc-close-rule {
+  opacity: 0;
+  transition: opacity 620ms var(--ease-soft);
+}
+
+.lc-use-line,
+.lc-judgment {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 620ms var(--ease-soft),
+    transform 620ms var(--ease-soft);
+}
+
+[data-state="cross-stage-use-stated"] .lc-close-rule {
+  opacity: 1;
+  transition-delay: 60ms;
+}
+
+[data-state="cross-stage-use-stated"] .lc-use-line {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 140ms;
+}
+
+[data-state="cross-stage-use-stated"] .lc-judgment {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 640ms;
+}
+
+.lc-line-kicker {
+  flex: none;
+  width: 238px; /* 两行收束内容左缘对齐（台账式固定标签列） */
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+}
+
+.lc-use-text {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--text);
+}
+
+.lc-uses {
+  display: inline-flex;
+  gap: 12px;
+}
+
+.lc-use-tag {
+  font-style: normal;
+  padding: 6px 16px;
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  border-radius: 8px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 480ms var(--ease-overshoot),
+    transform 480ms var(--ease-overshoot);
+}
+
+[data-state="cross-stage-use-stated"] .lc-use-tag {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-state="cross-stage-use-stated"] .lc-use-tag:nth-child(1) {
+  transition-delay: 300ms;
+}
+
+[data-state="cross-stage-use-stated"] .lc-use-tag:nth-child(2) {
+  transition-delay: 460ms;
+}
+
+[data-state="cross-stage-use-stated"] .lc-use-tag:nth-child(3) {
+  transition-delay: 620ms;
+}
+
+.lc-judgment-text {
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+}
+
+.lc-judgment-text em {
+  font-style: normal;
+}
+
+.lc-changes {
+  padding: 2px 10px;
+  background: var(--theme-warning-surface);
+  box-shadow: 0 0 0 6px var(--theme-warning-surface);
+}
+
+.lc-keeps {
+  padding-bottom: 4px;
+  border-bottom: 6px solid var(--theme-process);
+}
+
+@keyframes lc-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,237 @@
+/* ─────────────────────────────────────────────────────────────
+ * 02-records-without-chain · A002 parallel-cards-with-takeaway
+ * mechanism: equal-weight-accumulation — 三卡同构等权、同一语法，
+ *   同一拍内依次就位，完成后不留当前选中项；卡间无箭头无数据流，
+ *   收束判断由 K-A002-01 accent 独立承载
+ * prefix: rw-
+ * ───────────────────────────────────────────────────────────── */
+
+.rw-scene {
+  justify-content: flex-start;
+  gap: 52px;
+}
+
+/* ── 论点标题 ─────────────────────────────────────────────── */
+
+.rw-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  color: var(--theme-structural);
+  animation: rw-rise 640ms var(--ease-quart) backwards;
+}
+
+.rw-thesis em {
+  font-style: normal;
+  padding-bottom: 6px;
+  border-bottom: 7px solid var(--theme-warning);
+}
+
+/* ── 三张同构系统卡：等权、同语法 ─────────────────────────── */
+
+.rw-cards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+.rw-card {
+  display: flex;
+  flex-direction: column;
+  padding: 46px 44px 42px;
+  animation: rw-stamp-in 620ms var(--ease-overshoot) backwards;
+  animation-delay: calc(300ms + var(--rw-i) * 420ms);
+}
+
+@keyframes rw-stamp-in {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.rw-abbr {
+  font-size: 84px;
+  color: var(--theme-process);
+}
+
+.rw-cn {
+  margin: 20px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+}
+
+.rw-en {
+  margin: 12px 0 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  color: var(--text-mute);
+}
+
+/* 台账行：每个系统各自保留记录（抽象行，无数字无假数据） */
+
+.rw-ledger {
+  margin-top: auto;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rw-row {
+  height: 8px;
+  background: var(--theme-process);
+  opacity: 0.5;
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: rw-row-draw 460ms var(--ease-quart) forwards;
+  animation-delay: calc(
+    300ms + var(--rw-i) * 420ms + 420ms + var(--rw-j) * 110ms
+  );
+}
+
+.rw-row:nth-child(1) { width: 100%; }
+.rw-row:nth-child(2) { width: 72%; }
+.rw-row:nth-child(3) { width: 86%; }
+
+@keyframes rw-row-draw {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.rw-rule {
+  margin: 30px 0 26px;
+}
+
+.rw-note {
+  margin: 0;
+  min-height: 82px; /* 两行高：保证三卡底部判断行与上方细线对齐 */
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  font-family: var(--font-body);
+  font-size: 27px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.rw-note-mark {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  margin-top: 13px;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* ── K-A002-01 · accent：低成本全屏收束判断 ───────────────── */
+/* scene-pad 已是 absolute inset:0 的定位容器，这里不再改 position */
+
+.rw-accent {
+  justify-content: center;
+  align-items: center;
+  gap: 56px;
+  text-align: center;
+}
+
+.rw-kicker {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  color: var(--theme-warning);
+  animation: rw-rise 480ms var(--ease-quart) backwards;
+}
+
+.rw-statement {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 88px;
+  font-weight: 900;
+  line-height: 1.5;
+  color: var(--theme-structural);
+  animation: rw-statement-in 820ms var(--ease-quart) 160ms backwards;
+}
+
+.rw-has-data {
+  font-style: normal;
+  color: var(--theme-process);
+  border-bottom: 7px solid var(--accent-glow);
+  padding-bottom: 4px;
+}
+
+.rw-two-things {
+  font-style: normal;
+  padding: 0 10px;
+  background: var(--theme-warning-surface);
+  box-shadow: 0 0 0 8px var(--theme-warning-surface);
+}
+
+/* 背景巨符：单字符排版强调，非图表非关系演示 */
+
+.rw-neq {
+  position: absolute;
+  right: 96px;
+  top: 50%;
+  margin-top: -290px;
+  z-index: 0;
+  font-family: var(--font-mono);
+  font-size: 520px;
+  line-height: 1;
+  color: var(--theme-warning);
+  opacity: 0.13;
+  animation: rw-neq-in 760ms var(--ease-overshoot) 420ms backwards;
+}
+
+@keyframes rw-neq-in {
+  0% {
+    opacity: 0;
+    transform: scale(1.7) rotate(-6deg);
+  }
+  100% {
+    opacity: 0.13;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes rw-statement-in {
+  0% {
+    opacity: 0;
+    transform: translateY(44px) scale(0.97);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes rw-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

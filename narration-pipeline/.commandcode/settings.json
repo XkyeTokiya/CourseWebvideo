@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(python ./.agents/skills/design-course-visual-rough/scripts/verify_visual_rough.py --a-page ../player/episodes/episode-02/inputs/episode-02-a-page.json --visual-rough ../player/episodes/episode-02/inputs/episode-02-visual-rough-rebuild.md --recipes-dir ./.agents/skills/design-course-visual-rough/references/page-recipes --output ../player/episodes/episode-02/inputs/episode-02-visual-rough-rebuild-validation.json)",
+      "Shell(python -m unittest discover -s ./.agents/skills/design-course-visual-rough/tests -p test_*.py 2 >& 1)",
+      "Shell(python -m unittest discover -s ./.agents/skills/design-course-visual-rough/tests -p \"test_*.py\")",
+      "Shell(powershell -NoProfile -Command \"Get-Item '../player/episodes/episode-02/inputs/episode-02-visual-rough-rebuild.md','../player/episodes/episode-02/inputs/episode-02-visual-rough-rebuild-validation.json' | Select-Object Name, CreationTime, LastWriteTime\")"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  }
+}
+
+

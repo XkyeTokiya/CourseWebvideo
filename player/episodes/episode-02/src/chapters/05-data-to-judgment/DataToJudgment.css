@@ -1,0 +1,268 @@
+/* ─────────────────────────────────────────────────────────────
+ * 05-data-to-judgment · A005 linear-steps-to-result
+ * mechanism: ordered-progression — 四步单向轨道按真实先后依次
+ *   点亮，方向提示只说明"采集—治理—组织—反馈"；第四步兼作
+ *   terminal-result，末步不连回起点，无总结条
+ * prefix: dj-
+ * ───────────────────────────────────────────────────────────── */
+
+.dj-scene {
+  justify-content: center;
+  gap: 44px;
+}
+
+/* ── 论点标题 ── */
+.dj-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: dj-rise 640ms var(--ease-quart) backwards;
+}
+.dj-title-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--theme-process-surface);
+}
+.dj-title-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.dj-title-text em {
+  font-style: normal;
+  border-bottom: 7px solid var(--theme-process);
+  padding-bottom: 3px;
+}
+@keyframes dj-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── 四步单向轨道 ── */
+.dj-track {
+  display: flex;
+  align-items: stretch;
+}
+
+.dj-step-slot {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+}
+
+.dj-chevron {
+  width: 34px;
+  flex: none;
+  position: relative;
+  align-self: center;
+  height: 18px;
+  opacity: 0.45;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.dj-chevron::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  width: 16px;
+  height: var(--rule-w);
+  background: var(--theme-dashed-line);
+  transform: translateY(-50%);
+}
+.dj-chevron::after {
+  content: "";
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 10px solid var(--theme-dashed-line);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+.dj-chevron[data-on="true"]::before {
+  background: var(--theme-process);
+}
+.dj-chevron[data-on="true"]::after {
+  border-left-color: var(--theme-process);
+}
+
+.dj-step {
+  flex: 1;
+  min-height: 470px;
+  padding: 32px 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    background-color var(--dur-slow) var(--ease-soft),
+    border-color var(--dur-slow) var(--ease-soft),
+    box-shadow var(--dur-slow) var(--ease-soft);
+}
+.dj-step.is-ghost {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  opacity: 0.85;
+}
+.dj-step.is-ghost::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: inherit;
+}
+
+/* 真实顺序过程：active 当前步 / past 已走完 / upcoming 预留 */
+.dj-step.is-active {
+  animation: dj-wipe 620ms var(--ease-overshoot) backwards;
+  border-color: var(--theme-structural);
+}
+.dj-step.dj-terminal.is-active {
+  box-shadow: var(--card-shadow), 0 0 0 8px var(--accent-glow);
+}
+@keyframes dj-wipe {
+  0% {
+    opacity: 0;
+    transform: translateX(-26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.dj-step.is-past {
+  background: var(--theme-process-surface);
+  border-color: var(--theme-process);
+  box-shadow: none;
+  transform: scale(0.985);
+}
+
+.dj-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.dj-step.is-lit .dj-slot {
+  opacity: 0;
+}
+
+.dj-step-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.dj-step.is-lit .dj-step-body {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 140ms;
+}
+
+.dj-step-head {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 18px;
+  border-bottom: var(--rule-w) dashed var(--theme-dashed-line);
+}
+.dj-step-no {
+  font-size: 40px;
+  color: var(--theme-process);
+}
+.dj-step-name {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.dj-step.is-past .dj-step-name {
+  color: var(--theme-process);
+}
+
+.dj-step-desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+/* 步骤 1：三类信息源 */
+.dj-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.dj-chip {
+  font-family: var(--font-body);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: var(--rule-w) solid var(--theme-structural);
+  border-radius: 8px;
+  padding: 8px 16px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+  transition-delay: calc(var(--dj-j) * 200ms + 260ms);
+}
+.dj-step.is-lit .dj-chip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 步骤 4：terminal-result 收束条 */
+.dj-result {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.dj-result[data-on="true"] {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 320ms;
+}
+.dj-result-bar {
+  width: 8px;
+  height: 34px;
+  flex: none;
+  background: var(--theme-process);
+}
+.dj-result-text {
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--theme-process);
+  letter-spacing: 0.02em;
+}

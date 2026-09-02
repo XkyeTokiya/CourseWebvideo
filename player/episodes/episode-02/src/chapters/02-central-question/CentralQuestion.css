@@ -1,0 +1,262 @@
+/* ─────────────────────────────────────────────────────────────
+ * 02-central-question · A002 central-question
+ * mechanism: premise-to-question — 两个前提标签承接开环缺口并
+ *   持续在场（完成拍整体弱化），完整问句落定为视觉中心；
+ *   不展示答案路径
+ * prefix: cq-
+ * ───────────────────────────────────────────────────────────── */
+
+.cq-scene {
+  justify-content: space-between;
+  gap: 36px;
+}
+
+/* ── 前提标签行（页面最下方）：ghost 预留 → 交叉淡入成立 ── */
+.cq-premises {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+.is-complete .cq-premises {
+  opacity: 0.78;
+  transform: scale(0.985);
+}
+
+.cq-tag {
+  min-height: 150px;
+  padding: 24px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    background-color var(--dur-slow) var(--ease-soft),
+    border-color var(--dur-slow) var(--ease-soft),
+    box-shadow var(--dur-slow) var(--ease-soft);
+}
+.cq-tag.is-ghost {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  opacity: 0.85;
+}
+.cq-tag.is-ghost::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: inherit;
+}
+.cq-tag.is-on {
+  animation: cq-stamp 620ms var(--ease-overshoot) backwards;
+}
+/* 前提一：首拍延迟入场——词组与问句先落地，再淡入承接 */
+.cq-tag.is-on:nth-child(1) {
+  animation-delay: 850ms;
+}
+.cq-tag.is-on:nth-child(1) .cq-slot {
+  animation: cq-slot-out 420ms var(--ease-soft) 640ms backwards;
+}
+@keyframes cq-slot-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.cq-tag.is-on:nth-child(1) .cq-tag-body {
+  animation: cq-body-in 480ms var(--ease-soft) 980ms backwards;
+}
+@keyframes cq-body-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes cq-stamp {
+  0% {
+    opacity: 0;
+    transform: translateY(26px) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cq-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.cq-tag.is-on .cq-slot {
+  opacity: 0;
+}
+
+.cq-tag-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.cq-tag.is-on .cq-tag-body {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 140ms;
+}
+
+.cq-tag-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+.cq-tag-no {
+  font-size: 36px;
+  color: var(--theme-process);
+}
+.cq-tag-name {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.cq-tag-text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 23px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* ── 视觉中心：四体系词组 + 完整问句 ── */
+.cq-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+
+.cq-systems {
+  display: flex;
+  gap: 26px;
+}
+.cq-system {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-structural);
+  border-radius: 10px;
+  padding: 8px 34px;
+  animation: cq-pop 560ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--cq-i) * 150ms + 260ms);
+}
+@keyframes cq-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.cq-q {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: center;
+}
+.cq-q-line {
+  font-family: var(--font-display-cn);
+  font-size: 74px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+  line-height: 1.24;
+  animation: cq-rise 680ms var(--ease-quart) backwards;
+}
+.cq-q-line + .cq-q-line {
+  animation: none;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+.cq-q-line + .cq-q-line[data-on="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes cq-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(34px);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.cq-em {
+  font-style: normal;
+  border-bottom: 7px solid var(--theme-process);
+  padding-bottom: 4px;
+}
+.cq-em-action {
+  border-bottom-color: var(--theme-process);
+}
+.cq-em-return {
+  border-bottom-color: var(--theme-warning);
+}
+
+/* ── 观察方式提示语：末拍弱化出现，槽位常驻不重排 ── */
+.cq-note {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease-soft);
+}
+.cq-note[data-on="true"] {
+  opacity: 1;
+}
+.cq-note-rule {
+  width: 46px;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+}
+.cq-note-text {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}

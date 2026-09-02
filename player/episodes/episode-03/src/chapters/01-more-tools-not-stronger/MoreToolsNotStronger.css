@@ -1,0 +1,359 @@
+/* more-tools-not-stronger · A001 issue-cards-with-image
+   mechanism: premise-to-question — 现场图与新增投入前提持续，视觉中心随口播
+   从投入到信息分散，再落到能力断点判断；前序槽位保持，不重排。
+   prefix: mt- */
+
+.mt-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── 论点标题 ─────────────────────────────────────────── */
+
+.mt-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: mt-rise 640ms var(--ease-quart) backwards;
+}
+
+.mt-thesis em {
+  font-style: normal;
+  color: var(--theme-warning);
+}
+
+/* ── 主区：现场图（前提）+ 三张问题卡 ─────────────────── */
+
+.mt-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 780px 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.mt-media {
+  margin: 0;
+  animation: mt-rise 700ms var(--ease-quart) 80ms backwards;
+}
+
+.mt-photo {
+  position: relative;
+  padding: 14px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.mt-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.mt-stamp {
+  position: absolute;
+  top: 34px;
+  left: 34px;
+  padding: 10px 18px;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.08em;
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  transform: rotate(-2deg);
+}
+
+.mt-media-cap {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  color: var(--text-mute);
+}
+
+/* ── 问题卡列：虚线预留槽 → 实卡 stamp-in 就位 ────────── */
+
+.mt-cards {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mt-cards-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.mt-card {
+  padding: 18px 30px;
+}
+
+.mt-card[data-on="waiting"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+.mt-card[data-on="waiting"] .mt-card-body {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.mt-card[data-on="on"] {
+  animation: mt-stamp-in 620ms var(--ease-overshoot) backwards;
+}
+
+.mt-card-body {
+  transition: opacity 320ms var(--ease-soft);
+}
+
+.mt-card-title {
+  margin: 0 0 14px;
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  font-family: var(--font-display-cn);
+  font-size: 33px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.mt-index {
+  font-size: 40px;
+  color: var(--theme-process);
+}
+
+/* ── 卡 1 · 新增投入：两行清单 + ＋新增贴标 ───────────── */
+
+.mt-invest {
+  display: flex;
+  gap: 26px;
+}
+
+.mt-invest-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+  font-size: 27px;
+  color: var(--theme-structural);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+}
+
+.mt-plus {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.06em;
+  color: var(--theme-process);
+  background: var(--surface-2);
+  border: 2px solid var(--theme-process);
+  padding: 3px 10px;
+  animation: mt-pop 420ms var(--ease-overshoot) 480ms backwards;
+}
+
+.mt-plus--late {
+  animation-delay: 760ms;
+}
+
+/* ── 共享 keyframes ──────────────────────────────────── */
+
+@keyframes mt-rise {
+  0%   { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mt-stamp-in {
+  0%   { opacity: 0; transform: translateY(34px) scale(1.04); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes mt-pop {
+  0%   { opacity: 0; transform: scale(0.6); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ── 卡 2 · 信息分散：四类信息散停在不同位置 ──────────── */
+
+.mt-scatter {
+  position: relative;
+  min-height: 122px;
+}
+
+.mt-chip {
+  position: absolute;
+  padding: 10px 18px;
+  font-size: 24px;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px dashed var(--text-mute);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.mt-card[data-on="on"] .mt-chip {
+  animation: mt-drop 520ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--mt-i) * 170ms + 140ms);
+}
+
+.mt-chip--a { left: 2%;  top: 4px;   transform: rotate(-1.6deg); }
+.mt-chip--b { left: 40%; top: 46px;  transform: rotate(1.8deg); }
+.mt-chip--c { left: 71%; top: 0;     transform: rotate(-1deg); }
+.mt-chip--d { left: 16%; top: 82px;  transform: rotate(1.2deg); }
+
+.mt-scatter-note {
+  position: absolute;
+  right: 2%;
+  bottom: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+  animation: mt-fade 460ms var(--ease-soft) 860ms backwards;
+}
+
+@keyframes mt-drop {
+  0%   { opacity: 0; translate: 0 -26px; }
+  100% { opacity: 1; translate: 0 0; }
+}
+
+@keyframes mt-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── 卡 3 · 能力断点：数量增加 ⇄ 不自动形成 ⇄ 整体能力 ── */
+
+.mt-card--gap[data-on="on"] {
+  border: 3px solid var(--theme-warning);
+  background: var(--theme-warning-surface);
+  animation: mt-stamp-in 620ms var(--ease-overshoot) backwards,
+    mt-gap-hold 2s var(--ease-soft) 700ms forwards;
+}
+
+.mt-card--gap .mt-index {
+  color: var(--theme-warning);
+}
+
+.mt-chain {
+  display: flex;
+  align-items: stretch;
+  gap: 18px;
+}
+
+.mt-chain-from,
+.mt-chain-to {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--surface-2);
+}
+
+.mt-chain-to {
+  border: 2px dashed var(--theme-structural);
+  background: transparent;
+  font-weight: 400;
+}
+
+.mt-chain-link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 128px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: var(--theme-warning);
+}
+
+.mt-chain-line {
+  width: 100%;
+  height: 0;
+  border-top: 3px dashed var(--theme-warning);
+  transform-origin: left center;
+}
+
+.mt-card--gap[data-on="on"] .mt-chain-line {
+  animation: mt-draw 620ms var(--ease-quart) 340ms backwards;
+}
+
+@keyframes mt-draw {
+  0%   { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+@keyframes mt-gap-hold {
+  0%, 100% { box-shadow: var(--card-shadow); }
+  50%      { box-shadow: 0 0 0 3px var(--theme-structural),
+             7px 8px 0 var(--theme-offset-shadow),
+             0 0 0 10px var(--accent-soft); }
+}
+
+.mt-chain-note {
+  margin: 14px 0 0;
+  font-size: 22px;
+  color: var(--text-2);
+  animation: mt-fade 480ms var(--ease-soft) 900ms backwards;
+}
+/* ── 底部 takeaway 收束线 ─────────────────────────────── */
+
+.mt-take {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 26px 36px;
+  border-top: var(--rule-w) solid var(--theme-structural);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+
+.mt-take.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mt-take-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--theme-process);
+}
+
+.mt-take-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.mt-take-hero em {
+  font-style: normal;
+  color: var(--theme-warning);
+  border-bottom: 6px solid var(--theme-warning);
+  padding-bottom: 4px;
+}

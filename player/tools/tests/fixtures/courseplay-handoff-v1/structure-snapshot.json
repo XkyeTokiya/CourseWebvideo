@@ -1,0 +1,45 @@
+{
+  "schema_version": "web-video-courseplay-handoff-structure-snapshot/v1",
+  "episode_id": "episode-09",
+  "legacy_packet_schema": "web-video-courseplay-chapter-handoff/v1",
+  "top_level_keys": [
+    "schema_version",
+    "episode_id",
+    "chapter",
+    "theme",
+    "a_page",
+    "narration",
+    "outline",
+    "visual_rough_markdown",
+    "sources"
+  ],
+  "nested_keys": {
+    "chapter": ["index", "id", "title", "a_page_id", "step_count"],
+    "a_page": [
+      "a_id",
+      "callback_a_ids",
+      "nx",
+      "teaching_purpose",
+      "single_message",
+      "must_visible",
+      "protected_relations",
+      "entry_condition",
+      "exit_condition",
+      "timing"
+    ],
+    "outline": ["chapter_markdown", "schedule", "materials_markdown"],
+    "sources": ["a_page", "visual_rough", "outline", "script", "approved_text", "theme"]
+  },
+  "pages": [
+    {"a_page_id": "A001", "index": 1, "chapter_id": "after-scan", "title": "认出发动机之后", "step_count": 3, "bytes": 10773},
+    {"a_page_id": "A002", "index": 2, "chapter_id": "records-without-chain", "title": "有记录，还没有追溯链", "step_count": 2, "bytes": 9946},
+    {"a_page_id": "A003", "index": 3, "chapter_id": "fragmented-records", "title": "记录为什么接不起来", "step_count": 3, "bytes": 11233},
+    {"a_page_id": "A004", "index": 4, "chapter_id": "lifecycle-continuity", "title": "同一台发动机走完全生命周期", "step_count": 2, "bytes": 9562},
+    {"a_page_id": "A005", "index": 5, "chapter_id": "identity-as-anchor", "title": "统一标识只做关联锚点", "step_count": 3, "bytes": 10325},
+    {"a_page_id": "A006", "index": 6, "chapter_id": "anchor-groups", "title": "五类信息围绕一个标识", "step_count": 3, "bytes": 10884},
+    {"a_page_id": "A007", "index": 7, "chapter_id": "feedback-with-identity", "title": "售后反馈带着身份回查", "step_count": 4, "bytes": 11783},
+    {"a_page_id": "A008", "index": 8, "chapter_id": "lookup-changed", "title": "改变的是查找方式", "step_count": 3, "bytes": 11410},
+    {"a_page_id": "A009", "index": 9, "chapter_id": "evidence-boundary", "title": "三项案例数字的证据边界", "step_count": 5, "bytes": 11640},
+    {"a_page_id": "A010", "index": 10, "chapter_id": "reconnect-same-object", "title": "围绕同一对象重新连接", "step_count": 4, "bytes": 11005}
+  ]
+}

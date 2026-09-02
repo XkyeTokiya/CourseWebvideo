@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "courseplay-a-page-v6",
+  "title": "Courseplay A Page v6",
+  "description": "A-page v6 freezes narration semantics and screen guidance. Final learner-visible wording remains downstream.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "document_kind", "episode_id", "approved_text", "timing_model", "evidence_catalog", "pages"],
+  "properties": {
+    "schema_version": { "const": "courseplay-a-page/v6" },
+    "document_kind": { "const": "production" },
+    "episode_id": { "type": "string", "minLength": 1 },
+    "approved_text": { "const": "approved-spoken-text.txt" },
+    "timing_model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["han_weight", "fullwidth_punctuation_weight", "other_non_whitespace_weight", "chars_per_minute"],
+      "properties": {
+        "han_weight": { "const": 1 },
+        "fullwidth_punctuation_weight": { "const": 0 },
+        "other_non_whitespace_weight": { "const": 0.5 },
+        "chars_per_minute": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["minimum", "target", "maximum"],
+          "properties": {
+            "minimum": { "const": 220 },
+            "target": { "const": 230 },
+            "maximum": { "const": 240 }
+          }
+        }
+      }
+    },
+    "evidence_catalog": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+    "pages": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/page" } }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_id", "claim_or_asset", "source_locator", "verification_status", "allowed_use"],
+      "properties": {
+        "evidence_id": { "type": "string", "pattern": "^E\\d{3}$" },
+        "claim_or_asset": { "type": "string", "minLength": 1 },
+        "source_locator": { "type": "string", "minLength": 1 },
+        "verification_status": { "type": "string", "minLength": 1 },
+        "allowed_use": { "type": "string", "minLength": 1 }
+      }
+    },
+    "screenGuidanceItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["screen_item_id", "guidance_text", "usage_policy", "evidence_refs"],
+      "properties": {
+        "screen_item_id": { "type": "string", "pattern": "^S\\d{3}$" },
+        "guidance_text": { "type": "string", "minLength": 1 },
+        "usage_policy": { "enum": ["reference", "exact"] },
+        "evidence_refs": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^E\\d{3}$" } }
+      }
+    },
+    "screenGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["group_id", "items"],
+      "properties": {
+        "group_id": { "type": "string", "pattern": "^G\\d{3}$" },
+        "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/screenGuidanceItem" } }
+      }
+    },
+    "screen": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "groups"],
+      "properties": {
+        "title": { "$ref": "#/$defs/screenGuidanceItem" },
+        "groups": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/screenGroup" } }
+      }
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["relation_id", "from", "relation", "to", "direction"],
+      "properties": {
+        "relation_id": { "type": "string", "pattern": "^R\\d{3}$" },
+        "from": { "type": "string", "minLength": 1 },
+        "relation": { "type": "string", "minLength": 1 },
+        "to": { "type": "string", "minLength": 1 },
+        "direction": { "type": "string", "minLength": 1 }
+      }
+    },
+    "silentConstraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["constraint_id", "instruction", "evidence_refs"],
+      "properties": {
+        "constraint_id": { "type": "string", "pattern": "^C\\d{3}$" },
+        "instruction": { "type": "string", "minLength": 1 },
+        "evidence_refs": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^E\\d{3}$" } }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["char_equivalent", "min_seconds", "target_seconds", "max_seconds", "short_page_reason"],
+      "properties": {
+        "char_equivalent": { "type": "number", "minimum": 0 },
+        "min_seconds": { "type": "integer", "minimum": 0 },
+        "target_seconds": { "type": "integer", "minimum": 0 },
+        "max_seconds": { "type": "integer", "minimum": 0 },
+        "short_page_reason": { "type": ["string", "null"] }
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["a_id", "callback_a_ids", "nx", "teaching_purpose", "single_message", "screen", "protected_relations", "silent_constraints", "entry_condition", "exit_condition", "timing"],
+      "properties": {
+        "a_id": { "type": "string", "pattern": "^A\\d{3}$" },
+        "callback_a_ids": { "type": "array", "items": { "type": "string", "pattern": "^A\\d{3}$" } },
+        "nx": { "type": "string", "minLength": 1 },
+        "teaching_purpose": { "type": "string", "minLength": 1 },
+        "single_message": { "type": "string", "minLength": 1 },
+        "screen": { "$ref": "#/$defs/screen" },
+        "protected_relations": { "type": "array", "items": { "$ref": "#/$defs/relation" } },
+        "silent_constraints": { "type": "array", "items": { "$ref": "#/$defs/silentConstraint" } },
+        "entry_condition": { "type": "string", "minLength": 1 },
+        "exit_condition": { "type": "string", "minLength": 1 },
+        "timing": { "$ref": "#/$defs/timing" }
+      }
+    }
+  }
+}

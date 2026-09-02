@@ -1,0 +1,349 @@
+/* ─────────────────────────────────────────────────────────────
+ * 15-closing-loop-summary · A015 image-with-insight-rail
+ * mechanism: persistent-media-reading — 主图与开篇开环情境形成
+ *   结果对照（双向流演示），rail 三条依次回顾"连接与汇聚—驱动
+ *   与保障—双向流相接"，第三条即全集阅读终点，不增加独立底栏
+ *   或额外结论槽；K-A015-01 accent 承载全集最终结论
+ * prefix: cs-
+ * ───────────────────────────────────────────────────────────── */
+
+.cs-scene {
+  justify-content: center;
+  gap: 44px;
+}
+
+/* ── 论点标题 ── */
+.cs-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: cs-rise 640ms var(--ease-quart) backwards;
+}
+.cs-title-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--theme-process-surface);
+}
+.cs-title-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.cs-title-text em {
+  font-style: normal;
+  border-bottom: 7px solid var(--theme-process);
+  padding-bottom: 3px;
+}
+@keyframes cs-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cs-main {
+  display: flex;
+  gap: 44px;
+  align-items: center;
+}
+
+/* ── 回顾 rail（左）：三条依次成立，第三条为全集阅读终点 ── */
+.cs-rail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.cs-item {
+  position: relative;
+  padding: 18px 28px;
+  border: var(--rule-w) dashed transparent;
+  border-radius: 12px;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    background-color var(--dur-slow) var(--ease-soft),
+    border-color var(--dur-slow) var(--ease-soft);
+}
+.cs-item.is-ghost {
+  opacity: 0.85;
+  border-color: var(--theme-dashed-line);
+}
+.cs-item.is-on {
+  animation: cs-item-in 620ms var(--ease-overshoot) backwards;
+  background: var(--surface-2);
+  border-color: var(--theme-structural);
+  border-style: solid;
+}
+.cs-item.is-endpoint {
+  background: var(--theme-process-surface);
+  border-color: var(--theme-process);
+}
+@keyframes cs-item-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.cs-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.cs-item.is-on .cs-slot {
+  opacity: 0;
+}
+
+.cs-item-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.cs-item.is-on .cs-item-body {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 140ms;
+}
+
+.cs-item-mark {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  margin-top: 12px;
+  background: var(--theme-process);
+}
+.cs-item.is-endpoint .cs-item-mark {
+  background: var(--theme-structural);
+}
+
+.cs-item-name {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+  display: block;
+  margin-bottom: 8px;
+}
+.cs-item.is-endpoint .cs-item-name {
+  color: var(--theme-process);
+}
+
+.cs-item-desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 21px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+.cs-item.is-endpoint .cs-item-desc {
+  color: var(--theme-structural);
+  font-weight: 700;
+}
+
+/* ── 主图（右）：M005 占位 + 双向流交汇演示 ── */
+.cs-media {
+  width: 1040px;
+  height: 585px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.cs-canvas {
+  position: relative;
+  flex: 1;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.cs-lane-label {
+  position: absolute;
+  top: 22px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+.cs-lane-up {
+  left: 24%;
+}
+.cs-lane-down {
+  right: 24%;
+}
+
+.cs-dot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  opacity: 0;
+}
+.cs-dot-up {
+  left: 27%;
+  bottom: 32%;
+  background: var(--theme-process);
+  animation: cs-up 2.6s linear infinite;
+  animation-delay: calc(var(--cs-d) * 1.3s);
+}
+@keyframes cs-up {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  82% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-330px);
+    opacity: 0;
+  }
+}
+.cs-dot-down {
+  right: 27%;
+  top: 16%;
+  background: var(--theme-structural);
+  animation: cs-down 2.6s linear infinite;
+  animation-delay: calc(var(--cs-d) * 1.3s + 0.65s);
+}
+@keyframes cs-down {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  82% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(300px);
+    opacity: 0;
+  }
+}
+
+.cs-floor {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 24px;
+  display: flex;
+  gap: 64px;
+}
+.cs-machine {
+  width: 124px;
+  height: 84px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 6px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  position: relative;
+}
+.cs-machine::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 12px;
+  height: 12px;
+  background: var(--theme-process);
+}
+
+.cs-cap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 24px;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+  background: var(--surface-2);
+}
+.cs-cap-mark {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--theme-structural);
+  background: var(--theme-cool-surface);
+  padding: 4px 14px;
+  border-radius: 6px;
+}
+.cs-cap-desc {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: var(--text-mute);
+}
+
+/* ── K-A015-01 accent：全集最终结论 ── */
+.cs-accent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 52px;
+}
+.cs-accent-kicker {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.24em;
+  color: var(--theme-paper);
+  background: var(--theme-structural);
+  padding: 10px 26px;
+  border-radius: 8px;
+  animation: cs-accent-in 560ms var(--ease-overshoot) backwards;
+}
+.cs-accent-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 60px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+  text-align: center;
+  animation: cs-accent-in 620ms var(--ease-quart) 260ms backwards;
+}
+.cs-accent-line em {
+  font-style: normal;
+  color: var(--theme-process);
+  border-bottom: 7px solid var(--theme-process);
+  padding-bottom: 3px;
+}
+@keyframes cs-accent-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

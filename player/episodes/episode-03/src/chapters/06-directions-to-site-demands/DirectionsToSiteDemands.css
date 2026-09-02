@@ -1,0 +1,164 @@
+/* directions-to-site-demands · A006 parallel-cards-self-contained
+   mechanism: equal-weight-accumulation — 三张同构方向卡跨拍等权补齐，完成后
+   不留当前选中项；第四张共同断点卡同区域收尾，不画网络线/断缆/底部结论条。
+   prefix: ds- */
+
+.ds-scene {
+  justify-content: flex-start;
+  gap: 28px;
+}
+
+/* ── 论点标题 ─────────────────────────────────────────── */
+
+.ds-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: ds-rise 620ms var(--ease-quart) backwards;
+}
+
+.ds-thesis em {
+  font-style: normal;
+  color: var(--theme-warning);
+  border-bottom: 6px solid var(--theme-warning);
+  padding-bottom: 4px;
+}
+
+/* ── 三张同构方向卡（并列等权）────────────────────────── */
+
+.ds-row {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 36px;
+  align-items: stretch;
+}
+
+.ds-dir {
+  padding: 28px 30px;
+  transition: opacity 320ms var(--ease-soft);
+}
+
+.ds-dir[data-on="on"] {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  animation: ds-stamp 580ms var(--ease-overshoot) backwards;
+}
+
+.ds-dir[data-on="waiting"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+}
+
+.ds-dir[data-on="waiting"] .ds-dir-body {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.ds-dir-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+}
+
+.ds-dir-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.ds-dir-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+.ds-dir-text {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+.ds-dir-foot {
+  margin: auto 0 0;
+  padding-top: 14px;
+  font-size: 24px;
+  color: var(--text-2);
+  border-top: 2px dashed var(--theme-dashed-line);
+}
+
+/* ── 第四张共同断点卡（同一主体区域收尾）──────────────── */
+
+.ds-break {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+
+.ds-break.is-on {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.ds-break-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px 34px;
+  background: var(--theme-warning-surface);
+  border: 3px solid var(--theme-warning);
+  box-shadow: var(--card-shadow);
+}
+
+.ds-break-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--theme-warning);
+}
+
+.ds-break-text {
+  margin: 0;
+  font-size: 28px;
+  color: var(--theme-structural);
+}
+
+.ds-break-text i {
+  font-style: normal;
+  font-weight: 900;
+  border-bottom: 4px solid var(--theme-warning);
+  padding-bottom: 2px;
+}
+
+.ds-break-em {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+/* ── 共享 keyframes ──────────────────────────────────── */
+
+@keyframes ds-rise {
+  0%   { opacity: 0; transform: translateY(28px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ds-stamp {
+  0%   { opacity: 0; transform: translateY(28px) scale(1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}

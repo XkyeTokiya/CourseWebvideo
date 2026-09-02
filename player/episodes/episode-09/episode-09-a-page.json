@@ -1,0 +1,573 @@
+{
+  "schema_version": "courseplay-a-page/v4",
+  "document_kind": "production",
+  "episode_id": "episode-09",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "第 09 集标题、来源范围、前置关系、相邻边界和动态风险",
+      "source_locator": "已确认课程架构，Episode Architecture 第 09 集及第 08–13 集责任",
+      "verification_status": "not applicable",
+      "allowed_use": "控制单集范围、去重和时长"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "发动机基本、装配、质量信息分散在 ERP、MES、WMS 等系统，存在查询反馈链条长、数据不完整和信息不统一等问题",
+      "source_locator": "主教材，1.3.1“1. 应用背景”",
+      "verification_status": "not applicable",
+      "allowed_use": "建立案例旧状态与核心矛盾"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "全生命周期管理覆盖设计、生产、经销、运行、使用、维修保养、回收再处置，并以统一编码贯通各环节数据",
+      "source_locator": "主教材，1.3.1“2. 业务模式”",
+      "verification_status": "not applicable",
+      "allowed_use": "解释案例目标和生命周期范围"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "整车组装厂、原材料供应商的业务系统协议和数据规范不同，产品信息分散、利用率低，历史数据积累使问题定位困难",
+      "source_locator": "主教材，1.3.1“3. 业务需求”",
+      "verification_status": "not applicable",
+      "allowed_use": "解释“系统都有数据却难追溯”的原因"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "教材数据割裂图展示供应商 ERP、生产企业 MES、生产企业 WMS、经销商 ERP 之间的分段关系",
+      "source_locator": "教材数据割裂图，1.3.1“3. 业务需求”后的原图",
+      "verification_status": "not applicable",
+      "allowed_use": "作为旧状态证据锚点和忠实语义重绘依据"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "方案通过企业标识解析二级节点平台、发动机赋码和标识关联，连接产品基本、生产装配、工艺控制、质量管理、物流存储等信息",
+      "source_locator": "主教材，1.3.1“4. 项目方案”",
+      "verification_status": "not applicable",
+      "allowed_use": "构成本集干预与数据关联主轴"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "售后环节可扫描发动机标识码获取基本信息，并通过互动服务支持故障报修和意见反馈",
+      "source_locator": "主教材，1.3.1“4. 项目方案”末段",
+      "verification_status": "not applicable",
+      "allowed_use": "构成开篇业务问题和追溯链的反馈端"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "教材称该案例中产品质量精度提升 40%，追溯与质量分析人力成本降低 15% 以上，经销商及客户追溯满意度提升 15% 以上",
+      "source_locator": "主教材，1.3.1“5. 应用成效”",
+      "verification_status": "not applicable",
+      "allowed_use": "仅以“教材所述某集团案例结果”呈现"
+    },
+    {
+      "evidence_id": "E009",
+      "claim_or_asset": "教材方案图将 ERP、MES、WMS 信息通过标识关联到同一发动机，并示意扫码反馈",
+      "source_locator": "教材产品质量追溯方案图，1.3.1“4. 项目方案”后的原图",
+      "verification_status": "not applicable",
+      "allowed_use": "只作制作参考或去敏后的证据锚点；支持忠实语义重绘"
+    },
+    {
+      "evidence_id": "E010",
+      "claim_or_asset": "同一发动机标识关联基本、装配、工艺、质量、物流信息，并支持售后查询与反馈、定位问题环节",
+      "source_locator": "E002、E004、E006–E007",
+      "verification_status": "not applicable",
+      "allowed_use": "用一个对象串联案例的数据变化"
+    },
+    {
+      "evidence_id": "E011",
+      "claim_or_asset": "一台发动机在售后出现异常，服务人员先扫描标识再追查生产与物流记录的教学情境",
+      "source_locator": "E002、E007；教学情境",
+      "verification_status": "not applicable",
+      "allowed_use": "以具体业务问题进入案例"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "先设想一个场景：一台发动机在售后出了问题。服务人员扫到它身上的标识，设备确实认出了它。可接下来还要查几个问题：它来自哪个订单？经历过怎样的装配和工艺控制？质量记录在哪里？又经过了哪些仓储物流？要把这些记录接起来，光扫到标识还不够。记录明明都在，为什么查起来还是费劲？本节借这个发动机案例，看看统一标识怎样把分散系统串成一条可定位问题的追溯链。\n\n",
+      "teaching_purpose": "用售后异常的教学情境建立“识别对象不等于定位问题”的学习动机。",
+      "single_message": "扫描能认出发动机，却不能自动接出它的完整追溯记录。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V001",
+          "meaning": "教学情境中的同一台发动机、售后服务人员和扫描标识动作。",
+          "evidence_refs": ["E007", "E011"]
+        },
+        {
+          "semantic_item_id": "V002",
+          "meaning": "围绕这台发动机待查的订单、装配与工艺控制、质量记录、仓储物流四类问题。",
+          "evidence_refs": ["E007", "E011"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "发动机标识",
+          "relation": "用于识别",
+          "to": "售后问题对象",
+          "direction": "从扫描动作指向同一台发动机"
+        },
+        {
+          "relation_id": "R002",
+          "from": "订单、装配、质量和物流记录",
+          "relation": "需要围绕同一对象建立关联",
+          "to": "发动机",
+          "direction": "从分散待查记录汇向发动机"
+        }
+      ],
+      "entry_condition": "观众只知道售后人员能扫描到一台发动机。",
+      "exit_condition": "观众理解识别发动机只是追溯问题的起点。",
+      "timing": {
+        "char_equivalent": 156.0,
+        "min_seconds": 39,
+        "target_seconds": 41,
+        "max_seconds": 43,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": ["A001"],
+      "nx": "先看旧状态。发动机的基本信息、生产装配信息和质量信息，分别记录在三个业务系统里。企业资源计划（Enterprise Resource Planning，ERP）、制造执行系统（Manufacturing Execution System，MES）和仓库管理系统（Warehouse Management System，WMS）都在记录相关信息。各系统都有记录，仍不代表同一台发动机已经形成完整的追溯链。系统有数据，和能顺着数据找到问题，是两回事。\n\n",
+      "teaching_purpose": "说明旧状态下多个系统分别留存记录，却没有形成面向同一发动机的追溯链。",
+      "single_message": "系统有数据，并不等于能顺着数据定位发动机问题。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V003",
+          "meaning": "发动机的基本、生产装配和质量信息分别存在于多个业务系统。",
+          "evidence_refs": ["E002"]
+        },
+        {
+          "semantic_item_id": "V004",
+          "meaning": "企业资源计划（Enterprise Resource Planning，ERP）、制造执行系统（Manufacturing Execution System，MES）、仓库管理系统（Warehouse Management System，WMS）的首次全称与缩写。",
+          "evidence_refs": ["E002"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R003",
+          "from": "ERP、MES、WMS",
+          "relation": "分别记录",
+          "to": "发动机相关信息",
+          "direction": "从各业务系统指向各自持有的记录"
+        }
+      ],
+      "entry_condition": "观众已看到一台发动机需要追查多个记录。",
+      "exit_condition": "观众理解分散留存不等于已经具备完整追溯能力。",
+      "timing": {
+        "char_equivalent": 153.0,
+        "min_seconds": 39,
+        "target_seconds": 40,
+        "max_seconds": 42,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": ["A002"],
+      "nx": "问题出在数据分散。一台发动机从零部件供货、生产装配、仓储物流到经销，记录分布在不同企业和系统中。供应商、生产企业和经销商各自使用的系统，协议和数据规范并不一致，同一对象的记录很难直接对上。要查完整记录，往往得跨部门、跨企业反复确认，反馈链条很长。数据越积越多，问题反而越难定位。记录之间缺少共同线索，已有信息因此难以连起来。\n\n",
+      "teaching_purpose": "解释记录难以追溯的根因：跨企业、跨系统的数据规范不同，且缺少共同线索。",
+      "single_message": "记录分段、规范不一和共同线索缺失，使查询反馈链条变长、问题更难定位。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V005",
+          "meaning": "供应商 ERP、生产企业 MES、生产企业 WMS、经销商 ERP 四段记录关系及其断点。",
+          "evidence_refs": ["E005"]
+        },
+        {
+          "semantic_item_id": "V006",
+          "meaning": "不同企业和系统的协议、数据规范不一致，以及由此产生的跨部门、跨企业反复确认和较长的查询反馈链条。",
+          "evidence_refs": ["E004"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R004",
+          "from": "供应商 ERP",
+          "relation": "与之构成教材原图中的分段关系",
+          "to": "生产企业 MES",
+          "direction": "从左至右呈现，不推定未给出的数据流"
+        },
+        {
+          "relation_id": "R005",
+          "from": "生产企业 MES",
+          "relation": "与之构成教材原图中的分段关系",
+          "to": "生产企业 WMS",
+          "direction": "从左至右呈现，不推定未给出的数据流"
+        },
+        {
+          "relation_id": "R006",
+          "from": "生产企业 WMS",
+          "relation": "与之构成教材原图中的分段关系",
+          "to": "经销商 ERP",
+          "direction": "从左至右呈现，不推定未给出的数据流"
+        }
+      ],
+      "entry_condition": "观众知道不同业务系统各有发动机记录。",
+      "exit_condition": "观众理解为何已有数据仍难以完整追查。",
+      "timing": {
+        "char_equivalent": 145.0,
+        "min_seconds": 37,
+        "target_seconds": 38,
+        "max_seconds": 40,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": ["A003"],
+      "nx": "解决这个矛盾，先看全生命周期管理覆盖的范围。发动机经历设计、生产、经销、运行、使用、维修保养，以及回收再处置等阶段；每个阶段都会产生记录。重点是让同一台发动机在这些阶段的数据贯通，用于分析、改进生产和支撑运维决策。\n\n",
+      "teaching_purpose": "用全生命周期管理界定需要贯通的数据范围和业务目标。",
+      "single_message": "全生命周期管理的关键，是让同一台发动机跨阶段的数据贯通并用于改进决策。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V007",
+          "meaning": "发动机从设计到回收再处置的生命周期范围，以及各阶段都会产生记录。",
+          "evidence_refs": ["E003"]
+        },
+        {
+          "semantic_item_id": "V008",
+          "meaning": "同一台发动机跨阶段的数据贯通可用于分析、改进生产和支撑运维决策。",
+          "evidence_refs": ["E003"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R007",
+          "from": "同一台发动机",
+          "relation": "贯通",
+          "to": "全生命周期各阶段产生的数据",
+          "direction": "沿生命周期阶段延展"
+        }
+      ],
+      "entry_condition": "观众已经理解分散记录缺少共同线索。",
+      "exit_condition": "观众知道追溯要服务于跨阶段数据贯通与后续决策。",
+      "timing": {
+        "char_equivalent": 94.0,
+        "min_seconds": 24,
+        "target_seconds": 25,
+        "max_seconds": 26,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": ["A002"],
+      "nx": "落到实施上，关键做法是给发动机赋予统一标识，把它作为跨系统的关联锚点。统一标识不取代 ERP、MES、WMS，也不把全部业务数据塞进一段编码。各系统继续承担原有职责，统一标识用于确认这些分散记录是否属于同一台发动机。\n\n",
+      "teaching_purpose": "准确界定统一标识的作用，消除其替换系统或容纳全部数据的误解。",
+      "single_message": "统一标识是跨系统关联锚点，既不替代业务系统，也不是数据容器。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V009",
+          "meaning": "同一台发动机的统一标识及其作为跨系统关联锚点的角色。",
+          "evidence_refs": ["E006"]
+        },
+        {
+          "semantic_item_id": "V010",
+          "meaning": "ERP、MES、WMS 保持原有职责；统一标识不等于装入全部业务数据的编码。",
+          "evidence_refs": ["E006"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R008",
+          "from": "统一标识",
+          "relation": "作为关联锚点确认记录是否属于",
+          "to": "同一台发动机",
+          "direction": "从统一标识连接到分散记录"
+        },
+        {
+          "relation_id": "R009",
+          "from": "统一标识",
+          "relation": "不取代",
+          "to": "ERP、MES、WMS",
+          "direction": "明确排除替换业务系统的解释"
+        },
+        {
+          "relation_id": "R010",
+          "from": "统一标识",
+          "relation": "不等于承载",
+          "to": "企业全部业务数据",
+          "direction": "明确排除把数据塞入编码的解释"
+        }
+      ],
+      "entry_condition": "观众已理解跨系统记录缺少共同线索。",
+      "exit_condition": "观众准确掌握统一标识的关联边界。",
+      "timing": {
+        "char_equivalent": 93.5,
+        "min_seconds": 24,
+        "target_seconds": 24,
+        "max_seconds": 26,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": ["A005"],
+      "nx": "围绕这个标识，产品基本信息、生产装配信息、工艺控制信息、质量管理信息和物流存储信息可以建立关联。方案还结合企业标识解析二级节点平台，支持不同环节依据同一个发动机标识查找相关记录。二级节点只承担关联和解析支撑，不集中保存企业全部业务数据。\n\n",
+      "teaching_purpose": "展开统一标识实际关联的五类信息，并界定二级节点平台的支撑边界。",
+      "single_message": "五类发动机信息围绕同一标识关联，二级节点提供关联与解析支撑而非集中存储。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V011",
+          "meaning": "产品基本、生产装配、工艺控制、质量管理、物流存储五类信息围绕同一发动机标识建立关联。",
+          "evidence_refs": ["E006", "E010"]
+        },
+        {
+          "semantic_item_id": "V012",
+          "meaning": "企业标识解析二级节点平台支持不同环节依据同一发动机标识查找相关记录。",
+          "evidence_refs": ["E006", "E009"]
+        },
+        {
+          "semantic_item_id": "V013",
+          "meaning": "二级节点承担关联和解析支撑，不集中保存企业全部业务数据。",
+          "evidence_refs": ["E006"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R011",
+          "from": "同一发动机标识",
+          "relation": "关联",
+          "to": "产品基本、生产装配、工艺控制、质量管理、物流存储信息",
+          "direction": "从共同锚点扩展到五类信息"
+        },
+        {
+          "relation_id": "R012",
+          "from": "企业标识解析二级节点平台",
+          "relation": "提供关联和解析支撑",
+          "to": "不同环节的相关记录查找",
+          "direction": "从平台支撑到跨环节查找"
+        },
+        {
+          "relation_id": "R013",
+          "from": "企业标识解析二级节点平台",
+          "relation": "不集中保存",
+          "to": "企业全部业务数据",
+          "direction": "明确平台边界"
+        }
+      ],
+      "entry_condition": "观众已经知道统一标识只承担跨系统关联。",
+      "exit_condition": "观众能指出关联信息范围和二级节点的平台边界。",
+      "timing": {
+        "char_equivalent": 109.0,
+        "min_seconds": 28,
+        "target_seconds": 28,
+        "max_seconds": 30,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": ["A005", "A006"],
+      "nx": "售后环节最能看出这种关联的作用。售后人员扫描发动机标识，可以获取产品基本信息，并通过互动服务发起故障报修、提交意见反馈。售后反馈带有明确的发动机身份，能和前面的装配、工艺、质量、物流记录对应起来。锁定问题对象后，可以沿着关联记录向前查：确认异常涉及哪台发动机、对应哪一段装配、工艺或质量记录，再定位相关问题环节。这里说的是业务层面的定位，不涉及用什么算法判定缺陷。\n\n",
+      "teaching_purpose": "让售后查询和反馈端到端地接回发动机的生产与质量关联记录。",
+      "single_message": "售后反馈带着发动机身份，便能回查关联记录并定位业务问题环节，而非判定缺陷算法。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V014",
+          "meaning": "教学情境中的售后扫描同一发动机标识并获取产品基本信息。",
+          "evidence_refs": ["E007", "E011"]
+        },
+        {
+          "semantic_item_id": "V015",
+          "meaning": "通过互动服务发起故障报修、提交意见反馈，并保留明确的发动机身份。",
+          "evidence_refs": ["E007", "E010"]
+        },
+        {
+          "semantic_item_id": "V016",
+          "meaning": "从问题对象回查装配、工艺、质量、物流关联记录的业务定位边界，不展示缺陷判定算法。",
+          "evidence_refs": ["E010"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R014",
+          "from": "售后反馈",
+          "relation": "带有明确的身份并对应",
+          "to": "同一发动机的装配、工艺、质量、物流记录",
+          "direction": "从售后端回查前序记录"
+        },
+        {
+          "relation_id": "R015",
+          "from": "异常涉及的发动机",
+          "relation": "对应",
+          "to": "相关装配、工艺或质量记录",
+          "direction": "从问题对象定位到相关记录"
+        },
+        {
+          "relation_id": "R016",
+          "from": "业务层面的定位",
+          "relation": "不涉及",
+          "to": "缺陷判定算法",
+          "direction": "明确事实边界"
+        }
+      ],
+      "entry_condition": "观众已经掌握同一发动机标识关联五类信息的机制。",
+      "exit_condition": "观众理解售后反馈如何带着对象身份回查问题环节。",
+      "timing": {
+        "char_equivalent": 164.0,
+        "min_seconds": 41,
+        "target_seconds": 43,
+        "max_seconds": 45,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": ["A005", "A007"],
+      "nx": "改造前后，数据本来就存在，改变的是查找方式：过去要在各个业务系统中分散查找，现在可以围绕同一对象追溯。统一标识像一个共同的路标，让查询、反馈和分析沿着生命周期找到关联记录。售后发现的问题，可以带着发动机身份回到生产和质量记录；生产侧的改进，也服务于后续产品质量。统一标识只负责把关系串起来，数据能不能产生价值，还取决于企业后续的治理、分析和业务协同。\n\n",
+      "teaching_purpose": "对比改造前后的查找方式，并说明统一标识之外仍需要治理、分析和协同。",
+      "single_message": "改造改变的是围绕同一对象查找记录的方式，价值仍依赖后续治理、分析和协同。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V017",
+          "meaning": "改造前在各业务系统中分散查找，与改造后围绕同一发动机追溯的对比。",
+          "evidence_refs": ["E002", "E004", "E010"]
+        },
+        {
+          "semantic_item_id": "V018",
+          "meaning": "售后发现的问题带着发动机身份回到生产和质量记录，生产改进服务后续产品质量。",
+          "evidence_refs": ["E006", "E007", "E010"]
+        },
+        {
+          "semantic_item_id": "V019",
+          "meaning": "统一标识只串联关系，数据价值仍取决于企业后续治理、分析和业务协同。",
+          "evidence_refs": ["E010"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R017",
+          "from": "售后发现的问题",
+          "relation": "带着发动机身份回到",
+          "to": "生产和质量记录",
+          "direction": "从售后反馈端回到生产和质量"
+        },
+        {
+          "relation_id": "R018",
+          "from": "生产侧的改进",
+          "relation": "服务于",
+          "to": "后续产品质量",
+          "direction": "从生产侧改进指向后续质量"
+        },
+        {
+          "relation_id": "R019",
+          "from": "统一标识",
+          "relation": "只负责串联",
+          "to": "记录之间的关系",
+          "direction": "与后续治理、分析、协同共同构成价值条件"
+        }
+      ],
+      "entry_condition": "观众已经理解售后反馈能回查发动机的关联记录。",
+      "exit_condition": "观众能区分关联能力与数据价值实现所需的后续工作。",
+      "timing": {
+        "char_equivalent": 159.0,
+        "min_seconds": 40,
+        "target_seconds": 41,
+        "max_seconds": 44,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": ["A008"],
+      "nx": "课程资料所述的某集团发动机质量追溯案例中，产品质量精度提升了百分之四十。质量追溯与质量分析的人力成本降低了百分之十五以上。经销商及客户对产品质量追溯的满意度提升了百分之十五以上。这些数字只说明课程资料案例中的变化，不代表所有发动机企业采用标识解析后都会自动得到同样结果。课程资料没有提供统计周期、样本规模和计算方法；这些数字不能当作行业平均值，也不能当作对任何企业的承诺。\n\n",
+      "teaching_purpose": "呈现课程资料中的案例结果，并把数字的归属、统计缺口和不可外推边界说清楚。",
+      "single_message": "三项数字只属于课程资料所述的某集团案例，不能外推为行业基准或企业承诺。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V020",
+          "meaning": "“课程资料所述的某集团发动机质量追溯案例”这一限定语，以及质量精度提升 40%、人力成本降低 15% 以上、追溯满意度提升 15% 以上三项结果。",
+          "evidence_refs": ["E008"]
+        },
+        {
+          "semantic_item_id": "V021",
+          "meaning": "课程资料未提供统计周期、样本规模和计算方法；数字不是行业平均值或对任何企业的承诺。",
+          "evidence_refs": ["E008"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R020",
+          "from": "40%、15% 以上、15% 以上三项结果",
+          "relation": "仅说明",
+          "to": "课程资料所述某集团发动机质量追溯案例中的变化",
+          "direction": "从数字回指案例归属"
+        },
+        {
+          "relation_id": "R021",
+          "from": "课程资料中的案例数字",
+          "relation": "不构成",
+          "to": "行业平均值或对任何企业的承诺",
+          "direction": "从案例结果排除外推结论"
+        }
+      ],
+      "entry_condition": "观众已理解统一标识改变了关联与查找方式。",
+      "exit_condition": "观众能在保留案例归属的前提下理解三项结果及其边界。",
+      "timing": {
+        "char_equivalent": 176.0,
+        "min_seconds": 44,
+        "target_seconds": 46,
+        "max_seconds": 48,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A010",
+      "callback_a_ids": ["A005", "A007", "A008"],
+      "nx": "【本期总结】\n回到开头那台发动机。ERP、MES、WMS 继续管理各自的业务，统一标识把同一台发动机的基本、装配、工艺、质量、物流和售后记录串成可追溯链。这里的共同规律是：分散数据要围绕同一对象重新连接。真正产生价值的，不是某个系统名称，而是企业对相关数据的治理、分析和协同。",
+      "teaching_purpose": "回扣开头的发动机问题，收束系统分工、统一标识和数据价值条件之间的关系。",
+      "single_message": "各系统各司其职，统一标识围绕同一发动机串起记录，价值来自后续治理、分析和协同。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V022",
+          "meaning": "ERP、MES、WMS 继续各自管理业务，并围绕同一台发动机保留基本、装配、工艺、质量、物流和售后记录。",
+          "evidence_refs": ["E006", "E007", "E010"]
+        },
+        {
+          "semantic_item_id": "V023",
+          "meaning": "同一对象、共同锚点、跨系统追溯，以及数据价值依赖治理、分析和协同的收束关系。",
+          "evidence_refs": ["E010"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R022",
+          "from": "ERP、MES、WMS",
+          "relation": "继续管理",
+          "to": "各自的业务",
+          "direction": "保持业务系统原有分工"
+        },
+        {
+          "relation_id": "R023",
+          "from": "统一标识",
+          "relation": "把同一台发动机的记录串成",
+          "to": "可追溯链",
+          "direction": "从共同锚点连接基本、装配、工艺、质量、物流和售后记录"
+        }
+      ],
+      "entry_condition": "观众已经掌握关联机制、售后回查和价值实现条件。",
+      "exit_condition": "观众能用同一对象和共同锚点概括本集的追溯链逻辑。",
+      "timing": {
+        "char_equivalent": 114.5,
+        "min_seconds": 29,
+        "target_seconds": 30,
+        "max_seconds": 32,
+        "short_page_reason": null
+      }
+    }
+  ]
+}

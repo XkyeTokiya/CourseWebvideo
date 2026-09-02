@@ -1,0 +1,157 @@
+{
+  "schema_version": "web-video-courseplay-chapter-handoff/v2",
+  "episode_id": "episode-09",
+  "fixture_status": "candidate-only; narration is not approved production text",
+  "chapter": {
+    "index": 9,
+    "id": "evidence-boundary",
+    "title": "三项案例数字的证据边界",
+    "a_page_id": "A009",
+    "step_count": 3
+  },
+  "narration": {
+    "authority": "candidate_a_page.nx",
+    "beats": [
+      "某集团发动机质量追溯案例中，产品质量精度提升了百分之四十。",
+      "质量追溯与质量分析的人力成本降低了百分之十五以上。",
+      "经销商及客户对产品质量追溯的满意度提升了百分之十五以上。"
+    ]
+  },
+  "screen_source": {
+    "title": {
+      "screen_item_id": "S022",
+      "source_text": "某集团发动机质量追溯案例的三项结果",
+      "edit_policy": "exact",
+      "evidence_refs": ["E008"]
+    },
+    "groups": [
+      {
+        "group_id": "G020",
+        "items": [
+          {
+            "screen_item_id": "S023",
+            "source_text": "课程资料所述的某集团发动机质量追溯案例",
+            "edit_policy": "exact",
+            "evidence_refs": ["E008"]
+          }
+        ]
+      },
+      {
+        "group_id": "G021",
+        "items": [
+          {
+            "screen_item_id": "S024",
+            "source_text": "产品质量精度提升 40%",
+            "edit_policy": "exact",
+            "evidence_refs": ["E008"]
+          },
+          {
+            "screen_item_id": "S025",
+            "source_text": "质量追溯与质量分析人力成本降低 15% 以上",
+            "edit_policy": "exact",
+            "evidence_refs": ["E008"]
+          },
+          {
+            "screen_item_id": "S026",
+            "source_text": "经销商及客户质量追溯满意度提升 15% 以上",
+            "edit_policy": "exact",
+            "evidence_refs": ["E008"]
+          }
+        ]
+      }
+    ],
+    "protected_relations": [
+      {
+        "relation_id": "R020",
+        "from": "40%、15% 以上、15% 以上三项结果",
+        "relation": "仅说明",
+        "to": "课程资料所述某集团发动机质量追溯案例中的变化",
+        "direction": "从数字回指案例归属"
+      },
+      {
+        "relation_id": "R021",
+        "from": "课程资料中的案例数字",
+        "relation": "不构成",
+        "to": "行业平均值或对任何企业的承诺",
+        "direction": "从案例结果排除外推结论"
+      }
+    ]
+  },
+  "presentation": {
+    "recipe_id": "evidence-cards-with-provenance-boundary",
+    "slot_bindings": [
+      "provenance <- G020",
+      "results <- G021",
+      "inference-boundary <- none"
+    ],
+    "media": [],
+    "relation_carriers": [
+      {
+        "relation_id": "R020",
+        "carrier": "G020 before G021"
+      },
+      {
+        "relation_id": "R021",
+        "carrier": "C020-C022 review boundary; no visible binding"
+      }
+    ]
+  },
+  "steps": [
+    {
+      "index": 1,
+      "scene_state": "S-A009 · provenance-first-result",
+      "show_refs": ["G020", "S024"],
+      "keep_refs": [],
+      "focus_refs": ["G020"],
+      "instruction": "先建立案例归属，再呈现第一项结果"
+    },
+    {
+      "index": 2,
+      "scene_state": "S-A009 · second-result",
+      "show_refs": ["S025"],
+      "keep_refs": ["G020", "S024"],
+      "focus_refs": ["G021"],
+      "instruction": "保持归属与首项结果，补充第二项结果"
+    },
+    {
+      "index": 3,
+      "scene_state": "S-A009 · three-results-complete",
+      "show_refs": ["S026"],
+      "keep_refs": ["G020", "S024", "S025"],
+      "focus_refs": ["G021"],
+      "instruction": "保持前两项，补齐第三项结果"
+    }
+  ],
+  "silent_constraints": [
+    {
+      "constraint_id": "C020",
+      "instruction": "来源限定为课程资料所述的某集团案例，不补写集团名称或外部来源。",
+      "evidence_refs": ["E008"]
+    },
+    {
+      "constraint_id": "C021",
+      "instruction": "资料未给出统计周期、样本规模和计算方法，不补齐审计信息。",
+      "evidence_refs": ["E008"]
+    },
+    {
+      "constraint_id": "C022",
+      "instruction": "三项数字不得外推为行业平均值或任何企业的结果承诺。",
+      "evidence_refs": ["E008"]
+    }
+  ],
+  "materials_markdown": null,
+  "sources": {
+    "a_page": {
+      "path": "tools/tests/fixtures/courseplay-handoff-v2/episode-09/episode-09-a-page-v5-slice.json",
+      "sha256": "2f5e113535347efd2a24b0523bc5586cbaf8bfd3fe95989c50133cea1e4840fc"
+    },
+    "visual_rough": {
+      "path": "tools/tests/fixtures/courseplay-handoff-v2/episode-09/episode-09-visual-rough-v2-slice.md",
+      "sha256": "e6ca0a746c84281a9afbc3659e3e69a5c31e3e3bdab243a6a60fa151fb1e0e0a"
+    },
+    "outline": {
+      "path": "tools/tests/fixtures/courseplay-handoff-v2/episode-09/outline-screen-source-slice.md",
+      "sha256": "db2e09797ef2ac4065ee3c44ca8b157a6273651cfad298372bd42158dca3fc69"
+    }
+  }
+}

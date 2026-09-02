@@ -1,0 +1,115 @@
+/* ─────────────────────────────────────────────────────────────
+ * 08-condition-fusion · A008 condition-key-goal
+ * mechanism: cumulative-assembly — 固定三卡内按阅读顺序组装，中卡权重最高
+ * prefix: cf-
+ * ───────────────────────────────────────────────────────────── */
+
+.cf-scene {
+  justify-content: center;
+  gap: 48px;
+}
+
+.cf-row {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.22fr 1fr;
+  align-items: center;
+  gap: 40px;
+  min-height: 0;
+}
+
+.cf-panel {
+  border-radius: var(--r-card);
+  padding: 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 460px;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-quart);
+}
+.cf-panel[data-on="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cf-panel-tag {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.34em;
+  color: var(--theme-warning);
+  border: var(--rule-w) dashed var(--theme-warning);
+  border-radius: 8px;
+  padding: 4px 16px 4px 22px;
+}
+.cf-panel-title {
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  line-height: 1.2;
+}
+.cf-panel-desc {
+  font-family: var(--font-body);
+  font-size: 24px;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+
+/* 中卡：反白 + 抬升，权重最高 */
+.cf-panel.is-key {
+  min-height: 560px;
+  background: var(--theme-structural);
+  border: var(--rule-w) solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  margin-top: -48px;
+}
+.cf-panel.is-key .cf-panel-tag {
+  color: var(--surface);
+  border-color: var(--theme-warning);
+}
+.cf-panel.is-key .cf-panel-title {
+  color: var(--surface);
+}
+.cf-panel.is-key .cf-panel-desc {
+  color: var(--surface-3);
+}
+
+/* ── 底部结论（末拍并入收束） ── */
+.cf-bottom {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 26px 36px;
+  border-radius: var(--r-card);
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  font-family: var(--font-body);
+  font-size: 27px;
+  line-height: 1.5;
+  color: var(--text-mute);
+  transition: color var(--dur-base) var(--ease-soft),
+    background var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-soft);
+}
+.cf-bottom-mark {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  background: var(--theme-dashed-line);
+  transition: background var(--dur-base) var(--ease-soft);
+}
+.cf-bottom[data-strong="true"] {
+  color: var(--theme-structural);
+  font-weight: 700;
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-process);
+  box-shadow: var(--card-shadow);
+}
+.cf-bottom[data-strong="true"] .cf-bottom-mark {
+  background: var(--theme-process);
+}

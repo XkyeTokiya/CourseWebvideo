@@ -1,0 +1,282 @@
+/* after-scan · A001 issue-cards-with-image
+   mechanism: premise-to-question — 现场图与已识别前提持续并弱化，待查问题与收束判断先后成为视觉中心
+   prefix: as- */
+
+.as-scene {
+  justify-content: flex-start;
+  gap: 40px;
+}
+
+/* ── 论点标题 ─────────────────────────────────────────── */
+
+.as-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.as-thesis.is-weak {
+  opacity: 0.32;
+  transform: scale(0.97);
+  transform-origin: top left;
+  filter: grayscale(0.6);
+}
+
+/* ── 主区：现场图（前提）+ 待查记录队列 ───────────────── */
+
+.as-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 880px 1fr;
+  gap: 72px;
+  align-items: center;
+  transform-origin: left center;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.as-main.is-weak {
+  opacity: 0.3;
+  transform: scale(0.96);
+  filter: grayscale(0.55);
+}
+
+.as-media {
+  margin: 0;
+}
+
+.as-photo {
+  position: relative;
+  padding: 14px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.as-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.as-scanline {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 4%;
+  height: 6px;
+  background: var(--accent);
+  box-shadow: 0 0 22px var(--accent-glow);
+  animation: as-sweep 1.4s ease-in-out forwards;
+}
+
+@keyframes as-sweep {
+  0%   { top: 4%;  opacity: 0; }
+  14%  { opacity: 1; }
+  82%  { opacity: 1; }
+  100% { top: 94%; opacity: 0; }
+}
+
+.as-id-chip {
+  position: absolute;
+  left: 34px;
+  bottom: 34px;
+  padding: 10px 18px;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.06em;
+  color: var(--theme-process);
+  background: var(--surface-2);
+  border: 2px solid var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  animation: as-chip-in 460ms var(--ease-overshoot) 1.15s forwards;
+}
+
+@keyframes as-chip-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.as-media-cap {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  color: var(--text-mute);
+}
+
+/* ── 待查记录队列：虚线预留槽 → 实卡 stamp-in 就位 ─────── */
+
+.as-qa {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.as-qa-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.as-qs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.as-q {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 26px 32px;
+  transition: opacity 560ms var(--ease-soft),
+    transform 560ms var(--ease-soft),
+    background-color 560ms var(--ease-soft),
+    border-color 560ms var(--ease-soft),
+    box-shadow 560ms var(--ease-soft);
+}
+
+.as-q[data-on="on"] {
+  animation: as-stamp-in 620ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--as-i) * 220ms);
+}
+
+@keyframes as-stamp-in {
+  0%   { opacity: 0; transform: translateY(36px) scale(1.05); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.as-q[data-on="waiting"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+.as-index {
+  font-size: 48px;
+  color: var(--theme-process);
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.as-q[data-on="waiting"] .as-index {
+  opacity: 0.35;
+  color: var(--text-faint);
+}
+
+.as-q-body {
+  transition: opacity 480ms var(--ease-soft), visibility 0s;
+}
+
+.as-q[data-on="waiting"] .as-q-body {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms var(--ease-soft), visibility 0s 300ms;
+}
+
+.as-q-body h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.as-q-body p {
+  margin: 0;
+  font-size: 27px;
+  color: var(--text-2);
+}
+
+/* ── 收束层：锚带 + 费劲之问 + takeaway 判断条 ────────── */
+
+.as-gap {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-slow) var(--ease-soft);
+}
+
+.as-gap.is-on {
+  opacity: 1;
+}
+
+.as-gap-plate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 62px 88px;
+  box-shadow: var(--card-shadow);
+}
+
+.as-gap-anchor {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  letter-spacing: 0.2em;
+  color: var(--theme-process);
+}
+
+.as-gap-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 78px;
+  font-weight: 900;
+  line-height: 1.24;
+  text-align: center;
+  color: var(--theme-structural);
+  animation: as-rise 720ms var(--ease-quart) 120ms backwards;
+}
+
+.as-gap-hero em {
+  font-style: normal;
+  border-bottom: 8px solid var(--theme-warning);
+  padding-bottom: 6px;
+}
+
+.as-gap-note {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 28px;
+  color: var(--text-2);
+  letter-spacing: 0.01em;
+  animation: as-rise 640ms var(--ease-quart) 640ms backwards;
+}
+
+.as-gap-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+@keyframes as-rise {
+  0%   { opacity: 0; transform: translateY(32px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

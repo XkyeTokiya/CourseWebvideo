@@ -1,0 +1,172 @@
+/* collaboration-within-authority · A011 image-with-insight-rail
+   mechanism: persistent-media-reading — M004 主图持续，三条阅读项按
+   “谁协作／什么条件／协同什么”依次完成；“共享条件”先于“协同事项”（R018），
+   不在图上叠加权限拓扑。
+   prefix: ca- */
+
+.ca-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── 论点标题 ─────────────────────────────────────────── */
+
+.ca-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: ca-rise 620ms var(--ease-quart) backwards;
+}
+
+.ca-thesis em {
+  font-style: normal;
+  color: var(--theme-warning);
+  border-bottom: 6px solid var(--theme-warning);
+  padding-bottom: 4px;
+}
+
+/* ── 主区：主图 + 侧栏三阅读项 ────────────────────────── */
+
+.ca-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 600px;
+  gap: 56px;
+  align-items: center;
+}
+
+.ca-media {
+  margin: 0;
+  animation: ca-rise 700ms var(--ease-quart) 80ms backwards;
+}
+
+.ca-photo {
+  padding: 14px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.ca-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.ca-media-cap {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  color: var(--text-mute);
+}
+
+/* ── 侧栏阅读项 ──────────────────────────────────────── */
+
+.ca-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ca-rail-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.ca-item {
+  display: flex;
+  gap: 20px;
+  padding: 20px 24px;
+  transition: opacity 320ms var(--ease-soft),
+    border-color var(--dur-slow) var(--ease-soft),
+    background-color var(--dur-slow) var(--ease-soft);
+}
+
+.ca-item[data-on="on"] {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  animation: ca-stamp 560ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--ca-i) * 200ms + 80ms);
+}
+
+.ca-item[data-on="waiting"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+}
+
+.ca-item[data-on="waiting"] .ca-item-body {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.ca-item.is-focus {
+  border-color: var(--theme-process);
+}
+
+.ca-item-index {
+  font-size: 36px;
+  color: var(--theme-process);
+}
+
+.ca-item-body h2 {
+  margin: 0 0 10px;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.ca-item-body p {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.ca-item-body i {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+/* ── 协作主体芯片 ────────────────────────────────────── */
+
+.ca-actors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.ca-actor-chip {
+  padding: 8px 16px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px solid var(--theme-structural);
+}
+
+/* ── 共享 keyframes ──────────────────────────────────── */
+
+@keyframes ca-rise {
+  0%   { opacity: 0; transform: translateY(28px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ca-stamp {
+  0%   { opacity: 0; transform: translateY(26px) scale(1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}

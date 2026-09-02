@@ -1,0 +1,4 @@
+interface:
+  display_name: "Course Narration Polisher"
+  short_description: "在独立目录中逐集润色、校验并安全管理工业互联网课程口播稿"
+  default_prompt: "Use $polish-course-narration to polish one episode in the separate narration output directory."

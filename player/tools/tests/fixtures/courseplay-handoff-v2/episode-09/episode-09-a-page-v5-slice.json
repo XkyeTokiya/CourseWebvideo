@@ -1,0 +1,346 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "courseplay-a-page/v5",
+  "document_kind": "candidate",
+  "fixture_status": "candidate-only; not a formal production output",
+  "episode_id": "episode-09",
+  "approved_text": null,
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "发动机基本、装配、质量信息分散在 ERP、MES、WMS 等系统，存在查询反馈链条长、数据不完整和信息不统一等问题",
+      "source_locator": "主教材，1.3.1“1. 应用背景”",
+      "verification_status": "not applicable",
+      "allowed_use": "建立案例旧状态与核心矛盾"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "整车组装厂、原材料供应商的业务系统协议和数据规范不同，产品信息分散、利用率低，历史数据积累使问题定位困难",
+      "source_locator": "主教材，1.3.1“3. 业务需求”",
+      "verification_status": "not applicable",
+      "allowed_use": "解释系统都有数据却难追溯的原因"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "方案通过企业标识解析二级节点平台、发动机赋码和标识关联，连接产品基本、生产装配、工艺控制、质量管理、物流存储等信息",
+      "source_locator": "主教材，1.3.1“4. 项目方案”",
+      "verification_status": "not applicable",
+      "allowed_use": "构成本集干预与数据关联主轴"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "售后环节可扫描发动机标识码获取基本信息，并通过互动服务支持故障报修和意见反馈",
+      "source_locator": "主教材，1.3.1“4. 项目方案”末段",
+      "verification_status": "not applicable",
+      "allowed_use": "构成开篇业务问题和追溯链的反馈端"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "教材称该案例中产品质量精度提升 40%，追溯与质量分析人力成本降低 15% 以上，经销商及客户追溯满意度提升 15% 以上",
+      "source_locator": "主教材，1.3.1“5. 应用成效”",
+      "verification_status": "not applicable",
+      "allowed_use": "仅以教材所述某集团案例结果呈现"
+    },
+    {
+      "evidence_id": "E010",
+      "claim_or_asset": "同一发动机标识关联基本、装配、工艺、质量、物流信息，并支持售后查询与反馈、定位问题环节",
+      "source_locator": "E002、E004、E006–E007",
+      "verification_status": "not applicable",
+      "allowed_use": "用一个对象串联案例的数据变化"
+    },
+    {
+      "evidence_id": "E011",
+      "claim_or_asset": "一台发动机在售后出现异常，服务人员先扫描标识再追查生产与物流记录的教学情境",
+      "source_locator": "E002、E007；教学情境",
+      "verification_status": "not applicable",
+      "allowed_use": "以具体业务问题进入案例"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "先设想一个场景：一台发动机在售后出了问题。服务人员扫到它身上的标识，设备确实认出了它。可接下来还要查几个问题：它来自哪个订单？经历过怎样的装配和工艺控制？质量记录在哪里？又经过了哪些仓储物流？要把这些记录接起来，光扫到标识还不够。记录明明都在，为什么查起来还是费劲？本节借这个发动机案例，看看统一标识怎样把分散系统串成一条可定位问题的追溯链。\n\n",
+      "teaching_purpose": "用售后异常的教学情境建立识别对象不等于定位问题的学习动机。",
+      "single_message": "扫描能认出发动机，却不能自动接出它的完整追溯记录。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S001",
+          "source_text": "扫描认出发动机，追溯才刚刚开始",
+          "edit_policy": "adaptable",
+          "evidence_refs": ["E007", "E011"]
+        },
+        "groups": [
+          {
+            "group_id": "G001",
+            "items": [
+              {
+                "screen_item_id": "S002",
+                "source_text": "订单：来自哪个订单？",
+                "edit_policy": "adaptable",
+                "evidence_refs": ["E007", "E011"]
+              },
+              {
+                "screen_item_id": "S003",
+                "source_text": "装配与工艺：经历了怎样的装配和工艺控制？",
+                "edit_policy": "adaptable",
+                "evidence_refs": ["E007", "E011"]
+              },
+              {
+                "screen_item_id": "S004",
+                "source_text": "质量：对应的质量记录在哪里？",
+                "edit_policy": "adaptable",
+                "evidence_refs": ["E007", "E011"]
+              },
+              {
+                "screen_item_id": "S005",
+                "source_text": "仓储物流：经过了哪些仓储物流环节？",
+                "edit_policy": "adaptable",
+                "evidence_refs": ["E007", "E011"]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "发动机标识",
+          "relation": "用于识别",
+          "to": "售后问题对象",
+          "direction": "从扫描动作指向同一台发动机"
+        },
+        {
+          "relation_id": "R002",
+          "from": "订单、装配、质量和物流记录",
+          "relation": "需要围绕同一对象建立关联",
+          "to": "发动机",
+          "direction": "从分散待查记录汇向发动机"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C001",
+          "instruction": "扫描动作只确认对象身份，不表示已经接通订单、装配、质量或物流记录。",
+          "evidence_refs": ["E007", "E011"]
+        },
+        {
+          "constraint_id": "C002",
+          "instruction": "不得补写具体订单号、系统界面、记录值或未提供的现场细节。",
+          "evidence_refs": ["E007", "E011"]
+        }
+      ],
+      "entry_condition": "观众只知道售后人员能扫描到一台发动机。",
+      "exit_condition": "观众理解识别发动机只是追溯问题的起点。",
+      "timing": {
+        "char_equivalent": 156,
+        "min_seconds": 39,
+        "target_seconds": 41,
+        "max_seconds": 43,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": ["A005", "A007"],
+      "nx": "改造前后，数据本来就存在，改变的是查找方式：过去要在各个业务系统中分散查找，现在可以围绕同一对象追溯。统一标识像一个共同的路标，让查询、反馈和分析沿着生命周期找到关联记录。售后发现的问题，可以带着发动机身份回到生产和质量记录；生产侧的改进，也服务于后续产品质量。统一标识只负责把关系串起来，数据能不能产生价值，还取决于企业后续的治理、分析和业务协同。\n\n",
+      "teaching_purpose": "对比改造前后的查找方式，并说明统一标识之外仍需要治理、分析和协同。",
+      "single_message": "改造改变的是围绕同一对象查找记录的方式，价值仍依赖后续治理、分析和协同。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S017",
+          "source_text": "统一标识改变记录查找方式，数据价值仍要靠治理、分析和协同",
+          "edit_policy": "adaptable",
+          "evidence_refs": ["E002", "E004", "E010"]
+        },
+        "groups": [
+          {
+            "group_id": "G017",
+            "items": [
+              {
+                "screen_item_id": "S018",
+                "source_text": "改造前：在各业务系统中分散查找",
+                "edit_policy": "adaptable",
+                "evidence_refs": ["E002", "E004"]
+              }
+            ]
+          },
+          {
+            "group_id": "G018",
+            "items": [
+              {
+                "screen_item_id": "S019",
+                "source_text": "改造后：围绕同一台发动机追溯",
+                "edit_policy": "adaptable",
+                "evidence_refs": ["E006", "E010"]
+              },
+              {
+                "screen_item_id": "S020",
+                "source_text": "售后问题带着发动机身份回到生产和质量记录",
+                "edit_policy": "adaptable",
+                "evidence_refs": ["E006", "E007", "E010"]
+              },
+              {
+                "screen_item_id": "S021",
+                "source_text": "生产侧改进服务后续产品质量",
+                "edit_policy": "adaptable",
+                "evidence_refs": ["E006", "E010"]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R017",
+          "from": "售后发现的问题",
+          "relation": "带着发动机身份回到",
+          "to": "生产和质量记录",
+          "direction": "从售后反馈端回到生产和质量"
+        },
+        {
+          "relation_id": "R018",
+          "from": "生产侧的改进",
+          "relation": "服务于",
+          "to": "后续产品质量",
+          "direction": "从生产侧改进指向后续质量"
+        },
+        {
+          "relation_id": "R019",
+          "from": "统一标识",
+          "relation": "只负责串联",
+          "to": "记录之间的关系",
+          "direction": "与后续治理、分析、协同共同构成价值条件"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C017",
+          "instruction": "统一标识仅承担关联与查找支撑，不得表述为替代 ERP、MES、WMS 或自动生成业务价值。",
+          "evidence_refs": ["E006", "E010"]
+        },
+        {
+          "constraint_id": "C018",
+          "instruction": "售后回查与生产改进写为业务关系，不改写为缺陷算法或统计成效。",
+          "evidence_refs": ["E007", "E010"]
+        }
+      ],
+      "entry_condition": "观众已经理解售后反馈能回查发动机的关联记录。",
+      "exit_condition": "观众能区分关联能力与数据价值实现所需的后续工作。",
+      "timing": {
+        "char_equivalent": 159,
+        "min_seconds": 40,
+        "target_seconds": 41,
+        "max_seconds": 44,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": ["A008"],
+      "nx": "某集团发动机质量追溯案例中，产品质量精度提升了百分之四十。质量追溯与质量分析的人力成本降低了百分之十五以上。经销商及客户对产品质量追溯的满意度提升了百分之十五以上。\n\n",
+      "teaching_purpose": "呈现一个特定集团案例中的三项结果；来源、统计审计与外推边界由静默护栏约束。",
+      "single_message": "某集团案例中呈现了质量精度、人力成本和追溯满意度三项变化。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S022",
+          "source_text": "某集团发动机质量追溯案例的三项结果",
+          "edit_policy": "exact",
+          "evidence_refs": ["E008"]
+        },
+        "groups": [
+          {
+            "group_id": "G020",
+            "items": [
+              {
+                "screen_item_id": "S023",
+                "source_text": "课程资料所述的某集团发动机质量追溯案例",
+                "edit_policy": "exact",
+                "evidence_refs": ["E008"]
+              }
+            ]
+          },
+          {
+            "group_id": "G021",
+            "items": [
+              {
+                "screen_item_id": "S024",
+                "source_text": "产品质量精度提升 40%",
+                "edit_policy": "exact",
+                "evidence_refs": ["E008"]
+              },
+              {
+                "screen_item_id": "S025",
+                "source_text": "质量追溯与质量分析人力成本降低 15% 以上",
+                "edit_policy": "exact",
+                "evidence_refs": ["E008"]
+              },
+              {
+                "screen_item_id": "S026",
+                "source_text": "经销商及客户质量追溯满意度提升 15% 以上",
+                "edit_policy": "exact",
+                "evidence_refs": ["E008"]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R020",
+          "from": "40%、15% 以上、15% 以上三项结果",
+          "relation": "仅说明",
+          "to": "课程资料所述某集团发动机质量追溯案例中的变化",
+          "direction": "从数字回指案例归属"
+        },
+        {
+          "relation_id": "R021",
+          "from": "课程资料中的案例数字",
+          "relation": "不构成",
+          "to": "行业平均值或对任何企业的承诺",
+          "direction": "从案例结果排除外推结论"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C020",
+          "instruction": "来源限定为课程资料所述的某集团案例，不补写集团名称或外部来源。",
+          "evidence_refs": ["E008"]
+        },
+        {
+          "constraint_id": "C021",
+          "instruction": "资料未给出统计周期、样本规模和计算方法，不补齐审计信息。",
+          "evidence_refs": ["E008"]
+        },
+        {
+          "constraint_id": "C022",
+          "instruction": "三项数字不得外推为行业平均值或任何企业的结果承诺。",
+          "evidence_refs": ["E008"]
+        }
+      ],
+      "entry_condition": "观众已理解统一标识改变了关联与查找方式。",
+      "exit_condition": "观众能识别特定案例中的三项结果及其受约束的证据边界。",
+      "timing": {
+        "char_equivalent": 80,
+        "min_seconds": 20,
+        "target_seconds": 21,
+        "max_seconds": 22,
+        "short_page_reason": null
+      }
+    }
+  ],
+  "fixture_notes": [
+    "This slice is not a complete episode and must not be published to output/episode-09.",
+    "A009 nx is a candidate narration and is not approved-spoken-text.txt."
+  ]
+}

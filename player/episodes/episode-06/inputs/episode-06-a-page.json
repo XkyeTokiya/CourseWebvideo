@@ -1,0 +1,618 @@
+{
+  "schema_version": "courseplay-a-page/v4",
+  "document_kind": "production",
+  "episode_id": "episode-06",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "第 06 集标题、来源范围、前置关系、相邻边界和动态风险",
+      "source_locator": "已确认课程架构，Episode Architecture 第 06 集及第 05–07、28–31 集责任",
+      "verification_status": "not applicable",
+      "allowed_use": "控制单集范围、去重和时长"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "标识解析体系把设备、服务、产品等实体的标识符解析为地址、位置、元数据等相关信息",
+      "source_locator": "主教材，1.2.1“2．标识解析体系”首段",
+      "verification_status": "not applicable",
+      "allowed_use": "定义本集的解析目标与结果边界"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "工业互联网标识解析系统可类比互联网 DNS，但面向工业对象和相关信息查询",
+      "source_locator": "主教材，1.2.1“2．标识解析体系”；图 1-5",
+      "verification_status": "not applicable",
+      "allowed_use": "用熟悉机制建立认知入口"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "标识解析体系由标识编码和解析系统两部分组成；前者赋予身份，后者完成唯一定位和信息查询",
+      "source_locator": "主教材，1.2.1“2．标识解析体系”中“两部分组成”",
+      "verification_status": "not applicable",
+      "allowed_use": "作为本集机制主轴"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "国际根、国家顶级、二级、企业、递归解析五类主体的教材职责",
+      "source_locator": "主教材，1.2.1 图 1-6 后的层级结构说明表",
+      "verification_status": "not verified—version unspecified",
+      "allowed_use": "解释高层角色分工与协作方向"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "国家顶级节点支持跨二级节点与异构体系互联；二级节点面向行业；企业节点服务特定企业并可定义数据访问方式；递归解析节点提供公共查询和访问入口并可使用缓存",
+      "source_locator": "主教材，1.2.1 层级结构说明表",
+      "verification_status": "not verified—version unspecified",
+      "allowed_use": "支持语义级查询路径和角色关系"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "图 1-5 的 DNS/标识解析左右类比关系",
+      "source_locator": "教材图 1-5 原始资产，图 1-5",
+      "verification_status": "not applicable",
+      "allowed_use": "作为 DNS 类比关系的证据锚点"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "图 1-6 展示国际根、国家顶级、二级、企业和递归解析节点的总体层级关系",
+      "source_locator": "教材图 1-6 原始资产，图 1-6",
+      "verification_status": "not verified—version unspecified",
+      "allowed_use": "作为高层角色关系的证据锚点"
+    },
+    {
+      "evidence_id": "E009",
+      "claim_or_asset": "承接第 05 集收货场景：已确认同一零部件后，质检员继续查询批次、状态或说明",
+      "source_locator": "直接前置任务包的收货情境；本集开场教学叙事",
+      "verification_status": "not applicable",
+      "allowed_use": "承接“查的是谁”，提出“到哪里查、返回什么”"
+    },
+    {
+      "evidence_id": "E010",
+      "claim_or_asset": "“提交标识→公共查询入口→分层定位→企业侧相关信息或访问入口→结果返回”的语义级查询链",
+      "source_locator": "教学归纳，依据 E002、E004–E006",
+      "verification_status": "not applicable",
+      "allowed_use": "高层解释各角色怎样围绕一次查询协作"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "设想一个收货质检的现场。同一个零部件已经确认了身份，下游知道查的是谁。可是身份对齐之后，质检员的问题并没有结束。这个零件属于哪个批次？现在的状态怎么样？相关的说明要去哪里查看？读到身份，只是查询的起点，编码不会自动把答案全部摆在眼前。\n\n",
+      "teaching_purpose": "用已确认身份的收货质检情境提出仍需查询的信息问题。",
+      "single_message": "确认对象身份并不等于已经获得批次、状态和说明。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V001",
+          "meaning": "同一零部件身份已确认后，仍要查询批次、状态和说明；这是教学情境。",
+          "evidence_refs": [
+            "E009"
+          ]
+        }
+      ],
+      "protected_relations": [],
+      "entry_condition": "观众已知道对象可以被确认身份。",
+      "exit_condition": "观众理解读到身份只是查询的起点。",
+      "timing": {
+        "char_equivalent": 106.0,
+        "min_seconds": 27,
+        "target_seconds": 28,
+        "max_seconds": 29,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": [
+        "A001"
+      ],
+      "nx": "先把编码理解成对象的身份键。它要回答的是“这是谁”，帮助系统把一个对象同其他对象区分开。批次、位置、状态或者说明这类信息，可以和这个身份关联起来，却不必全部写进编码本身。信息一变，编码就得跟着改，身份反而失去了稳定的锚点。\n\n",
+      "teaching_purpose": "建立编码作为稳定身份键而不是全部信息容器的理解。",
+      "single_message": "编码回答对象是谁，相关信息可与身份关联而不必写进编码。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V002",
+          "meaning": "编码充当对象身份键，用于把一个对象同其他对象区分开。",
+          "evidence_refs": [
+            "E004"
+          ]
+        },
+        {
+          "semantic_item_id": "V003",
+          "meaning": "批次、位置、状态或说明可与身份关联，信息变化不应迫使身份键随之失稳。",
+          "evidence_refs": [
+            "E004",
+            "E009"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "标识编码",
+          "relation": "赋予",
+          "to": "对象身份",
+          "direction": "标识编码→对象身份"
+        },
+        {
+          "relation_id": "R002",
+          "from": "批次、位置、状态或说明",
+          "relation": "可与身份键关联而不必全部写入",
+          "to": "标识编码",
+          "direction": "相关信息→关联→身份键"
+        }
+      ],
+      "entry_condition": "观众已看到身份确认后仍有查询问题。",
+      "exit_condition": "观众把编码理解为稳定的身份键，而非全部业务数据。",
+      "timing": {
+        "char_equivalent": 98.0,
+        "min_seconds": 25,
+        "target_seconds": 26,
+        "max_seconds": 27,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": [
+        "A002"
+      ],
+      "nx": "那么，从身份键走到相关信息，靠的是什么呢？标识解析体系。它做的事情可以概括成一句话：标识解析体系把设备、服务、产品等实体的标识符，解析为地址、位置、元数据等相关信息。注意，这里的解析不是把一串字符拆开念含义，而是让系统拿着标识去完成定位和查询。\n\n",
+      "teaching_purpose": "定义标识解析的目标，并区分系统定位查询与字符释义。",
+      "single_message": "标识解析让系统依据标识完成定位和查询，得到相关信息。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V004",
+          "meaning": "设备、服务、产品等实体的标识符可被解析为地址、位置、元数据等相关信息。",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        {
+          "semantic_item_id": "V005",
+          "meaning": "这里的解析是系统定位和查询，不是拆开字符念含义。",
+          "evidence_refs": [
+            "E002"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R003",
+          "from": "标识符",
+          "relation": "经标识解析体系解析为",
+          "to": "地址、位置、元数据等相关信息",
+          "direction": "标识符→标识解析体系→相关信息"
+        }
+      ],
+      "entry_condition": "观众已理解编码是对象的身份键。",
+      "exit_condition": "观众理解解析把身份键带向定位和查询，而非字符解释。",
+      "timing": {
+        "char_equivalent": 108.0,
+        "min_seconds": 27,
+        "target_seconds": 28,
+        "max_seconds": 30,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": [
+        "A003"
+      ],
+      "nx": "概念有点抽象，拿个熟悉的例子就好懂了。域名解析系统，也就是常说的 DNS。人在浏览器里输入一个域名，系统会把这个好记的名字，变成浏览器真正能访问的网络地址。工业互联网标识解析也有类似的映射关系，提交一个标识，得到一个结果，方向是一致的。\n\n",
+      "teaching_purpose": "借 DNS 建立从提交名称或标识到获得结果的解析映射直觉。",
+      "single_message": "DNS 与工业互联网标识解析都可帮助理解提交输入后获得结果的映射关系。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V006",
+          "meaning": "域名解析系统（DNS）与工业互联网标识解析共同体现提交名称或标识、获得结果的解析映射。",
+          "evidence_refs": [
+            "E003",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R004",
+          "from": "域名解析系统（DNS）与工业互联网标识解析",
+          "relation": "共同体现",
+          "to": "从提交输入到获得结果的解析映射",
+          "direction": "两类系统→解析映射"
+        }
+      ],
+      "entry_condition": "观众已知道解析用于定位和查询。",
+      "exit_condition": "观众形成解析映射的直觉，并知道 DNS 的中文含义。",
+      "timing": {
+        "char_equivalent": 104.5,
+        "min_seconds": 27,
+        "target_seconds": 27,
+        "max_seconds": 29,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": [
+        "A004"
+      ],
+      "nx": "不过类比不能走得太远。DNS 主要为互联网访问提供定位。工业互联网面对的对象，可能是设备、产品、零部件，也可能是算法、工序这类虚拟资源；而查询结果，还可能关联地址、位置或者元数据。两边相同的只是“解析映射”这一步，协议、治理方式、返回内容，都不一样。\n\n",
+      "teaching_purpose": "明确 DNS 类比只用于解析映射直觉，不能替代工业互联网体系本身。",
+      "single_message": "两类系统只在解析映射上相同，对象、协议、治理和结果不同。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V007",
+          "meaning": "DNS 类比只保留解析映射共同点；工业对象、协议、治理方式和返回内容并不相同。",
+          "evidence_refs": [
+            "E003",
+            "E007"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R005",
+          "from": "DNS 类比",
+          "relation": "仅共享",
+          "to": "解析映射直觉",
+          "direction": "类比→共同点"
+        },
+        {
+          "relation_id": "R006",
+          "from": "工业互联网标识解析",
+          "relation": "不同于 DNS 的",
+          "to": "对象、协议、治理方式和返回内容",
+          "direction": "工业互联网标识解析≠DNS"
+        }
+      ],
+      "entry_condition": "观众已建立 DNS 的解析映射直觉。",
+      "exit_condition": "观众不会把 DNS 的协议、治理或返回内容迁移到工业互联网。",
+      "timing": {
+        "char_equivalent": 104.5,
+        "min_seconds": 27,
+        "target_seconds": 27,
+        "max_seconds": 29,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": [
+        "A002",
+        "A003"
+      ],
+      "nx": "所以，标识解析体系由两个相互配合的部分组成。一部分是标识编码，给机器、产品、零部件以及虚拟资源赋予身份；另一部分是解析系统，利用这个身份去做唯一定位和信息查询。没有稳定的编码，系统不知道查谁；只有编码而没有解析系统，也找不到它关联的信息。两部分缺一不可。\n\n",
+      "teaching_purpose": "建立标识编码与解析系统的分工及其相互依赖。",
+      "single_message": "编码赋予身份，解析系统据此定位和查询，两部分缺一不可。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V008",
+          "meaning": "标识编码赋予身份，解析系统利用身份完成唯一定位和信息查询。",
+          "evidence_refs": [
+            "E004"
+          ]
+        },
+        {
+          "semantic_item_id": "V009",
+          "meaning": "没有稳定编码不知道查谁，只有编码没有解析系统也找不到关联信息。",
+          "evidence_refs": [
+            "E004"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R007",
+          "from": "标识编码",
+          "relation": "赋予",
+          "to": "机器、产品、零部件以及虚拟资源的身份",
+          "direction": "标识编码→对象身份"
+        },
+        {
+          "relation_id": "R008",
+          "from": "解析系统",
+          "relation": "利用身份完成",
+          "to": "唯一定位和信息查询",
+          "direction": "解析系统→定位和查询"
+        }
+      ],
+      "entry_condition": "观众已理解身份键与解析目标。",
+      "exit_condition": "观众理解编码与解析系统不能相互替代。",
+      "timing": {
+        "char_equivalent": 114.0,
+        "min_seconds": 29,
+        "target_seconds": 30,
+        "max_seconds": 32,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": [
+        "A006"
+      ],
+      "nx": "回到开头的零部件。质检员提交编码之后，请求先进入一个可访问的查询入口，再由体系判断该到哪里寻找相关记录。整条路径可以概括为：提交标识，找到负责范围，定位到企业侧的相关信息或访问入口，再把结果返回给查询者。这是一条高层路径，不是固定的协议流程，至于缓存怎么命中、请求怎么转发，那些细节不在这次讨论的范围里。\n\n",
+      "teaching_purpose": "沿一次查询建立从入口、负责范围到企业侧结果的高层语义路径。",
+      "single_message": "查询经可访问入口和分层定位关联到企业侧相关信息或访问入口，再返回结果。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V010",
+          "meaning": "一次查询可概括为提交标识、找到负责范围、关联企业侧相关信息或访问入口并返回结果。",
+          "evidence_refs": [
+            "E010"
+          ]
+        },
+        {
+          "semantic_item_id": "V011",
+          "meaning": "该路径是高层语义归纳，不是固定协议步骤，不展开缓存命中或请求转发。",
+          "evidence_refs": [
+            "E006",
+            "E010"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R009",
+          "from": "提交标识",
+          "relation": "经公共查询入口和分层定位关联到",
+          "to": "企业侧相关信息或访问入口，并返回结果",
+          "direction": "提交标识→查询入口→分层定位→企业侧相关信息或访问入口→结果返回"
+        }
+      ],
+      "entry_condition": "观众已理解编码与解析系统相互配合。",
+      "exit_condition": "观众获得查询链的高层语义，而不把它当作协议流程。",
+      "timing": {
+        "char_equivalent": 138.0,
+        "min_seconds": 35,
+        "target_seconds": 36,
+        "max_seconds": 38,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": [
+        "A007"
+      ],
+      "nx": "继续看这条路径上的角色。递归解析节点面向查询者，提供公共查询和访问入口，还可以利用缓存提升服务性能。向上看，国际根节点面向全球，负责根区数据管理和根解析。国家顶级节点与全球根互联，还能支持跨二级节点以及异构体系之间的互联。再往下，二级节点贴近行业，面向行业提供标识注册和解析服务。企业节点服务特定企业，并且可以结合企业特点定义数据访问方式。这样一路看下来，负责范围在逐步缩小，从大范围的协同，走到具体企业能够提供的信息或访问入口。\n\n",
+      "teaching_purpose": "说明五类节点的高层职责及负责范围由大到小的协作方向。",
+      "single_message": "五类节点按各自的高层职责协作，把查询引向具体企业可提供的信息或访问入口。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V012",
+          "meaning": "递归解析节点面向查询者提供公共查询和访问入口，并可利用缓存提升服务性能。",
+          "evidence_refs": [
+            "E005",
+            "E006",
+            "E008"
+          ]
+        },
+        {
+          "semantic_item_id": "V013",
+          "meaning": "国际根、国家顶级、二级和企业节点分别承担全球根区与根解析、跨范围互联、行业服务和特定企业服务的高层职责。",
+          "evidence_refs": [
+            "E005",
+            "E006",
+            "E008"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R010",
+          "from": "递归解析节点",
+          "relation": "面向查询者提供",
+          "to": "公共查询和访问入口",
+          "direction": "递归解析节点→查询者"
+        },
+        {
+          "relation_id": "R011",
+          "from": "国际根节点",
+          "relation": "面向全球负责",
+          "to": "根区数据管理和根解析",
+          "direction": "国际根节点→全球根区"
+        },
+        {
+          "relation_id": "R012",
+          "from": "国家顶级节点",
+          "relation": "与全球根互联并支持",
+          "to": "跨二级节点及异构体系之间的互联",
+          "direction": "国家顶级节点→跨范围互联"
+        },
+        {
+          "relation_id": "R013",
+          "from": "二级节点",
+          "relation": "面向行业提供",
+          "to": "标识注册和解析服务",
+          "direction": "二级节点→行业"
+        },
+        {
+          "relation_id": "R014",
+          "from": "企业节点",
+          "relation": "服务特定企业并可定义",
+          "to": "数据访问方式",
+          "direction": "企业节点→特定企业"
+        }
+      ],
+      "entry_condition": "观众已得到一次查询的高层语义路径。",
+      "exit_condition": "观众能说出五类节点的稳定高层职责和负责范围的协作方向。",
+      "timing": {
+        "char_equivalent": 197.0,
+        "min_seconds": 50,
+        "target_seconds": 51,
+        "max_seconds": 54,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": [
+        "A008"
+      ],
+      "nx": "这五个角色不是彼此孤立的五座节点。国际根和国家顶级负责更大范围的协同，二级节点连接行业服务，企业节点贴近对象和它的数据，递归解析节点面向查询者提供入口。查询者不需要事先知道信息存放在哪里，分层协作会帮他找到负责的角色。\n\n",
+      "teaching_purpose": "把五类职责收束为查询者能够借助分层协作找到负责角色的机制。",
+      "single_message": "分层协作让查询者无须预先知道信息存放位置，也能找到负责角色。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V014",
+          "meaning": "国际根和国家顶级承担更大范围协同，二级连接行业服务，企业贴近对象和数据，递归解析节点面向查询者提供入口。",
+          "evidence_refs": [
+            "E005",
+            "E006",
+            "E008"
+          ]
+        },
+        {
+          "semantic_item_id": "V015",
+          "meaning": "查询者不必预先知道信息存放位置，分层协作会帮助找到负责角色。",
+          "evidence_refs": [
+            "E010"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R015",
+          "from": "五类节点的分层协作",
+          "relation": "帮助查询者找到",
+          "to": "负责角色",
+          "direction": "查询者→分层协作→负责角色"
+        }
+      ],
+      "entry_condition": "观众已知道五类节点分别承担什么高层职责。",
+      "exit_condition": "观众理解这些角色共同服务于一次查询，而非彼此孤立。",
+      "timing": {
+        "char_equivalent": 102.0,
+        "min_seconds": 26,
+        "target_seconds": 27,
+        "max_seconds": 28,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A010",
+      "callback_a_ids": [
+        "A009"
+      ],
+      "nx": "查询返回什么，也要守住边界。解析结果可能是地址、位置、元数据这类相关信息，也可能是继续访问某项服务的入口。它并不等于：任何人只要拿到编码，就能无条件取得对象的全部生产、质量或商业数据。企业节点可以定义数据访问方式，受控的数据留在边界之后。\n\n",
+      "teaching_purpose": "限定解析结果的示例范围和数据访问边界。",
+      "single_message": "解析可能返回相关信息或访问入口，不等于任何人都能无条件获得全部数据。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V016",
+          "meaning": "解析结果可能是地址、位置、元数据等相关信息，也可能是继续访问服务的入口。",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        {
+          "semantic_item_id": "V017",
+          "meaning": "企业可定义数据访问方式；解析成功不等于无条件获得全部生产、质量或商业数据。",
+          "evidence_refs": [
+            "E006"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R016",
+          "from": "解析结果",
+          "relation": "可能是",
+          "to": "地址、位置、元数据等相关信息或访问入口",
+          "direction": "解析结果→相关信息或访问入口"
+        },
+        {
+          "relation_id": "R017",
+          "from": "企业节点",
+          "relation": "可定义",
+          "to": "数据访问方式",
+          "direction": "企业节点→数据访问方式"
+        }
+      ],
+      "entry_condition": "观众已理解分层协作可以定位负责角色。",
+      "exit_condition": "观众不会把解析结果误解为全部数据的无条件开放。",
+      "timing": {
+        "char_equivalent": 107.0,
+        "min_seconds": 27,
+        "target_seconds": 28,
+        "max_seconds": 30,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A011",
+      "callback_a_ids": [
+        "A001",
+        "A007",
+        "A010"
+      ],
+      "nx": "本期总结。回到质检员的扫码动作。终端读出编码，编码是身份键；查询入口接收请求，分层体系帮助定位负责范围；企业侧把身份关联到可以提供的信息或访问方式；结果再返回业务现场。编码这才从一串可识别的字符，变成能够支撑信息查询的基础。记住这条主线：编码回答“查谁”，解析回答“去哪里查、能得到什么”，分层节点让查询可以跨范围协作。这套机制是稳定的，它不依赖某一年建了多少节点、分布在哪些城市。",
+      "teaching_purpose": "回扣收货情境，收束编码、解析和分层协作的稳定机制。",
+      "single_message": "编码回答查谁，解析回答去哪里查和能得到什么，分层节点支持跨范围协作。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V018",
+          "meaning": "收束链条为：业务对象经身份键进入查询入口，分层体系定位负责范围，企业侧提供相关信息或访问方式，结果返回业务现场。",
+          "evidence_refs": [
+            "E004",
+            "E006",
+            "E009",
+            "E010"
+          ]
+        },
+        {
+          "semantic_item_id": "V019",
+          "meaning": "本集只讲稳定机制，不引入某一年节点数量、城市分布或规模数据。",
+          "evidence_refs": [
+            "E001"
+          ]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R018",
+          "from": "编码",
+          "relation": "回答",
+          "to": "查谁",
+          "direction": "编码→查谁"
+        },
+        {
+          "relation_id": "R019",
+          "from": "解析",
+          "relation": "回答",
+          "to": "去哪里查、能得到什么",
+          "direction": "解析→去哪里查、能得到什么"
+        },
+        {
+          "relation_id": "R020",
+          "from": "分层节点",
+          "relation": "让查询能够",
+          "to": "跨范围协作",
+          "direction": "分层节点→跨范围协作"
+        }
+      ],
+      "entry_condition": "观众已理解查询路径、角色协作和结果边界。",
+      "exit_condition": "观众能用编码、解析和分层协作三句话概括稳定机制。",
+      "timing": {
+        "char_equivalent": 169.0,
+        "min_seconds": 43,
+        "target_seconds": 44,
+        "max_seconds": 47,
+        "short_page_reason": null
+      }
+    }
+  ]
+}

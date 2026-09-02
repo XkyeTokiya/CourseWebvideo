@@ -1,0 +1,291 @@
+/* ─────────────────────────────────────────────────────────────
+ * 08-physical-digital-pivot · A008 split-compare-with-pivot
+ * mechanism: compare-and-reweight — 左右两栏空间全程持续，对照
+ *   完成职责边界；pivot 只保留"是否共同工作"短判据，不展开
+ *   技术细节，不轮播，不加跨栏箭头与底部结论
+ * prefix: pd-
+ * ───────────────────────────────────────────────────────────── */
+
+.pd-scene {
+  justify-content: center;
+  gap: 48px;
+}
+
+/* ── 论点标题 ── */
+.pd-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: pd-rise 640ms var(--ease-quart) backwards;
+}
+.pd-title-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--theme-process-surface);
+}
+.pd-title-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.pd-title-text em {
+  font-style: normal;
+  border-bottom: 7px solid var(--theme-process);
+  padding-bottom: 3px;
+}
+@keyframes pd-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pd-main {
+  display: flex;
+  align-items: stretch;
+  gap: 44px;
+}
+.is-settled .pd-col {
+  transform: scale(0.985);
+  opacity: 0.92;
+}
+
+/* ── 对照栏（左：生产现场 / 右：数字空间）── */
+.pd-col {
+  flex: 1;
+  min-height: 660px;
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    background-color var(--dur-slow) var(--ease-soft),
+    border-color var(--dur-slow) var(--ease-soft),
+    box-shadow var(--dur-slow) var(--ease-soft);
+}
+.pd-col.is-ghost {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  opacity: 0.85;
+}
+.pd-col.is-ghost::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: inherit;
+}
+.pd-col.is-on {
+  animation: pd-col-in 640ms var(--ease-overshoot) backwards;
+}
+@keyframes pd-col-in {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pd-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.pd-col.is-on .pd-slot,
+.pd-pivot.is-on .pd-slot {
+  opacity: 0;
+}
+
+.pd-col-body {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  flex: 1;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.pd-col.is-on .pd-col-body {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 140ms;
+}
+
+.pd-col-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 20px;
+  border-bottom: var(--rule-w) dashed var(--theme-dashed-line);
+}
+.pd-col-mark {
+  width: 16px;
+  height: 16px;
+  background: var(--theme-structural);
+}
+.pd-col-name {
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.04em;
+}
+
+.pd-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.pd-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  opacity: 0;
+  transform: translateX(-14px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+  transition-delay: calc(var(--pd-i) * 240ms + 320ms);
+}
+.pd-col.is-on .pd-row {
+  opacity: 1;
+  transform: translateX(0);
+}
+.pd-row-dot {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  background: var(--theme-process);
+}
+.pd-row-text {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  letter-spacing: 0.03em;
+}
+
+.pd-col-intro {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 23px;
+  color: var(--text-2);
+}
+
+.pd-col-foot {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+}
+.pd-foot-label {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+.pd-foot-tag {
+  font-family: var(--font-body);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: var(--rule-w) solid var(--theme-process);
+  border-radius: 8px;
+  padding: 5px 16px;
+}
+
+/* ── 中枢判据：短判据落定，不展开技术细节 ── */
+.pd-pivot {
+  width: 190px;
+  flex: none;
+  align-self: center;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    background-color var(--dur-slow) var(--ease-soft),
+    border-color var(--dur-slow) var(--ease-soft),
+    box-shadow var(--dur-slow) var(--ease-soft);
+}
+.pd-pivot.is-ghost {
+  opacity: 0.85;
+}
+.pd-pivot.is-ghost::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: 18px;
+}
+.pd-pivot.is-on {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 18px;
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  animation: pd-pivot-in 620ms var(--ease-overshoot) backwards;
+}
+@keyframes pd-pivot-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.pd-pivot-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-soft) 160ms;
+}
+.pd-pivot.is-on .pd-pivot-body {
+  opacity: 1;
+}
+.pd-pivot-kicker {
+  font-family: var(--font-mono);
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--theme-process);
+}
+.pd-pivot-text {
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.08em;
+  text-align: center;
+  line-height: 1.4;
+}

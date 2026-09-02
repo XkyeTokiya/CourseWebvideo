@@ -1,0 +1,382 @@
+/* ─────────────────────────────────────────────────────────────
+ * 07-feedback-with-identity · A007 image-with-insight-rail
+ * mechanism: persistent-media-reading — M003 场景图全程持续不卸载，
+ *   图侧四条阅读项按售后业务顺序依次完成（确认对象→提交反馈→
+ *   回查记录→事实边界），阅读焦点随口播迁移；R014「反馈对应前序
+ *   记录」由项 2→3 的先后阅读与项 3 语境条（等权 chips，无连线）
+ *   承载，不画售后端返回生产端的回流线；图上不叠加完整句、路径
+ *   或虚构系统界面；本配方不设 final judgment / 底部总结栏
+ * prefix: fw-
+ * ───────────────────────────────────────────────────────────── */
+
+.fw-scene {
+  justify-content: flex-start;
+  gap: 34px;
+}
+
+/* ── 论点标题（可见标题：保留） ───────────────────────────── */
+
+.fw-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  color: var(--theme-structural);
+  animation: fw-rise 640ms var(--ease-quart) backwards;
+}
+
+.fw-thesis em {
+  font-style: normal;
+  padding-bottom: 6px;
+  border-bottom: 7px solid var(--theme-warning);
+}
+
+/* ── 主区：左 = M003 场景图（全程持续）｜右 = insight rail ── */
+
+.fw-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 960px minmax(0, 1fr);
+  gap: 60px;
+  align-items: stretch;
+}
+
+.fw-media {
+  margin: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fw-media-in 700ms var(--ease-quart) backwards;
+}
+
+.fw-photo {
+  padding: 14px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.fw-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--surface-3);
+}
+
+.fw-media-cap {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+}
+
+@keyframes fw-media-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── insight rail：四阅读项槽位固定，完成后累计保留不重排 ── */
+
+.fw-rail {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+
+.fw-rail-lead {
+  margin: 0 0 4px;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.fw-item {
+  padding: 18px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: opacity 480ms var(--ease-soft),
+    box-shadow 480ms var(--ease-soft);
+}
+
+.fw-item[data-state="on"] {
+  animation: fw-stamp-in 620ms var(--ease-overshoot) backwards;
+  animation-delay: var(--fw-d, 0ms);
+}
+
+/* 预留项槽：虚线占位，与就位后同高（内容仅隐藏可见性），不重排 */
+
+.fw-item[data-state="waiting"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+.fw-item[data-state="waiting"] .fw-no {
+  opacity: 0.3;
+  color: var(--text-faint);
+}
+
+.fw-item[data-state="waiting"] .fw-label,
+.fw-item[data-state="waiting"] .fw-text,
+.fw-item[data-state="waiting"] .fw-note3-context {
+  visibility: hidden;
+}
+
+/* 阅读焦点迁移：当前项描环，已读项弱化但持续保留 */
+
+.fw-item.is-focus:not([data-state="waiting"]) {
+  box-shadow: var(--card-shadow), 0 0 0 4px var(--accent-soft);
+}
+
+.fw-item.is-dim {
+  opacity: 0.55;
+}
+
+.fw-item-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.fw-no {
+  font-size: 38px;
+  color: var(--theme-process);
+  transition: opacity 480ms var(--ease-soft), color 480ms var(--ease-soft);
+}
+
+.fw-label {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.fw-text {
+  margin: 0;
+  min-height: 78px;
+  font-family: var(--font-body);
+  font-size: 26px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* ── 阅读项 3：waiting → dawning（语境开始）→ on（完成）────
+   卡体不再重放入场（dawning 时已可见），完成拍只由正文 stamp-in */
+
+.fw-item-note {
+  transition: opacity 480ms var(--ease-soft),
+    box-shadow 480ms var(--ease-soft),
+    background-color 480ms var(--ease-soft),
+    border-color 480ms var(--ease-soft);
+}
+
+.fw-item-note[data-state="on"] {
+  animation: none;
+}
+
+.fw-item-note[data-state="dawning"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+.fw-item-note[data-state="dawning"] .fw-no {
+  opacity: 0.6;
+}
+
+.fw-item-note[data-state="dawning"] .fw-label {
+  opacity: 0.72;
+}
+
+.fw-item-note[data-state="dawning"] .fw-text {
+  visibility: hidden;
+}
+
+/* R014 语境条：拍 2 出现、完成后保留为项内结构行；
+   等权 chips 罗列，不画连线、不画回流路径 */
+
+.fw-note3-context {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  min-height: 42px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 460ms var(--ease-soft), visibility 0s 460ms;
+}
+
+.fw-item-note[data-state="dawning"] .fw-note3-context {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 460ms var(--ease-soft) 220ms, visibility 0s;
+}
+
+.fw-item-note[data-state="on"] .fw-note3-context {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 460ms var(--ease-soft), visibility 0s;
+}
+
+.fw-ctx-lead {
+  font-family: var(--font-mono);
+  font-size: 25px;
+  letter-spacing: 0.04em;
+  color: var(--theme-process);
+}
+
+.fw-ctx-chips {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.fw-ctx-chip {
+  padding: 3px 12px;
+  font-family: var(--font-mono);
+  font-size: 25px;
+  line-height: 1.4;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px solid var(--theme-dashed-line);
+}
+
+.fw-item-note[data-state="dawning"] .fw-ctx-chip {
+  animation: fw-chip-in 420ms var(--ease-overshoot) backwards;
+  animation-delay: calc(560ms + var(--fw-i) * 140ms);
+}
+
+/* 完成拍：正文 stamp-in，语境条保持 */
+
+.fw-item-note[data-state="on"] .fw-text {
+  animation: fw-text-in 560ms var(--ease-overshoot) 160ms backwards;
+}
+
+/* ── 项内强调：身份高亮（R014）/ 定位关键词 / 边界否定 ───── */
+
+/* 拍 2 起身份短语锚定绿色高亮（一次性扫入，持续保留） */
+.fw-id-em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background-image: linear-gradient(var(--accent-soft), var(--accent-soft));
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size 700ms var(--ease-quart) 260ms;
+}
+
+.fw-scene:not([data-state="feedback-submitted"]) .fw-id-em {
+  background-size: 100% 100%;
+}
+
+.fw-key-em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--theme-structural);
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.fw-item[data-state="on"] .fw-key-em::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 5px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: fw-underline 560ms var(--ease-quart) 720ms forwards;
+}
+
+.fw-scope-em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--theme-structural);
+  padding-bottom: 4px;
+  border-bottom: 5px solid var(--theme-warning);
+}
+
+.fw-negation {
+  font-weight: 700;
+  color: var(--theme-warning);
+}
+
+/* 事实边界项：编号转陶土橙，标记注意语义 */
+.fw-item-boundary[data-state="on"] .fw-no {
+  color: var(--theme-warning);
+}
+
+/* ── 共用动画 ─────────────────────────────────────────────── */
+
+@keyframes fw-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fw-stamp-in {
+  0% {
+    opacity: 0;
+    transform: translateY(36px) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fw-text-in {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fw-chip-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fw-underline {
+  to {
+    transform: scaleX(1);
+  }
+}

@@ -1,0 +1,197 @@
+/* value-recap · A008 parallel-cards-with-takeaway
+   mechanism: equal-weight-accumulation — 两张价值卡等权积累，takeaway 区逐步收束
+   连续表意：回扣段为一条连续环路语句，takeaway 区跨拍累计不重排
+   prefix: vr- */
+
+.vr-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── 标题区（S033 判断方向） ──────────────────────────── */
+
+.vr-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: vr-rise 640ms var(--ease-quart) backwards;
+}
+
+.vr-title em {
+  font-style: normal;
+  border-bottom: 8px solid var(--theme-process);
+  padding-bottom: 4px;
+}
+
+@keyframes vr-rise {
+  0%   { opacity: 0; transform: translateY(26px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 两张等权价值卡 ───────────────────────────────────── */
+
+.vr-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.vr-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 26px 32px;
+  min-width: 0;
+  animation: vr-stamp-in 600ms var(--ease-overshoot) backwards;
+}
+
+.vr-card:nth-child(2) {
+  animation-delay: 200ms;
+}
+
+@keyframes vr-stamp-in {
+  0%   { opacity: 0; transform: translateY(30px) scale(1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.vr-card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.vr-idx {
+  font-size: 38px;
+  color: var(--theme-process);
+}
+
+.vr-card-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.vr-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vr-item {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--text-2);
+}
+
+.vr-cap {
+  margin: 6px 0 0;
+  padding-top: 12px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  font-size: 23px;
+  color: var(--text-mute);
+}
+
+/* ── takeaway 收束区：跨拍累计，不重排 ────────────────── */
+
+.vr-takeaway {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 10px;
+  padding: 26px 34px;
+}
+
+.vr-tk-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.2em;
+  color: var(--text-mute);
+}
+
+.vr-sec {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 480ms var(--ease-soft), visibility 0s 480ms;
+}
+
+/* 状态相关动画挂 is-on 态：切换时重新触发（mount 锚定陷阱） */
+.vr-sec.is-on {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 480ms var(--ease-soft), visibility 0s;
+  animation: vr-sec-in 560ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--vr-i) * 180ms);
+}
+
+@keyframes vr-sec-in {
+  0%   { opacity: 0; transform: translateY(24px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.vr-warn-line {
+  margin: 0 0 10px;
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+.vr-line {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.vr-callback {
+  margin: 0 0 10px;
+  display: inline-block;
+  padding: 4px 14px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.14em;
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+}
+
+.vr-loop {
+  margin: 0 0 10px;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 900;
+  line-height: 1.55;
+  color: var(--theme-structural);
+}
+
+.vr-line-strong {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.vr-final {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  line-height: 1.5;
+  color: var(--theme-structural);
+}
+
+.vr-final em {
+  font-style: normal;
+  border-bottom: 6px solid var(--theme-warning);
+  padding-bottom: 2px;
+}

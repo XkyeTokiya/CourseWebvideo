@@ -1,0 +1,649 @@
+{
+  "schema_version": "courseplay-a-page/v4",
+  "document_kind": "production",
+  "episode_id": "episode-07",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "第 07 集标题、来源范围、前置关系、相邻边界和动态风险",
+      "source_locator": "已确认课程架构，Episode Architecture 第 07 集及第 05–13、28–31 集责任",
+      "verification_status": "not applicable",
+      "allowed_use": "控制单集范围、去重和时长"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "教材把 2018 年概括为全面实施工业互联网建设的开局之年，并回顾“323”行动",
+      "source_locator": "主教材，1.2.2，2018 年里程碑段",
+      "verification_status": "not verified—version unspecified",
+      "allowed_use": "作为带教材归属的发展起点"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "教材对 2019—2023 年从节点接入、行业渗透到规模发展的阶段性回顾",
+      "source_locator": "主教材，1.2.2，2019—2023 年里程碑段",
+      "verification_status": "not verified—version unspecified",
+      "allowed_use": "只作压缩的阶段过渡"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "《工业互联网创新发展行动计划（2021—2023 年）》由工业互联网专项工作组印发",
+      "source_locator": "权威补充来源，通知正文；工信部信管〔2020〕197 号",
+      "verification_status": "verified",
+      "allowed_use": "作为 2021—2023 年政策阶段锚点"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "十二部门印发《工业互联网标识解析体系“贯通”行动计划（2024—2026 年）》；文号、落款和总体目标",
+      "source_locator": "政府政策全文转载–政府交叉核验来源，通知及“一、总体要求”",
+      "verification_status": "verified",
+      "allowed_use": "支持政策名称、政策周期、阶段方向和总体目标"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "到 2026 年的规模应用目标：服务企业超 50 万家、60 个行业、累计注册量超 6000 亿个、日均解析量 3 亿次以上、主动标识载体超 5000 万枚",
+      "source_locator": "政府政策全文转载–政府交叉核验来源，“一、总体要求（二）总体目标”",
+      "verification_status": "verified",
+      "allowed_use": "只能作为 2026 年政策目标展示"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "“贯通”行动覆盖产业链供应链、消费品、数字医疗、绿色低碳、安全管理、城市数字化、产业集群等重点任务",
+      "source_locator": "政府政策全文转载–政府交叉核验来源，“二、重点任务”",
+      "verification_status": "verified",
+      "allowed_use": "说明规模应用的范围已经从节点建设进入业务和产业场景"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "“建设→应用”可归纳为基础设施可用→业务环节贯通、单点接入→产业链协同、规模指标→持续价值与安全能力",
+      "source_locator": "教学归纳，依据 E002–E007",
+      "verification_status": "not applicable",
+      "allowed_use": "作为本集一句话结论和教学主轴"
+    },
+    {
+      "evidence_id": "E009",
+      "claim_or_asset": "已有标识解析能力的汽车零部件工厂，工程师关注标识是否真正进入质检、物流和售后流程",
+      "source_locator": "教学组织，承接既有稳定机制",
+      "verification_status": "not applicable",
+      "allowed_use": "从第 06 集机制自然转入阶段问题"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "上一讲我们确认过：编码回答“查谁”，解析回答“去哪里查、得到什么”。今天换个视角，走进一家已经具备标识解析能力的汽车零部件工厂。先说明，这只是课堂设想，不是哪家企业的真实故事。工厂里，一件零部件扫码就能查到身份，工程师心里还有疑问：查得到，不等于用起来了。质检、物流、售后这些环节用不用它？上下游能不能围着同一个标识配合？这属于另一层事情。\n\n",
+      "teaching_purpose": "承接既有查询机制，以教学设想提出“可解析”之外的业务应用问题。",
+      "single_message": "体系能够解析，不等于标识已经被业务环节和上下游协同真正使用。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V001",
+          "meaning": "编码回答“查谁”，解析回答“去哪里查、得到什么”的前置认识。",
+          "evidence_refs": ["E001"]
+        },
+        {
+          "semantic_item_id": "V002",
+          "meaning": "教学设想中一件零部件经扫码可查身份，与质检、物流、售后及上下游协同尚待进入业务的对照。",
+          "evidence_refs": ["E009"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "编码",
+          "relation": "回答",
+          "to": "查谁",
+          "direction": "概念到问题"
+        },
+        {
+          "relation_id": "R002",
+          "from": "解析",
+          "relation": "回答",
+          "to": "去哪里查、得到什么",
+          "direction": "概念到问题"
+        },
+        {
+          "relation_id": "R003",
+          "from": "体系可用",
+          "relation": "不等同于",
+          "to": "标识已进入业务",
+          "direction": "判断边界"
+        }
+      ],
+      "entry_condition": "学习者已知道编码与解析分别回答的基本问题。",
+      "exit_condition": "学习者能区分解析可用与业务实际使用，并理解本集提出的是后一层问题。",
+      "timing": {
+        "char_equivalent": 147.0,
+        "min_seconds": 37,
+        "target_seconds": 38,
+        "max_seconds": 41,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": ["A001"],
+      "nx": "这层事情，就是“从建设走向规模应用”。建设阶段要解决的是：体系有没有、通不通、能不能提供服务。应用阶段要追问的是：谁在用标识、用在哪个环节、能不能形成持续的价值。两个阶段不是谁取代谁，而是基础能力建好之后，评价的重心往业务深处移动了。\n\n",
+      "teaching_purpose": "定义建设阶段与应用阶段的不同问题，并建立阶段转换不是替代的边界。",
+      "single_message": "建设与应用并非前后替代，而是基础能力具备后，评价重心进一步转向业务中的持续价值。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V003",
+          "meaning": "建设阶段关注体系是否存在、连通并能提供服务。",
+          "evidence_refs": ["E008"]
+        },
+        {
+          "semantic_item_id": "V004",
+          "meaning": "应用阶段关注谁在使用、使用环节及是否形成持续价值。",
+          "evidence_refs": ["E008"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R004",
+          "from": "建设阶段",
+          "relation": "优先解决",
+          "to": "体系是否存在、连通并可提供服务",
+          "direction": "阶段任务"
+        },
+        {
+          "relation_id": "R005",
+          "from": "应用阶段",
+          "relation": "继续追问",
+          "to": "谁在用、用在哪个环节、能否形成持续价值",
+          "direction": "评价重心"
+        },
+        {
+          "relation_id": "R006",
+          "from": "基础能力建好",
+          "relation": "使评价重心移向",
+          "to": "业务深处",
+          "direction": "演进方向"
+        }
+      ],
+      "entry_condition": "学习者已意识到解析能力本身不能说明业务已经用起来。",
+      "exit_condition": "学习者能用不同问题概括建设阶段与应用阶段，并知道两者需要并行推进。",
+      "timing": {
+        "char_equivalent": 102.0,
+        "min_seconds": 26,
+        "target_seconds": 27,
+        "max_seconds": 28,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": ["A002"],
+      "nx": "先看建设阶段。按课程资料的回顾，2018 年是全面实施工业互联网建设的开局之年，当时的推进安排叫“323”行动。这是资料里的说法，只当发展起点，不展开成正式政策文件的内容。对标识解析来说，这个阶段的首要任务，是把基础设施和服务体系搭起来，让跨企业、跨行业的注册和解析先有共同的运行基础。\n\n",
+      "teaching_purpose": "说明建设阶段的历史起点、教材归属边界和基础设施任务。",
+      "single_message": "建设阶段首先要搭起基础设施和服务体系，为跨企业、跨行业的注册与解析建立共同运行基础。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V005",
+          "meaning": "2018 年发展起点与“323”行动仅作为课程资料回顾，不扩展为未核验的正式政策内容。",
+          "evidence_refs": ["E002"]
+        },
+        {
+          "semantic_item_id": "V006",
+          "meaning": "基础设施和服务体系为跨企业、跨行业注册与解析提供共同运行基础。",
+          "evidence_refs": ["E002", "E003", "E008"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R007",
+          "from": "2018 年",
+          "relation": "被课程资料概括为",
+          "to": "全面实施工业互联网建设的开局之年",
+          "direction": "资料归属"
+        },
+        {
+          "relation_id": "R008",
+          "from": "基础设施和服务体系",
+          "relation": "为",
+          "to": "跨企业、跨行业注册与解析的共同运行基础",
+          "direction": "前提关系"
+        }
+      ],
+      "entry_condition": "学习者已知道本集将发展重心分为建设与应用两个相互衔接的阶段。",
+      "exit_condition": "学习者理解建设阶段的首要任务及“323”行动的教材归属边界。",
+      "timing": {
+        "char_equivalent": 124.5,
+        "min_seconds": 32,
+        "target_seconds": 32,
+        "max_seconds": 34,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": ["A003"],
+      "nx": "早期观察，大家习惯看节点接没接入、服务范围扩没扩大、体系稳不稳定。这些指标当然重要，没有可靠的入口、协同的节点和基础服务，应用就无从谈起。可基础设施的数量再多，也回答不了另一个问题：它有没有改变实际的生产经营。节点在跑，和标识进了业务，是两回事。\n\n",
+      "teaching_purpose": "承认建设指标的必要性，同时划清建设数量与业务效果之间不能直接等同的界线。",
+      "single_message": "可靠基础能力是应用前提，但节点接入和设施数量本身不能证明标识已经改变实际生产经营。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V007",
+          "meaning": "节点接入、服务范围和体系稳定性是早期建设观察指标。",
+          "evidence_refs": ["E003"]
+        },
+        {
+          "semantic_item_id": "V008",
+          "meaning": "基础设施数量与标识进入业务、改变生产经营之间不能直接画等号。",
+          "evidence_refs": ["E003", "E008"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R009",
+          "from": "可靠入口、协同节点和基础服务",
+          "relation": "是",
+          "to": "应用展开的必要基础",
+          "direction": "前提关系"
+        },
+        {
+          "relation_id": "R010",
+          "from": "基础设施数量",
+          "relation": "不能单独回答",
+          "to": "是否改变实际生产经营",
+          "direction": "评价边界"
+        },
+        {
+          "relation_id": "R011",
+          "from": "节点在跑",
+          "relation": "不等于",
+          "to": "标识进入业务",
+          "direction": "判断边界"
+        }
+      ],
+      "entry_condition": "学习者理解建设阶段先要形成共同运行的基础。",
+      "exit_condition": "学习者能说明为什么建设指标重要却不足以判断业务应用价值。",
+      "timing": {
+        "char_equivalent": 109.0,
+        "min_seconds": 28,
+        "target_seconds": 28,
+        "max_seconds": 30,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": ["A003"],
+      "nx": "进入 2021 到 2023 年，情况变了。《工业互联网创新发展行动计划（2021—2023 年）》成为新的政策锚点，由工业互联网专项工作组印发。课程资料把这一时期概括为：工业互联网向更多行业渗透，标识解析服务能力也在扩展。每年的数字不必去背，关键是看见一条连续的线：体系从起步建设，一路走到能力增强、行业推广。\n\n",
+      "teaching_purpose": "以已核验政策名称锚定能力增强、行业推广的连续发展阶段。",
+      "single_message": "2021—2023 年的关键线索是体系从起步建设连续发展到能力增强和行业推广，而不是记忆每年的数字。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V009",
+          "meaning": "《工业互联网创新发展行动计划（2021—2023 年）》及其由工业互联网专项工作组印发的已核验通知信息。",
+          "evidence_refs": ["E004"]
+        },
+        {
+          "semantic_item_id": "V010",
+          "meaning": "从起步建设到能力增强、行业推广的连续发展线索。",
+          "evidence_refs": ["E003", "E004"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R012",
+          "from": "2021—2023 年政策锚点",
+          "relation": "承接",
+          "to": "起步建设到能力增强、行业推广的连续发展",
+          "direction": "阶段连续性"
+        }
+      ],
+      "entry_condition": "学习者已能区分早期建设指标与实际业务效果。",
+      "exit_condition": "学习者能把政策名称、周期和能力增强阶段正确关联，而不把未核验的附件细节带入判断。",
+      "timing": {
+        "char_equivalent": 126.0,
+        "min_seconds": 32,
+        "target_seconds": 33,
+        "max_seconds": 35,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": ["A005"],
+      "nx": "随后，一份新政策登场：《工业互联网标识解析体系“贯通”行动计划（2024—2026 年）》，由工业和信息化部等十二部门印发。标题里的“贯通”很关键。这份政策的目光，不再只落在节点建了多少，而是投向制造业和经济社会重点领域：帮助企业数字化转型、畅通产业链供应链、促进不同类型企业之间的融通。它还画了“规模应用”的观察维度：服务多少企业、覆盖多少行业、累计注册量、日均解析量。主动标识载体部署了多少，重点领域的成效又如何。规模不是一个单独的总数，而是几个方面合起来的状态：覆盖面多宽、用得勤不勤、现场载体多少、业务效果怎么样。\n\n",
+      "teaching_purpose": "解释“贯通”政策怎样把评价重心推向业务、协同与多维度的规模应用。",
+      "single_message": "“贯通”把关注点从节点数量扩展到企业数字化、产业链协同及覆盖、频率、载体和效果共同构成的规模状态。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V011",
+          "meaning": "《工业互联网标识解析体系“贯通”行动计划（2024—2026 年）》、工信部联信管〔2023〕271 号、政策周期和工业和信息化部等十二部门印发的身份。",
+          "evidence_refs": ["E005"]
+        },
+        {
+          "semantic_item_id": "V012",
+          "meaning": "政策面向制造业和经济社会重点领域，支撑企业数字化转型、产业链供应链畅通和不同类型企业融通。",
+          "evidence_refs": ["E007"]
+        },
+        {
+          "semantic_item_id": "V013",
+          "meaning": "规模应用需要结合服务企业、覆盖行业、注册量、解析量、主动标识载体和重点领域成效理解。",
+          "evidence_refs": ["E005", "E006"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R013",
+          "from": "“贯通”行动计划",
+          "relation": "支持",
+          "to": "企业数字化转型、产业链供应链畅通和不同类型企业融通",
+          "direction": "支撑方向"
+        },
+        {
+          "relation_id": "R014",
+          "from": "规模应用",
+          "relation": "由多个维度共同观察",
+          "to": "覆盖面、使用频率、现场载体和业务效果",
+          "direction": "多维判断"
+        }
+      ],
+      "entry_condition": "学习者已经看见建设阶段向能力增强和行业推广的连续发展。",
+      "exit_condition": "学习者理解“贯通”并非只增加节点，而是把应用与协同纳入多维度的规模判断。",
+      "timing": {
+        "char_equivalent": 221.0,
+        "min_seconds": 56,
+        "target_seconds": 58,
+        "max_seconds": 61,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": ["A006"],
+      "nx": "计划还提出了到 2026 年的政策目标。服务企业要超过 50 万家，在 60 个行业推广应用；累计注册量超过 6000 亿个，日均解析量达到 3 亿次以上；主动标识载体部署超过 5000 万枚。听数字之前，先记住一个标签：到 2026 年的目标，不是已经实现的统计结果。为什么要分这么清？目标回答“准备走到哪里”，统计回答“实际上走到了哪里”，两件事需要不同的证据。课程资料里的节点数、企业数、解析量也各有各的时点，不能直接搬到今天。所以这一讲只判断发展方向，不评价目标完成率。\n\n",
+      "teaching_purpose": "完整呈现五项政策目标，并建立目标与实际完成值不能混同的时间证据边界。",
+      "single_message": "五项数值都是到 2026 年的政策目标，说明准备走向何处，不是已经实现的统计结果。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V014",
+          "meaning": "“到 2026 年的政策目标”标签及服务企业超 50 万家、60 个行业、注册量超 6000 亿个、日均解析量 3 亿次以上、主动标识载体超 5000 万枚。",
+          "evidence_refs": ["E006"]
+        },
+        {
+          "semantic_item_id": "V015",
+          "meaning": "目标回答准备走到哪里，统计回答实际上走到了哪里；截至 2026-07-20 的实际完成度未获同口径权威统计，本集不评价目标完成率。",
+          "evidence_refs": ["E001", "E006"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R015",
+          "from": "到 2026 年的政策目标",
+          "relation": "不等于",
+          "to": "已经实现的统计结果",
+          "direction": "时间边界"
+        },
+        {
+          "relation_id": "R016",
+          "from": "目标",
+          "relation": "回答",
+          "to": "准备走到哪里",
+          "direction": "问题对应"
+        },
+        {
+          "relation_id": "R017",
+          "from": "统计结果",
+          "relation": "回答",
+          "to": "实际上走到了哪里",
+          "direction": "问题对应"
+        }
+      ],
+      "entry_condition": "学习者已理解规模应用由多个维度共同观察。",
+      "exit_condition": "学习者能准确复述五项目标的性质，并拒绝把目标读成完成实绩。",
+      "timing": {
+        "char_equivalent": 190.5,
+        "min_seconds": 48,
+        "target_seconds": 50,
+        "max_seconds": 52,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": ["A007"],
+      "nx": "那“规模应用”到底意味着什么？拆成三层来看。一层是，从服务可用走向业务贯通。标识不能只躺在注册系统里，要走进生产、加工、运输、检测、服务和回收这些环节。同一个身份锚点顺着流程一路发挥作用，解析能力才从基础设施变成业务能力。",
+      "teaching_purpose": "展开规模应用的第一层含义：标识从可用服务进入完整业务流程。",
+      "single_message": "业务贯通要求同一个身份锚点进入多个业务环节并沿流程持续发挥作用。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V016",
+          "meaning": "服务可用走向业务贯通，是规模应用的第一层变化。",
+          "evidence_refs": ["E008"]
+        },
+        {
+          "semantic_item_id": "V017",
+          "meaning": "标识进入生产、加工、运输、检测、服务和回收等环节，同一身份锚点沿流程发挥作用。",
+          "evidence_refs": ["E008"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R018",
+          "from": "标识",
+          "relation": "进入",
+          "to": "生产、加工、运输、检测、服务和回收环节",
+          "direction": "业务链"
+        },
+        {
+          "relation_id": "R019",
+          "from": "同一身份锚点",
+          "relation": "沿流程发挥作用，使解析能力成为",
+          "to": "业务能力",
+          "direction": "作用延伸"
+        }
+      ],
+      "entry_condition": "学习者知道规模应用不能只以单个总数判断。",
+      "exit_condition": "学习者能解释为什么标识进入连续业务环节才构成从服务可用到业务贯通的变化。",
+      "timing": {
+        "char_equivalent": 97.0,
+        "min_seconds": 25,
+        "target_seconds": 25,
+        "max_seconds": 27,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": ["A008"],
+      "nx": "另一层是，从单个企业接入走向产业链协同。政策把产业链供应链放进重点任务，由关键企业带动上下游一起接入，让设计、生产、物流、服务这些环节围绕标识建立联系。规模不只是企业数量变多，协同的圈子还从企业内部一路延伸到链上的多个主体。",
+      "teaching_purpose": "展开规模应用的第二层含义：从单一企业接入走向产业链多主体协同。",
+      "single_message": "产业链协同不是企业数量简单增加，而是关键企业带动上下游围绕标识建立跨主体联系。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V018",
+          "meaning": "从单个企业接入走向产业链协同，是规模应用的第二层变化。",
+          "evidence_refs": ["E007", "E008"]
+        },
+        {
+          "semantic_item_id": "V019",
+          "meaning": "关键企业带动上下游接入，设计、生产、物流、服务等环节围绕标识建立联系。",
+          "evidence_refs": ["E008"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R020",
+          "from": "关键企业",
+          "relation": "带动",
+          "to": "上下游共同接入",
+          "direction": "链式协同"
+        },
+        {
+          "relation_id": "R021",
+          "from": "协同范围",
+          "relation": "从",
+          "to": "企业内部延伸到产业链多个主体",
+          "direction": "范围扩展"
+        }
+      ],
+      "entry_condition": "学习者已经理解标识需要沿企业内部业务流程发挥作用。",
+      "exit_condition": "学习者能区分企业数量增长与链上多主体围绕标识协同这两种尺度。",
+      "timing": {
+        "char_equivalent": 102.0,
+        "min_seconds": 26,
+        "target_seconds": 27,
+        "max_seconds": 28,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A010",
+      "callback_a_ids": ["A009"],
+      "nx": "还有一层是，从追求调用量走向可持续的应用价值。政策点名的方向不少：消费品质量追溯、数字医疗、绿色低碳、安全管理、城市数字化、产业集群升级。与此同时，基础设施、技术产品、数据流通和安全保障这些底子，也要继续加厚。应用走得越深，建设、治理和安全越不能松手。\n\n",
+      "teaching_purpose": "展开规模应用的第三层含义：应用价值与持续的基础能力、治理和安全支撑必须共同推进。",
+      "single_message": "规模应用追求可持续价值，既覆盖多个重点方向，也要求建设、数据流通和安全保障持续加强。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V020",
+          "meaning": "从追求调用量走向可持续应用价值，以及消费品质量追溯、数字医疗、绿色低碳、安全管理、城市数字化和产业集群升级等任务方向。",
+          "evidence_refs": ["E007", "E008"]
+        },
+        {
+          "semantic_item_id": "V021",
+          "meaning": "基础设施、技术产品、数据流通和安全保障需要随应用深入继续增强。",
+          "evidence_refs": ["E007", "E008"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R022",
+          "from": "持续应用价值",
+          "relation": "要求",
+          "to": "基础设施、技术产品、数据流通和安全保障同步增强",
+          "direction": "支撑关系"
+        },
+        {
+          "relation_id": "R023",
+          "from": "应用加深",
+          "relation": "不应削弱",
+          "to": "建设、治理和安全",
+          "direction": "持续建设"
+        }
+      ],
+      "entry_condition": "学习者已经理解业务贯通和产业链协同是规模应用的前两层变化。",
+      "exit_condition": "学习者能说明为什么应用价值的扩大并不允许放松基础能力、治理与安全。",
+      "timing": {
+        "char_equivalent": 109.0,
+        "min_seconds": 28,
+        "target_seconds": 28,
+        "max_seconds": 30,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A011",
+      "callback_a_ids": ["A010"],
+      "nx": "所以，“从建设走向应用”绝不意味着建设任务画上了句号。节点能力还要补强，技术和标准还要发展，数据流通和安全保障也要同步推进。真正的变化，是判断体系价值时，不能光看建了什么，更要看标识有没有进入流程、连接起主体，能不能形成持续运行的服务。\n\n",
+      "teaching_purpose": "收束三层含义，重申建设持续与评价重心变化必须同时成立。",
+      "single_message": "从建设走向应用不是停止建设，而是以标识是否进入流程、连接主体并形成持续服务来进一步判断体系价值。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V022",
+          "meaning": "节点能力、技术和标准、数据流通与安全保障仍需同步推进；编码设计、数据建模、标识载体、节点建设与运营属于持续建设的基础环节。",
+          "evidence_refs": ["E001", "E008"]
+        },
+        {
+          "semantic_item_id": "V023",
+          "meaning": "体系价值判断从只看建了什么，进一步转向标识是否进入流程、连接主体并形成持续服务。",
+          "evidence_refs": ["E008"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R024",
+          "from": "从建设走向应用",
+          "relation": "不意味着",
+          "to": "建设任务画上句号",
+          "direction": "阶段判断"
+        },
+        {
+          "relation_id": "R025",
+          "from": "体系价值判断",
+          "relation": "从只看建了什么转向",
+          "to": "标识进入流程、连接主体、形成持续服务",
+          "direction": "评价重心"
+        }
+      ],
+      "entry_condition": "学习者已经分别理解业务贯通、产业链协同与可持续价值的含义。",
+      "exit_condition": "学习者能用“建设持续、应用加深”概括阶段转换的正确含义。",
+      "timing": {
+        "char_equivalent": 105.0,
+        "min_seconds": 27,
+        "target_seconds": 27,
+        "max_seconds": 29,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A012",
+      "callback_a_ids": ["A001", "A002", "A007", "A010"],
+      "nx": "本期总结。回到开头那间工厂。零部件查得到身份，只是起点；标识进入质检、物流、售后，上下游围着它协同，才是应用阶段的真正考验。回顾这条发展线：先把基础设施建起来，让解析有共同的运行基础；再用政策把评价重心推向业务和产业链。“到 2026 年的目标”还提醒我们，规模是一个按年份读的状态，不是已经到手的现状。记住这个核心判断：从建设走向规模应用，不是建设画上句号，而是评价的天平，从“有没有、能不能”，转向了标识是否真正贯通业务、连接主体、形成持续的价值。",
+      "teaching_purpose": "回到开场情境，汇总建设与应用的演进、目标年份边界及最终评价重心。",
+      "single_message": "规模应用以业务贯通、主体连接和持续价值为判断核心，而建设仍在继续，目标也不能误读成现状。",
+      "must_visible": [
+        {
+          "semantic_item_id": "V024",
+          "meaning": "身份可查只是起点，标识进入质检、物流、售后并支持上下游协同才是应用阶段的考验。",
+          "evidence_refs": ["E009"]
+        },
+        {
+          "semantic_item_id": "V025",
+          "meaning": "评价重心从“有没有、能不能”转向业务贯通、主体连接和持续价值。",
+          "evidence_refs": ["E008"]
+        },
+        {
+          "semantic_item_id": "V026",
+          "meaning": "到 2026 年的目标应按目标年份理解，不能当作已经到手的现状。",
+          "evidence_refs": ["E006"]
+        }
+      ],
+      "protected_relations": [
+        {
+          "relation_id": "R026",
+          "from": "身份可查",
+          "relation": "只是",
+          "to": "应用阶段的起点",
+          "direction": "递进关系"
+        },
+        {
+          "relation_id": "R027",
+          "from": "评价天平",
+          "relation": "从",
+          "to": "有没有、能不能，转向业务贯通、主体连接与持续价值",
+          "direction": "核心判断"
+        },
+        {
+          "relation_id": "R028",
+          "from": "到 2026 年目标",
+          "relation": "应按",
+          "to": "目标年份理解，而不是当作已实现的现状",
+          "direction": "时间边界"
+        }
+      ],
+      "entry_condition": "学习者已建立建设持续、应用加深和目标不等于实绩三个核心认识。",
+      "exit_condition": "学习者能用开场工厂情境解释规模应用的最终判断，并保持对目标年份的事实边界。",
+      "timing": {
+        "char_equivalent": 193.0,
+        "min_seconds": 49,
+        "target_seconds": 50,
+        "max_seconds": 53,
+        "short_page_reason": null
+      }
+    }
+  ]
+}

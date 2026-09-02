@@ -1,0 +1,197 @@
+/* direction-support-recap · A016 image-with-summary-rail
+   mechanism: persistent-media-reading — M006 主图持续，四条编号总结带按
+   “历史—政策—运行—边界”依次完成；R027 由“运行支撑”带表达，R028 由第四带
+   与底部最终判断表达；final-judgment 不引入新定义。
+   prefix: dr- */
+
+.dr-scene {
+  justify-content: flex-start;
+  gap: 26px;
+}
+
+/* ── 论点标题 ─────────────────────────────────────────── */
+
+.dr-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: dr-rise 620ms var(--ease-quart) backwards;
+}
+
+/* ── 主区：四条总结带（左）+ 主图（右）────────────────── */
+
+.dr-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 600px;
+  gap: 52px;
+  align-items: center;
+}
+
+.dr-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dr-rail-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.dr-band {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 18px 24px;
+  transition: opacity 320ms var(--ease-soft);
+}
+
+.dr-band[data-on="on"] {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  animation: dr-stamp 560ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--dr-i) * 240ms + 80ms);
+}
+
+.dr-band[data-on="waiting"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+}
+
+.dr-band[data-on="waiting"] .dr-band-index,
+.dr-band[data-on="waiting"] .dr-band-body {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dr-band--edge[data-on="on"] {
+  border-color: var(--theme-warning);
+  animation-delay: 8600ms;
+}
+
+.dr-band-index {
+  flex: none;
+  font-size: 32px;
+  color: var(--theme-process);
+}
+
+.dr-band-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dr-band-label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.dr-band-text {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--theme-structural);
+}
+
+.dr-neq {
+  font-size: 26px;
+  color: var(--theme-warning);
+}
+
+/* ── 主图媒体区 ──────────────────────────────────────── */
+
+.dr-media {
+  margin: 0;
+  animation: dr-rise 700ms var(--ease-quart) 80ms backwards;
+}
+
+.dr-photo {
+  padding: 14px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.dr-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.dr-media-cap {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  color: var(--text-mute);
+}
+
+/* ── 底部 final-judgment：重申标题判断 ────────────────── */
+
+.dr-final {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 20px 34px;
+  border-top: var(--rule-w) solid var(--theme-structural);
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 620ms var(--ease-soft), transform 620ms var(--ease-soft);
+}
+
+.dr-final.is-on {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 9800ms;
+}
+
+.dr-final-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--theme-process);
+}
+
+.dr-final-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.dr-final-hero em {
+  font-style: normal;
+  color: var(--theme-warning);
+  border-bottom: 6px solid var(--theme-warning);
+  padding-bottom: 3px;
+}
+
+/* ── 共享 keyframes ──────────────────────────────────── */
+
+@keyframes dr-rise {
+  0%   { opacity: 0; transform: translateY(26px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dr-stamp {
+  0%   { opacity: 0; transform: translateY(22px) scale(1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}

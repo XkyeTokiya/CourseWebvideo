@@ -1,0 +1,144 @@
+{
+  "schema_version": "web-video-courseplay-chapter-handoff/v1",
+  "episode_id": "episode-09",
+  "chapter": {
+    "index": 6,
+    "id": "anchor-groups",
+    "title": "五类信息围绕一个标识",
+    "a_page_id": "A006",
+    "step_count": 3
+  },
+  "theme": {
+    "id": "active-identification-note",
+    "nameZh": "主动标识工程笔记",
+    "descriptionZh": "工程方格纸上的工业教学视觉系统：深海军蓝建立粗结构，工业绿表达主动流动与改善，陶土橙承担风险提示，低位硬投影形成可靠的工程贴纸质感。",
+    "mood": [
+      "light",
+      "industrial",
+      "engineering",
+      "technical",
+      "educational",
+      "structured",
+      "tactile"
+    ],
+    "bestFor": [
+      "工业互联网与智能制造",
+      "工程技术与设备原理讲解",
+      "企业技术培训",
+      "生产流程和闭环控制",
+      "B2B 解决方案演示",
+      "职业教育与教材信息图",
+      "数据驱动的运营汇报"
+    ]
+  },
+  "a_page": {
+    "a_id": "A006",
+    "callback_a_ids": [
+      "A005"
+    ],
+    "nx": "围绕这个标识，产品基本信息、生产装配信息、工艺控制信息、质量管理信息和物流存储信息可以建立关联。方案还结合企业标识解析二级节点平台，支持不同环节依据同一个发动机标识查找相关记录。二级节点只承担关联和解析支撑，不集中保存企业全部业务数据。\n\n",
+    "teaching_purpose": "展开统一标识实际关联的五类信息，并界定二级节点平台的支撑边界。",
+    "single_message": "五类发动机信息围绕同一标识关联，二级节点提供关联与解析支撑而非集中存储。",
+    "must_visible": [
+      {
+        "semantic_item_id": "V011",
+        "meaning": "产品基本、生产装配、工艺控制、质量管理、物流存储五类信息围绕同一发动机标识建立关联。",
+        "evidence_refs": [
+          "E006",
+          "E010"
+        ]
+      },
+      {
+        "semantic_item_id": "V012",
+        "meaning": "企业标识解析二级节点平台支持不同环节依据同一发动机标识查找相关记录。",
+        "evidence_refs": [
+          "E006",
+          "E009"
+        ]
+      },
+      {
+        "semantic_item_id": "V013",
+        "meaning": "二级节点承担关联和解析支撑，不集中保存企业全部业务数据。",
+        "evidence_refs": [
+          "E006"
+        ]
+      }
+    ],
+    "protected_relations": [
+      {
+        "relation_id": "R011",
+        "from": "同一发动机标识",
+        "relation": "关联",
+        "to": "产品基本、生产装配、工艺控制、质量管理、物流存储信息",
+        "direction": "从共同锚点扩展到五类信息"
+      },
+      {
+        "relation_id": "R012",
+        "from": "企业标识解析二级节点平台",
+        "relation": "提供关联和解析支撑",
+        "to": "不同环节的相关记录查找",
+        "direction": "从平台支撑到跨环节查找"
+      },
+      {
+        "relation_id": "R013",
+        "from": "企业标识解析二级节点平台",
+        "relation": "不集中保存",
+        "to": "企业全部业务数据",
+        "direction": "明确平台边界"
+      }
+    ],
+    "entry_condition": "观众已经知道统一标识只承担跨系统关联。",
+    "exit_condition": "观众能指出关联信息范围和二级节点的平台边界。",
+    "timing": {
+      "char_equivalent": 109,
+      "min_seconds": 28,
+      "target_seconds": 28,
+      "max_seconds": 30,
+      "short_page_reason": null
+    }
+  },
+  "narration": {
+    "authority": "a_page.nx",
+    "beats": [
+      "围绕这个标识，产品基本信息、生产装配信息、工艺控制信息、质量管理信息和物流存储信息可以建立关联。",
+      "方案还结合企业标识解析二级节点平台，支持不同环节依据同一个发动机标识查找相关记录。",
+      "二级节点只承担关联和解析支撑，不集中保存企业全部业务数据。"
+    ]
+  },
+  "outline": {
+    "chapter_markdown": "## 6. anchor-groups — 五类信息围绕一个标识（3 steps · ~28s）\n\n**A-page / Chapter**：`A006`\n**基础场景**：`S-A006` — 共享锚点围合区（五类信息关联组）+ 平台支撑组 + 作用范围组\n**页面配方**：`common-anchor-association-groups`\n**核心判断**：五类发动机信息围绕同一标识关联，二级节点提供关联与解析支撑而非集中存储。\n**结构指纹**：`共享锚点（同一发动机标识）| 五类信息围合关联组 | 支撑说明组 | 作用范围组`\n**语义关系**：共享锚点下的包含关联 + 平台支撑与边界的分层阅读\n**关系机制**：`anchor-group-nesting`（本章新命名机制）— 五类信息通过邻近、围合与共享\"同一发动机\"标签形成关联组（R011），不用星状连线、网络图或数据流；平台组与边界组在关联组之后的独立阅读层，不与五类信息卡混层（R012/R013）\n**持续元素**：论点标题、共享锚点、围合区五类信息组\n**内容槽位**：`anchor-tag`（同一发动机标识）；`group-5`（产品基本｜生产装配｜工艺控制｜质量管理｜物流存储）；`platform-note`（二级节点支撑跨环节查找）；`scope-note`（不集中保存全部业务数据）\n**强调页**：`none`\n**额外复杂场景**：`none`\n**可见标题**：`保留`\n**信息池**（主动设计：源为冻结 A-page / visual rough / evidence_catalog）：\n- 语义项：V011 五类信息围绕同一标识关联；V012 二级节点支撑查找；V013 平台不集中保存数据 —— A-page A006 must_visible（E006/E009/E010）\n- 关系：R011 锚点扩展到五类信息；R012 平台支撑；R013 平台边界 —— A-page A006 protected_relations\n- 证据：E006 项目方案；E010 单对象串联数据变化 —— evidence_catalog\n**beat 切分**：N=3，N_eff=3，3 拍（=N），无偏离；五类信息为顿号连续枚举单句，同拍内一次围合呈现，不机械拆分。\n\n| Step | Narration focus | Scene · Semantic state | 本步场景指令 |\n|---|---|---|---|\n| 1 | 五类信息围绕同一标识建立关联 | `S-A006 · anchor-group-assembled` (~11s) | 论点标题立\"先对齐身份\"判断；共享锚点与围合区建立，五类信息在同一围合区内完成共同归属读取（V011/R011）；不在标题与围合区重复整句判断 |\n| 2 | 二级节点支撑跨环节查找 | `S-A006 · platform-support-noted` (~10s) | 围合组保持；platform-note 出现（企业标识解析二级节点平台支持不同环节按同一标识查找记录，R012），与对象锚点分成两个阅读层次，避免误读成数据中心 |\n| 3 | 平台作用边界 | `S-A006 · platform-bounded` (~7s) | 前序保持；scope-note 出现（只承担关联与解析支撑，不集中保存企业全部业务数据，R013），正常阅读层级，不以小字弱化 |\n\n**口播节选**：\"二级节点只承担关联和解析支撑，不集中保存企业全部业务数据。\"",
+    "schedule": {
+      "previous": "| A005 | `scope-responsibility-ledger` | 职责与边界定界 | `cumulative-assembly` | 台账：共同条件行 + 职责列 + 边界列 | 无 | none | 台账行核对结构，替代阶段带 |",
+      "current": "| A006 | `common-anchor-association-groups` | 共享锚点下的关联组 | `anchor-group-nesting` | 锚点围合区 + 五类信息组 + 平台组 | 无 | none | 围合关联组结构，区别于台账 |",
+      "next": "| A007 | `image-with-insight-rail` | 售后业务顺序阅读 | `persistent-media-reading` | 场景图（M003）+ 图侧四阅读项 | 无 | M003 | 场景图回归，阅读项轨道 |"
+    },
+    "materials_markdown": null
+  },
+  "visual_rough_markdown": "## A006｜五类信息围绕一个标识\n\n- **内容角色**：机制展开——说明共同锚点关联哪些信息，以及二级节点平台提供什么支撑、守住什么边界。\n- **页面配方**：`common-anchor-association-groups`\n- **论点标题**：[V011] 先对齐同一发动机标识，五类信息才获得共同归属\n- **辅助句**：`none`\n- **媒体需求**：`none`\n- **媒体作用**：`none`\n- **教材证据**：`none`\n- **逻辑图**：`no`\n- **逻辑图理由**：`none`\n\n### 上屏内容组\n\n1. [V011][R011] **共享锚点｜同一发动机标识**：产品基本、生产装配、工艺控制、质量管理和物流存储五类信息在同一围合区内按共同归属读取。\n2. [V012][R012] **支撑说明**：企业标识解析二级节点平台支持不同环节依据同一发动机标识查找相关记录。\n3. [V013][R013] **作用范围**：二级节点承担关联和解析支撑，不集中保存企业全部业务数据。\n\n### 页面骨架\n\n- 论点标题给出“先对齐身份”的判断；主体区域以“同一发动机标识”作为唯一共享锚点，五类信息在同一区域完成共同归属读取，避免在标题和围合区重复整句判断。\n- 五类信息通过邻近、围合和共享的“同一发动机”标签形成关联组，不使用星状连线、网络图或数据流。\n- 支撑说明与作用范围位于锚点关联组之后，且与对象锚点分成两个阅读层次，避免把二级节点误读成数据中心。\n\n### 关系保真\n\n- [R011] 五类信息与同一发动机标识的关系由共同锚点和关联组的包含关系表达，不把五项机械画成五个辐射节点。\n- [R012] 二级节点平台对跨环节查找的支撑由独立平台组说明，不与五类信息卡混成同一层。\n- [R013] “不集中保存企业全部业务数据”作为正常阅读层级的边界组紧随平台支撑出现，不以小字弱化。",
+  "sources": {
+    "a_page": {
+      "path": "episodes/episode-09/episode-09-a-page.json",
+      "sha256": "8fb764141c77def8fbb003f376ab2d4d47f38a6d05d4528d2a11e3a4562f25be"
+    },
+    "visual_rough": {
+      "path": "episodes/episode-09/episode-09-visual-rough.md",
+      "sha256": "908aa37daf366132fafa02f66069f18d209b7099dd7e462b492a6a7c26e4d230"
+    },
+    "outline": {
+      "path": "episodes/episode-09/outline.md",
+      "sha256": "963e00798cfd0dd9322e9b0ba04b3a5e5da92b9f558c8c3fac56ccd64c37b6b9"
+    },
+    "script": {
+      "path": "episodes/episode-09/script.md",
+      "sha256": "add821ff31cd497c48f03a05250eeda88d67d09e16ace9f629d1a24eb34ad6ea"
+    },
+    "approved_text": {
+      "path": "episodes/episode-09/approved-spoken-text.txt",
+      "sha256": "e07682c0eaeae79123476216b63fd9450d5a854b1d6080c0604a44438a6e4f25"
+    },
+    "theme": {
+      "path": ".agents/skills/web-video-presentation/themes/active-identification-note/theme.json",
+      "sha256": "868de872b3c03d359b3c808ac69aa98c6a0a0b9e3e45ed0dc33f592d5a9f6997"
+    }
+  }
+}

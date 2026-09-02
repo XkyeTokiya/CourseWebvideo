@@ -1,0 +1,210 @@
+/* ─────────────────────────────────────────────────────────────
+ * 11-enter-the-process · A011 image-with-summary-rail + accent
+ * mechanism: ordered-progression — 媒体左、总结带右，末拍切换全屏 accent
+ * prefix: ep-
+ * ───────────────────────────────────────────────────────────── */
+
+.ep-scene {
+  justify-content: center;
+}
+
+.ep-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 640px 1fr;
+  gap: 64px;
+  min-height: 0;
+}
+
+/* ── 媒体占位（区别于开场的协同场景） ── */
+.ep-media {
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  background: var(--surface-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 0;
+  animation: ep-fade 700ms var(--ease-quart) backwards;
+}
+.ep-media-mark {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+}
+.ep-media-desc {
+  font-family: var(--font-body);
+  font-size: 21px;
+  color: var(--text-faint);
+}
+@keyframes ep-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ── 回扣提示 + 编号总结带 ── */
+.ep-rail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  min-height: 0;
+}
+.ep-recall {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.2em;
+  color: var(--theme-warning);
+  animation: ep-rise 560ms var(--ease-quart) 200ms backwards;
+}
+
+.ep-band {
+  display: flex;
+  align-items: flex-start;
+  gap: 26px;
+  border-radius: var(--r-card);
+  padding: 24px 32px;
+  transition: opacity var(--dur-base) var(--ease-soft),
+    background var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-soft);
+  border: var(--rule-w) solid transparent;
+}
+.ep-band-no {
+  font-size: 56px;
+  color: var(--text-faint);
+  line-height: 1;
+  flex: none;
+  transition: color var(--dur-base) var(--ease-soft);
+}
+.ep-band-title {
+  display: block;
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  line-height: 1.2;
+}
+.ep-band-desc {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-body);
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.ep-band.is-upcoming {
+  opacity: 0.45;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+}
+.ep-band.is-upcoming .ep-band-title,
+.ep-band.is-upcoming .ep-band-desc {
+  visibility: hidden;
+}
+
+.ep-band.is-active {
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  animation: ep-wipe 600ms var(--ease-quart) backwards;
+}
+.ep-band.is-active .ep-band-no {
+  color: var(--theme-process);
+}
+@keyframes ep-wipe {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 0 0 100%);
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+}
+
+.ep-band.is-past {
+  background: var(--theme-process-surface);
+  border: var(--rule-w) solid var(--theme-process);
+  opacity: 0.82;
+}
+.ep-band.is-past .ep-band-no {
+  color: var(--theme-process);
+}
+.ep-band.is-past .ep-band-title {
+  color: var(--text-2);
+}
+
+@keyframes ep-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── K-A011-01 · accent：低成本全屏最终判断 ── */
+.ep-accent {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  text-align: center;
+}
+.ep-accent-kicker {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  color: var(--theme-warning);
+  border: var(--rule-w) dashed var(--theme-warning);
+  border-radius: 8px;
+  padding: 8px 22px;
+  animation: ep-rise 520ms var(--ease-quart) backwards;
+}
+.ep-accent-statement {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 84px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  line-height: 1.45;
+  animation: ep-statement 820ms var(--ease-quart) 220ms backwards;
+}
+.ep-accent-statement em {
+  font-style: normal;
+  color: var(--theme-danger);
+  text-decoration: line-through;
+  text-decoration-thickness: 6px;
+}
+.ep-accent-statement strong {
+  font-weight: 900;
+  color: var(--theme-process);
+  border-bottom: 8px solid var(--accent-glow);
+  padding-bottom: 4px;
+}
+@keyframes ep-statement {
+  0% {
+    opacity: 0;
+    transform: translateY(42px) scale(0.97);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}

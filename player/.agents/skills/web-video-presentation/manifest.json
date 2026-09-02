@@ -1,0 +1,12 @@
+{
+  "name": "web-video-presentation",
+  "version": "2.0.0",
+  "category": "Web Video / Presentation",
+  "description": "Turn scripts, articles, lessons, product demos, and talks into click-driven 16:9 episodes for the root Web Video Studio. Uses the shared legacy presentation runtime, dynamic project-selected themes, root Node audio tools, and the episodes/<id> contract; it does not generate standalone Vite projects.",
+  "homepage": "https://github.com/liliMozi/openhanako",
+  "compat": [
+    "hanaagent",
+    "claude-code",
+    "codex-cli"
+  ]
+}

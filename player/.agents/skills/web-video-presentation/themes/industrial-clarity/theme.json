@@ -1,0 +1,30 @@
+{
+  "id": "industrial-clarity",
+  "name": "Industrial Clarity",
+  "nameZh": "工业清晰",
+  "description": "A clear industrial information system: navy structure, technical blue, process green, and teaching orange on a white canvas with softly rounded panels.",
+  "descriptionZh": "清晰的工业信息编码系统：海军蓝建立结构，技术蓝标记对象，工业绿表达流程与成效，提示橙控制教学节奏，承载于白色画布和柔和圆角面板之中。",
+  "mood": [
+    "light",
+    "industrial",
+    "clear",
+    "technical",
+    "professional",
+    "educational",
+    "structured"
+  ],
+  "bestFor": [
+    "工业互联网与智能制造",
+    "企业技术培训",
+    "B2B 产品与解决方案",
+    "流程和系统架构讲解",
+    "数据驱动的业务汇报",
+    "职业教育与教材演示"
+  ],
+  "preview": {
+    "shell": "#dbe4eb",
+    "surface": "#ffffff",
+    "text": "#182735",
+    "accent": "#176ca4"
+  }
+}

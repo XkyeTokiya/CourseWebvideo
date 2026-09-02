@@ -1,0 +1,70 @@
+{
+  "schema_version": "courseplay-handoff-fixture-baseline/v1",
+  "captured_at": "2026-08-31",
+  "episode_id": "episode-09",
+  "repository": {
+    "root": "D:/00-workspace/006-webvideo",
+    "branch": "codex/courseplay-screen-text-lightweight-flow-20260831",
+    "head": "fe1c14e519c24ddb6f3351b1692ec83188ba7ba7",
+    "working_tree": {
+      "dirty": true,
+      "dirty_marker": "git status --porcelain=v1 was non-empty before fixture writes",
+      "preexisting_changes_preserved": true
+    }
+  },
+  "generator": {
+    "path": "tools/courseplay-handoff.mjs",
+    "bytes": 18522,
+    "sha256": "b0f579d706d847b60f44b30e8e9455c93c487b5b41537c1da721ca8f19655f3a"
+  },
+  "legacy_v1": {
+    "fixture_root": "tools/tests/fixtures/courseplay-handoff-v1",
+    "packet_schema": "web-video-courseplay-chapter-handoff/v1",
+    "packet_count": 10,
+    "outline": {
+      "path": "tools/tests/fixtures/courseplay-handoff-v1/episode-09/outline.md",
+      "bytes": 38811,
+      "sha256": "963e00798cfd0dd9322e9b0ba04b3a5e5da92b9f558c8c3fac56ccd64c37b6b9"
+    },
+    "packets": [
+      {"a_page_id": "A001", "bytes": 10773, "sha256": "83b038b832b56a401d59959e1bd28f9910ca60d70d147af769b14bab7e688bff"},
+      {"a_page_id": "A002", "bytes": 9946, "sha256": "5f3cd50ce9fd78be6a7d547fd79bd63ac39d33753f21c2a7b145c8cc00f7b5ad"},
+      {"a_page_id": "A003", "bytes": 11233, "sha256": "020c906262a9ef5e957b2f6718c72ae09ab2b12283e35d692812689b163668de"},
+      {"a_page_id": "A004", "bytes": 9562, "sha256": "cb96e25ba51a56738235aaae8b2a03001fcdc2ad8e9270c88effb9b7f44f5b87"},
+      {"a_page_id": "A005", "bytes": 10325, "sha256": "2817ad1deb8c212098fd87a637fde6a3d808245b53b48faddcaa5dc3ce924da5"},
+      {"a_page_id": "A006", "bytes": 10884, "sha256": "cba292e33f4ac932e67e71fc53dfbae6ccdb0a91b7226621163371dd8025cb61"},
+      {"a_page_id": "A007", "bytes": 11783, "sha256": "037b8aedf605446c1c9fd30aa53ba10055928206bab8042b899b9097399f67fc"},
+      {"a_page_id": "A008", "bytes": 11410, "sha256": "eec88149d31b39920da9ee1db7c83f624a9c35f9b2e097a8071bfdd13c22bc61"},
+      {"a_page_id": "A009", "bytes": 11640, "sha256": "87124bc36f3f6e268b59eeee07492a2ee9991e06b8759a008a1607a818fd87d2"},
+      {"a_page_id": "A010", "bytes": 11005, "sha256": "6b8766042130718750a3bb3039bc19b5cd386e43f6e54c2d37a8b924817cbae9"}
+    ]
+  },
+  "candidate_v2": {
+    "fixture_root": "tools/tests/fixtures/courseplay-handoff-v2",
+    "packet_schema": "web-video-courseplay-chapter-handoff/v2",
+    "packets": [
+      {"a_page_id": "A001", "bytes": 5151, "sha256": "d92e89d54e0621cddef28653aa92f57f2114a792442514af69abc867afe6a1bf", "screen_items": 5, "source_text_occurrences": 5, "all_source_text_once": true},
+      {"a_page_id": "A008", "bytes": 5368, "sha256": "55942140479809d7238e99899dfa31755961a08d2bb94c0035e0ca5bf2e3634a", "screen_items": 5, "source_text_occurrences": 5, "all_source_text_once": true},
+      {"a_page_id": "A009", "bytes": 5008, "sha256": "9987f8ad7eba00cdc64b55b53d459879a5fc73c7d3bcdcd4429b6a522271153f", "screen_items": 5, "source_text_occurrences": 5, "all_source_text_once": true}
+    ],
+    "embedded_documents": {
+      "full_a_page": false,
+      "full_outline_markdown": false,
+      "full_visual_rough_markdown": false,
+      "source_text_is_projected_once": true
+    }
+  },
+  "fixed_consumer_context": {
+    "current_required_files": [
+      {"path": ".agents/skills/web-video-presentation/references/CHAPTER-CRAFT.md", "bytes": 20336, "sha256": "2d2dceb3113b435fa0bba81aff995aa7c03101c868d116c9ee84c471733770e9"},
+      {"path": ".agents/skills/web-video-presentation/references/COURSEPLAY-BOUND-MODE.md", "bytes": 15677, "sha256": "7567942fcf95c83a972d646b49f3a5a1ca3cd33c8c88df15a64d6bfde8efba60"},
+      {"path": ".agents/skills/web-video-presentation/references/COURSEPLAY-STATE-MECHANISMS.md", "bytes": 4659, "sha256": "5fae6fb473249ed73170cf8dff98ea655d55c4920aef52ec0f0df97ee9c3daea"}
+    ],
+    "current_total_bytes": 40672,
+    "candidate_required_files": "same three fixed files; no new required reference",
+    "candidate_total_bytes": 40672,
+    "delta_bytes": 0
+  },
+  "screen_source_rule": "Every screen_source.title or screen_source.groups[*].items[*].source_text is counted as an exact UTF-8 string in its packet; each candidate has one occurrence per item.",
+  "approval_boundary": "Task 3–6 producer, validator, viewer, and downstream generator changes remain unauthorized until this template/fixture set is reviewed."
+}

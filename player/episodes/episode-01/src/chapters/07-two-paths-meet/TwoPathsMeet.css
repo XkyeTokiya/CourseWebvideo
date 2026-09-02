@@ -1,0 +1,164 @@
+/* ─────────────────────────────────────────────────────────────
+ * 07-two-paths-meet · A007 image-with-reading-notes
+ * mechanism: persistent-media-reading — 原图持续，读图焦点迁移
+ * prefix: tp-
+ * ───────────────────────────────────────────────────────────── */
+
+.tp-scene {
+  justify-content: center;
+}
+
+.tp-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 560px;
+  gap: 64px;
+  min-height: 0;
+}
+
+/* ── 原图主区：持续不卸载 ── */
+.tp-media {
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  background: var(--surface-3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 0;
+  animation: tp-fade 700ms var(--ease-quart) backwards;
+}
+.tp-media-mark {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+}
+.tp-media-desc {
+  font-family: var(--font-body);
+  font-size: 21px;
+  color: var(--text-faint);
+}
+.tp-media-stamp {
+  position: absolute;
+  right: 36px;
+  bottom: 28px;
+  font-size: 96px;
+  color: var(--theme-warning);
+  opacity: 0.85;
+  transform: rotate(-6deg);
+  animation: tp-stamp 620ms var(--ease-overshoot) backwards;
+}
+@keyframes tp-stamp {
+  0% {
+    opacity: 0;
+    transform: rotate(-6deg) scale(2.2);
+  }
+  100% {
+    opacity: 0.85;
+    transform: rotate(-6deg) scale(1);
+  }
+}
+@keyframes tp-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ── 侧栏读图提示卡 ── */
+.tp-notes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 26px;
+  min-height: 0;
+}
+
+.tp-note {
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  padding: 28px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-quart),
+    border-color var(--dur-base) var(--ease-soft),
+    background var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-soft);
+}
+.tp-note[data-on="true"] {
+  opacity: 1;
+  transform: translateX(0);
+}
+.tp-note.is-focus {
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+.tp-note.is-focus .tp-note-no {
+  color: var(--theme-process);
+}
+
+.tp-note-no {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.26em;
+  color: var(--text-mute);
+}
+.tp-note-title {
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+.tp-note-desc {
+  font-family: var(--font-body);
+  font-size: 23px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* ── 底部交汇判断（槽位常驻，末拍点亮） ── */
+.tp-converge {
+  margin-top: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 22px 28px;
+  border-radius: var(--r-card);
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  font-family: var(--font-body);
+  font-size: 25px;
+  line-height: 1.55;
+  color: var(--text-mute);
+  transition: color var(--dur-base) var(--ease-soft),
+    background var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-soft);
+}
+.tp-converge-mark {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  margin-top: 10px;
+  background: var(--theme-dashed-line);
+  transition: background var(--dur-base) var(--ease-soft);
+}
+.tp-converge.is-on {
+  color: var(--theme-structural);
+  font-weight: 700;
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+.tp-converge.is-on .tp-converge-mark {
+  background: var(--theme-warning);
+}

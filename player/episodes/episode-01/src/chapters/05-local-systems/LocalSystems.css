@@ -1,0 +1,113 @@
+/* ─────────────────────────────────────────────────────────────
+ * 05-local-systems · A005 parallel-cards-with-takeaway
+ * mechanism: equal-weight-accumulation — 四卡等权依次出现，完成后无选中项
+ * prefix: ls-
+ * ───────────────────────────────────────────────────────────── */
+
+.ls-scene {
+  justify-content: center;
+  gap: 34px;
+}
+
+/* ── 2×2 等权卡网格 ── */
+.ls-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 30px;
+  flex: 1;
+  min-height: 0;
+}
+
+.ls-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 34px 44px;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  background: var(--surface-2);
+  opacity: 0;
+  transform: translateY(30px) scale(0.97);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-overshoot);
+}
+.ls-card[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: calc(var(--ls-i) * 200ms);
+}
+
+.ls-card-no {
+  font-size: 40px;
+  color: var(--text-faint);
+}
+.ls-card-name {
+  font-family: var(--font-display-cn);
+  font-size: 46px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.ls-card-duty {
+  font-family: var(--font-body);
+  font-size: 23px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* ── 整组状态说明：不属于任何单卡 ── */
+.ls-status {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  font-family: var(--font-body);
+  font-size: 26px;
+  line-height: 1.6;
+  color: var(--theme-warning);
+  border-left: 6px solid var(--theme-warning);
+  padding-left: 0;
+  transition: max-height var(--dur-slow) var(--ease-quart),
+    opacity var(--dur-slow) var(--ease-soft),
+    padding var(--dur-slow) var(--ease-soft);
+}
+.ls-status[data-on="true"] {
+  max-height: 140px;
+  opacity: 1;
+  padding: 8px 0 8px 28px;
+}
+
+/* ── 底部结论：扩张拍收束 ── */
+.ls-bottom {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 26px 36px;
+  border-radius: var(--r-card);
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--text-mute);
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  transition: color var(--dur-base) var(--ease-soft),
+    background var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-soft);
+}
+.ls-bottom-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-dashed-line);
+  transition: background var(--dur-base) var(--ease-soft);
+}
+.ls-bottom[data-strong="true"] {
+  color: var(--theme-structural);
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+.ls-bottom[data-strong="true"] .ls-bottom-mark {
+  background: var(--theme-warning);
+}

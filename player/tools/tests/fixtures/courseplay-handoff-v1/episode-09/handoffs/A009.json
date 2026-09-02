@@ -1,0 +1,130 @@
+{
+  "schema_version": "web-video-courseplay-chapter-handoff/v1",
+  "episode_id": "episode-09",
+  "chapter": {
+    "index": 9,
+    "id": "evidence-boundary",
+    "title": "三项案例数字的证据边界",
+    "a_page_id": "A009",
+    "step_count": 5
+  },
+  "theme": {
+    "id": "active-identification-note",
+    "nameZh": "主动标识工程笔记",
+    "descriptionZh": "工程方格纸上的工业教学视觉系统：深海军蓝建立粗结构，工业绿表达主动流动与改善，陶土橙承担风险提示，低位硬投影形成可靠的工程贴纸质感。",
+    "mood": [
+      "light",
+      "industrial",
+      "engineering",
+      "technical",
+      "educational",
+      "structured",
+      "tactile"
+    ],
+    "bestFor": [
+      "工业互联网与智能制造",
+      "工程技术与设备原理讲解",
+      "企业技术培训",
+      "生产流程和闭环控制",
+      "B2B 解决方案演示",
+      "职业教育与教材信息图",
+      "数据驱动的运营汇报"
+    ]
+  },
+  "a_page": {
+    "a_id": "A009",
+    "callback_a_ids": [
+      "A008"
+    ],
+    "nx": "课程资料所述的某集团发动机质量追溯案例中，产品质量精度提升了百分之四十。质量追溯与质量分析的人力成本降低了百分之十五以上。经销商及客户对产品质量追溯的满意度提升了百分之十五以上。这些数字只说明课程资料案例中的变化，不代表所有发动机企业采用标识解析后都会自动得到同样结果。课程资料没有提供统计周期、样本规模和计算方法；这些数字不能当作行业平均值，也不能当作对任何企业的承诺。\n\n",
+    "teaching_purpose": "呈现课程资料中的案例结果，并把数字的归属、统计缺口和不可外推边界说清楚。",
+    "single_message": "三项数字只属于课程资料所述的某集团案例，不能外推为行业基准或企业承诺。",
+    "must_visible": [
+      {
+        "semantic_item_id": "V020",
+        "meaning": "“课程资料所述的某集团发动机质量追溯案例”这一限定语，以及质量精度提升 40%、人力成本降低 15% 以上、追溯满意度提升 15% 以上三项结果。",
+        "evidence_refs": [
+          "E008"
+        ]
+      },
+      {
+        "semantic_item_id": "V021",
+        "meaning": "课程资料未提供统计周期、样本规模和计算方法；数字不是行业平均值或对任何企业的承诺。",
+        "evidence_refs": [
+          "E008"
+        ]
+      }
+    ],
+    "protected_relations": [
+      {
+        "relation_id": "R020",
+        "from": "40%、15% 以上、15% 以上三项结果",
+        "relation": "仅说明",
+        "to": "课程资料所述某集团发动机质量追溯案例中的变化",
+        "direction": "从数字回指案例归属"
+      },
+      {
+        "relation_id": "R021",
+        "from": "课程资料中的案例数字",
+        "relation": "不构成",
+        "to": "行业平均值或对任何企业的承诺",
+        "direction": "从案例结果排除外推结论"
+      }
+    ],
+    "entry_condition": "观众已理解统一标识改变了关联与查找方式。",
+    "exit_condition": "观众能在保留案例归属的前提下理解三项结果及其边界。",
+    "timing": {
+      "char_equivalent": 176,
+      "min_seconds": 44,
+      "target_seconds": 46,
+      "max_seconds": 48,
+      "short_page_reason": null
+    }
+  },
+  "narration": {
+    "authority": "a_page.nx",
+    "beats": [
+      "课程资料所述的某集团发动机质量追溯案例中，产品质量精度提升了百分之四十。",
+      "质量追溯与质量分析的人力成本降低了百分之十五以上。",
+      "经销商及客户对产品质量追溯的满意度提升了百分之十五以上。",
+      "这些数字只说明课程资料案例中的变化，不代表所有发动机企业采用标识解析后都会自动得到同样结果。",
+      "课程资料没有提供统计周期、样本规模和计算方法；这些数字不能当作行业平均值，也不能当作对任何企业的承诺。"
+    ]
+  },
+  "outline": {
+    "chapter_markdown": "## 9. evidence-boundary — 三项案例数字的证据边界（5 steps · ~46s）\n\n**A-page / Chapter**：`A009`\n**基础场景**：`S-A009` — provenance band + 三张同标签证据卡 + evidence gap 组 + inference boundary 组\n**页面配方**：`evidence-cards-with-provenance-boundary`\n**核心判断**：三项数字只属于课程资料所述的某集团案例，不能外推为行业基准或企业承诺。\n**结构指纹**：`provenance band（案例来源）| 三张同标签证据卡（40%｜15%｜15%）| evidence gap 组 | inference boundary 组`\n**语义关系**：证据归属→结果陈列→统计缺口→推断边界（读图 + 定界）\n**关系机制**：`cumulative-assembly` — 固定证据结构按阅读顺序组装：先来源带、再三张证据卡、最后缺口与边界组；三卡同一证据标签，不生成仪表盘、趋势图、比例图或完成率（R020）；inference boundary 保持正常阅读层级（R021）\n**持续元素**：provenance band、三张证据卡\n**内容槽位**：`provenance-band`（课程资料所述某集团发动机质量追溯案例）；`evidence-1 精度+40%`；`evidence-2 人力成本−15%以上`；`evidence-3 满意度+15%以上`；`gap-row`（无统计周期/样本规模/计算方法）；`boundary-row`（不是行业平均值、不构成承诺）\n**强调页**：`none`（边界判断句保留在 base-scene 正常阅读层级，符合配方\"inference boundary 不缩成角注\"要求）\n**额外复杂场景**：`none`\n**可见标题**：`none`\n**省略理由**：provenance band 已固定案例归属，证据卡、统计缺口行和推断边界行已完整表达三项数字及其不可外推边界；删除标题不改变证据卡配方或证据边界。\n**信息池**（主动设计：源为冻结 A-page / visual rough / evidence_catalog）：\n- 语义项：V020 案例限定语与三项结果；V021 统计缺口与不可外推边界 —— A-page A009 must_visible（E008）\n- 关系：R020 三项结果仅说明案例变化；R021 不构成行业平均值或承诺 —— A-page A009 protected_relations\n- 证据：E008 应用成效（40% / 15% 以上 / 15% 以上），仅以\"教材所述某集团案例结果\"呈现 —— evidence_catalog\n**beat 切分**：N=4，N_eff=4，5 拍（N_eff+1，合规）。扩张：\"这些数字只说明……\"外推边界判断句有独立口播且形成新稳定画面，独立成拍；缺口句与推断边界句同拍收束（g3、g4 同拍，画面为缺口行 + 边界行并置）。\n\n| Step | Narration focus | Scene · Semantic state | 本步场景指令 |\n|---|---|---|---|\n| 1 | 案例来源 + 精度提升 40% | `S-A009 · provenance-first-result` (~9s) | provenance band 先立案例来源（V020）；第一张证据卡出现（产品质量精度提升 40%）；共享证据标签，数字不脱离来源单独陈列 |\n| 2 | 人力成本降低 15% 以上 | `S-A009 · second-result` (~6s) | 来源带与首卡保持；第二张证据卡出现（质量追溯与质量分析人力成本降低 15% 以上） |\n| 3 | 满意度提升 15% 以上 | `S-A009 · three-results-complete` (~7s) | 前序保持；第三张证据卡出现（经销商及客户质量追溯满意度提升 15% 以上），三卡齐 |\n| 4 | 数字只说明案例变化 | `S-A009 · extrapolation-limited` (~11s) | 来源带与三卡保持；外推限定浮现（这些数字只说明课程资料案例中的变化，不代表所有企业都会自动得到同样结果）；阅读焦点移向边界区 |\n| 5 | 统计缺口 + 推断边界 | `S-A009 · gap-and-boundary-stated` (~12s) | 前序保持；gap-row 出现（未提供统计周期、样本规模和计算方法）；boundary-row 补齐（不是行业平均值、不构成对任何企业的承诺，R021），正常阅读层级；本页不另设泛化价值结论 |\n\n**口播节选**：\"这些数字不能当作行业平均值，也不能当作对任何企业的承诺。\"",
+    "schedule": {
+      "previous": "| A008 | `split-compare-with-thesis` | 前后对照 | `compare-and-reweight` | 左右两栏 + bottom thesis 条 | 无（判断保留在底栏） | none | 两栏对照结构首次出现 |",
+      "current": "| A009 | `evidence-cards-with-provenance-boundary` | 证据归属与边界 | `cumulative-assembly` | 来源带 + 三张证据卡 + 缺口/边界组 | 无 | none | 证据卡 + 来源带结构 |",
+      "next": "| A010 | `image-with-summary-rail` | 收束回扣 | `persistent-media-reading` | 主图（M004）+ 总结带 | `K-A010-01` accent（最终判断） | M004 | 收束页：主图 + 总结带，判断切至 accent |"
+    },
+    "materials_markdown": null
+  },
+  "visual_rough_markdown": "## A009｜三项案例数字的证据边界\n\n- **内容角色**：证据限定——在呈现案例结果的同时固定来源、统计缺口和不可外推边界。\n- **页面配方**：`evidence-cards-with-provenance-boundary`\n- **论点标题**：[V020][V021] 三项数字只属于课程资料所述某集团案例，不是行业基准或企业承诺\n- **辅助句**：`none`\n- **媒体需求**：`none`\n- **媒体作用**：`none`\n- **教材证据**：`none`\n- **逻辑图**：`no`\n- **逻辑图理由**：`none`\n\n### 上屏内容组\n\n1. [V020][R020] **证据身份**：课程资料所述的某集团发动机质量追溯案例。\n2. [V020][R020] **三项案例结果**：产品质量精度提升 40%｜质量追溯与质量分析人力成本降低 15% 以上｜经销商及客户质量追溯满意度提升 15% 以上。\n3. [V021] **统计缺口**：课程资料未提供统计周期、样本规模和计算方法。\n4. [V021][R021] **推断边界**：这些数字不是行业平均值，也不构成对任何企业的结果承诺。\n\n### 页面骨架\n\n- provenance band 先建立案例来源，再读三项证据卡，最后依次读取 evidence gap 与 inference boundary。\n- 三项数字使用同一证据标签，不生成仪表盘、趋势图、比例图或完成率。\n- inference boundary 保持正常阅读层级，不缩成角注；本页不另设泛化价值结论。\n\n### 关系保真\n\n- [R020] 三项结果与某集团案例的归属关系由证据身份先行和共享标签表达，任何数字都不脱离来源单独陈列。\n- [R021] 不构成行业平均值或企业承诺的关系由独立推断边界组明确呈现，不只放在结构性结论槽。",
+  "sources": {
+    "a_page": {
+      "path": "episodes/episode-09/episode-09-a-page.json",
+      "sha256": "8fb764141c77def8fbb003f376ab2d4d47f38a6d05d4528d2a11e3a4562f25be"
+    },
+    "visual_rough": {
+      "path": "episodes/episode-09/episode-09-visual-rough.md",
+      "sha256": "908aa37daf366132fafa02f66069f18d209b7099dd7e462b492a6a7c26e4d230"
+    },
+    "outline": {
+      "path": "episodes/episode-09/outline.md",
+      "sha256": "963e00798cfd0dd9322e9b0ba04b3a5e5da92b9f558c8c3fac56ccd64c37b6b9"
+    },
+    "script": {
+      "path": "episodes/episode-09/script.md",
+      "sha256": "add821ff31cd497c48f03a05250eeda88d67d09e16ace9f629d1a24eb34ad6ea"
+    },
+    "approved_text": {
+      "path": "episodes/episode-09/approved-spoken-text.txt",
+      "sha256": "e07682c0eaeae79123476216b63fd9450d5a854b1d6080c0604a44438a6e4f25"
+    },
+    "theme": {
+      "path": ".agents/skills/web-video-presentation/themes/active-identification-note/theme.json",
+      "sha256": "868de872b3c03d359b3c808ac69aa98c6a0a0b9e3e45ed0dc33f592d5a9f6997"
+    }
+  }
+}

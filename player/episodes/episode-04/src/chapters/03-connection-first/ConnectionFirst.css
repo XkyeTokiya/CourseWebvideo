@@ -1,0 +1,328 @@
+/* connection-first · A003 linear-steps-to-result
+   mechanism: ordered-progression — 两级步骤先后推进，终端结果区承载 R001 终点；单向顺序保真
+   视觉修订：句式卡标题 + 纵向分布式正文，仅保留必要强调件，去 tag 化
+   prefix: cf- */
+
+.cf-scene {
+  justify-content: flex-start;
+  gap: 36px;
+}
+
+/* ── 标题区（S010 判断方向 + 引入句承载） ─────────────── */
+
+.cf-kicker {
+  margin: 0 0 14px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+  animation: cf-rise 560ms var(--ease-quart) backwards;
+}
+
+.cf-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: cf-rise 640ms var(--ease-quart) 120ms backwards;
+}
+
+.cf-title em {
+  font-style: normal;
+  border-bottom: 8px solid var(--theme-process);
+  padding-bottom: 4px;
+}
+
+@keyframes cf-rise {
+  0%   { opacity: 0; transform: translateY(26px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 单向链：步骤 01 → 02 → 终端结果区 ────────────────── */
+
+.cf-chain {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 22px;
+}
+
+.cf-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 34px 36px;
+  min-width: 0;
+  transition: opacity 560ms var(--ease-soft),
+    background-color 560ms var(--ease-soft),
+    border-color 560ms var(--ease-soft),
+    box-shadow 560ms var(--ease-soft);
+}
+
+.cf-result {
+  flex: 1.18;
+}
+
+/* 状态相关动画挂状态选择器:upcoming→active 切换时重新触发(mount 锚定陷阱) */
+.cf-card[data-phase="active"] {
+  animation: cf-stamp-in 620ms var(--ease-overshoot) backwards;
+}
+
+.cf-card[data-phase="past"] {
+  opacity: 0.82;
+}
+
+.cf-card[data-phase="upcoming"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+.cf-card[data-phase="upcoming"] .cf-card-title,
+.cf-card[data-phase="upcoming"] .cf-body {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.cf-card[data-phase="upcoming"] .cf-idx {
+  opacity: 0.35;
+}
+
+@keyframes cf-stamp-in {
+  0%   { opacity: 0; transform: translateY(34px) scale(1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.cf-idx {
+  font-size: 42px;
+  color: var(--theme-process);
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.cf-card-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 33px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: var(--theme-structural);
+  transition: opacity 480ms var(--ease-soft), visibility 0s;
+}
+
+.cf-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-width: 0;
+  transition: opacity 480ms var(--ease-soft), visibility 0s;
+}
+
+/* 步骤卡 01：通信能力成行文字，纵向均布 */
+
+.cf-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.cf-list li {
+  position: relative;
+  padding-left: 36px;
+  font-size: 27px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.cf-list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 13px;
+  height: 13px;
+  background: var(--theme-process);
+}
+
+.cf-list b {
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* 步骤卡 02：轨道式链路 + 判断注脚 */
+
+.cf-track {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 26px;
+}
+
+.cf-track::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 50%;
+  height: 3px;
+  background: var(--theme-structural);
+  transform: translateY(-50%);
+}
+
+.cf-mile {
+  position: relative;
+  z-index: 1;
+  padding: 4px 12px;
+  background: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.cf-mile-final {
+  color: var(--theme-process);
+  border-bottom: 6px solid var(--theme-process);
+  padding-bottom: 2px;
+}
+
+.cf-flow-cap {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.cf-footnote {
+  margin: 0;
+  padding: 16px 20px;
+  background: var(--theme-process-surface);
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  color: var(--theme-process);
+}
+
+/* 链接箭头：阶段推进时单向流一次 */
+
+.cf-link {
+  flex: none;
+  align-self: center;
+  width: 46px;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--theme-structural) 0 10px,
+    transparent 10px 17px
+  );
+  position: relative;
+}
+
+.cf-link::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  width: 13px;
+  height: 13px;
+  border-top: 4px solid var(--theme-structural);
+  border-right: 4px solid var(--theme-structural);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.cf-scene[data-phase="information-flowing"] .cf-link-1 {
+  animation: cf-march 1.2s linear 2;
+}
+
+.cf-scene[data-phase="fragment-to-capability"] .cf-link-2 {
+  animation: cf-march 1.2s linear 2;
+}
+
+@keyframes cf-march {
+  from { background-position: 0 0; }
+  to   { background-position: 17px 0; }
+}
+
+/* 终端结果区：封闭片段 → 转化条件 → 数据能力 */
+
+.cf-silos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.cf-silo {
+  padding: 16px 10px;
+  text-align: center;
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  border: 2px dashed var(--theme-warning);
+}
+
+.cf-frag {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+.cf-transform {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.cf-condition {
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.cf-tarrow {
+  width: 40px;
+  height: 3px;
+  background: var(--theme-process);
+  position: relative;
+}
+
+.cf-tarrow::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  border-top: 3px solid var(--theme-process);
+  border-right: 3px solid var(--theme-process);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.cf-badge {
+  padding: 14px 30px;
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 3px solid var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.cf-card[data-phase="active"] .cf-badge {
+  animation: cf-stamp-in 560ms var(--ease-overshoot) 620ms backwards;
+}

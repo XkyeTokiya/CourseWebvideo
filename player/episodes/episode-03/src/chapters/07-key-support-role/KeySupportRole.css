@@ -1,0 +1,178 @@
+/* key-support-role · A007 condition-key-goal + K-A007-01 accent
+   mechanism: cumulative-assembly — 身份→基础→作用三卡组装（R012）；
+   骨架底部 takeaway 判断条由 K-A007-01 accent 替代，base 不再重复该判断。
+   prefix: ks- */
+
+/* ── K-A007-01 · accent：低成本全屏强调（目标—支撑转折）── */
+/* scene-pad 已是 absolute inset:0 定位容器，只改排布不改定位 */
+
+.ks-accent {
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  text-align: center;
+}
+
+.ks-accent-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  color: var(--theme-process);
+  animation: ks-rise 480ms var(--ease-quart) backwards;
+}
+
+.ks-accent-statement {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 84px;
+  font-weight: 900;
+  line-height: 1.5;
+  color: var(--theme-structural);
+  animation: ks-statement 820ms var(--ease-quart) 160ms backwards;
+}
+
+.ks-accent-statement em {
+  font-style: normal;
+  color: var(--theme-process);
+  border-bottom: 8px solid var(--accent-glow);
+  padding-bottom: 6px;
+}
+
+/* ── base-scene：三张横向大卡（身份｜基础｜作用）───────── */
+
+.ks-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+.ks-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: ks-rise 620ms var(--ease-quart) backwards;
+}
+
+.ks-cards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 36px;
+  align-items: stretch;
+}
+
+.ks-card {
+  padding: 28px 30px;
+  transition: opacity 320ms var(--ease-soft);
+}
+
+.ks-card[data-on="on"] {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  animation: ks-stamp 600ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--ks-i) * 200ms);
+}
+
+.ks-card[data-on="waiting"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+.ks-card[data-on="waiting"] .ks-card-body {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.ks-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+
+.ks-card-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.ks-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ks-main-term {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  text-align: center;
+  color: var(--theme-structural);
+}
+
+.ks-sub {
+  margin: 0;
+  padding-top: 16px;
+  font-size: 25px;
+  color: var(--text-2);
+  border-top: 2px dashed var(--theme-dashed-line);
+}
+
+.ks-sub i {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-process);
+  border-bottom: 4px solid var(--theme-process);
+  padding-bottom: 2px;
+}
+
+/* ── 身份卡：融合产物组装 ─────────────────────────────── */
+
+.ks-fusion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.ks-fusion-chip {
+  padding: 14px 22px;
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px solid var(--theme-structural);
+}
+
+.ks-fusion-times {
+  font-size: 30px;
+  color: var(--theme-process);
+}
+
+/* ── 共享 keyframes ──────────────────────────────────── */
+
+@keyframes ks-rise {
+  0%   { opacity: 0; transform: translateY(28px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ks-statement {
+  0%   { opacity: 0; transform: translateY(34px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ks-stamp {
+  0%   { opacity: 0; transform: translateY(28px) scale(1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}

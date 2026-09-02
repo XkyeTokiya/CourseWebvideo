@@ -1,0 +1,193 @@
+/* shared-view-action · A013 issue-cards-with-image
+   mechanism: view-to-action-chain（新命名）— 四张回应卡按“视图—判断—行动—
+   边界”阅读顺序推进：视图卡作为支持前提持续在场（R023 用卡片先后表达支持
+   关系，不画支持箭头网络），边界卡收束教学情境。
+   prefix: sv- */
+
+.sv-scene {
+  justify-content: flex-start;
+  gap: 26px;
+}
+
+/* ── 论点标题 ─────────────────────────────────────────── */
+
+.sv-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: sv-rise 620ms var(--ease-quart) backwards;
+}
+
+/* ── 主区：四张回应卡（左）+ 现场协作图（右）──────────── */
+
+.sv-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 620px;
+  gap: 56px;
+  align-items: center;
+}
+
+.sv-cards {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sv-card {
+  padding: 20px 26px;
+  transition: opacity 320ms var(--ease-soft);
+}
+
+.sv-card[data-on="on"] {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  animation: sv-stamp 560ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--sv-i) * 260ms + 80ms);
+}
+
+.sv-card[data-on="waiting"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+}
+
+.sv-card[data-on="waiting"] .sv-card-body {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sv-card--boundary.is-on {
+  border-style: dashed;
+  border-color: var(--text-mute);
+  box-shadow: none;
+}
+
+.sv-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sv-card-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.sv-card--view .sv-card-kicker {
+  color: var(--theme-process);
+}
+
+.sv-card-text {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+.sv-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sv-chip {
+  padding: 8px 16px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+}
+
+/* ── 现场协作图（独立落位）────────────────────────────── */
+
+.sv-media {
+  margin: 0;
+}
+
+.sv-photo {
+  padding: 14px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.sv-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.sv-media-cap {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  color: var(--text-mute);
+}
+
+/* ── takeaway 收束线（拍 4 扩张）──────────────────────── */
+
+.sv-take {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 22px 34px;
+  border-top: var(--rule-w) solid var(--theme-structural);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+
+.sv-take.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sv-take-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--theme-process);
+}
+
+.sv-take-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.sv-take-hero em {
+  font-style: normal;
+  color: var(--theme-process);
+  border-bottom: 6px solid var(--theme-process);
+  padding-bottom: 3px;
+}
+
+/* ── 共享 keyframes ──────────────────────────────────── */
+
+@keyframes sv-rise {
+  0%   { opacity: 0; transform: translateY(28px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sv-stamp {
+  0%   { opacity: 0; transform: translateY(24px) scale(1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}

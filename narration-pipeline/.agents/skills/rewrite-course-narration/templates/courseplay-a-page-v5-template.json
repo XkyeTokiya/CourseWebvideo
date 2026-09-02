@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Courseplay A Page v5 template",
+  "description": "Fixture-first template. Replace each screen source placeholder with learner-usable wording before approval; this file is not a production A-page.",
+  "schema_version": "courseplay-a-page/v5",
+  "document_kind": "candidate",
+  "episode_id": "episode-XX",
+  "approved_text": null,
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "<可核验的事实、关系或资源>",
+      "source_locator": "<冻结任务包中的定位>",
+      "verification_status": "<核验状态>",
+      "allowed_use": "<允许的教学使用范围>"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "<批准口播原文；候选夹具外不得改写>",
+      "teaching_purpose": "<本页教学职责>",
+      "single_message": "<本页唯一信息>",
+      "screen": {
+        "title": {
+          "screen_item_id": "S001",
+          "source_text": "上游明确提供、可直接使用的标题",
+          "edit_policy": "adaptable",
+          "evidence_refs": ["E001"]
+        },
+        "groups": [
+          {
+            "group_id": "G001",
+            "items": [
+              {
+                "screen_item_id": "S002",
+                "source_text": "上游明确提供、可直接使用的屏幕文本",
+                "edit_policy": "adaptable",
+                "evidence_refs": ["E001"]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [],
+      "silent_constraints": [
+        {
+          "constraint_id": "C001",
+          "instruction": "只约束下游，不得成为口播或屏幕文本",
+          "evidence_refs": ["E001"]
+        }
+      ],
+      "entry_condition": "<进入前观众已经理解什么>",
+      "exit_condition": "<离开前必须建立什么理解>",
+      "timing": {
+        "char_equivalent": 0,
+        "min_seconds": 0,
+        "target_seconds": 0,
+        "max_seconds": 0,
+        "short_page_reason": null
+      }
+    }
+  ]
+}

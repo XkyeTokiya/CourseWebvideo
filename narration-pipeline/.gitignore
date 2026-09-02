@@ -1,0 +1,36 @@
+.gateway.env
+.env
+.env.*
+!.env.example
+
+__pycache__/
+*.py[cod]
+
+.DS_Store
+Thumbs.db
+
+node_modules/
+
+work/**/.git/
+
+# Local agent state and recoverable workspace backups
+.hermes/
+.workbuddy/
+.commandcode/settings.local.json
+backups/
+
+# Generated archives and transient reports
+outputs/*.zip
+work/1111
+work/*-report.json
+work/**/禁止agent处理.zip
+
+# Completed visual experiments and preview-only files
+work/**/episode-*-visual-preview.html
+work/2026-08-29-visual-recipe-expansion/
+work/2026-08-29-visual-rough-bottom-slot-review.md
+
+# Uncompressed image intermediates; keep optimized PNG assets in Git
+img/**/*.bmp
+
+

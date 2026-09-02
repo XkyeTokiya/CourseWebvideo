@@ -1,0 +1,315 @@
+/* ─────────────────────────────────────────────────────────────
+ * 03-fragmented-records · A003 image-with-reading-notes
+ * mechanism: persistent-media-reading — M002 教材原图全程持续不卸载，
+ *   三张编号阅读注在图外固定注区依次 stamp-in 就位并累计保留，
+ *   阅读焦点随口播 顺序→断点→后果 迁移；原图以 contain 完整呈现，
+ *   不裁切关键标注，不在原图上补画任何拓扑、箭头或连接线
+ * prefix: fr-
+ * ───────────────────────────────────────────────────────────── */
+
+.fr-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── 论点标题 ─────────────────────────────────────────────── */
+
+.fr-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  color: var(--theme-structural);
+  animation: fr-rise 640ms var(--ease-quart) backwards;
+}
+
+.fr-thesis em {
+  font-style: normal;
+  padding-bottom: 6px;
+  border-bottom: 7px solid var(--theme-warning);
+}
+
+/* ── 主区：左 = M002 原图（前提锚，占比大）｜右 = 图外固定注区 ── */
+
+.fr-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 780px minmax(0, 1fr);
+  gap: 56px;
+  align-items: stretch;
+}
+
+.fr-media {
+  margin: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fr-media-in 700ms var(--ease-quart) backwards;
+}
+
+.fr-photo {
+  padding: 14px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.fr-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain; /* 教材原图完整呈现，不裁切关键标注 */
+  background: var(--surface-3);
+}
+
+.fr-media-cap {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+}
+
+@keyframes fr-media-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── 图外注区：三张编号注纵向排列，槽位固定、注就位后不重排 ── */
+
+.fr-notes {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.fr-note {
+  padding: 26px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: opacity 480ms var(--ease-soft),
+    box-shadow 480ms var(--ease-soft);
+}
+
+.fr-note[data-state="on"] {
+  animation: fr-stamp-in 620ms var(--ease-overshoot) backwards;
+}
+
+@keyframes fr-stamp-in {
+  0% {
+    opacity: 0;
+    transform: translateY(36px) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 阅读焦点迁移：当前注强调，已读注弱化但持续保留 */
+.fr-note.is-dim {
+  opacity: 0.55;
+}
+
+.fr-note.is-focus {
+  box-shadow: var(--card-shadow), 0 0 0 4px var(--accent-soft);
+}
+
+.fr-note-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+
+.fr-note-no {
+  font-size: 44px;
+  color: var(--theme-process);
+}
+
+.fr-note-kind {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+  transition: color 480ms var(--ease-soft);
+}
+
+.fr-note.is-focus .fr-note-kind {
+  color: var(--theme-process);
+}
+
+.fr-note-text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 27px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.fr-note-text em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+/* 预留注槽：虚线占位与就位后同高（body 仅隐藏可见性），出现注时不重排 */
+
+.fr-note[data-state="waiting"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+.fr-note[data-state="waiting"] .fr-note-no {
+  opacity: 0.3;
+  color: var(--text-faint);
+}
+
+.fr-note[data-state="waiting"] .fr-note-kind,
+.fr-note[data-state="waiting"] .fr-note-body {
+  visibility: hidden;
+}
+
+/* ── 注 1 内容：四段读图顺序（仅原图左右相邻关系，不加箭头） ── */
+
+.fr-order {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.fr-order-seg {
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 26px;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px solid var(--theme-dashed-line);
+}
+
+.fr-note[data-state="on"] .fr-order-seg {
+  animation: fr-chip-in 460ms var(--ease-overshoot) backwards;
+  animation-delay: calc(860ms + var(--fr-i) * 170ms);
+}
+
+@keyframes fr-chip-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fr-order-hint {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 26px;
+  color: var(--text-mute);
+}
+
+/* ── takeaway 收束线：最后出现并保留 ───────────────────────── */
+
+.fr-takeaway {
+  min-height: 96px;
+  display: flex;
+}
+
+.fr-takeaway-plate {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 16px 40px;
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+}
+
+.fr-takeaway-plate.is-on {
+  opacity: 1;
+  animation: fr-take-in 700ms var(--ease-quart) backwards;
+}
+
+@keyframes fr-take-in {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fr-takeaway-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.fr-takeaway-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+}
+
+.fr-takeaway-text em {
+  font-style: normal;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.fr-takeaway-plate.is-on .fr-takeaway-text em::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 6px;
+  background: var(--theme-warning);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: fr-underline 560ms var(--ease-quart) 460ms forwards;
+}
+
+@keyframes fr-underline {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ── 共用入场 ── */
+
+@keyframes fr-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

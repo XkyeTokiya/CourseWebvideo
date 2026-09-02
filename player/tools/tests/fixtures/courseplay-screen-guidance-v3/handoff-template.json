@@ -1,0 +1,63 @@
+{
+  "schema_version": "web-video-courseplay-chapter-handoff/v3",
+  "episode_id": "episode-XX",
+  "chapter": {
+    "index": 1,
+    "id": "chapter-id",
+    "title": "章节标题",
+    "a_page_id": "A001",
+    "step_count": 1
+  },
+  "narration": {
+    "authority": "a_page.nx",
+    "beats": ["当前 A 的批准口播 Beat"]
+  },
+  "screen_guidance": {
+    "title": {
+      "screen_item_id": "S001",
+      "guidance_text": "页面判断方向",
+      "usage_policy": "reference",
+      "evidence_refs": ["E001"]
+    },
+    "groups": [
+      {
+        "group_id": "G001",
+        "items": [
+          {
+            "screen_item_id": "S002",
+            "guidance_text": "内容方向、重点和可复用素材",
+            "usage_policy": "reference",
+            "evidence_refs": ["E001"]
+          }
+        ]
+      }
+    ]
+  },
+  "presentation": {
+    "recipe_id": "registered-recipe-id",
+    "slot_bindings": ["content <- G001"],
+    "media": [],
+    "relation_carriers": []
+  },
+  "steps": [
+    {
+      "index": 1,
+      "narration_focus": "当前口播焦点",
+      "scene_state": "S-A001 · state",
+      "show_refs": ["G001"],
+      "keep_refs": [],
+      "focus_refs": ["G001"],
+      "instruction": "保持现有 Outline 的结构化场景指令"
+    }
+  ],
+  "protected_relations": [],
+  "silent_constraints": [],
+  "materials_markdown": null,
+  "sources": {
+    "project": {"path": "episodes/episode-XX/project.json", "sha256": "<sha256>"},
+    "a_page": {"path": "episodes/episode-XX/episode-XX-a-page.json", "sha256": "<sha256>"},
+    "visual_rough": {"path": "episodes/episode-XX/episode-XX-visual-rough.md", "sha256": "<sha256>"},
+    "outline": {"path": "episodes/episode-XX/outline.md", "sha256": "<sha256>"},
+    "script": {"path": "episodes/episode-XX/script.md", "sha256": "<sha256>"}
+  }
+}

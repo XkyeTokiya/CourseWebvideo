@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(node \"C:\\Users\\liuxn\\AppData\\Local\\Temp\\commandcode\\D--00-workspace-005-coursewebvideo-player\\96575d11-b665-40a0-b1a1-a04a747efd13\\scratchpad\\verify-script.mjs\")",
+      "Shell(pnpm:*)",
+      "Shell(git:*)",
+      "Shell(git add -- episodes/episode-01 && git commit --only -F - -- episodes/episode-01 <<'EOF' feat(episode-01): 实现 A002 概念锚点章节 Co-authored-by: CommandCodeBot <noreply@commandcode.ai> EOF)",
+      "Shell(ls player/episodes/<episode-id>/inputs/ 2>/dev/null)",
+      "Shell(dir:*)",
+      "Shell(findstr:*)",
+      "Shell(powershell -NoProfile -Command \"Get-Content 'D:/00-workspace/005-coursewebvideo/player/episodes/episode-02/inputs/episode-02-a-page.json' -TotalCount 30\")",
+      "Shell(powershell -NoProfile -Command \"Select-String -Path 'D:/00-workspace/005-coursewebvideo/player/episodes/episode-02/inputs/episode-02-a-page.json' -Pattern '\\\"title\\\"' | Select-Object -First 3; Get-Content 'D:/00-workspace/005-coursewebvideo/player/episodes/episode-02/inputs/episode-02-visual-rough.md' -TotalCount 15\")",
+      "Shell(powershell -NoProfile -Command \"Get-Content 'D:/00-workspace/005-coursewebvideo/player/episodes/episode-02/inputs/approved-spoken-text.txt' -TotalCount 8\")",
+      "Shell(ls:*)",
+      "Shell(rmdir:*)"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  },
+  "tasteLearning": true
+}

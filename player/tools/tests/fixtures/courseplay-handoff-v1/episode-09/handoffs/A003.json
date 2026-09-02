@@ -1,0 +1,135 @@
+{
+  "schema_version": "web-video-courseplay-chapter-handoff/v1",
+  "episode_id": "episode-09",
+  "chapter": {
+    "index": 3,
+    "id": "fragmented-records",
+    "title": "记录为什么接不起来",
+    "a_page_id": "A003",
+    "step_count": 3
+  },
+  "theme": {
+    "id": "active-identification-note",
+    "nameZh": "主动标识工程笔记",
+    "descriptionZh": "工程方格纸上的工业教学视觉系统：深海军蓝建立粗结构，工业绿表达主动流动与改善，陶土橙承担风险提示，低位硬投影形成可靠的工程贴纸质感。",
+    "mood": [
+      "light",
+      "industrial",
+      "engineering",
+      "technical",
+      "educational",
+      "structured",
+      "tactile"
+    ],
+    "bestFor": [
+      "工业互联网与智能制造",
+      "工程技术与设备原理讲解",
+      "企业技术培训",
+      "生产流程和闭环控制",
+      "B2B 解决方案演示",
+      "职业教育与教材信息图",
+      "数据驱动的运营汇报"
+    ]
+  },
+  "a_page": {
+    "a_id": "A003",
+    "callback_a_ids": [
+      "A002"
+    ],
+    "nx": "问题出在数据分散。一台发动机从零部件供货、生产装配、仓储物流到经销，记录分布在不同企业和系统中。供应商、生产企业和经销商各自使用的系统，协议和数据规范并不一致，同一对象的记录很难直接对上。要查完整记录，往往得跨部门、跨企业反复确认，反馈链条很长。数据越积越多，问题反而越难定位。记录之间缺少共同线索，已有信息因此难以连起来。\n\n",
+    "teaching_purpose": "解释记录难以追溯的根因：跨企业、跨系统的数据规范不同，且缺少共同线索。",
+    "single_message": "记录分段、规范不一和共同线索缺失，使查询反馈链条变长、问题更难定位。",
+    "must_visible": [
+      {
+        "semantic_item_id": "V005",
+        "meaning": "供应商 ERP、生产企业 MES、生产企业 WMS、经销商 ERP 四段记录关系及其断点。",
+        "evidence_refs": [
+          "E005"
+        ]
+      },
+      {
+        "semantic_item_id": "V006",
+        "meaning": "不同企业和系统的协议、数据规范不一致，以及由此产生的跨部门、跨企业反复确认和较长的查询反馈链条。",
+        "evidence_refs": [
+          "E004"
+        ]
+      }
+    ],
+    "protected_relations": [
+      {
+        "relation_id": "R004",
+        "from": "供应商 ERP",
+        "relation": "与之构成教材原图中的分段关系",
+        "to": "生产企业 MES",
+        "direction": "从左至右呈现，不推定未给出的数据流"
+      },
+      {
+        "relation_id": "R005",
+        "from": "生产企业 MES",
+        "relation": "与之构成教材原图中的分段关系",
+        "to": "生产企业 WMS",
+        "direction": "从左至右呈现，不推定未给出的数据流"
+      },
+      {
+        "relation_id": "R006",
+        "from": "生产企业 WMS",
+        "relation": "与之构成教材原图中的分段关系",
+        "to": "经销商 ERP",
+        "direction": "从左至右呈现，不推定未给出的数据流"
+      }
+    ],
+    "entry_condition": "观众知道不同业务系统各有发动机记录。",
+    "exit_condition": "观众理解为何已有数据仍难以完整追查。",
+    "timing": {
+      "char_equivalent": 145,
+      "min_seconds": 37,
+      "target_seconds": 38,
+      "max_seconds": 40,
+      "short_page_reason": null
+    }
+  },
+  "narration": {
+    "authority": "a_page.nx",
+    "beats": [
+      "问题出在数据分散。一台发动机从零部件供货、生产装配、仓储物流到经销，记录分布在不同企业和系统中。",
+      "供应商、生产企业和经销商各自使用的系统，协议和数据规范并不一致，同一对象的记录很难直接对上。",
+      "要查完整记录，往往得跨部门、跨企业反复确认，反馈链条很长。数据越积越多，问题反而越难定位。记录之间缺少共同线索，已有信息因此难以连起来。"
+    ]
+  },
+  "outline": {
+    "chapter_markdown": "## 3. fragmented-records — 记录为什么接不起来（3 steps · ~38s）\n\n**A-page / Chapter**：`A003`\n**基础场景**：`S-A003` — M002 教材原图 + 图外阅读注区 + takeaway 收束线\n**页面配方**：`image-with-reading-notes`\n**核心判断**：记录分段、规范不一和共同线索缺失，使查询反馈链条变长、问题更难定位。\n**结构指纹**：`教材原图媒体区（M002）| 图外阅读注（读图顺序｜断点原因｜业务后果）| takeaway 收束线`\n**语义关系**：读图——按教材原图从左到右读取四段分段关系及其断点\n**关系机制**：`persistent-media-reading` — M002 原图全程持续不卸载，阅读注依次出现在图外固定注区，阅读焦点随口播迁移；不裁切关键标注，不描摹、重绘、AI 复刻或在原图上补画任何拓扑（R004/R005/R006 只保留原图相邻分段关系）\n**持续元素**：论点标题、M002 教材原图、图外阅读注区、takeaway 收束线\n**内容槽位**：`media-textbook`（M002）；`note-1 读图顺序`（供应商 ERP｜生产企业 MES｜生产企业 WMS｜经销商 ERP）；`note-2 断点原因`；`note-3 业务后果`；`takeaway`\n**强调页**：`none`\n**额外复杂场景**：`none`\n**可见标题**：`保留`\n**信息池**（主动设计：源为冻结 A-page / visual rough / evidence_catalog）：\n- 媒体：M002 textbook_original 教材数据割裂图 —— visual rough A003（证据 E005，待提供；必须教材原图）\n- 语义项：V005 四段记录关系及断点；V006 规范不一致与反复确认链条 —— A-page A003 must_visible\n- 关系：R004/R005/R006 原图相邻分段关系（从左至右，不推定数据流） —— A-page A003 protected_relations\n- 证据：E004 业务需求（协议和数据规范不同、历史数据使定位困难）；E005 教材原图 —— evidence_catalog\n**beat 切分**：N=3，N_eff=3，3 拍（=N）。并入：\"问题出在数据分散\"引入句并入拍 1；骨架 takeaway 判断句（\"记录之间缺少共同线索……\"）随末组口播并入拍 3，未独立扩张。\n\n| Step | Narration focus | Scene · Semantic state | 本步场景指令 |\n|---|---|---|---|\n| 1 | 数据分散 + 四段记录读图顺序 | `S-A003 · reading-order-established` (~11s) | 建立 M002 教材原图媒体区（完整呈现，不裁切关键标注）；图外注区先立\"读图顺序\"注：供应商 ERP→生产企业 MES→生产企业 WMS→经销商 ERP；只按原图从左到右读取，不推定未给出的数据流 |\n| 2 | 规范不一致，记录难对上 | `S-A003 · mismatch-noted` (~11s) | 原图保持；注区补\"断点原因\"注（协议与数据规范不一致、同一对象记录难以直接对上）；阅读焦点从顺序迁到断点，不在原图上补线 |\n| 3 | 反复确认链条长 + 缺共同线索收束 | `S-A003 · gap-conclusion-stated` (~16s) | 原图与前两条注保持；补\"业务后果\"注（跨部门跨企业反复确认、链条长、数据越积越多越难定位）；takeaway 收束线出现（记录都在，共同线索还没建立） |\n\n**口播节选**：\"记录之间缺少共同线索，已有信息因此难以连起来。\"",
+    "schedule": {
+      "previous": "| A002 | `parallel-cards-with-takeaway` | 三系统并列等权 | `equal-weight-accumulation` | 三张同构系统卡 | `K-A002-01` accent（收束判断） | none | 去图改卡：三卡并列，判断切至 accent |",
+      "current": "| A003 | `image-with-reading-notes` | 读图（四段分段关系与断点） | `persistent-media-reading` | 教材原图（M002）+ 图外阅读注 | 无 | M002 | 原图证据页：注在图外，区别于并列卡 |",
+      "next": "| A004 | `lifecycle-identity-continuity` | 恒定对象 × 阶段范围 | `constant-anchor-band-unfold` | 身份锚点 + 七阶段无连线阶段带 | 无 | none | 无连线阶段带首次出现，无媒体 |"
+    },
+    "materials_markdown": "### A003\n- ⚠️ `M002`：textbook_original — 教材数据割裂原图（证据 E005）；必须完整呈现教材原图，不裁切关键标注，不得 AI 复刻、描摹或重绘（待提供 / placeholder）"
+  },
+  "visual_rough_markdown": "## A003｜记录为什么接不起来\n\n- **内容角色**：证据读图——借教材数据割裂图解释四段记录关系和追溯断点。\n- **页面配方**：`image-with-reading-notes`\n- **论点标题**：[V006] 规范不一、共同线索缺失，让已有记录仍难以接成追溯链\n- **辅助句**：`none`\n- **媒体需求**：`M002` / `textbook_original`\n- **媒体作用**：完整呈现教材数据割裂图，作为旧状态中四段系统关系的证据锚点；全部解释置于图外。\n- **教材证据**：`E005`\n- **逻辑图**：`no`\n- **逻辑图理由**：`none`\n\n### 上屏内容组\n\n1. [V005][R004][R005][R006] **读图顺序**：供应商 ERP｜生产企业 MES｜生产企业 WMS｜经销商 ERP；只按教材原图从左到右读取四段关系，不推定未给出的数据流。\n2. [V006] **断点原因**：不同企业和系统使用的协议、数据规范并不一致，同一对象的记录难以直接对上。\n3. [V006] **业务后果**：跨部门、跨企业反复确认，查询反馈链条被拉长，问题更难定位。\n\n### 页面骨架\n\n- 教材原图保持完整，读图顺序和两条解释均置于图外。\n- 不裁切关键标注，不描摹、重绘、AI 复刻或在原图上补画任何拓扑。\n- takeaway 收束：记录都在，记录之间的共同线索还没有建立。\n\n### 关系保真\n\n- [R004] 供应商 ERP 与生产企业 MES 只保留教材原图中的相邻分段关系，以读图顺序说明，不解释为数据流。\n- [R005] 生产企业 MES 与生产企业 WMS 同样只按原图相邻关系读取，不增加方向含义。\n- [R006] 生产企业 WMS 与经销商 ERP 同样只保留原图分段关系；三段关系共同说明记录割裂，不画新的连接线。",
+  "sources": {
+    "a_page": {
+      "path": "episodes/episode-09/episode-09-a-page.json",
+      "sha256": "8fb764141c77def8fbb003f376ab2d4d47f38a6d05d4528d2a11e3a4562f25be"
+    },
+    "visual_rough": {
+      "path": "episodes/episode-09/episode-09-visual-rough.md",
+      "sha256": "908aa37daf366132fafa02f66069f18d209b7099dd7e462b492a6a7c26e4d230"
+    },
+    "outline": {
+      "path": "episodes/episode-09/outline.md",
+      "sha256": "963e00798cfd0dd9322e9b0ba04b3a5e5da92b9f558c8c3fac56ccd64c37b6b9"
+    },
+    "script": {
+      "path": "episodes/episode-09/script.md",
+      "sha256": "add821ff31cd497c48f03a05250eeda88d67d09e16ace9f629d1a24eb34ad6ea"
+    },
+    "approved_text": {
+      "path": "episodes/episode-09/approved-spoken-text.txt",
+      "sha256": "e07682c0eaeae79123476216b63fd9450d5a854b1d6080c0604a44438a6e4f25"
+    },
+    "theme": {
+      "path": ".agents/skills/web-video-presentation/themes/active-identification-note/theme.json",
+      "sha256": "868de872b3c03d359b3c808ac69aa98c6a0a0b9e3e45ed0dc33f592d5a9f6997"
+    }
+  }
+}

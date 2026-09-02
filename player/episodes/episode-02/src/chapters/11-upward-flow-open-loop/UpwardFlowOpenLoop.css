@@ -1,0 +1,323 @@
+/* ─────────────────────────────────────────────────────────────
+ * 11-upward-flow-open-loop · A011 image-with-insight-rail
+ * mechanism: persistent-media-reading — 主图承担"看见生产但现场
+ *   未改变"的情境，rail 四项按"来源—上行—看见—未闭环"顺序
+ *   阅读；第四项与主图形成"看见/未改变"对照，直接完成收束，
+ *   不增加 final judgment
+ * prefix: uf-
+ * ───────────────────────────────────────────────────────────── */
+
+.uf-scene {
+  justify-content: center;
+  gap: 44px;
+}
+
+/* ── 论点标题 ── */
+.uf-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: uf-rise 640ms var(--ease-quart) backwards;
+}
+.uf-title-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--theme-process-surface);
+}
+.uf-title-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.uf-title-text em {
+  font-style: normal;
+  border-bottom: 7px solid var(--theme-warning);
+  padding-bottom: 3px;
+}
+@keyframes uf-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.uf-main {
+  display: flex;
+  gap: 44px;
+  align-items: center;
+}
+
+/* ── 图侧 rail（左）：四项顺序阅读，末项对照收束 ── */
+.uf-rail {
+  flex: 1;
+  height: 596px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  padding: 6px 0;
+}
+.uf-rail::before {
+  content: "";
+  position: absolute;
+  left: 29px;
+  top: 30px;
+  bottom: 30px;
+  border-left: var(--rule-w) dashed var(--theme-dashed-line);
+}
+
+.uf-item {
+  position: relative;
+  transition: opacity var(--dur-slow) var(--ease-soft);
+}
+.uf-item.is-ghost {
+  opacity: 0.85;
+}
+.uf-item.is-on {
+  animation: uf-item-in 620ms var(--ease-overshoot) backwards;
+}
+@keyframes uf-item-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.uf-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.uf-item.is-on .uf-slot {
+  opacity: 0;
+}
+
+.uf-item-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.uf-item.is-on .uf-item-body {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 140ms;
+}
+
+.uf-badge {
+  width: 60px;
+  height: 60px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: var(--theme-process);
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-process);
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.uf-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 4px;
+}
+.uf-item-name {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.uf-item-desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 21px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* 第四项：尚未闭环——对照收束 */
+.uf-item.is-gap .uf-badge {
+  color: var(--theme-warning);
+  border-color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+}
+.uf-item.is-gap .uf-item-name {
+  color: var(--theme-warning);
+}
+.uf-item.is-gap .uf-item-desc {
+  color: var(--theme-structural);
+  font-weight: 700;
+}
+
+/* ── 主图（右）：M003 占位 + 机器静默/报表闪烁反差演示 ── */
+.uf-media {
+  width: 1040px;
+  height: 596px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.uf-canvas {
+  position: relative;
+  flex: 1;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.uf-report {
+  position: absolute;
+  top: 26px;
+  right: 30px;
+  width: 330px;
+  height: 170px;
+  border: var(--rule-w) dashed var(--theme-structural);
+  border-radius: 12px;
+  background: var(--surface-2);
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.uf-report-label {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  color: var(--theme-structural);
+}
+.uf-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  height: 76px;
+}
+.uf-bar {
+  width: 44px;
+  background: var(--theme-process);
+  opacity: 0.75;
+  animation: uf-flicker 1.9s var(--ease-soft) infinite;
+  animation-delay: calc(var(--uf-b) * 260ms);
+}
+.uf-bar:nth-child(1) { height: 42%; }
+.uf-bar:nth-child(2) { height: 66%; }
+.uf-bar:nth-child(3) { height: 88%; }
+@keyframes uf-flicker {
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.uf-dot {
+  position: absolute;
+  bottom: 30%;
+  width: 13px;
+  height: 13px;
+  background: var(--theme-process);
+  opacity: 0;
+  animation: uf-up 2.6s linear infinite;
+  animation-delay: calc(var(--uf-i) * 0.85s);
+}
+.uf-dot:nth-child(1) { left: 62%; }
+.uf-dot:nth-child(2) { left: 70%; }
+.uf-dot:nth-child(3) { left: 78%; }
+@keyframes uf-up {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  14% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-240px);
+    opacity: 0;
+  }
+}
+
+.uf-floor {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 26px;
+  display: flex;
+  gap: 60px;
+}
+.uf-machine {
+  width: 118px;
+  height: 80px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 6px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  position: relative;
+}
+.uf-machine::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 11px;
+  height: 11px;
+  background: var(--theme-dashed-line);
+}
+
+.uf-cap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 24px;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+  background: var(--surface-2);
+}
+.uf-cap-mark {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--theme-structural);
+  background: var(--theme-cool-surface);
+  padding: 4px 14px;
+  border-radius: 6px;
+}
+.uf-cap-desc {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: var(--text-mute);
+}

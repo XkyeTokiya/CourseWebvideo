@@ -1,0 +1,31 @@
+{
+  "episode_id": "episode-02",
+  "validation_profile": "visual-rough-v1",
+  "schema_version": "courseplay-visual-rough/v1",
+  "status": "draft",
+  "a_pages": {
+    "count": 15
+  },
+  "image_allocation": {
+    "required_page_count": 5,
+    "assigned_page_count": 5,
+    "media_requirement_count": 5,
+    "photorealistic_ai_count": 5,
+    "textbook_original_count": 0,
+    "reuse_allowed": false
+  },
+  "logic_diagrams": {
+    "page_limit": 2,
+    "assigned_page_count": 0
+  },
+  "recipe_usage": {
+    "distinct_count": 10,
+    "manual_registry": true
+  },
+  "failures": [],
+  "input_integrity": {
+    "a_page_sha256": "dcd1beed9eb6eb761ebe0c2d8d0f09ba353ff7380b5349a9d28b88386034fa11",
+    "visual_rough_sha256": "8ba59b46ac716f4a9eac4f32e69bfed339c019ff564b68bf5cad27a56d020156",
+    "recipe_registry_sha256": "4d9c97f24a059ec3b2b7397ed5c9a39a5f1b15042a0834d3430266608b879619"
+  }
+}

@@ -1,0 +1,237 @@
+/* ─────────────────────────────────────────────────────────────
+ * 03-network-foundation · A003 parallel-cards-self-contained
+ * mechanism: equal-weight-accumulation — 三张等权卡依次回答
+ *   "连接谁—传什么—为何必要"，完成后保持等权；卡间不连线，
+ *   无独立结论条
+ * prefix: nf-
+ * ───────────────────────────────────────────────────────────── */
+
+.nf-scene {
+  justify-content: center;
+  gap: 40px;
+}
+
+/* ── 论点标题 ── */
+.nf-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: nf-rise 640ms var(--ease-quart) backwards;
+}
+.nf-title-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--theme-process-surface);
+}
+.nf-title-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.nf-title-text em {
+  font-style: normal;
+  border-bottom: 7px solid var(--theme-process);
+  padding-bottom: 3px;
+}
+@keyframes nf-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── 信息路径带：可持续传递的脉冲演示 ── */
+.nf-path {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  animation: nf-rise 640ms var(--ease-quart) 180ms backwards;
+}
+.nf-path-label {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+  flex: none;
+}
+.nf-path-track {
+  position: relative;
+  flex: 1;
+  height: 16px;
+  border-bottom: var(--rule-w) dashed var(--theme-dashed-line);
+}
+.nf-pulse {
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--theme-process);
+  opacity: 0;
+  animation: nf-travel 4.2s linear infinite;
+  animation-delay: calc(var(--nf-i) * 1.4s + 600ms);
+}
+@keyframes nf-travel {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.9;
+  }
+  88% {
+    opacity: 0.9;
+  }
+  100% {
+    left: calc(100% - 12px);
+    opacity: 0;
+  }
+}
+
+/* ── 三张等权卡：ghost 预留 → 依次成立 ── */
+.nf-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  align-items: stretch;
+}
+
+.nf-card {
+  height: 520px;
+  padding: 36px 36px 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    background-color var(--dur-slow) var(--ease-soft),
+    border-color var(--dur-slow) var(--ease-soft),
+    box-shadow var(--dur-slow) var(--ease-soft);
+}
+.nf-card.is-ghost {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  opacity: 0.85;
+}
+.nf-card.is-ghost::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: inherit;
+}
+.nf-card.is-on {
+  animation: nf-stamp 620ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--nf-i) * 0ms);
+}
+@keyframes nf-stamp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.nf-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.nf-card.is-on .nf-slot {
+  opacity: 0;
+}
+
+.nf-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.nf-card.is-on .nf-card-body {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 140ms;
+}
+
+.nf-card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding-bottom: 20px;
+  border-bottom: var(--rule-w) dashed var(--theme-dashed-line);
+}
+.nf-card-no {
+  font-size: 42px;
+  color: var(--theme-process);
+}
+.nf-card-name {
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+
+.nf-card-desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 24px;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+.nf-card-desc em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--theme-process);
+}
+
+/* 卡 1：四类连接对象 2×2 词组 */
+.nf-objects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.nf-object {
+  font-family: var(--font-body);
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: var(--rule-w) solid var(--theme-structural);
+  border-radius: 10px;
+  padding: 14px 18px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+  transition-delay: calc(var(--nf-j) * 200ms + 200ms);
+}
+.nf-card.is-on .nf-object {
+  opacity: 1;
+  transform: translateY(0);
+}

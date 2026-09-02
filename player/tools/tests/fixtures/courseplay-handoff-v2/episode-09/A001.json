@@ -1,0 +1,153 @@
+{
+  "schema_version": "web-video-courseplay-chapter-handoff/v2",
+  "episode_id": "episode-09",
+  "chapter": {
+    "index": 1,
+    "id": "after-scan",
+    "title": "认出发动机之后",
+    "a_page_id": "A001",
+    "step_count": 3
+  },
+  "narration": {
+    "authority": "a_page.nx",
+    "beats": [
+      "先设想一个场景：一台发动机在售后出了问题。服务人员扫到它身上的标识，设备确实认出了它。可接下来还要查几个问题：它来自哪个订单？经历过怎样的装配和工艺控制？",
+      "质量记录在哪里？又经过了哪些仓储物流？",
+      "要把这些记录接起来，光扫到标识还不够。记录明明都在，为什么查起来还是费劲？本节借这个发动机案例，看看统一标识怎样把分散系统串成一条可定位问题的追溯链。"
+    ]
+  },
+  "screen_source": {
+    "title": {
+      "screen_item_id": "S001",
+      "source_text": "扫描认出发动机，追溯才刚刚开始",
+      "edit_policy": "adaptable",
+      "evidence_refs": ["E007", "E011"]
+    },
+    "groups": [
+      {
+        "group_id": "G001",
+        "items": [
+          {
+            "screen_item_id": "S002",
+            "source_text": "订单：来自哪个订单？",
+            "edit_policy": "adaptable",
+            "evidence_refs": ["E007", "E011"]
+          },
+          {
+            "screen_item_id": "S003",
+            "source_text": "装配与工艺：经历了怎样的装配和工艺控制？",
+            "edit_policy": "adaptable",
+            "evidence_refs": ["E007", "E011"]
+          },
+          {
+            "screen_item_id": "S004",
+            "source_text": "质量：对应的质量记录在哪里？",
+            "edit_policy": "adaptable",
+            "evidence_refs": ["E007", "E011"]
+          },
+          {
+            "screen_item_id": "S005",
+            "source_text": "仓储物流：经过了哪些仓储物流环节？",
+            "edit_policy": "adaptable",
+            "evidence_refs": ["E007", "E011"]
+          }
+        ]
+      }
+    ],
+    "protected_relations": [
+      {
+        "relation_id": "R001",
+        "from": "发动机标识",
+        "relation": "用于识别",
+        "to": "售后问题对象",
+        "direction": "从扫描动作指向同一台发动机"
+      },
+      {
+        "relation_id": "R002",
+        "from": "订单、装配、质量和物流记录",
+        "relation": "需要围绕同一对象建立关联",
+        "to": "发动机",
+        "direction": "从分散待查记录汇向发动机"
+      }
+    ]
+  },
+  "presentation": {
+    "recipe_id": "issue-cards-with-image",
+    "slot_bindings": [
+      "media-scene <- M001",
+      "headline <- S001",
+      "question-cards <- G001",
+      "takeaway <- none"
+    ],
+    "media": [
+      {
+        "media_id": "M001",
+        "media_type": "photorealistic_ai",
+        "role": "售后扫描情境"
+      }
+    ],
+    "relation_carriers": [
+      {
+        "relation_id": "R001",
+        "carrier": "media-scene + headline"
+      },
+      {
+        "relation_id": "R002",
+        "carrier": "G001 shared object + reading order"
+      }
+    ]
+  },
+  "steps": [
+    {
+      "index": 1,
+      "scene_state": "S-A001 · scene-and-first-questions",
+      "show_refs": ["M001", "S001", "G001"],
+      "keep_refs": [],
+      "focus_refs": ["S001"],
+      "instruction": "建立现场与前两问"
+    },
+    {
+      "index": 2,
+      "scene_state": "S-A001 · all-questions-visible",
+      "show_refs": [],
+      "keep_refs": ["M001", "S001", "G001"],
+      "focus_refs": ["G001"],
+      "instruction": "保持现场与前两卡，补齐后两问"
+    },
+    {
+      "index": 3,
+      "scene_state": "S-A001 · recognition-gap-stated",
+      "show_refs": [],
+      "keep_refs": ["M001", "S001", "G001"],
+      "focus_refs": ["R002"],
+      "instruction": "保持主体，聚焦识别与完整追溯的差距"
+    }
+  ],
+  "silent_constraints": [
+    {
+      "constraint_id": "C001",
+      "instruction": "扫描动作只确认对象身份，不表示已经接通订单、装配、质量或物流记录。",
+      "evidence_refs": ["E007", "E011"]
+    },
+    {
+      "constraint_id": "C002",
+      "instruction": "不得补写具体订单号、系统界面、记录值或未提供的现场细节。",
+      "evidence_refs": ["E007", "E011"]
+    }
+  ],
+  "materials_markdown": "### A001\n- `M001`：`photorealistic_ai` — 售后扫描情境占位媒体；不承载 screen source。",
+  "sources": {
+    "a_page": {
+      "path": "tools/tests/fixtures/courseplay-handoff-v2/episode-09/episode-09-a-page-v5-slice.json",
+      "sha256": "2f5e113535347efd2a24b0523bc5586cbaf8bfd3fe95989c50133cea1e4840fc"
+    },
+    "visual_rough": {
+      "path": "tools/tests/fixtures/courseplay-handoff-v2/episode-09/episode-09-visual-rough-v2-slice.md",
+      "sha256": "e6ca0a746c84281a9afbc3659e3e69a5c31e3e3bdab243a6a60fa151fb1e0e0a"
+    },
+    "outline": {
+      "path": "tools/tests/fixtures/courseplay-handoff-v2/episode-09/outline-screen-source-slice.md",
+      "sha256": "db2e09797ef2ac4065ee3c44ca8b157a6273651cfad298372bd42158dca3fc69"
+    }
+  }
+}

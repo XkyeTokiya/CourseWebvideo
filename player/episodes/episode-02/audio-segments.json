@@ -1,0 +1,296 @@
+[
+  {
+    "chapter": "open-loop-line",
+    "step": 1,
+    "text": "设想一条已经联网的产线。设备不断上传状态信息，",
+    "audio": "open-loop-line/1.mp3"
+  },
+  {
+    "chapter": "open-loop-line",
+    "step": 2,
+    "text": "可一旦出现异常，还是要等现场人员发现，再打电话沟通，由不同的人和系统分头处理。",
+    "audio": "open-loop-line/2.mp3"
+  },
+  {
+    "chapter": "open-loop-line",
+    "step": 3,
+    "text": "信息已经传出去了，生产过程却没有因此得到及时改善。问题在哪里？",
+    "audio": "open-loop-line/3.mp3"
+  },
+  {
+    "chapter": "open-loop-line",
+    "step": 4,
+    "text": "连接只能让信息开始流动，还需要有人接住信息、理解变化，并把判断带回生产现场。",
+    "audio": "open-loop-line/4.mp3"
+  },
+  {
+    "chapter": "central-question",
+    "step": 1,
+    "text": "这就带来一个关键问题：设备和业务系统联网以后，网络、平台、数据和安全怎样配合，才能让信息变成行动，",
+    "audio": "central-question/1.mp3"
+  },
+  {
+    "chapter": "central-question",
+    "step": 2,
+    "text": "再从行动中产生新的信息？理解这件事，可以沿着一次真实的生产变化来观察。",
+    "audio": "central-question/2.mp3"
+  },
+  {
+    "chapter": "network-foundation",
+    "step": 1,
+    "text": "网络提供了这条路径的基础。它把工厂内外的设备、生产系统、管理系统，以及供应链中相关的环节连接起来。",
+    "audio": "network-foundation/1.mp3"
+  },
+  {
+    "chapter": "network-foundation",
+    "step": 2,
+    "text": "设备状态和业务活动只有能够持续传递，生产过程的变化才不会被困在某个局部。",
+    "audio": "network-foundation/2.mp3"
+  },
+  {
+    "chapter": "network-foundation",
+    "step": 3,
+    "text": "没有连接，后面的理解和判断就失去了入口。",
+    "audio": "network-foundation/3.mp3"
+  },
+  {
+    "chapter": "platform-common-space",
+    "step": 1,
+    "text": "信息进入共同环境之后，还需要平台来承接。平台可以理解成把资源和能力组织起来的共同空间。",
+    "audio": "platform-common-space/1.mp3"
+  },
+  {
+    "chapter": "platform-common-space",
+    "step": 2,
+    "text": "它汇聚制造资源与能力，为数据处理、数字模型、应用服务和业务协同提供支撑。",
+    "audio": "platform-common-space/2.mp3"
+  },
+  {
+    "chapter": "platform-common-space",
+    "step": 3,
+    "text": "这样，分散在不同环节的能力才有机会被放在一起使用，而不是各自保存、各自处理。",
+    "audio": "platform-common-space/3.mp3"
+  },
+  {
+    "chapter": "data-to-judgment",
+    "step": 1,
+    "text": "数据是这条路径中的核心。设备状态、生产过程和业务活动会不断形成信息。",
+    "audio": "data-to-judgment/1.mp3"
+  },
+  {
+    "chapter": "data-to-judgment",
+    "step": 2,
+    "text": "这些信息经过持续采集、处理、必要的治理和使用，才可能被人和系统理解。",
+    "audio": "data-to-judgment/2.mp3"
+  },
+  {
+    "chapter": "data-to-judgment",
+    "step": 3,
+    "text": "数据不是停在某个环节的记录，而是贯穿感知、建模、判断和反馈的主线。",
+    "audio": "data-to-judgment/3.mp3"
+  },
+  {
+    "chapter": "data-to-judgment",
+    "step": 4,
+    "text": "这里关注的是它如何推动理解和优化，不展开数据分类、共享制度或具体建模方法。",
+    "audio": "data-to-judgment/4.mp3"
+  },
+  {
+    "chapter": "security-full-path",
+    "step": 1,
+    "text": "安全则要一直在场。设备、网络、应用和数据都需要受到保护。",
+    "audio": "security-full-path/1.mp3"
+  },
+  {
+    "chapter": "security-full-path",
+    "step": 2,
+    "text": "可靠性让信息和服务能够持续工作；保密性防止不该看到的内容被暴露；完整性保证信息没有被不当改变；可用性保证需要时能够正常使用。",
+    "audio": "security-full-path/2.mp3"
+  },
+  {
+    "chapter": "security-full-path",
+    "step": 3,
+    "text": "安全不是流程结束时才加上的一道门，而是让整条信息路径能够可信运行的条件。",
+    "audio": "security-full-path/3.mp3"
+  },
+  {
+    "chapter": "four-duties-chain",
+    "step": 1,
+    "text": "把这几项职责放在一起看，它们并不是互不相干的名词。网络负责连接和传递；平台负责汇聚资源与能力；数据让系统有了理解和优化的依据；安全让整个过程能够稳定、可信地持续运行。",
+    "audio": "four-duties-chain/1.mp3"
+  },
+  {
+    "chapter": "four-duties-chain",
+    "step": 2,
+    "text": "少了网络，信息传不上来；少了平台，分散的能力难以协同；少了数据，判断没有根据；少了安全，信息和行动就难以放心地持续运行。",
+    "audio": "four-duties-chain/2.mp3"
+  },
+  {
+    "chapter": "four-duties-chain",
+    "step": 3,
+    "text": "生产现场与数字空间也在这条路径上相互配合。",
+    "audio": "four-duties-chain/3.mp3"
+  },
+  {
+    "chapter": "physical-digital-pivot",
+    "step": 1,
+    "text": "设备资产、生产系统、管理系统和供应链环节，提供的是正在发生的运行状态与业务活动。",
+    "audio": "physical-digital-pivot/1.mp3"
+  },
+  {
+    "chapter": "physical-digital-pivot",
+    "step": 2,
+    "text": "数字空间把这些信息组织起来，支持描述、分析和决策。",
+    "audio": "physical-digital-pivot/2.mp3"
+  },
+  {
+    "chapter": "physical-digital-pivot",
+    "step": 3,
+    "text": "这里说的 IT 与 OT 融合，可以先用一句人话理解：信息与管理能力，开始和工业现场的运行能力协同工作，不再各自孤立。",
+    "audio": "physical-digital-pivot/3.mp3"
+  },
+  {
+    "chapter": "perception-model-layers",
+    "step": 1,
+    "text": "为了看清数据怎样发挥作用，可以把它分成三个相互衔接的层次。感知控制负责获取物理对象和生产过程的信息，也承接行动回到现场。",
+    "audio": "perception-model-layers/1.mp3"
+  },
+  {
+    "chapter": "perception-model-layers",
+    "step": 2,
+    "text": "数字模型把分散的信息组织成可以描述和分析的数字对象。",
+    "audio": "perception-model-layers/2.mp3"
+  },
+  {
+    "chapter": "three-layers-to-action",
+    "step": 1,
+    "text": "决策优化则根据分析结果，形成面向生产和业务目标的判断。",
+    "audio": "three-layers-to-action/1.mp3"
+  },
+  {
+    "chapter": "three-layers-to-action",
+    "step": 2,
+    "text": "三个层次合在一起，才有可能让信息从现场出发，经过理解，转化成对生产有用的行动。",
+    "audio": "three-layers-to-action/2.mp3"
+  },
+  {
+    "chapter": "upward-flow-open-loop",
+    "step": 1,
+    "text": "先沿着自下而上的信息流观察。设备资产、生产系统、管理系统和供应链环节不断产生状态与业务信息。",
+    "audio": "upward-flow-open-loop/1.mp3"
+  },
+  {
+    "chapter": "upward-flow-open-loop",
+    "step": 2,
+    "text": "网络把这些信息传到共同环境，平台承接处理和模型能力。",
+    "audio": "upward-flow-open-loop/2.mp3"
+  },
+  {
+    "chapter": "upward-flow-open-loop",
+    "step": 3,
+    "text": "数字空间于是能够观察生产正在发生什么，也能够形成对变化的理解。",
+    "audio": "upward-flow-open-loop/3.mp3"
+  },
+  {
+    "chapter": "upward-flow-open-loop",
+    "step": 4,
+    "text": "到这里，系统已经可以看见和分析，但如果结果只停在报表或提示上，生产现场仍然没有得到改变。",
+    "audio": "upward-flow-open-loop/4.mp3"
+  },
+  {
+    "chapter": "downward-flow-feedback",
+    "step": 1,
+    "text": "真正的作用还需要一条自上而下的决策流。判断可以转化为调度、协同、服务或控制行动，",
+    "audio": "downward-flow-feedback/1.mp3"
+  },
+  {
+    "chapter": "downward-flow-feedback",
+    "step": 2,
+    "text": "再作用于生产过程。行动会改变设备或业务运行的状态，",
+    "audio": "downward-flow-feedback/2.mp3"
+  },
+  {
+    "chapter": "downward-flow-feedback",
+    "step": 3,
+    "text": "新的状态又形成新的信息，继续向上流动。",
+    "audio": "downward-flow-feedback/3.mp3"
+  },
+  {
+    "chapter": "downward-flow-feedback",
+    "step": 4,
+    "text": "这样，系统能够比较行动后的变化，修正原来的判断，再形成下一次行动。",
+    "audio": "downward-flow-feedback/4.mp3"
+  },
+  {
+    "chapter": "downward-flow-feedback",
+    "step": 5,
+    "text": "信息上行、决策下行、结果再次反馈，正是持续优化所需要的往复过程。",
+    "audio": "downward-flow-feedback/5.mp3"
+  },
+  {
+    "chapter": "feedback-forms-flexible",
+    "step": 1,
+    "text": "这也说明，数据回到生产，并不等于每个场景都必须全自动控制。有时返回的是调度安排，",
+    "audio": "feedback-forms-flexible/1.mp3"
+  },
+  {
+    "chapter": "feedback-forms-flexible",
+    "step": 2,
+    "text": "有时是跨环节协同，有时是服务响应，也可能是现场控制。",
+    "audio": "feedback-forms-flexible/2.mp3"
+  },
+  {
+    "chapter": "feedback-forms-flexible",
+    "step": 3,
+    "text": "重要的是，数字空间中的判断确实能够作用于生产过程，而生产过程的变化又能回到信息系统中。IT 与 OT 的协同，正体现在这种相互连接、相互反馈的关系里。",
+    "audio": "feedback-forms-flexible/3.mp3"
+  },
+  {
+    "chapter": "five-business-directions",
+    "step": 1,
+    "text": "同一套机制可以服务不同的业务方向。",
+    "audio": "five-business-directions/1.mp3"
+  },
+  {
+    "chapter": "five-business-directions",
+    "step": 2,
+    "text": "它可以支持智能化生产，让生产过程得到更及时的理解和调整；支持网络化协同，让不同环节围绕业务行动配合起来。",
+    "audio": "five-business-directions/2.mp3"
+  },
+  {
+    "chapter": "five-business-directions",
+    "step": 3,
+    "text": "它还可以支持服务化延伸、个性化定制和数字化管理：让产品和服务延伸到持续的服务应用，让生产活动面向具体需求组织，让运营过程获得持续的信息支持。",
+    "audio": "five-business-directions/3.mp3"
+  },
+  {
+    "chapter": "five-business-directions",
+    "step": 4,
+    "text": "五种方向的表现不同，共同条件却很清楚：数据要跨环节流动，判断要能够返回业务行动，行动后的新状态还要重新进入这条信息路径。",
+    "audio": "five-business-directions/4.mp3"
+  },
+  {
+    "chapter": "closing-loop-summary",
+    "step": 1,
+    "text": "本期总结：再回到开场那条产线。设备联网，只解决了信息能不能传递；平台让资源和能力有地方汇聚；",
+    "audio": "closing-loop-summary/1.mp3"
+  },
+  {
+    "chapter": "closing-loop-summary",
+    "step": 2,
+    "text": "数据让生产状态能够被理解并支持判断；安全让信息和行动能够可信地运行。",
+    "audio": "closing-loop-summary/2.mp3"
+  },
+  {
+    "chapter": "closing-loop-summary",
+    "step": 3,
+    "text": "当自下而上的信息流遇到自上而下的决策流，判断回到现场，现场变化再次形成信息，生产才真正获得持续优化的可能。",
+    "audio": "closing-loop-summary/3.mp3"
+  },
+  {
+    "chapter": "closing-loop-summary",
+    "step": 4,
+    "text": "这就是网络、平台、数据与安全共同作用的意义。",
+    "audio": "closing-loop-summary/4.mp3"
+  }
+]

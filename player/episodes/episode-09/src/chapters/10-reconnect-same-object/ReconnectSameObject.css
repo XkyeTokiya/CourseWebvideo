@@ -1,0 +1,470 @@
+/* ─────────────────────────────────────────────────────────────
+ * 10-reconnect-same-object · A010 image-with-summary-rail
+ * mechanism: persistent-media-reading — M004 主图全程持续不卸载，
+ *   总结带 1→2 在右侧轨道依次就位并累计保留，阅读焦点随口播
+ *   系统分工 → 共同锚点 → 标题规律 迁移；图片不叠加系统拓扑、链路
+ *   或软件界面，全部语义由总结带承担（R022 并列列举不画互连，
+ *   R023 共同对象分组不画网络节点）；最终判断由 K-A010-01 accent
+ *   唯一承载，base-scene 不再重复
+ * prefix: rs-
+ * ───────────────────────────────────────────────────────────── */
+
+.rs-scene {
+  justify-content: flex-start;
+  gap: 36px;
+}
+
+/* ── 论点标题：pattern-named 拍规律句落在标题判断上 ─────────── */
+
+.rs-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  color: var(--theme-structural);
+  animation: rs-rise 640ms var(--ease-quart) backwards;
+}
+
+.rs-thesis em {
+  font-style: normal;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.rs-thesis em::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 7px;
+  background: var(--theme-warning);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.rs-scene[data-state="pattern-named"] .rs-thesis em::after {
+  animation: rs-underline 640ms var(--ease-quart) forwards;
+}
+
+/* ── 主区：左 = M004 主图（全程持续）｜右 = 总结带轨道 ─────── */
+
+.rs-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1000px minmax(0, 1fr);
+  gap: 64px;
+  align-items: center;
+}
+
+.rs-media {
+  margin: 0;
+  min-height: 0;
+  animation: rs-media-in 700ms var(--ease-quart) backwards;
+}
+
+.rs-photo {
+  position: relative;
+  padding: 14px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.rs-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* 回扣标记：回到开头那台发动机（并入拍 1 的回扣句，非拓扑非界面） */
+
+.rs-recall-chip {
+  position: absolute;
+  left: 32px;
+  bottom: 32px;
+  padding: 10px 18px;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.06em;
+  color: var(--theme-process);
+  background: var(--surface-2);
+  border: 2px solid var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  animation: rs-chip-pop 460ms var(--ease-overshoot) 1.05s forwards;
+}
+
+.rs-media-cap {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+}
+
+/* ── 总结带轨道：带 1 → 带 2 依次就位，就位后累计保留不重排 ── */
+
+.rs-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.rs-band {
+  position: relative;
+  padding: 28px 34px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rs-band[data-on="on"] {
+  animation: rs-stamp-in 620ms var(--ease-overshoot) backwards;
+}
+
+/* pattern-named 拍：已立总结带与标题判断共同承载规律（一次性确认脉冲） */
+
+.rs-band-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(--accent-soft);
+  box-shadow: 0 0 0 4px var(--accent-glow);
+  opacity: 0;
+}
+
+.rs-scene[data-state="pattern-named"] .rs-band-glow {
+  animation: rs-pulse 1150ms var(--ease-soft);
+}
+
+.rs-band-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+
+.rs-band-no {
+  font-size: 40px;
+  color: var(--theme-process);
+}
+
+.rs-band-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+}
+
+.rs-band-text {
+  margin: 14px 0 0;
+  font-family: var(--font-body);
+  font-size: 27px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+/* 预留带槽：与就位后同高（内容仅隐藏可见性），出现带时不重排 */
+
+.rs-band[data-on="waiting"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+.rs-band[data-on="waiting"] .rs-band-no {
+  opacity: 0.3;
+  color: var(--text-faint);
+}
+
+.rs-band[data-on="waiting"] .rs-band-name,
+.rs-band[data-on="waiting"] .rs-band-text,
+.rs-band[data-on="waiting"] .rs-anchor-group,
+.rs-band[data-on="waiting"] .rs-band-glow {
+  visibility: hidden;
+}
+
+/* ── 带 1 内演示：三系统等权罗列 + 各自台账行（无互连） ─────── */
+
+.rs-sys-row {
+  margin-top: 22px;
+  display: flex;
+  gap: 16px;
+}
+
+.rs-sys-cell {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rs-sys-chip {
+  padding: 9px 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 26px;
+  letter-spacing: 0.08em;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+}
+
+.rs-sys-ledger {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rs-sys-ledger i {
+  display: block;
+  height: 6px;
+  background: var(--theme-process);
+  opacity: 0.55;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.rs-sys-ledger i:nth-child(1) {
+  width: 100%;
+}
+
+.rs-sys-ledger i:nth-child(2) {
+  width: 68%;
+}
+
+.rs-band[data-on="on"] .rs-sys-cell {
+  animation: rs-chip-in 460ms var(--ease-overshoot) backwards;
+  animation-delay: calc(820ms + var(--rs-i) * 200ms);
+}
+
+.rs-band[data-on="on"] .rs-sys-ledger i {
+  animation: rs-draw 460ms var(--ease-quart) forwards;
+  animation-delay: calc(1150ms + var(--rs-i) * 200ms + var(--rs-j) * 130ms);
+}
+
+/* ── 带 2 内演示：六类记录围合同一锚点的分组框（无网络节点） ── */
+
+.rs-anchor-group {
+  position: relative;
+  margin-top: 26px;
+  padding: 30px 18px 16px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: var(--theme-process-surface);
+}
+
+.rs-anchor-tab {
+  position: absolute;
+  top: -17px;
+  left: 18px;
+  padding: 5px 16px;
+  font-family: var(--font-mono);
+  font-size: 26px;
+  letter-spacing: 0.1em;
+  color: var(--theme-process);
+  background: var(--surface-2);
+  border: 2px solid var(--theme-process);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.rs-kind-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rs-kind-chip {
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 25px;
+  color: var(--theme-structural);
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+}
+
+.rs-band[data-on="on"] .rs-anchor-group {
+  animation: rs-frame-in 560ms var(--ease-quart) backwards;
+  animation-delay: 820ms;
+}
+
+.rs-band[data-on="on"] .rs-anchor-tab {
+  animation: rs-chip-pop 460ms var(--ease-overshoot) backwards;
+  animation-delay: 1050ms;
+}
+
+.rs-band[data-on="on"] .rs-kind-chip {
+  animation: rs-chip-in 460ms var(--ease-overshoot) backwards;
+  animation-delay: calc(1250ms + var(--rs-i) * 150ms);
+}
+
+/* ── K-A010-01 · accent：低成本全屏最终判断 ─────────────────── */
+
+.rs-accent {
+  justify-content: center;
+  align-items: center;
+  gap: 52px;
+  text-align: center;
+}
+
+.rs-accent-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.32em;
+  text-indent: 0.32em;
+  color: var(--theme-process);
+  animation: rs-rise 480ms var(--ease-quart) backwards;
+}
+
+.rs-accent-statement {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 88px;
+  font-weight: 900;
+  line-height: 1.5;
+  color: var(--theme-structural);
+  animation: rs-statement-in 820ms var(--ease-quart) 160ms backwards;
+}
+
+.rs-not {
+  color: var(--text-2);
+  text-decoration: line-through;
+  text-decoration-color: var(--theme-warning);
+  text-decoration-thickness: 6px;
+}
+
+.rs-value {
+  font-style: normal;
+  position: relative;
+  padding-bottom: 6px;
+  color: var(--theme-process);
+}
+
+.rs-value::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 8px;
+  background: var(--accent-glow);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: rs-underline 620ms var(--ease-quart) 700ms forwards;
+}
+
+/* ── 共用动画 ───────────────────────────────────────────────── */
+
+@keyframes rs-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rs-media-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rs-stamp-in {
+  0% {
+    opacity: 0;
+    transform: translateY(36px) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes rs-chip-in {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rs-chip-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rs-frame-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rs-draw {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rs-underline {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rs-pulse {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes rs-statement-in {
+  0% {
+    opacity: 0;
+    transform: translateY(44px) scale(0.97);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}

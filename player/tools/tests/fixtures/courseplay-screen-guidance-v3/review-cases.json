@@ -1,0 +1,150 @@
+{
+  "schema_version": "courseplay-screen-guidance-review-fixtures/v1",
+  "fixture_scope": "人工/Agent 页面级语义审查；不作为自动内容充分性分类器",
+  "cases": [
+    {
+      "case_id": "A003-old-three-labels",
+      "a_page_id": "A003",
+      "focus": "content-sufficiency",
+      "rendered_summary": "三栏只显示设备、系统、业务三个上位标签，缺少对象、信息流和断点判断。",
+      "expected_report": {
+        "schemaVersion": "web-video-chapter-review-attempt/v1",
+        "reviewId": "10000000-0000-4000-8000-000000000003",
+        "aPageId": "A003",
+        "lane": "contract",
+        "sourceHashes": {"handoff": "fixture-a003-old"},
+        "decision": "must-fix",
+        "recordedAt": "2026-09-01T00:00:00.000Z",
+        "recordedBy": "self",
+        "mustFix": ["页面只剩上位标签，未表达指导中的具体对象、采集传递关系和连通后的断点。"],
+        "shouldFix": []
+      }
+    },
+    {
+      "case_id": "A003-rich-three-source",
+      "a_page_id": "A003",
+      "focus": "content-sufficiency",
+      "rendered_summary": "画面呈现设备/系统/流程/人员、传感器/执行器、采集到业务环节的路径，以及日志/质量/库存/计划的孤立断点。",
+      "expected_report": {
+        "schemaVersion": "web-video-chapter-review-attempt/v1",
+        "reviewId": "10000000-0000-4000-8000-000000000013",
+        "aPageId": "A003",
+        "lane": "contract",
+        "sourceHashes": {"handoff": "fixture-a003-rich"},
+        "decision": "passed",
+        "recordedAt": "2026-09-01T00:00:00.000Z",
+        "recordedBy": "self",
+        "mustFix": [],
+        "shouldFix": []
+      }
+    },
+    {
+      "case_id": "A004-exact-missing",
+      "a_page_id": "A004",
+      "focus": "exact-visibility",
+      "rendered_summary": "源码含有 exact 字符串，但所有实际 step 都未渲染该文字。",
+      "expected_report": {
+        "schemaVersion": "web-video-chapter-review-attempt/v1",
+        "reviewId": "10000000-0000-4000-8000-000000000004",
+        "aPageId": "A004",
+        "lane": "visual",
+        "sourceHashes": {"handoff": "fixture-a004-exact-missing"},
+        "decision": "must-fix",
+        "recordedAt": "2026-09-01T00:00:00.000Z",
+        "recordedBy": "self",
+        "mustFix": ["exact guidance 未在任何实际渲染 step 中完整、学习者可见。"],
+        "shouldFix": []
+      }
+    },
+    {
+      "case_id": "A004-exact-visible",
+      "a_page_id": "A004",
+      "focus": "exact-visibility",
+      "rendered_summary": "exact 原子在终态完整可见，并由相邻 reference 文本提供上下文。",
+      "expected_report": {
+        "schemaVersion": "web-video-chapter-review-attempt/v1",
+        "reviewId": "10000000-0000-4000-8000-000000000014",
+        "aPageId": "A004",
+        "lane": "visual",
+        "sourceHashes": {"handoff": "fixture-a004-exact-visible"},
+        "decision": "passed",
+        "recordedAt": "2026-09-01T00:00:00.000Z",
+        "recordedBy": "self",
+        "mustFix": [],
+        "shouldFix": []
+      }
+    },
+    {
+      "case_id": "silent-constraint-direct-leak",
+      "a_page_id": "A004",
+      "focus": "silent-constraint",
+      "rendered_summary": "画面直接显示了 silent constraint 的审计说明。",
+      "expected_report": {
+        "schemaVersion": "web-video-chapter-review-attempt/v1",
+        "reviewId": "10000000-0000-4000-8000-000000000024",
+        "aPageId": "A004",
+        "lane": "contract",
+        "sourceHashes": {"handoff": "fixture-silent-direct"},
+        "decision": "must-fix",
+        "recordedAt": "2026-09-01T00:00:00.000Z",
+        "recordedBy": "self",
+        "mustFix": ["静默约束被直接显示为学习者可见文字。"],
+        "shouldFix": []
+      }
+    },
+    {
+      "case_id": "silent-constraint-paraphrase-leak",
+      "a_page_id": "A004",
+      "focus": "silent-constraint",
+      "rendered_summary": "画面把审计边界改写成同义免责声明。",
+      "expected_report": {
+        "schemaVersion": "web-video-chapter-review-attempt/v1",
+        "reviewId": "10000000-0000-4000-8000-000000000034",
+        "aPageId": "A004",
+        "lane": "contract",
+        "sourceHashes": {"handoff": "fixture-silent-paraphrase"},
+        "decision": "must-fix",
+        "recordedAt": "2026-09-01T00:00:00.000Z",
+        "recordedBy": "self",
+        "mustFix": ["静默约束经改写后仍泄漏到学习者画面。"],
+        "shouldFix": []
+      }
+    },
+    {
+      "case_id": "A001-scenario-page",
+      "a_page_id": "A001",
+      "focus": "scenario",
+      "rendered_summary": "情境、问题对象和判断方向在逐步揭示后形成可静音理解的终态。",
+      "expected_report": {
+        "schemaVersion": "web-video-chapter-review-attempt/v1",
+        "reviewId": "10000000-0000-4000-8000-000000000001",
+        "aPageId": "A001",
+        "lane": "visual",
+        "sourceHashes": {"handoff": "fixture-a001-scenario"},
+        "decision": "passed",
+        "recordedAt": "2026-09-01T00:00:00.000Z",
+        "recordedBy": "self",
+        "mustFix": [],
+        "shouldFix": []
+      }
+    },
+    {
+      "case_id": "A007-textbook-media-relation",
+      "a_page_id": "A007",
+      "focus": "media-relation",
+      "rendered_summary": "教材原图、媒体角色和受保护关系由明确读图载体保持。",
+      "expected_report": {
+        "schemaVersion": "web-video-chapter-review-attempt/v1",
+        "reviewId": "10000000-0000-4000-8000-000000000007",
+        "aPageId": "A007",
+        "lane": "visual",
+        "sourceHashes": {"handoff": "fixture-a007-media"},
+        "decision": "passed",
+        "recordedAt": "2026-09-01T00:00:00.000Z",
+        "recordedBy": "self",
+        "mustFix": [],
+        "shouldFix": []
+      }
+    }
+  ]
+}

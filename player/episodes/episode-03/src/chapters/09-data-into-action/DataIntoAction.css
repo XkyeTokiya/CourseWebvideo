@@ -1,0 +1,203 @@
+/* data-into-action · A009 linear-steps-to-result
+   mechanism: ordered-progression — 真实顺序过程，三张单向步骤卡按先后落位；
+   R014 由单向顺序表达，R015 由末步直接表达，末步后不加 takeaway/回返线。
+   prefix: da- */
+
+.da-scene {
+  justify-content: flex-start;
+  gap: 32px;
+}
+
+/* ── 论点标题 ─────────────────────────────────────────── */
+
+.da-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: da-rise 620ms var(--ease-quart) backwards;
+}
+
+.da-thesis em {
+  font-style: normal;
+  color: var(--theme-process);
+  border-bottom: 6px solid var(--theme-process);
+  padding-bottom: 4px;
+}
+
+/* ── 三步轨道：汇聚 → 分析 → 行动 ─────────────────────── */
+
+.da-track {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 56px 1fr 56px 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.da-arrow {
+  align-self: center;
+  justify-self: center;
+  font-size: 44px;
+  color: var(--theme-process);
+  animation: da-rise 520ms var(--ease-quart) 620ms backwards;
+}
+
+.da-step {
+  min-height: 400px;
+  padding: 26px 28px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  animation: da-stamp 600ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--da-i) * 260ms + 80ms);
+}
+
+.da-step--last.is-landed {
+  border-color: var(--theme-process);
+  box-shadow: var(--card-shadow), 0 0 0 8px var(--accent-soft);
+}
+
+.da-step-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+}
+
+.da-step-index {
+  font-size: 38px;
+  color: var(--theme-process);
+}
+
+.da-step-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.da-step-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.da-info-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  width: 100%;
+}
+
+.da-info-chips span {
+  padding: 10px 18px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px solid var(--theme-structural);
+}
+
+.da-step-foot {
+  margin: 0;
+  padding-top: 14px;
+  font-size: 23px;
+  color: var(--text-2);
+  border-top: 2px dashed var(--theme-dashed-line);
+}
+
+/* ── 分析判断卡：三例在拍 2 落入 ──────────────────────── */
+
+.da-examples {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 460ms var(--ease-soft), transform 460ms var(--ease-soft);
+}
+
+.da-examples.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.da-example {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 12px 14px;
+  font-size: 22px;
+  color: var(--theme-structural);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+}
+
+.da-example b {
+  flex: none;
+  font-weight: 900;
+}
+
+.da-example-arrow {
+  flex: none;
+  font-size: 19px;
+  color: var(--theme-process);
+}
+
+/* ── 采取行动卡：拍 3 落定，末步即阅读终点 ────────────── */
+
+.da-action {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 420ms var(--ease-soft), transform 420ms var(--ease-soft);
+}
+
+.da-action.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.da-action-text {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.da-action-note {
+  margin: 0;
+  font-size: 23px;
+  color: var(--text-2);
+}
+
+.da-action-note em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-warning);
+  border-bottom: 5px solid var(--theme-warning);
+  padding-bottom: 2px;
+}
+
+/* ── 共享 keyframes ──────────────────────────────────── */
+
+@keyframes da-rise {
+  0%   { opacity: 0; transform: translateY(28px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes da-stamp {
+  0%   { opacity: 0; transform: translateY(28px) scale(1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}

@@ -1,0 +1,153 @@
+/* connection-shared-awareness · A008 image-with-insight-rail
+   mechanism: persistent-media-reading — M003 主图全程持续不卸载，两条阅读项
+   依次出现在图侧固定注区；不在图片上绘制关系线（R013）。
+   prefix: cs- */
+
+.cs-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── 论点标题 ─────────────────────────────────────────── */
+
+.cs-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: cs-rise 620ms var(--ease-quart) backwards;
+}
+
+.cs-thesis em {
+  font-style: normal;
+  color: var(--theme-process);
+  border-bottom: 6px solid var(--theme-process);
+  padding-bottom: 4px;
+}
+
+/* ── 主区：主图（主要视觉面积）+ 侧栏阅读项 ───────────── */
+
+.cs-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 560px;
+  gap: 60px;
+  align-items: center;
+}
+
+.cs-media {
+  margin: 0;
+  animation: cs-rise 700ms var(--ease-quart) 80ms backwards;
+}
+
+.cs-photo {
+  padding: 14px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.cs-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.cs-media-cap {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  color: var(--text-mute);
+}
+
+/* ── 侧栏阅读项：固定注区，依次完成 ───────────────────── */
+
+.cs-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cs-rail-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.cs-item {
+  display: flex;
+  gap: 22px;
+  padding: 24px 26px;
+  transition: opacity 320ms var(--ease-soft),
+    border-color var(--dur-slow) var(--ease-soft),
+    background-color var(--dur-slow) var(--ease-soft);
+}
+
+.cs-item[data-on="on"] {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  animation: cs-stamp 580ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--cs-i) * 220ms + 80ms);
+}
+
+.cs-item[data-on="waiting"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+}
+
+.cs-item[data-on="waiting"] .cs-item-body {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.cs-item.is-focus {
+  border-color: var(--theme-process);
+}
+
+.cs-item-index {
+  font-size: 40px;
+  color: var(--theme-process);
+}
+
+.cs-item-body h2 {
+  margin: 0 0 10px;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.cs-item-body p {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.cs-item-body i {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+/* ── 共享 keyframes ──────────────────────────────────── */
+
+@keyframes cs-rise {
+  0%   { opacity: 0; transform: translateY(28px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cs-stamp {
+  0%   { opacity: 0; transform: translateY(26px) scale(1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}

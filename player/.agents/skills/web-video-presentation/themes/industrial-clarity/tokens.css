@@ -1,0 +1,74 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * Theme · industrial-clarity
+ *   Industrial education and enterprise technical communication.
+ *   Navy builds the information structure, blue marks technical objects,
+ *   green expresses flow and positive results, and orange controls the
+ *   teaching rhythm. SIGNATURE: clear industrial information coding on
+ *   a white canvas with softly rounded, lightly bordered panels.
+ * ───────────────────────────────────────────────────────────────────── */
+:root {
+  /* ─── standard palette contract ─── */
+  --shell:        #dbe4eb;
+  --surface:      #ffffff;
+  --surface-2:    #f5f9fc;
+  --surface-3:    #eaf6fb;
+  --text:         #182735;
+  --text-2:       #40566a;
+  --text-mute:    #607487;
+  --text-faint:   #64798b;
+  --rule:         #bfd1df;
+  --accent:       #176ca4;
+  --accent-soft:  rgba(23, 108, 164, 0.12);
+  --accent-glow:  rgba(23, 108, 164, 0.24);
+
+  /* ─── theme semantics extracted from the source presentation ─── */
+  --industrial-navy:       #123b63;
+  --industrial-blue:       #176ca4;
+  --industrial-green:      #14866d;
+  --industrial-orange:     #e86f36;
+  --industrial-cyan:       #eaf6fb;
+  --industrial-mint:       #e9f7f2;
+  --industrial-amber:      #fff4e8;
+  --industrial-soft:       #f5f9fc;
+  --industrial-green-line: #a9d9c9;
+  --industrial-warm-line:  #f2c7aa;
+
+  /* ─── fonts: preserve the source page's Windows-first character ─── */
+  --font-display-cn: "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", Arial, sans-serif;
+  --font-display-en: Georgia, "Times New Roman", serif;
+  --font-body:       "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", Arial, sans-serif;
+  --font-mono:       "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+  --font-features:   "tnum";
+
+  /* ─── measured teaching rhythm ─── */
+  --dur-base:       520ms;
+  --dur-slow:       760ms;
+  --dur-cinematic:  1100ms;
+
+  /* ─── identity: broad rounded panels, restrained material ─── */
+  --r-card:           22px;
+  --r-stage:          0;
+  --rule-w:           1px;
+  --rule-style:       solid;
+  --hero-num-font:    var(--font-body);
+  --hero-num-style:   normal;
+  --hero-num-weight:  800;
+  --hero-num-track:   -0.02em;
+  --stage-pad-x:      110px;
+  --stage-pad-y:      84px;
+  --card-shadow:      none;
+  --card-glass-bg:    rgba(255, 255, 255, 0.84);
+  --card-glass-border: rgba(18, 59, 99, 0.12);
+  --shadow-stage:
+    0 34px 96px rgba(18, 59, 99, 0.18),
+    0 0 0 1px rgba(18, 59, 99, 0.05);
+  --stage-border: none;
+
+  /* ─── decoration stays quiet; content carries the color coding ─── */
+  --surface-pattern: none;
+  --surface-pattern-size: auto;
+  --surface-pattern-blend: normal;
+  --surface-pattern-opacity: 0;
+  --surface-vignette: none;
+  --text-shadow: none;
+}

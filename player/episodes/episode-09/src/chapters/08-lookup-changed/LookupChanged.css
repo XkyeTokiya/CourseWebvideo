@@ -1,0 +1,437 @@
+/* ─────────────────────────────────────────────────────────────
+ * 08-lookup-changed · A008 split-compare-with-thesis
+ * mechanism: compare-and-reweight — 两栏空间持续，视觉权重随口播
+ *   从左栏移向右栏；两栏间不加中转状态、断桥或回流箭头；
+ *   R017/R018 用句内先后与栏内第二层结果表达，不跨栏画线。
+ * 可见标题：none（outline §8 省略授权）——页面不含标题区，
+ *   V019 判断语义由 bottom thesis 收束条唯一承载。
+ * prefix: lk-
+ * ───────────────────────────────────────────────────────────── */
+
+.lk-scene {
+  justify-content: flex-start;
+  gap: 36px;
+}
+
+/* ── 两栏框架：空间持续，中间仅以虚线分栏（非桥接元素） ────── */
+
+.lk-cols {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.lk-col {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.lk-col-before {
+  padding-right: 56px;
+  transform-origin: left center;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+/* 权重移动：左栏保持但弱化，右栏成为视觉重心 */
+.lk-col-before.is-weak {
+  opacity: 0.45;
+  transform: scale(0.965);
+  filter: grayscale(0.5);
+}
+
+.lk-col-after {
+  padding-left: 56px;
+  border-left: 2px dashed var(--theme-dashed-line);
+}
+
+/* ── 栏头：前后标签 + 查找方式标签 ─────────────────────────── */
+
+.lk-col-head {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+}
+
+.lk-col-tag {
+  flex: none;
+  padding: 9px 20px;
+  font-family: var(--font-mono);
+  font-size: 26px;
+  letter-spacing: 0.18em;
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  animation: lk-stamp 560ms var(--ease-overshoot) 120ms backwards;
+}
+
+.lk-col-before .lk-col-tag {
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+}
+
+.lk-col-after .lk-col-tag {
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  animation-delay: 160ms;
+}
+
+.lk-col-label {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+  animation: lk-rise 640ms var(--ease-quart) 260ms backwards;
+}
+
+.lk-col-after .lk-col-label {
+  animation-delay: 400ms;
+}
+
+.lk-col-rule {
+  margin-top: 24px;
+}
+
+.lk-col-body {
+  margin: 28px 0 0;
+  font-family: var(--font-body);
+  font-size: 31px;
+  line-height: 1.62;
+  color: var(--text-2);
+  animation: lk-rise 640ms var(--ease-quart) 520ms backwards;
+}
+
+/* ── 左栏演示：分散的系统板 + 探查扫描（分别寻找、反复确认） ── */
+
+.lk-scatter {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin-top: 10px;
+}
+
+.lk-plate {
+  position: absolute;
+  left: var(--lk-x);
+  top: var(--lk-y);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 34px 22px;
+  font-family: var(--font-mono);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--theme-structural);
+  background: var(--surface-2);
+  border: 2px solid var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  transform: rotate(var(--lk-rot));
+  animation: lk-plate-in 620ms var(--ease-overshoot) backwards;
+  animation-delay: calc(900ms + var(--lk-i) * 450ms);
+}
+
+/* 系统内既有记录条（数据本来就存在） */
+.lk-plate::before {
+  content: "";
+  width: 148px;
+  height: 11px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--theme-structural) 0 28px,
+    transparent 28px 44px
+  );
+  opacity: 0.4;
+}
+
+/* 探查环：扫一遍 + 快速复核一遍，随后归于静止（一次性） */
+.lk-plate::after {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border: 3px solid var(--theme-warning);
+  opacity: 0;
+  pointer-events: none;
+  animation: lk-probe 4.6s linear forwards;
+  animation-delay: calc(2500ms + var(--lk-i) * 520ms);
+}
+
+/* ── 左栏 step0 的右栏虚线预留框（不承载任何文案） ─────────── */
+
+.lk-reserved {
+  flex: 1;
+  min-height: 0;
+  margin-top: 8px;
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  opacity: 0.55;
+  animation: lk-fade 620ms var(--ease-soft) 240ms backwards;
+}
+
+/* ── 右栏：身份锚点（改造后内容随 step1 就位） ─────────────── */
+
+.lk-anchor {
+  position: relative;
+  margin-top: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 30px 36px;
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  animation: lk-stamp 620ms var(--ease-overshoot) 800ms backwards;
+}
+
+/* 锚点钉下的一次性定锚环（非循环） */
+.lk-anchor::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border: 3px solid var(--theme-process);
+  opacity: 0;
+  pointer-events: none;
+  animation: lk-ping 820ms var(--ease-soft) 1700ms forwards;
+}
+
+.lk-anchor-chip {
+  padding: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 25px;
+  letter-spacing: 0.14em;
+  color: var(--theme-process);
+  background: var(--surface-2);
+  border: 2px solid var(--theme-process);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.lk-anchor-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+}
+
+/* ── 右栏：栏内追溯轨 + 两层结果（不跨栏画线） ─────────────── */
+
+.lk-results {
+  position: relative;
+  margin-top: 42px;
+  padding-left: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* 栏内追溯轨：从锚点垂向两层结果，只在右栏内部 */
+.lk-results::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 0;
+  border-left: 2px dashed var(--theme-dashed-line);
+  transform: scaleY(0);
+  transform-origin: top center;
+  animation: lk-draw 720ms var(--ease-quart) 1500ms forwards;
+}
+
+.lk-result {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 28px 32px;
+}
+
+.lk-result-1 {
+  background: var(--surface-2);
+  border: 2px solid var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  animation: lk-stamp 620ms var(--ease-overshoot) 3200ms backwards;
+}
+
+/* 第二层结果：随后的服务与改进——不做成统计成效的样子 */
+.lk-result-2 {
+  margin-left: 34px;
+  background: var(--surface-3);
+  border: 2px dashed var(--theme-dashed-line);
+  animation: lk-rise 620ms var(--ease-quart) 5200ms backwards;
+}
+
+.lk-result-index {
+  flex: none;
+  font-size: 40px;
+}
+
+.lk-result-1 .lk-result-index {
+  color: var(--theme-process);
+}
+
+.lk-result-2 .lk-result-index {
+  color: var(--text-mute);
+}
+
+.lk-result-text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 30px;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.lk-result-2 .lk-result-text {
+  color: var(--text-2);
+}
+
+/* ── bottom thesis 收束条：本页唯一判断位（V019） ──────────── */
+
+.lk-thesis {
+  flex: none;
+  height: 108px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 0 40px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-structural);
+  border-radius: var(--r-card);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 720ms var(--ease-soft),
+    transform 720ms var(--ease-soft);
+}
+
+.lk-thesis.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lk-thesis-mark {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.lk-thesis-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 33px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+}
+
+.lk-thesis-text .lk-lim {
+  font-style: normal;
+  border-bottom: 5px solid var(--theme-warning);
+  padding-bottom: 3px;
+}
+
+.lk-thesis-text .lk-val {
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+/* ── keyframes ─────────────────────────────────────────────── */
+
+@keyframes lk-stamp {
+  0% {
+    opacity: 0;
+    transform: translateY(34px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes lk-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lk-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes lk-plate-in {
+  0% {
+    opacity: 0;
+    transform: translateY(34px) rotate(var(--lk-rot)) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--lk-rot)) scale(1);
+  }
+}
+
+/* 探查环：第一遍扫描 + 第二遍快速复核，结尾保持透明 */
+@keyframes lk-probe {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  8% {
+    opacity: 0.9;
+  }
+  14% {
+    opacity: 0;
+    transform: scale(1.32);
+  }
+  55% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  62% {
+    opacity: 0.5;
+  }
+  68% {
+    opacity: 0;
+    transform: scale(1.32);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.32);
+  }
+}
+
+@keyframes lk-ping {
+  0% {
+    opacity: 0.85;
+    transform: scale(0.72);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.45);
+  }
+}
+
+@keyframes lk-draw {
+  to {
+    transform: scaleY(1);
+  }
+}

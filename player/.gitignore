@@ -1,0 +1,38 @@
+# HanaAgent 本地配置
+.hanako/
+
+# 本地密钥（禁止提交）
+.env
+
+# Agent / preview scratch state
+.commandcode/settings.local.json
+.hermes/
+.playwright-cli/
+tmp/
+.tmp/
+episodes/episode-09-isolation-preview/
+x
+占位图/
+
+# 依赖与构建产物
+node_modules/
+.pnpm-store/
+dist/
+build/
+episodes/*/.handoffs/
+
+# 生成媒体产物
+*.mp4
+*.mov
+*.webm
+*.wav
+*.mp3
+*.m4a
+
+# Monorepo-local temporary pipeline output
+../.tmp/
+
+# 系统文件
+Thumbs.db
+.DS_Store
+

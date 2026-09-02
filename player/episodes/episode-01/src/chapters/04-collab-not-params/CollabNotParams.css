@@ -1,0 +1,201 @@
+/* ─────────────────────────────────────────────────────────────
+ * 04-collab-not-params · A004 linear-steps-with-takeaway
+ * mechanism: ordered-progression — 横向四步卡单向推进
+ * prefix: cp-
+ * ───────────────────────────────────────────────────────────── */
+
+.cp-scene {
+  justify-content: center;
+  gap: 56px;
+}
+
+/* ── 横向步骤链 ── */
+.cp-chain {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+.cp-chain.is-settled {
+  opacity: 0.72;
+  filter: grayscale(0.25);
+}
+
+.cp-cell {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.cp-card {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-radius: var(--r-card);
+  padding: 34px 30px;
+  min-height: 400px;
+  transition: opacity var(--dur-base) var(--ease-soft),
+    background var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-soft);
+}
+
+.cp-card-no {
+  font-size: 64px;
+  color: var(--text-faint);
+  transition: color var(--dur-base) var(--ease-soft);
+}
+.cp-card-title {
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  line-height: 1.25;
+}
+.cp-card-desc {
+  font-family: var(--font-body);
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+.cp-card-note {
+  margin-top: auto;
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--theme-warning);
+  animation: cp-note-in 520ms var(--ease-quart) backwards;
+}
+@keyframes cp-note-in {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* upcoming：虚线预留 */
+.cp-card.is-upcoming {
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  opacity: 0.5;
+}
+.cp-card.is-upcoming .cp-card-title,
+.cp-card.is-upcoming .cp-card-desc {
+  visibility: hidden;
+}
+
+/* active：白卡掀入 */
+.cp-card.is-active {
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  animation: cp-wipe 600ms var(--ease-quart) backwards;
+}
+.cp-card.is-active .cp-card-no {
+  color: var(--theme-process);
+}
+@keyframes cp-wipe {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 0 0 100%);
+    transform: translateX(-18px);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+}
+
+/* past：完成态 */
+.cp-card.is-past {
+  background: var(--theme-process-surface);
+  border: var(--rule-w) solid var(--theme-process);
+}
+.cp-card.is-past .cp-card-no {
+  color: var(--theme-process);
+}
+.cp-card.is-past .cp-card-title {
+  color: var(--text-2);
+}
+
+/* ── 短方向提示 ── */
+.cp-arrow {
+  align-self: center;
+  flex: none;
+  width: 64px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--theme-dashed-line);
+  transition: color var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.cp-arrow.is-on {
+  color: var(--theme-process);
+  animation: cp-arrow-pop 480ms var(--ease-overshoot);
+}
+@keyframes cp-arrow-pop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ── 底部边界条：step1 就位（灰），takeaway 拍收束（强） ── */
+.cp-boundary {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 34px;
+  border-radius: var(--r-card);
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  font-family: var(--font-body);
+  font-size: 27px;
+  color: var(--text-mute);
+  transition: color var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft),
+    background var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-soft);
+  animation: cp-fade 620ms var(--ease-quart) 500ms backwards;
+}
+.cp-boundary-tag {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.3em;
+  color: var(--theme-warning);
+}
+.cp-boundary-tail {
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: cp-note-in 560ms var(--ease-quart) 120ms backwards;
+}
+.cp-boundary[data-strong="true"] {
+  color: var(--text);
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-warning);
+  box-shadow: var(--card-shadow);
+}
+@keyframes cp-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,252 @@
+/* ─────────────────────────────────────────────────────────────
+ * 04-platform-common-space · A004 image-with-insight-rail
+ * mechanism: persistent-media-reading — 主图持续承担共同生产
+ *   运营环境的场景识别，图侧 rail 三条阅读项按"汇聚—组织—
+ *   协同"依次补齐；关键判断由标题与阅读项完成，无页底结论
+ * prefix: pc-
+ * ───────────────────────────────────────────────────────────── */
+
+.pc-scene {
+  justify-content: center;
+  gap: 44px;
+}
+
+/* ── 论点标题 ── */
+.pc-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: pc-rise 640ms var(--ease-quart) backwards;
+}
+.pc-title-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--theme-process-surface);
+}
+.pc-title-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.pc-title-text em {
+  font-style: normal;
+  border-bottom: 7px solid var(--theme-process);
+  padding-bottom: 3px;
+}
+@keyframes pc-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pc-main {
+  display: flex;
+  gap: 44px;
+  align-items: center;
+}
+
+/* ── 媒体占位：真实 16:9 留位 + 共同空间资源块微演示 ── */
+.pc-media {
+  width: 1060px;
+  height: 596px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pc-canvas {
+  position: relative;
+  flex: 1;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pc-zone {
+  position: relative;
+  width: 560px;
+  height: 330px;
+  border: var(--rule-w) dashed var(--theme-structural);
+  border-radius: 14px;
+  background: var(--surface-2);
+}
+.pc-zone-label {
+  position: absolute;
+  top: -16px;
+  left: 28px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--theme-structural);
+  background: var(--surface-2);
+  padding: 0 12px;
+}
+
+.pc-block {
+  position: absolute;
+  width: 130px;
+  height: 92px;
+  background: var(--theme-cool-surface);
+  border: 3px solid var(--theme-structural);
+  border-radius: 8px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  animation: pc-bob 3.6s var(--ease-soft) infinite;
+  animation-delay: calc(var(--pc-i) * 420ms);
+}
+.pc-block:nth-child(2) { left: 9%;  top: 18%; }
+.pc-block:nth-child(3) { right: 9%; top: 18%; }
+.pc-block:nth-child(4) { left: 9%;  bottom: 14%; }
+.pc-block:nth-child(5) { right: 9%; bottom: 14%; }
+@keyframes pc-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+.pc-cap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 24px;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+  background: var(--surface-2);
+}
+.pc-cap-mark {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--theme-structural);
+  background: var(--theme-cool-surface);
+  padding: 4px 14px;
+  border-radius: 6px;
+}
+.pc-cap-desc {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: var(--text-mute);
+}
+
+/* ── 图侧 insight rail：编号阅读项依次补齐 ── */
+.pc-rail {
+  flex: 1;
+  height: 596px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  padding: 6px 0;
+}
+.pc-rail::before {
+  content: "";
+  position: absolute;
+  left: 29px;
+  top: 30px;
+  bottom: 30px;
+  border-left: var(--rule-w) dashed var(--theme-dashed-line);
+}
+
+.pc-item {
+  position: relative;
+  transition: opacity var(--dur-slow) var(--ease-soft);
+}
+.pc-item.is-ghost {
+  opacity: 0.85;
+}
+.pc-item.is-on {
+  animation: pc-stamp 620ms var(--ease-overshoot) backwards;
+}
+@keyframes pc-stamp {
+  0% {
+    opacity: 0;
+    transform: translateX(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.pc-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.pc-item.is-on .pc-slot {
+  opacity: 0;
+}
+
+.pc-item-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.pc-item.is-on .pc-item-body {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 140ms;
+}
+
+.pc-badge {
+  width: 60px;
+  height: 60px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: var(--theme-process);
+  background: var(--surface-2);
+  border: var(--rule-w) solid var(--theme-process);
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.pc-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 4px;
+}
+.pc-item-name {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.pc-item-desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--text-2);
+}

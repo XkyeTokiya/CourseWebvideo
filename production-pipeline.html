@@ -1,0 +1,1066 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Courseplay 生产主线 · 单仓数据流与人工门禁</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#08090A;
+  --s1:#16171C;
+  --s2:#1E1F25;
+  --s3:#26272E;
+  --hair:rgba(255,255,255,.06);
+  --hair-strong:rgba(255,255,255,.11);
+  --t1:#F7F8F8;
+  --t2:#9CA3AF;
+  --t3:#6B7280;
+  --accent:#5E6AD2;
+  --accent-bright:#8B95F0;
+  --accent-soft:rgba(94,106,210,.13);
+  --accent-line:rgba(94,106,210,.38);
+  --code:#A78BFA;
+  --code-bg:rgba(167,139,250,.08);
+  --ok:#3FB68B;
+  --r-s:6px;--r-m:12px;--r-l:16px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --sect-gap:96px;
+  --sect-pad:40px;
+  --row-pad:16px;
+}
+[data-density="compact"]{
+  --sect-gap:64px;
+  --sect-pad:28px;
+  --row-pad:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1!important;transform:none!important;transition:none!important}
+}
+@media print{
+  .reveal{opacity:1!important;transform:none!important}
+  nav,.tweaks-btn,.tweaks{display:none!important}
+  body{background:#fff}
+}
+[data-motion="off"] .reveal{opacity:1;transform:none;transition:none}
+body{
+  background:var(--ground);
+  color:var(--t1);
+  font-family:"Inter Tight","PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  font-size:15px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+::selection{background:rgba(94,106,210,.4)}
+a{color:inherit;text-decoration:none}
+.mono{font-family:"JetBrains Mono","Cascadia Code",Consolas,monospace}
+
+.mesh{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.mesh i{position:absolute;border-radius:50%;filter:blur(90px)}
+.mesh .m1{width:720px;height:480px;left:-160px;top:-180px;background:radial-gradient(closest-side,rgba(94,106,210,.16),transparent 70%)}
+.mesh .m2{width:640px;height:420px;right:-140px;top:-120px;background:radial-gradient(closest-side,rgba(139,149,240,.09),transparent 70%)}
+.mesh .m3{width:560px;height:400px;left:32%;top:38%;background:radial-gradient(closest-side,rgba(94,106,210,.05),transparent 70%)}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(8,9,10,.72);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--hair);
+}
+.nav-inner{
+  max-width:1120px;margin:0 auto;padding:0 24px;
+  height:56px;display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.brand{display:flex;align-items:baseline;gap:10px;font-weight:600;letter-spacing:-.01em;white-space:nowrap}
+.brand .v{
+  font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:600;
+  color:var(--accent-bright);background:var(--accent-soft);
+  border:1px solid var(--accent-line);border-radius:999px;padding:2px 9px;
+}
+.brand span{color:var(--t1);font-size:14px}
+.nav-links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{
+  font-size:13px;color:var(--t2);padding:6px 12px;border-radius:var(--r-s);
+  white-space:nowrap;transition:color .15s var(--ease),background .15s var(--ease);
+}
+.nav-links a:hover{color:var(--t1);background:var(--s2)}
+.nav-links a.on{color:var(--t1);background:var(--s3)}
+
+.page{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 24px}
+
+.hero{padding:150px 0 84px}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--t2);
+  border:1px solid var(--hair-strong);border-radius:999px;padding:6px 14px;
+  background:rgba(255,255,255,.02);
+}
+.badge b{color:var(--accent-bright);font-weight:600}
+.hero h1{
+  margin-top:28px;
+  font-size:clamp(38px,5.6vw,62px);
+  font-weight:700;letter-spacing:-.025em;line-height:1.12;
+  text-wrap:balance;max-width:19em;
+}
+.hero h1 em{font-style:normal;color:var(--accent-bright)}
+.hero .lede{
+  margin-top:22px;max-width:44em;color:var(--t2);font-size:16.5px;text-wrap:pretty;
+}
+.hero .note{
+  margin-top:18px;display:flex;gap:10px;align-items:flex-start;
+  max-width:44em;color:var(--t3);font-size:13.5px;
+}
+.hero .note svg{flex:none;margin-top:3px}
+.vchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.vchips .chip{
+  font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--t2);
+  border:1px solid var(--hair);background:var(--s1);border-radius:var(--r-s);
+  padding:7px 12px;
+}
+.vchips .chip b{color:var(--t1);font-weight:600}
+
+section{padding:var(--sect-pad) 0;scroll-margin-top:88px}
+.sect-head{margin-bottom:40px;max-width:56em}
+.kicker{
+  font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:600;
+  letter-spacing:.14em;color:var(--accent-bright);text-transform:uppercase;
+  display:flex;align-items:center;gap:12px;
+}
+.kicker::after{content:"";height:1px;width:44px;background:var(--accent-line)}
+.sect-head h2{margin-top:14px;font-size:clamp(24px,3vw,32px);letter-spacing:-.02em;line-height:1.2}
+.sect-head p{margin-top:12px;color:var(--t2);font-size:14.5px;text-wrap:pretty}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:28px}
+.legend span{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--t2)}
+.legend i{width:8px;height:8px;border-radius:2px;display:inline-block}
+.legend .l-up i{background:var(--t3)}
+.legend .l-down i{background:var(--accent)}
+.legend .l-gate i{background:transparent;border:1px solid var(--accent-line);background:var(--accent-soft)}
+
+.flow{position:relative}
+.fnode{display:grid;grid-template-columns:30px 1fr;gap:0 16px;position:relative}
+.rail{position:relative}
+.rail::before{
+  content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;
+  background:var(--hair-strong);transform:translateX(-.5px);
+}
+.fnode:first-child .rail::before{top:26px}
+.fnode:last-child .rail::before{bottom:auto;height:26px}
+.rail .dot{
+  position:absolute;left:50%;top:20px;transform:translate(-50%,-50%);
+  width:9px;height:9px;border-radius:50%;
+  background:var(--t3);border:2px solid var(--ground);
+}
+.fnode.down .rail .dot{background:var(--accent)}
+.fcard{
+  margin-bottom:12px;
+  display:flex;align-items:flex-start;gap:16px;
+  background:var(--s1);border:1px solid var(--hair);border-radius:var(--r-m);
+  padding:16px 20px;
+  transition:border-color .15s var(--ease),background .15s var(--ease),transform .15s var(--ease);
+}
+.fcard:hover{border-color:var(--hair-strong);background:var(--s2);transform:translateX(2px)}
+.fnum{
+  font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:600;color:var(--t3);
+  border:1px solid var(--hair);border-radius:var(--r-s);padding:4px 8px;margin-top:1px;flex:none;
+}
+.fbody{flex:1;min-width:0}
+.ftitle{font-size:15.5px;font-weight:600;letter-spacing:-.01em}
+.fnote{margin-top:4px;font-size:13px;color:var(--t2);text-wrap:pretty}
+.fchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.fchips .k{
+  font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--code);
+  background:var(--code-bg);border:1px solid rgba(167,139,250,.16);
+  border-radius:var(--r-s);padding:3px 8px;
+}
+.fzone{
+  flex:none;font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.08em;
+  color:var(--t3);border:1px solid var(--hair);border-radius:999px;padding:3px 9px;margin-top:3px;
+}
+.fnode.down .fzone{color:var(--accent-bright);border-color:var(--accent-line);background:var(--accent-soft)}
+
+.gate{
+  position:relative;margin:0 0 12px 46px;
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;
+  border:1px solid var(--accent-line);border-radius:var(--r-m);
+  background:linear-gradient(90deg,var(--accent-soft),rgba(94,106,210,.04) 60%,transparent);
+  padding:13px 18px;
+}
+.gate::before{
+  content:"";position:absolute;left:-31px;top:50%;transform:translate(-50%,-50%);
+  width:11px;height:11px;border-radius:50%;
+  background:var(--accent);border:3px solid var(--ground);
+  box-shadow:0 0 0 1px var(--accent-line);
+}
+.gtag{
+  font-family:"JetBrains Mono",monospace;font-size:10.5px;font-weight:600;letter-spacing:.12em;
+  color:var(--accent-bright);border:1px solid var(--accent-line);border-radius:999px;
+  padding:3px 10px;background:rgba(94,106,210,.16);white-space:nowrap;
+}
+.gname{font-size:14.5px;font-weight:600}
+.gnote{font-size:12.5px;color:var(--t2);flex:1;min-width:220px;text-wrap:pretty}
+
+.table-wrap{
+  border:1px solid var(--hair);border-radius:var(--r-l);background:var(--s1);
+  overflow-x:auto;
+}
+table{width:100%;border-collapse:collapse;min-width:860px}
+thead th{
+  position:sticky;z-index:2;
+  background:var(--s2);
+  font-size:11.5px;font-weight:600;letter-spacing:.1em;color:var(--t2);
+  text-transform:uppercase;text-align:left;
+  padding:13px 18px;border-bottom:1px solid var(--hair-strong);
+  white-space:nowrap;
+}
+tbody td{padding:var(--row-pad) 18px;border-bottom:1px solid var(--hair);vertical-align:top;font-size:13.5px;color:var(--t2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr{transition:background .15s var(--ease)}
+tbody tr:hover{background:rgba(255,255,255,.025)}
+td.stg{white-space:nowrap;font-weight:600;color:var(--t1);font-size:14px}
+td .idx{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--t3);display:block;margin-bottom:3px}
+.art{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--code);background:var(--code-bg);border:1px solid rgba(167,139,250,.14);border-radius:var(--r-s);padding:2px 8px;margin:2px 4px 2px 0;word-break:break-all}
+.gcell{display:inline-flex;align-items:flex-start;gap:8px;max-width:300px;font-size:12.5px;color:var(--t3)}
+.gcell i{flex:none;width:6px;height:6px;border-radius:50%;background:var(--t3);margin-top:7px}
+tr.hard .gcell{color:var(--t1)}
+tr.hard .gcell i{background:var(--accent)}
+tr.hard td.stg{box-shadow:inset 3px 0 0 var(--accent)}
+.dash{color:var(--t3)}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media (max-width:900px){.grid3{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}}
+
+.pcard{
+  position:relative;background:var(--s1);border:1px solid var(--hair);border-radius:var(--r-l);
+  padding:26px 24px 24px;display:flex;flex-direction:column;gap:12px;min-height:190px;
+  transition:border-color .15s var(--ease),transform .2s var(--ease),background .15s var(--ease);
+}
+.pcard:hover{border-color:var(--hair-strong);background:var(--s2);transform:translateY(-2px)}
+.pcard .pidx{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--t3)}
+.pcard .pfile{font-family:"JetBrains Mono",monospace;font-size:14.5px;font-weight:600;color:var(--code);word-break:break-all}
+.pcard p{font-size:13px;color:var(--t2);text-wrap:pretty}
+.ptag{
+  position:absolute;top:22px;right:20px;font-size:10.5px;letter-spacing:.1em;
+  color:var(--ok);border:1px solid rgba(63,182,139,.3);background:rgba(63,182,139,.08);
+  border-radius:999px;padding:3px 10px;font-family:"JetBrains Mono",monospace;white-space:nowrap;
+}
+.pcard.gov{background:transparent;border-style:dashed;min-height:0;padding:18px 20px}
+.pcard.gov .pfile{color:var(--t2);font-size:13px}
+.pcard.gov .ptag{color:var(--t3);border-color:var(--hair-strong);background:transparent}
+
+.aside-note{
+  margin-top:16px;display:flex;gap:12px;align-items:flex-start;
+  border:1px solid var(--hair);border-left:2px solid var(--accent-line);
+  border-radius:var(--r-m);background:rgba(255,255,255,.015);
+  padding:14px 18px;font-size:13px;color:var(--t2);text-wrap:pretty;
+}
+.aside-note .mono{color:var(--code);font-size:12.5px}
+
+.phase{background:var(--s1);border:1px solid var(--hair);border-radius:var(--r-l);padding:26px 24px}
+.phase .ph-top{display:flex;align-items:center;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+.phase .ph-num{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:600;color:var(--accent-bright);border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:var(--r-s);padding:3px 9px}
+.phase h3{font-size:17px;letter-spacing:-.01em}
+.phase .ph-sub{font-size:13px;color:var(--t3);margin-bottom:18px}
+.io{display:grid;grid-template-columns:1fr 32px 1fr;gap:10px;align-items:center}
+.io .lab{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.12em;color:var(--t3);text-transform:uppercase;margin-bottom:8px}
+.io .box{border:1px solid var(--hair);border-radius:var(--r-m);background:var(--s2);padding:12px 14px;font-size:13px;color:var(--t2)}
+.io .box .mono{color:var(--t1);font-size:12.5px;display:block;margin-bottom:2px}
+.io .arr{color:var(--t3);font-size:16px;text-align:center}
+.io > div{min-width:0}
+@media (max-width:720px){.io{grid-template-columns:1fr}.io .arr{transform:rotate(90deg)}}
+
+.packet{
+  margin-top:14px;border:1px solid var(--hair-strong);border-radius:var(--r-m);
+  background:var(--s2);overflow:hidden;
+}
+.packet-head{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;
+  padding:13px 18px;border-bottom:1px solid var(--hair);
+}
+.packet-head .pf{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--t1);font-weight:600}
+.packet-head .pd{font-size:12.5px;color:var(--t3)}
+.src3{display:grid;grid-template-columns:repeat(3,1fr)}
+@media (max-width:860px){.src3{grid-template-columns:1fr}}
+.src{padding:16px 18px;border-right:1px solid var(--hair)}
+.src:last-child{border-right:none}
+@media (max-width:860px){.src{border-right:none;border-bottom:1px solid var(--hair)}.src:last-child{border-bottom:none}}
+.src .sn{font-family:"JetBrains Mono",monospace;font-size:12.5px;font-weight:600;color:var(--accent-bright)}
+.src p{margin-top:6px;font-size:12.5px;color:var(--t2);text-wrap:pretty}
+
+.oblig{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.oblig .ob{
+  flex:1;min-width:260px;display:flex;gap:12px;align-items:flex-start;
+  border-radius:var(--r-m);padding:14px 16px;font-size:12.5px;text-wrap:pretty;
+}
+.oblig .ob b{display:block;font-size:12px;font-family:"JetBrains Mono",monospace;letter-spacing:.06em;margin-bottom:4px}
+.oblig .ob.exact{border:1px solid var(--accent-line);background:var(--accent-soft);color:var(--t1)}
+.oblig .ob.exact b{color:var(--accent-bright)}
+.oblig .ob.ref{border:1px solid var(--hair);background:var(--s1);color:var(--t2)}
+.oblig .ob.ref b{color:var(--t2)}
+
+.gates5{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.g5{
+  grid-column:span 2;background:var(--s1);border:1px solid var(--hair);border-radius:var(--r-l);
+  padding:24px 22px;display:flex;flex-direction:column;gap:10px;
+  transition:border-color .15s var(--ease),transform .2s var(--ease),background .15s var(--ease);
+}
+.g5:hover{border-color:var(--accent-line);background:var(--s2);transform:translateY(-2px)}
+.g5 .gnum{
+  font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:600;color:var(--accent-bright);
+  display:flex;align-items:center;gap:10px;
+}
+.g5 .gnum::after{content:"";flex:1;height:1px;background:var(--hair)}
+.g5 h3{font-size:16.5px;letter-spacing:-.01em}
+.g5 p{font-size:13px;color:var(--t2);text-wrap:pretty}
+.g5 .gfile{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--code);background:var(--code-bg);border-radius:var(--r-s);padding:2px 8px;align-self:flex-start}
+@media (max-width:980px){.gates5{grid-template-columns:repeat(2,1fr)}.g5{grid-column:span 1}}
+@media (max-width:640px){.gates5{grid-template-columns:1fr}}
+
+.chain{position:relative;max-width:760px}
+.crow{
+  display:grid;grid-template-columns:200px 1fr;gap:0 20px;position:relative;
+  padding:0 0 8px;
+}
+.crow .ck{
+  text-align:right;font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:600;color:var(--t1);
+  padding-top:14px;position:relative;
+}
+.crow .ck::after{
+  content:"";position:absolute;right:-13%;top:36%;width:9px;height:9px;border-radius:50%;
+  background:var(--accent);border:2px solid var(--ground);box-shadow:0 0 0 1px var(--accent-line);
+}
+.crow .cv{
+  border-left:1px solid var(--hair-strong);padding:12px 0 16px 24px;
+  font-size:14px;color:var(--t2);text-wrap:pretty;
+}
+.crow:last-child .cv{padding-bottom:4px}
+.crow .cv b{color:var(--t1);font-weight:600}
+@media (max-width:640px){.crow{grid-template-columns:1fr}.crow .ck{text-align:left;padding-top:0;padding-bottom:6px}.crow .ck::after{display:none}.crow .cv{border-left:none;padding-left:0;border-top:1px solid var(--hair)}}
+
+.verdict{
+  margin-top:44px;border:1px solid var(--accent-line);border-radius:var(--r-l);
+  background:linear-gradient(135deg,var(--accent-soft),rgba(94,106,210,.03) 55%,transparent);
+  padding:30px 32px;
+}
+.verdict .vk{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--accent-bright);text-transform:uppercase}
+.verdict p{margin-top:12px;font-size:clamp(17px,2vw,21px);line-height:1.6;letter-spacing:-.01em;color:var(--t1);text-wrap:balance;max-width:30em}
+.verdict p em{font-style:normal;color:var(--accent-bright)}
+
+footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 0 64px}
+.foot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:860px){.foot-grid{grid-template-columns:1fr}}
+.fref{border:1px solid var(--hair);border-radius:var(--r-m);background:var(--s1);padding:16px 18px}
+.fref .fr-role{font-size:10.5px;font-family:"JetBrains Mono",monospace;letter-spacing:.12em;color:var(--t3);text-transform:uppercase}
+.fref .fr-name{margin-top:6px;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--code);word-break:break-all}
+.fref .fr-desc{margin-top:6px;font-size:12px;color:var(--t2)}
+.foot-note{margin-top:24px;font-size:12.5px;color:var(--t3);text-wrap:pretty}
+
+.tweaks-btn{
+  position:fixed;right:20px;bottom:20px;z-index:60;
+  font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:600;color:var(--t2);
+  background:var(--s3);border:1px solid var(--hair-strong);border-radius:999px;
+  padding:9px 16px;cursor:pointer;
+  transition:color .15s var(--ease),border-color .15s var(--ease);
+  box-shadow:0 1px 2px rgba(0,0,0,.3);
+}
+.tweaks-btn:hover{color:var(--t1);border-color:rgba(255,255,255,.2)}
+.tweaks{
+  position:fixed;right:20px;bottom:64px;z-index:60;width:230px;
+  background:var(--s2);border:1px solid var(--hair-strong);border-radius:var(--r-m);
+  box-shadow:0 8px 28px rgba(0,0,0,.45);
+  padding:14px 16px;display:none;
+}
+.tweaks.open{display:block}
+.tweaks h4{font-size:12px;font-weight:600;color:var(--t1);letter-spacing:.02em;margin-bottom:10px}
+.tk{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 0;font-size:12.5px;color:var(--t2)}
+.switch{position:relative;width:34px;height:19px;flex:none;cursor:pointer}
+.switch input{opacity:0;width:0;height:0;position:absolute}
+.switch .tr{position:absolute;inset:0;border-radius:999px;background:var(--s3);border:1px solid var(--hair-strong);transition:background .15s var(--ease)}
+.switch .tr::after{content:"";position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:var(--t2);transition:transform .18s var(--ease),background .15s var(--ease)}
+.switch input:checked + .tr{background:var(--accent)}
+.switch input:checked + .tr::after{transform:translateX(15px);background:#fff}
+@media (max-width:720px){
+  .nav-links{display:none}
+  .hero{padding:120px 0 64px}
+  .gate{margin-left:40px}
+}
+</style>
+</head>
+<body data-density="comfortable">
+<div class="mesh" aria-hidden="true"><i class="m1"></i><i class="m2"></i><i class="m3"></i></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#top"><span class="v">v6</span><span>Courseplay 生产主线</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#pipeline">整体链条</a>
+      <a href="#stages">阶段与产物</a>
+      <a href="#upstream">上游产物</a>
+      <a href="#repo">仓库路由</a>
+      <a href="#downstream">下游消费</a>
+      <a href="#gates">五大门禁</a>
+      <a href="#authority">权威链</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <header class="hero" id="top">
+    <span class="badge"><b>A-page v6</b>+<b>visual rough v3</b>+<b>handoff v3</b></span>
+    <h1>从冻结任务包，<br>到可验收的<em>成片</em>。</h1>
+    <p class="lede">今后新生产一律走这条主线：单一 Git 仓库内划分 <span class="mono">narration-pipeline/</span> 与 <span class="mono">player/</span> 两个子项目。上游以冻结任务包为唯一事实来源，经过连续口播、A-page 编译与 visual rough 编译；下游以三源 handoff 驱动章节创作。链条上共 14 个阶段、5 道不可自动越过的人工门禁。</p>
+    <p class="note">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.6" stroke="#6B7280" stroke-width="1.3"/><path d="M8 5.2v.2M8 7.4V11" stroke="#6B7280" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <span>ep04 的 v5/v2 只是冻结兼容分支，继续服务旧实例；它不代表新流程，新实例不得参照。</span>
+    </p>
+    <div class="vchips">
+      <span class="chip">上游权威 <b>rewrite-course-narration</b></span>
+      <span class="chip">上游权威 <b>design-course-visual-rough</b></span>
+      <span class="chip">下游权威 <b>web-video-presentation</b></span>
+    </div>
+  </header>
+
+  <section id="pipeline">
+    <div class="sect-head reveal">
+      <div class="kicker">01 · Pipeline</div>
+      <h2>整体链条</h2>
+      <p>一条从上游编译域到下游制作域的完整链路。紫色节点为人工门禁——它们只能由用户亲手放行，任何自动化都不得越过。</p>
+    </div>
+
+    <div class="legend reveal">
+      <span class="l-up"><i></i>上游 · 编译域（rewrite-course-narration / design-course-visual-rough）</span>
+      <span class="l-down"><i></i>下游 · 制作域（web-video-presentation）</span>
+      <span class="l-gate"><i></i>人工门禁</span>
+    </div>
+
+    <div class="flow">
+
+      <div class="fnode reveal">
+        <div class="rail"><span class="dot"></span></div>
+        <div class="fcard">
+          <span class="fnum">01</span>
+          <div class="fbody">
+            <div class="ftitle">冻结任务包</div>
+            <div class="fnote">整个链条的唯一事实来源，只读。</div>
+          </div>
+          <span class="fzone">上游</span>
+        </div>
+      </div>
+
+      <div class="fnode reveal">
+        <div class="rail"><span class="dot"></span></div>
+        <div class="fcard">
+          <span class="fnum">02</span>
+          <div class="fbody">
+            <div class="ftitle">Brief 提炼</div>
+            <div class="fnote">提炼内容义务、事实边界、受保护关系和静默护栏。</div>
+          </div>
+          <span class="fzone">上游</span>
+        </div>
+      </div>
+
+      <div class="fnode reveal">
+        <div class="rail"><span class="dot"></span></div>
+        <div class="fcard">
+          <span class="fnum">03</span>
+          <div class="fbody">
+            <div class="ftitle">隔离生成连续口播</div>
+            <div class="fnote">Stage 1 只读取 Brief 和短 Prompt，隔离生成自然连续稿。</div>
+          </div>
+          <span class="fzone">上游</span>
+        </div>
+      </div>
+
+      <div class="gate reveal">
+        <span class="gtag">人工门禁 1</span>
+        <span class="gname">批准口播</span>
+        <span class="gnote">用户未明确批准，不得生成 <span class="mono">approved-spoken-text.txt</span>，不得进入 A-page</span>
+      </div>
+
+      <div class="fnode reveal">
+        <div class="rail"><span class="dot"></span></div>
+        <div class="fcard">
+          <span class="fnum">04</span>
+          <div class="fbody">
+            <div class="ftitle">A-page v6 编译</div>
+            <div class="fchips">
+              <span class="k">批准口播 Nx</span>
+              <span class="k">screen guidance</span>
+              <span class="k">evidence / relations</span>
+              <span class="k">silent constraints</span>
+            </div>
+          </div>
+          <span class="fzone">上游</span>
+        </div>
+      </div>
+
+      <div class="fnode reveal">
+        <div class="rail"><span class="dot"></span></div>
+        <div class="fcard">
+          <span class="fnum">05</span>
+          <div class="fbody">
+            <div class="ftitle">机器验证 + 人工语义验收</div>
+            <div class="fnote">检查覆盖、事实边界、关系与 exact 原子性；编译追踪证明每个语义原子的去向。</div>
+          </div>
+          <span class="fzone">上游</span>
+        </div>
+      </div>
+
+      <div class="fnode reveal">
+        <div class="rail"><span class="dot"></span></div>
+        <div class="fcard">
+          <span class="fnum">06</span>
+          <div class="fbody">
+            <div class="ftitle">visual rough v3</div>
+            <div class="fnote">决定页面配方、G/R/M 结构、媒体需求和关系载体。</div>
+          </div>
+          <span class="fzone">上游</span>
+        </div>
+      </div>
+
+      <div class="gate reveal">
+        <span class="gtag">人工门禁 2</span>
+        <span class="gname">批准视觉粗设</span>
+        <span class="gnote">粗设必须由用户审阅，才能由 <span class="mono">draft</span> 改成 <span class="mono">approved</span></span>
+      </div>
+
+      <div class="fnode down reveal">
+        <div class="rail"><span class="dot"></span></div>
+        <div class="fcard">
+          <span class="fnum">07</span>
+          <div class="fbody">
+            <div class="ftitle">发布到 player/episodes/&lt;id&gt;/inputs/</div>
+            <div class="fnote">只有人工批准与验证后的正式文件进入 <span class="mono">inputs/</span>；过程文件留在 <span class="mono">.tmp/narration-pipeline/</span>，不进 Git。</div>
+          </div>
+          <span class="fzone">下游</span>
+        </div>
+      </div>
+
+      <div class="fnode down reveal">
+        <div class="rail"><span class="dot"></span></div>
+        <div class="fcard">
+          <span class="fnum">08</span>
+          <div class="fbody">
+            <div class="ftitle">生成 script.md + outline.md</div>
+            <div class="fnote">从每个 A 的 Nx 无损切分 narration beats，产出生产计划。</div>
+          </div>
+          <span class="fzone">下游</span>
+        </div>
+      </div>
+
+      <div class="gate reveal">
+        <span class="gtag">人工门禁 3</span>
+        <span class="gname">Checkpoint Plan</span>
+        <span class="gnote">一次确认稿子、Outline、主题、素材与开发模式——五项没有对齐，不得进入网页开发</span>
+      </div>
+
+      <div class="fnode down reveal">
+        <div class="rail"><span class="dot"></span></div>
+        <div class="fcard">
+          <span class="fnum">09</span>
+          <div class="fbody">
+            <div class="ftitle">按 A 生成 compact handoff v3</div>
+            <div class="fnote"><span class="mono">pnpm courseplay:handoff</span> 从 <span class="mono">inputs/</span> 机械生成 <span class="mono">.handoffs/Axxx.json</span>，不再把完整冻结输入喂给章节 Agent。</div>
+          </div>
+          <span class="fzone">下游</span>
+        </div>
+      </div>
+
+      <div class="fnode down reveal">
+        <div class="rail"><span class="dot"></span></div>
+        <div class="fcard">
+          <span class="fnum">10</span>
+          <div class="fbody">
+            <div class="ftitle">guidance + beats + presentation 三源创作</div>
+            <div class="fnote">章节 Agent 用三源重新设计完整上屏内容。</div>
+          </div>
+          <span class="fzone">下游</span>
+        </div>
+      </div>
+
+      <div class="fnode down reveal">
+        <div class="rail"><span class="dot"></span></div>
+        <div class="fcard">
+          <span class="fnum">11</span>
+          <div class="fbody">
+            <div class="ftitle">第 1 章完整制作</div>
+            <div class="fnote">必须是可验收的完整版本，不允许先交骨架。</div>
+          </div>
+          <span class="fzone">下游</span>
+        </div>
+      </div>
+
+      <div class="gate reveal">
+        <span class="gtag">人工门禁 4</span>
+        <span class="gname">第 1 章验收</span>
+        <span class="gnote">用户验收通过前，不得继续第 2 章及后续批量制作</span>
+      </div>
+
+      <div class="fnode down reveal">
+        <div class="rail"><span class="dot"></span></div>
+        <div class="fcard">
+          <span class="fnum">12</span>
+          <div class="fbody">
+            <div class="ftitle">第 2～N 章制作、审查与结清</div>
+            <div class="fnote">按 A/B/C 模式生产、审查、修复和结清。</div>
+          </div>
+          <span class="fzone">下游</span>
+        </div>
+      </div>
+
+      <div class="gate reveal">
+        <span class="gtag">人工门禁 5</span>
+        <span class="gname">是否合成音频</span>
+        <span class="gnote">Checkpoint Audio：先询问是否合成；合成前再确认 <span class="mono">audio-segments.json</span></span>
+      </div>
+
+      <div class="fnode down reveal">
+        <div class="rail"><span class="dot"></span></div>
+        <div class="fcard">
+          <span class="fnum">13</span>
+          <div class="fbody">
+            <div class="ftitle">可选 TTS → 录屏 → 后期成品</div>
+            <div class="fnote">音频分段落盘 <span class="mono">media/audio/&lt;chapter&gt;/&lt;step&gt;.mp3</span>；自动播放或手动推进录屏，最终视觉与成片验收。</div>
+          </div>
+          <span class="fzone">下游</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="stages">
+    <div class="sect-head reveal">
+      <div class="kicker">02 · Stages</div>
+      <h2>各阶段、产物与门禁</h2>
+      <p>14 个阶段的完整对照表。带紫色标记的行对应五道真正不可自动越过的人工门禁。</p>
+    </div>
+    <div class="table-wrap reveal">
+      <table>
+        <thead>
+          <tr><th style="width:56px">#</th><th>阶段</th><th>主要工作</th><th>主要产物</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="stg"><span class="idx">01</span>Brief</td>
+            <td>只读冻结任务包，提炼内容义务、事实边界、受保护关系和静默护栏；任务包事实源位于 <span class="mono">narration-pipeline/episodes/</span></td>
+            <td><span class="art">.tmp/narration-pipeline/&lt;flow&gt;/&lt;id&gt;/narration-brief.json</span></td>
+            <td><span class="gcell"><i></i>发生事实冲突或职责不清时停止，请用户决策</span></td>
+          </tr>
+          <tr>
+            <td class="stg"><span class="idx">02</span>连续口播</td>
+            <td>Stage 1 只读取 Brief 和短 Prompt，隔离生成自然连续稿</td>
+            <td><span class="art">连续口播候选</span></td>
+            <td><span class="gcell"><i></i>红线审读、内容审读、语言审读</span></td>
+          </tr>
+          <tr class="hard">
+            <td class="stg"><span class="idx">03</span>批准口播</td>
+            <td>用户确认连续稿</td>
+            <td><span class="art">approved-spoken-text.txt</span></td>
+            <td><span class="gcell"><i></i>用户未明确批准，不得生成该文件，不得进入 A-page</span></td>
+          </tr>
+          <tr>
+            <td class="stg"><span class="idx">04</span>A-page v6</td>
+            <td>切分连续 Nx；从任务包可见信息提取语义原子，形成 screen guidance</td>
+            <td><span class="art">episode-XX-a-page.json</span></td>
+            <td><span class="gcell"><i></i>机器验证通过后，人工检查覆盖、事实边界、关系和 exact 原子性</span></td>
+          </tr>
+          <tr>
+            <td class="stg"><span class="idx">05</span>编译追踪</td>
+            <td>证明任务包语义原子进入哪个 A/S，或为什么省略</td>
+            <td><span class="art">…-b-to-a-compile-trace.json</span></td>
+            <td><span class="gcell"><i></i>trace 有 unresolved 或无理由遗漏时不得发布</span></td>
+          </tr>
+          <tr>
+            <td class="stg"><span class="idx">06</span>A-page 验证</td>
+            <td>检查 schema、Nx 无损、证据、关系、guidance、trace</td>
+            <td><span class="art">…-a-page-validation.json</span></td>
+            <td><span class="gcell"><i></i><span class="mono" style="font-size:11.5px">coverage_passed=true · unresolved=[] · failures=[]</span></span></td>
+          </tr>
+          <tr class="hard">
+            <td class="stg"><span class="idx">07</span>Visual rough v3</td>
+            <td>决定页面配方、G/R/M 结构、媒体需求和关系载体</td>
+            <td><span class="art">…-visual-rough.md</span><span class="art">validation JSON</span></td>
+            <td><span class="gcell"><i></i>用户批准后才能由 draft 改成 approved</span></td>
+          </tr>
+          <tr>
+            <td class="stg"><span class="idx">08</span>下游 Phase 1</td>
+            <td>读取 <span class="mono">inputs/</span> 正式输入；无损派生口播 beats，生成生产计划</td>
+            <td><span class="art">script.md</span><span class="art">outline.md</span><span class="art">project.json</span></td>
+            <td><span class="gcell"><i></i>script / outline 自检；必要时独立 reviewer</span></td>
+          </tr>
+          <tr class="hard">
+            <td class="stg"><span class="idx">09</span>Checkpoint Plan</td>
+            <td>一次确认稿子、Outline、主题、素材方案和开发模式</td>
+            <td><span class="art">已批准的生产计划</span></td>
+            <td><span class="gcell"><i></i>五项没有对齐，不得进入网页开发</span></td>
+          </tr>
+          <tr>
+            <td class="stg"><span class="idx">10</span>单章交接</td>
+            <td>从 <span class="mono">inputs/</span> 机械生成单 A packet；v6/v3 输入路由到 handoff v3</td>
+            <td><span class="art">.handoffs/Axxx.json</span><span class="art">Git 忽略</span></td>
+            <td><span class="gcell"><i></i><span class="mono" style="font-size:11.5px">--check</span> 或 freshness 失败就停止</span></td>
+          </tr>
+          <tr class="hard">
+            <td class="stg"><span class="idx">11</span>章节制作</td>
+            <td>综合 guidance、当前 A beats、presentation 重新创作完整上屏内容</td>
+            <td><span class="art">Chapter.tsx</span><span class="art">CSS</span><span class="art">narrations.ts</span><span class="art">媒体</span></td>
+            <td><span class="gcell"><i></i>第 1 章必须完整制作并由用户验收</span></td>
+          </tr>
+          <tr>
+            <td class="stg"><span class="idx">12</span>后续章节</td>
+            <td>按 A/B/C 模式生产、审查、修复和结清</td>
+            <td><span class="art">全部章节代码</span><span class="art">review-summary.json</span><span class="art">.reviews/</span></td>
+            <td><span class="gcell"><i></i>取决于模式：A 逐章确认，B 滚动审查，C 并行但仍需最终验收</span></td>
+          </tr>
+          <tr class="hard">
+            <td class="stg"><span class="idx">13</span>音频</td>
+            <td>从 narrations.ts 提取音频分段并可选合成</td>
+            <td><span class="art">audio-segments.json</span><span class="art">media/audio/&lt;chapter&gt;/&lt;step&gt;.mp3</span></td>
+            <td><span class="gcell"><i></i>先问用户是否合成；合成前再确认分段文本</span></td>
+          </tr>
+          <tr>
+            <td class="stg"><span class="idx">14</span>录屏与后期</td>
+            <td>自动播放或手动推进录屏</td>
+            <td><span class="art">视频录屏</span><span class="art">后期成品</span></td>
+            <td><span class="gcell"><i></i>最终视觉与成片验收</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="upstream">
+    <div class="sect-head reveal">
+      <div class="kicker">03 · Upstream Outputs</div>
+      <h2>三份上游正式内容产物</h2>
+      <p>真正同步给下游作为内容输入的只有这三份。其余报告只用于治理与验收，不是章节创作素材。</p>
+    </div>
+    <div class="grid3">
+      <div class="pcard reveal">
+        <span class="pidx">01</span>
+        <span class="ptag">内容输入</span>
+        <span class="pfile">approved-spoken-text.txt</span>
+        <p>用户明确批准的连续口播。决定整集「实际说什么」，是 A-page Nx 的唯一来源。</p>
+      </div>
+      <div class="pcard reveal">
+        <span class="pidx">02</span>
+        <span class="ptag">内容输入</span>
+        <span class="pfile">episode-XX-a-page.json</span>
+        <p>每页的批准口播 Nx、screen guidance、evidence / relations 与静默约束——下游屏幕表达的方向与事实边界。</p>
+      </div>
+      <div class="pcard reveal">
+        <span class="pidx">03</span>
+        <span class="ptag">内容输入</span>
+        <span class="pfile">episode-XX-visual-rough.md</span>
+        <p>用户批准的视觉粗设，决定页面配方、G/R/M 结构、媒体需求和关系载体。</p>
+      </div>
+    </div>
+    <div class="grid2" style="margin-top:16px">
+      <div class="pcard gov reveal">
+        <span class="ptag">治理 · 验收</span>
+        <span class="pfile">episode-XX-a-page-validation.json</span>
+        <p>A-page 机器验证报告：coverage、unresolved、failures。</p>
+      </div>
+      <div class="pcard gov reveal">
+        <span class="ptag">治理 · 验收</span>
+        <span class="pfile">episode-XX-visual-rough-validation.json</span>
+        <p>visual rough 验证报告，用于批准前的结构核对。</p>
+      </div>
+    </div>
+    <div class="aside-note reveal">
+      <span><span class="mono">narration-brief.json</span> 与 compile trace 属于过程文件，留在 <span class="mono">.tmp/narration-pipeline/</span>，不进 Git，也不进入 <span class="mono">inputs/</span>。</span>
+    </div>
+  </section>
+
+  <section id="repo">
+    <div class="sect-head reveal">
+      <div class="kicker">04 · Repo Routing</div>
+      <h2>单仓双域与目录路由</h2>
+      <p>单一 Git 根，两个清晰的工作边界。播放器实例只消费 <span class="mono">inputs/</span>，不得反向修复或覆盖任务包。</p>
+    </div>
+    <div class="grid2">
+      <div class="pcard reveal">
+        <span class="pidx">01</span>
+        <span class="ptag">事实源 · 只读</span>
+        <span class="pfile">narration-pipeline/episodes/</span>
+        <p>51 集任务包事实源、口播、A-page v6 与 visual rough v3 的权威技能域。任务包保持只读。</p>
+      </div>
+      <div class="pcard reveal">
+        <span class="pidx">02</span>
+        <span class="ptag">过程文件 · 不进 Git</span>
+        <span class="pfile">.tmp/narration-pipeline/</span>
+        <p>brief、草稿口播、编译追踪等上游过程文件目录，不是事实源，不提交 Git。</p>
+      </div>
+      <div class="pcard reveal">
+        <span class="pidx">03</span>
+        <span class="ptag">正式消费入口</span>
+        <span class="pfile">player/episodes/&lt;id&gt;/inputs/</span>
+        <p>上游批准 handoff 的唯一正式入口。只有经过批准和验证的正式文件才能发布到这里。</p>
+      </div>
+      <div class="pcard reveal">
+        <span class="pidx">04</span>
+        <span class="ptag">章节实现</span>
+        <span class="pfile">player/episodes/&lt;id&gt;/src/</span>
+        <p>章节代码、narrations.ts 与封面；51 期标准封面内容库位于 <span class="mono">episodes/_shared/covers/</span>。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="downstream">
+    <div class="sect-head reveal">
+      <div class="kicker">05 · Downstream</div>
+      <h2>下游真正如何消费</h2>
+      <p>下游分为两个阶段：Phase 1 读取 <span class="mono">inputs/</span> 正式输入做计划，Phase 2 按 A 发放三源 handoff，章节 Agent 重新创作完整上屏内容。</p>
+    </div>
+
+    <div class="grid2">
+      <div class="phase reveal">
+        <div class="ph-top"><span class="ph-num">PHASE 1</span><h3>读取正式输入，生成计划</h3></div>
+        <div class="ph-sub">读取 inputs/ 正式输入，无损派生口播与生产调度。</div>
+        <div class="io">
+          <div>
+            <div class="lab">输入</div>
+            <div class="box"><span class="mono">player/episodes/&lt;id&gt;/inputs/</span>三份内容产物 + 验证报告</div>
+          </div>
+          <div class="arr">→</div>
+          <div>
+            <div class="lab">输出</div>
+            <div class="box">
+              <span class="mono">script.md</span>从每个 A 的 Nx 无损切分 narration beats
+              <span class="mono" style="margin-top:8px">outline.md</span>章节、step、semantic state、持续元素与场景调度
+              <span class="mono" style="margin-top:8px">主题 · 素材 · 开发模式建议</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase reveal">
+        <div class="ph-top"><span class="ph-num">PHASE 2</span><h3>按 A 发放三源 handoff</h3></div>
+        <div class="ph-sub">Checkpoint Plan 之后，不再把完整 A-page、rough、script、Outline 全部喂给章节 Agent。</div>
+        <div class="packet">
+          <div class="packet-head">
+            <span class="pf mono">.handoffs/Axxx.json</span>
+            <span class="pd">每个 A 一份，机械生成；派生缓存，不进 Git</span>
+          </div>
+          <div class="src3">
+            <div class="src">
+              <span class="sn">screen_guidance</span>
+              <p>方向、重点、事实边界和 exact 义务。</p>
+            </div>
+            <div class="src">
+              <span class="sn">narration.beats</span>
+              <p>当前 A 可用于扩充上屏内容的具体素材。</p>
+            </div>
+            <div class="src">
+              <span class="sn">presentation</span>
+              <p>rough 投影出的表达结构、关系和媒体安排。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="oblig reveal">
+      <div class="ob exact">
+        <div>
+          <b>exact — 逐字义务</b>
+          标记为 exact 的内容必须逐字可见，不得改写、拆并或省略。
+        </div>
+      </div>
+      <div class="ob ref">
+        <div>
+          <b>reference — 可再创作</b>
+          普通 reference S/G 不需要逐项复现；允许改写、拆分、合并、扩充和视觉化。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gates">
+    <div class="sect-head reveal">
+      <div class="kicker">06 · Human Gates</div>
+      <h2>最关键的人工门禁</h2>
+      <p>五道真正不可自动越过的节点。其余检查可以自动化或由流程兜底，这五道只能由用户亲手放行。</p>
+    </div>
+    <div class="gates5">
+      <div class="g5 reveal">
+        <span class="gnum">GATE 01</span>
+        <h3>批准连续口播</h3>
+        <p>没有用户明确批准，就没有批准口播文件，也不能生成 A-page。</p>
+        <span class="gfile">approved-spoken-text.txt</span>
+      </div>
+      <div class="g5 reveal">
+        <span class="gnum">GATE 02</span>
+        <h3>批准 visual rough</h3>
+        <p>粗设必须由用户审阅，才能从 draft 变为 approved。</p>
+        <span class="gfile">episode-XX-visual-rough.md</span>
+      </div>
+      <div class="g5 reveal">
+        <span class="gnum">GATE 03</span>
+        <h3>Checkpoint Plan</h3>
+        <p>同时确认 script、Outline、主题、素材和开发模式，五项对齐才开工。</p>
+        <span class="gfile">已批准的生产计划</span>
+      </div>
+      <div class="g5 reveal">
+        <span class="gnum">GATE 04</span>
+        <h3>第 1 章验收</h3>
+        <p>必须是完整版本，不允许先交骨架；用户验收前不能继续批量制作。</p>
+        <span class="gfile">Chapter.tsx · narrations.ts</span>
+      </div>
+      <div class="g5 reveal">
+        <span class="gnum">GATE 05</span>
+        <h3>Checkpoint Audio</h3>
+        <p>网页制作完成后必须询问是否合成音频；合成前还要先确认分段文本。</p>
+        <span class="gfile">audio-segments.json</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="authority">
+    <div class="sect-head reveal">
+      <div class="kicker">07 · Authority Chain</div>
+      <h2>权威关系</h2>
+      <p>每一环只决定自己那一层的事，上一层的产出是下一层的边界。</p>
+    </div>
+    <div class="chain">
+      <div class="crow reveal">
+        <div class="ck">任务包</div>
+        <div class="cv">决定<b>内容义务与事实边界</b></div>
+      </div>
+      <div class="crow reveal">
+        <div class="ck">批准口播</div>
+        <div class="cv">决定<b>实际说什么</b></div>
+      </div>
+      <div class="crow reveal">
+        <div class="ck">A-page guidance</div>
+        <div class="cv">决定屏幕应往什么方向表达、<b>哪些事实不能错</b></div>
+      </div>
+      <div class="crow reveal">
+        <div class="ck">visual rough</div>
+        <div class="cv">决定采用<b>什么表达结构</b></div>
+      </div>
+      <div class="crow reveal">
+        <div class="ck">Outline</div>
+        <div class="cv">决定<b>制作调度、step 与状态</b></div>
+      </div>
+      <div class="crow reveal">
+        <div class="ck">下游章节实现</div>
+        <div class="cv">决定<b>最终画面和完整上屏文案</b></div>
+      </div>
+    </div>
+
+    <div class="verdict reveal">
+      <div class="vk">Core Shift</div>
+      <p>JSON 现在不是「最终屏幕文案清单」，而是下游进行完整上屏内容创作时的<em>方向与边界</em>。</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-grid">
+      <div class="fref">
+        <div class="fr-role">上游 · 口播（narration-pipeline）</div>
+        <div class="fr-name">rewrite-course-narration</div>
+        <div class="fr-desc">Brief 提炼、隔离口播生成与批准口播阶段的上游权威。</div>
+      </div>
+      <div class="fref">
+        <div class="fr-role">上游 · 视觉（narration-pipeline）</div>
+        <div class="fr-name">design-course-visual-rough</div>
+        <div class="fr-desc">A-page 编译、visual rough v3 与其审批规则的上游权威。</div>
+      </div>
+      <div class="fref">
+        <div class="fr-role">下游 · 制作（player）</div>
+        <div class="fr-name">web-video-presentation</div>
+        <div class="fr-desc">Phase 1 计划、handoff 三源、章节制作、音频与录屏的下游权威。</div>
+      </div>
+    </div>
+    <p class="foot-note">ep04 的 v5/v2 为冻结兼容分支，仅继续服务旧实例；新实例一律使用本页描述的 v6 主线。数据流：任务包 → .tmp 过程文件 → 人工批准与验证 → inputs/ → src/ → 预览、构建与录屏。</p>
+  </footer>
+
+</div>
+
+<button class="tweaks-btn" id="tweaksBtn" type="button">Tweaks</button>
+<div class="tweaks" id="tweaksPanel">
+  <h4>Tweaks</h4>
+  <div class="tk">
+    <span>紧凑密度</span>
+    <label class="switch"><input type="checkbox" id="tkDensity"><span class="tr"></span></label>
+  </div>
+  <div class="tk">
+    <span>关闭动效</span>
+    <label class="switch"><input type="checkbox" id="tkMotion"><span class="tr"></span></label>
+  </div>
+</div>
+
+<script>
+(function(){
+  var revealEls=document.querySelectorAll('.reveal');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isStatic=new URLSearchParams(location.search).has('static');
+  if(isStatic){
+    document.documentElement.classList.add('static');
+  }
+  if(reduce||isStatic||!('IntersectionObserver' in window)){
+    revealEls.forEach(function(el){el.classList.add('in')});
+  }else{
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+      });
+    },{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+    revealEls.forEach(function(el){io.observe(el)});
+  }
+
+  var links=document.querySelectorAll('#navLinks a');
+  var sections=[];
+  links.forEach(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var s=document.getElementById(id);
+    if(s)sections.push({id:id,el:s,a:a});
+  });
+  if('IntersectionObserver' in window){
+    var nio=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){a.classList.remove('on')});
+          var hit=sections.find(function(s){return s.el===e.target});
+          if(hit)hit.a.classList.add('on');
+        }
+      });
+    },{rootMargin:'-40% 0px -55% 0px'});
+    sections.forEach(function(s){nio.observe(s.el)});
+  }
+
+  var btn=document.getElementById('tweaksBtn');
+  var panel=document.getElementById('tweaksPanel');
+  btn.addEventListener('click',function(){panel.classList.toggle('open')});
+  document.addEventListener('click',function(e){
+    if(!panel.contains(e.target)&&e.target!==btn&&!btn.contains(e.target))panel.classList.remove('open');
+  });
+
+  var tkDensity=document.getElementById('tkDensity');
+  tkDensity.addEventListener('change',function(){
+    document.body.dataset.density=tkDensity.checked?'compact':'comfortable';
+  });
+  var tkMotion=document.getElementById('tkMotion');
+  tkMotion.addEventListener('change',function(){
+    document.body.dataset.motion=tkMotion.checked?'off':'on';
+    if(tkMotion.checked){revealEls.forEach(function(el){el.classList.add('in')});}
+  });
+})();
+</script>
+</body>
+</html>

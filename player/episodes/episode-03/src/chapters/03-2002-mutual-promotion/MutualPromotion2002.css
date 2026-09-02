@@ -1,0 +1,231 @@
+/* 2002-mutual-promotion · A003 time-anchor-opening
+   mechanism: anchor-and-context — “2002”锚点全页恒定，历史限定与关系内容在
+   固定区域补充；两方向并列等权，不绘制双向箭头、不扩展时间轴（R003/R004）。
+   prefix: mp- */
+
+.mp-scene {
+  justify-content: flex-start;
+  gap: 26px;
+}
+
+/* ── 论点标题 ─────────────────────────────────────────── */
+
+.mp-thesis {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: mp-rise 620ms var(--ease-quart) backwards;
+}
+
+.mp-thesis em {
+  font-style: normal;
+  color: var(--theme-warning);
+  border-bottom: 6px solid var(--theme-warning);
+  padding-bottom: 4px;
+}
+
+/* ── 主区：2002 大字锚点（恒定）｜M002 场景图（独立落位）*/
+
+.mp-main {
+  display: grid;
+  grid-template-columns: 520px 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.mp-anchor {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: mp-rise 660ms var(--ease-quart) 80ms backwards;
+}
+
+.mp-anchor-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.mp-year {
+  margin: 0;
+  font-size: 168px;
+  line-height: 1.02;
+  color: var(--theme-structural);
+}
+
+.mp-anchor-note {
+  margin: 0;
+  font-size: 27px;
+  color: var(--text-2);
+}
+
+.mp-media {
+  margin: 0;
+  justify-self: end;
+  width: 680px;
+  animation: mp-rise 700ms var(--ease-quart) 140ms backwards;
+}
+
+.mp-photo {
+  padding: 12px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.mp-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.mp-media-cap {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  color: var(--text-mute);
+}
+
+/* ── 关系区：短句组框架 → 两个方向并列等权 ────────────── */
+
+.mp-relations {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.mp-relations-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.1em;
+  color: var(--theme-structural);
+  animation: mp-rise 560ms var(--ease-quart) 220ms backwards;
+}
+
+.mp-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.mp-dir {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px 20px;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  transition: opacity 320ms var(--ease-soft), visibility 0s;
+}
+
+.mp-dir i {
+  font-style: normal;
+  font-size: 30px;
+  color: var(--theme-process);
+}
+
+.mp-dir[data-on="waiting"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+.mp-dir[data-on="waiting"] {
+  color: transparent;
+}
+
+.mp-dir[data-on="waiting"] i {
+  color: transparent;
+}
+
+.mp-dir[data-on="on"] {
+  animation: mp-stamp 560ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--mp-i) * 260ms + 60ms);
+}
+
+/* ── 共同要素：四类要素收拢进同一组（不画图示）───────── */
+
+.mp-joint {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+
+.mp-joint.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mp-joint-band {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  padding: 18px 24px;
+  background: var(--theme-process-surface);
+  border: 3px solid var(--theme-process);
+}
+
+.mp-joint.is-on .mp-joint-chip {
+  animation: mp-chip 460ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--mp-i) * 140ms + 120ms);
+}
+
+.mp-joint-chip {
+  padding: 10px 22px;
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--theme-process);
+  background: var(--surface-2);
+  border: 2px solid var(--theme-process);
+}
+
+.mp-joint-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  color: var(--text-2);
+  text-align: center;
+}
+
+.mp-joint-line em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-structural);
+  border-bottom: 5px solid var(--theme-process);
+  padding-bottom: 3px;
+}
+
+/* ── 共享 keyframes ──────────────────────────────────── */
+
+@keyframes mp-rise {
+  0%   { opacity: 0; transform: translateY(28px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mp-stamp {
+  0%   { opacity: 0; transform: translateY(26px) scale(1.04); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes mp-chip {
+  0%   { opacity: 0; transform: scale(0.72); }
+  100% { opacity: 1; transform: scale(1); }
+}

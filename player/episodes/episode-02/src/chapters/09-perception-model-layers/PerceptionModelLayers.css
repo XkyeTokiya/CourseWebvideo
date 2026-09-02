@@ -1,0 +1,284 @@
+/* ─────────────────────────────────────────────────────────────
+ * 09-perception-model-layers · A009 layered-bands-with-side-notes
+ * mechanism: ordered-bands-with-side-notes — 两条无连线大文字带
+ *   按"现场接入—信息组织"固定顺序成立，侧栏提示卡逐带就位；
+ *   boundary 标出本页只建立前两个层次（第三层虚线占位），
+ *   takeaway 槽收束"先接住现场，再形成可分析对象"
+ * prefix: pm-
+ * ───────────────────────────────────────────────────────────── */
+
+.pm-scene {
+  justify-content: center;
+  gap: 36px;
+}
+
+/* ── 论点标题 ── */
+.pm-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: pm-rise 640ms var(--ease-quart) backwards;
+}
+.pm-title-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--theme-process-surface);
+}
+.pm-title-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}
+.pm-title-text em {
+  font-style: normal;
+  border-bottom: 7px solid var(--theme-process);
+  padding-bottom: 3px;
+}
+@keyframes pm-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── boundary 条：层次进度小格演示（第三层虚线占位）── */
+.pm-boundary {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  border: var(--rule-w) dashed var(--theme-structural);
+  border-radius: 10px;
+  padding: 14px 26px;
+  animation: pm-rise 560ms var(--ease-quart) 120ms backwards;
+}
+.pm-boundary-label {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--theme-structural);
+}
+.pm-layer-cells {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+}
+.pm-cell {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-faint);
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: 8px;
+  transition: background-color var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft), color var(--dur-base) var(--ease-soft);
+}
+.pm-cell.is-on {
+  color: var(--theme-paper);
+  background: var(--theme-process);
+  border: var(--rule-w) solid var(--theme-process);
+}
+.pm-cell-todo {
+  opacity: 0.7;
+}
+
+/* ── 两条大文字带：固定顺序成立，逐带挂提示卡 ── */
+.pm-bands {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.pm-band {
+  min-height: 236px;
+  padding: 34px 40px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    background-color var(--dur-slow) var(--ease-soft),
+    border-color var(--dur-slow) var(--ease-soft),
+    box-shadow var(--dur-slow) var(--ease-soft);
+}
+.pm-band.is-ghost {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  opacity: 0.85;
+}
+.pm-band.is-ghost::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: inherit;
+}
+.pm-band.is-on {
+  animation: pm-band-in 640ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--pm-i) * 420ms);
+}
+@keyframes pm-band-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.pm-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.pm-band.is-on .pm-slot {
+  opacity: 0;
+}
+
+.pm-band-body {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+  transition-delay: calc(var(--pm-i) * 420ms + 160ms);
+}
+.pm-band.is-on .pm-band-body {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pm-band-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.pm-band-layer {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--theme-process);
+}
+.pm-band-name {
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.04em;
+}
+.pm-band-desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 23px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.pm-note {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 24px;
+  border: var(--rule-w) dashed var(--theme-process);
+  border-radius: 12px;
+  background: var(--theme-process-surface);
+}
+.pm-note-mark {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  background: var(--theme-process);
+}
+.pm-note-text {
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.08em;
+  color: var(--theme-structural);
+}
+
+/* ── takeaway 槽：同步收束 ── */
+.pm-takeaway {
+  position: relative;
+  height: 116px;
+  display: flex;
+  align-items: center;
+}
+.pm-takeaway-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--rule-w) dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+  opacity: 0.7;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+.is-closed .pm-takeaway-slot {
+  opacity: 0;
+}
+.pm-takeaway-body {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  padding: 20px 40px;
+  background: var(--surface-2);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+.pm-takeaway[data-on="true"] .pm-takeaway-body {
+  opacity: 1;
+  transform: translateY(0);
+}
+.pm-takeaway-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 3px var(--theme-process-surface);
+}
+.pm-takeaway-text {
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  letter-spacing: 0.02em;
+}

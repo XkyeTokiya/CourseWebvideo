@@ -1,0 +1,285 @@
+/* data-as-evidence · A004 parallel-cards-self-contained
+   mechanism: equal-weight-accumulation — 三张自足等权卡逐拍就位，完成后不留当前选中项
+   视觉修订：句式卡标题 + 成行文字与绘制标记，仅保留必要强调件，纵向均布去留白
+   prefix: de- */
+
+.de-scene {
+  justify-content: flex-start;
+  gap: 36px;
+}
+
+/* ── 标题区（S014 判断方向，outline 声明保留） ─────────── */
+
+.de-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: de-rise 640ms var(--ease-quart) backwards;
+}
+
+.de-title em {
+  font-style: normal;
+  border-bottom: 8px solid var(--theme-process);
+  padding-bottom: 4px;
+}
+
+@keyframes de-rise {
+  0%   { opacity: 0; transform: translateY(26px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 三张自足等权卡：纵向并列网格，非流水线 ───────────── */
+
+.de-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.de-card {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 32px 32px;
+  min-width: 0;
+  transition: opacity 560ms var(--ease-soft),
+    background-color 560ms var(--ease-soft),
+    border-color 560ms var(--ease-soft),
+    box-shadow 560ms var(--ease-soft);
+}
+
+/* 状态相关动画挂在 data-on 态：waiting 时不计时 */
+.de-card[data-on="on"] {
+  animation: de-stamp-in 620ms var(--ease-overshoot) backwards;
+}
+
+.de-card:nth-child(2)[data-on="on"],
+.de-card:nth-child(3)[data-on="on"] {
+  animation-delay: 120ms;
+}
+
+@keyframes de-stamp-in {
+  0%   { opacity: 0; transform: translateY(34px) scale(1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.de-card[data-on="waiting"] {
+  background: transparent;
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+.de-card[data-on="waiting"] .de-card-title,
+.de-card[data-on="waiting"] .de-body {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.de-card[data-on="waiting"] .de-idx {
+  opacity: 0.35;
+}
+
+.de-idx {
+  font-size: 42px;
+  color: var(--theme-process);
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.de-card-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: var(--theme-structural);
+  transition: opacity 480ms var(--ease-soft), visibility 0s;
+}
+
+.de-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  transition: opacity 480ms var(--ease-soft), visibility 0s;
+}
+
+/* 卡 01：六类来源成行列举（两列绘制标记），卡面判断收底 */
+
+.de-sources {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 22px;
+  align-content: space-evenly;
+}
+
+.de-sources li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 26px;
+  color: var(--text-2);
+}
+
+.de-sources li i {
+  flex: none;
+  width: 13px;
+  height: 13px;
+  background: var(--theme-process);
+}
+
+.de-card[data-on="on"] .de-sources li {
+  animation: de-stamp-in 460ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--de-i) * 140ms + 160ms);
+}
+
+.de-lead {
+  margin: 0;
+  padding-top: 18px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  font-size: 26px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.de-lead em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* 卡 02：发现 → 依据（行内强调，非 chip 堆） */
+
+.de-ana {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.de-ana-label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+.de-finds {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+.de-bases {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+.de-down {
+  align-self: center;
+  width: 3px;
+  height: 26px;
+  background: var(--theme-structural);
+  position: relative;
+}
+
+.de-down::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-right: 3px solid var(--theme-structural);
+  border-bottom: 3px solid var(--theme-structural);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* 卡 03：三条记录汇聚到同一异常 → 连续证据 */
+
+.de-linkcol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.de-linkrow {
+  padding: 12px 18px;
+  font-size: 26px;
+  color: var(--text-2);
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+  position: relative;
+}
+
+.de-linkrow::after {
+  content: "";
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  border-top: 3px solid var(--theme-warning);
+  border-right: 3px solid var(--theme-warning);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.de-card[data-on="on"] .de-linkrow {
+  animation: de-stamp-in 460ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--de-i) * 180ms + 160ms);
+}
+
+.de-node {
+  margin: 6px 0 0;
+  align-self: flex-end;
+  padding: 12px 22px;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  border: 3px solid var(--theme-warning);
+}
+
+.de-card[data-on="on"] .de-node {
+  animation: de-stamp-in 520ms var(--ease-overshoot) 760ms backwards;
+}
+
+.de-outcome {
+  margin: 0;
+  font-size: 23px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.de-landing {
+  margin: 0;
+  padding-bottom: 4px;
+  align-self: flex-start;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-process);
+  border-bottom: 6px solid var(--theme-process);
+}
+
+.de-card[data-on="on"] .de-landing {
+  animation: de-rise 560ms var(--ease-quart) 1080ms backwards;
+}

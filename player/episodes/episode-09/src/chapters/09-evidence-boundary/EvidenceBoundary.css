@@ -1,0 +1,322 @@
+/* ─────────────────────────────────────────────────────────────
+ * 09-evidence-boundary · A009 evidence-cards-with-provenance-boundary
+ * mechanism: cumulative-assembly — 固定证据结构按阅读顺序组装：
+ *   step0 来源带先立案例归属（V020），首张证据卡（精度提升 40%）随后就位；
+ *   step1/2 第二、三张证据卡依次入同一标签槽位，等权并列不留选中项；
+ *   step3 外推限定浮现于推断边界组，阅读焦点移向边界区（三卡有理由弱化）；
+ *   step4 gap-row（未提供统计周期/样本规模/计算方法）出现，
+ *   boundary-row（不是行业平均值、不构成承诺，R021）补齐，正常阅读层级。
+ *   三卡为纯排版证据卡：无仪表盘、趋势图、比例图、完成率（R020）。
+ * 可见标题：none（outline §9 省略授权）——案例归属由来源带承载，
+ *   不可外推判断由缺口组与边界组承载，不设顶替标题的文案或槽位。
+ * prefix: eb-
+ * ───────────────────────────────────────────────────────────── */
+
+.eb-scene {
+  gap: 40px;
+}
+
+/* ── provenance band：案例归属固定于此 ─────────────────────── */
+
+.eb-band {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 22px 34px;
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  animation: eb-rise 680ms var(--ease-quart) 80ms backwards;
+  transition: opacity 560ms var(--ease-soft), filter 560ms var(--ease-soft);
+}
+
+.eb-band-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+  animation: eb-rise 620ms var(--ease-quart) 240ms backwards;
+}
+
+.eb-band-text em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* 同一证据标签系统：来源带与三张证据卡共用同一枚标签语法 */
+
+.eb-evi-tag {
+  flex: none;
+  padding: 8px 17px;
+  font-family: var(--font-mono);
+  font-size: 25px;
+  letter-spacing: 0.15em;
+  color: var(--theme-process);
+  background: var(--surface-2);
+  border: 2px solid var(--theme-process);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.eb-band .eb-evi-tag {
+  animation: eb-stamp 560ms var(--ease-overshoot) 340ms backwards;
+}
+
+/* ── 三张同标签证据卡：槽位固定，逐张就位，等权并列 ─────────── */
+
+.eb-cards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  transform-origin: center bottom;
+  transition: opacity 560ms var(--ease-soft), transform 560ms var(--ease-soft),
+    filter 560ms var(--ease-soft);
+}
+
+/* step3 起阅读焦点移向边界区：三卡让位弱化（保留，不消失不重排） */
+
+.eb-scene[data-state="extrapolation-limited"] .eb-cards,
+.eb-scene[data-state="gap-and-boundary-stated"] .eb-cards {
+  opacity: 0.55;
+  transform: scale(0.985);
+  filter: saturate(0.8);
+}
+
+.eb-scene[data-state="extrapolation-limited"] .eb-band,
+.eb-scene[data-state="gap-and-boundary-stated"] .eb-band {
+  opacity: 0.75;
+}
+
+.eb-slot {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+}
+
+.eb-card {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 34px 30px;
+  animation: eb-stamp 620ms var(--ease-overshoot) backwards;
+  animation-delay: var(--eb-base, 0ms);
+}
+
+.eb-card-first {
+  --eb-base: 880ms; /* 来源带先立，数字随后就位 */
+}
+
+.eb-card-later {
+  --eb-base: 160ms;
+}
+
+.eb-card .eb-evi-tag {
+  align-self: flex-start;
+}
+
+.eb-card-hero {
+  margin: auto 0 18px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.eb-hero-num {
+  font-size: 126px;
+  color: var(--theme-process);
+}
+
+.eb-hero-suffix {
+  font-family: var(--font-mono);
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: var(--text-2);
+}
+
+.eb-card-metric {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--theme-structural);
+}
+
+.eb-card-metric em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+/* ── evidence gap 组 | inference boundary 组：最后组装 ──────── */
+
+.eb-bottom {
+  display: grid;
+  grid-template-columns: 40fr 60fr;
+  gap: 40px;
+  min-height: 264px; /* 固定证据结构的定界区：自 step0 预留，行后补不重排 */
+}
+
+.eb-zone {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.eb-zone-head {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  animation: eb-rise 560ms var(--ease-quart) backwards;
+}
+
+.eb-zone-gap .eb-zone-head {
+  animation-delay: 1150ms;
+}
+
+.eb-zone-boundary .eb-zone-head {
+  animation-delay: 1300ms;
+}
+
+.eb-zone-cn {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--theme-structural);
+}
+
+.eb-zone-en {
+  font-family: var(--font-mono);
+  font-size: 25px;
+  letter-spacing: 0.26em;
+  color: var(--text-mute);
+}
+
+/* ── gap-row：课程资料未提供的三项，虚线空位示其缺席 ────────── */
+
+.eb-gap-row {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px 26px;
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-dashed-line);
+  animation: eb-rise 560ms var(--ease-quart) 140ms backwards;
+}
+
+.eb-gap-lead {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+.eb-gap-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.eb-gap-chip {
+  padding: 7px 15px;
+  font-size: 26px;
+  line-height: 1.3;
+  color: var(--text-mute);
+  background: var(--surface-3);
+  border: 2px dashed var(--rule);
+  animation: eb-stamp 520ms var(--ease-overshoot) backwards;
+  animation-delay: calc(320ms + var(--eb-g) * 140ms);
+}
+
+/* ── boundary-row：外推限定 + R021 边界行，正常阅读层级不缩角注 ── */
+
+.eb-boundary-row {
+  position: relative;
+  margin: 0;
+  padding: 18px 26px;
+  font-size: 27px;
+  line-height: 1.55;
+  color: var(--text-2);
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  animation: eb-stamp-rot 620ms var(--ease-overshoot) backwards;
+}
+
+.eb-boundary-row em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+.eb-boundary-limit {
+  animation-delay: 240ms;
+}
+
+.eb-boundary-final {
+  animation-delay: 1000ms;
+}
+
+/* 外推限定就位时的一次性聚焦环（非循环、不常驻） */
+.eb-boundary-limit::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border: 3px solid var(--theme-warning);
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  animation: eb-ping 820ms var(--ease-soft) 920ms forwards;
+}
+
+/* ── keyframes ─────────────────────────────────────────────── */
+
+@keyframes eb-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes eb-stamp {
+  0% {
+    opacity: 0;
+    transform: translateY(34px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes eb-stamp-rot {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(1.04) rotate(-1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes eb-ping {
+  0% {
+    opacity: 0.85;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}

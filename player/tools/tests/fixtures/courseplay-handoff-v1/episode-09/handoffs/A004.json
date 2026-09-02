@@ -1,0 +1,120 @@
+{
+  "schema_version": "web-video-courseplay-chapter-handoff/v1",
+  "episode_id": "episode-09",
+  "chapter": {
+    "index": 4,
+    "id": "lifecycle-continuity",
+    "title": "同一台发动机走完全生命周期",
+    "a_page_id": "A004",
+    "step_count": 2
+  },
+  "theme": {
+    "id": "active-identification-note",
+    "nameZh": "主动标识工程笔记",
+    "descriptionZh": "工程方格纸上的工业教学视觉系统：深海军蓝建立粗结构，工业绿表达主动流动与改善，陶土橙承担风险提示，低位硬投影形成可靠的工程贴纸质感。",
+    "mood": [
+      "light",
+      "industrial",
+      "engineering",
+      "technical",
+      "educational",
+      "structured",
+      "tactile"
+    ],
+    "bestFor": [
+      "工业互联网与智能制造",
+      "工程技术与设备原理讲解",
+      "企业技术培训",
+      "生产流程和闭环控制",
+      "B2B 解决方案演示",
+      "职业教育与教材信息图",
+      "数据驱动的运营汇报"
+    ]
+  },
+  "a_page": {
+    "a_id": "A004",
+    "callback_a_ids": [
+      "A003"
+    ],
+    "nx": "解决这个矛盾，先看全生命周期管理覆盖的范围。发动机经历设计、生产、经销、运行、使用、维修保养，以及回收再处置等阶段；每个阶段都会产生记录。重点是让同一台发动机在这些阶段的数据贯通，用于分析、改进生产和支撑运维决策。\n\n",
+    "teaching_purpose": "用全生命周期管理界定需要贯通的数据范围和业务目标。",
+    "single_message": "全生命周期管理的关键，是让同一台发动机跨阶段的数据贯通并用于改进决策。",
+    "must_visible": [
+      {
+        "semantic_item_id": "V007",
+        "meaning": "发动机从设计到回收再处置的生命周期范围，以及各阶段都会产生记录。",
+        "evidence_refs": [
+          "E003"
+        ]
+      },
+      {
+        "semantic_item_id": "V008",
+        "meaning": "同一台发动机跨阶段的数据贯通可用于分析、改进生产和支撑运维决策。",
+        "evidence_refs": [
+          "E003"
+        ]
+      }
+    ],
+    "protected_relations": [
+      {
+        "relation_id": "R007",
+        "from": "同一台发动机",
+        "relation": "贯通",
+        "to": "全生命周期各阶段产生的数据",
+        "direction": "沿生命周期阶段延展"
+      }
+    ],
+    "entry_condition": "观众已经理解分散记录缺少共同线索。",
+    "exit_condition": "观众知道追溯要服务于跨阶段数据贯通与后续决策。",
+    "timing": {
+      "char_equivalent": 94,
+      "min_seconds": 24,
+      "target_seconds": 25,
+      "max_seconds": 26,
+      "short_page_reason": null
+    }
+  },
+  "narration": {
+    "authority": "a_page.nx",
+    "beats": [
+      "解决这个矛盾，先看全生命周期管理覆盖的范围。发动机经历设计、生产、经销、运行、使用、维修保养，以及回收再处置等阶段；每个阶段都会产生记录。",
+      "重点是让同一台发动机在这些阶段的数据贯通，用于分析、改进生产和支撑运维决策。"
+    ]
+  },
+  "outline": {
+    "chapter_markdown": "## 4. lifecycle-continuity — 同一台发动机走完全生命周期（2 steps · ~25s）\n\n**A-page / Chapter**：`A004`\n**基础场景**：`S-A004` — 恒定身份锚点 + 七阶段无连线阶段带 + continuity judgment 收束线\n**页面配方**：`lifecycle-identity-continuity`\n**核心判断**：全生命周期管理的关键，是让同一台发动机跨阶段的数据贯通并用于改进决策。\n**结构指纹**：`稳定身份锚点（同一台发动机）| 七阶段无连线阶段带（设计｜生产｜经销｜运行｜使用｜维修保养｜回收再处置）| continuity judgment 收束`\n**语义关系**：恒定对象与全生命周期阶段的包含/贯通关系（阶段顺序只说明范围，不暗示前一步导致后一步）\n**关系机制**：`constant-anchor-band-unfold`（本章新命名机制）— 身份锚点全页恒定，七阶段以相同语法整体铺开；阅读顺序从锚点→阶段带→用途收束；不使用时间轴里程碑、流程箭头、贯穿脊柱或回流线（R007）\n**持续元素**：论点标题、身份锚点、七阶段带\n**内容槽位**：`anchor-engine`（同一台发动机）；`stage-band`（七阶段）；`stage-record-note`（每阶段产生记录）；`use-line`（分析、改进生产、支撑运维决策）\n**强调页**：`none`\n**额外复杂场景**：`none`\n**可见标题**：`保留`\n**信息池**（主动设计：源为冻结 A-page / visual rough / evidence_catalog）：\n- 语义项：V007 生命周期范围与各阶段记录；V008 跨阶段数据贯通用于分析、改进与运维决策 —— A-page A004 must_visible（E003）\n- 关系：R007 同一台发动机贯通全生命周期各阶段数据 —— A-page A004 protected_relations\n- 证据：E003 业务模式（设计→回收再处置、统一编码贯通） —— evidence_catalog\n**beat 切分**：N=3，N_eff=2，2 拍（=N_eff）。并入：组 1\"稳定身份锚点\"无独立口播句，作为全页持续元素并入各拍（画面自本页开场即由锚点承担）；单组并入，不触发 Checkpoint 披露线。\n\n| Step | Narration focus | Scene · Semantic state | 本步场景指令 |\n|---|---|---|---|\n| 1 | 生命周期范围：七个阶段与记录 | `S-A004 · stage-band-complete` (~15s) | 建立恒定身份锚点（同一台发动机，组 1 由此并入承担）与无连线七阶段带；阶段同语法呈现，\"每个阶段都会产生记录\"作为带下注记；引入句并入本拍 |\n| 2 | 数据贯通与用途 | `S-A004 · cross-stage-use-stated` (~9s) | 锚点与阶段带保持；use-line 出现（同一台发动机跨阶段数据贯通→分析、改进生产、支撑运维决策，V008）；continuity judgment 收束线出现（变的是阶段与记录，不变的是同一台发动机） |\n\n**口播节选**：\"重点是让同一台发动机在这些阶段的数据贯通。\"",
+    "schedule": {
+      "previous": "| A003 | `image-with-reading-notes` | 读图（四段分段关系与断点） | `persistent-media-reading` | 教材原图（M002）+ 图外阅读注 | 无 | M002 | 原图证据页：注在图外，区别于并列卡 |",
+      "current": "| A004 | `lifecycle-identity-continuity` | 恒定对象 × 阶段范围 | `constant-anchor-band-unfold` | 身份锚点 + 七阶段无连线阶段带 | 无 | none | 无连线阶段带首次出现，无媒体 |",
+      "next": "| A005 | `scope-responsibility-ledger` | 职责与边界定界 | `cumulative-assembly` | 台账：共同条件行 + 职责列 + 边界列 | 无 | none | 台账行核对结构，替代阶段带 |"
+    },
+    "materials_markdown": null
+  },
+  "visual_rough_markdown": "## A004｜同一台发动机走完全生命周期\n\n- **内容角色**：范围建立——界定发动机全生命周期的数据范围与贯通后的业务用途。\n- **页面配方**：`lifecycle-identity-continuity`\n- **论点标题**：[V008] 同一台发动机跨阶段的数据贯通，才能服务分析、生产改进和运维决策\n- **辅助句**：`none`\n- **媒体需求**：`none`\n- **媒体作用**：`none`\n- **教材证据**：`none`\n- **逻辑图**：`no`\n- **逻辑图理由**：`none`\n\n### 上屏内容组\n\n1. [V007][R007] **稳定身份锚点**：全页始终讨论同一台发动机，而不是一类发动机或多个阶段中的不同对象。\n2. [V007][R007] **完整阶段带**：设计｜生产｜经销｜运行｜使用｜维修保养｜回收再处置；每个阶段都会产生属于这台发动机的记录。\n3. [V008][R007] **阶段资料的共同用途**：把同一台发动机的跨阶段数据共同理解，才能用于分析、改进生产和支撑运维决策。\n\n### 页面骨架\n\n- 先读一次稳定身份锚点，再读无连线的完整阶段带，最后读业务用途。\n- 七个阶段以相同语法呈现，阶段顺序只说明生命周期范围，不暗示前一步导致后一步。\n- continuity judgment 收束：会变化的是阶段和阶段记录；不变的是这些记录始终属于同一台发动机。\n\n### 关系保真\n\n- [R007] “同一台发动机贯通全生命周期数据”由稳定身份锚点、完整阶段带和业务用途的三段阅读顺序表达；不使用时间轴里程碑、流程箭头、贯穿脊柱或回流线。",
+  "sources": {
+    "a_page": {
+      "path": "episodes/episode-09/episode-09-a-page.json",
+      "sha256": "8fb764141c77def8fbb003f376ab2d4d47f38a6d05d4528d2a11e3a4562f25be"
+    },
+    "visual_rough": {
+      "path": "episodes/episode-09/episode-09-visual-rough.md",
+      "sha256": "908aa37daf366132fafa02f66069f18d209b7099dd7e462b492a6a7c26e4d230"
+    },
+    "outline": {
+      "path": "episodes/episode-09/outline.md",
+      "sha256": "963e00798cfd0dd9322e9b0ba04b3a5e5da92b9f558c8c3fac56ccd64c37b6b9"
+    },
+    "script": {
+      "path": "episodes/episode-09/script.md",
+      "sha256": "add821ff31cd497c48f03a05250eeda88d67d09e16ace9f629d1a24eb34ad6ea"
+    },
+    "approved_text": {
+      "path": "episodes/episode-09/approved-spoken-text.txt",
+      "sha256": "e07682c0eaeae79123476216b63fd9450d5a854b1d6080c0604a44438a6e4f25"
+    },
+    "theme": {
+      "path": ".agents/skills/web-video-presentation/themes/active-identification-note/theme.json",
+      "sha256": "868de872b3c03d359b3c808ac69aa98c6a0a0b9e3e45ed0dc33f592d5a9f6997"
+    }
+  }
+}

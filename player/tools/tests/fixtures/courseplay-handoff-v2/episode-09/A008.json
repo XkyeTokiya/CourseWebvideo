@@ -1,0 +1,162 @@
+{
+  "schema_version": "web-video-courseplay-chapter-handoff/v2",
+  "episode_id": "episode-09",
+  "chapter": {
+    "index": 8,
+    "id": "lookup-changed",
+    "title": "改变的是查找方式",
+    "a_page_id": "A008",
+    "step_count": 3
+  },
+  "narration": {
+    "authority": "a_page.nx",
+    "beats": [
+      "改造前后，数据本来就存在，改变的是查找方式：过去要在各个业务系统中分散查找，",
+      "现在可以围绕同一对象追溯。统一标识像一个共同的路标，让查询、反馈和分析沿着生命周期找到关联记录。售后发现的问题，可以带着发动机身份回到生产和质量记录；生产侧的改进，也服务于后续产品质量。",
+      "统一标识只负责把关系串起来，数据能不能产生价值，还取决于企业后续的治理、分析和业务协同。"
+    ]
+  },
+  "screen_source": {
+    "title": {
+      "screen_item_id": "S017",
+      "source_text": "统一标识改变记录查找方式，数据价值仍要靠治理、分析和协同",
+      "edit_policy": "adaptable",
+      "evidence_refs": ["E002", "E004", "E010"]
+    },
+    "groups": [
+      {
+        "group_id": "G017",
+        "items": [
+          {
+            "screen_item_id": "S018",
+            "source_text": "改造前：在各业务系统中分散查找",
+            "edit_policy": "adaptable",
+            "evidence_refs": ["E002", "E004"]
+          }
+        ]
+      },
+      {
+        "group_id": "G018",
+        "items": [
+          {
+            "screen_item_id": "S019",
+            "source_text": "改造后：围绕同一台发动机追溯",
+            "edit_policy": "adaptable",
+            "evidence_refs": ["E006", "E010"]
+          },
+          {
+            "screen_item_id": "S020",
+            "source_text": "售后问题带着发动机身份回到生产和质量记录",
+            "edit_policy": "adaptable",
+            "evidence_refs": ["E006", "E007", "E010"]
+          },
+          {
+            "screen_item_id": "S021",
+            "source_text": "生产侧改进服务后续产品质量",
+            "edit_policy": "adaptable",
+            "evidence_refs": ["E006", "E010"]
+          }
+        ]
+      }
+    ],
+    "protected_relations": [
+      {
+        "relation_id": "R017",
+        "from": "售后发现的问题",
+        "relation": "带着发动机身份回到",
+        "to": "生产和质量记录",
+        "direction": "从售后反馈端回到生产和质量"
+      },
+      {
+        "relation_id": "R018",
+        "from": "生产侧的改进",
+        "relation": "服务于",
+        "to": "后续产品质量",
+        "direction": "从生产侧改进指向后续质量"
+      },
+      {
+        "relation_id": "R019",
+        "from": "统一标识",
+        "relation": "只负责串联",
+        "to": "记录之间的关系",
+        "direction": "与后续治理、分析、协同共同构成价值条件"
+      }
+    ]
+  },
+  "presentation": {
+    "recipe_id": "split-compare-with-thesis",
+    "slot_bindings": [
+      "before <- G017",
+      "after <- G018",
+      "thesis <- S017"
+    ],
+    "media": [],
+    "relation_carriers": [
+      {
+        "relation_id": "R017",
+        "carrier": "G018 internal reading order"
+      },
+      {
+        "relation_id": "R018",
+        "carrier": "G018 second-layer order"
+      },
+      {
+        "relation_id": "R019",
+        "carrier": "S017 thesis position"
+      }
+    ]
+  },
+  "steps": [
+    {
+      "index": 1,
+      "scene_state": "S-A008 · before-column-set",
+      "show_refs": ["G017"],
+      "keep_refs": ["G018"],
+      "focus_refs": ["G017"],
+      "instruction": "建立前后对照，聚焦改造前栏"
+    },
+    {
+      "index": 2,
+      "scene_state": "S-A008 · after-column-complete",
+      "show_refs": ["G018"],
+      "keep_refs": ["G017"],
+      "focus_refs": ["G018", "R017", "R018"],
+      "instruction": "保持左栏，补齐改造后栏与两层业务关系"
+    },
+    {
+      "index": 3,
+      "scene_state": "S-A008 · thesis-stated",
+      "show_refs": ["S017"],
+      "keep_refs": ["G017", "G018"],
+      "focus_refs": ["S017", "R019"],
+      "instruction": "保持两栏，收束关联能力与价值条件"
+    }
+  ],
+  "silent_constraints": [
+    {
+      "constraint_id": "C017",
+      "instruction": "统一标识仅承担关联与查找支撑，不得表述为替代 ERP、MES、WMS 或自动生成业务价值。",
+      "evidence_refs": ["E006", "E010"]
+    },
+    {
+      "constraint_id": "C018",
+      "instruction": "售后回查与生产改进写为业务关系，不改写为缺陷算法或统计成效。",
+      "evidence_refs": ["E007", "E010"]
+    }
+  ],
+  "materials_markdown": null,
+  "sources": {
+    "a_page": {
+      "path": "tools/tests/fixtures/courseplay-handoff-v2/episode-09/episode-09-a-page-v5-slice.json",
+      "sha256": "2f5e113535347efd2a24b0523bc5586cbaf8bfd3fe95989c50133cea1e4840fc"
+    },
+    "visual_rough": {
+      "path": "tools/tests/fixtures/courseplay-handoff-v2/episode-09/episode-09-visual-rough-v2-slice.md",
+      "sha256": "e6ca0a746c84281a9afbc3659e3e69a5c31e3e3bdab243a6a60fa151fb1e0e0a"
+    },
+    "outline": {
+      "path": "tools/tests/fixtures/courseplay-handoff-v2/episode-09/outline-screen-source-slice.md",
+      "sha256": "db2e09797ef2ac4065ee3c44ca8b157a6273651cfad298372bd42158dca3fc69"
+    }
+  }
+}
