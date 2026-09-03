@@ -1,0 +1,441 @@
+/* shortlist-directions · A008
+   mechanism: equal-weight-accumulation — 三张方向卡等权逐拍落位，takeaway 收束"方向非结论"
+   prefix: sd- */
+
+.sd-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── 标题方向 + 定位注记 ───────────────────────────────── */
+
+.sd-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.sd-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.16em;
+  color: var(--theme-process);
+  animation: sd-fade-in 520ms var(--ease-soft) backwards;
+}
+
+.sd-title {
+  margin: 8px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: sd-fade-in 560ms var(--ease-soft) 120ms backwards;
+}
+
+.sd-positioning {
+  margin: 0;
+  padding: 12px 22px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  animation: sd-fade-in 560ms var(--ease-overshoot) 260ms backwards;
+}
+
+/* ── 三张等权方向卡（逐拍落位） ───────────────────────── */
+
+.sd-cards {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.sd-card {
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: sd-card-in 520ms var(--ease-overshoot) backwards;
+  animation-delay: calc(240ms + var(--sd-i) * 170ms);
+}
+
+.sd-card.is-upcoming {
+  border-style: dashed;
+  box-shadow: none;
+  background: var(--theme-cool-surface);
+}
+
+.sd-slot {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: sd-fade-in 520ms var(--ease-soft) backwards;
+  animation-delay: calc(420ms + var(--sd-i) * 180ms);
+}
+
+.sd-slot-id {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+}
+
+.sd-slot-label {
+  font-size: 24px;
+  color: var(--text-faint);
+}
+
+.sd-card-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  animation: sd-fade-in 420ms var(--ease-soft) backwards;
+}
+
+.sd-card-idx {
+  font-size: 46px;
+  color: var(--theme-structural);
+}
+
+.sd-card-id {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.sd-card-cond {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sd-chip {
+  padding: 6px 14px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-2);
+  background: var(--theme-cool-surface);
+  border: 2px solid var(--rule);
+  animation: sd-chip-in 440ms var(--ease-overshoot) backwards;
+  animation-delay: calc(140ms + var(--sd-c) * 110ms);
+}
+
+/* 卡内迷你 SVG 演示 */
+
+.sd-glyph {
+  display: block;
+  width: 168px;
+  height: 112px;
+  margin: auto 0;
+  overflow: visible;
+}
+
+.sd-g-label {
+  fill: var(--theme-paper);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.sd-g-dot {
+  fill: var(--theme-structural);
+}
+
+.sd-g-line {
+  fill: var(--theme-dashed-line);
+  transform-origin: left center;
+  animation: sd-print-line 380ms var(--ease-soft) both;
+  animation-delay: calc(280ms + var(--sd-g) * 130ms);
+}
+
+.sd-g-printbar {
+  fill: var(--theme-process);
+  animation: sd-print 980ms ease-in-out 200ms both;
+}
+
+.sd-g-flame {
+  fill: var(--theme-warning);
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: sd-flame 560ms ease-in-out 2 alternate 320ms both;
+}
+
+.sd-g-flame-core {
+  fill: var(--theme-danger);
+}
+
+.sd-g-shield {
+  fill: var(--theme-paper);
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  animation: sd-shield-in 520ms var(--ease-overshoot) 160ms both;
+}
+
+.sd-g-tag {
+  fill: var(--theme-cool-surface);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.sd-g-arc {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 96 96;
+  stroke-dashoffset: 96;
+  animation: sd-arc-draw 640ms var(--ease-soft) both;
+  animation-delay: calc(220ms + var(--sd-g) * 170ms);
+}
+
+/* 出路行 + 注脚 */
+
+.sd-card-verdict {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: sd-card-in 520ms var(--ease-overshoot) 240ms backwards;
+}
+
+.sd-verdict-arrow {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  color: var(--text-faint);
+}
+
+.sd-verdict-text {
+  padding: 8px 18px;
+  border: 2px solid currentcolor;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.sd-card[data-tone="process"] .sd-verdict-text {
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+}
+
+.sd-card[data-tone="warning"] .sd-verdict-text {
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+}
+
+.sd-card[data-tone="cool"] .sd-verdict-text {
+  color: var(--theme-structural);
+  background: var(--theme-cool-surface);
+}
+
+.sd-card-note {
+  margin: 0;
+  font-size: 24px;
+  color: var(--text-mute);
+  animation: sd-fade-in 480ms var(--ease-soft) 380ms backwards;
+}
+
+/* ── takeaway 收束区（step 4 就位） ───────────────────── */
+
+.sd-takeaway {
+  display: flex;
+  justify-content: center;
+}
+
+.sd-takeaway-plate {
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 560ms var(--ease-soft),
+    transform 560ms var(--ease-soft);
+}
+
+.sd-takeaway.is-on .sd-takeaway-plate {
+  opacity: 1;
+  transform: none;
+}
+
+/* "方向 ≠ 结论" 对比章戳 */
+
+.sd-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 26px;
+  border: 3px solid var(--theme-danger);
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-danger);
+  opacity: 0;
+  transform: rotate(-9deg) scale(1.9);
+}
+
+.sd-takeaway.is-on .sd-stamp {
+  animation: sd-stamp-in 480ms var(--ease-overshoot) 200ms both;
+}
+
+.sd-stamp-word {
+  position: relative;
+}
+
+.sd-strike {
+  position: absolute;
+  left: -4%;
+  top: 52%;
+  width: 108%;
+  height: 7px;
+  background: var(--theme-danger);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.sd-takeaway.is-on .sd-strike {
+  animation: sd-strike-in 340ms var(--ease-soft) 560ms both;
+}
+
+.sd-takeaway-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sd-takeaway-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.sd-takeaway-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.sd-takeaway-hero em {
+  font-style: normal;
+  color: var(--theme-danger);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes sd-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sd-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sd-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sd-print-line {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes sd-print {
+  0% {
+    transform: translateX(0);
+    opacity: 0.95;
+  }
+  80% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translateX(72px);
+    opacity: 0;
+  }
+}
+
+@keyframes sd-flame {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0.94);
+  }
+}
+
+@keyframes sd-shield-in {
+  from {
+    opacity: 0;
+    transform: translateY(-26px) scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sd-arc-draw {
+  from {
+    stroke-dashoffset: 96;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes sd-stamp-in {
+  from {
+    opacity: 0;
+    transform: rotate(-9deg) scale(1.9);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-4deg) scale(1);
+  }
+}
+
+@keyframes sd-strike-in {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

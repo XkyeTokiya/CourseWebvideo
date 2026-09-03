@@ -1,0 +1,452 @@
+/* route-validation · A009
+   mechanism: ordered-progression — 四步单向步骤带从左到右推进，SVG 路线光点与 step 同步，不回流
+   prefix: rv- */
+
+.rv-scene {
+  justify-content: flex-start;
+  gap: 26px;
+}
+
+/* ── 标题方向 + 路线提示 ───────────────────────────────── */
+
+.rv-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.rv-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.16em;
+  color: var(--theme-process);
+  animation: rv-fade-in 520ms var(--ease-soft) backwards;
+}
+
+.rv-title {
+  margin: 8px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: rv-fade-in 560ms var(--ease-soft) 120ms backwards;
+}
+
+.rv-route-hint {
+  margin: 0;
+  padding: 12px 22px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.1em;
+  color: var(--text-2);
+  background: var(--theme-cool-surface);
+  border: 2px solid var(--rule);
+  animation: rv-fade-in 560ms var(--ease-overshoot) 260ms backwards;
+}
+
+/* ── 四步单向步骤带（active / past / upcoming） ───────── */
+
+.rv-band {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr;
+  gap: 30px;
+  align-items: stretch;
+}
+
+.rv-node {
+  position: relative;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: opacity 420ms var(--ease-soft), filter 420ms var(--ease-soft),
+    border-color 420ms var(--ease-soft), box-shadow 420ms var(--ease-soft);
+  animation: rv-pop 480ms var(--ease-overshoot) backwards;
+  animation-delay: calc(200ms + var(--rv-i) * 150ms);
+}
+
+/* 段间单向箭头（最后一步除外） */
+.rv-node:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -25px;
+  width: 0;
+  height: 0;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-left: 15px solid var(--rule);
+  transform: translateY(-50%);
+  transition: border-left-color 420ms var(--ease-soft);
+}
+
+.rv-node.is-past:not(:last-child)::after {
+  border-left-color: var(--theme-process);
+}
+
+.rv-node.is-upcoming {
+  border-style: dashed;
+  box-shadow: none;
+  background: var(--theme-cool-surface);
+}
+
+.rv-node.is-past {
+  opacity: 0.68;
+  filter: grayscale(0.45);
+}
+
+.rv-node.is-active {
+  border: 3px solid var(--theme-structural);
+  box-shadow: 0 0 0 3px var(--accent-soft), var(--card-shadow);
+}
+
+.rv-node-ghost {
+  margin: auto;
+  font-family: var(--font-mono);
+  font-size: 28px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  animation: rv-fade-in 480ms var(--ease-soft) backwards;
+  animation-delay: calc(420ms + var(--rv-i) * 150ms);
+}
+
+.rv-node-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  animation: rv-pop 460ms var(--ease-overshoot) backwards;
+}
+
+.rv-node-idx {
+  font-size: 42px;
+  color: var(--theme-structural);
+}
+
+.rv-node.is-past .rv-node-idx {
+  color: var(--text-mute);
+}
+
+.rv-node-tag {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+
+.rv-node-name {
+  margin: 4px 0 0;
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: rv-pop 460ms var(--ease-overshoot) 90ms backwards;
+}
+
+.rv-node-sub {
+  margin: 0;
+  font-size: 25px;
+  color: var(--text-2);
+  animation: rv-pop 460ms var(--ease-overshoot) 180ms backwards;
+}
+
+/* 步四卡内：判断分支（码面状态 → 三条出路并列） */
+
+.rv-branch {
+  margin-top: auto;
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rv-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rv-row-label {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+  animation: rv-fade-in 400ms var(--ease-soft) backwards;
+}
+
+.rv-row:nth-child(1) .rv-row-label {
+  animation-delay: 220ms;
+}
+
+.rv-row:nth-child(2) .rv-row-label {
+  animation-delay: 660ms;
+}
+
+.rv-damage-chip {
+  padding: 7px 16px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--theme-danger);
+  background: var(--theme-danger-surface);
+  border: 2px solid var(--theme-danger);
+  animation: rv-chip-in 420ms var(--ease-overshoot) backwards;
+  animation-delay: calc(260ms + var(--rv-c) * 110ms);
+}
+
+.rv-out-chip {
+  flex: 1;
+  padding: 12px 6px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  animation: rv-chip-in 460ms var(--ease-overshoot) backwards;
+  animation-delay: calc(700ms + var(--rv-c) * 150ms);
+}
+
+/* ── SVG 路线：制作点 → 工艺带 → 复读点 → 判断（不回流） ─ */
+
+.rv-route {
+  margin: 0;
+}
+
+.rv-route-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.rv-route-base {
+  stroke: var(--theme-dashed-line);
+  stroke-width: 3;
+  stroke-dasharray: 10 9;
+}
+
+.rv-route-progress {
+  stroke: var(--theme-process);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 850ms var(--ease-soft);
+}
+
+.rv-band-cell {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-dashed-line);
+  stroke-width: 2;
+}
+
+.rv-band-label {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 700;
+  fill: var(--theme-structural);
+}
+
+.rv-route-note {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  fill: var(--text-faint);
+}
+
+.rv-route-cap {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  fill: var(--text-mute);
+}
+
+.rv-route-marker {
+  fill: var(--theme-structural);
+  stroke: var(--theme-paper);
+  stroke-width: 3;
+}
+
+.rv-route-decision {
+  fill: var(--theme-cool-surface);
+  stroke: var(--rule);
+  stroke-width: 3;
+  transition: fill 400ms var(--ease-soft), stroke 400ms var(--ease-soft);
+}
+
+.rv-route-decision.is-on {
+  fill: var(--theme-danger-surface);
+  stroke: var(--theme-danger);
+}
+
+.rv-dot {
+  transition: transform 850ms var(--ease-soft);
+}
+
+.rv-dot-halo {
+  fill: none;
+  stroke: var(--accent-glow);
+  stroke-width: 5;
+}
+
+.rv-dot-core {
+  fill: var(--theme-process);
+  stroke: var(--theme-paper);
+  stroke-width: 3;
+}
+
+.rv-ping {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: rv-ping 700ms ease-out both;
+}
+
+/* ── takeaway 收束区（step 4 就位） ───────────────────── */
+
+.rv-takeaway {
+  display: flex;
+  justify-content: center;
+}
+
+.rv-takeaway-plate {
+  padding: 22px 48px;
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 560ms var(--ease-soft),
+    transform 560ms var(--ease-soft);
+}
+
+.rv-takeaway.is-on .rv-takeaway-plate {
+  opacity: 1;
+  transform: none;
+}
+
+.rv-takeaway-kicker {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.rv-takeaway-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.rv-chip {
+  position: relative;
+  display: inline-block;
+  margin: 0 10px;
+  padding: 4px 18px;
+  border-radius: 10px;
+  font-weight: 900;
+  opacity: 0;
+}
+
+.rv-chip.is-combo {
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+}
+
+.rv-chip.is-single {
+  color: var(--theme-danger);
+  background: var(--theme-danger-surface);
+  border: 2px solid var(--theme-danger);
+}
+
+.rv-takeaway.is-on .rv-chip {
+  animation: rv-chip-in 460ms var(--ease-overshoot) both;
+}
+
+.rv-takeaway.is-on .is-combo {
+  animation-delay: 220ms;
+}
+
+.rv-takeaway.is-on .is-single {
+  animation-delay: 380ms;
+}
+
+.rv-chip.is-single::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  top: 52%;
+  width: 104%;
+  height: 6px;
+  background: var(--theme-danger);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.rv-takeaway.is-on .is-single::after {
+  animation: rv-strike 360ms var(--ease-soft) 620ms both;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes rv-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rv-pop {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rv-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rv-ping {
+  from {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+}
+
+@keyframes rv-strike {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

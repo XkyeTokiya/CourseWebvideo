@@ -1,0 +1,448 @@
+/* geometry-field-limits · A005 common-anchor-association-groups
+   mechanism: anchor-and-context — 共享几何锚持续，关联组逐拍补充，归因收束于边界注
+   prefix: gf- */
+
+.gf-scene {
+  justify-content: flex-start;
+  gap: 28px;
+}
+
+/* ── 标题区：判断方向 ─────────────────────────────────── */
+
+.gf-head {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gf-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.14em;
+  color: var(--theme-process);
+  animation: gf-fade-in 520ms var(--ease-soft) backwards;
+}
+
+.gf-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: gf-fade-in 560ms var(--ease-soft) 120ms backwards;
+}
+
+/* ── 主区：共享几何锚 + 关联组 ────────────────────────── */
+
+.gf-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 900px 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.gf-anchor {
+  min-width: 0;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.gf-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* SVG 内元素基础样式 */
+
+.gf-cyl-body {
+  fill: var(--theme-paper);
+  stroke: var(--rule);
+  stroke-width: 3;
+  animation: gf-rise 620ms var(--ease-soft) 80ms backwards;
+}
+
+.gf-cyl-top {
+  fill: var(--theme-cool-surface);
+  stroke: var(--rule);
+  stroke-width: 3;
+  animation: gf-rise 620ms var(--ease-soft) 80ms backwards;
+}
+
+.gf-cell {
+  fill: var(--theme-structural);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: gf-cell-in 340ms var(--ease-overshoot) both;
+  animation-delay: calc(360ms + var(--gf-d) * 22ms);
+}
+
+.gf-ghost rect,
+.gf-ghost line {
+  fill: none;
+  stroke: var(--theme-dashed-line);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+}
+
+.gf-ghost {
+  animation: gf-soft-in 600ms var(--ease-soft) 2100ms both;
+}
+
+.gf-ghost-arrow {
+  fill: none;
+  stroke: var(--text-mute);
+  stroke-width: 2;
+  animation: gf-soft-in 600ms var(--ease-soft) 2100ms both;
+}
+
+.gf-arrow-tip {
+  fill: var(--text-mute);
+}
+
+.gf-arrow-tip.is-warn {
+  fill: var(--theme-warning);
+}
+
+.gf-lamp circle {
+  fill: var(--theme-warning);
+}
+
+.gf-lamp line {
+  stroke: var(--theme-warning);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.gf-lamp {
+  animation: gf-soft-in 500ms var(--ease-soft) 1400ms both;
+}
+
+.gf-beam {
+  stroke: var(--theme-warning);
+  stroke-width: 3;
+  stroke-dasharray: 6 7;
+  animation: gf-soft-in 500ms var(--ease-soft) 1600ms both;
+}
+
+.gf-band-soft {
+  fill: var(--theme-warning);
+  opacity: 0.14;
+}
+
+.gf-band-core {
+  fill: var(--theme-warning);
+  opacity: 0.3;
+}
+
+.gf-band {
+  animation: gf-band-in 700ms var(--ease-soft) 2300ms both,
+    gf-band-scan 5.6s ease-in-out 3s infinite alternate;
+}
+
+.gf-note {
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.08em;
+  fill: var(--text-mute);
+}
+
+.gf-note-deform,
+.gf-note-band {
+  fill: var(--theme-warning);
+}
+
+.gf-note,
+.gf-leader {
+  animation: gf-soft-in 600ms var(--ease-soft) both;
+}
+
+/* 标注随口播分批出现：刻码 → 变形 → 光柱 */
+.gf-note-lamp {
+  animation-delay: 1500ms;
+}
+
+.gf-note-code {
+  animation-delay: 1900ms;
+}
+
+.gf-note-ghost {
+  animation-delay: 2100ms;
+}
+
+.gf-note-deform,
+.gf-leader-deform {
+  animation-delay: 2500ms;
+}
+
+.gf-note-band,
+.gf-leader-band {
+  animation-delay: 2900ms;
+}
+
+.gf-leader {
+  stroke: var(--theme-warning);
+  stroke-width: 2;
+}
+
+/* ── 右列：三组关联组 ─────────────────────────────────── */
+
+.gf-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+  min-width: 0;
+  align-self: stretch;
+  padding: 6px 0;
+}
+
+.gf-group {
+  padding: 26px 30px;
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.gf-group.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.gf-gkicker {
+  margin: 0 0 14px;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  letter-spacing: 0.12em;
+  color: var(--theme-process);
+}
+
+.gf-gkicker.is-warn {
+  color: var(--theme-warning);
+}
+
+/* 关联组一：曲面变形 / 反光光柱 */
+
+.gf-g1-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.gf-g1-row {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.gf-group1.is-on .gf-g1-row {
+  animation: gf-row-in 480ms var(--ease-soft) both;
+  animation-delay: calc(200ms + var(--gf-d) * 300ms);
+}
+
+.gf-g1-term {
+  min-width: 236px;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.gf-g1-arrow {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  color: var(--theme-warning);
+}
+
+.gf-g1-desc {
+  font-size: 29px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+/* 关联组二：现场四因素 */
+
+.gf-factors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.gf-factor {
+  padding: 14px 20px;
+  font-size: 30px;
+  font-weight: 800;
+  text-align: center;
+  color: var(--theme-structural);
+  background: var(--theme-cool-surface);
+  border: 2px solid var(--rule);
+  border-radius: 10px;
+}
+
+.gf-group2.is-on .gf-factor {
+  animation: gf-chip-in 440ms var(--ease-overshoot) both;
+  animation-delay: calc(180ms + var(--gf-d) * 140ms);
+}
+
+.gf-g2-foot {
+  margin: 16px 0 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--theme-warning);
+}
+
+.gf-group2.is-on .gf-g2-foot {
+  animation: gf-fade-in 520ms var(--ease-soft) 800ms both;
+}
+
+/* 关联组三：边界注（视觉重心） */
+
+.gf-attrib-hero {
+  margin: 0 0 16px;
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--theme-structural);
+}
+
+.gf-attrib-row {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.gf-cause-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gf-cause-x {
+  font-size: 26px;
+  color: var(--text-mute);
+}
+
+.gf-cause {
+  padding: 10px 22px;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--theme-structural);
+  border: 2px solid var(--theme-structural);
+  border-radius: 10px;
+}
+
+.gf-group3.is-on .gf-cause {
+  animation: gf-chip-in 420ms var(--ease-overshoot) both;
+  animation-delay: calc(240ms + var(--gf-d) * 160ms);
+}
+
+.gf-attrib-verb {
+  margin-left: 8px;
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+.gf-group3.is-on .gf-attrib-verb {
+  animation: gf-fade-in 520ms var(--ease-soft) 800ms both;
+}
+
+/* ── step3 重心收束：锚与前提组退后 ───────────────────── */
+
+.gf-scene.is-concluded .gf-anchor,
+.gf-scene.is-concluded .gf-group1,
+.gf-scene.is-concluded .gf-group2 {
+  opacity: 0.55;
+  filter: grayscale(0.35);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes gf-soft-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gf-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes gf-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes gf-cell-in {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes gf-band-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gf-band-scan {
+  from {
+    transform: translateX(40px);
+  }
+  to {
+    transform: translateX(-260px);
+  }
+}
+
+@keyframes gf-row-in {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes gf-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,573 @@
+/* three-decision-combo · A002 parallel-cards-self-contained
+   mechanism: cumulative-assembly — 读取链、三张候选卡与牵连收束条在固定构图内逐层组装
+   prefix: tc- */
+
+.tc-scene {
+  justify-content: flex-start;
+  gap: 26px;
+}
+
+/* ── 标题区（判断方向） ────────────────────────────────── */
+
+.tc-anchor {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  animation: tc-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.tc-anchor-kicker {
+  margin: 0 0 10px;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  letter-spacing: 0.18em;
+  color: var(--theme-process);
+}
+
+.tc-anchor-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.tc-anchor-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.1em;
+  color: var(--text-2);
+  animation: tc-fade-in 560ms var(--ease-soft) 260ms backwards;
+}
+
+.tc-anchor-note::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: var(--theme-process);
+}
+
+/* ── 读取链行（step1 依次点亮，持续元素） ─────────────── */
+
+.tc-chain {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: stretch;
+}
+
+.tc-chain-band {
+  flex: 1;
+  min-width: 0;
+  padding: 20px 26px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: tc-band-in 560ms var(--ease-overshoot) backwards;
+  animation-delay: calc(200ms + var(--tc-i) * 360ms);
+}
+
+.tc-chain-link {
+  width: 72px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: tc-fade-in 480ms var(--ease-soft) backwards;
+  animation-delay: calc(560ms + var(--tc-i) * 360ms);
+}
+
+.tc-link-svg {
+  width: 64px;
+  height: 24px;
+  overflow: visible;
+}
+
+.tc-link-line {
+  stroke: var(--theme-process);
+  stroke-width: 3;
+  stroke-dasharray: 10 8;
+  animation: tc-dash-flow 1.6s linear infinite;
+}
+
+.tc-link-head {
+  fill: var(--theme-process);
+}
+
+.tc-band-lamp {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  border: 2px solid var(--theme-structural);
+  background: var(--surface-2);
+  animation: tc-lamp-on 420ms var(--ease-soft) backwards;
+  animation-delay: calc(520ms + var(--tc-i) * 360ms);
+}
+
+.tc-band-idx {
+  font-size: 28px;
+  color: var(--theme-process);
+}
+
+.tc-band-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tc-band-name {
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.tc-band-desc {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+/* ── 三张等权候选卡（step2 依次落位并保持等权） ───────── */
+
+.tc-candidates {
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.tc-card {
+  position: relative;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--dur-base) var(--ease-soft);
+}
+
+.tc-card.is-ghost {
+  background: transparent;
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.tc-card-ghosttag {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+}
+
+.tc-card:not(.is-ghost) .tc-card-ghosttag {
+  opacity: 0;
+}
+
+.tc-card-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tc-card.is-ghost .tc-card-body {
+  opacity: 0;
+}
+
+.tc-card:not(.is-ghost) .tc-card-body {
+  opacity: 1;
+  animation: tc-body-in 560ms var(--ease-overshoot) backwards;
+  animation-delay: calc(var(--tc-i) * 300ms);
+}
+
+.tc-card-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.16em;
+  color: var(--theme-process);
+}
+
+.tc-card-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.tc-card-options {
+  margin: auto 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tc-option {
+  padding: 8px 18px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+}
+
+.tc-card:not(.is-ghost) .tc-option {
+  animation: tc-fade-in 420ms var(--ease-soft) both;
+  animation-delay: calc(500ms + var(--tc-i) * 300ms + var(--tc-o) * 110ms);
+}
+
+/* ── 卡内迷你示意（条码/激光/扫码枪） ─────────────────── */
+
+.tc-glyph {
+  width: 100%;
+  height: 104px;
+  margin: 2px 0;
+  overflow: visible;
+}
+
+.tc-glyph-bar {
+  fill: var(--theme-structural);
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.tc-card:not(.is-ghost) .tc-glyph-bar {
+  animation: tc-bar-pop 360ms var(--ease-soft) both;
+  animation-delay: calc(560ms + var(--tc-i) * 300ms + var(--tc-d));
+}
+
+.tc-glyph-underline {
+  stroke: var(--rule);
+  stroke-width: 3;
+}
+
+.tc-glyph-tagrect {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-process);
+  stroke-width: 2.5;
+}
+
+.tc-glyph-arc {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.tc-card:not(.is-ghost) .tc-glyph-arc {
+  animation: tc-arc-draw 480ms var(--ease-soft) both;
+  animation-delay: calc(760ms + var(--tc-i) * 300ms + var(--tc-d));
+}
+
+.tc-glyph-nozzle {
+  fill: var(--theme-structural);
+}
+
+.tc-glyph-beam {
+  stroke: var(--theme-warning);
+  stroke-width: 4;
+  stroke-dasharray: 10 8;
+}
+
+.tc-card:not(.is-ghost) .tc-glyph-beam {
+  animation: tc-dash-flow 1.1s linear infinite;
+}
+
+.tc-glyph-spark {
+  fill: var(--theme-warning);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.tc-card:not(.is-ghost) .tc-glyph-spark {
+  animation: tc-spark 1.4s ease-in-out infinite;
+}
+
+.tc-glyph-surface {
+  stroke: var(--theme-structural);
+  stroke-width: 3.5;
+}
+
+.tc-glyph-etch {
+  stroke: var(--theme-warning);
+  stroke-width: 3;
+  stroke-dasharray: 9 6;
+}
+
+.tc-card:not(.is-ghost) .tc-glyph-etch {
+  animation: tc-fade-in 480ms var(--ease-soft) both;
+  animation-delay: calc(980ms + var(--tc-i) * 300ms);
+}
+
+.tc-glyph-cone {
+  fill: var(--accent-soft);
+  stroke: var(--theme-process);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 6;
+  animation: tc-cone 2.2s ease-in-out infinite;
+}
+
+.tc-glyph-gunbody {
+  fill: var(--theme-structural);
+}
+
+.tc-glyph-trigger {
+  fill: var(--theme-process);
+}
+
+.tc-glyph-target {
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+/* ── 牵连收束条（step3 落位，卡底连线牵入） ───────────── */
+
+.tc-candidates.is-linked .tc-card::after {
+  content: "";
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 50%;
+  width: 0;
+  height: 26px;
+  border-left: 3px dashed var(--theme-process);
+  transform-origin: top center;
+  animation: tc-stub-grow 460ms var(--ease-soft) both;
+  animation-delay: calc(var(--tc-i) * 140ms);
+}
+
+.tc-interlock {
+  margin-top: 30px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+  pointer-events: none;
+}
+
+.tc-interlock.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.tc-interlock-plate {
+  padding: 28px 44px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.tc-interlock-lead {
+  min-width: 0;
+}
+
+.tc-interlock-kicker {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  color: var(--theme-warning);
+}
+
+.tc-interlock-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+.tc-interlock-hero em {
+  font-style: normal;
+  color: var(--theme-danger);
+}
+
+.tc-interlock-sub {
+  margin: 8px 0 0;
+  font-size: 24px;
+  color: var(--text-2);
+}
+
+.tc-interlock-risks {
+  flex: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.tc-risk {
+  padding: 16px 22px;
+  border: 2px solid var(--rule);
+  opacity: 0;
+}
+
+.tc-interlock.is-on .tc-risk {
+  animation: tc-risk-in 480ms var(--ease-soft) both;
+  animation-delay: calc(320ms + var(--tc-i) * 200ms);
+}
+
+.tc-risk[data-tone="warning"] {
+  border-color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+}
+
+.tc-risk[data-tone="danger"] {
+  border-color: var(--theme-danger);
+  background: var(--theme-danger-surface);
+}
+
+.tc-risk-label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+
+.tc-risk-verdict {
+  margin: 6px 0 0;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.tc-risk[data-tone="warning"] .tc-risk-verdict {
+  color: var(--theme-warning);
+}
+
+.tc-risk[data-tone="danger"] .tc-risk-verdict {
+  color: var(--theme-danger);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes tc-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tc-band-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tc-lamp-on {
+  from {
+    background: var(--surface-2);
+    box-shadow: none;
+  }
+  to {
+    background: var(--theme-process);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+}
+
+@keyframes tc-body-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tc-bar-pop {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes tc-arc-draw {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes tc-dash-flow {
+  to {
+    stroke-dashoffset: -34;
+  }
+}
+
+@keyframes tc-spark {
+  0%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+}
+
+@keyframes tc-cone {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes tc-stub-grow {
+  from {
+    transform: translateX(-50%) scaleY(0);
+  }
+  to {
+    transform: translateX(-50%) scaleY(1);
+  }
+}
+
+@keyframes tc-risk-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

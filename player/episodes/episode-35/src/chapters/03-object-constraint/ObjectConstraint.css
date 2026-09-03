@@ -1,0 +1,458 @@
+/* object-constraint · A003 image-with-insight-rail
+   mechanism: persistent-media-reading — 齿轮图持续，洞察栏逐拍补充，焦点随口播迁移
+   prefix: oc- */
+
+.oc-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── 标题区（判断方向） ────────────────────────────────── */
+
+.oc-anchor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: oc-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.oc-anchor-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.oc-anchor-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--text-2);
+  animation: oc-fade-in 560ms var(--ease-soft) 260ms backwards;
+}
+
+.oc-anchor-note::before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  background: var(--theme-warning);
+}
+
+/* ── 主区：左媒体 + 右洞察栏 ──────────────────────────── */
+
+.oc-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 880px 1fr;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.oc-media {
+  margin: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.oc-photo-placeholder {
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border-style: dashed;
+  border-width: 3px;
+  animation: oc-fade-in 620ms var(--ease-soft) 160ms backwards;
+}
+
+.oc-ph-label {
+  font-family: var(--font-mono);
+  font-size: 27px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.oc-ph-desc {
+  font-size: 24px;
+  color: var(--text-faint);
+}
+
+.oc-schematic {
+  flex: 1;
+  min-height: 0;
+  padding: 16px 26px 10px;
+  display: flex;
+  flex-direction: column;
+  animation: oc-fade-in 620ms var(--ease-soft) 260ms backwards;
+}
+
+.oc-schematic-caption {
+  margin: 0 0 2px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+
+.oc-schematic-svg {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+/* ── 示意图元素：齿轮 / 激光 / 刻印 / 检查 ─────────────── */
+
+.oc-tooth {
+  fill: var(--theme-structural);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: oc-tooth-in 380ms var(--ease-overshoot) both;
+  animation-delay: calc(180ms + var(--oc-i) * 70ms);
+}
+
+.oc-face {
+  fill: var(--theme-paper);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+  stroke-dasharray: 491;
+  animation: oc-face-draw 900ms var(--ease-soft) 260ms both;
+}
+
+.oc-nozzle {
+  fill: var(--theme-structural);
+  opacity: 0;
+}
+
+.is-engraved .oc-nozzle {
+  opacity: 1;
+  animation: oc-nozzle-in 420ms var(--ease-overshoot) backwards;
+}
+
+.oc-beam {
+  stroke: var(--theme-warning);
+  stroke-width: 4;
+  stroke-dasharray: 10 8;
+  opacity: 0;
+}
+
+.is-engraved .oc-beam {
+  opacity: 1;
+  animation: oc-dash-flow 1s linear infinite;
+}
+
+.oc-spark {
+  fill: var(--theme-warning);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.is-engraved .oc-spark {
+  opacity: 1;
+  animation: oc-spark 1.3s ease-in-out infinite;
+}
+
+.oc-engrave-cell {
+  fill: var(--theme-structural);
+  opacity: 0;
+  transform: translateX(0);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 700ms var(--ease-soft) calc(var(--oc-d) * 0.3);
+}
+
+.is-engraved .oc-engrave-cell {
+  animation: oc-cell-in 340ms var(--ease-soft) both;
+  animation-delay: calc(400ms + var(--oc-d));
+}
+
+.is-warped .oc-engrave-cell {
+  transform: translateX(var(--oc-wx));
+}
+
+.oc-curve {
+  fill: none;
+  stroke: var(--theme-warning);
+  stroke-width: 2.5;
+  stroke-dasharray: 8 6;
+  opacity: 0;
+  transition: opacity 520ms var(--ease-soft);
+}
+
+.is-checked .oc-curve {
+  opacity: 1;
+}
+
+.oc-vision {
+  fill: none;
+  stroke: var(--theme-warning);
+  stroke-width: 2.5;
+  stroke-dasharray: 10 8;
+  opacity: 0;
+  transition: opacity 520ms var(--ease-soft);
+}
+
+.is-checked .oc-vision {
+  opacity: 1;
+  animation: oc-dash-flow 2.6s linear infinite;
+}
+
+.oc-approach {
+  opacity: 0;
+  transition: opacity 520ms var(--ease-soft) 200ms;
+}
+
+.is-checked .oc-approach {
+  opacity: 1;
+}
+
+.oc-approach-line {
+  stroke: var(--theme-process);
+  stroke-width: 3;
+  stroke-dasharray: 10 8;
+  animation: oc-dash-flow 2.2s linear infinite;
+}
+
+.oc-approach-head {
+  fill: var(--theme-process);
+}
+
+.oc-svg-tag {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.1em;
+  fill: var(--text-faint);
+  opacity: 0;
+  transition: opacity 520ms var(--ease-soft) 260ms;
+}
+
+.is-checked .oc-svg-tag {
+  opacity: 1;
+}
+
+/* ── 洞察栏：三条逐拍落位 + 判断收束 ──────────────────── */
+
+.oc-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.oc-insight {
+  padding: 26px 30px;
+  opacity: 0;
+}
+
+.oc-insight.is-on {
+  opacity: 1;
+  animation: oc-rise 560ms var(--ease-soft) backwards;
+}
+
+.oc-insight-kicker {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.16em;
+  color: var(--theme-process);
+}
+
+.oc-insight-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--theme-structural);
+}
+
+.oc-insight-title em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.oc-factors {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.oc-factor {
+  padding: 8px 18px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+  animation: oc-rise 460ms var(--ease-soft) both;
+  animation-delay: calc(420ms + var(--oc-i) * 120ms);
+}
+
+.oc-checks {
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.oc-check {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 12px 2px;
+}
+
+.oc-check + .oc-check {
+  border-top: 2px dashed var(--rule);
+}
+
+.oc-insight.is-on .oc-check {
+  animation: oc-rise 460ms var(--ease-soft) both;
+  animation-delay: calc(220ms + var(--oc-i) * 200ms);
+}
+
+.oc-check-idx {
+  font-size: 22px;
+  color: var(--theme-process);
+}
+
+.oc-check-label {
+  flex: none;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--theme-structural);
+}
+
+.oc-check-ask {
+  font-size: 24px;
+  color: var(--text-2);
+}
+
+.oc-verdict {
+  margin-top: auto;
+  padding: 24px 32px;
+  opacity: 0;
+}
+
+.oc-verdict.is-on {
+  opacity: 1;
+  animation: oc-rise 560ms var(--ease-soft) 160ms backwards;
+}
+
+.oc-verdict-kicker {
+  margin: 0 0 6px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  color: var(--theme-warning);
+}
+
+.oc-verdict-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--theme-structural);
+}
+
+.oc-verdict-hero em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes oc-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes oc-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes oc-tooth-in {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes oc-face-draw {
+  from {
+    stroke-dashoffset: 491;
+    fill-opacity: 0;
+  }
+  60% {
+    fill-opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+  }
+}
+
+@keyframes oc-nozzle-in {
+  from {
+    transform: translateY(-16px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes oc-dash-flow {
+  to {
+    stroke-dashoffset: -36;
+  }
+}
+
+@keyframes oc-cell-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes oc-spark {
+  0%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+}

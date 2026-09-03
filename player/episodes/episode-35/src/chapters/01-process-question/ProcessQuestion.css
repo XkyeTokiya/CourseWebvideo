@@ -1,0 +1,349 @@
+/* process-question · A001 time-anchor-opening
+   mechanism: premise-to-question — 工艺链前提持续，前后对照与问题句出现后重心转移
+   prefix: pq- */
+
+.pq-scene {
+  justify-content: flex-start;
+  gap: 40px;
+}
+
+/* ── 时间锚 + 设想标注（持续元素） ─────────────────────── */
+
+.pq-anchor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.pq-anchor.is-weak {
+  opacity: 0.34;
+  filter: grayscale(0.5);
+}
+
+.pq-anchor-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: pq-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.pq-anchor-badge {
+  font-size: 54px;
+  color: var(--theme-process);
+}
+
+.pq-fiction-note {
+  padding: 10px 24px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  animation: pq-fade-in 560ms var(--ease-overshoot) 300ms backwards;
+}
+
+/* ── 主区：现场图占位 + 工艺链 ─────────────────────────── */
+
+.pq-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 760px 1fr;
+  gap: 60px;
+  align-items: stretch;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.pq-main.is-weak {
+  opacity: 0.42;
+  filter: grayscale(0.35);
+}
+
+.pq-media {
+  margin: 0;
+  display: flex;
+}
+
+.pq-photo-placeholder {
+  flex: 1;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  border-style: dashed;
+  border-width: 3px;
+  animation: pq-fade-in 620ms var(--ease-soft) 160ms backwards;
+}
+
+.pq-ph-label {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.pq-ph-desc {
+  font-size: 26px;
+  color: var(--text-faint);
+}
+
+.pq-chain {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  min-width: 0;
+}
+
+.pq-chain-caption {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text-2);
+  animation: pq-fade-in 520ms var(--ease-soft) 240ms backwards;
+}
+
+.pq-chain-track {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.pq-chain-node {
+  padding: 22px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  animation: pq-node-in 520ms var(--ease-overshoot) backwards;
+  animation-delay: calc(400ms + var(--pq-i) * 220ms);
+}
+
+.pq-node-idx {
+  font-size: 30px;
+  color: var(--theme-process);
+}
+
+.pq-node-name {
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* ── 工艺前后对照（问题拍落位） ───────────────────────── */
+
+.pq-contrast {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+
+.pq-contrast.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.pq-contrast-cell {
+  padding: 26px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.pq-contrast-cell[data-tone="ok"] {
+  background: var(--theme-process-surface);
+}
+
+.pq-contrast-cell[data-tone="risk"] {
+  background: var(--theme-warning-surface);
+}
+
+.pq-qr {
+  width: 118px;
+  height: 118px;
+  overflow: visible;
+}
+
+.pq-qr-cell {
+  fill: var(--theme-structural);
+}
+
+.pq-qr-cell.is-damaged {
+  fill: var(--theme-warning);
+  animation: pq-cell-fade 480ms var(--ease-soft) var(--pq-d) both;
+}
+
+.pq-qr-scanline {
+  stroke: var(--theme-danger);
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+  animation: pq-scan 2.4s linear infinite;
+}
+
+.pq-contrast-cell[data-tone="ok"] .pq-qr-scanline {
+  animation: pq-scan-good 2.4s linear infinite;
+  stroke: var(--theme-process);
+}
+
+.pq-contrast-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.pq-contrast-verdict {
+  margin: 0;
+  font-size: 38px;
+  font-weight: 900;
+}
+
+.pq-contrast-verdict.is-good {
+  color: var(--theme-process);
+}
+
+.pq-contrast-verdict.is-bad {
+  color: var(--theme-danger);
+}
+
+/* ── 问题句（视觉重心） ───────────────────────────────── */
+
+.pq-question {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 110px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity var(--dur-slow) var(--ease-soft) 700ms,
+    transform var(--dur-slow) var(--ease-soft) 700ms;
+}
+
+.pq-question.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.pq-question-plate {
+  max-width: 900px;
+  padding: 52px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.pq-question-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 26px;
+  letter-spacing: 0.16em;
+  color: var(--theme-process);
+}
+
+.pq-question-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 84px;
+  font-weight: 900;
+  line-height: 1.18;
+  color: var(--theme-structural);
+}
+
+.pq-question-hero em {
+  font-style: normal;
+  color: var(--theme-danger);
+}
+
+.pq-question-sub {
+  margin: 0;
+  font-size: 30px;
+  color: var(--text-2);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes pq-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pq-node-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pq-cell-fade {
+  0%,
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.28;
+  }
+}
+
+@keyframes pq-scan {
+  0% {
+    transform: translateY(-40px);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(40px);
+    opacity: 0.9;
+  }
+  50.01% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}
+
+@keyframes pq-scan-good {
+  0% {
+    transform: translateY(-40px);
+  }
+  50% {
+    transform: translateY(40px);
+  }
+  100% {
+    transform: translateY(-40px);
+  }
+}

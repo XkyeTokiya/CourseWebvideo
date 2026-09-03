@@ -1,0 +1,548 @@
+/* selection-conclusion · A011 选型收束（~53s · 3 steps）
+   mechanism: compare-and-reweight — 两侧结局对照持续，判断支点随口播向 pivot 区迁移，三问收束于判断区
+   prefix: sc- */
+
+.sc-scene {
+  justify-content: flex-start;
+  gap: 18px;
+}
+
+/* ── 标题区：判断方向 ─────────────────────────────────── */
+
+.sc-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  animation: sc-fade-in 560ms var(--ease-soft) both;
+}
+
+.sc-head-kicker {
+  margin: 0 0 10px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.2em;
+  color: var(--theme-process);
+}
+
+.sc-head-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.sc-head-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.sc-head-note {
+  margin: 0 0 8px;
+  padding: 10px 22px;
+  border: 2px dashed var(--rule);
+  border-radius: 10px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  animation: sc-fade-in 560ms var(--ease-soft) 220ms both;
+}
+
+/* ── 回收开场行 + 验证小轨道 ──────────────────────────── */
+
+.sc-recap {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 18px 28px;
+  border: 3px solid var(--theme-structural);
+  border-radius: var(--r-card);
+  background: var(--theme-cool-surface);
+  transition: filter 520ms var(--ease-soft);
+  animation: sc-fade-in 560ms var(--ease-soft) 160ms backwards;
+}
+
+.sc-recap-tag {
+  flex: none;
+  padding: 8px 16px;
+  border: 2px solid var(--theme-structural);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--theme-structural);
+}
+
+.sc-recap-text {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--theme-structural);
+}
+
+.sc-recap-text em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.sc-track {
+  position: relative;
+  margin-left: auto;
+  flex: none;
+  width: 430px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sc-track-line {
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 50%;
+  border-top: 3px dashed var(--rule);
+}
+
+.sc-track-node {
+  position: relative;
+  padding: 7px 14px;
+  border: 2px solid var(--rule);
+  border-radius: 8px;
+  background: var(--theme-cool-surface);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-2);
+}
+
+.sc-track-dot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 14px var(--accent-glow);
+  animation: sc-run 5.2s linear 900ms infinite;
+}
+
+/* ── 中段：结局对照 + 保留标准 + 判断支点 ─────────────── */
+
+.sc-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sc-outcomes {
+  flex: 1.3 1 0%;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  transition: flex-grow 700ms var(--ease-soft);
+}
+
+.sc-outcome {
+  min-height: 0;
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  transition: filter 520ms var(--ease-soft);
+}
+
+.sc-outcome:not(.is-on) {
+  background: transparent;
+  border: 2px dashed var(--rule);
+  box-shadow: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.sc-outcome-ghost {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.22em;
+  color: var(--text-faint);
+}
+
+.sc-outcome.is-on {
+  animation: sc-cell-in 560ms var(--ease-overshoot) both;
+  animation-delay: calc(var(--sc-i) * 260ms);
+}
+
+.sc-outcome.is-on[data-tone="process"] {
+  background: var(--theme-process-surface);
+}
+
+.sc-outcome.is-on[data-tone="warning"] {
+  background: var(--theme-warning-surface);
+}
+
+.sc-outcome-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  color: var(--text-mute);
+}
+
+.sc-outcome-cond {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.sc-outcome-result {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--theme-structural);
+}
+
+.sc-outcome[data-tone="process"] .sc-outcome-result {
+  color: var(--theme-process);
+}
+
+.sc-outcome[data-tone="warning"] .sc-outcome-result {
+  color: var(--theme-warning);
+}
+
+/* 保留标准句 */
+.sc-keep {
+  flex: none;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 30px;
+  border: 3px solid var(--accent);
+  border-radius: 14px;
+  background: var(--accent-soft);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 520ms var(--ease-soft), transform 520ms var(--ease-soft),
+    filter 520ms var(--ease-soft);
+}
+
+.sc-keep.is-on {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1150ms, 1150ms, 0ms;
+}
+
+.sc-keep-check {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  display: grid;
+  place-items: center;
+}
+
+.sc-keep-check svg {
+  width: 24px;
+  height: 24px;
+}
+
+.sc-keep-check path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.sc-keep.is-on .sc-keep-check path {
+  animation: sc-draw 560ms var(--ease-soft) 1500ms forwards;
+}
+
+.sc-keep-text {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.sc-keep-text em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* 判断支点区 */
+.sc-pivot {
+  flex: 1 1 0%;
+  min-height: 0;
+  position: relative;
+  transition: flex-grow 700ms var(--ease-soft);
+}
+
+.sc-pivot-ghost {
+  margin: 0;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.24em;
+  color: var(--text-faint);
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.sc-pivot.is-on .sc-pivot-ghost {
+  opacity: 0;
+}
+
+.sc-pivot-plate {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 500px;
+  gap: 44px;
+  padding: 26px 40px;
+  opacity: 0;
+  transform: translateY(22px) scale(0.985);
+  transition: opacity 620ms var(--ease-soft) 120ms,
+    transform 620ms var(--ease-soft) 120ms;
+  pointer-events: none;
+}
+
+.sc-pivot.is-on .sc-pivot-plate {
+  opacity: 1;
+  transform: none;
+}
+
+.sc-pivot-lines-wrap {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sc-pivot-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.2em;
+  color: var(--theme-process);
+}
+
+.sc-pivot-lines {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.sc-pivot-lines li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+}
+
+.sc-pivot.is-on .sc-pivot-lines li {
+  animation: sc-line-in 520ms var(--ease-soft) both;
+  animation-delay: calc(260ms + var(--sc-i) * 240ms);
+}
+
+.sc-pivot-idx {
+  font-size: 30px;
+  color: var(--accent);
+}
+
+.sc-pivot-line {
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--theme-structural);
+}
+
+/* 三问检查章 */
+.sc-questions {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  border-left: 3px dashed var(--rule);
+  padding-left: 40px;
+}
+
+.sc-q-label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.2em;
+  color: var(--text-mute);
+}
+
+.sc-q-stamp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 20px;
+  border: 3px solid transparent;
+  border-radius: 12px;
+  outline: 2px solid transparent;
+  outline-offset: 3px;
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  opacity: 0;
+}
+
+.sc-q-stamp[data-tone="structural"] {
+  border-color: var(--theme-structural);
+  outline-color: var(--theme-structural);
+  color: var(--theme-structural);
+}
+
+.sc-q-stamp[data-tone="warning"] {
+  border-color: var(--theme-warning);
+  outline-color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  color: var(--theme-warning);
+}
+
+.sc-q-stamp[data-tone="process"] {
+  border-color: var(--theme-process);
+  outline-color: var(--theme-process);
+  background: var(--theme-process-surface);
+  color: var(--theme-process);
+}
+
+.sc-pivot.is-on .sc-q-stamp {
+  animation: sc-stamp-in 460ms var(--ease-soft) both;
+  animation-delay: calc(1000ms + var(--sc-i) * 820ms);
+}
+
+/* ── step3：重心向判断支点迁移 ───────────────────────── */
+
+.is-pivoted .sc-outcomes {
+  flex-grow: 1;
+}
+
+.is-pivoted .sc-pivot {
+  flex-grow: 1.55;
+}
+
+.is-pivoted .sc-recap {
+  filter: grayscale(0.4) opacity(0.5);
+}
+
+.is-pivoted .sc-track-dot {
+  animation: none;
+  opacity: 0;
+}
+
+.is-pivoted .sc-outcome {
+  filter: grayscale(0.45) opacity(0.42);
+}
+
+.is-pivoted .sc-keep {
+  filter: grayscale(0.4) opacity(0.45);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes sc-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sc-cell-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sc-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes sc-run {
+  0% {
+    left: 0%;
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  58% {
+    left: calc(100% - 16px);
+    opacity: 1;
+  }
+  66% {
+    left: calc(100% - 16px);
+    opacity: 0;
+  }
+  100% {
+    left: calc(100% - 16px);
+    opacity: 0;
+  }
+}
+
+@keyframes sc-line-in {
+  from {
+    opacity: 0;
+    transform: translateX(-26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sc-stamp-in {
+  0% {
+    opacity: 0;
+    transform: scale(1.9) rotate(-7deg);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(0.93) rotate(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(var(--sc-tilt, 0deg));
+  }
+}

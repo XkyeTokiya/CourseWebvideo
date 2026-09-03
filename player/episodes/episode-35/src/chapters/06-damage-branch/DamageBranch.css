@@ -1,0 +1,525 @@
+/* damage-branch · A006 issue-cards-with-image
+   mechanism: ordered-progression — 问题卡按累积→检查→出路推进，修复分支由卡片顺序承载，不画回流线
+   prefix: db- */
+
+.db-scene {
+  justify-content: flex-start;
+  gap: 32px;
+}
+
+/* ── 标题区：判断方向 ─────────────────────────────────── */
+
+.db-head {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.db-head-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.18em;
+  color: var(--theme-warning);
+  animation: db-fade-in 480ms var(--ease-soft) backwards;
+}
+
+.db-head-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: db-fade-in 520ms var(--ease-soft) 120ms backwards;
+}
+
+.db-head-title em {
+  font-style: normal;
+  color: var(--theme-warning);
+}
+
+/* ── 主区：问题卡带 + 污损特写侧 ─────────────────────── */
+
+.db-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 640px;
+  gap: 48px;
+  align-items: stretch;
+}
+
+/* ── 问题卡带（累积 → 检查 → 出路） ──────────────────── */
+
+.db-track {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  min-width: 0;
+}
+
+.db-issue {
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: opacity 560ms var(--ease-soft), filter 560ms var(--ease-soft);
+  animation: db-card-in 560ms var(--ease-overshoot) backwards;
+}
+
+.db-issue.is-past {
+  opacity: 0.72;
+  filter: saturate(0.85);
+}
+
+.db-issue[data-tone="risk"] {
+  background: var(--theme-warning-surface);
+}
+
+.db-issue[data-tone="branch"] {
+  background: var(--theme-process-surface);
+}
+
+.db-issue[data-tone="exit"] {
+  background: var(--theme-danger-surface);
+}
+
+.db-issue-head {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.db-issue-idx {
+  font-size: 44px;
+  color: var(--theme-structural);
+}
+
+.db-issue-titles {
+  min-width: 0;
+}
+
+.db-issue-kicker {
+  margin: 0 0 4px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.db-issue-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.db-issue-tone {
+  margin-left: auto;
+  flex: none;
+  padding: 6px 16px;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+  border: 2px dashed var(--rule);
+}
+
+/* 卡一：累积因素 */
+
+.db-factors {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 18px;
+}
+
+.db-factor {
+  padding: 10px 30px;
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  border: 3px solid var(--theme-warning);
+  animation: db-chip-in 460ms var(--ease-overshoot) backwards;
+  animation-delay: calc(420ms + var(--db-i) * 200ms);
+}
+
+/* 卡二：检查分支两步（卡内依次呈现） */
+
+.db-checks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.db-check {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 22px;
+  border: 2px solid var(--rule);
+  animation: db-row-in 460ms var(--ease-soft) both;
+  animation-delay: calc(700ms + var(--db-i) * 1900ms);
+}
+
+.db-check-box {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 3px solid var(--theme-structural);
+}
+
+.db-check-box svg {
+  width: 26px;
+  height: 26px;
+  overflow: visible;
+}
+
+.db-tick {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: db-tick-draw 460ms var(--ease-soft) both;
+  animation-delay: var(--db-t);
+}
+
+.db-check-label {
+  font-size: 31px;
+  font-weight: 800;
+  color: var(--theme-structural);
+}
+
+.db-check-order {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  color: var(--theme-process);
+}
+
+/* 卡三：出路 + 回到源头标记 */
+
+.db-return-stamp {
+  margin-left: auto;
+  flex: none;
+  padding: 8px 20px;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-warning);
+  border: 3.5px solid var(--theme-warning);
+  transform: rotate(-5deg);
+  animation: db-stamp 440ms var(--ease-overshoot) backwards;
+  animation-delay: 640ms;
+}
+
+.db-fallback-line {
+  margin: 0;
+  font-size: 28px;
+  color: var(--text-2);
+}
+
+.db-fallbacks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 18px;
+}
+
+.db-fallback {
+  padding: 10px 30px;
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  border: 3px solid var(--theme-structural);
+  animation: db-chip-in 460ms var(--ease-overshoot) backwards;
+  animation-delay: calc(420ms + var(--db-i) * 200ms);
+}
+
+/* ── 右侧：M004 placeholder + 码面状态演示 ───────────── */
+
+.db-side {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-width: 0;
+}
+
+.db-media {
+  margin: 0;
+  display: flex;
+}
+
+.db-photo-placeholder {
+  flex: 1;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border-style: dashed;
+  border-width: 3px;
+  animation: db-fade-in 560ms var(--ease-soft) 160ms backwards;
+}
+
+.db-ph-label {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.db-ph-desc {
+  font-size: 24px;
+  color: var(--text-faint);
+}
+
+.db-demo {
+  flex: 1;
+  min-height: 0;
+  padding: 20px 28px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  animation: db-fade-in 560ms var(--ease-soft) 280ms backwards;
+}
+
+.db-demo-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.db-demo-title {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.db-demo-tag {
+  padding: 4px 14px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  border: 2px solid currentColor;
+}
+
+.db-demo-tag.is-warn {
+  color: var(--theme-warning);
+}
+
+.db-demo-tag.is-ok {
+  color: var(--theme-process);
+}
+
+.db-demo-tag.is-bad {
+  color: var(--theme-danger);
+}
+
+.db-qr {
+  width: 216px;
+  height: 216px;
+  overflow: visible;
+}
+
+.db-qr-cell {
+  fill: var(--theme-structural);
+}
+
+.db-stain.is-oil {
+  fill: var(--theme-warning);
+  opacity: 0.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: db-stain-in 620ms var(--ease-soft) backwards;
+  animation-delay: var(--db-s);
+}
+
+.db-stain.is-wear {
+  fill: var(--theme-warning);
+  opacity: 0.38;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: db-stain-in 620ms var(--ease-soft) backwards;
+  animation-delay: var(--db-s);
+}
+
+.db-stain.is-scratch {
+  fill: none;
+  stroke: var(--theme-danger);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 208;
+  stroke-dashoffset: 208;
+  opacity: 0.68;
+  animation: db-scratch-draw 640ms var(--ease-soft) backwards;
+  animation-delay: var(--db-s);
+}
+
+.db-inspect path {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 4;
+  animation: db-fade-in 380ms var(--ease-soft) both;
+  animation-delay: 300ms;
+}
+
+.db-inspect path:nth-child(2) {
+  animation-delay: 400ms;
+}
+
+.db-inspect path:nth-child(3) {
+  animation-delay: 500ms;
+}
+
+.db-inspect path:nth-child(4) {
+  animation-delay: 600ms;
+}
+
+.db-sweep {
+  stroke: var(--theme-process);
+  stroke-width: 3;
+  stroke-dasharray: 10 6;
+  opacity: 0;
+  animation: db-sweep 1300ms ease-in-out 700ms forwards;
+}
+
+.db-demo-verdict {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 800;
+  animation: db-fade-in 460ms var(--ease-soft) backwards;
+}
+
+.db-demo-verdict.is-warn {
+  color: var(--theme-warning);
+}
+
+.db-demo-verdict.is-ok {
+  color: var(--theme-process);
+}
+
+.db-demo-verdict.is-bad {
+  color: var(--theme-danger);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes db-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes db-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes db-chip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes db-row-in {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes db-tick-draw {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes db-stain-in {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
+
+@keyframes db-scratch-draw {
+  from {
+    stroke-dashoffset: 208;
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.68;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 0.68;
+  }
+}
+
+@keyframes db-stamp {
+  from {
+    opacity: 0;
+    transform: rotate(-5deg) scale(1.9);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-5deg) scale(1);
+  }
+}
+
+@keyframes db-sweep {
+  0% {
+    transform: translateY(8px);
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(208px);
+    opacity: 0;
+  }
+}

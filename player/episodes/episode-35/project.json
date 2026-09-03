@@ -1,12 +1,12 @@
 {
   "id": "episode-35",
-  "title": "第 35 期（待制作）",
-  "status": "planned",
+  "title": "标识载体选型",
+  "status": "ready",
   "theme": "active-identification-note",
   "progress": {
-    "completed": 0,
-    "total": 0,
+    "completed": 12,
+    "total": 12,
     "current": null
   },
-  "updatedAt": "2026-09-02"
+  "updatedAt": "2026-09-03"
 }

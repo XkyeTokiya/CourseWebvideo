@@ -1,0 +1,438 @@
+/* decision-ledger · A010 现场决策顺序（~32s · 4 steps）
+   mechanism: ordered-progression — 台账行按决策顺序逐行就位，理由列逐行填充，不画流程箭头
+   prefix: dl- */
+
+.dl-scene {
+  justify-content: flex-start;
+  gap: 18px;
+}
+
+/* ── 标题区：判断方向 ─────────────────────────────────── */
+
+.dl-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  animation: dl-fade-in 560ms var(--ease-soft) both;
+}
+
+.dl-head-kicker {
+  margin: 0 0 10px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.2em;
+  color: var(--text-mute);
+}
+
+.dl-head-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.dl-head-title em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.dl-head-side {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-2);
+  animation: dl-fade-in 560ms var(--ease-soft) 240ms both;
+}
+
+.dl-head-count {
+  font-size: 52px;
+  color: var(--theme-warning);
+}
+
+/* ── 台账：列头 + 四行 ───────────────────────────────── */
+
+.dl-ledger {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dl-cols {
+  display: grid;
+  grid-template-columns: 92px 320px 1fr 440px;
+  gap: 24px;
+  padding: 0 30px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+}
+
+.dl-cols-reason {
+  transition: color 420ms var(--ease-soft);
+}
+
+.is-traceable .dl-cols-reason {
+  color: var(--theme-process);
+}
+
+.dl-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dl-row {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 92px 320px 1fr 440px;
+  gap: 24px;
+  align-items: center;
+  padding: 0 30px;
+}
+
+/* 未就位的行：虚线空槽，只留行号 */
+.dl-row:not(.is-set) {
+  background: transparent;
+  border: 2px dashed var(--rule);
+  box-shadow: none;
+}
+
+.dl-row.is-set {
+  animation: dl-row-in 560ms var(--ease-overshoot) both;
+}
+
+/* 行号：先灰后点亮 */
+.dl-row-no {
+  font-size: 44px;
+  color: var(--text-faint);
+  opacity: 0.55;
+  transition: color 420ms var(--ease-soft), opacity 420ms var(--ease-soft);
+}
+
+.dl-row.is-set .dl-row-no {
+  opacity: 1;
+  animation: dl-num-pop 560ms var(--ease-overshoot) both;
+}
+
+.dl-row.is-set[data-tone="process"] .dl-row-no {
+  color: var(--theme-process);
+}
+
+.dl-row.is-set[data-tone="warning"] .dl-row-no {
+  color: var(--theme-warning);
+}
+
+.dl-row.is-set[data-tone="structural"] .dl-row-no {
+  color: var(--theme-structural);
+}
+
+/* 行内容：就位后才可见 */
+.dl-row-name {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  visibility: hidden;
+}
+
+.dl-row.is-set .dl-row-name {
+  visibility: visible;
+  animation: dl-part-in 520ms var(--ease-soft) 80ms both;
+}
+
+.dl-row-name-cn {
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.dl-row-name-tag {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.22em;
+  color: var(--text-faint);
+}
+
+.dl-row-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  visibility: hidden;
+}
+
+.dl-row.is-set .dl-row-points {
+  visibility: visible;
+}
+
+.dl-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 20px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: var(--theme-cool-surface);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  animation: dl-chip-in 440ms var(--ease-overshoot) both;
+  animation-delay: calc(240ms + var(--dl-j) * 150ms);
+}
+
+.dl-row[data-tone="warning"] .dl-chip {
+  background: var(--theme-warning-surface);
+  border-color: var(--theme-warning);
+  color: var(--theme-warning);
+}
+
+.dl-row[data-tone="structural"] .dl-chip {
+  background: transparent;
+  border-color: var(--theme-structural);
+  color: var(--theme-structural);
+}
+
+/* 行尾理由：手写感下划线 + 可回查对勾 */
+.dl-row-reason {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  visibility: hidden;
+}
+
+.dl-row.is-set .dl-row-reason {
+  visibility: visible;
+  animation: dl-part-in 520ms var(--ease-soft) 420ms both;
+}
+
+.dl-reason-text {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-2);
+}
+
+.dl-reason-line {
+  width: 260px;
+  height: 12px;
+  overflow: visible;
+}
+
+.dl-reason-line path {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.dl-row.is-set .dl-reason-line path {
+  animation: dl-draw 620ms var(--ease-soft) 760ms forwards;
+}
+
+.dl-row[data-tone="warning"] .dl-reason-line path {
+  stroke: var(--theme-warning);
+}
+
+.dl-row[data-tone="structural"] .dl-reason-line path {
+  stroke: var(--theme-structural);
+}
+
+.dl-reason-check {
+  position: absolute;
+  top: -12px;
+  right: -4px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid var(--theme-process);
+  background: var(--theme-process-surface);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+}
+
+.dl-reason-check svg {
+  width: 22px;
+  height: 22px;
+}
+
+.dl-reason-check path {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.is-traceable .dl-reason-check {
+  animation: dl-check-in 460ms var(--ease-overshoot) both;
+  animation-delay: calc(300ms + var(--dl-i) * 260ms);
+}
+
+/* ── 收束判断条（行四就位时落位） ─────────────────────── */
+
+.dl-close {
+  flex: none;
+  position: relative;
+  height: 108px;
+  margin-top: 6px;
+}
+
+.dl-close-ghost {
+  margin: 0;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.24em;
+  color: var(--text-faint);
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-traceable .dl-close-ghost {
+  opacity: 0;
+}
+
+.dl-close-plate {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 0 36px;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 560ms var(--ease-soft) 460ms,
+    transform 560ms var(--ease-soft) 460ms;
+}
+
+.is-traceable .dl-close-plate {
+  opacity: 1;
+  transform: none;
+}
+
+.dl-close-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.2em;
+  color: var(--theme-process);
+  white-space: nowrap;
+}
+
+.dl-close-text {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.dl-close-text em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.dl-close-text span {
+  margin-left: 18px;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--text-2);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes dl-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dl-row-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dl-num-pop {
+  0% {
+    transform: scale(0.6);
+  }
+  60% {
+    transform: scale(1.18);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes dl-part-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dl-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dl-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dl-check-in {
+  0% {
+    opacity: 0;
+    transform: scale(1.7) rotate(-14deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.92) rotate(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}

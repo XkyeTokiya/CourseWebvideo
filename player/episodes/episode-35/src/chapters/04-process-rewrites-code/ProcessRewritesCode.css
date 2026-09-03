@@ -1,0 +1,439 @@
+/* process-rewrites-code · A004 image-with-reading-notes
+   mechanism: persistent-media-reading — 教材原图与六工艺带持续，要点卡逐拍补充
+   prefix: pr- */
+
+.pr-scene {
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+/* ── 标题区：判断方向 ─────────────────────────────────── */
+
+.pr-head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pr-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  color: var(--theme-process);
+  animation: pr-fade-in 520ms var(--ease-soft) backwards;
+}
+
+.pr-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  line-height: 1.15;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: pr-fade-in 560ms var(--ease-soft) 120ms backwards;
+}
+
+.pr-title em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* ── 六工艺带（step1 逐位点亮 + 扫光） ────────────────── */
+
+.pr-band-strip {
+  position: relative;
+  margin: 0 -12px;
+  padding: 4px 12px 16px;
+  overflow: hidden;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.pr-strip-cap {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--theme-structural);
+  animation: pr-fade-in 520ms var(--ease-soft) 180ms backwards;
+}
+
+.pr-band-track {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 18px;
+}
+
+.pr-band {
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  animation: pr-band-in 560ms var(--ease-overshoot) backwards;
+  animation-delay: calc(260ms + var(--pr-i) * 620ms);
+}
+
+.pr-band-idx {
+  font-size: 26px;
+  line-height: 1;
+  color: var(--theme-process);
+}
+
+.pr-band-name {
+  font-size: 38px;
+  line-height: 1.1;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* 工艺带扫光（step1 后段一次性扫过） */
+.pr-band-strip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 200px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-soft) 42%,
+    var(--accent-glow) 50%,
+    var(--accent-soft) 58%,
+    transparent
+  );
+  transform: translateX(-220px);
+  animation: pr-strip-sweep 2000ms var(--ease-soft) 4300ms both;
+}
+
+/* ── 主区：教材原图占位 + 要点卡 ──────────────────────── */
+
+.pr-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 600px 1fr;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.pr-media {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.pr-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border-style: dashed;
+  border-width: 3px;
+  animation: pr-fade-in 620ms var(--ease-soft) 320ms backwards;
+}
+
+.pr-ph-label {
+  font-family: var(--font-mono);
+  font-size: 27px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.pr-ph-desc {
+  font-size: 25px;
+  color: var(--text-faint);
+}
+
+.pr-notes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  min-width: 0;
+}
+
+/* ── 要点卡通用（逐拍落位） ───────────────────────────── */
+
+.pr-key {
+  padding: 20px 28px;
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.pr-key.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.pr-key-kicker {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  color: var(--theme-process);
+}
+
+/* 要点卡一：变化维度 */
+.pr-dims {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.pr-dim-chip {
+  padding: 10px 22px;
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--theme-structural);
+  background: var(--theme-cool-surface);
+  border: 2px solid var(--rule);
+  border-radius: 10px;
+}
+
+.pr-key1.is-on .pr-dim-chip {
+  animation: pr-chip-in 440ms var(--ease-overshoot) both;
+  animation-delay: calc(160ms + var(--pr-d) * 130ms);
+}
+
+/* 要点卡二：两个选型问题 */
+.pr-q-row {
+  margin: 0 0 10px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-size: 30px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+.pr-q-row:last-child {
+  margin-bottom: 0;
+}
+
+.pr-q-badge {
+  font-size: 26px;
+  color: var(--theme-process);
+}
+
+.pr-key2.is-on .pr-q-row {
+  animation: pr-q-in 480ms var(--ease-soft) both;
+  animation-delay: calc(140ms + var(--pr-d) * 420ms);
+}
+
+/* 要点卡三：检查点 + 码面两态微演示 */
+.pr-check {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.pr-examples {
+  display: flex;
+  gap: 26px;
+}
+
+.pr-example {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.pr-key3.is-on .pr-example {
+  animation: pr-chip-in 460ms var(--ease-overshoot) both;
+  animation-delay: calc(120ms + var(--pr-d) * 260ms);
+}
+
+.pr-qr {
+  width: 88px;
+  height: 88px;
+  overflow: visible;
+}
+
+.pr-qr-cell {
+  fill: var(--theme-structural);
+}
+
+.pr-key3.is-on .pr-qr-cell.is-dim {
+  animation: pr-dim-fade 900ms var(--ease-soft) both;
+  animation-delay: calc(560ms + var(--pr-d));
+}
+
+.pr-stain {
+  fill: var(--theme-warning);
+  opacity: 0.55;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.pr-key3.is-on .pr-stain.is-a {
+  animation: pr-stain-in 520ms var(--ease-overshoot) 640ms both;
+}
+
+.pr-key3.is-on .pr-stain.is-b {
+  animation: pr-stain-in 520ms var(--ease-overshoot) 860ms both;
+}
+
+.pr-key3.is-on .pr-stain.is-c {
+  animation: pr-stain-in 480ms var(--ease-overshoot) 1080ms both;
+}
+
+.pr-example-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.pr-example-effect {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--theme-warning);
+}
+
+.pr-verdict {
+  padding: 18px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--theme-process-surface);
+  border: 2px dashed var(--theme-process);
+  border-radius: 12px;
+}
+
+.pr-key3.is-on .pr-verdict {
+  animation: pr-fade-in 520ms var(--ease-soft) 900ms both;
+}
+
+.pr-verdict-line {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.pr-verdict-sub {
+  margin: 0;
+  font-size: 23px;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+.pr-verdict-sub em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-process);
+  padding: 0 4px;
+}
+
+/* ── step4 重心收束：前提槽位轻微退后 ─────────────────── */
+
+.pr-scene.is-final .pr-band-strip,
+.pr-scene.is-final .pr-media,
+.pr-scene.is-final .pr-key1,
+.pr-scene.is-final .pr-key2 {
+  opacity: 0.58;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes pr-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pr-band-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pr-strip-sweep {
+  from {
+    transform: translateX(-220px);
+  }
+  to {
+    transform: translateX(1780px);
+  }
+}
+
+@keyframes pr-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pr-q-in {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pr-dim-fade {
+  0%,
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes pr-stain-in {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  to {
+    opacity: 0.55;
+    transform: none;
+  }
+}
