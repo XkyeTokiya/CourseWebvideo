@@ -239,13 +239,14 @@
   pointer-events: none;
   opacity: 0;
   transform: translateX(40px);
-  transition: opacity var(--dur-slow) var(--ease-soft) 700ms,
-    transform var(--dur-slow) var(--ease-soft) 700ms;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
 }
 
 .pq-question.is-on {
   opacity: 1;
   transform: none;
+  transition-delay: 700ms;
 }
 
 .pq-question-plate {
