@@ -13,11 +13,16 @@ episodes/<episode-id>/
   .handoffs/<Axxx>.json           # 播放器生成的临时交接包
 
 episodes/_shared/covers/          # 51 集标准封面库
+占位图/                           # 本地占位图素材库，仅用于复制取用
 src/                              # 共享播放器与 Studio
 tools/                            # 播放器工具
+dist/media/episodes/<id>/         # 构建后按期、类型、章节隔离的媒体
+dist/manifests/assets.json        # 构建产物完整性与归属清单
 ```
 
 `episodes/_shared/` 不是 episode，不能被目录扫描或播放路由识别为实例。`player/output/` 已废弃，不得重新创建；截图、构建结果和录屏放在外部临时输出位置。
+
+`占位图/` 是不提交 Git 的本地素材库。Agent 使用时必须把选定文件复制到 `episodes/<id>/src/chapters/<chapter>/assets/` 再由组件导入；禁止创建符号链接、目录联接或从章节代码直接跨目录引用素材库。
 
 ## 输入与边界
 
@@ -39,6 +44,7 @@ pnpm audio:synthesize -- --episode episode-04 --provider edge
 pnpm typecheck
 pnpm lint
 pnpm build
+pnpm build:inspect
 ```
 
 不得为单期创建独立 `package.json`、锁文件、`node_modules`、Vite 配置或开发服务器。
@@ -46,5 +52,7 @@ pnpm build
 ## 修改与验证
 
 章节改动必须运行 `pnpm episode:check`、`pnpm typecheck`、`pnpm lint`；改动 `narrations.ts` 追加 `pnpm audio:extract -- --episode <id>`；共享运行时、主题或完整交付追加 `pnpm build`。
+
+生产构建不得把 episode 媒体平铺到 `dist/assets/`。完整布局、缓存和部署约束见 `docs/media-build-layout.md`。
 
 未经明确授权，不修改上游任务包、正式 inputs 或共享运行时契约。

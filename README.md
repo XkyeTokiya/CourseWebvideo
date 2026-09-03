@@ -89,6 +89,7 @@ pnpm typecheck           # TypeScript 类型检查
 pnpm lint                # 静态检查
 pnpm test:tools          # 工具链测试
 pnpm build               # 校验并构建生产版本
+pnpm build:inspect       # 校验构建文件的归属、大小与 SHA-256
 pnpm audio:extract       # 从 narrations.ts 提取音频分段
 pnpm audio:providers     # 查看可用音频提供方
 ```
@@ -107,4 +108,4 @@ pnpm courseplay:handoff -- --help
 - `inputs/` 只能放经过批准和验证的正式产物。
 - `.handoffs/` 是派生缓存，不进入 Git。
 - 音频合成前必须先确认分段文本和是否合成。
-
+- 生产媒体按 `dist/media/episodes/<episode-id>/<kind>/` 隔离，禁止回退为 `dist/assets/` 平铺；规则见 `player/docs/media-build-layout.md`。

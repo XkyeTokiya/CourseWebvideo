@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node tools/dev.mjs",
-    "build": "pnpm run episode:check && pnpm run typecheck && vite build",
+    "build": "pnpm run episode:check && pnpm run typecheck && vite build && pnpm run build:inspect",
     "lint": "oxlint src/app src/catalog src/runtime src/shared src/studio tools",
     "typecheck": "tsc --noEmit",
     "episode:new": "node tools/create-episode.mjs",
@@ -15,6 +15,7 @@
     "audio:extract": "node tools/extract-narrations.mjs",
     "audio:synthesize": "node tools/synthesize-audio.mjs",
     "audio:providers": "node tools/synthesize-audio.mjs --list-providers",
+    "build:inspect": "node tools/inspect-build.mjs",
     "test:tools": "node --test --test-isolation=none tools/tests/*.test.mjs"
   },
   "dependencies": {
