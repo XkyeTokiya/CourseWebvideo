@@ -10,7 +10,7 @@
 - 证据先行:bug 先交证据支撑的根因诊断(什么坏了/在哪/为何自检没拦住),确认后再改文件;不把文档承诺当真——契约声明与启发式都对照实际成品工件实证复核;被质疑("请你重新思考")时真正重新审视,愿意基于证据推翻自己的方案。Confidence: 0.9
 - 方案先行与严格执行:规则/设计改动先列多个备选 + 明确取舍 + 有理由的推荐,不预设唯一修法;≥3 文件或契约/规则改动先确认精确编辑范围再交整合书面方案评审,1-2 文件小改 checkpoint 一句确认即可,通过后严格执行、禁止静默私自优化——超出方案字面的改进必须经坦白逐项自审计(照做项 vs 每处偏离及性质、留待用户裁决的点)浮出水面。Confidence: 0.8
 - 上下游边界:契约/规则/输出改动只落本仓库(下游);上游 skills 与已完工工件冻结只读;再生成最小扰动(已批准文案不动);需超出下游权限时向用户提出冲突,由用户上游协商带回授权,绝不单方面偏离或重新解释冻结契约。Confidence: 0.9
-- See [workflow/taste.md](workflow/taste.md) · [visual-design/taste.md](visual-design/taste.md) · [courseplay/taste.md](courseplay/taste.md) · [environment/taste.md](environment/taste.md) ——主题分包,进入对应领域工作前按需读取。Confidence: 0.9
+- See [workflow/taste.md](workflow/taste.md) · [visual-design/taste.md](visual-design/taste.md) · [courseplay/taste.md](courseplay/taste.md) · [environment/taste.md](environment/taste.md) ——主题分包;进入对应领域工作前必须实际读取相关分包,不能把自动注入的主文件当成 taste 全部("按需读取"在领域任务里即硬要求,episode-35 复盘自曝分包一次未读,未读分包使"未等确认就并行开工"这类本可被分包既有条款拦截的越权发生,属同源根因);用户会主动审计实际读取情况("你在制作的过程中真的阅读了taste吗?不是说写入,而是读取"),被问时如实交代实际读了什么、没读什么,不自称已读。Confidence: 0.9
 
 # Taste 维护
 - 用户会实际审计 taste 是否被遵循,发现失守时要求对 taste 系统本身做结构化诊断与修复,而非重申规则(本源案例:主文件被精简成一行指针、83 条沉在二级类目,新会话自动注入量归零→批准分包重构)。批准的布局:只有主 taste.md 在新会话自动注入,故主文件只内联跨场景高频核心、每类 ≤5 条(防类别被整体移出再次归零),长尾细节留主题分包按需读取;修剪取向是合并去重而非全保留或激进删减。Confidence: 0.8
