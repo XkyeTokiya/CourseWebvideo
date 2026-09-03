@@ -1,0 +1,232 @@
+{
+  "schemaVersion": "coursewebvideo/episode-production-status/v1",
+  "episodeId": "episode-09",
+  "title": "发动机质量追溯：统一标识串起分散记录",
+  "summary": {
+    "status": "blocked",
+    "currentStage": "audio",
+    "nextAction": "补齐人工审批记录: checkpointAudio",
+    "blockers": [
+      "音频缺少 32 个文件"
+    ],
+    "approvalGaps": [
+      "checkpointAudio"
+    ]
+  },
+  "observations": {
+    "taskPackage": {
+      "status": "present",
+      "path": "narration-pipeline/episodes/module-1-system-cognition/episode-09-engine-lifecycle-traceability-task-package.md",
+      "sha256": "5809e0ad2772073ad736fe1f8b0e956887a234d1255e384fcd0691720642561f",
+      "failures": []
+    },
+    "approvedNarration": {
+      "status": "present",
+      "path": "player/episodes/episode-09/inputs/approved-spoken-text.txt",
+      "sha256": "e07682c0eaeae79123476216b63fd9450d5a854b1d6080c0604a44438a6e4f25",
+      "failures": []
+    },
+    "aPage": {
+      "status": "valid",
+      "path": "player/episodes/episode-09/inputs/episode-09-a-page.json",
+      "sha256": "8fb764141c77def8fbb003f376ab2d4d47f38a6d05d4528d2a11e3a4562f25be",
+      "failures": []
+    },
+    "visualRough": {
+      "status": "approved",
+      "path": "player/episodes/episode-09/inputs/episode-09-visual-rough.md",
+      "sha256": "908aa37daf366132fafa02f66069f18d209b7099dd7e462b492a6a7c26e4d230",
+      "failures": []
+    },
+    "player": {
+      "projectPath": "player/episodes/episode-09/project.json",
+      "status": "in-progress",
+      "chaptersCompleted": 10,
+      "chaptersTotal": 10,
+      "current": null,
+      "entrypointPresent": true,
+      "sourceChapterCount": 11
+    },
+    "audio": {
+      "segmentsPath": "player/episodes/episode-09/audio-segments.json",
+      "status": "extracted",
+      "segmentCount": 32,
+      "fileCount": 0,
+      "missingCount": 32,
+      "source": "narrations.ts",
+      "ttsProvider": null
+    },
+    "delivery": {
+      "recording": {
+        "status": "not-observed",
+        "paths": []
+      },
+      "finalVideo": {
+        "status": "not-observed",
+        "paths": []
+      }
+    }
+  },
+  "approvals": {
+    "narration": {
+      "status": "approved",
+      "decidedAt": "2026-09-03T13:10:36.275Z",
+      "decidedBy": "批量默认审核",
+      "evidence": "player/episodes/episode-09/inputs/approved-spoken-text.txt",
+      "note": "按用户要求默认通过，流程推进至音频检查点"
+    },
+    "visualRough": {
+      "status": "approved",
+      "decidedAt": "2026-09-03T13:10:36.275Z",
+      "decidedBy": "批量默认审核",
+      "evidence": "player/episodes/episode-09/inputs/episode-09-visual-rough.md; player/episodes/episode-09/inputs/episode-09-visual-rough-validation.json",
+      "note": "按用户要求默认通过，流程推进至音频检查点"
+    },
+    "checkpointPlan": {
+      "status": "approved",
+      "decidedAt": "2026-09-03T13:10:36.275Z",
+      "decidedBy": "批量默认审核",
+      "evidence": "player/episodes/episode-09/script.md; player/episodes/episode-09/outline.md; player/episodes/episode-09/project.json",
+      "note": "按用户要求默认通过，流程推进至音频检查点"
+    },
+    "firstChapter": {
+      "status": "approved",
+      "decidedAt": "2026-09-03T13:10:36.275Z",
+      "decidedBy": "批量默认审核",
+      "evidence": "player/episodes/episode-09/src/entry.tsx; player/episodes/episode-09/project.json",
+      "note": "按用户要求默认通过，流程推进至音频检查点"
+    },
+    "checkpointAudio": {
+      "status": "pending",
+      "decidedAt": "2026-09-03T13:10:36.275Z",
+      "decidedBy": "批量默认审核",
+      "evidence": "player/episodes/episode-09/audio-segments.json",
+      "note": "停在音频检查点，等待人工审核"
+    },
+    "finalDelivery": {
+      "status": "unrecorded",
+      "decidedAt": null,
+      "decidedBy": null,
+      "evidence": null,
+      "note": null
+    }
+  },
+  "coordination": {
+    "owner": null,
+    "targetDate": null,
+    "blockers": [],
+    "notes": "",
+    "externalArtifacts": []
+  },
+  "stages": [
+    {
+      "id": "freeze-task-package",
+      "name": "冻结任务包",
+      "status": "complete"
+    },
+    {
+      "id": "continuous-narration",
+      "name": "连续口播",
+      "status": "complete"
+    },
+    {
+      "id": "approve-narration",
+      "name": "批准口播",
+      "status": "complete"
+    },
+    {
+      "id": "a-page",
+      "name": "A-page",
+      "status": "complete"
+    },
+    {
+      "id": "compile-trace",
+      "name": "编译追踪",
+      "status": "complete"
+    },
+    {
+      "id": "validate-a-page",
+      "name": "A-page 验证",
+      "status": "complete"
+    },
+    {
+      "id": "visual-rough",
+      "name": "Visual rough",
+      "status": "complete"
+    },
+    {
+      "id": "player-phase-1",
+      "name": "Player Phase 1",
+      "status": "complete"
+    },
+    {
+      "id": "checkpoint-plan",
+      "name": "Checkpoint Plan",
+      "status": "complete"
+    },
+    {
+      "id": "chapter-handoff",
+      "name": "单章 handoff",
+      "status": "complete"
+    },
+    {
+      "id": "chapter-production",
+      "name": "章节制作",
+      "status": "complete"
+    },
+    {
+      "id": "chapter-acceptance",
+      "name": "后续章节与验收",
+      "status": "complete"
+    },
+    {
+      "id": "audio",
+      "name": "音频",
+      "status": "awaiting-approval"
+    },
+    {
+      "id": "recording-delivery",
+      "name": "录屏、后期与成片验收",
+      "status": "not-started"
+    }
+  ],
+  "updatedAt": "2026-09-03",
+  "updatedBy": "production-status sync",
+  "stageReviews": {
+    "approve-narration": {
+      "status": "approved",
+      "reviewedAt": "2026-09-03T13:10:36.275Z",
+      "reviewedBy": "批量默认审核",
+      "evidence": "player/episodes/episode-09/inputs/approved-spoken-text.txt",
+      "note": "按用户要求默认通过，流程推进至音频检查点"
+    },
+    "visual-rough": {
+      "status": "approved",
+      "reviewedAt": "2026-09-03T13:10:36.275Z",
+      "reviewedBy": "批量默认审核",
+      "evidence": "player/episodes/episode-09/inputs/episode-09-visual-rough.md; player/episodes/episode-09/inputs/episode-09-visual-rough-validation.json",
+      "note": "按用户要求默认通过，流程推进至音频检查点"
+    },
+    "checkpoint-plan": {
+      "status": "approved",
+      "reviewedAt": "2026-09-03T13:10:36.275Z",
+      "reviewedBy": "批量默认审核",
+      "evidence": "player/episodes/episode-09/script.md; player/episodes/episode-09/outline.md; player/episodes/episode-09/project.json",
+      "note": "按用户要求默认通过，流程推进至音频检查点"
+    },
+    "chapter-acceptance": {
+      "status": "approved",
+      "reviewedAt": "2026-09-03T13:10:36.275Z",
+      "reviewedBy": "批量默认审核",
+      "evidence": "player/episodes/episode-09/src/entry.tsx; player/episodes/episode-09/project.json",
+      "note": "按用户要求默认通过，流程推进至音频检查点"
+    },
+    "audio": {
+      "status": "pending",
+      "reviewedAt": "2026-09-03T13:10:36.275Z",
+      "reviewedBy": "批量默认审核",
+      "evidence": "player/episodes/episode-09/audio-segments.json",
+      "note": "停在音频检查点，等待人工审核"
+    }
+  }
+}

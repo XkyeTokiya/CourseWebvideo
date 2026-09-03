@@ -1,0 +1,1337 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>课程视频 · 生产状态控制面</title>
+  <style>
+    :root{
+      --bg:#06070A;
+      --bg-2:#0B0D12;
+      --panel:rgba(18,20,26,.88);
+      --panel-2:rgba(26,29,37,.72);
+      --panel-3:rgba(34,38,48,.62);
+      --text:#F3F5F9;
+      --muted:#A6ADBD;
+      --muted-2:#75808F;
+      --line:rgba(255,255,255,.08);
+      --line-strong:rgba(255,255,255,.16);
+      --accent:#6E7BFF;
+      --accent-2:#9BA5FF;
+      --accent-soft:rgba(110,123,255,.14);
+      --accent-line:rgba(110,123,255,.34);
+      --shadow:0 24px 70px rgba(0,0,0,.42);
+      --tone-ok:#3FB68B;
+      --tone-warn:#E4AE49;
+      --tone-danger:#F16767;
+      --radius-s:8px;
+      --radius-m:14px;
+      --radius-l:20px;
+      --ease:cubic-bezier(.22,1,.36,1);
+      --mono:ui-monospace,SFMono-Regular,"JetBrains Mono","Cascadia Code",Consolas,monospace;
+    }
+    [data-theme="light"]{
+      --bg:#F2F4F8;
+      --bg-2:#E8EBF1;
+      --panel:rgba(255,255,255,.9);
+      --panel-2:rgba(248,250,253,.82);
+      --panel-3:rgba(241,244,249,.8);
+      --text:#111827;
+      --muted:#4B5768;
+      --muted-2:#68758A;
+      --line:rgba(15,23,42,.11);
+      --line-strong:rgba(15,23,42,.2);
+      --accent:#4F5BD5;
+      --accent-2:#3742A8;
+      --accent-soft:rgba(79,91,213,.11);
+      --accent-line:rgba(79,91,213,.28);
+      --shadow:0 20px 55px rgba(15,23,42,.1);
+      --tone-ok:#10815F;
+      --tone-warn:#97650C;
+      --tone-danger:#C23333;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(900px 520px at 8% -8%,rgba(110,123,255,.16),transparent 65%),
+        radial-gradient(760px 500px at 92% 0%,rgba(63,182,139,.09),transparent 62%),
+        linear-gradient(180deg,var(--bg),var(--bg-2));
+      color:var(--text);
+      font-family:"Inter Tight","Segoe UI","PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+      font-size:15px;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    [data-theme="light"] body{
+      background:
+        radial-gradient(900px 520px at 8% -8%,rgba(79,91,213,.13),transparent 65%),
+        radial-gradient(760px 500px at 92% 0%,rgba(16,150,110,.08),transparent 62%),
+        linear-gradient(180deg,#F7F8FB,var(--bg-2));
+    }
+    ::selection{background:rgba(110,123,255,.32)}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit;color:inherit}
+    select{color-scheme:dark}
+    select option,
+    select optgroup{background-color:#1A1D25;color:#F3F5F9}
+    [data-theme="light"] select{color-scheme:light}
+    [data-theme="light"] select option,
+    [data-theme="light"] select optgroup{background-color:#FFFFFF;color:#111827}
+    button{cursor:pointer}
+    .mono{font-family:var(--mono)}
+    .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+    .tone-neutral{--tone:#98A2B3;--tone-bg:rgba(152,162,179,.13);--tone-line:rgba(152,162,179,.28)}
+    .tone-info{--tone:#7A86FF;--tone-bg:rgba(122,134,255,.14);--tone-line:rgba(122,134,255,.32)}
+    .tone-ok{--tone:#3FB68B;--tone-bg:rgba(63,182,139,.14);--tone-line:rgba(63,182,139,.3)}
+    .tone-warn{--tone:#E4AE49;--tone-bg:rgba(228,174,73,.14);--tone-line:rgba(228,174,73,.32)}
+    .tone-danger{--tone:#F16767;--tone-bg:rgba(241,103,103,.14);--tone-line:rgba(241,103,103,.3)}
+    .tone-muted{--tone:#818B9C;--tone-bg:rgba(129,139,156,.12);--tone-line:rgba(129,139,156,.26)}
+    [data-theme="light"] .tone-info{--tone:#3D49C6}
+    [data-theme="light"] .tone-ok{--tone:#10815F}
+    [data-theme="light"] .tone-warn{--tone:#97650C}
+    [data-theme="light"] .tone-danger{--tone:#C23333}
+
+    .topbar{
+      position:sticky;top:0;z-index:30;
+      background:color-mix(in srgb,var(--bg) 78%,transparent);
+      backdrop-filter:blur(18px) saturate(1.2);
+      -webkit-backdrop-filter:blur(18px) saturate(1.2);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar-inner{
+      max-width:1440px;margin:auto;padding:14px 28px;
+      display:flex;align-items:center;justify-content:space-between;gap:20px;
+    }
+    .brand{display:flex;align-items:center;gap:14px;min-width:0}
+    .brand-mark{
+      width:42px;height:42px;border-radius:13px;flex:none;
+      display:grid;place-items:center;color:white;
+      background:linear-gradient(145deg,var(--accent),#8659ff 65%,#49c8ff);
+      box-shadow:0 10px 28px rgba(110,123,255,.28);
+    }
+    .brand-copy{min-width:0}
+    .brand-copy h1{font-size:17px;font-weight:700;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .brand-copy p{font-size:12px;color:var(--muted-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .mode-pill{
+      display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px;
+      border:1px solid var(--line);border-radius:999px;background:var(--panel-2);
+      color:var(--muted);font-size:12.5px;white-space:nowrap;
+    }
+    .mode-dot{width:7px;height:7px;border-radius:50%;background:var(--muted-2)}
+    .mode-pill.ok .mode-dot{background:var(--tone-ok,#3FB68B);box-shadow:0 0 0 4px rgba(63,182,139,.14)}
+    .mode-pill.readonly .mode-dot{background:var(--tone-warn,#E4AE49);box-shadow:0 0 0 4px rgba(228,174,73,.12)}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      height:38px;padding:0 14px;border-radius:10px;border:1px solid var(--line);
+      background:var(--panel-2);color:var(--text);
+      transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease);
+      white-space:nowrap;
+    }
+    .btn:hover{border-color:var(--line-strong);background:var(--panel-3)}
+    .btn:active{transform:translateY(1px)}
+    .btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+    .btn.primary{
+      border-color:transparent;color:white;
+      background:linear-gradient(135deg,var(--accent),#8A67FF);
+      box-shadow:0 10px 24px rgba(110,123,255,.22);
+    }
+    .btn.primary:hover{filter:brightness(1.06)}
+    .btn.icon{width:38px;padding:0}
+    .btn svg{width:17px;height:17px;flex:none}
+    .btn.small{height:32px;padding:0 10px;font-size:12.5px;border-radius:9px}
+
+    .page{max-width:1440px;margin:auto;padding:30px 28px 80px}
+    .notice{
+      margin-bottom:22px;padding:16px 18px;border-radius:var(--radius-m);
+      border:1px solid var(--accent-line);background:linear-gradient(90deg,var(--accent-soft),transparent 72%);
+      color:var(--muted);font-size:13.5px;
+    }
+    .notice b{color:var(--text)}
+    .notice code{font-family:var(--mono);font-size:12px;color:var(--accent-2)}
+
+    .kpis{
+      display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin-bottom:16px;
+    }
+    .kpi{
+      position:relative;overflow:hidden;display:block;width:100%;min-height:126px;padding:18px;
+      border:1px solid var(--line);border-radius:var(--radius-l);
+      background:linear-gradient(145deg,var(--panel),var(--panel-2));
+      box-shadow:0 18px 45px rgba(0,0,0,.16);
+      transition:border-color .2s var(--ease),transform .2s var(--ease),background .2s var(--ease);
+      text-align:left;
+    }
+    .kpi:hover{transform:translateY(-2px);border-color:var(--line-strong)}
+    .kpi::after{
+      content:"";position:absolute;right:-42px;top:-52px;width:140px;height:140px;border-radius:50%;
+      background:radial-gradient(closest-side,var(--kpi-glow,rgba(110,123,255,.24)),transparent);
+    }
+    .kpi-label{display:block;font-size:12.5px;color:var(--muted-2)}
+    .kpi-value{display:block;margin-top:14px;font-size:34px;font-weight:700;line-height:1;letter-spacing:-.03em}
+    .kpi-foot{display:block;margin-top:12px;font-size:12px;color:var(--muted-2)}
+    .kpi.clickable{cursor:pointer}
+    .kpi[data-active="true"]{border-color:var(--accent-line);background:linear-gradient(145deg,var(--accent-soft),var(--panel-2))}
+
+    .distribution{
+      height:8px;display:flex;gap:3px;overflow:hidden;border-radius:999px;
+      background:var(--panel-2);border:1px solid var(--line);margin-bottom:24px;
+    }
+    .distribution i{display:block;height:100%;min-width:2px}
+
+    .controls{
+      display:grid;grid-template-columns:minmax(240px,1.4fr) repeat(3,minmax(150px,.7fr));
+      gap:12px;margin-bottom:24px;
+    }
+    .control{
+      display:flex;align-items:center;gap:10px;min-height:42px;padding:0 13px;
+      border:1px solid var(--line);border-radius:12px;background:var(--panel-2);
+      transition:border-color .2s var(--ease),background .2s var(--ease);
+    }
+    .control:focus-within{border-color:var(--accent-line);background:var(--panel-3)}
+    .control svg{width:16px;height:16px;color:var(--muted-2);flex:none}
+    .control input,.control select{
+      width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--text);
+    }
+    .control input::placeholder{color:var(--muted-2)}
+    .control.select{padding-right:8px}
+    .control select{appearance:none;cursor:pointer}
+    .check{
+      display:inline-flex;align-items:center;gap:9px;justify-content:center;
+      border:1px solid var(--line);border-radius:12px;background:var(--panel-2);
+      min-height:42px;padding:0 13px;color:var(--muted);font-size:13px;cursor:pointer;
+      transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease);
+      user-select:none;
+    }
+    .check:hover{border-color:var(--line-strong);color:var(--text)}
+    .check input{width:15px;height:15px;accent-color:var(--accent)}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));gap:16px}
+    .card{
+      position:relative;overflow:hidden;cursor:pointer;
+      border:1px solid var(--line);border-radius:var(--radius-l);
+      background:linear-gradient(150deg,var(--panel),var(--panel-2));
+      padding:18px;min-width:0;
+      transition:border-color .2s var(--ease),background .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease);
+    }
+    .card:hover{
+      transform:translateY(-2px);border-color:var(--line-strong);
+      box-shadow:0 18px 42px rgba(0,0,0,.18);
+    }
+    .card::before{
+      content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+      background:linear-gradient(180deg,var(--tone,var(--accent)),transparent 85%);
+      opacity:.8;
+    }
+    .card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}
+    .ep{
+      font-size:12px;font-weight:600;color:var(--accent-2);
+      background:var(--accent-soft);border:1px solid var(--accent-line);
+      border-radius:999px;padding:3px 9px;
+    }
+    .pill{
+      display:inline-flex;align-items:center;gap:6px;
+      border:1px solid var(--tone-line);background:var(--tone-bg);color:var(--tone);
+      border-radius:999px;padding:3px 9px;font-size:12px;font-weight:600;white-space:nowrap;
+    }
+    .pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+    .title{
+      font-size:16.5px;font-weight:700;letter-spacing:-.015em;line-height:1.38;
+      display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+    }
+    .next{
+      margin-top:9px;color:var(--muted);font-size:13px;
+      display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+    }
+    .progress{
+      height:6px;margin-top:16px;border-radius:999px;overflow:hidden;background:var(--panel-3);
+      border:1px solid var(--line);
+    }
+    .progress i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#8659ff)}
+    .mini-meta{
+      margin-top:11px;display:flex;flex-wrap:wrap;gap:6px 12px;color:var(--muted-2);font-size:12px;
+    }
+    .approval-row{display:flex;align-items:center;gap:5px;margin-top:14px;flex-wrap:wrap}
+    .approval-dot{
+      width:9px;height:9px;border-radius:50%;
+      background:var(--tone,#98A2B3);box-shadow:0 0 0 3px var(--tone-bg);
+    }
+    .approval-name{margin-left:auto;font-size:11.5px;color:var(--muted-2)}
+    .card-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+    .tag{
+      display:inline-flex;align-items:center;gap:6px;
+      border:1px solid var(--line);border-radius:999px;background:var(--panel-3);
+      color:var(--muted);font-size:11.5px;padding:3px 8px;
+    }
+    .tag.owner{color:var(--accent-2);border-color:var(--accent-line);background:var(--accent-soft)}
+    .tag.danger{color:var(--tone-danger);border-color:color-mix(in srgb,var(--tone-danger) 34%,transparent);background:color-mix(in srgb,var(--tone-danger) 13%,transparent)}
+    .tag.warn{color:var(--tone-warn);border-color:color-mix(in srgb,var(--tone-warn) 34%,transparent);background:color-mix(in srgb,var(--tone-warn) 13%,transparent)}
+    .tag.ok{color:var(--tone-ok);border-color:color-mix(in srgb,var(--tone-ok) 34%,transparent);background:color-mix(in srgb,var(--tone-ok) 13%,transparent)}
+    .card-foot{
+      margin-top:16px;padding-top:13px;border-top:1px solid var(--line);
+      display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--muted-2);font-size:12px;
+    }
+    .card-note{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .open-hint{display:inline-flex;align-items:center;gap:6px;color:var(--accent-2)}
+    .open-hint svg{width:14px;height:14px}
+
+    .empty{
+      padding:60px 24px;text-align:center;border:1px dashed var(--line-strong);border-radius:var(--radius-l);
+      background:var(--panel-2);color:var(--muted);
+    }
+    .empty h2{font-size:20px;color:var(--text);margin-bottom:10px}
+    .empty p{max-width:56ch;margin:0 auto 22px}
+    .empty-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+    dialog.modal{
+      position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);margin:0;
+      width:min(1180px,calc(100vw - 32px));height:min(880px,calc(100vh - 32px));
+      max-width:calc(100vw - 32px);max-height:calc(100vh - 32px);
+      border:1px solid var(--line-strong);border-radius:22px;padding:0;color:var(--text);
+      background:var(--panel);box-shadow:var(--shadow);overflow:hidden;
+    }
+    dialog.modal[open]{display:flex;flex-direction:column}
+    dialog.modal::backdrop{background:rgba(3,4,8,.68);backdrop-filter:blur(8px)}
+    .modal-head{
+      flex:none;display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:18px 22px;border-bottom:1px solid var(--line);
+      background:color-mix(in srgb,var(--bg) 82%,transparent);
+      backdrop-filter:blur(18px);
+    }
+    .modal-title{min-width:0}
+    .modal-eyebrow{font-size:12px;color:var(--muted-2);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .modal-title h2{
+      margin-top:5px;font-size:21px;font-weight:700;letter-spacing:-.02em;line-height:1.25;
+      display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+      white-space:normal;word-break:break-word;
+    }
+    .modal-body{flex:1;min-height:0;overflow:auto;overflow-x:hidden;padding:22px}
+    .modal-foot{
+      flex:none;display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:14px 22px;border-top:1px solid var(--line);
+      background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(18px);
+    }
+    .foot-note{display:flex;flex-direction:column;gap:6px;min-width:0;font-size:12px;color:var(--muted-2)}
+    .updater{display:inline-flex;align-items:center;gap:8px;max-width:100%;color:var(--muted)}
+    .updater input{
+      min-width:0;min-height:32px;width:180px;max-width:100%;padding:0 9px;border:1px solid var(--line);border-radius:8px;
+      background:var(--panel);color:var(--text);outline:none;
+    }
+    .updater input:focus{border-color:var(--accent-line)}
+    .foot-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .editor-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:20px;align-items:start}
+    .section{
+      border:1px solid var(--line);border-radius:var(--radius-l);
+      background:linear-gradient(150deg,var(--panel-2),transparent);padding:18px;margin-bottom:18px;
+    }
+    .section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}
+    .section-head h3{font-size:15.5px;font-weight:700;letter-spacing:-.01em}
+    .section-head p{font-size:12px;color:var(--muted-2)}
+    .field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+    .field{display:flex;flex-direction:column;gap:6px;min-width:0}
+    .field.full{grid-column:1 / -1}
+    .field > span{font-size:12px;color:var(--muted-2)}
+    .field input,.field select,.field textarea{
+      display:block;width:100%;min-width:0;max-width:100%;min-height:38px;padding:8px 11px;border:1px solid var(--line);border-radius:10px;
+      background:var(--panel);color:var(--text);outline:none;
+      transition:border-color .2s var(--ease),background .2s var(--ease);
+    }
+    .field textarea{min-height:74px;resize:vertical;line-height:1.5}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent-line);background:var(--panel-3)}
+    .field .hint{font-size:11px;color:var(--muted-2)}
+    .approval-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+    .approval-card{
+      border:1px solid var(--line);border-radius:var(--radius-m);background:var(--panel-2);padding:13px;min-width:0;
+    }
+    .approval-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:11px}
+    .approval-head strong{min-width:0;font-size:13.5px}
+    .approval-head select{
+      flex:0 1 135px;width:135px;min-width:0;max-width:48%;min-height:32px;
+      border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--text);padding:0 8px;
+    }
+    .approval-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:9px}
+    .approval-fields label{display:flex;flex-direction:column;gap:4px;min-width:0;font-size:11px;color:var(--muted-2)}
+    .approval-fields input{
+      display:block;width:100%;min-width:0;max-width:100%;min-height:32px;padding:5px 8px;
+      border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text);outline:none;font-size:12px;
+    }
+    .approval-fields input:focus{border-color:var(--accent-line);background:var(--panel-3)}
+    .approval-fields .wide{grid-column:1 / -1}
+    .stage-list{display:grid;grid-template-columns:1fr;gap:8px}
+    .stage-row{
+      display:grid;grid-template-columns:minmax(0,1fr) 168px;align-items:center;gap:12px;
+      padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:var(--panel-2);
+    }
+    .stage-name{font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .stage-row select{width:100%;min-width:0;min-height:32px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text);padding:0 8px}
+    .obs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+    .obs-card{
+      border:1px solid var(--line);border-radius:var(--radius-m);background:var(--panel-2);padding:13px;min-width:0;
+    }
+    .obs-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}
+    .obs-head strong{font-size:13.5px}
+    .obs-path{
+      font-family:var(--mono);font-size:11.5px;color:var(--muted);word-break:break-all;
+      background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px;
+    }
+    .obs-stats{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+    details.raw{margin-top:16px;border:1px solid var(--line);border-radius:var(--radius-m);background:var(--panel-2)}
+    details.raw summary{cursor:pointer;padding:12px 14px;color:var(--muted);font-size:13px}
+    details.raw pre{
+      margin:0;padding:0 14px 14px;overflow:auto;max-height:320px;
+      font-family:var(--mono);font-size:11.5px;line-height:1.55;color:var(--muted);
+    }
+    .toasts{position:fixed;right:20px;bottom:20px;z-index:100;display:flex;flex-direction:column;gap:10px}
+    .toast{
+      min-width:230px;max-width:390px;padding:12px 14px;border-radius:12px;
+      border:1px solid var(--line-strong);background:var(--panel);color:var(--text);
+      box-shadow:var(--shadow);font-size:13px;
+      animation:toast-in .24s var(--ease);
+    }
+    .toast.ok{border-color:rgba(63,182,139,.38)}
+    .toast.warn{border-color:rgba(228,174,73,.38)}
+    .toast.danger{border-color:rgba(241,103,103,.38)}
+    @keyframes toast-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    .hidden{display:none !important}
+    @media (max-width:1180px){
+      .kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .controls{grid-template-columns:1fr 1fr}
+      .editor-grid{grid-template-columns:1fr}
+      .approval-list,.obs-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:760px){
+      .topbar-inner{padding:12px 16px;align-items:flex-start;flex-direction:column}
+      .top-actions{width:100%}
+      .page{padding:22px 16px 70px}
+      .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .controls{grid-template-columns:1fr}
+      .field-grid{grid-template-columns:1fr}
+      .stage-row{grid-template-columns:1fr;align-items:stretch}
+      dialog.modal{width:calc(100vw - 20px);height:calc(100vh - 20px);max-width:calc(100vw - 20px);max-height:calc(100vh - 20px);border-radius:16px}
+      .modal-body{padding:16px}
+      .modal-head,.modal-foot{padding-left:16px;padding-right:16px}
+      .section{padding:14px;border-radius:14px}
+      .section-head{align-items:flex-start}
+      .modal-foot{flex-direction:column;align-items:stretch}
+      .foot-note{align-items:flex-start}
+      .foot-actions{justify-content:stretch}
+      .foot-actions .btn{flex:1}
+      .updater{display:grid;grid-template-columns:auto minmax(0,1fr);width:100%}
+      .updater input{width:100%}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *{transition:none !important;animation:none !important}
+      html{scroll-behavior:auto}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 3 5-7 4 5"/><path d="M3 21h18"/></svg>
+        </div>
+        <div class="brand-copy">
+          <h1>课程视频生产状态控制面</h1>
+          <p>剧集状态 · 人工门禁 · 阶段观测</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <div id="modePill" class="mode-pill"><span class="mode-dot"></span><span id="modeText">未连接</span></div>
+        <button id="connectBtn" class="btn primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+          连接数据目录
+        </button>
+        <button id="filesBtn" class="btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/></svg>
+          选择状态文件
+        </button>
+        <button id="refreshBtn" class="btn icon" disabled aria-label="刷新数据">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
+        </button>
+        <button id="themeBtn" class="btn icon" aria-label="切换主题">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        </button>
+        <input id="fileInput" class="visually-hidden" type="file" accept=".json,application/json" multiple tabindex="-1">
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section id="notice" class="notice">
+      <b>数据读取方式。</b> 通过本地服务打开时，页面会自动读取同目录下的剧集状态文件；直接双击打开时，浏览器通常会阻止本地文件读取。请点击“连接数据目录”，优先选择仓库根目录，即可在剧集工作台中预览阶段产物并保存审核结果。
+    </section>
+
+    <section id="kpis" class="kpis" aria-label="生产概览"></section>
+    <div id="distribution" class="distribution" aria-hidden="true"></div>
+
+    <section class="controls" aria-label="筛选与排序">
+      <label class="control">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="searchInput" type="search" placeholder="搜索标题、集数、负责人、路径、备注…" aria-label="搜索">
+      </label>
+      <label class="control select">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16"/><path d="M7 12h10"/><path d="M10 19h4"/></svg>
+        <select id="statusFilter" aria-label="状态筛选">
+          <option value="all">全部状态</option>
+        </select>
+      </label>
+      <label class="control select">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M6 12h12"/><path d="M9 17h6"/></svg>
+        <select id="sortSelect" aria-label="排序">
+          <option value="work">工作优先级</option>
+          <option value="episode">集数顺序</option>
+          <option value="progress">阶段进度</option>
+          <option value="updated">最近更新</option>
+        </select>
+      </label>
+      <label class="check">
+        <input id="attentionOnly" type="checkbox">
+        只看未交付
+      </label>
+    </section>
+
+    <section id="grid" class="grid" aria-live="polite"></section>
+    <section id="empty" class="empty hidden">
+      <h2>尚未加载剧集状态</h2>
+      <p>推荐使用 Chrome / Edge 点击“连接数据目录”，选择仓库中的 <b>production-status/episodes</b> 目录。页面会解析全部剧集状态文件，并允许把人工修改直接保存回原文件。</p>
+      <div class="empty-actions">
+        <button class="btn primary" id="emptyConnect">连接数据目录</button>
+        <button class="btn" id="emptyFiles">选择状态文件</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="editor" class="modal" aria-labelledby="editorTitle">
+    <div class="modal-head">
+      <div class="modal-title">
+        <div class="modal-eyebrow">
+          <span id="editorEpisode" class="ep">第 ? 集</span>
+          <span id="editorFile" class="mono">状态文件</span>
+          <span id="editorUpdated"></span>
+        </div>
+        <h2 id="editorTitle">剧集详情</h2>
+      </div>
+      <button class="btn icon" id="closeEditor" aria-label="关闭编辑面板">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="editor-grid">
+        <div>
+          <section class="section">
+            <div class="section-head">
+              <div>
+                <h3>总体状态</h3>
+                <p>可直接修改；同步工具会根据状态观测和人工审批重算总体状态与阶段。</p>
+              </div>
+            </div>
+            <div class="field-grid">
+              <label class="field">
+                <span>整体状态</span>
+                <select id="editStatus"></select>
+              </label>
+              <label class="field">
+                <span>当前阶段</span>
+                <select id="editCurrentStage"></select>
+              </label>
+              <label class="field full">
+                <span>下一步动作</span>
+                <textarea id="editNextAction"></textarea>
+              </label>
+              <label class="field">
+                <span>阻塞项（每行一条）</span>
+                <textarea id="editSummaryBlockers"></textarea>
+              </label>
+              <label class="field">
+                <span>审批缺口（逗号或换行分隔）</span>
+                <textarea id="editApprovalGaps"></textarea>
+              </label>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="section-head">
+              <div>
+                <h3>人工审批</h3>
+                <p>审批是人工事实，自动化不得根据文件存在与否推断。</p>
+              </div>
+            </div>
+            <div id="approvalList" class="approval-list"></div>
+          </section>
+
+          <section class="section">
+            <div class="section-head">
+              <div>
+                <h3>协调信息</h3>
+                <p>记录负责人、目标日期、阻塞事项和仓库外证据。</p>
+              </div>
+            </div>
+            <div class="field-grid">
+              <label class="field">
+                <span>负责人</span>
+                <input id="editOwner" type="text" placeholder="例如：liuxn">
+              </label>
+              <label class="field">
+                <span>目标日期</span>
+                <input id="editTargetDate" type="date">
+              </label>
+              <label class="field full">
+                <span>协调阻塞（每行一条）</span>
+                <textarea id="editCoordinationBlockers"></textarea>
+              </label>
+              <label class="field full">
+                <span>备注 / 仓库外证据</span>
+                <textarea id="editNotes"></textarea>
+              </label>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="section-head">
+              <div>
+                <h3>生产阶段</h3>
+                <p>14 个生产阶段的状态，可按需要直接调整。</p>
+              </div>
+            </div>
+            <div id="stageList" class="stage-list"></div>
+          </section>
+        </div>
+
+        <div>
+          <section class="section">
+            <div class="section-head">
+              <div>
+                <h3>状态观测</h3>
+                <p>只读展示任务包、输入物、播放器、音频与交付证据。</p>
+              </div>
+            </div>
+            <div id="observationList" class="obs-grid"></div>
+          </section>
+
+          <details class="raw">
+            <summary>查看当前状态原文</summary>
+            <pre id="rawJson"></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-foot">
+      <div class="foot-note">
+        <label class="updater">
+          <span>更新人</span>
+          <input id="updatedBy" type="text" value="界面人工修改">
+        </label>
+        <span>保存时会自动记录更新日期与更新人。</span>
+      </div>
+      <div class="foot-actions">
+        <button class="btn" id="downloadDoc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M5 21h14"/></svg>
+          下载状态文件
+        </button>
+        <button class="btn primary" id="saveDoc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h7"/></svg>
+          <span id="saveText">保存修改</span>
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const SUMMARY_STATUSES = ['not-started','in-progress','awaiting-approval','blocked','delivered'];
+const STAGE_STATUSES = ['not-started','in-progress','awaiting-approval','blocked','complete','not-required'];
+const APPROVAL_STATUSES = ['unrecorded','pending','approved','rejected','not-required'];
+const APPROVAL_KEYS = ['narration','visualRough','checkpointPlan','firstChapter','checkpointAudio','finalDelivery'];
+const SUMMARY_META = {
+  'not-started': {label:'未开始', tone:'neutral'},
+  'in-progress': {label:'进行中', tone:'info'},
+  'awaiting-approval': {label:'待审批', tone:'warn'},
+  'blocked': {label:'阻塞', tone:'danger'},
+  'delivered': {label:'已交付', tone:'ok'}
+};
+const STAGE_META = {
+  'not-started': {label:'未开始', tone:'neutral'},
+  'in-progress': {label:'进行中', tone:'info'},
+  'awaiting-approval': {label:'待审批', tone:'warn'},
+  'blocked': {label:'阻塞', tone:'danger'},
+  'complete': {label:'完成', tone:'ok'},
+  'not-required': {label:'无需', tone:'muted'}
+};
+const APPROVAL_META = {
+  'unrecorded': {label:'未记录', tone:'neutral'},
+  'pending': {label:'待定', tone:'warn'},
+  'approved': {label:'已批准', tone:'ok'},
+  'rejected': {label:'已拒绝', tone:'danger'},
+  'not-required': {label:'无需', tone:'muted'}
+};
+const APPROVAL_LABELS = {
+  narration:'口播稿',
+  visualRough:'视觉粗稿',
+  checkpointPlan:'方案检查点',
+  firstChapter:'首章验收',
+  checkpointAudio:'音频检查点',
+  finalDelivery:'最终交付'
+};
+const STAGE_LABELS = {
+  'freeze-task-package':'冻结任务包',
+  'continuous-narration':'连续口播',
+  'approve-narration':'批准口播',
+  'a-page':'A 页',
+  'compile-trace':'编译追踪',
+  'validate-a-page':'A 页验证',
+  'visual-rough':'视觉粗稿',
+  'player-phase-1':'播放器初版',
+  'checkpoint-plan':'方案检查点',
+  'chapter-handoff':'单章交接',
+  'chapter-production':'章节制作',
+  'chapter-acceptance':'后续章节与验收',
+  'audio':'音频',
+  'recording-delivery':'录屏与成片交付'
+};
+const OBS_FILE_META = {
+  missing:{label:'缺失', tone:'danger'},
+  present:{label:'存在', tone:'info'},
+  valid:{label:'有效', tone:'ok'},
+  invalid:{label:'无效', tone:'danger'},
+  draft:{label:'草稿', tone:'warn'},
+  approved:{label:'已批准', tone:'ok'}
+};
+const OBS_PLAYER_META = {
+  missing:{label:'缺失', tone:'danger'},
+  planned:{label:'已规划', tone:'neutral'},
+  'in-progress':{label:'进行中', tone:'info'},
+  ready:{label:'就绪', tone:'ok'}
+};
+const OBS_AUDIO_META = {
+  'not-extracted':{label:'未提取', tone:'neutral'},
+  extracted:{label:'已提取', tone:'info'},
+  partial:{label:'部分完成', tone:'warn'},
+  complete:{label:'完整', tone:'ok'}
+};
+const OBS_DELIVERY_META = {
+  'not-observed':{label:'未观测', tone:'neutral'},
+  present:{label:'存在', tone:'ok'}
+};
+const STATUS_PRIORITY = {
+  blocked:0,
+  'awaiting-approval':1,
+  'in-progress':2,
+  'not-started':3,
+  delivered:4
+};
+
+let docs = [];
+let episodesHandle = null;
+let sourceMode = null;
+let currentWrapper = null;
+let current = null;
+
+const el = {
+  modePill:$('#modePill'), modeText:$('#modeText'), notice:$('#notice'),
+  kpis:$('#kpis'), distribution:$('#distribution'), grid:$('#grid'), empty:$('#empty'),
+  searchInput:$('#searchInput'), statusFilter:$('#statusFilter'), sortSelect:$('#sortSelect'),
+  attentionOnly:$('#attentionOnly'), refreshBtn:$('#refreshBtn'), fileInput:$('#fileInput'),
+  editor:$('#editor'), editorEpisode:$('#editorEpisode'), editorFile:$('#editorFile'),
+  editorTitle:$('#editorTitle'), editorUpdated:$('#editorUpdated'),
+  editStatus:$('#editStatus'), editCurrentStage:$('#editCurrentStage'), editNextAction:$('#editNextAction'),
+  editSummaryBlockers:$('#editSummaryBlockers'), editApprovalGaps:$('#editApprovalGaps'),
+  approvalList:$('#approvalList'), editOwner:$('#editOwner'), editTargetDate:$('#editTargetDate'),
+  editCoordinationBlockers:$('#editCoordinationBlockers'), editNotes:$('#editNotes'),
+  stageList:$('#stageList'), observationList:$('#observationList'), rawJson:$('#rawJson'),
+  updatedBy:$('#updatedBy'), saveText:$('#saveText')
+};
+
+function escapeHtml(value){
+  return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function lines(value){
+  return String(value ?? '').split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+}
+function tokens(value){
+  return String(value ?? '').split(/[\r\n,，]/).map(s => s.trim()).filter(Boolean);
+}
+function localToday(){
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function isoToLocalInput(value){
+  if(!value) return '';
+  const d = new Date(value);
+  if(Number.isNaN(d.getTime())) return '';
+  const p = n => String(n).padStart(2,'0');
+  return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`;
+}
+function localInputToIso(value){
+  if(!value) return null;
+  const d = new Date(value);
+  return Number.isNaN(d.getTime()) ? null : d.toISOString();
+}
+function episodeLabel(id){
+  const match = String(id || '').match(/(\d+)/);
+  return match ? `第 ${Number(match[1])} 集` : id;
+}
+function stageName(doc, id){
+  return STAGE_LABELS[id] || doc.stages?.find(s => s.id === id)?.name || id;
+}
+function stageLabel(stage){
+  return STAGE_LABELS[stage.id] || stage.name || stage.id;
+}
+function stageProgress(doc){
+  const stages = doc.stages || [];
+  const done = stages.filter(s => s.status === 'complete' || s.status === 'not-required').length;
+  return {done, total:stages.length || 14};
+}
+function approvalProgress(doc){
+  const values = APPROVAL_KEYS.map(k => doc.approvals?.[k]?.status);
+  const done = values.filter(s => s === 'approved' || s === 'not-required').length;
+  return {done, total:APPROVAL_KEYS.length};
+}
+function pill(status, meta){
+  const item = meta[status] || {label:'未知状态', tone:'neutral'};
+  return `<span class="pill tone-${item.tone}">${escapeHtml(item.label)}</span>`;
+}
+function optionsHtml(values, selected, labels = {}){
+  const list = selected && !values.includes(selected) ? [...values, selected] : values;
+  return list.map(v => `<option value="${escapeHtml(v)}"${v === selected ? ' selected' : ''}>${escapeHtml(labels[v] ?? v)}</option>`).join('');
+}
+function toast(message, tone = 'ok'){
+  const node = document.createElement('div');
+  node.className = `toast ${tone}`;
+  node.textContent = message;
+  $('#toasts').appendChild(node);
+  setTimeout(() => {
+    node.style.opacity = '0';
+    node.style.transform = 'translateY(8px)';
+    setTimeout(() => node.remove(), 220);
+  }, 3600);
+}
+function setMode(mode, text, kind){
+  sourceMode = mode;
+  el.modeText.textContent = text;
+  el.modePill.className = `mode-pill ${kind}`;
+  el.refreshBtn.disabled = !mode || mode === 'files';
+  el.saveText.textContent = episodesHandle ? '保存修改' : '下载修改后的状态文件';
+}
+function setDocs(loaded, mode, modeText, modeKind){
+  docs = loaded.filter(item => item?.doc?.episodeId).sort((a,b) => a.doc.episodeId.localeCompare(b.doc.episodeId));
+  setMode(mode, modeText, modeKind);
+  el.notice.classList.toggle('hidden', docs.length > 0);
+  render();
+}
+function serialize(doc){
+  return JSON.stringify(doc, null, 2) + '\n';
+}
+function statusFileName(doc){
+  return `${doc.episodeId}.json`;
+}
+function downloadDoc(doc){
+  const blob = new Blob([serialize(doc)], {type:'application/json;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = statusFileName(doc);
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+async function ensureWritePermission(handle){
+  if(!handle.queryPermission) return true;
+  const opts = {mode:'readwrite'};
+  if(await handle.queryPermission(opts) === 'granted') return true;
+  return await handle.requestPermission(opts) === 'granted';
+}
+async function resolveEpisodesDir(dir){
+  try { return await dir.getDirectoryHandle('episodes'); } catch {}
+  try {
+    const statusDir = await dir.getDirectoryHandle('production-status');
+    return await statusDir.getDirectoryHandle('episodes');
+  } catch {}
+  return dir;
+}
+async function rememberRepositoryHandle(handle){
+  try {
+    const db = await new Promise((resolve,reject) => {
+      const request = indexedDB.open('coursewebvideo-production-status', 1);
+      request.onupgradeneeded = () => request.result.createObjectStore('handles');
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+    await new Promise((resolve,reject) => {
+      const request = db.transaction('handles','readwrite').objectStore('handles').put(handle,'repository-root');
+      request.onsuccess = resolve;
+      request.onerror = () => reject(request.error);
+    });
+    db.close();
+  } catch {}
+}
+async function loadFromDirectoryHandle(){
+  if(!episodesHandle) return;
+  const entries = [];
+  for await (const [name, handle] of episodesHandle.entries()) {
+    if(handle.kind === 'file' && /\.json$/i.test(name)) entries.push({name, handle});
+  }
+  const loaded = (await Promise.allSettled(entries.map(async entry => {
+    const file = await entry.handle.getFile();
+    const text = await file.text();
+    return {doc:JSON.parse(text), handle:entry.handle};
+  }))).filter(r => r.status === 'fulfilled' && r.value).map(r => r.value);
+  entries.forEach((entry, i) => {
+    if(!loaded.some(item => item.handle === entry.handle)) toast(`解析失败：${entry.name}`, 'danger');
+  });
+  if(!loaded.length) toast('所选目录没有可读取的状态文件', 'warn');
+  setDocs(loaded, 'directory', `可写 · ${episodesHandle.name}`, 'ok');
+}
+async function connectDirectory(){
+  if(!window.showDirectoryPicker){
+    toast('当前浏览器不支持目录写入，请使用 Chrome / Edge 或选择状态文件', 'warn');
+    return;
+  }
+  try {
+    const picked = await window.showDirectoryPicker({id:'coursewebvideo-status-episodes', mode:'readwrite', startIn:'documents'});
+    await rememberRepositoryHandle(picked);
+    episodesHandle = await resolveEpisodesDir(picked);
+    if(!await ensureWritePermission(episodesHandle)){
+      episodesHandle = null;
+      toast('未获得写权限，无法直接保存', 'danger');
+      return;
+    }
+    await loadFromDirectoryHandle();
+  } catch(error) {
+    if(error?.name !== 'AbortError') toast(`连接目录失败：${error.message || error}`, 'danger');
+  }
+}
+async function detectHttpBase(){
+  const candidates = ['episodes/episode-01.json','production-status/episodes/episode-01.json'];
+  for(const candidate of candidates) {
+    try {
+      const res = await fetch(candidate, {cache:'no-store'});
+      if(!res.ok) continue;
+      JSON.parse(await res.text());
+      return candidate.replace('episode-01.json','');
+    } catch {}
+  }
+  return null;
+}
+async function loadHttp(){
+  const base = await detectHttpBase();
+  if(!base) return [];
+  const jobs = Array.from({length:99}, (_,i) => i + 1).map(async n => {
+    const id = `episode-${String(n).padStart(2,'0')}`;
+    const res = await fetch(`${base}${id}.json`, {cache:'no-store'});
+    if(!res.ok) return null;
+    return {doc:await res.json(), handle:null};
+  });
+  const results = await Promise.allSettled(jobs);
+  return results.filter(r => r.status === 'fulfilled' && r.value).map(r => r.value);
+}
+async function loadFiles(fileList){
+  const loaded = [];
+  for(const file of fileList) {
+    if(!/\.json$/i.test(file.name)) continue;
+    try {
+      loaded.push({doc:JSON.parse(await file.text()), handle:null});
+    } catch {
+      toast(`解析失败：${file.name}`, 'danger');
+    }
+  }
+  if(!loaded.length) toast('未选择有效的状态文件', 'warn');
+  setDocs(loaded, 'files', `文件模式 · 只读 · ${loaded.length} 个`, 'readonly');
+}
+async function refresh(){
+  if(sourceMode === 'directory' && episodesHandle) return loadFromDirectoryHandle();
+  if(sourceMode === 'http') return setDocs(await loadHttp(), 'http', '在线模式 · 只读', 'readonly');
+  toast('当前数据源无法自动刷新，请重新选择状态文件', 'warn');
+}
+function render(){
+  renderKpis();
+  renderGrid();
+  el.empty.classList.toggle('hidden', docs.length > 0);
+  el.grid.classList.toggle('hidden', docs.length === 0);
+}
+function renderKpis(){
+  const counts = Object.fromEntries(SUMMARY_STATUSES.map(s => [s, docs.filter(x => x.doc.summary.status === s).length]));
+  const gaps = docs.reduce((sum,x) => sum + (x.doc.summary.approvalGaps?.length || 0), 0);
+  const latest = docs.reduce((max,item) => (item.doc.updatedAt || '') > max ? item.doc.updatedAt : max, '');
+  const items = [
+    {key:'all', label:'总集数', value:docs.length, foot:latest ? `最近更新 ${latest}` : '尚无更新记录', glow:'rgba(110,123,255,.24)'},
+    {key:'delivered', label:'已交付', value:counts.delivered, foot:'最终交付已批准', glow:'rgba(63,182,139,.22)'},
+    {key:'awaiting-approval', label:'待审批', value:counts['awaiting-approval'], foot:'等待人工审批', glow:'rgba(228,174,73,.22)'},
+    {key:'in-progress', label:'进行中', value:counts['in-progress'], foot:'制作进行中', glow:'rgba(122,134,255,.22)'},
+    {key:'not-started', label:'未开始', value:counts['not-started'], foot:'尚未进入制作', glow:'rgba(152,162,179,.2)'},
+    {key:'blocked', label:'阻塞 / 缺口', value:counts.blocked, foot:`${counts.blocked} 项阻塞 · ${gaps} 项审批缺口`, glow:'rgba(241,103,103,.22)'}
+  ];
+  el.kpis.innerHTML = items.map(item => `
+    <button class="kpi clickable" data-kpi="${item.key}" data-active="${el.statusFilter.value === item.key || (item.key === 'all' && el.statusFilter.value === 'all')}" style="--kpi-glow:${item.glow}">
+      <span class="kpi-label">${item.label}</span>
+      <span class="kpi-value">${item.value}</span>
+      <span class="kpi-foot">${item.foot}</span>
+    </button>
+  `).join('');
+  el.distribution.innerHTML = SUMMARY_STATUSES.map(status => {
+    const count = counts[status];
+    const meta = SUMMARY_META[status];
+    return `<i class="tone-${meta.tone}" style="flex-grow:${count};background:var(--tone)" title="${meta.label}: ${count}"></i>`;
+  }).join('');
+}
+function visibleDocs(){
+  const query = el.searchInput.value.trim().toLowerCase();
+  const status = el.statusFilter.value;
+  let list = docs.filter(({doc}) => {
+    if(status !== 'all' && doc.summary.status !== status) return false;
+    if(el.attentionOnly.checked && doc.summary.status === 'delivered') return false;
+    if(!query) return true;
+    const haystack = [
+      doc.episodeId, doc.title, doc.summary.currentStage, doc.summary.nextAction,
+      doc.coordination.owner, doc.coordination.notes, doc.coordination.targetDate,
+      ...(doc.summary.blockers || []), ...(doc.summary.approvalGaps || []),
+      ...(doc.coordination.blockers || [])
+    ].filter(Boolean).join(' ').toLowerCase();
+    return haystack.includes(query);
+  });
+  const sort = el.sortSelect.value;
+  list = [...list].sort((a,b) => {
+    const da = a.doc, db = b.doc;
+    if(sort === 'episode') return da.episodeId.localeCompare(db.episodeId);
+    if(sort === 'progress') return stageProgress(db).done - stageProgress(da).done || da.episodeId.localeCompare(db.episodeId);
+    if(sort === 'updated') return (db.updatedAt || '').localeCompare(da.updatedAt || '') || da.episodeId.localeCompare(db.episodeId);
+    const pa = STATUS_PRIORITY[da.summary.status] ?? 9, pb = STATUS_PRIORITY[db.summary.status] ?? 9;
+    return pa - pb || da.episodeId.localeCompare(db.episodeId);
+  });
+  return list;
+}
+function cardHtml({doc}){
+  const sp = stageProgress(doc), ap = approvalProgress(doc);
+  const meta = SUMMARY_META[doc.summary.status] || {label:'未知状态', tone:'neutral'};
+  const owner = doc.coordination.owner || '未指派';
+  const target = doc.coordination.targetDate || '未定';
+  const blockers = doc.summary.blockers?.length || doc.coordination.blockers?.length || 0;
+  const gaps = doc.summary.approvalGaps?.length || 0;
+  return `
+    <article class="card tone-${meta.tone}" data-id="${escapeHtml(doc.episodeId)}" data-href="episode-workbench.html?episode=${encodeURIComponent(doc.episodeId)}&stage=${encodeURIComponent(doc.summary.currentStage)}" tabindex="0" role="link" aria-label="进入${escapeHtml(episodeLabel(doc.episodeId))}生产工作台：${escapeHtml(doc.title)}">
+      <div class="card-top">
+        <span class="ep">${escapeHtml(episodeLabel(doc.episodeId))}</span>
+        ${pill(doc.summary.status, SUMMARY_META)}
+      </div>
+      <h3 class="title">${escapeHtml(doc.title)}</h3>
+      <p class="next"><b>${escapeHtml(stageName(doc, doc.summary.currentStage))}</b> · ${escapeHtml(doc.summary.nextAction || '暂无下一步动作')}</p>
+      <div class="progress" title="阶段进度 ${sp.done} / ${sp.total}"><i style="width:${sp.total ? Math.round(sp.done / sp.total * 100) : 0}%"></i></div>
+      <div class="mini-meta">
+        <span>阶段 ${sp.done} / ${sp.total}</span>
+        <span>审批 ${ap.done} / ${ap.total}</span>
+        <span>更新 ${escapeHtml(doc.updatedAt || '—')}</span>
+      </div>
+      <div class="approval-row">
+        ${APPROVAL_KEYS.map(k => {
+          const st = doc.approvals?.[k]?.status || 'unrecorded';
+          const m = APPROVAL_META[st] || APPROVAL_META.unrecorded;
+          return `<i class="approval-dot tone-${m.tone}" style="background:var(--tone)" title="${escapeHtml(APPROVAL_LABELS[k])}：${escapeHtml(m.label)}"></i>`;
+        }).join('')}
+        <span class="approval-name">人工审批</span>
+      </div>
+      <div class="card-tags">
+        <span class="tag owner">负责人：${escapeHtml(owner)}</span>
+        <span class="tag">目标：${escapeHtml(target)}</span>
+        ${blockers ? `<span class="tag danger">${blockers} 项阻塞</span>` : ''}
+        ${gaps ? `<span class="tag warn">${gaps} 项审批缺口</span>` : ''}
+        ${doc.observations?.delivery?.finalVideo?.status === 'present' ? '<span class="tag ok">已有成片观测</span>' : ''}
+      </div>
+      <div class="card-foot">
+        <span class="card-note">${escapeHtml(doc.coordination.notes || '暂无协调备注')}</span>
+        <span class="open-hint">进入工作台
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+        </span>
+      </div>
+    </article>
+  `;
+}
+function renderGrid(){
+  el.grid.innerHTML = visibleDocs().map(cardHtml).join('');
+}
+function rememberDashboardView(){
+  sessionStorage.setItem('coursewebvideo-dashboard-view', JSON.stringify({
+    search:el.searchInput.value,
+    status:el.statusFilter.value,
+    sort:el.sortSelect.value,
+    attention:el.attentionOnly.checked,
+    scrollY:window.scrollY
+  }));
+}
+function openWorkbench(card){
+  if(!card?.dataset.href) return;
+  rememberDashboardView();
+  location.href = card.dataset.href;
+}
+function restoreDashboardView(){
+  try {
+    const saved = JSON.parse(sessionStorage.getItem('coursewebvideo-dashboard-view') || 'null');
+    if(!saved) return;
+    el.searchInput.value = saved.search || '';
+    el.statusFilter.value = saved.status || 'all';
+    el.sortSelect.value = saved.sort || 'priority';
+    el.attentionOnly.checked = Boolean(saved.attention);
+    renderKpis();
+    renderGrid();
+    requestAnimationFrame(() => window.scrollTo(0, Number(saved.scrollY) || 0));
+  } catch {}
+}
+function obsCard(title, status, meta, path = '', stats = []){
+  return `
+    <div class="obs-card">
+      <div class="obs-head">
+        <strong>${escapeHtml(title)}</strong>
+        ${pill(status, meta)}
+      </div>
+      ${path ? `<div class="obs-path">${escapeHtml(path)}</div>` : ''}
+      ${stats.length ? `<div class="obs-stats">${stats.map(s => `<span class="tag">${escapeHtml(s)}</span>`).join('')}</div>` : ''}
+    </div>
+  `;
+}
+function renderObservations(doc){
+  const o = doc.observations || {};
+  const fileCards = [
+    ['任务包', o.taskPackage], ['口播稿', o.approvedNarration],
+    ['A 页数据', o.aPage], ['视觉粗稿', o.visualRough]
+  ].map(([title, item]) => obsCard(
+    title, item?.status || 'missing', OBS_FILE_META, item?.path || '',
+    [
+      ...(item?.failures || []),
+      item?.sha256 ? `内容指纹 ${item.sha256.slice(0,10)}…` : ''
+    ].filter(Boolean)
+  )).join('');
+  const player = o.player || {};
+  const audio = o.audio || {};
+  const delivery = o.delivery || {};
+  const playerCard = obsCard('播放器', player.status || 'missing', OBS_PLAYER_META, player.projectPath || '', [
+    `章节完成 ${player.chaptersCompleted ?? 0} / ${player.chaptersTotal ?? 0}`,
+    player.entrypointPresent ? '入口文件存在' : '入口文件缺失',
+    `源章节数 ${player.sourceChapterCount ?? 0}`
+  ]);
+  const audioCard = obsCard('音频', audio.status || 'not-extracted', OBS_AUDIO_META, audio.segmentsPath || '', [
+    `语音段落 ${audio.segmentCount ?? 0}`,
+    `音频文件 ${audio.fileCount ?? 0}`,
+    `缺失 ${audio.missingCount ?? 0}`
+  ]);
+  const deliveryCards = ['recording','finalVideo'].map(key => {
+    const item = delivery[key] || {status:'not-observed', paths:[]};
+    const label = key === 'recording' ? '录屏' : '最终成片';
+    const extra = Math.max((item.paths?.length || 0) - 1, 0);
+    return obsCard(label, item.status, OBS_DELIVERY_META, item.paths?.[0] || '', extra ? [`另有 ${extra} 个位置`] : []);
+  }).join('');
+  el.observationList.innerHTML = fileCards + playerCard + audioCard + deliveryCards;
+}
+function renderApprovals(doc){
+  el.approvalList.innerHTML = APPROVAL_KEYS.map(key => {
+    const item = doc.approvals?.[key] || {status:'unrecorded', decidedAt:null, decidedBy:null, evidence:null, note:null};
+    return `
+      <div class="approval-card" data-approval="${escapeHtml(key)}">
+        <div class="approval-head">
+          <strong>${escapeHtml(APPROVAL_LABELS[key])}</strong>
+          <select data-field="status">${optionsHtml(APPROVAL_STATUSES, item.status, Object.fromEntries(Object.entries(APPROVAL_META).map(([k,v]) => [k,v.label])))}</select>
+        </div>
+        <div class="approval-fields">
+          <label>决定时间<input type="datetime-local" data-field="decidedAt" value="${escapeHtml(isoToLocalInput(item.decidedAt))}"></label>
+          <label>决定人<input type="text" data-field="decidedBy" value="${escapeHtml(item.decidedBy ?? '')}"></label>
+          <label class="wide">证据 / 链接<input type="text" data-field="evidence" value="${escapeHtml(item.evidence ?? '')}"></label>
+          <label class="wide">备注<input type="text" data-field="note" value="${escapeHtml(item.note ?? '')}"></label>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+function renderStages(doc){
+  el.stageList.innerHTML = (doc.stages || []).map(stage => `
+    <div class="stage-row" data-stage="${escapeHtml(stage.id)}">
+      <span class="stage-name">${escapeHtml(stageLabel(stage))}</span>
+      <select data-field="status">${optionsHtml(STAGE_STATUSES, stage.status, Object.fromEntries(Object.entries(STAGE_META).map(([k,v]) => [k,v.label])))}</select>
+    </div>
+  `).join('');
+}
+function openEditor(id){
+  const wrapper = docs.find(item => item.doc.episodeId === id);
+  if(!wrapper) return;
+  currentWrapper = wrapper;
+  current = structuredClone(wrapper.doc);
+  const doc = current;
+  el.editorEpisode.textContent = episodeLabel(doc.episodeId);
+  el.editorFile.textContent = statusFileName(doc);
+  el.editorUpdated.textContent = `更新于 ${doc.updatedAt || '未知'} · ${doc.updatedBy || '未知'}`;
+  el.editorTitle.textContent = doc.title;
+  el.editStatus.innerHTML = optionsHtml(SUMMARY_STATUSES, doc.summary.status, Object.fromEntries(Object.entries(SUMMARY_META).map(([k,v]) => [k,v.label])));
+  el.editCurrentStage.innerHTML = optionsHtml((doc.stages || []).map(s => s.id), doc.summary.currentStage, Object.fromEntries((doc.stages || []).map(s => [s.id, stageLabel(s)])));
+  el.editNextAction.value = doc.summary.nextAction ?? '';
+  el.editSummaryBlockers.value = (doc.summary.blockers || []).join('\n');
+  el.editApprovalGaps.value = (doc.summary.approvalGaps || []).join(', ');
+  el.editOwner.value = doc.coordination.owner ?? '';
+  el.editTargetDate.value = doc.coordination.targetDate ?? '';
+  el.editCoordinationBlockers.value = (doc.coordination.blockers || []).join('\n');
+  el.editNotes.value = doc.coordination.notes ?? '';
+  const savedUpdater = localStorage.getItem('coursewebvideo-updatedBy') || '界面人工修改';
+  el.updatedBy.value = savedUpdater === 'dashboard-edit' ? '界面人工修改' : savedUpdater;
+  renderApprovals(doc);
+  renderStages(doc);
+  renderObservations(doc);
+  el.rawJson.textContent = serialize(doc);
+  el.editor.showModal();
+}
+function collectForm(){
+  current.summary.status = el.editStatus.value;
+  current.summary.currentStage = el.editCurrentStage.value;
+  current.summary.nextAction = el.editNextAction.value.trim();
+  current.summary.blockers = lines(el.editSummaryBlockers.value);
+  current.summary.approvalGaps = tokens(el.editApprovalGaps.value);
+  el.approvalList.querySelectorAll('[data-approval]').forEach(card => {
+    const key = card.dataset.approval;
+    current.approvals[key] = {
+      status:card.querySelector('[data-field="status"]').value,
+      decidedAt:localInputToIso(card.querySelector('[data-field="decidedAt"]').value),
+      decidedBy:card.querySelector('[data-field="decidedBy"]').value.trim() || null,
+      evidence:card.querySelector('[data-field="evidence"]').value.trim() || null,
+      note:card.querySelector('[data-field="note"]').value.trim() || null
+    };
+  });
+  current.coordination.owner = el.editOwner.value.trim() || null;
+  current.coordination.targetDate = el.editTargetDate.value || null;
+  current.coordination.blockers = lines(el.editCoordinationBlockers.value);
+  current.coordination.notes = el.editNotes.value.trim();
+  current.stages = (current.stages || []).map(stage => ({
+    ...stage,
+    status:el.stageList.querySelector(`[data-stage="${CSS.escape(stage.id)}"] [data-field="status"]`)?.value || stage.status
+  }));
+  const updater = el.updatedBy.value.trim() || '界面人工修改';
+  current.updatedAt = localToday();
+  current.updatedBy = updater;
+  localStorage.setItem('coursewebvideo-updatedBy', updater);
+}
+function validateCurrent(){
+  if(!SUMMARY_STATUSES.includes(current.summary.status)) return '总体状态不合法';
+  if(!current.summary.currentStage) return '当前阶段不能为空';
+  if(current.summary.status === 'delivered' && current.approvals?.finalDelivery?.status !== 'approved'){
+    return '“已交付”要求“最终交付”审批为“已批准”';
+  }
+  for(const stage of current.stages || []) {
+    if(!STAGE_STATUSES.includes(stage.status)) return `阶段“${stageLabel(stage)}”的状态不合法`;
+  }
+  return null;
+}
+async function persistDoc(wrapper, doc){
+  if(!episodesHandle){
+    downloadDoc(doc);
+    wrapper.doc = structuredClone(doc);
+    render();
+    return {written:false};
+  }
+  const fileName = statusFileName(doc);
+  const handle = wrapper.handle || await episodesHandle.getFileHandle(fileName, {create:true});
+  wrapper.handle = handle;
+  if(!await ensureWritePermission(handle)) throw new Error('未获得文件写权限');
+  const writable = await handle.createWritable();
+  await writable.write(serialize(doc));
+  await writable.close();
+  wrapper.doc = structuredClone(doc);
+  render();
+  return {written:true};
+}
+async function saveCurrent({closeAfter = false} = {}){
+  if(!current || !currentWrapper) return;
+  collectForm();
+  const invalid = validateCurrent();
+  if(invalid){
+    toast(invalid, 'danger');
+    return;
+  }
+  const btn = $('#saveDoc');
+  btn.disabled = true;
+  el.saveText.textContent = episodesHandle ? '写入中…' : '生成中…';
+  try {
+    const result = await persistDoc(currentWrapper, current);
+    el.rawJson.textContent = serialize(current);
+    toast(result.written ? `${episodeLabel(current.episodeId)}状态文件已保存到原位置` : `${episodeLabel(current.episodeId)}状态文件已下载，请替换原文件`, result.written ? 'ok' : 'warn');
+    if(closeAfter) el.editor.close();
+  } catch(error) {
+    toast(`保存失败：${error.message || error}`, 'danger');
+  } finally {
+    btn.disabled = false;
+    el.saveText.textContent = episodesHandle ? '保存修改' : '下载修改后的状态文件';
+  }
+}
+function initControls(){
+  el.statusFilter.innerHTML = '<option value="all">全部状态</option>' + SUMMARY_STATUSES.map(s => `<option value="${s}">${SUMMARY_META[s].label}</option>`).join('');
+  $('#connectBtn').addEventListener('click', connectDirectory);
+  $('#emptyConnect').addEventListener('click', connectDirectory);
+  $('#filesBtn').addEventListener('click', () => el.fileInput.click());
+  $('#emptyFiles').addEventListener('click', () => el.fileInput.click());
+  el.fileInput.addEventListener('change', () => loadFiles(el.fileInput.files));
+  el.refreshBtn.addEventListener('click', refresh);
+  [el.searchInput, el.statusFilter, el.sortSelect, el.attentionOnly].forEach(node => {
+    node.addEventListener('input', () => { renderKpis(); renderGrid(); });
+    node.addEventListener('change', () => { renderKpis(); renderGrid(); });
+  });
+  el.kpis.addEventListener('click', event => {
+    const kpi = event.target.closest('[data-kpi]');
+    if(!kpi) return;
+    const key = kpi.dataset.kpi;
+    el.statusFilter.value = key === 'all' ? 'all' : key;
+    renderKpis();
+    renderGrid();
+  });
+  el.grid.addEventListener('click', event => {
+    const card = event.target.closest('[data-id]');
+    if(card) openWorkbench(card);
+  });
+  el.grid.addEventListener('keydown', event => {
+    if(event.key !== 'Enter' && event.key !== ' ') return;
+    const card = event.target.closest('[data-id]');
+    if(card){
+      event.preventDefault();
+      openWorkbench(card);
+    }
+  });
+  $('#closeEditor').addEventListener('click', () => el.editor.close());
+  $('#saveDoc').addEventListener('click', () => saveCurrent());
+  $('#downloadDoc').addEventListener('click', () => {
+    if(!current) return;
+    collectForm();
+    downloadDoc(current);
+    toast('已下载当前修改后的状态文件', 'warn');
+  });
+  const themeBtn = $('#themeBtn');
+  const setTheme = theme => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('coursewebvideo-theme', theme);
+  };
+  setTheme(localStorage.getItem('coursewebvideo-theme') || 'dark');
+  themeBtn.addEventListener('click', () => {
+    setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+  });
+}
+async function boot(){
+  initControls();
+  if(location.protocol === 'http:' || location.protocol === 'https:'){
+    const loaded = await loadHttp();
+    if(loaded.length){
+      setDocs(loaded, 'http', '在线模式 · 只读', 'readonly');
+      restoreDashboardView();
+      return;
+    }
+    el.notice.innerHTML = '<b>未找到在线数据源。</b> 请把本文件放在 <code>production-status/</code> 下并用静态服务打开，或点击“连接数据目录”选择剧集状态目录。';
+  } else {
+    el.notice.innerHTML = '<b>当前为本地文件方式打开。</b> 浏览器通常阻止读取本地状态文件；请点击“连接数据目录”并优先选择仓库根目录，即可在工作台预览阶段产物并直接保存审核结果。';
+  }
+  render();
+}
+boot();
+</script>
+</body>
+</html>

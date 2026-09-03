@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "coursewebvideo/episode-production-status/v1",
+  "title": "CourseWebvideo Episode Production Status",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "episodeId", "title", "summary", "observations", "approvals", "coordination", "stages", "updatedAt", "updatedBy"],
+  "properties": {
+    "schemaVersion": { "const": "coursewebvideo/episode-production-status/v1" },
+    "episodeId": { "type": "string", "pattern": "^episode-[0-9]{2}$" },
+    "title": { "type": "string", "minLength": 1 },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "currentStage", "nextAction", "blockers", "approvalGaps"],
+      "properties": {
+        "status": { "enum": ["not-started", "in-progress", "awaiting-approval", "blocked", "delivered"] },
+        "currentStage": { "type": "string" },
+        "nextAction": { "type": "string" },
+        "blockers": { "type": "array", "items": { "type": "string" } },
+        "approvalGaps": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "observations": { "$ref": "#/$defs/observations" },
+    "approvals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["narration", "visualRough", "checkpointPlan", "firstChapter", "checkpointAudio", "finalDelivery"],
+      "properties": {
+        "narration": { "$ref": "#/$defs/approval" },
+        "visualRough": { "$ref": "#/$defs/approval" },
+        "checkpointPlan": { "$ref": "#/$defs/approval" },
+        "firstChapter": { "$ref": "#/$defs/approval" },
+        "checkpointAudio": { "$ref": "#/$defs/approval" },
+        "finalDelivery": { "$ref": "#/$defs/approval" }
+      }
+    },
+    "stageReviews": {
+      "type": "object",
+      "description": "Optional human review records for individual production stages. Hard gates are still authoritative in approvals.",
+      "additionalProperties": { "$ref": "#/$defs/stageReview" }
+    },
+    "coordination": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["owner", "targetDate", "blockers", "notes", "externalArtifacts"],
+      "properties": {
+        "owner": { "type": ["string", "null"] },
+        "targetDate": { "type": ["string", "null"], "format": "date" },
+        "blockers": { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": "string" },
+        "externalArtifacts": { "type": "array", "items": { "$ref": "#/$defs/artifact" } }
+      }
+    },
+    "stages": { "type": "array", "minItems": 14, "items": { "$ref": "#/$defs/stage" } },
+    "updatedAt": { "type": "string", "format": "date" },
+    "updatedBy": { "type": "string", "minLength": 1 }
+  },
+  "$defs": {
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "decidedAt", "decidedBy", "evidence", "note"],
+      "properties": {
+        "status": { "enum": ["unrecorded", "pending", "approved", "rejected", "not-required"] },
+        "decidedAt": { "type": ["string", "null"], "format": "date-time" },
+        "decidedBy": { "type": ["string", "null"] },
+        "evidence": { "type": ["string", "null"] },
+        "note": { "type": ["string", "null"] }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "label"],
+      "properties": { "path": { "type": "string" }, "label": { "type": "string" } }
+    },
+    "fileObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "path"],
+      "properties": {
+        "status": { "enum": ["missing", "present", "valid", "invalid", "draft", "approved"] },
+        "path": { "type": "string" },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "failures": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "observations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["taskPackage", "approvedNarration", "aPage", "visualRough", "player", "audio", "delivery"],
+      "properties": {
+        "taskPackage": { "$ref": "#/$defs/fileObservation" },
+        "approvedNarration": { "$ref": "#/$defs/fileObservation" },
+        "aPage": { "$ref": "#/$defs/fileObservation" },
+        "visualRough": { "$ref": "#/$defs/fileObservation" },
+        "player": {
+          "type": "object", "additionalProperties": false,
+          "required": ["projectPath", "status", "chaptersCompleted", "chaptersTotal", "entrypointPresent", "sourceChapterCount"],
+          "properties": {
+            "projectPath": { "type": "string" }, "status": { "enum": ["missing", "planned", "in-progress", "ready"] },
+            "chaptersCompleted": { "type": "integer", "minimum": 0 }, "chaptersTotal": { "type": "integer", "minimum": 0 },
+            "current": { "type": ["string", "null"] }, "entrypointPresent": { "type": "boolean" }, "sourceChapterCount": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "audio": {
+          "type": "object", "additionalProperties": false,
+          "required": ["segmentsPath", "status", "segmentCount", "fileCount", "missingCount"],
+          "properties": {
+            "segmentsPath": { "type": "string" }, "status": { "enum": ["not-extracted", "extracted", "partial", "complete"] },
+            "segmentCount": { "type": "integer", "minimum": 0 }, "fileCount": { "type": "integer", "minimum": 0 }, "missingCount": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "delivery": {
+          "type": "object", "additionalProperties": false,
+          "required": ["recording", "finalVideo"],
+          "properties": {
+            "recording": { "$ref": "#/$defs/deliveryObservation" }, "finalVideo": { "$ref": "#/$defs/deliveryObservation" }
+          }
+        }
+      }
+    },
+    "deliveryObservation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "paths"],
+      "properties": { "status": { "enum": ["not-observed", "present"] }, "paths": { "type": "array", "items": { "type": "string" } } }
+    },
+    "stage": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "name", "status"],
+      "properties": {
+        "id": { "type": "string" }, "name": { "type": "string" },
+        "status": { "enum": ["not-started", "in-progress", "awaiting-approval", "blocked", "complete", "not-required"] }
+      }
+    },
+    "stageReview": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "reviewedAt", "reviewedBy", "evidence", "note"],
+      "properties": {
+        "status": { "enum": ["pending", "approved", "changes-requested"] },
+        "reviewedAt": { "type": "string", "format": "date-time" },
+        "reviewedBy": { "type": "string", "minLength": 1 },
+        "evidence": { "type": ["string", "null"] },
+        "note": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

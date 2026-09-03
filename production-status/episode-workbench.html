@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>剧集生产工作台</title>
+  <link rel="stylesheet" href="workbench.css">
+</head>
+<body>
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-mark" aria-hidden="true"></div>
+    <p>正在读取剧集状态...</p>
+  </div>
+
+  <div id="app" class="app hidden">
+    <header class="app-header">
+      <div class="header-main">
+        <button id="backBtn" class="icon-btn" type="button" aria-label="返回生产总览" title="返回生产总览">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <div class="episode-heading">
+          <div class="episode-meta">
+            <span id="episodeLabel" class="episode-chip">第 ? 集</span>
+            <span id="fileLabel" class="mono">episode-??.json</span>
+            <span id="updatedLabel"></span>
+          </div>
+          <h1 id="episodeTitle">剧集生产工作台</h1>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span id="sourceBadge" class="source-badge"><i></i><span>正在连接</span></span>
+        <button id="refreshBtn" class="tool-btn" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0 2 5.5"/><path d="M20 4v7h-7"/></svg>
+          刷新
+        </button>
+        <button id="themeBtn" class="icon-btn" type="button" aria-label="切换主题" title="切换主题">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
+        </button>
+        <button id="moreBtn" class="icon-btn" type="button" aria-label="更多操作" title="更多操作">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div id="alertStrip" class="alert-strip hidden" role="status">
+      <div>
+        <strong id="alertTitle">发现流程异常</strong>
+        <span id="alertSummary"></span>
+      </div>
+      <button id="showAlertsBtn" type="button">查看详情</button>
+    </div>
+
+    <div class="mobile-stage-select">
+      <label for="stageSelect">当前查看阶段</label>
+      <select id="stageSelect"></select>
+    </div>
+
+    <main class="workspace">
+      <aside class="stage-sidebar" aria-label="生产阶段">
+        <div class="sidebar-head">
+          <span>生产阶段</span>
+          <strong id="progressLabel">0 / 14</strong>
+        </div>
+        <div class="progress-track" aria-hidden="true"><i id="progressBar"></i></div>
+        <nav id="stageNav" class="stage-nav"></nav>
+        <div class="episode-switcher">
+          <button id="prevEpisode" class="icon-btn" type="button" aria-label="上一集" title="上一集">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <span id="episodePosition">-- / 51</span>
+          <button id="nextEpisode" class="icon-btn" type="button" aria-label="下一集" title="下一集">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </aside>
+
+      <section class="review-column">
+        <div class="stage-hero">
+          <div>
+            <div class="stage-kicker">
+              <span id="stageNumber">阶段 01</span>
+              <span id="stageGroup">上游内容</span>
+              <span id="stageState" class="state-pill">未开始</span>
+            </div>
+            <h2 id="stageTitle">冻结任务包</h2>
+            <p id="stagePurpose"></p>
+          </div>
+          <div id="stageReviewBadge" class="review-badge hidden"></div>
+        </div>
+
+        <section id="stageAlerts" class="content-section hidden">
+          <div class="section-title danger-title">
+            <div>
+              <span class="eyebrow">需要先确认</span>
+              <h3>流程一致性</h3>
+            </div>
+            <span id="stageAlertCount" class="count-badge">0</span>
+          </div>
+          <div id="stageAlertList" class="issue-list"></div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-title">
+            <div>
+              <span class="eyebrow">阶段证据</span>
+              <h3>产物与验证</h3>
+            </div>
+            <span id="artifactSummary" class="section-summary"></span>
+          </div>
+          <div id="artifactList" class="artifact-list"></div>
+        </section>
+
+        <section id="previewSection" class="content-section preview-section hidden">
+          <div class="section-title preview-title">
+            <div>
+              <span class="eyebrow">文件预览</span>
+              <h3 id="previewTitle">产物内容</h3>
+            </div>
+            <div class="section-tools">
+              <button id="copyPathBtn" class="icon-btn" type="button" aria-label="复制文件路径" title="复制文件路径">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              </button>
+              <button id="closePreviewBtn" class="icon-btn" type="button" aria-label="关闭预览" title="关闭预览">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+          </div>
+          <div id="previewMeta" class="preview-meta mono"></div>
+          <div id="previewContent" class="preview-content"></div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-title">
+            <div>
+              <span class="eyebrow">审核依据</span>
+              <h3>本阶段检查清单</h3>
+            </div>
+            <span id="checkProgress" class="section-summary">0 / 0</span>
+          </div>
+          <div id="checklist" class="checklist"></div>
+        </section>
+      </section>
+
+      <aside class="action-sidebar">
+        <section id="decisionPanel" class="action-panel">
+          <div class="panel-label">阶段审核</div>
+          <h3 id="decisionTitle">记录审核结论</h3>
+          <p id="decisionHelp"></p>
+
+          <label class="form-field">
+            <span>审核人</span>
+            <input id="reviewerInput" type="text" value="界面人工审核">
+          </label>
+          <label class="form-field">
+            <span>审核说明</span>
+            <textarea id="reviewNote" placeholder="通过说明或需要修改的具体问题"></textarea>
+          </label>
+
+          <div id="decisionActions" class="decision-actions">
+            <button id="approveBtn" class="primary-btn" type="button">审核通过</button>
+            <button id="requestChangesBtn" class="danger-btn" type="button">要求修改</button>
+            <button id="pendingBtn" class="quiet-btn" type="button">暂不决定</button>
+          </div>
+          <div id="readonlyMessage" class="readonly-message hidden"></div>
+        </section>
+
+        <section class="action-panel next-panel">
+          <div class="panel-label">下一步</div>
+          <h3 id="nextStageTitle">启动下一阶段</h3>
+          <p id="nextStageDescription"></p>
+          <div id="prerequisites" class="prerequisites"></div>
+          <button id="copyPromptBtn" class="copy-prompt-btn" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span>复制启动提示词</span>
+          </button>
+          <details class="prompt-details">
+            <summary>预览提示词</summary>
+            <pre id="promptPreview"></pre>
+          </details>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <dialog id="connectionDialog" class="sheet-dialog" aria-labelledby="connectionTitle">
+    <form method="dialog" class="dialog-shell">
+      <div class="dialog-head">
+        <div>
+          <span class="eyebrow">数据连接</span>
+          <h2 id="connectionTitle">连接课程仓库</h2>
+        </div>
+        <button class="icon-btn" value="cancel" aria-label="关闭" title="关闭">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <p>选择仓库根目录可以读取状态文件和各阶段产物，并把审核结果保存回原文件。</p>
+      <div class="dialog-actions">
+        <button id="pickRepoBtn" class="primary-btn" value="cancel" type="button">选择仓库根目录</button>
+        <button id="pickStatusBtn" class="quiet-btn" value="cancel" type="button">仅选择状态文件</button>
+      </div>
+      <input id="statusFileInput" type="file" accept=".json,application/json" hidden>
+    </form>
+  </dialog>
+
+  <dialog id="moreDialog" class="sheet-dialog" aria-labelledby="moreTitle">
+    <form method="dialog" class="dialog-shell wide-dialog">
+      <div class="dialog-head">
+        <div><span class="eyebrow">剧集信息</span><h2 id="moreTitle">协调与原始状态</h2></div>
+        <button class="icon-btn" value="cancel" aria-label="关闭" title="关闭">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="more-grid">
+        <label class="form-field"><span>负责人</span><input id="ownerInput" type="text"></label>
+        <label class="form-field"><span>目标日期</span><input id="targetDateInput" type="date"></label>
+        <label class="form-field full"><span>协调备注</span><textarea id="coordinationNotes"></textarea></label>
+      </div>
+      <details class="raw-details"><summary>查看当前状态 JSON</summary><pre id="rawJson"></pre></details>
+      <div class="dialog-actions end">
+        <button id="downloadBtn" class="quiet-btn" value="cancel" type="button">下载状态文件</button>
+        <button id="saveCoordinationBtn" class="primary-btn" value="cancel" type="button">保存协调信息</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <script src="workflow-definition.js"></script>
+  <script src="workbench.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+{
+  "schemaVersion": "coursewebvideo/episode-production-status/v1",
+  "episodeId": "episode-47",
+  "title": "企业节点的五项核心功能",
+  "summary": {
+    "status": "not-started",
+    "currentStage": "continuous-narration",
+    "nextAction": "推进阶段: 连续口播",
+    "blockers": [],
+    "approvalGaps": []
+  },
+  "observations": {
+    "taskPackage": {
+      "status": "present",
+      "path": "narration-pipeline/episodes/module-5-node-construction-operation/episode-47-enterprise-node-five-core-functions-task-package.md",
+      "sha256": "13e24ccaa588f2fabe3faa49ba2b77fd9e42960af392fa929c74f8d245ce6e9e",
+      "failures": []
+    },
+    "approvedNarration": {
+      "status": "missing",
+      "path": "player/episodes/episode-47/inputs/approved-spoken-text.txt",
+      "failures": []
+    },
+    "aPage": {
+      "status": "missing",
+      "path": "player/episodes/episode-47/inputs/episode-47-a-page.json",
+      "failures": []
+    },
+    "visualRough": {
+      "status": "missing",
+      "path": "player/episodes/episode-47/inputs/episode-47-visual-rough.md",
+      "failures": []
+    },
+    "player": {
+      "projectPath": "player/episodes/episode-47/project.json",
+      "status": "planned",
+      "chaptersCompleted": 0,
+      "chaptersTotal": 0,
+      "current": null,
+      "entrypointPresent": false,
+      "sourceChapterCount": 0
+    },
+    "audio": {
+      "segmentsPath": "player/episodes/episode-47/audio-segments.json",
+      "status": "not-extracted",
+      "segmentCount": 0,
+      "fileCount": 0,
+      "missingCount": 0,
+      "source": null,
+      "ttsProvider": null
+    },
+    "delivery": {
+      "recording": {
+        "status": "not-observed",
+        "paths": []
+      },
+      "finalVideo": {
+        "status": "not-observed",
+        "paths": []
+      }
+    }
+  },
+  "approvals": {
+    "narration": {
+      "status": "unrecorded",
+      "decidedAt": null,
+      "decidedBy": null,
+      "evidence": null,
+      "note": null
+    },
+    "visualRough": {
+      "status": "unrecorded",
+      "decidedAt": null,
+      "decidedBy": null,
+      "evidence": null,
+      "note": null
+    },
+    "checkpointPlan": {
+      "status": "unrecorded",
+      "decidedAt": null,
+      "decidedBy": null,
+      "evidence": null,
+      "note": null
+    },
+    "firstChapter": {
+      "status": "unrecorded",
+      "decidedAt": null,
+      "decidedBy": null,
+      "evidence": null,
+      "note": null
+    },
+    "checkpointAudio": {
+      "status": "unrecorded",
+      "decidedAt": null,
+      "decidedBy": null,
+      "evidence": null,
+      "note": null
+    },
+    "finalDelivery": {
+      "status": "unrecorded",
+      "decidedAt": null,
+      "decidedBy": null,
+      "evidence": null,
+      "note": null
+    }
+  },
+  "coordination": {
+    "owner": null,
+    "targetDate": null,
+    "blockers": [],
+    "notes": "",
+    "externalArtifacts": []
+  },
+  "stages": [
+    {
+      "id": "freeze-task-package",
+      "name": "冻结任务包",
+      "status": "complete"
+    },
+    {
+      "id": "continuous-narration",
+      "name": "连续口播",
+      "status": "not-started"
+    },
+    {
+      "id": "approve-narration",
+      "name": "批准口播",
+      "status": "not-started"
+    },
+    {
+      "id": "a-page",
+      "name": "A-page",
+      "status": "not-started"
+    },
+    {
+      "id": "compile-trace",
+      "name": "编译追踪",
+      "status": "not-started"
+    },
+    {
+      "id": "validate-a-page",
+      "name": "A-page 验证",
+      "status": "not-started"
+    },
+    {
+      "id": "visual-rough",
+      "name": "Visual rough",
+      "status": "not-started"
+    },
+    {
+      "id": "player-phase-1",
+      "name": "Player Phase 1",
+      "status": "not-started"
+    },
+    {
+      "id": "checkpoint-plan",
+      "name": "Checkpoint Plan",
+      "status": "not-started"
+    },
+    {
+      "id": "chapter-handoff",
+      "name": "单章 handoff",
+      "status": "not-started"
+    },
+    {
+      "id": "chapter-production",
+      "name": "章节制作",
+      "status": "not-started"
+    },
+    {
+      "id": "chapter-acceptance",
+      "name": "后续章节与验收",
+      "status": "not-started"
+    },
+    {
+      "id": "audio",
+      "name": "音频",
+      "status": "not-started"
+    },
+    {
+      "id": "recording-delivery",
+      "name": "录屏、后期与成片验收",
+      "status": "not-started"
+    }
+  ],
+  "updatedAt": "2026-09-03",
+  "updatedBy": "production-status sync"
+}

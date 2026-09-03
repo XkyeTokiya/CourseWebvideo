@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "coursewebvideo/episode-production-status/v1",
+  "episodeId": "episode-05",
+  "title": "工业互联网标识：为什么“私码”难以跨企业",
+  "summary": {
+    "status": "awaiting-approval",
+    "currentStage": "approve-narration",
+    "nextAction": "补齐人工审批记录: narration",
+    "blockers": [],
+    "approvalGaps": [
+      "narration"
+    ]
+  },
+  "observations": {
+    "taskPackage": {
+      "status": "present",
+      "path": "narration-pipeline/episodes/module-1-system-cognition/episode-05-industrial-internet-identifier-private-code-task-package.md",
+      "sha256": "f1cb88ab6e56f8730e186ddd50968242d19277fc02d45d5d526f78c0e741941b",
+      "failures": []
+    },
+    "approvedNarration": {
+      "status": "present",
+      "path": "player/episodes/episode-05/inputs/approved-spoken-text.txt",
+      "sha256": "c4ca331e78b75ff71b0b435a7e8b927c9d988c49f8ce6d493ada1e5cf61a55bd",
+      "failures": []
+    },
+    "aPage": {
+      "status": "valid",
+      "path": "player/episodes/episode-05/inputs/episode-05-a-page.json",
+      "sha256": "f6014172649f8c889b0772fafd2807df345c24a83899cab16d16486da964520a",
+      "failures": []
+    },
+    "visualRough": {
+      "status": "missing",
+      "path": "player/episodes/episode-05/inputs/episode-05-visual-rough.md",
+      "failures": []
+    },
+    "player": {
+      "projectPath": "player/episodes/episode-05/project.json",
+      "status": "planned",
+      "chaptersCompleted": 0,
+      "chaptersTotal": 0,
+      "current": null,
+      "entrypointPresent": false,
+      "sourceChapterCount": 0
+    },
+    "audio": {
+      "segmentsPath": "player/episodes/episode-05/audio-segments.json",
+      "status": "not-extracted",
+      "segmentCount": 0,
+      "fileCount": 0,
+      "missingCount": 0,
+      "source": null,
+      "ttsProvider": null
+    },
+    "delivery": {
+      "recording": {
+        "status": "not-observed",
+        "paths": []
+      },
+      "finalVideo": {
+        "status": "not-observed",
+        "paths": []
+      }
+    }
+  },
+  "approvals": {
+    "narration": {
+      "status": "unrecorded",
+      "decidedAt": null,
+      "decidedBy": null,
+      "evidence": null,
+      "note": null
+    },
+    "visualRough": {
+      "status": "unrecorded",
+      "decidedAt": null,
+      "decidedBy": null,
+      "evidence": null,
+      "note": null
+    },
+    "checkpointPlan": {
+      "status": "unrecorded",
+      "decidedAt": null,
+      "decidedBy": null,
+      "evidence": null,
+      "note": null
+    },
+    "firstChapter": {
+      "status": "unrecorded",
+      "decidedAt": null,
+      "decidedBy": null,
+      "evidence": null,
+      "note": null
+    },
+    "checkpointAudio": {
+      "status": "unrecorded",
+      "decidedAt": null,
+      "decidedBy": null,
+      "evidence": null,
+      "note": null
+    },
+    "finalDelivery": {
+      "status": "unrecorded",
+      "decidedAt": null,
+      "decidedBy": null,
+      "evidence": null,
+      "note": null
+    }
+  },
+  "coordination": {
+    "owner": null,
+    "targetDate": null,
+    "blockers": [],
+    "notes": "",
+    "externalArtifacts": []
+  },
+  "stages": [
+    {
+      "id": "freeze-task-package",
+      "name": "冻结任务包",
+      "status": "complete"
+    },
+    {
+      "id": "continuous-narration",
+      "name": "连续口播",
+      "status": "complete"
+    },
+    {
+      "id": "approve-narration",
+      "name": "批准口播",
+      "status": "awaiting-approval"
+    },
+    {
+      "id": "a-page",
+      "name": "A-page",
+      "status": "complete"
+    },
+    {
+      "id": "compile-trace",
+      "name": "编译追踪",
+      "status": "complete"
+    },
+    {
+      "id": "validate-a-page",
+      "name": "A-page 验证",
+      "status": "complete"
+    },
+    {
+      "id": "visual-rough",
+      "name": "Visual rough",
+      "status": "not-started"
+    },
+    {
+      "id": "player-phase-1",
+      "name": "Player Phase 1",
+      "status": "not-started"
+    },
+    {
+      "id": "checkpoint-plan",
+      "name": "Checkpoint Plan",
+      "status": "not-started"
+    },
+    {
+      "id": "chapter-handoff",
+      "name": "单章 handoff",
+      "status": "not-started"
+    },
+    {
+      "id": "chapter-production",
+      "name": "章节制作",
+      "status": "not-started"
+    },
+    {
+      "id": "chapter-acceptance",
+      "name": "后续章节与验收",
+      "status": "not-started"
+    },
+    {
+      "id": "audio",
+      "name": "音频",
+      "status": "not-started"
+    },
+    {
+      "id": "recording-delivery",
+      "name": "录屏、后期与成片验收",
+      "status": "not-started"
+    }
+  ],
+  "updatedAt": "2026-09-03",
+  "updatedBy": "界面人工审核",
+  "stageReviews": {
+    "freeze-task-package": {
+      "status": "approved",
+      "reviewedAt": "2026-09-03T15:18:11.478Z",
+      "reviewedBy": "界面人工审核",
+      "evidence": "narration-pipeline/episodes/module-1-system-cognition/episode-05-industrial-internet-identifier-private-code-task-package.md",
+      "note": null
+    },
+    "continuous-narration": {
+      "status": "approved",
+      "reviewedAt": "2026-09-03T15:18:17.711Z",
+      "reviewedBy": "界面人工审核",
+      "evidence": "player/episodes/episode-05/inputs/approved-spoken-text.txt",
+      "note": null
+    }
+  }
+}

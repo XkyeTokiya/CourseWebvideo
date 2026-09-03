@@ -1,4 +1,6 @@
 .tmp/
+.playwright-cli/
+output/
 player/node_modules/
 player/.pnpm-store/
 player/dist/

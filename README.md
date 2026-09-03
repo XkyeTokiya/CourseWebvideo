@@ -109,3 +109,26 @@ pnpm courseplay:handoff -- --help
 - `.handoffs/` 是派生缓存，不进入 Git。
 - 音频合成前必须先确认分段文本和是否合成。
 - 生产媒体按 `dist/media/episodes/<episode-id>/<kind>/` 隔离，禁止回退为 `dist/assets/` 平铺；规则见 `player/docs/media-build-layout.md`。
+
+## 单集总状态控制面
+
+`production-status/episodes/<episode-id>.json` 是跨上游、Player、音频和最终交付的单集总状态；`player/episodes/<episode-id>/project.json` 仍只负责 Player 下游章节状态，不能替代总状态。
+
+总状态分为三类信息：
+
+- `observations`：由磁盘事实同步的文件、验证结果、章节和音频数量；工具可以更新。
+- `approvals`：人工门禁记录，默认是 `unrecorded`；文件存在或 Player `ready` 都不能自动变成 `approved`。
+- `coordination`：负责人、目标日期、阻塞事项和外部录屏/成片引用。
+
+常用命令从仓库根目录执行：
+
+```powershell
+node tools/production-status.mjs init
+node tools/production-status.mjs sync --episode episode-01
+node tools/production-status.mjs check
+node tools/production-status.mjs report
+```
+
+`sync` 会保留已有的 `approvals` 和 `coordination`，只刷新可观测事实。人工审批应直接维护对应 episode JSON 的 `approvals` 对象，并填写 `decidedAt`、`decidedBy`、`evidence` 和 `note`。录屏或成片不在仓库时，不要伪造路径；可在 `coordination.externalArtifacts` 中登记真实外部证据。
+
+状态推导规则：存在阻塞或验证失败为 `blocked`；存在待人工门禁为 `awaiting-approval`；最终视频已登记且 `finalDelivery` 已批准才是 `delivered`。因此总状态不会把下游局部完成误认为整期交付完成。
