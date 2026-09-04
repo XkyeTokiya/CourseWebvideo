@@ -33,6 +33,20 @@ test('local observations match known episodes', () => {
   assert.notEqual(ep35.summary.status, 'delivered');
 });
 
+test('scan separates production stage, automation health, and owner decisions', () => {
+  const episode04 = JSON.parse(fs.readFileSync(path.join(dir, 'episode-04.json'), 'utf8'));
+  const episode10 = JSON.parse(fs.readFileSync(path.join(dir, 'episode-10.json'), 'utf8'));
+  const episode05 = JSON.parse(fs.readFileSync(path.join(dir, 'episode-05.json'), 'utf8'));
+  assert.equal(episode04.readiness.state, 'blocked');
+  assert.match(episode04.readiness.reasons.join('\n'), /缺少 21 个音频文件/);
+  assert.equal(episode10.readiness.state, 'not-started');
+  assert.equal(episode10.automation.status, 'passed');
+  assert.equal(episode05.readiness.humanStatus, 'needs-decision');
+  assert.equal(episode05.readiness.automationStatus, 'failed');
+  assert.equal(episode05.stages.length, 14);
+  assert.ok(episode05.stages.every(stage => 'health' in stage && 'canAdvance' in stage));
+});
+
 test('status index covers exactly the persisted episode set', async () => {
   const port = 18000 + (process.pid % 1000);
   const server = spawn(process.execPath, ['tools/production-status-server.mjs', '--port', String(port)], { cwd: root, stdio: 'ignore' });

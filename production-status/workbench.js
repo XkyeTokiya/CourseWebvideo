@@ -5,8 +5,9 @@
   const stageMap = new Map(workflow.stages.map(stage => [stage.id, stage]));
   const stateMeta = {
     'not-started': ['未开始', 'neutral'], 'in-progress': ['进行中', 'in-progress'],
+    'needs-scan': ['待扫描', 'awaiting-approval'], 'needs-owner': ['待负责人', 'awaiting-approval'], ready: ['可推进', 'complete'], complete: ['已完成', 'complete'], delivered: ['已交付', 'complete'],
     'awaiting-approval': ['待审批', 'awaiting-approval'], blocked: ['阻塞', 'blocked'],
-    complete: ['完成', 'complete'], 'not-required': ['无需', 'neutral']
+    'not-required': ['无需', 'neutral']
   };
   const artifactMeta = {
     missing: ['缺失', 'danger'], invalid: ['验证失败', 'danger'], draft: ['草稿', 'warn'],
@@ -34,11 +35,11 @@
   const $ = selector => document.querySelector(selector);
   const dom = {
     loading: $('#loadingScreen'), app: $('#app'), episodeLabel: $('#episodeLabel'), fileLabel: $('#fileLabel'),
-    updatedLabel: $('#updatedLabel'), episodeTitle: $('#episodeTitle'), sourceBadge: $('#sourceBadge'), alertStrip: $('#alertStrip'),
+    updatedLabel: $('#updatedLabel'), readinessBadge: $('#readinessBadge'), episodeTitle: $('#episodeTitle'), sourceBadge: $('#sourceBadge'), alertStrip: $('#alertStrip'),
     alertSummary: $('#alertSummary'), stageNav: $('#stageNav'), stageSelect: $('#stageSelect'), progressLabel: $('#progressLabel'),
     progressBar: $('#progressBar'), episodePosition: $('#episodePosition'), prevEpisode: $('#prevEpisode'), nextEpisode: $('#nextEpisode'),
     stageNumber: $('#stageNumber'), stageGroup: $('#stageGroup'), stageState: $('#stageState'), stageTitle: $('#stageTitle'),
-    stagePurpose: $('#stagePurpose'), stageReviewBadge: $('#stageReviewBadge'), stageAlerts: $('#stageAlerts'),
+    stagePurpose: $('#stagePurpose'), stageReviewBadge: $('#stageReviewBadge'), stageAlerts: $('#stageAlerts'), automationSummary: $('#automationSummary'), automationList: $('#automationList'),
     stageAlertCount: $('#stageAlertCount'), stageAlertList: $('#stageAlertList'), artifactSummary: $('#artifactSummary'),
     artifactList: $('#artifactList'), previewSection: $('#previewSection'), previewTitle: $('#previewTitle'),
     previewMeta: $('#previewMeta'), previewContent: $('#previewContent'), checklist: $('#checklist'), checkProgress: $('#checkProgress'),
@@ -258,12 +259,27 @@
     dom.fileLabel.textContent = `${doc.episodeId}.json`;
     dom.updatedLabel.textContent = `更新于 ${doc.updatedAt || '未知'} · ${doc.updatedBy || '未知'}`;
     dom.episodeTitle.textContent = doc.title;
+    const readiness = doc.readiness?.state || doc.summary?.status || 'not-started';
+    const readinessInfo = stateMeta[readiness] || stateMeta['not-started'];
+    dom.readinessBadge.textContent = readinessInfo[0];
+    dom.readinessBadge.className = `state-pill ${readinessInfo[1]}`;
     const source = appState.sourceMode === 'directory' ? ['可写 · 仓库目录', 'writable'] : appState.sourceMode === 'file' ? ['单文件 · 下载保存', 'readonly'] : ['在线 · 下载保存', 'readonly'];
     dom.sourceBadge.className = `source-badge ${source[1]}`;
     dom.sourceBadge.querySelector('span').textContent = source[0];
     const alerts = allAlerts();
     dom.alertStrip.classList.toggle('hidden', alerts.length === 0);
     dom.alertSummary.textContent = alerts.length ? `${alerts.length} 项跨阶段事实需要确认` : '';
+  }
+  function renderAutomation() {
+    const automation = appState.doc.automation;
+    if (!automation?.ranAt) {
+      dom.automationSummary.textContent = '尚未扫描';
+      dom.automationList.innerHTML = '<div class="issue-item">请在仓库根目录手动运行 <code>node tools/production-status.mjs scan</code>。</div>';
+      return;
+    }
+    const failed = automation.failures || [];
+    dom.automationSummary.textContent = `${automation.status === 'failed' ? '失败' : '通过'} · ${new Date(automation.ranAt).toLocaleString()}`;
+    dom.automationList.innerHTML = [...failed.map(item => `<div class="issue-item">${escapeHtml(item)}</div>`), ...(automation.warnings || []).map(item => `<div class="issue-item warning-item">${escapeHtml(item)}</div>`)].join('') || '<div class="issue-item success-item">所有已执行机械检查通过。</div>';
   }
   function renderStageNav() {
     const groups = [...new Set(workflow.stages.map(stage => stage.group))];
@@ -422,7 +438,7 @@
     dom.rawJson.textContent = serialize(appState.doc);
   }
   function renderAll() {
-    renderHeader(); renderStageNav(); renderEpisodeSwitcher(); renderStageHero(); renderAlerts();
+    renderHeader(); renderStageNav(); renderEpisodeSwitcher(); renderStageHero(); renderAlerts(); renderAutomation();
     appState.artifacts = currentStage().artifacts.map(resolveArtifact);
     loadChecklist(); renderArtifacts(); renderChecklist(); renderDecision(); renderNextStage(); renderMore();
     dom.loading.classList.add('hidden'); dom.app.classList.remove('hidden');

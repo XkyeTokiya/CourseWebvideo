@@ -51,3 +51,5 @@ cd D:\00-workspace\005-coursewebvideo\player
 - `summary` 与 `stages` 是推导结果；最终交付必须同时具备最终视频观测和 `approvals.finalDelivery.status=approved`。
 
 从仓库根目录运行 `node tools/production-status.mjs check` 校验 51 期状态，运行 `node tools/production-status.mjs report` 查看全局汇总。同步工具必须保留人工审批与协调字段，不得覆盖它们。
+
+手动触发全量机械验证使用 `node tools/production-status.mjs scan`；该命令调用 Player 的 `episode:check`，并记录 A-page、Visual rough、音频文件、输入 SHA-256、命令输出与扫描时间。`scan` 只写入 `automation`、`readiness` 和推导状态，不会写入人工审批结论。需要同时执行 Player 的 `typecheck` 与 `lint` 时使用 `node tools/production-status.mjs scan --build`。

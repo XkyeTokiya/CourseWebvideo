@@ -9,7 +9,10 @@
     "blockers": [
       "音频缺少 21 个文件"
     ],
-    "approvalGaps": []
+    "approvalGaps": [],
+    "productionStatus": "in-progress",
+    "automationStatus": "failed",
+    "humanStatus": "none"
   },
   "observations": {
     "taskPackage": {
@@ -132,76 +135,120 @@
     {
       "id": "freeze-task-package",
       "name": "冻结任务包",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "continuous-narration",
       "name": "连续口播",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "approve-narration",
       "name": "批准口播",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "a-page",
       "name": "A-page",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "compile-trace",
       "name": "编译追踪",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "validate-a-page",
       "name": "A-page 验证",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "visual-rough",
       "name": "Visual rough",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "player-phase-1",
       "name": "Player Phase 1",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "checkpoint-plan",
       "name": "Checkpoint Plan",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "chapter-handoff",
       "name": "单章 handoff",
-      "status": "not-required"
+      "status": "not-required",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "chapter-production",
       "name": "章节制作",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "chapter-acceptance",
       "name": "后续章节与验收",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "audio",
       "name": "音频",
-      "status": "in-progress"
+      "status": "in-progress",
+      "health": "blocked",
+      "reasons": [
+        "音频缺少 21 个文件"
+      ],
+      "canAdvance": false
     },
     {
       "id": "recording-delivery",
       "name": "录屏、后期与成片验收",
-      "status": "not-started"
+      "status": "not-started",
+      "health": "not-run",
+      "reasons": [],
+      "canAdvance": false
     }
   ],
   "updatedAt": "2026-09-04",
-  "updatedBy": "界面人工审核",
+  "updatedBy": "production-status scan",
   "stageReviews": {
     "continuous-narration": {
       "status": "approved",
@@ -252,5 +299,94 @@
       "evidence": "player/episodes/episode-04/.handoffs/",
       "note": null
     }
+  },
+  "automation": {
+    "status": "failed",
+    "ranAt": "2026-09-04T16:25:20.008Z",
+    "runner": "production-status scan",
+    "checks": {
+      "task-package": {
+        "status": "passed",
+        "detail": "任务包存在且已计算指纹"
+      },
+      "approved-narration": {
+        "status": "passed",
+        "detail": "批准口播已发布"
+      },
+      "a-page": {
+        "status": "passed",
+        "detail": "A-page 报告通过"
+      },
+      "visual-rough": {
+        "status": "passed",
+        "detail": "Visual rough 状态为 draft"
+      },
+      "visual-rough-validator": {
+        "status": "passed",
+        "detail": "上游 visual rough validator 通过"
+      },
+      "a-page-validator": {
+        "status": "failed",
+        "detail": "FAIL TRACE_RESOLUTION_INCOMPLETE:coverage[0].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[1].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[3]:responsibilities_resolved"
+      },
+      "player-contract": {
+        "status": "passed",
+        "detail": "episode:check 通过"
+      },
+      "audio-files": {
+        "status": "failed",
+        "detail": "缺少 21 个音频文件"
+      }
+    },
+    "failures": [
+      "a-page-validator: FAIL TRACE_RESOLUTION_INCOMPLETE:coverage[0].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[1].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[3]:responsibilities_resolved",
+      "audio-files: 缺少 21 个音频文件"
+    ],
+    "warnings": [],
+    "sourceHashes": {
+      "taskPackage": "45037ddeed8e77b793aa53ad61f76beef5eafc2409ef7dedcccabfa335fd6909",
+      "approvedNarration": "0871e92994bac81a5f070db7c0994dab5bb7c43249747f294c6b3310506ba813",
+      "aPage": "654469dcde1734bc82de05dca4388f357f4b45860188a1c03115a625baa3b1d0",
+      "visualRough": "b14a8f2b51a5b6acec40d7b989a238eb7a21223e7ccbb8a667778a50de5d431e",
+      "playerScript": "a17fba64b7ca1cb65849deebe4c23e43da1fd4c192b2cbe8f86097a6d485f6e6",
+      "playerOutline": "b5593d9745928b634998bb7fe7b749c9e65c3e3dc5e13a7cdb058b174f2c997d"
+    },
+    "commands": [
+      {
+        "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\scripts\\verify_visual_rough.py --a-page D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-04\\inputs\\episode-04-a-page.json --visual-rough D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-04\\inputs\\episode-04-visual-rough.md --recipes-dir D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\references\\page-recipes --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-04-visual-rough-validation.json",
+        "exitCode": 0,
+        "durationMs": 100,
+        "stdout": "PASS visual-rough-v3: source binding, recipes, screen slots, images, and logic limits are valid",
+        "stderr": "",
+        "timedOut": false
+      },
+      {
+        "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\rewrite-course-narration\\scripts\\verify_compilation.py --validation-profile a-page-v6 --task-package D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\episodes\\module-1-system-cognition\\episode-04-digital-transformation-chain-task-package.md --compile-trace D:\\00-workspace\\005-coursewebvideo\\.tmp\\narration-pipeline\\2026-08-31-ep04-task-package-screen-source\\episode-04\\episode-04-b-to-a-compile-trace.json --approved-text D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-04\\inputs\\approved-spoken-text.txt --compiled-json D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-04\\inputs\\episode-04-a-page.json --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-04-a-page-validation.json",
+        "exitCode": 1,
+        "durationMs": 98,
+        "stdout": "FAIL TRACE_RESOLUTION_INCOMPLETE:coverage[0].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[1].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[3]:responsibilities_resolved",
+        "stderr": "",
+        "timedOut": false
+      },
+      {
+        "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-04",
+        "exitCode": 0,
+        "durationMs": 110,
+        "stdout": "episode:check 通过：1 个实例，0 个警告",
+        "stderr": "",
+        "timedOut": false
+      }
+    ]
+  },
+  "readiness": {
+    "state": "blocked",
+    "canAdvance": false,
+    "reasons": [
+      "a-page-validator: FAIL TRACE_RESOLUTION_INCOMPLETE:coverage[0].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[1].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[3]:responsibilities_resolved",
+      "audio-files: 缺少 21 个音频文件"
+    ],
+    "productionStatus": "in-progress",
+    "automationStatus": "failed",
+    "humanStatus": "none"
   }
 }

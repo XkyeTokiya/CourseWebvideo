@@ -20,10 +20,11 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
         </button>
         <div class="episode-heading">
-          <div class="episode-meta">
-            <span id="episodeLabel" class="episode-chip">第 ? 集</span>
-            <span id="fileLabel" class="mono">episode-??.json</span>
-            <span id="updatedLabel"></span>
+            <div class="episode-meta">
+              <span id="episodeLabel" class="episode-chip">第 ? 集</span>
+              <span id="fileLabel" class="mono">episode-??.json</span>
+              <span id="readinessBadge" class="state-pill">待扫描</span>
+              <span id="updatedLabel"></span>
           </div>
           <h1 id="episodeTitle">剧集生产工作台</h1>
         </div>
@@ -98,6 +99,14 @@
             <span id="stageAlertCount" class="count-badge">0</span>
           </div>
           <div id="stageAlertList" class="issue-list"></div>
+        </section>
+
+        <section class="content-section automation-section">
+          <div class="section-title">
+            <div><span class="eyebrow">机械验证</span><h3>最近一次扫描</h3></div>
+            <span id="automationSummary" class="section-summary">尚未扫描</span>
+          </div>
+          <div id="automationList" class="issue-list"></div>
         </section>
 
         <section class="content-section">

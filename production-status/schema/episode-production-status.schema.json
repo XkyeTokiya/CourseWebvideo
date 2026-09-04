@@ -18,7 +18,10 @@
         "currentStage": { "type": "string" },
         "nextAction": { "type": "string" },
         "blockers": { "type": "array", "items": { "type": "string" } },
-        "approvalGaps": { "type": "array", "items": { "type": "string" } }
+        "approvalGaps": { "type": "array", "items": { "type": "string" } },
+        "productionStatus": { "enum": ["not-started", "in-progress", "complete"] },
+        "automationStatus": { "enum": ["not-run", "passed", "failed", "stale"] },
+        "humanStatus": { "enum": ["none", "needs-decision", "paused", "delivery-confirmation"] }
       }
     },
     "observations": { "$ref": "#/$defs/observations" },
@@ -49,9 +52,12 @@
         "targetDate": { "type": ["string", "null"], "format": "date" },
         "blockers": { "type": "array", "items": { "type": "string" } },
         "notes": { "type": "string" },
+        "paused": { "type": "boolean" },
         "externalArtifacts": { "type": "array", "items": { "$ref": "#/$defs/artifact" } }
       }
     },
+    "automation": { "$ref": "#/$defs/automation" },
+    "readiness": { "$ref": "#/$defs/readiness" },
     "stages": { "type": "array", "minItems": 14, "items": { "$ref": "#/$defs/stage" } },
     "updatedAt": { "type": "string", "format": "date" },
     "updatedBy": { "type": "string", "minLength": 1 }
@@ -133,7 +139,36 @@
       "required": ["id", "name", "status"],
       "properties": {
         "id": { "type": "string" }, "name": { "type": "string" },
-        "status": { "enum": ["not-started", "in-progress", "awaiting-approval", "blocked", "complete", "not-required"] }
+        "status": { "enum": ["not-started", "in-progress", "awaiting-approval", "blocked", "complete", "not-required"] },
+        "health": { "enum": ["not-run", "passed", "failed", "blocked"] },
+        "reasons": { "type": "array", "items": { "type": "string" } },
+        "canAdvance": { "type": "boolean" }
+      }
+    },
+    "automation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "ranAt", "runner", "checks", "failures", "warnings", "sourceHashes", "commands"],
+      "properties": {
+        "status": { "enum": ["not-run", "passed", "failed", "stale"] },
+        "ranAt": { "type": ["string", "null"], "format": "date-time" },
+        "runner": { "type": ["string", "null"] },
+        "checks": { "type": "object", "additionalProperties": { "type": "object" } },
+        "failures": { "type": "array", "items": { "type": "string" } },
+        "warnings": { "type": "array", "items": { "type": "string" } },
+        "sourceHashes": { "type": "object", "additionalProperties": { "type": "string", "pattern": "^[a-f0-9]{64}$" } },
+        "commands": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "readiness": {
+      "type": "object", "additionalProperties": false,
+      "required": ["state", "canAdvance", "reasons", "productionStatus", "automationStatus", "humanStatus"],
+      "properties": {
+        "state": { "enum": ["not-started", "needs-scan", "blocked", "needs-owner", "in-progress", "ready", "complete", "delivered"] },
+        "canAdvance": { "type": "boolean" },
+        "reasons": { "type": "array", "items": { "type": "string" } },
+        "productionStatus": { "enum": ["not-started", "in-progress", "complete"] },
+        "automationStatus": { "enum": ["not-run", "passed", "failed", "stale"] },
+        "humanStatus": { "enum": ["none", "needs-decision", "paused", "delivery-confirmation"] }
       }
     },
     "stageReview": {

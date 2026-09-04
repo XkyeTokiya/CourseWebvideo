@@ -7,7 +7,10 @@
     "currentStage": "continuous-narration",
     "nextAction": "推进阶段: 连续口播",
     "blockers": [],
-    "approvalGaps": []
+    "approvalGaps": [],
+    "productionStatus": "not-started",
+    "automationStatus": "passed",
+    "humanStatus": "none"
   },
   "observations": {
     "taskPackage": {
@@ -125,74 +128,172 @@
     {
       "id": "freeze-task-package",
       "name": "冻结任务包",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "continuous-narration",
       "name": "连续口播",
-      "status": "not-started"
+      "status": "not-started",
+      "health": "not-run",
+      "reasons": [],
+      "canAdvance": false
     },
     {
       "id": "approve-narration",
       "name": "批准口播",
-      "status": "not-started"
+      "status": "not-started",
+      "health": "not-run",
+      "reasons": [],
+      "canAdvance": false
     },
     {
       "id": "a-page",
       "name": "A-page",
-      "status": "not-started"
+      "status": "not-started",
+      "health": "not-run",
+      "reasons": [],
+      "canAdvance": false
     },
     {
       "id": "compile-trace",
       "name": "编译追踪",
-      "status": "not-started"
+      "status": "not-started",
+      "health": "not-run",
+      "reasons": [],
+      "canAdvance": false
     },
     {
       "id": "validate-a-page",
       "name": "A-page 验证",
-      "status": "not-started"
+      "status": "not-started",
+      "health": "not-run",
+      "reasons": [],
+      "canAdvance": false
     },
     {
       "id": "visual-rough",
       "name": "Visual rough",
-      "status": "not-started"
+      "status": "not-started",
+      "health": "not-run",
+      "reasons": [],
+      "canAdvance": false
     },
     {
       "id": "player-phase-1",
       "name": "Player Phase 1",
-      "status": "not-started"
+      "status": "not-started",
+      "health": "not-run",
+      "reasons": [],
+      "canAdvance": false
     },
     {
       "id": "checkpoint-plan",
       "name": "Checkpoint Plan",
-      "status": "not-started"
+      "status": "not-started",
+      "health": "not-run",
+      "reasons": [],
+      "canAdvance": false
     },
     {
       "id": "chapter-handoff",
       "name": "单章 handoff",
-      "status": "not-required"
+      "status": "not-required",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "chapter-production",
       "name": "章节制作",
-      "status": "not-started"
+      "status": "not-started",
+      "health": "not-run",
+      "reasons": [],
+      "canAdvance": false
     },
     {
       "id": "chapter-acceptance",
       "name": "后续章节与验收",
-      "status": "not-started"
+      "status": "not-started",
+      "health": "not-run",
+      "reasons": [],
+      "canAdvance": false
     },
     {
       "id": "audio",
       "name": "音频",
-      "status": "not-started"
+      "status": "not-started",
+      "health": "not-run",
+      "reasons": [],
+      "canAdvance": false
     },
     {
       "id": "recording-delivery",
       "name": "录屏、后期与成片验收",
-      "status": "not-started"
+      "status": "not-started",
+      "health": "not-run",
+      "reasons": [],
+      "canAdvance": false
     }
   ],
-  "updatedAt": "2026-09-03",
-  "updatedBy": "production-status sync"
+  "updatedAt": "2026-09-04",
+  "updatedBy": "production-status scan",
+  "automation": {
+    "status": "passed",
+    "ranAt": "2026-09-04T16:25:25.944Z",
+    "runner": "production-status scan",
+    "checks": {
+      "task-package": {
+        "status": "passed",
+        "detail": "任务包存在且已计算指纹"
+      },
+      "approved-narration": {
+        "status": "passed",
+        "detail": "尚未发布批准口播"
+      },
+      "a-page": {
+        "status": "passed",
+        "detail": "A-page 尚未进入生产"
+      },
+      "visual-rough": {
+        "status": "passed",
+        "detail": "Visual rough 尚未进入生产"
+      },
+      "player-contract": {
+        "status": "passed",
+        "detail": "episode:check 通过"
+      },
+      "audio-files": {
+        "status": "passed",
+        "detail": "尚未提取音频分段"
+      }
+    },
+    "failures": [],
+    "warnings": [
+      "音频阶段尚未开始"
+    ],
+    "sourceHashes": {
+      "taskPackage": "33a1ececd879e889e40164a08ec8d947310c99b7a32f04b441c6974481cfeac7"
+    },
+    "commands": [
+      {
+        "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-48",
+        "exitCode": 0,
+        "durationMs": 111,
+        "stdout": "episode:check 通过：1 个实例，1 个警告",
+        "stderr": "WARN  episodes/episode-48: planned 实例尚未创建可播放入口",
+        "timedOut": false
+      }
+    ]
+  },
+  "readiness": {
+    "state": "not-started",
+    "canAdvance": false,
+    "reasons": [],
+    "productionStatus": "not-started",
+    "automationStatus": "passed",
+    "humanStatus": "none"
+  }
 }

@@ -1,15 +1,24 @@
 {
   "schemaVersion": "coursewebvideo/episode-production-status/v1",
   "episodeId": "episode-05",
-  "title": "工业互联网标识：为什么“私码”难以跨企业",
+  "title": "对象身份锚点",
   "summary": {
-    "status": "awaiting-approval",
+    "status": "blocked",
     "currentStage": "approve-narration",
     "nextAction": "补齐人工审批记录: narration",
-    "blockers": [],
+    "blockers": [
+      "音频缺少 37 个文件"
+    ],
     "approvalGaps": [
-      "narration"
-    ]
+      "narration",
+      "visualRough",
+      "checkpointPlan",
+      "firstChapter",
+      "checkpointAudio"
+    ],
+    "productionStatus": "in-progress",
+    "automationStatus": "failed",
+    "humanStatus": "needs-decision"
   },
   "observations": {
     "taskPackage": {
@@ -27,40 +36,43 @@
     "aPage": {
       "status": "valid",
       "path": "player/episodes/episode-05/inputs/episode-05-a-page.json",
-      "sha256": "f6014172649f8c889b0772fafd2807df345c24a83899cab16d16486da964520a",
+      "sha256": "e98e5187f47372d90d90400d121f7736a8e59c3fc7bdefba322bc3da79004717",
       "failures": []
     },
     "visualRough": {
-      "status": "missing",
+      "status": "draft",
       "path": "player/episodes/episode-05/inputs/episode-05-visual-rough.md",
+      "sha256": "ce52dfb7a03d5e37cc6c47951affd2c0843d27a1b85e2cdcdad566185d2bcff8",
       "failures": []
     },
     "playerScript": {
-      "status": "missing",
+      "status": "present",
       "path": "player/episodes/episode-05/script.md",
+      "sha256": "40f7f6a48d8861f7552010bfbd3447fb17f4389f47de72dc1aa3cfa4cf80f75e",
       "failures": []
     },
     "playerOutline": {
-      "status": "missing",
+      "status": "present",
       "path": "player/episodes/episode-05/outline.md",
+      "sha256": "422dc90002072b39d484db67e5edd4cdb41f2cb2b1833f4a2e6fa3b2f06a80fe",
       "failures": []
     },
     "player": {
       "projectPath": "player/episodes/episode-05/project.json",
-      "status": "planned",
-      "chaptersCompleted": 0,
-      "chaptersTotal": 0,
+      "status": "in-progress",
+      "chaptersCompleted": 11,
+      "chaptersTotal": 11,
       "current": null,
-      "entrypointPresent": false,
-      "sourceChapterCount": 0
+      "entrypointPresent": true,
+      "sourceChapterCount": 11
     },
     "audio": {
       "segmentsPath": "player/episodes/episode-05/audio-segments.json",
-      "status": "not-extracted",
-      "segmentCount": 0,
+      "status": "extracted",
+      "segmentCount": 37,
       "fileCount": 0,
-      "missingCount": 0,
-      "source": null,
+      "missingCount": 37,
+      "source": "narrations.ts",
       "ttsProvider": null
     },
     "delivery": {
@@ -129,76 +141,120 @@
     {
       "id": "freeze-task-package",
       "name": "冻结任务包",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "continuous-narration",
       "name": "连续口播",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "approve-narration",
       "name": "批准口播",
-      "status": "awaiting-approval"
+      "status": "awaiting-approval",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": false
     },
     {
       "id": "a-page",
       "name": "A-page",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "compile-trace",
       "name": "编译追踪",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "validate-a-page",
       "name": "A-page 验证",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "visual-rough",
       "name": "Visual rough",
-      "status": "not-started"
+      "status": "awaiting-approval",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": false
     },
     {
       "id": "player-phase-1",
       "name": "Player Phase 1",
-      "status": "not-started"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "checkpoint-plan",
       "name": "Checkpoint Plan",
-      "status": "not-started"
+      "status": "awaiting-approval",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": false
     },
     {
       "id": "chapter-handoff",
       "name": "单章 handoff",
-      "status": "not-required"
+      "status": "not-required",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "chapter-production",
       "name": "章节制作",
-      "status": "not-started"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "chapter-acceptance",
       "name": "后续章节与验收",
-      "status": "not-started"
+      "status": "awaiting-approval",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": false
     },
     {
       "id": "audio",
       "name": "音频",
-      "status": "not-started"
+      "status": "awaiting-approval",
+      "health": "blocked",
+      "reasons": [
+        "音频缺少 37 个文件"
+      ],
+      "canAdvance": false
     },
     {
       "id": "recording-delivery",
       "name": "录屏、后期与成片验收",
-      "status": "not-started"
+      "status": "not-started",
+      "health": "not-run",
+      "reasons": [],
+      "canAdvance": false
     }
   ],
-  "updatedAt": "2026-09-03",
-  "updatedBy": "production-status sync",
+  "updatedAt": "2026-09-04",
+  "updatedBy": "production-status scan",
   "stageReviews": {
     "freeze-task-package": {
       "status": "approved",
@@ -214,5 +270,93 @@
       "evidence": "player/episodes/episode-05/inputs/approved-spoken-text.txt",
       "note": null
     }
+  },
+  "automation": {
+    "status": "failed",
+    "ranAt": "2026-09-04T16:25:20.338Z",
+    "runner": "production-status scan",
+    "checks": {
+      "task-package": {
+        "status": "passed",
+        "detail": "任务包存在且已计算指纹"
+      },
+      "approved-narration": {
+        "status": "passed",
+        "detail": "批准口播已发布"
+      },
+      "a-page": {
+        "status": "passed",
+        "detail": "A-page 报告通过"
+      },
+      "visual-rough": {
+        "status": "passed",
+        "detail": "Visual rough 状态为 draft"
+      },
+      "visual-rough-validator": {
+        "status": "passed",
+        "detail": "上游 visual rough validator 通过"
+      },
+      "a-page-validator": {
+        "status": "passed",
+        "detail": "上游 A-page validator 通过"
+      },
+      "player-contract": {
+        "status": "passed",
+        "detail": "episode:check 通过"
+      },
+      "audio-files": {
+        "status": "failed",
+        "detail": "缺少 37 个音频文件"
+      }
+    },
+    "failures": [
+      "audio-files: 缺少 37 个音频文件"
+    ],
+    "warnings": [],
+    "sourceHashes": {
+      "taskPackage": "f1cb88ab6e56f8730e186ddd50968242d19277fc02d45d5d526f78c0e741941b",
+      "approvedNarration": "c4ca331e78b75ff71b0b435a7e8b927c9d988c49f8ce6d493ada1e5cf61a55bd",
+      "aPage": "e98e5187f47372d90d90400d121f7736a8e59c3fc7bdefba322bc3da79004717",
+      "visualRough": "ce52dfb7a03d5e37cc6c47951affd2c0843d27a1b85e2cdcdad566185d2bcff8",
+      "playerScript": "40f7f6a48d8861f7552010bfbd3447fb17f4389f47de72dc1aa3cfa4cf80f75e",
+      "playerOutline": "422dc90002072b39d484db67e5edd4cdb41f2cb2b1833f4a2e6fa3b2f06a80fe"
+    },
+    "commands": [
+      {
+        "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\scripts\\verify_visual_rough.py --a-page D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-05\\inputs\\episode-05-a-page.json --visual-rough D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-05\\inputs\\episode-05-visual-rough.md --recipes-dir D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\references\\page-recipes --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-05-visual-rough-validation.json",
+        "exitCode": 0,
+        "durationMs": 110,
+        "stdout": "PASS visual-rough-v3: source binding, recipes, screen slots, images, and logic limits are valid",
+        "stderr": "",
+        "timedOut": false
+      },
+      {
+        "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\rewrite-course-narration\\scripts\\verify_compilation.py --validation-profile a-page-v6 --task-package D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\episodes\\module-1-system-cognition\\episode-05-industrial-internet-identifier-private-code-task-package.md --compile-trace D:\\00-workspace\\005-coursewebvideo\\.tmp\\narration-pipeline\\2026-09-04-ep05-a-page-recompile\\episode-05\\episode-05-b-to-a-compile-trace.json --approved-text D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-05\\inputs\\approved-spoken-text.txt --compiled-json D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-05\\inputs\\episode-05-a-page.json --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-05-a-page-validation.json",
+        "exitCode": 0,
+        "durationMs": 100,
+        "stdout": "PASS a-page-v6: A-page semantics, screen contract, Nx, timing, and compile coverage are valid",
+        "stderr": "",
+        "timedOut": false
+      },
+      {
+        "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-05",
+        "exitCode": 0,
+        "durationMs": 112,
+        "stdout": "episode:check 通过：1 个实例，0 个警告",
+        "stderr": "",
+        "timedOut": false
+      }
+    ]
+  },
+  "readiness": {
+    "state": "blocked",
+    "canAdvance": false,
+    "reasons": [
+      "audio-files: 缺少 37 个音频文件",
+      "等待人工决策: narration, visualRough, checkpointPlan, firstChapter, checkpointAudio"
+    ],
+    "productionStatus": "in-progress",
+    "automationStatus": "failed",
+    "humanStatus": "needs-decision"
   }
 }

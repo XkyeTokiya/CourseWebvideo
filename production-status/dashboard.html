@@ -537,23 +537,23 @@
             <div class="field-grid">
               <label class="field">
                 <span>整体状态</span>
-                <select id="editStatus"></select>
+                <select id="editStatus" disabled></select>
               </label>
               <label class="field">
                 <span>当前阶段</span>
-                <select id="editCurrentStage"></select>
+                <select id="editCurrentStage" disabled></select>
               </label>
               <label class="field full">
                 <span>下一步动作</span>
-                <textarea id="editNextAction"></textarea>
+                <textarea id="editNextAction" disabled></textarea>
               </label>
               <label class="field">
                 <span>阻塞项（每行一条）</span>
-                <textarea id="editSummaryBlockers"></textarea>
+                <textarea id="editSummaryBlockers" disabled></textarea>
               </label>
               <label class="field">
                 <span>审批缺口（逗号或换行分隔）</span>
-                <textarea id="editApprovalGaps"></textarea>
+                <textarea id="editApprovalGaps" disabled></textarea>
               </label>
             </div>
           </section>
@@ -651,15 +651,19 @@
 <script src="status-store.js"></script>
 <script>
 const $ = s => document.querySelector(s);
-const SUMMARY_STATUSES = ['not-started','in-progress','awaiting-approval','blocked','delivered'];
+const SUMMARY_STATUSES = ['not-started','needs-scan','in-progress','ready','needs-owner','blocked','complete','delivered'];
 const STAGE_STATUSES = ['not-started','in-progress','awaiting-approval','blocked','complete','not-required'];
 const APPROVAL_STATUSES = ['unrecorded','pending','approved','rejected','not-required'];
 const APPROVAL_KEYS = ['narration','visualRough','checkpointPlan','firstChapter','checkpointAudio','finalDelivery'];
 const SUMMARY_META = {
   'not-started': {label:'未开始', tone:'neutral'},
+  'needs-scan': {label:'待扫描', tone:'warn'},
   'in-progress': {label:'进行中', tone:'info'},
+  'ready': {label:'可推进', tone:'ok'},
+  'needs-owner': {label:'待负责人', tone:'warn'},
   'awaiting-approval': {label:'待审批', tone:'warn'},
   'blocked': {label:'阻塞', tone:'danger'},
+  'complete': {label:'已完成', tone:'ok'},
   'delivered': {label:'已交付', tone:'ok'}
 };
 const STAGE_META = {
@@ -727,11 +731,15 @@ const OBS_DELIVERY_META = {
 };
 const STATUS_PRIORITY = {
   blocked:0,
-  'awaiting-approval':1,
-  'in-progress':2,
-  'not-started':3,
-  delivered:4
+  'needs-scan':1,
+  'needs-owner':2,
+  'in-progress':3,
+  ready:4,
+  'not-started':5,
+  complete:6,
+  delivered:7
 };
+function readinessOf(doc){ return doc.readiness?.state || doc.summary?.status || 'not-started'; }
 
 let docs = [];
 let episodesHandle = null;
@@ -960,16 +968,18 @@ function render(){
   el.grid.classList.toggle('hidden', docs.length === 0);
 }
 function renderKpis(){
-  const counts = Object.fromEntries(SUMMARY_STATUSES.map(s => [s, docs.filter(x => x.doc.summary.status === s).length]));
+  const counts = Object.fromEntries(SUMMARY_STATUSES.map(s => [s, docs.filter(x => readinessOf(x.doc) === s).length]));
   const gaps = docs.reduce((sum,x) => sum + (x.doc.summary.approvalGaps?.length || 0), 0);
   const latest = docs.reduce((max,item) => (item.doc.updatedAt || '') > max ? item.doc.updatedAt : max, '');
   const items = [
     {key:'all', label:'总集数', value:docs.length, foot:latest ? `最近更新 ${latest}` : '尚无更新记录', glow:'rgba(110,123,255,.24)'},
     {key:'delivered', label:'已交付', value:counts.delivered, foot:'最终交付已批准', glow:'rgba(63,182,139,.22)'},
-    {key:'awaiting-approval', label:'待审批', value:counts['awaiting-approval'], foot:'等待人工审批', glow:'rgba(228,174,73,.22)'},
+    {key:'needs-scan', label:'待扫描', value:counts['needs-scan'], foot:'需要手动触发机械扫描', glow:'rgba(228,174,73,.22)'},
+    {key:'needs-owner', label:'待负责人', value:counts['needs-owner'], foot:'仅需少数人工决策', glow:'rgba(228,174,73,.22)'},
     {key:'in-progress', label:'进行中', value:counts['in-progress'], foot:'制作进行中', glow:'rgba(122,134,255,.22)'},
     {key:'not-started', label:'未开始', value:counts['not-started'], foot:'尚未进入制作', glow:'rgba(152,162,179,.2)'},
-    {key:'blocked', label:'阻塞 / 缺口', value:counts.blocked, foot:`${counts.blocked} 项阻塞 · ${gaps} 项审批缺口`, glow:'rgba(241,103,103,.22)'}
+    {key:'ready', label:'可推进', value:counts.ready, foot:'扫描通过且前置条件齐全', glow:'rgba(63,182,139,.22)'},
+    {key:'blocked', label:'阻塞', value:counts.blocked, foot:`${counts.blocked} 项技术或流程阻塞`, glow:'rgba(241,103,103,.22)'}
   ];
   el.kpis.innerHTML = items.map(item => `
     <button class="kpi clickable" data-kpi="${item.key}" data-active="${el.statusFilter.value === item.key || (item.key === 'all' && el.statusFilter.value === 'all')}" style="--kpi-glow:${item.glow}">
@@ -988,8 +998,8 @@ function visibleDocs(){
   const query = el.searchInput.value.trim().toLowerCase();
   const status = el.statusFilter.value;
   let list = docs.filter(({doc}) => {
-    if(status !== 'all' && doc.summary.status !== status) return false;
-    if(el.attentionOnly.checked && doc.summary.status === 'delivered') return false;
+    if(status !== 'all' && readinessOf(doc) !== status) return false;
+    if(el.attentionOnly.checked && readinessOf(doc) === 'delivered') return false;
     if(!query) return true;
     const haystack = [
       doc.episodeId, doc.title, doc.summary.currentStage, doc.summary.nextAction,
@@ -1005,14 +1015,15 @@ function visibleDocs(){
     if(sort === 'episode') return da.episodeId.localeCompare(db.episodeId);
     if(sort === 'progress') return stageProgress(db).done - stageProgress(da).done || da.episodeId.localeCompare(db.episodeId);
     if(sort === 'updated') return (db.updatedAt || '').localeCompare(da.updatedAt || '') || da.episodeId.localeCompare(db.episodeId);
-    const pa = STATUS_PRIORITY[da.summary.status] ?? 9, pb = STATUS_PRIORITY[db.summary.status] ?? 9;
+    const pa = STATUS_PRIORITY[readinessOf(da)] ?? 9, pb = STATUS_PRIORITY[readinessOf(db)] ?? 9;
     return pa - pb || da.episodeId.localeCompare(db.episodeId);
   });
   return list;
 }
 function cardHtml({doc}){
   const sp = stageProgress(doc), ap = approvalProgress(doc);
-  const meta = SUMMARY_META[doc.summary.status] || {label:'未知状态', tone:'neutral'};
+  const readiness = readinessOf(doc);
+  const meta = SUMMARY_META[readiness] || {label:'未知状态', tone:'neutral'};
   const owner = doc.coordination.owner || '未指派';
   const target = doc.coordination.targetDate || '未定';
   const blockers = doc.summary.blockers?.length || doc.coordination.blockers?.length || 0;
@@ -1021,7 +1032,7 @@ function cardHtml({doc}){
     <article class="card tone-${meta.tone}" data-id="${escapeHtml(doc.episodeId)}" data-href="episode-workbench.html?episode=${encodeURIComponent(doc.episodeId)}&stage=${encodeURIComponent(doc.summary.currentStage)}" tabindex="0" role="link" aria-label="进入${escapeHtml(episodeLabel(doc.episodeId))}生产工作台：${escapeHtml(doc.title)}">
       <div class="card-top">
         <span class="ep">${escapeHtml(episodeLabel(doc.episodeId))}</span>
-        ${pill(doc.summary.status, SUMMARY_META)}
+        ${pill(readiness, SUMMARY_META)}
       </div>
       <h3 class="title">${escapeHtml(doc.title)}</h3>
       <p class="next"><b>${escapeHtml(stageName(doc, doc.summary.currentStage))}</b> · ${escapeHtml(doc.summary.nextAction || '暂无下一步动作')}</p>
@@ -1044,6 +1055,7 @@ function cardHtml({doc}){
         <span class="tag">目标：${escapeHtml(target)}</span>
         ${blockers ? `<span class="tag danger">${blockers} 项阻塞</span>` : ''}
         ${gaps ? `<span class="tag warn">${gaps} 项审批缺口</span>` : ''}
+        ${doc.automation?.ranAt ? `<span class="tag ${doc.automation.status === 'failed' ? 'danger' : 'ok'}">扫描 ${doc.automation.status === 'failed' ? '失败' : '通过'}</span>` : '<span class="tag warn">尚未扫描</span>'}
         ${doc.observations?.delivery?.finalVideo?.status === 'present' ? '<span class="tag ok">已有成片观测</span>' : ''}
       </div>
       <div class="card-foot">
@@ -1185,11 +1197,7 @@ function openEditor(id){
   el.editor.showModal();
 }
 function collectForm(){
-  current.summary.status = el.editStatus.value;
-  current.summary.currentStage = el.editCurrentStage.value;
-  current.summary.nextAction = el.editNextAction.value.trim();
-  current.summary.blockers = lines(el.editSummaryBlockers.value);
-  current.summary.approvalGaps = tokens(el.editApprovalGaps.value);
+  // summary/readiness are derived by the scanner; only approvals and coordination are editable here.
   el.approvalList.querySelectorAll('[data-approval]').forEach(card => {
     const key = card.dataset.approval;
     current.approvals[key] = {

@@ -9,7 +9,10 @@
     "blockers": [],
     "approvalGaps": [
       "checkpointAudio"
-    ]
+    ],
+    "productionStatus": "in-progress",
+    "automationStatus": "passed",
+    "humanStatus": "needs-decision"
   },
   "observations": {
     "taskPackage": {
@@ -132,76 +135,118 @@
     {
       "id": "freeze-task-package",
       "name": "冻结任务包",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "continuous-narration",
       "name": "连续口播",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "approve-narration",
       "name": "批准口播",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "a-page",
       "name": "A-page",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "compile-trace",
       "name": "编译追踪",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "validate-a-page",
       "name": "A-page 验证",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "visual-rough",
       "name": "Visual rough",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "player-phase-1",
       "name": "Player Phase 1",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "checkpoint-plan",
       "name": "Checkpoint Plan",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "chapter-handoff",
       "name": "单章 handoff",
-      "status": "not-required"
+      "status": "not-required",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "chapter-production",
       "name": "章节制作",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "chapter-acceptance",
       "name": "后续章节与验收",
-      "status": "complete"
+      "status": "complete",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": true
     },
     {
       "id": "audio",
       "name": "音频",
-      "status": "awaiting-approval"
+      "status": "awaiting-approval",
+      "health": "passed",
+      "reasons": [],
+      "canAdvance": false
     },
     {
       "id": "recording-delivery",
       "name": "录屏、后期与成片验收",
-      "status": "not-started"
+      "status": "not-started",
+      "health": "not-run",
+      "reasons": [],
+      "canAdvance": false
     }
   ],
-  "updatedAt": "2026-09-03",
-  "updatedBy": "production-status sync",
+  "updatedAt": "2026-09-04",
+  "updatedBy": "production-status scan",
   "stageReviews": {
     "approve-narration": {
       "status": "approved",
@@ -238,5 +283,90 @@
       "evidence": "player/episodes/episode-35/audio-segments.json",
       "note": "停在音频检查点，等待人工审核"
     }
+  },
+  "automation": {
+    "status": "passed",
+    "ranAt": "2026-09-04T16:25:24.340Z",
+    "runner": "production-status scan",
+    "checks": {
+      "task-package": {
+        "status": "passed",
+        "detail": "任务包存在且已计算指纹"
+      },
+      "approved-narration": {
+        "status": "passed",
+        "detail": "批准口播已发布"
+      },
+      "a-page": {
+        "status": "passed",
+        "detail": "A-page 报告通过"
+      },
+      "visual-rough": {
+        "status": "passed",
+        "detail": "Visual rough 状态为 approved"
+      },
+      "visual-rough-validator": {
+        "status": "passed",
+        "detail": "上游 visual rough validator 通过"
+      },
+      "a-page-validator": {
+        "status": "passed",
+        "detail": "上游 A-page validator 通过"
+      },
+      "player-contract": {
+        "status": "passed",
+        "detail": "episode:check 通过"
+      },
+      "audio-files": {
+        "status": "passed",
+        "detail": "音频文件与分段齐全"
+      }
+    },
+    "failures": [],
+    "warnings": [],
+    "sourceHashes": {
+      "taskPackage": "00891a1dfd009ddff42fe82a1d74ac0918535b47fba4f2ad1cdb0b0ff02c30dc",
+      "approvedNarration": "fd02af2dc6a8c7208a36c2d59ca042d4a42c3793424c2dabca5b5b8ac7916301",
+      "aPage": "75e878392d2ea0711ef628f48c0c1c2aacfea75263fea203e322105e9ad0313c",
+      "visualRough": "f4565614b830c2f311872c5f3e2ad00583c0cd0fbfa7bfe7938978b0b47f834d",
+      "playerScript": "ad785b8543831439ac85fe8294b10ef838b6c61be44a1294713b67db5112e941",
+      "playerOutline": "cc741973255c64a886b208d99938e3d715486681cb1080e79bd1fb2556e41c50"
+    },
+    "commands": [
+      {
+        "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\scripts\\verify_visual_rough.py --a-page D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-35\\inputs\\episode-35-a-page.json --visual-rough D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-35\\inputs\\episode-35-visual-rough.md --recipes-dir D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\references\\page-recipes --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-35-visual-rough-validation.json",
+        "exitCode": 0,
+        "durationMs": 101,
+        "stdout": "PASS visual-rough-v3: source binding, recipes, screen slots, images, and logic limits are valid",
+        "stderr": "",
+        "timedOut": false
+      },
+      {
+        "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\rewrite-course-narration\\scripts\\verify_compilation.py --validation-profile a-page-v6 --task-package D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\episodes\\module-4-identifier-carrier\\episode-35-identifier-carrier-selection-material-process-environment-cost-task-package.md --compile-trace D:\\00-workspace\\005-coursewebvideo\\.tmp\\narration-pipeline\\2026-09-02-rewrite-narration-ep35\\episode-35\\episode-35-b-to-a-compile-trace.json --approved-text D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-35\\inputs\\approved-spoken-text.txt --compiled-json D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-35\\inputs\\episode-35-a-page.json --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-35-a-page-validation.json",
+        "exitCode": 0,
+        "durationMs": 99,
+        "stdout": "PASS a-page-v6: A-page semantics, screen contract, Nx, timing, and compile coverage are valid",
+        "stderr": "",
+        "timedOut": false
+      },
+      {
+        "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-35",
+        "exitCode": 0,
+        "durationMs": 120,
+        "stdout": "episode:check 通过：1 个实例，0 个警告",
+        "stderr": "",
+        "timedOut": false
+      }
+    ]
+  },
+  "readiness": {
+    "state": "needs-owner",
+    "canAdvance": false,
+    "reasons": [
+      "等待人工决策: checkpointAudio"
+    ],
+    "productionStatus": "in-progress",
+    "automationStatus": "passed",
+    "humanStatus": "needs-decision"
   }
 }

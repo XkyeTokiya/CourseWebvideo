@@ -96,6 +96,8 @@ function compactEpisode(doc) {
     episodeId: doc.episodeId,
     title: doc.title,
     summary: doc.summary,
+    readiness: doc.readiness,
+    automation: doc.automation,
     approvals: doc.approvals,
     coordination: doc.coordination,
     stages: doc.stages,
