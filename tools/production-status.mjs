@@ -66,6 +66,13 @@ function findCompileTrace(id) {
   const candidates = walk(path.join(ROOT, '.tmp')).filter(file => file.toLowerCase().endsWith('.json') && path.basename(file).toLowerCase().includes('compile-trace') && file.includes(`${path.sep}${id}${path.sep}`));
   return candidates.sort((a, b) => fs.statSync(b).mtimeMs - fs.statSync(a).mtimeMs)[0] || null;
 }
+function runGlobalChecks(enabled) {
+  if (!enabled) return [];
+  return [['typecheck', ['run', 'typecheck']], ['lint', ['run', 'lint']]].map(([name, args]) => {
+    const command = runCommand('pnpm', args, path.join(ROOT, 'player'));
+    return { name, command };
+  });
+}
 function scanEpisode(id, doc, options = {}) {
   const checks = {};
   const failures = [];
@@ -109,11 +116,8 @@ function scanEpisode(id, doc, options = {}) {
   const audio = o.audio || {};
   record('audio-files', audio.status !== 'partial' && audio.missingCount === 0, audio.status === 'not-extracted' ? '尚未提取音频分段' : audio.missingCount ? `缺少 ${audio.missingCount} 个音频文件` : '音频文件与分段齐全');
   if (audio.status === 'not-extracted') warnings.push('音频阶段尚未开始');
-  if (options.build) {
-    for (const [name, args] of [['typecheck', ['run', 'typecheck']], ['lint', ['run', 'lint']]]) {
-      const command = runCommand('pnpm', args, path.join(ROOT, 'player'));
-      record(name, command.exitCode === 0, command.exitCode === 0 ? `${name} 通过` : (command.stderr || command.stdout || `${name} 失败`), command);
-    }
+  for (const { name, command } of options.globalChecks || []) {
+    record(name, command.exitCode === 0, command.exitCode === 0 ? `${name} 通过` : (command.stderr || command.stdout || `${name} 失败`), command);
   }
   const sourceHashes = {};
   for (const key of ['taskPackage', 'approvedNarration', 'aPage', 'visualRough', 'playerScript', 'playerOutline']) if (o[key]?.sha256) sourceHashes[key] = o[key].sha256;
@@ -201,7 +205,7 @@ function scanOne(id, options = {}) { const out = path.join(EPISODES_DIR, `${id}.
 function check(doc) { const errors = []; if (doc.schemaVersion !== 'coursewebvideo/episode-production-status/v1') errors.push('schemaVersion'); if (doc.observations.player.projectPath !== ('player/episodes/' + doc.episodeId + '/project.json')) errors.push('player mirror path'); if (doc.summary.status === 'delivered' && doc.approvals.finalDelivery.status !== 'approved') errors.push('delivered without finalDelivery approval'); return errors; }
 const args = process.argv.slice(2); const command = args[0] || 'report';
 if (command === 'init' || command === 'sync') { for (const id of ids(args)) syncOne(id, command === 'init'); writeIndex(); console.log(`${command}: ${ids(args).length} episode status files updated; index.json regenerated`); }
-else if (command === 'scan') { const options = { build: args.includes('--build'), player: !args.includes('--no-player'), upstream: !args.includes('--no-upstream') }; for (const id of ids(args)) scanOne(id, options); writeIndex(); console.log(`scan: ${ids(args).length} episode status files scanned; index.json regenerated`); }
+else if (command === 'scan') { const options = { build: args.includes('--build'), player: !args.includes('--no-player'), upstream: !args.includes('--no-upstream') }; options.globalChecks = runGlobalChecks(options.build); for (const id of ids(args)) scanOne(id, options); writeIndex(); console.log(`scan: ${ids(args).length} episode status files scanned; index.json regenerated`); }
 else if (command === 'index') { writeIndex(); console.log('index: production-status/index.json regenerated'); }
 else if (command === 'check') { const files = fs.readdirSync(EPISODES_DIR).filter(f => f.endsWith('.json')); const errors = files.flatMap(f => check(readJson(path.join(EPISODES_DIR, f))).map(e => `${f}: ${e}`)); if (errors.length) { console.error(errors.join('\n')); process.exitCode = 1; } else console.log(`check: ${files.length} status files valid`); }
 else if (command === 'report') { const files = fs.readdirSync(EPISODES_DIR).filter(f => f.endsWith('.json')).sort(); const docs = files.map(f => readJson(path.join(EPISODES_DIR, f))); const states = ['not-started', 'needs-scan', 'in-progress', 'ready', 'needs-owner', 'blocked', 'complete', 'delivered']; for (const state of states) console.log(`${state}: ${docs.filter(d => (d.readiness?.state || d.summary.status) === state).length}`); for (const d of docs) console.log(`${d.episodeId}\t${d.readiness?.state || d.summary.status}\t${d.summary.currentStage}\t${d.summary.nextAction}`); }

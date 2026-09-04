@@ -35,7 +35,7 @@
   const $ = selector => document.querySelector(selector);
   const dom = {
     loading: $('#loadingScreen'), app: $('#app'), episodeLabel: $('#episodeLabel'), fileLabel: $('#fileLabel'),
-    updatedLabel: $('#updatedLabel'), readinessBadge: $('#readinessBadge'), episodeTitle: $('#episodeTitle'), sourceBadge: $('#sourceBadge'), alertStrip: $('#alertStrip'),
+    updatedLabel: $('#updatedLabel'), readinessBadge: $('#readinessBadge'), episodeTitle: $('#episodeTitle'), sourceBadge: $('#sourceBadge'), alertStrip: $('#alertStrip'), scanBtn: $('#scanBtn'),
     alertSummary: $('#alertSummary'), stageNav: $('#stageNav'), stageSelect: $('#stageSelect'), progressLabel: $('#progressLabel'),
     progressBar: $('#progressBar'), episodePosition: $('#episodePosition'), prevEpisode: $('#prevEpisode'), nextEpisode: $('#nextEpisode'),
     stageNumber: $('#stageNumber'), stageGroup: $('#stageGroup'), stageState: $('#stageState'), stageTitle: $('#stageTitle'),
@@ -577,6 +577,34 @@
       appState.probes.clear(); renderAll(); toast('状态已刷新');
     } catch (error) { toast(`刷新失败：${error.message || error}`, 'danger'); }
   }
+  async function waitForScan(runId) {
+    for (;;) {
+      await new Promise(resolve => window.setTimeout(resolve, 500));
+      const response = await fetch(`/api/production-status/scan?run=${encodeURIComponent(runId)}`, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`无法读取扫描状态：HTTP ${response.status}`);
+      const run = await response.json();
+      if (run.status !== 'running') return run;
+    }
+  }
+  async function scanEpisode() {
+    if (appState.sourceMode !== 'http' || dom.scanBtn.disabled) return;
+    const label = dom.scanBtn.querySelector('span');
+    dom.scanBtn.disabled = true; label.textContent = '扫描中…';
+    try {
+      const response = await fetch('/api/production-status/scan', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ episode: appState.episodeId }) });
+      const run = await response.json();
+      if (!response.ok && response.status !== 409) throw new Error(run.error || `HTTP ${response.status}`);
+      toast(response.status === 409 ? '已有扫描任务，正在等待结果' : `${episodeLabel(appState.episodeId)}扫描已启动`, 'warn');
+      const result = await waitForScan(run.id);
+      if (result.status !== 'passed') throw new Error(result.error || result.output || '扫描失败');
+      await refresh();
+      toast(`${episodeLabel(appState.episodeId)}机械扫描完成`);
+    } catch (error) {
+      toast(`扫描失败：${error.message || error}`, 'danger');
+    } finally {
+      dom.scanBtn.disabled = appState.sourceMode !== 'http'; label.textContent = '扫描本集';
+    }
+  }
   function navigateEpisode(offset) {
     const number = episodeNumber(appState.doc.episodeId) + offset;
     if (number < 1 || number > 51) return;
@@ -594,6 +622,7 @@
       document.documentElement.dataset.theme = theme; localStorage.setItem('coursewebvideo-theme', theme);
     });
     $('#refreshBtn').addEventListener('click', refresh);
+    dom.scanBtn.addEventListener('click', scanEpisode);
     $('#moreBtn').addEventListener('click', () => { renderMore(); dom.moreDialog.showModal(); });
     $('#showAlertsBtn').addEventListener('click', () => {
       const firstAlert = allAlerts()[0]; if (firstAlert) selectStage(firstAlert.stage);
@@ -637,6 +666,8 @@
     if (!loaded) {
       dom.loading.classList.add('hidden'); dom.connectionDialog.showModal(); return;
     }
+    dom.scanBtn.disabled = appState.sourceMode !== 'http';
+    dom.scanBtn.title = appState.sourceMode === 'http' ? '运行本集机械扫描' : '扫描只能通过本地 production-status 服务触发';
     if (!stageMap.has(appState.selectedStageId)) appState.selectedStageId = stageMap.has(appState.doc.summary?.currentStage) ? appState.doc.summary.currentStage : workflow.stages[0].id;
     renderAll();
   }

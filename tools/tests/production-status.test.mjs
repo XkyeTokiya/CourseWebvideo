@@ -69,3 +69,29 @@ test('status index covers exactly the persisted episode set', async () => {
     server.kill();
   }
 });
+
+test('status service triggers an episode scan and rejects invalid ids', async () => {
+  const port = 19000 + (process.pid % 1000);
+  const server = spawn(process.execPath, ['tools/production-status-server.mjs', '--port', String(port)], { cwd: root, stdio: 'ignore' });
+  try {
+    for (let attempt = 0; attempt < 30; attempt += 1) {
+      try { if ((await fetch(`http://127.0.0.1:${port}/health`)).ok) break; } catch {}
+      await new Promise(resolve => setTimeout(resolve, 25));
+    }
+    const invalid = await fetch(`http://127.0.0.1:${port}/api/production-status/scan`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ episode: '../bad' }) });
+    assert.equal(invalid.status, 400);
+    const started = await fetch(`http://127.0.0.1:${port}/api/production-status/scan`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ episode: 'episode-10' }) });
+    assert.equal(started.status, 202);
+    const run = await started.json();
+    let state;
+    for (let attempt = 0; attempt < 80; attempt += 1) {
+      state = await fetch(`http://127.0.0.1:${port}/api/production-status/scan?run=${encodeURIComponent(run.id)}`).then(response => response.json());
+      if (state.status !== 'running') break;
+      await new Promise(resolve => setTimeout(resolve, 50));
+    }
+    assert.equal(state.status, 'passed');
+    assert.equal(state.exitCode, 0);
+  } finally {
+    server.kill();
+  }
+});

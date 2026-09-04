@@ -456,6 +456,10 @@
         <button id="refreshBtn" class="btn icon" disabled aria-label="刷新数据">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
         </button>
+        <button id="scanBtn" class="btn primary" type="button" title="在本地服务中运行全量机械扫描">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4"/><path d="M12 17v4"/><path d="m4.22 4.22 2.83 2.83"/><path d="m16.95 16.95 2.83 2.83"/><path d="M3 12h4"/><path d="M17 12h4"/><circle cx="12" cy="12" r="3"/></svg>
+          <span>扫描全部</span>
+        </button>
         <button id="themeBtn" class="btn icon" aria-label="切换主题">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
         </button>
@@ -746,12 +750,13 @@ let episodesHandle = null;
 let sourceMode = null;
 let currentWrapper = null;
 let current = null;
+let scanInFlight = false;
 
 const el = {
   modePill:$('#modePill'), modeText:$('#modeText'), notice:$('#notice'),
   kpis:$('#kpis'), distribution:$('#distribution'), grid:$('#grid'), empty:$('#empty'),
   searchInput:$('#searchInput'), statusFilter:$('#statusFilter'), sortSelect:$('#sortSelect'),
-  attentionOnly:$('#attentionOnly'), refreshBtn:$('#refreshBtn'), fileInput:$('#fileInput'),
+  attentionOnly:$('#attentionOnly'), refreshBtn:$('#refreshBtn'), scanBtn:$('#scanBtn'), fileInput:$('#fileInput'),
   editor:$('#editor'), editorEpisode:$('#editorEpisode'), editorFile:$('#editorFile'),
   editorTitle:$('#editorTitle'), editorUpdated:$('#editorUpdated'),
   editStatus:$('#editStatus'), editCurrentStage:$('#editCurrentStage'), editNextAction:$('#editNextAction'),
@@ -831,6 +836,8 @@ function setMode(mode, text, kind){
   el.modeText.textContent = text;
   el.modePill.className = `mode-pill ${kind}`;
   el.refreshBtn.disabled = !mode || mode === 'files';
+  el.scanBtn.disabled = mode !== 'http';
+  el.scanBtn.title = mode === 'http' ? '在本地服务中运行全量机械扫描' : '扫描只能通过本地 production-status 服务触发';
   el.saveText.textContent = episodesHandle ? '保存修改' : '下载修改后的状态文件';
 }
 function setDocs(loaded, mode, modeText, modeKind){
@@ -959,6 +966,35 @@ async function refresh(){
     button.disabled = !sourceMode || sourceMode === 'files';
     button.setAttribute('aria-label', previousLabel);
     button.classList.remove('is-loading');
+  }
+}
+async function waitForScan(runId){
+  for (;;) {
+    await new Promise(resolve => setTimeout(resolve, 500));
+    const response = await fetch(`/api/production-status/scan?run=${encodeURIComponent(runId)}`, {cache:'no-store'});
+    if(!response.ok) throw new Error(`无法读取扫描状态：HTTP ${response.status}`);
+    const run = await response.json();
+    if(run.status !== 'running') return run;
+  }
+}
+async function scanAll(){
+  if(scanInFlight || sourceMode !== 'http') return;
+  scanInFlight = true;
+  const label = el.scanBtn.querySelector('span');
+  el.scanBtn.disabled = true; label.textContent = '扫描中…'; el.scanBtn.classList.add('is-loading');
+  try {
+    const response = await fetch('/api/production-status/scan', {method:'POST', headers:{'Content-Type':'application/json'}, body:'{}'});
+    const run = await response.json();
+    if(!response.ok && response.status !== 409) throw new Error(run.error || `HTTP ${response.status}`);
+    toast(response.status === 409 ? '已有扫描任务，正在等待结果' : '已启动 51 集机械扫描', 'warn');
+    const result = await waitForScan(run.id);
+    if(result.status !== 'passed') throw new Error(result.error || result.output || '扫描失败');
+    await refresh();
+    toast('全量机械扫描完成，状态已刷新');
+  } catch(error) {
+    toast(`扫描失败：${error.message || error}`, 'danger');
+  } finally {
+    scanInFlight = false; el.scanBtn.disabled = sourceMode !== 'http'; label.textContent = '扫描全部'; el.scanBtn.classList.remove('is-loading');
   }
 }
 function render(){
@@ -1281,6 +1317,7 @@ function initControls(){
   $('#emptyFiles').addEventListener('click', () => el.fileInput.click());
   el.fileInput.addEventListener('change', () => loadFiles(el.fileInput.files));
   el.refreshBtn.addEventListener('click', refresh);
+  el.scanBtn.addEventListener('click', scanAll);
   [el.searchInput, el.statusFilter, el.sortSelect, el.attentionOnly].forEach(node => {
     node.addEventListener('input', () => { renderKpis(); renderGrid(); });
     node.addEventListener('change', () => { renderKpis(); renderGrid(); });

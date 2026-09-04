@@ -1,5 +1,6 @@
 import { createServer } from 'node:http';
 import { createReadStream, existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { spawn } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -48,6 +49,8 @@ const contentTypes = {
 
 let indexCache = null;
 let indexSignature = '';
+const scanRuns = new Map();
+let activeScanId = null;
 
 function resolveRequestPath(pathname) {
   const decodedPath = decodeURIComponent(pathname);
@@ -63,6 +66,32 @@ function sendJson(response, statusCode, body) {
     'Content-Type': 'application/json; charset=utf-8',
   });
   response.end(JSON.stringify(body, null, 2));
+}
+
+function requestBody(request) {
+  return new Promise((resolve, reject) => {
+    let body = '';
+    request.setEncoding('utf8');
+    request.on('data', chunk => { body += chunk; if (body.length > 10000) reject(new Error('request body too large')); });
+    request.on('end', () => { try { resolve(body ? JSON.parse(body) : {}); } catch { reject(new Error('invalid JSON body')); } });
+    request.on('error', reject);
+  });
+}
+function startScan(payload = {}) {
+  if (activeScanId) return { conflict: true, run: scanRuns.get(activeScanId) };
+  const episode = payload.episode == null || payload.episode === '' ? null : String(payload.episode);
+  if (episode && !/^episode-\d{2}$/.test(episode)) throw new Error('invalid episode');
+  const runId = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  const run = { id: runId, status: 'running', episode, startedAt: new Date().toISOString(), finishedAt: null, exitCode: null, output: '', error: null };
+  scanRuns.set(runId, run); activeScanId = runId;
+  const args = [path.join(options.root, 'tools', 'production-status.mjs'), 'scan', '--build'];
+  if (episode) args.push('--episode', episode);
+  const child = spawn(process.execPath, args, { cwd: options.root, windowsHide: true });
+  child.stdout.on('data', chunk => { run.output = `${run.output}${chunk}`.slice(-12000); });
+  child.stderr.on('data', chunk => { run.error = `${run.error || ''}${chunk}`.slice(-12000); });
+  child.on('error', error => { run.status = 'failed'; run.error = String(error.message || error); run.finishedAt = new Date().toISOString(); activeScanId = null; indexCache = null; });
+  child.on('close', code => { run.exitCode = code; run.status = code === 0 ? 'passed' : 'failed'; run.finishedAt = new Date().toISOString(); activeScanId = null; indexCache = null; });
+  return { conflict: false, run };
 }
 
 function statusIndex() {
@@ -113,8 +142,8 @@ function compactEpisode(doc) {
 }
 
 const server = createServer((request, response) => {
-  if (!['GET', 'HEAD'].includes(request.method ?? '')) {
-    response.writeHead(405, { Allow: 'GET, HEAD' });
+  if (!['GET', 'HEAD', 'POST'].includes(request.method ?? '')) {
+    response.writeHead(405, { Allow: 'GET, HEAD, POST' });
     response.end();
     return;
   }
@@ -131,6 +160,32 @@ const server = createServer((request, response) => {
 
   if (url.pathname === '/production-status/index.json' || url.pathname === '/api/production-status/index') {
     sendJson(response, 200, statusIndex());
+    return;
+  }
+
+  if (url.pathname === '/api/production-status/scan' && request.method === 'POST') {
+    requestBody(request).then(payload => {
+      try {
+        const result = startScan(payload);
+        sendJson(response, result.conflict ? 409 : 202, result.run);
+      } catch (error) {
+        sendJson(response, 400, { error: error.message || String(error) });
+      }
+    }).catch(error => sendJson(response, 400, { error: error.message || String(error) }));
+    return;
+  }
+  if (url.pathname === '/api/production-status/scan' && request.method === 'GET') {
+    const run = url.searchParams.get('run');
+    if (run) {
+      const status = scanRuns.get(run);
+      if (!status) return sendJson(response, 404, { error: 'scan run not found' });
+      return sendJson(response, 200, status);
+    }
+    return sendJson(response, 200, activeScanId ? scanRuns.get(activeScanId) : { status: 'idle' });
+  }
+  if (request.method === 'POST') {
+    response.writeHead(405, { Allow: 'GET, HEAD' });
+    response.end();
     return;
   }
 
