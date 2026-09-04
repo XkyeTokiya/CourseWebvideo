@@ -151,15 +151,7 @@
   }
 
   async function detectHttpStatus(id) {
-    const candidates = [`episodes/${id}.json`, `production-status/episodes/${id}.json`];
-    for (const candidate of candidates) {
-      try {
-        const response = await fetch(candidate, { cache: 'no-store' });
-        if (!response.ok) continue;
-        return { doc: await response.json(), url: new URL(candidate, location.href) };
-      } catch { /* try next location */ }
-    }
-    return null;
+    try { return await window.CourseStatusStore.loadHttpEpisode(id); } catch { return null; }
   }
   async function loadFromStatusHandle(handle, mode = 'directory') {
     const file = await handle.getFile();

@@ -114,6 +114,8 @@ pnpm courseplay:handoff -- --help
 
 `production-status/episodes/<episode-id>.json` 是跨上游、Player、音频和最终交付的单集总状态；`player/episodes/<episode-id>/project.json` 仍只负责 Player 下游章节状态，不能替代总状态。
 
+工作台在线模式读取 `production-status/index.json`（服务模式下由 `/production-status/index.json` 按当前文件即时生成），一次加载全部剧集状态，避免逐集探测不存在的文件。运行 `node tools/production-status.mjs index` 可为静态文件模式重新生成索引；索引是派生文件，不是人工审批事实源。
+
 总状态分为三类信息：
 
 - `observations`：由磁盘事实同步的文件、验证结果、章节和音频数量；工具可以更新。

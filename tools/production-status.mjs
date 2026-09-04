@@ -7,7 +7,7 @@ const STATUS_DIR = path.join(ROOT, 'production-status');
 const EPISODES_DIR = path.join(STATUS_DIR, 'episodes');
 const PLAYER_DIR = path.join(ROOT, 'player');
 const TASK_DIR = path.join(ROOT, 'narration-pipeline', 'episodes');
-const TODAY = '2026-09-03';
+const TODAY = new Date().toISOString().slice(0, 10);
 const APPROVAL_KEYS = ['narration', 'visualRough', 'checkpointPlan', 'firstChapter', 'checkpointAudio', 'finalDelivery'];
 const HANDOFF_EXEMPT_EPISODES = new Set(['episode-01', 'episode-02', 'episode-03', 'episode-04', 'episode-09']); // 保留明确名单，handoff 当前对所有 episode 均为非强制
 const STAGES = [
@@ -84,11 +84,23 @@ function applyDerived(doc) {
   doc.stages = stageStatus; return doc;
 }
 function save(id, doc) { const out = path.join(EPISODES_DIR, `${id}.json`); const tmp = `${out}.tmp`; fs.writeFileSync(tmp, JSON.stringify(doc, null, 2) + '\n'); fs.renameSync(tmp, out); }
+function writeIndex() {
+  const files = fs.readdirSync(EPISODES_DIR).filter(f => /^episode-\d{2}\.json$/.test(f)).sort();
+  const episodes = files.map(file => compactEpisode(readJson(path.join(EPISODES_DIR, file))));
+  const out = path.join(STATUS_DIR, 'index.json'); const tmp = `${out}.tmp`;
+  fs.writeFileSync(tmp, JSON.stringify({ schemaVersion: 'coursewebvideo/episode-production-status/index/v1', generatedAt: new Date().toISOString(), count: episodes.length, episodes }, null, 2) + '\n');
+  fs.renameSync(tmp, out);
+}
+function compactEpisode(doc) {
+  return { schemaVersion: doc.schemaVersion, episodeId: doc.episodeId, title: doc.title, summary: doc.summary, approvals: doc.approvals, coordination: doc.coordination, stages: doc.stages, updatedAt: doc.updatedAt, updatedBy: doc.updatedBy,
+    observations: { delivery: doc.observations?.delivery ?? { recording: { status: 'not-observed', paths: [] }, finalVideo: { status: 'not-observed', paths: [] } } } };
+}
 function ids(args) { if (args.includes('--episode')) return [args[args.indexOf('--episode') + 1]]; return Array.from({ length: 51 }, (_, i) => `episode-${String(i + 1).padStart(2, '0')}`); }
 function syncOne(id, initialize = false) { const out = path.join(EPISODES_DIR, `${id}.json`); const old = exists(out) ? readJson(out) : blank(id, id); const next = { ...old, ...obs(id), approvals: old.approvals ?? blank(id, id).approvals, coordination: old.coordination ?? blank(id, id).coordination, updatedAt: TODAY, updatedBy: 'production-status sync' }; applyDerived(next); save(id, next); return next; }
 function check(doc) { const errors = []; if (doc.schemaVersion !== 'coursewebvideo/episode-production-status/v1') errors.push('schemaVersion'); if (doc.observations.player.projectPath !== ('player/episodes/' + doc.episodeId + '/project.json')) errors.push('player mirror path'); if (doc.summary.status === 'delivered' && doc.approvals.finalDelivery.status !== 'approved') errors.push('delivered without finalDelivery approval'); return errors; }
 const args = process.argv.slice(2); const command = args[0] || 'report';
-if (command === 'init' || command === 'sync') { for (const id of ids(args)) syncOne(id, command === 'init'); console.log(`${command}: ${ids(args).length} episode status files updated`); }
+if (command === 'init' || command === 'sync') { for (const id of ids(args)) syncOne(id, command === 'init'); writeIndex(); console.log(`${command}: ${ids(args).length} episode status files updated; index.json regenerated`); }
+else if (command === 'index') { writeIndex(); console.log('index: production-status/index.json regenerated'); }
 else if (command === 'check') { const files = fs.readdirSync(EPISODES_DIR).filter(f => f.endsWith('.json')); const errors = files.flatMap(f => check(readJson(path.join(EPISODES_DIR, f))).map(e => `${f}: ${e}`)); if (errors.length) { console.error(errors.join('\n')); process.exitCode = 1; } else console.log(`check: ${files.length} status files valid`); }
 else if (command === 'report') { const files = fs.readdirSync(EPISODES_DIR).filter(f => f.endsWith('.json')).sort(); const docs = files.map(f => readJson(path.join(EPISODES_DIR, f))); for (const status of ['not-started', 'in-progress', 'awaiting-approval', 'blocked', 'delivered']) console.log(`${status}: ${docs.filter(d => d.summary.status === status).length}`); for (const d of docs) console.log(`${d.episodeId}\t${d.summary.status}\t${d.summary.currentStage}\t${d.summary.nextAction}`); }
-else { console.error('Usage: node tools/production-status.mjs init|sync|check|report [--episode episode-01]'); process.exitCode = 1; }
+else { console.error('Usage: node tools/production-status.mjs init|sync|index|check|report [--episode episode-01]'); process.exitCode = 1; }

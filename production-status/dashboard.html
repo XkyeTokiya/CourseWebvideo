@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
   <title>课程视频 · 生产状态控制面</title>
   <style>
     :root{
@@ -647,6 +648,7 @@
 
   <div id="toasts" class="toasts" aria-live="polite"></div>
 
+<script src="status-store.js"></script>
 <script>
 const $ = s => document.querySelector(s);
 const SUMMARY_STATUSES = ['not-started','in-progress','awaiting-approval','blocked','delivered'];
@@ -878,18 +880,9 @@ async function rememberRepositoryHandle(handle){
 }
 async function loadFromDirectoryHandle(){
   if(!episodesHandle) return;
-  const entries = [];
-  for await (const [name, handle] of episodesHandle.entries()) {
-    if(handle.kind === 'file' && /\.json$/i.test(name)) entries.push({name, handle});
-  }
-  const loaded = (await Promise.allSettled(entries.map(async entry => {
-    const file = await entry.handle.getFile();
-    const text = await file.text();
-    return {doc:JSON.parse(text), handle:entry.handle};
-  }))).filter(r => r.status === 'fulfilled' && r.value).map(r => r.value);
-  entries.forEach((entry, i) => {
-    if(!loaded.some(item => item.handle === entry.handle)) toast(`解析失败：${entry.name}`, 'danger');
-  });
+  const result = await window.CourseStatusStore.loadDirectoryEntries(episodesHandle);
+  const loaded = result.loaded;
+  result.failures.forEach(entry => toast(`解析失败：${entry.name}`, 'danger'));
   if(!loaded.length) toast('所选目录没有可读取的状态文件', 'warn');
   setDocs(loaded, 'directory', `可写 · ${episodesHandle.name}`, 'ok');
 }
@@ -912,36 +905,9 @@ async function connectDirectory(){
     if(error?.name !== 'AbortError') toast(`连接目录失败：${error.message || error}`, 'danger');
   }
 }
-async function detectHttpBase(requestToken = Date.now()){
-  const candidates = ['episodes/episode-01.json','production-status/episodes/episode-01.json'];
-  for(const candidate of candidates) {
-    try {
-      const separator = candidate.includes('?') ? '&' : '?';
-      const res = await fetch(`${candidate}${separator}_refresh=${requestToken}`, {
-        cache:'reload',
-        headers:{'Cache-Control':'no-cache'}
-      });
-      if(!res.ok) continue;
-      JSON.parse(await res.text());
-      return candidate.replace('episode-01.json','');
-    } catch {}
-  }
-  return null;
-}
 async function loadHttp(requestToken = Date.now()){
-  const base = await detectHttpBase(requestToken);
-  if(!base) return [];
-  const jobs = Array.from({length:99}, (_,i) => i + 1).map(async n => {
-    const id = `episode-${String(n).padStart(2,'0')}`;
-    const res = await fetch(`${base}${id}.json?_refresh=${requestToken}`, {
-      cache:'reload',
-      headers:{'Cache-Control':'no-cache'}
-    });
-    if(!res.ok) return null;
-    return {doc:await res.json(), handle:null};
-  });
-  const results = await Promise.allSettled(jobs);
-  return results.filter(r => r.status === 'fulfilled' && r.value).map(r => r.value);
+  const index = await window.CourseStatusStore.loadHttpIndex(requestToken);
+  return index.episodes.map(doc => ({doc, handle:null}));
 }
 async function loadFiles(fileList){
   const loaded = [];
@@ -1352,13 +1318,18 @@ function initControls(){
 async function boot(){
   initControls();
   if(location.protocol === 'http:' || location.protocol === 'https:'){
-    const loaded = await loadHttp();
-    if(loaded.length){
-      setDocs(loaded, 'http', '在线模式 · 只读', 'readonly');
-      restoreDashboardView();
-      return;
+    try {
+      const loaded = await loadHttp();
+      if(loaded.length){
+        setDocs(loaded, 'http', '在线模式 · 只读', 'readonly');
+        restoreDashboardView();
+        return;
+      }
+      el.notice.innerHTML = '<b>在线索引为空。</b> 请运行状态同步或连接状态目录。';
+    } catch(error) {
+      el.notice.innerHTML = `<b>无法读取在线索引。</b> ${escapeHtml(error.message || error)} 请连接数据目录或选择状态文件。`;
+      toast(`连接失败：${error.message || error}`, 'danger');
     }
-    el.notice.innerHTML = '<b>未找到在线数据源。</b> 请把本文件放在 <code>production-status/</code> 下并用静态服务打开，或点击“连接数据目录”选择剧集状态目录。';
   } else {
     el.notice.innerHTML = '<b>当前为本地文件方式打开。</b> 浏览器通常阻止读取本地状态文件；请点击“连接数据目录”并优先选择仓库根目录，即可在工作台预览阶段产物并直接保存审核结果。';
   }

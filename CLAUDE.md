@@ -45,6 +45,7 @@ cd D:\00-workspace\005-coursewebvideo\player
 仓库根级 `production-status/` 是跨项目的生产控制面，不属于 `narration-pipeline/` 或 `player/` 任一子项目。每期文件位于 `production-status/episodes/<episode-id>.json`，结构由 `production-status/schema/episode-production-status.schema.json` 约束。
 
 - `observations` 由 `node tools/production-status.mjs sync` 从任务包、inputs、Player、音频目录同步。
+- 工作台总览通过 `production-status/index.json` 或服务端同路径索引一次读取剧集，不得在前端猜测集数或逐个请求不存在的文件。
 - `approvals` 是人工事实，自动化不得根据文件存在、验证通过或 `project.json.status=ready` 推断批准。
 - `coordination` 记录负责人、目标日期、阻塞和仓库外录屏/成片证据。
 - `summary` 与 `stages` 是推导结果；最终交付必须同时具备最终视频观测和 `approvals.finalDelivery.status=approved`。

@@ -1,0 +1,7628 @@
+{
+  "schemaVersion": "coursewebvideo/episode-production-status/index/v1",
+  "generatedAt": "2026-09-04T15:40:51.637Z",
+  "count": 51,
+  "episodes": [
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-01",
+      "title": "工业互联网的产生与边界",
+      "summary": {
+        "status": "awaiting-approval",
+        "currentStage": "audio",
+        "nextAction": "补齐人工审批记录: checkpointAudio",
+        "blockers": [],
+        "approvalGaps": [
+          "checkpointAudio"
+        ]
+      },
+      "approvals": {
+        "narration": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:06:44.930Z",
+          "decidedBy": "界面人工审核",
+          "evidence": "player/episodes/episode-01/inputs/approved-spoken-text.txt",
+          "note": null
+        },
+        "visualRough": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:06:52.544Z",
+          "decidedBy": "界面人工审核",
+          "evidence": "player/episodes/episode-01/inputs/episode-01-visual-rough.md; player/episodes/episode-01/inputs/episode-01-visual-rough-validation.json",
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-01/script.md; player/episodes/episode-01/outline.md; player/episodes/episode-01/project.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "firstChapter": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-01/src/entry.tsx; player/episodes/episode-01/project.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "checkpointAudio": {
+          "status": "pending",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-01/audio-segments.json",
+          "note": "停在音频检查点，等待人工审核"
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "complete"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "complete"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "complete"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "complete"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "complete"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "complete"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "complete"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "complete"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "complete"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "complete"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "awaiting-approval"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-02",
+      "title": "工业互联网的体系构成",
+      "summary": {
+        "status": "awaiting-approval",
+        "currentStage": "audio",
+        "nextAction": "补齐人工审批记录: checkpointAudio",
+        "blockers": [],
+        "approvalGaps": [
+          "checkpointAudio"
+        ]
+      },
+      "approvals": {
+        "narration": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-02/inputs/approved-spoken-text.txt",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "visualRough": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-02/inputs/episode-02-visual-rough.md; player/episodes/episode-02/inputs/episode-02-visual-rough-validation.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "checkpointPlan": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-02/script.md; player/episodes/episode-02/outline.md; player/episodes/episode-02/project.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "firstChapter": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-02/src/entry.tsx; player/episodes/episode-02/project.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "checkpointAudio": {
+          "status": "pending",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-02/audio-segments.json",
+          "note": "停在音频检查点，等待人工审核"
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "complete"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "complete"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "complete"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "complete"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "complete"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "complete"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "complete"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "complete"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "complete"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "complete"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "awaiting-approval"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-03",
+      "title": "新型工业化与工业互联网：目标与支撑",
+      "summary": {
+        "status": "awaiting-approval",
+        "currentStage": "audio",
+        "nextAction": "补齐人工审批记录: checkpointAudio",
+        "blockers": [],
+        "approvalGaps": [
+          "checkpointAudio"
+        ]
+      },
+      "approvals": {
+        "narration": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-03/inputs/approved-spoken-text.txt",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "visualRough": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-03/inputs/episode-03-visual-rough.md; player/episodes/episode-03/inputs/episode-03-visual-rough-validation.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "checkpointPlan": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-03/script.md; player/episodes/episode-03/outline.md; player/episodes/episode-03/project.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "firstChapter": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-03/src/entry.tsx; player/episodes/episode-03/project.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "checkpointAudio": {
+          "status": "pending",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-03/audio-segments.json",
+          "note": "停在音频检查点，等待人工审核"
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "complete"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "complete"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "complete"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "complete"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "complete"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "complete"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "complete"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "complete"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "complete"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "complete"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "awaiting-approval"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-04",
+      "title": "数字化转型:从技术部署到业务价值",
+      "summary": {
+        "status": "blocked",
+        "currentStage": "audio",
+        "nextAction": "推进阶段: 音频",
+        "blockers": [
+          "音频缺少 21 个文件"
+        ],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T12:35:54.425Z",
+          "decidedBy": "界面人工审核",
+          "evidence": "player/episodes/episode-04/inputs/approved-spoken-text.txt",
+          "note": "批准"
+        },
+        "visualRough": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-04/inputs/episode-04-visual-rough.md; player/episodes/episode-04/inputs/episode-04-visual-rough-validation.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "checkpointPlan": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-04/script.md; player/episodes/episode-04/outline.md; player/episodes/episode-04/project.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "firstChapter": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-04/src/entry.tsx; player/episodes/episode-04/project.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "checkpointAudio": {
+          "status": "approved",
+          "decidedAt": "2026-09-04T01:01:12.242Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-04/audio-segments.json",
+          "note": "停在音频检查点，等待人工审核"
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "complete"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "complete"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "complete"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "complete"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "complete"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "complete"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "complete"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "complete"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "complete"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "complete"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "in-progress"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-04",
+      "updatedBy": "界面人工审核",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-05",
+      "title": "工业互联网标识：为什么“私码”难以跨企业",
+      "summary": {
+        "status": "awaiting-approval",
+        "currentStage": "approve-narration",
+        "nextAction": "补齐人工审批记录: narration",
+        "blockers": [],
+        "approvalGaps": [
+          "narration"
+        ]
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "complete"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "awaiting-approval"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "complete"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "complete"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "complete"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-06",
+      "title": "标识解析体系如何把编码变成可查询信息",
+      "summary": {
+        "status": "awaiting-approval",
+        "currentStage": "approve-narration",
+        "nextAction": "补齐人工审批记录: narration",
+        "blockers": [],
+        "approvalGaps": [
+          "narration"
+        ]
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "complete"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "awaiting-approval"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "complete"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "complete"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "complete"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-07",
+      "title": "我国标识解析从建设走向规模应用",
+      "summary": {
+        "status": "awaiting-approval",
+        "currentStage": "approve-narration",
+        "nextAction": "补齐人工审批记录: narration",
+        "blockers": [],
+        "approvalGaps": [
+          "narration"
+        ]
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "complete"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "awaiting-approval"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "complete"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "complete"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "complete"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-08",
+      "title": "标识解析怎样贯通对象、环节与产业链",
+      "summary": {
+        "status": "awaiting-approval",
+        "currentStage": "approve-narration",
+        "nextAction": "补齐人工审批记录: narration",
+        "blockers": [],
+        "approvalGaps": [
+          "narration"
+        ]
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "complete"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "awaiting-approval"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "complete"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "complete"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "complete"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-09",
+      "title": "发动机质量追溯：统一标识串起分散记录",
+      "summary": {
+        "status": "blocked",
+        "currentStage": "audio",
+        "nextAction": "补齐人工审批记录: checkpointAudio",
+        "blockers": [
+          "音频缺少 32 个文件"
+        ],
+        "approvalGaps": [
+          "checkpointAudio"
+        ]
+      },
+      "approvals": {
+        "narration": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-09/inputs/approved-spoken-text.txt",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "visualRough": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-09/inputs/episode-09-visual-rough.md; player/episodes/episode-09/inputs/episode-09-visual-rough-validation.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "checkpointPlan": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-09/script.md; player/episodes/episode-09/outline.md; player/episodes/episode-09/project.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "firstChapter": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-09/src/entry.tsx; player/episodes/episode-09/project.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "checkpointAudio": {
+          "status": "pending",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-09/audio-segments.json",
+          "note": "停在音频检查点，等待人工审核"
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "complete"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "complete"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "complete"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "complete"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "complete"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "complete"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "complete"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "complete"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "complete"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "complete"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "awaiting-approval"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-10",
+      "title": "主动标识如何改变模具生产管控",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-11",
+      "title": "药品供应链协同：从唯一标识到全链数据",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-12",
+      "title": "汽车零部件精益管理：一物一码如何减少错装与串货",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-13",
+      "title": "工业软件连接器：异构系统如何共享数据",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-14",
+      "title": "好的标识编码必须满足哪些原则",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-15",
+      "title": "VAA 编码：从发码机构到企业内部编码",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-16",
+      "title": "Handle 编码：前缀、后缀与分布式解析",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-17",
+      "title": "OID 编码：树状命名如何保证唯一性",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-18",
+      "title": "Ecode 编码：版本、体系标识与主码",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-19",
+      "title": "GS1 与五类编码体系怎么选",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-20",
+      "title": "从前缀到后缀：设计一套可落地的编码规则",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-21",
+      "title": "工业大数据从哪里来、怎样产生价值",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-22",
+      "title": "主数据、业务数据、元数据与数据字典的边界",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-23",
+      "title": "工业数据共享如何跨越产线、工厂与产业链",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-24",
+      "title": "数据要素为什么需要标识体系",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-25",
+      "title": "标识数据模型：从数字对象到属性与事件",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-26",
+      "title": "二级节点 OpenAPI：一次请求包含什么",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-27",
+      "title": "用 Apifox 调试标识数据模板接口",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-28",
+      "title": "顶级节点与企业节点分别负责什么",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-29",
+      "title": "二级节点为什么是承上启下的公共服务平台",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-30",
+      "title": "三级业务管理系统如何完成前缀申请与注册",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-31",
+      "title": "递归解析：一次查询怎样逐级找到企业数据",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-32",
+      "title": "标识创新应用的端到端业务闭环",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-33",
+      "title": "一维码与二维码：容量、识读和工业场景怎么取舍",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-34",
+      "title": "RFID 如何实现非接触识别与批量读取",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-35",
+      "title": "标识载体选型",
+      "summary": {
+        "status": "awaiting-approval",
+        "currentStage": "audio",
+        "nextAction": "补齐人工审批记录: checkpointAudio",
+        "blockers": [],
+        "approvalGaps": [
+          "checkpointAudio"
+        ]
+      },
+      "approvals": {
+        "narration": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-35/inputs/approved-spoken-text.txt",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "visualRough": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-35/inputs/episode-35-visual-rough.md; player/episodes/episode-35/inputs/episode-35-visual-rough-validation.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "checkpointPlan": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-35/script.md; player/episodes/episode-35/outline.md; player/episodes/episode-35/project.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "firstChapter": {
+          "status": "approved",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-35/src/entry.tsx; player/episodes/episode-35/project.json",
+          "note": "按用户要求默认通过，流程推进至音频检查点"
+        },
+        "checkpointAudio": {
+          "status": "pending",
+          "decidedAt": "2026-09-03T13:10:36.275Z",
+          "decidedBy": "批量默认审核",
+          "evidence": "player/episodes/episode-35/audio-segments.json",
+          "note": "停在音频检查点，等待人工审核"
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "complete"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "complete"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "complete"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "complete"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "complete"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "complete"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "complete"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "complete"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "complete"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "complete"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "awaiting-approval"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-36",
+      "title": "标识载体设计：尺寸、位置、耐久与信息层级",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-37",
+      "title": "主动标识载体与 UICC：为什么能主动、安全地联网",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-38",
+      "title": "通信模组与工业互联网终端怎样承载工业 ID",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-39",
+      "title": "主动标识如何完成注册与数据上报",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-40",
+      "title": "主动标识服务架构：终端、载体与平台如何协作",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-41",
+      "title": "SM1 与 SM2 在主动标识安全中的不同角色",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-42",
+      "title": "主动标识适合哪些行业场景",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-43",
+      "title": "二级节点怎么建：牵头主体与部署模式",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-44",
+      "title": "二级节点建设的技术底线：数据、接口与性能",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-45",
+      "title": "二级节点如何持续运营：服务、人员与报告机制",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-46",
+      "title": "二级节点安全保障的六个层面",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-47",
+      "title": "企业节点的五项核心功能",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-48",
+      "title": "企业节点数据如何同步与治理",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-49",
+      "title": "IDHub 企业节点产品架构",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-50",
+      "title": "自建还是托管：企业节点建设模式怎么选",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    },
+    {
+      "schemaVersion": "coursewebvideo/episode-production-status/v1",
+      "episodeId": "episode-51",
+      "title": "企业前缀申请：从准备信息到完成校验",
+      "summary": {
+        "status": "not-started",
+        "currentStage": "continuous-narration",
+        "nextAction": "推进阶段: 连续口播",
+        "blockers": [],
+        "approvalGaps": []
+      },
+      "approvals": {
+        "narration": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "visualRough": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointPlan": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "firstChapter": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "checkpointAudio": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        },
+        "finalDelivery": {
+          "status": "unrecorded",
+          "decidedAt": null,
+          "decidedBy": null,
+          "evidence": null,
+          "note": null
+        }
+      },
+      "coordination": {
+        "owner": null,
+        "targetDate": null,
+        "blockers": [],
+        "notes": "",
+        "externalArtifacts": []
+      },
+      "stages": [
+        {
+          "id": "freeze-task-package",
+          "name": "冻结任务包",
+          "status": "complete"
+        },
+        {
+          "id": "continuous-narration",
+          "name": "连续口播",
+          "status": "not-started"
+        },
+        {
+          "id": "approve-narration",
+          "name": "批准口播",
+          "status": "not-started"
+        },
+        {
+          "id": "a-page",
+          "name": "A-page",
+          "status": "not-started"
+        },
+        {
+          "id": "compile-trace",
+          "name": "编译追踪",
+          "status": "not-started"
+        },
+        {
+          "id": "validate-a-page",
+          "name": "A-page 验证",
+          "status": "not-started"
+        },
+        {
+          "id": "visual-rough",
+          "name": "Visual rough",
+          "status": "not-started"
+        },
+        {
+          "id": "player-phase-1",
+          "name": "Player Phase 1",
+          "status": "not-started"
+        },
+        {
+          "id": "checkpoint-plan",
+          "name": "Checkpoint Plan",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-handoff",
+          "name": "单章 handoff",
+          "status": "not-required"
+        },
+        {
+          "id": "chapter-production",
+          "name": "章节制作",
+          "status": "not-started"
+        },
+        {
+          "id": "chapter-acceptance",
+          "name": "后续章节与验收",
+          "status": "not-started"
+        },
+        {
+          "id": "audio",
+          "name": "音频",
+          "status": "not-started"
+        },
+        {
+          "id": "recording-delivery",
+          "name": "录屏、后期与成片验收",
+          "status": "not-started"
+        }
+      ],
+      "updatedAt": "2026-09-03",
+      "updatedBy": "production-status sync",
+      "observations": {
+        "delivery": {
+          "recording": {
+            "status": "not-observed",
+            "paths": []
+          },
+          "finalVideo": {
+            "status": "not-observed",
+            "paths": []
+          }
+        }
+      }
+    }
+  ]
+}
