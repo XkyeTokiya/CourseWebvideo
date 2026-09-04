@@ -1,7 +1,7 @@
 {
   "episode_id": "episode-05",
-  "validation_profile": "a-page-v4",
-  "schema_version": "courseplay-a-page/v4",
+  "validation_profile": "a-page-v6",
+  "schema_version": "courseplay-a-page/v6",
   "document_kind": "production",
   "production_status": "production",
   "a_pages": {
@@ -10,13 +10,18 @@
     "short_page_exceptions": []
   },
   "failures": [],
+  "screen_guidance": {
+    "item_count": 50,
+    "group_count": 19,
+    "silent_constraint_count": 7
+  },
   "compile_coverage": {
     "coverage_passed": true,
-    "trace_sha256": "ab75282add604013a6e18739886d4c2484d18a2796e1ce6a2bfb0a2ab87fc3eb"
+    "trace_sha256": "7ceff7b7dfc085cd09b5f7468df1992b8ac3ede8dd8b10f4a335df8a59c2bffb"
   },
   "input_integrity": {
     "task_package_sha256": "f1cb88ab6e56f8730e186ddd50968242d19277fc02d45d5d526f78c0e741941b",
     "approved_text_sha256": "c4ca331e78b75ff71b0b435a7e8b927c9d988c49f8ce6d493ada1e5cf61a55bd",
-    "a_page_sha256": "f6014172649f8c889b0772fafd2807df345c24a83899cab16d16486da964520a"
+    "a_page_sha256": "e98e5187f47372d90d90400d121f7736a8e59c3fc7bdefba322bc3da79004717"
   }
 }

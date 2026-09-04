@@ -31,6 +31,16 @@
       "path": "player/episodes/episode-34/inputs/episode-34-visual-rough.md",
       "failures": []
     },
+    "playerScript": {
+      "status": "missing",
+      "path": "player/episodes/episode-34/script.md",
+      "failures": []
+    },
+    "playerOutline": {
+      "status": "missing",
+      "path": "player/episodes/episode-34/outline.md",
+      "failures": []
+    },
     "player": {
       "projectPath": "player/episodes/episode-34/project.json",
       "status": "planned",
@@ -160,7 +170,7 @@
     {
       "id": "chapter-handoff",
       "name": "单章 handoff",
-      "status": "not-started"
+      "status": "not-required"
     },
     {
       "id": "chapter-production",

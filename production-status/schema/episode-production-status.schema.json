@@ -89,12 +89,14 @@
     "observations": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["taskPackage", "approvedNarration", "aPage", "visualRough", "player", "audio", "delivery"],
+      "required": ["taskPackage", "approvedNarration", "aPage", "visualRough", "playerScript", "playerOutline", "player", "audio", "delivery"],
       "properties": {
         "taskPackage": { "$ref": "#/$defs/fileObservation" },
         "approvedNarration": { "$ref": "#/$defs/fileObservation" },
         "aPage": { "$ref": "#/$defs/fileObservation" },
         "visualRough": { "$ref": "#/$defs/fileObservation" },
+        "playerScript": { "$ref": "#/$defs/fileObservation" },
+        "playerOutline": { "$ref": "#/$defs/fileObservation" },
         "player": {
           "type": "object", "additionalProperties": false,
           "required": ["projectPath", "status", "chaptersCompleted", "chaptersTotal", "entrypointPresent", "sourceChapterCount"],

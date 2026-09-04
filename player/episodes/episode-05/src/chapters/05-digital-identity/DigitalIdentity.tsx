@@ -54,9 +54,18 @@ export default function DigitalIdentity({ step }: ChapterStepProps) {
               <i className="dgi-focus-c dgi-focus-c--bl" />
               <i className="dgi-focus-c dgi-focus-c--br" />
             </span>
-            <figcaption className="dgi-media-caption">
-              M002 · 车间现场 · 占位图（正式素材待替换）
-            </figcaption>
+            {/* 收束拍：判断句 scrim 蒙在实景上（常驻槽 opacity 淡入，不条件挂载） */}
+            <div
+              className={`dgi-scrim${settled ? " is-on" : ""}`}
+              aria-hidden={!settled}
+            >
+              <p className="dgi-scrim-main">
+                系统处理的，是对应物理实体的数字身份
+              </p>
+              <p className="dgi-scrim-sub">
+                货架上的实物 · 对应可供系统识别的对象身份
+              </p>
+            </div>
           </div>
         </figure>
 
@@ -123,11 +132,6 @@ export default function DigitalIdentity({ step }: ChapterStepProps) {
                 <p className="dgi-node-sub">物理实体在数字世界里的身份</p>
               </li>
             </ol>
-
-            <div className={`dgi-close${settled ? " is-on" : ""}`}>
-              <p className="dgi-close-main">系统处理的，是对应物理实体的数字身份</p>
-              <p className="dgi-close-sub">货架上的实物 · 对应可供系统识别的对象身份</p>
-            </div>
           </section>
         </div>
       </div>

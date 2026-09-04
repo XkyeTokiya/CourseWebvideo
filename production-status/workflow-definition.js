@@ -62,8 +62,8 @@
       purpose: '从正式 inputs 无损派生口播 beats、Outline 和生产计划。',
       checklist: ['script 与批准口播无损一致', 'outline 覆盖全部 A-page', '主题、素材和开发模式已明确'],
       artifacts: [
-        { key: 'script', label: 'script.md', source: 'derived', path: 'player/episodes/{{episodeId}}/script.md' },
-        { key: 'outline', label: 'outline.md', source: 'derived', path: 'player/episodes/{{episodeId}}/outline.md' },
+        { key: 'script', label: 'script.md', source: 'observation', observation: 'playerScript' },
+        { key: 'outline', label: 'outline.md', source: 'observation', observation: 'playerOutline' },
         { key: 'project', label: 'project.json', source: 'player' }
       ],
       prompt: '请对 {{episodeId}}（{{title}}）执行 Checkpoint Plan。集中展示并核对 script、outline、主题、素材方案和开发模式五项内容，列出未决问题；在用户明确确认五项全部对齐前，不得进入网页开发。'
@@ -73,14 +73,14 @@
       purpose: '一次确认稿子、Outline、主题、素材和开发模式，控制网页开发返工风险。',
       checklist: ['script 已确认', 'Outline 与章节结构已确认', '主题、素材、开发模式均已确认'],
       artifacts: [
-        { key: 'script', label: 'script.md', source: 'derived', path: 'player/episodes/{{episodeId}}/script.md' },
-        { key: 'outline', label: 'outline.md', source: 'derived', path: 'player/episodes/{{episodeId}}/outline.md' },
+        { key: 'script', label: 'script.md', source: 'observation', observation: 'playerScript' },
+        { key: 'outline', label: 'outline.md', source: 'observation', observation: 'playerOutline' },
         { key: 'project', label: 'project.json', source: 'player' }
       ],
       prompt: '请在 player 中为 {{episodeId}}（{{title}}）生成单章 compact handoff v3。先运行 pnpm courseplay:handoff -- --episode {{episodeId}} --a-page <Axxx> --check，确保 freshness 和输入契约通过；handoff 写入 episode 的 .handoffs/，不得提交 Git。'
     },
     {
-      id: 'chapter-handoff', number: '10', group: '下游制作', label: '单章交接', short: '生成隔离的章节输入包',
+      id: 'chapter-handoff', number: '10', group: '下游制作', label: '单章交接（豁免）', short: '当前流程不再强制生成 handoff', optional: true,
       purpose: '从正式 inputs 机械生成单 A compact handoff，控制章节 Agent 的上下文边界。',
       checklist: ['handoff 来源仅为正式 inputs', '--check 与 freshness 通过', 'A-page 与目标章节对应'],
       artifacts: [{ key: 'handoffs', label: '.handoffs/', source: 'derived', path: 'player/episodes/{{episodeId}}/.handoffs/' }],

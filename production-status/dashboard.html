@@ -143,7 +143,7 @@
       box-shadow:0 10px 24px rgba(110,123,255,.22);
     }
     .btn.primary:hover{filter:brightness(1.06)}
-    .btn.icon{width:38px;padding:0}
+    .btn.icon{width:38px;padding:0}.btn.icon.is-loading svg{animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
     .btn svg{width:17px;height:17px;flex:none}
     .btn.small{height:32px;padding:0 10px;font-size:12.5px;border-radius:9px}
 
@@ -912,11 +912,15 @@ async function connectDirectory(){
     if(error?.name !== 'AbortError') toast(`连接目录失败：${error.message || error}`, 'danger');
   }
 }
-async function detectHttpBase(){
+async function detectHttpBase(requestToken = Date.now()){
   const candidates = ['episodes/episode-01.json','production-status/episodes/episode-01.json'];
   for(const candidate of candidates) {
     try {
-      const res = await fetch(candidate, {cache:'no-store'});
+      const separator = candidate.includes('?') ? '&' : '?';
+      const res = await fetch(`${candidate}${separator}_refresh=${requestToken}`, {
+        cache:'reload',
+        headers:{'Cache-Control':'no-cache'}
+      });
       if(!res.ok) continue;
       JSON.parse(await res.text());
       return candidate.replace('episode-01.json','');
@@ -924,12 +928,15 @@ async function detectHttpBase(){
   }
   return null;
 }
-async function loadHttp(){
-  const base = await detectHttpBase();
+async function loadHttp(requestToken = Date.now()){
+  const base = await detectHttpBase(requestToken);
   if(!base) return [];
   const jobs = Array.from({length:99}, (_,i) => i + 1).map(async n => {
     const id = `episode-${String(n).padStart(2,'0')}`;
-    const res = await fetch(`${base}${id}.json`, {cache:'no-store'});
+    const res = await fetch(`${base}${id}.json?_refresh=${requestToken}`, {
+      cache:'reload',
+      headers:{'Cache-Control':'no-cache'}
+    });
     if(!res.ok) return null;
     return {doc:await res.json(), handle:null};
   });
@@ -949,10 +956,36 @@ async function loadFiles(fileList){
   if(!loaded.length) toast('未选择有效的状态文件', 'warn');
   setDocs(loaded, 'files', `文件模式 · 只读 · ${loaded.length} 个`, 'readonly');
 }
+let refreshInFlight = false;
 async function refresh(){
-  if(sourceMode === 'directory' && episodesHandle) return loadFromDirectoryHandle();
-  if(sourceMode === 'http') return setDocs(await loadHttp(), 'http', '在线模式 · 只读', 'readonly');
-  toast('当前数据源无法自动刷新，请重新选择状态文件', 'warn');
+  if(refreshInFlight) return;
+  refreshInFlight = true;
+  const button = el.refreshBtn;
+  const previousLabel = button.getAttribute('aria-label') || '刷新数据';
+  button.disabled = true;
+  button.setAttribute('aria-label', '刷新中');
+  button.classList.add('is-loading');
+  try {
+    if(sourceMode === 'directory' && episodesHandle){
+      await loadFromDirectoryHandle();
+      toast('数据已刷新');
+      return;
+    }
+    if(sourceMode === 'http'){
+      const loaded = await loadHttp(Date.now());
+      setDocs(loaded, 'http', '在线模式 · 只读', 'readonly');
+      toast(loaded.length ? `已刷新 ${loaded.length} 个状态文件` : '刷新完成，但没有找到状态文件', loaded.length ? 'ok' : 'warn');
+      return;
+    }
+    toast('当前数据源无法自动刷新，请重新选择状态文件', 'warn');
+  } catch(error) {
+    toast(`刷新失败：${error.message || error}`, 'danger');
+  } finally {
+    refreshInFlight = false;
+    button.disabled = !sourceMode || sourceMode === 'files';
+    button.setAttribute('aria-label', previousLabel);
+    button.classList.remove('is-loading');
+  }
 }
 function render(){
   renderKpis();

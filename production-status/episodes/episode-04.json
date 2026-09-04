@@ -5,13 +5,11 @@
   "summary": {
     "status": "blocked",
     "currentStage": "audio",
-    "nextAction": "补齐人工审批记录: checkpointAudio",
+    "nextAction": "推进阶段: 音频",
     "blockers": [
       "音频缺少 21 个文件"
     ],
-    "approvalGaps": [
-      "checkpointAudio"
-    ]
+    "approvalGaps": []
   },
   "observations": {
     "taskPackage": {
@@ -36,6 +34,18 @@
       "status": "draft",
       "path": "player/episodes/episode-04/inputs/episode-04-visual-rough.md",
       "sha256": "b14a8f2b51a5b6acec40d7b989a238eb7a21223e7ccbb8a667778a50de5d431e",
+      "failures": []
+    },
+    "playerScript": {
+      "status": "present",
+      "path": "player/episodes/episode-04/script.md",
+      "sha256": "a17fba64b7ca1cb65849deebe4c23e43da1fd4c192b2cbe8f86097a6d485f6e6",
+      "failures": []
+    },
+    "playerOutline": {
+      "status": "present",
+      "path": "player/episodes/episode-04/outline.md",
+      "sha256": "b5593d9745928b634998bb7fe7b749c9e65c3e3dc5e13a7cdb058b174f2c997d",
       "failures": []
     },
     "player": {
@@ -97,8 +107,8 @@
       "note": "按用户要求默认通过，流程推进至音频检查点"
     },
     "checkpointAudio": {
-      "status": "pending",
-      "decidedAt": "2026-09-03T13:10:36.275Z",
+      "status": "approved",
+      "decidedAt": "2026-09-04T01:01:12.242Z",
       "decidedBy": "批量默认审核",
       "evidence": "player/episodes/episode-04/audio-segments.json",
       "note": "停在音频检查点，等待人工审核"
@@ -167,7 +177,7 @@
     {
       "id": "chapter-handoff",
       "name": "单章 handoff",
-      "status": "complete"
+      "status": "not-required"
     },
     {
       "id": "chapter-production",
@@ -182,7 +192,7 @@
     {
       "id": "audio",
       "name": "音频",
-      "status": "awaiting-approval"
+      "status": "in-progress"
     },
     {
       "id": "recording-delivery",
@@ -190,8 +200,8 @@
       "status": "not-started"
     }
   ],
-  "updatedAt": "2026-09-03",
-  "updatedBy": "production-status sync",
+  "updatedAt": "2026-09-04",
+  "updatedBy": "界面人工审核",
   "stageReviews": {
     "continuous-narration": {
       "status": "approved",
@@ -229,11 +239,18 @@
       "note": "按用户要求默认通过，流程推进至音频检查点"
     },
     "audio": {
-      "status": "pending",
-      "reviewedAt": "2026-09-03T13:10:36.275Z",
+      "status": "approved",
+      "reviewedAt": "2026-09-04T01:01:12.242Z",
       "reviewedBy": "批量默认审核",
       "evidence": "player/episodes/episode-04/audio-segments.json",
       "note": "停在音频检查点，等待人工审核"
+    },
+    "chapter-handoff": {
+      "status": "approved",
+      "reviewedAt": "2026-09-04T05:30:16.176Z",
+      "reviewedBy": "界面人工审核",
+      "evidence": "player/episodes/episode-04/.handoffs/",
+      "note": null
     }
   }
 }

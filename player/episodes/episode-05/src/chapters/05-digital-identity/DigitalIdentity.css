@@ -1,12 +1,12 @@
 /* digital-identity · A005 image-with-insight-rail
    mechanism: persistent-media-reading — 车间实景持续在场，取景框随阅读
    焦点迁移；图侧双 insight 轨：轨一 需求→范围，轨二 映射链（阅读顺序
-   即映射方向，不画箭头）→ 身份证类比 → 数字身份收束。
+   即映射方向，不画箭头）→ 身份证类比；settled 拍判断句以 scrim 收在实景上。
    prefix: dgi- */
 
 .dgi-scene {
   justify-content: flex-start;
-  gap: 34px;
+  gap: 28px;
 }
 
 /* ── headline：数字“身份证”高亮，收束拍加深 ─────────────── */
@@ -137,22 +137,6 @@
   border-bottom-width: 3px;
 }
 
-.dgi-media-caption {
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0;
-  padding: 12px 22px;
-  font-family: var(--font-mono);
-  font-size: 20px;
-  letter-spacing: 0.08em;
-  color: var(--theme-paper);
-  background: color-mix(in srgb, var(--theme-structural) 62%, transparent);
-  animation: dgi-fade-in 480ms var(--ease-soft) 420ms backwards;
-}
-
 /* ── 双 insight 轨 ──────────────────────────────────────── */
 
 .dgi-rails {
@@ -181,10 +165,18 @@
 .dgi-rail--map {
   flex: 1;
   min-height: 0;
+  gap: 12px;
   border: 2px dashed var(--theme-dashed-line);
   transition: background var(--dur-slow) var(--ease-soft),
     border var(--dur-slow) var(--ease-soft),
     box-shadow var(--dur-slow) var(--ease-soft);
+}
+
+/* 节点列充满轨道剩余高度，条目均匀分布落满卡片 */
+.dgi-rail--map .dgi-nodes {
+  margin-top: 0;
+  flex: 1;
+  justify-content: space-between;
 }
 
 .dgi-rail--map.is-on {
@@ -216,7 +208,7 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .dgi-node {
@@ -302,6 +294,8 @@
 }
 
 .dgi-node--analogy::before {
+  top: 20px;
+  left: 8px;
   border-color: var(--theme-warning);
 }
 
@@ -345,37 +339,46 @@
   animation: dgi-idcard-in 480ms var(--ease-overshoot) 260ms both;
 }
 
-/* 收束项：判断句唯一载体，末拍后置入场 */
-.dgi-close {
-  margin-top: auto;
-  padding: 14px 20px;
-  background: var(--theme-process-surface);
-  border: 3px solid var(--theme-process);
-  border-radius: 12px;
+/* 收束拍 scrim：判断句唯一载体，蒙在实景上，末拍后置入场 */
+.dgi-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 0 40px;
+  text-align: center;
+  background: color-mix(in srgb, var(--theme-structural) 74%, transparent);
   opacity: 0;
 }
 
-.dgi-close.is-on {
+.dgi-scrim.is-on {
+  animation: dgi-fade-in 420ms var(--ease-soft) 80ms both;
+}
+
+.dgi-scrim-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--theme-paper);
+}
+
+.dgi-scrim.is-on .dgi-scrim-main {
   animation: dgi-rise-in 520ms var(--ease-overshoot) 240ms both;
 }
 
-.dgi-close-main {
+.dgi-scrim-sub {
   margin: 0;
-  font-family: var(--font-display-cn);
-  font-size: 27px;
-  font-weight: 900;
-  color: var(--theme-structural);
+  font-size: 26px;
+  color: color-mix(in srgb, var(--theme-paper) 85%, transparent);
 }
 
-.dgi-close-sub {
-  margin: 6px 0 0;
-  font-size: 22px;
-  color: var(--text-2);
-  opacity: 0;
-}
-
-.dgi-close.is-on .dgi-close-sub {
-  animation: dgi-fade-in 420ms var(--ease-soft) 520ms both;
+.dgi-scrim.is-on .dgi-scrim-sub {
+  animation: dgi-fade-in 420ms var(--ease-soft) 640ms both;
 }
 
 /* ── keyframes ─────────────────────────────────────────── */

@@ -9,6 +9,7 @@ const PLAYER_DIR = path.join(ROOT, 'player');
 const TASK_DIR = path.join(ROOT, 'narration-pipeline', 'episodes');
 const TODAY = '2026-09-03';
 const APPROVAL_KEYS = ['narration', 'visualRough', 'checkpointPlan', 'firstChapter', 'checkpointAudio', 'finalDelivery'];
+const HANDOFF_EXEMPT_EPISODES = new Set(['episode-01', 'episode-02', 'episode-03', 'episode-04', 'episode-09']); // 保留明确名单，handoff 当前对所有 episode 均为非强制
 const STAGES = [
   ['freeze-task-package', '冻结任务包'], ['continuous-narration', '连续口播'], ['approve-narration', '批准口播'],
   ['a-page', 'A-page'], ['compile-trace', '编译追踪'], ['validate-a-page', 'A-page 验证'],
@@ -33,12 +34,14 @@ function blank(id, title) {
       audio: { segmentsPath: `player/episodes/${id}/audio-segments.json`, status: 'not-extracted', segmentCount: 0, fileCount: 0, missingCount: 0, source: null, ttsProvider: null },
       delivery: { recording: { status: 'not-observed', paths: [] }, finalVideo: { status: 'not-observed', paths: [] } } },
     approvals: Object.fromEntries(APPROVAL_KEYS.map(k => [k, approval()])), coordination: { owner: null, targetDate: null, blockers: [], notes: '', externalArtifacts: [] },
-    stages: STAGES.map(([stageId, name]) => ({ id: stageId, name, status: 'not-started' })), updatedAt: TODAY, updatedBy: 'production-status sync' };
+    stages: STAGES.map(([stageId, name]) => ({ id: stageId, name, status: stageId === 'chapter-handoff' ? 'not-required' : 'not-started' })), updatedAt: TODAY, updatedBy: 'production-status sync' };
 }
 function obs(id, current) {
   const dir = path.join(PLAYER_DIR, 'episodes', id); const inputs = path.join(dir, 'inputs');
   const task = findTask(id); const p = path.join(dir, 'project.json'); const project = exists(p) ? readJson(p) : null;
   const file = (name, status = 'present') => { const f = path.join(inputs, name); return exists(f) ? { status, path: rel(f), sha256: sha256(f), failures: [] } : { status: 'missing', path: rel(f), failures: [] }; };
+  const fileObservation = f => exists(f) ? { status: 'present', path: rel(f), sha256: sha256(f), failures: [] } : { status: 'missing', path: rel(f), failures: [] };
+  const playerScript = fileObservation(path.join(dir, 'script.md')); const playerOutline = fileObservation(path.join(dir, 'outline.md'));
   let aPage = file(`${id}-a-page.json`), visual = file(`${id}-visual-rough.md`), narration = file('approved-spoken-text.txt');
   const av = path.join(inputs, `${id}-a-page-validation.json`); if (exists(av)) { const v = readJson(av); aPage.status = v.failures?.length ? 'invalid' : 'valid'; aPage.failures = v.failures ?? []; }
   const vv = path.join(inputs, `${id}-visual-rough-validation.json`); if (exists(vv)) { const v = readJson(vv); visual.status = v.failures?.length ? 'invalid' : (v.status === 'approved' ? 'approved' : v.status === 'draft' ? 'draft' : 'present'); visual.failures = v.failures ?? []; }
@@ -47,6 +50,7 @@ function obs(id, current) {
   const sourceChapters = walk(path.join(dir, 'src', 'chapters')).filter(f => f.endsWith('.tsx') && !f.endsWith('narrations.ts')).length;
   const title = project?.title && !project.title.includes('待制作') ? project.title : taskTitle(task, id);
   return { title, observations: { taskPackage: task ? { status: 'present', path: rel(task), sha256: sha256(task), failures: [] } : { status: 'missing', path: '', failures: [] }, approvedNarration: narration, aPage, visualRough: visual,
+    playerScript, playerOutline,
     player: { projectPath: rel(p), status: project?.status ?? 'missing', chaptersCompleted: project?.progress?.completed ?? 0, chaptersTotal: project?.progress?.total ?? 0, current: project?.progress?.current ?? null, entrypointPresent: exists(path.join(dir, 'src', 'entry.tsx')), sourceChapterCount: sourceChapters },
     audio: { segmentsPath: rel(audioPath), status: !segments.length ? 'not-extracted' : missing.length ? (audioFiles.length ? 'partial' : 'extracted') : 'complete', segmentCount: segments.length, fileCount: audioFiles.length, missingCount: missing.length, source: exists(path.join(dir, 'src')) ? 'narrations.ts' : null, ttsProvider: null },
     delivery: { recording: { status: 'not-observed', paths: [] }, finalVideo: { status: 'not-observed', paths: [] } } } };
@@ -64,14 +68,14 @@ function applyDerived(doc) {
   if (o.audio.status !== 'not-extracted' && !isApprovalDone(a.checkpointAudio)) gaps.push('checkpointAudio');
   if (o.delivery.finalVideo.status === 'present' && !isApprovalDone(a.finalDelivery)) gaps.push('finalDelivery');
   const complete = o.delivery.finalVideo.status === 'present' && a.finalDelivery.status === 'approved';
-  const stageStatus = STAGES.map(([id, name]) => ({ id, name, status: 'not-started' }));
+  const stageStatus = STAGES.map(([id, name]) => ({ id, name, status: id === 'chapter-handoff' ? 'not-required' : 'not-started' }));
   const set = (id, status) => { stageStatus.find(s => s.id === id).status = status; };
   if (o.taskPackage.status === 'present') set('freeze-task-package', 'complete');
   if (o.approvedNarration.status !== 'missing') set('continuous-narration', 'complete');
   if (o.approvedNarration.status !== 'missing') set('approve-narration', isApprovalDone(a.narration) ? 'complete' : 'awaiting-approval');
   if (o.aPage.status !== 'missing') set('a-page', 'complete'); if (o.aPage.status === 'valid') set('validate-a-page', 'complete');
   if (o.aPage.status !== 'missing') set('compile-trace', 'complete'); if (o.visualRough.status !== 'missing') set('visual-rough', isApprovalDone(a.visualRough) ? 'complete' : 'awaiting-approval');
-  if (o.player.entrypointPresent) { set('player-phase-1', 'complete'); set('checkpoint-plan', isApprovalDone(a.checkpointPlan) ? 'complete' : 'awaiting-approval'); set('chapter-handoff', 'complete'); set('chapter-production', o.player.chaptersTotal && o.player.chaptersCompleted >= o.player.chaptersTotal ? 'complete' : 'in-progress'); set('chapter-acceptance', isApprovalDone(a.firstChapter) ? 'complete' : 'awaiting-approval'); }
+  if (o.player.entrypointPresent) { set('player-phase-1', 'complete'); set('checkpoint-plan', isApprovalDone(a.checkpointPlan) ? 'complete' : 'awaiting-approval'); set('chapter-handoff', 'not-required'); set('chapter-production', o.player.chaptersTotal && o.player.chaptersCompleted >= o.player.chaptersTotal ? 'complete' : 'in-progress'); set('chapter-acceptance', isApprovalDone(a.firstChapter) ? 'complete' : 'awaiting-approval'); }
   if (o.audio.status !== 'not-extracted') set('audio', isApprovalDone(a.checkpointAudio) ? (o.audio.status === 'complete' ? 'complete' : 'in-progress') : 'awaiting-approval');
   if (o.delivery.finalVideo.status === 'present') set('recording-delivery', a.finalDelivery.status === 'approved' ? 'complete' : 'awaiting-approval');
   const firstOpen = stageStatus.find(s => ['in-progress', 'awaiting-approval', 'blocked', 'not-started'].includes(s.status));

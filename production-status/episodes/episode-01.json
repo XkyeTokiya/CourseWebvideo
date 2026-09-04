@@ -36,6 +36,18 @@
       "sha256": "96c72a1297063c78742e2ba41e3d191f3d3c1bdf675ca888f1bf56c7c97b01f1",
       "failures": []
     },
+    "playerScript": {
+      "status": "present",
+      "path": "player/episodes/episode-01/script.md",
+      "sha256": "64d3f03b87104cf6810dfcd59ba76bcd566effc860b2b9bfd03856d62aec3a77",
+      "failures": []
+    },
+    "playerOutline": {
+      "status": "present",
+      "path": "player/episodes/episode-01/outline.md",
+      "sha256": "bcc2b777a248dd317c319d6adecefc188ae73a0cfb16f9d1b2bb48426ae6cd7f",
+      "failures": []
+    },
     "player": {
       "projectPath": "player/episodes/episode-01/project.json",
       "status": "in-progress",
@@ -165,7 +177,7 @@
     {
       "id": "chapter-handoff",
       "name": "单章 handoff",
-      "status": "complete"
+      "status": "not-required"
     },
     {
       "id": "chapter-production",

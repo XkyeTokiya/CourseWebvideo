@@ -35,6 +35,16 @@
       "path": "player/episodes/episode-05/inputs/episode-05-visual-rough.md",
       "failures": []
     },
+    "playerScript": {
+      "status": "missing",
+      "path": "player/episodes/episode-05/script.md",
+      "failures": []
+    },
+    "playerOutline": {
+      "status": "missing",
+      "path": "player/episodes/episode-05/outline.md",
+      "failures": []
+    },
     "player": {
       "projectPath": "player/episodes/episode-05/project.json",
       "status": "planned",
@@ -164,7 +174,7 @@
     {
       "id": "chapter-handoff",
       "name": "单章 handoff",
-      "status": "not-started"
+      "status": "not-required"
     },
     {
       "id": "chapter-production",
@@ -188,7 +198,7 @@
     }
   ],
   "updatedAt": "2026-09-03",
-  "updatedBy": "界面人工审核",
+  "updatedBy": "production-status sync",
   "stageReviews": {
     "freeze-task-package": {
       "status": "approved",

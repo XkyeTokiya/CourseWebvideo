@@ -1,5 +1,5 @@
 {
-  "schema_version": "courseplay-a-page/v4",
+  "schema_version": "courseplay-a-page/v6",
   "document_kind": "production",
   "episode_id": "episode-05",
   "approved_text": "approved-spoken-text.txt",
@@ -76,38 +76,79 @@
       "a_id": "A001",
       "callback_a_ids": [],
       "nx": "设想一个收货现场：一批零部件从供应商发往制造商，外包装上都贴着二维码。收货人员拿起扫码枪一扫，屏幕上确实跳出了一串字符。可再往下就卡住了：本企业的系统认不出这串字符，收货人员只能翻出清单，逐一核对。包装上的标签看得清清楚楚，标签背后的身份却没有一同到达。\n\n",
-      "teaching_purpose": "以教学设想的跨企业收货情境提出“可扫码但不能确认对象”的问题。",
-      "single_message": "扫出字符不等于业务系统能够识别对象；断点发生在身份语境没有随编码跨企业到达。",
-      "must_visible": [
-        {
-          "semantic_item_id": "V001",
-          "meaning": "供应商发出的零部件进入制造商收货环节；二维码可被扫描，却只得到陌生字符并需要人工核对；该情境明确为教学设想。",
+      "teaching_purpose": "以教学设想的跨企业收货情境提出“可扫码但不能确认对象”的断点问题",
+      "single_message": "扫码读出字符不等于业务系统能识别对象，断点在于对象身份没有随标签一同到达",
+      "screen": {
+        "title": {
+          "screen_item_id": "S001",
+          "guidance_text": "收货现场：标签看得见，身份没跟上",
+          "usage_policy": "reference",
           "evidence_refs": [
-            "E002",
             "E007"
           ]
-        }
-      ],
+        },
+        "groups": [
+          {
+            "group_id": "G001",
+            "items": [
+              {
+                "screen_item_id": "S002",
+                "guidance_text": "一批零部件从供应商发往制造商收货区，外包装二维码可正常扫描",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              },
+              {
+                "screen_item_id": "S003",
+                "guidance_text": "扫码后屏幕只显示本企业不认识的陌生字符，业务确认停在人工翻清单、逐一核对",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002",
+                  "E007"
+                ]
+              },
+              {
+                "screen_item_id": "S004",
+                "guidance_text": "对照点：二维码可扫描，对象身份却未随标签到达下游",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          }
+        ]
+      },
       "protected_relations": [
         {
           "relation_id": "R001",
           "from": "二维码中的字符",
           "relation": "可被扫描但不必然使系统",
           "to": "确认具体对象",
-          "direction": "单向限定"
+          "direction": "caution"
         },
         {
           "relation_id": "R002",
           "from": "标签可见",
           "relation": "不等于",
           "to": "对象身份已被下游系统理解",
-          "direction": "非等价"
+          "direction": "contrast"
         }
       ],
-      "entry_condition": "学习者已具备扫码能够读出字符的日常经验。",
-      "exit_condition": "学习者能说出扫码成功与业务识别对象之间仍可能存在断点。",
+      "silent_constraints": [
+        {
+          "constraint_id": "C001",
+          "instruction": "开篇收货为教学情境，不冒充真实企业案例，相关素材按下游规则标记",
+          "evidence_refs": [
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "学习者具备日常扫码读出字符的经验",
+      "exit_condition": "学习者能说出扫码成功与业务识别对象之间仍存在断点",
       "timing": {
-        "char_equivalent": 116,
+        "char_equivalent": 116.0,
         "min_seconds": 29,
         "target_seconds": 30,
         "max_seconds": 32,
@@ -116,42 +157,81 @@
     },
     {
       "a_id": "A002",
-      "callback_a_ids": [
-        "A001"
-      ],
+      "callback_a_ids": [],
       "nx": "先弄明白这串字符的来历。它多半是企业自己设置的编码，专门为内部管理服务，这样的编码叫“私码”。在供应商自己的系统里，私码是管用的。系统里记录着这串字符的含义，以及它对应的订单、批次和产品记录。私码并不是没有价值，问题在于，它的规则和含义通常只在本企业的管理环境里才成立。\n\n",
-      "teaching_purpose": "界定私码在企业内部的用途与正当价值。",
-      "single_message": "私码是企业自行设置、主要服务内部管理的编码，在本企业中可以关联订单、批次和产品记录。",
-      "must_visible": [
-        {
-          "semantic_item_id": "V002",
-          "meaning": "企业内部的私码可关联订单、批次和产品记录；其规则和含义在本企业管理环境内成立。",
+      "teaching_purpose": "界定私码的来历与其在企业内部的正当用途",
+      "single_message": "私码是企业自行设置、主要服务内部管理的编码，在本企业管理环境内可关联订单、批次和产品记录",
+      "screen": {
+        "title": {
+          "screen_item_id": "S005",
+          "guidance_text": "字符的来历：企业自设的私码",
+          "usage_policy": "reference",
           "evidence_refs": [
-            "E002",
-            "E007"
+            "E002"
           ]
-        }
-      ],
+        },
+        "groups": [
+          {
+            "group_id": "G002",
+            "items": [
+              {
+                "screen_item_id": "S006",
+                "guidance_text": "私码：企业自己设置、专门服务内部管理的编码",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              },
+              {
+                "screen_item_id": "S007",
+                "guidance_text": "在供应商自己的系统里私码管用：系统记录字符含义，并对应订单、批次和产品记录",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002",
+                  "E007"
+                ]
+              },
+              {
+                "screen_item_id": "S008",
+                "guidance_text": "私码有价值；其规则与含义只在本企业的管理环境里成立",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          }
+        ]
+      },
       "protected_relations": [
         {
           "relation_id": "R003",
           "from": "私码",
           "relation": "主要服务于",
           "to": "企业内部管理",
-          "direction": "用途限定"
+          "direction": "forward"
         },
         {
           "relation_id": "R004",
           "from": "私码",
-          "relation": "可以关联",
+          "relation": "可关联",
           "to": "订单、批次和产品记录",
-          "direction": "单向关联"
+          "direction": "forward"
         }
       ],
-      "entry_condition": "学习者已看到跨企业收货时出现陌生字符的情境。",
-      "exit_condition": "学习者理解私码并非没有价值，其有效性依赖企业内部的管理语境。",
+      "silent_constraints": [
+        {
+          "constraint_id": "C002",
+          "instruction": "私码只表示企业自设、服务内部管理的编码，不渲染为非法编码、伪码、安全漏洞或低质量标签",
+          "evidence_refs": [
+            "E002"
+          ]
+        }
+      ],
+      "entry_condition": "学习者已看到跨企业收货出现陌生字符",
+      "exit_condition": "学习者理解私码并非没有价值，其有效性依赖企业内部管理语境",
       "timing": {
-        "char_equivalent": 121,
+        "char_equivalent": 121.0,
         "min_seconds": 31,
         "target_seconds": 32,
         "max_seconds": 33,
@@ -160,42 +240,86 @@
     },
     {
       "a_id": "A003",
-      "callback_a_ids": [
-        "A002"
-      ],
+      "callback_a_ids": [],
       "nx": "编码一旦跨出企业边界，情形就不同了。到了下游企业，这串编码由谁分配、对应哪类对象、是否重复，对方都未必能判断；与它关联的记录，也未必找得到。扫码枪读出来的是一串字符，业务系统却无法凭它确认对象。我们常说的“不能识别”，问题不在扫码这个动作本身，而在于企业之间没有共享同一套身份语境。\n\n",
-      "teaching_purpose": "解释私码跨出企业边界后为什么会失去可理解的对象含义。",
-      "single_message": "下游读出字符后仍可能不知道分配者、对象类别、重复情况和关联记录，因此不能确认对象。",
-      "must_visible": [
-        {
-          "semantic_item_id": "V003",
-          "meaning": "同一编码进入下游后，分配者、对象类别、是否重复和关联记录均可能未知；读出字符不等于识别对象。",
+      "teaching_purpose": "解释编码跨出企业边界后失去可理解对象含义的原因",
+      "single_message": "下游读出字符后仍可能不知道分配者、对象类别、重复情况与关联记录，因此不能确认对象",
+      "screen": {
+        "title": {
+          "screen_item_id": "S009",
+          "guidance_text": "跨过企业边界，身份语境断了",
+          "usage_policy": "reference",
           "evidence_refs": [
-            "E002",
-            "E007"
+            "E002"
           ]
-        }
-      ],
+        },
+        "groups": [
+          {
+            "group_id": "G003",
+            "items": [
+              {
+                "screen_item_id": "S010",
+                "guidance_text": "同一编码进入下游企业：由谁分配、对应哪类对象、是否重复，对方都未必能判断",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002",
+                  "E007"
+                ]
+              },
+              {
+                "screen_item_id": "S011",
+                "guidance_text": "与编码关联的记录，下游也未必找得到",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G004",
+            "items": [
+              {
+                "screen_item_id": "S012",
+                "guidance_text": "读出字符 ≠ 识别对象",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E002"
+                ]
+              },
+              {
+                "screen_item_id": "S013",
+                "guidance_text": "断点定位：问题不在扫码动作，而在企业之间没有共享同一套身份语境",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          }
+        ]
+      },
       "protected_relations": [
         {
           "relation_id": "R005",
           "from": "扫码读出字符",
           "relation": "不等于",
           "to": "业务系统识别对象",
-          "direction": "非等价"
+          "direction": "contrast"
         },
         {
           "relation_id": "R006",
           "from": "企业之间缺少共同身份语境",
           "relation": "导致",
           "to": "下游无法确认对象",
-          "direction": "因果"
+          "direction": "forward"
         }
       ],
-      "entry_condition": "学习者已理解私码在原企业内部可以正常使用。",
-      "exit_condition": "学习者能定位跨企业断点是共同身份语境缺失，而非扫码动作失败。",
+      "silent_constraints": [],
+      "entry_condition": "学习者已理解私码在原企业内部可正常使用",
+      "exit_condition": "学习者能把跨企业断点定位为共同身份语境缺失，而非扫码动作失败",
       "timing": {
-        "char_equivalent": 125,
+        "char_equivalent": 125.0,
         "min_seconds": 32,
         "target_seconds": 33,
         "max_seconds": 35,
@@ -204,57 +328,100 @@
     },
     {
       "a_id": "A004",
-      "callback_a_ids": [
-        "A003"
-      ],
+      "callback_a_ids": [],
       "nx": "要往下讲，得先把三个概念分开。零部件、设备和产品，是需要被识别的对象。编码，是赋给对象的数字身份。二维码、条形码和标签，则是把编码带到现场的标识载体。标签样式换了，编码背后的规则不会跟着变；反过来，同一个身份编码，也能换一种载体带到现场。标签旧了、破了，可以补一张新的。只要新标签承载的还是同一编码，系统识别的仍是原来的对象。\n\n",
-      "teaching_purpose": "拆分对象、编码和标识载体三个易混概念。",
-      "single_message": "对象是被识别的主体，编码是其数字身份，二维码、条形码和标签只是承载编码的载体。",
-      "must_visible": [
-        {
-          "semantic_item_id": "V004",
-          "meaning": "对象、身份编码与二维码、条形码、标签三层概念必须区分；载体可更换，但同一编码与对象的身份关联保持稳定。",
+      "teaching_purpose": "拆分对象、身份编码与标识载体三个易混概念",
+      "single_message": "对象是被识别的主体，编码是赋给对象的数字身份，二维码、条形码和标签只是承载编码的载体",
+      "screen": {
+        "title": {
+          "screen_item_id": "S014",
+          "guidance_text": "对象、编码、载体：三个概念分开",
+          "usage_policy": "reference",
           "evidence_refs": [
-            "E004",
-            "E005",
             "E008"
           ]
-        }
-      ],
+        },
+        "groups": [
+          {
+            "group_id": "G005",
+            "items": [
+              {
+                "screen_item_id": "S015",
+                "guidance_text": "对象：需要被识别的主体，如零部件、设备、产品",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005",
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S016",
+                "guidance_text": "身份编码：赋给对象的数字身份",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S017",
+                "guidance_text": "标识载体：把编码带到现场的二维码、条形码、标签",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G006",
+            "items": [
+              {
+                "screen_item_id": "S018",
+                "guidance_text": "载体可换、身份不变：标签旧了破了可补打，新标签承载同一编码，系统识别的仍是原对象",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          }
+        ]
+      },
       "protected_relations": [
         {
           "relation_id": "R007",
           "from": "对象",
           "relation": "具有",
           "to": "身份编码",
-          "direction": "对象到编码"
+          "direction": "forward"
         },
         {
           "relation_id": "R008",
           "from": "标识载体",
           "relation": "承载",
           "to": "编码",
-          "direction": "载体到编码"
+          "direction": "forward"
         },
         {
           "relation_id": "R009",
           "from": "标识载体",
           "relation": "不等于",
           "to": "编码",
-          "direction": "非等价"
+          "direction": "contrast"
         },
         {
           "relation_id": "R010",
           "from": "同一身份编码",
           "relation": "可以更换",
           "to": "不同标识载体",
-          "direction": "可替换"
+          "direction": "forward"
         }
       ],
-      "entry_condition": "学习者已认识到字符在跨企业场景中需要可理解的身份含义。",
-      "exit_condition": "学习者不会把二维码图形、编码和被识别对象当作同义概念。",
+      "silent_constraints": [],
+      "entry_condition": "学习者已认识到跨企业字符需要可理解的身份含义",
+      "exit_condition": "学习者不把二维码图形、编码和被识别对象当作同义概念",
       "timing": {
-        "char_equivalent": 143,
+        "char_equivalent": 143.0,
         "min_seconds": 36,
         "target_seconds": 37,
         "max_seconds": 39,
@@ -263,43 +430,86 @@
     },
     {
       "a_id": "A005",
-      "callback_a_ids": [
-        "A004"
-      ],
+      "callback_a_ids": [],
       "nx": "跨企业协同，需要大家都能认的共同身份。工业互联网标识要解决的，正是对象身份问题。产品、装备、制造设备等工业对象，都会在数字世界中映射为对应的数字实体，用一串标识编码来代表。可以把这串标识看成物理实体在数字世界里的“身份证”。系统处理的，始终是与那个物理实体对应的数字身份；货架上的实物，也因此对应着一个可供系统识别的对象身份。\n\n",
-      "teaching_purpose": "建立工业互联网标识面向工业对象的数字身份边界。",
-      "single_message": "工业互联网标识是产品、装备、制造设备等物理实体在数字世界中的身份映射，而不是某一种二维码图形。",
-      "must_visible": [
-        {
-          "semantic_item_id": "V005",
-          "meaning": "产品、装备、制造设备等工业对象映射为数字实体，并以标识编码代表其可供系统识别的对象身份。",
+      "teaching_purpose": "建立工业互联网标识的对象范围与数字身份含义",
+      "single_message": "工业互联网标识是产品、装备、制造设备等物理实体在数字世界中的身份映射，而不是某一种二维码图形",
+      "screen": {
+        "title": {
+          "screen_item_id": "S019",
+          "guidance_text": "工业互联网标识：对象的数字“身份证”",
+          "usage_policy": "reference",
           "evidence_refs": [
             "E003",
-            "E005",
-            "E008"
+            "E005"
           ]
-        }
-      ],
+        },
+        "groups": [
+          {
+            "group_id": "G007",
+            "items": [
+              {
+                "screen_item_id": "S020",
+                "guidance_text": "跨企业协同需要大家都能认的共同身份，工业互联网标识解决对象身份问题",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              },
+              {
+                "screen_item_id": "S021",
+                "guidance_text": "对象范围：产品、装备、制造设备等工业对象",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G008",
+            "items": [
+              {
+                "screen_item_id": "S022",
+                "guidance_text": "物理实体在数字世界中映射为数字实体，由一串标识编码代表，如同数字世界的“身份证”",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              },
+              {
+                "screen_item_id": "S023",
+                "guidance_text": "系统处理的是稳定指向对象的数字身份，不只是货架上的实物",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
       "protected_relations": [
         {
           "relation_id": "R011",
           "from": "物理实体",
           "relation": "映射为",
           "to": "数字实体",
-          "direction": "物理到数字"
+          "direction": "forward"
         },
         {
           "relation_id": "R012",
           "from": "工业互联网标识",
           "relation": "代表",
           "to": "工业对象的数字身份",
-          "direction": "标识到身份"
+          "direction": "forward"
         }
       ],
-      "entry_condition": "学习者已能区分对象、编码与载体。",
-      "exit_condition": "学习者理解工业互联网标识的对象范围和数字身份含义。",
+      "silent_constraints": [],
+      "entry_condition": "学习者已能区分对象、编码与载体",
+      "exit_condition": "学习者理解工业互联网标识的对象范围与数字身份含义",
       "timing": {
-        "char_equivalent": 147,
+        "char_equivalent": 147.0,
         "min_seconds": 37,
         "target_seconds": 38,
         "max_seconds": 41,
@@ -308,49 +518,100 @@
     },
     {
       "a_id": "A006",
-      "callback_a_ids": [
-        "A005"
-      ],
+      "callback_a_ids": [],
       "nx": "为什么强调“身份”，不直接说“编号”？如果只说“编号”，很容易让人以为它只是一串随手写下的字符。标识编码不一样，它背后带着管理逻辑。居民身份证可以作个参照，号码背后有统筹、分配和校验这些规则撑着，才能稳定地把人区分开。合格的标识编码不能随手编写。它要有人负责管理，有明确的分配规则，还要避免对象之间撞名、重号。否则，两家企业可能把相同字符分给不同对象，也可能给同一对象留下几个对不上的名字。这样一来，跨企业识别就失去了可靠起点。\n\n",
-      "teaching_purpose": "说明标识编码背后的管理逻辑是稳定区分对象的条件。",
-      "single_message": "标识编码不是随手生成的字符串，需要统筹、分配和校验等管理逻辑，避免不同对象撞名或同一对象身份不一致。",
-      "must_visible": [
-        {
-          "semantic_item_id": "V006",
-          "meaning": "标识编码受统筹、分配和校验等管理逻辑约束；这些规则支撑对象的稳定区分并避免撞名、重号或身份不一致。",
+      "teaching_purpose": "说明标识编码背后的管理逻辑是稳定区分对象的条件",
+      "single_message": "标识编码不是随手生成的字符串，需要统筹、分配和校验等管理逻辑来避免撞名重号、保持对象身份可靠",
+      "screen": {
+        "title": {
+          "screen_item_id": "S024",
+          "guidance_text": "身份不是编号：编码背后是管理逻辑",
+          "usage_policy": "reference",
           "evidence_refs": [
-            "E004",
-            "E008"
+            "E004"
           ]
-        }
-      ],
+        },
+        "groups": [
+          {
+            "group_id": "G009",
+            "items": [
+              {
+                "screen_item_id": "S025",
+                "guidance_text": "编号听上去是随手可写的字符；标识编码背后带着管理逻辑",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              },
+              {
+                "screen_item_id": "S026",
+                "guidance_text": "身份证参照：号码背后有统筹、分配和校验等规则，才能稳定把人区分开",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G010",
+            "items": [
+              {
+                "screen_item_id": "S027",
+                "guidance_text": "合格的身份编码：有人负责管理、分配规则明确、避免对象之间撞名重号",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              },
+              {
+                "screen_item_id": "S028",
+                "guidance_text": "反例后果：相同字符分给不同对象，或同一对象留下对不上的名字，跨企业识别失去可靠起点",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          }
+        ]
+      },
       "protected_relations": [
         {
           "relation_id": "R013",
           "from": "标识编码",
           "relation": "体现",
           "to": "统筹、分配和校验等管理逻辑",
-          "direction": "编码到规则"
+          "direction": "forward"
         },
         {
           "relation_id": "R014",
           "from": "管理逻辑",
           "relation": "支撑",
           "to": "对象的稳定区分",
-          "direction": "规则到结果"
+          "direction": "forward"
         },
         {
           "relation_id": "R015",
           "from": "无序分配",
           "relation": "可能造成",
           "to": "不同对象撞名或同一对象身份不一致",
-          "direction": "风险因果"
+          "direction": "caution"
         }
       ],
-      "entry_condition": "学习者已理解工业互联网标识是对象的数字身份。",
-      "exit_condition": "学习者能解释“身份”不同于随手写下的普通编号。",
+      "silent_constraints": [
+        {
+          "constraint_id": "C003",
+          "instruction": "身份证只作生活类比符号，不展示真实证件版式、号码或字段细节",
+          "evidence_refs": [
+            "E004"
+          ]
+        }
+      ],
+      "entry_condition": "学习者已理解工业互联网标识是对象的数字身份",
+      "exit_condition": "学习者能解释身份不同于随手写下的编号",
       "timing": {
-        "char_equivalent": 188,
+        "char_equivalent": 188.0,
         "min_seconds": 47,
         "target_seconds": 49,
         "max_seconds": 52,
@@ -359,43 +620,95 @@
     },
     {
       "a_id": "A007",
-      "callback_a_ids": [
-        "A005",
-        "A006"
-      ],
+      "callback_a_ids": [],
       "nx": "只有身份保持连续，同一工业对象在各个环节留下的数字记录，才能始终对应到这个对象。一件产品从研发设计、生产制造、物流运输到销售使用，环节会变，叫法会变，身份联系始终追得回来。\n\n",
-      "teaching_purpose": "解释同一工业对象在全生命周期中保持身份连续。",
-      "single_message": "研发设计、生产制造、物流运输和销售使用等环节可以变化，但同一对象的数字记录始终要对应同一个身份。",
-      "must_visible": [
-        {
-          "semantic_item_id": "V007",
-          "meaning": "研发设计、生产制造、物流运输、销售使用四个物理环节完整对应到数字世界中的同一对象身份，不能裁掉阶段关系。",
+      "teaching_purpose": "解释同一工业对象跨环节的身份连续性",
+      "single_message": "研发设计、生产制造、物流运输、销售使用环节可以变化，同一对象的数字记录始终对应同一个身份",
+      "screen": {
+        "title": {
+          "screen_item_id": "S029",
+          "guidance_text": "一个身份贯穿多个环节",
+          "usage_policy": "reference",
           "evidence_refs": [
             "E003",
             "E006"
           ]
-        }
-      ],
+        },
+        "groups": [
+          {
+            "group_id": "G011",
+            "items": [
+              {
+                "screen_item_id": "S030",
+                "guidance_text": "教材图 1-4 全貌：物理世界向数字世界的映射",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              },
+              {
+                "screen_item_id": "S031",
+                "guidance_text": "物理世界四环节：研发设计、生产制造、物流运输、销售使用",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              },
+              {
+                "screen_item_id": "S032",
+                "guidance_text": "四环节映射到数字世界，由对应的数字标识表示同一对象",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003",
+                  "E006"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G012",
+            "items": [
+              {
+                "screen_item_id": "S033",
+                "guidance_text": "环节会变、叫法会变，同一对象的身份联系始终可追踪",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
       "protected_relations": [
         {
           "relation_id": "R016",
           "from": "研发设计、生产制造、物流运输、销售使用",
           "relation": "映射至",
           "to": "同一对象对应的数字身份",
-          "direction": "多环节到身份"
+          "direction": "forward"
         },
         {
           "relation_id": "R017",
           "from": "环节和叫法",
           "relation": "可以变化而不改变",
           "to": "身份联系",
-          "direction": "连续性限定"
+          "direction": "conditional"
         }
       ],
-      "entry_condition": "学习者已理解身份编码受管理逻辑约束。",
-      "exit_condition": "学习者能将生命周期各环节的数字记录理解为同一对象身份的连续记录。",
+      "silent_constraints": [
+        {
+          "constraint_id": "C004",
+          "instruction": "图 1-4 相关画面先以教材原图建立证据归属；重绘保持四环节向数字标识映射的原意，不补充解析节点或数据字段",
+          "evidence_refs": [
+            "E006"
+          ]
+        }
+      ],
+      "entry_condition": "学习者已理解身份编码受管理逻辑约束",
+      "exit_condition": "学习者把各环节数字记录理解为同一对象身份的连续记录",
       "timing": {
-        "char_equivalent": 77,
+        "char_equivalent": 77.0,
         "min_seconds": 20,
         "target_seconds": 20,
         "max_seconds": 21,
@@ -404,49 +717,103 @@
     },
     {
       "a_id": "A008",
-      "callback_a_ids": [
-        "A007"
-      ],
+      "callback_a_ids": [],
       "nx": "这也说明了工业互联网标识为什么面向跨企业协同。在企业内部，熟悉情况的员工和内部系统能够看懂私码。可放到产业链中，供应商、制造商、物流服务商和使用方都要能识别同一个身份。大家先按共同的身份规则，确认“说的是哪个对象”，之后才谈得上关联它在生产、流通和使用中的数据。各方不必把内部业务编号全部改成一样。只要跨企业共用的身份大家都能识别，并能和各自系统里的记录对应起来就行。\n\n",
-      "teaching_purpose": "说明共同身份规则如何成为跨企业协同的对象锚点。",
-      "single_message": "供应商、制造商、物流服务商和使用方先共同确认“是哪个对象”，才能把各自记录关联起来；内部业务编号不必全部一致。",
-      "must_visible": [
-        {
-          "semantic_item_id": "V008",
-          "meaning": "供应商、制造商、物流服务商和使用方共同识别同一对象身份；共同身份可与各自系统记录对应，而内部业务编号无需全部统一。",
+      "teaching_purpose": "说明共同身份规则如何让产业链各方对齐同一对象",
+      "single_message": "供应商、制造商、物流服务商和使用方先按共同身份规则确认是哪个对象，才谈得上关联各自数据；内部业务编号不必全部一致",
+      "screen": {
+        "title": {
+          "screen_item_id": "S034",
+          "guidance_text": "产业链先对齐：说的是哪个对象",
+          "usage_policy": "reference",
           "evidence_refs": [
             "E005",
             "E008"
           ]
-        }
-      ],
+        },
+        "groups": [
+          {
+            "group_id": "G013",
+            "items": [
+              {
+                "screen_item_id": "S035",
+                "guidance_text": "参与主体：供应商、制造商、物流服务商、使用方",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              },
+              {
+                "screen_item_id": "S036",
+                "guidance_text": "各方都要能识别同一个身份：先按共同身份规则确认“说的是哪个对象”",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005",
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S037",
+                "guidance_text": "确认对象之后，才谈得上关联它在生产、流通和使用中的数据",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G014",
+            "items": [
+              {
+                "screen_item_id": "S038",
+                "guidance_text": "各方内部业务编号不必全部改成一样；跨企业共用身份能被识别、能对应各自系统记录即可",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          }
+        ]
+      },
       "protected_relations": [
         {
           "relation_id": "R018",
           "from": "共同身份规则",
           "relation": "先确认",
           "to": "同一个对象",
-          "direction": "先后依赖"
+          "direction": "forward"
         },
         {
           "relation_id": "R019",
           "from": "共同可识别的身份",
           "relation": "使各方能够关联",
           "to": "生产、流通和使用中的记录",
-          "direction": "身份到关联"
+          "direction": "forward"
         },
         {
           "relation_id": "R020",
           "from": "各方内部业务编号",
           "relation": "不必全部",
           "to": "保持一致",
-          "direction": "边界限制"
+          "direction": "caution"
         }
       ],
-      "entry_condition": "学习者已理解同一对象的身份可跨生命周期保持连续。",
-      "exit_condition": "学习者理解跨企业协同要求共享可识别身份，而非统一全部内部编号。",
+      "silent_constraints": [
+        {
+          "constraint_id": "C005",
+          "instruction": "不把统一标识表述为全球只用一种编码体系，不出现具体编码体系名称、结构或治理主体",
+          "evidence_refs": [
+            "E005",
+            "E008"
+          ]
+        }
+      ],
+      "entry_condition": "学习者已理解同一对象身份可跨环节保持连续",
+      "exit_condition": "学习者理解跨企业协同要求共享可识别身份，而非统一全部内部编号",
       "timing": {
-        "char_equivalent": 168,
+        "char_equivalent": 168.0,
         "min_seconds": 42,
         "target_seconds": 44,
         "max_seconds": 46,
@@ -455,16 +822,103 @@
     },
     {
       "a_id": "A009",
-      "callback_a_ids": [
-        "A008"
-      ],
+      "callback_a_ids": [],
       "nx": "还需要分清一件事：有了共同可识别的标识，不等于数据已经自动共享。标识提供的是一个身份锚点，只回答“查的是谁”。这就像知道一座房子的门牌号，并不等于知道房子里放着什么。至于凭这个标识去哪里查、能查到什么，属于标识解析体系的职责。\n\n",
-      "teaching_purpose": "划清标识与解析职责，并限制数据自动共享的误解。",
-      "single_message": "标识提供“查的是谁”的身份锚点，不等于数据自动共享；到哪里查询、能返回什么信息属于标识解析职责。",
-      "must_visible": [
+      "teaching_purpose": "划清标识与解析的职责边界，限制数据自动共享的误解",
+      "single_message": "标识提供“查的是谁”的身份锚点，不等于数据自动共享；到哪里查、能查到什么属于标识解析体系职责",
+      "screen": {
+        "title": {
+          "screen_item_id": "S039",
+          "guidance_text": "标识是身份锚点，不是数据共享",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005",
+            "E008"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G015",
+            "items": [
+              {
+                "screen_item_id": "S040",
+                "guidance_text": "标识：查的是谁",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E005",
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S041",
+                "guidance_text": "解析：到哪里查、返回什么",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E005",
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G016",
+            "items": [
+              {
+                "screen_item_id": "S042",
+                "guidance_text": "共同可识别的标识不等于数据已自动共享",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S043",
+                "guidance_text": "类比：知道门牌号，不等于知道房子里放着什么",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S044",
+                "guidance_text": "到哪里查询、能查到什么，属于标识解析体系的职责",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005",
+                  "E008"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
         {
-          "semantic_item_id": "V009",
-          "meaning": "共同可识别的标识只确认查询对象，不自动共享数据；标识解析负责查询去向和可返回的信息范围。",
+          "relation_id": "R021",
+          "from": "标识",
+          "relation": "回答",
+          "to": "查的是谁",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R022",
+          "from": "标识解析",
+          "relation": "负责",
+          "to": "到哪里查询、能返回什么信息",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R023",
+          "from": "共同可识别的标识",
+          "relation": "不等于",
+          "to": "数据自动共享",
+          "direction": "contrast"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C006",
+          "instruction": "标识解析机制不在本集展开：不出现 DNS 类比、层级架构、节点结构或查询操作演示",
           "evidence_refs": [
             "E001",
             "E005",
@@ -472,33 +926,10 @@
           ]
         }
       ],
-      "protected_relations": [
-        {
-          "relation_id": "R021",
-          "from": "标识",
-          "relation": "回答",
-          "to": "查的是谁",
-          "direction": "职责限定"
-        },
-        {
-          "relation_id": "R022",
-          "from": "标识解析",
-          "relation": "负责",
-          "to": "到哪里查询、能返回什么信息",
-          "direction": "职责限定"
-        },
-        {
-          "relation_id": "R023",
-          "from": "共同可识别的标识",
-          "relation": "不等于",
-          "to": "数据自动共享",
-          "direction": "非等价"
-        }
-      ],
-      "entry_condition": "学习者已理解共同身份规则让多方能够指向同一对象。",
-      "exit_condition": "学习者能区分身份锚点与信息查询职责，且不会把标识误解为自动数据共享。",
+      "entry_condition": "学习者已理解共同身份规则让多方指向同一对象",
+      "exit_condition": "学习者能区分身份锚点与信息查询职责，不把标识误解为自动数据共享",
       "timing": {
-        "char_equivalent": 101,
+        "char_equivalent": 101.0,
         "min_seconds": 26,
         "target_seconds": 26,
         "max_seconds": 28,
@@ -508,52 +939,119 @@
     {
       "a_id": "A010",
       "callback_a_ids": [
-        "A001",
-        "A008",
-        "A009"
+        "A001"
       ],
       "nx": "本期总结。回到开头的收货现场。如果二维码里装的只是供应商内部的私码，下游虽然读得出那串字符，却对不上具体对象。如果大家能按共同规则识别同一个标识，那么零部件进入另一家企业后，仍然对应着同一个数字身份。私码在企业内部有它的用处，工业互联网标识解决的是跨企业的问题，两者分工不同。共同的规律是：跨企业协同，先要说清“同一个对象”。工业互联网标识的价值就从这里开始：它为跨主体协同提供对象身份锚点。至于怎样凭标识查询相关信息，那是标识解析要回答的问题。",
-      "teaching_purpose": "回扣收货情境，闭合私码与跨企业身份锚点的概念结论。",
-      "single_message": "私码服务企业内部管理；工业互联网标识为跨主体协同提供共同对象身份锚点，查询相关信息仍属于标识解析职责。",
-      "must_visible": [
-        {
-          "semantic_item_id": "V010",
-          "meaning": "收货场景的两条结果需对照：私码只能读出陌生字符并人工核对，共同标识可确认同一对象；信息查询职责仍归标识解析。",
+      "teaching_purpose": "回扣收货情境，闭合私码与跨企业身份锚点的概念结论并建立下一集入口",
+      "single_message": "私码服务企业内部管理；工业互联网标识为跨主体协同提供对象身份锚点，查询相关信息属于标识解析职责",
+      "screen": {
+        "title": {
+          "screen_item_id": "S045",
+          "guidance_text": "从私码断点到身份锚点",
+          "usage_policy": "reference",
           "evidence_refs": [
             "E002",
-            "E005",
-            "E007",
-            "E008"
+            "E005"
           ]
-        }
-      ],
+        },
+        "groups": [
+          {
+            "group_id": "G017",
+            "items": [
+              {
+                "screen_item_id": "S046",
+                "guidance_text": "私码路径：扫码读出陌生字符，业务确认停在人工核对",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002",
+                  "E007"
+                ]
+              },
+              {
+                "screen_item_id": "S047",
+                "guidance_text": "共同标识路径：扫码即确认同一对象对应的数字身份",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005",
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G018",
+            "items": [
+              {
+                "screen_item_id": "S048",
+                "guidance_text": "分工：私码服务企业内部管理，工业互联网标识解决跨企业问题，提供对象身份锚点",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002",
+                  "E005"
+                ]
+              },
+              {
+                "screen_item_id": "S049",
+                "guidance_text": "共同规律：跨企业协同先要说清“同一个对象”",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G019",
+            "items": [
+              {
+                "screen_item_id": "S050",
+                "guidance_text": "下一集入口：编码怎样变成可查询信息，由标识解析回答",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          }
+        ]
+      },
       "protected_relations": [
         {
           "relation_id": "R024",
           "from": "私码",
           "relation": "主要解决",
           "to": "企业内部管理",
-          "direction": "范围限定"
+          "direction": "forward"
         },
         {
           "relation_id": "R025",
           "from": "工业互联网标识",
           "relation": "提供",
           "to": "跨主体协同的对象身份锚点",
-          "direction": "作用"
+          "direction": "forward"
         },
         {
           "relation_id": "R026",
           "from": "相关信息查询",
           "relation": "属于",
           "to": "标识解析职责",
-          "direction": "职责边界"
+          "direction": "forward"
         }
       ],
-      "entry_condition": "学习者已区分私码、共同身份、数据关联与解析职责。",
-      "exit_condition": "学习者能用开场情境解释为什么跨企业协同要先对齐同一个对象的身份。",
+      "silent_constraints": [
+        {
+          "constraint_id": "C007",
+          "instruction": "结尾只保留通往解析的问题入口，不预告下一集的解析体系答案",
+          "evidence_refs": [
+            "E001",
+            "E008"
+          ]
+        }
+      ],
+      "entry_condition": "学习者已区分私码、共同身份、数据关联与解析职责",
+      "exit_condition": "学习者能用开场情境解释跨企业协同为什么先对齐同一个对象的身份",
       "timing": {
-        "char_equivalent": 203,
+        "char_equivalent": 203.0,
         "min_seconds": 51,
         "target_seconds": 53,
         "max_seconds": 56,

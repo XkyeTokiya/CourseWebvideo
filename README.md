@@ -129,6 +129,20 @@ node tools/production-status.mjs check
 node tools/production-status.mjs report
 ```
 
+### 一键启动工作台
+
+双击仓库根目录的 `启动生产状态工作台.cmd`。它默认以 `D:\00-workspace\005-coursewebvideo\production-status` 作为状态数据目录，启动或复用本机服务后自动打开：
+
+`http://127.0.0.1:8765/production-status/dashboard.html`
+
+也可从仓库根目录手动启动：
+
+```powershell
+node tools/production-status-server.mjs
+```
+
+服务仅绑定到本机 `127.0.0.1`，并托管仓库根目录，以便工作台可直接预览关联的阶段性文件。
+
 `sync` 会保留已有的 `approvals` 和 `coordination`，只刷新可观测事实。人工审批应直接维护对应 episode JSON 的 `approvals` 对象，并填写 `decidedAt`、`decidedBy`、`evidence` 和 `note`。录屏或成片不在仓库时，不要伪造路径；可在 `coordination.externalArtifacts` 中登记真实外部证据。
 
 状态推导规则：存在阻塞或验证失败为 `blocked`；存在待人工门禁为 `awaiting-approval`；最终视频已登记且 `finalDelivery` 已批准才是 `delivered`。因此总状态不会把下游局部完成误认为整期交付完成。
