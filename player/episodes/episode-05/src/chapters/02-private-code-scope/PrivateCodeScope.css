@@ -144,7 +144,7 @@
   padding: 24px 4px;
   border-bottom: 2px dashed var(--theme-dashed-line);
   animation: pcs-slot-in 520ms var(--ease-soft) both;
-  animation-delay: calc(3400ms + var(--pcs-i) * 1800ms);
+  animation-delay: calc(1200ms + var(--pcs-i) * 1200ms);
 }
 
 .pcs-def-idx {
@@ -162,7 +162,7 @@
 
 .pcs-def-rule {
   transform-origin: left center;
-  animation: pcs-grow-x 640ms var(--ease-soft) 6600ms both;
+  animation: pcs-grow-x 640ms var(--ease-soft) 3200ms both;
 }
 
 .pcs-def-term-wrap {
@@ -170,7 +170,7 @@
   display: flex;
   align-items: center;
   gap: 28px;
-  animation: pcs-rise 520ms var(--ease-soft) 7300ms both;
+  animation: pcs-rise 520ms var(--ease-soft) 3800ms both;
 }
 
 .pcs-def-term-lead {
@@ -193,7 +193,7 @@
   border: 3px solid var(--theme-structural);
   border-radius: 12px;
   box-shadow: 7px 8px 0 var(--theme-offset-shadow);
-  animation: pcs-stamp 640ms var(--ease-overshoot) 7700ms both;
+  animation: pcs-stamp 640ms var(--ease-overshoot) 4200ms both;
 }
 
 /* ── 成立范围卡（s1 空槽 → s2 面板落位，状态门控） ──────── */
@@ -340,40 +340,40 @@
 }
 
 .pcs-scene.is-scoped .pcs-scope-meaning {
-  animation: pcs-rise 480ms var(--ease-soft) 4200ms both;
+  animation: pcs-rise 480ms var(--ease-soft) 1400ms both;
 }
 
 .pcs-scene.is-scoped .pcs-scope-label {
-  animation: pcs-rise 460ms var(--ease-soft) 6400ms both;
+  animation: pcs-rise 460ms var(--ease-soft) 2600ms both;
 }
 
 .pcs-scene.is-scoped .pcs-scope-tile {
   animation: pcs-pop 460ms var(--ease-overshoot) both;
-  animation-delay: calc(6900ms + var(--pcs-i) * 280ms);
+  animation-delay: calc(3200ms + var(--pcs-i) * 260ms);
 }
 
 /* s3：边界框合拢 + 边界注入场，双卡等权轻退（无当前选中项） */
 .pcs-scene.is-settled .pcs-boundary {
-  animation: pcs-rise 560ms var(--ease-soft) 2200ms both;
+  animation: pcs-rise 560ms var(--ease-soft) 1100ms both;
 }
 
 .pcs-scene.is-settled .pcs-corner {
   animation: pcs-corner-in 340ms var(--ease-overshoot) both;
-  animation-delay: calc(3400ms + var(--pcs-i) * 90ms);
+  animation-delay: calc(1700ms + var(--pcs-i) * 90ms);
 }
 
 .pcs-scene.is-settled .pcs-frame {
-  animation: pcs-frame-in 620ms var(--ease-soft) 3900ms both;
+  animation: pcs-frame-in 620ms var(--ease-soft) 2300ms both;
 }
 
 .pcs-scene.is-settled .pcs-frame-label {
-  animation: pcs-stamp 520ms var(--ease-overshoot) 5600ms both;
+  animation: pcs-stamp 520ms var(--ease-overshoot) 3200ms both;
 }
 
 .pcs-scene.is-settled .pcs-def,
 .pcs-scene.is-settled .pcs-scope-card {
   opacity: 0.85;
-  transition-delay: 4800ms;
+  transition-delay: 3800ms;
 }
 
 /* ── keyframes ────────────────────────────────────────── */

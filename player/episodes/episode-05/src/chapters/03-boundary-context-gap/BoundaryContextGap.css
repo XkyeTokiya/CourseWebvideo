@@ -296,21 +296,21 @@
 .bcg-scene.is-listed .bcg-gap-mark,
 .bcg-scene.is-listed .bcg-gap-text {
   animation: bcg-row-in 480ms var(--ease-soft) both;
-  animation-delay: calc(2200ms + var(--bcg-i) * 1500ms);
+  animation-delay: calc(700ms + var(--bcg-i) * 600ms);
 }
 
 .bcg-scene.is-listed .bcg-gap-tail {
   animation: bcg-fade-in 520ms var(--ease-soft) both;
-  animation-delay: calc(2600ms + var(--bcg-i) * 1500ms);
+  animation-delay: calc(1000ms + var(--bcg-i) * 600ms);
 }
 
 .bcg-scene.is-listed .bcg-gap.is-records .bcg-gap-mark,
 .bcg-scene.is-listed .bcg-gap.is-records .bcg-gap-text {
-  animation-delay: 8000ms;
+  animation-delay: 3400ms;
 }
 
 .bcg-scene.is-listed .bcg-gap.is-records .bcg-gap-tail {
-  animation-delay: 8500ms;
+  animation-delay: 3800ms;
 }
 
 /* s3：判据句重权落地（exact：读出字符 ≠ 识别对象），左栏轻退 */
@@ -319,41 +319,41 @@
 }
 
 .bcg-scene.is-contrasted .bcg-verdict {
-  animation: bcg-land 560ms var(--ease-overshoot) 2400ms both;
+  animation: bcg-land 560ms var(--ease-overshoot) 1300ms both;
 }
 
 .bcg-scene.is-contrasted .bcg-verdict-phrase span {
   animation: bcg-token 420ms var(--ease-overshoot) both;
-  animation-delay: calc(3400ms + var(--bcg-i) * 1200ms);
+  animation-delay: calc(1900ms + var(--bcg-i) * 450ms);
 }
 
 .bcg-scene.is-contrasted .bcg-left {
   opacity: 0.82;
-  transition-delay: 1400ms;
+  transition-delay: 900ms;
 }
 
 /* s4：定位句入场，断点从扫码动作移向身份语境；对照收束 */
 .bcg-scene.is-pinned .bcg-pin {
-  animation: bcg-fade-in 420ms var(--ease-soft) 2800ms both;
+  animation: bcg-fade-in 420ms var(--ease-soft) 1000ms both;
 }
 
 .bcg-scene.is-pinned .bcg-pin-not {
-  animation: bcg-rise 480ms var(--ease-soft) 3100ms both;
+  animation: bcg-rise 480ms var(--ease-soft) 1400ms both;
 }
 
 .bcg-scene.is-pinned .bcg-pin-main {
-  animation: bcg-rise 560ms var(--ease-soft) 5800ms both;
+  animation: bcg-rise 560ms var(--ease-soft) 2600ms both;
 }
 
 .bcg-scene.is-pinned .bcg-title em {
   background-size: 100% 4px;
-  transition-delay: 6800ms;
+  transition-delay: 3200ms;
 }
 
 .bcg-scene.is-pinned .bcg-left {
   opacity: 0.55;
   filter: grayscale(0.35);
-  transition-delay: 3600ms;
+  transition-delay: 2200ms;
 }
 
 /* ── keyframes ────────────────────────────────────────── */
