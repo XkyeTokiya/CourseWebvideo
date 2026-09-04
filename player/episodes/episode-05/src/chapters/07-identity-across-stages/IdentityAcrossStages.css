@@ -50,21 +50,6 @@
   display: block;
 }
 
-.ias-media-caption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0;
-  padding: 12px 22px;
-  font-family: var(--font-mono);
-  font-size: 20px;
-  letter-spacing: 0.08em;
-  color: var(--theme-paper);
-  background: color-mix(in srgb, var(--theme-structural) 62%, transparent);
-  animation: ias-fade-in 520ms var(--ease-soft) 480ms backwards;
-}
-
 /* ── 侧栏：读图方向注（s1） → 四环节（s2） → 要点卡（s2） ─ */
 
 .ias-rail {

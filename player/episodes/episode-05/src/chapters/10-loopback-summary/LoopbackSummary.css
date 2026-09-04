@@ -45,14 +45,14 @@
   animation: los-rise-in 560ms var(--ease-soft) 240ms backwards;
 }
 
-/* ── 主区：回扣图（左）+ 总结轨（右）+ final-judgment（底部整行） */
+/* ── 主区：回扣图（左）+ 总结轨（右） ───────────────────── */
 
 .los-main {
   flex: 1;
   min-height: 0;
   display: grid;
   grid-template-columns: 520px 1fr;
-  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-rows: minmax(0, 1fr);
   gap: 36px 44px;
 }
 
@@ -134,22 +134,6 @@
   border: 2px solid var(--theme-warning);
   border-radius: 10px;
   animation: los-rise-in 460ms var(--ease-soft) 820ms backwards;
-}
-
-.los-media-caption {
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0;
-  padding: 11px 20px;
-  font-family: var(--font-mono);
-  font-size: 19px;
-  letter-spacing: 0.08em;
-  color: var(--theme-paper);
-  background: color-mix(in srgb, var(--theme-structural) 62%, transparent);
-  animation: los-rise-in 460ms var(--ease-soft) 680ms backwards;
 }
 
 /* ── 总结轨：两路径对照卡 + 分工行 ───────────────────────── */
@@ -434,132 +418,6 @@
   transition-delay: 480ms;
 }
 
-/* ── final-judgment：下一集问题入口（常驻预留槽，解析侧不展开） */
-
-.los-gate {
-  grid-column: 1 / -1;
-  grid-row: 2;
-  display: flex;
-  align-items: center;
-  gap: 26px;
-  padding: 22px 30px;
-  border: 2px dashed var(--accent);
-  border-radius: var(--r-card);
-  background: color-mix(in srgb, var(--accent) 5%, transparent);
-  visibility: hidden;
-}
-
-.los-scene.is-gate .los-gate {
-  visibility: visible;
-}
-
-.los-gate-kicker {
-  flex: none;
-  font-family: var(--font-mono);
-  font-size: 21px;
-  letter-spacing: 0.18em;
-  color: var(--accent);
-  opacity: 0;
-}
-
-.los-gate-q {
-  margin: 0;
-  flex: none;
-  font-size: 40px;
-  font-weight: 900;
-  color: var(--theme-structural);
-  opacity: 0;
-}
-
-.los-gate-arrow {
-  position: relative;
-  flex: 1;
-  min-width: 60px;
-  height: 3px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left center;
-}
-
-.los-gate-arrow::after {
-  content: "";
-  position: absolute;
-  right: -2px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-left: 16px solid var(--accent);
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-}
-
-.los-gate-slot {
-  flex: none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  padding: 12px 26px;
-  background: var(--surface-2);
-  border: 2px dashed var(--theme-dashed-line);
-  border-radius: 12px;
-  opacity: 0;
-}
-
-.los-gate-slot-name {
-  font-size: 30px;
-  font-weight: 900;
-  color: var(--theme-process);
-}
-
-.los-gate-slot-sub {
-  font-family: var(--font-mono);
-  font-size: 19px;
-  letter-spacing: 0.1em;
-  color: var(--text-mute);
-}
-
-/* s5 入口落下：kicker → 问句 → 箭头绘制 → 未展开槽位 */
-.los-scene.is-gate .los-gate-kicker {
-  animation: los-gate-in 460ms var(--ease-overshoot) both;
-}
-
-.los-scene.is-gate .los-gate-q {
-  animation: los-gate-in 520ms var(--ease-overshoot) 140ms both;
-}
-
-.los-scene.is-gate .los-gate-arrow {
-  animation: los-draw 640ms var(--ease-soft) 480ms both;
-}
-
-.los-scene.is-gate .los-gate-slot {
-  animation: los-gate-in 480ms var(--ease-overshoot) 880ms both;
-}
-
-/* 收束拍主区轻微退让，final-judgment 成焦点（弱化态规则内，不加延迟） */
-.los-scene.is-gate .los-media,
-.los-scene.is-gate .los-rail {
-  opacity: 0.8;
-}
-
-/* accent 插入后回到 base：构图保持 s3 离开时终态，不重放入场动画 */
-.los-scene.is-return :is(
-    .los-title,
-    .los-head-note,
-    .los-media-frame,
-    .los-photo,
-    .los-chip,
-    .los-chip-arrow,
-    .los-fiction,
-    .los-media-caption,
-    .los-path,
-    .los-bar,
-    .los-scanline,
-    .los-read,
-    .los-verdict
-  ) {
-  animation: none;
-}
-
 /* ── K-A010-01 accent：全屏规律句（低成本 StatementFrame） ── */
 
 .los-accent {
@@ -712,17 +570,6 @@
     transform: scale(1.045);
   }
   to {
-    transform: none;
-  }
-}
-
-@keyframes los-gate-in {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
     transform: none;
   }
 }

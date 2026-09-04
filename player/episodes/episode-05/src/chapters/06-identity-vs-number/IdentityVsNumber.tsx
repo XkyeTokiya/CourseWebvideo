@@ -139,24 +139,9 @@ export default function IdentityVsNumber({ step }: ChapterStepProps) {
           <div className="ivn-risk">
             <p className="ivn-risk-tag">否则 · 无序分配</p>
             <div className="ivn-risk-row" style={{ "--ivn-i": "0" } as CSSProperties}>
-              <span className="ivn-risk-demo" aria-hidden>
-                <span className="ivn-risk-slot">
-                  <span className="ivn-risk-glyph">A7</span>
-                </span>
-                <span className="ivn-risk-slot">
-                  <span className="ivn-risk-glyph">A7</span>
-                </span>
-              </span>
               <span className="ivn-risk-text">相同字符，分给不同对象</span>
             </div>
             <div className="ivn-risk-row" style={{ "--ivn-i": "1" } as CSSProperties}>
-              <span className="ivn-risk-demo" aria-hidden>
-                <span className="ivn-risk-slot is-stack">
-                  <span className="ivn-risk-glyph">A7</span>
-                  <span className="ivn-risk-glyph">Q2</span>
-                  <span className="ivn-risk-glyph">K9</span>
-                </span>
-              </span>
               <span className="ivn-risk-text">同一对象，留下对不上的名字</span>
             </div>
             <p className="ivn-risk-close">跨企业识别，失去可靠起点</p>

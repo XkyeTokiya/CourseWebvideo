@@ -55,7 +55,6 @@ export default function PrivateCodeScope({ step }: ChapterStepProps) {
               </li>
             ))}
           </ul>
-          <div className="pcs-def-rule rule" aria-hidden />
           <div className="pcs-def-term-wrap">
             <p className="pcs-def-term-lead">这样的编码，叫</p>
             <p className="pcs-def-term">私码</p>
@@ -71,7 +70,13 @@ export default function PrivateCodeScope({ step }: ChapterStepProps) {
           </div>
           <section className="pcs-scope-card card">
             <p className="pcs-card-tag">成立范围 · 供应商自己的系统</p>
-            <p className="pcs-scope-meaning">系统里，记录着这串字符的含义</p>
+            {/* S007 前后两半句：私码管用 → 系统记录含义 → 对应记录 */}
+            <div className="pcs-scope-body">
+              <p className="pcs-scope-valid">
+                在这里，<em>私码是管用的</em>
+              </p>
+              <p className="pcs-scope-meaning">系统里，记录着这串字符的含义</p>
+            </div>
             <p className="pcs-scope-label">对应的记录</p>
             <div className="pcs-scope-tiles">
               {RECORD_ITEMS.map((item, i) => (

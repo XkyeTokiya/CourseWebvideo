@@ -12,7 +12,7 @@ const states = [
 ] as const;
 type RbState = (typeof states)[number];
 
-const READOUT = "6E·A41·77C2";
+const READOUT = "88.199.400/***";
 const CHECK_ROWS = ["翻查到货清单", "逐一比对信息", "人工登记确认"];
 
 function BarcodeGlyph() {
@@ -71,9 +71,6 @@ export default function ReceivingBreakpoint({ step }: ChapterStepProps) {
               <span className="rb-chip">制造商收货区</span>
               <span className="rb-chip is-tag">外包装均贴二维码</span>
             </div>
-            <figcaption className="rb-media-caption">
-              M001 · 收货扫码核验现场 · 占位图（正式素材待替换）
-            </figcaption>
             <div className="rb-scrim" aria-hidden={!closed}>
               <p className="rb-scrim-kicker">二维码可扫描</p>
               <p className="rb-scrim-hero">

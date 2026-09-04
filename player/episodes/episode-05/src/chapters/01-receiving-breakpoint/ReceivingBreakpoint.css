@@ -127,21 +127,6 @@
   text-shadow: 0 2px 8px var(--theme-offset-shadow);
 }
 
-.rb-media-caption {
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0;
-  padding: 12px 22px;
-  font-family: var(--font-mono);
-  font-size: 20px;
-  letter-spacing: 0.08em;
-  color: var(--theme-paper);
-  background: color-mix(in srgb, var(--theme-structural) 62%, transparent);
-}
-
 /* 收束遮罩：判断句唯一载体，住在常驻预留槽 opacity 淡入 */
 .rb-scrim {
   position: absolute;

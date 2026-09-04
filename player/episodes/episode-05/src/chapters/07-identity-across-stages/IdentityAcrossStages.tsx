@@ -31,9 +31,6 @@ export default function IdentityAcrossStages({ step }: ChapterStepProps) {
             alt="教材图 1-4：物理世界四环节向数字世界的映射（占位图）"
             className="ias-photo"
           />
-          <figcaption className="ias-media-caption">
-            M003 · 教材图 1-4 原图 · 占位图（正式原图待替换）
-          </figcaption>
         </figure>
 
         {/* 侧位读图注：全局方向注（s1）+ 四环节行进（s2）+ 要点卡（s2） */}

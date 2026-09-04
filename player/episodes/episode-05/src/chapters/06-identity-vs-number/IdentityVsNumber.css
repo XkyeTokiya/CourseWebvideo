@@ -357,14 +357,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 30px;
+  gap: 24px;
 }
 
 .ivn-beam {
   margin: 0;
-  padding: 22px 0;
+  padding: 14px 0;
   text-align: center;
-  font-size: 34px;
+  font-size: 32px;
   font-weight: 900;
   letter-spacing: 0.08em;
   color: var(--theme-paper);
@@ -386,7 +386,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 16px 6px;
+  padding: 12px 6px;
   border-top: 2px dashed var(--theme-dashed-line);
   opacity: 0;
 }
@@ -403,7 +403,7 @@
 }
 
 .ivn-req-text {
-  font-size: 31px;
+  font-size: 30px;
   font-weight: 700;
   color: var(--text);
 }
@@ -413,8 +413,8 @@
 .ivn-risk {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding: 24px 30px;
+  gap: 14px;
+  padding: 20px 26px;
   background: var(--theme-warning-surface);
   border: 2px solid var(--theme-warning);
   border-radius: var(--r-card);
@@ -436,40 +436,6 @@
   opacity: 0;
 }
 
-.ivn-risk-demo {
-  flex: none;
-  width: 216px;
-  display: flex;
-  justify-content: flex-start;
-  gap: 20px;
-}
-
-.ivn-risk-slot {
-  width: 96px;
-  height: 92px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  background: var(--surface-2);
-  border: 2px dashed var(--theme-warning);
-  border-radius: 12px;
-}
-
-.ivn-risk-glyph {
-  font-family: var(--font-mono);
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--theme-warning);
-}
-
-.ivn-risk-slot.is-stack .ivn-risk-glyph {
-  font-size: 22px;
-  line-height: 1.2;
-}
-
 .ivn-risk-text {
   font-size: 28px;
   font-weight: 700;
@@ -479,8 +445,8 @@
 .ivn-risk-close {
   margin: 0;
   align-self: flex-start;
-  padding: 12px 24px;
-  font-size: 32px;
+  padding: 10px 22px;
+  font-size: 30px;
   font-weight: 900;
   color: var(--theme-danger);
   background: var(--theme-danger-surface);

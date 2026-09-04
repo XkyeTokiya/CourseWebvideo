@@ -116,10 +116,13 @@
   background: var(--theme-process-surface);
 }
 
-/* 带三自上而下压轴落位，更宽的底座承载上方两层 */
+/* 带三压轴落位：口播报到“二维码、条形码和标签”才成形——
+   槽位保持 ~3.2s（实体化 transition-delay 只写在落位态，反向回退即时恢复），
+   槽位原位成形不做位移，内容级联随后正常继续 */
 .occ-band--carrier.is-placed {
   background: var(--theme-paper);
-  animation-delay: 640ms;
+  animation: none;
+  transition-delay: 3200ms;
 }
 
 .occ-band-idx {
@@ -132,6 +135,11 @@
 
 .occ-band.is-placed .occ-band-idx {
   color: var(--theme-structural);
+}
+
+/* 带三序号变色随实体化同步延迟，不提前于槽位成形 */
+.occ-band--carrier.is-placed .occ-band-idx {
+  transition-delay: 3200ms;
 }
 
 .occ-band-body {
@@ -150,7 +158,7 @@
 }
 
 .occ-band--carrier.is-placed .occ-band-body {
-  animation-delay: 900ms;
+  animation-delay: 3500ms;
 }
 
 .occ-band-name {
@@ -276,7 +284,7 @@
 
 .occ-band--carrier.is-placed .occ-carrier-tile {
   animation: occ-tile-in 480ms var(--ease-overshoot) both;
-  animation-delay: calc(1050ms + var(--occ-i) * 200ms);
+  animation-delay: calc(3700ms + var(--occ-i) * 200ms);
 }
 
 .occ-carrier-name {
@@ -322,7 +330,7 @@
 
 .occ-band--carrier.is-placed .occ-qr-cell {
   animation: occ-cell-in 320ms var(--ease-overshoot) both;
-  animation-delay: calc(1400ms + var(--occ-i) * 45ms);
+  animation-delay: calc(4000ms + var(--occ-i) * 45ms);
 }
 
 .occ-bar {
@@ -336,7 +344,7 @@
 
 .occ-band--carrier.is-placed .occ-bar {
   animation: occ-bar-in 380ms var(--ease-soft) both;
-  animation-delay: calc(1450ms + var(--occ-i) * 55ms);
+  animation-delay: calc(4050ms + var(--occ-i) * 55ms);
 }
 
 .occ-tag-body {
@@ -358,7 +366,7 @@
 }
 
 .occ-band--carrier.is-placed .occ-glyph-tag {
-  animation: occ-tag-in 460ms var(--ease-overshoot) 1650ms both;
+  animation: occ-tag-in 460ms var(--ease-overshoot) 4300ms both;
 }
 
 /* ── 侧注栏：槽位 → 替换说明卡 ─────────────────────────── */
@@ -477,13 +485,17 @@
   white-space: nowrap;
 }
 
-/* 说明条目 */
+/* 说明条目：列表纵向弹性铺开，吃掉收束章上方的冗余空白
+   （第三条 s4 前常驻占位，出现时不回流） */
 .occ-notes {
   margin: 0;
   padding: 0;
   list-style: none;
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   gap: 16px;
 }
 
@@ -493,7 +505,7 @@
   gap: 14px;
   font-size: 25px;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.5;
   color: var(--text);
   opacity: 0;
 }

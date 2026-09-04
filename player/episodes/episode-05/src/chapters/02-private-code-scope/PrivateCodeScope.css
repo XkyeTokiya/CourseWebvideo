@@ -129,7 +129,11 @@
   transition: opacity var(--dur-slow) var(--ease-soft);
 }
 
+/* 两目两线：每条特征行自带底线，列表居中撑起卡片中段 */
 .pcs-def-layers {
+  flex: 1;
+  min-height: 0;
+  justify-content: center;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -141,7 +145,7 @@
   display: flex;
   align-items: center;
   gap: 24px;
-  padding: 24px 4px;
+  padding: 38px 4px;
   border-bottom: 2px dashed var(--theme-dashed-line);
   animation: pcs-slot-in 520ms var(--ease-soft) both;
   animation-delay: calc(1200ms + var(--pcs-i) * 1200ms);
@@ -158,11 +162,6 @@
   font-weight: 800;
   letter-spacing: 0.02em;
   color: var(--text);
-}
-
-.pcs-def-rule {
-  transform-origin: left center;
-  animation: pcs-grow-x 640ms var(--ease-soft) 3200ms both;
 }
 
 .pcs-def-term-wrap {
@@ -248,8 +247,31 @@
   transition: opacity 480ms var(--ease-soft), transform 480ms var(--ease-overshoot);
 }
 
+/* 卡片中段主体：flex:1 垂直居中，撑起卡片全高（对齐定义卡骨架） */
+.pcs-scope-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.pcs-scope-valid {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.pcs-scope-valid em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
 .pcs-scope-meaning {
-  margin: 8px 0 0;
+  margin: 0;
   font-family: var(--font-body);
   font-size: 34px;
   font-weight: 800;
@@ -335,21 +357,26 @@
   transform: none;
 }
 
+/* 入场时序贴第 2 拍口播顺序：私码管用(1.0s) → 记录含义(2.2s) → 记录引导(3.2s) → 记录块(3.8s 起) */
 .pcs-scene.is-scoped .pcs-scope-card .pcs-card-tag {
   animation: pcs-rise 460ms var(--ease-soft) 300ms both;
 }
 
+.pcs-scene.is-scoped .pcs-scope-valid {
+  animation: pcs-rise 480ms var(--ease-soft) 1000ms both;
+}
+
 .pcs-scene.is-scoped .pcs-scope-meaning {
-  animation: pcs-rise 480ms var(--ease-soft) 1400ms both;
+  animation: pcs-rise 480ms var(--ease-soft) 2200ms both;
 }
 
 .pcs-scene.is-scoped .pcs-scope-label {
-  animation: pcs-rise 460ms var(--ease-soft) 2600ms both;
+  animation: pcs-rise 460ms var(--ease-soft) 3200ms both;
 }
 
 .pcs-scene.is-scoped .pcs-scope-tile {
   animation: pcs-pop 460ms var(--ease-overshoot) both;
-  animation-delay: calc(3200ms + var(--pcs-i) * 260ms);
+  animation-delay: calc(3800ms + var(--pcs-i) * 260ms);
 }
 
 /* s3：边界框合拢 + 边界注入场，双卡等权轻退（无当前选中项） */
@@ -406,15 +433,6 @@
   to {
     opacity: 1;
     transform: none;
-  }
-}
-
-@keyframes pcs-grow-x {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
   }
 }
 

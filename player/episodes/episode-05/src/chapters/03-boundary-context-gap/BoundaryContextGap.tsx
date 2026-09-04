@@ -11,8 +11,8 @@ const states = [
 ] as const;
 type BcgState = (typeof states)[number];
 
-/* 承接第 1 章扫码读出的那串教学字符（同一虚构情境，非真实编码） */
-const CODE = "6E·A41·77C2";
+/* 承接第 1 章扫码读出的那串教学字符——取教材示例码，后段过长以 * 略写 */
+const CODE = "88.199.400/***";
 
 const GAP_ROWS = [
   { text: "由谁分配", tail: "未必能判断" },

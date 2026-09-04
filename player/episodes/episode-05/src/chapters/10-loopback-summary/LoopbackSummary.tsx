@@ -3,19 +3,18 @@ import type { ChapterStepProps } from "../../../../../src/shared/presentation-ru
 import "./LoopbackSummary.css";
 import m004 from "./assets/m004.png";
 
-/* states: outline 第 10 章 base-scene semantic states（step 0/1/2/4；step 3 = accent 全屏强调拍）
-   映射：step < ACCENT_STEP 取 baseStates[step]；step > ACCENT_STEP 取 baseStates[step-1] ?? 末位 */
+/* states: outline 第 10 章 base-scene semantic states（step 0/1/2；step ≥3 = accent 全屏强调页持续到集尾）
+   映射：step < ACCENT_STEP 取 baseStates[step] */
 const ACCENT_STEP = 3;
 const baseStates = [
   "private-path-recalled",
   "shared-path-contrasted",
   "division-stated",
-  "gateway-open",
 ] as const;
 type LosState = (typeof baseStates)[number];
 
 const LAST_STATE = baseStates[baseStates.length - 1];
-const READOUT = "6E·A41·77C2"; // 呼应第 1 章同一收货现场读出的字符（教学情境）
+const READOUT = "88.199.400/***"; // 呼应第 1 章同一收货现场读出的字符（教材示例码，后段以 * 略写）
 const CHAIN = ["按共同规则识别", "零部件进入另一家企业", "仍是同一个数字身份"];
 const MEDIA_TAGS = ["供应商发货", "制造商收货区"];
 
@@ -47,18 +46,16 @@ function MiniBarcode() {
   );
 }
 
-/* S-A010 base-scene：回扣收货图 + 总结轨两路径对照 + 分工行 + final-judgment */
+/* S-A010 base-scene：回扣收货图 + 总结轨两路径对照 + 分工行 */
 function LoopbackScene({ state }: { state: LosState }) {
   const sharedIn = state !== "private-path-recalled";
-  const divisionIn = state === "division-stated" || state === "gateway-open";
-  const gateOpen = state === "gateway-open";
-  const returned = gateOpen; // accent 插入后回到 base：保持 s3 离开时构图，不重放入场
+  const divisionIn = state === "division-stated";
 
   return (
     <div
       className={`los-scene scene-pad${sharedIn ? " is-shared" : ""}${
         divisionIn ? " is-divided" : ""
-      }${gateOpen ? " is-gate" : ""}${returned ? " is-return" : ""}`}
+      }`}
     >
       <header className="los-headline">
         <h2 className="los-title">
@@ -91,9 +88,6 @@ function LoopbackScene({ state }: { state: LosState }) {
               </span>
             </div>
             <span className="los-fiction">教学情境 · 非真实企业案例</span>
-            <figcaption className="los-media-caption">
-              M004 · 回扣收货区 · 占位图（正式素材待替换）
-            </figcaption>
           </div>
         </figure>
 
@@ -151,16 +145,6 @@ function LoopbackScene({ state }: { state: LosState }) {
             </div>
           </div>
         </div>
-
-        <div className="los-gate">
-          <span className="los-gate-kicker">下一集入口</span>
-          <p className="los-gate-q">怎样凭标识查询相关信息？</p>
-          <span className="los-gate-arrow" aria-hidden />
-          <div className="los-gate-slot">
-            <span className="los-gate-slot-name">标识解析</span>
-            <span className="los-gate-slot-sub">要回答的问题</span>
-          </div>
-        </div>
       </div>
     </div>
   );
@@ -188,12 +172,9 @@ function AccentStatement() {
 }
 
 export default function LoopbackSummary({ step }: ChapterStepProps) {
-  if (step === ACCENT_STEP) {
+  if (step >= ACCENT_STEP) {
     return <AccentStatement />;
   }
-  const state: LosState =
-    step < ACCENT_STEP
-      ? (baseStates[step] ?? LAST_STATE)
-      : (baseStates[step - 1] ?? LAST_STATE);
+  const state: LosState = baseStates[step] ?? LAST_STATE;
   return <LoopbackScene state={state} />;
 }

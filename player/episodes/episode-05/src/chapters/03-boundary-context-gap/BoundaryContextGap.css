@@ -288,7 +288,7 @@
 /* ── 状态门控 ──────────────────────────────────────────── */
 
 /* s2：左栏清单逐条落位（两相：短项先入，“未必”注随后；
-   第 4 项“关联的记录”按口播后段单独计时） */
+   第 4 项“关联的记录”为口播末句，紧随三问级联 +500ms 入场，收在本拍内不越拍） */
 .bcg-scene.is-listed .bcg-col-tag {
   animation: bcg-rise 460ms var(--ease-soft) 300ms both;
 }
@@ -306,11 +306,11 @@
 
 .bcg-scene.is-listed .bcg-gap.is-records .bcg-gap-mark,
 .bcg-scene.is-listed .bcg-gap.is-records .bcg-gap-text {
-  animation-delay: 3400ms;
+  animation-delay: 2400ms;
 }
 
 .bcg-scene.is-listed .bcg-gap.is-records .bcg-gap-tail {
-  animation-delay: 3800ms;
+  animation-delay: 2800ms;
 }
 
 /* s3：判据句重权落地（exact：读出字符 ≠ 识别对象），左栏轻退 */
