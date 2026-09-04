@@ -1,0 +1,687 @@
+/* object-code-carrier · A004 layered-bands-with-side-notes
+   mechanism: cumulative-assembly — 三条层带自上而下逐条落位（s1 对象带，
+   s2 编码带+载体带），侧栏替换说明卡分两步补入（s3 换样式/换载体，
+   s4 补打/同一对象收束）。带间无连线，各带独立收束。
+   prefix: occ- */
+
+.occ-scene {
+  justify-content: flex-start;
+  gap: 34px;
+}
+
+/* ── headline：三个概念 + 分层色标 ───────────────────────── */
+
+.occ-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: occ-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.occ-t {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.occ-t::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: 0;
+  height: 6px;
+  border-radius: 3px;
+  transform-origin: left center;
+  animation: occ-underline 520ms var(--ease-overshoot) backwards;
+}
+
+.occ-t--object::after {
+  background: var(--theme-structural);
+  animation-delay: 240ms;
+}
+
+.occ-t--code::after {
+  background: var(--theme-process);
+  animation-delay: 400ms;
+}
+
+.occ-t--carrier::after {
+  background: var(--theme-warning);
+  animation-delay: 560ms;
+}
+
+.occ-title-sep,
+.occ-title-rest {
+  padding-bottom: 10px;
+}
+
+/* ── 主区：层带栈 + 侧注栏 ──────────────────────────────── */
+
+.occ-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 470px;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.occ-stack {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 26px;
+}
+
+/* 层带：槽位（虚线）→ 落位（实线 + 纸面投影） */
+.occ-band {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 26px 36px;
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  background: transparent;
+  transition: background var(--dur-slow) var(--ease-soft),
+    border var(--dur-slow) var(--ease-soft),
+    box-shadow var(--dur-slow) var(--ease-soft);
+}
+
+.occ-band--object,
+.occ-band--code {
+  width: 88%;
+  min-height: 180px;
+}
+
+.occ-band--carrier {
+  width: 100%;
+  min-height: 216px;
+}
+
+.occ-band.is-placed {
+  border: 3px solid var(--theme-structural);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  animation: occ-band-place 640ms var(--ease-overshoot) both;
+}
+
+.occ-band--object.is-placed {
+  background: var(--theme-cool-surface);
+}
+
+.occ-band--code.is-placed {
+  background: var(--theme-process-surface);
+}
+
+/* 带三自上而下压轴落位，更宽的底座承载上方两层 */
+.occ-band--carrier.is-placed {
+  background: var(--theme-paper);
+  animation-delay: 640ms;
+}
+
+.occ-band-idx {
+  flex: none;
+  width: 58px;
+  font-size: 38px;
+  color: var(--text-faint);
+  transition: color var(--dur-base) var(--ease-soft);
+}
+
+.occ-band.is-placed .occ-band-idx {
+  color: var(--theme-structural);
+}
+
+.occ-band-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  opacity: 0;
+}
+
+.occ-band.is-placed .occ-band-body {
+  opacity: 1;
+  animation: occ-fade-in 480ms var(--ease-soft) both;
+  animation-delay: 200ms;
+}
+
+.occ-band--carrier.is-placed .occ-band-body {
+  animation-delay: 900ms;
+}
+
+.occ-band-name {
+  flex: none;
+  width: 300px;
+}
+
+.occ-band-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.occ-band-def {
+  margin: 8px 0 0;
+  font-size: 24px;
+  color: var(--text-2);
+}
+
+/* 带一：对象清单 */
+.occ-objects {
+  margin: 0 0 0 auto;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 22px;
+}
+
+.occ-object-chip {
+  padding: 12px 28px;
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--theme-paper);
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: 10px;
+  opacity: 0;
+}
+
+.occ-band--object.is-placed .occ-object-chip {
+  animation: occ-chip-in 460ms var(--ease-overshoot) both;
+  animation-delay: calc(560ms + var(--occ-i) * 150ms);
+}
+
+/* 带二：数字身份芯片图形 */
+.occ-chip-figure {
+  margin: 0 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.occ-chip {
+  width: 118px;
+  height: auto;
+  overflow: visible;
+}
+
+.occ-chip-body {
+  fill: var(--theme-paper);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+  opacity: 0;
+  transform-origin: center;
+}
+
+.occ-band--code.is-placed .occ-chip-body {
+  animation: occ-chip-body-in 480ms var(--ease-overshoot) 620ms both;
+}
+
+.occ-chip-core {
+  fill: var(--theme-process);
+  opacity: 0;
+}
+
+.occ-band--code.is-placed .occ-chip-core {
+  animation: occ-fade-in 300ms var(--ease-soft) 700ms both;
+}
+
+.occ-chip-pin {
+  fill: var(--theme-structural);
+  opacity: 0;
+}
+
+.occ-band--code.is-placed .occ-chip-pin {
+  animation: occ-pin-in 360ms var(--ease-soft) both;
+  animation-delay: calc(760ms + var(--occ-i) * 90ms);
+}
+
+.occ-chip-tag {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+  opacity: 0;
+}
+
+.occ-band--code.is-placed .occ-chip-tag {
+  animation: occ-fade-in 420ms var(--ease-soft) 1000ms both;
+}
+
+/* 带三：三种标识载体图形 */
+.occ-carriers {
+  margin: 0 0 0 auto;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 22px;
+}
+
+.occ-carrier-tile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 20px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-dashed-line);
+  border-radius: 12px;
+  opacity: 0;
+}
+
+.occ-band--carrier.is-placed .occ-carrier-tile {
+  animation: occ-tile-in 480ms var(--ease-overshoot) both;
+  animation-delay: calc(1050ms + var(--occ-i) * 200ms);
+}
+
+.occ-carrier-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+.occ-glyph-qr {
+  width: 36px;
+  height: 36px;
+}
+
+.occ-barcode {
+  width: 50px;
+  height: 38px;
+}
+
+.occ-glyph-tag {
+  width: 42px;
+  height: 40px;
+}
+
+.occ-qr-finder {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 2.4;
+}
+
+.occ-qr-dot {
+  fill: var(--theme-structural);
+}
+
+.occ-qr-cell {
+  fill: var(--theme-structural);
+}
+
+/* 载体网格逐格浮现（仅带三落位后） */
+.occ-band--carrier .occ-qr-cell {
+  opacity: 0;
+}
+
+.occ-band--carrier.is-placed .occ-qr-cell {
+  animation: occ-cell-in 320ms var(--ease-overshoot) both;
+  animation-delay: calc(1400ms + var(--occ-i) * 45ms);
+}
+
+.occ-bar {
+  fill: var(--theme-structural);
+  transform-origin: left center;
+}
+
+.occ-band--carrier .occ-bar {
+  opacity: 0;
+}
+
+.occ-band--carrier.is-placed .occ-bar {
+  animation: occ-bar-in 380ms var(--ease-soft) both;
+  animation-delay: calc(1450ms + var(--occ-i) * 55ms);
+}
+
+.occ-tag-body {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+}
+
+.occ-tag-hole {
+  fill: var(--surface-2);
+}
+
+.occ-tag-line {
+  fill: var(--theme-structural);
+}
+
+.occ-band--carrier .occ-glyph-tag {
+  opacity: 0;
+}
+
+.occ-band--carrier.is-placed .occ-glyph-tag {
+  animation: occ-tag-in 460ms var(--ease-overshoot) 1650ms both;
+}
+
+/* ── 侧注栏：槽位 → 替换说明卡 ─────────────────────────── */
+
+.occ-side {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 28px 30px;
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  transition: background var(--dur-slow) var(--ease-soft),
+    border var(--dur-slow) var(--ease-soft),
+    box-shadow var(--dur-slow) var(--ease-soft);
+}
+
+.occ-side.is-on {
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  animation: occ-side-in 620ms var(--ease-overshoot) backwards;
+}
+
+.occ-side-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+  opacity: 0;
+}
+
+.occ-side.is-on .occ-side-kicker {
+  animation: occ-fade-in 420ms var(--ease-soft) 160ms both;
+}
+
+/* 换载体演示：载体块在恒定的“同一编码”四周换位一次 */
+.occ-swap {
+  position: relative;
+  flex: none;
+  height: 208px;
+  opacity: 0;
+}
+
+.occ-side.is-on .occ-swap {
+  animation: occ-fade-in 420ms var(--ease-soft) 260ms both;
+}
+
+.occ-swap-tile {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 158px;
+  height: 64px;
+  padding: 0 14px;
+  background: var(--theme-cool-surface);
+  border: 2px solid var(--theme-dashed-line);
+  border-radius: 12px;
+  opacity: 0;
+}
+
+.occ-swap-tile--qr {
+  left: 4px;
+  top: 14px;
+}
+
+.occ-swap-tile--tag {
+  right: 4px;
+  top: 130px;
+}
+
+.occ-side.is-on .occ-swap-tile {
+  animation: occ-tile-in 480ms var(--ease-overshoot) 340ms both;
+}
+
+.occ-side.is-on .occ-swap-tile--qr.is-swapped {
+  left: calc(100% - 162px);
+  transition: left 1050ms var(--ease-overshoot) 950ms;
+}
+
+.occ-side.is-on .occ-swap-tile--tag.is-swapped {
+  right: calc(100% - 162px);
+  transition: right 1050ms var(--ease-overshoot) 950ms;
+}
+
+.occ-swap-tile .occ-glyph-qr,
+.occ-swap-tile .occ-glyph-tag {
+  width: 34px;
+  height: 34px;
+}
+
+.occ-swap-tile-name {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+.occ-swap-core {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 12px 22px;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--theme-process-surface);
+  border: 3px solid var(--theme-process);
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+/* 说明条目 */
+.occ-notes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.occ-note {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text);
+  opacity: 0;
+}
+
+.occ-note::before {
+  content: "";
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border: 3px solid var(--theme-structural);
+}
+
+.occ-side.is-on .occ-note:not(.occ-note--late) {
+  animation: occ-note-in 460ms var(--ease-soft) both;
+  animation-delay: calc(520ms + var(--occ-i) * 170ms);
+}
+
+.occ-side.is-confirmed .occ-note--late {
+  animation: occ-note-in 460ms var(--ease-soft) 700ms both;
+}
+
+/* 收束章：判断句唯一载体，确认拍后置入场 */
+.occ-stamp {
+  margin: auto 0 0;
+  align-self: flex-start;
+  padding: 14px 26px;
+  border: 3px solid var(--theme-process);
+  border-radius: 12px;
+  background: var(--theme-process-surface);
+  transform: rotate(-1.6deg);
+  opacity: 0;
+}
+
+.occ-side.is-confirmed .occ-stamp {
+  animation: occ-stamp-in 560ms var(--ease-overshoot) 620ms both;
+}
+
+.occ-stamp-pre {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--theme-process);
+}
+
+.occ-stamp-main {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* ── keyframes ─────────────────────────────────────────── */
+
+@keyframes occ-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes occ-underline {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes occ-band-place {
+  from {
+    transform: translateY(-26px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes occ-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes occ-chip-body-in {
+  from {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes occ-pin-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes occ-tile-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes occ-cell-in {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes occ-bar-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes occ-tag-in {
+  from {
+    opacity: 0;
+    transform: rotate(-8deg) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes occ-side-in {
+  from {
+    transform: translateX(46px) scale(0.985);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes occ-note-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes occ-stamp-in {
+  from {
+    opacity: 0;
+    transform: rotate(-1.6deg) scale(1.55);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-1.6deg) scale(1);
+  }
+}

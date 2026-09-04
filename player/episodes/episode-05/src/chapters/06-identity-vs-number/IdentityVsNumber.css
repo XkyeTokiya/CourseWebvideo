@@ -1,0 +1,615 @@
+/* identity-vs-number · A006 split-compare-with-pivot
+   mechanism: compare-and-reweight — 两侧对照持续，右栏要求与风险逐级加码，
+   收束于「失去可靠起点」
+   prefix: ivn- */
+
+.ivn-scene {
+  justify-content: flex-start;
+  gap: 32px;
+}
+
+/* ── headline（持续元素） ─────────────────────────────── */
+
+.ivn-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 60px;
+  font-weight: 900;
+  line-height: 1.16;
+  color: var(--theme-structural);
+  animation: ivn-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.ivn-title em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* ── 对照主区：左（印象+参照） / 分隔 / 右（要求+风险） ── */
+
+.ivn-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 64px 1fr;
+  align-items: stretch;
+}
+
+.ivn-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ivn-divider::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 50%;
+  border-left: var(--rule-w) dashed var(--theme-dashed-line);
+  animation: ivn-fade-in 640ms var(--ease-soft) 220ms backwards;
+}
+
+.ivn-divider-mark {
+  position: relative;
+  z-index: 1;
+  padding: 10px 16px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.22em;
+  color: var(--text-mute);
+  background: var(--surface);
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: 999px;
+  animation: ivn-fade-in 640ms var(--ease-soft) 360ms backwards;
+}
+
+/* ── 两侧栏面板 ───────────────────────────────────────── */
+
+.ivn-col {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: 38px 46px;
+  animation: ivn-fade-in 640ms var(--ease-soft) 140ms backwards;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+/* s4 左栏弱化退让：收束让位给右栏风险项（弱化态规则，无额外 delay） */
+.ivn-left.is-weak {
+  opacity: 0.36;
+  filter: grayscale(0.55);
+}
+
+.ivn-col-tag {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+.ivn-col-idx {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  font-size: 28px;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px solid var(--theme-dashed-line);
+  border-radius: 12px;
+}
+
+.ivn-col-sub {
+  margin-left: auto;
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+}
+
+/* ── 左栏 · 随手印象（s1 落位，s3 被划掉弱化） ─────────── */
+
+.ivn-impression {
+  position: relative;
+  flex: none;
+  height: 286px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 24px;
+  background: var(--surface);
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+}
+
+.ivn-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  gap: 14px 24px;
+}
+
+.ivn-tile {
+  display: inline-block;
+  padding: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--text-faint);
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+  border-radius: 10px;
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  transform: rotate(var(--ivn-rot)) translateY(var(--ivn-dy));
+  animation: ivn-tile-in 460ms var(--ease-overshoot) backwards;
+  animation-delay: calc(520ms + var(--ivn-i) * 130ms);
+  transition: opacity 560ms var(--ease-soft);
+}
+
+/* 弱化态：s3「不能随手编写」划掉印象（delay 只写在弱化态规则里） */
+.ivn-impression.is-crossed .ivn-tile {
+  opacity: 0.42;
+  transition-delay: 260ms;
+}
+
+.ivn-impression-note {
+  margin: 0;
+  text-align: center;
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--text-2);
+  animation: ivn-fade-in 520ms var(--ease-soft) 1.6s backwards;
+}
+
+/* 划除线：s3 状态门控下自左向右画出 */
+.ivn-strike {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 50%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--theme-warning);
+  opacity: 0.85;
+  transform: translateY(-50%) rotate(-3deg) scaleX(0);
+  transform-origin: left center;
+  transition: transform 480ms var(--ease-soft);
+}
+
+.ivn-impression.is-crossed .ivn-strike {
+  transform: translateY(-50%) rotate(-3deg) scaleX(1);
+  transition-delay: 300ms;
+}
+
+/* ── 左栏 · 管理逻辑参照（s2 落位，R013 载体） ─────────── */
+
+.ivn-managed {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+.ivn-managed-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+.ivn-managed-line em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.ivn-ref {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ivn-ref-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+  opacity: 0;
+}
+
+.ivn-ref-only {
+  margin-left: 14px;
+  padding: 4px 12px;
+  font-size: 20px;
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  border-radius: 8px;
+}
+
+.ivn-ref-rules {
+  display: flex;
+  gap: 22px;
+}
+
+.ivn-ref-rule {
+  flex: 1;
+  padding: 16px 0;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: var(--theme-structural);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  border-radius: 12px;
+  opacity: 0;
+}
+
+.ivn-ref-note {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+/* ── 右栏 · 空槽脚手架（s1–s2 占位，s3 让位淡出） ──────── */
+
+.ivn-right {
+  position: relative;
+}
+
+.ivn-empty {
+  position: absolute;
+  inset: 22px;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.ivn-scene.is-qualified .ivn-empty {
+  opacity: 0;
+}
+
+.ivn-c {
+  position: absolute;
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 0 solid var(--theme-dashed-line);
+  animation: ivn-fade-in 480ms var(--ease-soft) backwards;
+  animation-delay: calc(700ms + var(--ivn-i) * 160ms);
+}
+
+.ivn-c1 {
+  top: 0;
+  left: 0;
+  border-top-width: 3px;
+  border-left-width: 3px;
+}
+
+.ivn-c2 {
+  top: 0;
+  right: 0;
+  border-top-width: 3px;
+  border-right-width: 3px;
+}
+
+.ivn-c3 {
+  bottom: 0;
+  left: 0;
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+}
+
+.ivn-c4 {
+  bottom: 0;
+  right: 0;
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+}
+
+.ivn-empty-mark {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  letter-spacing: 0.3em;
+  color: var(--text-faint);
+  opacity: 0.55;
+  animation: ivn-fade-in 520ms var(--ease-soft) 1.4s backwards;
+}
+
+/* ── 右栏 · 合格要求（s3 落位，R014 支撑收束） ─────────── */
+
+.ivn-right-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.ivn-right .ivn-col-tag {
+  opacity: 0;
+}
+
+.ivn-support {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.ivn-beam {
+  margin: 0;
+  padding: 22px 0;
+  text-align: center;
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: var(--theme-paper);
+  background: var(--theme-structural);
+  border-radius: 12px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+}
+
+.ivn-reqs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.ivn-req {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 6px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+}
+
+.ivn-req:last-child {
+  border-bottom: 2px dashed var(--theme-dashed-line);
+}
+
+.ivn-req-idx {
+  flex: none;
+  min-width: 52px;
+  font-size: 30px;
+  color: var(--theme-process);
+}
+
+.ivn-req-text {
+  font-size: 31px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ── 右栏 · 反例后果（s4 后置入场，风险提示色收束） ────── */
+
+.ivn-risk {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px 30px;
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  border-radius: var(--r-card);
+  opacity: 0;
+}
+
+.ivn-risk-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.16em;
+  color: var(--theme-warning);
+}
+
+.ivn-risk-row {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  opacity: 0;
+}
+
+.ivn-risk-demo {
+  flex: none;
+  width: 216px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.ivn-risk-slot {
+  width: 96px;
+  height: 92px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-warning);
+  border-radius: 12px;
+}
+
+.ivn-risk-glyph {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--theme-warning);
+}
+
+.ivn-risk-slot.is-stack .ivn-risk-glyph {
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.ivn-risk-text {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ivn-risk-close {
+  margin: 0;
+  align-self: flex-start;
+  padding: 12px 24px;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-danger);
+  background: var(--theme-danger-surface);
+  border: 2px solid var(--theme-danger);
+  border-radius: 12px;
+  opacity: 0;
+}
+
+/* ── 状态门控（s2 managed → s3 qualified → s4 settled） ── */
+
+.ivn-scene.is-framed .ivn-managed-line {
+  animation: ivn-fade-in 560ms var(--ease-soft) 100ms both;
+}
+
+.ivn-scene.is-framed .ivn-ref-tag {
+  animation: ivn-fade-in 520ms var(--ease-soft) 420ms both;
+}
+
+.ivn-scene.is-framed .ivn-ref-rule {
+  animation: ivn-rule-up 500ms var(--ease-overshoot) both;
+  animation-delay: calc(700ms + var(--ivn-i) * 240ms);
+}
+
+.ivn-scene.is-framed .ivn-ref-note {
+  animation: ivn-fade-in 520ms var(--ease-soft) 1.75s both;
+}
+
+.ivn-scene.is-qualified .ivn-right .ivn-col-tag {
+  animation: ivn-fade-in 520ms var(--ease-soft) 80ms both;
+}
+
+.ivn-scene.is-qualified .ivn-req {
+  animation: ivn-req-in 520ms var(--ease-overshoot) both;
+  animation-delay: calc(340ms + var(--ivn-i) * 300ms);
+}
+
+.ivn-scene.is-qualified .ivn-beam {
+  animation: ivn-beam-settle 560ms var(--ease-overshoot) 1.85s both;
+}
+
+.ivn-scene.is-settled .ivn-risk {
+  animation: ivn-fade-in 480ms var(--ease-soft) 160ms both;
+}
+
+.ivn-scene.is-settled .ivn-risk-row {
+  animation: ivn-risk-in 520ms var(--ease-soft) both;
+  animation-delay: calc(600ms + var(--ivn-i) * 420ms);
+}
+
+.ivn-scene.is-settled .ivn-risk-close {
+  animation: ivn-close-in 560ms var(--ease-overshoot) 2.2s both;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes ivn-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ivn-tile-in {
+  from {
+    opacity: 0;
+    transform: rotate(calc(var(--ivn-rot) - 16deg))
+      translateY(calc(var(--ivn-dy) + 26px)) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(var(--ivn-rot)) translateY(var(--ivn-dy));
+  }
+}
+
+@keyframes ivn-rule-up {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ivn-req-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ivn-beam-settle {
+  from {
+    opacity: 0;
+    transform: translateY(-18px) scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ivn-risk-in {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ivn-close-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,345 @@
+/* identity-across-stages · A007 image-with-reading-notes
+   mechanism: persistent-media-reading — 教材原图持续在场为证据锚点，
+   读图顺序沿原图方向推进（物理四环节 → 数字标识），要点卡收束变与不变
+   prefix: ias- */
+
+.ias-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── headline（持续元素） ─────────────────────────────── */
+
+.ias-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: ias-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.ias-title em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* ── 主区：教材原图（证据主体） + 侧位读图注 ──────────── */
+
+.ias-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 470px;
+  gap: 44px;
+  align-items: stretch;
+}
+
+.ias-figure {
+  margin: 0;
+  position: relative;
+  align-self: center;
+  overflow: hidden;
+  animation: ias-anchor-in 760ms var(--ease-soft) 120ms backwards;
+}
+
+/* 原图全幅展示：宽随容器、高按比例，不裁切 */
+.ias-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ias-media-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 12px 22px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: var(--theme-paper);
+  background: color-mix(in srgb, var(--theme-structural) 62%, transparent);
+  animation: ias-fade-in 520ms var(--ease-soft) 480ms backwards;
+}
+
+/* ── 侧栏：读图方向注（s1） → 四环节（s2） → 要点卡（s2） ─ */
+
+.ias-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 26px;
+}
+
+.ias-direction {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ias-direction-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+  animation: ias-fade-in 520ms var(--ease-soft) 420ms backwards;
+}
+
+.ias-direction-flow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ias-direction-node {
+  padding: 14px 24px;
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  background: var(--surface-2);
+  border: 2px solid var(--theme-dashed-line);
+  border-radius: 12px;
+  animation: ias-fade-in 520ms var(--ease-soft) 560ms backwards;
+}
+
+.ias-direction-node.is-digital {
+  color: var(--theme-paper);
+  background: var(--theme-structural);
+  border-color: var(--theme-structural);
+  animation-delay: 940ms;
+}
+
+/* 方向线：沿读图方向自左向右画出，落点箭头随后点亮 */
+.ias-direction-arrow {
+  position: relative;
+  flex: 1;
+  height: 3px;
+  background: var(--theme-process);
+  transform-origin: left center;
+  animation: ias-arrow-draw 620ms var(--ease-soft) 780ms backwards;
+}
+
+.ias-direction-arrow::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border-top: 3px solid var(--theme-process);
+  border-right: 3px solid var(--theme-process);
+  transform: translateY(-50%) rotate(45deg);
+  animation: ias-fade-in 300ms var(--ease-soft) 1300ms backwards;
+}
+
+/* 四环节行：槽位常驻（s1 隐形占位，s2 依次点亮） */
+
+.ias-stages {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.ias-stage {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 8px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+}
+
+.ias-stage:last-child {
+  border-bottom: 2px dashed var(--theme-dashed-line);
+}
+
+.ias-stage-idx {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  font-size: 24px;
+  color: var(--text-faint);
+  background: var(--surface-3);
+  border: 2px solid var(--theme-dashed-line);
+  border-radius: 50%;
+  transition: color var(--dur-base) var(--ease-soft),
+    background var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft);
+}
+
+.ias-stage-name {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+/* 数字标识落点（s2，四环节走完后落位） */
+
+.ias-target {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 24px;
+  background: var(--theme-structural);
+  border-radius: 12px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+}
+
+.ias-target-label {
+  flex: none;
+  font-size: 30px;
+  color: var(--theme-process);
+}
+
+.ias-target-text {
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-paper);
+}
+
+/* 要点卡：变与不变对照（R017 载体，无状态连线） */
+
+.ias-points {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 26px 30px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  opacity: 0;
+}
+
+.ias-points-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.ias-point {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ias-point-mark {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  padding: 8px 12px;
+  font-size: 24px;
+  font-weight: 900;
+  border-radius: 10px;
+}
+
+.ias-point-mark.is-var {
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+}
+
+.ias-point-mark.is-fix {
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+}
+
+.ias-point-text {
+  font-size: 29px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ── 状态门控（s2 four-stages-tracked） ───────────────── */
+
+.ias-scene.is-tracked .ias-stage {
+  animation: ias-stage-in 480ms var(--ease-soft) both;
+  animation-delay: calc(200ms + var(--ias-i) * 300ms);
+}
+
+.ias-scene.is-tracked .ias-stage-idx {
+  color: var(--theme-paper);
+  background: var(--theme-process);
+  border-color: var(--theme-process);
+  transition-delay: calc(320ms + var(--ias-i) * 300ms);
+}
+
+.ias-scene.is-tracked .ias-target {
+  animation: ias-target-land 560ms var(--ease-overshoot) 1.7s both;
+}
+
+.ias-scene.is-tracked .ias-points {
+  animation: ias-fade-in 560ms var(--ease-soft) 2.5s both;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes ias-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ias-anchor-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ias-arrow-draw {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ias-stage-in {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ias-target-land {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

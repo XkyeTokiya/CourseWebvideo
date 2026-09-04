@@ -22,5 +22,161 @@
     "step": 4,
     "text": "包装上的标签看得清清楚楚，标签背后的身份却没有一同到达。",
     "audio": "receiving-breakpoint/4.mp3"
+  },
+  {
+    "chapter": "private-code-scope",
+    "step": 1,
+    "text": "先弄明白这串字符的来历。它多半是企业自己设置的编码，专门为内部管理服务，这样的编码叫“私码”。",
+    "audio": "private-code-scope/1.mp3"
+  },
+  {
+    "chapter": "private-code-scope",
+    "step": 2,
+    "text": "在供应商自己的系统里，私码是管用的。系统里记录着这串字符的含义，以及它对应的订单、批次和产品记录。",
+    "audio": "private-code-scope/2.mp3"
+  },
+  {
+    "chapter": "private-code-scope",
+    "step": 3,
+    "text": "私码并不是没有价值，问题在于，它的规则和含义通常只在本企业的管理环境里才成立。",
+    "audio": "private-code-scope/3.mp3"
+  },
+  {
+    "chapter": "boundary-context-gap",
+    "step": 1,
+    "text": "编码一旦跨出企业边界，情形就不同了。",
+    "audio": "boundary-context-gap/1.mp3"
+  },
+  {
+    "chapter": "boundary-context-gap",
+    "step": 2,
+    "text": "到了下游企业，这串编码由谁分配、对应哪类对象、是否重复，对方都未必能判断；与它关联的记录，也未必找得到。",
+    "audio": "boundary-context-gap/2.mp3"
+  },
+  {
+    "chapter": "boundary-context-gap",
+    "step": 3,
+    "text": "扫码枪读出来的是一串字符，业务系统却无法凭它确认对象。",
+    "audio": "boundary-context-gap/3.mp3"
+  },
+  {
+    "chapter": "boundary-context-gap",
+    "step": 4,
+    "text": "我们常说的“不能识别”，问题不在扫码这个动作本身，而在于企业之间没有共享同一套身份语境。",
+    "audio": "boundary-context-gap/4.mp3"
+  },
+  {
+    "chapter": "object-code-carrier",
+    "step": 1,
+    "text": "要往下讲，得先把三个概念分开。零部件、设备和产品，是需要被识别的对象。",
+    "audio": "object-code-carrier/1.mp3"
+  },
+  {
+    "chapter": "object-code-carrier",
+    "step": 2,
+    "text": "编码，是赋给对象的数字身份。二维码、条形码和标签，则是把编码带到现场的标识载体。",
+    "audio": "object-code-carrier/2.mp3"
+  },
+  {
+    "chapter": "object-code-carrier",
+    "step": 3,
+    "text": "标签样式换了，编码背后的规则不会跟着变；反过来，同一个身份编码，也能换一种载体带到现场。",
+    "audio": "object-code-carrier/3.mp3"
+  },
+  {
+    "chapter": "object-code-carrier",
+    "step": 4,
+    "text": "标签旧了、破了，可以补一张新的。只要新标签承载的还是同一编码，系统识别的仍是原来的对象。",
+    "audio": "object-code-carrier/4.mp3"
+  },
+  {
+    "chapter": "digital-identity",
+    "step": 1,
+    "text": "跨企业协同，需要大家都能认的共同身份。工业互联网标识要解决的，正是对象身份问题。",
+    "audio": "digital-identity/1.mp3"
+  },
+  {
+    "chapter": "digital-identity",
+    "step": 2,
+    "text": "产品、装备、制造设备等工业对象，都会在数字世界中映射为对应的数字实体，用一串标识编码来代表。",
+    "audio": "digital-identity/2.mp3"
+  },
+  {
+    "chapter": "digital-identity",
+    "step": 3,
+    "text": "可以把这串标识看成物理实体在数字世界里的“身份证”。",
+    "audio": "digital-identity/3.mp3"
+  },
+  {
+    "chapter": "digital-identity",
+    "step": 4,
+    "text": "系统处理的，始终是与那个物理实体对应的数字身份；货架上的实物，也因此对应着一个可供系统识别的对象身份。",
+    "audio": "digital-identity/4.mp3"
+  },
+  {
+    "chapter": "identity-vs-number",
+    "step": 1,
+    "text": "为什么强调“身份”，不直接说“编号”？如果只说“编号”，很容易让人以为它只是一串随手写下的字符。",
+    "audio": "identity-vs-number/1.mp3"
+  },
+  {
+    "chapter": "identity-vs-number",
+    "step": 2,
+    "text": "标识编码不一样，它背后带着管理逻辑。居民身份证可以作个参照，号码背后有统筹、分配和校验这些规则撑着，才能稳定地把人区分开。",
+    "audio": "identity-vs-number/2.mp3"
+  },
+  {
+    "chapter": "identity-vs-number",
+    "step": 3,
+    "text": "合格的标识编码不能随手编写。它要有人负责管理，有明确的分配规则，还要避免对象之间撞名、重号。",
+    "audio": "identity-vs-number/3.mp3"
+  },
+  {
+    "chapter": "identity-vs-number",
+    "step": 4,
+    "text": "否则，两家企业可能把相同字符分给不同对象，也可能给同一对象留下几个对不上的名字。这样一来，跨企业识别就失去了可靠起点。",
+    "audio": "identity-vs-number/4.mp3"
+  },
+  {
+    "chapter": "identity-across-stages",
+    "step": 1,
+    "text": "只有身份保持连续，同一工业对象在各个环节留下的数字记录，才能始终对应到这个对象。",
+    "audio": "identity-across-stages/1.mp3"
+  },
+  {
+    "chapter": "identity-across-stages",
+    "step": 2,
+    "text": "一件产品从研发设计、生产制造、物流运输到销售使用，环节会变，叫法会变，身份联系始终追得回来。",
+    "audio": "identity-across-stages/2.mp3"
+  },
+  {
+    "chapter": "loopback-summary",
+    "step": 1,
+    "text": "本期总结。回到开头的收货现场。如果二维码里装的只是供应商内部的私码，下游虽然读得出那串字符，却对不上具体对象。",
+    "audio": "loopback-summary/1.mp3"
+  },
+  {
+    "chapter": "loopback-summary",
+    "step": 2,
+    "text": "如果大家能按共同规则识别同一个标识，那么零部件进入另一家企业后，仍然对应着同一个数字身份。",
+    "audio": "loopback-summary/2.mp3"
+  },
+  {
+    "chapter": "loopback-summary",
+    "step": 3,
+    "text": "私码在企业内部有它的用处，工业互联网标识解决的是跨企业的问题，两者分工不同。",
+    "audio": "loopback-summary/3.mp3"
+  },
+  {
+    "chapter": "loopback-summary",
+    "step": 4,
+    "text": "共同的规律是：跨企业协同，先要说清“同一个对象”。工业互联网标识的价值就从这里开始：它为跨主体协同提供对象身份锚点。",
+    "audio": "loopback-summary/4.mp3"
+  },
+  {
+    "chapter": "loopback-summary",
+    "step": 5,
+    "text": "至于怎样凭标识查询相关信息，那是标识解析要回答的问题。",
+    "audio": "loopback-summary/5.mp3"
   }
 ]

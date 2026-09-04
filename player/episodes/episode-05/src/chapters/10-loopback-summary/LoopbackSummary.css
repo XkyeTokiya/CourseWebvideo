@@ -1,0 +1,737 @@
+/* loopback-summary · A010 image-with-summary-rail
+   mechanism: loopback-contrast — 回扣开场收货图作前后呼应锚持续在场，
+   总结轨两路径对照推进，分工行/问题入口依次收束，accent 全屏插入
+   prefix: los- */
+
+.los-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── headline：收束页标题（S045 方向）+ 回扣注 ───────────── */
+
+.los-headline {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.los-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: los-rise-in 560ms var(--ease-soft) backwards;
+}
+
+.los-title-mark {
+  font-style: normal;
+  padding-bottom: 4px;
+  border-bottom: 6px solid var(--theme-warning);
+}
+
+.los-title-mark[data-tone="shared"] {
+  border-bottom-color: var(--theme-process);
+}
+
+.los-head-note {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+  animation: los-rise-in 560ms var(--ease-soft) 240ms backwards;
+}
+
+/* ── 主区：回扣图（左）+ 总结轨（右）+ final-judgment（底部整行） */
+
+.los-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 520px 1fr;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 36px 44px;
+}
+
+.los-media {
+  margin: 0;
+  grid-column: 1;
+  grid-row: 1;
+  min-height: 0;
+  display: flex;
+  transition: opacity var(--dur-slow) var(--ease-soft);
+}
+
+.los-media-frame {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  animation: los-rise-in 620ms var(--ease-soft) 120ms backwards;
+}
+
+.los-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  animation: los-photo-settle 1100ms var(--ease-soft) both;
+}
+
+.los-media-tags {
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.los-chip {
+  padding: 6px 14px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--card-glass-bg);
+  border: 2px solid var(--card-glass-border);
+  border-radius: 12px;
+  animation: los-rise-in 460ms var(--ease-soft) backwards;
+  animation-delay: calc(340ms + var(--los-i) * 110ms);
+}
+
+.los-chip.is-tag {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  background: var(--theme-paper);
+}
+
+.los-chip-arrow {
+  font-size: 22px;
+  color: var(--theme-paper);
+  text-shadow: 0 2px 8px var(--theme-offset-shadow);
+  animation: los-rise-in 460ms var(--ease-soft) backwards;
+  animation-delay: calc(340ms + var(--los-i) * 110ms);
+}
+
+.los-fiction {
+  position: absolute;
+  z-index: 1;
+  right: 18px;
+  bottom: 54px;
+  padding: 5px 12px;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.08em;
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  border-radius: 10px;
+  animation: los-rise-in 460ms var(--ease-soft) 820ms backwards;
+}
+
+.los-media-caption {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 11px 20px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.08em;
+  color: var(--theme-paper);
+  background: color-mix(in srgb, var(--theme-structural) 62%, transparent);
+  animation: los-rise-in 460ms var(--ease-soft) 680ms backwards;
+}
+
+/* ── 总结轨：两路径对照卡 + 分工行 ───────────────────────── */
+
+.los-rail {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  transition: opacity var(--dur-slow) var(--ease-soft);
+}
+
+.los-path {
+  flex: 1;
+  min-height: 0;
+  padding: 24px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: los-rise-in 560ms var(--ease-soft) backwards;
+  animation-delay: calc(180ms + var(--los-i) * 180ms);
+}
+
+.los-path-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.los-path-num {
+  font-size: 36px;
+  color: var(--theme-warning);
+}
+
+.los-path[data-tone="shared"] .los-path-num {
+  color: var(--theme-process);
+}
+
+.los-path-name {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.los-scan-tag {
+  margin-left: auto;
+  padding: 4px 14px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-overshoot);
+}
+
+.los-scene.is-shared .los-scan-tag {
+  opacity: 1;
+  transform: none;
+}
+
+/* 私码路径演示：扫码 → 读出陌生字符 → 停在人工核对 */
+.los-private-demo {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.los-barcode {
+  width: 150px;
+  height: auto;
+  flex: none;
+  overflow: visible;
+}
+
+.los-bar {
+  fill: var(--theme-structural);
+  transform-origin: left center;
+  animation: los-bar-in 380ms var(--ease-soft) backwards;
+  animation-delay: calc(430ms + var(--los-i) * 42ms);
+}
+
+.los-scanline {
+  stroke: var(--theme-warning);
+  stroke-width: 2.5;
+  opacity: 0;
+  animation: los-sweep 1.5s var(--ease-soft) 950ms 1 both;
+}
+
+.los-read {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 22px;
+  background: var(--surface-3);
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: 12px;
+  animation: los-pop-in 440ms var(--ease-overshoot) 1020ms backwards;
+}
+
+.los-read-code {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--theme-structural);
+}
+
+.los-read-sub {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.los-demo-arrow {
+  flex: none;
+  font-size: 30px;
+  color: var(--text-faint);
+}
+
+.los-verdict {
+  margin: 0;
+  padding: 12px 22px;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  border-radius: 12px;
+  animation: los-pop-in 480ms var(--ease-overshoot) 1520ms backwards;
+}
+
+/* 共同标识路径演示：扫码即确认 → 三节点链 */
+.los-chain {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.los-chain-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.los-chain-node {
+  padding: 14px 20px;
+  font-size: 26px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--text-2);
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateY(12px) scale(0.96);
+  transition: opacity 460ms var(--ease-soft),
+    transform 460ms var(--ease-overshoot);
+}
+
+.los-chain-node[data-last] {
+  border-style: solid;
+  border-color: var(--theme-process);
+  background: var(--theme-process-surface);
+  color: var(--theme-structural);
+  font-weight: 900;
+}
+
+.los-chain-link {
+  width: 30px;
+  height: 0;
+  flex: none;
+  border-top: 3px solid var(--rule);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 380ms var(--ease-soft);
+}
+
+.los-scene.is-shared .los-chain-node {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(140ms + var(--los-i) * 220ms);
+}
+
+.los-scene.is-shared .los-chain-link {
+  transform: none;
+  transition-delay: calc(380ms + var(--los-i) * 220ms);
+}
+
+/* 分工行：总结轨下方，两半对齐两条路径 */
+.los-division {
+  flex: none;
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 18px;
+  padding: 0 6px;
+}
+
+.los-division-half {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 460ms var(--ease-soft),
+    transform 460ms var(--ease-overshoot);
+}
+
+.los-division-half[data-tone="private"] {
+  justify-content: flex-end;
+}
+
+.los-division-half[data-tone="shared"] {
+  justify-content: flex-start;
+}
+
+.los-division-dot {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: var(--theme-warning);
+}
+
+.los-division-half[data-tone="shared"] .los-division-dot {
+  background: var(--theme-process);
+}
+
+.los-division-who {
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.los-division-what {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.los-division-mid {
+  padding: 10px 20px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.16em;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+  border-radius: 999px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 460ms var(--ease-soft),
+    transform 460ms var(--ease-overshoot);
+}
+
+.los-scene.is-divided .los-division-half {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(100ms + var(--los-i) * 180ms);
+}
+
+.los-scene.is-divided .los-division-mid {
+  opacity: 1;
+  transform: none;
+  transition-delay: 480ms;
+}
+
+/* ── final-judgment：下一集问题入口（常驻预留槽，解析侧不展开） */
+
+.los-gate {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 22px 30px;
+  border: 2px dashed var(--accent);
+  border-radius: var(--r-card);
+  background: color-mix(in srgb, var(--accent) 5%, transparent);
+  visibility: hidden;
+}
+
+.los-scene.is-gate .los-gate {
+  visibility: visible;
+}
+
+.los-gate-kicker {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  opacity: 0;
+}
+
+.los-gate-q {
+  margin: 0;
+  flex: none;
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+.los-gate-arrow {
+  position: relative;
+  flex: 1;
+  min-width: 60px;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.los-gate-arrow::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 16px solid var(--accent);
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+.los-gate-slot {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px 26px;
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: 12px;
+  opacity: 0;
+}
+
+.los-gate-slot-name {
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+.los-gate-slot-sub {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+/* s5 入口落下：kicker → 问句 → 箭头绘制 → 未展开槽位 */
+.los-scene.is-gate .los-gate-kicker {
+  animation: los-gate-in 460ms var(--ease-overshoot) both;
+}
+
+.los-scene.is-gate .los-gate-q {
+  animation: los-gate-in 520ms var(--ease-overshoot) 140ms both;
+}
+
+.los-scene.is-gate .los-gate-arrow {
+  animation: los-draw 640ms var(--ease-soft) 480ms both;
+}
+
+.los-scene.is-gate .los-gate-slot {
+  animation: los-gate-in 480ms var(--ease-overshoot) 880ms both;
+}
+
+/* 收束拍主区轻微退让，final-judgment 成焦点（弱化态规则内，不加延迟） */
+.los-scene.is-gate .los-media,
+.los-scene.is-gate .los-rail {
+  opacity: 0.8;
+}
+
+/* accent 插入后回到 base：构图保持 s3 离开时终态，不重放入场动画 */
+.los-scene.is-return :is(
+    .los-title,
+    .los-head-note,
+    .los-media-frame,
+    .los-photo,
+    .los-chip,
+    .los-chip-arrow,
+    .los-fiction,
+    .los-media-caption,
+    .los-path,
+    .los-bar,
+    .los-scanline,
+    .los-read,
+    .los-verdict
+  ) {
+  animation: none;
+}
+
+/* ── K-A010-01 accent：全屏规律句（低成本 StatementFrame） ── */
+
+.los-accent {
+  justify-content: center;
+  align-items: flex-start;
+  gap: 34px;
+}
+
+.los-accent-kicker {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 26px;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  animation: los-rise-in 420ms var(--ease-soft) backwards;
+}
+
+.los-accent-kicker::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+}
+
+.los-accent-hero {
+  margin: 0;
+  position: relative;
+  z-index: 0;
+  font-family: var(--font-display-cn);
+  font-size: 104px;
+  font-weight: 900;
+  line-height: 1.22;
+  color: var(--theme-structural);
+  animation: los-rise-in 640ms var(--ease-overshoot) 140ms backwards;
+}
+
+.los-accent-mark {
+  position: relative;
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.los-accent-mark::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -1%;
+  right: -1%;
+  bottom: 4px;
+  height: 16px;
+  background: color-mix(in srgb, var(--accent) 24%, transparent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: los-draw 620ms var(--ease-soft) 760ms both;
+}
+
+.los-accent-rule {
+  width: 340px;
+  height: 6px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: los-draw 520ms var(--ease-soft) 920ms both;
+}
+
+.los-accent-close {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.los-accent-lead {
+  margin: 0;
+  font-size: 34px;
+  color: var(--text-2);
+  animation: los-rise-in 460ms var(--ease-soft) 1040ms backwards;
+}
+
+.los-accent-value {
+  margin: 0;
+  font-size: 50px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: los-rise-in 500ms var(--ease-overshoot) 1200ms backwards;
+}
+
+.los-accent-value em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes los-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes los-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes los-bar-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes los-sweep {
+  0% {
+    transform: translateY(-14px);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.95;
+  }
+  62% {
+    transform: translateY(14px);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+}
+
+@keyframes los-photo-settle {
+  from {
+    transform: scale(1.045);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes los-gate-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes los-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: none;
+  }
+}

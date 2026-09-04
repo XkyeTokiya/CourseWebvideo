@@ -1,0 +1,467 @@
+/* private-code-scope · A002 parallel-cards-self-contained
+   mechanism: cumulative-assembly — 固定双卡等权结构内逐层装入定义、
+   成立范围与内部边界注；s3 边界框合拢收束
+   prefix: pcs- */
+
+.pcs-scene {
+  justify-content: flex-start;
+  gap: 34px;
+}
+
+/* ── headline（可见标题，保留） ─────────────────────────── */
+
+.pcs-head {
+  display: flex;
+  align-items: baseline;
+}
+
+.pcs-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: pcs-rise 560ms var(--ease-soft) 60ms backwards;
+}
+
+.pcs-title em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* ── 双卡区：等权槽位 + s3 内部环境边界框 ───────────────── */
+
+.pcs-cards {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+/* 边界框：s3 收束时四角先撑开、虚线框随后合拢 */
+.pcs-frame {
+  position: absolute;
+  inset: -24px -26px;
+  border: 3px dashed var(--theme-warning);
+  border-radius: 22px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pcs-corner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  opacity: 0;
+}
+
+.pcs-corner-tl {
+  top: -5px;
+  left: -5px;
+  border-top: 5px solid var(--theme-warning);
+  border-left: 5px solid var(--theme-warning);
+  border-top-left-radius: 16px;
+  transform-origin: top left;
+}
+
+.pcs-corner-tr {
+  top: -5px;
+  right: -5px;
+  border-top: 5px solid var(--theme-warning);
+  border-right: 5px solid var(--theme-warning);
+  border-top-right-radius: 16px;
+  transform-origin: top right;
+}
+
+.pcs-corner-bl {
+  bottom: -5px;
+  left: -5px;
+  border-bottom: 5px solid var(--theme-warning);
+  border-left: 5px solid var(--theme-warning);
+  border-bottom-left-radius: 16px;
+  transform-origin: bottom left;
+}
+
+.pcs-corner-br {
+  bottom: -5px;
+  right: -5px;
+  border-bottom: 5px solid var(--theme-warning);
+  border-right: 5px solid var(--theme-warning);
+  border-bottom-right-radius: 16px;
+  transform-origin: bottom right;
+}
+
+.pcs-frame-label {
+  position: absolute;
+  top: -21px;
+  left: 42px;
+  padding: 7px 20px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--theme-structural);
+  background: var(--theme-warning-surface);
+  border: 2.5px solid var(--theme-warning);
+  border-radius: 10px;
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  opacity: 0;
+}
+
+/* ── 定义卡（s1 装入，进章即播） ────────────────────────── */
+
+.pcs-card-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.pcs-def {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: 34px 42px 40px;
+  animation: pcs-rise 560ms var(--ease-soft) 140ms backwards;
+  transition: opacity var(--dur-slow) var(--ease-soft);
+}
+
+.pcs-def-layers {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.pcs-def-layer {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 4px;
+  border-bottom: 2px dashed var(--theme-dashed-line);
+  animation: pcs-slot-in 520ms var(--ease-soft) both;
+  animation-delay: calc(3400ms + var(--pcs-i) * 1800ms);
+}
+
+.pcs-def-idx {
+  font-size: 30px;
+  color: var(--theme-process);
+}
+
+.pcs-def-text {
+  font-family: var(--font-body);
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+
+.pcs-def-rule {
+  transform-origin: left center;
+  animation: pcs-grow-x 640ms var(--ease-soft) 6600ms both;
+}
+
+.pcs-def-term-wrap {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  animation: pcs-rise 520ms var(--ease-soft) 7300ms both;
+}
+
+.pcs-def-term-lead {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.pcs-def-term {
+  margin: 0;
+  display: inline-block;
+  padding: 6px 40px 12px;
+  font-family: var(--font-display-cn);
+  font-size: 78px;
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--theme-structural);
+  background: var(--theme-paper);
+  border: 3px solid var(--theme-structural);
+  border-radius: 12px;
+  box-shadow: 7px 8px 0 var(--theme-offset-shadow);
+  animation: pcs-stamp 640ms var(--ease-overshoot) 7700ms both;
+}
+
+/* ── 成立范围卡（s1 空槽 → s2 面板落位，状态门控） ──────── */
+
+.pcs-scope-slot {
+  position: relative;
+  min-height: 0;
+}
+
+.pcs-scope-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+  border: 2.5px dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  animation: pcs-fade-in 560ms var(--ease-soft) 300ms both;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+
+.pcs-scope-empty i {
+  display: block;
+  height: 0;
+  border-top: 2px dashed var(--theme-dashed-line);
+  opacity: 0.7;
+}
+
+.pcs-scope-empty i:nth-child(1) {
+  width: 62%;
+}
+
+.pcs-scope-empty i:nth-child(2) {
+  width: 78%;
+}
+
+.pcs-scope-empty i:nth-child(3) {
+  width: 50%;
+}
+
+.pcs-scope-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 34px 42px 40px;
+  opacity: 0;
+  transform: scale(0.975);
+  transition: opacity 480ms var(--ease-soft), transform 480ms var(--ease-overshoot);
+}
+
+.pcs-scope-meaning {
+  margin: 8px 0 0;
+  font-family: var(--font-body);
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.pcs-scope-label {
+  margin: auto 0 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.pcs-scope-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.pcs-scope-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 10px;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2.5px solid var(--theme-dashed-line);
+  border-radius: 12px;
+}
+
+/* ── 边界注（s3 收束，全页唯一判断句载体） ──────────────── */
+
+.pcs-boundary {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 28px;
+  opacity: 0;
+}
+
+.pcs-boundary-lead {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.pcs-boundary-sep {
+  align-self: center;
+  width: 0;
+  height: 34px;
+  border-left: 2px dashed var(--theme-dashed-line);
+}
+
+.pcs-boundary-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.pcs-boundary-main em {
+  font-style: normal;
+  color: var(--theme-warning);
+  border-bottom: 3px dashed var(--theme-warning);
+  padding-bottom: 3px;
+}
+
+/* ── 状态门控（s2 装入 / s3 收束） ──────────────────────── */
+
+/* s2：成立范围卡落位，空槽让位 */
+.pcs-scene.is-scoped .pcs-scope-empty {
+  opacity: 0;
+}
+
+.pcs-scene.is-scoped .pcs-scope-card {
+  opacity: 1;
+  transform: none;
+}
+
+.pcs-scene.is-scoped .pcs-scope-card .pcs-card-tag {
+  animation: pcs-rise 460ms var(--ease-soft) 300ms both;
+}
+
+.pcs-scene.is-scoped .pcs-scope-meaning {
+  animation: pcs-rise 480ms var(--ease-soft) 4200ms both;
+}
+
+.pcs-scene.is-scoped .pcs-scope-label {
+  animation: pcs-rise 460ms var(--ease-soft) 6400ms both;
+}
+
+.pcs-scene.is-scoped .pcs-scope-tile {
+  animation: pcs-pop 460ms var(--ease-overshoot) both;
+  animation-delay: calc(6900ms + var(--pcs-i) * 280ms);
+}
+
+/* s3：边界框合拢 + 边界注入场，双卡等权轻退（无当前选中项） */
+.pcs-scene.is-settled .pcs-boundary {
+  animation: pcs-rise 560ms var(--ease-soft) 2200ms both;
+}
+
+.pcs-scene.is-settled .pcs-corner {
+  animation: pcs-corner-in 340ms var(--ease-overshoot) both;
+  animation-delay: calc(3400ms + var(--pcs-i) * 90ms);
+}
+
+.pcs-scene.is-settled .pcs-frame {
+  animation: pcs-frame-in 620ms var(--ease-soft) 3900ms both;
+}
+
+.pcs-scene.is-settled .pcs-frame-label {
+  animation: pcs-stamp 520ms var(--ease-overshoot) 5600ms both;
+}
+
+.pcs-scene.is-settled .pcs-def,
+.pcs-scene.is-settled .pcs-scope-card {
+  opacity: 0.85;
+  transition-delay: 4800ms;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes pcs-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pcs-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pcs-slot-in {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pcs-grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pcs-stamp {
+  0% {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+  62% {
+    opacity: 1;
+    transform: scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pcs-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pcs-frame-in {
+  from {
+    opacity: 0;
+    transform: scale(1.035);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pcs-corner-in {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

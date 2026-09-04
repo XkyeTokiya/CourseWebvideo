@@ -1,0 +1,456 @@
+/* digital-identity · A005 image-with-insight-rail
+   mechanism: persistent-media-reading — 车间实景持续在场，取景框随阅读
+   焦点迁移；图侧双 insight 轨：轨一 需求→范围，轨二 映射链（阅读顺序
+   即映射方向，不画箭头）→ 身份证类比 → 数字身份收束。
+   prefix: dgi- */
+
+.dgi-scene {
+  justify-content: flex-start;
+  gap: 34px;
+}
+
+/* ── headline：数字“身份证”高亮，收束拍加深 ─────────────── */
+
+.dgi-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: dgi-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.dgi-title-em {
+  font-style: normal;
+  color: var(--theme-process);
+  background: var(--accent-soft);
+  padding: 2px 14px;
+  border-radius: 8px;
+  transition: background 700ms var(--ease-soft);
+}
+
+.dgi-scene[data-state="digital-identity-settled"] .dgi-title-em {
+  background: var(--accent-glow);
+}
+
+/* ── 主区：实景图 + 图侧双轨 ────────────────────────────── */
+
+.dgi-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 900px 1fr;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.dgi-media {
+  margin: 0;
+  display: flex;
+  min-height: 0;
+}
+
+.dgi-media-frame {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  border: 3px solid var(--theme-structural);
+  border-radius: var(--r-card);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  animation: dgi-media-in 800ms var(--ease-soft) backwards;
+}
+
+.dgi-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.05) translate(-1.2%, -0.6%);
+  transition: transform var(--dur-cinematic) var(--ease-soft);
+}
+
+/* 阅读焦点迁移：实景图不卸载，取景框随拍移动 */
+.dgi-scene[data-state="objects-mapped"] .dgi-photo {
+  transform: scale(1.035) translate(1%, -0.5%);
+}
+
+.dgi-scene[data-state="analogy-in-place"] .dgi-photo {
+  transform: scale(1.035) translate(-0.8%, 0.8%);
+}
+
+.dgi-scene[data-state="digital-identity-settled"] .dgi-photo {
+  transform: scale(1.01);
+}
+
+.dgi-focus {
+  position: absolute;
+  inset: 6%;
+  pointer-events: none;
+  transition: inset 900ms var(--ease-soft);
+  animation: dgi-fade-in 600ms var(--ease-soft) 480ms backwards;
+}
+
+.dgi-scene[data-state="objects-mapped"] .dgi-focus {
+  inset: 12% 30% 20% 8%;
+}
+
+.dgi-scene[data-state="analogy-in-place"] .dgi-focus {
+  inset: 20% 10% 12% 30%;
+}
+
+.dgi-scene[data-state="digital-identity-settled"] .dgi-focus {
+  inset: 5% 5% 12% 5%;
+}
+
+.dgi-focus-c {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  border: 0 solid var(--theme-process);
+}
+
+.dgi-focus-c--tl {
+  left: 0;
+  top: 0;
+  border-left-width: 3px;
+  border-top-width: 3px;
+}
+
+.dgi-focus-c--tr {
+  right: 0;
+  top: 0;
+  border-right-width: 3px;
+  border-top-width: 3px;
+}
+
+.dgi-focus-c--bl {
+  left: 0;
+  bottom: 0;
+  border-left-width: 3px;
+  border-bottom-width: 3px;
+}
+
+.dgi-focus-c--br {
+  right: 0;
+  bottom: 0;
+  border-right-width: 3px;
+  border-bottom-width: 3px;
+}
+
+.dgi-media-caption {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 12px 22px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: var(--theme-paper);
+  background: color-mix(in srgb, var(--theme-structural) 62%, transparent);
+  animation: dgi-fade-in 480ms var(--ease-soft) 420ms backwards;
+}
+
+/* ── 双 insight 轨 ──────────────────────────────────────── */
+
+.dgi-rails {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-height: 0;
+}
+
+.dgi-rail {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 26px;
+  border-radius: var(--r-card);
+}
+
+.dgi-rail--need {
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  animation: dgi-slide-in 620ms var(--ease-overshoot) 240ms backwards;
+}
+
+/* 轨二：s1 仅保留占位槽 */
+.dgi-rail--map {
+  flex: 1;
+  min-height: 0;
+  border: 2px dashed var(--theme-dashed-line);
+  transition: background var(--dur-slow) var(--ease-soft),
+    border var(--dur-slow) var(--ease-soft),
+    box-shadow var(--dur-slow) var(--ease-soft);
+}
+
+.dgi-rail--map.is-on {
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  animation: dgi-slide-in 600ms var(--ease-overshoot) backwards;
+}
+
+.dgi-rail-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.dgi-rail--map .dgi-rail-tag {
+  opacity: 0;
+}
+
+.dgi-rail--map.is-on .dgi-rail-tag {
+  animation: dgi-fade-in 300ms var(--ease-soft) 80ms both;
+}
+
+.dgi-nodes {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dgi-node {
+  position: relative;
+  padding-left: 36px;
+  opacity: 0;
+}
+
+.dgi-node.is-on {
+  animation: dgi-node-in 440ms var(--ease-overshoot) both;
+  animation-delay: calc(420ms + var(--dgi-i) * 240ms);
+}
+
+.dgi-node::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 13px;
+  height: 13px;
+  border: 3px solid var(--theme-structural);
+  transition: background var(--dur-base) var(--ease-soft);
+}
+
+.dgi-chain-node {
+  margin-left: calc(var(--dgi-i) * 26px);
+}
+
+.dgi-chain-node::before {
+  border-color: var(--theme-process);
+}
+
+/* 收束拍：全链节点落定填充 */
+.dgi-rail--map.is-settled .dgi-chain-node:not(.dgi-node--analogy)::before {
+  background: var(--theme-process);
+}
+
+.dgi-node-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--theme-structural);
+}
+
+.dgi-node-sub {
+  margin: 6px 0 0;
+  font-size: 22px;
+  color: var(--text-2);
+}
+
+/* 对象范围短项 */
+.dgi-scope {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 16px;
+}
+
+.dgi-scope-chip {
+  padding: 10px 24px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--theme-cool-surface);
+  border: 2px solid var(--rule);
+  border-radius: 10px;
+  opacity: 0;
+}
+
+.dgi-node.is-on .dgi-scope-chip {
+  animation: dgi-chip-in 400ms var(--ease-overshoot) both;
+  animation-delay: calc(320ms + var(--dgi-i) * 130ms);
+}
+
+/* “身份证”类比项：陶土橙提示色，链路末端延伸 */
+.dgi-node--analogy {
+  padding: 12px 18px 12px 36px;
+  background: var(--theme-warning-surface);
+  border: 2.5px solid var(--theme-warning);
+  border-radius: 12px;
+}
+
+.dgi-node--analogy::before {
+  border-color: var(--theme-warning);
+}
+
+.dgi-node--analogy.is-on {
+  animation-delay: 200ms;
+}
+
+.dgi-idcard {
+  display: inline-block;
+  vertical-align: -5px;
+  margin-right: 12px;
+  width: 46px;
+  height: 30px;
+  border: 2.5px solid var(--theme-warning);
+  border-radius: 5px;
+  position: relative;
+  opacity: 0;
+}
+
+.dgi-idcard::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  bottom: 4px;
+  width: 12px;
+  background: color-mix(in srgb, var(--theme-warning) 50%, transparent);
+}
+
+.dgi-idcard::after {
+  content: "";
+  position: absolute;
+  right: 5px;
+  top: 13px;
+  width: 14px;
+  height: 4px;
+  background: color-mix(in srgb, var(--theme-warning) 50%, transparent);
+}
+
+.dgi-node--analogy.is-on .dgi-idcard {
+  animation: dgi-idcard-in 480ms var(--ease-overshoot) 260ms both;
+}
+
+/* 收束项：判断句唯一载体，末拍后置入场 */
+.dgi-close {
+  margin-top: auto;
+  padding: 14px 20px;
+  background: var(--theme-process-surface);
+  border: 3px solid var(--theme-process);
+  border-radius: 12px;
+  opacity: 0;
+}
+
+.dgi-close.is-on {
+  animation: dgi-rise-in 520ms var(--ease-overshoot) 240ms both;
+}
+
+.dgi-close-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.dgi-close-sub {
+  margin: 6px 0 0;
+  font-size: 22px;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.dgi-close.is-on .dgi-close-sub {
+  animation: dgi-fade-in 420ms var(--ease-soft) 520ms both;
+}
+
+/* ── keyframes ─────────────────────────────────────────── */
+
+@keyframes dgi-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dgi-media-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dgi-slide-in {
+  from {
+    transform: translateX(42px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes dgi-node-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dgi-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dgi-idcard-in {
+  from {
+    opacity: 0;
+    transform: rotate(-6deg) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dgi-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

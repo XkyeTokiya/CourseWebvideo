@@ -1,0 +1,426 @@
+/* boundary-context-gap · A003 split-compare-with-pivot（pivot 槽为空不启用）
+   mechanism: compare-and-reweight — 两侧空间持续，左清单先立、右判据后聚，
+   权重向右栏收束
+   prefix: bcg- */
+
+.bcg-scene {
+  justify-content: flex-start;
+  gap: 26px;
+}
+
+/* ── headline + 边界跨越开场条 ──────────────────────────── */
+
+.bcg-head {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.bcg-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: bcg-rise 520ms var(--ease-soft) backwards;
+}
+
+.bcg-title em {
+  font-style: normal;
+  padding-bottom: 6px;
+  background-image: linear-gradient(var(--theme-warning), var(--theme-warning));
+  background-repeat: no-repeat;
+  background-size: 0% 4px;
+  background-position: 0 96%;
+  transition: background-size 620ms var(--ease-soft);
+}
+
+.bcg-crossing {
+  position: relative;
+  height: 100px;
+  animation: bcg-fade-in 520ms var(--ease-soft) 160ms both;
+}
+
+.bcg-cross-side {
+  position: absolute;
+  top: 32px;
+  font-family: var(--font-body);
+  font-size: 25px;
+  font-weight: 800;
+  color: var(--text-mute);
+}
+
+.bcg-cross-side.is-from {
+  right: calc(50% + 330px);
+}
+
+.bcg-cross-side.is-down {
+  left: calc(50% + 330px);
+}
+
+.bcg-cross-boundary {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.bcg-cross-line {
+  flex: 1;
+  width: 0;
+  border-left: 3px dashed var(--theme-warning);
+}
+
+.bcg-cross-line-label {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.22em;
+  color: var(--theme-warning);
+}
+
+.bcg-cross-code {
+  position: absolute;
+  top: 10px;
+  left: calc(50% - 300px);
+  padding: 10px 26px;
+  font-family: var(--font-mono);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--theme-structural);
+  background: var(--theme-paper);
+  border: 2.5px solid var(--theme-structural);
+  border-radius: 10px;
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  animation: bcg-cross 950ms var(--ease-soft) 380ms both;
+}
+
+/* ── 对照区：左清单 / 空置 pivot 分隔 / 右判据 ──────────── */
+
+.bcg-compare {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 2px 1.12fr;
+  gap: 44px;
+}
+
+.bcg-divider {
+  height: 100%;
+  border-left: 2px dashed var(--theme-dashed-line);
+  animation: bcg-fade-in 520ms var(--ease-soft) 260ms both;
+}
+
+/* 左栏：骨架常驻，s2 逐条装入缺失语境 */
+.bcg-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 28px 36px 22px;
+  border: 2.5px dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  animation: bcg-fade-in 560ms var(--ease-soft) 240ms both;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.bcg-col-tag {
+  margin: 0 0 6px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+  opacity: 0;
+}
+
+.bcg-gaps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.bcg-gap {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 14px 4px;
+  border-bottom: 2px dashed var(--theme-dashed-line);
+}
+
+.bcg-gap:last-child {
+  border-bottom: 0;
+}
+
+.bcg-gap-mark {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: var(--text-mute);
+  border: 2.5px dashed var(--theme-dashed-line);
+  border-radius: 10px;
+}
+
+.bcg-gap-text {
+  font-family: var(--font-body);
+  font-size: 33px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.bcg-gap-tail {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  color: var(--theme-warning);
+}
+
+.bcg-gap-mark,
+.bcg-gap-text,
+.bcg-gap-tail {
+  opacity: 0;
+}
+
+/* 右栏：占位槽 s3 让位于判据面板，s4 定位句入预留槽 */
+.bcg-right {
+  position: relative;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.bcg-right-empty {
+  position: absolute;
+  inset: 0;
+  border: 2.5px dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  animation: bcg-fade-in 560ms var(--ease-soft) 320ms both;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+
+.bcg-verdict {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 36px 40px;
+  opacity: 0;
+}
+
+.bcg-verdict-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--theme-process);
+}
+
+.bcg-verdict-phrase {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 22px;
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.bcg-neq {
+  font-size: 74px;
+  color: var(--theme-danger);
+}
+
+.bcg-pin {
+  min-height: 152px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 22px 32px;
+  background: var(--surface);
+  border: 2.5px dashed var(--theme-warning);
+  border-radius: var(--r-card);
+  opacity: 0;
+}
+
+.bcg-pin-not {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.bcg-pin-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+.bcg-pin-main em {
+  font-style: normal;
+  color: var(--theme-warning);
+}
+
+/* ── 状态门控 ──────────────────────────────────────────── */
+
+/* s2：左栏清单逐条落位（两相：短项先入，“未必”注随后；
+   第 4 项“关联的记录”按口播后段单独计时） */
+.bcg-scene.is-listed .bcg-col-tag {
+  animation: bcg-rise 460ms var(--ease-soft) 300ms both;
+}
+
+.bcg-scene.is-listed .bcg-gap-mark,
+.bcg-scene.is-listed .bcg-gap-text {
+  animation: bcg-row-in 480ms var(--ease-soft) both;
+  animation-delay: calc(2200ms + var(--bcg-i) * 1500ms);
+}
+
+.bcg-scene.is-listed .bcg-gap-tail {
+  animation: bcg-fade-in 520ms var(--ease-soft) both;
+  animation-delay: calc(2600ms + var(--bcg-i) * 1500ms);
+}
+
+.bcg-scene.is-listed .bcg-gap.is-records .bcg-gap-mark,
+.bcg-scene.is-listed .bcg-gap.is-records .bcg-gap-text {
+  animation-delay: 8000ms;
+}
+
+.bcg-scene.is-listed .bcg-gap.is-records .bcg-gap-tail {
+  animation-delay: 8500ms;
+}
+
+/* s3：判据句重权落地（exact：读出字符 ≠ 识别对象），左栏轻退 */
+.bcg-scene.is-contrasted .bcg-right-empty {
+  opacity: 0;
+}
+
+.bcg-scene.is-contrasted .bcg-verdict {
+  animation: bcg-land 560ms var(--ease-overshoot) 2400ms both;
+}
+
+.bcg-scene.is-contrasted .bcg-verdict-phrase span {
+  animation: bcg-token 420ms var(--ease-overshoot) both;
+  animation-delay: calc(3400ms + var(--bcg-i) * 1200ms);
+}
+
+.bcg-scene.is-contrasted .bcg-left {
+  opacity: 0.82;
+  transition-delay: 1400ms;
+}
+
+/* s4：定位句入场，断点从扫码动作移向身份语境；对照收束 */
+.bcg-scene.is-pinned .bcg-pin {
+  animation: bcg-fade-in 420ms var(--ease-soft) 2800ms both;
+}
+
+.bcg-scene.is-pinned .bcg-pin-not {
+  animation: bcg-rise 480ms var(--ease-soft) 3100ms both;
+}
+
+.bcg-scene.is-pinned .bcg-pin-main {
+  animation: bcg-rise 560ms var(--ease-soft) 5800ms both;
+}
+
+.bcg-scene.is-pinned .bcg-title em {
+  background-size: 100% 4px;
+  transition-delay: 6800ms;
+}
+
+.bcg-scene.is-pinned .bcg-left {
+  opacity: 0.55;
+  filter: grayscale(0.35);
+  transition-delay: 3600ms;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes bcg-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bcg-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bcg-cross {
+  from {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  to {
+    transform: translateX(312px);
+    opacity: 1;
+  }
+}
+
+@keyframes bcg-row-in {
+  from {
+    opacity: 0;
+    transform: translateX(-26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bcg-land {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bcg-token {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
