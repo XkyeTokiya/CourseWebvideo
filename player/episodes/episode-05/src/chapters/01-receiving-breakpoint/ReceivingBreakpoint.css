@@ -1,0 +1,529 @@
+/* receiving-breakpoint · A001 time-anchor-opening
+   mechanism: anchor-and-context — 现场图与扫码动作作锚持续，
+   时间锚区按先后补充节点，对照收束压轴
+   prefix: rb- */
+
+.rb-scene {
+  justify-content: flex-start;
+  gap: 36px;
+}
+
+/* ── 时间锚 + 教学情境标注（持续元素） ─────────────────── */
+
+.rb-anchor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.rb-anchor.is-weak {
+  opacity: 0.34;
+  filter: grayscale(0.5);
+}
+
+.rb-anchor-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: rb-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.rb-anchor-badge {
+  font-size: 54px;
+  color: var(--theme-process);
+}
+
+.rb-fiction-note {
+  padding: 10px 24px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  animation: rb-fade-in 560ms var(--ease-overshoot) 300ms backwards;
+}
+
+/* ── 主区：现场图 + 扫码核验台 ─────────────────────────── */
+
+.rb-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 780px 1fr;
+  gap: 56px;
+  align-items: stretch;
+}
+
+.rb-media {
+  margin: 0;
+  display: flex;
+  min-height: 0;
+}
+
+.rb-media-frame {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  animation: rb-fade-in 620ms var(--ease-soft) 160ms backwards;
+}
+
+.rb-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--dur-cinematic) var(--ease-soft),
+    filter var(--dur-cinematic) var(--ease-soft);
+}
+
+/* 收束时主构图轻微退让（状态门控，回退即时） */
+.rb-media.is-closed .rb-photo {
+  transform: scale(0.985);
+  filter: saturate(0.85);
+}
+
+.rb-media-tags {
+  position: absolute;
+  z-index: 1;
+  top: 22px;
+  left: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: rb-fade-in 560ms var(--ease-soft) 340ms backwards;
+}
+
+.rb-chip {
+  padding: 8px 18px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--card-glass-bg);
+  border: 2px solid var(--card-glass-border);
+  border-radius: var(--r-card);
+}
+
+.rb-chip.is-tag {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  background: var(--theme-paper);
+}
+
+.rb-chip-arrow {
+  font-size: 26px;
+  color: var(--theme-paper);
+  text-shadow: 0 2px 8px var(--theme-offset-shadow);
+}
+
+.rb-media-caption {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 12px 22px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: var(--theme-paper);
+  background: color-mix(in srgb, var(--theme-structural) 62%, transparent);
+}
+
+/* 收束遮罩：判断句唯一载体，住在常驻预留槽 opacity 淡入 */
+.rb-scrim {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 14px;
+  padding: 0 40px 60px;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--theme-structural) 6%, transparent) 0%,
+    color-mix(in srgb, var(--theme-structural) 88%, transparent) 74%
+  );
+  transition: opacity var(--dur-slow) var(--ease-soft);
+}
+
+.rb-media.is-closed .rb-scrim {
+  opacity: 1;
+  transition-delay: 260ms;
+}
+
+.rb-scrim-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.16em;
+  color: var(--theme-process);
+}
+
+.rb-scrim-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-paper);
+}
+
+.rb-scrim-hero em {
+  font-style: normal;
+  color: var(--theme-warning);
+}
+
+/* ── 右栏：时间锚节点 → 扫码面板 → 人工核对 ────────────── */
+
+.rb-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.rb-aside.is-weak {
+  opacity: 0.4;
+  filter: grayscale(0.4);
+}
+
+.rb-timeanchor {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: rb-fade-in 520ms var(--ease-soft) 240ms backwards;
+}
+
+.rb-node {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  transition: background var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft);
+}
+
+.rb-node-idx {
+  font-size: 34px;
+  color: var(--text-faint);
+  transition: color var(--dur-base) var(--ease-soft);
+}
+
+.rb-node-name {
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--text-faint);
+  transition: color var(--dur-base) var(--ease-soft);
+}
+
+.rb-node[data-tone="done"] {
+  border-style: solid;
+  border-color: var(--theme-process);
+  background: var(--theme-process-surface);
+}
+
+.rb-node[data-tone="done"] .rb-node-idx,
+.rb-node[data-tone="done"] .rb-node-name {
+  color: var(--theme-structural);
+}
+
+.rb-node[data-tone="stalled"] {
+  border-style: solid;
+  border-color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  animation: rb-stall-pop 480ms var(--ease-overshoot) both;
+}
+
+.rb-node[data-tone="stalled"] .rb-node-idx,
+.rb-node[data-tone="stalled"] .rb-node-name {
+  color: var(--theme-structural);
+}
+
+.rb-node-line {
+  flex: 1;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+}
+
+.rb-scan {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 30px 34px;
+  animation: rb-fade-in 560ms var(--ease-soft) 320ms backwards;
+}
+
+.rb-scan-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.rb-scan-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  min-height: 0;
+}
+
+.rb-barcode {
+  width: 220px;
+  height: auto;
+  flex: none;
+  overflow: visible;
+}
+
+.rb-bar {
+  fill: var(--theme-structural);
+  transform-origin: left center;
+  animation: rb-bar-in 420ms var(--ease-soft) backwards;
+  animation-delay: calc(360ms + var(--rb-i) * 60ms);
+}
+
+.rb-scanline {
+  stroke: var(--theme-process);
+  stroke-width: 2.5;
+  opacity: 0;
+}
+
+/* 扫码拍扫描线掠过两遍即停（状态门控，不常驻闪烁） */
+.rb-scan.is-on .rb-scanline {
+  animation: rb-sweep 1.6s var(--ease-soft) 2 both;
+}
+
+.rb-readout {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-height: 96px;
+  padding: 0 28px;
+  overflow: hidden;
+  background: var(--surface-3);
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: 12px;
+}
+
+.rb-readout-idle {
+  position: absolute;
+  left: 28px;
+  font-family: var(--font-mono);
+  font-size: 34px;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+
+.rb-scan.is-on .rb-readout-idle {
+  opacity: 0;
+}
+
+.rb-readout-chars {
+  position: absolute;
+  left: 28px;
+  display: flex;
+}
+
+.rb-char {
+  font-family: var(--font-mono);
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+.rb-scan.is-on .rb-char {
+  animation: rb-char-in 380ms var(--ease-overshoot) both;
+  animation-delay: calc(560ms + var(--rb-i) * 130ms);
+}
+
+.rb-verdict {
+  margin: 0;
+  align-self: flex-start;
+  padding: 10px 22px;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--theme-danger);
+  background: var(--theme-danger-surface);
+  border: 2px solid var(--theme-danger);
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+
+.rb-scan.is-stalled .rb-verdict {
+  opacity: 1;
+  transform: none;
+  transition-delay: 700ms;
+}
+
+.rb-check {
+  padding: 26px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: rb-fade-in 560ms var(--ease-soft) 420ms backwards;
+}
+
+.rb-check-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.rb-check-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rb-check-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 46px;
+  border-bottom: 2px dashed var(--theme-dashed-line);
+}
+
+/* 勾选记号：CSS 绘制，卡住拍逐行落定 */
+.rb-check-mark {
+  flex: none;
+  width: 20px;
+  height: 10px;
+  border-left: 3px solid var(--theme-process);
+  border-bottom: 3px solid var(--theme-process);
+  transform: rotate(-45deg) scale(0.6);
+  opacity: 0;
+  transition: opacity 320ms var(--ease-soft),
+    transform 320ms var(--ease-overshoot);
+}
+
+.rb-check-text {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text-faint);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft),
+    color var(--dur-base) var(--ease-soft);
+}
+
+.rb-check.is-stalled .rb-check-text {
+  opacity: 1;
+  transform: none;
+  color: var(--text);
+  transition-delay: calc(900ms + var(--rb-i) * 500ms);
+}
+
+.rb-check.is-stalled .rb-check-mark {
+  opacity: 1;
+  transform: rotate(-45deg) scale(1);
+  transition-delay: calc(1200ms + var(--rb-i) * 500ms);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes rb-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rb-bar-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rb-sweep {
+  0% {
+    transform: translateY(-22px);
+    opacity: 0;
+  }
+  12%,
+  44% {
+    opacity: 0.95;
+  }
+  30% {
+    transform: translateY(22px);
+  }
+  48%,
+  56% {
+    opacity: 0;
+    transform: translateY(-22px);
+  }
+  62%,
+  96% {
+    opacity: 0.95;
+  }
+  80% {
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-22px);
+  }
+}
+
+@keyframes rb-char-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rb-stall-pop {
+  from {
+    transform: translateY(6px) scale(0.94);
+  }
+  to {
+    transform: none;
+  }
+}

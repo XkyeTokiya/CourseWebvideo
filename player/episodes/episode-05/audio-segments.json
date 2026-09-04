@@ -1,0 +1,26 @@
+[
+  {
+    "chapter": "receiving-breakpoint",
+    "step": 1,
+    "text": "设想一个收货现场：一批零部件从供应商发往制造商，外包装上都贴着二维码。",
+    "audio": "receiving-breakpoint/1.mp3"
+  },
+  {
+    "chapter": "receiving-breakpoint",
+    "step": 2,
+    "text": "收货人员拿起扫码枪一扫，屏幕上确实跳出了一串字符。",
+    "audio": "receiving-breakpoint/2.mp3"
+  },
+  {
+    "chapter": "receiving-breakpoint",
+    "step": 3,
+    "text": "可再往下就卡住了：本企业的系统认不出这串字符，收货人员只能翻出清单，逐一核对。",
+    "audio": "receiving-breakpoint/3.mp3"
+  },
+  {
+    "chapter": "receiving-breakpoint",
+    "step": 4,
+    "text": "包装上的标签看得清清楚楚，标签背后的身份却没有一同到达。",
+    "audio": "receiving-breakpoint/4.mp3"
+  }
+]

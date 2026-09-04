@@ -1,12 +1,12 @@
 {
   "id": "episode-05",
-  "title": "第 05 期（待制作）",
-  "status": "planned",
+  "title": "对象身份锚点",
+  "status": "in-progress",
   "theme": "active-identification-note",
   "progress": {
-    "completed": 0,
-    "total": 0,
+    "completed": 1,
+    "total": 11,
     "current": null
   },
-  "updatedAt": "2026-09-02"
+  "updatedAt": "2026-09-04"
 }
