@@ -1,0 +1,333 @@
+/* anchor-vs-resolve · A009 split-compare-with-thesis
+   mechanism: compare-and-reweight — 两栏分立持续、两侧不画连接线，
+   底部论点条自 s1 先落分界声明作全页收束（常驻预留槽）；
+   解析侧落到职责声明即止，保持未展开（C006：不做任何解析系统示意）
+   prefix: avr- */
+
+.avr-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── 标题（S039 方向；「≠ 数据共享」判断只由底部论点条承载） ── */
+
+.avr-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: avr-rise 620ms var(--ease-soft) backwards;
+}
+
+.avr-title em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* ── 主区：左右两栏分立（无中线、无连接线） ───────────── */
+
+.avr-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.avr-col {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 34px 40px;
+  border-radius: var(--r-card);
+  animation: avr-rise 560ms var(--ease-soft) backwards;
+}
+
+/* 左栏：card 性格，s2 起承载锚点项 + 类比支撑（较重一侧） */
+.avr-col--anchor {
+  animation-delay: 160ms;
+}
+
+/* 右栏：quiet 面板 —— 职责声明即可，视觉上保持未展开 */
+.avr-col--resolve {
+  background: var(--surface);
+  border: 2px solid var(--rule);
+  animation-delay: 260ms;
+}
+
+/* 占位：s1 双栏留空，内容落位时让位淡出 */
+.avr-pending {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 40px;
+  letter-spacing: 0.3em;
+  color: var(--text-faint);
+  animation: avr-fade 480ms var(--ease-soft) 460ms backwards;
+  transition: opacity 320ms var(--ease-soft);
+}
+
+.avr-col.is-set .avr-pending {
+  opacity: 0;
+}
+
+.avr-col-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+/* exact 项：逐字完整可见（S040 / S041，全角冒号） */
+.avr-exact {
+  margin: 6px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+.avr-col.is-set .avr-exact {
+  animation: avr-rise 480ms var(--ease-soft) 80ms both;
+}
+
+.avr-exact-key {
+  color: var(--theme-process);
+  border-bottom: 6px solid color-mix(in srgb, var(--theme-process) 30%, transparent);
+}
+
+.avr-col-note {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.avr-col.is-set .avr-col-note {
+  animation: avr-rise 440ms var(--ease-soft) 440ms both;
+}
+
+/* ── 左栏类比支撑：门牌号卡（锚点项落定后置入场） ─────── */
+
+.avr-analogy {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 22px 26px;
+  background: var(--surface-3);
+  border: 2px solid var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  opacity: 0;
+}
+
+.avr-col--anchor.is-set .avr-analogy {
+  animation: avr-rise 480ms var(--ease-soft) 760ms both;
+}
+
+.avr-house {
+  flex: none;
+  width: 168px;
+  height: auto;
+  overflow: visible;
+}
+
+/* 房体轮廓：pathLength=1 自绘 */
+.avr-house-stroke {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.avr-col--anchor.is-set .avr-house-roof {
+  animation: avr-draw 560ms var(--ease-soft) 980ms both;
+}
+
+.avr-col--anchor.is-set .avr-house-body {
+  animation: avr-draw 560ms var(--ease-soft) 1140ms both;
+}
+
+.avr-house-door {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+  opacity: 0;
+}
+
+.avr-col--anchor.is-set .avr-house-door {
+  animation: avr-fade 320ms var(--ease-soft) 1520ms both;
+}
+
+/* 门牌：类比道具，号牌轻落 */
+.avr-house-plate {
+  fill: var(--theme-warning-surface);
+  stroke: var(--theme-warning);
+  stroke-width: 2.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+}
+
+.avr-col--anchor.is-set .avr-house-plate {
+  animation: avr-pop 420ms var(--ease-overshoot) 1640ms both;
+}
+
+.avr-house-plate-num {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  fill: var(--theme-structural);
+  opacity: 0;
+}
+
+.avr-col--anchor.is-set .avr-house-plate-num {
+  animation: avr-fade 300ms var(--ease-soft) 1760ms both;
+}
+
+/* 房内问号：房里放着什么——未知 */
+.avr-house-mark {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  fill: var(--text-faint);
+  opacity: 0;
+}
+
+.avr-col--anchor.is-set .avr-house-mark {
+  animation: avr-fade 380ms var(--ease-soft) 1880ms both;
+}
+
+.avr-col--anchor.is-set .avr-house-mark--b {
+  animation-delay: 2020ms;
+}
+
+.avr-analogy-tag {
+  margin: 0 0 6px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+
+.avr-analogy-text {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.avr-analogy-text em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+/* ── 底部论点条：s1 先落，深底反白收束 ────────────────── */
+
+.avr-thesis {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 24px 44px;
+  background: var(--theme-structural);
+  border-radius: var(--r-card);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  animation: avr-rise 560ms var(--ease-soft) 340ms backwards;
+}
+
+.avr-thesis-kicker {
+  flex: none;
+  padding: 8px 18px;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.22em;
+  color: color-mix(in srgb, var(--theme-paper) 68%, transparent);
+  border: 2px solid color-mix(in srgb, var(--theme-paper) 38%, transparent);
+  border-radius: 10px;
+}
+
+.avr-thesis-line {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-paper);
+}
+
+.avr-neq {
+  font-size: 58px;
+  color: var(--theme-warning);
+  animation: avr-neq 520ms var(--ease-overshoot) 820ms backwards;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes avr-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes avr-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes avr-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes avr-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes avr-neq {
+  from {
+    opacity: 0;
+    transform: scale(1.9) rotate(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

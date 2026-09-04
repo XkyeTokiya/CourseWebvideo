@@ -150,6 +150,48 @@
     "audio": "identity-across-stages/2.mp3"
   },
   {
+    "chapter": "chain-alignment",
+    "step": 1,
+    "text": "这也说明了工业互联网标识为什么面向跨企业协同。在企业内部，熟悉情况的员工和内部系统能够看懂私码。",
+    "audio": "chain-alignment/1.mp3"
+  },
+  {
+    "chapter": "chain-alignment",
+    "step": 2,
+    "text": "可放到产业链中，供应商、制造商、物流服务商和使用方都要能识别同一个身份。",
+    "audio": "chain-alignment/2.mp3"
+  },
+  {
+    "chapter": "chain-alignment",
+    "step": 3,
+    "text": "大家先按共同的身份规则，确认“说的是哪个对象”，之后才谈得上关联它在生产、流通和使用中的数据。",
+    "audio": "chain-alignment/3.mp3"
+  },
+  {
+    "chapter": "chain-alignment",
+    "step": 4,
+    "text": "各方不必把内部业务编号全部改成一样。只要跨企业共用的身份大家都能识别，并能和各自系统里的记录对应起来就行。",
+    "audio": "chain-alignment/4.mp3"
+  },
+  {
+    "chapter": "anchor-vs-resolve",
+    "step": 1,
+    "text": "还需要分清一件事：有了共同可识别的标识，不等于数据已经自动共享。",
+    "audio": "anchor-vs-resolve/1.mp3"
+  },
+  {
+    "chapter": "anchor-vs-resolve",
+    "step": 2,
+    "text": "标识提供的是一个身份锚点，只回答“查的是谁”。这就像知道一座房子的门牌号，并不等于知道房子里放着什么。",
+    "audio": "anchor-vs-resolve/2.mp3"
+  },
+  {
+    "chapter": "anchor-vs-resolve",
+    "step": 3,
+    "text": "至于凭这个标识去哪里查、能查到什么，属于标识解析体系的职责。",
+    "audio": "anchor-vs-resolve/3.mp3"
+  },
+  {
     "chapter": "loopback-summary",
     "step": 1,
     "text": "本期总结。回到开头的收货现场。如果二维码里装的只是供应商内部的私码，下游虽然读得出那串字符，却对不上具体对象。",

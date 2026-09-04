@@ -15,6 +15,10 @@ import IdentityVsNumber from "./chapters/06-identity-vs-number/IdentityVsNumber"
 import { narrations as identityVsNumberNarrations } from "./chapters/06-identity-vs-number/narrations";
 import IdentityAcrossStages from "./chapters/07-identity-across-stages/IdentityAcrossStages";
 import { narrations as identityAcrossStagesNarrations } from "./chapters/07-identity-across-stages/narrations";
+import ChainAlignment from "./chapters/08-chain-alignment/ChainAlignment";
+import { narrations as chainAlignmentNarrations } from "./chapters/08-chain-alignment/narrations";
+import AnchorVsResolve from "./chapters/09-anchor-vs-resolve/AnchorVsResolve";
+import { narrations as anchorVsResolveNarrations } from "./chapters/09-anchor-vs-resolve/narrations";
 import LoopbackSummary from "./chapters/10-loopback-summary/LoopbackSummary";
 import { narrations as loopbackSummaryNarrations } from "./chapters/10-loopback-summary/narrations";
 
@@ -70,6 +74,18 @@ export const CHAPTERS: ChapterDef[] = [
     title: "一个身份贯穿四个环节",
     narrations: identityAcrossStagesNarrations,
     Component: IdentityAcrossStages,
+  },
+  {
+    id: "chain-alignment",
+    title: "产业链上的共同身份",
+    narrations: chainAlignmentNarrations,
+    Component: ChainAlignment,
+  },
+  {
+    id: "anchor-vs-resolve",
+    title: "锚点与解析的分界",
+    narrations: anchorVsResolveNarrations,
+    Component: AnchorVsResolve,
   },
   {
     id: "loopback-summary",

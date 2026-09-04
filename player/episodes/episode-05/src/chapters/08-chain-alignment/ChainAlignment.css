@@ -1,0 +1,460 @@
+/* chain-alignment · A008 layered-bands-with-side-notes
+   mechanism: ordered-progression — 槽位先行（常驻空槽占位），层带按带序就位，
+   先前带保持可见；全页唯一的先后关系在带二（先确认）→带三（后关联），
+   四类参与主体并列等权；侧栏编号边界卡收束（R020）
+   prefix: cha- */
+
+.cha-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── 标题（S034 方向） ─────────────────────────────────── */
+
+.cha-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: cha-rise 620ms var(--ease-soft) backwards;
+}
+
+.cha-title em {
+  font-style: normal;
+  color: var(--theme-process);
+  border-bottom: 6px solid color-mix(in srgb, var(--theme-process) 32%, transparent);
+}
+
+/* ── 主区：有序层带 + 侧栏注 ──────────────────────────── */
+
+.cha-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 430px;
+  gap: 54px;
+  align-items: center;
+}
+
+.cha-flow {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 层带：落位前为常驻空槽（占位不显形），落位即从 rail 侧滑入对齐 */
+.cha-band {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  opacity: 0;
+}
+
+.cha-band.is-set {
+  opacity: 1;
+  animation: cha-dock 560ms var(--ease-soft) both;
+}
+
+/* 带三等带二就位、连接段走完后再落（delay 累算） */
+.cha-band--link.is-set {
+  animation-delay: 1360ms;
+}
+
+/* 带首序列标记：谁 → 先 → 后（随带落位，不做提前曝光） */
+.cha-mark {
+  flex: none;
+  width: 78px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  border-radius: var(--r-card);
+}
+
+.cha-band--parties .cha-mark {
+  color: var(--theme-paper);
+  background: var(--theme-structural);
+}
+
+.cha-mark--step {
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+}
+
+.cha-band-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px 32px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-structural);
+  border-radius: var(--r-card);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+}
+
+.cha-band--confirm .cha-band-body,
+.cha-band--link .cha-band-body {
+  border-color: color-mix(in srgb, var(--theme-process) 52%, var(--theme-structural));
+}
+
+.cha-band-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.cha-band-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.cha-band-text {
+  margin: 0;
+  font-size: 29px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+.cha-band-text em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+/* 四类参与主体：等权芯片，依次落位后无任何“当前项”残留 */
+.cha-parties {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.cha-party {
+  padding: 10px 26px;
+  font-size: 29px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px solid var(--theme-dashed-line);
+  border-radius: 12px;
+  opacity: 0;
+}
+
+.cha-band--parties.is-set .cha-party {
+  animation: cha-pop 460ms var(--ease-overshoot) both;
+  animation-delay: calc(300ms + var(--cha-i) * 110ms);
+}
+
+/* 带一结论行：芯片落定后入场 */
+.cha-band-point {
+  margin: 0;
+  font-size: 29px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+.cha-band--parties.is-set .cha-band-point {
+  animation: cha-rise 460ms var(--ease-soft) 860ms both;
+}
+
+.cha-band-point em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* 连接段：s1 起示意带序骨架，带落位时绿色走线自上而下填充 */
+.cha-joint {
+  flex: none;
+  width: 78px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+}
+
+.cha-joint-line {
+  position: relative;
+  width: 0;
+  border-left: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  animation: cha-fade 460ms var(--ease-soft) backwards;
+}
+
+.cha-joint--confirm .cha-joint-line {
+  animation-delay: 240ms;
+}
+
+.cha-joint--link .cha-joint-line {
+  animation-delay: 360ms;
+}
+
+.cha-joint-fill {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: -2px;
+  width: 3px;
+  background: var(--theme-process);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.cha-flow.is-seq .cha-joint--confirm .cha-joint-fill {
+  animation: cha-draw 360ms var(--ease-soft) 460ms both;
+}
+
+.cha-flow.is-seq .cha-joint--link .cha-joint-fill {
+  animation: cha-draw 420ms var(--ease-soft) 900ms both;
+}
+
+/* ── 侧栏：内部对照注（s1）+ 编号边界卡（s4 收束） ────── */
+
+.cha-side {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+}
+
+.cha-internal {
+  padding: 26px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: cha-rise 560ms var(--ease-soft) 380ms backwards;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+/* 弱化态：s4 边界卡成为焦点后对照注退后（delay 只写在弱化态规则里） */
+.cha-internal.is-weak {
+  opacity: 0.36;
+  filter: grayscale(0.45);
+  transition-delay: 200ms;
+}
+
+.cha-note-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.cha-internal-text {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.cha-internal-pair {
+  margin: 4px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cha-pair-chip {
+  padding: 8px 20px;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px solid var(--theme-dashed-line);
+  border-radius: 10px;
+}
+
+.cha-pair-chip--ok {
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border-color: var(--theme-process);
+}
+
+.cha-pair-arrow {
+  font-size: 28px;
+  color: var(--text-mute);
+  transform-origin: left center;
+  animation: cha-arrow 360ms var(--ease-soft) 1020ms backwards;
+}
+
+/* 边界卡：常驻预留槽，s4 印章式入位（全页收束判断的唯一载体） */
+.cha-boundary {
+  min-width: 0;
+}
+
+.cha-boundary-card {
+  padding: 28px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+}
+
+.cha-boundary.is-on .cha-boundary-card {
+  opacity: 1;
+  animation: cha-stamp 560ms var(--ease-overshoot) both;
+}
+
+.cha-boundary-main {
+  margin: 0;
+  font-size: 33px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--theme-structural);
+}
+
+.cha-boundary-main em {
+  font-style: normal;
+  color: var(--theme-warning);
+}
+
+.cha-boundary-rows {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cha-boundary-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+}
+
+.cha-boundary.is-on .cha-boundary-row {
+  animation: cha-rise 420ms var(--ease-soft) both;
+  animation-delay: calc(340ms + var(--cha-i) * 240ms);
+}
+
+/* 条件记号：CSS 绘制的方形勾选格 */
+.cha-row-mark {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--theme-process);
+  border-radius: 7px;
+  background: var(--theme-process-surface);
+  position: relative;
+}
+
+.cha-row-mark::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  width: 12px;
+  height: 6px;
+  border-left: 3px solid var(--theme-process);
+  border-bottom: 3px solid var(--theme-process);
+  transform: rotate(-45deg) scale(0.4);
+  opacity: 0;
+}
+
+.cha-boundary.is-on .cha-row-mark::after {
+  opacity: 1;
+  transform: rotate(-45deg) scale(1);
+  transition: opacity 260ms var(--ease-soft), transform 260ms var(--ease-overshoot);
+  transition-delay: calc(600ms + var(--cha-i) * 240ms);
+}
+
+.cha-row-text {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text-2);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes cha-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cha-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cha-dock {
+  from {
+    opacity: 0;
+    transform: translateX(-34px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cha-pop {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.72);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cha-draw {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes cha-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.07) rotate(-1.4deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cha-arrow {
+  from {
+    opacity: 0;
+    transform: scaleX(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
