@@ -7,3 +7,4 @@
 - 同一文件并行批量 edit 后视图可能滞后于磁盘:一批并行 edit 同一文件后,后续工具视图可能仍显示旧内容(实测:4 条收紧 edit 全部落盘但中间视图未刷新)——判定编辑成败一律以重读磁盘逐处核对为准,不凭旧快照断言竞态丢失,也不凭旧快照重复重放编辑。Confidence: 0.6
 - episode 章图片素材导入:tsconfig `types` 含 `vite/client`(png 等资源模块已全局声明,无需自写 .d.ts);沿用 sibling 先例以相对路径导入章 assets 占位图(小写命名,如 `import m001 from "./assets/m001.png"`)。Confidence: 0.7
 - Subagent 消耗可见性与生命周期:subagent 完成收尾时框架在结果里附加 `<usage>` 块(total_tokens / tool_uses / turns / duration_ms),逐 agent 实测数据可直接引用作复盘的成本治理依据(用户会主动询问 subagent token 消耗);主线程自身消耗、运行中 agent 的实时消耗均读不到——须等完成返回;后台 agent 随会话关闭而终止,会话收尾前未完成的 agent 要么留会话等完、要么按"从已提交工件重派"路径干净重启(已验证重派成本低)。Confidence: 0.7
+- 环境判别:本分包多条 Windows 条目(cmd.exe/findstr 静默失配/PowerShell 兜底等)出自 Windows 会话,另存在 Linux 会话环境(/home/tokiya 路径、/tmp scratchpad)——bash heredoc 多行提交 `git commit -F - <<'EOF'` 在 Linux 会话实证可用(ep06 d2965a8),Windows 专属坑不适用;动用 environment 条目前先按路径形态/可用 shell 判别当前环境,不把单机条目当跨环境通则。Confidence: 0.6
