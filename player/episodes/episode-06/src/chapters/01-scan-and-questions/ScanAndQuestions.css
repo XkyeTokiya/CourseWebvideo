@@ -1,0 +1,413 @@
+/* scan-and-questions · A001 time-anchor-opening
+   mechanism: premise-to-question — 扫码情境与三问持续，判断句与核心问题出现后重心转移
+   prefix: sq- */
+
+.sq-scene {
+  justify-content: flex-start;
+  gap: 34px;
+}
+
+/* ── 头部：判断方向标题 + 教学情境护栏（持续元素） ───────── */
+
+.sq-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.sq-header.is-weak {
+  opacity: 0.34;
+  filter: grayscale(0.5);
+  transition-delay: 650ms;
+}
+
+.sq-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 46px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: sq-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.sq-headline em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.sq-fiction-note {
+  flex: none;
+  padding: 10px 24px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  animation: sq-fade-in 560ms var(--ease-overshoot) 260ms backwards;
+}
+
+/* ── 主区：现场图占位 + 查询轨道 ─────────────────────── */
+
+.sq-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 620px 1fr;
+  gap: 52px;
+  align-items: stretch;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.sq-main.is-weak {
+  opacity: 0.4;
+  filter: grayscale(0.4);
+  transition-delay: 650ms;
+}
+
+.sq-media {
+  margin: 0;
+  display: flex;
+}
+
+.sq-photo-placeholder {
+  flex: 1;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  border-style: dashed;
+  border-width: 3px;
+  animation: sq-fade-in 620ms var(--ease-soft) 160ms backwards;
+}
+
+.sq-ph-label {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.sq-ph-desc {
+  font-size: 26px;
+  color: var(--text-faint);
+  text-align: center;
+  max-width: 460px;
+  line-height: 1.5;
+}
+
+.sq-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* ── 扫码演示（进章即播，拍 1 口播窗口内收完） ─────────── */
+
+.sq-scan {
+  flex: 1;
+  min-height: 0;
+  padding: 30px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: sq-fade-in 560ms var(--ease-soft) 320ms backwards;
+}
+
+.sq-scan-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.sq-scan-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.sq-code {
+  width: 150px;
+  height: 150px;
+  flex: none;
+  overflow: visible;
+}
+
+.sq-code-cell {
+  fill: var(--theme-structural);
+  animation: sq-cell-in 360ms var(--ease-soft) backwards;
+  animation-delay: calc(480ms + var(--sq-d));
+}
+
+.sq-scanline {
+  stroke: var(--theme-process);
+  stroke-width: 3;
+  stroke-dasharray: 7 5;
+  animation: sq-sweep 1.3s ease-in-out 0.85s 1 both;
+}
+
+.sq-scan-check {
+  stroke: var(--theme-process);
+  stroke-width: 7;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: sq-check 520ms var(--ease-overshoot) 2.3s forwards;
+}
+
+.sq-scan-read {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sq-scan-pending {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 28px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+  animation: sq-pending-out 700ms var(--ease-soft) 1.7s forwards;
+}
+
+.sq-scan-confirm {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+  animation: sq-fade-in 520ms var(--ease-overshoot) 2.35s forwards;
+}
+
+/* ── 三问（step 2 起，动画门控在状态选择器下） ─────────── */
+
+.sq-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+
+.sq-questions.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.sq-questions-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.sq-q-card {
+  padding: 18px 26px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  opacity: 0;
+}
+
+.sq-questions.is-on .sq-q-card {
+  animation: sq-q-in 460ms var(--ease-overshoot) forwards;
+  animation-delay: calc(360ms + var(--sq-i) * 380ms);
+}
+
+.sq-q-num {
+  font-size: 30px;
+  color: var(--theme-process);
+}
+
+.sq-q-text {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+/* ── 判断条（step 3 起，正向延迟/反向即时） ────────────── */
+
+.sq-judgment {
+  padding: 20px 30px;
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+
+.sq-judgment[data-tone="process"] {
+  background: var(--theme-process-surface);
+}
+
+.sq-judgment.is-on {
+  opacity: 1;
+  transform: none;
+  transition-delay: 260ms;
+}
+
+.sq-judgment-tag {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--theme-process);
+}
+
+.sq-judgment-text {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.5;
+  color: var(--theme-structural);
+}
+
+.sq-judgment-text strong {
+  color: var(--theme-process);
+  font-weight: 900;
+}
+
+/* ── 核心问题聚焦（step 4，正向延迟/反向即时） ─────────── */
+
+.sq-focus {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 110px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+
+.sq-focus.is-on {
+  opacity: 1;
+  transform: none;
+  transition-delay: 620ms;
+}
+
+.sq-focus-plate {
+  max-width: 880px;
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sq-focus-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 26px;
+  letter-spacing: 0.16em;
+  color: var(--theme-process);
+}
+
+.sq-focus-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 78px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+.sq-focus-hero em {
+  font-style: normal;
+  color: var(--theme-danger);
+}
+
+.sq-focus-sub {
+  margin: 0;
+  font-size: 30px;
+  color: var(--text-2);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes sq-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sq-q-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sq-cell-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sq-sweep {
+  0% {
+    transform: translateY(-56px);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(56px);
+    opacity: 0.9;
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-56px);
+    opacity: 0;
+  }
+}
+
+@keyframes sq-check {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes sq-pending-out {
+  to {
+    opacity: 0;
+  }
+}

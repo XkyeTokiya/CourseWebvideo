@@ -1,12 +1,12 @@
 {
   "id": "episode-06",
-  "title": "第 06 期（待制作）",
-  "status": "planned",
+  "title": "标识解析体系与层级",
+  "status": "in-progress",
   "theme": "active-identification-note",
   "progress": {
-    "completed": 0,
-    "total": 0,
+    "completed": 2,
+    "total": 13,
     "current": null
   },
-  "updatedAt": "2026-09-02"
+  "updatedAt": "2026-09-06"
 }
