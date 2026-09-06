@@ -5,16 +5,14 @@
   "summary": {
     "status": "blocked",
     "currentStage": "audio",
-    "nextAction": "补齐人工审批记录: checkpointAudio",
+    "nextAction": "推进阶段: 音频",
     "blockers": [
       "音频缺少 32 个文件"
     ],
-    "approvalGaps": [
-      "checkpointAudio"
-    ],
+    "approvalGaps": [],
     "productionStatus": "in-progress",
     "automationStatus": "failed",
-    "humanStatus": "needs-decision"
+    "humanStatus": "none"
   },
   "observations": {
     "taskPackage": {
@@ -233,7 +231,7 @@
     {
       "id": "audio",
       "name": "音频",
-      "status": "awaiting-approval",
+      "status": "in-progress",
       "health": "blocked",
       "reasons": [
         "音频缺少 32 个文件"
@@ -249,7 +247,7 @@
       "canAdvance": false
     }
   ],
-  "updatedAt": "2026-09-04",
+  "updatedAt": "2026-09-05",
   "updatedBy": "production-status scan",
   "stageReviews": {
     "approve-narration": {
@@ -290,7 +288,7 @@
   },
   "automation": {
     "status": "failed",
-    "ranAt": "2026-09-04T16:25:20.907Z",
+    "ranAt": "2026-09-05T02:25:07.975Z",
     "runner": "production-status scan",
     "checks": {
       "task-package": {
@@ -309,10 +307,6 @@
         "status": "passed",
         "detail": "Visual rough 状态为 approved"
       },
-      "visual-rough-validator": {
-        "status": "passed",
-        "detail": "上游 visual rough validator 通过"
-      },
       "player-contract": {
         "status": "passed",
         "detail": "episode:check 通过"
@@ -320,13 +314,21 @@
       "audio-files": {
         "status": "failed",
         "detail": "缺少 32 个音频文件"
+      },
+      "typecheck": {
+        "status": "passed",
+        "detail": "typecheck 通过"
+      },
+      "lint": {
+        "status": "passed",
+        "detail": "lint 通过"
       }
     },
     "failures": [
       "audio-files: 缺少 32 个音频文件"
     ],
     "warnings": [
-      "找不到当前 A-page 对应的 compile trace，未重跑上游 validator"
+      "旧流程实例：跳过当前 A-page / Visual rough 上游 validator"
     ],
     "sourceHashes": {
       "taskPackage": "5809e0ad2772073ad736fe1f8b0e956887a234d1255e384fcd0691720642561f",
@@ -338,19 +340,27 @@
     },
     "commands": [
       {
-        "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\scripts\\verify_visual_rough.py --a-page D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-09\\inputs\\episode-09-a-page.json --visual-rough D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-09\\inputs\\episode-09-visual-rough.md --recipes-dir D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\references\\page-recipes --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-09-visual-rough-validation.json",
+        "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-09",
         "exitCode": 0,
-        "durationMs": 102,
-        "stdout": "PASS visual-rough-v1: source binding, recipes, screen slots, images, and logic limits are valid",
+        "durationMs": 142,
+        "stdout": "episode:check 通过：1 个实例，0 个警告",
         "stderr": "",
         "timedOut": false
       },
       {
-        "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-09",
+        "command": "pnpm run typecheck",
         "exitCode": 0,
-        "durationMs": 116,
-        "stdout": "episode:check 通过：1 个实例，0 个警告",
-        "stderr": "",
+        "durationMs": 1554,
+        "stdout": "",
+        "stderr": "$ tsc --noEmit",
+        "timedOut": false
+      },
+      {
+        "command": "pnpm run lint",
+        "exitCode": 0,
+        "durationMs": 770,
+        "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+        "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
         "timedOut": false
       }
     ]
@@ -359,11 +369,17 @@
     "state": "blocked",
     "canAdvance": false,
     "reasons": [
-      "audio-files: 缺少 32 个音频文件",
-      "等待人工决策: checkpointAudio"
+      "audio-files: 缺少 32 个音频文件"
     ],
     "productionStatus": "in-progress",
     "automationStatus": "failed",
-    "humanStatus": "needs-decision"
+    "humanStatus": "none"
+  },
+  "workflow": {
+    "mode": "legacy",
+    "exemptions": [
+      "chapter-handoff",
+      "checkpointAudio"
+    ]
   }
 }

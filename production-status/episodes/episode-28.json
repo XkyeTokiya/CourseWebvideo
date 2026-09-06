@@ -238,11 +238,11 @@
       "canAdvance": false
     }
   ],
-  "updatedAt": "2026-09-04",
+  "updatedAt": "2026-09-05",
   "updatedBy": "production-status scan",
   "automation": {
     "status": "passed",
-    "ranAt": "2026-09-04T16:25:23.277Z",
+    "ranAt": "2026-09-05T02:25:11.038Z",
     "runner": "production-status scan",
     "checks": {
       "task-package": {
@@ -268,6 +268,14 @@
       "audio-files": {
         "status": "passed",
         "detail": "尚未提取音频分段"
+      },
+      "typecheck": {
+        "status": "passed",
+        "detail": "typecheck 通过"
+      },
+      "lint": {
+        "status": "passed",
+        "detail": "lint 通过"
       }
     },
     "failures": [],
@@ -281,9 +289,25 @@
       {
         "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-28",
         "exitCode": 0,
-        "durationMs": 113,
+        "durationMs": 140,
         "stdout": "episode:check 通过：1 个实例，1 个警告",
         "stderr": "WARN  episodes/episode-28: planned 实例尚未创建可播放入口",
+        "timedOut": false
+      },
+      {
+        "command": "pnpm run typecheck",
+        "exitCode": 0,
+        "durationMs": 1554,
+        "stdout": "",
+        "stderr": "$ tsc --noEmit",
+        "timedOut": false
+      },
+      {
+        "command": "pnpm run lint",
+        "exitCode": 0,
+        "durationMs": 770,
+        "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+        "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
         "timedOut": false
       }
     ]
@@ -295,5 +319,9 @@
     "productionStatus": "not-started",
     "automationStatus": "passed",
     "humanStatus": "none"
+  },
+  "workflow": {
+    "mode": "current",
+    "exemptions": []
   }
 }

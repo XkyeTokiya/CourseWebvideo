@@ -11,7 +11,9 @@ const TASK_DIR = path.join(ROOT, 'narration-pipeline', 'episodes');
 const TODAY = new Date().toISOString().slice(0, 10);
 const NOW = () => new Date().toISOString();
 const APPROVAL_KEYS = ['narration', 'visualRough', 'checkpointPlan', 'firstChapter', 'checkpointAudio', 'finalDelivery'];
-const HANDOFF_EXEMPT_EPISODES = new Set(['episode-01', 'episode-02', 'episode-03', 'episode-04', 'episode-09']); // 保留明确名单，handoff 当前对所有 episode 均为非强制
+// These episodes were produced under the retired workflow. Their historical
+// manual checkpoints must not hold the current production board hostage.
+const LEGACY_FLOW_EPISODES = new Set(['episode-01', 'episode-02', 'episode-03', 'episode-09']);
 const STAGES = [
   ['freeze-task-package', '冻结任务包'], ['continuous-narration', '连续口播'], ['approve-narration', '批准口播'],
   ['a-page', 'A-page'], ['compile-trace', '编译追踪'], ['validate-a-page', 'A-page 验证'],
@@ -30,6 +32,7 @@ function taskTitle(p, id) { if (!p) return id; const text = fs.readFileSync(p, '
 function approval() { return { status: 'unrecorded', decidedAt: null, decidedBy: null, evidence: null, note: null }; }
 function blank(id, title) {
   return { schemaVersion: 'coursewebvideo/episode-production-status/v1', episodeId: id, title,
+    workflow: LEGACY_FLOW_EPISODES.has(id) ? { mode: 'legacy', exemptions: ['chapter-handoff', 'checkpointAudio'] } : { mode: 'current', exemptions: [] },
     summary: { status: 'not-started', currentStage: 'freeze-task-package', nextAction: '开始冻结任务包后的连续口播生产', blockers: [], approvalGaps: [] },
     observations: { taskPackage: { status: 'missing', path: '' }, approvedNarration: { status: 'missing', path: '' }, aPage: { status: 'missing', path: '' }, visualRough: { status: 'missing', path: '' },
       player: { projectPath: `player/episodes/${id}/project.json`, status: 'missing', chaptersCompleted: 0, chaptersTotal: 0, current: null, entrypointPresent: false, sourceChapterCount: 0 },
@@ -78,6 +81,7 @@ function scanEpisode(id, doc, options = {}) {
   const failures = [];
   const warnings = [];
   const commands = [];
+  const legacy = LEGACY_FLOW_EPISODES.has(id) || doc.workflow?.mode === 'legacy';
   const o = doc.observations || {};
   const record = (name, pass, detail, command = null) => {
     checks[name] = { status: pass ? 'passed' : 'failed', detail };
@@ -89,7 +93,7 @@ function scanEpisode(id, doc, options = {}) {
   record('approved-narration', o.approvedNarration?.status !== 'missing' || !narrationStarted, o.approvedNarration?.status !== 'missing' ? '批准口播已发布' : '尚未发布批准口播');
   record('a-page', o.aPage?.status === 'valid' || (o.aPage?.status === 'missing' && o.approvedNarration?.status === 'missing'), o.aPage?.status === 'valid' ? 'A-page 报告通过' : (o.aPage?.failures?.join('; ') || 'A-page 尚未进入生产'));
   record('visual-rough', !o.visualRough?.failures?.length, o.visualRough?.failures?.join('; ') || (o.visualRough?.status === 'missing' ? 'Visual rough 尚未进入生产' : `Visual rough 状态为 ${o.visualRough?.status}`));
-  if (options.upstream !== false) {
+  if (options.upstream !== false && !legacy) {
     const aPagePath = o.aPage?.path ? path.join(ROOT, o.aPage.path) : null;
     const visualPath = o.visualRough?.path ? path.join(ROOT, o.visualRough.path) : null;
     const approvedPath = o.approvedNarration?.path ? path.join(ROOT, o.approvedNarration.path) : null;
@@ -109,6 +113,7 @@ function scanEpisode(id, doc, options = {}) {
       warnings.push('找不到当前 A-page 对应的 compile trace，未重跑上游 validator');
     }
   }
+  if (legacy && options.upstream !== false) warnings.push('旧流程实例：跳过当前 A-page / Visual rough 上游 validator');
   if (options.player !== false) {
     const command = runCommand(process.execPath, ['tools/validate-episodes.mjs', '--episode', id], path.join(ROOT, 'player'));
     record('player-contract', command.exitCode === 0, command.exitCode === 0 ? 'episode:check 通过' : (command.stderr || command.stdout || 'episode:check 失败'), command);
@@ -148,6 +153,9 @@ function deriveReadiness(doc) {
 }
 function applyDerived(doc) {
   const o = doc.observations; const a = doc.approvals; const blockers = [...doc.coordination.blockers];
+  const legacy = doc.workflow?.mode === 'legacy' || LEGACY_FLOW_EPISODES.has(doc.episodeId);
+  doc.workflow ??= legacy ? { mode: 'legacy', exemptions: ['chapter-handoff', 'checkpointAudio'] } : { mode: 'current', exemptions: [] };
+  const exempt = new Set(doc.workflow?.exemptions || (legacy ? ['chapter-handoff', 'checkpointAudio'] : []));
   const isApprovalDone = item => ['approved', 'not-required'].includes(item?.status);
   for (const section of [o.aPage, o.visualRough]) if (section.failures?.length) blockers.push(...section.failures.map(x => `验证失败: ${x}`));
   if (o.audio.missingCount) blockers.push(`音频缺少 ${o.audio.missingCount} 个文件`);
@@ -156,7 +164,7 @@ function applyDerived(doc) {
   if (o.visualRough.status !== 'missing' && !isApprovalDone(a.visualRough)) gaps.push('visualRough');
   if (o.player.entrypointPresent && !isApprovalDone(a.checkpointPlan)) gaps.push('checkpointPlan');
   if (o.player.sourceChapterCount > 0 && !isApprovalDone(a.firstChapter)) gaps.push('firstChapter');
-  if (o.audio.status !== 'not-extracted' && !isApprovalDone(a.checkpointAudio)) gaps.push('checkpointAudio');
+  if (o.audio.status !== 'not-extracted' && !isApprovalDone(a.checkpointAudio) && !exempt.has('checkpointAudio')) gaps.push('checkpointAudio');
   if (o.delivery.finalVideo.status === 'present' && !isApprovalDone(a.finalDelivery)) gaps.push('finalDelivery');
   const complete = o.delivery.finalVideo.status === 'present' && a.finalDelivery.status === 'approved';
   const stageStatus = STAGES.map(([id, name]) => ({ id, name, status: id === 'chapter-handoff' ? 'not-required' : 'not-started' }));
@@ -167,7 +175,7 @@ function applyDerived(doc) {
   if (o.aPage.status !== 'missing') set('a-page', 'complete'); if (o.aPage.status === 'valid') set('validate-a-page', 'complete');
   if (o.aPage.status !== 'missing') set('compile-trace', 'complete'); if (o.visualRough.status !== 'missing') set('visual-rough', isApprovalDone(a.visualRough) ? 'complete' : 'awaiting-approval');
   if (o.player.entrypointPresent) { set('player-phase-1', 'complete'); set('checkpoint-plan', isApprovalDone(a.checkpointPlan) ? 'complete' : 'awaiting-approval'); set('chapter-handoff', 'not-required'); set('chapter-production', o.player.chaptersTotal && o.player.chaptersCompleted >= o.player.chaptersTotal ? 'complete' : 'in-progress'); set('chapter-acceptance', isApprovalDone(a.firstChapter) ? 'complete' : 'awaiting-approval'); }
-  if (o.audio.status !== 'not-extracted') set('audio', isApprovalDone(a.checkpointAudio) ? (o.audio.status === 'complete' ? 'complete' : 'in-progress') : 'awaiting-approval');
+  if (o.audio.status !== 'not-extracted') set('audio', (isApprovalDone(a.checkpointAudio) || exempt.has('checkpointAudio')) ? (o.audio.status === 'complete' ? 'complete' : 'in-progress') : 'awaiting-approval');
   if (o.delivery.finalVideo.status === 'present') set('recording-delivery', a.finalDelivery.status === 'approved' ? 'complete' : 'awaiting-approval');
   const firstOpen = stageStatus.find(s => ['in-progress', 'awaiting-approval', 'blocked', 'not-started'].includes(s.status));
   const status = complete ? 'delivered' : blockers.length ? 'blocked' : gaps.length ? 'awaiting-approval' : (o.approvedNarration.status === 'missing' && !o.player.entrypointPresent ? 'not-started' : 'in-progress');
@@ -196,12 +204,12 @@ function writeIndex() {
   fs.renameSync(tmp, out);
 }
 function compactEpisode(doc) {
-  return { schemaVersion: doc.schemaVersion, episodeId: doc.episodeId, title: doc.title, summary: doc.summary, readiness: doc.readiness, automation: doc.automation, approvals: doc.approvals, coordination: doc.coordination, stages: doc.stages, updatedAt: doc.updatedAt, updatedBy: doc.updatedBy,
+  return { schemaVersion: doc.schemaVersion, episodeId: doc.episodeId, title: doc.title, workflow: doc.workflow, summary: doc.summary, readiness: doc.readiness, automation: doc.automation, approvals: doc.approvals, coordination: doc.coordination, stages: doc.stages, updatedAt: doc.updatedAt, updatedBy: doc.updatedBy,
     observations: { delivery: doc.observations?.delivery ?? { recording: { status: 'not-observed', paths: [] }, finalVideo: { status: 'not-observed', paths: [] } } } };
 }
 function ids(args) { if (args.includes('--episode')) return [args[args.indexOf('--episode') + 1]]; return Array.from({ length: 51 }, (_, i) => `episode-${String(i + 1).padStart(2, '0')}`); }
-function syncOne(id, initialize = false) { const out = path.join(EPISODES_DIR, `${id}.json`); const old = exists(out) ? readJson(out) : blank(id, id); const next = { ...old, ...obs(id), approvals: old.approvals ?? blank(id, id).approvals, coordination: old.coordination ?? blank(id, id).coordination, updatedAt: TODAY, updatedBy: 'production-status sync' }; applyDerived(next); save(id, next); return next; }
-function scanOne(id, options = {}) { const out = path.join(EPISODES_DIR, `${id}.json`); const old = exists(out) ? readJson(out) : syncOne(id); const next = { ...old, ...obs(id), approvals: old.approvals ?? blank(id, id).approvals, coordination: old.coordination ?? blank(id, id).coordination, updatedAt: TODAY, updatedBy: 'production-status scan' }; next.automation = scanEpisode(id, next, options); applyDerived(next); save(id, next); return next; }
+function syncOne(id, initialize = false) { const out = path.join(EPISODES_DIR, `${id}.json`); const old = exists(out) ? readJson(out) : blank(id, id); const next = { ...old, ...obs(id), workflow: old.workflow ?? blank(id, id).workflow, approvals: old.approvals ?? blank(id, id).approvals, coordination: old.coordination ?? blank(id, id).coordination, updatedAt: TODAY, updatedBy: 'production-status sync' }; applyDerived(next); save(id, next); return next; }
+function scanOne(id, options = {}) { const out = path.join(EPISODES_DIR, `${id}.json`); const old = exists(out) ? readJson(out) : syncOne(id); const next = { ...old, ...obs(id), workflow: old.workflow ?? blank(id, id).workflow, approvals: old.approvals ?? blank(id, id).approvals, coordination: old.coordination ?? blank(id, id).coordination, updatedAt: TODAY, updatedBy: 'production-status scan' }; next.automation = scanEpisode(id, next, options); applyDerived(next); save(id, next); return next; }
 function check(doc) { const errors = []; if (doc.schemaVersion !== 'coursewebvideo/episode-production-status/v1') errors.push('schemaVersion'); if (doc.observations.player.projectPath !== ('player/episodes/' + doc.episodeId + '/project.json')) errors.push('player mirror path'); if (doc.summary.status === 'delivered' && doc.approvals.finalDelivery.status !== 'approved') errors.push('delivered without finalDelivery approval'); return errors; }
 const args = process.argv.slice(2); const command = args[0] || 'report';
 if (command === 'init' || command === 'sync') { for (const id of ids(args)) syncOne(id, command === 'init'); writeIndex(); console.log(`${command}: ${ids(args).length} episode status files updated; index.json regenerated`); }
@@ -209,4 +217,4 @@ else if (command === 'scan') { const options = { build: args.includes('--build')
 else if (command === 'index') { writeIndex(); console.log('index: production-status/index.json regenerated'); }
 else if (command === 'check') { const files = fs.readdirSync(EPISODES_DIR).filter(f => f.endsWith('.json')); const errors = files.flatMap(f => check(readJson(path.join(EPISODES_DIR, f))).map(e => `${f}: ${e}`)); if (errors.length) { console.error(errors.join('\n')); process.exitCode = 1; } else console.log(`check: ${files.length} status files valid`); }
 else if (command === 'report') { const files = fs.readdirSync(EPISODES_DIR).filter(f => f.endsWith('.json')).sort(); const docs = files.map(f => readJson(path.join(EPISODES_DIR, f))); const states = ['not-started', 'needs-scan', 'in-progress', 'ready', 'needs-owner', 'blocked', 'complete', 'delivered']; for (const state of states) console.log(`${state}: ${docs.filter(d => (d.readiness?.state || d.summary.status) === state).length}`); for (const d of docs) console.log(`${d.episodeId}\t${d.readiness?.state || d.summary.status}\t${d.summary.currentStage}\t${d.summary.nextAction}`); }
-else { console.error('Usage: node tools/production-status.mjs init|sync|scan|index|check|report [--episode episode-01] [--build] [--no-upstream]'); process.exitCode = 1; }
+else { console.error('Usage: node production-status/production-status.mjs init|sync|scan|index|check|report [--episode episode-01] [--build] [--no-upstream]'); process.exitCode = 1; }

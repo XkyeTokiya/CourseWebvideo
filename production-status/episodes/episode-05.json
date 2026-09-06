@@ -4,16 +4,12 @@
   "title": "对象身份锚点",
   "summary": {
     "status": "blocked",
-    "currentStage": "approve-narration",
-    "nextAction": "补齐人工审批记录: narration",
+    "currentStage": "audio",
+    "nextAction": "补齐人工审批记录: checkpointAudio",
     "blockers": [
       "音频缺少 37 个文件"
     ],
     "approvalGaps": [
-      "narration",
-      "visualRough",
-      "checkpointPlan",
-      "firstChapter",
       "checkpointAudio"
     ],
     "productionStatus": "in-progress",
@@ -88,32 +84,32 @@
   },
   "approvals": {
     "narration": {
-      "status": "unrecorded",
-      "decidedAt": null,
-      "decidedBy": null,
-      "evidence": null,
+      "status": "approved",
+      "decidedAt": "2026-09-04T23:22:15.259Z",
+      "decidedBy": "界面人工审核",
+      "evidence": "player/episodes/episode-05/inputs/approved-spoken-text.txt",
       "note": null
     },
     "visualRough": {
-      "status": "unrecorded",
-      "decidedAt": null,
-      "decidedBy": null,
+      "status": "approved",
+      "decidedAt": "2026-09-05T04:27:43.744Z",
+      "decidedBy": "workbench",
       "evidence": null,
-      "note": null
+      "note": ""
     },
     "checkpointPlan": {
-      "status": "unrecorded",
-      "decidedAt": null,
-      "decidedBy": null,
+      "status": "approved",
+      "decidedAt": "2026-09-05T04:27:51.422Z",
+      "decidedBy": "workbench",
       "evidence": null,
-      "note": null
+      "note": ""
     },
     "firstChapter": {
-      "status": "unrecorded",
-      "decidedAt": null,
-      "decidedBy": null,
+      "status": "approved",
+      "decidedAt": "2026-09-05T04:27:56.847Z",
+      "decidedBy": "workbench",
       "evidence": null,
-      "note": null
+      "note": ""
     },
     "checkpointAudio": {
       "status": "unrecorded",
@@ -157,10 +153,10 @@
     {
       "id": "approve-narration",
       "name": "批准口播",
-      "status": "awaiting-approval",
+      "status": "complete",
       "health": "passed",
       "reasons": [],
-      "canAdvance": false
+      "canAdvance": true
     },
     {
       "id": "a-page",
@@ -189,10 +185,10 @@
     {
       "id": "visual-rough",
       "name": "Visual rough",
-      "status": "awaiting-approval",
+      "status": "complete",
       "health": "passed",
       "reasons": [],
-      "canAdvance": false
+      "canAdvance": true
     },
     {
       "id": "player-phase-1",
@@ -205,10 +201,10 @@
     {
       "id": "checkpoint-plan",
       "name": "Checkpoint Plan",
-      "status": "awaiting-approval",
+      "status": "complete",
       "health": "passed",
       "reasons": [],
-      "canAdvance": false
+      "canAdvance": true
     },
     {
       "id": "chapter-handoff",
@@ -229,10 +225,10 @@
     {
       "id": "chapter-acceptance",
       "name": "后续章节与验收",
-      "status": "awaiting-approval",
+      "status": "complete",
       "health": "passed",
       "reasons": [],
-      "canAdvance": false
+      "canAdvance": true
     },
     {
       "id": "audio",
@@ -253,7 +249,7 @@
       "canAdvance": false
     }
   ],
-  "updatedAt": "2026-09-04",
+  "updatedAt": "2026-09-05",
   "updatedBy": "production-status scan",
   "stageReviews": {
     "freeze-task-package": {
@@ -269,11 +265,18 @@
       "reviewedBy": "界面人工审核",
       "evidence": "player/episodes/episode-05/inputs/approved-spoken-text.txt",
       "note": null
+    },
+    "approve-narration": {
+      "status": "approved",
+      "reviewedAt": "2026-09-04T23:22:15.259Z",
+      "reviewedBy": "界面人工审核",
+      "evidence": "player/episodes/episode-05/inputs/approved-spoken-text.txt",
+      "note": null
     }
   },
   "automation": {
     "status": "failed",
-    "ranAt": "2026-09-04T16:25:20.338Z",
+    "ranAt": "2026-09-05T04:27:59.020Z",
     "runner": "production-status scan",
     "checks": {
       "task-package": {
@@ -307,6 +310,14 @@
       "audio-files": {
         "status": "failed",
         "detail": "缺少 37 个音频文件"
+      },
+      "typecheck": {
+        "status": "passed",
+        "detail": "typecheck 通过"
+      },
+      "lint": {
+        "status": "passed",
+        "detail": "lint 通过"
       }
     },
     "failures": [
@@ -325,7 +336,7 @@
       {
         "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\scripts\\verify_visual_rough.py --a-page D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-05\\inputs\\episode-05-a-page.json --visual-rough D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-05\\inputs\\episode-05-visual-rough.md --recipes-dir D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\references\\page-recipes --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-05-visual-rough-validation.json",
         "exitCode": 0,
-        "durationMs": 110,
+        "durationMs": 88,
         "stdout": "PASS visual-rough-v3: source binding, recipes, screen slots, images, and logic limits are valid",
         "stderr": "",
         "timedOut": false
@@ -333,7 +344,7 @@
       {
         "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\rewrite-course-narration\\scripts\\verify_compilation.py --validation-profile a-page-v6 --task-package D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\episodes\\module-1-system-cognition\\episode-05-industrial-internet-identifier-private-code-task-package.md --compile-trace D:\\00-workspace\\005-coursewebvideo\\.tmp\\narration-pipeline\\2026-09-04-ep05-a-page-recompile\\episode-05\\episode-05-b-to-a-compile-trace.json --approved-text D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-05\\inputs\\approved-spoken-text.txt --compiled-json D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-05\\inputs\\episode-05-a-page.json --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-05-a-page-validation.json",
         "exitCode": 0,
-        "durationMs": 100,
+        "durationMs": 76,
         "stdout": "PASS a-page-v6: A-page semantics, screen contract, Nx, timing, and compile coverage are valid",
         "stderr": "",
         "timedOut": false
@@ -341,9 +352,25 @@
       {
         "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-05",
         "exitCode": 0,
-        "durationMs": 112,
+        "durationMs": 90,
         "stdout": "episode:check 通过：1 个实例，0 个警告",
         "stderr": "",
+        "timedOut": false
+      },
+      {
+        "command": "pnpm run typecheck",
+        "exitCode": 0,
+        "durationMs": 1169,
+        "stdout": "",
+        "stderr": "$ tsc --noEmit",
+        "timedOut": false
+      },
+      {
+        "command": "pnpm run lint",
+        "exitCode": 0,
+        "durationMs": 623,
+        "stdout": "Found 0 warnings and 0 errors.\nFinished in 15ms on 50 files with 100 rules using 32 threads.",
+        "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
         "timedOut": false
       }
     ]
@@ -353,10 +380,14 @@
     "canAdvance": false,
     "reasons": [
       "audio-files: 缺少 37 个音频文件",
-      "等待人工决策: narration, visualRough, checkpointPlan, firstChapter, checkpointAudio"
+      "等待人工决策: checkpointAudio"
     ],
     "productionStatus": "in-progress",
     "automationStatus": "failed",
     "humanStatus": "needs-decision"
+  },
+  "workflow": {
+    "mode": "current",
+    "exemptions": []
   }
 }

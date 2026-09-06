@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { access, mkdir, readFile, readdir, rename, rm, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, rename, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
@@ -390,7 +390,6 @@ async function standardInputs(root, episodeId) {
   if (await exists(path.join(inputsDir, "approved-spoken-text.txt"))) {
     expected.approved = path.join(inputsDir, "approved-spoken-text.txt");
   }
-  const inputEntries = await readdir(inputsDir, { withFileTypes: true }).catch(() => []);
   const missing = [];
   for (const [label, file] of Object.entries(expected)) {
     if (!(await exists(file))) missing.push(`${label}: ${relative(root, file)}`);

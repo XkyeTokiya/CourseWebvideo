@@ -114,7 +114,7 @@ pnpm courseplay:handoff -- --help
 
 `production-status/episodes/<episode-id>.json` 是跨上游、Player、音频和最终交付的单集总状态；`player/episodes/<episode-id>/project.json` 仍只负责 Player 下游章节状态，不能替代总状态。
 
-工作台在线模式读取 `production-status/index.json`（服务模式下由 `/production-status/index.json` 按当前文件即时生成），一次加载全部剧集状态，避免逐集探测不存在的文件。运行 `node tools/production-status.mjs index` 可为静态文件模式重新生成索引；索引是派生文件，不是人工审批事实源。
+工作台在线模式读取 `production-status/index.json`（服务模式下由 `/production-status/index.json` 按当前文件即时生成），一次加载全部剧集状态，避免逐集探测不存在的文件。运行 `node production-status/production-status.mjs index` 可为静态文件模式重新生成索引；索引是派生文件，不是人工审批事实源。
 
 总状态分为三类信息：
 
@@ -125,10 +125,10 @@ pnpm courseplay:handoff -- --help
 常用命令从仓库根目录执行：
 
 ```powershell
-node tools/production-status.mjs init
-node tools/production-status.mjs sync --episode episode-01
-node tools/production-status.mjs check
-node tools/production-status.mjs report
+node production-status/production-status.mjs init
+node production-status/production-status.mjs sync --episode episode-01
+node production-status/production-status.mjs check
+node production-status/production-status.mjs report
 ```
 
 ### 一键启动工作台
@@ -140,7 +140,7 @@ node tools/production-status.mjs report
 也可从仓库根目录手动启动：
 
 ```powershell
-node tools/production-status-server.mjs
+node production-status/production-status-server.mjs
 ```
 
 服务仅绑定到本机 `127.0.0.1`，并托管仓库根目录，以便工作台可直接预览关联的阶段性文件。

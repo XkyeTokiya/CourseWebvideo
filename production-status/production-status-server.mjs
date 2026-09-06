@@ -1,5 +1,5 @@
 import { createServer } from 'node:http';
-import { createReadStream, existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { createReadStream, existsSync, readdirSync, readFileSync, renameSync, statSync, writeFileSync } from 'node:fs';
 import { spawn } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -25,6 +25,8 @@ function readOptions(argv) {
 }
 
 const options = readOptions(process.argv.slice(2));
+const SERVICE_ID = 'coursewebvideo-production-status';
+const APPROVAL_KEYS = ['narration', 'visualRough', 'checkpointPlan', 'firstChapter', 'checkpointAudio', 'finalDelivery'];
 if (!Number.isInteger(options.port) || options.port < 1 || options.port > 65535) {
   throw new Error(`Invalid port: ${options.port}`);
 }
@@ -84,7 +86,7 @@ function startScan(payload = {}) {
   const runId = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   const run = { id: runId, status: 'running', episode, startedAt: new Date().toISOString(), finishedAt: null, exitCode: null, output: '', error: null };
   scanRuns.set(runId, run); activeScanId = runId;
-  const args = [path.join(options.root, 'tools', 'production-status.mjs'), 'scan', '--build'];
+  const args = [path.join(options.root, 'production-status', 'production-status.mjs'), 'scan', '--build'];
   if (episode) args.push('--episode', episode);
   const child = spawn(process.execPath, args, { cwd: options.root, windowsHide: true });
   child.stdout.on('data', chunk => { run.output = `${run.output}${chunk}`.slice(-12000); });
@@ -92,6 +94,30 @@ function startScan(payload = {}) {
   child.on('error', error => { run.status = 'failed'; run.error = String(error.message || error); run.finishedAt = new Date().toISOString(); activeScanId = null; indexCache = null; });
   child.on('close', code => { run.exitCode = code; run.status = code === 0 ? 'passed' : 'failed'; run.finishedAt = new Date().toISOString(); activeScanId = null; indexCache = null; });
   return { conflict: false, run };
+}
+
+function recordApproval(payload = {}) {
+  const episode = String(payload.episode ?? '');
+  const gate = String(payload.gate ?? '');
+  const status = String(payload.status ?? 'approved');
+  if (!/^episode-\d{2}$/.test(episode)) throw new Error('invalid episode');
+  if (!APPROVAL_KEYS.includes(gate)) throw new Error('invalid approval gate');
+  if (!['approved', 'unrecorded'].includes(status)) throw new Error('invalid approval status');
+  if (activeScanId) return { conflict: true, run: scanRuns.get(activeScanId) };
+  const file = path.join(options.statusDir, 'episodes', `${episode}.json`);
+  if (!existsSync(file)) throw new Error('episode status file not found');
+  const doc = JSON.parse(readFileSync(file, 'utf8'));
+  doc.approvals ??= {};
+  doc.approvals[gate] = status === 'approved'
+    ? { status, decidedAt: new Date().toISOString(), decidedBy: String(payload.decidedBy || 'workbench'), evidence: null, note: String(payload.note || '') }
+    : { status, decidedAt: null, decidedBy: null, evidence: null, note: null };
+  doc.updatedAt = new Date().toISOString().slice(0, 10);
+  doc.updatedBy = 'production-status workbench';
+  const temp = `${file}.tmp`;
+  writeFileSync(temp, `${JSON.stringify(doc, null, 2)}\n`);
+  renameSync(temp, file);
+  const scan = startScan({ episode });
+  return { conflict: false, approval: doc.approvals[gate], run: scan.run };
 }
 
 function statusIndex() {
@@ -124,6 +150,7 @@ function compactEpisode(doc) {
     schemaVersion: doc.schemaVersion,
     episodeId: doc.episodeId,
     title: doc.title,
+    workflow: doc.workflow,
     summary: doc.summary,
     readiness: doc.readiness,
     automation: doc.automation,
@@ -151,6 +178,8 @@ const server = createServer((request, response) => {
   const url = new URL(request.url ?? '/', `http://${request.headers.host ?? options.host}`);
   if (url.pathname === '/health') {
     sendJson(response, 200, {
+      service: SERVICE_ID,
+      serviceScript: path.join(options.root, 'production-status', 'production-status-server.mjs'),
       root: options.root,
       statusDir: options.statusDir,
       dashboard: '/production-status/dashboard.html',
@@ -168,6 +197,17 @@ const server = createServer((request, response) => {
       try {
         const result = startScan(payload);
         sendJson(response, result.conflict ? 409 : 202, result.run);
+      } catch (error) {
+        sendJson(response, 400, { error: error.message || String(error) });
+      }
+    }).catch(error => sendJson(response, 400, { error: error.message || String(error) }));
+    return;
+  }
+  if (url.pathname === '/api/production-status/approval' && request.method === 'POST') {
+    requestBody(request).then(payload => {
+      try {
+        const result = recordApproval(payload);
+        sendJson(response, result.conflict ? 409 : 202, result);
       } catch (error) {
         sendJson(response, 400, { error: error.message || String(error) });
       }

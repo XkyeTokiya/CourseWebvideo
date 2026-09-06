@@ -3,16 +3,14 @@
   "episodeId": "episode-02",
   "title": "工业互联网的体系构成",
   "summary": {
-    "status": "awaiting-approval",
-    "currentStage": "audio",
-    "nextAction": "补齐人工审批记录: checkpointAudio",
+    "status": "in-progress",
+    "currentStage": "recording-delivery",
+    "nextAction": "推进阶段: 录屏、后期与成片验收",
     "blockers": [],
-    "approvalGaps": [
-      "checkpointAudio"
-    ],
+    "approvalGaps": [],
     "productionStatus": "in-progress",
     "automationStatus": "passed",
-    "humanStatus": "needs-decision"
+    "humanStatus": "none"
   },
   "observations": {
     "taskPackage": {
@@ -231,10 +229,10 @@
     {
       "id": "audio",
       "name": "音频",
-      "status": "awaiting-approval",
+      "status": "complete",
       "health": "passed",
       "reasons": [],
-      "canAdvance": false
+      "canAdvance": true
     },
     {
       "id": "recording-delivery",
@@ -245,7 +243,7 @@
       "canAdvance": false
     }
   ],
-  "updatedAt": "2026-09-04",
+  "updatedAt": "2026-09-05",
   "updatedBy": "production-status scan",
   "stageReviews": {
     "approve-narration": {
@@ -286,7 +284,7 @@
   },
   "automation": {
     "status": "passed",
-    "ranAt": "2026-09-04T16:25:19.477Z",
+    "ranAt": "2026-09-05T02:25:06.321Z",
     "runner": "production-status scan",
     "checks": {
       "task-package": {
@@ -305,10 +303,6 @@
         "status": "passed",
         "detail": "Visual rough 状态为 draft"
       },
-      "visual-rough-validator": {
-        "status": "passed",
-        "detail": "上游 visual rough validator 通过"
-      },
       "player-contract": {
         "status": "passed",
         "detail": "episode:check 通过"
@@ -316,11 +310,19 @@
       "audio-files": {
         "status": "passed",
         "detail": "音频文件与分段齐全"
+      },
+      "typecheck": {
+        "status": "passed",
+        "detail": "typecheck 通过"
+      },
+      "lint": {
+        "status": "passed",
+        "detail": "lint 通过"
       }
     },
     "failures": [],
     "warnings": [
-      "找不到当前 A-page 对应的 compile trace，未重跑上游 validator"
+      "旧流程实例：跳过当前 A-page / Visual rough 上游 validator"
     ],
     "sourceHashes": {
       "taskPackage": "e555f927cb928c9e4af9d010924ba056063b088c7cfa4b4c47bf611b6b05ee49",
@@ -332,31 +334,44 @@
     },
     "commands": [
       {
-        "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\scripts\\verify_visual_rough.py --a-page D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-02\\inputs\\episode-02-a-page.json --visual-rough D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-02\\inputs\\episode-02-visual-rough.md --recipes-dir D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\references\\page-recipes --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-02-visual-rough-validation.json",
+        "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-02",
         "exitCode": 0,
-        "durationMs": 103,
-        "stdout": "PASS visual-rough-v1: source binding, recipes, screen slots, images, and logic limits are valid",
+        "durationMs": 135,
+        "stdout": "episode:check 通过：1 个实例，0 个警告",
         "stderr": "",
         "timedOut": false
       },
       {
-        "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-02",
+        "command": "pnpm run typecheck",
         "exitCode": 0,
-        "durationMs": 112,
-        "stdout": "episode:check 通过：1 个实例，0 个警告",
-        "stderr": "",
+        "durationMs": 1554,
+        "stdout": "",
+        "stderr": "$ tsc --noEmit",
+        "timedOut": false
+      },
+      {
+        "command": "pnpm run lint",
+        "exitCode": 0,
+        "durationMs": 770,
+        "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+        "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
         "timedOut": false
       }
     ]
   },
   "readiness": {
-    "state": "needs-owner",
-    "canAdvance": false,
-    "reasons": [
-      "等待人工决策: checkpointAudio"
-    ],
+    "state": "ready",
+    "canAdvance": true,
+    "reasons": [],
     "productionStatus": "in-progress",
     "automationStatus": "passed",
-    "humanStatus": "needs-decision"
+    "humanStatus": "none"
+  },
+  "workflow": {
+    "mode": "legacy",
+    "exemptions": [
+      "chapter-handoff",
+      "checkpointAudio"
+    ]
   }
 }

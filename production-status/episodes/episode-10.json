@@ -9,7 +9,7 @@
     "blockers": [],
     "approvalGaps": [],
     "productionStatus": "not-started",
-    "automationStatus": "failed",
+    "automationStatus": "passed",
     "humanStatus": "none"
   },
   "observations": {
@@ -238,11 +238,11 @@
       "canAdvance": false
     }
   ],
-  "updatedAt": "2026-09-04",
+  "updatedAt": "2026-09-05",
   "updatedBy": "production-status scan",
   "automation": {
-    "status": "failed",
-    "ranAt": "2026-09-04T23:15:21.283Z",
+    "status": "passed",
+    "ranAt": "2026-09-05T02:58:13.616Z",
     "runner": "production-status scan",
     "checks": {
       "task-package": {
@@ -274,13 +274,11 @@
         "detail": "typecheck 通过"
       },
       "lint": {
-        "status": "failed",
-        "detail": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools"
+        "status": "passed",
+        "detail": "lint 通过"
       }
     },
-    "failures": [
-      "lint: $ oxlint src/app src/catalog src/runtime src/shared src/studio tools"
-    ],
+    "failures": [],
     "warnings": [
       "音频阶段尚未开始"
     ],
@@ -291,7 +289,7 @@
       {
         "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-10",
         "exitCode": 0,
-        "durationMs": 123,
+        "durationMs": 112,
         "stdout": "episode:check 通过：1 个实例，1 个警告",
         "stderr": "WARN  episodes/episode-10: planned 实例尚未创建可播放入口",
         "timedOut": false
@@ -299,29 +297,31 @@
       {
         "command": "pnpm run typecheck",
         "exitCode": 0,
-        "durationMs": 1507,
+        "durationMs": 1284,
         "stdout": "",
         "stderr": "$ tsc --noEmit",
         "timedOut": false
       },
       {
         "command": "pnpm run lint",
-        "exitCode": 1,
-        "durationMs": 875,
-        "stdout": "tools/tests/courseplay-handoff.test.mjs:3:40: error eslint(no-unused-vars): Identifier 'rename' is imported but never used. help: Consider removing this import.\ntools/courseplay-handoff.mjs:393:9: error eslint(no-unused-vars): Variable 'inputEntries' is declared but never used. Unused variables should start with a '_'. help: Consider removing this declaration.\n[ELIFECYCLE] Command failed with exit code 1.",
+        "exitCode": 0,
+        "durationMs": 701,
+        "stdout": "",
         "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
         "timedOut": false
       }
     ]
   },
   "readiness": {
-    "state": "blocked",
+    "state": "not-started",
     "canAdvance": false,
-    "reasons": [
-      "lint: $ oxlint src/app src/catalog src/runtime src/shared src/studio tools"
-    ],
+    "reasons": [],
     "productionStatus": "not-started",
-    "automationStatus": "failed",
+    "automationStatus": "passed",
     "humanStatus": "none"
+  },
+  "workflow": {
+    "mode": "current",
+    "exemptions": []
   }
 }

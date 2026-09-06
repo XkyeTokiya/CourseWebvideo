@@ -44,12 +44,12 @@ cd D:\00-workspace\005-coursewebvideo\player
 
 仓库根级 `production-status/` 是跨项目的生产控制面，不属于 `narration-pipeline/` 或 `player/` 任一子项目。每期文件位于 `production-status/episodes/<episode-id>.json`，结构由 `production-status/schema/episode-production-status.schema.json` 约束。
 
-- `observations` 由 `node tools/production-status.mjs sync` 从任务包、inputs、Player、音频目录同步。
+- `observations` 由 `node production-status/production-status.mjs sync` 从任务包、inputs、Player、音频目录同步。
 - 工作台总览通过 `production-status/index.json` 或服务端同路径索引一次读取剧集，不得在前端猜测集数或逐个请求不存在的文件。
 - `approvals` 是人工事实，自动化不得根据文件存在、验证通过或 `project.json.status=ready` 推断批准。
 - `coordination` 记录负责人、目标日期、阻塞和仓库外录屏/成片证据。
 - `summary` 与 `stages` 是推导结果；最终交付必须同时具备最终视频观测和 `approvals.finalDelivery.status=approved`。
 
-从仓库根目录运行 `node tools/production-status.mjs check` 校验 51 期状态，运行 `node tools/production-status.mjs report` 查看全局汇总。同步工具必须保留人工审批与协调字段，不得覆盖它们。
+从仓库根目录运行 `node production-status/production-status.mjs check` 校验 51 期状态，运行 `node production-status/production-status.mjs report` 查看全局汇总。同步工具必须保留人工审批与协调字段，不得覆盖它们。
 
-手动触发全量机械验证使用 `node tools/production-status.mjs scan`；该命令调用 Player 的 `episode:check`，并记录 A-page、Visual rough、音频文件、输入 SHA-256、命令输出与扫描时间。`scan` 只写入 `automation`、`readiness` 和推导状态，不会写入人工审批结论。需要同时执行 Player 的 `typecheck` 与 `lint` 时使用 `node tools/production-status.mjs scan --build`。
+手动触发全量机械验证使用 `node production-status/production-status.mjs scan`；该命令调用 Player 的 `episode:check`，并记录 A-page、Visual rough、音频文件、输入 SHA-256、命令输出与扫描时间。`scan` 只写入 `automation`、`readiness` 和推导状态，不会写入人工审批结论。需要同时执行 Player 的 `typecheck` 与 `lint` 时使用 `node production-status/production-status.mjs scan --build`。

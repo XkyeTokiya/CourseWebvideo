@@ -245,7 +245,7 @@
       "canAdvance": false
     }
   ],
-  "updatedAt": "2026-09-04",
+  "updatedAt": "2026-09-05",
   "updatedBy": "production-status scan",
   "stageReviews": {
     "approve-narration": {
@@ -286,7 +286,7 @@
   },
   "automation": {
     "status": "passed",
-    "ranAt": "2026-09-04T16:25:24.340Z",
+    "ranAt": "2026-09-05T02:25:12.376Z",
     "runner": "production-status scan",
     "checks": {
       "task-package": {
@@ -320,6 +320,14 @@
       "audio-files": {
         "status": "passed",
         "detail": "音频文件与分段齐全"
+      },
+      "typecheck": {
+        "status": "passed",
+        "detail": "typecheck 通过"
+      },
+      "lint": {
+        "status": "passed",
+        "detail": "lint 通过"
       }
     },
     "failures": [],
@@ -336,7 +344,7 @@
       {
         "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\scripts\\verify_visual_rough.py --a-page D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-35\\inputs\\episode-35-a-page.json --visual-rough D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-35\\inputs\\episode-35-visual-rough.md --recipes-dir D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\references\\page-recipes --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-35-visual-rough-validation.json",
         "exitCode": 0,
-        "durationMs": 101,
+        "durationMs": 108,
         "stdout": "PASS visual-rough-v3: source binding, recipes, screen slots, images, and logic limits are valid",
         "stderr": "",
         "timedOut": false
@@ -344,7 +352,7 @@
       {
         "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\rewrite-course-narration\\scripts\\verify_compilation.py --validation-profile a-page-v6 --task-package D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\episodes\\module-4-identifier-carrier\\episode-35-identifier-carrier-selection-material-process-environment-cost-task-package.md --compile-trace D:\\00-workspace\\005-coursewebvideo\\.tmp\\narration-pipeline\\2026-09-02-rewrite-narration-ep35\\episode-35\\episode-35-b-to-a-compile-trace.json --approved-text D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-35\\inputs\\approved-spoken-text.txt --compiled-json D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-35\\inputs\\episode-35-a-page.json --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-35-a-page-validation.json",
         "exitCode": 0,
-        "durationMs": 99,
+        "durationMs": 105,
         "stdout": "PASS a-page-v6: A-page semantics, screen contract, Nx, timing, and compile coverage are valid",
         "stderr": "",
         "timedOut": false
@@ -352,9 +360,25 @@
       {
         "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-35",
         "exitCode": 0,
-        "durationMs": 120,
+        "durationMs": 142,
         "stdout": "episode:check 通过：1 个实例，0 个警告",
         "stderr": "",
+        "timedOut": false
+      },
+      {
+        "command": "pnpm run typecheck",
+        "exitCode": 0,
+        "durationMs": 1554,
+        "stdout": "",
+        "stderr": "$ tsc --noEmit",
+        "timedOut": false
+      },
+      {
+        "command": "pnpm run lint",
+        "exitCode": 0,
+        "durationMs": 770,
+        "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+        "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
         "timedOut": false
       }
     ]
@@ -368,5 +392,9 @@
     "productionStatus": "in-progress",
     "automationStatus": "passed",
     "humanStatus": "needs-decision"
+  },
+  "workflow": {
+    "mode": "current",
+    "exemptions": []
   }
 }
