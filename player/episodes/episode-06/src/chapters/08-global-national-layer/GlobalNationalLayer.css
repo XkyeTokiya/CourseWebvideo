@@ -264,10 +264,12 @@
   border-color: var(--theme-structural);
   background: var(--surface-2);
   box-shadow: 7px 8px 0 var(--theme-offset-shadow);
+  opacity: 1;
   animation: gn-band-land 560ms var(--ease-soft) 480ms backwards;
 }
 
 .gn-band-global .gn-band-core > * {
+  opacity: 1;
   animation: gn-rise 460ms var(--ease-overshoot) backwards;
   animation-delay: calc(700ms + var(--gn-i) * 170ms);
 }
@@ -282,6 +284,7 @@
   border-color: var(--theme-structural);
   background: var(--surface-2);
   box-shadow: 7px 8px 0 var(--theme-offset-shadow);
+  opacity: 1;
   animation: gn-band-land 560ms var(--ease-soft) backwards;
 }
 
@@ -289,7 +292,8 @@
   opacity: 0;
 }
 
-.gn-scene.is-national .gn-band-core > * {
+.gn-scene.is-national .gn-band-national .gn-band-core > * {
+  opacity: 1;
   animation: gn-rise 460ms var(--ease-overshoot) backwards;
   animation-delay: calc(240ms + var(--gn-i) * 170ms);
 }
@@ -346,6 +350,7 @@
   border-color: var(--theme-structural);
   background: var(--surface-2);
   box-shadow: 7px 8px 0 var(--theme-offset-shadow);
+  opacity: 1;
   animation: gn-band-land 560ms var(--ease-soft) 160ms backwards;
 }
 
@@ -354,6 +359,7 @@
 }
 
 .gn-scene.is-note .gn-note-core > * {
+  opacity: 1;
   animation: gn-rise 460ms var(--ease-overshoot) backwards;
   animation-delay: calc(240ms + var(--gn-i) * 150ms);
 }
