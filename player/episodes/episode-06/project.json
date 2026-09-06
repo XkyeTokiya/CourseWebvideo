@@ -1,10 +1,10 @@
 {
   "id": "episode-06",
   "title": "标识解析体系与层级",
-  "status": "in-progress",
+  "status": "ready",
   "theme": "active-identification-note",
   "progress": {
-    "completed": 2,
+    "completed": 13,
     "total": 13,
     "current": null
   },

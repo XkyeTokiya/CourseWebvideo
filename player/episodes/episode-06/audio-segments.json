@@ -22,5 +22,203 @@
     "step": 4,
     "text": "真正的问题是：拿着这个编码，去哪里查，又能查到什么？我们就沿着这个问题，看标识解析体系怎样把一个编码，变成可以查询的信息。",
     "audio": "scan-and-questions/4.mp3"
+  },
+  {
+    "chapter": "identity-key",
+    "step": 1,
+    "text": "先把编码的角色说清楚。编码是对象的身份键。什么是身份键？就是回答“这是谁”的钥匙，帮系统把一个对象同其他对象区分开。",
+    "audio": "identity-key/1.mp3"
+  },
+  {
+    "chapter": "identity-key",
+    "step": 2,
+    "text": "至于它属于哪个批次、放在什么位置、状态怎样，这些信息可以和身份关联，但不必全部塞进编码本身。",
+    "audio": "identity-key/2.mp3"
+  },
+  {
+    "chapter": "identity-key",
+    "step": 3,
+    "text": "为什么不塞进去？信息一变，编码就得跟着改，身份就不再是稳定的锚点了。身份键要的是稳定：信息可以挂在身份下面随时更新，键本身不能乱动。",
+    "audio": "identity-key/3.mp3"
+  },
+  {
+    "chapter": "what-resolution-does",
+    "step": 1,
+    "text": "那么，从身份键到这些信息，中间靠什么？靠标识解析体系。",
+    "audio": "what-resolution-does/1.mp3"
+  },
+  {
+    "chapter": "what-resolution-does",
+    "step": 2,
+    "text": "它把设备、服务、产品这些实体的标识符，解析成地址、位置、元数据等相关信息。",
+    "audio": "what-resolution-does/2.mp3"
+  },
+  {
+    "chapter": "what-resolution-does",
+    "step": 3,
+    "text": "注意，“解析”不是把字符拆开读含义，而是系统根据这个标识，完成定位和查询。",
+    "audio": "what-resolution-does/3.mp3"
+  },
+  {
+    "chapter": "dns-analogy-limits",
+    "step": 1,
+    "text": "说起“提交一个名称、拿回一个结果”，有个更熟悉的例子：域名解析系统，也就是 DNS。在浏览器里输入一个好记的域名，系统会把它关联到访问网络所需的结果。",
+    "audio": "dns-analogy-limits/1.mp3"
+  },
+  {
+    "chapter": "dns-analogy-limits",
+    "step": 2,
+    "text": "工业互联网的标识解析，也有“提交标识、获得结果”的映射关系。这是两边共同的地方。",
+    "audio": "dns-analogy-limits/2.mp3"
+  },
+  {
+    "chapter": "dns-analogy-limits",
+    "step": 3,
+    "text": "不过，类比不能走得太远。互联网上解析的多是域名；工业世界要解析的对象，可能是设备、产品、零部件，也可能是算法、工序这样的虚拟资源；",
+    "audio": "dns-analogy-limits/3.mp3"
+  },
+  {
+    "chapter": "dns-analogy-limits",
+    "step": 4,
+    "text": "查回来的结果，可能是地址、位置，也可能是元数据。",
+    "audio": "dns-analogy-limits/4.mp3"
+  },
+  {
+    "chapter": "dns-analogy-limits",
+    "step": 5,
+    "text": "两边共同的是“解析映射”；至于协议、治理方式和返回内容，并不相同。",
+    "audio": "dns-analogy-limits/5.mp3"
+  },
+  {
+    "chapter": "two-parts-inseparable",
+    "step": 1,
+    "text": "看清了类比和边界，再看标识解析体系的构成。它由两个相互配合的部分组成：标识编码给机器、产品、零部件以及虚拟资源赋予身份；解析系统利用身份完成唯一定位和信息查询。",
+    "audio": "two-parts-inseparable/1.mp3"
+  },
+  {
+    "chapter": "two-parts-inseparable",
+    "step": 2,
+    "text": "两部分缺一不可：没有稳定编码，不知道查谁；只有编码、没有解析系统，又找不到关联的信息。",
+    "audio": "two-parts-inseparable/2.mp3"
+  },
+  {
+    "chapter": "query-walkthrough",
+    "step": 1,
+    "text": "现在回到那个零部件。质检员提交编码后，请求先进入一个可以访问的查询入口，再由体系逐层判断该到哪里去找相关记录。",
+    "audio": "query-walkthrough/1.mp3"
+  },
+  {
+    "chapter": "query-walkthrough",
+    "step": 2,
+    "text": "这条链路可以概括成一条语义路径：提交标识，找到负责范围，定位到企业侧的信息或访问入口，结果返回给查询的人。",
+    "audio": "query-walkthrough/2.mp3"
+  },
+  {
+    "chapter": "query-walkthrough",
+    "step": 3,
+    "text": "这是帮助理解协作的路径，不是固定的操作步骤。",
+    "audio": "query-walkthrough/3.mp3"
+  },
+  {
+    "chapter": "recursive-entry-node",
+    "step": 1,
+    "text": "路径的入口处，有一个专门的角色：递归解析节点。",
+    "audio": "recursive-entry-node/1.mp3"
+  },
+  {
+    "chapter": "recursive-entry-node",
+    "step": 2,
+    "text": "它面向查询者，提供公共查询和访问入口，接收问题，协助沿体系寻找答案。",
+    "audio": "recursive-entry-node/2.mp3"
+  },
+  {
+    "chapter": "recursive-entry-node",
+    "step": 3,
+    "text": "为了把服务做得更快，它还可以利用缓存。所谓缓存，就是把查过的结果先记下来，再有同样的请求，就不用从头找一遍。",
+    "audio": "recursive-entry-node/3.mp3"
+  },
+  {
+    "chapter": "global-national-layer",
+    "step": 1,
+    "text": "再往体系上方看。国际根节点面向全球，提供根区数据管理和根解析服务。",
+    "audio": "global-national-layer/1.mp3"
+  },
+  {
+    "chapter": "global-national-layer",
+    "step": 2,
+    "text": "国家顶级节点与全球根节点互联，还支持跨二级节点、跨不同标识解析体系之间的互联。",
+    "audio": "global-national-layer/2.mp3"
+  },
+  {
+    "chapter": "global-national-layer",
+    "step": 3,
+    "text": "它们解决的是更大范围的协同：该向哪个体系、哪个服务范围继续寻找。",
+    "audio": "global-national-layer/3.mp3"
+  },
+  {
+    "chapter": "industry-enterprise-layer",
+    "step": 1,
+    "text": "再往下看。二级节点更贴近行业，面向行业提供标识注册和解析服务；",
+    "audio": "industry-enterprise-layer/1.mp3"
+  },
+  {
+    "chapter": "industry-enterprise-layer",
+    "step": 2,
+    "text": "企业节点服务特定工业企业，同样承担注册和解析，还可以结合企业特点定义数据访问方式。",
+    "audio": "industry-enterprise-layer/2.mp3"
+  },
+  {
+    "chapter": "industry-enterprise-layer",
+    "step": 3,
+    "text": "请求就这样一层层缩小范围，落到具体企业能提供的信息或访问入口上。",
+    "audio": "industry-enterprise-layer/3.mp3"
+  },
+  {
+    "chapter": "five-roles-collaborate",
+    "step": 1,
+    "text": "把这几个角色放在一起看，它们不是五个孤立的数据库。国际根和国家顶级管大范围协同，二级节点连接行业，企业节点贴近对象和数据，递归解析节点守在查询者一侧。",
+    "audio": "five-roles-collaborate/1.mp3"
+  },
+  {
+    "chapter": "five-roles-collaborate",
+    "step": 2,
+    "text": "分层协作的意义在于：查询能在不同服务范围之间找到负责的角色，查询的人不必预先知道信息存放在哪里。",
+    "audio": "five-roles-collaborate/2.mp3"
+  },
+  {
+    "chapter": "result-boundary",
+    "step": 1,
+    "text": "当然，查回来的是什么，还要守住边界。解析结果可能是地址、位置、元数据这样的信息，也可能是继续访问某项服务的入口；",
+    "audio": "result-boundary/1.mp3"
+  },
+  {
+    "chapter": "result-boundary",
+    "step": 2,
+    "text": "企业还可以定义自己的数据访问方式。解析成功，不等于扫码后就能无条件拿到对象的全部生产、质量或商业数据。",
+    "audio": "result-boundary/2.mp3"
+  },
+  {
+    "chapter": "from-code-to-info",
+    "step": 1,
+    "text": "再回头看质检员的扫码动作：终端读出编码，编码充当身份键；查询入口接收请求，分层体系定位负责范围；企业侧把身份关联到信息或访问方式；结果返回业务现场。",
+    "audio": "from-code-to-info/1.mp3"
+  },
+  {
+    "chapter": "from-code-to-info",
+    "step": 2,
+    "text": "走完这一圈，编码才从一串可识别的字符，变成能支撑信息查询的基础。",
+    "audio": "from-code-to-info/2.mp3"
+  },
+  {
+    "chapter": "from-code-to-info",
+    "step": 3,
+    "text": "走到这里，可以把主线收拢了：编码回答“查谁”，解析回答“去哪里查、能得到什么”，一层层节点让查询跨范围协作。",
+    "audio": "from-code-to-info/3.mp3"
+  },
+  {
+    "chapter": "from-code-to-info",
+    "step": 4,
+    "text": "至于建了多少节点、分布在哪些城市，这些数据会随时间变化；这条稳定的机制主线，才是理解标识解析体系的钥匙。",
+    "audio": "from-code-to-info/4.mp3"
   }
 ]

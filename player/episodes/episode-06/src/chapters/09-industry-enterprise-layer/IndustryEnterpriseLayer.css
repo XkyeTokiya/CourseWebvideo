@@ -1,0 +1,496 @@
+/* industry-enterprise-layer · A009 parallel-cards-with-takeaway
+   mechanism: equal-weight-accumulation — 两卡等权逐拍就位、结构一致（卡内注册/解析分行），完成后不留当前选中项，takeaway 收束
+   prefix: ie- */
+
+.ie-scene {
+  justify-content: flex-start;
+  gap: 34px;
+}
+
+/* ── 头部：判断方向标题 + 下行标注（进章即播，挂本体） ── */
+
+.ie-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.ie-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-structural);
+  animation: ie-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.ie-headline em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.ie-down {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 6px;
+}
+
+.ie-down-glyph {
+  width: 26px;
+  height: 58px;
+  overflow: visible;
+}
+
+.ie-down-chev {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: ie-chev-in 360ms var(--ease-soft) calc(var(--ie-di) * 150ms) backwards;
+}
+
+.ie-down-text {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+  animation: ie-fade-in 480ms var(--ease-soft) 260ms backwards;
+}
+
+/* ── 两卡槽位：等权网格，弱化占位先行 ────────────────── */
+
+.ie-cards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+  align-items: stretch;
+}
+
+.ie-slot {
+  position: relative;
+  display: flex;
+}
+
+.ie-card {
+  flex: 1;
+  min-width: 0;
+  padding: 30px 40px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+  transition: opacity 460ms var(--ease-soft);
+}
+
+.ie-slot.is-on .ie-card {
+  opacity: 1;
+  transition-delay: 80ms;
+}
+
+/* 弱化占位：蓝图式骨架，落位后让位于真卡（正向小延迟/反向即时） */
+
+.ie-ghost {
+  position: absolute;
+  inset: 0;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: var(--surface-3);
+  opacity: 0.55;
+  transition: opacity 420ms var(--ease-soft);
+  animation: ie-ghost-in 520ms var(--ease-soft) backwards;
+}
+
+.ie-slot:nth-child(2) .ie-ghost {
+  animation-delay: 140ms;
+}
+
+.ie-slot.is-on .ie-ghost {
+  opacity: 0;
+  transition-delay: 60ms;
+}
+
+.ie-ghost-label {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.ie-ghost-skel {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+}
+
+.ie-ghost-bar {
+  display: block;
+  height: 20px;
+  border-radius: 5px;
+  background: var(--rule);
+  opacity: 0.55;
+}
+
+.ie-ghost-bar:nth-child(2) {
+  width: 72%;
+}
+
+.ie-ghost-bar:nth-child(3) {
+  width: 62%;
+}
+
+.ie-ghost-bar:nth-child(4) {
+  width: 52%;
+}
+
+.ie-ghost-bar-name {
+  width: 46%;
+  height: 30px;
+  background: var(--theme-structural);
+  opacity: 0.16;
+}
+
+/* ── 卡内结构：等权同构（scope / 名称 / 职责分行 / 完整职责句） ──
+   落位级联只在 is-on 态给出延迟，基础规则不挂延迟，反向导航即时复原 */
+
+.ie-card-scope,
+.ie-card-name,
+.ie-card-rule,
+.ie-duty,
+.ie-card-line {
+  opacity: 0;
+}
+
+.ie-slot.is-on .ie-card-scope {
+  animation: ie-rise 420ms var(--ease-overshoot) 160ms forwards;
+}
+
+.ie-slot.is-on .ie-card-name {
+  animation: ie-rise 440ms var(--ease-overshoot) 300ms forwards;
+}
+
+.ie-slot.is-on .ie-card-rule {
+  animation: ie-rise 420ms var(--ease-soft) 420ms forwards;
+}
+
+.ie-slot.is-on .ie-duty {
+  animation: ie-rise 440ms var(--ease-overshoot) calc(560ms + var(--ie-ci) * 140ms) forwards;
+}
+
+.ie-slot.is-on .ie-card-line {
+  animation: ie-rise 440ms var(--ease-soft) 1000ms forwards;
+}
+
+.ie-card-scope {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.ie-card-scope::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: var(--theme-structural);
+}
+
+.ie-card-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+.ie-card-rule {
+  margin: 0;
+  border-color: var(--theme-grid-line);
+}
+
+.ie-duties {
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 12px;
+}
+
+.ie-duty {
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.ie-duty-access {
+  background: var(--theme-warning-surface);
+  border-radius: 12px;
+  padding: 12px 20px;
+}
+
+.ie-glyph {
+  width: 46px;
+  height: 46px;
+  flex: none;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ie-glyph-dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.ie-duty-register .ie-glyph {
+  color: var(--theme-structural);
+}
+
+.ie-duty-resolve .ie-glyph {
+  color: var(--theme-process);
+}
+
+.ie-duty-access .ie-glyph {
+  color: var(--theme-warning);
+}
+
+.ie-duty-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ie-duty-label {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.ie-duty-access .ie-duty-label {
+  color: var(--theme-warning);
+}
+
+.ie-duty-desc {
+  font-size: 24px;
+  color: var(--text-2);
+}
+
+.ie-card-line {
+  margin: 0;
+  padding-top: 16px;
+  border-top: 2px dashed var(--theme-grid-line);
+  font-size: 26px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* ── takeaway 收束区：请求逐层缩小示意 + 判断句（step 3 落位） ── */
+
+.card.ie-takeaway {
+  flex: none;
+  padding: 26px 44px;
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  background: var(--theme-process-surface);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 520ms var(--ease-soft),
+    transform 520ms var(--ease-soft);
+}
+
+.card.ie-takeaway.is-on {
+  opacity: 1;
+  transform: none;
+  transition-delay: 90ms;
+}
+
+.ie-takeaway-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ie-takeaway-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.16em;
+  color: var(--theme-process);
+}
+
+.ie-takeaway-sentence {
+  margin: 0;
+  font-size: 33px;
+  line-height: 1.5;
+  color: var(--theme-structural);
+}
+
+.ie-takeaway-sentence strong {
+  color: var(--theme-process);
+  font-weight: 900;
+}
+
+/* 收窄示意：行业面 → 企业 → 信息/访问入口（概念示意，无流程箭头） */
+
+.ie-funnel {
+  width: 430px;
+  height: 176px;
+  flex: none;
+  overflow: visible;
+}
+
+.ie-funnel-bar {
+  fill: var(--theme-cool-surface);
+  stroke: var(--theme-structural);
+  stroke-width: 2;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.ie-funnel-barlabel {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  fill: var(--theme-structural);
+  opacity: 0;
+}
+
+.ie-funnel-guide {
+  stroke: var(--theme-dashed-line);
+  stroke-width: 2;
+  stroke-dasharray: 7 6;
+  opacity: 0;
+}
+
+.ie-funnel-point {
+  fill: var(--theme-process);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.ie-funnel-out {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  fill: var(--theme-process);
+  opacity: 0;
+}
+
+.ie-takeaway.is-on .ie-funnel-bar {
+  animation: ie-bar-in 380ms var(--ease-overshoot) calc(160ms + var(--ie-fi) * 300ms) forwards;
+}
+
+.ie-takeaway.is-on .ie-funnel-barlabel {
+  animation: ie-fade-in 320ms var(--ease-soft) calc(300ms + var(--ie-fi) * 300ms) forwards;
+}
+
+.ie-takeaway.is-on .ie-funnel-point {
+  animation: ie-point-in 420ms var(--ease-overshoot) 820ms forwards;
+}
+
+.ie-takeaway.is-on .ie-funnel-guide {
+  animation: ie-fade-in 460ms var(--ease-soft) 960ms forwards;
+}
+
+.ie-takeaway.is-on .ie-funnel-out {
+  animation: ie-fade-in 460ms var(--ease-soft) 1180ms forwards;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes ie-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ie-ghost-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 0.55;
+    transform: none;
+  }
+}
+
+@keyframes ie-chev-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ie-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ie-bar-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.35);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ie-point-in {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,544 @@
+/* dns-analogy-limits · A004 image-with-insight-rail
+   mechanism: persistent-media-reading — 教材原图（M003 占位）持续承载映射直觉，
+   图侧短条逐拍给出两侧映射与三条边界，阅读项全部在图外
+   prefix: da- */
+
+.da-scene {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  font-family: var(--font-body);
+}
+
+/* ── 标题：S014 判断方向，进章即播 ─────────────────────── */
+
+.da-header {
+  display: flex;
+  align-items: baseline;
+}
+
+.da-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 46px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: da-rise 620ms var(--ease-soft) backwards;
+}
+
+.da-headline em {
+  position: relative;
+  z-index: 0;
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.da-headline em::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  bottom: 4px;
+  height: 12px;
+  background: var(--accent-soft);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 700ms var(--ease-soft);
+  z-index: -1;
+}
+
+/* ── 主区：教材原图占位（持续不卸载）+ 图侧短条 ───────── */
+
+.da-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 880px minmax(0, 1fr);
+  gap: 48px;
+}
+
+.da-media {
+  margin: 0;
+  display: flex;
+  min-height: 0;
+}
+
+.da-media-ph {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 40px;
+  border: 3px dashed var(--rule);
+  animation: da-rise 640ms var(--ease-soft) 140ms backwards;
+}
+
+.da-ph-tag,
+.da-ph-source {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+
+.da-ph-tag {
+  top: 22px;
+  left: 26px;
+}
+
+.da-ph-source {
+  bottom: 20px;
+  right: 26px;
+}
+
+.da-ph-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.da-ph-label {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  letter-spacing: 0.22em;
+  color: var(--text-mute);
+}
+
+.da-ph-desc {
+  max-width: 480px;
+  font-size: 25px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--text-faint);
+}
+
+/* ── 图侧短条：映射组 / 边界组两组 cap ────────────────── */
+
+.da-rail {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.da-cap {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  color: var(--text-mute);
+}
+
+.da-cap::before {
+  content: "";
+  flex: none;
+  width: 12px;
+  height: 12px;
+}
+
+.da-cap::after {
+  content: "";
+  flex: 1;
+  border-top: 2px dashed var(--rule);
+}
+
+.da-cap-mapping {
+  animation: da-rise 520ms var(--ease-soft) 240ms backwards;
+}
+
+.da-cap-mapping::before {
+  background: var(--theme-process);
+}
+
+.da-cap-bounds {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 460ms var(--ease-soft),
+    transform 460ms var(--ease-soft);
+}
+
+.da-cap-bounds.is-on {
+  opacity: 1;
+  transform: none;
+  transition-delay: 40ms;
+}
+
+.da-cap-bounds::before {
+  background: var(--theme-warning);
+}
+
+/* ── 短条本体：映射条（card 性格）+ 边界条（轻量注记） ── */
+
+.da-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 24px;
+  transition: opacity 480ms var(--ease-soft),
+    transform 480ms var(--ease-soft),
+    box-shadow 620ms var(--ease-soft);
+}
+
+.da-strip-later {
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+.da-strip-later.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+/* 正向逐拍延迟；反向导航回基础规则 0，即时恢复 */
+.da-strip-industry.is-on {
+  transition-delay: 200ms;
+}
+
+.da-strip-object.is-on {
+  transition-delay: 260ms;
+}
+
+.da-strip-result.is-on {
+  transition-delay: 150ms;
+}
+
+.da-strip-diff.is-on {
+  transition-delay: 130ms;
+}
+
+.da-strip-dns {
+  animation: da-rise 620ms var(--ease-soft) 340ms backwards;
+}
+
+.da-note {
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+  border-radius: 14px;
+}
+
+.da-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.da-line {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.da-line strong {
+  font-weight: 900;
+  color: var(--theme-structural);
+  transition: color 520ms var(--ease-soft);
+}
+
+.da-tag {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+}
+
+.da-tag::before {
+  content: "";
+  flex: none;
+  width: 11px;
+  height: 11px;
+  background: var(--theme-warning);
+}
+
+/* ── 两侧同构的映射示意：chip →（解析）→ chip ─────────── */
+
+.da-map-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.da-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px solid var(--theme-structural);
+  border-radius: 10px;
+  opacity: 0;
+}
+
+.da-chip-sm {
+  padding: 8px 16px;
+  font-size: 23px;
+}
+
+.da-arrow {
+  flex: none;
+  width: 84px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.da-arrow svg {
+  width: 84px;
+  height: 18px;
+  overflow: visible;
+}
+
+.da-arrow-label {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.24em;
+  padding-left: 0.24em;
+  color: var(--text-mute);
+  opacity: 0;
+}
+
+.da-arrow-line {
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.da-arrow-head {
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* 进章即播：短条①映射示意随拍 1 口播演示 */
+.da-strip-dns .da-chip {
+  animation: da-chip-in 420ms var(--ease-overshoot) forwards;
+  animation-delay: calc(700ms + var(--da-i) * 180ms);
+}
+
+.da-strip-dns .da-arrow-label {
+  animation: da-fade-in 420ms var(--ease-soft) 1.2s forwards;
+}
+
+.da-strip-dns .da-arrow-line {
+  animation: da-draw 560ms var(--ease-soft) 1.08s forwards;
+}
+
+.da-strip-dns .da-arrow-head {
+  animation: da-head-in 360ms var(--ease-overshoot) 1.58s forwards;
+}
+
+/* 拍 2：短条②同构示意，动画门控在 is-on 状态选择器下 */
+.da-strip-industry.is-on .da-chip {
+  animation: da-chip-in 420ms var(--ease-overshoot) forwards;
+  animation-delay: calc(430ms + var(--da-i) * 170ms);
+}
+
+.da-strip-industry.is-on .da-arrow-label {
+  animation: da-fade-in 420ms var(--ease-soft) 930ms forwards;
+}
+
+.da-strip-industry.is-on .da-arrow-line {
+  animation: da-draw 560ms var(--ease-soft) 810ms forwards;
+}
+
+.da-strip-industry.is-on .da-arrow-head {
+  animation: da-head-in 360ms var(--ease-overshoot) 1.31s forwards;
+}
+
+/* 拍 3：对象边界两行，互联网/工业对照逐行落位 */
+.da-bound-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+}
+
+.da-strip-object.is-on .da-bound-row {
+  animation: da-row-in 460ms var(--ease-overshoot) forwards;
+  animation-delay: calc(430ms + var(--da-i) * 280ms);
+}
+
+.da-side {
+  flex: none;
+  width: 104px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  background: var(--theme-cool-surface);
+  border: 2px solid var(--theme-structural);
+  border-radius: 10px;
+}
+
+.da-bound-row[data-tone="industrial"] .da-side {
+  color: var(--theme-process);
+  border-color: var(--theme-process);
+  background: var(--theme-process-surface);
+}
+
+.da-side-text {
+  font-size: 25px;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+/* 拍 4/5：结果与差异的并列 chip 行 */
+.da-chip-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.da-lead {
+  margin-right: 4px;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.da-strip-result.is-on .da-chip {
+  animation: da-chip-in 380ms var(--ease-overshoot) forwards;
+  animation-delay: calc(360ms + var(--da-i) * 150ms);
+}
+
+.da-diff-stamp {
+  margin-left: 8px;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-warning);
+  opacity: 0;
+}
+
+.da-strip-diff.is-on .da-chip {
+  animation: da-chip-in 380ms var(--ease-overshoot) forwards;
+  animation-delay: calc(320ms + var(--da-i) * 160ms);
+}
+
+.da-strip-diff.is-on .da-diff-stamp {
+  animation: da-stamp-in 460ms var(--ease-overshoot) 980ms forwards;
+}
+
+/* ── 拍 5 收束：映射条权重上浮 + 标题落点（正向延迟，反向即时） ── */
+
+.da-scene[data-state="differences-concluded"] .da-strip-dns,
+.da-scene[data-state="differences-concluded"] .da-strip-industry {
+  box-shadow: 0 0 0 4px var(--accent-glow),
+    7px 8px 0 var(--theme-offset-shadow);
+  transition-delay: 480ms;
+}
+
+.da-scene[data-state="differences-concluded"] .da-line strong {
+  color: var(--theme-process);
+  transition-delay: 480ms;
+}
+
+.da-scene[data-state="differences-concluded"] .da-headline em::after {
+  transform: scaleX(1);
+  transition-delay: 560ms;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes da-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes da-chip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.86) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes da-row-in {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes da-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes da-head-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes da-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes da-stamp-in {
+  from {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

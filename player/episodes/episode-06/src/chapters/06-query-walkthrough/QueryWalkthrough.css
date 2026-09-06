@@ -1,0 +1,516 @@
+/* query-walkthrough · A006 linear-steps-to-result
+   mechanism: ordered-progression — 单向语义路径步骤带：首步 active、逐级转 past、末步 active
+   落 terminal-result；顺序由步骤阅读顺序与带序空间排布承载，无协议箭头、无步骤编号、无回流线
+   prefix: qw- */
+
+.qw-scene {
+  justify-content: flex-start;
+  gap: 34px;
+}
+
+/* ── 头部：判断方向标题（S026）+ 开场回扣标注（持续元素） ── */
+
+.qw-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.qw-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--theme-structural);
+  animation: qw-rise 560ms var(--ease-soft) backwards;
+}
+
+.qw-headline em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.qw-callback {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 26px;
+  background: var(--theme-process-surface);
+  border: 2px solid var(--industrial-green-line);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  transition: opacity 700ms var(--ease-soft);
+  transition-delay: 0ms;
+}
+
+.is-query-entered .qw-callback {
+  animation: qw-rise 560ms var(--ease-soft) 260ms backwards;
+}
+
+.is-path-traced .qw-callback,
+.is-semantics-noted .qw-callback {
+  opacity: 0.38;
+  transition-delay: 250ms;
+}
+
+.qw-part {
+  width: 58px;
+  height: 58px;
+  flex: none;
+  overflow: visible;
+}
+
+.qw-part-hex {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 4;
+  stroke-linejoin: round;
+  stroke-dasharray: 170;
+  stroke-dashoffset: 170;
+  animation: qw-draw 700ms var(--ease-soft) 620ms forwards;
+}
+
+.qw-part-hole {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 4;
+  stroke-dasharray: 74;
+  stroke-dashoffset: 74;
+  animation: qw-draw 480ms var(--ease-soft) 1180ms forwards;
+}
+
+.qw-callback-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.qw-callback-tag {
+  font-size: 29px;
+  font-weight: 800;
+  color: var(--theme-structural);
+}
+
+.qw-callback-sub {
+  font-size: 21px;
+  color: var(--text-mute);
+}
+
+/* ── 步骤带：五阶段单向轨道（持续主构图） ────────────────── */
+
+.qw-band {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  padding: 30px 64px 44px;
+  animation: qw-rise 620ms var(--ease-soft) 420ms backwards;
+}
+
+.qw-track {
+  position: relative;
+  width: 100%;
+  padding-top: 64px;
+}
+
+.qw-track-line {
+  position: absolute;
+  top: 85px;
+  left: 10%;
+  right: 10%;
+  border-top: 3px dashed var(--theme-dashed-line);
+  animation: qw-fade-in 560ms var(--ease-soft) 520ms backwards;
+}
+
+.qw-track-fill {
+  position: absolute;
+  top: 84px;
+  left: 10%;
+  width: 0;
+  height: 6px;
+  background: var(--theme-process);
+  box-shadow: 0 0 14px var(--accent-glow);
+  z-index: 1;
+}
+
+.is-query-entered .qw-track-fill {
+  animation: qw-fill-entry 800ms var(--ease-soft) 5800ms both;
+}
+
+.is-path-traced .qw-track-fill {
+  animation: qw-fill-run 2000ms var(--ease-soft) 1500ms both;
+}
+
+.is-semantics-noted .qw-track-fill {
+  width: 80%;
+}
+
+/* ── 阶段节点：active / past / upcoming 全部由 data-phase 驱动 ── */
+
+.qw-stages {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.qw-stage {
+  --qw-d: 0ms;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: qw-rise 520ms var(--ease-soft) backwards;
+  animation-delay: calc(560ms + var(--qw-i) * 130ms);
+}
+
+.qw-node {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 3px dashed var(--theme-dashed-line);
+  background: var(--surface-2);
+  transition: border-color 420ms var(--ease-soft);
+  transition-delay: var(--qw-d);
+}
+
+.qw-node-core {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--surface-3);
+  transition: background-color 420ms var(--ease-soft),
+    box-shadow 420ms var(--ease-soft);
+  transition-delay: var(--qw-d);
+}
+
+.qw-stage[data-phase="past"] .qw-node {
+  border-color: var(--theme-structural);
+  border-style: solid;
+}
+
+.qw-stage[data-phase="past"] .qw-node-core {
+  background: var(--theme-structural);
+}
+
+.qw-stage[data-phase="active"] .qw-node {
+  border-color: var(--theme-process);
+  border-style: solid;
+  animation: qw-node-pop 520ms var(--ease-overshoot) 620ms backwards;
+}
+
+.qw-stage[data-phase="active"] .qw-node-core {
+  background: var(--theme-process);
+  box-shadow: 0 0 0 6px var(--accent-soft), 0 0 18px var(--accent-glow);
+}
+
+.qw-stage-label {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--theme-structural);
+  transition: color 420ms var(--ease-soft), opacity 420ms var(--ease-soft);
+  transition-delay: var(--qw-d);
+}
+
+.qw-stage-sub {
+  font-size: 21px;
+  text-align: center;
+  color: var(--text-mute);
+  transition: opacity 420ms var(--ease-soft);
+  transition-delay: var(--qw-d);
+}
+
+.qw-stage[data-phase="upcoming"] .qw-stage-label {
+  color: var(--text-mute);
+  opacity: 0.66;
+}
+
+.qw-stage[data-phase="upcoming"] .qw-stage-sub {
+  opacity: 0.55;
+}
+
+.qw-stage[data-phase="active"] .qw-stage-label {
+  color: var(--theme-process);
+}
+
+/* 拍 2 逐级点亮的正延迟：只写在激活态规则，基础 0，反向即时恢复 */
+.is-path-traced .qw-stage[data-phase="past"] {
+  --qw-d: calc(1500ms + var(--qw-i) * 500ms);
+}
+
+.is-path-traced .qw-stage[data-phase="active"],
+.is-semantics-noted .qw-stage[data-phase="active"] {
+  --qw-d: 3500ms;
+}
+
+.is-path-traced .qw-stage[data-phase="active"] .qw-node,
+.is-semantics-noted .qw-stage[data-phase="active"] .qw-node {
+  animation-delay: 3500ms;
+}
+
+/* ── 入口面向标注（steps-entry 槽位，拍 1 内出现后持续） ──── */
+
+.qw-facing-tag {
+  position: absolute;
+  top: -58px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--industrial-green-line);
+}
+
+.is-query-entered .qw-facing-tag {
+  animation: qw-fade-in 480ms var(--ease-soft) 5700ms backwards;
+}
+
+/* ── 请求游标：随状态单向行进，末步淡出并落进结果区 ──────── */
+
+.qw-token {
+  position: absolute;
+  top: 87px;
+  left: 10%;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--theme-structural);
+  color: var(--theme-paper);
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.06em;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  transform: translate(-50%, -50%);
+}
+
+.is-query-entered .qw-token {
+  animation: qw-token-entry 1200ms var(--ease-soft) 4600ms both;
+}
+
+.is-path-traced .qw-token {
+  animation: qw-token-run 2600ms var(--ease-soft) 1500ms both;
+}
+
+.is-semantics-noted .qw-token {
+  left: 90%;
+  opacity: 0;
+  animation: none;
+}
+
+/* ── 尾部：性质注记（拍 3）+ 末步结果区（拍 2，阅读终点） ── */
+
+.qw-footer {
+  display: grid;
+  grid-template-columns: 1fr 880px;
+  gap: 40px;
+  min-height: 200px;
+}
+
+.qw-note {
+  padding: 26px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 560ms var(--ease-overshoot),
+    transform 560ms var(--ease-overshoot);
+  transition-delay: 0ms;
+}
+
+.qw-note.is-on {
+  opacity: 1;
+  transform: none;
+  transition-delay: 350ms;
+}
+
+.qw-note-tag {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--theme-process);
+}
+
+.qw-note-text {
+  margin: 0;
+  font-size: 31px;
+  line-height: 1.55;
+  color: var(--theme-structural);
+}
+
+.qw-note-text em {
+  font-style: normal;
+  font-weight: 800;
+  color: var(--theme-process);
+}
+
+.qw-note-text strong {
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+.qw-terminal {
+  padding: 24px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  background: var(--theme-process-surface);
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 600ms var(--ease-overshoot),
+    transform 600ms var(--ease-overshoot);
+  transition-delay: 0ms;
+}
+
+.qw-terminal.is-on {
+  opacity: 1;
+  transform: none;
+  transition-delay: 3900ms;
+}
+
+.qw-terminal-tag {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--theme-process);
+}
+
+.qw-terminal-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--theme-process);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.qw-terminal.is-on .qw-terminal-dot {
+  animation: qw-dot-pop 480ms var(--ease-overshoot) 4300ms backwards;
+}
+
+.qw-terminal-text {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.5;
+  color: var(--theme-structural);
+}
+
+.qw-terminal-text em {
+  font-style: normal;
+  font-weight: 800;
+  color: var(--theme-process);
+}
+
+/* ── keyframes ─────────────────────────────────────────── */
+
+@keyframes qw-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes qw-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes qw-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes qw-fill-entry {
+  from {
+    width: 0;
+  }
+  to {
+    width: 20%;
+  }
+}
+
+@keyframes qw-fill-run {
+  from {
+    width: 20%;
+  }
+  to {
+    width: 80%;
+  }
+}
+
+@keyframes qw-token-entry {
+  from {
+    left: 10%;
+  }
+  to {
+    left: 30%;
+  }
+}
+
+@keyframes qw-token-run {
+  0% {
+    left: 30%;
+    opacity: 1;
+  }
+  77% {
+    left: 90%;
+    opacity: 1;
+  }
+  86% {
+    left: 90%;
+    opacity: 1;
+  }
+  100% {
+    left: 90%;
+    opacity: 0;
+  }
+}
+
+@keyframes qw-node-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes qw-dot-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

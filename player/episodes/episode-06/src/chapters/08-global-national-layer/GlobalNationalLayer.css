@@ -1,0 +1,503 @@
+/* global-national-layer · A008 layered-bands-with-side-notes
+   mechanism: ordered-progression — 层带按“全球在上、国家在下”逐条落位，
+   互联方向由层带顺序与带内说明栏承载，不画连接线、不画跨层箭头
+   prefix: gn- */
+
+.gn-scene {
+  justify-content: flex-start;
+  gap: 38px;
+}
+
+/* ── 头部：页面判断方向（S035，进章即播） ─────────────────── */
+
+.gn-header {
+  flex: none;
+}
+
+.gn-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: gn-rise 520ms var(--ease-soft) backwards;
+}
+
+.gn-headline em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* ── 主区：层带列 + 侧栏列 ───────────────────────────────── */
+
+.gn-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 520px;
+  gap: 52px;
+  align-items: stretch;
+  animation: gn-fade 420ms var(--ease-soft) backwards;
+}
+
+.gn-stack {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* ── 上行标注：再往体系上方看（进章即播） ─────────────────── */
+
+.gn-upnote {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  animation: gn-rise 480ms var(--ease-soft) 140ms backwards;
+}
+
+.gn-chevrons {
+  width: 46px;
+  height: 66px;
+  flex: none;
+  overflow: visible;
+}
+
+.gn-chevron {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: gn-chev-in 420ms var(--ease-overshoot) backwards;
+  animation-delay: calc(320ms + var(--gn-i) * 150ms);
+}
+
+.gn-upnote-text {
+  margin: 0;
+  font-size: 31px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  letter-spacing: 0.04em;
+}
+
+.gn-upnote-rule {
+  flex: 1;
+}
+
+/* ── 层带框体：骨架（虚线框）→ 落位（实底 + 纸影）───────── */
+
+.gn-band {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  border: 3px dashed var(--theme-dashed-line);
+  border-radius: 4px;
+  background: transparent;
+  opacity: 0.45;
+  transition: opacity 240ms var(--ease-soft),
+    background-color 240ms var(--ease-soft),
+    border-color 240ms var(--ease-soft);
+}
+
+.gn-band-ghost-tag {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  transition: opacity 240ms var(--ease-soft);
+}
+
+.gn-band-core {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  padding: 30px 40px;
+}
+
+.gn-band-core > * {
+  opacity: 0;
+}
+
+/* ── 层带内容：徽记 / 名称（exact）/ 说明栏 / 范围标注 ───── */
+
+.gn-band-mark {
+  flex: none;
+  align-self: center;
+}
+
+.gn-mark {
+  width: 96px;
+  height: 96px;
+  overflow: visible;
+}
+
+.gn-mark-line {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.gn-mark-soft {
+  stroke: var(--rule);
+}
+
+.gn-mark-arc {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.gn-mark-region-line {
+  fill: var(--accent-soft);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-dasharray: 9 6;
+}
+
+.gn-mark-node {
+  fill: var(--theme-process);
+}
+
+.gn-band-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.gn-band-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.gn-band-duty {
+  margin: 0;
+  font-size: 29px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.gn-band-duty em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+/* 带内范围标注：虚线面域 + 端点界标，全球满幅、国家收窄 */
+
+.gn-band-scope {
+  flex: none;
+  width: 320px;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.gn-scope-tag {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--theme-process);
+}
+
+.gn-scope-field {
+  position: relative;
+  height: 40px;
+  border: 2px dashed var(--theme-dashed-line);
+}
+
+.gn-scope-field::before,
+.gn-scope-field::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  width: 4px;
+  background: var(--theme-structural);
+}
+
+.gn-scope-field::before {
+  left: -2px;
+}
+
+.gn-scope-field::after {
+  right: -2px;
+}
+
+.gn-scope-field-national {
+  margin-inline: 58px;
+}
+
+.gn-scope-fill {
+  position: absolute;
+  inset: 3px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--accent-soft) 0 9px,
+    transparent 9px 19px
+  );
+}
+
+/* ── 全球层带：进章即落位（动画挂本体，仅限进章即播元素） ── */
+
+.gn-band-global {
+  border-color: var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: 7px 8px 0 var(--theme-offset-shadow);
+  animation: gn-band-land 560ms var(--ease-soft) 480ms backwards;
+}
+
+.gn-band-global .gn-band-core > * {
+  animation: gn-rise 460ms var(--ease-overshoot) backwards;
+  animation-delay: calc(700ms + var(--gn-i) * 170ms);
+}
+
+.gn-band-global .gn-scope-fill {
+  animation: gn-sweep 760ms var(--ease-soft) 1250ms forwards;
+}
+
+/* ── 国家层带：拍 2 落位（动画与延迟全部挂在状态选择器下） ── */
+
+.gn-scene.is-national .gn-band-national {
+  border-color: var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: 7px 8px 0 var(--theme-offset-shadow);
+  animation: gn-band-land 560ms var(--ease-soft) backwards;
+}
+
+.gn-scene.is-national .gn-band-ghost-tag {
+  opacity: 0;
+}
+
+.gn-scene.is-national .gn-band-core > * {
+  animation: gn-rise 460ms var(--ease-overshoot) backwards;
+  animation-delay: calc(240ms + var(--gn-i) * 170ms);
+}
+
+.gn-scene.is-national .gn-band-national .gn-scope-fill {
+  animation: gn-sweep 760ms var(--ease-soft) 760ms forwards;
+}
+
+/* ── 侧栏协同注记：拍 3 落位（同层带骨架语言） ───────────── */
+
+.gn-note {
+  position: relative;
+  min-height: 0;
+  border: 3px dashed var(--theme-dashed-line);
+  border-radius: 4px;
+  background: transparent;
+  opacity: 0.45;
+  transition: opacity 240ms var(--ease-soft),
+    background-color 240ms var(--ease-soft),
+    border-color 240ms var(--ease-soft);
+}
+
+.gn-note-ghost-tag {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  transition: opacity 240ms var(--ease-soft);
+}
+
+.gn-note-core {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 26px;
+  padding: 44px 46px;
+}
+
+.gn-note-core > * {
+  opacity: 0;
+}
+
+/* ── 侧栏落位与内容：动画与延迟全部挂在状态选择器下 ──────── */
+
+.gn-scene.is-note .gn-note {
+  border-color: var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: 7px 8px 0 var(--theme-offset-shadow);
+  animation: gn-band-land 560ms var(--ease-soft) 160ms backwards;
+}
+
+.gn-scene.is-note .gn-note-ghost-tag {
+  opacity: 0;
+}
+
+.gn-scene.is-note .gn-note-core > * {
+  animation: gn-rise 460ms var(--ease-overshoot) backwards;
+  animation-delay: calc(240ms + var(--gn-i) * 150ms);
+}
+
+.gn-note-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.16em;
+  color: var(--theme-process);
+}
+
+.gn-note-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+.gn-note-hero em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.gn-note-rule {
+  width: 100%;
+}
+
+.gn-note-ask {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.gn-note-q {
+  margin: 0;
+  min-width: 0;
+  flex: 1;
+  font-size: 31px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--theme-structural);
+}
+
+.gn-note-q em {
+  font-style: normal;
+  color: var(--theme-process);
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 8px;
+  text-decoration-color: var(--accent-glow);
+}
+
+.gn-finder {
+  width: 168px;
+  height: 118px;
+  flex: none;
+  overflow: visible;
+}
+
+.gn-finder-path {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 130;
+  stroke-dashoffset: 130;
+}
+
+.gn-finder-ring {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-process);
+  stroke-width: 3;
+  opacity: 0;
+}
+
+.gn-finder-q {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  fill: var(--theme-structural);
+  opacity: 0;
+}
+
+.gn-scene.is-note .gn-finder-path {
+  animation: gn-draw 640ms var(--ease-soft) 700ms forwards;
+}
+
+.gn-scene.is-note .gn-finder-ring {
+  animation: gn-pop 360ms var(--ease-overshoot) 1120ms backwards;
+}
+
+.gn-scene.is-note .gn-finder-q {
+  animation: gn-fade 320ms var(--ease-soft) 1300ms backwards;
+}
+
+/* ── keyframes（从态 → 各元素基态，backwards 承接延迟） ──── */
+
+@keyframes gn-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@keyframes gn-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes gn-band-land {
+  from {
+    opacity: 0.45;
+    background: transparent;
+    border-color: var(--theme-dashed-line);
+    box-shadow: none;
+  }
+}
+
+@keyframes gn-chev-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes gn-sweep {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes gn-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes gn-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}

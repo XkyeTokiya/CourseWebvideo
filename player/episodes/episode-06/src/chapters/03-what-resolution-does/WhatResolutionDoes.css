@@ -1,0 +1,607 @@
+/* what-resolution-does · A003 common-anchor-association-groups
+   mechanism: anchor-and-context — 共享锚点持续，关联组围绕展开，边界注收束
+   prefix: wr- */
+
+.wr-scene {
+  gap: 30px;
+}
+
+/* ── 标题：判断方向（S010），持续元素 ─────────────────────── */
+
+.wr-header {
+  display: flex;
+  align-items: baseline;
+}
+
+.wr-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 46px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: wr-fade 480ms var(--ease-soft) backwards;
+}
+
+.wr-headline em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* ── 主区：共享锚点（大块稳定体）+ 关联组 ────────────────── */
+
+.wr-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 720px 1fr;
+  gap: 56px;
+  align-items: stretch;
+}
+
+.wr-anchor {
+  padding: 54px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+  animation: wr-rise 560ms var(--ease-soft) backwards;
+}
+
+.wr-anchor-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 28px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  animation: wr-fade 420ms var(--ease-soft) 60ms backwards;
+}
+
+.wr-anchor-q {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 46px;
+  font-weight: 800;
+  color: var(--text-2);
+  animation: wr-fade 420ms var(--ease-soft) 160ms backwards;
+}
+
+.wr-anchor-rule {
+  width: 220px;
+  border-top-color: var(--theme-process);
+  transform-origin: left center;
+  animation: wr-rule-grow 480ms var(--ease-soft) 420ms backwards;
+}
+
+.wr-anchor-name {
+  margin: 6px 0 0;
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  font-family: var(--font-display-cn);
+  font-size: 96px;
+  font-weight: 900;
+  line-height: 1.12;
+  color: var(--theme-structural);
+  animation: wr-stamp 620ms var(--ease-overshoot) 240ms backwards;
+}
+
+.wr-anchor-pre {
+  flex: none;
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--theme-process);
+}
+
+/* ── 关联组：拍 1 弱化占位，拍 2 激活落位 ──────────────────
+   基础规则延迟一律 0；正向（弱化→激活）延迟只写在 .is-on，
+   反向导航回到弱化/隐藏即时生效。 */
+
+.wr-associations {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+
+.wr-associations.is-weak {
+  opacity: 0.38;
+}
+
+.wr-associations.is-on {
+  opacity: 1;
+  transition-delay: 240ms;
+}
+
+.wr-group {
+  flex: 1;
+  min-height: 0;
+  padding: 24px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  background: var(--surface-3);
+  border: 2px solid var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  animation: wr-fade 520ms var(--ease-soft) 480ms backwards;
+}
+
+.wr-group-objects {
+  --wr-g: 0ms;
+}
+
+.wr-group-results {
+  --wr-g: 1330ms;
+}
+
+.wr-group-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.16em;
+  color: var(--theme-structural);
+}
+
+.wr-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.wr-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 118px;
+  padding: 12px 30px;
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: 10px;
+  background: transparent;
+}
+
+.wr-chip-text {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+.wr-associations.is-on .wr-chip {
+  animation: wr-chip-box 420ms var(--ease-soft) forwards;
+  animation-delay: calc(420ms + var(--wr-g) + var(--wr-i) * 130ms);
+}
+
+.wr-associations.is-on .wr-chip-text {
+  animation: wr-chip-in 420ms var(--ease-overshoot) forwards;
+  animation-delay: calc(440ms + var(--wr-g) + var(--wr-i) * 130ms);
+}
+
+@keyframes wr-chip-box {
+  from {
+    border-style: dashed;
+    border-color: var(--theme-dashed-line);
+    background: transparent;
+  }
+  to {
+    border-style: solid;
+    border-color: var(--theme-structural);
+    background: var(--surface-2);
+  }
+}
+
+@keyframes wr-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 关系词：竖排阅读次序承载“解析成”，不画箭头 */
+
+.wr-link-word {
+  margin: 0;
+  align-self: center;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  color: var(--text-mute);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+
+.wr-associations.is-on .wr-link-word {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1560ms;
+}
+
+.wr-group-foot {
+  margin: 0;
+  font-size: 27px;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+
+.wr-associations.is-on .wr-group-foot {
+  opacity: 1;
+  transition-delay: calc(1150ms + var(--wr-g));
+}
+
+/* ── 边界注：拍 3 落位收束 + 错/对小型对照示意 ────────────── */
+
+.wr-boundary {
+  flex: none;
+  padding: 30px 44px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px 500px;
+  gap: 32px;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+
+.wr-boundary.is-on {
+  opacity: 1;
+  transform: none;
+  transition-delay: 150ms;
+}
+
+.wr-boundary-cap {
+  margin: 0 0 10px;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.16em;
+  color: var(--theme-warning);
+}
+
+.wr-boundary-judgment {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.6;
+  color: var(--theme-structural);
+}
+
+.wr-boundary-judgment .wr-no {
+  color: var(--theme-danger);
+}
+
+.wr-boundary-judgment .wr-yes {
+  color: var(--theme-process);
+}
+
+/* 对照示意：错侧拆散（danger），对侧定位查询（process），无箭头 */
+
+.wr-panel {
+  align-self: stretch;
+  padding: 20px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  border-radius: 10px;
+  opacity: 0;
+}
+
+.wr-panel-wrong {
+  background: var(--theme-danger-surface);
+  border: 2px solid var(--theme-danger);
+}
+
+.wr-panel-right {
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+}
+
+.wr-boundary.is-on .wr-panel {
+  animation: wr-panel-in 400ms var(--ease-soft) forwards;
+  animation-delay: var(--wr-p);
+}
+
+.wr-panel-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  letter-spacing: 0.1em;
+  color: var(--theme-structural);
+}
+
+.wr-panel-wrong .wr-panel-tag {
+  color: var(--theme-danger);
+}
+
+.wr-panel-right .wr-panel-tag {
+  color: var(--theme-process);
+}
+
+/* 错侧：三段字符块被拆散 + 交叉删除线 */
+
+.wr-cells-zone {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.wr-cells {
+  display: flex;
+  gap: 12px;
+}
+
+.wr-cell {
+  width: 46px;
+  height: 52px;
+  border: 2px solid var(--theme-structural);
+  border-radius: 6px;
+  background: var(--surface-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.wr-cell i {
+  display: block;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--theme-structural);
+}
+
+.wr-cell i:first-child {
+  width: 24px;
+}
+
+.wr-cell i:last-child {
+  width: 14px;
+}
+
+.wr-boundary.is-on .wr-panel-wrong .wr-cell {
+  animation: wr-scatter 620ms var(--ease-soft) forwards;
+  animation-delay: calc(1050ms + var(--wr-i) * 130ms);
+}
+
+.wr-boundary.is-on .wr-panel-wrong .wr-cell:nth-child(1) {
+  --wr-spread: translate(-30px, -8px) rotate(-12deg);
+}
+
+.wr-boundary.is-on .wr-panel-wrong .wr-cell:nth-child(2) {
+  --wr-spread: translate(0, -22px) rotate(5deg);
+}
+
+.wr-boundary.is-on .wr-panel-wrong .wr-cell:nth-child(3) {
+  --wr-spread: translate(32px, -6px) rotate(11deg);
+}
+
+.wr-strike {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 190px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--theme-danger);
+  transform: translate(-50%, -50%) rotate(var(--wr-tilt)) scaleX(0);
+}
+
+.wr-strike-a {
+  --wr-tilt: 22deg;
+}
+
+.wr-strike-b {
+  --wr-tilt: -22deg;
+}
+
+.wr-boundary.is-on .wr-strike {
+  animation: wr-strike-in 380ms var(--ease-soft) forwards;
+  animation-delay: 1550ms;
+}
+
+/* 对侧：字符块保持完整 → 瞄准环自绘 → 定位/查询小牌 */
+
+.wr-locate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+}
+
+.wr-cells-frame {
+  flex: none;
+  padding: 10px;
+  display: flex;
+  gap: 8px;
+  border: 2px solid var(--theme-structural);
+  border-radius: 8px;
+  background: var(--surface-2);
+}
+
+.wr-cells-frame .wr-cell {
+  width: 34px;
+  height: 40px;
+  gap: 5px;
+}
+
+.wr-cells-frame .wr-cell i {
+  height: 4px;
+}
+
+.wr-cells-frame .wr-cell i:first-child {
+  width: 18px;
+}
+
+.wr-cells-frame .wr-cell i:last-child {
+  width: 11px;
+}
+
+.wr-crosshair {
+  flex: none;
+  width: 66px;
+  height: 66px;
+  overflow: visible;
+}
+
+.wr-ch-outer,
+.wr-ch-inner {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3;
+}
+
+.wr-ch-outer {
+  stroke-dasharray: 183;
+  stroke-dashoffset: 183;
+}
+
+.wr-ch-inner {
+  stroke-dasharray: 95;
+  stroke-dashoffset: 95;
+  stroke-width: 2.5;
+}
+
+.wr-ch-dot {
+  fill: var(--theme-process);
+  opacity: 0;
+}
+
+.wr-ch-tick {
+  stroke: var(--theme-process);
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0;
+}
+
+.wr-boundary.is-on .wr-ch-outer {
+  animation: wr-draw 700ms var(--ease-soft) forwards;
+  animation-delay: 2450ms;
+}
+
+.wr-boundary.is-on .wr-ch-inner {
+  animation: wr-draw 500ms var(--ease-soft) forwards;
+  animation-delay: 2900ms;
+}
+
+.wr-boundary.is-on .wr-ch-dot,
+.wr-boundary.is-on .wr-ch-tick {
+  animation: wr-fade 320ms var(--ease-soft) forwards;
+  animation-delay: 3220ms;
+}
+
+.wr-plates {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wr-plate {
+  padding: 8px 20px;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--theme-process);
+  border: 2px solid var(--theme-process);
+  border-radius: 8px;
+  background: var(--surface-2);
+  opacity: 0;
+}
+
+.wr-boundary.is-on .wr-plate {
+  animation: wr-plate-in 380ms var(--ease-overshoot) forwards;
+  animation-delay: calc(3300ms + var(--wr-i) * 130ms);
+}
+
+/* ── keyframes（状态门控段） ─────────────────────────────── */
+
+@keyframes wr-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes wr-scatter {
+  to {
+    opacity: 0.55;
+    transform: var(--wr-spread, none);
+  }
+}
+
+@keyframes wr-strike-in {
+  to {
+    transform: translate(-50%, -50%) rotate(var(--wr-tilt)) scaleX(1);
+  }
+}
+
+@keyframes wr-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes wr-plate-in {
+  from {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── keyframes（进章即播段） ─────────────────────────────── */
+
+@keyframes wr-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes wr-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes wr-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes wr-rule-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

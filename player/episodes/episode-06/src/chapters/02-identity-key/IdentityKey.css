@@ -1,0 +1,533 @@
+/* identity-key · A002 image-with-insight-rail
+   mechanism: persistent-media-reading — 特写图持续，洞察栏逐拍补充键定义/关联信息/不写入原因，焦点随口播迁移
+   prefix: ik- */
+
+.ik-scene {
+  gap: 30px;
+}
+
+/* ── 头部：判断方向标题（S006），否定线待拍 3 论证完成后划下 ── */
+
+.ik-header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ik-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 47px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: ik-rise 560ms var(--ease-soft) backwards;
+}
+
+.ik-hl {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.ik-hl-no {
+  position: relative;
+}
+
+.ik-hl-no::after {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 58%;
+  height: 5px;
+  width: 0;
+  background: var(--theme-danger);
+  transform: rotate(-1.6deg);
+  transition: width 460ms var(--ease-soft);
+}
+
+.ik-scene[data-state="stability-reasoned"] .ik-hl-no::after {
+  width: calc(100% + 6px);
+  transition-delay: 950ms;
+}
+
+.ik-header-rule {
+  transform-origin: left center;
+  animation: ik-grow 720ms var(--ease-soft) 220ms backwards;
+}
+
+/* ── 主区：左 = 特写图占位（M002，持续） + 锚点图示；右 = 洞察栏 ── */
+
+.ik-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 680px 1fr;
+  gap: 56px;
+  align-items: stretch;
+}
+
+.ik-media-col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.ik-media {
+  margin: 0;
+  display: flex;
+}
+
+.ik-photo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-style: dashed;
+  border-width: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  animation: ik-rise 620ms var(--ease-soft) 140ms backwards;
+}
+
+.ik-ph-label {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.ik-ph-desc {
+  font-size: 24px;
+  color: var(--text-faint);
+  text-align: center;
+  max-width: 480px;
+  line-height: 1.5;
+}
+
+/* ── 锚点图示：键块恒定 + 其下信息项挂载/更替（持续元素） ── */
+
+.ik-anchor {
+  flex: 1;
+  min-height: 0;
+  padding: 24px 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  animation: ik-rise 620ms var(--ease-soft) 260ms backwards;
+}
+
+.ik-anchor-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.ik-key-plate {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 24px;
+  background: var(--theme-structural);
+  border-radius: 12px;
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  animation: ik-rise 520ms var(--ease-soft) 460ms backwards;
+}
+
+.ik-key-glyph {
+  width: 76px;
+  height: 50px;
+  flex: none;
+  overflow: visible;
+}
+
+.ik-kg {
+  stroke: var(--industrial-green-line);
+  stroke-width: 6;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ik-kg-bow {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: ik-draw 560ms var(--ease-soft) 680ms forwards;
+}
+
+.ik-kg-shaft {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: ik-draw 420ms var(--ease-soft) 960ms forwards;
+}
+
+.ik-kg-tooth {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: ik-draw 300ms var(--ease-soft) 1180ms forwards;
+}
+
+.ik-kg-tooth + .ik-kg-tooth {
+  animation-delay: 1300ms;
+}
+
+.ik-key-text {
+  min-width: 0;
+}
+
+.ik-key-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--surface-2);
+}
+
+.ik-key-sub {
+  margin: 4px 0 0;
+  font-family: var(--font-body);
+  font-size: 20px;
+  color: var(--rule);
+}
+
+.ik-key-lock {
+  margin-left: auto;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 15px;
+  background: var(--surface-2);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 360ms var(--ease-overshoot),
+    transform 360ms var(--ease-overshoot);
+}
+
+.ik-lock-glyph {
+  width: 22px;
+  height: 22px;
+  stroke: var(--theme-process);
+  stroke-width: 2.4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ik-scene[data-state="stability-reasoned"] .ik-key-lock {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1050ms;
+}
+
+.ik-scene[data-state="stability-reasoned"] .ik-key-plate {
+  animation: ik-hold 880ms var(--ease-soft) 1150ms backwards;
+}
+
+/* ── 挂载区：拍 1 空槽占位，拍 2 信息项落位，拍 3 状态项演示更替 ── */
+
+.ik-mount {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.ik-chips {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.ik-chip {
+  position: relative;
+  min-height: 76px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  border-radius: 10px;
+  opacity: 0.55;
+}
+
+.ik-chip.is-in {
+  border-style: solid;
+  background: var(--theme-cool-surface);
+  opacity: 1;
+  animation: ik-chip-in 460ms var(--ease-overshoot) both;
+  animation-delay: calc(300ms + var(--ik-d));
+}
+
+.ik-chip-face {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+.ik-chip-b {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.ik-refresh-glyph {
+  width: 24px;
+  height: 24px;
+  stroke: var(--theme-process);
+  stroke-width: 2.6;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ik-scene[data-state="stability-reasoned"] .ik-chip--state .ik-chip-a {
+  animation: ik-swap-out 380ms var(--ease-soft) 1500ms both;
+}
+
+.ik-scene[data-state="stability-reasoned"] .ik-chip--state .ik-chip-b {
+  animation: ik-swap-in 480ms var(--ease-overshoot) 1880ms both;
+}
+
+.ik-mount-cap {
+  position: relative;
+  margin: 0;
+  height: 30px;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.ik-cap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.ik-scene[data-state="key-defined"] .ik-cap--key {
+  animation: ik-cap-in 420ms var(--ease-soft) 900ms both;
+}
+
+.ik-scene[data-state="linked-info-listed"] .ik-cap--info {
+  animation: ik-cap-in 420ms var(--ease-soft) 1750ms both;
+}
+
+.ik-scene[data-state="stability-reasoned"] .ik-cap--stable {
+  animation: ik-cap-in 420ms var(--ease-soft) 2250ms both;
+}
+
+/* ── 洞察栏：键定义 → 关联信息 → 不写入原因，逐拍落位（键条在前、信息条在后） ── */
+
+.ik-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.ik-entry {
+  padding: 26px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+}
+
+.ik-entry.is-on {
+  animation: ik-entry-in 640ms var(--ease-soft) both;
+}
+
+.ik-entry--key.is-on {
+  animation-delay: 200ms;
+}
+
+.ik-entry--info.is-on {
+  /* 拍 2：信息项 chips 先挂载（前提），判断条后置落位 */
+  animation-delay: 950ms;
+}
+
+.ik-entry--why.is-on {
+  animation-delay: 140ms;
+}
+
+.ik-entry--why {
+  flex: 1;
+  justify-content: center;
+  background: var(--theme-process-surface);
+}
+
+.ik-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.15em;
+  color: var(--text-mute);
+}
+
+.ik-entry--why .ik-tag {
+  color: var(--theme-process);
+}
+
+.ik-main-line {
+  margin: 4px 0 0;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--theme-structural);
+}
+
+.ik-main-line strong {
+  font-weight: 900;
+}
+
+.ik-term {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+.ik-sub-line {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.ik-entry--why .ik-sub-line {
+  color: var(--theme-structural);
+}
+
+.ik-principle {
+  margin: 8px 0 0;
+  font-size: 31px;
+  font-weight: 700;
+  line-height: 1.55;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+/* 拍 3：原则（判断句）后置于设问与原因行 */
+.ik-scene[data-state="stability-reasoned"] .ik-entry--why.is-on .ik-principle {
+  animation: ik-rise 480ms var(--ease-soft) 820ms both;
+}
+
+.ik-principle strong {
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes ik-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ik-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes ik-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ik-entry-in {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  55% {
+    opacity: 1;
+    transform: none;
+    box-shadow: 0 0 0 8px var(--accent-glow);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    box-shadow: var(--card-shadow, none);
+  }
+}
+
+@keyframes ik-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ik-swap-out {
+  to {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes ik-swap-in {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ik-cap-in {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ik-hold {
+  0% {
+    transform: none;
+    box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  }
+  40% {
+    transform: scale(1.015);
+    box-shadow: 0 0 0 5px var(--accent-glow), 6px 7px 0 var(--theme-offset-shadow);
+  }
+  100% {
+    transform: none;
+    box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  }
+}

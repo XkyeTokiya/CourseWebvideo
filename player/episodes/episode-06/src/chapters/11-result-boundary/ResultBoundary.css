@@ -1,0 +1,573 @@
+/* result-boundary · A011 evidence-cards-with-provenance-boundary
+   mechanism: cumulative-assembly — 口径带→证据卡→边界栏固定结构内逐层组装；两卡并列“例如”框架，判断收束于边界栏
+   prefix: rb- */
+
+.rb-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── 头部：判断方向标题（持续元素，进章即播） ───────────── */
+
+.rb-header {
+  flex: none;
+}
+
+.rb-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: rb-rise 560ms var(--ease-soft) backwards;
+}
+
+.rb-headline em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* ── 主区：口径带 → 证据卡 → 边界栏（固定结构，逐层组装） ── */
+
+.rb-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── 来源口径带（拍 1 落位，进章即播） ─────────────────── */
+
+.rb-band {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rb-band-rule {
+  transform-origin: left center;
+  animation: rb-rule-grow 560ms var(--ease-soft) 140ms backwards;
+}
+
+.rb-band-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+  animation: rb-fade 440ms var(--ease-soft) 320ms backwards;
+}
+
+/* ── 证据卡 ×2（拍 1 依次落位并列，信息卡先行） ────────── */
+
+.rb-cards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+
+/* 拍 2 判断收束时两卡等权轻微让位（延迟只在弱化态规则上，反向导航即时恢复） */
+.is-concluded .rb-cards {
+  opacity: 0.85;
+  transition-delay: 1500ms;
+}
+
+.rb-card {
+  min-height: 0;
+  padding: 34px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.rb-card[data-kind="info"] {
+  animation: rb-card-in 480ms var(--ease-overshoot) 560ms backwards;
+}
+
+.rb-card[data-kind="entry"] {
+  animation: rb-card-in 480ms var(--ease-overshoot) 1860ms backwards;
+}
+
+.rb-card-head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.rb-card-type {
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--theme-structural);
+}
+
+.rb-card-eg {
+  padding: 7px 18px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  color: var(--theme-process);
+  background: var(--accent-soft);
+  border: 2px solid var(--theme-process);
+  border-radius: 6px;
+  opacity: 0;
+}
+
+.is-on .rb-card-eg {
+  animation: rb-fade 320ms var(--ease-soft) forwards;
+}
+
+.is-on .rb-card[data-kind="info"] .rb-card-eg {
+  animation-delay: 880ms;
+}
+
+.is-on .rb-card[data-kind="entry"] .rb-card-eg {
+  animation-delay: 2260ms;
+}
+
+/* 信息卡：地址/位置/元数据 逐行落位（“例如”清单） */
+
+.rb-chips {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.rb-chip {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 15px 6px;
+  border-bottom: 2px dashed var(--theme-grid-line);
+  opacity: 0;
+}
+
+.is-on .rb-chip {
+  animation: rb-chip-in 360ms var(--ease-overshoot) forwards;
+  animation-delay: calc(880ms + var(--rb-ci) * 140ms);
+}
+
+.rb-chip-idx {
+  font-size: 26px;
+  color: var(--theme-process);
+}
+
+.rb-chip-word {
+  font-family: var(--font-body);
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+.rb-card-sub {
+  margin: auto 0 0;
+  font-family: var(--font-body);
+  font-size: 28px;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.is-on .rb-card[data-kind="info"] .rb-card-sub {
+  animation: rb-fade 340ms var(--ease-soft) 1520ms forwards;
+}
+
+/* 入口卡：继续访问某项服务（抽象箭头示意） */
+
+.rb-card-line {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+.is-on .rb-card[data-kind="entry"] .rb-card-line {
+  animation: rb-fade 340ms var(--ease-soft) 2260ms forwards;
+}
+
+/* ── 入口演示：箭头穿过槽口进入服务（进章即播，挂在 is-on 状态下） ── */
+
+.rb-entry {
+  width: 100%;
+  max-width: 520px;
+  margin: auto auto 0;
+  display: block;
+  overflow: visible;
+}
+
+.rb-entry-slab {
+  fill: var(--surface-3);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+  opacity: 0;
+}
+
+.is-on .rb-entry-slab {
+  animation: rb-pop 360ms var(--ease-overshoot) 2560ms forwards;
+}
+
+.rb-entry-slab-text {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  fill: var(--theme-structural);
+  text-anchor: middle;
+  opacity: 0;
+}
+
+.is-on .rb-entry-slab-text {
+  animation: rb-fade 280ms var(--ease-soft) 3460ms forwards;
+}
+
+.rb-entry-slot {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+  opacity: 0;
+}
+
+.is-on .rb-entry-slot {
+  animation: rb-fade 280ms var(--ease-soft) 2740ms forwards;
+}
+
+.rb-entry-dot {
+  fill: var(--theme-structural);
+  opacity: 0;
+}
+
+.is-on .rb-entry-dot {
+  animation: rb-pop 280ms var(--ease-overshoot) 2900ms forwards;
+}
+
+.rb-entry-arrow {
+  stroke: var(--theme-process);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+}
+
+.is-on .rb-entry-arrow {
+  animation: rb-draw 440ms var(--ease-soft) 3080ms forwards;
+}
+
+.rb-entry-head {
+  stroke: var(--theme-process);
+  stroke-width: 6;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 70;
+  stroke-dashoffset: 70;
+}
+
+.is-on .rb-entry-head {
+  animation: rb-draw 240ms var(--ease-soft) 3460ms forwards;
+}
+
+.rb-entry-cap {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.12em;
+  fill: var(--theme-process);
+  opacity: 0;
+}
+
+.is-on .rb-entry-cap {
+  animation: rb-fade 280ms var(--ease-soft) 3280ms forwards;
+}
+
+/* ── 推断边界栏（拍 2 落位：状态门控，反向导航即时隐藏） ── */
+
+.rb-boundary {
+  flex: none;
+  padding: 30px 44px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-warning);
+  border-radius: var(--r-card);
+  box-shadow: 7px 8px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+
+.is-concluded .rb-boundary {
+  opacity: 1;
+  transform: none;
+  transition-delay: 160ms;
+}
+
+.rb-boundary-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rb-boundary-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.16em;
+  color: var(--theme-warning);
+  opacity: 0;
+}
+
+.is-concluded .rb-boundary-kicker {
+  animation: rb-fade 300ms var(--ease-soft) 380ms forwards;
+}
+
+.rb-boundary-mech {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+.is-concluded .rb-boundary-mech {
+  animation: rb-rise 420ms var(--ease-overshoot) 620ms forwards;
+}
+
+.rb-boundary-judge {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 30px;
+  line-height: 1.55;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.is-concluded .rb-boundary-judge {
+  animation: rb-rise 480ms var(--ease-soft) 2400ms forwards;
+}
+
+.rb-boundary-judge em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-danger);
+}
+
+/* 边界演示：边界线自上生长，结果停在界前，受控数据逐层叠在界后 */
+
+.rb-boundary-visual {
+  flex: none;
+  width: 620px;
+}
+
+.rb-bd {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.rb-bd-behind-cap {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  fill: var(--theme-warning);
+  opacity: 0;
+}
+
+.is-concluded .rb-bd-behind-cap {
+  animation: rb-fade 300ms var(--ease-soft) 1420ms forwards;
+}
+
+.rb-bd-slab {
+  opacity: 0;
+}
+
+.is-concluded .rb-bd-slab {
+  animation: rb-slab-in 400ms var(--ease-overshoot) forwards;
+  animation-delay: calc(1600ms + var(--rb-bi) * 150ms);
+}
+
+.rb-bd-slab rect {
+  fill: var(--theme-warning-surface);
+  stroke: var(--theme-warning);
+  stroke-width: 2.5;
+}
+
+.rb-bd-slab text {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  fill: var(--theme-structural);
+  text-anchor: middle;
+}
+
+.rb-bd-line {
+  stroke: var(--theme-warning);
+  stroke-width: 7;
+  stroke-linecap: round;
+  transform: scaleY(0);
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.is-concluded .rb-bd-line {
+  animation: rb-line-grow 560ms var(--ease-overshoot) 1040ms forwards;
+}
+
+.rb-bd-line-cap {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  fill: var(--theme-warning);
+  text-anchor: middle;
+  opacity: 0;
+}
+
+.is-concluded .rb-bd-line-cap {
+  animation: rb-fade 280ms var(--ease-soft) 980ms forwards;
+}
+
+.rb-bd-front {
+  opacity: 0;
+}
+
+.is-concluded .rb-bd-front {
+  animation: rb-svg-rise 400ms var(--ease-soft) 1240ms forwards;
+}
+
+.rb-bd-front-chip {
+  fill: var(--surface-3);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.rb-bd-front-text {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  fill: var(--theme-structural);
+  text-anchor: middle;
+}
+
+.rb-bd-front-arrow {
+  stroke: var(--theme-structural);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.rb-bd-front-head {
+  stroke: var(--theme-structural);
+  stroke-width: 5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes rb-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rb-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rb-rule-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rb-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rb-chip-in {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rb-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rb-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes rb-line-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes rb-slab-in {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rb-svg-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

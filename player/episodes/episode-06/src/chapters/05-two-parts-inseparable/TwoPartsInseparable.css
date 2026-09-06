@@ -1,0 +1,519 @@
+/* two-parts-inseparable · A005 split-compare-with-thesis
+   mechanism: compare-and-reweight — 左右两栏等宽并列、同时持续呈现，
+   底部判断条（两种失败对照）收束"缺一不可"；不轮播卡片
+   prefix: tp- */
+
+.tp-scene {
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+/* ── 头部：判断方向标题（持续元素；结论词随拍 2 着色） ── */
+
+.tp-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 46px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: tp-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.tp-headline em {
+  font-style: normal;
+  color: var(--text-2);
+  transition: color 480ms var(--ease-soft);
+}
+
+/* 方向化延迟：只在收束态写延迟，反向导航即时回落 */
+.tp-scene.is-concluded .tp-headline em {
+  color: var(--theme-process);
+  transition-delay: 520ms;
+}
+
+.tp-parts-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+  animation: tp-fade-in 480ms var(--ease-soft) 260ms backwards;
+}
+
+/* ── 两栏：等宽并列、同时呈现（进章即播，挂本体） ───── */
+
+.tp-cols {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+}
+
+.tp-col {
+  min-width: 0;
+  padding: 30px 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tp-col--code {
+  animation: tp-rise-in 640ms var(--ease-overshoot) 480ms backwards;
+}
+
+.tp-col--res {
+  animation: tp-rise-in 640ms var(--ease-overshoot) 980ms backwards;
+}
+
+.tp-col-head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tp-part-no {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+}
+
+.tp-term {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.tp-duty {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+.tp-duty strong {
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+/* ── 左栏图示：编码 → 赋予 → 对象身份（进章即播） ────── */
+
+.tp-dgm {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: block;
+}
+
+.tp-code-box {
+  fill: var(--theme-cool-surface);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+}
+
+.tp-code-cell {
+  fill: var(--theme-structural);
+  animation: tp-cell-in 320ms var(--ease-overshoot) backwards;
+  animation-delay: calc(1050ms + var(--d));
+}
+
+.tp-dgm-label {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  fill: var(--text-mute);
+}
+
+.tp-dgm-cap {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  fill: var(--text-2);
+  animation: tp-fade-in 380ms var(--ease-soft) 1550ms backwards;
+}
+
+.tp-grant-arrow {
+  stroke: var(--theme-process);
+  stroke-width: 4;
+  stroke-dasharray: 130;
+  stroke-dashoffset: 130;
+  animation: tp-draw 420ms var(--ease-soft) 1350ms forwards;
+}
+
+.tp-grant-head {
+  fill: var(--theme-process);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tp-pop 300ms var(--ease-overshoot) 1650ms backwards;
+}
+
+.tp-part-body {
+  fill: var(--surface-3);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.tp-part-hole {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+}
+
+.tp-id-tie {
+  stroke: var(--theme-process);
+  stroke-width: 2.5;
+  animation: tp-fade-in 300ms var(--ease-soft) 1800ms backwards;
+}
+
+.tp-id-tag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tp-pop 460ms var(--ease-overshoot) 1850ms backwards;
+}
+
+.tp-id-tag-rect {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-process);
+  stroke-width: 2.5;
+}
+
+.tp-id-tag-text {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  fill: var(--theme-process);
+}
+
+/* ── 右栏图示：身份 → 查询 → 定位/信息（进章即播） ───── */
+
+.tp-id-chip {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tp-pop 420ms var(--ease-overshoot) 1750ms backwards;
+}
+
+.tp-chip-rect {
+  fill: var(--theme-cool-surface);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+}
+
+.tp-chip-text {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  fill: var(--theme-structural);
+}
+
+.tp-look-arrow {
+  stroke: var(--theme-process);
+  stroke-width: 4;
+  stroke-dasharray: 106;
+  stroke-dashoffset: 106;
+  animation: tp-draw 380ms var(--ease-soft) 2000ms forwards;
+}
+
+.tp-look-head {
+  fill: var(--theme-process);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tp-pop 300ms var(--ease-overshoot) 2280ms backwards;
+}
+
+.tp-look-cap {
+  animation-delay: 2350ms;
+}
+
+.tp-look-frame {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+  animation: tp-fade-in 460ms var(--ease-soft) 2200ms backwards;
+}
+
+.tp-look-scope {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tp-pop 360ms var(--ease-overshoot) 2450ms backwards;
+}
+
+.tp-scope-glass {
+  fill: var(--theme-paper);
+  stroke: var(--theme-process);
+  stroke-width: 4;
+}
+
+.tp-scope-handle {
+  stroke: var(--theme-process);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.tp-look-row {
+  opacity: 0;
+  animation: tp-row-in 420ms var(--ease-soft) forwards;
+}
+
+.tp-row-1 {
+  animation-delay: 2600ms;
+}
+
+.tp-row-2 {
+  animation-delay: 2850ms;
+}
+
+.tp-row-pin-head {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3;
+}
+
+.tp-row-pin-stem {
+  stroke: var(--theme-process);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.tp-row-line {
+  fill: var(--theme-process);
+}
+
+.tp-row-text {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  fill: var(--theme-structural);
+}
+
+/* ── 底部判断条：拍 2 落位（门控在状态选择器下） ─────── */
+
+.tp-thesis {
+  flex: none;
+  padding: 26px 44px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 480ms var(--ease-soft),
+    transform 480ms var(--ease-soft);
+}
+
+/* 方向化延迟：激活态才延迟；反向导航按基础规则即时收起 */
+.tp-scene.is-concluded .tp-thesis {
+  opacity: 1;
+  transform: none;
+  transition-delay: 160ms;
+}
+
+.tp-thesis-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tp-thesis-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  color: var(--rule);
+}
+
+.tp-thesis-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--theme-paper);
+}
+
+.tp-thesis-sep {
+  flex: none;
+  align-self: stretch;
+  border-left: 2px dashed var(--rule);
+}
+
+.tp-fails {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.tp-fail {
+  min-width: 0;
+  padding: 20px 26px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  background: var(--theme-paper);
+  border: 2px solid var(--theme-danger);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+}
+
+.tp-fail[data-tone="warn"] {
+  border-color: var(--theme-warning);
+}
+
+/* 状态门控：仅在收束态播放，移除状态即回到 opacity 0 */
+.tp-scene.is-concluded .tp-fail {
+  animation: tp-fail-in 460ms var(--ease-overshoot) forwards;
+  animation-delay: calc(760ms + var(--tp-i) * 420ms);
+}
+
+.tp-fail-icon {
+  width: 74px;
+  height: 74px;
+  flex: none;
+}
+
+.tp-fail-cell {
+  fill: var(--theme-structural);
+}
+
+.tp-fail-miss {
+  fill: none;
+  stroke: var(--theme-danger);
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+  opacity: 0;
+}
+
+.tp-scene.is-concluded .tp-fail-miss {
+  animation: tp-fade-in 380ms var(--ease-soft) 1450ms forwards;
+}
+
+.tp-fail-scope {
+  fill: var(--theme-paper);
+  stroke: var(--theme-warning);
+  stroke-width: 4;
+}
+
+.tp-fail-handle {
+  stroke: var(--theme-warning);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.tp-fail-q {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 900;
+  fill: var(--theme-warning);
+  opacity: 0;
+}
+
+.tp-scene.is-concluded .tp-fail-q {
+  animation: tp-fade-in 380ms var(--ease-soft) 1520ms forwards;
+}
+
+.tp-fail-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tp-fail-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: var(--text-mute);
+}
+
+.tp-fail-result {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--theme-danger);
+}
+
+.tp-fail[data-tone="warn"] .tp-fail-result {
+  color: var(--theme-warning);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes tp-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tp-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tp-cell-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tp-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes tp-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tp-row-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tp-fail-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+

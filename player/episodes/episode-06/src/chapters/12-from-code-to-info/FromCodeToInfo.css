@@ -1,0 +1,640 @@
+/* from-code-to-info · A012 image-with-summary-rail
+   mechanism: ordered-progression — 总结栏按完整链路顺序重走（逐环点亮+轨道充能），
+   走完后判断随口播向主线与 final-judgment 收束；两问两答对仗由总结栏条目次序承载
+   prefix: fc- */
+
+.fc-scene {
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+/* ── 头部：判断方向标题（进章即播） ─────────────────────── */
+
+.fc-header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.fc-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 46px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: fc-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.fc-headline em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.fc-toprule {
+  animation: fc-fade-in 560ms var(--ease-soft) 200ms backwards;
+}
+
+/* ── 主区：现场回扣图占位（16:9 比例框） + 总结栏 ────────── */
+
+.fc-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 580px 1fr;
+  gap: 46px;
+  align-items: stretch;
+}
+
+.fc-media {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+}
+
+.fc-photo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border-style: dashed;
+  border-width: 3px;
+  animation: fc-fade-in 620ms var(--ease-soft) 140ms backwards;
+}
+
+.fc-ph-label {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.fc-ph-desc {
+  font-size: 25px;
+  color: var(--text-faint);
+  text-align: center;
+  max-width: 460px;
+  line-height: 1.5;
+}
+
+.fc-ph-echo {
+  align-self: center;
+  padding: 8px 22px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  animation: fc-fade-in 560ms var(--ease-soft) 340ms backwards;
+}
+
+/* ── 总结栏：链路重走 → 转变图示 → 主线收拢（槽位固定，逐拍落位） ── */
+
+.fc-rail {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.fc-rail-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+/* ── 完整链路：五环逐环点亮重走，轨道随级联充能 ─────────── */
+
+.fc-chain {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fc-fade-in 560ms var(--ease-soft) 260ms backwards;
+}
+
+.fc-chain-track {
+  position: relative;
+  padding: 6px 0;
+}
+
+.fc-rail-line {
+  position: absolute;
+  left: 14px;
+  top: 16px;
+  bottom: 16px;
+  width: 0;
+  border-left: 2px dashed var(--rule);
+}
+
+.fc-rail-fill {
+  position: absolute;
+  left: 14px;
+  top: 16px;
+  bottom: 16px;
+  width: 2px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.fc-chain.is-on .fc-rail-fill {
+  animation: fc-charge 2.3s var(--ease-soft) 620ms forwards;
+}
+
+.fc-chain-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.fc-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 4px 0 4px 34px;
+  opacity: 0;
+}
+
+.fc-dot {
+  position: absolute;
+  left: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: var(--surface-2);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.fc-chain.is-on .fc-link {
+  animation: fc-link-in 460ms var(--ease-soft) forwards;
+  animation-delay: calc(620ms + var(--fc-i) * 320ms);
+}
+
+.fc-chain.is-on .fc-dot {
+  animation: fc-dot-in 420ms var(--ease-overshoot) forwards;
+  animation-delay: calc(620ms + var(--fc-i) * 320ms);
+}
+
+.fc-link.is-return .fc-dot {
+  background: var(--accent);
+}
+
+.fc-link-label {
+  font-size: 29px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+.fc-link.is-return .fc-link-label {
+  color: var(--theme-process);
+}
+
+.fc-link-tag {
+  flex: none;
+  padding: 4px 14px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.1em;
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+}
+
+/* ── 转变图示：一串字符 → 可查询的基础（钥匙） ──────────── */
+
+.fc-transform {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 14px 30px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+
+.fc-transform.is-on {
+  opacity: 1;
+  transform: none;
+  transition-delay: 180ms;
+}
+
+.fc-t-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.fc-tiles {
+  width: 262px;
+  height: 58px;
+  flex: none;
+  overflow: visible;
+}
+
+.fc-tile {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.fc-transform.is-on .fc-tile {
+  animation: fc-tile-in 380ms var(--ease-overshoot) forwards;
+  animation-delay: calc(700ms + var(--fc-i) * 130ms);
+}
+
+.fc-tile-box {
+  fill: var(--surface-3);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+.fc-tile-bar {
+  fill: var(--text-mute);
+}
+
+.fc-t-cap {
+  font-size: 26px;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.fc-t-cap-strong {
+  font-weight: 700;
+  color: var(--theme-process);
+}
+
+.fc-transform.is-on .fc-t-cap {
+  animation: fc-fade-in 420ms var(--ease-soft) forwards;
+  animation-delay: 860ms;
+}
+
+.fc-transform.is-on .fc-t-cap-strong {
+  animation-delay: 2400ms;
+}
+
+.fc-t-arrow {
+  width: 64px;
+  height: 24px;
+  flex: none;
+  overflow: visible;
+}
+
+.fc-t-arrow-line,
+.fc-t-arrow-head {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.fc-t-arrow-line {
+  stroke-dasharray: 46;
+  stroke-dashoffset: 46;
+}
+
+.fc-t-arrow-head {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+}
+
+.fc-transform.is-on .fc-t-arrow-line {
+  animation: fc-draw 480ms var(--ease-soft) 1650ms forwards;
+}
+
+.fc-transform.is-on .fc-t-arrow-head {
+  animation: fc-draw 340ms var(--ease-soft) 1980ms forwards;
+}
+
+.fc-t-key {
+  width: 110px;
+  height: 53px;
+  overflow: visible;
+  opacity: 0;
+}
+
+.fc-key-bow {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 5;
+}
+
+.fc-key-hole {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 4;
+}
+
+.fc-key-shaft {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.fc-transform.is-on .fc-t-key {
+  animation: fc-key-in 560ms var(--ease-overshoot) 2150ms forwards;
+}
+
+/* ── 主线收拢：编码/解析两问两答对仗，节点协作跨范围 ─────── */
+
+.fc-mainline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fc-mainline .fc-rail-cap {
+  opacity: 0;
+}
+
+.fc-mainline.is-on .fc-rail-cap {
+  animation: fc-fade-in 420ms var(--ease-soft) 200ms forwards;
+}
+
+.fc-ml-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fc-ml-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 6px 20px;
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+  opacity: 0;
+}
+
+.fc-ml-row.is-span {
+  border-style: dashed;
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.fc-mainline.is-on .fc-ml-row {
+  animation: fc-ml-in 460ms var(--ease-soft) forwards;
+  animation-delay: calc(340ms + var(--fc-i) * 340ms);
+}
+
+.fc-ml-tag {
+  flex: none;
+  min-width: 170px;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--theme-structural);
+}
+
+.fc-ml-text {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+.fc-ml-row.is-span .fc-ml-text {
+  color: var(--theme-process);
+}
+
+/* ── final-judgment：会变的数据 vs 稳定的机制主线（钥匙） ── */
+
+.fc-final {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  padding: 20px 40px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+
+.fc-final[data-tone="process"] {
+  background: var(--theme-process-surface);
+}
+
+.fc-final.is-on {
+  opacity: 1;
+  transform: none;
+  transition-delay: 220ms;
+}
+
+.fc-f-changing {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fc-f-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+  opacity: 0;
+}
+
+.fc-f-cap-strong {
+  color: var(--theme-structural);
+}
+
+.fc-final.is-on .fc-f-cap {
+  animation: fc-fade-in 460ms var(--ease-soft) forwards;
+  animation-delay: 500ms;
+}
+
+.fc-f-chips {
+  display: flex;
+  gap: 16px;
+}
+
+.fc-f-chip {
+  padding: 6px 22px;
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--text-2);
+  background: var(--surface-2);
+  border: 2px dashed var(--rule);
+  opacity: 0;
+}
+
+.fc-final.is-on .fc-f-chip {
+  animation: fc-chip-in 480ms var(--ease-soft) forwards;
+  animation-delay: calc(620ms + var(--fc-i) * 200ms);
+}
+
+/* 会随时间变化的数据：轻幅漂移，与右侧稳定主线形成对照 */
+.fc-final.is-on .fc-f-chips {
+  animation: fc-sway 4.2s ease-in-out 1.4s infinite alternate;
+}
+
+.fc-f-sep {
+  align-self: stretch;
+  width: 0;
+  border-left: 2px dashed var(--rule);
+}
+
+.fc-f-stable {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.fc-f-key {
+  width: 96px;
+  height: 46px;
+  flex: none;
+  overflow: visible;
+  opacity: 0;
+}
+
+.fc-final.is-on .fc-f-key {
+  animation: fc-key-in 560ms var(--ease-overshoot) 1450ms forwards;
+}
+
+.fc-f-key-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fc-f-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+.fc-f-hero em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.fc-final.is-on .fc-f-hero {
+  animation: fc-fade-in 520ms var(--ease-soft) 1700ms forwards;
+}
+
+/* ── keyframes ─────────────────────────────────────────── */
+
+@keyframes fc-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fc-link-in {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fc-dot-in {
+  from {
+    transform: scale(0.3);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes fc-charge {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes fc-tile-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fc-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fc-key-in {
+  from {
+    opacity: 0;
+    transform: scale(0.7) rotate(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fc-ml-in {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fc-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fc-sway {
+  from {
+    transform: translateX(-5px);
+  }
+  to {
+    transform: translateX(6px);
+  }
+}

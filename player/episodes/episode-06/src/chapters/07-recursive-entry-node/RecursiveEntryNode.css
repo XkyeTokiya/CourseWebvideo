@@ -1,0 +1,464 @@
+/* recursive-entry-node · A007 parallel-cards-self-contained
+   mechanism: equal-weight-accumulation — 三张等权卡逐拍就位、卡内自足、完成后无当前选中项
+   prefix: rn- */
+
+.rn-scene {
+  justify-content: flex-start;
+  gap: 44px;
+}
+
+/* ── 头部：S031 判断方向标题（拍 1 内后置于槽位占位出现） ── */
+
+.rn-header {
+  flex: none;
+  text-align: center;
+}
+
+.rn-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+  animation: rn-rise 560ms var(--ease-soft) 650ms backwards;
+}
+
+.rn-headline em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* ── 三卡槽位：等权网格；弱化占位槽常驻，卡片逐拍落位覆盖 ── */
+
+.rn-cards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 44px;
+}
+
+.rn-cell {
+  position: relative;
+  min-width: 0;
+}
+
+.rn-cell[data-card="node"] {
+  --rn-base: 880ms;
+}
+
+.rn-cell[data-card="entry"] {
+  --rn-base: 480ms;
+}
+
+.rn-cell[data-card="cache"] {
+  --rn-base: 480ms;
+}
+
+/* 占位槽（进章即播的空位，卡片落位后被完整覆盖，反向导航即时重现） */
+.rn-slot {
+  position: absolute;
+  inset: 0;
+  border: 3px dashed var(--rule);
+  border-radius: var(--r-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: rn-slot-in 460ms var(--ease-soft) backwards;
+}
+
+.rn-cell[data-card="node"] .rn-slot {
+  animation-delay: 200ms;
+}
+
+.rn-cell[data-card="entry"] .rn-slot {
+  animation-delay: 360ms;
+}
+
+.rn-cell[data-card="cache"] .rn-slot {
+  animation-delay: 520ms;
+}
+
+.rn-slot-tag {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+}
+
+/* 卡片本体：等权落位（动画挂在 .is-on 状态选择器下，反向导航即时清空） */
+.rn-card {
+  position: absolute;
+  inset: 0;
+  padding: 34px 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  opacity: 0;
+  transform: translateY(26px);
+  pointer-events: none;
+}
+
+.rn-cell.is-on .rn-card {
+  animation: rn-land 640ms var(--ease-overshoot) both;
+}
+
+.rn-cell[data-card="node"].is-on .rn-card {
+  animation-delay: 700ms;
+}
+
+.rn-cell[data-card="entry"].is-on .rn-card {
+  animation-delay: 200ms;
+}
+
+.rn-cell[data-card="cache"].is-on .rn-card {
+  animation-delay: 200ms;
+}
+
+/* ── 卡内内容：kicker / 图示区 / 底部文字块（卡内自足） ── */
+
+.rn-card-kicker {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.rn-kicker-num {
+  font-size: 30px;
+  color: var(--theme-process);
+}
+
+.rn-card-text {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rn-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+}
+
+.rn-name-sub {
+  margin: 0;
+  font-size: 27px;
+  color: var(--text-2);
+}
+
+.rn-line {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--theme-structural);
+}
+
+.rn-line-mark {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--theme-process);
+}
+
+.rn-cache-line {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--theme-structural);
+}
+
+.rn-perf-chip {
+  align-self: flex-start;
+  padding: 8px 20px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+}
+
+/* ── 自绘 SVG 图示（三卡各自的卡内演示） ── */
+
+.rn-viz {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rn-glyph {
+  width: 92%;
+  max-height: 100%;
+  overflow: visible;
+}
+
+.rn-glyph-cap {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  fill: var(--text-mute);
+}
+
+.rn-slab-cap {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  fill: var(--theme-structural);
+}
+
+.rn-glyph-ground {
+  stroke: var(--rule);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+/* 卡一：解析路径止于节点，无箭头 */
+.rn-glyph-path {
+  stroke: var(--theme-structural);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 206;
+  stroke-dashoffset: 206;
+}
+
+.rn-glyph-node {
+  fill: var(--theme-process);
+}
+
+.rn-glyph-core {
+  fill: var(--surface-2);
+}
+
+/* 卡二：查询者与公共入口的相对位置 */
+.rn-person-head {
+  fill: var(--theme-structural);
+}
+
+.rn-person-body {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 4;
+}
+
+.rn-door-arch {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-process);
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+
+/* 卡三：结果堆叠与直接取用 */
+.rn-slab {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+}
+
+.rn-take-zone {
+  fill: var(--accent-soft);
+  stroke: var(--theme-process);
+  stroke-width: 2;
+  stroke-dasharray: 8 6;
+}
+
+/* ── 状态门控动画：全部挂在 .is-on 状态选择器下，经 --rn-base 按卡错峰；
+      反向导航移除 is-on 即时回到空槽基态，无反向延迟 ── */
+
+.rn-cell.is-on .rn-card-kicker {
+  animation: rn-rise 420ms var(--ease-soft) both;
+  animation-delay: var(--rn-base);
+}
+
+.rn-cell.is-on .rn-name {
+  animation: rn-rise 560ms var(--ease-overshoot) both;
+  animation-delay: calc(var(--rn-base) + 200ms);
+}
+
+.rn-cell.is-on .rn-name-sub {
+  animation: rn-rise 480ms var(--ease-soft) both;
+  animation-delay: calc(var(--rn-base) + 420ms);
+}
+
+.rn-cell.is-on .rn-line {
+  animation: rn-rise 460ms var(--ease-soft) both;
+  animation-delay: calc(var(--rn-base) + 260ms + var(--rn-i, 0) * 240ms);
+}
+
+.rn-cell.is-on .rn-cache-line {
+  animation: rn-rise 520ms var(--ease-soft) both;
+  animation-delay: calc(var(--rn-base) + 160ms);
+}
+
+.rn-cell.is-on .rn-perf-chip {
+  animation: rn-pop 460ms var(--ease-overshoot) both;
+  animation-delay: calc(var(--rn-base) + 560ms);
+}
+
+/* 卡一图示：路径绘制 → 节点就位（S032 名称随后落位） */
+.rn-cell.is-on .rn-glyph-path {
+  animation: rn-draw 680ms var(--ease-soft) both;
+  animation-delay: calc(var(--rn-base) + 300ms);
+}
+
+.rn-cell.is-on .rn-glyph-node {
+  animation: rn-pop 440ms var(--ease-overshoot) both;
+  animation-delay: calc(var(--rn-base) + 600ms);
+}
+
+.rn-cell.is-on .rn-glyph-core {
+  animation: rn-pop 380ms var(--ease-overshoot) both;
+  animation-delay: calc(var(--rn-base) + 780ms);
+}
+
+.rn-cell.is-on .rn-cap-path {
+  animation: rn-fade 380ms var(--ease-soft) both;
+  animation-delay: calc(var(--rn-base) + 820ms);
+}
+
+/* 卡二图示：查询者与入口相对位置就位 */
+.rn-cell.is-on .rn-glyph-ground {
+  animation: rn-fade 420ms var(--ease-soft) both;
+  animation-delay: calc(var(--rn-base) + 120ms);
+}
+
+.rn-cell.is-on .rn-person {
+  animation: rn-slide-left 560ms var(--ease-soft) both;
+  animation-delay: calc(var(--rn-base) + 320ms);
+}
+
+.rn-cell.is-on .rn-door {
+  animation: rn-slide-right 560ms var(--ease-soft) both;
+  animation-delay: calc(var(--rn-base) + 480ms);
+}
+
+.rn-cell.is-on .rn-cap-person {
+  animation: rn-fade 380ms var(--ease-soft) both;
+  animation-delay: calc(var(--rn-base) + 720ms);
+}
+
+.rn-cell.is-on .rn-cap-door {
+  animation: rn-fade 380ms var(--ease-soft) both;
+  animation-delay: calc(var(--rn-base) + 860ms);
+}
+
+/* 卡三图示：记下来 → 直接取用（概念层，无命中判断分支） */
+.rn-cell.is-on .rn-slab-drop {
+  animation: rn-slab-drop 720ms cubic-bezier(0.55, 0, 0.8, 0.45) both;
+  animation-delay: calc(var(--rn-base) + 760ms);
+}
+
+.rn-cell.is-on .rn-cap-record {
+  animation: rn-fade 380ms var(--ease-soft) both;
+  animation-delay: calc(var(--rn-base) + 1440ms);
+}
+
+.rn-cell.is-on .rn-take-zone {
+  animation: rn-fade 400ms var(--ease-soft) both;
+  animation-delay: calc(var(--rn-base) + 1760ms);
+}
+
+.rn-cell.is-on .rn-cap-request {
+  animation: rn-fade 380ms var(--ease-soft) both;
+  animation-delay: calc(var(--rn-base) + 1760ms);
+}
+
+.rn-cell.is-on .rn-slab-take {
+  animation: rn-slab-pop 460ms var(--ease-overshoot) both;
+  animation-delay: calc(var(--rn-base) + 2160ms);
+}
+
+.rn-cell.is-on .rn-cap-reuse {
+  animation: rn-fade 380ms var(--ease-soft) both;
+  animation-delay: calc(var(--rn-base) + 2320ms);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes rn-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@keyframes rn-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes rn-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.55);
+  }
+}
+
+@keyframes rn-slot-in {
+  from {
+    opacity: 0;
+    transform: scale(0.975);
+  }
+}
+
+@keyframes rn-land {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rn-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes rn-slide-left {
+  from {
+    opacity: 0;
+    transform: translateX(-26px);
+  }
+}
+
+@keyframes rn-slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(26px);
+  }
+}
+
+@keyframes rn-slab-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-58px);
+  }
+}
+
+@keyframes rn-slab-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+}

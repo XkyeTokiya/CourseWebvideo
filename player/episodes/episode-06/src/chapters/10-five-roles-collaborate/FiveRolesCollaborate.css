@@ -1,0 +1,536 @@
+/* five-roles-collaborate · A010 layered-bands-with-side-notes
+   mechanism: ordered-progression — 角色带按“全球协同→行业→企业→查询侧”带序落位，
+   协作意义由侧栏注记收束；带序阅读承载 R018，不画系统连线
+   prefix: fr- */
+
+.fr-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── 头部：判断方向标题（S047，进章即播） ────────────────── */
+
+.fr-header {
+  flex: none;
+}
+
+.fr-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: fr-rise 520ms var(--ease-soft) backwards;
+}
+
+.fr-headline em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* ── 总起句 + 划除演示（进章即播；判断线随口播后置落位） ── */
+
+.fr-overview {
+  flex: none;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+
+.fr-overview.is-weak {
+  opacity: 0.5;
+  transition-delay: 320ms;
+}
+
+.fr-overview-main {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--theme-structural);
+  animation: fr-rise 480ms var(--ease-soft) 160ms backwards;
+}
+
+.fr-strike {
+  position: relative;
+  padding: 0 6px;
+  white-space: nowrap;
+}
+
+.fr-strike::after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  right: -8px;
+  top: 52%;
+  height: 7px;
+  background: var(--theme-warning);
+  border-radius: 3px;
+  transform: rotate(-1.6deg) scaleX(0);
+  transform-origin: left center;
+  animation: fr-strike-draw 560ms var(--ease-soft) 1900ms forwards;
+}
+
+/* ── 主区：层带列 + 侧栏列 ───────────────────────────────── */
+
+.fr-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 470px;
+  gap: 48px;
+  align-items: stretch;
+  animation: fr-fade 420ms var(--ease-soft) 80ms backwards;
+}
+
+.fr-stack {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* ── 角色带槽位：虚线骨架先落位，实体带随后各归其位 ─────── */
+
+.fr-slot {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+.fr-ghost {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  background: var(--surface-3);
+  opacity: 0.55;
+  animation:
+    fr-ghost-in 420ms var(--ease-soft) calc(340ms + var(--fr-b) * 130ms) backwards,
+    fr-ghost-out 320ms var(--ease-soft) calc(3260ms + var(--fr-b) * 480ms) forwards;
+}
+
+.fr-ghost-tag {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.24em;
+  color: var(--text-faint);
+}
+
+.fr-band {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 18px 30px;
+  animation: fr-band-in 460ms var(--ease-overshoot) backwards;
+  animation-delay: calc(3200ms + var(--fr-b) * 480ms);
+}
+
+.fr-band > * {
+  animation: fr-item-in 420ms var(--ease-overshoot) backwards;
+  animation-delay: calc(3420ms + var(--fr-b) * 480ms + var(--fr-k) * 130ms);
+}
+
+.fr-scope {
+  flex: none;
+  min-width: 128px;
+  padding: 10px 18px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.14em;
+  color: var(--text-2);
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+}
+
+.fr-roles {
+  flex: none;
+  display: flex;
+  gap: 14px;
+}
+
+.fr-role {
+  padding: 10px 22px;
+  font-size: 36px;
+  font-weight: 900;
+  white-space: nowrap;
+  color: var(--theme-structural);
+  background: var(--theme-paper);
+  border: 3px solid var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.fr-duty {
+  flex: 1;
+  min-width: 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-2);
+}
+
+.fr-mark-slot {
+  flex: none;
+  width: 76px;
+  height: 76px;
+}
+
+.fr-mark {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.fr-mark-line {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.fr-mark-soft {
+  stroke: var(--rule);
+}
+
+.fr-mark-node {
+  fill: var(--theme-process);
+}
+
+.fr-mark-box {
+  fill: var(--surface-3);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.fr-mark-card {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-process);
+  stroke-width: 2.5;
+}
+
+.fr-mark-tick {
+  stroke: var(--theme-process);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.fr-mark-arrow {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── 查询侧带：同带序收尾，但表面与侧向标注区分“查询者一侧” ── */
+
+.fr-band-query {
+  background: var(--theme-process-surface);
+}
+
+.fr-query-side {
+  flex: none;
+  padding-left: 16px;
+  border-left: 2px dashed var(--industrial-green-line);
+  writing-mode: vertical-rl;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.3em;
+  color: var(--theme-process);
+}
+
+/* ── 侧栏：注记槽位持续在位，意义注记在拍 2 落位收束 ────── */
+
+.fr-notes {
+  position: relative;
+  min-width: 0;
+  display: flex;
+}
+
+.fr-note-reserve {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+
+.fr-note-reserve-tag {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.24em;
+  color: var(--text-faint);
+}
+
+.fr-notes.is-on .fr-note-reserve {
+  opacity: 0;
+}
+
+.fr-note {
+  position: relative;
+  flex: 1;
+  padding: 38px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 480ms var(--ease-soft), transform 480ms var(--ease-soft);
+}
+
+.fr-notes.is-on .fr-note {
+  opacity: 1;
+  transform: none;
+  transition-delay: 260ms;
+}
+
+.fr-note-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.18em;
+  color: var(--theme-process);
+}
+
+.fr-note-main {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.5;
+  color: var(--theme-structural);
+}
+
+.fr-note-main b {
+  color: var(--theme-process);
+}
+
+.fr-note-rule {
+  width: 100%;
+}
+
+.fr-note-sub {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.fr-note-demo {
+  margin: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fr-note-demo-cap {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+}
+
+/* 拍 2 内部级联：延迟只写在 is-on 规则下，反向导航即时还原 */
+
+.fr-notes.is-on .fr-note-kicker {
+  animation: fr-rise 420ms var(--ease-soft) 300ms backwards;
+}
+
+.fr-notes.is-on .fr-note-main {
+  animation: fr-rise 460ms var(--ease-soft) 420ms backwards;
+}
+
+.fr-notes.is-on .fr-note-rule {
+  animation: fr-fade 360ms var(--ease-soft) 560ms backwards;
+}
+
+.fr-notes.is-on .fr-note-sub {
+  animation: fr-rise 460ms var(--ease-soft) 660ms backwards;
+}
+
+.fr-notes.is-on .fr-note-demo {
+  animation: fr-fade 460ms var(--ease-soft) 780ms backwards;
+}
+
+/* ── 侧栏演示：查询扫过各服务范围，落到负责角色 ─────────── */
+
+.fr-locator {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.fr-seg {
+  fill: var(--surface-3);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+.fr-seg-hit {
+  stroke: var(--rule);
+}
+
+.fr-notes.is-on .fr-seg-hit {
+  animation: fr-seg-lit 460ms var(--ease-soft) 2.45s forwards;
+}
+
+.fr-locator-track {
+  fill: none;
+  stroke: var(--theme-dashed-line);
+  stroke-width: 2.5;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.fr-notes.is-on .fr-locator-track {
+  animation: fr-draw 800ms var(--ease-soft) 850ms forwards;
+}
+
+.fr-pin {
+  will-change: transform;
+}
+
+.fr-notes.is-on .fr-pin {
+  animation: fr-pin-ride 1.5s var(--ease-soft) 950ms forwards;
+}
+
+.fr-pin-stem {
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.fr-pin-head {
+  fill: var(--surface-2);
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+}
+
+.fr-pin-core {
+  fill: var(--theme-process);
+}
+
+.fr-lock {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3;
+  stroke-dasharray: 6 6;
+  opacity: 0;
+  transform: scale(0.4);
+  transform-box: view-box;
+  transform-origin: 248px 94px;
+}
+
+.fr-notes.is-on .fr-lock {
+  animation: fr-lock-pop 480ms var(--ease-overshoot) 2.6s forwards;
+}
+
+/* ── keyframes ───────────────────────────────────────────── */
+
+@keyframes fr-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fr-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fr-band-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fr-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fr-ghost-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.55;
+  }
+}
+
+@keyframes fr-ghost-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fr-strike-draw {
+  to {
+    transform: rotate(-1.6deg) scaleX(1);
+  }
+}
+
+@keyframes fr-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fr-pin-ride {
+  0% {
+    transform: translate(0, 0);
+  }
+  55% {
+    transform: translate(96px, -4px);
+  }
+  82% {
+    transform: translate(178px, 12px);
+  }
+  100% {
+    transform: translate(192px, 28px);
+  }
+}
+
+@keyframes fr-lock-pop {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fr-seg-lit {
+  to {
+    fill: var(--accent-soft);
+    stroke: var(--theme-process);
+  }
+}
