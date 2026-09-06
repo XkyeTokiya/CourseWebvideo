@@ -1,0 +1,25 @@
+# Keep hashed production inputs byte-stable across Windows, Linux, and macOS.
+*.json text eol=lf
+*.md text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.sh text eol=lf
+
+# Preserve the native Windows line ending for the Windows launcher.
+*.cmd text eol=crlf
+
+# Do not normalize media as text.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.mp3 binary
+*.mp4 binary
+*.mov binary
+*.webm binary
+*.wav binary
+*.m4a binary

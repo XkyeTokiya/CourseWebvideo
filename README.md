@@ -137,6 +137,12 @@ node production-status/production-status.mjs report
 
 `http://127.0.0.1:8765/production-status/dashboard.html`
 
+Linux/macOS 可执行仓库根目录的 `启动生产状态工作台.sh`；它会自动定位当前仓库、启动或复用本地服务，并尝试打开浏览器：
+
+```bash
+./启动生产状态工作台.sh
+```
+
 也可从仓库根目录手动启动：
 
 ```powershell

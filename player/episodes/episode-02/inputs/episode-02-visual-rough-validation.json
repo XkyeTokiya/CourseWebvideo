@@ -24,7 +24,7 @@
   },
   "failures": [],
   "input_integrity": {
-    "a_page_sha256": "dcd1beed9eb6eb761ebe0c2d8d0f09ba353ff7380b5349a9d28b88386034fa11",
+    "a_page_sha256": "12460252af6aaa37ec9b6d4867bbe0506beb1bfa1308f4c02eff794a75037e27",
     "visual_rough_sha256": "8ba59b46ac716f4a9eac4f32e69bfed339c019ff564b68bf5cad27a56d020156",
     "recipe_registry_sha256": "4d9c97f24a059ec3b2b7397ed5c9a39a5f1b15042a0834d3430266608b879619"
   }
