@@ -18,7 +18,7 @@
     "taskPackage": {
       "status": "present",
       "path": "narration-pipeline/episodes/module-1-system-cognition/episode-04-digital-transformation-chain-task-package.md",
-      "sha256": "45037ddeed8e77b793aa53ad61f76beef5eafc2409ef7dedcccabfa335fd6909",
+      "sha256": "45d4347d75670a03ab81e2ce5becaddc09c8b43587135b68736c38c21b53c4d4",
       "failures": []
     },
     "approvedNarration": {
@@ -48,7 +48,7 @@
     "playerOutline": {
       "status": "present",
       "path": "player/episodes/episode-04/outline.md",
-      "sha256": "b5593d9745928b634998bb7fe7b749c9e65c3e3dc5e13a7cdb058b174f2c997d",
+      "sha256": "3b214b2558dd0d9ccf61fe50e5bf74c84918d72dfd71172c82db7aebb9ed2357",
       "failures": []
     },
     "player": {
@@ -247,8 +247,8 @@
       "canAdvance": false
     }
   ],
-  "updatedAt": "2026-09-05",
-  "updatedBy": "production-status scan",
+  "updatedAt": "2026-09-06",
+  "updatedBy": "production-status sync",
   "stageReviews": {
     "continuous-narration": {
       "status": "approved",
@@ -302,7 +302,7 @@
   },
   "automation": {
     "status": "failed",
-    "ranAt": "2026-09-05T02:25:06.892Z",
+    "ranAt": "2026-09-06T06:46:01.126Z",
     "runner": "production-status scan",
     "checks": {
       "task-package": {
@@ -325,10 +325,6 @@
         "status": "passed",
         "detail": "上游 visual rough validator 通过"
       },
-      "a-page-validator": {
-        "status": "failed",
-        "detail": "FAIL TRACE_RESOLUTION_INCOMPLETE:coverage[0].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[1].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[3]:responsibilities_resolved"
-      },
       "player-contract": {
         "status": "passed",
         "detail": "episode:check 通过"
@@ -347,39 +343,32 @@
       }
     },
     "failures": [
-      "a-page-validator: FAIL TRACE_RESOLUTION_INCOMPLETE:coverage[0].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[1].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[3]:responsibilities_resolved",
       "audio-files: 缺少 21 个音频文件"
     ],
-    "warnings": [],
+    "warnings": [
+      "找不到当前 A-page 对应的 compile trace，未重跑上游 validator"
+    ],
     "sourceHashes": {
-      "taskPackage": "45037ddeed8e77b793aa53ad61f76beef5eafc2409ef7dedcccabfa335fd6909",
+      "taskPackage": "45d4347d75670a03ab81e2ce5becaddc09c8b43587135b68736c38c21b53c4d4",
       "approvedNarration": "0871e92994bac81a5f070db7c0994dab5bb7c43249747f294c6b3310506ba813",
       "aPage": "654469dcde1734bc82de05dca4388f357f4b45860188a1c03115a625baa3b1d0",
       "visualRough": "b14a8f2b51a5b6acec40d7b989a238eb7a21223e7ccbb8a667778a50de5d431e",
       "playerScript": "a17fba64b7ca1cb65849deebe4c23e43da1fd4c192b2cbe8f86097a6d485f6e6",
-      "playerOutline": "b5593d9745928b634998bb7fe7b749c9e65c3e3dc5e13a7cdb058b174f2c997d"
+      "playerOutline": "3b214b2558dd0d9ccf61fe50e5bf74c84918d72dfd71172c82db7aebb9ed2357"
     },
     "commands": [
       {
-        "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\scripts\\verify_visual_rough.py --a-page D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-04\\inputs\\episode-04-a-page.json --visual-rough D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-04\\inputs\\episode-04-visual-rough.md --recipes-dir D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\references\\page-recipes --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-04-visual-rough-validation.json",
+        "command": "python /home/tokiya/135-CourseWebvideo/narration-pipeline/.agents/skills/design-course-visual-rough/scripts/verify_visual_rough.py --a-page /home/tokiya/135-CourseWebvideo/player/episodes/episode-04/inputs/episode-04-a-page.json --visual-rough /home/tokiya/135-CourseWebvideo/player/episodes/episode-04/inputs/episode-04-visual-rough.md --recipes-dir /home/tokiya/135-CourseWebvideo/narration-pipeline/.agents/skills/design-course-visual-rough/references/page-recipes --output /home/tokiya/135-CourseWebvideo/.tmp/production-status-scan/episode-04-visual-rough-validation.json",
         "exitCode": 0,
-        "durationMs": 133,
+        "durationMs": 100,
         "stdout": "PASS visual-rough-v3: source binding, recipes, screen slots, images, and logic limits are valid",
         "stderr": "",
         "timedOut": false
       },
       {
-        "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\rewrite-course-narration\\scripts\\verify_compilation.py --validation-profile a-page-v6 --task-package D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\episodes\\module-1-system-cognition\\episode-04-digital-transformation-chain-task-package.md --compile-trace D:\\00-workspace\\005-coursewebvideo\\.tmp\\narration-pipeline\\2026-08-31-ep04-task-package-screen-source\\episode-04\\episode-04-b-to-a-compile-trace.json --approved-text D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-04\\inputs\\approved-spoken-text.txt --compiled-json D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-04\\inputs\\episode-04-a-page.json --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-04-a-page-validation.json",
-        "exitCode": 1,
-        "durationMs": 110,
-        "stdout": "FAIL TRACE_RESOLUTION_INCOMPLETE:coverage[0].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[1].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[3]:responsibilities_resolved",
-        "stderr": "",
-        "timedOut": false
-      },
-      {
-        "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-04",
+        "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-04",
         "exitCode": 0,
-        "durationMs": 162,
+        "durationMs": 46,
         "stdout": "episode:check 通过：1 个实例，0 个警告",
         "stderr": "",
         "timedOut": false
@@ -387,7 +376,7 @@
       {
         "command": "pnpm run typecheck",
         "exitCode": 0,
-        "durationMs": 1554,
+        "durationMs": 704,
         "stdout": "",
         "stderr": "$ tsc --noEmit",
         "timedOut": false
@@ -395,8 +384,8 @@
       {
         "command": "pnpm run lint",
         "exitCode": 0,
-        "durationMs": 770,
-        "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+        "durationMs": 340,
+        "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
         "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
         "timedOut": false
       }
@@ -406,7 +395,6 @@
     "state": "blocked",
     "canAdvance": false,
     "reasons": [
-      "a-page-validator: FAIL TRACE_RESOLUTION_INCOMPLETE:coverage[0].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[1].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[3]:responsibilities_resolved",
       "audio-files: 缺少 21 个音频文件"
     ],
     "productionStatus": "in-progress",

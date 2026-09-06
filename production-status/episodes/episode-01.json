@@ -3,20 +3,22 @@
   "episodeId": "episode-01",
   "title": "工业互联网的产生与边界",
   "summary": {
-    "status": "in-progress",
-    "currentStage": "recording-delivery",
-    "nextAction": "推进阶段: 录屏、后期与成片验收",
-    "blockers": [],
+    "status": "blocked",
+    "currentStage": "audio",
+    "nextAction": "推进阶段: 音频",
+    "blockers": [
+      "音频缺少 35 个文件"
+    ],
     "approvalGaps": [],
     "productionStatus": "in-progress",
-    "automationStatus": "passed",
+    "automationStatus": "failed",
     "humanStatus": "none"
   },
   "observations": {
     "taskPackage": {
       "status": "present",
       "path": "narration-pipeline/episodes/module-1-system-cognition/episode-01-industrial-internet-origins-task-package.md",
-      "sha256": "48ec998651cb59e973bd11751f91817b65a38b56968f4f7590c89f727a086ebf",
+      "sha256": "65235b102ad31d99b052057e109d783d8370019578ff7ce0552b22f8e9b6ce2c",
       "failures": []
     },
     "approvedNarration": {
@@ -60,10 +62,10 @@
     },
     "audio": {
       "segmentsPath": "player/episodes/episode-01/audio-segments.json",
-      "status": "complete",
+      "status": "extracted",
       "segmentCount": 35,
-      "fileCount": 35,
-      "missingCount": 0,
+      "fileCount": 0,
+      "missingCount": 35,
       "source": "narrations.ts",
       "ttsProvider": null
     },
@@ -229,10 +231,12 @@
     {
       "id": "audio",
       "name": "音频",
-      "status": "complete",
-      "health": "passed",
-      "reasons": [],
-      "canAdvance": true
+      "status": "in-progress",
+      "health": "blocked",
+      "reasons": [
+        "音频缺少 35 个文件"
+      ],
+      "canAdvance": false
     },
     {
       "id": "recording-delivery",
@@ -243,8 +247,8 @@
       "canAdvance": false
     }
   ],
-  "updatedAt": "2026-09-05",
-  "updatedBy": "production-status scan",
+  "updatedAt": "2026-09-06",
+  "updatedBy": "production-status sync",
   "stageReviews": {
     "approve-narration": {
       "status": "approved",
@@ -283,8 +287,8 @@
     }
   },
   "automation": {
-    "status": "passed",
-    "ranAt": "2026-09-05T02:25:06.165Z",
+    "status": "failed",
+    "ranAt": "2026-09-06T06:46:00.894Z",
     "runner": "production-status scan",
     "checks": {
       "task-package": {
@@ -308,8 +312,8 @@
         "detail": "episode:check 通过"
       },
       "audio-files": {
-        "status": "passed",
-        "detail": "音频文件与分段齐全"
+        "status": "failed",
+        "detail": "缺少 35 个音频文件"
       },
       "typecheck": {
         "status": "passed",
@@ -320,12 +324,14 @@
         "detail": "lint 通过"
       }
     },
-    "failures": [],
+    "failures": [
+      "audio-files: 缺少 35 个音频文件"
+    ],
     "warnings": [
       "旧流程实例：跳过当前 A-page / Visual rough 上游 validator"
     ],
     "sourceHashes": {
-      "taskPackage": "48ec998651cb59e973bd11751f91817b65a38b56968f4f7590c89f727a086ebf",
+      "taskPackage": "65235b102ad31d99b052057e109d783d8370019578ff7ce0552b22f8e9b6ce2c",
       "approvedNarration": "051c4165840e43648cb342e149ca700fd54144760507398cc50cc88c58862aab",
       "aPage": "68e93022f5460f333db59edf337ea24a75c1ff66884141cb9045571dc6af19cc",
       "visualRough": "96c72a1297063c78742e2ba41e3d191f3d3c1bdf675ca888f1bf56c7c97b01f1",
@@ -334,9 +340,9 @@
     },
     "commands": [
       {
-        "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-01",
+        "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-01",
         "exitCode": 0,
-        "durationMs": 120,
+        "durationMs": 46,
         "stdout": "episode:check 通过：1 个实例，0 个警告",
         "stderr": "",
         "timedOut": false
@@ -344,7 +350,7 @@
       {
         "command": "pnpm run typecheck",
         "exitCode": 0,
-        "durationMs": 1554,
+        "durationMs": 704,
         "stdout": "",
         "stderr": "$ tsc --noEmit",
         "timedOut": false
@@ -352,19 +358,21 @@
       {
         "command": "pnpm run lint",
         "exitCode": 0,
-        "durationMs": 770,
-        "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+        "durationMs": 340,
+        "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
         "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
         "timedOut": false
       }
     ]
   },
   "readiness": {
-    "state": "ready",
-    "canAdvance": true,
-    "reasons": [],
+    "state": "blocked",
+    "canAdvance": false,
+    "reasons": [
+      "audio-files: 缺少 35 个音频文件"
+    ],
     "productionStatus": "in-progress",
-    "automationStatus": "passed",
+    "automationStatus": "failed",
     "humanStatus": "none"
   },
   "workflow": {

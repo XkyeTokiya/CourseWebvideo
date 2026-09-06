@@ -1,14 +1,19 @@
 {
   "schemaVersion": "coursewebvideo/episode-production-status/v1",
   "episodeId": "episode-06",
-  "title": "标识解析体系如何把编码变成可查询信息",
+  "title": "标识解析体系与层级",
   "summary": {
-    "status": "awaiting-approval",
-    "currentStage": "approve-narration",
-    "nextAction": "补齐人工审批记录: narration",
-    "blockers": [],
+    "status": "blocked",
+    "currentStage": "visual-rough",
+    "nextAction": "补齐人工审批记录: visualRough",
+    "blockers": [
+      "音频缺少 37 个文件"
+    ],
     "approvalGaps": [
-      "narration"
+      "visualRough",
+      "checkpointPlan",
+      "firstChapter",
+      "checkpointAudio"
     ],
     "productionStatus": "in-progress",
     "automationStatus": "passed",
@@ -18,52 +23,55 @@
     "taskPackage": {
       "status": "present",
       "path": "narration-pipeline/episodes/module-1-system-cognition/episode-06-identifier-resolution-system-task-package.md",
-      "sha256": "b517ad3f89f6ad65f4c4b729cf5e96aaaabc11e2f3756d427361bf8817715508",
+      "sha256": "c270cbaf022b5daea959059e06fe85ad98b67db0647c8c695eca9a24139dc24f",
       "failures": []
     },
     "approvedNarration": {
       "status": "present",
       "path": "player/episodes/episode-06/inputs/approved-spoken-text.txt",
-      "sha256": "d63df3b08aa493532d3da60d5b165d5f2ce494d3679d71b85585d6a00c5623df",
+      "sha256": "272d284a58cba4294822819ba7438b2646305a9b686368a614f50a4f6b76374f",
       "failures": []
     },
     "aPage": {
       "status": "valid",
       "path": "player/episodes/episode-06/inputs/episode-06-a-page.json",
-      "sha256": "112767d12950820bc79d9b7eaa1884d4fa7b2e268ac1d6a0a73f7d440cad220e",
+      "sha256": "1db01f3fccfe50fcccbc7e1902422271e64b951529e2c24f9037f4c7672ce753",
       "failures": []
     },
     "visualRough": {
-      "status": "missing",
+      "status": "approved",
       "path": "player/episodes/episode-06/inputs/episode-06-visual-rough.md",
+      "sha256": "906cb990617093e4e87febb06e7398e6c356c5ae3548ece25c6c6809e259dbad",
       "failures": []
     },
     "playerScript": {
-      "status": "missing",
+      "status": "present",
       "path": "player/episodes/episode-06/script.md",
+      "sha256": "e6cedca67f31849ec1b331656abe7a0f0bc6448e6766dfa64aaa578cf6a74117",
       "failures": []
     },
     "playerOutline": {
-      "status": "missing",
+      "status": "present",
       "path": "player/episodes/episode-06/outline.md",
+      "sha256": "d474fae6175e401e97264b5a625a4c3cd404321fa75ff53649e3b993fa5319c3",
       "failures": []
     },
     "player": {
       "projectPath": "player/episodes/episode-06/project.json",
-      "status": "planned",
-      "chaptersCompleted": 0,
-      "chaptersTotal": 0,
+      "status": "ready",
+      "chaptersCompleted": 13,
+      "chaptersTotal": 13,
       "current": null,
-      "entrypointPresent": false,
-      "sourceChapterCount": 0
+      "entrypointPresent": true,
+      "sourceChapterCount": 13
     },
     "audio": {
       "segmentsPath": "player/episodes/episode-06/audio-segments.json",
-      "status": "not-extracted",
-      "segmentCount": 0,
+      "status": "extracted",
+      "segmentCount": 37,
       "fileCount": 0,
-      "missingCount": 0,
-      "source": null,
+      "missingCount": 37,
+      "source": "narrations.ts",
       "ttsProvider": null
     },
     "delivery": {
@@ -79,11 +87,11 @@
   },
   "approvals": {
     "narration": {
-      "status": "unrecorded",
-      "decidedAt": null,
-      "decidedBy": null,
+      "status": "approved",
+      "decidedAt": "2026-09-06T06:46:25.178Z",
+      "decidedBy": "workbench",
       "evidence": null,
-      "note": null
+      "note": ""
     },
     "visualRough": {
       "status": "unrecorded",
@@ -148,10 +156,10 @@
     {
       "id": "approve-narration",
       "name": "批准口播",
-      "status": "awaiting-approval",
+      "status": "complete",
       "health": "passed",
       "reasons": [],
-      "canAdvance": false
+      "canAdvance": true
     },
     {
       "id": "a-page",
@@ -180,24 +188,24 @@
     {
       "id": "visual-rough",
       "name": "Visual rough",
-      "status": "not-started",
-      "health": "not-run",
+      "status": "awaiting-approval",
+      "health": "passed",
       "reasons": [],
       "canAdvance": false
     },
     {
       "id": "player-phase-1",
       "name": "Player Phase 1",
-      "status": "not-started",
-      "health": "not-run",
+      "status": "complete",
+      "health": "passed",
       "reasons": [],
-      "canAdvance": false
+      "canAdvance": true
     },
     {
       "id": "checkpoint-plan",
       "name": "Checkpoint Plan",
-      "status": "not-started",
-      "health": "not-run",
+      "status": "awaiting-approval",
+      "health": "passed",
       "reasons": [],
       "canAdvance": false
     },
@@ -212,25 +220,27 @@
     {
       "id": "chapter-production",
       "name": "章节制作",
-      "status": "not-started",
-      "health": "not-run",
+      "status": "complete",
+      "health": "passed",
       "reasons": [],
-      "canAdvance": false
+      "canAdvance": true
     },
     {
       "id": "chapter-acceptance",
       "name": "后续章节与验收",
-      "status": "not-started",
-      "health": "not-run",
+      "status": "awaiting-approval",
+      "health": "passed",
       "reasons": [],
       "canAdvance": false
     },
     {
       "id": "audio",
       "name": "音频",
-      "status": "not-started",
-      "health": "not-run",
-      "reasons": [],
+      "status": "awaiting-approval",
+      "health": "blocked",
+      "reasons": [
+        "音频缺少 37 个文件"
+      ],
       "canAdvance": false
     },
     {
@@ -242,11 +252,11 @@
       "canAdvance": false
     }
   ],
-  "updatedAt": "2026-09-05",
-  "updatedBy": "production-status scan",
+  "updatedAt": "2026-09-06",
+  "updatedBy": "production-status sync",
   "automation": {
     "status": "passed",
-    "ranAt": "2026-09-05T02:25:07.480Z",
+    "ranAt": "2026-09-06T06:46:26.404Z",
     "runner": "production-status scan",
     "checks": {
       "task-package": {
@@ -288,15 +298,15 @@
       "音频阶段尚未开始"
     ],
     "sourceHashes": {
-      "taskPackage": "b517ad3f89f6ad65f4c4b729cf5e96aaaabc11e2f3756d427361bf8817715508",
+      "taskPackage": "c270cbaf022b5daea959059e06fe85ad98b67db0647c8c695eca9a24139dc24f",
       "approvedNarration": "d63df3b08aa493532d3da60d5b165d5f2ce494d3679d71b85585d6a00c5623df",
       "aPage": "112767d12950820bc79d9b7eaa1884d4fa7b2e268ac1d6a0a73f7d440cad220e"
     },
     "commands": [
       {
-        "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-06",
+        "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-06",
         "exitCode": 0,
-        "durationMs": 158,
+        "durationMs": 51,
         "stdout": "episode:check 通过：1 个实例，1 个警告",
         "stderr": "WARN  episodes/episode-06: planned 实例尚未创建可播放入口",
         "timedOut": false
@@ -304,7 +314,7 @@
       {
         "command": "pnpm run typecheck",
         "exitCode": 0,
-        "durationMs": 1554,
+        "durationMs": 784,
         "stdout": "",
         "stderr": "$ tsc --noEmit",
         "timedOut": false
@@ -312,8 +322,8 @@
       {
         "command": "pnpm run lint",
         "exitCode": 0,
-        "durationMs": 770,
-        "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+        "durationMs": 331,
+        "stdout": "Found 0 warnings and 0 errors.\nFinished in 27ms on 50 files with 100 rules using 32 threads.",
         "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
         "timedOut": false
       }
@@ -323,7 +333,7 @@
     "state": "needs-owner",
     "canAdvance": false,
     "reasons": [
-      "等待人工决策: narration"
+      "等待人工决策: visualRough, checkpointPlan, firstChapter, checkpointAudio"
     ],
     "productionStatus": "in-progress",
     "automationStatus": "passed",

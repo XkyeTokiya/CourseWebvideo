@@ -18,7 +18,7 @@
     "taskPackage": {
       "status": "present",
       "path": "narration-pipeline/episodes/module-1-system-cognition/episode-09-engine-lifecycle-traceability-task-package.md",
-      "sha256": "5809e0ad2772073ad736fe1f8b0e956887a234d1255e384fcd0691720642561f",
+      "sha256": "ac7d04d4863d1915e5c39ab2b8915008a56a635a95e9366b6e2f110523a8c918",
       "failures": []
     },
     "approvedNarration": {
@@ -42,13 +42,13 @@
     "playerScript": {
       "status": "present",
       "path": "player/episodes/episode-09/script.md",
-      "sha256": "012a17cebc8a35e24d7b7ba6fe12cdbd479cd00b7a8ec491b7accfb2f66f4d7c",
+      "sha256": "add821ff31cd497c48f03a05250eeda88d67d09e16ace9f629d1a24eb34ad6ea",
       "failures": []
     },
     "playerOutline": {
       "status": "present",
       "path": "player/episodes/episode-09/outline.md",
-      "sha256": "d8b202f051cc4033e715775535b27d294825705fe907480c3e6c352a7f048c28",
+      "sha256": "b75522fe5cd4dc181dfc0dfb1075bd5ad3b20a59bd9b6e14cdefd345cc859ea6",
       "failures": []
     },
     "player": {
@@ -247,8 +247,8 @@
       "canAdvance": false
     }
   ],
-  "updatedAt": "2026-09-05",
-  "updatedBy": "production-status scan",
+  "updatedAt": "2026-09-06",
+  "updatedBy": "production-status sync",
   "stageReviews": {
     "approve-narration": {
       "status": "approved",
@@ -288,7 +288,7 @@
   },
   "automation": {
     "status": "failed",
-    "ranAt": "2026-09-05T02:25:07.975Z",
+    "ranAt": "2026-09-06T06:46:01.408Z",
     "runner": "production-status scan",
     "checks": {
       "task-package": {
@@ -331,18 +331,18 @@
       "旧流程实例：跳过当前 A-page / Visual rough 上游 validator"
     ],
     "sourceHashes": {
-      "taskPackage": "5809e0ad2772073ad736fe1f8b0e956887a234d1255e384fcd0691720642561f",
+      "taskPackage": "ac7d04d4863d1915e5c39ab2b8915008a56a635a95e9366b6e2f110523a8c918",
       "approvedNarration": "e07682c0eaeae79123476216b63fd9450d5a854b1d6080c0604a44438a6e4f25",
       "aPage": "8fb764141c77def8fbb003f376ab2d4d47f38a6d05d4528d2a11e3a4562f25be",
       "visualRough": "908aa37daf366132fafa02f66069f18d209b7099dd7e462b492a6a7c26e4d230",
-      "playerScript": "012a17cebc8a35e24d7b7ba6fe12cdbd479cd00b7a8ec491b7accfb2f66f4d7c",
-      "playerOutline": "d8b202f051cc4033e715775535b27d294825705fe907480c3e6c352a7f048c28"
+      "playerScript": "add821ff31cd497c48f03a05250eeda88d67d09e16ace9f629d1a24eb34ad6ea",
+      "playerOutline": "b75522fe5cd4dc181dfc0dfb1075bd5ad3b20a59bd9b6e14cdefd345cc859ea6"
     },
     "commands": [
       {
-        "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-09",
+        "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-09",
         "exitCode": 0,
-        "durationMs": 142,
+        "durationMs": 41,
         "stdout": "episode:check 通过：1 个实例，0 个警告",
         "stderr": "",
         "timedOut": false
@@ -350,7 +350,7 @@
       {
         "command": "pnpm run typecheck",
         "exitCode": 0,
-        "durationMs": 1554,
+        "durationMs": 704,
         "stdout": "",
         "stderr": "$ tsc --noEmit",
         "timedOut": false
@@ -358,8 +358,8 @@
       {
         "command": "pnpm run lint",
         "exitCode": 0,
-        "durationMs": 770,
-        "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+        "durationMs": 340,
+        "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
         "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
         "timedOut": false
       }

@@ -16,7 +16,7 @@
     "taskPackage": {
       "status": "present",
       "path": "narration-pipeline/episodes/module-3-data-and-resolution/episode-22-industrial-data-concept-boundaries-task-package.md",
-      "sha256": "993ff9d8a70f5a733d20fdcaee30b83d015749decc7f05a6014d22acc0e29c6b",
+      "sha256": "3e30d756c28b70b9d5cb2b2df020e0f07cc58c581be675ae64783d7e1caf3eba",
       "failures": []
     },
     "approvedNarration": {
@@ -238,11 +238,11 @@
       "canAdvance": false
     }
   ],
-  "updatedAt": "2026-09-05",
-  "updatedBy": "production-status scan",
+  "updatedAt": "2026-09-06",
+  "updatedBy": "production-status sync",
   "automation": {
     "status": "passed",
-    "ranAt": "2026-09-05T02:25:10.024Z",
+    "ranAt": "2026-09-06T06:46:02.035Z",
     "runner": "production-status scan",
     "checks": {
       "task-package": {
@@ -283,13 +283,13 @@
       "音频阶段尚未开始"
     ],
     "sourceHashes": {
-      "taskPackage": "993ff9d8a70f5a733d20fdcaee30b83d015749decc7f05a6014d22acc0e29c6b"
+      "taskPackage": "3e30d756c28b70b9d5cb2b2df020e0f07cc58c581be675ae64783d7e1caf3eba"
     },
     "commands": [
       {
-        "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-22",
+        "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-22",
         "exitCode": 0,
-        "durationMs": 142,
+        "durationMs": 70,
         "stdout": "episode:check 通过：1 个实例，1 个警告",
         "stderr": "WARN  episodes/episode-22: planned 实例尚未创建可播放入口",
         "timedOut": false
@@ -297,7 +297,7 @@
       {
         "command": "pnpm run typecheck",
         "exitCode": 0,
-        "durationMs": 1554,
+        "durationMs": 704,
         "stdout": "",
         "stderr": "$ tsc --noEmit",
         "timedOut": false
@@ -305,8 +305,8 @@
       {
         "command": "pnpm run lint",
         "exitCode": 0,
-        "durationMs": 770,
-        "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+        "durationMs": 340,
+        "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
         "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
         "timedOut": false
       }

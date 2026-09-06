@@ -3,22 +3,24 @@
   "episodeId": "episode-35",
   "title": "标识载体选型",
   "summary": {
-    "status": "awaiting-approval",
+    "status": "blocked",
     "currentStage": "audio",
     "nextAction": "补齐人工审批记录: checkpointAudio",
-    "blockers": [],
+    "blockers": [
+      "音频缺少 36 个文件"
+    ],
     "approvalGaps": [
       "checkpointAudio"
     ],
     "productionStatus": "in-progress",
-    "automationStatus": "passed",
+    "automationStatus": "failed",
     "humanStatus": "needs-decision"
   },
   "observations": {
     "taskPackage": {
       "status": "present",
       "path": "narration-pipeline/episodes/module-4-identifier-carrier/episode-35-identifier-carrier-selection-material-process-environment-cost-task-package.md",
-      "sha256": "00891a1dfd009ddff42fe82a1d74ac0918535b47fba4f2ad1cdb0b0ff02c30dc",
+      "sha256": "f66fdc831c61fc7e4c213d46ec8e7ad88a6fb52d493ce7080206c71c1140fd1c",
       "failures": []
     },
     "approvedNarration": {
@@ -62,10 +64,10 @@
     },
     "audio": {
       "segmentsPath": "player/episodes/episode-35/audio-segments.json",
-      "status": "complete",
+      "status": "extracted",
       "segmentCount": 36,
-      "fileCount": 36,
-      "missingCount": 0,
+      "fileCount": 0,
+      "missingCount": 36,
       "source": "narrations.ts",
       "ttsProvider": null
     },
@@ -232,8 +234,10 @@
       "id": "audio",
       "name": "音频",
       "status": "awaiting-approval",
-      "health": "passed",
-      "reasons": [],
+      "health": "blocked",
+      "reasons": [
+        "音频缺少 36 个文件"
+      ],
       "canAdvance": false
     },
     {
@@ -245,8 +249,8 @@
       "canAdvance": false
     }
   ],
-  "updatedAt": "2026-09-05",
-  "updatedBy": "production-status scan",
+  "updatedAt": "2026-09-06",
+  "updatedBy": "production-status sync",
   "stageReviews": {
     "approve-narration": {
       "status": "approved",
@@ -285,8 +289,8 @@
     }
   },
   "automation": {
-    "status": "passed",
-    "ranAt": "2026-09-05T02:25:12.376Z",
+    "status": "failed",
+    "ranAt": "2026-09-06T06:46:02.743Z",
     "runner": "production-status scan",
     "checks": {
       "task-package": {
@@ -309,17 +313,13 @@
         "status": "passed",
         "detail": "上游 visual rough validator 通过"
       },
-      "a-page-validator": {
-        "status": "passed",
-        "detail": "上游 A-page validator 通过"
-      },
       "player-contract": {
         "status": "passed",
         "detail": "episode:check 通过"
       },
       "audio-files": {
-        "status": "passed",
-        "detail": "音频文件与分段齐全"
+        "status": "failed",
+        "detail": "缺少 36 个音频文件"
       },
       "typecheck": {
         "status": "passed",
@@ -330,10 +330,14 @@
         "detail": "lint 通过"
       }
     },
-    "failures": [],
-    "warnings": [],
+    "failures": [
+      "audio-files: 缺少 36 个音频文件"
+    ],
+    "warnings": [
+      "找不到当前 A-page 对应的 compile trace，未重跑上游 validator"
+    ],
     "sourceHashes": {
-      "taskPackage": "00891a1dfd009ddff42fe82a1d74ac0918535b47fba4f2ad1cdb0b0ff02c30dc",
+      "taskPackage": "f66fdc831c61fc7e4c213d46ec8e7ad88a6fb52d493ce7080206c71c1140fd1c",
       "approvedNarration": "fd02af2dc6a8c7208a36c2d59ca042d4a42c3793424c2dabca5b5b8ac7916301",
       "aPage": "75e878392d2ea0711ef628f48c0c1c2aacfea75263fea203e322105e9ad0313c",
       "visualRough": "f4565614b830c2f311872c5f3e2ad00583c0cd0fbfa7bfe7938978b0b47f834d",
@@ -342,25 +346,17 @@
     },
     "commands": [
       {
-        "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\scripts\\verify_visual_rough.py --a-page D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-35\\inputs\\episode-35-a-page.json --visual-rough D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-35\\inputs\\episode-35-visual-rough.md --recipes-dir D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\references\\page-recipes --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-35-visual-rough-validation.json",
+        "command": "python /home/tokiya/135-CourseWebvideo/narration-pipeline/.agents/skills/design-course-visual-rough/scripts/verify_visual_rough.py --a-page /home/tokiya/135-CourseWebvideo/player/episodes/episode-35/inputs/episode-35-a-page.json --visual-rough /home/tokiya/135-CourseWebvideo/player/episodes/episode-35/inputs/episode-35-visual-rough.md --recipes-dir /home/tokiya/135-CourseWebvideo/narration-pipeline/.agents/skills/design-course-visual-rough/references/page-recipes --output /home/tokiya/135-CourseWebvideo/.tmp/production-status-scan/episode-35-visual-rough-validation.json",
         "exitCode": 0,
-        "durationMs": 108,
+        "durationMs": 56,
         "stdout": "PASS visual-rough-v3: source binding, recipes, screen slots, images, and logic limits are valid",
         "stderr": "",
         "timedOut": false
       },
       {
-        "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\rewrite-course-narration\\scripts\\verify_compilation.py --validation-profile a-page-v6 --task-package D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\episodes\\module-4-identifier-carrier\\episode-35-identifier-carrier-selection-material-process-environment-cost-task-package.md --compile-trace D:\\00-workspace\\005-coursewebvideo\\.tmp\\narration-pipeline\\2026-09-02-rewrite-narration-ep35\\episode-35\\episode-35-b-to-a-compile-trace.json --approved-text D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-35\\inputs\\approved-spoken-text.txt --compiled-json D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-35\\inputs\\episode-35-a-page.json --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-35-a-page-validation.json",
+        "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-35",
         "exitCode": 0,
-        "durationMs": 105,
-        "stdout": "PASS a-page-v6: A-page semantics, screen contract, Nx, timing, and compile coverage are valid",
-        "stderr": "",
-        "timedOut": false
-      },
-      {
-        "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-35",
-        "exitCode": 0,
-        "durationMs": 142,
+        "durationMs": 27,
         "stdout": "episode:check 通过：1 个实例，0 个警告",
         "stderr": "",
         "timedOut": false
@@ -368,7 +364,7 @@
       {
         "command": "pnpm run typecheck",
         "exitCode": 0,
-        "durationMs": 1554,
+        "durationMs": 704,
         "stdout": "",
         "stderr": "$ tsc --noEmit",
         "timedOut": false
@@ -376,21 +372,22 @@
       {
         "command": "pnpm run lint",
         "exitCode": 0,
-        "durationMs": 770,
-        "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+        "durationMs": 340,
+        "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
         "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
         "timedOut": false
       }
     ]
   },
   "readiness": {
-    "state": "needs-owner",
+    "state": "blocked",
     "canAdvance": false,
     "reasons": [
+      "audio-files: 缺少 36 个音频文件",
       "等待人工决策: checkpointAudio"
     ],
     "productionStatus": "in-progress",
-    "automationStatus": "passed",
+    "automationStatus": "failed",
     "humanStatus": "needs-decision"
   },
   "workflow": {

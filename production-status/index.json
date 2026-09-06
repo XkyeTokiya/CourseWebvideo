@@ -1,6 +1,6 @@
 {
   "schemaVersion": "coursewebvideo/episode-production-status/index/v1",
-  "generatedAt": "2026-09-05T04:27:59.027Z",
+  "generatedAt": "2026-09-06T16:55:57.315Z",
   "count": 51,
   "episodes": [
     {
@@ -15,26 +15,30 @@
         ]
       },
       "summary": {
-        "status": "in-progress",
-        "currentStage": "recording-delivery",
-        "nextAction": "推进阶段: 录屏、后期与成片验收",
-        "blockers": [],
+        "status": "blocked",
+        "currentStage": "audio",
+        "nextAction": "推进阶段: 音频",
+        "blockers": [
+          "音频缺少 35 个文件"
+        ],
         "approvalGaps": [],
         "productionStatus": "in-progress",
-        "automationStatus": "passed",
+        "automationStatus": "failed",
         "humanStatus": "none"
       },
       "readiness": {
-        "state": "ready",
-        "canAdvance": true,
-        "reasons": [],
+        "state": "blocked",
+        "canAdvance": false,
+        "reasons": [
+          "audio-files: 缺少 35 个音频文件"
+        ],
         "productionStatus": "in-progress",
-        "automationStatus": "passed",
+        "automationStatus": "failed",
         "humanStatus": "none"
       },
       "automation": {
-        "status": "passed",
-        "ranAt": "2026-09-05T02:25:06.165Z",
+        "status": "failed",
+        "ranAt": "2026-09-06T06:46:00.894Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -58,8 +62,8 @@
             "detail": "episode:check 通过"
           },
           "audio-files": {
-            "status": "passed",
-            "detail": "音频文件与分段齐全"
+            "status": "failed",
+            "detail": "缺少 35 个音频文件"
           },
           "typecheck": {
             "status": "passed",
@@ -70,12 +74,14 @@
             "detail": "lint 通过"
           }
         },
-        "failures": [],
+        "failures": [
+          "audio-files: 缺少 35 个音频文件"
+        ],
         "warnings": [
           "旧流程实例：跳过当前 A-page / Visual rough 上游 validator"
         ],
         "sourceHashes": {
-          "taskPackage": "48ec998651cb59e973bd11751f91817b65a38b56968f4f7590c89f727a086ebf",
+          "taskPackage": "65235b102ad31d99b052057e109d783d8370019578ff7ce0552b22f8e9b6ce2c",
           "approvedNarration": "051c4165840e43648cb342e149ca700fd54144760507398cc50cc88c58862aab",
           "aPage": "68e93022f5460f333db59edf337ea24a75c1ff66884141cb9045571dc6af19cc",
           "visualRough": "96c72a1297063c78742e2ba41e3d191f3d3c1bdf675ca888f1bf56c7c97b01f1",
@@ -84,9 +90,9 @@
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-01",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-01",
             "exitCode": 0,
-            "durationMs": 120,
+            "durationMs": 46,
             "stdout": "episode:check 通过：1 个实例，0 个警告",
             "stderr": "",
             "timedOut": false
@@ -94,7 +100,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -102,8 +108,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -260,10 +266,12 @@
         {
           "id": "audio",
           "name": "音频",
-          "status": "complete",
-          "health": "passed",
-          "reasons": [],
-          "canAdvance": true
+          "status": "in-progress",
+          "health": "blocked",
+          "reasons": [
+            "音频缺少 35 个文件"
+          ],
+          "canAdvance": false
         },
         {
           "id": "recording-delivery",
@@ -274,8 +282,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -301,26 +309,30 @@
         ]
       },
       "summary": {
-        "status": "in-progress",
-        "currentStage": "recording-delivery",
-        "nextAction": "推进阶段: 录屏、后期与成片验收",
-        "blockers": [],
+        "status": "blocked",
+        "currentStage": "audio",
+        "nextAction": "推进阶段: 音频",
+        "blockers": [
+          "音频缺少 49 个文件"
+        ],
         "approvalGaps": [],
         "productionStatus": "in-progress",
-        "automationStatus": "passed",
+        "automationStatus": "failed",
         "humanStatus": "none"
       },
       "readiness": {
-        "state": "ready",
-        "canAdvance": true,
-        "reasons": [],
+        "state": "blocked",
+        "canAdvance": false,
+        "reasons": [
+          "audio-files: 缺少 49 个音频文件"
+        ],
         "productionStatus": "in-progress",
-        "automationStatus": "passed",
+        "automationStatus": "failed",
         "humanStatus": "none"
       },
       "automation": {
-        "status": "passed",
-        "ranAt": "2026-09-05T02:25:06.321Z",
+        "status": "failed",
+        "ranAt": "2026-09-06T06:46:00.936Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -344,8 +356,8 @@
             "detail": "episode:check 通过"
           },
           "audio-files": {
-            "status": "passed",
-            "detail": "音频文件与分段齐全"
+            "status": "failed",
+            "detail": "缺少 49 个音频文件"
           },
           "typecheck": {
             "status": "passed",
@@ -356,23 +368,25 @@
             "detail": "lint 通过"
           }
         },
-        "failures": [],
+        "failures": [
+          "audio-files: 缺少 49 个音频文件"
+        ],
         "warnings": [
           "旧流程实例：跳过当前 A-page / Visual rough 上游 validator"
         ],
         "sourceHashes": {
-          "taskPackage": "e555f927cb928c9e4af9d010924ba056063b088c7cfa4b4c47bf611b6b05ee49",
+          "taskPackage": "f23e63aaaa53c6799dce63c78f73c770e5d6d5632736c7d83ca35f7f2915fa68",
           "approvedNarration": "eb560a43d0d3063b1d635a46c110c3d22e652661e9f59cb591b23309687e4823",
           "aPage": "12460252af6aaa37ec9b6d4867bbe0506beb1bfa1308f4c02eff794a75037e27",
-          "visualRough": "8ba59b46ac716f4a9eac4f32e69bfed339c019ff564b68bf5cad27a56d020156",
+          "visualRough": "d392ed64b39c616d77e725e0e22eabfc80b30ba929750ca4eb36a505e9700a2f",
           "playerScript": "c2e1146f7521c4752c1c418530b92f7d4d87234e444e7dd4a2b13e3c9615de3a",
-          "playerOutline": "7d3fa09e8ad823f200d236e20f76c3eb35a036082cb6a9ea5857bc3513a8a33d"
+          "playerOutline": "a7dba17e53e4e9b41980e95938aaaa05fecc6a9f3f43d86c35daa35905ddfe82"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-02",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-02",
             "exitCode": 0,
-            "durationMs": 135,
+            "durationMs": 39,
             "stdout": "episode:check 通过：1 个实例，0 个警告",
             "stderr": "",
             "timedOut": false
@@ -380,7 +394,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -388,8 +402,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -546,10 +560,12 @@
         {
           "id": "audio",
           "name": "音频",
-          "status": "complete",
-          "health": "passed",
-          "reasons": [],
-          "canAdvance": true
+          "status": "in-progress",
+          "health": "blocked",
+          "reasons": [
+            "音频缺少 49 个文件"
+          ],
+          "canAdvance": false
         },
         {
           "id": "recording-delivery",
@@ -560,8 +576,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -587,26 +603,30 @@
         ]
       },
       "summary": {
-        "status": "in-progress",
-        "currentStage": "recording-delivery",
-        "nextAction": "推进阶段: 录屏、后期与成片验收",
-        "blockers": [],
+        "status": "blocked",
+        "currentStage": "audio",
+        "nextAction": "推进阶段: 音频",
+        "blockers": [
+          "音频缺少 49 个文件"
+        ],
         "approvalGaps": [],
         "productionStatus": "in-progress",
-        "automationStatus": "passed",
+        "automationStatus": "failed",
         "humanStatus": "none"
       },
       "readiness": {
-        "state": "ready",
-        "canAdvance": true,
-        "reasons": [],
+        "state": "blocked",
+        "canAdvance": false,
+        "reasons": [
+          "audio-files: 缺少 49 个音频文件"
+        ],
         "productionStatus": "in-progress",
-        "automationStatus": "passed",
+        "automationStatus": "failed",
         "humanStatus": "none"
       },
       "automation": {
-        "status": "passed",
-        "ranAt": "2026-09-05T02:25:06.472Z",
+        "status": "failed",
+        "ranAt": "2026-09-06T06:46:00.978Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -630,8 +650,8 @@
             "detail": "episode:check 通过"
           },
           "audio-files": {
-            "status": "passed",
-            "detail": "音频文件与分段齐全"
+            "status": "failed",
+            "detail": "缺少 49 个音频文件"
           },
           "typecheck": {
             "status": "passed",
@@ -642,23 +662,25 @@
             "detail": "lint 通过"
           }
         },
-        "failures": [],
+        "failures": [
+          "audio-files: 缺少 49 个音频文件"
+        ],
         "warnings": [
           "旧流程实例：跳过当前 A-page / Visual rough 上游 validator"
         ],
         "sourceHashes": {
-          "taskPackage": "cdc6b53b4ae51174acba1cb5ea67ef54bad94971dd195588fdf2ec8a0b7e8fba",
+          "taskPackage": "c65a3e60722eb8a15998faa256b508e94508abcc661379f1f62d8b4ab14610a1",
           "approvedNarration": "8a81375558c9b12daadf13129e12d39ceb10f8dcf8ade09caed20c9a1e487570",
-          "aPage": "7dde3fd9b3eda451b3e60afc2312247ad31a802d6ff8c6937e5816144df775d0",
+          "aPage": "f3e9fb1e9269d410910ca25fa446c89c02c17603e7cc64b1fe85046235547c46",
           "visualRough": "88c0ae912a2b53517236510291d1e439f90d3bc9e8fcbf7f9802154d8c6fec07",
           "playerScript": "0e0da0e657cb6b8cdd1d5d47a598fdc9322a0d9085eb78991f177a793a80a50e",
-          "playerOutline": "c00f681dce59adb5a4de13d99c07e9d2fa0471a8d3139425970664d05380c857"
+          "playerOutline": "fdd1d82bc013ca7c0958eebdfca16cf406f0c0e1e20c3aec7e3d16a50e741a14"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-03",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-03",
             "exitCode": 0,
-            "durationMs": 130,
+            "durationMs": 40,
             "stdout": "episode:check 通过：1 个实例，0 个警告",
             "stderr": "",
             "timedOut": false
@@ -666,7 +688,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -674,8 +696,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -832,10 +854,12 @@
         {
           "id": "audio",
           "name": "音频",
-          "status": "complete",
-          "health": "passed",
-          "reasons": [],
-          "canAdvance": true
+          "status": "in-progress",
+          "health": "blocked",
+          "reasons": [
+            "音频缺少 49 个文件"
+          ],
+          "canAdvance": false
         },
         {
           "id": "recording-delivery",
@@ -846,8 +870,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -885,7 +909,6 @@
         "state": "blocked",
         "canAdvance": false,
         "reasons": [
-          "a-page-validator: FAIL TRACE_RESOLUTION_INCOMPLETE:coverage[0].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[1].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[3]:responsibilities_resolved",
           "audio-files: 缺少 21 个音频文件"
         ],
         "productionStatus": "in-progress",
@@ -894,7 +917,7 @@
       },
       "automation": {
         "status": "failed",
-        "ranAt": "2026-09-05T02:25:06.892Z",
+        "ranAt": "2026-09-06T06:46:01.126Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -917,10 +940,6 @@
             "status": "passed",
             "detail": "上游 visual rough validator 通过"
           },
-          "a-page-validator": {
-            "status": "failed",
-            "detail": "FAIL TRACE_RESOLUTION_INCOMPLETE:coverage[0].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[1].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[3]:responsibilities_resolved"
-          },
           "player-contract": {
             "status": "passed",
             "detail": "episode:check 通过"
@@ -939,39 +958,32 @@
           }
         },
         "failures": [
-          "a-page-validator: FAIL TRACE_RESOLUTION_INCOMPLETE:coverage[0].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[1].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[3]:responsibilities_resolved",
           "audio-files: 缺少 21 个音频文件"
         ],
-        "warnings": [],
+        "warnings": [
+          "找不到当前 A-page 对应的 compile trace，未重跑上游 validator"
+        ],
         "sourceHashes": {
-          "taskPackage": "45037ddeed8e77b793aa53ad61f76beef5eafc2409ef7dedcccabfa335fd6909",
+          "taskPackage": "45d4347d75670a03ab81e2ce5becaddc09c8b43587135b68736c38c21b53c4d4",
           "approvedNarration": "0871e92994bac81a5f070db7c0994dab5bb7c43249747f294c6b3310506ba813",
           "aPage": "654469dcde1734bc82de05dca4388f357f4b45860188a1c03115a625baa3b1d0",
           "visualRough": "b14a8f2b51a5b6acec40d7b989a238eb7a21223e7ccbb8a667778a50de5d431e",
           "playerScript": "a17fba64b7ca1cb65849deebe4c23e43da1fd4c192b2cbe8f86097a6d485f6e6",
-          "playerOutline": "b5593d9745928b634998bb7fe7b749c9e65c3e3dc5e13a7cdb058b174f2c997d"
+          "playerOutline": "3b214b2558dd0d9ccf61fe50e5bf74c84918d72dfd71172c82db7aebb9ed2357"
         },
         "commands": [
           {
-            "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\scripts\\verify_visual_rough.py --a-page D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-04\\inputs\\episode-04-a-page.json --visual-rough D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-04\\inputs\\episode-04-visual-rough.md --recipes-dir D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\references\\page-recipes --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-04-visual-rough-validation.json",
+            "command": "python /home/tokiya/135-CourseWebvideo/narration-pipeline/.agents/skills/design-course-visual-rough/scripts/verify_visual_rough.py --a-page /home/tokiya/135-CourseWebvideo/player/episodes/episode-04/inputs/episode-04-a-page.json --visual-rough /home/tokiya/135-CourseWebvideo/player/episodes/episode-04/inputs/episode-04-visual-rough.md --recipes-dir /home/tokiya/135-CourseWebvideo/narration-pipeline/.agents/skills/design-course-visual-rough/references/page-recipes --output /home/tokiya/135-CourseWebvideo/.tmp/production-status-scan/episode-04-visual-rough-validation.json",
             "exitCode": 0,
-            "durationMs": 133,
+            "durationMs": 100,
             "stdout": "PASS visual-rough-v3: source binding, recipes, screen slots, images, and logic limits are valid",
             "stderr": "",
             "timedOut": false
           },
           {
-            "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\rewrite-course-narration\\scripts\\verify_compilation.py --validation-profile a-page-v6 --task-package D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\episodes\\module-1-system-cognition\\episode-04-digital-transformation-chain-task-package.md --compile-trace D:\\00-workspace\\005-coursewebvideo\\.tmp\\narration-pipeline\\2026-08-31-ep04-task-package-screen-source\\episode-04\\episode-04-b-to-a-compile-trace.json --approved-text D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-04\\inputs\\approved-spoken-text.txt --compiled-json D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-04\\inputs\\episode-04-a-page.json --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-04-a-page-validation.json",
-            "exitCode": 1,
-            "durationMs": 110,
-            "stdout": "FAIL TRACE_RESOLUTION_INCOMPLETE:coverage[0].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[1].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[2].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[3].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[4].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[5].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[3]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[6].visible_source_units[4]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[0]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[1]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[2]:responsibilities_resolved\r\nFAIL TRACE_RESOLUTION_INCOMPLETE:coverage[7].visible_source_units[3]:responsibilities_resolved",
-            "stderr": "",
-            "timedOut": false
-          },
-          {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-04",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-04",
             "exitCode": 0,
-            "durationMs": 162,
+            "durationMs": 46,
             "stdout": "episode:check 通过：1 个实例，0 个警告",
             "stderr": "",
             "timedOut": false
@@ -979,7 +991,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -987,8 +999,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -1161,8 +1173,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -1202,6 +1214,7 @@
         "state": "blocked",
         "canAdvance": false,
         "reasons": [
+          "visual-rough-validator: FAIL SOURCE_HASH_MISMATCH",
           "audio-files: 缺少 37 个音频文件",
           "等待人工决策: checkpointAudio"
         ],
@@ -1211,7 +1224,7 @@
       },
       "automation": {
         "status": "failed",
-        "ranAt": "2026-09-05T04:27:59.020Z",
+        "ranAt": "2026-09-06T06:46:01.205Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -1231,12 +1244,8 @@
             "detail": "Visual rough 状态为 draft"
           },
           "visual-rough-validator": {
-            "status": "passed",
-            "detail": "上游 visual rough validator 通过"
-          },
-          "a-page-validator": {
-            "status": "passed",
-            "detail": "上游 A-page validator 通过"
+            "status": "failed",
+            "detail": "FAIL SOURCE_HASH_MISMATCH"
           },
           "player-contract": {
             "status": "passed",
@@ -1256,38 +1265,33 @@
           }
         },
         "failures": [
+          "visual-rough-validator: FAIL SOURCE_HASH_MISMATCH",
           "audio-files: 缺少 37 个音频文件"
         ],
-        "warnings": [],
+        "warnings": [
+          "找不到当前 A-page 对应的 compile trace，未重跑上游 validator"
+        ],
         "sourceHashes": {
-          "taskPackage": "f1cb88ab6e56f8730e186ddd50968242d19277fc02d45d5d526f78c0e741941b",
+          "taskPackage": "91886acec42a2ac4b7bfd3ce6876015852f587e8e24e530a381e4949eadf8938",
           "approvedNarration": "c4ca331e78b75ff71b0b435a7e8b927c9d988c49f8ce6d493ada1e5cf61a55bd",
-          "aPage": "e98e5187f47372d90d90400d121f7736a8e59c3fc7bdefba322bc3da79004717",
+          "aPage": "f8b3ba87cf8d73d0c1c8fac761d5f823caa6ba4f1262d67c443f092b2a9a8e6c",
           "visualRough": "ce52dfb7a03d5e37cc6c47951affd2c0843d27a1b85e2cdcdad566185d2bcff8",
           "playerScript": "40f7f6a48d8861f7552010bfbd3447fb17f4389f47de72dc1aa3cfa4cf80f75e",
           "playerOutline": "422dc90002072b39d484db67e5edd4cdb41f2cb2b1833f4a2e6fa3b2f06a80fe"
         },
         "commands": [
           {
-            "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\scripts\\verify_visual_rough.py --a-page D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-05\\inputs\\episode-05-a-page.json --visual-rough D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-05\\inputs\\episode-05-visual-rough.md --recipes-dir D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\references\\page-recipes --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-05-visual-rough-validation.json",
-            "exitCode": 0,
-            "durationMs": 88,
-            "stdout": "PASS visual-rough-v3: source binding, recipes, screen slots, images, and logic limits are valid",
+            "command": "python /home/tokiya/135-CourseWebvideo/narration-pipeline/.agents/skills/design-course-visual-rough/scripts/verify_visual_rough.py --a-page /home/tokiya/135-CourseWebvideo/player/episodes/episode-05/inputs/episode-05-a-page.json --visual-rough /home/tokiya/135-CourseWebvideo/player/episodes/episode-05/inputs/episode-05-visual-rough.md --recipes-dir /home/tokiya/135-CourseWebvideo/narration-pipeline/.agents/skills/design-course-visual-rough/references/page-recipes --output /home/tokiya/135-CourseWebvideo/.tmp/production-status-scan/episode-05-visual-rough-validation.json",
+            "exitCode": 1,
+            "durationMs": 46,
+            "stdout": "FAIL SOURCE_HASH_MISMATCH",
             "stderr": "",
             "timedOut": false
           },
           {
-            "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\rewrite-course-narration\\scripts\\verify_compilation.py --validation-profile a-page-v6 --task-package D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\episodes\\module-1-system-cognition\\episode-05-industrial-internet-identifier-private-code-task-package.md --compile-trace D:\\00-workspace\\005-coursewebvideo\\.tmp\\narration-pipeline\\2026-09-04-ep05-a-page-recompile\\episode-05\\episode-05-b-to-a-compile-trace.json --approved-text D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-05\\inputs\\approved-spoken-text.txt --compiled-json D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-05\\inputs\\episode-05-a-page.json --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-05-a-page-validation.json",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-05",
             "exitCode": 0,
-            "durationMs": 76,
-            "stdout": "PASS a-page-v6: A-page semantics, screen contract, Nx, timing, and compile coverage are valid",
-            "stderr": "",
-            "timedOut": false
-          },
-          {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-05",
-            "exitCode": 0,
-            "durationMs": 90,
+            "durationMs": 32,
             "stdout": "episode:check 通过：1 个实例，0 个警告",
             "stderr": "",
             "timedOut": false
@@ -1295,7 +1299,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1169,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -1303,8 +1307,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 623,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 15ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -1477,8 +1481,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -1495,18 +1499,23 @@
     {
       "schemaVersion": "coursewebvideo/episode-production-status/v1",
       "episodeId": "episode-06",
-      "title": "标识解析体系如何把编码变成可查询信息",
+      "title": "标识解析体系与层级",
       "workflow": {
         "mode": "current",
         "exemptions": []
       },
       "summary": {
-        "status": "awaiting-approval",
-        "currentStage": "approve-narration",
-        "nextAction": "补齐人工审批记录: narration",
-        "blockers": [],
+        "status": "blocked",
+        "currentStage": "visual-rough",
+        "nextAction": "补齐人工审批记录: visualRough",
+        "blockers": [
+          "音频缺少 37 个文件"
+        ],
         "approvalGaps": [
-          "narration"
+          "visualRough",
+          "checkpointPlan",
+          "firstChapter",
+          "checkpointAudio"
         ],
         "productionStatus": "in-progress",
         "automationStatus": "passed",
@@ -1516,7 +1525,7 @@
         "state": "needs-owner",
         "canAdvance": false,
         "reasons": [
-          "等待人工决策: narration"
+          "等待人工决策: visualRough, checkpointPlan, firstChapter, checkpointAudio"
         ],
         "productionStatus": "in-progress",
         "automationStatus": "passed",
@@ -1524,7 +1533,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:07.480Z",
+        "ranAt": "2026-09-06T06:46:26.404Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -1566,15 +1575,15 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "b517ad3f89f6ad65f4c4b729cf5e96aaaabc11e2f3756d427361bf8817715508",
+          "taskPackage": "c270cbaf022b5daea959059e06fe85ad98b67db0647c8c695eca9a24139dc24f",
           "approvedNarration": "d63df3b08aa493532d3da60d5b165d5f2ce494d3679d71b85585d6a00c5623df",
           "aPage": "112767d12950820bc79d9b7eaa1884d4fa7b2e268ac1d6a0a73f7d440cad220e"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-06",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-06",
             "exitCode": 0,
-            "durationMs": 158,
+            "durationMs": 51,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-06: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -1582,7 +1591,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 784,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -1590,8 +1599,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 331,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 27ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -1599,11 +1608,11 @@
       },
       "approvals": {
         "narration": {
-          "status": "unrecorded",
-          "decidedAt": null,
-          "decidedBy": null,
+          "status": "approved",
+          "decidedAt": "2026-09-06T06:46:25.178Z",
+          "decidedBy": "workbench",
           "evidence": null,
-          "note": null
+          "note": ""
         },
         "visualRough": {
           "status": "unrecorded",
@@ -1668,10 +1677,10 @@
         {
           "id": "approve-narration",
           "name": "批准口播",
-          "status": "awaiting-approval",
+          "status": "complete",
           "health": "passed",
           "reasons": [],
-          "canAdvance": false
+          "canAdvance": true
         },
         {
           "id": "a-page",
@@ -1700,24 +1709,24 @@
         {
           "id": "visual-rough",
           "name": "Visual rough",
-          "status": "not-started",
-          "health": "not-run",
+          "status": "awaiting-approval",
+          "health": "passed",
           "reasons": [],
           "canAdvance": false
         },
         {
           "id": "player-phase-1",
           "name": "Player Phase 1",
-          "status": "not-started",
-          "health": "not-run",
+          "status": "complete",
+          "health": "passed",
           "reasons": [],
-          "canAdvance": false
+          "canAdvance": true
         },
         {
           "id": "checkpoint-plan",
           "name": "Checkpoint Plan",
-          "status": "not-started",
-          "health": "not-run",
+          "status": "awaiting-approval",
+          "health": "passed",
           "reasons": [],
           "canAdvance": false
         },
@@ -1732,25 +1741,27 @@
         {
           "id": "chapter-production",
           "name": "章节制作",
-          "status": "not-started",
-          "health": "not-run",
+          "status": "complete",
+          "health": "passed",
           "reasons": [],
-          "canAdvance": false
+          "canAdvance": true
         },
         {
           "id": "chapter-acceptance",
           "name": "后续章节与验收",
-          "status": "not-started",
-          "health": "not-run",
+          "status": "awaiting-approval",
+          "health": "passed",
           "reasons": [],
           "canAdvance": false
         },
         {
           "id": "audio",
           "name": "音频",
-          "status": "not-started",
-          "health": "not-run",
-          "reasons": [],
+          "status": "awaiting-approval",
+          "health": "blocked",
+          "reasons": [
+            "音频缺少 37 个文件"
+          ],
           "canAdvance": false
         },
         {
@@ -1762,8 +1773,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -1809,7 +1820,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:07.641Z",
+        "ranAt": "2026-09-06T06:46:01.303Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -1851,15 +1862,15 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "1840fa32bba98ecfee9878355aead0588899d7185b966bd46b915eec87fa5b66",
+          "taskPackage": "8b522a08358c7b201e99c04957aeca97b3788a7be0a395f7b91104feb880fd27",
           "approvedNarration": "a6e7a92eec6d255ebbae16cb5b4057948437cb02fc624830f4629ecfa48ebca6",
           "aPage": "120c4ef639d7160838e8fd483fc18a7bd103241f503bfa607b3a15864887f618"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-07",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-07",
             "exitCode": 0,
-            "durationMs": 147,
+            "durationMs": 40,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-07: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -1867,7 +1878,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -1875,8 +1886,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -2047,8 +2058,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -2094,7 +2105,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:07.808Z",
+        "ranAt": "2026-09-06T06:46:01.365Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -2136,15 +2147,15 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "9745a06a001e37d7da8dd1fbcefeb968c5ceb67980eb1f1b136c0118703ae0b5",
+          "taskPackage": "c5c716215f2af32de7dfb5e5a99a780b051cdddbd911d0da30d0d526a4b5ffcd",
           "approvedNarration": "73095de97cddfefc0ff81a003509ca6b8abeb7bd6bd3339dd5d437d139d4c280",
           "aPage": "7749495e5455694193f1d33368ad5d30968a946557f53a5fafa1da2132b21c43"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-08",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-08",
             "exitCode": 0,
-            "durationMs": 151,
+            "durationMs": 61,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-08: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -2152,7 +2163,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -2160,8 +2171,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -2332,8 +2343,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -2382,7 +2393,7 @@
       },
       "automation": {
         "status": "failed",
-        "ranAt": "2026-09-05T02:25:07.975Z",
+        "ranAt": "2026-09-06T06:46:01.408Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -2425,18 +2436,18 @@
           "旧流程实例：跳过当前 A-page / Visual rough 上游 validator"
         ],
         "sourceHashes": {
-          "taskPackage": "5809e0ad2772073ad736fe1f8b0e956887a234d1255e384fcd0691720642561f",
+          "taskPackage": "ac7d04d4863d1915e5c39ab2b8915008a56a635a95e9366b6e2f110523a8c918",
           "approvedNarration": "e07682c0eaeae79123476216b63fd9450d5a854b1d6080c0604a44438a6e4f25",
           "aPage": "8fb764141c77def8fbb003f376ab2d4d47f38a6d05d4528d2a11e3a4562f25be",
           "visualRough": "908aa37daf366132fafa02f66069f18d209b7099dd7e462b492a6a7c26e4d230",
-          "playerScript": "012a17cebc8a35e24d7b7ba6fe12cdbd479cd00b7a8ec491b7accfb2f66f4d7c",
-          "playerOutline": "d8b202f051cc4033e715775535b27d294825705fe907480c3e6c352a7f048c28"
+          "playerScript": "add821ff31cd497c48f03a05250eeda88d67d09e16ace9f629d1a24eb34ad6ea",
+          "playerOutline": "b75522fe5cd4dc181dfc0dfb1075bd5ad3b20a59bd9b6e14cdefd345cc859ea6"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-09",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-09",
             "exitCode": 0,
-            "durationMs": 142,
+            "durationMs": 41,
             "stdout": "episode:check 通过：1 个实例，0 个警告",
             "stderr": "",
             "timedOut": false
@@ -2444,7 +2455,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -2452,8 +2463,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -2626,8 +2637,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -2669,7 +2680,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:58:13.616Z",
+        "ranAt": "2026-09-06T06:46:01.445Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -2710,13 +2721,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "380df498411b3d0318d75a5529c7c15b800e5fc8b62621e82d7c6af280b15103"
+          "taskPackage": "86024944ae21599f08825fa333c86cbdde3582129a6e723621fc1fa913e85c5a"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-10",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-10",
             "exitCode": 0,
-            "durationMs": 112,
+            "durationMs": 35,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-10: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -2724,7 +2735,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1284,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -2732,8 +2743,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 701,
-            "stdout": "",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -2904,8 +2915,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -2947,7 +2958,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:08.282Z",
+        "ranAt": "2026-09-06T06:46:01.492Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -2988,13 +2999,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "e36eaebf7e384a48b9ffd17408d28e803844a7aca36b7f61b590fe4787ae2a2b"
+          "taskPackage": "3f5300d3d6587690e4db924cc11f0701e0ac45f3ba5449dc3e81f1a61577c0ad"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-11",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-11",
             "exitCode": 0,
-            "durationMs": 148,
+            "durationMs": 46,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-11: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -3002,7 +3013,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -3010,8 +3021,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -3182,8 +3193,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -3225,7 +3236,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:08.444Z",
+        "ranAt": "2026-09-06T06:46:01.550Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -3266,13 +3277,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "0bd5b8a21cd8af6b1f5ab2dae90af8684be92d0d053cd090d1ee153e30c64662"
+          "taskPackage": "21de8debef8fae655ebb76dd7f8efb3b7c210564d807d83ddec49fe3235e1fb6"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-12",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-12",
             "exitCode": 0,
-            "durationMs": 151,
+            "durationMs": 57,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-12: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -3280,7 +3291,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -3288,8 +3299,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -3460,8 +3471,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -3503,7 +3514,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:08.591Z",
+        "ranAt": "2026-09-06T06:46:01.609Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -3544,13 +3555,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "5f391711a98fb029892f068c036b83a3b0ae2c337c5a4b76d7a73dc2033dd21b"
+          "taskPackage": "623d57383575930481be2a8b56a23f2685fe4cb77d8e4aab21b4fa6af62dcf4c"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-13",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-13",
             "exitCode": 0,
-            "durationMs": 134,
+            "durationMs": 57,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-13: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -3558,7 +3569,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -3566,8 +3577,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -3738,8 +3749,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -3781,7 +3792,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:08.757Z",
+        "ranAt": "2026-09-06T06:46:01.649Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -3822,13 +3833,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "1e0c6943c352cf6a6854f309c4dfaea8286cbb9173eb9766b37aac98532ebfc9"
+          "taskPackage": "8e48290393cf5b48ff14bd44e60f3847b34d0c6085e08502b90b6d64ab1b3207"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-14",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-14",
             "exitCode": 0,
-            "durationMs": 148,
+            "durationMs": 38,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-14: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -3836,7 +3847,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -3844,8 +3855,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -4016,8 +4027,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -4059,7 +4070,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:08.910Z",
+        "ranAt": "2026-09-06T06:46:01.684Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -4100,13 +4111,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "15806c13a8cfd6dd0e2fb2902177f453e8fd0fd4b86a810e9727cb4f45b38a15"
+          "taskPackage": "ba21ae8f2bdd6bac9237fade3018a10b33b82c18d3d522d72267598df8374ce4"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-15",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-15",
             "exitCode": 0,
-            "durationMs": 142,
+            "durationMs": 35,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-15: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -4114,7 +4125,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -4122,8 +4133,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -4294,8 +4305,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -4337,7 +4348,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:09.081Z",
+        "ranAt": "2026-09-06T06:46:01.725Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -4378,13 +4389,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "67374201b6d233c6b039d8685c7b15495c2c4c3468c9d754c4ca4d926d1f307e"
+          "taskPackage": "9d8673deec55749799a57d67307c0e83f824f0642ed47dd91b9c6d8642e6dbfe"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-16",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-16",
             "exitCode": 0,
-            "durationMs": 160,
+            "durationMs": 39,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-16: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -4392,7 +4403,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -4400,8 +4411,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -4572,8 +4583,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -4615,7 +4626,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:09.233Z",
+        "ranAt": "2026-09-06T06:46:01.772Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -4656,13 +4667,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "1e6537eae082abd4dfa93858e8965fc2b1f5da3394b6ef80421ba22c963d37b5"
+          "taskPackage": "11851f94557f7328bcbf39064885fd912904817b74aa264b805fd174ca571527"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-17",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-17",
             "exitCode": 0,
-            "durationMs": 140,
+            "durationMs": 46,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-17: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -4670,7 +4681,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -4678,8 +4689,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -4850,8 +4861,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -4893,7 +4904,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:09.386Z",
+        "ranAt": "2026-09-06T06:46:01.809Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -4934,13 +4945,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "95983720bae9611c2de6e1d0eb2597a73054e50fef0bccc6808bdf8f6700dfca"
+          "taskPackage": "df3f2c5b299f76b83c586a9b115016fad0701ebf8e55b89e96c697e2f441a626"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-18",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-18",
             "exitCode": 0,
-            "durationMs": 142,
+            "durationMs": 36,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-18: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -4948,7 +4959,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -4956,8 +4967,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -5128,8 +5139,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -5171,7 +5182,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:09.550Z",
+        "ranAt": "2026-09-06T06:46:01.852Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -5212,13 +5223,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "41711802011a7d4e35f2d90f7ff96178a00f7eee443f2835769bea33a95607d7"
+          "taskPackage": "31c80b57d3c72f7528272f7287289ece256759a12b52b9b7b5fc88015e9c3f43"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-19",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-19",
             "exitCode": 0,
-            "durationMs": 152,
+            "durationMs": 42,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-19: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -5226,7 +5237,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -5234,8 +5245,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -5406,8 +5417,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -5449,7 +5460,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:09.714Z",
+        "ranAt": "2026-09-06T06:46:01.914Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -5490,13 +5501,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "d315ecccd08eecfae836a3541cd217e58b717082b39158d6d439c5c11d1a69a3"
+          "taskPackage": "b49f481d209dbc0bb42ba2ce426cc15019ca218f5634b458ac9658b69582d7bf"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-20",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-20",
             "exitCode": 0,
-            "durationMs": 151,
+            "durationMs": 60,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-20: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -5504,7 +5515,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -5512,8 +5523,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -5684,8 +5695,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -5727,7 +5738,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:09.867Z",
+        "ranAt": "2026-09-06T06:46:01.963Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -5768,13 +5779,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "614331920d8fa2c07e14d7781873e7416f254c6b1129887a286f05be54be1461"
+          "taskPackage": "29caadaa32afb74aea54065b2c348f7e3245aa7fcbd9fdce4ff5e9943d34151a"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-21",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-21",
             "exitCode": 0,
-            "durationMs": 138,
+            "durationMs": 48,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-21: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -5782,7 +5793,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -5790,8 +5801,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -5962,8 +5973,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -6005,7 +6016,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:10.024Z",
+        "ranAt": "2026-09-06T06:46:02.035Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -6046,13 +6057,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "993ff9d8a70f5a733d20fdcaee30b83d015749decc7f05a6014d22acc0e29c6b"
+          "taskPackage": "3e30d756c28b70b9d5cb2b2df020e0f07cc58c581be675ae64783d7e1caf3eba"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-22",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-22",
             "exitCode": 0,
-            "durationMs": 142,
+            "durationMs": 70,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-22: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -6060,7 +6071,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -6068,8 +6079,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -6240,8 +6251,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -6283,7 +6294,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:10.205Z",
+        "ranAt": "2026-09-06T06:46:02.078Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -6324,13 +6335,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "d90ad3c1c8d6e584fc12c3c22db633c99da1281ff0a1758a6938cfd601b88d65"
+          "taskPackage": "932c18e2cf97af1515414e1e34124948e859f5e1b8feea034ae1ba9d0340c4b8"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-23",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-23",
             "exitCode": 0,
-            "durationMs": 169,
+            "durationMs": 41,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-23: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -6338,7 +6349,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -6346,8 +6357,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -6518,8 +6529,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -6561,7 +6572,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:10.376Z",
+        "ranAt": "2026-09-06T06:46:02.136Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -6602,13 +6613,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "4bf4f51220e59e9bccb4c5fef50e89c5dbf47d51b0fed5d93ce5dde4372a57af"
+          "taskPackage": "ca4757f5b9a494f32b3f8257b83b37fba9a2005835b71c29e166a0f7cc612383"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-24",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-24",
             "exitCode": 0,
-            "durationMs": 158,
+            "durationMs": 57,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-24: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -6616,7 +6627,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -6624,8 +6635,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -6796,8 +6807,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -6839,7 +6850,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:10.550Z",
+        "ranAt": "2026-09-06T06:46:02.201Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -6880,13 +6891,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "ab0e1129a1a7439bb27f84578294f3bac043d93dc85fab06bfdb9dbdbda910e1"
+          "taskPackage": "15ee66e53001521fdefb6b3530dd24a270999fa9fc1d06aaae56fd9e5dee5cc5"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-25",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-25",
             "exitCode": 0,
-            "durationMs": 161,
+            "durationMs": 63,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-25: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -6894,7 +6905,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -6902,8 +6913,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -7074,8 +7085,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -7117,7 +7128,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:10.713Z",
+        "ranAt": "2026-09-06T06:46:02.254Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -7158,13 +7169,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "e20bd835ee0700c5543a1c991545655594763b8a40070f15f704b5e5e3833dcc"
+          "taskPackage": "333b10db8b2d3a31f4a80770adc6af5f8f22a17ec73ba0048a469d9afad6897b"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-26",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-26",
             "exitCode": 0,
-            "durationMs": 151,
+            "durationMs": 50,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-26: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -7172,7 +7183,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -7180,8 +7191,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -7352,8 +7363,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -7395,7 +7406,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:10.886Z",
+        "ranAt": "2026-09-06T06:46:02.299Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -7436,13 +7447,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "099869e1298aa106d0188bfa6ce53e260d7ea742439c19a25a41044926b510b0"
+          "taskPackage": "a231fb619fc5395e0fb95e09c313bc93515fd8bfefb22b219a87ac40796bd4f0"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-27",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-27",
             "exitCode": 0,
-            "durationMs": 161,
+            "durationMs": 44,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-27: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -7450,7 +7461,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -7458,8 +7469,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -7630,8 +7641,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -7673,7 +7684,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:11.038Z",
+        "ranAt": "2026-09-06T06:46:02.368Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -7714,13 +7725,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "fcd0111c492e102bfb25780e5c26adfcfb62611e92ce8d722af49f4311d83e0a"
+          "taskPackage": "666ec7e6c1416fee39da43a212df213eb71f9669846c5379db36c8df286eda8e"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-28",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-28",
             "exitCode": 0,
-            "durationMs": 140,
+            "durationMs": 68,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-28: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -7728,7 +7739,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -7736,8 +7747,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -7908,8 +7919,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -7951,7 +7962,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:11.197Z",
+        "ranAt": "2026-09-06T06:46:02.414Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -7992,13 +8003,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "c9e10eef0bf6b35cd60dd4546a2074490772f9a3a0960bac7a4cd857d19036cc"
+          "taskPackage": "eaeb5c1193e0957a3cd7790b8ba32706150b2539e2a543585cd2e76240c41d0c"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-29",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-29",
             "exitCode": 0,
-            "durationMs": 144,
+            "durationMs": 44,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-29: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -8006,7 +8017,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -8014,8 +8025,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -8186,8 +8197,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -8229,7 +8240,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:11.358Z",
+        "ranAt": "2026-09-06T06:46:02.445Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -8270,13 +8281,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "de3100d40c081518ae1b7782d34ad2c823a78510f201886173a7caa7fe67d55b"
+          "taskPackage": "8406e4f45deb54aae8b5d4da9a3ee7b53e438e32e8ffade63a5f403fdf972b5f"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-30",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-30",
             "exitCode": 0,
-            "durationMs": 150,
+            "durationMs": 30,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-30: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -8284,7 +8295,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -8292,8 +8303,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -8464,8 +8475,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -8507,7 +8518,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:11.511Z",
+        "ranAt": "2026-09-06T06:46:02.487Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -8548,13 +8559,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "4726bad78f58cd83e533b15a061b3abd2e4ccb35a627c8252fcaf78c9ad9a114"
+          "taskPackage": "61c53119f517c862a03dd46b2334a7a7e51c17042c34d70b8583b460f21281ff"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-31",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-31",
             "exitCode": 0,
-            "durationMs": 140,
+            "durationMs": 42,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-31: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -8562,7 +8573,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -8570,8 +8581,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -8742,8 +8753,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -8785,7 +8796,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:11.673Z",
+        "ranAt": "2026-09-06T06:46:02.554Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -8826,13 +8837,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "fcdf927b0fafa75d90abcb6a668eb5dae5860485c459f516332237b47513055d"
+          "taskPackage": "12da5e5346eace2cd94270b7c1b1daa0fa6594d2065fee53820ebe46f507414f"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-32",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-32",
             "exitCode": 0,
-            "durationMs": 151,
+            "durationMs": 65,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-32: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -8840,7 +8851,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -8848,8 +8859,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -9020,8 +9031,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -9063,7 +9074,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:11.830Z",
+        "ranAt": "2026-09-06T06:46:02.602Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -9104,13 +9115,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "cbdb526cbbc17df1497e93917ce5e0c599b2229ef04dcad6375c09c16e79e658"
+          "taskPackage": "c98a9a234229975adf935246fbe539b0fcd9db934ed09ccfa2fe225f0563b054"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-33",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-33",
             "exitCode": 0,
-            "durationMs": 146,
+            "durationMs": 47,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-33: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -9118,7 +9129,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -9126,8 +9137,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -9298,8 +9309,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -9341,7 +9352,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:11.992Z",
+        "ranAt": "2026-09-06T06:46:02.658Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -9382,13 +9393,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "092d2e7afc7b14fd9db1e8c17620a74948855b7641611a85461bb4536b8fdf6d"
+          "taskPackage": "5155d214438ac2436eeb329e29376ebf62135d349a0fbf37cb083353771192e1"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-34",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-34",
             "exitCode": 0,
-            "durationMs": 151,
+            "durationMs": 54,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-34: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -9396,7 +9407,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -9404,8 +9415,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -9576,8 +9587,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -9600,30 +9611,33 @@
         "exemptions": []
       },
       "summary": {
-        "status": "awaiting-approval",
+        "status": "blocked",
         "currentStage": "audio",
         "nextAction": "补齐人工审批记录: checkpointAudio",
-        "blockers": [],
+        "blockers": [
+          "音频缺少 36 个文件"
+        ],
         "approvalGaps": [
           "checkpointAudio"
         ],
         "productionStatus": "in-progress",
-        "automationStatus": "passed",
+        "automationStatus": "failed",
         "humanStatus": "needs-decision"
       },
       "readiness": {
-        "state": "needs-owner",
+        "state": "blocked",
         "canAdvance": false,
         "reasons": [
+          "audio-files: 缺少 36 个音频文件",
           "等待人工决策: checkpointAudio"
         ],
         "productionStatus": "in-progress",
-        "automationStatus": "passed",
+        "automationStatus": "failed",
         "humanStatus": "needs-decision"
       },
       "automation": {
-        "status": "passed",
-        "ranAt": "2026-09-05T02:25:12.376Z",
+        "status": "failed",
+        "ranAt": "2026-09-06T06:46:02.743Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -9646,17 +9660,13 @@
             "status": "passed",
             "detail": "上游 visual rough validator 通过"
           },
-          "a-page-validator": {
-            "status": "passed",
-            "detail": "上游 A-page validator 通过"
-          },
           "player-contract": {
             "status": "passed",
             "detail": "episode:check 通过"
           },
           "audio-files": {
-            "status": "passed",
-            "detail": "音频文件与分段齐全"
+            "status": "failed",
+            "detail": "缺少 36 个音频文件"
           },
           "typecheck": {
             "status": "passed",
@@ -9667,10 +9677,14 @@
             "detail": "lint 通过"
           }
         },
-        "failures": [],
-        "warnings": [],
+        "failures": [
+          "audio-files: 缺少 36 个音频文件"
+        ],
+        "warnings": [
+          "找不到当前 A-page 对应的 compile trace，未重跑上游 validator"
+        ],
         "sourceHashes": {
-          "taskPackage": "00891a1dfd009ddff42fe82a1d74ac0918535b47fba4f2ad1cdb0b0ff02c30dc",
+          "taskPackage": "f66fdc831c61fc7e4c213d46ec8e7ad88a6fb52d493ce7080206c71c1140fd1c",
           "approvedNarration": "fd02af2dc6a8c7208a36c2d59ca042d4a42c3793424c2dabca5b5b8ac7916301",
           "aPage": "75e878392d2ea0711ef628f48c0c1c2aacfea75263fea203e322105e9ad0313c",
           "visualRough": "f4565614b830c2f311872c5f3e2ad00583c0cd0fbfa7bfe7938978b0b47f834d",
@@ -9679,25 +9693,17 @@
         },
         "commands": [
           {
-            "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\scripts\\verify_visual_rough.py --a-page D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-35\\inputs\\episode-35-a-page.json --visual-rough D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-35\\inputs\\episode-35-visual-rough.md --recipes-dir D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\design-course-visual-rough\\references\\page-recipes --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-35-visual-rough-validation.json",
+            "command": "python /home/tokiya/135-CourseWebvideo/narration-pipeline/.agents/skills/design-course-visual-rough/scripts/verify_visual_rough.py --a-page /home/tokiya/135-CourseWebvideo/player/episodes/episode-35/inputs/episode-35-a-page.json --visual-rough /home/tokiya/135-CourseWebvideo/player/episodes/episode-35/inputs/episode-35-visual-rough.md --recipes-dir /home/tokiya/135-CourseWebvideo/narration-pipeline/.agents/skills/design-course-visual-rough/references/page-recipes --output /home/tokiya/135-CourseWebvideo/.tmp/production-status-scan/episode-35-visual-rough-validation.json",
             "exitCode": 0,
-            "durationMs": 108,
+            "durationMs": 56,
             "stdout": "PASS visual-rough-v3: source binding, recipes, screen slots, images, and logic limits are valid",
             "stderr": "",
             "timedOut": false
           },
           {
-            "command": "python D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\.agents\\skills\\rewrite-course-narration\\scripts\\verify_compilation.py --validation-profile a-page-v6 --task-package D:\\00-workspace\\005-coursewebvideo\\narration-pipeline\\episodes\\module-4-identifier-carrier\\episode-35-identifier-carrier-selection-material-process-environment-cost-task-package.md --compile-trace D:\\00-workspace\\005-coursewebvideo\\.tmp\\narration-pipeline\\2026-09-02-rewrite-narration-ep35\\episode-35\\episode-35-b-to-a-compile-trace.json --approved-text D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-35\\inputs\\approved-spoken-text.txt --compiled-json D:\\00-workspace\\005-coursewebvideo\\player\\episodes\\episode-35\\inputs\\episode-35-a-page.json --output D:\\00-workspace\\005-coursewebvideo\\.tmp\\production-status-scan\\episode-35-a-page-validation.json",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-35",
             "exitCode": 0,
-            "durationMs": 105,
-            "stdout": "PASS a-page-v6: A-page semantics, screen contract, Nx, timing, and compile coverage are valid",
-            "stderr": "",
-            "timedOut": false
-          },
-          {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-35",
-            "exitCode": 0,
-            "durationMs": 142,
+            "durationMs": 27,
             "stdout": "episode:check 通过：1 个实例，0 个警告",
             "stderr": "",
             "timedOut": false
@@ -9705,7 +9711,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -9713,8 +9719,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -9872,8 +9878,10 @@
           "id": "audio",
           "name": "音频",
           "status": "awaiting-approval",
-          "health": "passed",
-          "reasons": [],
+          "health": "blocked",
+          "reasons": [
+            "音频缺少 36 个文件"
+          ],
           "canAdvance": false
         },
         {
@@ -9885,8 +9893,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -9928,7 +9936,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:12.532Z",
+        "ranAt": "2026-09-06T06:46:02.798Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -9969,13 +9977,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "db5843555184fb5f905be731107727c8045639f5e6020d3601bfcd2a82cbd5b7"
+          "taskPackage": "05b021461c7e34725a34f2d43640be9017fb1e1d60c0f17454bf6ec5293e29a7"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-36",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-36",
             "exitCode": 0,
-            "durationMs": 146,
+            "durationMs": 53,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-36: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -9983,7 +9991,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -9991,8 +9999,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -10163,8 +10171,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -10206,7 +10214,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:12.683Z",
+        "ranAt": "2026-09-06T06:46:02.851Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -10247,13 +10255,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "65a50b083d51cfec6da324a9929a58790997301387a9f263c58e39da8fb145dc"
+          "taskPackage": "ed35865887d6e0dbd13a9146c795ad5f0051892f23807227d8c3cf5a1561c7d0"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-37",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-37",
             "exitCode": 0,
-            "durationMs": 140,
+            "durationMs": 51,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-37: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -10261,7 +10269,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -10269,8 +10277,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -10441,8 +10449,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -10484,7 +10492,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:12.839Z",
+        "ranAt": "2026-09-06T06:46:02.915Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -10525,13 +10533,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "255326b983c52cc3941ead4219362f34a38a24ceb4f01954dcf458407420e730"
+          "taskPackage": "1c949fe437369dbd8911b3f6ef8a40084602ef394a07f106c1ed4b91f435a52d"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-38",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-38",
             "exitCode": 0,
-            "durationMs": 145,
+            "durationMs": 62,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-38: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -10539,7 +10547,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -10547,8 +10555,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -10719,8 +10727,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -10762,7 +10770,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:13.003Z",
+        "ranAt": "2026-09-06T06:46:02.982Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -10803,13 +10811,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "a179bb76067c5d95b62e33496df940b0c8dfed12601b9420bffbc266db75f058"
+          "taskPackage": "66b14dfb3ce42815e144a8be310e8cc07cfd2da11bb68d6a30398eb363da7631"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-39",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-39",
             "exitCode": 0,
-            "durationMs": 153,
+            "durationMs": 65,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-39: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -10817,7 +10825,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -10825,8 +10833,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -10997,8 +11005,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -11040,7 +11048,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:13.165Z",
+        "ranAt": "2026-09-06T06:46:03.021Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -11081,13 +11089,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "9494fc7a697083d1effc09349fe11937be69c61107dd259ae2cfc337f23547b9"
+          "taskPackage": "0f1498da48240532b1b607326105ee83b64a6d0d882b2cdfd1a59e31700d2e39"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-40",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-40",
             "exitCode": 0,
-            "durationMs": 150,
+            "durationMs": 37,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-40: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -11095,7 +11103,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -11103,8 +11111,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -11275,8 +11283,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -11318,7 +11326,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:13.330Z",
+        "ranAt": "2026-09-06T06:46:03.063Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -11359,13 +11367,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "dae608284db059e82a35ffbbd948be4db472d5c472645d8fa257e45ed6ed04fa"
+          "taskPackage": "758c70eefa2e9d2f0b08f2069be21e4a12b64a3c3ba4cec8de4a5023bc949667"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-41",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-41",
             "exitCode": 0,
-            "durationMs": 154,
+            "durationMs": 41,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-41: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -11373,7 +11381,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -11381,8 +11389,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -11553,8 +11561,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -11596,7 +11604,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:13.487Z",
+        "ranAt": "2026-09-06T06:46:03.128Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -11637,13 +11645,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "7c5411faeb27a3c8f834357f6d5d0528aef981af040219dc5efeee7486383fd8"
+          "taskPackage": "0bbfc0cfb46104e3011c1fcb9f77da3e3f948613533649fbd30fa9f57651a2fc"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-42",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-42",
             "exitCode": 0,
-            "durationMs": 146,
+            "durationMs": 63,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-42: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -11651,7 +11659,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -11659,8 +11667,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -11831,8 +11839,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -11874,7 +11882,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:13.649Z",
+        "ranAt": "2026-09-06T06:46:03.173Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -11915,13 +11923,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "d1029433385190eb040822fe2464ceb871bcf4bc0d86c5a1c6e7257be8f66f8c"
+          "taskPackage": "db3e8ffb07c14a9d7d138a9ebc9ba3c1bb07aa5aab8aa36c195075e3d86697b0"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-43",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-43",
             "exitCode": 0,
-            "durationMs": 147,
+            "durationMs": 44,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-43: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -11929,7 +11937,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -11937,8 +11945,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -12109,8 +12117,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -12152,7 +12160,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:13.808Z",
+        "ranAt": "2026-09-06T06:46:03.229Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -12193,13 +12201,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "a39382f79c02ac7a8535e6633b7beb197e840fdcb95594604ccd4d33b756961e"
+          "taskPackage": "adb855563174043b2cfa83d37a58318e27364358433e91dd66231ea1f3871293"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-44",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-44",
             "exitCode": 0,
-            "durationMs": 148,
+            "durationMs": 55,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-44: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -12207,7 +12215,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -12215,8 +12223,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -12387,8 +12395,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -12430,7 +12438,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:13.966Z",
+        "ranAt": "2026-09-06T06:46:03.302Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -12471,13 +12479,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "bc76fbd3cbdff66ec83d0ba7c58533aa2c58b8aa17ad9100e123c68261258466"
+          "taskPackage": "fca6d19220d41cf9589b230b06c032509582c4710378ad0eb0ee30710e363057"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-45",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-45",
             "exitCode": 0,
-            "durationMs": 147,
+            "durationMs": 71,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-45: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -12485,7 +12493,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -12493,8 +12501,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -12665,8 +12673,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -12708,7 +12716,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:14.132Z",
+        "ranAt": "2026-09-06T06:46:03.365Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -12749,13 +12757,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "ea1748654c3aa21ae4da762f3a6b0c64de2008fb10be16d094004a53d15d0daf"
+          "taskPackage": "3a0cd36469acb9f9ba8daec9e12a1936bdbf62291b3c9a014d242166b85bac24"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-46",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-46",
             "exitCode": 0,
-            "durationMs": 154,
+            "durationMs": 61,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-46: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -12763,7 +12771,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -12771,8 +12779,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -12943,8 +12951,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -12986,7 +12994,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:14.288Z",
+        "ranAt": "2026-09-06T06:46:03.438Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -13027,13 +13035,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "13e24ccaa588f2fabe3faa49ba2b77fd9e42960af392fa929c74f8d245ce6e9e"
+          "taskPackage": "262613104474284b20622a5b24791ec6547df76b8e041fe9d309ed75bd1a7d77"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-47",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-47",
             "exitCode": 0,
-            "durationMs": 145,
+            "durationMs": 71,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-47: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -13041,7 +13049,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -13049,8 +13057,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -13221,8 +13229,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -13264,7 +13272,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:14.439Z",
+        "ranAt": "2026-09-06T06:46:03.487Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -13305,13 +13313,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "33a1ececd879e889e40164a08ec8d947310c99b7a32f04b441c6974481cfeac7"
+          "taskPackage": "13ecae2a43bfdb79d35a6dd0c11030f7c2b085a4cd0377510380140e6d468ef4"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-48",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-48",
             "exitCode": 0,
-            "durationMs": 140,
+            "durationMs": 48,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-48: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -13319,7 +13327,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -13327,8 +13335,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -13499,8 +13507,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -13542,7 +13550,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:14.598Z",
+        "ranAt": "2026-09-06T06:46:03.537Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -13583,13 +13591,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "c47203322abb28f7c4025dc90b71f74d34cb79b436649bdfd2ac0d8dd39d7157"
+          "taskPackage": "c0411255020ef4fccabc119b3bfae6c03d78f285b3da2741486fb6eab2a576a1"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-49",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-49",
             "exitCode": 0,
-            "durationMs": 149,
+            "durationMs": 49,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-49: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -13597,7 +13605,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -13605,8 +13613,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -13777,8 +13785,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -13820,7 +13828,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:14.766Z",
+        "ranAt": "2026-09-06T06:46:03.607Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -13861,13 +13869,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "bb03bf05b1255d9c4ea90238ece1fab8b65dc0a8df534b68b6efff7f67f1e8f6"
+          "taskPackage": "6d2f3b6456b33757b17ceda7dd19094cc485e1340d90e85a456ccef74ca3b052"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-50",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-50",
             "exitCode": 0,
-            "durationMs": 157,
+            "durationMs": 68,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-50: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -13875,7 +13883,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -13883,8 +13891,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -14055,8 +14063,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
@@ -14098,7 +14106,7 @@
       },
       "automation": {
         "status": "passed",
-        "ranAt": "2026-09-05T02:25:14.921Z",
+        "ranAt": "2026-09-06T06:46:03.661Z",
         "runner": "production-status scan",
         "checks": {
           "task-package": {
@@ -14139,13 +14147,13 @@
           "音频阶段尚未开始"
         ],
         "sourceHashes": {
-          "taskPackage": "254597f6ad7c746caa1881bf2324844c0d1e45172d63dde071639dbe3fa8b9b1"
+          "taskPackage": "5e881036b4a7991e3c0526d5dc7fb5abb9e9f7f278d25d016160a30890215a62"
         },
         "commands": [
           {
-            "command": "C:\\nvm4w\\nodejs\\node.exe tools/validate-episodes.mjs --episode episode-51",
+            "command": "/usr/bin/node tools/validate-episodes.mjs --episode episode-51",
             "exitCode": 0,
-            "durationMs": 144,
+            "durationMs": 53,
             "stdout": "episode:check 通过：1 个实例，1 个警告",
             "stderr": "WARN  episodes/episode-51: planned 实例尚未创建可播放入口",
             "timedOut": false
@@ -14153,7 +14161,7 @@
           {
             "command": "pnpm run typecheck",
             "exitCode": 0,
-            "durationMs": 1554,
+            "durationMs": 704,
             "stdout": "",
             "stderr": "$ tsc --noEmit",
             "timedOut": false
@@ -14161,8 +14169,8 @@
           {
             "command": "pnpm run lint",
             "exitCode": 0,
-            "durationMs": 770,
-            "stdout": "Found 0 warnings and 0 errors.\nFinished in 21ms on 50 files with 100 rules using 32 threads.",
+            "durationMs": 340,
+            "stdout": "Found 0 warnings and 0 errors.\nFinished in 37ms on 50 files with 100 rules using 32 threads.",
             "stderr": "$ oxlint src/app src/catalog src/runtime src/shared src/studio tools",
             "timedOut": false
           }
@@ -14333,8 +14341,8 @@
           "canAdvance": false
         }
       ],
-      "updatedAt": "2026-09-05",
-      "updatedBy": "production-status scan",
+      "updatedAt": "2026-09-06",
+      "updatedBy": "production-status sync",
       "observations": {
         "delivery": {
           "recording": {
