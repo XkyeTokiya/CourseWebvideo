@@ -114,15 +114,14 @@ pnpm courseplay:handoff -- --help
 
 ## 单集总状态控制面
 
-`production-status/episodes/<episode-id>.json` 是跨上游、Player、音频和最终交付的单集总状态；`player/episodes/<episode-id>/project.json` 仍只负责 Player 下游章节状态，不能替代总状态。
+`production-status/` 是跨上游、Player、音频和最终交付的进度工作台；`player/episodes/<episode-id>/project.json` 仍只负责 Player 下游章节状态。工作台的 `episodes/*.json` 与 `index.json` 是本地可重建投影，不是需要提交的事实源。
 
-工作台在线模式读取 `production-status/index.json`（服务模式下由 `/production-status/index.json` 按当前文件即时生成），一次加载全部剧集状态，避免逐集探测不存在的文件。运行 `node production-status/production-status.mjs index` 可为静态文件模式重新生成索引；索引是派生文件，不是人工审批事实源。
+工作台在线模式通过 `/production-status/index.json` 按当前文件即时生成索引，一次加载全部剧集状态，避免逐集探测不存在的文件。运行 `node production-status/production-status.mjs index` 可手动重建本地索引；索引和每期快照均已加入 `.gitignore`。
 
-总状态分为三类信息：
+工作台使用两类输入：
 
 - `observations`：由磁盘事实同步的文件、验证结果、章节和音频数量；工具可以更新。
-- `approvals`：人工门禁记录，默认是 `unrecorded`；文件存在或 Player `ready` 都不能自动变成 `approved`。
-- `coordination`：负责人、目标日期、阻塞事项和外部录屏/成片引用。
+- `manual-approvals.json`：可选的轻量人工放行记录；它只影响进度显示，不承载生产内容。
 
 常用命令从仓库根目录执行：
 
@@ -153,6 +152,6 @@ node production-status/production-status-server.mjs
 
 服务仅绑定到本机 `127.0.0.1`，并托管仓库根目录，以便工作台可直接预览关联的阶段性文件。
 
-`sync` 会保留已有的 `approvals` 和 `coordination`，只刷新可观测事实。人工审批应直接维护对应 episode JSON 的 `approvals` 对象，并填写 `decidedAt`、`decidedBy`、`evidence` 和 `note`。录屏或成片不在仓库时，不要伪造路径；可在 `coordination.externalArtifacts` 中登记真实外部证据。
+`sync` 会从 `manual-approvals.json` 读取阶段放行记录，并重新生成本地 episode 状态。不要直接编辑 `production-status/episodes/*.json`；如果删除人工放行记录，工作台只会显示对应阶段尚未放行，不会影响任何正式生产文件。完整约定见 [`production-status/README.md`](production-status/README.md)。
 
 状态推导规则：存在阻塞或验证失败为 `blocked`；存在待人工门禁为 `awaiting-approval`；最终视频已登记且 `finalDelivery` 已批准才是 `delivered`。因此总状态不会把下游局部完成误认为整期交付完成。

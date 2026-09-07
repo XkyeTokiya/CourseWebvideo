@@ -43,16 +43,16 @@ cd D:\00-workspace\005-coursewebvideo\player
 - 先确认目标子项目和当前状态，再只提交本任务明确修改的路径。
 - `archives/retired-production-flows/` 是封存历史载荷；未经用户明确授权，Agent 不得读取、解压或将其中内容作为生产依据。
 
-## 跨项目单集总状态
+## 跨项目单集进度投影
 
-仓库根级 `production-status/` 是跨项目的生产控制面，不属于 `narration-pipeline/` 或 `player/` 任一子项目。每期文件位于 `production-status/episodes/<episode-id>.json`，结构由 `production-status/schema/episode-production-status.schema.json` 约束。
+仓库根级 `production-status/` 是跨项目的进度工作台，不属于 `narration-pipeline/` 或 `player/` 任一子项目。它的目标是方便查看任务进度，不是生产事实源。`production-status/episodes/*.json` 与 `production-status/index.json` 都是由脚本生成的本地投影，已加入 `.gitignore`，不提交 Git。
 
 - `observations` 由 `node production-status/production-status.mjs sync` 从任务包、inputs、Player、音频目录同步。
-- 工作台总览通过 `production-status/index.json` 或服务端同路径索引一次读取剧集，不得在前端猜测集数或逐个请求不存在的文件。
-- `approvals` 是人工事实，自动化不得根据文件存在、验证通过或 `project.json.status=ready` 推断批准。
-- `coordination` 记录负责人、目标日期、阻塞和仓库外录屏/成片证据。
-- `summary` 与 `stages` 是推导结果；最终交付必须同时具备最终视频观测和 `approvals.finalDelivery.status=approved`。
+- 可选的少量门禁记录单独保存在 `production-status/manual-approvals.json`；它只记录用户是否放行某个阶段，不承载生产内容，也不应阻塞普通文件同步。
+- 工作台启动或同步时重建 episode JSON 与索引；前端仍通过服务端索引读取剧集，不在前端猜测集数。
+- `summary`、`stages`、`readiness`、`automation` 与 `index.json` 都是派生结果；源文件变化后重新运行同步即可重建。
+- 如果删除 `manual-approvals.json` 中的记录，工作台只会恢复为“未放行”的进度显示，不会影响任务包、正式输入或 Player 产物。
 
-从仓库根目录运行 `node production-status/production-status.mjs check` 校验 51 期状态，运行 `node production-status/production-status.mjs report` 查看全局汇总。同步工具必须保留人工审批与协调字段，不得覆盖它们。
+从仓库根目录运行 `node production-status/production-status.mjs check` 校验 51 期状态，运行 `node production-status/production-status.mjs report` 查看全局汇总。同步工具从 `manual-approvals.json` 读取可选的阶段放行记录，episode JSON 和索引均可随时重建。
 
 手动触发全量机械验证使用 `node production-status/production-status.mjs scan`；该命令调用 Player 的 `episode:check`，并记录 A-page、Visual rough、音频文件、输入 SHA-256、命令输出与扫描时间。`scan` 只写入 `automation`、`readiness` 和推导状态，不会写入人工审批结论。需要同时执行 Player 的 `typecheck` 与 `lint` 时使用 `node production-status/production-status.mjs scan --build`。

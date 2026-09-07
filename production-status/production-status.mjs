@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { spawnSync } from 'node:child_process';
+import { approvalsFor, emptyApprovals, loadApprovalStore } from './approval-store.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const STATUS_DIR = path.join(ROOT, 'production-status');
@@ -10,7 +11,8 @@ const PLAYER_DIR = path.join(ROOT, 'player');
 const TASK_DIR = path.join(ROOT, 'narration-pipeline', 'episodes');
 const TODAY = new Date().toISOString().slice(0, 10);
 const NOW = () => new Date().toISOString();
-const APPROVAL_KEYS = ['narration', 'visualRough', 'checkpointPlan', 'firstChapter', 'checkpointAudio', 'finalDelivery'];
+const APPROVAL_STORE = loadApprovalStore(STATUS_DIR);
+fs.mkdirSync(EPISODES_DIR, { recursive: true });
 // These episodes were produced under the retired workflow. Their historical
 // manual checkpoints must not hold the current production board hostage.
 const LEGACY_FLOW_EPISODES = new Set(['episode-01', 'episode-02', 'episode-03', 'episode-09']);
@@ -29,7 +31,6 @@ const sha256 = p => crypto.createHash('sha256').update(fs.readFileSync(p)).diges
 function walk(dir) { if (!exists(dir)) return []; return fs.readdirSync(dir, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(path.join(dir, e.name)) : [path.join(dir, e.name)]); }
 function findTask(id) { return walk(TASK_DIR).find(p => path.basename(p).startsWith(`${id}-`) && p.endsWith('-task-package.md')); }
 function taskTitle(p, id) { if (!p) return id; const text = fs.readFileSync(p, 'utf8'); return text.match(/^# 第\s*\d+\s*集《([^》]+)》/m)?.[1] ?? id; }
-function approval() { return { status: 'unrecorded', decidedAt: null, decidedBy: null, evidence: null, note: null }; }
 function blank(id, title) {
   return { schemaVersion: 'coursewebvideo/episode-production-status/v1', episodeId: id, title,
     workflow: LEGACY_FLOW_EPISODES.has(id) ? { mode: 'legacy', exemptions: ['chapter-handoff', 'checkpointAudio'] } : { mode: 'current', exemptions: [] },
@@ -38,7 +39,8 @@ function blank(id, title) {
       player: { projectPath: `player/episodes/${id}/project.json`, status: 'missing', chaptersCompleted: 0, chaptersTotal: 0, current: null, entrypointPresent: false, sourceChapterCount: 0 },
       audio: { segmentsPath: `player/episodes/${id}/audio-segments.json`, status: 'not-extracted', segmentCount: 0, fileCount: 0, missingCount: 0, source: null, ttsProvider: null },
       delivery: { recording: { status: 'not-observed', paths: [] }, finalVideo: { status: 'not-observed', paths: [] } } },
-    approvals: Object.fromEntries(APPROVAL_KEYS.map(k => [k, approval()])), coordination: { owner: null, targetDate: null, blockers: [], notes: '', externalArtifacts: [], paused: false },
+    approvals: emptyApprovals(), coordination: { owner: null, targetDate: null, blockers: [], notes: '', externalArtifacts: [], paused: false },
+    automation: { status: 'not-run', ranAt: null, runner: null, checks: {}, failures: [], warnings: [], sourceHashes: {}, commands: [] },
     stages: STAGES.map(([stageId, name]) => ({ id: stageId, name, status: stageId === 'chapter-handoff' ? 'not-required' : 'not-started' })), updatedAt: TODAY, updatedBy: 'production-status sync' };
 }
 function obs(id, current) {
@@ -208,13 +210,55 @@ function compactEpisode(doc) {
     observations: { delivery: doc.observations?.delivery ?? { recording: { status: 'not-observed', paths: [] }, finalVideo: { status: 'not-observed', paths: [] } } } };
 }
 function ids(args) { if (args.includes('--episode')) return [args[args.indexOf('--episode') + 1]]; return Array.from({ length: 51 }, (_, i) => `episode-${String(i + 1).padStart(2, '0')}`); }
-function syncOne(id, initialize = false) { const out = path.join(EPISODES_DIR, `${id}.json`); const old = exists(out) ? readJson(out) : blank(id, id); const next = { ...old, ...obs(id), workflow: old.workflow ?? blank(id, id).workflow, approvals: old.approvals ?? blank(id, id).approvals, coordination: old.coordination ?? blank(id, id).coordination, updatedAt: TODAY, updatedBy: 'production-status sync' }; applyDerived(next); save(id, next); return next; }
-function scanOne(id, options = {}) { const out = path.join(EPISODES_DIR, `${id}.json`); const old = exists(out) ? readJson(out) : syncOne(id); const next = { ...old, ...obs(id), workflow: old.workflow ?? blank(id, id).workflow, approvals: old.approvals ?? blank(id, id).approvals, coordination: old.coordination ?? blank(id, id).coordination, updatedAt: TODAY, updatedBy: 'production-status scan' }; next.automation = scanEpisode(id, next, options); applyDerived(next); save(id, next); return next; }
+function syncOne(id, initialize = false) {
+  const out = path.join(EPISODES_DIR, `${id}.json`);
+  const template = blank(id, id);
+  const old = exists(out) ? readJson(out) : template;
+  const { stageReviews: _stageReviews, ...generatedBase } = old;
+  const next = {
+    ...generatedBase,
+    ...obs(id),
+    workflow: template.workflow,
+    approvals: approvalsFor(APPROVAL_STORE, id),
+    coordination: template.coordination,
+    updatedAt: TODAY,
+    updatedBy: 'production-status sync',
+  };
+  applyDerived(next);
+  save(id, next);
+  return next;
+}
+function scanOne(id, options = {}) {
+  const out = path.join(EPISODES_DIR, `${id}.json`);
+  const old = exists(out) ? readJson(out) : syncOne(id);
+  const template = blank(id, id);
+  const { stageReviews: _stageReviews, ...generatedBase } = old;
+  const next = {
+    ...generatedBase,
+    ...obs(id),
+    workflow: template.workflow,
+    approvals: approvalsFor(APPROVAL_STORE, id),
+    coordination: template.coordination,
+    updatedAt: TODAY,
+    updatedBy: 'production-status scan',
+  };
+  next.automation = scanEpisode(id, next, options);
+  applyDerived(next);
+  save(id, next);
+  return next;
+}
 function check(doc) { const errors = []; if (doc.schemaVersion !== 'coursewebvideo/episode-production-status/v1') errors.push('schemaVersion'); if (doc.observations.player.projectPath !== ('player/episodes/' + doc.episodeId + '/project.json')) errors.push('player mirror path'); if (doc.summary.status === 'delivered' && doc.approvals.finalDelivery.status !== 'approved') errors.push('delivered without finalDelivery approval'); return errors; }
+function ensureGeneratedStatus() {
+  const expected = ids([]);
+  if (expected.some(id => !exists(path.join(EPISODES_DIR, `${id}.json`)))) {
+    for (const id of expected) syncOne(id);
+    writeIndex();
+  }
+}
 const args = process.argv.slice(2); const command = args[0] || 'report';
 if (command === 'init' || command === 'sync') { for (const id of ids(args)) syncOne(id, command === 'init'); writeIndex(); console.log(`${command}: ${ids(args).length} episode status files updated; index.json regenerated`); }
 else if (command === 'scan') { const options = { build: args.includes('--build'), player: !args.includes('--no-player'), upstream: !args.includes('--no-upstream') }; options.globalChecks = runGlobalChecks(options.build); for (const id of ids(args)) scanOne(id, options); writeIndex(); console.log(`scan: ${ids(args).length} episode status files scanned; index.json regenerated`); }
-else if (command === 'index') { writeIndex(); console.log('index: production-status/index.json regenerated'); }
-else if (command === 'check') { const files = fs.readdirSync(EPISODES_DIR).filter(f => f.endsWith('.json')); const errors = files.flatMap(f => check(readJson(path.join(EPISODES_DIR, f))).map(e => `${f}: ${e}`)); if (errors.length) { console.error(errors.join('\n')); process.exitCode = 1; } else console.log(`check: ${files.length} status files valid`); }
-else if (command === 'report') { const files = fs.readdirSync(EPISODES_DIR).filter(f => f.endsWith('.json')).sort(); const docs = files.map(f => readJson(path.join(EPISODES_DIR, f))); const states = ['not-started', 'needs-scan', 'in-progress', 'ready', 'needs-owner', 'blocked', 'complete', 'delivered']; for (const state of states) console.log(`${state}: ${docs.filter(d => (d.readiness?.state || d.summary.status) === state).length}`); for (const d of docs) console.log(`${d.episodeId}\t${d.readiness?.state || d.summary.status}\t${d.summary.currentStage}\t${d.summary.nextAction}`); }
+else if (command === 'index') { ensureGeneratedStatus(); writeIndex(); console.log('index: production-status/index.json regenerated'); }
+else if (command === 'check') { ensureGeneratedStatus(); const files = fs.readdirSync(EPISODES_DIR).filter(f => f.endsWith('.json')); const errors = files.flatMap(f => check(readJson(path.join(EPISODES_DIR, f))).map(e => `${f}: ${e}`)); if (errors.length) { console.error(errors.join('\n')); process.exitCode = 1; } else console.log(`check: ${files.length} status files valid`); }
+else if (command === 'report') { ensureGeneratedStatus(); const files = fs.readdirSync(EPISODES_DIR).filter(f => f.endsWith('.json')).sort(); const docs = files.map(f => readJson(path.join(EPISODES_DIR, f))); const states = ['not-started', 'needs-scan', 'in-progress', 'ready', 'needs-owner', 'blocked', 'complete', 'delivered']; for (const state of states) console.log(`${state}: ${docs.filter(d => (d.readiness?.state || d.summary.status) === state).length}`); for (const d of docs) console.log(`${d.episodeId}\t${d.readiness?.state || d.summary.status}\t${d.summary.currentStage}\t${d.summary.nextAction}`); }
 else { console.error('Usage: node production-status/production-status.mjs init|sync|scan|index|check|report [--episode episode-01] [--build] [--no-upstream]'); process.exitCode = 1; }

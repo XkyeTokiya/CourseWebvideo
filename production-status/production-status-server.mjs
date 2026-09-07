@@ -1,8 +1,9 @@
 import { createServer } from 'node:http';
-import { createReadStream, existsSync, readdirSync, readFileSync, renameSync, statSync, writeFileSync } from 'node:fs';
-import { spawn } from 'node:child_process';
+import { createReadStream, existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { spawn, spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { APPROVAL_KEYS, emptyApproval, loadApprovalStore, saveApprovalStore } from './approval-store.mjs';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const defaults = {
@@ -26,13 +27,23 @@ function readOptions(argv) {
 
 const options = readOptions(process.argv.slice(2));
 const SERVICE_ID = 'coursewebvideo-production-status';
-const APPROVAL_KEYS = ['narration', 'visualRough', 'checkpointPlan', 'firstChapter', 'checkpointAudio', 'finalDelivery'];
 if (!Number.isInteger(options.port) || options.port < 1 || options.port > 65535) {
   throw new Error(`Invalid port: ${options.port}`);
 }
 if (!existsSync(options.statusDir) || !statSync(options.statusDir).isDirectory()) {
   throw new Error(`Status data directory does not exist: ${options.statusDir}`);
 }
+
+function regenerateStatus() {
+  const result = spawnSync(process.execPath, [path.join(options.root, 'production-status', 'production-status.mjs'), 'sync'], {
+    cwd: options.root,
+    encoding: 'utf8',
+    windowsHide: true,
+  });
+  if (result.status !== 0) throw new Error(result.stderr || result.stdout || 'failed to generate production status');
+}
+
+regenerateStatus();
 
 const contentTypes = {
   '.css': 'text/css; charset=utf-8',
@@ -104,20 +115,19 @@ function recordApproval(payload = {}) {
   if (!APPROVAL_KEYS.includes(gate)) throw new Error('invalid approval gate');
   if (!['approved', 'unrecorded'].includes(status)) throw new Error('invalid approval status');
   if (activeScanId) return { conflict: true, run: scanRuns.get(activeScanId) };
-  const file = path.join(options.statusDir, 'episodes', `${episode}.json`);
-  if (!existsSync(file)) throw new Error('episode status file not found');
-  const doc = JSON.parse(readFileSync(file, 'utf8'));
-  doc.approvals ??= {};
-  doc.approvals[gate] = status === 'approved'
+  const store = loadApprovalStore(options.statusDir);
+  store.episodes[episode] ??= {};
+  const approval = status === 'approved'
     ? { status, decidedAt: new Date().toISOString(), decidedBy: String(payload.decidedBy || 'workbench'), evidence: null, note: String(payload.note || '') }
-    : { status, decidedAt: null, decidedBy: null, evidence: null, note: null };
-  doc.updatedAt = new Date().toISOString().slice(0, 10);
-  doc.updatedBy = 'production-status workbench';
-  const temp = `${file}.tmp`;
-  writeFileSync(temp, `${JSON.stringify(doc, null, 2)}\n`);
-  renameSync(temp, file);
+    : emptyApproval();
+  if (status === 'approved') store.episodes[episode][gate] = approval;
+  else {
+    delete store.episodes[episode][gate];
+    if (!Object.keys(store.episodes[episode]).length) delete store.episodes[episode];
+  }
+  saveApprovalStore(options.statusDir, store);
   const scan = startScan({ episode });
-  return { conflict: false, approval: doc.approvals[gate], run: scan.run };
+  return { conflict: false, approval, run: scan.run };
 }
 
 function statusIndex() {

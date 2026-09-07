@@ -1,6 +1,10 @@
 .tmp/
 .playwright-cli/
 output/
+# production-status is a rebuildable progress projection; keep only the small manual gate store.
+production-status/index.json
+production-status/episodes/*.json
+!production-status/manual-approvals.json
 player/node_modules/
 player/.pnpm-store/
 player/dist/
