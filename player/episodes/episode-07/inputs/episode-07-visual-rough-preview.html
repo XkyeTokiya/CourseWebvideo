@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<title>EP07 visual rough v4瀑布流预览</title>
+<style>
+  :root { --ink:#1c2430; --muted:#5b6675; --line:#d7dde6; --card:#ffffff; --bg:#eef1f5; --accent:#2456a6; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+        font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 28px 16px 60px; }
+  h1 { font-size: 22px; margin: 8px 0 4px; }
+  .meta { color: var(--muted); font-size: 13px; margin-bottom: 22px; line-height:1.7; }
+  .page { background: var(--card); border:1px solid var(--line); border-radius:14px;
+          padding:18px 20px 14px; margin:0 0 26px; box-shadow:0 1px 3px rgba(20,30,50,.06); }
+  .page-title { font-size:17px; font-weight:700; }
+  .tags { margin:8px 0 12px; display:flex; flex-wrap:wrap; gap:6px; }
+  .chip { font-size:11.5px; color:var(--muted); background:#f2f5f9; border:1px solid var(--line);
+          border-radius:999px; padding:2px 9px; }
+  .chip.recipe { color:var(--accent); border-color:#bcd0ee; background:#eef4fd; font-weight:600; }
+  .headline { font-size:19px; font-weight:700; margin:4px 0 2px; display:flex; gap:8px; align-items:baseline; }
+  .subline { font-size:14px; color:var(--muted); margin:2px 0 10px; display:flex; gap:8px; }
+  .sid { font-size:11px; color:#8a93a3; font-family:ui-monospace,monospace; flex:none; }
+  .slots { display:flex; flex-direction:column; gap:10px; }
+  .slot { border:1px dashed var(--line); border-radius:10px; padding:8px 10px; }
+  .slot-label { font-size:11px; letter-spacing:.04em; color:#8a93a3; margin-bottom:6px;
+                font-family:ui-monospace,monospace; }
+  .item { font-size:14px; line-height:1.65; padding:5px 8px; border-radius:8px; margin:2px 0;
+          display:flex; gap:8px; align-items:baseline; flex-wrap:wrap; }
+  .item .txt { flex:1 1 auto; }
+  .item.exact { background:#f7fbf4; border:1px solid #cfe6c2; }
+  .pol { font-size:10px; border-radius:4px; padding:1px 5px; background:#eef1f5; color:var(--muted); flex:none; }
+  .pol.exact { background:#e7f3e0; color:#3c7a2a; font-weight:600; }
+  .eref { font-size:10px; color:#8a93a3; font-family:ui-monospace,monospace; flex:none; }
+  .media-placeholder { background:#232a35; color:#cfd6e2; border-radius:10px; min-height:150px;
+          display:flex; flex-direction:column; justify-content:center; gap:6px; padding:18px; }
+  .media-id { font-weight:700; letter-spacing:.05em; }
+  .media-note { font-size:11px; color:#8b95a7; }
+  .media-use { font-size:12.5px; color:#aeb8c9; }
+  footer { margin-top:12px; border-top:1px solid var(--line); padding-top:8px; }
+  .rel { font-size:12.5px; color:var(--muted); }
+  details { margin-top:6px; font-size:12.5px; color:var(--muted); }
+  details ul { margin:6px 0 0; padding-left:18px; }
+  details li { margin:3px 0; }
+</style></head><body><div class="wrap">
+<h1>Episode 07 · visual rough v4瀑布流预览</h1>
+<div class="meta">源 A-page：episode-07-a-page.json（SHA-256 c2f301d5…b1c63b00e）· 状态 approved（已发布） ·
+图片页 3/7（M001–M003，均 photorealistic_ai）· 深色块为待生成媒体占位 ·
+绿色底纹条目为 <code>exact</code>（须逐字上屏的原子），其余为 <code>reference</code> ·
+每页卡内标签：A 页 ID ｜ 配方 · 状态 ｜ 内容角色 ｜ U 区间 ｜ timing</div>
+
+<section class="page">
+  <header>
+    <div class="page-title">A001 ｜ 现场提问页</div>
+    <div class="tags">
+      <span class="chip recipe">issue-cards-with-image · active</span>
+      <span class="chip role">内容角色：以工业现场情境提出本集核心问题</span>
+      <span class="chip">U U001–U003</span>
+      <span class="chip">timing 58–60–63s（231 当量）</span>
+    </div>
+  </header>
+  <div class="headline"><span class="sid">S001</span><span class="txt">能解析，还不等于业务在用</span></div>
+  <div class="subline"><span class="sid">S006</span><span class="txt">基础能力建成后，评价重心向业务深处移动</span></div>
+  <div class="slots"><div class="slot"><div class="slot-label">scene · U001</div><div class="item"><span class="sid">S002</span><span class="txt">汽车零部件生产线上，工程师用终端扫码，零件身份当场可查</span><span class="pol ref">reference</span><span class="eref">E009</span></div></div><div class="slot"><div class="slot-label">issue-cards · U002</div><div class="item"><span class="sid">S003</span><span class="txt">质检、物流跟踪、售后三个业务环节是否使用同一标识，仍是问号</span><span class="pol ref">reference</span><span class="eref">E009</span></div><div class="item exact"><span class="sid">S004</span><span class="txt">教学情境：场景用于建立本集问题，不对应真实企业或政策成效</span><span class="pol exact">exact</span><span class="eref">E009</span></div></div><div class="slot"><div class="slot-label">takeaway · U003</div><div class="item exact"><span class="sid">S005</span><span class="txt">体系可用 ≠ 业务贯通</span><span class="pol exact">exact</span><span class="eref">E008</span></div><div class="item"><span class="sid">S006</span><span class="txt">基础能力建成后，评价重心向业务深处移动</span><span class="pol ref">reference</span><span class="eref">E008</span></div></div><div class="slot"><div class="slot-label">image · M001</div><div class="media-placeholder"><div class="media-id">M001 · photorealistic_ai</div><div class="media-note">待生成图片占位块（非最终视觉）</div><div class="media-use">工业产线扫码情境，呈现查询已经完成而业务环节尚未跟进的现场矛盾</div></div></div></div>
+  <footer>
+    <div class="rel">关系保真：R001 由现场单元与判断收束条的上下分区承载</div>
+    <details><summary>静默边界（审阅用，不上屏）</summary><ul><li>不得将本页情境表述为真实企业、政策样板或已核验成效 <span class="eref">E009</span></li><li>情境画面与文字不得出现品牌、可读编码或软件运行结果 <span class="eref">E009</span></li></ul></details>
+  </footer>
+</section>
+<section class="page">
+  <header>
+    <div class="page-title">A002 ｜ 建设起点页</div>
+    <div class="tags">
+      <span class="chip recipe">parallel-cards-with-takeaway · active</span>
+      <span class="chip role">内容角色：锚定建设起步阶段并给出观察边界</span>
+      <span class="chip">U U004–U006</span>
+      <span class="chip">timing 52–54–57s（206 当量）</span>
+    </div>
+  </header>
+  <div class="headline"><span class="sid">S007</span><span class="txt">2018：先把基础搭起来</span></div>
+  <div class="subline"><span class="sid">S012</span><span class="txt">建设指标 ≠ 业务效果：设施数量不回答生产经营是否改变</span></div>
+  <div class="slots"><div class="slot"><div class="slot-label">anchor-card · U004</div><div class="item"><span class="sid">S008</span><span class="txt">2018 年：全面实施工业互联网建设的开局之年</span><span class="pol ref">reference</span><span class="eref">E002</span></div><div class="item exact"><span class="sid">S009</span><span class="txt">教材回顾：“323”行动（当时的推进安排概括）</span><span class="pol exact">exact</span><span class="eref">E002</span></div></div><div class="slot"><div class="slot-label">focus-cards · U005</div><div class="item"><span class="sid">S010</span><span class="txt">首要任务：基础设施与服务体系，跨企业跨行业共同运行基础</span><span class="pol ref">reference</span><span class="eref">E002</span></div><div class="item"><span class="sid">S011</span><span class="txt">早期观察维度：节点接入、服务范围、体系稳定运行</span><span class="pol ref">reference</span><span class="eref">E003</span></div></div><div class="slot"><div class="slot-label">takeaway · U006</div><div class="item exact"><span class="sid">S012</span><span class="txt">建设指标 ≠ 业务效果：设施数量不回答生产经营是否改变</span><span class="pol exact">exact</span><span class="eref">E008</span></div></div></div>
+  <footer>
+    <div class="rel">关系保真：R002 由锚点卡、要点卡与收束条的纵向顺序承载</div>
+    <details><summary>静默边界（审阅用，不上屏）</summary><ul><li>“323”只作为推进安排的概括称呼，不得扩展为正式政策文件内容或文件样式 <span class="eref">E002</span></li><li>口播提到的 2017 年国务院指导意见与 2018—2020 年行动计划未进入本集证据台账，不得为其制作政策证据条、文号或日期展示 <span class="eref">E002</span></li><li>不得引用教材中的节点、企业、行业、项目和产业规模数字 <span class="eref">E003</span></li></ul></details>
+  </footer>
+</section>
+<section class="page">
+  <header>
+    <div class="page-title">A003 ｜ 政策锚点页</div>
+    <div class="tags">
+      <span class="chip recipe">evidence-cards-with-provenance-boundary · active</span>
+      <span class="chip role">内容角色：以已核验通知信息锚定 2021—2023 年阶段</span>
+      <span class="chip">U U007–U009</span>
+      <span class="chip">timing 22–22–24s（86 当量）</span>
+    </div>
+  </header>
+  <div class="headline"><span class="sid">S013</span><span class="txt">2021—2023：能力增强</span></div>
+  <div class="subline"><span class="sid">S017</span><span class="txt">连续性：起步建设 → 能力增强 → 行业推广</span></div>
+  <div class="slots"><div class="slot"><div class="slot-label">provenance-band · U007</div><div class="item exact"><span class="sid">S014</span><span class="txt">《工业互联网创新发展行动计划（2021—2023 年）》</span><span class="pol exact">exact</span><span class="eref">E004</span></div><div class="item exact"><span class="sid">S015</span><span class="txt">通知文号：工信部信管〔2020〕197 号</span><span class="pol exact">exact</span><span class="eref">E004</span></div></div><div class="slot"><div class="slot-label">evidence-cards · U008</div><div class="item"><span class="sid">S016</span><span class="txt">阶段方向：能力增强、行业推广</span><span class="pol ref">reference</span><span class="eref">E003</span></div></div><div class="slot"><div class="slot-label">continuity-takeaway · U009</div><div class="item"><span class="sid">S016</span><span class="txt">阶段方向：能力增强、行业推广</span><span class="pol ref">reference</span><span class="eref">E003</span></div><div class="item"><span class="sid">S017</span><span class="txt">连续性：起步建设 → 能力增强 → 行业推广</span><span class="pol ref">reference</span><span class="eref">E008</span></div></div></div>
+  <footer>
+    <div class="rel">关系保真：R003 由来源证据带与阶段方向卡的分层排布承载</div>
+    <details><summary>静默边界（审阅用，不上屏）</summary><ul><li>本页只使用该计划通知已核验信息，不得补写附件中的行动、工程和指标 <span class="eref">E004</span></li></ul></details>
+  </footer>
+</section>
+<section class="page">
+  <header>
+    <div class="page-title">A004 ｜ 贯通展开页</div>
+    <div class="tags">
+      <span class="chip recipe">layered-bands-with-side-notes · active</span>
+      <span class="chip role">内容角色：展开贯通政策的身份、支撑对象与观察维度</span>
+      <span class="chip">U U010–U012</span>
+      <span class="chip">timing 64–67–70s（255 当量）</span>
+    </div>
+  </header>
+  <div class="headline"><span class="sid">S018</span><span class="txt">2024—2026：以“贯通”为关键词</span></div>
+  <div class="subline"><span class="sid">S024</span><span class="txt">观察维度：服务企业数、覆盖行业数、累计注册量、日均解析量、主动标识载体部署量、重点领域应用成效</span></div>
+  <div class="slots"><div class="slot"><div class="slot-label">identity-band · U010</div><div class="item exact"><span class="sid">S019</span><span class="txt">《工业互联网标识解析体系“贯通”行动计划（2024—2026 年）》</span><span class="pol exact">exact</span><span class="eref">E005</span></div><div class="item exact"><span class="sid">S020</span><span class="txt">十二部门印发</span><span class="pol exact">exact</span><span class="eref">E005</span></div><div class="item exact"><span class="sid">S021</span><span class="txt">文号：工信部联信管〔2023〕271 号</span><span class="pol exact">exact</span><span class="eref">E005</span></div><div class="item exact"><span class="sid">S022</span><span class="txt">政策文本落款：2024 年 1 月 21 日</span><span class="pol exact">exact</span><span class="eref">E005</span></div></div><div class="slot"><div class="slot-label">support-band · U011</div><div class="item"><span class="sid">S023</span><span class="txt">支撑对象：企业数字化转型、产业链供应链畅通、不同类型企业融通</span><span class="pol ref">reference</span><span class="eref">E005</span></div></div><div class="slot"><div class="slot-label">side-notes · U012</div><div class="item"><span class="sid">S024</span><span class="txt">观察维度：服务企业数、覆盖行业数、累计注册量、日均解析量、主动标识载体部署量、重点领域应用成效</span><span class="pol ref">reference</span><span class="eref">E006</span></div><div class="item"><span class="sid">S025</span><span class="txt">主动标识载体：能自己主动上报信息的载体</span><span class="pol ref">reference</span><span class="eref">E006</span></div></div></div>
+  <footer>
+    <div class="rel">关系保真：R004 由身份、对象、维度三条文字带的层带顺序承载；R005 由对象带与维度带的相邻层带位置承载</div>
+    <details><summary>静默边界（审阅用，不上屏）</summary><ul><li>政策印发日期一律采用政府文本 2024 年 1 月 21 日，不得使用教材中的 2024 年 1 月 12 日 <span class="eref">E005</span></li><li>本页不得提前展示五项 2026 年目标数字 <span class="eref">E006</span></li></ul></details>
+  </footer>
+</section>
+<section class="page">
+  <header>
+    <div class="page-title">A005 ｜ 目标读法页</div>
+    <div class="tags">
+      <span class="chip recipe">evidence-cards-with-provenance-boundary · active</span>
+      <span class="chip role">内容角色：给出五项目标的统一读法与目标、实绩之间的边界</span>
+      <span class="chip">U U013–U015</span>
+      <span class="chip">timing 31–32–34s（123.5 当量）</span>
+    </div>
+  </header>
+  <div class="headline"><span class="sid">S026</span><span class="txt">目标值，不是完成值</span></div>
+  <div class="subline"><span class="sid">S033</span><span class="txt">目标 ≠ 实绩</span></div>
+  <div class="slots"><div class="slot"><div class="slot-label">provenance-band · U015</div><div class="item exact"><span class="sid">S027</span><span class="txt">总标签：到 2026 年的政策目标</span><span class="pol exact">exact</span><span class="eref">E006</span></div></div><div class="slot"><div class="slot-label">evidence-cards · U013</div><div class="item exact"><span class="sid">S028</span><span class="txt">服务企业突破 50 万家</span><span class="pol exact">exact</span><span class="eref">E006</span></div><div class="item exact"><span class="sid">S029</span><span class="txt">60 个行业推广应用</span><span class="pol exact">exact</span><span class="eref">E006</span></div><div class="item exact"><span class="sid">S030</span><span class="txt">累计注册量突破 6000 亿个</span><span class="pol exact">exact</span><span class="eref">E006</span></div><div class="item exact"><span class="sid">S031</span><span class="txt">日均解析量 3 亿次以上</span><span class="pol exact">exact</span><span class="eref">E006</span></div><div class="item exact"><span class="sid">S032</span><span class="txt">主动标识载体部署超过 5000 万枚</span><span class="pol exact">exact</span><span class="eref">E006</span></div></div><div class="slot"><div class="slot-label">inference-boundary · U014</div><div class="item exact"><span class="sid">S033</span><span class="txt">目标 ≠ 实绩</span><span class="pol exact">exact</span><span class="eref">E006</span></div><div class="item"><span class="sid">S034</span><span class="txt">历史统计都有明确时点，不能当作当前情况使用</span><span class="pol ref">reference</span><span class="eref">E003</span></div><div class="item exact"><span class="sid">S035</span><span class="txt">证据核验日：2026-07-20</span><span class="pol exact">exact</span><span class="eref">E006</span></div></div></div>
+  <footer>
+    <div class="rel">关系保真：R006 由目标标签带与推断边界带的同层对置承载</div>
+    <details><summary>静默边界（审阅用，不上屏）</summary><ul><li>五项数字只能作为到 2026 年的政策目标展示，不得做完成率、进度条、奖章或当前值对比 <span class="eref">E006</span></li><li>不得新增或引用截至 2026 年的实际节点数、企业数、注册量、解析量、行业覆盖数或目标完成率 <span class="eref">E006</span></li></ul></details>
+  </footer>
+</section>
+<section class="page">
+  <header>
+    <div class="page-title">A006 ｜ 三层递进页</div>
+    <div class="tags">
+      <span class="chip recipe">image-with-insight-rail · active</span>
+      <span class="chip role">内容角色：以图侧短条展开规模应用的三层递进</span>
+      <span class="chip">U U016–U018</span>
+      <span class="chip">timing 54–56–59s（214 当量）</span>
+    </div>
+  </header>
+  <div class="headline"><span class="sid">S036</span><span class="txt">规模应用的三层变化</span></div>
+  <div class="subline"><span class="sid">S040</span><span class="txt">底部支撑：基础设施、技术产品、数据流通、安全保障持续增强</span></div>
+  <div class="slots"><div class="slot"><div class="slot-label">image · M002</div><div class="media-placeholder"><div class="media-id">M002 · photorealistic_ai</div><div class="media-note">待生成图片占位块（非最终视觉）</div><div class="media-use">提供生产与物流环节协同的现场环境锚点，让三层递进落在可感知的现场</div></div></div><div class="slot"><div class="slot-label">rail-item-1 · U016</div><div class="item"><span class="sid">S037</span><span class="txt">第一层 服务可用 → 业务贯通：进入生产、加工、运输、检测、服务、回收等实际环节</span><span class="pol ref">reference</span><span class="eref">E008</span></div></div><div class="slot"><div class="slot-label">rail-item-2 · U017</div><div class="item"><span class="sid">S038</span><span class="txt">第二层 企业接入 → 产业链协同：关键企业带动上下游，围绕同一标识衔接</span><span class="pol ref">reference</span><span class="eref">E007</span></div></div><div class="slot"><div class="slot-label">rail-item-3 · U018</div><div class="item"><span class="sid">S039</span><span class="txt">第三层 调用规模 → 应用价值：消费品质量追溯、数字医疗、绿色低碳、安全管理、城市数字化、产业集群</span><span class="pol ref">reference</span><span class="eref">E007</span></div><div class="item"><span class="sid">S040</span><span class="txt">底部支撑：基础设施、技术产品、数据流通、安全保障持续增强</span><span class="pol ref">reference</span><span class="eref">E008</span></div></div></div>
+  <footer>
+    <div class="rel">关系保真：R007 由图侧短条的上下阅读顺序承载；R008 由图侧短条的顺序推进承载</div>
+    <details><summary>静默边界（审阅用，不上屏）</summary><ul><li>重点方向只作为政策任务方向，不得表现为各领域已普遍实现规模应用 <span class="eref">E007</span></li><li>应用加深不得解释为停止节点建设或不再需要技术与安全保障 <span class="eref">E008</span></li></ul></details>
+  </footer>
+</section>
+<section class="page">
+  <header>
+    <div class="page-title">A007 ｜ 收束回扣页</div>
+    <div class="tags">
+      <span class="chip recipe">image-with-summary-rail · active</span>
+      <span class="chip role">内容角色：收束阶段判断并回扣完整应用链</span>
+      <span class="chip">U U019–U021</span>
+      <span class="chip">timing 51–53–56s（203 当量）</span>
+    </div>
+  </header>
+  <div class="headline"><span class="sid">S041</span><span class="txt">建设不停，应用加深</span></div>
+  <div class="subline"><span class="sid">S042</span><span class="txt">从建设走向应用 ≠ 建设任务结束</span></div>
+  <div class="slots"><div class="slot"><div class="slot-label">image · M003</div><div class="media-placeholder"><div class="media-id">M003 · photorealistic_ai</div><div class="media-note">待生成图片占位块（非最终视觉）</div><div class="media-use">回扣开篇工业现场，把收束判断落回真实生产环境</div></div></div><div class="slot"><div class="slot-label">summary-band · U019</div><div class="item exact"><span class="sid">S042</span><span class="txt">从建设走向应用 ≠ 建设任务结束</span><span class="pol exact">exact</span><span class="eref">E008</span></div><div class="item"><span class="sid">S043</span><span class="txt">节点能力、技术和标准、数据流通与安全保障继续推进</span><span class="pol ref">reference</span><span class="eref">E008</span></div></div><div class="slot"><div class="slot-label">chain-check · U020</div><div class="item"><span class="sid">S044</span><span class="txt">完整应用链检验：编码设计、数据建模、载体选择、节点建设与运营 → 能否支撑真实业务贯通</span><span class="pol ref">reference</span><span class="eref">E008</span></div></div><div class="slot"><div class="slot-label">next-entry · U021</div><div class="item"><span class="sid">S045</span><span class="txt">下一集入口：对象、环节、产业链</span><span class="pol ref">reference</span><span class="eref">E001</span></div></div></div>
+  <footer>
+    <div class="rel">关系保真：R009 由总结带、检验行与后续入口行的上下排布承载</div>
+    <details><summary>静默边界（审阅用，不上屏）</summary><ul><li>第 08 集入口只显示对象、环节、产业链，不得提前绘制贯通机制或数据流 <span class="eref">E001</span></li><li>收束只给阶段判断，不给出第 08 集的机制答案 <span class="eref">E001</span></li></ul></details>
+  </footer>
+</section>
+</div></body></html>

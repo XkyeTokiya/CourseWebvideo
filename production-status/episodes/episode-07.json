@@ -4,11 +4,11 @@
   "title": "我国标识解析从建设走向规模应用",
   "summary": {
     "status": "awaiting-approval",
-    "currentStage": "approve-narration",
-    "nextAction": "补齐人工审批记录: narration",
+    "currentStage": "visual-rough",
+    "nextAction": "补齐人工审批记录: visualRough",
     "blockers": [],
     "approvalGaps": [
-      "narration"
+      "visualRough"
     ],
     "productionStatus": "in-progress",
     "automationStatus": "passed",
@@ -24,18 +24,19 @@
     "approvedNarration": {
       "status": "present",
       "path": "player/episodes/episode-07/inputs/approved-spoken-text.txt",
-      "sha256": "a6e7a92eec6d255ebbae16cb5b4057948437cb02fc624830f4629ecfa48ebca6",
+      "sha256": "faa378b985f1ee8c1f69278588244b04dbebae54416489030966a0b0ed2def43",
       "failures": []
     },
     "aPage": {
       "status": "valid",
       "path": "player/episodes/episode-07/inputs/episode-07-a-page.json",
-      "sha256": "120c4ef639d7160838e8fd483fc18a7bd103241f503bfa607b3a15864887f618",
+      "sha256": "c2f301d559afab18b2e0b07dfeb0258fccef65581c467fe67e7a868b1c63b00e",
       "failures": []
     },
     "visualRough": {
-      "status": "missing",
+      "status": "approved",
       "path": "player/episodes/episode-07/inputs/episode-07-visual-rough.md",
+      "sha256": "030fdb10c191a897b41a666957b20d706711c8ad1c845585f1f476a9cc75f9b8",
       "failures": []
     },
     "playerScript": {
@@ -79,11 +80,11 @@
   },
   "approvals": {
     "narration": {
-      "status": "unrecorded",
-      "decidedAt": null,
-      "decidedBy": null,
-      "evidence": null,
-      "note": null
+      "status": "approved",
+      "decidedAt": "2026-09-07",
+      "decidedBy": "user",
+      "evidence": "用户修改定稿并明确批准（会话内人工批准）；批准稿 player/episodes/episode-07/inputs/approved-spoken-text.txt SHA-256 faa378b985f1ee8c1f69278588244b04dbebae54416489030966a0b0ed2def43",
+      "note": "口播无污染重建自冻结任务包；配套 episode-07-a-page.json 已通过 a-page-v6 黑盒验证（PASS，0 failures）。旧正式产物已于 2026-09-07 按用户指令删除，由重建稿以正式名替换（含 episode-07-visual-rough.md，approved）。"
     },
     "visualRough": {
       "status": "unrecorded",
@@ -148,10 +149,10 @@
     {
       "id": "approve-narration",
       "name": "批准口播",
-      "status": "awaiting-approval",
+      "status": "complete",
       "health": "passed",
       "reasons": [],
-      "canAdvance": false
+      "canAdvance": true
     },
     {
       "id": "a-page",
@@ -180,8 +181,8 @@
     {
       "id": "visual-rough",
       "name": "Visual rough",
-      "status": "not-started",
-      "health": "not-run",
+      "status": "awaiting-approval",
+      "health": "passed",
       "reasons": [],
       "canAdvance": false
     },
@@ -242,7 +243,7 @@
       "canAdvance": false
     }
   ],
-  "updatedAt": "2026-09-06",
+  "updatedAt": "2026-09-07",
   "updatedBy": "production-status sync",
   "automation": {
     "status": "passed",
@@ -323,7 +324,7 @@
     "state": "needs-owner",
     "canAdvance": false,
     "reasons": [
-      "等待人工决策: narration"
+      "等待人工决策: visualRough"
     ],
     "productionStatus": "in-progress",
     "automationStatus": "passed",

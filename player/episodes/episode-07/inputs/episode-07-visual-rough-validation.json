@@ -1,0 +1,285 @@
+{
+  "episode_id": "episode-07",
+  "validation_profile": "visual-rough-v4",
+  "schema_version": "courseplay-visual-rough/v4",
+  "status": "approved",
+  "validation_summary": {
+    "pages": [
+      {
+        "a_id": "A001",
+        "source": {
+          "S": [
+            "S001",
+            "S002",
+            "S003",
+            "S004",
+            "S005",
+            "S006"
+          ],
+          "G": [
+            "G001",
+            "G002"
+          ],
+          "R": [
+            "R001"
+          ]
+        },
+        "recipe": {
+          "requested": "issue-cards-with-image",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M001"
+        }
+      },
+      {
+        "a_id": "A002",
+        "source": {
+          "S": [
+            "S007",
+            "S008",
+            "S009",
+            "S010",
+            "S011",
+            "S012"
+          ],
+          "G": [
+            "G003",
+            "G004"
+          ],
+          "R": [
+            "R002"
+          ]
+        },
+        "recipe": {
+          "requested": "parallel-cards-with-takeaway",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A003",
+        "source": {
+          "S": [
+            "S013",
+            "S014",
+            "S015",
+            "S016",
+            "S017"
+          ],
+          "G": [
+            "G005",
+            "G006"
+          ],
+          "R": [
+            "R003"
+          ]
+        },
+        "recipe": {
+          "requested": "evidence-cards-with-provenance-boundary",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A004",
+        "source": {
+          "S": [
+            "S018",
+            "S019",
+            "S020",
+            "S021",
+            "S022",
+            "S023",
+            "S024",
+            "S025"
+          ],
+          "G": [
+            "G007",
+            "G008",
+            "G009"
+          ],
+          "R": [
+            "R004",
+            "R005"
+          ]
+        },
+        "recipe": {
+          "requested": "layered-bands-with-side-notes",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A005",
+        "source": {
+          "S": [
+            "S026",
+            "S027",
+            "S028",
+            "S029",
+            "S030",
+            "S031",
+            "S032",
+            "S033",
+            "S034",
+            "S035"
+          ],
+          "G": [
+            "G010",
+            "G011"
+          ],
+          "R": [
+            "R006"
+          ]
+        },
+        "recipe": {
+          "requested": "evidence-cards-with-provenance-boundary",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A006",
+        "source": {
+          "S": [
+            "S036",
+            "S037",
+            "S038",
+            "S039",
+            "S040"
+          ],
+          "G": [
+            "G012",
+            "G013",
+            "G014"
+          ],
+          "R": [
+            "R007",
+            "R008"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-insight-rail",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M002"
+        }
+      },
+      {
+        "a_id": "A007",
+        "source": {
+          "S": [
+            "S041",
+            "S042",
+            "S043",
+            "S044",
+            "S045"
+          ],
+          "G": [
+            "G015",
+            "G016",
+            "G017"
+          ],
+          "R": [
+            "R009"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-summary-rail",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M003"
+        }
+      }
+    ]
+  },
+  "image_allocation": {
+    "required_page_count": 3,
+    "assigned_page_count": 3
+  },
+  "logic_diagrams": {
+    "page_limit": 0,
+    "assigned_page_count": 0
+  },
+  "errors": [],
+  "failures": [],
+  "input_integrity": {
+    "a_page_sha256": "c2f301d559afab18b2e0b07dfeb0258fccef65581c467fe67e7a868b1c63b00e",
+    "visual_rough_sha256": "030fdb10c191a897b41a666957b20d706711c8ad1c845585f1f476a9cc75f9b8",
+    "recipe_registry_sha256": "697ed613616ec9ac5325a38544fe4ac9c8fcf6b3ab5439e614e7a7293b93ef2e"
+  }
+}
