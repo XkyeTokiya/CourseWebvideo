@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: lifecycle-identity-continuity
 status: active
-content_group_min: 3
-content_group_max: 4
+content_unit_min: 3
+content_unit_max: 4
 media_mode: forbidden
 is_logic_diagram: false
 slot_contract: headline | invariant-anchor | ordered-stages | stage-purpose | continuity-judgment
 downstream_layouts: stage-strip | grouped-sequence
-definition_sha256: bb2079c9d446f39dbb8b8ad98ca1a97778edd852a49c8170bf2d6ea889920e05
+definition_sha256: 9f6b055a6a0055428fa518d383055a1ae2704ac4f677a2d30385476f679719e8
 ---
 
 # 用途

@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: issue-cards-with-image
 status: active
-content_group_min: 3
-content_group_max: 4
+content_unit_min: 3
+content_unit_max: 4
 media_mode: required
 is_logic_diagram: false
 slot_contract: headline | issue-cards | image | takeaway
 downstream_layouts: two-column | image-grid
-definition_sha256: 0437aca2d4f271da44181cee6af51f57bde0ff6507b5fc50c34f356a93546bb0
+definition_sha256: c59290c46b815707ac7075aa939890b935cdac4136de5a7674712aad170be3f1
 ---
 
 # 用途

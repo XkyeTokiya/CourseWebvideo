@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: layered-bands-with-side-notes
 status: active
-content_group_min: 2
-content_group_max: 3
+content_unit_min: 2
+content_unit_max: 3
 media_mode: forbidden
 is_logic_diagram: false
 slot_contract: headline | ordered-bands | side-notes | boundary | takeaway
 downstream_layouts: two-column | bullets
-definition_sha256: 5464f453159220aa715da552dda8a9ea80c7366380946d496537d511d2736c55
+definition_sha256: d18fbd9beb5dc9486a3d3f9805592e277264f9b8532bfd0343119a14d99c9eeb
 ---
 
 # 用途

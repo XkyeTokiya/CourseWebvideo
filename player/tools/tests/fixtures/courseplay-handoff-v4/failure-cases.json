@@ -1,0 +1,14 @@
+{
+  "schema_version":"courseplay-v4-failure-fixtures/v1",
+  "cases":[
+    {"code":"HV4_INPUT_MISSING","mutation":"remove project.json"},
+    {"code":"HV4_VERSION_PAIR","mutation":"set A-page schema to v5"},
+    {"code":"HV4_SOURCE_INTEGRITY","mutation":"replace source SHA-256"},
+    {"code":"HV4_PAGE_SEQUENCE","mutation":"swap outline chapters"},
+    {"code":"HV4_BEAT_STEP_MISMATCH","mutation":"remove one narration step"},
+    {"code":"HV4_NX_MISMATCH","mutation":"change one script beat"},
+    {"code":"HV4_REFERENCE_UNKNOWN","mutation":"reference U999"},
+    {"code":"HV4_RELATION_CARRIER","mutation":"duplicate R001 carrier"},
+    {"code":"HV4_MEDIA_MATERIAL","mutation":"remove A001 material section"}
+  ]
+}

@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: scope-responsibility-ledger
 status: active
-content_group_min: 3
-content_group_max: 4
+content_unit_min: 3
+content_unit_max: 4
 media_mode: forbidden
 is_logic_diagram: false
 slot_contract: headline | common-condition | responsibility-rows | duty-column | boundary-column
 downstream_layouts: responsibility-ledger | banded-table
-definition_sha256: b5b735457484b830645aa5800577846ed4041e59bffdd2be0f7da48e60aedf37
+definition_sha256: 5f4fcb221df0d0b95a5e716000b6b2efafd4c3c0be6dade17c0f997659d242af
 ---
 
 # 用途

@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: split-compare-with-pivot
 status: active
-content_group_min: 2
-content_group_max: 3
+content_unit_min: 2
+content_unit_max: 3
 media_mode: forbidden
 is_logic_diagram: false
 slot_contract: headline | left | pivot | right
 downstream_layouts: comparison | two-column
-definition_sha256: c3c9bc7838a0d56265e5d4532f9b86def402f6712d5fe66f55234fc9ae8ff9be
+definition_sha256: ba67c39d7ada11e38aa6694f7bc3e714c8bc5951c0c7f08721dde0b94470d9f6
 ---
 
 # 用途

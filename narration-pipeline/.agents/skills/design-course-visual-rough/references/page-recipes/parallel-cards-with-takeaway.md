@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: parallel-cards-with-takeaway
 status: active
-content_group_min: 3
-content_group_max: 4
+content_unit_min: 3
+content_unit_max: 4
 media_mode: forbidden
 is_logic_diagram: false
 slot_contract: headline | parallel-cards | takeaway
 downstream_layouts: three-column | bullets
-definition_sha256: add3a9eb4ccc36d7686105b1273e6e5a6716623ba3b4417b2d0a29f492fd375d
+definition_sha256: 925b13b47200a8f401efe65603e43e9239233c88fb7bb17bfc0bcd917adab2ac
 ---
 
 # 用途

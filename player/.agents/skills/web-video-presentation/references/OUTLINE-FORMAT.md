@@ -18,7 +18,7 @@
 > scene/step 比例判定设计失败；应检查连续 step 是否复用主构图，以及是否存在
 > 无理由的逐 step 重构图。
 >
-> **Courseplay-bound mode**：输入为正式 v5/v2（冻结兼容）或 v6/v3（后续新生产）时，必须完整读取
+> **Courseplay-bound mode**：输入为正式 v6/v4 时，必须完整读取
 > [`COURSEPLAY-BOUND-MODE.md`](COURSEPLAY-BOUND-MODE.md)。此时 A-page 默认对应
 > 一个 chapter 和一个持续 `base-scene`；`semantic state` 是 base-scene 内的稳定状态
 > 描述，不是额外的制作层。outline 必须分别报告 base-scene、accent-frame、
@@ -75,16 +75,15 @@ pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx>
 ```
 
 生成的 `episodes/<episode-id>/.handoffs/<Axxx>.json` 是一种紧凑输入。也可以直接
-提供等价的当前章节 outline、调度、A-page/Beat、visual rough、主题和素材。v2/v3 生成器把当前章元数据、准确
-`narration.beats`、screen source/guidance、`presentation`、结构化 steps、静默护栏和素材
+提供等价的当前章节 outline、调度、A-page/Beat、visual rough、主题和素材。v4 生成器把当前章元数据、准确
+`narration.beats`、screen guidance、`presentation`、结构化 steps、静默护栏和素材
 片段切成 compact 派生包。显式调用 handoff 时，生成或 `--check` 失败只表示该工具
 无法从当前文件生成可靠包；报告具体输入问题即可，不把错误扩展成全局制作停止条件。
 无论采用哪条路径，都只给章节 Agent 当前章必要上下文，不从历史章节猜测内容。
 
 Outline 只投影步骤、状态、持续元素、聚焦关系和制作指令，不保存最终文案权威，
-也不增加 guidance 覆盖表、Beat 来源登记或下游内容清单。v2 仍按冻结规则处理全部
-`screen_source`；v3 的普通 S/G 不承担逐项落屏义务，章节三源创作规则只以
-[`CHAPTER-CRAFT.md`](CHAPTER-CRAFT.md#courseplay-v3三源创作唯一详细规则) 为准。
+也不增加 guidance 覆盖表、Beat 来源登记或下游内容清单。普通 S/G 不承担逐项落屏义务，
+章节三源创作规则只以 [`CHAPTER-CRAFT.md`](CHAPTER-CRAFT.md#courseplay-v4三源创作唯一详细规则) 为准。
 
 ---
 

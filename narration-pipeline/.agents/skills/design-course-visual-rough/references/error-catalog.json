@@ -1,0 +1,31 @@
+{
+  "schema_version": "courseplay-validation-error-catalog/v1",
+  "errors": [
+    {"code":"VR4_FRONTMATTER_INVALID","message":"visual rough frontmatter 不符合 v4 契约。","hint":"只保留模板列出的字段，并使用 courseplay-visual-rough/v4。","contractSection":"frontmatter"},
+    {"code":"VR4_SOURCE_SCHEMA","message":"源 A-page 不是 v6。","hint":"使用已验证的 courseplay-a-page/v6；不要修改 G 数量。","contractSection":"source"},
+    {"code":"VR4_SOURCE_INTEGRITY","message":"源 episode 或 SHA-256 不匹配。","hint":"用编译工具重新写入源文件哈希。","contractSection":"source"},
+    {"code":"VR4_PAGE_SEQUENCE","message":"rough 页面与 A-page 页面不完全同序。","hint":"按 A-page 原顺序补齐页面。","contractSection":"pages"},
+    {"code":"VR4_PAGE_FIELD","message":"页面固定字段缺失、重复或为空。","hint":"按 v4 模板补齐每个固定字段。","contractSection":"page-fields"},
+    {"code":"VR4_UNIT_SYNTAX","message":"视觉内容单元格式无效。","hint":"使用 `Uxxx <- Gxxx + Gxxx`；可合并或复用 G，不要改上游 G。","contractSection":"content-units"},
+    {"code":"VR4_UNIT_SEQUENCE","message":"U 编号未在整份 rough 中连续。","hint":"从 U001 开始跨页连续编号。","contractSection":"content-units"},
+    {"code":"VR4_GROUP_REFERENCE_UNKNOWN","message":"视觉内容单元引用了本页未知 G。","hint":"修正 U 的 G 引用；不得修改 A-page G 来适配配方。","contractSection":"content-units"},
+    {"code":"VR4_GROUP_UNCOVERED","message":"至少一个源 G 未被任何 U 覆盖。","hint":"将未覆盖 G 加入现有或新增 U；不得修改上游 G。","contractSection":"content-units"},
+    {"code":"VR4_SLOT_BINDING","message":"页面骨架槽位语法无效。","hint":"骨架只使用 `slot <- S/U/M/none`。","contractSection":"slot-bindings"},
+    {"code":"VR4_SLOT_REFERENCE_UNKNOWN","message":"页面骨架引用了未知 S、U 或 M。","hint":"绑定本页已知 S/U/M；不要绑定 G 或 C。","contractSection":"slot-bindings"},
+    {"code":"VR4_GUIDANCE_COPIED","message":"rough 复制了 guidance_text。","hint":"删除可见文案，只保留稳定 ID 与结构关系。","contractSection":"visibility"},
+    {"code":"VR4_SILENT_CONSTRAINT_VISIBLE","message":"silent constraint 进入了可见结构。","hint":"从 U 和页面骨架移除 C/constraint 文本。","contractSection":"visibility"},
+    {"code":"VR4_RELATION_CARRIER","message":"R 与关系载体不是严格一一对应。","hint":"为每个源 R 写且只写一条载体说明。","contractSection":"relations"},
+    {"code":"VR4_RECIPE_INVALID","message":"配方未知或当前状态不可用。","hint":"选择 recipe v2 注册表中的合法配方。","contractSection":"recipes"},
+    {"code":"VR4_UNIT_COUNT","message":"U 数量超出配方范围。","hint":"调整 U 的合并/拆分或更换合法配方；不得修改上游 G。","contractSection":"recipes"},
+    {"code":"VR4_RECIPE_MEDIA","message":"媒体有无与配方不一致。","hint":"调整媒体绑定或选择匹配的配方。","contractSection":"media"},
+    {"code":"VR4_MEDIA_INVALID","message":"媒体需求格式或类型无效。","hint":"使用 none 或连续 M ID 加允许的媒体类型。","contractSection":"media"},
+    {"code":"VR4_MEDIA_SLOT_MISSING","message":"声明的媒体没有页面骨架槽位。","hint":"在页面骨架绑定当前 M。","contractSection":"media"},
+    {"code":"VR4_MEDIA_EVIDENCE","message":"媒体证据规则不满足。","hint":"AI 图证据写 none；教材原图引用有效 E。","contractSection":"media"},
+    {"code":"VR4_MEDIA_QUOTA","message":"多页图片配额或 M 连续编号不满足。","hint":"设置恰好 ceil(A/3) 个图片页并从 M001 连续编号。","contractSection":"media"},
+    {"code":"VR4_AI_MAJORITY","message":"实景 AI 图片未占严格多数。","hint":"在既定图片页内调整媒体类型。","contractSection":"media"},
+    {"code":"VR4_ADJACENT_RECIPE","message":"相邻页面使用了相同配方。","hint":"为当前页选择另一合法配方；不要修改 G。","contractSection":"recipes"},
+    {"code":"VR4_RECIPE_DIVERSITY","message":"十页以上文档的配方多样性不足。","hint":"使用至少四种合法配方。","contractSection":"recipes"},
+    {"code":"VR4_LOGIC_RECIPE","message":"逻辑图标记与具体 restricted 配方不一致。","hint":"默认使用零逻辑图；仅选择具体 restricted 配方。","contractSection":"logic"},
+    {"code":"VR4_LOGIC_LIMIT","message":"逻辑图数量超过当前注册表许可。","hint":"没有具体 restricted 配方时必须为零。","contractSection":"logic"}
+  ]
+}

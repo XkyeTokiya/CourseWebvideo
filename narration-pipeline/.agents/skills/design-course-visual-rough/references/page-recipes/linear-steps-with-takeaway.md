@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: linear-steps-with-takeaway
 status: active
-content_group_min: 3
-content_group_max: 4
+content_unit_min: 3
+content_unit_max: 4
 media_mode: forbidden
 is_logic_diagram: false
 slot_contract: headline | steps | takeaway
 downstream_layouts: process-steps
-definition_sha256: e01f11b6d623ee7afe0948c12649b9c8689e9cb88c42e5071b2bdc9dfcffe2ac
+definition_sha256: e66b82ddb923f226136d9a86a8942181175e4caa6f3e0bacc1d92f320f61de8e
 ---
 
 # 用途

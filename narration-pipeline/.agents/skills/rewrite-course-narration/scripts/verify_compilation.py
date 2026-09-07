@@ -8,11 +8,9 @@ import sys
 from pathlib import Path
 
 try:
-    from a_page_contract import SCHEMA_VERSION, SCHEMA_VERSION_V5, SCHEMA_VERSION_V6, parse_task_package, validate_a_page, validate_compile_trace
+    from a_page_contract import SCHEMA_VERSION, parse_task_package, validate_a_page, validate_compile_trace
 except ImportError:  # pragma: no cover - CLI 与脚本同目录，正常执行不会进入此分支
-    SCHEMA_VERSION = "courseplay-a-page/v4"  # type: ignore[assignment]
-    SCHEMA_VERSION_V5 = "courseplay-a-page/v5"  # type: ignore[assignment]
-    SCHEMA_VERSION_V6 = "courseplay-a-page/v6"  # type: ignore[assignment]
+    SCHEMA_VERSION = "courseplay-a-page/v6"  # type: ignore[assignment]
     parse_task_package = None  # type: ignore[assignment]
     validate_a_page = None  # type: ignore[assignment]
     validate_compile_trace = None  # type: ignore[assignment]
@@ -71,7 +69,7 @@ def main() -> int:
     parser.add_argument("--compiled-json", type=Path, required=True, help="Courseplay A-page production JSON.")
     parser.add_argument(
         "--validation-profile",
-        choices=["a-page-v4", "a-page-v5", "a-page-v6"],
+        choices=["a-page-v6"],
         default="a-page-v6",
         help="Canonical validation profile.",
     )
@@ -94,11 +92,7 @@ def main() -> int:
     if not isinstance(payload, dict) or not isinstance(trace, dict):
         print("FAIL JSON_OBJECT_REQUIRED")
         return 1
-    expected_schema = {
-        "a-page-v4": SCHEMA_VERSION,
-        "a-page-v5": SCHEMA_VERSION_V5,
-        "a-page-v6": SCHEMA_VERSION_V6,
-    }[args.validation_profile]
+    expected_schema = SCHEMA_VERSION
     if payload.get("schema_version") != expected_schema:
         print(f"FAIL VALIDATION_PROFILE_SCHEMA_MISMATCH:{args.validation_profile}:{payload.get('schema_version')}")
         return 1

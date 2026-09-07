@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: time-anchor-opening
 status: active
-content_group_min: 2
-content_group_max: 3
+content_unit_min: 2
+content_unit_max: 3
 media_mode: required
 is_logic_diagram: false
 slot_contract: headline | time-anchor | context-line | scene-image
 downstream_layouts: split-hero | three-column
-definition_sha256: a4661c74f0aadf6ac6cebf9d78b476b23e89c04330fb398c11831f06189f7f91
+definition_sha256: ba85c020340137e651878afd0f07f3da8872bf3cf27d0b0deb1d5f6700c2b132
 ---
 
 # 用途

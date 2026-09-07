@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: condition-key-goal
 status: active
-content_group_min: 3
-content_group_max: 3
+content_unit_min: 3
+content_unit_max: 3
 media_mode: forbidden
 is_logic_diagram: false
 slot_contract: headline | condition | key | goal | takeaway
 downstream_layouts: process-steps | three-column
-definition_sha256: 0f7e14e73a2937b9858ac0962b716a858743dc5300334261439aa6c1cbbeeedb
+definition_sha256: 785b90232a694a6a7608cc088b09297d8dbc02b16f59aed925cf5b7bba99e2cc
 ---
 
 # 用途

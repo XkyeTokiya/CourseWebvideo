@@ -2,12 +2,11 @@
 
 ---
 
-> **Courseplay-bound mode**：v5 + v2 或 v6 + v3 输入时读取
+> **Courseplay-bound mode**：v6 + v4 输入时读取
 > [`COURSEPLAY-BOUND-MODE.md`](COURSEPLAY-BOUND-MODE.md)，状态映射另读
 > [`COURSEPLAY-STATE-MECHANISMS.md`](COURSEPLAY-STATE-MECHANISMS.md)。handoff 是
 > 可选的当前章节上下文打包工具；Phase 2 可读取 `.handoffs/<Axxx>.json`，也可直接
-> 使用等价的当前章节输入。v2 输入提供 beats、`screen_source`、`presentation`、steps
-> 和护栏；v3 输入提供 beats、`screen_guidance`、`presentation`、steps、关系和护栏。
+> 使用等价的当前章节输入。v4 输入提供 beats、`screen_guidance`、`presentation`、steps、关系和护栏。
 
 ## 这是视频，不是 PPT
 
@@ -77,8 +76,7 @@ mode 下，除 outline 已声明 accent-frame 或 custom-scene 外，禁止把�
 
 ## 内容取舍：抓重点，不要原文搬运
 
-Courseplay v2 是冻结兼容规则：`screen_source` 是必须处理的基线，继续使用现有
-`validateScreenAdaptation`。Courseplay v3 改用下方“三源创作”：guidance 不是逐条
+Courseplay v4 使用下方“三源创作”：guidance 不是逐条
 落屏清单，下游必须重新设计完整上屏内容，不新增 `screenContent`、来源登记或其他 IR。
 
 视频是**音 + 画**：
@@ -93,12 +91,11 @@ hero 标语 / 一个数字 / 一组对比 + 必要的视觉演示。
 
 ---
 
-## 来源：普通项目双源，Courseplay v3 三源
+## 来源：普通项目双源，Courseplay v4 三源
 
 > 普通模式的**节奏 / 顺序 / 节拍切分**跟 **`script.md` 口播稿**；Courseplay
 > 则跟交接包中的 `narration.beats`，并以 `narration.authority=a_page.nx` 为口播权威。
-> **画面细节 / 数据 / 引用 / 案例** 回 **`article.md` 原文章（如有）**抽；v2 以
-> handoff 的 `screen_source`、`presentation`、steps、护栏和素材为准。v3 只读取
+> **画面细节 / 数据 / 引用 / 案例** 回 **`article.md` 原文章（如有）**抽；Courseplay 只读取
 > 当前 packet，并综合 `screen_guidance`、`narration.beats` 与 `presentation`。
 
 `outline.md` 已经在每章首段抽了「信息池」做参考。有 `article.md` 时，**实现
@@ -106,7 +103,7 @@ hero 标语 / 一个数字 / 一组对比 + 必要的视觉演示。
 引用原话、案例维度、出处时间）。Courseplay 没有 article 时，不得把缺失当成
 阻塞，也不得自行补写事实；使用交接包中的 A-page、visual rough 与素材清单。
 
-### Courseplay v3：三源创作（唯一详细规则）
+### Courseplay v4：三源创作（唯一详细规则）
 
 v6 JSON 给出内容方向、重点、事实边界和 exact 义务；当前 A 的
 `narration.beats` 提供可直接使用的具体素材；visual rough 投影到
@@ -304,7 +301,7 @@ step 可以共享同一网格和同一 semantic state。
 - [ ] 字号大、留白舒服、配色舒服
 - [ ] 清单 / 列表按“独立口播焦点 + 独立视觉槽位”逐个揭示；同一槽位的
       组合短语可共同出现，除明确换场外复用同一布局与槽位
-- [ ] 普通项目回原文章抽取了画面细节；Courseplay v3 则以三源重组出足够具体的页面信息，不以“字数多于口播”为门禁
+- [ ] 普通项目回原文章抽取了画面细节；Courseplay v4 则以三源重组出足够具体的页面信息，不以“字数多于口播”为门禁
 - [ ] 没有紫粉渐变 / 圆角彩色边框 / emoji / 假数据 / 假 logo
 - [ ] 缺的素材用 placeholder，不是 fake
 - [ ] **颜色和字体家族全部走 token**（无硬编码 hex / 字体名）；hero 数字

@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: central-question
 status: active
-content_group_min: 2
-content_group_max: 3
+content_unit_min: 2
+content_unit_max: 3
 media_mode: forbidden
 is_logic_diagram: false
 slot_contract: headline | premise-tags | question
 downstream_layouts: question-hero | centered-statement
-definition_sha256: af228c37e5f87a95389dc3bd0bc9469e61032eb3f0214d41873445ddc40cdaf9
+definition_sha256: 4b8383d96d4a111be0c4c73d4a44af89c3c26b68db4527a151bcf60850623a57
 ---
 
 # 用途

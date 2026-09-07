@@ -74,7 +74,7 @@ export const CHAPTERS: ChapterDef[] = [/* ... */];
 Courseplay 章节可以直接使用明确的当前 A-page、批准口播、visual rough/页面指导、
 outline 调度、主题和素材，也可以使用 handoff 生成紧凑输入。显式调用 handoff 时，
 工具读取 episode 根级元数据与 `inputs/` 下的正式输入，不动态搜索重名候选；版本路由为
-v4/v1→handoff v1、v5/v2→handoff v2、v6/v3→handoff v3。路径、格式或跨版本
+仅支持 v6/v4→handoff v4。路径、格式或版本
 错误由该命令报告，不升级为 Studio 构建或章节推进门禁。
 
 显式调用 handoff 时，`script.md` 使用以下可解析格式：
@@ -106,16 +106,13 @@ pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx>
 pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx> --check
 ```
 
-`episodes/<episode-id>/.handoffs/<Axxx>.json` 可作为紧凑的 Phase 2 输入。v2 包保留冻结的 `screen_source`；
-v3 包只含当前 A 的准确 beats、`screen_guidance`、`presentation`、steps、关系、
+`episodes/<episode-id>/.handoffs/<Axxx>.json` 可作为紧凑的 Phase 2 输入。v4 包只含当前 A 的准确 beats、`screen_guidance`、`presentation`、steps、关系、
 护栏和素材片段；章节 Agent 还读取现行的
 `CHAPTER-CRAFT.md`、`COURSEPLAY-BOUND-MODE.md`、`COURSEPLAY-STATE-MECHANISMS.md`、
 目标代码及必要的第 1 章风格参考。使用该包时不必再把完整内容源加入章节上下文。
 
 `.handoffs/` 是确定性派生缓存，不进入 `project.json`、catalog、Studio 构建或
 Git 提交。
-
-
 
 
 

@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: parallel-cards-self-contained
 status: active
-content_group_min: 3
-content_group_max: 4
+content_unit_min: 3
+content_unit_max: 4
 media_mode: forbidden
 is_logic_diagram: false
 slot_contract: headline | parallel-cards
 downstream_layouts: three-column | bullets
-definition_sha256: 5e2658b0097080cef38016fc4df54e1434ae501441995152d37d49e0622f5e76
+definition_sha256: 4f234bdeccc8e8247b3df2dabb1d185e01bb8e38b214dfaa31634ea3846d8ed0
 ---
 
 # 用途

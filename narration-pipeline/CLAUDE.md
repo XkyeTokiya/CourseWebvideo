@@ -19,7 +19,6 @@ docs/                                             # 生产、治理和历史说�
 
 - 任务包保持只读，不为通过验证而修改或替代任务包。
 - 新生产入口为 `rewrite-course-narration`，新视觉粗设入口为 `design-course-visual-rough`。
-- `polish-course-narration` 与 `polish-stage1-narration` 仅在用户明确调用时可用，不属于默认生产链。
 - 正式 handoff 通过人工批准和对应 validator 后才能发布到播放器 inputs。
 - 播放器只消费 inputs，不读取任务包或 `.tmp` 补齐页面语义。
 

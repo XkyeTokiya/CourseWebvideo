@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: common-anchor-association-groups
 status: active
-content_group_min: 3
-content_group_max: 4
+content_unit_min: 3
+content_unit_max: 4
 media_mode: forbidden
 is_logic_diagram: false
 slot_contract: headline | shared-anchor | association-groups | support-note | scope-boundary
 downstream_layouts: anchor-cluster | grouped-cards
-definition_sha256: bbb6de8362c19eef5530eecc36be3657bba2e6372f04a68e7072609e30fe5df5
+definition_sha256: a3cf6e7fa59903375ca69bf061926176747fd39dfa56fbb8b06baf0f06866569
 ---
 
 # 用途

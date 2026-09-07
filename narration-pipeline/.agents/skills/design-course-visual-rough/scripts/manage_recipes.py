@@ -150,7 +150,7 @@ def _list_recipes(args: argparse.Namespace) -> int:
     for recipe in payload["recipes"]:
         print(
             f"{recipe['recipe_id']}\t{recipe['status']}\t"
-            f"groups={recipe['content_group_min']}-{recipe['content_group_max']}\t"
+            f"units={recipe['content_unit_min']}-{recipe['content_unit_max']}\t"
             f"media={recipe['media_mode']}\tlogic={str(recipe['is_logic_diagram']).lower()}"
         )
     return 0

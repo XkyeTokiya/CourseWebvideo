@@ -7,7 +7,7 @@ from pathlib import Path
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
 SKILL_MD = SKILL_ROOT / "SKILL.md"
-SCHEMA = SKILL_ROOT / "references" / "courseplay-a-page.schema.json"
+SCHEMA = SKILL_ROOT / "references" / "courseplay-a-page-v6.schema.json"
 STAGE2 = SKILL_ROOT / "templates" / "stage2-a-page-compiler.md"
 WORKFLOW = SKILL_ROOT / "references" / "workflow.md"
 ACCEPTANCE = SKILL_ROOT / "references" / "acceptance-checklist.md"
@@ -108,9 +108,9 @@ class SkillContractTests(unittest.TestCase):
         self.assertIn("visible_source_units", workflow)
         self.assertIn("A → S", acceptance)
 
-    def test_v4_is_semantic_only_and_routes_visual_work_later(self) -> None:
+    def test_v6_is_semantic_only_and_routes_visual_work_later(self) -> None:
         text = SKILL_MD.read_text(encoding="utf-8")
-        self.assertIn("courseplay-a-page/v4", text)
+        self.assertIn("courseplay-a-page/v6", text)
         self.assertIn("design-course-visual-rough", text)
         self.assertIn("禁止 `visual_form`", text)
         self.assertIn("media_catalog", text)
@@ -136,18 +136,17 @@ class SkillContractTests(unittest.TestCase):
                 f"referenced asset missing: {ref}",
             )
 
-    def test_schema_exposes_only_the_v4_semantic_contract(self) -> None:
+    def test_schema_exposes_only_the_v6_guidance_contract(self) -> None:
         schema = json.loads(SCHEMA.read_text(encoding="utf-8"))
-        self.assertEqual("courseplay-a-page-v4", schema["$id"])
-        self.assertEqual("courseplay-a-page/v4", schema["properties"]["schema_version"]["const"])
+        self.assertEqual("courseplay-a-page-v6", schema["$id"])
+        self.assertEqual("courseplay-a-page/v6", schema["properties"]["schema_version"]["const"])
         self.assertNotIn("image_policy", schema["required"])
-        self.assertNotIn("media", schema["definitions"])
-        page_properties = schema["definitions"]["page"]["properties"]
+        self.assertNotIn("media", schema["$defs"])
+        page_properties = schema["$defs"]["page"]["properties"]
         for field_name in ("visual_form", "visual_priority", "media_refs"):
             self.assertNotIn(field_name, page_properties)
 
 
 if __name__ == "__main__":
     unittest.main()
-
 

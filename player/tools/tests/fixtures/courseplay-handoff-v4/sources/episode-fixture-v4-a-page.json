@@ -1,0 +1,14 @@
+{
+  "schema_version": "courseplay-a-page/v6",
+  "document_kind": "candidate",
+  "fixture_status": "synthetic",
+  "episode_id": "episode-fixture-v4",
+  "approved_text": null,
+  "timing_model": {"han_weight":1,"fullwidth_punctuation_weight":0,"other_non_whitespace_weight":0.5,"chars_per_minute":{"minimum":220,"target":230,"maximum":240}},
+  "evidence_catalog": [{"evidence_id":"E001","claim_or_asset":"合成证据","source_locator":"fixture","verification_status":"not applicable","allowed_use":"fixture only"}],
+  "pages": [
+    {"a_id":"A001","callback_a_ids":[],"nx":"先建立问题。再给出判断。","teaching_purpose":"验证映射","single_message":"组合与复用","screen":{"title":{"screen_item_id":"S001","guidance_text":"必须逐字显示的标题","usage_policy":"exact","evidence_refs":["E001"]},"groups":[{"group_id":"G001","items":[{"screen_item_id":"S002","guidance_text":"第一组参考","usage_policy":"reference","evidence_refs":["E001"]}]},{"group_id":"G002","items":[{"screen_item_id":"S003","guidance_text":"第二组参考","usage_policy":"reference","evidence_refs":["E001"]}]},{"group_id":"G003","items":[{"screen_item_id":"S004","guidance_text":"第三组参考","usage_policy":"reference","evidence_refs":["E001"]}]}]},"protected_relations":[{"relation_id":"R001","from":"G001","relation":"对照","to":"G002","direction":"bidirectional"}],"silent_constraints":[{"constraint_id":"C001","instruction":"不得把范围扩大到真实生产","evidence_refs":["E001"]}],"entry_condition":"开始","exit_condition":"形成判断","timing":{"char_equivalent":10,"min_seconds":3,"target_seconds":3,"max_seconds":3,"short_page_reason":"合成 fixture"}},
+    {"a_id":"A002","callback_a_ids":["A001"],"nx":"解释拆分。保持同一来源。","teaching_purpose":"验证拆分","single_message":"一个 G 可进入多个 U","screen":{"title":{"screen_item_id":"S005","guidance_text":"拆分测试标题","usage_policy":"reference","evidence_refs":["E001"]},"groups":[{"group_id":"G004","items":[{"screen_item_id":"S006","guidance_text":"可拆分的语义组","usage_policy":"reference","evidence_refs":["E001"]}]}]},"protected_relations":[],"silent_constraints":[],"entry_condition":"承接","exit_condition":"理解拆分","timing":{"char_equivalent":10,"min_seconds":3,"target_seconds":3,"max_seconds":3,"short_page_reason":"合成 fixture"}},
+    {"a_id":"A003","callback_a_ids":["A002"],"nx":"汇总规则。完成验证。","teaching_purpose":"验证收束","single_message":"多组可自由组合","screen":{"title":{"screen_item_id":"S007","guidance_text":"收束测试标题","usage_policy":"reference","evidence_refs":["E001"]},"groups":[{"group_id":"G005","items":[{"screen_item_id":"S008","guidance_text":"第五组参考","usage_policy":"reference","evidence_refs":["E001"]}]},{"group_id":"G006","items":[{"screen_item_id":"S009","guidance_text":"第六组参考","usage_policy":"reference","evidence_refs":["E001"]}]}]},"protected_relations":[],"silent_constraints":[],"entry_condition":"承接","exit_condition":"完成","timing":{"char_equivalent":8,"min_seconds":2,"target_seconds":2,"max_seconds":3,"short_page_reason":"合成 fixture"}}
+  ]
+}

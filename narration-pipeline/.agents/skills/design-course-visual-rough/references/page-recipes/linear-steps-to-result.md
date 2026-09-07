@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: linear-steps-to-result
 status: active
-content_group_min: 3
-content_group_max: 4
+content_unit_min: 3
+content_unit_max: 4
 media_mode: forbidden
 is_logic_diagram: false
 slot_contract: headline | steps | terminal-result
 downstream_layouts: process-steps
-definition_sha256: af9ba3226c797f71ab12d4bbe0940f328094263858e37faa1a3f081d4a4a7ae4
+definition_sha256: c1fa3ca2ba57ced1963319f84ba61bfaea18f7fedb851eafcbb4774cb3078caa
 ---
 
 # 用途

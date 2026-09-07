@@ -45,10 +45,10 @@
         { key: 'aPage', label: 'A-page JSON', source: 'observation', observation: 'aPage' },
         { key: 'aPageValidation', label: 'A-page 验证报告', source: 'derived', path: 'player/episodes/{{episodeId}}/inputs/{{episodeId}}-a-page-validation.json' }
       ],
-      prompt: '请在 narration-pipeline 中使用 design-course-visual-rough，为 {{episodeId}}（{{title}}）生成 visual rough v3 候选。只读取已验证的 A-page 正式输入；规划页面配方、G/R/M 结构、媒体需求和关系载体。候选保持 draft，完成验证后交给用户审阅，不得自动改为 approved。'
+      prompt: '请在 narration-pipeline 中使用 design-course-visual-rough，为 {{episodeId}}（{{title}}）生成 visual rough v4 候选。只读取已验证的 A-page 正式输入；用 U 映射 G，规划页面配方、S/U/M 骨架、媒体需求和 R 关系载体。不得修改上游 G 来适配配方。候选保持 draft，完成 preflight 与验证后交给用户审阅，不得自动改为 approved。'
     },
     {
-      id: 'visual-rough', number: '07', group: '上游内容', label: 'Visual rough v3', short: '人工门禁：批准视觉粗设', gateKey: 'visualRough',
+      id: 'visual-rough', number: '07', group: '上游内容', label: 'Visual rough v4', short: '人工门禁：批准视觉粗设', gateKey: 'visualRough',
       purpose: '确认页面配方、视觉关系、媒体需求和整体视觉节奏。',
       checklist: ['逐页配方与内容关系匹配', '媒体需求真实且不承担虚假证据', '验证通过并由用户明确批准'],
       artifacts: [
@@ -77,7 +77,7 @@
         { key: 'outline', label: 'outline.md', source: 'observation', observation: 'playerOutline' },
         { key: 'project', label: 'project.json', source: 'player' }
       ],
-      prompt: '请在 player 中为 {{episodeId}}（{{title}}）生成单章 compact handoff v3。先运行 pnpm courseplay:handoff -- --episode {{episodeId}} --a-page <Axxx> --check，确保 freshness 和输入契约通过；handoff 写入 episode 的 .handoffs/，不得提交 Git。'
+      prompt: '请在 player 中为 {{episodeId}}（{{title}}）生成单章 compact handoff v4。先运行 pnpm courseplay:handoff -- --episode {{episodeId}} --a-page <Axxx> --check，确保 freshness 和输入契约通过；handoff 写入 episode 的 .handoffs/，不得提交 Git。'
     },
     {
       id: 'chapter-handoff', number: '10', group: '下游制作', label: '单章交接（豁免）', short: '当前流程不再强制生成 handoff', optional: true,

@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: image-with-reading-notes
 status: active
-content_group_min: 2
-content_group_max: 3
+content_unit_min: 2
+content_unit_max: 3
 media_mode: required
 is_logic_diagram: false
 slot_contract: headline | image | reading-order | key-points | takeaway
 downstream_layouts: two-column | image-hero
-definition_sha256: 6a55797620f7cc8e0b87e9c3a35d92a195347caceeb0d3123517d7ba405c34dc
+definition_sha256: 5f5421c24d7bb21271e99d91e42bc7b83e51d5016a7cfb0936e5e11f94725066
 ---
 
 # 用途

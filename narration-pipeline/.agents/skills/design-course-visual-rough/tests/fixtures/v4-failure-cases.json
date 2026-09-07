@@ -1,0 +1,31 @@
+{
+  "schema_version": "courseplay-v4-failure-fixtures/v1",
+  "cases": [
+    {"code":"VR4_FRONTMATTER_INVALID","mutation":"remove frontmatter delimiter"},
+    {"code":"VR4_SOURCE_SCHEMA","mutation":"set A-page schema to v5"},
+    {"code":"VR4_SOURCE_INTEGRITY","mutation":"replace source hash"},
+    {"code":"VR4_PAGE_SEQUENCE","mutation":"swap A001 and A002"},
+    {"code":"VR4_PAGE_FIELD","mutation":"remove 内容角色"},
+    {"code":"VR4_UNIT_SYNTAX","mutation":"replace U001 arrow syntax"},
+    {"code":"VR4_UNIT_SEQUENCE","mutation":"rename U001 to U009"},
+    {"code":"VR4_GROUP_REFERENCE_UNKNOWN","mutation":"replace G001 with G999"},
+    {"code":"VR4_GROUP_UNCOVERED","mutation":"remove all G003 references"},
+    {"code":"VR4_SLOT_BINDING","mutation":"bind skeleton with prose"},
+    {"code":"VR4_SLOT_REFERENCE_UNKNOWN","mutation":"bind U999"},
+    {"code":"VR4_GUIDANCE_COPIED","mutation":"append source guidance_text"},
+    {"code":"VR4_SILENT_CONSTRAINT_VISIBLE","mutation":"bind C001 in visible structure"},
+    {"code":"VR4_RELATION_CARRIER","mutation":"duplicate R001 carrier"},
+    {"code":"VR4_RECIPE_INVALID","mutation":"use unknown recipe"},
+    {"code":"VR4_UNIT_COUNT","mutation":"remove U003 from three-unit recipe"},
+    {"code":"VR4_RECIPE_MEDIA","mutation":"remove M001 from required recipe"},
+    {"code":"VR4_MEDIA_INVALID","mutation":"use unsupported media type"},
+    {"code":"VR4_MEDIA_SLOT_MISSING","mutation":"remove image slot"},
+    {"code":"VR4_MEDIA_EVIDENCE","mutation":"give AI media E001"},
+    {"code":"VR4_MEDIA_QUOTA","mutation":"remove the only media page"},
+    {"code":"VR4_AI_MAJORITY","mutation":"change only media to textbook_original"},
+    {"code":"VR4_ADJACENT_RECIPE","mutation":"repeat adjacent recipe"},
+    {"code":"VR4_RECIPE_DIVERSITY","mutation":"use fewer than four recipes across ten pages"},
+    {"code":"VR4_LOGIC_RECIPE","mutation":"set logic yes on active non-logic recipe"},
+    {"code":"VR4_LOGIC_LIMIT","mutation":"assign logic when no restricted recipe exists"}
+  ]
+}

@@ -1,9 +1,9 @@
 # Courseplay-bound mode
 
-正式 Courseplay 输入使用本模式。可选 handoff 工具支持 v4/v1→handoff v1、
-v5/v2→handoff v2（继续服务 ep04）、v6/v3→handoff v3（后续新生产）；版本组合
-校验属于显式调用该工具时的输入契约，不是全局制作门禁。v3 的三源创作详细规则
-唯一存放在 [`CHAPTER-CRAFT.md`](CHAPTER-CRAFT.md#courseplay-v3三源创作唯一详细规则)；
+正式 Courseplay 输入使用本模式。可选 handoff 工具只支持
+`courseplay-a-page/v6` + `courseplay-visual-rough/v4` → handoff v4。版本组合
+校验属于显式调用该工具时的输入契约，不是全局制作门禁。当前三源创作详细规则
+唯一存放在 [`CHAPTER-CRAFT.md`](CHAPTER-CRAFT.md#courseplay-v4三源创作唯一详细规则)；
 本文件说明内容边界、可选上下文打包与通用场景调度。
 
 ## 目标与术语
@@ -33,8 +33,7 @@ Courseplay 的 A-page 是一个完整教学判断，不是一个口播瞬间。�
   `outline.md`、`<episode-id>-a-page.json`、`<episode-id>-visual-rough.md`，以及声明
   `approved_text` 时的 `approved-spoken-text.txt`。工具不动态搜索候选文件；路径或
   格式不符合时报告该命令的输入错误，不把它升级为全仓库 validator。
-- 新生产使用 `courseplay-a-page/v6` + `courseplay-visual-rough/v3`；v6 `screen` 是 guidance，v3 只写结构绑定、配方、媒体和 R 载体，不复制 `guidance_text`。
-- v5/v2 为冻结兼容路径，保留 `screen_source` 与现有 screen adaptation 行为；v4/v1 只由旧兼容验证路径读取。
+- 新生产使用 `courseplay-a-page/v6` + `courseplay-visual-rough/v4`；v6 `screen` 是 guidance，v4 只写结构绑定、配方、媒体和 R 载体，不复制 `guidance_text`。
 - 缺少当前章节实际所需的批准口播或页面指导时，列出缺项并请求补充；仅仅没有
   生成 handoff、文件不在工具默认路径或 script 使用不同排版，不阻止直接制作。
 - 每个 A-page 必须包含非空 `nx`；它是该页的批准口播源，不能由下游补写或改写。
@@ -80,8 +79,8 @@ A-page、base-scene 或 narration beat 统计。
   承载，并在 Checkpoint Plan 中确认。
 - 每个 A-page 默认对应一个 base-scene。
 - visual rough 的配方、骨架、媒体和语义区域在该 scene 的多个 step 中持续有效。
-- v2 的 screen source 继续按冻结规则承载；v3 的普通 S/G 只指导内容和结构，
-  不要求逐项落屏，也不形成 G→section 对应。R 仍须由明确关系载体保真。
+- v6 的普通 S/G 只指导内容与语义边界；rough v4 通过 U 组织视觉内容，
+  不形成 G→section 对应。R 仍须由明确关系载体保真。
 - 已出现的持续元素默认保留；可以弱化、聚焦或更新固定槽位，不得无理由
   消失或整体重排。
 
@@ -93,23 +92,17 @@ Courseplay 不设全局 state 标签白名单。每章使用能描述稳定画�
 
 ## Step 与 semantic state 粒度
 
-每个 A-page 没有固定 beat 或 state 数。narration beat 按 CLAUDE.md §1.4 的
-锚点与偏离规则切分：默认每页等于该页 visual rough 的 G 组数 N（以
-`### 上屏内容组` 下 `数字. Gxxx` 编号行计数），偏离仅限合并/扩张/并入
-三类并内联标注。beat 数确定后，按以下顺序确定每条 step 如何落到
-semantic state：
-
-1. 将 visual rough 的编号 G 组和其中的 S 子项作为候选状态单位；
-2. 对照页面骨架中的卡片、轨道、媒体区与判断区，确认实际视觉槽位；
-3. 对照口播，判断各内容组或子项是否被独立讲解和依次强调。
+每个 A-page 没有固定 beat 或 state 数。narration beat 只从已批准的 Nx
+按口播焦点切分；visual rough 的 G、U、槽位数量和 recipe ID 均不得反推 beat 数。
+beat 确定后，对照 U、页面骨架和关系载体，描述每条 step 结束时形成的
+semantic state。
 
 独立视觉槽位和独立口播焦点是需要写清场景指令的证据，不构成“一槽位一个
 state”的最低配额。粗设已放在同一卡片或同一轨道中的组合短语可以一起出现；
 一个 step 也可以在同一主构图中依次呈现多个子项，最终落到一个稳定 state。
 无论拆分、合并还是复用 state，都不得自动增加 narration step 或 base-scene。
 
-判断时先按编号内容组确定锚点，再对照批准口播验证每个锚点是否有独立口播句
-与稳定画面，最后检查偏离标注。每条 step 都必须有可执行的场景指令，但相邻
+每条 step 都必须有可执行的场景指令，但相邻
 step 可以重复引用同一 semantic state；重复时用“保持……”说明仍持续的构图和
 本次口播焦点。state 的拆分、合并或复用不自动增加场景，也不要求所有 A-page
 使用相同步数。
@@ -123,12 +116,9 @@ step 可以重复引用同一 semantic state；重复时用“保持……”说
 只有本 beat 结束时形成了不同的稳定画面结果，才使用新的 state，否则复用前一
 state。内部呈现动作不另计 semantic state。
 
-每拍必须有非空口播。beat 是 narration beat，不允许空拍；无口播的内容组不能
-独占一拍，无锚点的引入/过渡句并入其画面所属的相邻组拍。拍边界与句子边界
-不对齐是合法形态：句内切分仅限强分隔标点（，；：）且两侧分属不同组锚点；
-组锚点优先于句子完整性，句子完整性优先于逐组拆分。量词扫描是警告不是锚点：
-骨架措辞中的“三张/四条”与编号内容组数不一致时（如 layered-bands 的组内
-文字带数），以编号内容组为准。≥4s 含边界（仅 <4s 违规）；时长按 a-page
+每拍必须有非空口播。beat 是 narration beat，不允许空拍；引入或过渡句并入
+其画面所属的相邻拍。拍边界与句子边界不对齐时，仅在强分隔标点处切分。
+时长按 a-page
 `timing_model`（230 字/分）估算，不做逐字精算。
 
 ## Accent frame
@@ -201,7 +191,7 @@ accent-frame step 只写 `K-Axxx-xx · accent`，不再附加 semantic state 或
 outline 仍只描述节奏、内容、场景连续性与信息密度，不写 CSS、动画类型、
 毫秒值或实现手段。
 
-## 可见标题省略（v2 冻结兼容）
+## 可见标题省略
 
 outline Agent 拥有一项受限的“重复标题省略权”：可以把语义重复的论点标题
 声明为不进入画面。这是删除性例外，不是“标题自由可选”，边界只有以下几条：
@@ -249,7 +239,7 @@ outline Agent 拥有一项受限的“重复标题省略权”：可以把语义
 页面通过、哪些页面因标题是唯一判断载体而无法删除，再决定第二步是否
 开放「标题语义向既有主体槽位转移」。
 
-v3 不继承上述“标题默认必须显示”的来源义务。标题 S 是页面判断方向；是否设置
+v4 不继承上述“标题默认必须显示”的来源义务。标题 S 是页面判断方向；是否设置
 独立标题区由 visual rough、Outline 的既有字段和实际构图共同决定。不得为了省略
 标题而丢失页面判断，也不得在 Outline 中增加最终文案字段。
 
@@ -262,15 +252,14 @@ pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx>
 ```
 
 生成的 `episodes/<episode-id>/.handoffs/<Axxx>.json` 可作为紧凑输入；也可以直接
-提供等价的当前章节输入。v2 包提供冻结的 `screen_source`；v3 包提供当前 A 的准确
+提供等价的当前章节输入。v4 包提供当前 A 的准确
 beats、`screen_guidance`、`presentation`、steps、关系、护栏和素材片段。使用包时，
 章节 Agent 只读该包、本文件、`COURSEPLAY-STATE-MECHANISMS.md`、`CHAPTER-CRAFT.md`、
 目标代码及必要的第 1 章风格参考；直接提供输入时保持相同的当前章节范围。
 `narration.authority` 指向 `a_page.nx`（fixture-only 候选除外）。显式调用 handoff
 后生成或 `--check` 失败时，报告该工具无法生成的输入错误；不因此阻断其他章节制作路径。
 
-- v2 `screen_source` 继续使用 screen adaptation 内容检查；v3 不登记逐条口播来源，
-  只按 [`CHAPTER-CRAFT.md`](CHAPTER-CRAFT.md#courseplay-v3三源创作唯一详细规则)
+- v4 不登记逐条口播来源，只按 [`CHAPTER-CRAFT.md`](CHAPTER-CRAFT.md#courseplay-v4三源创作唯一详细规则)
   进行三源创作和页面自检。
 
 - 一个 A-page 默认实现为一个持续 Scene 组件，将 narration `step` 显式映射到

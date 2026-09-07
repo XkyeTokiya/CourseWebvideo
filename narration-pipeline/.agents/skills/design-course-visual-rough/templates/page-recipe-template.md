@@ -1,9 +1,9 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: <recipe-id>
 status: experimental
-content_group_min: 2
-content_group_max: 3
+content_unit_min: 2
+content_unit_max: 3
 media_mode: forbidden
 is_logic_diagram: false
 slot_contract: headline | content | takeaway

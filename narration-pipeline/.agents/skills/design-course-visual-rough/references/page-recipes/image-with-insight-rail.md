@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: image-with-insight-rail
 status: active
-content_group_min: 2
-content_group_max: 4
+content_unit_min: 2
+content_unit_max: 4
 media_mode: required
 is_logic_diagram: false
 slot_contract: headline | image | insight-rail
 downstream_layouts: two-column | image-hero
-definition_sha256: b24e4b4efc2cafe8dc22d00582fbd3567abad2bf8221afdac6f426d1562601a5
+definition_sha256: d6bd80e9d65d6437cc256674b9efc03c9b7de04000fa8c01b92b48dd244a4320
 ---
 
 # 用途

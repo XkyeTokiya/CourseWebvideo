@@ -20,8 +20,8 @@
 ## 必要输入
 
 - 待审查的 `outline.md`；
-- 对应 `courseplay-a-page/v4`；
-- 对应 `courseplay-visual-rough/v1`；
+- 对应 `courseplay-a-page/v6`；
+- 对应 `courseplay-visual-rough/v4`；
 - 可选：`approved-spoken-text.txt`。
 
 Reviewer 同时使用

@@ -1,0 +1,14 @@
+{
+  "schema_version": "courseplay-validation-error-catalog/v1",
+  "errors": [
+    {"code":"HV4_INPUT_MISSING","message":"必需输入不存在或无法读取。","hint":"补齐标准 episode 输入路径。","contractSection":"inputs"},
+    {"code":"HV4_VERSION_PAIR","message":"handoff v4 只接受 A-page v6 与 visual rough v4。","hint":"重新生成当前版本输入；不要修改 G 数量。","contractSection":"versions"},
+    {"code":"HV4_SOURCE_INTEGRITY","message":"visual rough 与源 A-page 不匹配。","hint":"用规范化工具更新 source SHA-256。","contractSection":"integrity"},
+    {"code":"HV4_PAGE_SEQUENCE","message":"script、outline 或 rough 页面顺序与 A-page 不一致。","hint":"按 A-page 顺序补齐对应章节。","contractSection":"sequence"},
+    {"code":"HV4_BEAT_STEP_MISMATCH","message":"script beat、outline step 与 narrations step 数不一致。","hint":"保持三者严格一一对应，不改写批准口播。","contractSection":"runtime-steps"},
+    {"code":"HV4_NX_MISMATCH","message":"script beat 拼接与 A-page nx 不一致。","hint":"从 nx 无损切分 beat。","contractSection":"narration"},
+    {"code":"HV4_REFERENCE_UNKNOWN","message":"handoff step 或 presentation 引用了未知稳定 ID。","hint":"仅引用当前 A-page 与 rough 已声明的 S/U/R/M。","contractSection":"references"},
+    {"code":"HV4_RELATION_CARRIER","message":"protected relation 与载体不是严格一一对应。","hint":"为每个 R 保留唯一载体。","contractSection":"relations"},
+    {"code":"HV4_MEDIA_MATERIAL","message":"rough 要求媒体但 outline 缺少素材清单。","hint":"为该 A-page 增加素材状态记录。","contractSection":"media"}
+  ]
+}

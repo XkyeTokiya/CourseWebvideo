@@ -22,7 +22,7 @@ CourseWebvideo 是一套面向课程视频的网页化生产工程，使用单�
 
 | 目录或文件 | 职责 |
 | --- | --- |
-| `narration-pipeline/` | 任务包、连续口播、A-page v6、visual rough v3 及其验证工具 |
+| `narration-pipeline/` | 任务包、连续口播、A-page v6、visual rough v4 及其验证工具 |
 | `narration-pipeline/episodes/` | 上游任务包事实源，保持只读 |
 | `player/` | Courseplay 网页播放器、章节代码、工具链和测试 |
 | `player/episodes/<id>/inputs/` | 下游唯一正式输入入口 |
@@ -36,7 +36,7 @@ CourseWebvideo 是一套面向课程视频的网页化生产工程，使用单�
 
 1. `approved-spoken-text.txt`：用户批准的连续口播，决定整集实际说什么。
 2. `episode-XX-a-page.json`：每页的 Nx、screen guidance、evidence、relations 和约束。
-3. `episode-XX-visual-rough.md`：页面配方、G/R/M 结构、媒体需求和关系载体。
+3. `episode-XX-visual-rough.md`：页面配方、G→U 映射、S/U/M 骨架、媒体需求和 R 关系载体。
 
 验证报告用于治理和验收，不作为章节创作素材。`narration-brief.json` 与 compile trace 等过程文件保留在 `.tmp/narration-pipeline/`。
 
@@ -50,7 +50,7 @@ CourseWebvideo 是一套面向课程视频的网页化生产工程，使用单�
 4. A-page v6：切分 Nx 并生成 screen guidance。
 5. 编译追踪：追踪语义原子进入哪个 A/S，或记录省略原因。
 6. A-page 验证：检查 schema、覆盖率、证据、关系和 trace。
-7. Visual rough v3：确定视觉结构和媒体方案。
+7. Visual rough v4：确定视觉结构和媒体方案。
 8. 下游 Phase 1：从 `inputs/` 生成 `script.md`、`outline.md` 和生产计划。
 9. Checkpoint Plan：确认稿子、Outline、主题、素材和开发模式。
 10. 单章交接：为每个 A 生成 `.handoffs/Axxx.json`。

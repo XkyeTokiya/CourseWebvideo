@@ -4,7 +4,7 @@
 
 ## 子项目路由
 
-- `narration-pipeline/`：51 集任务包事实源、口播、A-page v6、visual rough v3 与验证。
+- `narration-pipeline/`：51 集任务包事实源、口播、A-page v6、visual rough v4 与验证。
 - `player/`：Web Video Studio、51 期播放器实例、章节源码、音频与录屏。
 - `player/episodes/<episode-id>/inputs/`：上游批准 handoff 的唯一正式消费入口。
 - `player/episodes/_shared/covers/`：51 集标准封面内容库。
@@ -39,6 +39,7 @@ cd D:\00-workspace\005-coursewebvideo\player
 - 单一 Git 根位于本目录；两个子目录不再拥有独立 Git 历史。
 - 不提交 `.env`、凭据、令牌、`node_modules/`、构建缓存、`.tmp/` 或旧归档。
 - 先确认目标子项目和当前状态，再只提交本任务明确修改的路径。
+- `archives/retired-production-flows/` 是封存历史载荷；未经用户明确授权，Agent 不得读取、解压或将其中内容作为生产依据。
 
 ## 跨项目单集总状态
 

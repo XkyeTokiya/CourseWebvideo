@@ -419,12 +419,12 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
 <div class="page">
 
   <header class="hero" id="top">
-    <span class="badge"><b>A-page v6</b>+<b>visual rough v3</b>+<b>handoff v3</b></span>
+    <span class="badge"><b>A-page v6</b>+<b>visual rough v4</b>+<b>handoff v4</b></span>
     <h1>从冻结任务包，<br>到可验收的<em>成片</em>。</h1>
     <p class="lede">今后新生产一律走这条主线：单一 Git 仓库内划分 <span class="mono">narration-pipeline/</span> 与 <span class="mono">player/</span> 两个子项目。上游以冻结任务包为唯一事实来源，经过连续口播、A-page 编译与 visual rough 编译；下游以三源 handoff 驱动章节创作。链条上共 14 个阶段、5 道不可自动越过的人工门禁。</p>
     <p class="note">
       <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.6" stroke="#6B7280" stroke-width="1.3"/><path d="M8 5.2v.2M8 7.4V11" stroke="#6B7280" stroke-width="1.4" stroke-linecap="round"/></svg>
-      <span>ep04 的 v5/v2 只是冻结兼容分支，继续服务旧实例；它不代表新流程，新实例不得参照。</span>
+      <span>当前工具面只接受 v6/v4/handoff-v4；既有 episode 文件保持原样，但不再作为新生产入口。</span>
     </p>
     <div class="vchips">
       <span class="chip">上游权威 <b>rewrite-course-narration</b></span>
@@ -524,8 +524,8 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
         <div class="fcard">
           <span class="fnum">06</span>
           <div class="fbody">
-            <div class="ftitle">visual rough v3</div>
-            <div class="fnote">决定页面配方、G/R/M 结构、媒体需求和关系载体。</div>
+            <div class="ftitle">visual rough v4</div>
+            <div class="fnote">决定页面配方、G→U 映射、S/U/M 骨架、媒体需求和 R 关系载体。</div>
           </div>
           <span class="fzone">上游</span>
         </div>
@@ -572,7 +572,7 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
         <div class="fcard">
           <span class="fnum">09</span>
           <div class="fbody">
-            <div class="ftitle">按 A 生成 compact handoff v3</div>
+            <div class="ftitle">按 A 生成 compact handoff v4</div>
             <div class="fnote"><span class="mono">pnpm courseplay:handoff</span> 从 <span class="mono">inputs/</span> 机械生成 <span class="mono">.handoffs/Axxx.json</span>，不再把完整冻结输入喂给章节 Agent。</div>
           </div>
           <span class="fzone">下游</span>
@@ -691,8 +691,8 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
             <td><span class="gcell"><i></i><span class="mono" style="font-size:11.5px">coverage_passed=true · unresolved=[] · failures=[]</span></span></td>
           </tr>
           <tr class="hard">
-            <td class="stg"><span class="idx">07</span>Visual rough v3</td>
-            <td>决定页面配方、G/R/M 结构、媒体需求和关系载体</td>
+            <td class="stg"><span class="idx">07</span>Visual rough v4</td>
+            <td>决定页面配方、G→U 映射、S/U/M 骨架、媒体需求和 R 关系载体</td>
             <td><span class="art">…-visual-rough.md</span><span class="art">validation JSON</span></td>
             <td><span class="gcell"><i></i>用户批准后才能由 draft 改成 approved</span></td>
           </tr>
@@ -710,7 +710,7 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
           </tr>
           <tr>
             <td class="stg"><span class="idx">10</span>单章交接</td>
-            <td>从 <span class="mono">inputs/</span> 机械生成单 A packet；v6/v3 输入路由到 handoff v3</td>
+            <td>从 <span class="mono">inputs/</span> 机械生成单 A packet；v6/v4 输入路由到 handoff v4</td>
             <td><span class="art">.handoffs/Axxx.json</span><span class="art">Git 忽略</span></td>
             <td><span class="gcell"><i></i><span class="mono" style="font-size:11.5px">--check</span> 或 freshness 失败就停止</span></td>
           </tr>
@@ -766,7 +766,7 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
         <span class="pidx">03</span>
         <span class="ptag">内容输入</span>
         <span class="pfile">episode-XX-visual-rough.md</span>
-        <p>用户批准的视觉粗设，决定页面配方、G/R/M 结构、媒体需求和关系载体。</p>
+        <p>用户批准的视觉粗设，决定页面配方、G→U 映射、S/U/M 骨架、媒体需求和 R 关系载体。</p>
       </div>
     </div>
     <div class="grid2" style="margin-top:16px">
@@ -797,7 +797,7 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
         <span class="pidx">01</span>
         <span class="ptag">事实源 · 只读</span>
         <span class="pfile">narration-pipeline/episodes/</span>
-        <p>51 集任务包事实源、口播、A-page v6 与 visual rough v3 的权威技能域。任务包保持只读。</p>
+        <p>51 集任务包事实源、口播、A-page v6 与 visual rough v4 的权威技能域。任务包保持只读。</p>
       </div>
       <div class="pcard reveal">
         <span class="pidx">02</span>
@@ -979,7 +979,7 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
       <div class="fref">
         <div class="fr-role">上游 · 视觉（narration-pipeline）</div>
         <div class="fr-name">design-course-visual-rough</div>
-        <div class="fr-desc">A-page 编译、visual rough v3 与其审批规则的上游权威。</div>
+        <div class="fr-desc">A-page 编译、visual rough v4 与其审批规则的上游权威。</div>
       </div>
       <div class="fref">
         <div class="fr-role">下游 · 制作（player）</div>
@@ -987,7 +987,7 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
         <div class="fr-desc">Phase 1 计划、handoff 三源、章节制作、音频与录屏的下游权威。</div>
       </div>
     </div>
-    <p class="foot-note">ep04 的 v5/v2 为冻结兼容分支，仅继续服务旧实例；新实例一律使用本页描述的 v6 主线。数据流：任务包 → .tmp 过程文件 → 人工批准与验证 → inputs/ → src/ → 预览、构建与录屏。</p>
+    <p class="foot-note">新生产一律使用本页描述的 v6/v4/handoff-v4 主线。数据流：任务包 → .tmp 过程文件 → 人工批准与验证 → inputs/ → src/ → 预览、构建与录屏。</p>
   </footer>
 
 </div>

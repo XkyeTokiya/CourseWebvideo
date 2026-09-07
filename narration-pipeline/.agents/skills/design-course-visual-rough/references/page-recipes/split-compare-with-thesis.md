@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: split-compare-with-thesis
 status: active
-content_group_min: 2
-content_group_max: 3
+content_unit_min: 2
+content_unit_max: 3
 media_mode: forbidden
 is_logic_diagram: false
 slot_contract: headline | left | right | bottom-thesis
 downstream_layouts: comparison | two-column
-definition_sha256: 00090b6995adaace97b7d87986bef7aed6256418ca1049b87346a3403e12728e
+definition_sha256: c0736f22b0f10605808df883a05bed888b5014981f526604a22ffeed2e650f61
 ---
 
 # 用途

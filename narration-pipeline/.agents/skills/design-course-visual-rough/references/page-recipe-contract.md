@@ -1,15 +1,7 @@
-# Page recipe v1 contract
+# Courseplay page-recipe v2 contract
 
-`references/page-recipes/` 是页面配方的唯一人工权威源；一份配方对应一份 UTF-8 Markdown，文件名必须等于 `recipe_id`。validator 按文件名排序加载目录，在内存生成规范注册表并计算 SHA-256，不读取并行 JSON 注册表。
+每份配方是一个 Markdown 文件，schema 为 `courseplay-page-recipe/v2`。内容范围字段只有 `content_unit_min` 和 `content_unit_max`，只统计 visual rough v4 的 U，不统计 G、S、卡片、槽位或 recipe ID。
 
-Frontmatter 只允许：`schema_version`、`recipe_id`、`status`、`content_group_min`、`content_group_max`、`media_mode`、`is_logic_diagram`、`slot_contract`、`downstream_layouts`、`definition_sha256`。`slot_contract` 与 `downstream_layouts` 使用 ` | ` 分隔的非空唯一值。正文必须依次包含且只包含 `# 用途`、`# 正例`、`# 反例`。
+状态为 `experimental|active|restricted|deprecated|blocked`。新 draft 可用 experimental/active，approved 只用 active 或具体 restricted 配方。restricted 只用于模板化逻辑图；若注册表没有具体 restricted 配方，逻辑图必须为零。
 
-状态规则：
-
-- `experimental`：可人工编辑，仅可进入 `draft` 粗设；定义哈希允许 `pending`。
-- `active`：可进入新草稿和批准稿；激活后定义哈希必须匹配，结构修改必须 clone 新 ID。
-- `restricted`：仅允许具体的 `is_logic_diagram: true` 配方；每次使用均需必要性理由与人工批准。
-- `deprecated`：不得进入新草稿；既有 approved 粗设仍可解释。
-- `blocked`：任何当前粗设验证均失败。
-
-非逻辑配方的 `downstream_layouts` 不得包含 `flow-diagram`、`arch-diagram` 或 `mindmap`。宽泛 `logic-diagram` 只作为 blocked 历史项保留，不能成为新粗设的选择。
+`media_mode` 为 required 或 forbidden；`slot_contract` 与 `downstream_layouts` 是竖线分隔的稳定 ID。非逻辑配方不得声明 flow-diagram、arch-diagram 或 mindmap。激活结构由 `definition_sha256` 冻结。

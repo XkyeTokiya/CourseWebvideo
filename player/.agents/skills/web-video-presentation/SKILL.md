@@ -142,8 +142,7 @@ Phase 2.4 的"实现单章"会重复 N 次 —— 每次都要回看核心约束
 
 | 用户给的东西 | 该做的 |
 |---|---|
-| 同时提供正式 `courseplay-a-page/v6` + `courseplay-visual-rough/v3` | 进入 Courseplay-bound mode；v6 `screen` 是 guidance，当前 A 口播提供具体素材，rough 提供表达结构。三源创作完整规则只读 `references/CHAPTER-CRAFT.md` |
-| 同时提供正式 `courseplay-a-page/v5` + `courseplay-visual-rough/v2` | 进入冻结兼容的 Courseplay-bound mode，继续使用 v2 `screen_source` 基线与现有 screen adaptation review；用于 ep04 等既有生产 |
+| 同时提供正式 `courseplay-a-page/v6` + `courseplay-visual-rough/v4` | 进入 Courseplay-bound mode；v6 `screen` 是 guidance，当前 A 口播提供具体素材，rough 提供表达结构。三源创作完整规则只读 `references/CHAPTER-CRAFT.md` |
 | Courseplay 输入不完整，或当前 A-page 缺少可用口播/页面指导 | 报告缺少的内容并请求补充；只要已有等价的当前章节输入，就可继续制作。版本、存放路径和 script 排版只在显式调用 handoff 时按工具契约检查 |
 | 原始文章（书面语 / 公众号 / 论文 / 博客） | 一次产出 `script.md` + `outline.md`（1.2），过 Checkpoint Plan |
 | 直接的口播稿 / 视频脚本 | 落盘成 `script.md`，一次产出 `outline.md`（1.2 简化版），过 Checkpoint Plan |
@@ -253,7 +252,7 @@ A-page 是否保持一个持续视觉框架。不要把 narration beat 数称为
        项目以批准口播的语义完整性、独立焦点和视觉承载能力判断，不因超过 60s
        或 step 数不同而自动否定
      - 每步屏幕内容是否清晰
-     - 普通项目检查每章「信息池」是否有足够 article 细节；Courseplay v3 检查 guidance、beats 与 presentation 是否足以支撑页面创作
+     - 普通项目检查每章「信息池」是否有足够 article 细节；Courseplay v4 检查 guidance、beats 与 presentation 是否足以支撑页面创作
      - 末尾素材清单是否完整
 
   3. 选哪个主题？我的推荐：
@@ -321,18 +320,17 @@ handoff 对 outline 的纯排版差异保持兼容：章节标题和 step 估时
 新写 outline 仍优先让 A-page 映射独占一行，callback 等元数据另起字段；不要为修复
 这类 handoff 错误改写批准口播内容。
 
-生成的 `.handoffs/<Axxx>.json` 可作为 Courseplay Phase 2 的紧凑输入。v2 包继续提供
-`screen_source` 冻结基线；v3 包提供准确 `narration.beats`、`screen_guidance`、
+生成的 `.handoffs/<Axxx>.json` 可作为 Courseplay Phase 2 的紧凑输入。v4 包提供准确 `narration.beats`、`screen_guidance`、
 `presentation`、结构化 `steps`、关系、护栏和素材。章节 Agent 只读该包、`COURSEPLAY-BOUND-MODE.md`、
 `COURSEPLAY-STATE-MECHANISMS.md`、`CHAPTER-CRAFT.md`、目标章节代码和必要的第 1 章
 代码风格参考；使用该包时不必再把完整内容源加入章节上下文。
 `narration.authority` 指向 `a_page.nx`（fixture-only 候选除外），`narrations.ts`
 必须逐 Beat 使用这些文本。生成或 `--check` 失败时报告当前输入问题，不从历史章节猜测补齐。
-v2 继续要求处理全部 `screen_source`。v3 不要求普通 S/G 逐项落屏，也不登记
+v4 不要求普通 S/G 逐项落屏，也不登记
 guidance/Beat 来源；必须综合 guidance、当前 A beats 与 presentation 重新设计完整
 上屏内容。不得引入 packet 外事实、改变数字/范围/极性/归属/关系、泄漏
 `silent_constraints` 或提前揭示后续 beat。详细且唯一的三源创作规则见
-[`CHAPTER-CRAFT.md`](references/CHAPTER-CRAFT.md#courseplay-v3三源创作唯一详细规则)。
+[`CHAPTER-CRAFT.md`](references/CHAPTER-CRAFT.md#courseplay-v4三源创作唯一详细规则)。
 
 ### 2.2 第 1 章 —— 主线程 + 强制验收
 
@@ -357,7 +355,7 @@ guidance/Beat 来源；必须综合 guidance、当前 A beats 与 presentation �
   □ 视觉气质对不对？符合 <theme nameZh> 的预期吗？
   □ 节奏对不对？某些步太快 / 太慢 / 信息太薄？
   □ 内容驱动动画是否到位？还是有几步是无脑入场动画？
-  □ 内容来源：普通项目按双源原则检查 article 细节；Courseplay v3 检查是否综合 guidance、beats 与 presentation，而非套用 article 规则
+  □ 内容来源：普通项目按双源原则检查 article 细节；Courseplay v4 检查是否综合 guidance、beats 与 presentation，而非套用 article 规则
   □ 反 AI 味检查：紫粉渐变 / 圆角彩色边框 / 假插画 / emoji 是否有？
 
 问题告诉我，我针对性改。OK 了告诉我"继续"，我按选定模式做第 2 章及之后。
@@ -433,8 +431,8 @@ pnpm run lint
   定义和读图采用各自机制。一个 step 可含多个内部动作，相邻 step 可复用同一
   semantic state；都不因此新增 layout
 - **内容来源分流**：普通项目使用双源——script 定节拍、article 提供信息密度；
-  Courseplay v3 使用三源——guidance 定方向与边界、当前 A beats 提供具体素材、
-  presentation 提供表达结构。v2 继续执行冻结的 `screen_source` 基线规则。
+  Courseplay v4 使用三源——guidance 定方向与边界、当前 A beats 提供具体素材、
+  presentation 提供表达结构。
 - **完工自检逐项过**，不达标回去改
 
 ### 2.5 结构变更后检查持久化游标
@@ -529,7 +527,7 @@ Part 0 —— **写章节时回那里查**，下面只是索引。
 | 7 | **内容驱动动画** | 先找内在动作，找不到才入场动画兜底；持续微动慎用 |
 | 8 | 关系驱动状态 | 顺序、并列、对照、定义和读图使用不同机制；step 数不从槽位数量反推 |
 | 9 | 整片同一主题 | 章节间不翻表面色；**颜色 / 字体走 token**，其它尺度章节自由 |
-| 10 | 内容来源分流 | 普通项目走 script + article 双源；Courseplay v3 走 guidance + beats + presentation 三源 |
+| 10 | 内容来源分流 | 普通项目走 script + article 双源；Courseplay v4 走 guidance + beats + presentation 三源 |
 
 ---
 
@@ -549,7 +547,7 @@ Part 8「常见反馈速查」。**关键**：先定位是哪一层（节奏 / �
 |---|---|---|
 | [`references/SCRIPT-STYLE.md`](references/SCRIPT-STYLE.md) | Phase 1.2 必读 | 文章 → 口播稿规则、平台变体 |
 | [`references/OUTLINE-FORMAT.md`](references/OUTLINE-FORMAT.md) | Phase 1.2 必读 | outline.md 字段 spec、命名约定、章节切分、信息池 |
-| [`references/COURSEPLAY-BOUND-MODE.md`](references/COURSEPLAY-BOUND-MODE.md) | 检测到正式 v5/v2 或 v6/v3 时必读 | 版本路由、章节输入边界、场景绑定、semantic state / accent / custom 语义；v3 三源细则转引 CHAPTER-CRAFT |
+| [`references/COURSEPLAY-BOUND-MODE.md`](references/COURSEPLAY-BOUND-MODE.md) | 检测到正式 v6/v4 时必读 | 当前版本路由、章节输入边界、场景绑定、semantic state / accent / custom 语义；三源细则转引 CHAPTER-CRAFT |
 | [`references/COURSEPLAY-STATE-MECHANISMS.md`](references/COURSEPLAY-STATE-MECHANISMS.md) | Courseplay outline 与章节状态映射时必读 | 开放式关系机制、章节内 semantic state、step 复用与实现映射 |
 | [`references/COURSEPLAY-OUTLINE-REVIEW.md`](references/COURSEPLAY-OUTLINE-REVIEW.md) | Courseplay outline 自检；按需交给 reviewer | 场景连续性、强调页、额外复杂场景与制作规模审查协议 |
 | [`references/CHAPTER-CRAFT.md`](references/CHAPTER-CRAFT.md) | **Phase 2.4 每章单一必读入口** | Part 0 十条原则 / Part 1 开工 5 问 / Part 2 关系→动作决策树 / Part 3 视觉工具箱 / Part 4 时长 / Part 5 反 AI 味反模式 / Part 6 代码硬规则 / Part 7 完工自检 / Part 8 反馈速查 |

@@ -1,14 +1,14 @@
 ---
-schema_version: courseplay-page-recipe/v1
+schema_version: courseplay-page-recipe/v2
 recipe_id: evidence-cards-with-provenance-boundary
 status: active
-content_group_min: 3
-content_group_max: 4
+content_unit_min: 3
+content_unit_max: 4
 media_mode: forbidden
 is_logic_diagram: false
 slot_contract: headline | provenance-band | evidence-cards | evidence-gap | inference-boundary
 downstream_layouts: evidence-grid | card-ledger
-definition_sha256: 86c530b117722dd7f0c6f71541bca3bca9224bb3404fbffa1589e6c969604dab
+definition_sha256: c9fbbda37ae5afb2bf7b57470661bd9e5fcb8b513583865af7820781c6f30b0b
 ---
 
 # 用途

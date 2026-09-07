@@ -9,8 +9,8 @@ from pathlib import Path
 from typing import Any
 
 
-RECIPE_SCHEMA_VERSION = "courseplay-page-recipe/v1"
-REGISTRY_SCHEMA_VERSION = "courseplay-page-recipe-registry/v2"
+RECIPE_SCHEMA_VERSION = "courseplay-page-recipe/v2"
+REGISTRY_SCHEMA_VERSION = "courseplay-page-recipe-registry/v3"
 RECIPE_ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 RECIPE_STATUSES = ("experimental", "active", "restricted", "deprecated", "blocked")
 MEDIA_MODES = ("required", "forbidden")
@@ -18,8 +18,8 @@ FRONTMATTER_FIELDS = (
     "schema_version",
     "recipe_id",
     "status",
-    "content_group_min",
-    "content_group_max",
+    "content_unit_min",
+    "content_unit_max",
     "media_mode",
     "is_logic_diagram",
     "slot_contract",
@@ -89,8 +89,8 @@ def definition_payload(recipe: dict[str, Any]) -> dict[str, Any]:
         for key in (
             "schema_version",
             "recipe_id",
-            "content_group_min",
-            "content_group_max",
+            "content_unit_min",
+            "content_unit_max",
             "media_mode",
             "is_logic_diagram",
             "slot_contract",
@@ -144,8 +144,8 @@ def parse_recipe_markdown(path: Path) -> tuple[dict[str, Any], list[str]]:
         failures.append("RECIPE_LOGIC_FLAG_INVALID")
     is_logic = raw_logic == "true"
     try:
-        minimum = int(frontmatter.get("content_group_min", ""))
-        maximum = int(frontmatter.get("content_group_max", ""))
+        minimum = int(frontmatter.get("content_unit_min", ""))
+        maximum = int(frontmatter.get("content_unit_max", ""))
     except ValueError:
         minimum = maximum = 0
         failures.append("CONTENT_GROUP_RANGE_INVALID")
@@ -159,8 +159,6 @@ def parse_recipe_markdown(path: Path) -> tuple[dict[str, Any], list[str]]:
         failures.append("LOGIC_RECIPE_STATUS_INVALID")
     if not is_logic and status == "restricted":
         failures.append("RESTRICTED_NON_LOGIC_RECIPE_INVALID")
-    if recipe_id == "logic-diagram" and status != "blocked":
-        failures.append("BROAD_LOGIC_RECIPE_BLOCKED")
     if not is_logic and DIAGRAM_LAYOUTS.intersection(downstream_layouts):
         failures.append("NON_LOGIC_DIAGRAM_LAYOUT_FORBIDDEN")
 
@@ -168,8 +166,8 @@ def parse_recipe_markdown(path: Path) -> tuple[dict[str, Any], list[str]]:
         "schema_version": frontmatter.get("schema_version", ""),
         "recipe_id": recipe_id,
         "status": status,
-        "content_group_min": minimum,
-        "content_group_max": maximum,
+        "content_unit_min": minimum,
+        "content_unit_max": maximum,
         "media_mode": media_mode,
         "is_logic_diagram": is_logic,
         "slot_contract": slot_contract,
@@ -229,8 +227,8 @@ def render_recipe_markdown(recipe: dict[str, Any]) -> str:
 schema_version: {RECIPE_SCHEMA_VERSION}
 recipe_id: {recipe['recipe_id']}
 status: {recipe['status']}
-content_group_min: {recipe['content_group_min']}
-content_group_max: {recipe['content_group_max']}
+content_unit_min: {recipe['content_unit_min']}
+content_unit_max: {recipe['content_unit_max']}
 media_mode: {recipe['media_mode']}
 is_logic_diagram: {'true' if recipe['is_logic_diagram'] else 'false'}
 slot_contract: {joined('slot_contract')}
