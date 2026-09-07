@@ -1,12 +1,30 @@
-# 交互
-See [交互/taste.md](交互/taste.md)
-# 工作方式
-- Windows 环境:shell_command 执行 cmd.exe——PowerShell cmdlet 走专用 powershell 工具;git 多行提交信息用两个 -m 或 scratchpad 文件 + `git commit -F <file>`(here-string 位置传参会被当 pathspec 静默失败);细节见 [environment/taste.md](environment/taste.md)。Confidence: 0.9
-- 证据先行:bug 先交证据支撑的根因诊断(什么坏了/在哪/为何自检没拦住),确认后再改文件;不把文档承诺当真——契约声明与启发式都对照实际成品工件实证复核;被质疑("请你重新思考")时真正重新审视,愿意基于证据推翻自己的方案。Confidence: 0.9
-- 方案先行与严格执行:规则/设计改动先列多个备选 + 明确取舍 + 有理由的推荐,不预设唯一修法,且备选间关系要显式标明——互斥还是一个包含另一个(用户会先追问包含关系再裁决,实例:瘦身方案询问"A是不是包含了B?",确认后即按包含关系淘汰被包含项;预先写明可省一轮往返);≥3 文件或契约/规则改动先确认精确编辑范围再交整合书面方案评审,1-2 文件小改 checkpoint 一句确认即可,通过后严格执行、禁止静默私自优化——超出方案字面的改进必须经坦白逐项自审计(照做项 vs 每处偏离及性质、留待用户裁决的点)浮出水面。Confidence: 0.8
-- 上下游边界:契约/规则/输出改动只落本仓库(下游);上游 skills 与已完工工件冻结只读;再生成最小扰动(已批准文案不动);需超出下游权限时向用户提出冲突,由用户上游协商带回授权,绝不单方面偏离或重新解释冻结契约。Confidence: 0.9
-- See [workflow/taste.md](workflow/taste.md) · [visual-design/taste.md](visual-design/taste.md) · [courseplay/taste.md](courseplay/taste.md) · [environment/taste.md](environment/taste.md) ——主题分包;进入对应领域工作前必须实际读取相关分包,不能把自动注入的主文件当成 taste 全部("按需读取"在领域任务里即硬要求,episode-35 复盘自曝分包一次未读,未读分包使"未等确认就并行开工"这类本可被分包既有条款拦截的越权发生,属同源根因);分包已记录的实证模式即用户认可的既定做法,用户裁决时会直接点名引用(实例:"请遵从taste中的ep35模式")——读分包同时是拿用户已放行的标准做法,照分包执行而非重新提议;用户会主动审计实际读取情况("你在制作的过程中真的阅读了taste吗?不是说写入,而是读取"),被问时如实交代实际读了什么、没读什么,不自称已读。Confidence: 0.9
+# 交互与授权
+- 用户以简体中文交流,始终用中文回复;任务进行中收到提问或质询时先直接回答,再按答复继续。Confidence: 0.95
+- 用户明确说“暂停任务”时只简短确认并说明状态已保留,立即停止且不再调用任何工具,直到用户明确要求继续。Confidence: 0.95
+- 用户整体放权只覆盖当前已授权阶段内的判断,不允许跨过制作流程的硬 checkpoint;未获放行不得自行推进后续阶段或并行制作。Confidence: 0.95
+- 输出保持短促并及时交付可继承的磁盘成果;长文件分段落盘,不把多章推导或超长报告囤在一次思考或一次写入中。Confidence: 0.9
+
+# 事实与修改边界
+- 当前用户指令决定本次任务授权;批准输入、当前仓库契约与校验器决定文件格式和运行事实;Taste 表达用户偏好,不虚构或替代事实源。两侧冲突时列出依据并等用户裁决。Confidence: 0.95
+- 上游任务包、正式 inputs、已批准文案与已完工冻结工件只读;不得从历史 episode、过程目录或个人记忆补事实,不得为迁就下游实现改写批准来源。Confidence: 0.95
+- 发现非本任务或非本会话改动时先用 diff 定性来源,完整保留并与本次范围隔离;不擅自回滚、代改或混入提交。Confidence: 0.9
+- Bug、工具失败或流程异常先给证据支撑的根因诊断,区分工件、工具、环境与基线问题;被事实纠正时撤回错误结论并基于新证据重算。Confidence: 0.9
+- 规则、流程、设计或多文件改动先确认精确范围与方案;获准后严格执行,任何超出方案的优化都必须显式提出,不得静默扩张。Confidence: 0.9
+
+# 制作流程硬节点
+- Courseplay Phase 1 同轮完成 `script.md` 与 `outline.md`,分别自检修正后停在 Checkpoint Plan,一次对齐稿子、outline、主题、素材和开发模式。Confidence: 0.95
+- Checkpoint Plan 未确认不得进入章节开发;主题必须明确,开发模式未指定时采用逐章确认的 Mode A,不得自行启用 subagent 制作。Confidence: 0.95
+- Phase 2 第一章必须由主线程完成可验收的完整版本;代码级检查通过后停下等待用户视觉验收,未获“继续”不得制作后续章。Confidence: 0.95
+- 后续章节严格按已选 Mode A/B/C 推进;每个授权验收点都要停,模式切换、并发数和批次范围只按用户当前指令调整。Confidence: 0.9
+- 全部网页章节完成后停在 Checkpoint Audio;音频合成是逐实例授权项,单次授权不外推,未获授权不得自动合成或进入录屏。Confidence: 0.95
+
+# 强制选读路由
+- 涉及制作或文件修改时先实际读取当前目录与上级 CLAUDE;涉及网页视频再读 `web-video-presentation` Skill。涉及验证、Git、工作区异常、恢复任务或 subagent 时,动手前还必须读取 [workflow/taste.md](workflow/taste.md),不能只凭会话记忆,并向用户说明实际读取范围与当前阶段。Confidence: 0.95
+- 新建或接续 Courseplay、检查正式输入、生成或修订 script/outline 时,动手前必须读取 [courseplay-planning/taste.md](courseplay-planning/taste.md)。Confidence: 0.95
+- 制作或修订章节 TSX/CSS/narrations 时,动手前必须读取 [courseplay-chapter/taste.md](courseplay-chapter/taste.md) 与 [visual-design/taste.md](visual-design/taste.md),并同时读取 workflow 分包。Confidence: 0.95
+- 处理视觉反馈时读取 [交互/taste.md](交互/taste.md) 与 visual-design 分包;出现 shell、浏览器、dev server、TTS 或跨平台问题时先识别当前环境,再读取 [environment/taste.md](environment/taste.md)。Confidence: 0.9
+- 修改 `.commandcode/taste` 前必须读取 [taste-maint/taste.md](taste-maint/taste.md);只讨论或审计 Taste 时不得顺带推进 episode 制作。Confidence: 0.95
 
 # Taste 维护
-- Taste 改动最小纪律:任何 taste 写操作前即刻重读磁盘现状(学习系统会在会话中自动改写/追加条目,防竞态覆盖),先把原目录完整备份到 scratchpad 并核对文件清单与字符数一致后再动手,改完跑 `npx taste lint --all` 校验并汇报逐文件改动。Confidence: 0.85
-- See [taste-maint/taste.md](taste-maint/taste.md) ——taste 维护全量细则(结构布局、一致性审查、分包体积治理、格式与执行纪律、语义强度校准),涉及 taste 维护/改动前先读。Confidence: 0.9
+- 只有本文件直接注入上下文,其他分包均为选读;遗漏会造成越权、破坏事实源或跨 checkpoint 的规则必须留在本文件,不能只沉入分包。Confidence: 0.95
+- Taste 只保留可迁移、可执行且会影响未来任务的偏好;单集事故、旧协商过程、实例数值和已由契约或测试完整保证的事实不得长期占用活跃上下文。Confidence: 0.9
