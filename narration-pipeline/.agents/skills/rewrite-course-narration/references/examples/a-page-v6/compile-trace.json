@@ -1,0 +1,18 @@
+{
+  "schema_version": "courseplay-b-to-a-trace/v2",
+  "episode_id": "canonical-contract-example",
+  "source_task_package": "task-package.md",
+  "page_document": "canonical-contract-example-a-page.json",
+  "coverage": [
+    {
+      "source_b_id": "B01",
+      "resolved_a_ids": ["A001"],
+      "responsibilities_resolved": true,
+      "evidence_resolved": true,
+      "visible_source_units": [
+        {"source_unit":"共同对象","status":"covered","resolved_a_id":"A001","resolved_screen_item_ids":["S002"]}
+      ]
+    }
+  ],
+  "unresolved": []
+}

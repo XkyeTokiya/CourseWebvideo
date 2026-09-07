@@ -11,6 +11,7 @@ SCHEMA = SKILL_ROOT / "references" / "courseplay-a-page-v6.schema.json"
 STAGE2 = SKILL_ROOT / "templates" / "stage2-a-page-compiler.md"
 WORKFLOW = SKILL_ROOT / "references" / "workflow.md"
 ACCEPTANCE = SKILL_ROOT / "references" / "acceptance-checklist.md"
+AUTHOR_CONTRACT = SKILL_ROOT / "references" / "a-page-v6-author-contract.md"
 
 
 class SkillContractTests(unittest.TestCase):
@@ -83,37 +84,35 @@ class SkillContractTests(unittest.TestCase):
         self.assertIn("一条 A 严格对应一页", text)
         self.assertIn("B 是编译期", text)
         self.assertIn("不进入正式 JSON", text)
-        self.assertIn("A-page 不再提前做任何视觉或媒体决定", text)
+        self.assertIn("视觉配方和媒体安排由后续", text)
 
     def test_v6_screen_guidance_uses_task_package_atoms_without_per_item_display_duty(self) -> None:
         skill = SKILL_MD.read_text(encoding="utf-8")
         stage2 = STAGE2.read_text(encoding="utf-8")
         workflow = WORKFLOW.read_text(encoding="utf-8")
         acceptance = ACCEPTANCE.read_text(encoding="utf-8")
+        contract = AUTHOR_CONTRACT.read_text(encoding="utf-8")
 
         self.assertIn("screen guidance", skill)
-        self.assertIn("不产生逐 S 落屏义务", skill)
-        self.assertIn("guidance_text", skill)
-        self.assertIn("usage_policy", skill)
+        self.assertIn("作者契约卡", skill)
+        self.assertIn("guidance_text", contract)
+        self.assertIn("usage_policy", contract)
         self.assertNotIn("`source_text` 是下游唯一屏幕文案来源", skill)
-        self.assertIn("必须可见的信息", stage2)
-        self.assertIn("语义原子", stage2)
-        self.assertIn("方向、重点、事实边界和 exact 义务", stage2)
-        self.assertIn("当前 A beats", stage2)
-        self.assertIn("presentation", stage2)
-        self.assertIn("不产生逐 S 落屏义务", stage2)
+        self.assertIn("作者契约", stage2)
+        self.assertIn("canonical example", stage2)
         self.assertNotIn("screen source", stage2)
         self.assertNotIn("JSON 是下游必须处理的屏幕内容基线", stage2)
         self.assertNotIn("不得遗漏 JSON 基线", stage2)
-        self.assertIn("visible_source_units", workflow)
-        self.assertIn("A → S", acceptance)
+        self.assertIn("trace", workflow)
+        self.assertIn("error index", acceptance)
 
     def test_v6_is_semantic_only_and_routes_visual_work_later(self) -> None:
         text = SKILL_MD.read_text(encoding="utf-8")
         self.assertIn("courseplay-a-page/v6", text)
         self.assertIn("design-course-visual-rough", text)
-        self.assertIn("禁止 `visual_form`", text)
-        self.assertIn("media_catalog", text)
+        contract = AUTHOR_CONTRACT.read_text(encoding="utf-8")
+        self.assertIn("视觉、媒体、配方和布局", contract)
+        self.assertIn("正式 JSON 不得出现", contract)
         self.assertIn("旧 Media Plan", text)
 
     def test_prohibitions_are_stated(self) -> None:
@@ -131,6 +130,8 @@ class SkillContractTests(unittest.TestCase):
         refs = re.findall(r"(?:references|templates|scripts)/[\w.-]+", text)
         self.assertTrue(refs, "SKILL.md must reference at least one asset under references/templates/scripts")
         for ref in refs:
+            if (SKILL_ROOT / ref).is_dir():
+                continue
             self.assertTrue(
                 (SKILL_ROOT / ref).is_file(),
                 f"referenced asset missing: {ref}",
@@ -149,4 +150,3 @@ class SkillContractTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

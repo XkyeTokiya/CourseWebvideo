@@ -1,7 +1,7 @@
 # Courseplay handoff v4
 
-公开工具 `pnpm courseplay:handoff` 只接受 `courseplay-a-page/v6` 与 `courseplay-visual-rough/v4`。它不会搜索候选文件或兼容旧版本。
+handoff 是 script/outline 之后、章节制作之前的可选上下文打包工具，不是强制门禁。生产作者的固定输入、Markdown 语法、输出职责和 normalizer 边界统一见 [handoff v4 作者契约卡](courseplay-handoff-v4-author-contract.md)；合成成功样例见 [canonical example](examples/courseplay-handoff-v4/)。
 
-`presentation` 固定输出 `recipe_id`、`content_units`、`slot_bindings`、`media` 和 `relation_carriers`。其中 U 是 visual rough 定义的独立视觉内容单元；下游不得把 G 数量解释为配方或 step 数。
+公开工具只接受 `courseplay-a-page/v6` + `courseplay-visual-rough/v4`。它实际检查 script beat 与 outline step，以及当前页的引用、关系载体和素材清单；不读取或验证 `narrations.ts`，不声称三者相等。`narrations.ts` 由既有提取/运行时流程负责。
 
-运行时保持 `script beat = outline step = narrations.ts step`。错误使用 `code/path/expected/actual/message/hint/contractSection`，公开目录见 `handoff-v4-error-catalog.json`。生产 Agent 依赖本 contract 与诊断，不读取工具实现推断规则。
+失败使用 `code/path/expected/actual/message/hint/contractSection`，错误目录是 [handoff-v4-error-catalog.json](handoff-v4-error-catalog.json)。未登记异常统一作为工具缺陷返回；不读取工具实现猜规则。

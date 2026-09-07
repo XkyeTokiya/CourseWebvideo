@@ -1,0 +1,69 @@
+{
+  "schema_version": "courseplay-a-page/v6",
+  "document_kind": "production",
+  "episode_id": "canonical-contract-example",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {"minimum": 220, "target": 230, "maximum": 240}
+  },
+  "evidence_catalog": [
+    {"evidence_id":"E001","claim_or_asset":"共同对象与职责边界","source_locator":"synthetic example / scope","verification_status":"verified","allowed_use":"支持锚点与职责说明"},
+    {"evidence_id":"E002","claim_or_asset":"教材原图示例","source_locator":"synthetic example / textbook","verification_status":"verified","allowed_use":"允许完整引用原图"},
+    {"evidence_id":"E003","claim_or_asset":"现场场景示例","source_locator":"synthetic example / scene","verification_status":"verified","allowed_use":"支持场景语境"},
+    {"evidence_id":"E004","claim_or_asset":"比较条件示例","source_locator":"synthetic example / condition","verification_status":"verified","allowed_use":"支持条件与结论"}
+  ],
+  "pages": [
+    {
+      "a_id":"A001","callback_a_ids":[],"nx":"先确认共同锚点。","teaching_purpose":"建立共同对象","single_message":"先锁定讨论对象，再进入职责区分。",
+      "screen":{"title":{"screen_item_id":"S001","guidance_text":"共同锚点","usage_policy":"exact","evidence_refs":["E001"]},"groups":[{"group_id":"G001","items":[{"screen_item_id":"S002","guidance_text":"所有后续职责都指向同一个对象","usage_policy":"reference","evidence_refs":["E001"]}]},{"group_id":"G002","items":[{"screen_item_id":"S003","guidance_text":"锚点先于角色差异成立","usage_policy":"reference","evidence_refs":["E001"]}]}]},
+      "protected_relations":[{"relation_id":"R001","from":"G001","relation":"共同指向","to":"G002","direction":"same-anchor"}],
+      "silent_constraints":[{"constraint_id":"C001","instruction":"不要把示例范围扩展为真实生产结论","evidence_refs":["E001"]}],
+      "entry_condition":"观众知道本页开始讨论一个对象","exit_condition":"观众能说出共同锚点是什么","timing":{"char_equivalent":7,"min_seconds":2,"target_seconds":2,"max_seconds":2,"short_page_reason":"独立建立共同锚点，不能并入后续职责对照。"}
+    },
+    {
+      "a_id":"A002","callback_a_ids":["A001"],"nx":"有了共同锚点，再把两个主体放进同一场景，看清各自承担的职责。","teaching_purpose":"区分两个主体","single_message":"共同对象不等于共同职责。",
+      "screen":{"title":{"screen_item_id":"S004","guidance_text":"主体职责的分界","usage_policy":"reference","evidence_refs":["E001"]},"groups":[{"group_id":"G003","items":[{"screen_item_id":"S005","guidance_text":"主体甲承担前置识别与登记","usage_policy":"reference","evidence_refs":["E001"]}]},{"group_id":"G004","items":[{"screen_item_id":"S006","guidance_text":"主体乙承担后续处理与边界控制","usage_policy":"reference","evidence_refs":["E001"]}]}]},
+      "protected_relations":[{"relation_id":"R002","from":"G003","relation":"职责分界","to":"G004","direction":"contrast"}],
+      "silent_constraints":[],
+      "entry_condition":"观众已接受共同锚点","exit_condition":"观众能区分两个主体各自负责什么","timing":{"char_equivalent":27,"min_seconds":7,"target_seconds":7,"max_seconds":8,"short_page_reason":"职责对照需要独立呈现，不能压缩到锚点页。"}
+    },
+    {
+      "a_id":"A003","callback_a_ids":["A001","A002"],"nx":"教材原图把这层关系完整保留，读图时先看对象，再看它们如何共同支撑结论。","teaching_purpose":"从证据读出关系","single_message":"先读对象，再读共同作用。",
+      "screen":{"title":{"screen_item_id":"S007","guidance_text":"从对象到共同作用","usage_policy":"reference","evidence_refs":["E002"]},"groups":[{"group_id":"G005","items":[{"screen_item_id":"S008","guidance_text":"原图中的对象、标注与范围保持完整","usage_policy":"exact","evidence_refs":["E002"]}]},{"group_id":"G006","items":[{"screen_item_id":"S009","guidance_text":"共同作用必须回到原图关系中理解","usage_policy":"reference","evidence_refs":["E002"]}]}]},
+      "protected_relations":[{"relation_id":"R003","from":"G005","relation":"共同支撑","to":"G006","direction":"convergent"}],
+      "silent_constraints":[],
+      "entry_condition":"观众已经知道两个主体的职责","exit_condition":"观众能按对象和关系阅读证据","timing":{"char_equivalent":32,"min_seconds":8,"target_seconds":8,"max_seconds":9,"short_page_reason":null}
+    },
+    {
+      "a_id":"A004","callback_a_ids":["A002"],"nx":"当信息来自不同记录时，先按共同标准并列整理，再比较它们分别回答的问题。","teaching_purpose":"组织并列记录","single_message":"共同标准让并列记录可比较。",
+      "screen":{"title":{"screen_item_id":"S010","guidance_text":"共同标准下的并列记录","usage_policy":"reference","evidence_refs":["E001"]},"groups":[{"group_id":"G007","items":[{"screen_item_id":"S011","guidance_text":"记录一保留自己的对象与范围","usage_policy":"reference","evidence_refs":["E001"]}]},{"group_id":"G008","items":[{"screen_item_id":"S012","guidance_text":"记录二使用同一比较标准","usage_policy":"reference","evidence_refs":["E001"]}]},{"group_id":"G009","items":[{"screen_item_id":"S013","guidance_text":"并列结果回答不同问题","usage_policy":"reference","evidence_refs":["E004"]}]}]},
+      "protected_relations":[],
+      "silent_constraints":[{"constraint_id":"C002","instruction":"不要补造记录中没有的比例或排名","evidence_refs":["E004"]}],
+      "entry_condition":"观众知道需要比较多条记录","exit_condition":"观众能按共同标准完成并列阅读","timing":{"char_equivalent":32,"min_seconds":8,"target_seconds":8,"max_seconds":9,"short_page_reason":null}
+    },
+    {
+      "a_id":"A005","callback_a_ids":["A003"],"nx":"到了具体场景，时间和地点先把讨论范围固定下来，图片只负责提供现场落点。","teaching_purpose":"固定场景语境","single_message":"场景图先限定语境，不替代判断。",
+      "screen":{"title":{"screen_item_id":"S014","guidance_text":"先固定场景语境","usage_policy":"reference","evidence_refs":["E003"]},"groups":[{"group_id":"G010","items":[{"screen_item_id":"S015","guidance_text":"时间与地点共同限定本页范围","usage_policy":"reference","evidence_refs":["E003"]}]},{"group_id":"G011","items":[{"screen_item_id":"S016","guidance_text":"现场图片只承担语境落点","usage_policy":"reference","evidence_refs":["E003"]}]}]},
+      "protected_relations":[{"relation_id":"R004","from":"G010","relation":"限定语境","to":"G011","direction":"context"}],
+      "silent_constraints":[],
+      "entry_condition":"观众已理解抽象关系","exit_condition":"观众知道当前讨论适用的时间与地点","timing":{"char_equivalent":32,"min_seconds":8,"target_seconds":8,"max_seconds":9,"short_page_reason":null}
+    },
+    {
+      "a_id":"A006","callback_a_ids":["A004"],"nx":"两个状态看起来相近，真正的区别不在名称，而在它们是否满足同一个判断条件。","teaching_purpose":"比较相近状态","single_message":"判断条件比名称更能区分状态。",
+      "screen":{"title":{"screen_item_id":"S017","guidance_text":"用判断条件区分相近状态","usage_policy":"reference","evidence_refs":["E004"]},"groups":[{"group_id":"G012","items":[{"screen_item_id":"S018","guidance_text":"状态甲与状态乙共享表面名称","usage_policy":"reference","evidence_refs":["E004"]}]},{"group_id":"G013","items":[{"screen_item_id":"S019","guidance_text":"是否满足条件决定最终区分","usage_policy":"exact","evidence_refs":["E004"]}]}]},
+      "protected_relations":[{"relation_id":"R005","from":"G012","relation":"判据区分","to":"G013","direction":"pivot"}],
+      "silent_constraints":[],
+      "entry_condition":"观众注意到两个状态相近","exit_condition":"观众能用同一判断条件区分它们","timing":{"char_equivalent":33,"min_seconds":9,"target_seconds":9,"max_seconds":9,"short_page_reason":null}
+    },
+    {
+      "a_id":"A007","callback_a_ids":["A006"],"nx":"最后把步骤按阅读顺序收束，结果必须来自前面的动作，不能凭空增加新的价值判断。","teaching_purpose":"收束步骤与结果","single_message":"结果只能由前面的动作推出。",
+      "screen":{"title":{"screen_item_id":"S020","guidance_text":"从步骤到真实结果","usage_policy":"reference","evidence_refs":["E001"]},"groups":[{"group_id":"G014","items":[{"screen_item_id":"S021","guidance_text":"前置动作按顺序形成记录","usage_policy":"reference","evidence_refs":["E001"]}]},{"group_id":"G015","items":[{"screen_item_id":"S022","guidance_text":"后续动作承接已有记录","usage_policy":"reference","evidence_refs":["E001"]}]},{"group_id":"G016","items":[{"screen_item_id":"S023","guidance_text":"终点只呈现真实产生的结果","usage_policy":"exact","evidence_refs":["E001"]}]}]},
+      "protected_relations":[],
+      "silent_constraints":[{"constraint_id":"C003","instruction":"不要把结果扩写成没有证据的价值承诺","evidence_refs":["E001"]}],
+      "entry_condition":"观众已经掌握比较条件","exit_condition":"观众能从动作顺序解释真实结果","timing":{"char_equivalent":35,"min_seconds":9,"target_seconds":9,"max_seconds":10,"short_page_reason":null}
+    }
+  ]
+}

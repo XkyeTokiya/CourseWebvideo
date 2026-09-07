@@ -4,24 +4,27 @@ import path from "node:path";
 import test from "node:test";
 import { buildCourseplayHandoffV4Packet, HANDOFF_ERROR_CATALOG, HandoffContractError } from "../courseplay-handoff.mjs";
 
-const fixture = path.resolve("tools/tests/fixtures/courseplay-handoff-v4/sources");
+const example = path.resolve("docs/examples/courseplay-handoff-v4");
+const aPageExample = path.resolve("../narration-pipeline/.agents/skills/rewrite-course-narration/references/examples/a-page-v6/canonical-contract-example-a-page.json");
+const visualExample = path.resolve("../narration-pipeline/.agents/skills/design-course-visual-rough/references/examples/visual-rough-v4/canonical-contract-example-visual-rough.md");
 async function inputs() {
-  const read = (name) => readFile(path.join(fixture, name), "utf8");
-  const narrationSource = await readFile(path.resolve("tools/tests/fixtures/courseplay-handoff-v4/src/chapters/01-merge-and-reuse/narrations.ts"), "utf8");
+  const read = (name) => readFile(path.join(example, name), "utf8");
   return {
-    root: path.resolve("."), episodeId: "episode-fixture-v4", aPageId: "A001",
-    files: { episodeDir: fixture, project: path.join(fixture, "project.json"), aPage: path.join(fixture, "episode-fixture-v4-a-page.json"), visualRough: path.join(fixture, "episode-fixture-v4-visual-rough.md"), script: path.join(fixture, "script.md"), outline: path.join(fixture, "outline.md") },
-    projectText: await read("project.json"), aPageText: await read("episode-fixture-v4-a-page.json"), visualRoughText: await read("episode-fixture-v4-visual-rough.md"), scriptText: await read("script.md"), outlineText: await read("outline.md"), narrationSteps: [...narrationSource.matchAll(/^\s*"(.+)",?$/gmu)].map((item) => item[1]),
+    root: path.resolve("."), episodeId: "canonical-contract-example", aPageId: "A002",
+    files: { episodeDir: example, project: path.join(example, "project.json"), aPage: aPageExample, visualRough: visualExample, script: path.join(example, "script.md"), outline: path.join(example, "outline.md") },
+    projectText: await read("project.json"), aPageText: await readFile(aPageExample, "utf8"), visualRoughText: await readFile(visualExample, "utf8"), scriptText: await read("script.md"), outlineText: await read("outline.md"),
   };
 }
 
 test("handoff v4 emits U presentation and preserves runtime step equality", async () => {
   const { packet } = await buildCourseplayHandoffV4Packet(await inputs());
   assert.equal(packet.schema_version, "web-video-courseplay-chapter-handoff/v4");
-  assert.deepEqual(packet.presentation.content_units[0], { unit_id: "U001", source_group_ids: ["G001", "G002"] });
+  assert.deepEqual(packet.presentation.content_units[0], { unit_id: "U003", source_group_ids: ["G003"] });
   assert.equal(packet.narration.beats.length, packet.steps.length);
   assert.equal(packet.steps.length, packet.chapter.step_count);
-  assert.equal(packet.runtime_contract, "script beat = outline step = narrations.ts step");
+  assert.equal(packet.runtime_contract, "script beat = outline step");
+  assert.equal(packet.chapter.title, "职责页");
+  assert.match(packet.materials_markdown, /M001/);
   assert.ok(!JSON.stringify(packet.presentation).includes("必须逐字显示的标题"));
 });
 
@@ -31,9 +34,23 @@ test("handoff v4 rejects every older version pair with structured diagnostics", 
   await assert.rejects(() => buildCourseplayHandoffV4Packet(value), (error) => error instanceof HandoffContractError && error.detail.code === "HV4_VERSION_PAIR" && Object.keys(error.detail).length === 7);
 });
 
-test("handoff v4 checks narrations.ts step cardinality", async () => {
-  const value = await inputs(); value.narrationSteps = ["one"];
+test("handoff v4 checks script beat and outline step cardinality", async () => {
+  const value = await inputs(); value.outlineText = value.outlineText.replace("| 2 | 区分主体职责 |", "| 3 | 区分主体职责 |");
   await assert.rejects(() => buildCourseplayHandoffV4Packet(value), (error) => error.detail.code === "HV4_BEAT_STEP_MISMATCH");
+});
+
+test("handoff v4 rejects non-presentation stable IDs in show instructions", async () => {
+  const value = await inputs(); value.outlineText = value.outlineText.replace("show: S004, U003, M001", "show: G003, U003, M001");
+  await assert.rejects(() => buildCourseplayHandoffV4Packet(value), (error) => error.detail.code === "HV4_REFERENCE_UNKNOWN");
+});
+
+test("handoff v4 accepts non-semantic punctuation and spacing variants", async () => {
+  const value = await inputs();
+  value.visualRoughText = `\ufeff${value.visualRoughText.replaceAll("：", ":").replaceAll("｜", " | ").replaceAll("\n", "\r\n")}`;
+  value.scriptText = value.scriptText.replace("·", " | ").replaceAll("\n", "\r\n");
+  value.outlineText = value.outlineText.replaceAll(" — ", " - ").replaceAll("（", "(").replaceAll("）", ")").replaceAll("：", ":").replaceAll("\n", "\r\n");
+  const { packet } = await buildCourseplayHandoffV4Packet(value);
+  assert.equal(packet.chapter.a_page_id, "A002");
 });
 
 test("handoff error codes match the public catalog", async () => {

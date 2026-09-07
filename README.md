@@ -40,6 +40,8 @@ CourseWebvideo 是一套面向课程视频的网页化生产工程，使用单�
 
 验证报告用于治理和验收，不作为章节创作素材。`narration-brief.json` 与 compile trace 等过程文件保留在 `.tmp/narration-pipeline/`。
 
+作者入口：A-page 使用 [A-page v6 作者契约卡](narration-pipeline/.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md) 与 [合成示例](narration-pipeline/.agents/skills/rewrite-course-narration/references/examples/a-page-v6/)；visual rough 使用 [visual rough v4 作者契约卡](narration-pipeline/.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md)、[合成示例](narration-pipeline/.agents/skills/design-course-visual-rough/references/examples/visual-rough-v4/) 和当前 recipe；章节 handoff 使用 [handoff v4 作者契约卡](player/docs/courseplay-handoff-v4-author-contract.md) 与 [合成示例](player/docs/examples/courseplay-handoff-v4/)。
+
 ## 标准生产阶段
 
 生产主线按以下顺序推进：
@@ -53,8 +55,8 @@ CourseWebvideo 是一套面向课程视频的网页化生产工程，使用单�
 7. Visual rough v4：确定视觉结构和媒体方案。
 8. 下游 Phase 1：从 `inputs/` 生成 `script.md`、`outline.md` 和生产计划。
 9. Checkpoint Plan：确认稿子、Outline、主题、素材和开发模式。
-10. 单章交接：为每个 A 生成 `.handoffs/Axxx.json`。
-11. 章节制作：根据 handoff 完整创作章节画面。
+10. 可选单章交接：需要压缩上下文时生成 `.handoffs/Axxx.json`。
+11. 章节制作：根据 handoff（如有）或等价的当前章节输入，完整创作章节画面。
 12. 后续章节：按既定模式生产、审查和修复。
 13. 音频：提取并在确认后合成音频分段。
 14. 录屏与后期：完成预览、录屏和成片验收。
@@ -69,7 +71,7 @@ CourseWebvideo 是一套面向课程视频的网页化生产工程，使用单�
 - 第 1 章完整版本验收
 - Checkpoint Audio
 
-其中标记为 `exact` 的内容必须逐字可见；普通 `reference` 内容允许在事实边界内改写、拆分、合并或视觉化。
+具体字段和 `exact`/`reference` 语义以各阶段作者契约卡为准。
 
 ## 本地运行
 
@@ -94,7 +96,7 @@ pnpm audio:extract       # 从 narrations.ts 提取音频分段
 pnpm audio:providers     # 查看可用音频提供方
 ```
 
-如需生成单章 handoff，可在 `player/` 目录执行：
+如需生成可选的单章 handoff，可在 `player/` 目录执行：
 
 ```powershell
 pnpm courseplay:handoff -- --help
@@ -104,7 +106,7 @@ pnpm courseplay:handoff -- --help
 
 - `narration-pipeline/episodes/` 是事实源，不能由下游章节实现反向修复。
 - 未经用户明确批准，不得生成批准口播文件或进入 A-page 阶段。
-- `visual rough` 必须从 draft 进入 approved 后才能驱动网页制作。
+- `visual rough` 经用户审阅后再进入 approved，并作为章节制作输入。
 - `inputs/` 只能放经过批准和验证的正式产物。
 - `.handoffs/` 是派生缓存，不进入 Git。
 - 音频合成前必须先确认分段文本和是否合成。

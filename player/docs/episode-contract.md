@@ -72,38 +72,16 @@ export const CHAPTERS: ChapterDef[] = [/* ... */];
 ## Courseplay 正式输入与单章交接
 
 Courseplay 章节可以直接使用明确的当前 A-page、批准口播、visual rough/页面指导、
-outline 调度、主题和素材，也可以使用 handoff 生成紧凑输入。显式调用 handoff 时，
-工具读取 episode 根级元数据与 `inputs/` 下的正式输入，不动态搜索重名候选；版本路由为
-仅支持 v6/v4→handoff v4。路径、格式或版本
-错误由该命令报告，不升级为 Studio 构建或章节推进门禁。
-
-显式调用 handoff 时，`script.md` 使用以下可解析格式：
-
-```markdown
-# <标题>
-
-> <允许的 metadata>
-
-## Axxx · <页面标题>
-
-<Beat 1 原文>
-
----
-
-<Beat 2 原文>
-```
-
-标题和 metadata 不进入口播；`---` 只分隔当前 A-page 内的 narration Beat。
-每个 `pages[].a_id` 必须对应且仅对应一个二级标题，标题顺序与 `pages[]` 一致；
-每页 Beat 拼接经空白归一化后必须等于该页 `nx`，Beat 数必须等于 outline
-当前章节声明的 step 数。不使用 handoff 时，可以直接提供清楚标明 A-page 和 Beat
-的等价输入；文件存放位置和纯排版差异本身不阻止制作。
+outline 调度、主题和素材，也可以使用 handoff 生成紧凑输入。handoff 的固定路径、
+输入语法、真实检查范围和失败处理只见 [handoff v4 作者契约卡](courseplay-handoff-v4-author-contract.md)、
+[canonical example](examples/courseplay-handoff-v4/) 和失败时的 [error index](handoff-v4-error-catalog.json)。
+显式调用时，路径、格式或版本错误由该命令报告，不升级为 Studio 构建或章节推进门禁；
+不调用时，不要求 handoff 专用 Markdown 排版。
 
 需要为章节开发生成隔离上下文时，可以生成交接包：
 
 ```powershell
 pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx>
-pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx> --check
 ```
 
 `episodes/<episode-id>/.handoffs/<Axxx>.json` 可作为紧凑的 Phase 2 输入。v4 包只含当前 A 的准确 beats、`screen_guidance`、`presentation`、steps、关系、
@@ -113,6 +91,5 @@ pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx> --check
 
 `.handoffs/` 是确定性派生缓存，不进入 `project.json`、catalog、Studio 构建或
 Git 提交。
-
 
 

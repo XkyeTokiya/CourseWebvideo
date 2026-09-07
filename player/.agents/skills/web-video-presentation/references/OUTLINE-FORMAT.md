@@ -26,8 +26,8 @@
 > [`COURSEPLAY-STATE-MECHANISMS.md`](COURSEPLAY-STATE-MECHANISMS.md) 区分
 > relationship mechanism、semantic state 与 step instruction。
 > 当前章节需要有可用的批准口播和页面指导；缺少实际内容时请求补充，不自行猜测。
-> 根级文件、版本组合和 `## Axxx · <页面标题>` 格式是 handoff 工具的输入契约，
-> 不是全局制作门禁；直接提供等价的当前章节输入时，可以继续制作。
+> 只有显式调用 handoff 时，才读取其公开作者契约卡和 canonical example 处理固定输入；
+> 不调用 handoff 时，直接提供等价的当前章节输入即可。
 >
 > **写 outline 前必读**：先读 [`CHAPTER-CRAFT.md`](CHAPTER-CRAFT.md) 的来源原则，
 > 再读本文件的格式。
@@ -228,14 +228,11 @@ Courseplay 不设置硬门槛；普通项目可参考每章 3–8 步、30–60 
    本步场景指令；accent-frame 使用固定的 `K-Axxx-xx · accent` 例外格式。
 4. 只有内容关系或空间组织确实无法继续承载时，才声明新场景。
 
-在当前运行时契约下，Courseplay `script.md` 先按唯一的
-`## Axxx · <页面标题>` 定位页面，再按页内 `---` 切分 narration beat；每个 beat
-对应一个 step。一个 step 内可以在同一主构图中完成多个内部呈现动作；不因内部
-动作增加 narration step、base-scene 或 custom-scene。
-
-Courseplay 中 `---` 分隔符按 narration beat 插入，不按 A-page 边界插入；一个
-A-page 内可有多个 beat，一个 beat 必须且只能承载一段非空口播。beat 的锚点与
-偏离规则见 CLAUDE.md §1.4 与 `COURSEPLAY-BOUND-MODE.md`。
+Courseplay 的每个 narration beat 对应一个 step；一个 step 内可以在同一主构图中
+完成多个内部呈现动作，不因内部动作增加 narration step、base-scene 或 custom-scene。
+显式调用 handoff 时，script/outline 的页面标题、beat 分隔和映射语法以
+[`handoff v4 作者契约卡`](../../../../docs/courseplay-handoff-v4-author-contract.md) 为准；
+其他输入可使用等价的当前章节表达。
 
 ### 4.2 Courseplay step 格式
 
@@ -273,10 +270,8 @@ accent-frame 使用固定的两段引用，不附加 semantic state：
 首个 step 必须说明建立的基础槽位；后续 step 不能只写“显示 X”，必须说明与前一步
 的关系。持续元素默认保留，可被弱化、聚焦或更新，但不得无理由消失或整体重排。
 
-排版兼容约定：step 行的估时括号同样支持 `(~Ts)` 与 `（~Ts）`。A-page 映射新写时
-仍建议让 A-page / Chapter 映射行保持为 **A-page / Chapter**：`Axxx` 并独占一行；对已有文档，映射代码后允许
-保留一个括号附注（例如 `（callback：A001）`），handoff 只读取其中的 A-page 代码，
-不会把附注误判成缺少映射。callback 等元数据也可以按字段另起一行。
+排版兼容约定：step 行的估时括号同样支持 `(~Ts)` 与 `（~Ts）`；页面映射和其他
+元数据保持清楚可读即可。
 
 偏离默认拍数的页必须在章节块或 step 表中内联标注触发条件，格式：
 
@@ -387,8 +382,8 @@ keyframe 或毫秒值。章节实现阶段决定具体动画与持续微动。�
 ### 7.2 Courseplay 追加自检
 
 - [ ] 已确认当前使用的 A-page/rough 版本和内容来源；若显式调用 handoff，版本组合符合工具支持范围
-- [ ] 当前章节的批准口播、页面指导和素材来源明确；若显式调用 handoff，根级文件和
-      `## Axxx · 标题` 等格式满足工具输入契约
+- [ ] 当前章节的批准口播、页面指导和素材来源明确；若显式调用 handoff，按其公开
+      作者契约卡和 canonical example 准备输入
 - [ ] A-page 顺序默认对应 chapter 顺序；若偏离已说明章节边界理由并列入 Checkpoint Plan
 - [ ] 每个 A-page 默认有一个 base-scene；额外 base-scene 写明必要性并列入 Checkpoint Plan
 - [ ] 每章声明页面配方、结构指纹、语义关系、关系机制、持续元素和内容槽位
@@ -398,8 +393,8 @@ keyframe 或毫秒值。章节实现阶段决定具体动画与持续微动。�
       `K-Axxx-xx · accent` 两段格式
 - [ ] 每页 beat 数按 screen G 组与口播锚点 N 确定；所有偏离（N_eff±1）均内联标注
       触发条件（合并/扩张/并入），没有从槽位或关系机制反推固定数量
-- [ ] script.md 的 `---` 按 beat 插入；每拍口播非空；逐拍拼接经空白归一化
-      （折叠段落换行）后与该页 `nx` 逐字一致
+- [ ] 每个 narration beat 对应一个 step；每拍口播非空；显式调用 handoff 时按其
+      作者契约卡处理 beat 分隔与无损拼接
 - [ ] 同一槽位中的组合短语没有被机械拆分；一个 step 内的多元素呈现关系写清
 - [ ] 每个 step 都写明本步场景指令，持续元素和媒体区有明确保留关系
 - [ ] 连续 step 默认复用同一构图，semantic state 可重复；不以 scene/step 比例单独判失败

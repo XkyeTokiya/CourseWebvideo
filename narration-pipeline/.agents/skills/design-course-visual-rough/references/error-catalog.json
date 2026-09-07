@@ -26,6 +26,7 @@
     {"code":"VR4_ADJACENT_RECIPE","message":"相邻页面使用了相同配方。","hint":"为当前页选择另一合法配方；不要修改 G。","contractSection":"recipes"},
     {"code":"VR4_RECIPE_DIVERSITY","message":"十页以上文档的配方多样性不足。","hint":"使用至少四种合法配方。","contractSection":"recipes"},
     {"code":"VR4_LOGIC_RECIPE","message":"逻辑图标记与具体 restricted 配方不一致。","hint":"默认使用零逻辑图；仅选择具体 restricted 配方。","contractSection":"logic"},
-    {"code":"VR4_LOGIC_LIMIT","message":"逻辑图数量超过当前注册表许可。","hint":"没有具体 restricted 配方时必须为零。","contractSection":"logic"}
+    {"code":"VR4_LOGIC_LIMIT","message":"逻辑图数量超过当前注册表许可。","hint":"没有具体 restricted 配方时必须为零。","contractSection":"logic"},
+    {"code":"VR4_TOOL_DEFECT","message":"出现未登记的 visual rough 工具异常。","hint":"报告工具缺陷，不要读取实现猜规则。","contractSection":"tooling"}
   ]
 }

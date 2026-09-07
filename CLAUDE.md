@@ -6,9 +6,11 @@
 
 - `narration-pipeline/`：51 集任务包事实源、口播、A-page v6、visual rough v4 与验证。
 - `player/`：Web Video Studio、51 期播放器实例、章节源码、音频与录屏。
-- `player/episodes/<episode-id>/inputs/`：上游批准 handoff 的唯一正式消费入口。
+- `player/episodes/<episode-id>/inputs/`：上游批准正式输入的唯一消费入口。
 - `player/episodes/_shared/covers/`：51 集标准封面内容库。
 - `.tmp/narration-pipeline/`：上游过程文件目录，不是事实源，不提交 Git。
+
+作者契约路由：A-page 读 [`a-page-v6-author-contract.md`](narration-pipeline/.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md)，visual rough 读 [`visual-rough-v4-author-contract.md`](narration-pipeline/.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md)，可选 handoff 读 [`courseplay-handoff-v4-author-contract.md`](player/docs/courseplay-handoff-v4-author-contract.md)。每张卡链接一个合成成功样例和失败时的错误索引；实现文件不是生产规则来源。
 
 ## 数据流
 

@@ -155,10 +155,9 @@ Phase 2.4 的"实现单章"会重复 N 次 —— 每次都要回看核心约束
 1. **生成 `script.md`**：普通项目按 [`references/SCRIPT-STYLE.md`](references/SCRIPT-STYLE.md)
    的规则把 article 转成保持原文语言的平台化口播稿，并保留已有 `article.md`。
    Courseplay 不改写口播，而是按 A-page 顺序从各页非空 `nx` 无损派生 script；
-   新写文件推荐每页使用 `## Axxx · <页面标题>`，页内以 `---` 分 Beat；标题和
-   metadata 不进入口播。`approved_text` 如有只用于交叉核对。显式调用 handoff
-   时按工具要求准备根级文件和可解析的 A-page 标题；不调用时可直接提供等价的
-   当前章节输入，不因存放路径或纯排版差异停止制作。
+   显式调用 handoff 时，根级输入和 script/outline 语法只按 [`handoff v4 作者契约卡`](../../../docs/courseplay-handoff-v4-author-contract.md)
+   与 [canonical example](../../../docs/examples/courseplay-handoff-v4/) 准备。
+   不调用时可直接提供等价的当前章节输入，不因存放路径或纯排版差异停止制作。
 2. **生成 `outline.md`**：按 [`references/OUTLINE-FORMAT.md`](references/OUTLINE-FORMAT.md)
    规则切章节、确定 narration beat、绑定 base-scene、声明语义关系、开放式关系
    机制、semantic state 与场景例外，
@@ -315,17 +314,17 @@ pnpm dev
 pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx>
 ```
 
-handoff 对 outline 的纯排版差异保持兼容：章节标题和 step 估时可使用 ASCII 或全角
-括号；已有 A-page 映射行末尾的单个括号附注（如 callback）也不会被误判为缺失映射。
-新写 outline 仍优先让 A-page 映射独占一行，callback 等元数据另起字段；不要为修复
-这类 handoff 错误改写批准口播内容。
+handoff 是可选上下文打包工具，不是章节制作前置门禁。固定路径、script/outline 语法、
+normalizer 边界和真实检查范围只读 [`handoff v4 作者契约卡`](../../../docs/courseplay-handoff-v4-author-contract.md)、
+[`canonical example`](../../../docs/examples/courseplay-handoff-v4/)；失败时才按
+[`error index`](../../../docs/handoff-v4-error-catalog.json) 查码。不要读取 CLI/parser/validator 实现，
+也不要为修复 handoff 输入错误改写批准口播。
 
 生成的 `.handoffs/<Axxx>.json` 可作为 Courseplay Phase 2 的紧凑输入。v4 包提供准确 `narration.beats`、`screen_guidance`、
 `presentation`、结构化 `steps`、关系、护栏和素材。章节 Agent 只读该包、`COURSEPLAY-BOUND-MODE.md`、
 `COURSEPLAY-STATE-MECHANISMS.md`、`CHAPTER-CRAFT.md`、目标章节代码和必要的第 1 章
 代码风格参考；使用该包时不必再把完整内容源加入章节上下文。
-`narration.authority` 指向 `a_page.nx`（fixture-only 候选除外），`narrations.ts`
-必须逐 Beat 使用这些文本。生成或 `--check` 失败时报告当前输入问题，不从历史章节猜测补齐。
+`narration.authority` 指向 `a_page.nx`，`narrations.ts` 必须逐 Beat 使用这些文本；这是章节运行时的既有职责，不是 handoff 的读取或验证范围。生成或 `--check` 失败时报告当前输入问题，不从历史章节猜测补齐。
 v4 不要求普通 S/G 逐项落屏，也不登记
 guidance/Beat 来源；必须综合 guidance、当前 A beats 与 presentation 重新设计完整
 上屏内容。不得引入 packet 外事实、改变数字/范围/极性/归属/关系、泄漏
@@ -547,7 +546,12 @@ Part 8「常见反馈速查」。**关键**：先定位是哪一层（节奏 / �
 |---|---|---|
 | [`references/SCRIPT-STYLE.md`](references/SCRIPT-STYLE.md) | Phase 1.2 必读 | 文章 → 口播稿规则、平台变体 |
 | [`references/OUTLINE-FORMAT.md`](references/OUTLINE-FORMAT.md) | Phase 1.2 必读 | outline.md 字段 spec、命名约定、章节切分、信息池 |
-| [`references/COURSEPLAY-BOUND-MODE.md`](references/COURSEPLAY-BOUND-MODE.md) | 检测到正式 v6/v4 时必读 | 当前版本路由、章节输入边界、场景绑定、semantic state / accent / custom 语义；三源细则转引 CHAPTER-CRAFT |
+| [`references/COURSEPLAY-BOUND-MODE.md`](references/COURSEPLAY-BOUND-MODE.md) | 检测到正式 v6/v4 时必读 | 当前版本路由、章节输入边界、场景绑定、semantic state / accent / custom 语义；handoff 语法转引公开作者契约卡 |
+| [`../../../../narration-pipeline/.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md`](../../../../narration-pipeline/.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md) | 需要理解 A-page 字段时 | A-page 作者契约与 canonical example 路由 |
+| [`../../../../narration-pipeline/.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md`](../../../../narration-pipeline/.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md) | 需要理解 visual rough 字段时 | visual rough 作者契约与 canonical example 路由 |
+| [`../../../docs/courseplay-handoff-v4-author-contract.md`](../../../docs/courseplay-handoff-v4-author-contract.md) | 显式调用 handoff 时 | 固定输入、script/outline 语法、presentation 和真实检查范围 |
+| [`../../../docs/examples/courseplay-handoff-v4/`](../../../docs/examples/courseplay-handoff-v4/) | 显式调用 handoff 时 | 合成成功样例 |
+| [`../../../docs/handoff-v4-error-catalog.json`](../../../docs/handoff-v4-error-catalog.json) | handoff 失败时 | 按错误码局部诊断 |
 | [`references/COURSEPLAY-STATE-MECHANISMS.md`](references/COURSEPLAY-STATE-MECHANISMS.md) | Courseplay outline 与章节状态映射时必读 | 开放式关系机制、章节内 semantic state、step 复用与实现映射 |
 | [`references/COURSEPLAY-OUTLINE-REVIEW.md`](references/COURSEPLAY-OUTLINE-REVIEW.md) | Courseplay outline 自检；按需交给 reviewer | 场景连续性、强调页、额外复杂场景与制作规模审查协议 |
 | [`references/CHAPTER-CRAFT.md`](references/CHAPTER-CRAFT.md) | **Phase 2.4 每章单一必读入口** | Part 0 十条原则 / Part 1 开工 5 问 / Part 2 关系→动作决策树 / Part 3 视觉工具箱 / Part 4 时长 / Part 5 反 AI 味反模式 / Part 6 代码硬规则 / Part 7 完工自检 / Part 8 反馈速查 |

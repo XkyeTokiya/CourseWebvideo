@@ -27,8 +27,8 @@ description: Use when regenerating learner-facing continuous narration from a fr
 1. **提炼 Brief**：只读冻结任务包（`episodes/**/episode-XX-*-task-package.md`），生成 `narration-brief.json`。详见 `references/brief-contract.md`。
 2. **隔离生成连续稿**：Stage 1 只接收 `narration-brief.json` 与 `templates/stage1-short-prompt.md`。不读取任务包、旧稿、原 B 表、冲突台账或长 Prompt。输出自然连续口播，不含 Nx、A 页面或分隔线。
 3. **人工批准**：先核对内容义务与事实边界，再分别完成硬红线审读和常规口播质量审读。任一项不通过均保持 `待修改`；只有用户明确批准后，才生成唯一 `approved-spoken-text.txt`。批准前不得切 Nx 或生成 A 页面。
-4. **A 页面编译**：先按页面认知任务切分连续、非空 Nx；再从任务包语义分镜的“必须/必要可见信息”提取语义原子，依据当前 A 的 Nx、教学目的与受保护关系完成归属，并把制作作用相同的原子轻量组合成 screen guidance。原子覆盖只写入 work-only compile trace，不进入正式 A 文档。原 B 与旧 Media Plan 都不决定页面；`concat(pages[*].nx)` 必须与批准母版逐字符一致。详见 `templates/stage2-a-page-compiler.md` 与 `references/courseplay-a-page-v6.schema.json`。
-5. **验收并正式发布**：canonical `a-page-v6` validator 同时检查候选 A 文档和 trace。只有 `unresolved=[]`、`coverage_passed=true`、`failures=[]` 才可发布三份语义 handoff；随后再调用 `design-course-visual-rough` 形成 visual rough v4。详见 `references/acceptance-checklist.md`。
+4. **A 页面编译**：按作者契约卡把批准连续稿编译为 A-page，并把任务包覆盖记录留在 work-only compile trace；原 B 与旧 Media Plan 都不进入正式 A 文档。详见 `templates/stage2-a-page-compiler.md` 与 `references/courseplay-a-page-v6.schema.json`。
+5. **验收并正式发布**：按 [A-page v6 作者契约卡](references/a-page-v6-author-contract.md) 使用现有黑盒验证入口；只有 trace 无未解决项且报告通过，才可发布正式输入。随后可调用 `design-course-visual-rough` 形成 visual rough v4。
 
 ## 口播质量契约
 
@@ -37,19 +37,15 @@ description: Use when regenerating learner-facing continuous narration from a fr
 - Stage 1 不得输出情境真实性补丁、课程来源归属、制作或画面说明、审计免责声明和未来待办，也不得用同义改写保留这些内部话语。
 - 人工批准前必须分别完成硬红线审读和常规口播质量审读。红线清理不能代替语言、专业关系、节奏和叙事检查；任一通道不通过，状态均为 `待修改`。
 
-## A-page Contract
+## A-page 作者入口
 
-- `pages` 数组顺序就是页面顺序；`a_id` 从 `A001` 连续编号。
-- 每个 A 有且仅有一个非空连续 `nx`；不支持无口播页面。
-- `callback_a_ids` 只能引用更早的 A。
-- 正式 JSON 自包含 `evidence_catalog`；所有 E 引用必须内部解析。
-- v6 每页必须提供非空 `screen.title` 和至少一个 `screen.groups`；标题与组内条目使用稳定的 `Sxxx` / `Gxxx` ID、`guidance_text`、`usage_policy` 和 E 引用。`reference` 是内容方向、重点与可复用素材，不产生逐 S 落屏义务；`exact` 表示该原子文字必须完整、逐字、学习者可见。
-- 语义原子用于编译覆盖，不等于 S。具有相同制作作用、适合同时呈现的原子可合并为一个 S，但必须保留具体枚举、数值、条件和关系。v6 trace 用 `visible_source_units` 记录每个原子的 A/S 覆盖或有理由的省略；trace 只证明指导池完整。
-- `exact` 只锁定确需逐字稳定的数字、正式术语、引语或限定表达，必须保持原子化；所需上下文可由 reference guidance、当前 A 口播或视觉结构补足。原子性由人工 acceptance checklist 判断，不设置机械长度阈值。
-- `silent_constraints` 只给下游审阅和实现边界使用，不得成为 `nx` 或 `guidance_text`，也不得绑定到可见槽位。
-- v6 禁止 `visual_form`、`visual_priority`、`visual_strategy`、`dominant_visual`、`display_mode`、`media_refs`、`media_usage`、`image_policy` 与 `media_catalog`。A-page 不再提前做任何视觉或媒体决定。
-- 图片配额、图片页、媒体类型、页面配方与逻辑图资格全部属于后续视觉粗设，不得从旧 Media Plan 搬回 v6。
-- 时间完全由 Nx 字符当量机械计算；目标时长小于 8 秒时默认合并，确需独立页面必须填写 `short_page_reason`。
+生产 Agent 只路由到以下三个公开资源：
+
+- [作者契约卡](references/a-page-v6-author-contract.md)：输入/输出、字段、允许值、ID/引用、跨页规则、精确语法、normalizer 边界与错误处理。
+- [canonical example](references/examples/a-page-v6/)：唯一合成成功样例，测试也直接读取它。
+- [error index](references/error-catalog.json)：只在黑盒验证失败时按错误码局部读取。
+
+`templates/courseplay-a-page-v6-template.json` 只是可复制的空白骨架；`references/workflow.md`、`references/acceptance-checklist.md` 和 `templates/stage2-a-page-compiler.md` 只说明流程与入口，不另行定义字段规则。不要读取 validator、parser 或 handoff 实现来推断契约。
 
 ## Stop Rules
 
@@ -74,13 +70,4 @@ python .agents/skills/rewrite-course-narration/scripts/verify_compilation.py \
 
 ## Common Pitfalls
 
-- 把任务包、旧稿或原 B 表喂给 Stage 1 → 破坏隔离，重写退化成改写。
-- 未经批准就切 Nx 或生成 A 页面。
-- 让 B 数量决定页面数量，或在正式 JSON/报告中保留 B ID。
-- 生成 3–5 秒的纯过渡 A，却不给独立教学理由。
-- 读取旧 N 稿、历史母版或停用流程产物作为输入 → 破坏 Stage 1 隔离；停止并从冻结任务包重新提炼 Brief。
-- 在 v6 中保留任何视觉字段、媒体目录、图片配额、页面配方或旧 M 编号。
-- 把 `silent_constraints` 写进口播、屏幕文案或可见槽位。
-- 把每个语义原子机械拆成一个 S，或把多个具体原子压缩成失去枚举与关系的上位概括。
-- 让下游读取任务包或 work trace 来补齐页面语义。
-- 把 A 页面误当作已经完成的布局/CSS/renderer 规格。
+口播阶段仍遵守批准与隔离流程；A-page 阶段只按作者契约卡和 canonical example 编写。验证失败时只按 error index 查码；未登记项报告工具缺陷，不通过阅读实现扩大公开规则。

@@ -7,7 +7,7 @@
 ```text
 episodes/<episode-id>/
   project.json
-  inputs/                         # 上游批准 handoff，只读消费入口
+  inputs/                         # 上游批准正式输入，只读消费入口
   src/                            # 章节实现
   media/audio/<chapter>/<step>.mp3
   .handoffs/<Axxx>.json           # 播放器生成的临时交接包
@@ -31,6 +31,7 @@ dist/manifests/assets.json        # 构建产物完整性与归属清单
 - `project.json` 是播放器实例状态；`planned` 允许没有 `src/entry.tsx`，只能显示为待制作，不能进入播放页。
 - `in-progress` 与 `ready` 必须具备有效 `src/entry.tsx`。
 - `narrations.ts` 是 step 数和 TTS 文本的唯一真相源。
+- 可选 handoff 的作者规则、canonical example 与错误索引见 [`docs/courseplay-handoff-v4-author-contract.md`](docs/courseplay-handoff-v4-author-contract.md)；handoff 不读取或验证 `narrations.ts`。
 
 ## 命令
 

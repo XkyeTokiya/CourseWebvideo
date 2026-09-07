@@ -1,4 +1,4 @@
-"""Independent parser, preflight, and validator for Courseplay visual rough v4."""
+"""Independent parser and validator for Courseplay visual rough v4."""
 
 from __future__ import annotations
 
@@ -49,12 +49,15 @@ def load_error_catalog(path: Path | None = None) -> dict[str, dict[str, str]]:
 def _error(catalog: dict[str, dict[str, str]], code: str, path: str, expected: Any, actual: Any) -> dict[str, Any]:
     definition = catalog.get(code)
     if definition is None:
-        raise RuntimeError(f"unregistered validator error code: {code}")
+        original = code
+        code = "VR4_TOOL_DEFECT"
+        definition = catalog[code]
+        actual = {"unregistered_code": original, "value": actual}
     return {"code": code, "path": path, "expected": expected, "actual": actual, "message": definition["message"], "hint": definition["hint"], "contractSection": definition["contractSection"]}
 
 
 def _frontmatter(text: str, catalog: dict[str, dict[str, str]]) -> tuple[dict[str, str], str, list[dict[str, Any]]]:
-    normalized = text.replace("\r\n", "\n").replace("\r", "\n")
+    normalized = text.replace("\r\n", "\n").replace("\r", "\n").lstrip("\ufeff")
     if not normalized.startswith("---\n") or "\n---\n" not in normalized[4:]:
         return {}, normalized, [_error(catalog, "VR4_FRONTMATTER_INVALID", "$", "delimited YAML frontmatter", "missing or unterminated")]
     end = normalized.find("\n---\n", 4)
@@ -73,24 +76,30 @@ def _frontmatter(text: str, catalog: dict[str, dict[str, str]]) -> tuple[dict[st
 
 
 def _section(section: str, heading: str, next_heading: str | None = None) -> str | None:
-    end = rf"(?=^### {re.escape(next_heading)}\s*$)" if next_heading else r"(?=^## |\Z)"
-    match = re.search(rf"(?ms)^### {re.escape(heading)}\s*\n(.*?){end}", section)
+    end = rf"(?=^###\s+{re.escape(next_heading)}\s*$)" if next_heading else r"(?=^##\s|\Z)"
+    match = re.search(rf"(?ms)^###\s+{re.escape(heading)}\s*\n(.*?){end}", section)
     return match.group(1) if match else None
+
+
+def _field_values(section: str, label: str) -> list[str]:
+    return re.findall(rf"(?m)^\s*-\s+\*\*{re.escape(label)}\*\*\s*[：:]\s*(.*?)\s*$", section)
 
 
 def parse_visual_rough_v4(text: str, *, catalog: dict[str, dict[str, str]] | None = None) -> ParsedRough:
     catalog = catalog or load_error_catalog()
     frontmatter, body, errors = _frontmatter(text, catalog)
-    matches = list(re.finditer(r"(?m)^## (A\d{3})[｜|]([^\n]+)\s*$", body))
+    matches = list(re.finditer(r"(?m)^##\s+(A\d{3})\s*(?:[｜|])\s*([^\n]+?)\s*$", body))
     pages: list[Page] = []
     if not matches:
         errors.append(_error(catalog, "VR4_PAGE_SEQUENCE", "pages", "one or more Axxx pages", []))
     for index, match in enumerate(matches):
         section = body[match.end(): matches[index + 1].start() if index + 1 < len(matches) else len(body)]
         page = Page(match.group(1), match.group(2).strip())
+        if not page.title:
+            errors.append(_error(catalog, "VR4_PAGE_FIELD", f"{page.a_id}.title", "non-empty page title", page.title))
         for label, key in PAGE_LABELS.items():
-            values = re.findall(rf"(?m)^- \*\*{re.escape(label)}\*\*：\s*(.+?)\s*$", section)
-            if len(values) != 1:
+            values = _field_values(section, label)
+            if len(values) != 1 or not values[0].strip():
                 errors.append(_error(catalog, "VR4_PAGE_FIELD", f"{page.a_id}.{key}", "exactly one non-empty field", len(values)))
             else:
                 page.fields[key] = values[0].replace("`", "").strip()
@@ -119,7 +128,7 @@ def parse_visual_rough_v4(text: str, *, catalog: dict[str, dict[str, str]] | Non
         if relations is None:
             errors.append(_error(catalog, "VR4_RELATION_CARRIER", f"{page.a_id}.relation_carriers", "one carrier per R or none", "section missing"))
         else:
-            page.relation_carriers = re.findall(r"(?m)^-\s+`?\[(R\d{3})\]`?：\s*(\S.*?)\s*$", relations)
+            page.relation_carriers = re.findall(r"(?m)^\s*-\s+`?\[(R\d{3})\]`?\s*[：:]\s*(\S.*?)\s*$", relations)
         pages.append(page)
     return ParsedRough(frontmatter, pages, errors)
 
@@ -159,7 +168,7 @@ def validate_visual_rough_v4(*, source_payload: dict[str, Any], source_sha256: s
     recipes = {r.get("recipe_id"): r for r in registry.get("recipes", []) if isinstance(r, dict)}
     evidence_ids = {e.get("evidence_id") for e in source_payload.get("evidence_catalog", []) if isinstance(e, dict)}
     all_units: list[str] = []; media_ids: list[str] = []; recipe_ids: list[str] = []
-    ai_count = logic_count = 0; preflight_pages = []
+    ai_count = logic_count = 0; validation_pages = []
     for page in parsed.pages:
         source = source_by_a.get(page.a_id, {})
         title_id, group_ids, groups = _source_details(source)
@@ -171,6 +180,14 @@ def validate_visual_rough_v4(*, source_payload: dict[str, Any], source_sha256: s
                 if isinstance(item, dict):
                     known_s.add(item.get("screen_item_id"))
                     if isinstance(item.get("guidance_text"), str): guidance_texts.append(item["guidance_text"])
+        claim_headline = page.fields.get("claim_headline")
+        supporting_line = page.fields.get("supporting_line")
+        if claim_headline not in known_s:
+            add("VR4_SLOT_REFERENCE_UNKNOWN", f"{page.a_id}.claim_headline", sorted(x for x in known_s if x), claim_headline)
+        if supporting_line != "none" and supporting_line not in known_s:
+            add("VR4_SLOT_REFERENCE_UNKNOWN", f"{page.a_id}.supporting_line", sorted(x for x in known_s if x), supporting_line)
+        if page.fields.get("logic_diagram") not in {"yes", "no"}:
+            add("VR4_PAGE_FIELD", f"{page.a_id}.logic_diagram", "yes or no", page.fields.get("logic_diagram"))
         for text in guidance_texts:
             if text and text in rough_text: add("VR4_GUIDANCE_COPIED", page.a_id, "no guidance_text copied", text)
         for constraint in source.get("silent_constraints", []) if isinstance(source.get("silent_constraints"), list) else []:
@@ -210,7 +227,7 @@ def validate_visual_rough_v4(*, source_payload: dict[str, Any], source_sha256: s
         logic = page.fields.get("logic_diagram") == "yes"; logic_count += int(logic)
         if logic and not (recipe.get("status") == "restricted" and recipe.get("is_logic_diagram") is True): add("VR4_LOGIC_RECIPE", f"{page.a_id}.logic_diagram", "specific restricted logic recipe", recipe_id)
         if not logic and recipe.get("is_logic_diagram"): add("VR4_LOGIC_RECIPE", f"{page.a_id}.logic_diagram", "yes", page.fields.get("logic_diagram"))
-        preflight_pages.append({"a_id": page.a_id, "source": {"S": sorted(x for x in known_s if x), "G": group_ids, "R": expected_relations}, "recipe": {"requested": recipe_id, "eligible": bool(recipe), "content_unit_range": [minimum, maximum]}, "content_units": {"count": len(page.units), "uncovered_groups": missing_groups}, "media": {"required_by_recipe": recipe.get("media_mode") == "required", "binding": media_id}})
+        validation_pages.append({"a_id": page.a_id, "source": {"S": sorted(x for x in known_s if x), "G": group_ids, "R": expected_relations}, "recipe": {"requested": recipe_id, "eligible": bool(recipe), "content_unit_range": [minimum, maximum]}, "content_units": {"count": len(page.units), "uncovered_groups": missing_groups}, "media": {"required_by_recipe": recipe.get("media_mode") == "required", "binding": media_id}})
     expected_units = [f"U{i:03d}" for i in range(1, len(all_units) + 1)]
     if all_units != expected_units: add("VR4_UNIT_SEQUENCE", "content_units", expected_units, all_units)
     required_images = math.ceil(len(source_pages) / 3); expected_media = [f"M{i:03d}" for i in range(1, required_images + 1)]
@@ -221,7 +238,9 @@ def validate_visual_rough_v4(*, source_payload: dict[str, Any], source_sha256: s
     maximum_logic = 2 if any(r.get("status") == "restricted" and r.get("is_logic_diagram") for r in recipes.values()) else 0
     if logic_count > maximum_logic: add("VR4_LOGIC_LIMIT", "logic_diagrams", maximum_logic, logic_count)
     if len(source_pages) >= 10 and len(set(recipe_ids)) < 4: add("VR4_RECIPE_DIVERSITY", "pages.recipe_id", ">= 4 distinct recipes", len(set(recipe_ids)))
-    return {"episode_id": source_payload.get("episode_id"), "validation_profile": "visual-rough-v4", "schema_version": front.get("schema_version"), "status": front.get("status"), "preflight": {"pages": preflight_pages}, "image_allocation": {"required_page_count": required_images, "assigned_page_count": len(media_ids)}, "logic_diagrams": {"page_limit": maximum_logic, "assigned_page_count": logic_count}, "errors": errors, "failures": [error["code"] for error in errors]}
+    if front.get("image_required_page_fraction") != "1/3" or front.get("logic_diagram_page_limit") != str(maximum_logic):
+        add("VR4_FRONTMATTER_INVALID", "frontmatter.allocation", {"image_required_page_fraction": "1/3", "logic_diagram_page_limit": str(maximum_logic)}, {"image_required_page_fraction": front.get("image_required_page_fraction"), "logic_diagram_page_limit": front.get("logic_diagram_page_limit")})
+    return {"episode_id": source_payload.get("episode_id"), "validation_profile": "visual-rough-v4", "schema_version": front.get("schema_version"), "status": front.get("status"), "validation_summary": {"pages": validation_pages}, "image_allocation": {"required_page_count": required_images, "assigned_page_count": len(media_ids)}, "logic_diagrams": {"page_limit": maximum_logic, "assigned_page_count": logic_count}, "errors": errors, "failures": [error["code"] for error in errors]}
 
 
 def validate_visual_rough(**kwargs: Any) -> dict[str, Any]:

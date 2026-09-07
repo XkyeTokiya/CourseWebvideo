@@ -8,10 +8,12 @@ import sys
 from pathlib import Path
 
 try:
-    from a_page_contract import SCHEMA_VERSION, parse_task_package, validate_a_page, validate_compile_trace
+    from a_page_contract import SCHEMA_VERSION, canonicalize_approved_text, parse_task_package, structured_errors, validate_a_page, validate_compile_trace
 except ImportError:  # pragma: no cover - CLI 与脚本同目录，正常执行不会进入此分支
     SCHEMA_VERSION = "courseplay-a-page/v6"  # type: ignore[assignment]
+    canonicalize_approved_text = None  # type: ignore[assignment]
     parse_task_package = None  # type: ignore[assignment]
+    structured_errors = None  # type: ignore[assignment]
     validate_a_page = None  # type: ignore[assignment]
     validate_compile_trace = None  # type: ignore[assignment]
 
@@ -63,6 +65,18 @@ def _sanitize_public_report(value):
     return value
 
 
+def _cli_diagnostic(code: str, path: str, actual) -> dict:
+    if structured_errors is None:
+        return {"code": code, "path": path, "expected": "public A-page contract", "actual": actual, "message": "A-page tooling failure", "hint": "Report the tooling defect.", "contractSection": "tooling"}
+    diagnostic = structured_errors([f"{code}:{path}"])[0]
+    diagnostic["actual"] = actual
+    return diagnostic
+
+
+def _print_cli_failure(code: str, path: str, actual) -> None:
+    print(json.dumps({"failures": [code], "errors": [_cli_diagnostic(code, path, actual)]}, ensure_ascii=False))
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Verify the canonical Courseplay A-page semantic handoff.")
     parser.add_argument("--approved-text", type=Path, required=True, help="Approved spoken text (canonicalized).")
@@ -79,22 +93,22 @@ def main() -> int:
     args = parser.parse_args()
 
     if validate_a_page is None or validate_compile_trace is None or parse_task_package is None:
-        print("FAIL VALIDATOR_UNAVAILABLE")
+        _print_cli_failure("VALIDATOR_UNAVAILABLE", "validator", "unavailable")
         return 2
     try:
-        approved = args.approved_text.read_text(encoding="utf-8")
+        approved = canonicalize_approved_text(args.approved_text.read_text(encoding="utf-8"))
         payload = json.loads(args.compiled_json.read_text(encoding="utf-8"))
         trace = json.loads(args.compile_trace.read_text(encoding="utf-8"))
         task_package = parse_task_package(args.task_package.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError, AttributeError) as exc:
-        print(f"FAIL READ_FAILED:{exc}")
+        _print_cli_failure("READ_FAILED", "inputs", str(exc))
         return 2
     if not isinstance(payload, dict) or not isinstance(trace, dict):
-        print("FAIL JSON_OBJECT_REQUIRED")
+        _print_cli_failure("JSON_OBJECT_REQUIRED", "json", {"payload": type(payload).__name__, "trace": type(trace).__name__})
         return 1
     expected_schema = SCHEMA_VERSION
     if payload.get("schema_version") != expected_schema:
-        print(f"FAIL VALIDATION_PROFILE_SCHEMA_MISMATCH:{args.validation_profile}:{payload.get('schema_version')}")
+        _print_cli_failure("VALIDATION_PROFILE_SCHEMA_MISMATCH", "compiled_json.schema_version", payload.get("schema_version"))
         return 1
 
     report = validate_a_page(approved_text=approved, payload=payload)
@@ -113,12 +127,12 @@ def main() -> int:
         "a_page_sha256": _sha256(args.compiled_json),
     }
     report["failures"] = sorted(set(report["failures"] + coverage["failures"]))
+    report["errors"] = report.get("errors", []) + coverage.get("errors", [])
     report = _sanitize_public_report(report)
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     if report["failures"]:
-        for error in report["failures"]:
-            print(f"FAIL {error}")
+        print(json.dumps({"failures": report["failures"], "errors": report["errors"]}, ensure_ascii=False))
         return 1
     print(f"PASS {args.validation_profile}: A-page semantics, screen contract, Nx, timing, and compile coverage are valid")
     return 0

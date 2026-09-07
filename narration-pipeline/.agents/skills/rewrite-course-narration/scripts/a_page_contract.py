@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import math
+import json
 import re
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any
 
 SCHEMA_VERSION = "courseplay-a-page/v6"
@@ -19,6 +21,40 @@ CONSTRAINT = {"constraint_id", "instruction", "evidence_refs"}
 TIMING = {"char_equivalent", "min_seconds", "target_seconds", "max_seconds", "short_page_reason"}
 EVIDENCE = {"evidence_id", "claim_or_asset", "source_locator", "verification_status", "allowed_use"}
 FULLWIDTH = frozenset("，。！？；：、‘’“”（）《》〈〉【】〔〕［］｛｝—…·～")
+ERROR_CATALOG_PATH = Path(__file__).resolve().parents[1] / "references" / "error-catalog.json"
+
+
+def load_error_catalog() -> dict[str, dict[str, str]]:
+    payload = json.loads(ERROR_CATALOG_PATH.read_text(encoding="utf-8"))
+    return {item["code"]: item for item in payload["errors"]}
+
+
+def structured_errors(failures: list[str], *, trace: bool = False) -> list[dict[str, Any]]:
+    catalog = load_error_catalog()
+    fallback = "TRACE_TOOL_DEFECT" if trace else "A_PAGE_TOOL_DEFECT"
+    result = []
+    for failure in sorted(set(failures)):
+        raw_code, _, detail = failure.partition(":")
+        code = raw_code if raw_code in catalog else fallback
+        definition = catalog[code]
+        result.append({
+            "code": code,
+            "path": detail or "$",
+            "expected": f"公开契约的 {definition['contractSection']} 规则",
+            "actual": detail or None,
+            "message": definition["message"],
+            "hint": definition["hint"],
+            "contractSection": definition["contractSection"],
+        })
+    return result
+
+
+def canonicalize_approved_text(text: str) -> str:
+    normalized = text.replace("\r\n", "\n").replace("\r", "\n").lstrip("\ufeff")
+    lines = normalized.split("\n")
+    while lines and not lines[0].strip(): lines.pop(0)
+    while lines and not lines[-1].strip(): lines.pop()
+    return "\n".join(lines)
 
 
 @dataclass
@@ -75,6 +111,7 @@ def _refs(refs: Any, evidence_ids: set[str], path: str, failures: list[str]) -> 
 
 
 def validate_a_page_v6(*, approved_text: str, payload: dict[str, Any]) -> dict[str, Any]:
+    approved_text = canonicalize_approved_text(approved_text)
     failures: list[str] = []
     _shape(payload, TOP, "document", failures)
     if payload.get("schema_version") != SCHEMA_VERSION: failures.append("SCHEMA_VERSION_INVALID")
@@ -167,7 +204,8 @@ def validate_a_page_v6(*, approved_text: str, payload: dict[str, Any]) -> dict[s
     if r_ids != [f"R{i:03d}" for i in range(1, len(r_ids) + 1)]: failures.append("RELATION_ID_SEQUENCE_INVALID")
     if c_ids != [f"C{i:03d}" for i in range(1, len(c_ids) + 1)]: failures.append("SILENT_CONSTRAINT_ID_SEQUENCE_INVALID")
     if "".join(nx_parts) != approved_text: failures.append("NX_NOT_LOSSLESS")
-    return {"episode_id": payload.get("episode_id"), "validation_profile": "a-page-v6", "schema_version": payload.get("schema_version"), "document_kind": payload.get("document_kind"), "production_status": "production", "screen_guidance": {"item_count": len(s_ids), "group_count": len(g_ids), "silent_constraint_count": len(c_ids)}, "a_pages": {"count": len(pages), "total_target_seconds": total_seconds, "short_page_exceptions": short}, "failures": sorted(set(failures))}
+    failures = sorted(set(failures))
+    return {"episode_id": payload.get("episode_id"), "validation_profile": "a-page-v6", "schema_version": payload.get("schema_version"), "document_kind": payload.get("document_kind"), "production_status": "production", "screen_guidance": {"item_count": len(s_ids), "group_count": len(g_ids), "silent_constraint_count": len(c_ids)}, "a_pages": {"count": len(pages), "total_target_seconds": total_seconds, "short_page_exceptions": short}, "failures": failures, "errors": structured_errors(failures)}
 
 
 def validate_a_page(*, approved_text: str, payload: dict[str, Any]) -> dict[str, Any]:
@@ -197,4 +235,5 @@ def validate_compile_trace(*, page_payload: dict[str, Any], trace: dict[str, Any
             elif unit.get("status") == "omitted":
                 if not isinstance(unit.get("reason"), str) or not unit["reason"].strip(): failures.append(f"TRACE_RESOLUTION_INCOMPLETE:{unit_path}")
             else: failures.append(f"TRACE_RESOLUTION_INCOMPLETE:{unit_path}")
-    return {"coverage_passed": not failures, "failures": sorted(set(failures))}
+    failures = sorted(set(failures))
+    return {"coverage_passed": not failures, "failures": failures, "errors": structured_errors(failures, trace=True)}

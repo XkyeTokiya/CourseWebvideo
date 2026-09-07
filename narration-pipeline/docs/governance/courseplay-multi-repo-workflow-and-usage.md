@@ -117,11 +117,7 @@ D:/00-workspace/005-coursewebvideo/narration-pipeline/episodes/<module>/episode-
 
 #### 阶段 4：A-page v6 screen guidance 编译
 
-- 一条 A 严格对应一页；每页有且仅有一个连续非空 Nx，`concat(pages[*].nx)` 必须与批准母版逐字符一致。
-- 先按页面认知任务切 A；B、旧图片安排和视觉形式都不能反向决定 A 数量。
-- 正式 JSON 自包含 E 目录，不包含 B ID、B 映射、B 时长、旧包装层、M 目录或任何视觉字段。
-- `courseplay-a-page/v6` 冻结 Nx、教学语义、证据、关系、时间和 screen guidance；`reference` 不产生逐 S 落屏义务，`exact` 只锁定必须逐字可见的原子。页面配方、图片页、媒体类型与逻辑图资格由后续 `courseplay-visual-rough/v4` 承担。
-- 编译期覆盖记录写入 work-only trace；trace 不属于 handoff。
+作者字段、ID、引用、timing、trace 和 normalizer 规则统一见 [A-page v6 作者契约卡](../../.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md) 与 [canonical example](../../.agents/skills/rewrite-course-narration/references/examples/a-page-v6/)。本阶段只负责批准口播到 A-page 的编译，不把视觉决定前移。
 
 单期过程产物放入独立 `../.tmp/narration-pipeline/<任务名>/episode-XX/`，例如：
 
@@ -155,23 +151,11 @@ python .agents/skills/rewrite-course-narration/scripts/verify_compilation.py `
   --output ../player/episodes/episode-XX/inputs/episode-XX-a-page-validation.json
 ```
 
-机械报告必须 `coverage_passed=true` 且 `failures=[]`；再人工确认：
-
-1. 原 B 的必要职责和受保护信息无遗漏；
-2. 每页 A 的必见语义与关系真正支撑对应 Nx；
-3. 事实和相邻主题无越界；
-4. exact 保持原子化。
-
-满足后，语义层可发布批准稿、production A 页面 JSON 和当前验证报告。A 验证报告不包含视觉或媒体聚合。
+机械报告通过且 trace 无未解决项，再按 [A-page error index](../../.agents/skills/rewrite-course-narration/references/error-catalog.json) 处理失败；人工语义审阅与发布仍按作者契约卡进行。满足后发布批准稿、production A 页面 JSON 和当前验证报告。
 
 #### 阶段 6：视觉粗设与人工批准门
 
-- 视觉粗设读取已发布的 v6 A-page，使用 visual rough v4；G 只规划语义区域，U 独立承担视觉组合，不形成 G→UI section 或逐 G 落屏义务。
-- 页面配方唯一权威源为 `.agents/skills/design-course-visual-rough/references/page-recipes/*.md`。用户可复制模板或使用 `manage_recipes.py new` 新增 experimental 配方；正常 Agent 只能读取，不得新增、改写或激活配方。
-- 新草稿只使用 active 配方。需要缺失配方时停止并报告“页面配方缺口”；deprecated 不进入新草稿，blocked 在任何当前验证中失败。
-- 逻辑图只能使用具体、模板化、`is_logic_diagram=true` 的 restricted 配方，必须给出必要性理由并取得人工批准；注册表没有具体 restricted 配方时必须为零页。
-- 候选粗设先保存在 `../.tmp/narration-pipeline/<任务>/episode-XX/` 且 `status=draft`。只有用户明确批准后才能改为 `approved` 并发布到 `../player/episodes/episode-XX/inputs/`。
-- 视觉粗设通过 `visual-rough-v4` 校验后再发布；实际媒体仍在下游章节结构中按既有流程就位。
+视觉作者只读取 [visual rough v4 作者契约卡](../../.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md)、[canonical example](../../.agents/skills/design-course-visual-rough/references/examples/visual-rough-v4/) 和当前 recipe。候选先保持 `draft`，通过现有黑盒验证并经用户审阅后才发布；正常创作不增加独立创作前检查。
 
 ## 5. 下游使用方式（Web Video Studio）
 
@@ -182,11 +166,11 @@ python .agents/skills/rewrite-course-narration/scripts/verify_compilation.py `
 - 下游 episode 根目录中的 A-page、rough、script 和批准稿是上游批准产物的同步输入镜像；Phase 2 章节 consumer 只读当前 `.handoffs/<Axxx>.json`。
 - 版本组合固定为 v6/v4→handoff v4；其他版本组合直接拒绝。
 - v4 章节综合 `screen_guidance`、当前 A narration beats 与 presentation 创作最终上屏内容，不新增 `screenContent` IR，也不要求普通 S/G 逐项落屏。
-- 当前 Outline 的标题层级、字段顺序、四列表格与生成方式保持不变。
+- 当前 Outline 与 handoff 输入格式见 [handoff v4 作者契约卡](../../player/docs/courseplay-handoff-v4-author-contract.md)。
 
 ### 5.2 页面生产
 
-每章开工或返工前先生成并检查当前 A 的 compact handoff；章节按下游 Skill 实现、typecheck/lint/build，并由契约与视觉 reviewer 验收内容充分性、exact 可见性、事实边界、时序和静音终态。
+handoff 是可选的上下文打包工具；需要时生成当前 A 的 compact handoff，否则直接使用等价的当前章节输入。章节按下游 Skill 实现、typecheck/lint/build，并由既有契约与视觉 reviewer 验收。
 
 ## 6. 标准 handoff 清单
 
@@ -196,11 +180,11 @@ python .agents/skills/rewrite-course-narration/scripts/verify_compilation.py `
 - [ ] 下游只同步上游正式批准产物，不读取任务包或 work trace；
 - [ ] 未把下游 `episodes/` 当作任务包事实源；根级 episode 文件只作为同步输入镜像与当前生产实例；
 - [ ] 上游任务包保持只读；
-- [ ] 正式 handoff 固定来自上游 `../player/episodes/episode-XX/inputs/`，不消费带日期的 `../.tmp/narration-pipeline/<任务>/...`；
+- [ ] 如调用 handoff，来源固定为上游 `../player/episodes/episode-XX/inputs/`，不消费带日期的 `../.tmp/narration-pipeline/<任务>/...`；
 - [ ] A-page 为 `courseplay-a-page/v6`，visual rough 为 v4，源 SHA-256 匹配；
 - [ ] `approved-spoken-text.txt` 已获明确批准；
 - [ ] A 页面验证报告由当前 inputs 批准稿/A JSON、权威任务包与 `.tmp` compile trace 重新生成，且 `coverage_passed=true`、`failures=[]`；
-- [ ] 四项人工语义检查（含 exact 原子性）已记录；
+- [ ] 作者契约卡要求的人工语义检查已记录；
 - [ ] 报告中的 episode、输入 SHA-256 与 trace SHA-256 匹配当前磁盘原始字节，且没有 B ID。
 
 ## 7. 常见停止条件
@@ -221,5 +205,5 @@ python .agents/skills/rewrite-course-narration/scripts/verify_compilation.py `
 ## 8. 一句话任务路由
 
 - “第 XX 期整篇重写，批准后编译页面” → 上游 `rewrite-course-narration`。
-- “把已验收 A-page 制作为页面/scene” → 下游 Web Video Studio，先生成当前 A compact handoff。
+- “把已验收 A-page 制作为页面/scene” → 下游 Web Video Studio；需要压缩上下文时再生成当前 A compact handoff。
 - “制作或修改第 XX 期 Web Video” → 下游 `web-video-presentation`，遵守版本路由与 packet-only Phase 2 边界。

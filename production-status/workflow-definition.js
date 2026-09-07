@@ -21,7 +21,7 @@
       purpose: '用户明确确认连续稿后，才允许形成批准口播并进入 A-page。',
       checklist: ['已完整预览连续口播', '关键事实和措辞已确认', '用户明确同意作为整集口播权威'],
       artifacts: [{ key: 'approvedNarration', label: 'approved-spoken-text.txt', source: 'observation', observation: 'approvedNarration' }],
-      prompt: '请在 narration-pipeline 中继续 {{episodeId}}（{{title}}）的 A-page v6 编译。唯一口播来源是 player/episodes/{{episodeId}}/inputs/approved-spoken-text.txt。切分 Nx，生成 screen guidance、evidence、protected relations 与 silent constraints；同时生成 compile trace，并执行当前 A-page validator。任何验证失败或 unresolved 不得发布。'
+      prompt: '请在 narration-pipeline 中继续 {{episodeId}}（{{title}}）的 A-page v6 编译。先读取当前 A-page 作者契约卡与 canonical example；唯一口播来源是 player/episodes/{{episodeId}}/inputs/approved-spoken-text.txt。切分 Nx，生成 screen guidance、evidence、protected relations 与 silent constraints；同时生成 compile trace，并调用现有黑盒验证入口。任何验证失败或 unresolved 不得发布。'
     },
     {
       id: 'a-page', number: '04', group: '上游内容', label: 'A-page v6', short: '编译页面语义契约',
@@ -45,7 +45,7 @@
         { key: 'aPage', label: 'A-page JSON', source: 'observation', observation: 'aPage' },
         { key: 'aPageValidation', label: 'A-page 验证报告', source: 'derived', path: 'player/episodes/{{episodeId}}/inputs/{{episodeId}}-a-page-validation.json' }
       ],
-      prompt: '请在 narration-pipeline 中使用 design-course-visual-rough，为 {{episodeId}}（{{title}}）生成 visual rough v4 候选。只读取已验证的 A-page 正式输入；用 U 映射 G，规划页面配方、S/U/M 骨架、媒体需求和 R 关系载体。不得修改上游 G 来适配配方。候选保持 draft，完成 preflight 与验证后交给用户审阅，不得自动改为 approved。'
+      prompt: '请在 narration-pipeline 中使用 design-course-visual-rough，为 {{episodeId}}（{{title}}）生成 visual rough v4 候选。先读取 visual rough 作者契约卡、canonical example 和需要使用的当前 recipe；只读取已验证的 A-page 正式输入。候选保持 draft，调用现有黑盒验证入口后交给用户审阅，不得自动改为 approved；正常创作只依据公开契约、A-page、recipe 和示例，不增加独立创作前检查，也不修改上游 G 来适配配方。'
     },
     {
       id: 'visual-rough', number: '07', group: '上游内容', label: 'Visual rough v4', short: '人工门禁：批准视觉粗设', gateKey: 'visualRough',
@@ -77,12 +77,12 @@
         { key: 'outline', label: 'outline.md', source: 'observation', observation: 'playerOutline' },
         { key: 'project', label: 'project.json', source: 'player' }
       ],
-      prompt: '请在 player 中为 {{episodeId}}（{{title}}）生成单章 compact handoff v4。先运行 pnpm courseplay:handoff -- --episode {{episodeId}} --a-page <Axxx> --check，确保 freshness 和输入契约通过；handoff 写入 episode 的 .handoffs/，不得提交 Git。'
+      prompt: '如章节需要压缩上下文，请在 player 中为 {{episodeId}}（{{title}}）按 handoff v4 作者契约卡生成当前 A 的 compact handoff；它是可选工具，不是章节制作前置门禁。handoff 写入 episode 的 .handoffs/，不得提交 Git；失败时按公开错误索引报告，不读取实现补规则。'
     },
     {
       id: 'chapter-handoff', number: '10', group: '下游制作', label: '单章交接（豁免）', short: '当前流程不再强制生成 handoff', optional: true,
       purpose: '从正式 inputs 机械生成单 A compact handoff，控制章节 Agent 的上下文边界。',
-      checklist: ['handoff 来源仅为正式 inputs', '--check 与 freshness 通过', 'A-page 与目标章节对应'],
+      checklist: ['需要时才生成 handoff', '来源仅为正式 inputs', 'A-page 与目标章节对应'],
       artifacts: [{ key: 'handoffs', label: '.handoffs/', source: 'derived', path: 'player/episodes/{{episodeId}}/.handoffs/' }],
       prompt: '请在 player 中开始 {{episodeId}}（{{title}}）的第 1 章完整制作。综合 guidance、当前 A beats 和 presentation 三源重新设计完整上屏内容；不得先交骨架。完成 Chapter.tsx、CSS、narrations.ts 和所需媒体，并运行 episode:check、typecheck 与 lint，随后交给用户验收。'
     },

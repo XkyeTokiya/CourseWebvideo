@@ -4,7 +4,7 @@
 `courseplay-a-page/v6` + `courseplay-visual-rough/v4` → handoff v4。版本组合
 校验属于显式调用该工具时的输入契约，不是全局制作门禁。当前三源创作详细规则
 唯一存放在 [`CHAPTER-CRAFT.md`](CHAPTER-CRAFT.md#courseplay-v4三源创作唯一详细规则)；
-本文件说明内容边界、可选上下文打包与通用场景调度。
+本文件说明内容边界、可选上下文打包与通用场景调度。A-page、visual rough 和 handoff 的作者字段规则分别见上游 [A-page v6 作者契约卡](../../../../../narration-pipeline/.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md)、[visual rough v4 作者契约卡](../../../../../narration-pipeline/.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md) 和 [handoff v4 作者契约卡](../../../../docs/courseplay-handoff-v4-author-contract.md)。
 
 ## 目标与术语
 
@@ -30,9 +30,9 @@ Courseplay 的 A-page 是一个完整教学判断，不是一个口播瞬间。�
 - 章节制作需要明确的当前 A-page、批准口播、visual rough/页面指导、outline 调度、
   主题和素材；可以直接提供这些等价的当前章节输入，也可以用 handoff 打包。
 - 显式调用 handoff 时，工具读取 episode 根级固定文件：`project.json`、`script.md`、
-  `outline.md`、`<episode-id>-a-page.json`、`<episode-id>-visual-rough.md`，以及声明
-  `approved_text` 时的 `approved-spoken-text.txt`。工具不动态搜索候选文件；路径或
-  格式不符合时报告该命令的输入错误，不把它升级为全仓库 validator。
+  `outline.md`、`<episode-id>-a-page.json`、`<episode-id>-visual-rough.md`。它不读取
+  `approved-spoken-text.txt` 或 `narrations.ts`；路径或格式不符合时报告该命令的输入错误，
+  不把它升级为全仓库 validator。
 - 新生产使用 `courseplay-a-page/v6` + `courseplay-visual-rough/v4`；v6 `screen` 是 guidance，v4 只写结构绑定、配方、媒体和 R 载体，不复制 `guidance_text`。
 - 缺少当前章节实际所需的批准口播或页面指导时，列出缺项并请求补充；仅仅没有
   生成 handoff、文件不在工具默认路径或 script 使用不同排版，不阻止直接制作。
@@ -42,23 +42,7 @@ Courseplay 的 A-page 是一个完整教学判断，不是一个口播瞬间。�
 - A-page 顺序、视觉粗设页面顺序、口播语义与媒体资格保持一致。
 - 封面是独立场景，不计入正文 A-page 场景数。
 
-显式调用 handoff 时，推荐并按工具契约使用以下 A-page 格式：
-
-```markdown
-## Axxx · <页面标题>
-
-<Beat 1 原文>
-
----
-
-<Beat 2 原文>
-```
-
-在 handoff 输入中，每个 `pages[].a_id` 必须对应且仅对应一个标题，顺序必须与 `pages[]` 一致；
-标题和 metadata 不进入口播，`---` 只分隔当前 A-page 内的 Beat。每页 Beat 拼接
-经空白归一化后必须等于该页 `nx`，Beat 数必须等于 outline 当前章节 step 数。
-不调用 handoff 时，可直接提供清楚标明 A-page 和 Beat 的等价输入；纯排版差异
-本身不构成制作停止条件。
+显式调用 handoff 时，按 [handoff v4 作者契约卡](../../../../docs/courseplay-handoff-v4-author-contract.md) 和 [canonical example](../../../../docs/examples/courseplay-handoff-v4/) 准备 script/outline；其中的固定 Markdown 语法只在调用 handoff 时生效。不调用 handoff 时，可直接提供清楚标明 A-page 和 Beat 的等价输入；纯排版差异本身不构成制作停止条件。
 
 ## 继承通用 outline 契约
 

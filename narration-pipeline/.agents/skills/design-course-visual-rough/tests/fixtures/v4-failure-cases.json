@@ -26,6 +26,7 @@
     {"code":"VR4_ADJACENT_RECIPE","mutation":"repeat adjacent recipe"},
     {"code":"VR4_RECIPE_DIVERSITY","mutation":"use fewer than four recipes across ten pages"},
     {"code":"VR4_LOGIC_RECIPE","mutation":"set logic yes on active non-logic recipe"},
-    {"code":"VR4_LOGIC_LIMIT","mutation":"assign logic when no restricted recipe exists"}
+    {"code":"VR4_LOGIC_LIMIT","mutation":"assign logic when no restricted recipe exists"},
+    {"code":"VR4_TOOL_DEFECT","mutation":"unregistered validator exception"}
   ]
 }

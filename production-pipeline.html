@@ -421,7 +421,7 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
   <header class="hero" id="top">
     <span class="badge"><b>A-page v6</b>+<b>visual rough v4</b>+<b>handoff v4</b></span>
     <h1>从冻结任务包，<br>到可验收的<em>成片</em>。</h1>
-    <p class="lede">今后新生产一律走这条主线：单一 Git 仓库内划分 <span class="mono">narration-pipeline/</span> 与 <span class="mono">player/</span> 两个子项目。上游以冻结任务包为唯一事实来源，经过连续口播、A-page 编译与 visual rough 编译；下游以三源 handoff 驱动章节创作。链条上共 14 个阶段、5 道不可自动越过的人工门禁。</p>
+    <p class="lede">今后新生产一律走这条主线：单一 Git 仓库内划分 <span class="mono">narration-pipeline/</span> 与 <span class="mono">player/</span> 两个子项目。上游以冻结任务包为唯一事实来源，经过连续口播、A-page 编译与 visual rough 编译；下游按需使用 compact handoff 辅助章节创作，未调用时仍可使用等价的当前章节输入。</p>
     <p class="note">
       <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.6" stroke="#6B7280" stroke-width="1.3"/><path d="M8 5.2v.2M8 7.4V11" stroke="#6B7280" stroke-width="1.4" stroke-linecap="round"/></svg>
       <span>当前工具面只接受 v6/v4/handoff-v4；既有 episode 文件保持原样，但不再作为新生产入口。</span>
@@ -572,8 +572,8 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
         <div class="fcard">
           <span class="fnum">09</span>
           <div class="fbody">
-            <div class="ftitle">按 A 生成 compact handoff v4</div>
-            <div class="fnote"><span class="mono">pnpm courseplay:handoff</span> 从 <span class="mono">inputs/</span> 机械生成 <span class="mono">.handoffs/Axxx.json</span>，不再把完整冻结输入喂给章节 Agent。</div>
+            <div class="ftitle">可选：按 A 生成 compact handoff v4</div>
+            <div class="fnote"><span class="mono">pnpm courseplay:handoff</span> 从 <span class="mono">inputs/</span> 机械生成 <span class="mono">.handoffs/Axxx.json</span>，需要隔离上下文时使用。</div>
           </div>
           <span class="fzone">下游</span>
         </div>
@@ -709,10 +709,10 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
             <td><span class="gcell"><i></i>五项没有对齐，不得进入网页开发</span></td>
           </tr>
           <tr>
-            <td class="stg"><span class="idx">10</span>单章交接</td>
-            <td>从 <span class="mono">inputs/</span> 机械生成单 A packet；v6/v4 输入路由到 handoff v4</td>
+            <td class="stg"><span class="idx">10</span>可选单章交接</td>
+            <td>需要压缩上下文时，从 <span class="mono">inputs/</span> 机械生成单 A packet；v6/v4 输入路由到 handoff v4</td>
             <td><span class="art">.handoffs/Axxx.json</span><span class="art">Git 忽略</span></td>
-            <td><span class="gcell"><i></i><span class="mono" style="font-size:11.5px">--check</span> 或 freshness 失败就停止</span></td>
+            <td><span class="gcell">按需生成；失败时按公开错误索引诊断</span></td>
           </tr>
           <tr class="hard">
             <td class="stg"><span class="idx">11</span>章节制作</td>
@@ -809,7 +809,7 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
         <span class="pidx">03</span>
         <span class="ptag">正式消费入口</span>
         <span class="pfile">player/episodes/&lt;id&gt;/inputs/</span>
-        <p>上游批准 handoff 的唯一正式入口。只有经过批准和验证的正式文件才能发布到这里。</p>
+        <p>上游批准正式输入的唯一入口。只有经过批准和验证的正式文件才能发布到这里。</p>
       </div>
       <div class="pcard reveal">
         <span class="pidx">04</span>
@@ -824,7 +824,7 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
     <div class="sect-head reveal">
       <div class="kicker">05 · Downstream</div>
       <h2>下游真正如何消费</h2>
-      <p>下游分为两个阶段：Phase 1 读取 <span class="mono">inputs/</span> 正式输入做计划，Phase 2 按 A 发放三源 handoff，章节 Agent 重新创作完整上屏内容。</p>
+      <p>下游分为两个阶段：Phase 1 读取 <span class="mono">inputs/</span> 正式输入做计划，Phase 2 可按 A 发放三源 handoff，章节 Agent 重新创作完整上屏内容。</p>
     </div>
 
     <div class="grid2">
@@ -849,12 +849,12 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
       </div>
 
       <div class="phase reveal">
-        <div class="ph-top"><span class="ph-num">PHASE 2</span><h3>按 A 发放三源 handoff</h3></div>
-        <div class="ph-sub">Checkpoint Plan 之后，不再把完整 A-page、rough、script、Outline 全部喂给章节 Agent。</div>
+        <div class="ph-top"><span class="ph-num">PHASE 2 · OPTIONAL</span><h3>按 A 发放三源 handoff</h3></div>
+        <div class="ph-sub">需要隔离上下文时使用；也可直接提供等价的当前章节输入。</div>
         <div class="packet">
           <div class="packet-head">
             <span class="pf mono">.handoffs/Axxx.json</span>
-            <span class="pd">每个 A 一份，机械生成；派生缓存，不进 Git</span>
+            <span class="pd">按需生成；派生缓存，不进 Git</span>
           </div>
           <div class="src3">
             <div class="src">
@@ -984,10 +984,10 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
       <div class="fref">
         <div class="fr-role">下游 · 制作（player）</div>
         <div class="fr-name">web-video-presentation</div>
-        <div class="fr-desc">Phase 1 计划、handoff 三源、章节制作、音频与录屏的下游权威。</div>
+        <div class="fr-desc">Phase 1 计划、可选 handoff、章节制作、音频与录屏的下游权威。</div>
       </div>
     </div>
-    <p class="foot-note">新生产一律使用本页描述的 v6/v4/handoff-v4 主线。数据流：任务包 → .tmp 过程文件 → 人工批准与验证 → inputs/ → src/ → 预览、构建与录屏。</p>
+    <p class="foot-note">新生产使用本页描述的 v6/v4 主线；handoff v4 按需调用。数据流：任务包 → .tmp 过程文件 → 人工批准与验证 → inputs/ → script/outline → 可选 handoff → src/ → 预览、构建与录屏。</p>
   </footer>
 
 </div>

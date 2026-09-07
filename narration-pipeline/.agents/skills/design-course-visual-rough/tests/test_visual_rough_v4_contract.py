@@ -10,7 +10,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[5]
 SKILL = Path(__file__).resolve().parents[1]
-FIXTURE = ROOT / "player/tools/tests/fixtures/courseplay-handoff-v4/sources"
+EXAMPLE = SKILL / "references/examples/visual-rough-v4"
+A_PAGE_EXAMPLE = ROOT / "narration-pipeline/.agents/skills/rewrite-course-narration/references/examples/a-page-v6/canonical-contract-example-a-page.json"
 spec = importlib.util.spec_from_file_location("visual_rough_v4", SKILL / "scripts/visual_rough_contract.py")
 assert spec and spec.loader
 contract = importlib.util.module_from_spec(spec)
@@ -24,9 +25,9 @@ from normalize_visual_rough_v4 import normalize  # noqa: E402
 class VisualRoughV4Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.source_bytes = (FIXTURE / "episode-fixture-v4-a-page.json").read_bytes()
+        cls.source_bytes = A_PAGE_EXAMPLE.read_bytes()
         cls.source = json.loads(cls.source_bytes)
-        cls.rough = (FIXTURE / "episode-fixture-v4-visual-rough.md").read_text(encoding="utf-8")
+        cls.rough = (EXAMPLE / "canonical-contract-example-visual-rough.md").read_text(encoding="utf-8")
         cls.registry, failures, _ = load_recipe_directory(SKILL / "references/page-recipes")
         assert not failures, failures
 
@@ -38,20 +39,20 @@ class VisualRoughV4Tests(unittest.TestCase):
         self.assertEqual([], report["errors"])
         parsed = contract.parse_visual_rough_v4(self.rough)
         self.assertEqual(["G001", "G002"], parsed.pages[0].units[0].group_ids)
-        self.assertEqual(["G004"], parsed.pages[1].units[0].group_ids)
-        self.assertEqual(["G004"], parsed.pages[1].units[1].group_ids)
-        self.assertIn("U003", dict(parsed.pages[0].slot_bindings).values())
-        self.assertEqual(["S001", "S002", "S003", "S004"], report["preflight"]["pages"][0]["source"]["S"])
-        self.assertEqual([], report["preflight"]["pages"][0]["content_units"]["uncovered_groups"])
+        self.assertEqual(["G003"], parsed.pages[1].units[0].group_ids)
+        self.assertEqual(["G003"], parsed.pages[1].units[1].group_ids)
+        self.assertIn("U002", dict(parsed.pages[0].slot_bindings).values())
+        self.assertEqual(["S001", "S002", "S003"], report["validation_summary"]["pages"][0]["source"]["S"])
+        self.assertEqual([], report["validation_summary"]["pages"][0]["content_units"]["uncovered_groups"])
 
     def test_normalizer_generates_hash_and_continuous_u_m_ids(self) -> None:
         draft = self.rough.replace(hashlib.sha256(self.source_bytes).hexdigest(), "pending").replace("U001", "U901").replace("U002", "U902").replace("M001", "M901")
-        output = normalize(draft, a_page_name="episode-fixture-v4-a-page.json", a_page_bytes=self.source_bytes)
+        output = normalize(draft, a_page_name="canonical-contract-example-a-page.json", a_page_bytes=self.source_bytes)
         self.assertIn(hashlib.sha256(self.source_bytes).hexdigest(), output)
         self.assertIn("U001 <-", output); self.assertIn("U002 <-", output); self.assertIn("M001 /", output)
 
     def test_unknown_and_uncovered_groups_are_structured(self) -> None:
-        rough = self.rough.replace("U002 <- G003", "U002 <- G999").replace("U003 <- G001 + G003", "U003 <- G001")
+        rough = self.rough.replace("U003 <- G003", "U003 <- G999").replace("U005 <- G004", "U005 <- G003")
         errors = self.validate(rough)["errors"]
         codes = {error["code"] for error in errors}
         self.assertIn("VR4_GROUP_REFERENCE_UNKNOWN", codes)
@@ -65,12 +66,22 @@ class VisualRoughV4Tests(unittest.TestCase):
         self.assertEqual([], self.validate(rough)["errors"])
 
     def test_relation_exact_silent_and_guidance_rules(self) -> None:
-        duplicate = self.rough.replace("- `[R001]`：由 body 内的对照排列承载", "- `[R001]`：载体一\n- `[R001]`：载体二")
+        duplicate = self.rough.replace("- `[R001]`：由同一主区域的并列层级承载", "- `[R001]`：载体一\n- `[R001]`：载体二")
         self.assertIn("VR4_RELATION_CARRIER", self.validate(duplicate)["failures"])
         leaked = self.rough.replace("- `body <- U001`", "- `body <- U001`\n- `audit <- C001`")
         self.assertIn("VR4_SLOT_BINDING", self.validate(leaked)["failures"])
-        copied = self.rough + "\n必须逐字显示的标题\n"
+        copied = self.rough + "\n共同锚点\n"
         self.assertIn("VR4_GUIDANCE_COPIED", self.validate(copied)["failures"])
+
+    def test_page_title_and_field_references_are_publicly_checked(self) -> None:
+        invalid_title = self.rough.replace("`S001`", "`S999`", 1)
+        self.assertIn("VR4_SLOT_REFERENCE_UNKNOWN", self.validate(invalid_title)["failures"])
+        invalid_logic = self.rough.replace("- **逻辑图**：`no`", "- **逻辑图**：`maybe`", 1)
+        self.assertIn("VR4_PAGE_FIELD", self.validate(invalid_logic)["failures"])
+
+    def test_format_only_variants_are_accepted(self) -> None:
+        variant = self.rough.replace("｜", " | ").replace("：", ":")
+        self.assertEqual([], self.validate(variant)["errors"])
 
     def test_error_catalog_docs_and_failure_fixtures_match_emitted_codes(self) -> None:
         catalog = json.loads((SKILL / "references/error-catalog.json").read_text(encoding="utf-8"))
@@ -79,6 +90,7 @@ class VisualRoughV4Tests(unittest.TestCase):
         fixture_codes = {item["code"] for item in fixtures["cases"]}
         source = (SKILL / "scripts/visual_rough_contract.py").read_text(encoding="utf-8")
         emitted = set(re.findall(r'(?:_error\(catalog,|add\()\s*"(VR4_[A-Z_]+)"', source))
+        emitted.add("VR4_TOOL_DEFECT")
         self.assertEqual(catalog_codes, fixture_codes)
         self.assertEqual(catalog_codes, emitted)
 
