@@ -1,0 +1,258 @@
+/* ── 02-build-start · S-A002 parallel-cards-with-takeaway ──
+   主构图:纵向三层 —— 年份锚点卡 | 并列要点卡 | 边界收束条。
+   机制 anchor-and-context:锚点持续在场,卡区补充,收束给边界。
+   基础态 = 最终可见态,隐藏规则只挂在 [data-state] 下,保证可逆。 */
+
+.bs-pad {
+  gap: 24px;
+}
+
+/* ── 标题区 ── */
+.bs-head {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex-shrink: 0;
+}
+.bs-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+}
+
+/* ── 第一层:年份锚点卡 ── */
+.bs-anchor {
+  flex-shrink: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 44px;
+  padding: 28px 46px;
+}
+.bs-year {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.bs-year-num {
+  font-size: 118px;
+  color: var(--theme-structural);
+}
+.bs-year-cap {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+.bs-anchor-div {
+  width: 0;
+  border-left: var(--rule-w) dashed var(--rule);
+}
+.bs-plan {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+.bs-plan-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-mute);
+}
+.bs-plan-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.bs-plan-row {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+.bs-row-num {
+  font-family: var(--font-mono);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--theme-process);
+  width: 44px;
+  text-align: center;
+  border: 2px solid var(--theme-process);
+  border-radius: 8px;
+  background: var(--theme-process-surface);
+  flex-shrink: 0;
+  line-height: 1.3;
+}
+.bs-row-label {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text);
+}
+.bs-row-detail {
+  font-size: 23px;
+  font-weight: 500;
+  color: var(--text-2);
+}
+
+/* ── 第二层:并列要点卡(ghost 槽与内容卡同位 cross-fade) ── */
+.bs-focus {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 30px;
+}
+.bs-fcard {
+  position: relative;
+  flex: 1;
+}
+.bs-fghost,
+.bs-fbody {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-card);
+}
+.bs-fghost {
+  border: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.bs-fbody {
+  padding: 32px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease 0.12s, transform 0.5s ease 0.12s;
+}
+.bs-fcard + .bs-fcard .bs-fbody {
+  transition-delay: 0.3s, 0.3s;
+}
+.bs-ftag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--theme-process);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bs-ftag::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: var(--theme-process);
+  flex-shrink: 0;
+}
+.bs-fmain {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text);
+}
+.bs-fsub {
+  margin: 0;
+  font-size: 23px;
+  line-height: 1.6;
+  color: var(--text-2);
+  font-weight: 500;
+}
+.bs-fdims {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.bs-fdims li {
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.bs-fdims li::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--theme-structural);
+  background: var(--theme-process-surface);
+  flex-shrink: 0;
+}
+
+[data-state="anchor-established"] .bs-fbody {
+  opacity: 0;
+  transform: translateY(18px);
+}
+[data-state="anchor-established"] .bs-fghost {
+  opacity: 1;
+}
+/* step 2 内两卡随口播先后补齐,完成后等权 */
+
+/* ── 第三层:边界收束条(自首拍预留整槽,零回流) ── */
+.bs-takeaway {
+  flex-shrink: 0;
+  border-top: var(--rule-w) dashed var(--rule);
+  padding-top: 26px;
+  transition: opacity 0.5s ease;
+}
+.bs-band {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 20px;
+  background: var(--theme-structural);
+  color: var(--theme-paper);
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  border-radius: 12px;
+  padding: 26px 40px;
+  box-shadow: 7px 8px 0 var(--theme-offset-shadow);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.bs-neq {
+  font-family: var(--font-mono);
+  font-size: 46px;
+  font-weight: 700;
+  color: var(--theme-warning);
+}
+[data-state="anchor-established"] .bs-band,
+[data-state="priorities-paired"] .bs-band {
+  opacity: 0;
+  transform: translateY(16px);
+}
+/* step 3:全页重心落到收束条 */
+[data-state="boundary-drawn"] .bs-anchor,
+[data-state="boundary-drawn"] .bs-focus {
+  opacity: 0.62;
+}
+.bs-anchor,
+.bs-focus {
+  transition: opacity 0.55s ease;
+}

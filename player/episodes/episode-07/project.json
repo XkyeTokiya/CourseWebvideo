@@ -1,12 +1,12 @@
 {
   "id": "episode-07",
-  "title": "第 07 期（待制作）",
-  "status": "planned",
+  "title": "我国标识解析从建设走向规模应用",
+  "status": "in-progress",
   "theme": "active-identification-note",
   "progress": {
-    "completed": 0,
-    "total": 0,
+    "completed": 8,
+    "total": 8,
     "current": null
   },
-  "updatedAt": "2026-09-02"
+  "updatedAt": "2026-09-09"
 }

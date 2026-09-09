@@ -1,0 +1,141 @@
+/* ── 00-cover · 工程笔记封面(active-identification-note) ── */
+
+.cv-pad {
+  gap: 0;
+  justify-content: space-between;
+}
+
+/* 右上角集数铭牌 */
+.cv-plate {
+  position: absolute;
+  top: var(--stage-pad-y);
+  right: var(--stage-pad-x);
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  background: var(--theme-structural);
+  color: var(--theme-paper);
+  font-family: var(--font-mono);
+  font-size: 30px;
+  font-weight: 700;
+  border-radius: 10px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+/* 顶部课程线 */
+.cv-top {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-right: 140px;
+}
+.cv-course {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.22em;
+  color: var(--text-mute);
+  font-weight: 500;
+}
+
+/* 模块 / 任务结构行 */
+.cv-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cv-meta-line {
+  font-size: 25px;
+  color: var(--text-2);
+  font-weight: 500;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+.cv-meta-no {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--theme-process);
+  border: 2px solid var(--theme-process);
+  border-radius: 6px;
+  padding: 1px 10px;
+  background: var(--theme-process-surface);
+}
+
+/* 主标题区 */
+.cv-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.cv-point {
+  font-size: 88px;
+  color: var(--theme-process);
+}
+.cv-title {
+  font-family: var(--font-display-cn);
+  font-size: 86px;
+  font-weight: 900;
+  line-height: 1.16;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  max-width: 1420px;
+}
+
+/* 副标题说明(lede) */
+.cv-lede {
+  font-size: 30px;
+  line-height: 1.7;
+  color: var(--text-2);
+  max-width: 1240px;
+}
+
+/* 内容贴纸 */
+.cv-chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 22px;
+}
+.cv-chip {
+  font-family: var(--font-mono);
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--theme-structural);
+  background: var(--theme-paper);
+  border: 3px solid var(--theme-structural);
+  border-radius: 12px;
+  padding: 14px 30px;
+  box-shadow: var(--card-shadow);
+}
+.cv-chip:first-child {
+  color: var(--theme-process);
+  border-color: var(--theme-process);
+}
+
+/* 入场:图章式依次落位,1.4s 内收完,其余时间静止 */
+.cv-in {
+  opacity: 0;
+  animation: cv-stamp 0.72s cubic-bezier(0.2, 0.7, 0.25, 1) both;
+}
+.cv-d0 { animation-delay: 0s; }
+.cv-d1 { animation-delay: 0.12s; }
+.cv-d2 { animation-delay: 0.26s; }
+.cv-d3 { animation-delay: 0.42s; }
+.cv-d4 { animation-delay: 0.6s; }
+.cv-d5 { animation-delay: 0.72s; }
+.cv-d6 { animation-delay: 0.84s; }
+
+@keyframes cv-stamp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(1.015);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

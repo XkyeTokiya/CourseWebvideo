@@ -1,0 +1,218 @@
+/* ── 05-target-reading · S-A005 evidence-cards-with-provenance-boundary ──
+   主构图:总标签带(上)与推断边界带(下)把五张等权目标卡整体包夹在
+   “目标”语境中;两侧虚线轨随标签带落下而合拢成框。
+   机制 label-bounded-numbers:卡先等权浮现,标签带、边界带先后落位,
+   权重最终移向边界带。C009/C010:数字只作目标展示,无进度条/完成率。 */
+
+.tr-pad {
+  gap: 22px;
+}
+
+/* ── 标题区 ── */
+.tr-head {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex-shrink: 0;
+}
+.tr-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+}
+
+/* ── 包夹框架:上标签带 | 五卡 | 下边界带,两侧虚线轨 ── */
+.tr-frame {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 26px;
+}
+.tr-frame::before,
+.tr-frame::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 3px dashed var(--theme-dashed-line);
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 0.6s ease 0.15s;
+}
+.tr-frame::before {
+  left: 4px;
+}
+.tr-frame::after {
+  right: 4px;
+}
+
+/* 总标签带(上包夹) */
+.tr-band {
+  flex-shrink: 0;
+  border-radius: 10px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.tr-band-top {
+  background: var(--theme-structural);
+  color: var(--theme-paper);
+  padding: 14px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tr-band-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+/* 五张等权目标卡 */
+.tr-cards {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 18px;
+  transition: opacity 0.55s ease;
+}
+.tr-card {
+  flex: 1;
+  min-width: 0;
+  padding: 22px 22px 16px;
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  animation: tr-card-in 0.55s cubic-bezier(0.2, 0.7, 0.25, 1) both;
+}
+.tr-card:nth-child(2) {
+  animation-delay: 0.16s;
+}
+.tr-card:nth-child(3) {
+  animation-delay: 0.32s;
+}
+.tr-card:nth-child(4) {
+  animation-delay: 0.48s;
+}
+.tr-card:nth-child(5) {
+  animation-delay: 0.64s;
+}
+@keyframes tr-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.tr-dim {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+.tr-value {
+  margin: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.5;
+  color: var(--text);
+}
+.tr-year-tag {
+  margin: 0;
+  flex-shrink: 0;
+  border-top: var(--rule-w) dashed var(--rule);
+  padding-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--text-mute);
+}
+
+/* 推断边界带(下包夹) */
+.tr-band-bottom {
+  background: var(--theme-structural);
+  color: var(--theme-paper);
+  padding: 18px 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+}
+.tr-bound {
+  margin: 0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+.tr-neq {
+  font-family: var(--font-mono);
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--theme-warning);
+}
+.tr-bound-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: right;
+  min-width: 0;
+}
+.tr-meta-line {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--theme-paper);
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+/* 状态机:基础态 = 最终可见态;隐藏规则只挂 [data-state] */
+[data-state="numbers-displayed"] .tr-band-top,
+[data-state="numbers-displayed"] .tr-band-bottom {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+[data-state="numbers-displayed"] .tr-band-bottom {
+  transform: translateY(12px);
+}
+[data-state="numbers-displayed"] .tr-frame::before,
+[data-state="numbers-displayed"] .tr-frame::after {
+  transform: scaleY(0);
+}
+[data-state="targets-bounded"] .tr-cards {
+  opacity: 0.82;
+}
+[data-state="inference-bounded"] .tr-cards {
+  opacity: 0.58;
+}
+[data-state="inference-bounded"] .tr-band-bottom {
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow), 0 0 0 3px var(--theme-process);
+}

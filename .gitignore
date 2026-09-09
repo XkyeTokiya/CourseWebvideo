@@ -1,5 +1,6 @@
 .tmp/
 .playwright-cli/
+archives/
 output/
 # production-status is a rebuildable progress projection; keep only the small manual gate store.
 production-status/index.json

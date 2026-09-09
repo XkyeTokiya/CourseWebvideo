@@ -1,0 +1,292 @@
+/* ── 06-scale-layers · S-A006 image-with-insight-rail ──
+   主构图:左侧持续现场媒体(M002 占位)| 右侧三层洞察短条递进轨
+   + 底部支撑条。机制 persistent-media-reading:图片持续在场,
+   短条逐层加入并向下展开,阅读焦点沿轨道下移。
+   基础态 = 最终可见态,隐藏规则只挂 [data-state]。 */
+
+.sl-pad {
+  gap: 22px;
+}
+
+/* ── 标题区 ── */
+.sl-head {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex-shrink: 0;
+}
+.sl-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+}
+
+/* ── 主区:左媒体 | 右递进轨 ── */
+.sl-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 40px;
+}
+
+.sl-media {
+  margin: 0;
+  width: 640px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  transition: opacity 0.55s ease;
+}
+.sl-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--surface-3);
+  border: 2px dashed var(--theme-dashed-line);
+  overflow: hidden;
+}
+.sl-sketch {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.sl-photo-plate {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--theme-paper);
+  border: 2px solid var(--theme-structural);
+  border-radius: 8px;
+  padding: 7px 14px;
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+/* 递进轨:三层短条 + 底部支撑条 */
+.sl-rail {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sl-item {
+  position: relative;
+  flex-shrink: 0;
+}
+.sl-ghost,
+.sl-body {
+  border-radius: var(--r-card);
+}
+.sl-ghost {
+  border: 2px dashed var(--theme-dashed-line);
+  min-height: 76px;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.sl-ghost span {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text-faint);
+  opacity: 0.4;
+}
+.sl-body {
+  padding: 16px 28px;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+}
+.sl-title {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 800;
+  color: var(--text);
+}
+.sl-no {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--theme-process);
+  border: 2px solid var(--theme-process);
+  border-radius: 6px;
+  padding: 1px 9px;
+  background: var(--theme-process-surface);
+}
+.sl-arrow {
+  font-family: var(--font-mono);
+  color: var(--theme-process);
+}
+
+/* 展开/收起:grid-rows 过渡,层带向下生长 */
+.sl-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.6s ease 0.15s;
+}
+.sl-detail-in {
+  overflow: hidden;
+  min-height: 0;
+}
+.sl-detail-text {
+  margin: 12px 0 0;
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--text-2);
+  font-weight: 500;
+}
+.sl-flow {
+  margin: 10px 0 4px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+.sl-flow-arrow {
+  color: var(--theme-process);
+  font-weight: 400;
+}
+.sl-chain {
+  width: 300px;
+  height: auto;
+  display: block;
+  margin: 10px 0 4px;
+}
+.sl-dirs {
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+.sl-dirs-note {
+  margin: 8px 0 4px;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-mute);
+}
+
+/* 底部支撑条 */
+.sl-support {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  border-top: var(--rule-w) dashed var(--rule);
+  padding-top: 16px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease 0.4s, transform 0.5s ease 0.4s;
+}
+.sl-support-cap {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-mute);
+  flex-shrink: 0;
+}
+.sl-support-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 14px;
+}
+.sl-support-list li {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  border: 2px solid var(--rule);
+  border-left: 5px solid var(--theme-process);
+  border-radius: 8px;
+  background: var(--surface-2);
+  padding: 6px 18px;
+}
+
+/* ── 状态机(逐层累积展开:基础 0fr,到达层才 1fr) ── */
+[data-state="media-anchored"] .sl-body {
+  opacity: 0;
+  transform: translateX(22px);
+}
+[data-state="media-anchored"] .sl-ghost {
+  opacity: 1;
+}
+[data-state="media-anchored"] .sl-support {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+[data-state="flow-layered"] .sl-r1 .sl-detail,
+[data-state="chain-linked"] .sl-r1 .sl-detail,
+[data-state="value-and-support"] .sl-r1 .sl-detail {
+  grid-template-rows: 1fr;
+}
+
+[data-state="chain-linked"] .sl-r2 .sl-body,
+[data-state="value-and-support"] .sl-r2 .sl-body {
+  transition-delay: 0.1s, 0.1s;
+}
+[data-state="chain-linked"] .sl-r2 .sl-detail,
+[data-state="value-and-support"] .sl-r2 .sl-detail {
+  grid-template-rows: 1fr;
+  transition-delay: 0.2s;
+}
+
+[data-state="media-anchored"] .sl-r2 .sl-body,
+[data-state="flow-layered"] .sl-r2 .sl-body {
+  opacity: 0;
+  transform: translateX(22px);
+}
+[data-state="media-anchored"] .sl-r2 .sl-ghost,
+[data-state="flow-layered"] .sl-r2 .sl-ghost {
+  opacity: 1;
+}
+
+[data-state="media-anchored"] .sl-r3 .sl-body,
+[data-state="flow-layered"] .sl-r3 .sl-body,
+[data-state="chain-linked"] .sl-r3 .sl-body {
+  opacity: 0;
+  transform: translateX(22px);
+}
+[data-state="media-anchored"] .sl-r3 .sl-ghost,
+[data-state="flow-layered"] .sl-r3 .sl-ghost,
+[data-state="chain-linked"] .sl-r3 .sl-ghost {
+  opacity: 1;
+}
+
+[data-state="media-anchored"] .sl-support,
+[data-state="flow-layered"] .sl-support,
+[data-state="chain-linked"] .sl-support {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* step 4:焦点顺轨移到第三层与支撑 */
+[data-state="value-and-support"] .sl-media {
+  opacity: 0.8;
+}
+[data-state="value-and-support"] .sl-r3 {
+  filter: none;
+}
+[data-state="value-and-support"] .sl-r3 .sl-body {
+  box-shadow: var(--card-shadow), 0 0 0 3px var(--theme-process);
+}

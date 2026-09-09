@@ -1,0 +1,340 @@
+/* ── 07-wrap-check · S-A007 image-with-summary-rail ──
+   主构图:左侧回扣开篇的现场媒体(M003 占位)| 右侧自上而下:
+   总结带 → 应用链检验行 → 下一集入口行。
+   机制 persistent-media-reading:图片持续在场,右列按阅读顺序逐行补充。
+   基础态 = 最终可见态,隐藏规则只挂 [data-state];各行首拍占位,零回流。 */
+
+.wc-pad {
+  gap: 22px;
+}
+
+/* ── 标题区 ── */
+.wc-head {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex-shrink: 0;
+}
+.wc-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+}
+
+/* ── 主区:左媒体 | 右三行收束轨 ── */
+.wc-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 40px;
+}
+
+.wc-media {
+  margin: 0;
+  width: 640px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.wc-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--surface-3);
+  border: 2px dashed var(--theme-dashed-line);
+  overflow: hidden;
+}
+.wc-sketch {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.wc-photo-plate {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--theme-paper);
+  border: 2px solid var(--theme-structural);
+  border-radius: 8px;
+  padding: 7px 14px;
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.wc-rail {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ── 总结带:阶段判断 + 继续推进项(+ step 4 重心行) ── */
+.wc-summary {
+  flex-shrink: 0;
+  background: var(--theme-structural);
+  color: var(--theme-paper);
+  border-radius: 12px;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 7px 8px 0 var(--theme-offset-shadow);
+  transition: box-shadow 0.5s ease;
+}
+.wc-judgment {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-family: var(--font-display-cn);
+  font-size: 33px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
+.wc-neq {
+  font-family: var(--font-mono);
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--theme-warning);
+}
+.wc-continue {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+}
+.wc-continue li {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--theme-paper);
+  opacity: 0.85;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 3px 14px;
+  white-space: nowrap;
+}
+.wc-shift {
+  margin: 0;
+  display: none;
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--theme-paper);
+  border-top: 2px dashed rgba(255, 255, 255, 0.35);
+  padding-top: 10px;
+}
+.wc-shift-arrow {
+  font-family: var(--font-mono);
+  color: var(--theme-process);
+}
+
+/* ── 应用链检验行:检验问句(step 2)+ 链条逐环指向检验目标(step 3) ── */
+.wc-check {
+  flex: 1;
+  min-height: 0;
+  padding: 22px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 14px;
+}
+.wc-check-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-mute);
+}
+.wc-criteria {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+}
+.wc-criterion {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display-cn);
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--text);
+  border: 2px solid var(--rule);
+  border-radius: 10px;
+  background: var(--surface-3);
+  padding: 14px 18px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.wc-criterion:nth-child(2) {
+  transition-delay: 0.18s;
+}
+.wc-criterion:nth-child(3) {
+  transition-delay: 0.36s;
+}
+.wc-ring {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px dashed var(--theme-process);
+  flex-shrink: 0;
+}
+.wc-chain {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+.wc-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display-cn);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 2px solid var(--theme-structural);
+  border-radius: 8px;
+  padding: 8px 14px;
+  white-space: nowrap;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.wc-node-arrow {
+  font-family: var(--font-mono);
+  color: var(--theme-process);
+  font-weight: 400;
+}
+.wc-node:nth-child(2) {
+  transition-delay: 0.3s;
+}
+.wc-node:nth-child(3) {
+  transition-delay: 0.6s;
+}
+.wc-node:nth-child(4) {
+  transition-delay: 0.9s;
+}
+[data-state="chain-checked"] .wc-verdict {
+  transition-delay: 1.2s;
+}
+.wc-verdict {
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 900;
+  color: var(--theme-process);
+  border-bottom: 4px solid var(--theme-process);
+  padding-bottom: 2px;
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+/* ── 下一集入口行(step 4;C013 只显示入口词) ── */
+.wc-entry {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  border-top: var(--rule-w) dashed var(--rule);
+  padding-top: 18px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.wc-entry-cap {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+  flex-shrink: 0;
+}
+.wc-entry-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+}
+.wc-entry-word {
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--theme-structural);
+  background: var(--theme-paper);
+  border: 3px solid var(--theme-structural);
+  border-radius: 10px;
+  padding: 8px 26px;
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+/* ── 状态机(自上而下逐行补充) ── */
+[data-state="summary-anchored"] .wc-criterion,
+[data-state="summary-anchored"] .wc-node,
+[data-state="summary-anchored"] .wc-verdict {
+  opacity: 0;
+  transform: translateY(10px);
+}
+[data-state="summary-anchored"] .wc-node {
+  transform: translateY(10px) scale(0.94);
+}
+[data-state="summary-anchored"] .wc-entry {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+[data-state="criteria-shown"] .wc-node,
+[data-state="criteria-shown"] .wc-verdict {
+  opacity: 0;
+  transform: translateY(10px) scale(0.94);
+}
+[data-state="criteria-shown"] .wc-verdict {
+  transform: translateY(10px);
+}
+[data-state="criteria-shown"] .wc-entry {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+[data-state="chain-checked"] .wc-entry {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* step 4:总结带聚焦更新为最终判断重心 */
+[data-state="judgment-settled"] .wc-summary {
+  box-shadow: 7px 8px 0 var(--theme-offset-shadow), 0 0 0 3px var(--theme-process);
+}
+[data-state="judgment-settled"] .wc-shift {
+  display: block;
+  animation: wc-rise 0.5s ease 0.25s both;
+}
+@keyframes wc-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

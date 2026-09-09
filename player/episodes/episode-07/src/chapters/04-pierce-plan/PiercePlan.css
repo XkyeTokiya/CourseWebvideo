@@ -1,0 +1,331 @@
+/* ── 04-pierce-plan · S-A004 layered-bands-with-side-notes ──
+   主构图:顶部政策身份版 | 左“支撑对象”层带(三行逐层) | 右“侧注区”
+   面板(观察维度纵向维度条 + 主动标识载体解释卡)。
+   机制 layered-band-accumulation:三条文字带逐层建立并全部保持,
+   层间关系由相邻位置承载。基础态 = 最终可见态,隐藏规则只挂
+   [data-state];各槽位首拍即在 DOM 占位,零回流。 */
+
+.pp-pad {
+  gap: 20px;
+}
+
+/* ── 标题区 ── */
+.pp-head {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex-shrink: 0;
+}
+.pp-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+}
+.pp-keyword {
+  color: var(--theme-process);
+}
+
+/* ── 政策身份版(名称 + 印发主体 + 文号 + 落款,exact 逐字) ── */
+.pp-identity {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 26px 44px;
+}
+.pp-doc {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 33px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--text);
+}
+.pp-id-meta {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: right;
+}
+.pp-meta-line {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  font-weight: 500;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+
+/* ── 下部双柱:左支撑对象层带 | 右侧注区面板 ── */
+.pp-lower {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 30px;
+}
+
+/* 支撑对象带:三条层行,并列等权 */
+.pp-support {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.pp-support-cap {
+  margin: 0;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-mute);
+}
+.pp-support-band {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-2);
+  border: var(--bw-1) solid var(--rule);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+.pp-srow {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+.pp-srow + .pp-srow {
+  border-top: var(--rule-w) dashed var(--rule);
+}
+.pp-sghost,
+.pp-sbody {
+  position: absolute;
+  inset: 0;
+}
+.pp-sghost {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.pp-sbody {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 0 44px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease 0.12s, transform 0.5s ease 0.12s;
+}
+.pp-srow:nth-child(2) .pp-sbody {
+  transition-delay: 0.32s, 0.32s;
+}
+.pp-srow:nth-child(3) .pp-sbody {
+  transition-delay: 0.52s, 0.52s;
+}
+.pp-sverb {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--theme-process);
+  border: 2px solid var(--theme-process);
+  border-radius: 6px;
+  background: var(--theme-process-surface);
+  padding: 4px 14px;
+}
+.pp-sname {
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+[data-state="identity-established"] .pp-sbody {
+  opacity: 0;
+  transform: translateY(16px);
+}
+[data-state="identity-established"] .pp-sghost {
+  opacity: 1;
+}
+
+/* 侧注区:工程笔记页边注记样式(虚线框) */
+.pp-notes {
+  width: 600px;
+  flex-shrink: 0;
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  padding: 22px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+}
+.pp-notes-cap {
+  margin: 0;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-mute);
+}
+
+/* 维度条:纵向排布,step 3 逐条铺开 */
+.pp-dims {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.pp-dim {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.pp-dim::before {
+  content: "";
+  width: 11px;
+  height: 11px;
+  background: var(--theme-structural);
+  flex-shrink: 0;
+}
+.pp-dim-name {
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--text);
+  flex: 1;
+}
+.pp-dim-tag {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--theme-process);
+  border: 2px solid var(--theme-process);
+  border-radius: 999px;
+  padding: 2px 12px;
+  background: var(--theme-process-surface);
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+.pp-dim:nth-child(3) .pp-dim-tag {
+  color: var(--theme-warning);
+  border-color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+}
+
+[data-state="identity-established"] .pp-notes-cap,
+[data-state="support-shown"] .pp-notes-cap,
+[data-state="identity-established"] .pp-dim,
+[data-state="support-shown"] .pp-dim {
+  opacity: 0;
+  transform: translateY(12px);
+}
+[data-state="dimensions-shown"] .pp-dim:nth-child(2) {
+  transition-delay: 0.14s;
+}
+[data-state="dimensions-shown"] .pp-dim:nth-child(3) {
+  transition-delay: 0.28s;
+}
+[data-state="dimensions-shown"] .pp-dim:nth-child(4) {
+  transition-delay: 0.42s;
+}
+[data-state="dimensions-shown"] .pp-dim:nth-child(5) {
+  transition-delay: 0.56s;
+}
+[data-state="dimensions-shown"] .pp-dim:nth-child(6) {
+  transition-delay: 0.7s;
+}
+[data-state="identity-established"] .pp-dim-tag,
+[data-state="support-shown"] .pp-dim-tag,
+[data-state="dimensions-shown"] .pp-dim-tag {
+  opacity: 0;
+}
+[data-state="side-notes-complete"] .pp-dim:nth-child(2) .pp-dim-tag {
+  transition-delay: 1.75s;
+}
+[data-state="side-notes-complete"] .pp-dim:nth-child(3) .pp-dim-tag {
+  transition-delay: 1.85s;
+}
+[data-state="side-notes-complete"] .pp-dim:nth-child(4) .pp-dim-tag {
+  transition-delay: 1.95s;
+}
+[data-state="side-notes-complete"] .pp-dim:nth-child(5) .pp-dim-tag {
+  transition-delay: 2.05s;
+}
+[data-state="side-notes-complete"] .pp-dim:nth-child(6) .pp-dim-tag {
+  transition-delay: 2.15s;
+}
+
+/* 主动标识载体解释卡:step 4 聚焦落位 */
+.pp-carrier {
+  flex-shrink: 0;
+  background: var(--surface-2);
+  border: var(--bw-1) solid var(--rule);
+  border-left: 5px solid var(--theme-process);
+  border-radius: 10px;
+  padding: 16px 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.pp-carrier-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 23px;
+  font-weight: 800;
+  color: var(--text);
+}
+.pp-carrier-line {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--text-2);
+  font-weight: 500;
+}
+.pp-sketch {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.pp-wave {
+  opacity: 0.9;
+}
+[data-state="identity-established"] .pp-carrier,
+[data-state="support-shown"] .pp-carrier,
+[data-state="dimensions-shown"] .pp-carrier {
+  opacity: 0;
+  transform: translateY(14px);
+}
+[data-state="side-notes-complete"] .pp-wave {
+  animation: pp-pulse 0.9s ease-out 0.5s 1 both;
+}
+@keyframes pp-pulse {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.9;
+  }
+}

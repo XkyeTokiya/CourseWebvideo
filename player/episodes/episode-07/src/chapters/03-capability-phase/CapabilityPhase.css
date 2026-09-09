@@ -1,0 +1,228 @@
+/* ── 03-capability-phase · S-A003 evidence-cards-with-provenance-boundary ──
+   主构图:顶部来源证据带 | 下方“一条线”链条 —— 起步建设(节点)
+   → 线段 → 能力增强卡 → 线段 → 行业推广卡。
+   机制 evidence-anchored-continuity:证据带建立权威样态,方向卡为线上的
+   阶段主体,连续线在卡行内自左向右展开。基础态 = 最终可见态,
+   隐藏规则只挂 [data-state];线与节点首拍即在 DOM 占位,零回流。 */
+
+.cp-pad {
+  gap: 20px;
+}
+
+/* ── 标题区 ── */
+.cp-head {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex-shrink: 0;
+}
+.cp-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+}
+
+/* ── 顶部来源证据带(已核验来源样态) ── */
+.cp-band {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+  padding: 26px 44px;
+}
+.cp-band-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+.cp-doc {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--text);
+}
+.cp-doc-no {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text-2);
+}
+.cp-stamp {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--theme-process);
+  border: 3px solid var(--theme-process);
+  border-radius: 8px;
+  padding: 13px 20px 13px 24px;
+  background: var(--theme-process-surface);
+  transform: rotate(-5deg);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+/* ── 主区:连续线链条(起点节点 → 卡 → 卡) ── */
+.cp-flow {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+}
+.cp-origin {
+  width: 240px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.cp-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--theme-structural);
+  border: 3px solid var(--theme-paper);
+  box-shadow: 3px 4px 0 var(--theme-offset-shadow);
+  flex-shrink: 0;
+}
+.cp-origin-label {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+.cp-seg {
+  position: relative;
+  align-self: center;
+  flex: 0 0 84px;
+  height: 3px;
+  margin: 0 6px;
+  background: var(--theme-process);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.cp-seg::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-top: 3px solid var(--theme-process);
+  border-right: 3px solid var(--theme-process);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* ── 方向卡:线上阶段,等权、全高、一致骨架 ── */
+.cp-card {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+.cp-ghost,
+.cp-body {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-card);
+}
+.cp-ghost {
+  border: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.cp-body {
+  padding: 34px 46px 30px;
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease 0.12s, transform 0.5s ease 0.12s;
+}
+.cp-card + .cp-card .cp-body {
+  transition-delay: 0.26s, 0.26s;
+}
+.cp-tag {
+  margin: 0;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--theme-process);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cp-tag::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: var(--theme-process);
+  flex-shrink: 0;
+}
+.cp-word-slot {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+}
+.cp-word {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+}
+.cp-body .rule {
+  flex-shrink: 0;
+}
+.cp-sub {
+  margin: 20px 0 0;
+  font-size: 25px;
+  line-height: 1.6;
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+[data-state="anchor-established"] .cp-body {
+  opacity: 0;
+  transform: translateY(18px);
+}
+[data-state="anchor-established"] .cp-ghost {
+  opacity: 1;
+}
+
+/* step 2:两卡先后补齐,完成后等权;step 3:起点现身,连续线自左向右展开
+   flow 内 span 序:seg(1) seg(2) */
+[data-state="continuity-drawn"] .cp-origin {
+  opacity: 1;
+}
+[data-state="continuity-drawn"] .cp-seg {
+  animation: cp-draw 0.45s ease-out both;
+}
+[data-state="continuity-drawn"] .cp-seg:nth-of-type(2) {
+  animation-delay: 0.35s;
+}
+@keyframes cp-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
