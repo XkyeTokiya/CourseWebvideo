@@ -3,10 +3,11 @@
 - 正式输入只从 `episodes/<id>/inputs/` 消费:A-page v6 与 visual rough v4 必须对应同一 episode 且来源完整,每页 `nx` 非空;若 A-page 声明 `approved_text`,其文件必须可解析。缺必要内容时停止并列缺项,不降级为通用 article 流程。Confidence: 0.95
 - 上游任务包和正式 inputs 始终只读;只复制经批准文件到 Player 消费入口,不反向修改、替代或用过程目录/历史工件补齐。Confidence: 0.95
 - 新实例只在目标 `project.json` 不存在时运行 `pnpm episode:new`;实例已存在时不得覆盖或重复创建,先盘点已有 inputs、脚手架和状态,再只补当前阶段获准的缺项。Confidence: 0.9
-- `script.md` 按 A-page 顺序从各页 `nx` 无损派生,只增加章节标题与已确定 narration beat 分隔;不得改写、重排或为统一步数补删批准口播。Confidence: 0.95
+- Phase 1 先建立只含 A-page 顺序、source ownership、narrative role、相邻关系和 block 状态的 Episode Map;不得提前写 scene、step 或页面配方,避免退化为 outline-first。Confidence: 0.95
+- 每个 script block 按当前 A-page 的 `nx` 无损派生,只增加章节标题与已确定 narration beat 分隔;局部审查通过后冻结,再编译同章 outline,不得改写、重排或为统一步数补删批准口播。Confidence: 0.95
 - Narration beat 由批准口播中的独立语义焦点决定;visual rough 的 G/U、槽位数、recipe 或时长不得反推 step 数。相邻 beat 可复用同一 semantic state,不得为凑固定数量拆合。Confidence: 0.95
-- `outline.md` 决定章节顺序、持续 base-scene、结构指纹、关系机制、内容槽位、step 指令、accent/custom 例外和素材清单,但不写组件、CSS、动画类型或毫秒值。Confidence: 0.95
+- 每个 outline block 从同章已冻结 script 派生,决定持续 base-scene、结构指纹、关系机制、内容槽位、step 指令、accent/custom 例外和本章素材;全局 counts、视觉调度与素材汇总只在装配时生成,不写组件、CSS、动画类型或毫秒值。Confidence: 0.95
 - A-page 默认对应一个持续 base-scene;额外 base-scene 或 custom-scene 必须说明 base/accent 均不足的必要性并在 Checkpoint Plan 确认。标题省略仅限现有画面已完整表达同一判断的删除性例外,有疑即保留。Confidence: 0.9
 - visual rough 声明的媒体 ID、角色与资格必须进入素材清单;缺媒体时标记待提供或 placeholder,不得搜索、生成或借用无关图片冒充正式证据。Confidence: 0.95
-- script 与 outline 完成后先分别按当前 Skill 自检并修正,Courseplay outline 再执行场景连续性审查;随后停在 Checkpoint Plan,报告 Base/Accent/Custom/Narration 规模并等待五项确认。Confidence: 0.95
+- 每章 script/outline 分别局部自检并冻结;装配正式 `script.md`/`outline.md` 后只审查信息覆盖、章节衔接、相邻视觉差异和全局统计,失败时修最小失效 block,不得整稿重写;通过后停在 Checkpoint Plan 并报告 Base/Accent/Custom/Narration 规模。Confidence: 0.95
 - `project.json` 状态必须反映真实可播放阶段:只有入口和首章实际就位后才从 `planned` 改为 `in-progress`;`progress` 按已注册章节更新,每次改动后运行 `episode:check`。Confidence: 0.9
