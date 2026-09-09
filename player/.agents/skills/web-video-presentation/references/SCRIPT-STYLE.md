@@ -3,7 +3,7 @@
 把书面文章转成"说出来不别扭"的口播稿，默认 **B 站风格**。其他平台风格
 变体见末尾。
 
-> **三条底线**（任一不过，整稿重写）：
+> **三条底线**（任一不过不得冻结；定位到最小失效 chapter block 回修）：
 >
 > 1. **信息保留度 ≥ 60%**（详见下一节）—— 口播稿是"换说法"，不是
 >    "摘要"。删冗余 / 修饰可以，删事实 / 数据 / 案例 / 论证链不行。
@@ -47,6 +47,11 @@
 **如果原文确实太长**（比如 5000+ 字 article 做 3 分钟视频）→ 不要靠
 压缩硬塞，**告诉用户**："原文 X 字，按 60% 留存最少需要 ~Y 分钟视频，
 要么拉长视频要么拆成多集"。**不要**自作主张缩到 30% 然后假装做完了。
+
+**判定失败时怎么修**：先找出缺失事实、案例、论证步骤对应的 source span，
+再回修拥有这些 span 的 chapter script blocks。装配后的全局比例低于 60%，
+不等于所有章节都失败；禁止重写无关的冻结 block。只有 Episode Map 本身把
+source ownership 或章节边界划错时，才重新划分受影响范围。
 
 ---
 
@@ -332,22 +337,23 @@ AI 写中文时有强迫症式的整齐感。**口播比文字更怕排比** —
 
 ---
 
-## 转写完之后做什么
+## 章节纵切写作与审查
 
-### 1. 落盘 + 切节拍
+### 1. 写入当前 chapter script block + 切节拍
 
-落到 `script.md`，原文存在时保留为 `article.md`。检查每个 `---` 是否对应
-可独立成立的 narration beat；长段本身不是拆分理由，短段也不能只是为了增加
-step。Courseplay 以批准 `nx` 为准，不得为了视觉槽位、统一时长或模板步数
-新增口播焦点。
+按 Episode Map 的 source ownership，把当前章落到
+`.tmp/player-phase1/<episode-id>/script/<chapter-id>.md`；原文存在时仍保留为
+`article.md`。检查每个 `---` 是否对应可独立成立的 narration beat；长段本身
+不是拆分理由，短段也不能只是为了增加 step。Courseplay 以当前 A-page 的批准
+`nx` 为准，不得为了视觉槽位、统一时长或模板步数新增口播焦点。
 
-> ⚠️ **自检是硬性流程**：下面的三层自检（形式 / 风骨 / 念出来）写完
-> `script.md` 后**必须**全部走完 → 修改 → 再继续。**禁止**写完直接进
-> 入"产出 outline"环节。
+> ⚠️ **自检是硬性流程**：下面的三层自检（形式 / 风骨 / 念出来）在每个
+> chapter script block 写完后**必须**全部走完 → 局部修改 → 冻结。禁止未审
+> script block 直接进入同章 outline 编译。
 >
 > **执行方式**（按能力降级）：
 >
-> 1. **优先 Agent Teams**：开一个独立 reviewer agent，传入 `script.md`
+> 1. **优先 Agent Teams**：开一个独立 reviewer agent，传入当前 script block
 >    + 本节三层清单，让它**逐项核查 + 出结论**（哪几条 fail + 证据 +
 >    改写建议）。
 > 2. **其次 subAgent**：当前 agent 没 Teams 但能开 subagent，用 subagent
@@ -355,13 +361,12 @@ step。Courseplay 以批准 `nx` 为准，不得为了视觉槽位、统一时�
 > 3. **都没有**：自己**严格逐项**核查，特别是「念出来」一定要按字面
 >    执行。
 >
-> 拿到结论后**先按 fail 项改稿子，再产出 outline**。
+> 拿到结论后**先按 fail 项修当前 block，再冻结并编译同章 outline**。
 
-### 2. 形式层自检（8 条原则）
+### 2. Chapter-local 形式层自检（8 条原则）
 
-- [ ] **信息保留度 ≥ 60%**（**最高优先级**，不过整稿重写）—— 用
-      `wc -m script.md` / `wc -m article.md` 算比例；关键数字 / 案例 /
-      论证链逐项对照原文，不能整段消失
+- [ ] 当前 block 拥有的 source span 已充分覆盖；关键数字 / 案例 / 论证链
+      逐项对照，不能整段消失。`≥ 60%` 的全文比例留到装配后全局检查
 - [ ] 没出现 emoji / 原文书名号《》 / 括号补充 /「据 XX 报告显示」类
       引文格式（口播念不出来）
 - [ ] 每句 ≤ 20 字（B 站基准）？
@@ -371,7 +376,7 @@ step。Courseplay 以批准 `nx` 为准，不得为了视觉槽位、统一时�
 - [ ] 没"首先 / 其次 / 最后"结构词？
 - [ ] 都是具体例子，不是抽象描述？
 
-### 3. 风骨层自检（去 AI 味五类）—— **最重要**
+### 3. Chapter-local 风骨层自检（去 AI 味五类）—— **最重要**
 
 逐条扫一次，**任何一条没通过就回去改**：
 
@@ -386,7 +391,7 @@ step。Courseplay 以批准 `nx` 为准，不得为了视觉槽位、统一时�
 - [ ] 全文是否有用 "恰恰 / 反而 / 正是" 包装的句子？**去掉这些词
       意思变了吗**？没变就删。
 
-### 4. 念出来测试（终极标准）
+### 4. Chapter-local 念出来测试（终极标准）
 
 随便挑 3 段念出来 —— 不要在心里默读，**真的张嘴念**。
 
@@ -396,18 +401,31 @@ step。Courseplay 以批准 `nx` 为准，不得为了视觉槽位、统一时�
 
 **改完再念。直到三段念下来都自然为止**。
 
-### 5. 在同一次工作里产出 outline
+### 5. 冻结当前 script block，再编译同章 outline
 
-`script.md` 落盘 + 自检通过后，**不要立即停下来等用户**——按
-[`OUTLINE-FORMAT.md`](OUTLINE-FORMAT.md) 在**同一次思考**里继续产出
-`outline.md`（章节切分 + 每步屏幕内容 + 章节级信息池），然后再进入
-Checkpoint Plan 让用户一次对齐 5 件事（稿子 / outline / 主题 / 素材
-/ 开发模式）。
+当前 script block 三层自检通过后标记 `script-frozen`，按
+[`OUTLINE-FORMAT.md`](OUTLINE-FORMAT.md) 编译对应 chapter outline block。
+不要在章节之间停下来等用户；Phase 1 内部保持自动连续执行。
 
-> **流程变化提醒**：旧流程把 script / outline 切成两个 checkpoint，
-> 新版合并为一个（详见 SKILL.md「Phase 1.2 一次产出」）。理由是 outline
-> 不再写动画后，它的依赖只剩"稿子切节拍 + article 抽信息池"，可以
-> 和稿子一起做完。
+“同一个 Phase 1”只表示用户最终仍在一个 Checkpoint Plan 同时对齐稿子、
+outline、主题、素材和开发模式，不表示 script 与 outline 必须位于同一条模型
+响应或同一次思考。允许每个 chapter 使用独立、可恢复的推理事务，但依赖方向
+必须始终是当前章 `script-frozen → outline`。
+
+### 6. 装配后的 script global review
+
+全部 chapter script blocks 冻结后，按 Episode Map 顺序装配 `script.md`，再
+检查真正的跨章约束：
+
+- [ ] `len(script.md) ÷ len(article.md) ≥ 0.6`；
+- [ ] 所有 source spans 都有 owning chapter，关键事实、案例、限制条件和论证链
+      没有跨章遗漏；
+- [ ] 开头钩子、章节衔接、全文语气、重复表达和总长度合理；
+- [ ] narration beat 顺序稳定，章节连接处没有重复或断裂。
+
+Global Review 发现 fail 时，记录缺失或冲突的 source span，定位 owning
+chapter，只将对应 block 标记 stale 并回修。回修后重新装配和复核受影响的
+全局项；不得借机重写无关章节或重新生成完整 `script.md`。
 
 ---
 
