@@ -3,6 +3,11 @@
 `outline.md` 是从批准口播、原始文章和视觉粗设交接到章节开发的中间契约。
 它面向人阅读和编辑，使用 Markdown；不写成 JSON、YAML、CSS 或动画脚本。
 
+Phase 1 不直接创作一份不断增长的完整 `outline.md`。作者先从每个已冻结的
+chapter script block 编译同章 outline block，局部审查通过后冻结；全部章节
+完成后，再按 Episode Map 装配正式 `outline.md` 并生成全局派生段落。这个作者
+模型不改变最终 Markdown 格式，也不改变 `script → outline` 的权威方向。
+
 > ## outline 的职责
 >
 > outline 必须同时说明：
@@ -31,7 +36,8 @@
 >
 > **写 outline 前必读**：先读 [`CHAPTER-CRAFT.md`](CHAPTER-CRAFT.md) 的来源原则，
 > 再读本文件的格式。
-> `script.md` 决定节拍与顺序；`article.md` 如有则补充画面信息池。Courseplay
+> 当前章已冻结的 script block 决定该章节拍与顺序；装配后的 `script.md` 用于
+> 全局复核。`article.md` 如有则补充画面信息池。Courseplay
 > 另以 A-page、visual rough 与素材清单为权威来源；这些职责不能互换。
 
 ---
@@ -42,7 +48,8 @@
 
 | 来源 | outline 从中读取什么 | 不应做什么 |
 |---|---|---|
-| `script.md` | 章节边界、narration beat 顺序、口播焦点和估时 | 不把标题、序号或实现说明混入口播 |
+| 当前章已冻结的 script block | 本章 narration beat 顺序、口播焦点和估时 | 不从未冻结稿或别章内容反推当前章 outline |
+| 装配后的 `script.md` | 全局章节顺序、衔接与完整 narration beat 序列 | 不把标题、序号或实现说明混入口播 |
 | `article.md`（如有） | 画面信息池：数字、引用、案例、出处、时间、对比等 | 不改写原文，不用文章细节打乱批准口播顺序 |
 | A-page v5/v6 | 批准语义、`nx`、screen source/guidance、静默护栏、证据关系、进入/退出条件 | 不改写批准口播；不保存最终文案，不增加 guidance 覆盖表或 Beat 来源登记 |
 | visual rough v2/v3 | 页面配方、基础骨架、媒体区、S/G 槽位和关系载体 | 不省略媒体 ID、媒体角色或原图限制；不复制 A-page 文本；v3 普通 S/G 不产生最终逐项落屏义务 |
@@ -87,7 +94,25 @@ Outline 只投影步骤、状态、持续元素、聚焦关系和制作指令，
 
 ---
 
-## 二、文件总体结构
+## 二、工作表示与文件总体结构
+
+### 2.1 Chapter-local 与 global-derived
+
+Phase 1 工作区的 `outline/<chapter-id>.md` 只保存当前章可独立审查的契约：
+
+| Chapter-local（逐章确定并冻结） | Global-derived（全部章节完成后生成） |
+|---|---|
+| 章节标题、A-page / Chapter | 正文总时长、章节数、Narration beats 总数 |
+| 基础场景、页面配方、核心判断、结构指纹 | Base / Accent / Custom counts |
+| 语义关系、关系机制、持续元素、内容槽位 | 整集视觉调度表 |
+| 信息池、step table、accent / custom 声明 | 相邻章节差异检查 |
+| 当前章素材需求 | 按章节汇总的完整素材清单 |
+
+处理 A004 时不得同步重写顶部总计、整集调度表或其他章节。局部 block 只需
+携带自身装配所需的字段；global-derived 内容在所有 block 冻结后计算。正式
+`outline.md` 仍严格使用下面的现有格式。
+
+### 2.2 正式文件结构
 
 每期正文章节前默认加入独立封面：
 
@@ -127,7 +152,8 @@ Courseplay 模式用下面五行替换普通项目的“章节数”行：
 base-scene 必须说明必要性并进入 Checkpoint Plan；不设置固定 beat 数、accent 数
 或 scene/step 比例阈值。
 
-Courseplay 在 metadata 后、正文章节前必须加入整集视觉调度表：
+Courseplay 在 metadata 后、正文章节前必须加入整集视觉调度表。该表是
+global-derived 内容，只在所有 chapter blocks 冻结后装配：
 
 ```markdown
 ## 整集视觉调度
@@ -330,7 +356,8 @@ step 超过 10 秒、一个 step 内包含多个内部动作或相邻 step 复�
 
 ### 5.2 素材清单
 
-outline 末尾按章节列出所有媒体需求：
+每个 chapter outline block 记录本章媒体需求；装配时在 outline 末尾按章节
+汇总所有媒体需求：
 
 ```markdown
 ## 素材清单
@@ -361,33 +388,31 @@ keyframe 或毫秒值。章节实现阶段决定具体动画与持续微动。�
 
 ---
 
-## 七、写完后的自检与审查
+## 七、Chapter-local 与 global review
 
-写完 outline 后必须先自检、修复，再进入 Checkpoint Plan；不能拿未经修复的初稿
-直接请求用户对齐。默认 `review_mode: self`，只有用户或自动化流程明确指定
-`review_mode: independent` 时才调用 reviewer；reviewer 只报告，原作者负责修复。
+每个 outline block 写完后先做 chapter-local review，通过后冻结。全部 block
+装配后再做 global review；两个层级都修复完才进入 Checkpoint Plan。默认
+`review_mode: self`，只有用户或自动化流程明确指定 `review_mode: independent`
+时才调用 reviewer；reviewer 只报告，原作者负责最小范围修复。
 
-### 7.1 通用自检
+### 7.1 Chapter-local 通用自检
 
-- [ ] 章节边界与 `script.md` 顺序一致，口播没有被标题或实现说明污染
+- [ ] 本章边界与已冻结 script block 一致，口播没有被标题或实现说明污染
 - [ ] 每个 narration beat 都对应一个 step，step 数与 `narrations.ts` 计划一致
 - [ ] 每章都有信息池；有 article 时每章至少 3 条可追溯来源
 - [ ] 每个 step 都有清晰的屏幕内容和 `(~Ts)` 估时，不写动画、CSS、实现手段或微观时长
 - [ ] 每个 step 都说明相对前一步新增、保留、弱化、聚焦、更新或收束了什么
 - [ ] 首个 step 说明基础槽位；连续 step 复用主构图，或解释为什么必须换构图
-- [ ] 各章估时合计与顶部正文时长误差小于 10%
-- [ ] 封面独立、无口播、固定 15 秒，不计入正文统计
-- [ ] 末尾素材清单按章节列出，并明确 ✓ / ⚠️ / placeholder 状态
+- [ ] 本章素材需求完整，并明确 ✓ / ⚠️ / placeholder 状态
 
-### 7.2 Courseplay 追加自检
+### 7.2 Chapter-local Courseplay 追加自检
 
 - [ ] 已确认当前使用的 A-page/rough 版本和内容来源；若显式调用 handoff，版本组合符合工具支持范围
 - [ ] 当前章节的批准口播、页面指导和素材来源明确；若显式调用 handoff，按其公开
       作者契约卡和 canonical example 准备输入
-- [ ] A-page 顺序默认对应 chapter 顺序；若偏离已说明章节边界理由并列入 Checkpoint Plan
-- [ ] 每个 A-page 默认有一个 base-scene；额外 base-scene 写明必要性并列入 Checkpoint Plan
-- [ ] 每章声明页面配方、结构指纹、语义关系、关系机制、持续元素和内容槽位
-- [ ] 顶部 Base / Accent / Custom / Narration beats 统计与正文一致
+- [ ] 当前 A-page 与 Episode Map 的 chapter ownership 一致；若偏离已说明边界理由
+- [ ] 当前 A-page 默认有一个 base-scene；额外 base-scene 写明必要性并列入 Checkpoint Plan
+- [ ] 当前章声明页面配方、结构指纹、语义关系、关系机制、持续元素和内容槽位
 - [ ] 每个 base-scene / custom-scene step 引用有效 scene 与章节内 semantic state；
       state 描述稳定画面，可以重复，不使用固定全局标签；accent step 使用固定
       `K-Axxx-xx · accent` 两段格式
@@ -403,11 +428,27 @@ keyframe 或毫秒值。章节实现阶段决定具体动画与持续微动。�
 - [ ] 每个 custom-scene 都说明 base-scene 与 accent-frame 均不足，并已确认
 - [ ] 没有把 narration beat 数称为页面数，也没有仅因 step 超过 10 秒而拆分、换场或判定失败
 
-### 7.3 Courseplay 独立审查
+### 7.3 装配后的 global review
 
-完成通用自检后，再按 [`COURSEPLAY-OUTLINE-REVIEW.md`](COURSEPLAY-OUTLINE-REVIEW.md)
-审查。专项协议不替代封面、信息池、时长、素材和批准口播映射检查；若存在必须
-修改项，先修复再进入 Checkpoint Plan。
+- [ ] chapter 顺序与 Episode Map、装配后的 `script.md` 一致，没有缺章或重复章
+- [ ] 各章估时合计与顶部正文时长误差小于 10%
+- [ ] 封面独立、无口播、固定 15 秒，不计入正文统计
+- [ ] Base / Accent / Custom / Narration beats 统计与章节正文一致
+- [ ] 整集视觉调度每章一行，且相邻章节没有仅换文字的主构图、卡片比例、
+      强调机制或固定 chrome 重复
+- [ ] 完整素材清单由各章媒体需求汇总，没有遗漏或改变媒体 ID / 资格
+- [ ] 没有所有章节机械采用相同步数、相同状态链或相同强调方式的系统性退化
+
+Global Review 的每个 fail 都必须指向具体 chapter block 或 global-derived 段落。
+只将真正依赖该问题的范围标记 stale；不得重新生成无关 chapter blocks 或完整
+`outline.md`。
+
+### 7.4 Courseplay 专项审查
+
+每章按 [`COURSEPLAY-OUTLINE-REVIEW.md`](COURSEPLAY-OUTLINE-REVIEW.md) 的
+`review_scope: chapter` 审查；装配后再以 `review_scope: global` 审查。专项
+协议不替代封面、信息池、时长、素材和批准口播映射检查；若存在必须修改项，
+先按最小失效范围修复，再进入 Checkpoint Plan。
 
 最后确认：outline 是否让 chapter agent 知道“固定什么、变化什么、何时换场”，同时
 仍保留组件、CSS 和动画的设计空间。若答案是否定的，outline 尚未完成。
