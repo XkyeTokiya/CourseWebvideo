@@ -92,6 +92,7 @@ pnpm lint                # 静态检查
 pnpm test:tools          # 工具链测试
 pnpm build               # 校验并构建生产版本
 pnpm build:inspect       # 校验构建文件的归属、大小与 SHA-256
+pnpm courseplay:phase1 -- --help  # 查看 Phase 1 编译与恢复命令
 pnpm audio:extract       # 从 narrations.ts 提取音频分段
 pnpm audio:providers     # 查看可用音频提供方
 ```
@@ -101,6 +102,9 @@ pnpm audio:providers     # 查看可用音频提供方
 ```powershell
 pnpm courseplay:handoff -- --help
 ```
+
+Courseplay Phase 1 runner 的命令、候选块契约、状态迁移和错误码见
+[Courseplay Phase 1 runner](player/docs/courseplay-phase1-runner.md)。
 
 ## 生产约束
 

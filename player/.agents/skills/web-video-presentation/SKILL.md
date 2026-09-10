@@ -151,6 +151,11 @@ Phase 1 的基本创作、审查、恢复和修改单位是 **chapter / A-page b
 `script.md` 由已冻结 script blocks 汇总；`outline.md` 从初始化起就是正式文件，
 通过局部 patch 逐章完成。任何阶段都不要求模型重新生成完整 outline。
 
+Courseplay-bound mode 必须通过确定性 runner 执行 preflight、初始化、局部落盘、
+状态迁移、finalize 与恢复；Agent 只创作 script/outline 候选块和审查报告，不得
+手工伪造 marker 或 `state.json`。完整命令和诊断见
+[`docs/courseplay-phase1-runner.md`](../../../docs/courseplay-phase1-runner.md)。
+
 ### 1.1 识别用户输入
 
 | 用户给的东西 | 该做的 |
