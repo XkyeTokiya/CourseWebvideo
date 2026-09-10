@@ -103,7 +103,7 @@ pnpm audio:providers     # 查看可用音频提供方
 pnpm courseplay:handoff -- --help
 ```
 
-Courseplay Phase 1 runner 的命令、候选块契约、状态迁移和错误码见
+Courseplay Phase 1 runner 的最小命令、章节内容对契约、中断恢复和错误码见
 [Courseplay Phase 1 runner](player/docs/courseplay-phase1-runner.md)。
 
 ## 生产约束

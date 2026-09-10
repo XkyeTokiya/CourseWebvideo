@@ -23,8 +23,8 @@ pnpm dev
 
 ## 工作流
 
-1. 先 preflight 正式输入；Courseplay 从 A-page v6 初始化或安全迁移模块化 `outline.md` 外壳，再按不可改写的 `nx` → 冻结 script Beat → 原位填充同章 section 编译。
-2. metadata、schedule、materials 全局区全部 ready 并通过全局审查后，在 Checkpoint Plan 对齐稿子、outline、主题、custom-scene 候选、素材和开发模式。
+1. 先 preflight 正式输入；Courseplay 从 A-page v6 初始化或安全迁移模块化 `script.md` 与 `outline.md` 外壳，再按不可改写的 `nx` → script Beat → outline section 每章一次提交。
+2. runner 验证内容完整并自动生成 metadata、schedule、materials；作者只做最小语义自检，然后在 Checkpoint Plan 对齐稿子、outline、主题、custom-scene 候选、素材和开发模式。
 3. 仅在实例尚不存在时通过 `pnpm episode:new` 创建 `episodes/<id>/`；不得覆盖非原始模板 outline。
 4. 由主线程完成第 1 章，等待用户验收。
 5. 按已确认模式开发后续章节。
@@ -59,7 +59,7 @@ episodes/<id>/
         └── narrations.ts
 ```
 
-`project.json.theme` 是运行时主题唯一来源。Phase 1 由冻结 script Beat 决定计划；Phase 2 逐拍复制后，`narrations.ts` 才成为运行时 step 数和音频文本的唯一真相源。`src/entry.tsx` 导出 `id`、`title` 与 `CHAPTERS`。
+`project.json.theme` 是运行时主题唯一来源。Phase 1 由已提交 script Beat 决定计划；Phase 2 逐拍复制后，`narrations.ts` 才成为运行时 step 数和音频文本的唯一真相源。`src/entry.tsx` 导出 `id`、`title` 与 `CHAPTERS`。
 
 step 是口播与页面状态单位，不等于一张新页面。同一视觉步组内的连续 step 必须复用主构图，只更新局部状态；内容关系或空间组织真正变化时才切换主构图。
 
