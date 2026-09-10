@@ -377,6 +377,14 @@ function chapterById(state, aPageId) {
   return chapter;
 }
 
+function assertStateSequence(state, preflight) {
+  const expected = preflight.pages.map((page) => page.a_id);
+  const actual = state.chapters.map((chapter) => chapter.a_id);
+  if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+    fail("PHASE1_PAGE_SEQUENCE", "state.chapters", expected, actual);
+  }
+}
+
 function markGlobalStale(state, regions) {
   for (const region of regions) if (state.global[region] === "ready") state.global[region] = "stale";
   state.global.review = null;
@@ -421,6 +429,7 @@ export async function initPhase1({ root = process.cwd(), episodeId, testFault })
     if (isNew) {
       if (await exists(files.state)) {
         const state = await readState(files);
+        assertStateSequence(state, preflight);
         return { state, next: nextAction(state), resumed: true };
       }
       const state = initialState(preflight);
@@ -438,6 +447,7 @@ export async function compileChapter({ root = process.cwd(), episodeId, aPageId,
   const preflight = await preflightPhase1({ root, episodeId });
   const { files } = preflight;
   const state = await readState(files);
+  assertStateSequence(state, preflight);
   aPageId = aPageId?.toUpperCase();
   const chapter = chapterById(state, aPageId);
   const pageIndex = preflight.pages.findIndex((page) => page.a_id === aPageId);
@@ -492,6 +502,7 @@ export async function reviewChapter({ root = process.cwd(), episodeId, aPageId, 
   const preflight = await preflightPhase1({ root, episodeId });
   const { files } = preflight;
   const state = await readState(files);
+  assertStateSequence(state, preflight);
   aPageId = aPageId?.toUpperCase();
   verdict = verdict?.toUpperCase();
   if (!new Set(["script", "outline"]).has(stage) || !new Set(["PASS", "REVISE"]).has(verdict)) {
@@ -567,6 +578,7 @@ export async function finalizePhase1({ root = process.cwd(), episodeId, schedule
   const preflight = await preflightPhase1({ root, episodeId });
   const { files } = preflight;
   const state = await readState(files);
+  assertStateSequence(state, preflight);
   const incomplete = state.chapters.filter((chapter) => chapter.script.status !== "frozen" || chapter.outline.status !== "frozen");
   if (incomplete.length) fail("PHASE1_STATE", "chapters", "all script and outline reviews PASS", incomplete.map((item) => item.a_id));
   if (!schedule || !materials) fail("PHASE1_STATE", "finalize.arguments", "--schedule and --materials", { schedule, materials });
@@ -632,6 +644,7 @@ export async function reviewGlobal({ root = process.cwd(), episodeId, verdict, r
   const preflight = await preflightPhase1({ root, episodeId });
   const { files } = preflight;
   const state = await readState(files);
+  assertStateSequence(state, preflight);
   verdict = verdict?.toUpperCase();
   if (!new Set(["PASS", "REVISE"]).has(verdict)) fail("PHASE1_REVIEW", "review-global.verdict", "PASS or REVISE", verdict);
   if (["metadata", "schedule", "materials"].some((region) => state.global[region] !== "ready")) {
@@ -680,6 +693,7 @@ export async function reviewGlobal({ root = process.cwd(), episodeId, verdict, r
 export async function statusPhase1({ root = process.cwd(), episodeId }) {
   const preflight = await preflightPhase1({ root, episodeId });
   const state = await readState(preflight.files);
+  assertStateSequence(state, preflight);
   const changes = preflight.chapters.filter((current) => chapterById(state, current.a_id).input_fingerprint !== current.input_fingerprint)
     .map((item) => item.a_id);
   return { state, input_changes: changes, next: changes.length ? "resume to mark changed chapters stale" : nextAction(state) };
@@ -689,6 +703,7 @@ export async function resumePhase1({ root = process.cwd(), episodeId }) {
   const preflight = await preflightPhase1({ root, episodeId });
   const { files } = preflight;
   const state = await readState(files);
+  assertStateSequence(state, preflight);
   let outlineText = await required(files.outline, "outline");
   for (const current of preflight.chapters) {
     const chapter = chapterById(state, current.a_id);

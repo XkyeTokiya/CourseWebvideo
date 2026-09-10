@@ -267,3 +267,14 @@ test("resume marks only changed input owners stale after valid input refresh", a
   assert.equal(resumed.state.chapters[0].script.status, "stale");
   assert.equal(resumed.state.chapters[1].script.status, "frozen");
 });
+
+test("state commands fail fast instead of silently using a stale chapter order", async (t) => {
+  const ctx = await fixture(); t.after(ctx.cleanup);
+  await initPhase1({ root: ctx.root, episodeId });
+  const statePath = path.join(ctx.root, ".tmp", "player-phase1", episodeId, "state.json");
+  const state = JSON.parse(await readFile(statePath, "utf8"));
+  [state.chapters[0], state.chapters[1]] = [state.chapters[1], state.chapters[0]];
+  await writeFile(statePath, `${JSON.stringify(state, null, 2)}\n`);
+  await expectCode(() => statusPhase1({ root: ctx.root, episodeId }), "PHASE1_PAGE_SEQUENCE");
+  await expectCode(() => resumePhase1({ root: ctx.root, episodeId }), "PHASE1_PAGE_SEQUENCE");
+});
