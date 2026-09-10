@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
-import { buildCourseplayHandoffV4Packet, HANDOFF_ERROR_CATALOG, HandoffContractError } from "../courseplay-handoff.mjs";
+import { buildCourseplayHandoffV4Packet, HANDOFF_ERROR_CATALOG, HandoffContractError, parseVisualRoughV4 } from "../courseplay-handoff.mjs";
 
 const example = path.resolve("docs/examples/courseplay-handoff-v4");
 const aPageExample = path.resolve("../narration-pipeline/.agents/skills/rewrite-course-narration/references/examples/a-page-v6/canonical-contract-example-a-page.json");
@@ -59,4 +59,10 @@ test("handoff error codes match the public catalog", async () => {
   assert.deepEqual(new Set(catalog.errors.map((item) => item.code)), new Set(Object.keys(HANDOFF_ERROR_CATALOG)));
   assert.deepEqual(new Set(failures.cases.map((item) => item.code)), new Set(Object.keys(HANDOFF_ERROR_CATALOG)));
   for (const item of catalog.errors) assert.deepEqual(HANDOFF_ERROR_CATALOG[item.code], [item.message, item.hint, item.contractSection]);
+});
+
+test("visual rough parser preserves multiple relation carriers in one A-page", async () => {
+  const aPage = JSON.parse(await readFile(path.resolve("episodes/episode-07/inputs/episode-07-a-page.json"), "utf8"));
+  const rough = await readFile(path.resolve("episodes/episode-07/inputs/episode-07-visual-rough.md"), "utf8");
+  assert.deepEqual(parseVisualRoughV4(rough, aPage.pages).get("A004").relation_carriers.map((item) => item.relation_id), ["R004", "R005"]);
 });
