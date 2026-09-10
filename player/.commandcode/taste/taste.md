@@ -12,7 +12,7 @@
 - 规则、流程、设计或多文件改动先确认精确范围与方案;获准后严格执行,任何超出方案的优化都必须显式提出,不得静默扩张。Confidence: 0.9
 
 # 制作流程硬节点
-- Courseplay Phase 1 同轮完成 `script.md` 与 `outline.md`,分别自检修正后停在 Checkpoint Plan,一次对齐稿子、outline、主题、素材和开发模式。Confidence: 0.95
+- Courseplay Phase 1 只接受正式 inputs 中通过 preflight 的 A-page v6+visual rough v4,由 A-page 确定性初始化模块化 outline 外壳,再按已冻结 script Beat 原位填充同章 section;主题与 custom 候选留到唯一 Checkpoint Plan 决定,禁止整份覆盖。Confidence: 0.95
 - Checkpoint Plan 未确认不得进入章节开发;主题必须明确,开发模式未指定时采用逐章确认的 Mode A,不得自行启用 subagent 制作。Confidence: 0.95
 - Phase 2 第一章必须由主线程完成可验收的完整版本;代码级检查通过后停下等待用户视觉验收,未获“继续”不得制作后续章。Confidence: 0.95
 - 后续章节严格按已选 Mode A/B/C 推进;每个授权验收点都要停,模式切换、并发数和批次范围只按用户当前指令调整。Confidence: 0.9

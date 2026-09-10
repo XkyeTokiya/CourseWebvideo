@@ -4,6 +4,14 @@
 自行执行，也可以单独交给 reviewer agent 或 subagent。Reviewer 只报告，
 不修改 outline、A-page、visual rough 或口播稿。
 
+每次调用必须声明审查范围：
+
+- `review_scope: chapter`：默认，审查 `outline.md` 中一个 chapter section；
+- `review_scope: global`：全部 sections 冻结并填充全局派生区后，只审查跨章节约束。
+
+两个 scope 互补。chapter pass 不代表整集不存在重复；global fail 也不允许
+无理由重写所有已通过章节。
+
 ## 审查目标
 
 判断 outline 是否在保留口播节拍与视觉冲击力的同时：
@@ -11,7 +19,7 @@
 1. 以每个 A-page 的 base-scene 作为主要制作单位；
 2. 让 step 在同一构图内遵循页面关系机制，并允许复用 semantic state；
 3. 合理使用低成本 accent-frame；
-4. 避免无必要的 custom-scene；
+4. 避免无必要的 custom-scene 候选，并把确认权留给 Checkpoint Plan；
 5. 如实报告视觉制作规模。
 
 本审查不评价配色、动画实现、CSS 选型或代码质量，也不因为 narration beat
@@ -19,16 +27,29 @@
 
 ## 必要输入
 
-- 待审查的 `outline.md`；
-- 对应 `courseplay-a-page/v6`；
-- 对应 `courseplay-visual-rough/v4`；
-- 可选：`approved-spoken-text.txt`。
+`review_scope: chapter`：
+
+- `outline.md` 中当前 A-page 对应的 chapter section；
+- 当前章已冻结的 script block；
+- 对应 A-page；
+- 对应 visual rough 页面；
+- 可选：当前章批准口播原文。
+
+`review_scope: global`：
+
+- 已完成的模块化 `outline.md`；
+- 正式 A-page JSON；
+- 所有 chapter review 结论；
+- 全部 A-page 与 visual rough；
+- 可选：汇总后的 `script.md`。
 
 Reviewer 同时使用
 [`COURSEPLAY-STATE-MECHANISMS.md`](COURSEPLAY-STATE-MECHANISMS.md) 的概念
 边界，但不得把其中的常见机制家族当成封闭白名单。
 
-缺少 A-page 或 visual rough 时停止，输出 `REVISE` 并列出缺少的输入。
+chapter scope 缺少当前 A-page、visual rough 页面或已冻结 script block 时停止；
+global scope 缺少正式 outline 或完整 A-page / rough 时停止。输出
+`REVISE` 并只列出当前 scope 缺少的输入。
 
 ## 分类口径
 
@@ -60,13 +81,13 @@ state。建立、保持、补充、聚焦、更新和收束是场景指令，不
 
 ## 审查步骤
 
-### 1. 核对输入与规模摘要
+### 1. 核对当前 scope 输入
 
-统计并报告 A-page、base-scene、accent-frame、custom-scene 与 narration beat
-数量。不要把 narration beat 数称为页面数。检查 outline 顶部摘要是否与
-正文声明一致，但不设置 accent-frame 的机械上限。
+chapter scope 报告当前 A-page 的 base-scene、accent-frame、custom-scene 与
+narration beat 数量；global scope 才统计整集规模并核对 outline 顶部摘要。
+不要把 narration beat 数称为页面数，也不设置 accent-frame 的机械上限。
 
-### 2. 逐 A-page 检查连续性
+### 2. Chapter scope：检查当前 A-page
 
 逐页检查：
 
@@ -87,15 +108,9 @@ state。建立、保持、补充、聚焦、更新和收束是场景指令，不
 - accent-frame 是否承担真实的强调或停顿；
 - accent step 是否使用无歧义的 `K-Axxx-xx · accent` 两段格式，而未混入额外
   semantic state 或第三段场景类型；
-- custom-scene 是否有充分必要性；
-- 每页 beat 数是否按编号内容组锚点切分；任何偏离（beat 数 ≠ N_eff）是否
-  内联标注了合并/扩张/并入触发条件——无标注偏离 → fail；
-- 合并理由是否清一色为时长，而页面口播时长与内容组数之比明显大于 4s
-  → fail（时长理由不成立）；
-- 全集偏离页占比是否超过 50%，或所有页 beat 数恒等于同一数值 → 判为
-  系统性退化，整期打回；
-- 所有页恒等于 N 且存在明显可独立成拍的判断句却未触发扩张核查 → 检查
-  锚点是否被机械执行。
+- custom-scene 是否标为 `proposed` 并有充分必要性，且未在 Checkpoint 前伪称批准；
+- Beat 是否来自已冻结 script block，全部非空 Beat 顺序拼接与当前 A-page `nx`
+  一致；是否错误地从 G/U、槽位、recipe、时长或固定模板反推数量；
 
 ### 3. Accent frame 判断
 
@@ -130,15 +145,37 @@ state。建立、保持、补充、聚焦、更新和收束是场景指令，不
 语义焦点或当前画面无法持续承载时，才作为内容粒度证据；时长本身不触发
 REVISE。
 
+### 5. Global scope：跨章节与派生内容
+
+只在所有 chapter sections 已通过并填充全局派生区后检查：
+
+- 顶部 A-page、base-scene、accent-frame、custom-scene 与 narration beat 统计
+  是否与正文一致；
+- metadata、schedule、materials 三个 global-derived marker 是否全部为 `ready`；
+- A-page JSON 中每个页面是否在 outline 恰好出现一次，顺序与正式输入一致；
+- 整集视觉调度是否覆盖每章，调度行是否忠实投影各章已冻结字段；
+- 相邻章节是否仅替换文字却复用同一主构图、卡片比例、强调机制和固定 chrome；
+- 全集偏离页占比是否超过 50%，或所有页 beat 数恒等于同一数值，形成系统性
+  退化；
+- 所有页恒等于 N 且存在明显可独立成拍的判断句却未触发扩张核查，锚点是否被
+  机械执行；
+- 完整素材清单是否无损汇总各章媒体 ID、角色、资格与就位状态；
+- 是否出现所有章节机械使用同一 semantic state 链或强调方式的局部最优。
+
+global fail 必须列出具体 A-page 与证据，并给出最小修改范围。只改全局统计或
+调度行时，不得触碰 chapter section；需要解决相邻重复时，只回修被选中的页。
+禁止使用“整期打回”作为未定位问题的默认建议。
+
 ## 判定
 
 ### PASS
 
-- 每个 A-page 有稳定 base-scene；
-- step 遵循页面关系机制，semantic state 的复用或变化均有明确场景指令；
-- accent-frame 使用合理；
-- custom-scene 均有明确必要性；
-- 制作规模摘要真实清楚。
+chapter scope：当前 A-page 有稳定 base-scene；step 遵循页面关系机制；
+semantic state 的复用或变化均有明确场景指令；accent-frame 使用合理；
+custom-scene 候选有明确必要性且仍等待 Checkpoint Plan 决策。
+
+global scope：整集规模与派生内容真实；章节顺序和素材汇总完整；相邻差异、
+beat 分布与机制选择没有系统性退化。
 
 ### REVISE
 
@@ -164,6 +201,10 @@ REVISE。
 ## Verdict
 
 `PASS` 或 `REVISE`
+
+## Review scope
+
+`chapter: Axxx` 或 `global`
 
 ## 制作规模
 
@@ -197,6 +238,9 @@ REVISE。
 
 没有必须修改项时写 `none`，不要为了填满报告制造问题。
 
+chapter scope 的“逐页结论”只写当前 A-page；global scope 覆盖所有 A-page，
+但不要重复 chapter report 的全部细节，只记录跨章与汇总结论。
+
 ## 自动化调用
 
 任务级选项：
@@ -204,6 +248,8 @@ REVISE。
 - `review_mode: self`（默认）：作者按本协议自检并修正。
 - `review_mode: independent`：调用方明确要求时，把本协议和全部必要输入
   交给 reviewer agent/subagent；父 agent 根据报告修正 outline。
+
+`review_mode` 决定由谁审查，`review_scope` 决定审查什么，两者不能互相替代。
 
 请求 independent 但无可用 reviewer 时回退到 self，并在 Checkpoint Plan
 披露。审查报告默认通过 agent 消息返回，不落盘；只有调用方明确要求时才保存。

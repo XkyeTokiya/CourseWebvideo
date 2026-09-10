@@ -23,9 +23,9 @@ Do not create an episode-level `package.json`, lockfile, `node_modules`, `vite.c
 
 ## Workflow
 
-1. Read the source article and produce `script.md` and `outline.md` together.
-2. Stop at Checkpoint Plan and align script, outline, theme, assets, and development mode.
-3. Create `episodes/<id>/` with `pnpm episode:new`.
+1. Preflight the formal inputs; for Courseplay, initialize or safely migrate a modular `outline.md` shell from A-page v6, then compile each chapter as immutable `nx` → frozen script beats → in-place outline section.
+2. Finish and mark the metadata, schedule, and materials regions ready, run global review, then stop at Checkpoint Plan to align script, outline, theme, custom-scene candidates, assets, and development mode.
+3. Create `episodes/<id>/` with `pnpm episode:new` only when it does not already exist; never overwrite a non-template outline.
 4. Build chapter one in the main thread and wait for approval.
 5. Build later chapters in the approved mode.
 6. Stop at Checkpoint Audio, extract `narrations.ts`, then synthesize only after the user confirms the segments.
@@ -59,7 +59,7 @@ episodes/<id>/
         └── narrations.ts
 ```
 
-`project.json.theme` is the only theme source. `src/entry.tsx` exports `id`, `title`, and `CHAPTERS`. `narrations.ts` is the sole source of step count and audio text.
+`project.json.theme` is the only runtime theme source. Frozen script beats are the Phase 1 plan; after Phase 2 copies them verbatim, `narrations.ts` becomes the sole runtime source of step count and audio text. `src/entry.tsx` exports `id`, `title`, and `CHAPTERS`.
 
 A step is a narration-to-implementation handoff unit. Consecutive steps in one visual group reuse the same main composition. In Courseplay, each base-scene step maps to a chapter-local semantic state, and adjacent steps may reuse that state. A new composition is reserved for an actual relationship or spatial-structure change.
 
