@@ -75,8 +75,10 @@ episodes/<episode-id>/
 
 实例不再包含 `package.json`、`pnpm-lock.yaml`、`node_modules`、`vite.config.ts`，也不单独启动 Vite。统一进入 player/ 目录后运行 `pnpm dev`。`player/output/`（已删除）与历史归档 仅作历史资料，不导入新 Studio。
 
-> **关键**：`narrations.ts` 是 step 数和音频合成的**唯一真相源**。
-> 章节组件可到达的最大 step + 1 必须等于 `narrations.length`；实现可以使用
+> **关键**：Phase 1 尚未创建 `narrations.ts`，此时由已冻结 script Beat 决定计划
+> step；Phase 2 将其逐拍复制到 `narrations.ts` 后，后者才是运行时 step 数和音频
+> 合成的**唯一真相源**。章节组件可到达的最大 step + 1 必须等于
+> `narrations.length`；实现可以使用
 > 条件分支、数组映射或状态机，不能只依赖 `if (step === N)`。这保证 script /
 > outline / 章节代码 / `entry.tsx` / 音频文件不会漂。
 
@@ -154,10 +156,26 @@ Phase 1 的基本创作、审查、恢复和修改单位是 **chapter / A-page b
 | 用户给的东西 | 该做的 |
 |---|---|
 | 同时提供正式 `courseplay-a-page/v6` + `courseplay-visual-rough/v4` | 进入 Courseplay-bound mode；v6 `screen` 是 guidance，当前 A 口播提供具体素材，rough 提供表达结构。三源创作完整规则只读 `references/CHAPTER-CRAFT.md` |
-| Courseplay 输入不完整，或当前 A-page 缺少可用口播/页面指导 | 报告缺少的内容并请求补充；只要已有等价的当前章节输入，就可继续制作。版本、存放路径和 script 排版只在显式调用 handoff 时按工具契约检查 |
+| Courseplay 输入不完整，版本不是 A-page v6 + visual rough v4，未处于 `episodes/<id>/inputs/`，批准状态/episode/source 不一致，或当前页缺少非空 `nx` / 页面指导 | Phase 1 fail-fast，列出缺项或冲突；不得用“等价输入”、历史文件或普通 article 流程降级。等价的当前章节输入只可在正式输入已通过 preflight 后，作为 Phase 2 不调用 handoff 时的上下文传递方式 |
 | 原始文章（书面语 / 公众号 / 论文 / 博客） | 划定内容章节后初始化模块化 outline 外壳，按章节完成 script → outline 编译（1.2–1.5），再过 Checkpoint Plan |
 | 直接的口播稿 / 视频脚本 | 保持原文内容，按已有章节初始化 outline 外壳并逐章派生（1.2–1.5 简化版），再过 Checkpoint Plan |
 | 啥都没有，只说"帮我做个 X 主题的视频" | **反问**：先给一段素材或大纲。Skill 不替用户构思内容 |
+
+Courseplay preflight 的“正式且已批准”只有一种口径，以下条件必须同时成立：
+
+- 文件位于 `episodes/<id>/inputs/`，名称为 `<id>-a-page.json`、
+  `<id>-a-page-validation.json`、`<id>-visual-rough.md`、
+  `<id>-visual-rough-validation.json`，以及 A-page 声明的 `approved_text`；
+- A-page 为 `courseplay-a-page/v6`、`document_kind: production`，visual rough 为
+  `courseplay-visual-rough/v4`、`document_kind: production`、`status: approved`；
+- 两份正文、两份 validation report 的 `episode_id` 一致，A-page 页序唯一且每页
+  `nx` 非空，rough 的 `source_a_page` 与当前文件名和文件内容摘要一致；
+- 两份 validation report 的 profile/schema 匹配，`errors` 与 `failures` 均为空，
+  其中记录的输入摘要与当前文件一致；声明 `approved_text` 时，所有 `nx` 顺序拼接
+  与批准文件一致。
+
+任一条件失败均停止 Phase 1 并报告具体文件和字段；不得读取历史 episode、过程目录
+或“等价输入”补齐。preflight 使用的输入摘要只参与校验，不写入 outline。
 
 ### 1.2 初始化模块化 outline.md 外壳
 
@@ -167,7 +185,7 @@ Courseplay-bound mode 直接读取正式 A-page JSON，按 `pages[]` 数组顺�
 - 固定封面模块；
 - A-page 数量、顺序和 `A001` 等稳定 ID；
 - 每章 `pending-script` 占位标记；
-- metadata、整集视觉调度与素材清单的 `GLOBAL-DERIVED: pending` 占位区。
+- metadata、整集视觉调度与素材清单三个具名的 `GLOBAL-DERIVED: pending` 占位区。
 
 初始化器不得写 chapter title、narration beat / step 数、base-scene、页面配方、
 核心判断、结构指纹、关系机制、semantic state、信息池或媒体判断。A-page 的
@@ -178,11 +196,14 @@ Courseplay-bound mode 直接读取正式 A-page JSON，按 `pages[]` 数组顺�
 # Video Outline
 
 > **编译状态**：in-progress
+> **主题**：pending（Checkpoint Plan 待选）
 > **章节**：<由 `pages.length` 计数>
+
+<!-- GLOBAL-DERIVED: metadata · pending -->
 
 ## 整集视觉调度
 
-<!-- GLOBAL-DERIVED: pending -->
+<!-- GLOBAL-DERIVED: schedule · pending -->
 
 ## 0. cover — 封面（1 silent step · fixed 15s）
 
@@ -193,11 +214,13 @@ Courseplay-bound mode 直接读取正式 A-page JSON，按 `pages[]` 数组顺�
 
 ## 素材清单
 
-<!-- GLOBAL-DERIVED: pending -->
+<!-- GLOBAL-DERIVED: materials · pending -->
 ```
 
-同一 A-page 输入必须产生相同外壳。`outline.md` 已存在时，初始化不得覆盖文件、
-已填写模块或用户修改；只能报告已存在并进入恢复检查。普通 article 没有 A-page
+同一 A-page 输入必须产生相同外壳。`outline.md` 已存在时先分类：若内容与仓库
+`templates/episode/outline.md` 的原始占位模板逐字一致，允许将它迁移为新外壳；
+若已经是带 Phase 1 marker 的新格式则进入恢复检查；其他任何既有内容都 fail-fast
+为 `PHASE1_OUTLINE_CONFLICT`，不得覆盖或猜测迁移。普通 article 没有 A-page
 结构时，Agent 在划定内容章节后创建同格式的最小外壳，但同样不得提前填写视觉
 判断。
 
@@ -209,8 +232,10 @@ Phase 1 只在 Git 忽略目录保存 script 工作块：
 └── A002.md
 ```
 
-恢复时读取 `outline.md` 的 block marker 与已有 script blocks，从第一个非
-`outline-frozen` 或已标记 `stale` 的章节继续。
+恢复时读取 `outline.md` 的 block marker、三个具名 global-derived marker 与已有
+script blocks：先处理第一个非 `outline-frozen` 或 `stale` 章节；全部章节冻结后，
+再从第一个非 `ready` 的 global-derived 区域继续。章节变化必须把真正依赖它的
+global-derived 区域标为 `stale`。
 
 ### 1.3 按章节纵切编译
 
@@ -218,12 +243,14 @@ Courseplay 严格按 A-page JSON 顺序处理每一章；普通项目按初始 o
 
 1. 从当前 A-page 或普通文章的当前内容段生成 `script/<chapter-id>.md`。普通项目按
    [`SCRIPT-STYLE.md`](references/SCRIPT-STYLE.md) 改写；Courseplay 按当前
-   A-page 的非空 `nx` 无损派生，不改写批准口播。
+   A-page 的非空 `nx` 无损派生，不改写批准口播，也不套用普通文章的 B 站风格或
+   `script/article ≥ 60%` 门禁。
 2. 对当前 script block 做 chapter-local review；只修当前 block，直到通过，
    再把 `outline.md` 中对应 marker 更新为 `script-frozen`。
 3. **只在当前 script block 冻结后**，按
    [`OUTLINE-FORMAT.md`](references/OUTLINE-FORMAT.md) **只替换** `outline.md`
-   中同 ID 的 chapter section。切 narration beat、绑定 base-scene、声明语义
+   中同 ID 的 chapter section。使用已冻结 script block 中持久化的 Beat 边界，
+   绑定 base-scene、声明语义
    关系、开放式关系机制、semantic state、场景例外与信息池；其他章节和
    global-derived 区域保持字节不变。
 4. 对刚替换的 outline section 做 chapter-local review；只修当前 section，直到
@@ -233,33 +260,42 @@ Courseplay 严格按 A-page JSON 顺序处理每一章；普通项目按初始 o
 section 或明确的 global-derived 占位区；一次掉线最多损失当前未完成的局部 patch。
 
 script 始终是 outline 的口播权威来源。章节纵切改变的是事务边界，不改变
-`script → outline` 的依赖方向。显式调用 Courseplay handoff 时，根级输入和
+`script → outline` 的依赖方向。Phase 1 的 Courseplay 正式输入只接受已通过
+preflight 的 `episodes/<id>/inputs/` A-page v6 + visual rough v4；“等价输入”不能
+替代正式输入。显式调用 Courseplay handoff 时，根级输入和
 script/outline 语法只按
 [`handoff v4 作者契约卡`](../../../docs/courseplay-handoff-v4-author-contract.md)
 与 [canonical example](../../../docs/examples/courseplay-handoff-v4/) 准备；
-不调用时可直接提供等价的当前章节输入，不因存放路径或纯排版差异停止制作。
+不调用时可在 Phase 2 从已验证正式输入中直接提供等价的当前章节上下文。
 
 Courseplay-bound mode 额外遵守 [`COURSEPLAY-BOUND-MODE.md`](references/COURSEPLAY-BOUND-MODE.md)：
-A-page 顺序默认对应 chapter 顺序，每个 A-page 默认一个持续 base-scene；narration
-beat 按 CLAUDE.md §1.4 Beat 切分规则从 visual rough 的 G 组锚定（默认 = N，
-偏离须标注合并/扩张/并入触发条件）并决定 step 数，semantic state 描述稳定画面并可跨 step 重复；关系机制不决定
+A-page 顺序对应 chapter 顺序，每个 A-page 默认一个持续 base-scene；narration
+beat 由批准 `nx` 的语义边界切分并显式持久化在 script block 中，outline 只读取
+已冻结边界，不从 visual rough 的 G/U、槽位、recipe 或时长反推 step 数。
+semantic state 描述稳定画面并可跨 step 重复；关系机制不决定
 step 或 state 数，不使用固定全局 state 枚举；accent-frame 允许低成本全屏强调；custom-scene 必须写
-必要性。Courseplay 字段只追加场景绑定，不替代通用封面、信息池、时长摘要
+必要性并以 `proposed` 状态进入 Checkpoint Plan，局部审查只验证提案理由，不能提前
+声称用户已确认。Courseplay 字段只追加场景绑定，不替代通用封面、信息池、时长摘要
 或素材清单。A-page / visual rough 决定章节边界、语义、页面配方、骨架与媒体资格；
 outline 决定持续构图、结构指纹、内容槽位、每步场景指令与场景例外；chapter agent 决定组件、
-CSS、动画和具体视觉实现；`narrations.ts` 是运行时 step 数与 TTS 文本的最终真相源。
+CSS、动画和具体视觉实现。Phase 1 以冻结 script beats 作为计划真相源；Phase 2
+创建 `narrations.ts` 时必须逐 beat 复制，届时它才成为运行时 step 数与 TTS 文本的
+最终真相源，Phase 1 不得依赖尚不存在的文件。
 
 ### 1.4 完成正式产物
 
 全部 chapter blocks 冻结后，按 A-page JSON 或既有 outline 模块顺序汇总 script
 blocks，生成正式 `script.md`。`outline.md` 不装配、不重写；只计算并替换顶部统计、
-整集视觉调度和素材汇总等 global-derived 占位区，再清除临时编译状态标记，使其
+整集视觉调度和素材汇总等 global-derived 占位区。每个区域写入并校验后分别从
+`pending/stale` 转为 `ready`；三个区域全部 `ready` 才可开始 Global Review。
+临时 marker 只在 Checkpoint Plan 批准并完成主题/custom 决策投影后清除，使文件
 保持现有正式格式。禁止为了“整理”再输出一次完整 30–50 KB outline。
 
 ### 1.5 全局一致性审查与最小回修
 
-Global Review 只负责跨章节约束：全文信息保留度、A-page / 原文内容覆盖、开头
-钩子、章节衔接、语气一致性、相邻视觉重复、整体节奏、总时长、全局 counts、
+Global Review 只负责跨章节约束：普通文章且存在 `article.md` 时检查全文信息
+保留度；Courseplay 改为检查每页 `nx` 的无损覆盖与顺序，不计算 article 比例；
+另检查开头钩子、章节衔接、语气一致性、相邻视觉重复、整体节奏、总时长、全局 counts、
 视觉调度和素材汇总。它不重新润色所有已通过的 chapter block。
 
 修改传播规则：
@@ -268,9 +304,9 @@ Global Review 只负责跨章节约束：全文信息保留度、A-page / 原文
 |---|---|---|
 | A-page 集合或顺序经授权变更 | 增删/移动对应 outline 模块；受影响 script blocks + outline sections | 无关章节 |
 | `script/A006` 文案，beat 不变 | `outline/A006` narration mapping 复核 | 其他章节 |
-| `script/A006` beat 边界 | `outline/A006` steps；全局 beat counts / duration | 其他 chapter blocks |
-| `outline/A006` scene / state | A006 的 global schedule 行与相关统计 | `script/A006`、其他章节 |
-| A006 media | A006 outline/media summary | narration 与无关章节 |
+| `script/A006` beat 边界 | `outline/A006` steps；metadata 与 schedule 标为 `stale` | 其他 chapter blocks |
+| `outline/A006` scene / state | schedule 与 metadata 标为 `stale` | `script/A006`、其他章节 |
+| A006 media | materials 标为 `stale` | narration 与无关章节 |
 | Global Review 发现相邻重复 | 被明确选中回修的 chapter blocks | 其他已通过章节 |
 
 **硬原则：Repair the smallest invalidated scope.** 局部失败先定位对应 A-page
@@ -314,8 +350,8 @@ JSON 的 `style` 字段。JSON 只提供内容，不决定视觉；视觉由实�
 
 ## Checkpoint Plan —— 5 件事一次对齐（**硬节点**）
 
-`script.md` + `outline.md` 写完后必须停下来。**用户在这一个节点同时确认
-5 件事**。
+`script.md` 与 outline 的章节内容/全局派生区通过审查后必须停下来。此时主题字段
+仍可为 `pending`，custom-scene 仍为 `proposed`；**用户在这一个节点同时确认 5 件事**。
 
 ### agent 此时要做的预备工作
 
@@ -385,8 +421,11 @@ A-page 是否保持一个持续视觉框架。不要把 narration beat 数称为
 
 收到反馈后：
 - 稿子 / outline 要改：直接编辑文件，编辑完 ping 一次（或口头描述 agent 改）
+- custom-scene：用户确认后将候选状态改为 `approved`；拒绝则回修对应 section，
+  不得把未确认候选带入 Phase 2
 - **主题必须明确**才进入 Phase 2。用户说"主题你帮我选" → 取你推荐的第 1 个，
-  **告诉用户你选了什么、为什么**，给反悔机会
+  **告诉用户你选了什么、为什么**，给反悔机会；将选定主题原位写入 outline 顶部
+  和 `project.json.theme`，这只是 Checkpoint 决策投影，不触发整份 Global Review
 - 模式选定 → 进 Phase 2
 
 ---

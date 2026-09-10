@@ -19,7 +19,7 @@
 1. 以每个 A-page 的 base-scene 作为主要制作单位；
 2. 让 step 在同一构图内遵循页面关系机制，并允许复用 semantic state；
 3. 合理使用低成本 accent-frame；
-4. 避免无必要的 custom-scene；
+4. 避免无必要的 custom-scene 候选，并把确认权留给 Checkpoint Plan；
 5. 如实报告视觉制作规模。
 
 本审查不评价配色、动画实现、CSS 选型或代码质量，也不因为 narration beat
@@ -108,11 +108,9 @@ narration beat 数量；global scope 才统计整集规模并核对 outline 顶�
 - accent-frame 是否承担真实的强调或停顿；
 - accent step 是否使用无歧义的 `K-Axxx-xx · accent` 两段格式，而未混入额外
   semantic state 或第三段场景类型；
-- custom-scene 是否有充分必要性；
-- 每页 beat 数是否按编号内容组锚点切分；任何偏离（beat 数 ≠ N_eff）是否
-  内联标注了合并/扩张/并入触发条件——无标注偏离 → fail；
-- 合并理由是否清一色为时长，而页面口播时长与内容组数之比明显大于 4s
-  → fail（时长理由不成立）；
+- custom-scene 是否标为 `proposed` 并有充分必要性，且未在 Checkpoint 前伪称批准；
+- Beat 是否来自已冻结 script block，全部非空 Beat 顺序拼接与当前 A-page `nx`
+  一致；是否错误地从 G/U、槽位、recipe、时长或固定模板反推数量；
 
 ### 3. Accent frame 判断
 
@@ -153,6 +151,7 @@ REVISE。
 
 - 顶部 A-page、base-scene、accent-frame、custom-scene 与 narration beat 统计
   是否与正文一致；
+- metadata、schedule、materials 三个 global-derived marker 是否全部为 `ready`；
 - A-page JSON 中每个页面是否在 outline 恰好出现一次，顺序与正式输入一致；
 - 整集视觉调度是否覆盖每章，调度行是否忠实投影各章已冻结字段；
 - 相邻章节是否仅替换文字却复用同一主构图、卡片比例、强调机制和固定 chrome；
@@ -173,7 +172,7 @@ global fail 必须列出具体 A-page 与证据，并给出最小修改范围。
 
 chapter scope：当前 A-page 有稳定 base-scene；step 遵循页面关系机制；
 semantic state 的复用或变化均有明确场景指令；accent-frame 使用合理；
-custom-scene 有明确必要性。
+custom-scene 候选有明确必要性且仍等待 Checkpoint Plan 决策。
 
 global scope：整集规模与派生内容真实；章节顺序和素材汇总完整；相邻差异、
 beat 分布与机制选择没有系统性退化。

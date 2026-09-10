@@ -17,22 +17,26 @@ Markdown 格式，也不改变 `script → outline` 的权威方向。
 > - 每个 step 的口播焦点，以及相对前一步的视觉变化；
 > - 章节级信息池、媒体资格和需要确认的场景例外。
 >
-> `step` 是口播与画面实现的交接单位，不自动等于新页面。`narrations.ts` 是
-> 运行时 step 数与口播文本的最终真相源；如果实现改变 step 数，必须同步 outline，
+> `step` 是口播与画面实现的交接单位，不自动等于新页面。Phase 1 以已冻结
+> script block 的 Beat 边界为计划真相源；Phase 2 创建 `narrations.ts` 时必须逐拍
+> 复制，届时它才是运行时 step 数与口播文本的最终真相源。如果实现改变 step 数，必须同步 outline，
 > 并重新检查持久化游标。不得把 narration beat 数直接称为页面数，也不能仅凭
 > scene/step 比例判定设计失败；应检查连续 step 是否复用主构图，以及是否存在
 > 无理由的逐 step 重构图。
 >
-> **Courseplay-bound mode**：输入为正式 v6/v4 时，必须完整读取
+> **Courseplay-bound mode**：只接受 `episodes/<id>/inputs/` 下已通过 preflight 的
+> 正式 A-page v6 + visual rough v4，必须完整读取
 > [`COURSEPLAY-BOUND-MODE.md`](COURSEPLAY-BOUND-MODE.md)。此时 A-page 默认对应
 > 一个 chapter 和一个持续 `base-scene`；`semantic state` 是 base-scene 内的稳定状态
 > 描述，不是额外的制作层。outline 必须分别报告 base-scene、accent-frame、
 > custom-scene 与 narration beat 数，并读取
 > [`COURSEPLAY-STATE-MECHANISMS.md`](COURSEPLAY-STATE-MECHANISMS.md) 区分
 > relationship mechanism、semantic state 与 step instruction。
-> 当前章节需要有可用的批准口播和页面指导；缺少实际内容时请求补充，不自行猜测。
+> 当前章节需要有可用的批准口播和页面指导；缺少、版本/episode/source/批准状态
+> 不一致时 fail-fast，不自行猜测，也不以“等价输入”降级 Phase 1。
 > 只有显式调用 handoff 时，才读取其公开作者契约卡和 canonical example 处理固定输入；
-> 不调用 handoff 时，直接提供等价的当前章节输入即可。
+> 正式输入已通过 preflight 后，Phase 2 不调用 handoff 时才可直接提供等价的当前
+> 章节上下文。
 >
 > **写 outline 前必读**：先读 [`CHAPTER-CRAFT.md`](CHAPTER-CRAFT.md) 的来源原则，
 > 再读本文件的格式。
@@ -51,8 +55,8 @@ Markdown 格式，也不改变 `script → outline` 的权威方向。
 | 当前章已冻结的 script block | 本章 narration beat 顺序、口播焦点和估时 | 不从未冻结稿或别章内容反推当前章 outline |
 | 汇总后的 `script.md` | 全局章节顺序、衔接与完整 narration beat 序列 | 不把标题、序号或实现说明混入口播 |
 | `article.md`（如有） | 画面信息池：数字、引用、案例、出处、时间、对比等 | 不改写原文，不用文章细节打乱批准口播顺序 |
-| A-page v5/v6 | 批准语义、`nx`、screen source/guidance、静默护栏、证据关系、进入/退出条件 | 不改写批准口播；不保存最终文案，不增加 guidance 覆盖表或 Beat 来源登记 |
-| visual rough v2/v3 | 页面配方、基础骨架、媒体区、S/G 槽位和关系载体 | 不省略媒体 ID、媒体角色或原图限制；不复制 A-page 文本；v3 普通 S/G 不产生最终逐项落屏义务 |
+| A-page v6 | 批准语义、`nx`、screen source/guidance、静默护栏、证据关系、进入/退出条件 | 不改写批准口播；不保存最终文案，不增加 guidance 覆盖表 |
+| visual rough v4 | 页面配方、基础骨架、媒体区、S/G/U 槽位和关系载体 | 不省略媒体 ID、媒体角色或原图限制；不复制 A-page 文本；G/U 不反推 Beat 数 |
 
 直接提供口播稿而没有 `article.md` 时，信息池退化为主动设计的画面信息池，
 例如已知的对比、元数据和结构提示；不得编造事实、数字、logo 或素材来源。
@@ -89,7 +93,7 @@ pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx>
 无论采用哪条路径，都只给章节 Agent 当前章必要上下文，不从历史章节猜测内容。
 
 Outline 只投影步骤、状态、持续元素、聚焦关系和制作指令，不保存最终文案权威，
-也不增加 guidance 覆盖表、Beat 来源登记或下游内容清单。普通 S/G 不承担逐项落屏义务，
+也不增加 guidance 覆盖表或下游内容清单。普通 S/G 不承担逐项落屏义务，
 章节三源创作规则只以 [`CHAPTER-CRAFT.md`](CHAPTER-CRAFT.md#courseplay-v4三源创作唯一详细规则) 为准。
 
 ---
@@ -106,11 +110,14 @@ global-derived 占位区：
 # Video Outline
 
 > **编译状态**：in-progress
+> **主题**：pending（Checkpoint Plan 待选）
 > **章节**：<由 `pages.length` 计数>
+
+<!-- GLOBAL-DERIVED: metadata · pending -->
 
 ## 整集视觉调度
 
-<!-- GLOBAL-DERIVED: pending -->
+<!-- GLOBAL-DERIVED: schedule · pending -->
 
 ## 0. cover — 封面（1 silent step · fixed 15s）
 
@@ -121,16 +128,21 @@ global-derived 占位区：
 
 ## 素材清单
 
-<!-- GLOBAL-DERIVED: pending -->
+<!-- GLOBAL-DERIVED: materials · pending -->
 ```
 
 初始化不得生成 chapter title、step 数、base-scene、页面配方、核心判断、结构
 指纹、关系机制、semantic state、信息池或媒体判断。相同 A-page 输入必须生成
-相同外壳；文件已存在时不得覆盖任何内容。普通项目在内容
+相同外壳。文件已存在时只允许两种自动处理：与仓库旧模板逐字一致的原始占位文件
+可迁移为新外壳；带 Phase 1 marker 的新格式进入恢复。其他既有内容必须返回
+`PHASE1_OUTLINE_CONFLICT`，不得覆盖。普通项目在内容
 章节确定后创建同格式的最小外壳。
 
 每个 chapter section 是当前章唯一可写范围：`pending-script → script-frozen →
-outline-frozen`。script 未冻结时不得填充该 section；初始化后禁止整份覆盖
+outline-frozen`，失败或依赖变化时为 `stale`。三个 global-derived 区分别使用
+`pending → ready`，依赖变化时回到 `stale`。metadata 区的 `ready` 表示章节派生的
+时长与统计已就绪，不表示主题已选；主题在 Checkpoint Plan 前允许保持 `pending`。
+script 未冻结时不得填充该 section；初始化后禁止整份覆盖
 `outline.md`。Agent 只可替换当前 section 或明确的 global-derived 占位区。
 
 ### 2.2 Chapter-local 与 global-derived
@@ -169,7 +181,7 @@ JSON 没有 `subtitle`，使用 `lede`，不要机械截取正文第一句。
 ```markdown
 # Video Outline
 
-> **主题**：`<theme-id>`（Checkpoint Plan 已选定）—— <一句话风格描述>
+> **主题**：pending（Checkpoint Plan 待选；批准后原位替换）
 > **正文时长**：约 <T> 分 <S> 秒
 > **章节数**：<N> 章 / <M> narration beats
 ```
@@ -189,8 +201,9 @@ Courseplay 模式用下面五行替换普通项目的“章节数”行：
 base-scene 必须说明必要性并进入 Checkpoint Plan；不设置固定 beat 数、accent 数
 或 scene/step 比例阈值。
 
-Courseplay 在 metadata 后、正文章节前必须加入整集视觉调度表。该表是
-global-derived 内容，只在所有 chapter sections 冻结后填充：
+Courseplay 在 metadata 后、正文章节前必须加入整集视觉调度表。metadata、调度表、
+素材汇总是三个独立 global-derived 区域，只在所有 chapter sections 冻结后填充并
+逐一标记 `ready`：
 
 ```markdown
 ## 整集视觉调度
@@ -310,8 +323,9 @@ Courseplay 的每个 narration beat 对应一个 step；一个 step 内可以在
 更多 step；同一个 semantic state 可以连续重复。semantic state 使用章节内
 自定义的 `lower-kebab-case` 名称，描述该 step 结束时形成的稳定画面，不使用
 `init/add/focus/update/conclude` 作为全局枚举。`accent` 只能引用本章已声明的
-accent-frame；custom-scene step 只能引用已声明、写明必要性并获 Checkpoint Plan
-确认的 scene ID。
+accent-frame。custom-scene 在 Phase 1 只能声明为 `proposed`，并写明 base-scene
+与 accent-frame 均不足的必要性；局部/全局审查只检查候选是否合法，不得写“已确认”。
+Checkpoint Plan 批准后改为 `approved`，Phase 2 只能引用 `approved` 的 scene ID。
 
 accent-frame 使用固定的两段引用，不附加 semantic state：
 
@@ -336,7 +350,12 @@ accent-frame 使用固定的两段引用，不附加 semantic state：
 排版兼容约定：step 行的估时括号同样支持 `(~Ts)` 与 `（~Ts）`；页面映射和其他
 元数据保持清楚可读即可。
 
-偏离默认拍数的页必须在章节块或 step 表中内联标注触发条件，格式：
+Beat 边界由 script block 显式持久化；outline 不再计算默认拍数或由视觉内容组推导
+目标拍数。
+若作者合并或拆分了先前已写入的 Beat，必须在 script block 的局部审查中完成并重新
+冻结，outline 只记录最终映射，不另设偏离公式。
+
+需要解释 Beat 边界时可在章节块内联记录理由，格式：
 
 ```markdown
 （合并 4→3：组2/组3 同槽单句枚举，合并后 18s ≥4s）
@@ -344,14 +363,15 @@ accent-frame 使用固定的两段引用，不附加 semantic state：
 （并入：组1 本页无口播，画面自 A011 持续）
 ```
 
-无标注的偏离视为切分错误。
+理由只用于审阅，不从 G/U 数量推导 pass/fail；唯一机械门禁是全部非空 Beat 顺序
+拼接后与当前 `nx` 一致。
 
 ### 4.3 narration step 与 semantic state 的映射
 
 不要先规定每个 A-page 的 step 数，也不要从关系机制或槽位数量反推。按以下顺序：
 
-- 先按 CLAUDE.md §1.4 Beat 切分规则，从编号内容组锚点与批准口播确定
-  narration beat 与 step；
+- 先读取当前已冻结 script block 中由 `---` 持久化的 narration Beat；恢复时不得
+  重新推断或静默改变；
 - 再读取 visual rough 的编号内容组、页面骨架和独立槽位；
 - 判断本 step 内如何呈现这些内容，以及结束时形成什么稳定画面；
 - 若稳定画面与前一步相同，重复同一 semantic state，并用“保持……”写清焦点；
@@ -436,7 +456,7 @@ sections 冻结并填充全局派生区后再做 global review；两个层级都
 ### 7.1 Chapter-local 通用自检
 
 - [ ] 本章边界与已冻结 script block 一致，口播没有被标题或实现说明污染
-- [ ] 每个 narration beat 都对应一个 step，step 数与 `narrations.ts` 计划一致
+- [ ] 每个已冻结 script Beat 都对应一个 step；Phase 1 不依赖尚未创建的 `narrations.ts`
 - [ ] 每章都有信息池；有 article 时每章至少 3 条可追溯来源
 - [ ] 每个 step 都有清晰的屏幕内容和 `(~Ts)` 估时，不写动画、CSS、实现手段或微观时长
 - [ ] 每个 step 都说明相对前一步新增、保留、弱化、聚焦、更新或收束了什么
@@ -454,8 +474,8 @@ sections 冻结并填充全局派生区后再做 global review；两个层级都
 - [ ] 每个 base-scene / custom-scene step 引用有效 scene 与章节内 semantic state；
       state 描述稳定画面，可以重复，不使用固定全局标签；accent step 使用固定
       `K-Axxx-xx · accent` 两段格式
-- [ ] 每页 beat 数按 screen G 组与口播锚点 N 确定；所有偏离（N_eff±1）均内联标注
-      触发条件（合并/扩张/并入），没有从槽位或关系机制反推固定数量
+- [ ] Beat 边界来自已冻结 script block；全部非空 Beat 顺序拼接与当前 `nx` 一致，
+      没有从 G/U、槽位、关系机制、时长或固定模板反推数量
 - [ ] 每个 narration beat 对应一个 step；每拍口播非空；显式调用 handoff 时按其
       作者契约卡处理 beat 分隔与无损拼接
 - [ ] 同一槽位中的组合短语没有被机械拆分；一个 step 内的多元素呈现关系写清
@@ -463,7 +483,8 @@ sections 冻结并填充全局派生区后再做 global review；两个层级都
 - [ ] 连续 step 默认复用同一构图，semantic state 可重复；不以 scene/step 比例单独判失败
 - [ ] accent-frame 只承担真实的金句、转折、边界或最终判断，并保持低成本
 - [ ] 若 accent-frame 替代底部判断条，同一句结论没有在 base-scene 重复
-- [ ] 每个 custom-scene 都说明 base-scene 与 accent-frame 均不足，并已确认
+- [ ] 每个 custom-scene 都标为 `proposed` 并说明 base-scene 与 accent-frame 均不足；
+      未在 Checkpoint Plan 前伪称已确认
 - [ ] 没有把 narration beat 数称为页面数，也没有仅因 step 超过 10 秒而拆分、换场或判定失败
 
 ### 7.3 完成后的 global review
@@ -472,6 +493,8 @@ sections 冻结并填充全局派生区后再做 global review；两个层级都
 - [ ] 各章估时合计与顶部正文时长误差小于 10%
 - [ ] 封面独立、无口播、固定 15 秒，不计入正文统计
 - [ ] Base / Accent / Custom / Narration beats 统计与章节正文一致
+- [ ] metadata、schedule、materials 三个 global-derived 区域均为 `ready`，没有
+      `pending` 或 `stale`
 - [ ] 整集视觉调度每章一行，且相邻章节没有仅换文字的主构图、卡片比例、
       强调机制或固定 chrome 重复
 - [ ] 完整素材清单由各章媒体需求汇总，没有遗漏或改变媒体 ID / 资格
