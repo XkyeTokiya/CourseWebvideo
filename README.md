@@ -12,6 +12,9 @@ CourseWebvideo 是一套面向课程视频的网页化生产工程，使用单�
   -> .tmp/narration-pipeline/        # brief、草稿和追踪文件，不进 Git
   -> 人工批准与机器验证
   -> player/episodes/<id>/inputs/    # 三份正式内容产物
+  -> Phase 1 runner                 # init -> 按 A 提交 -> finalize
+  -> player/episodes/<id>/{script,outline}.md  # 唯一持久计划状态
+  -> Checkpoint Plan / 可选 .handoffs/Axxx.json
   -> player/episodes/<id>/src/       # 章节实现
   -> 预览、构建、录屏与后期
 ```
@@ -26,8 +29,11 @@ CourseWebvideo 是一套面向课程视频的网页化生产工程，使用单�
 | `narration-pipeline/episodes/` | 上游任务包事实源，保持只读 |
 | `player/` | Courseplay 网页播放器、章节代码、工具链和测试 |
 | `player/episodes/<id>/inputs/` | 下游唯一正式输入入口 |
+| `player/episodes/<id>/script.md`、`outline.md` | Phase 1 runner 管理的唯一持久计划状态 |
+| `player/episodes/<id>/.handoffs/` | 按需生成的单章交接包，派生缓存，不提交 Git |
 | `player/episodes/<id>/src/` | 章节组件、样式和 `narrations.ts` |
 | `.tmp/` | 过程文件和派生缓存，不提交 Git |
+| `.tmp/archives/` | 已迁移的历史归档载荷，不是生产输入，不提交 Git |
 | `production-pipeline.html` | 生产主线的可视化说明页 |
 
 ## 上游正式产物
@@ -53,7 +59,7 @@ CourseWebvideo 是一套面向课程视频的网页化生产工程，使用单�
 5. 编译追踪：追踪语义原子进入哪个 A/S，或记录省略原因。
 6. A-page 验证：检查 schema、覆盖率、证据、关系和 trace。
 7. Visual rough v4：确定视觉结构和媒体方案。
-8. 下游 Phase 1：从 `inputs/` 生成 `script.md`、`outline.md` 和生产计划。
+8. 下游 Phase 1 runner：`init` 初始化章节外壳，按 A 使用 `commit-chapter` 成对提交 `script.md` 与 `outline.md`，`finalize` 汇总生产计划。
 9. Checkpoint Plan：确认稿子、Outline、主题、素材和开发模式。
 10. 可选单章交接：需要压缩上下文时生成 `.handoffs/Axxx.json`。
 11. 章节制作：根据 handoff（如有）或等价的当前章节输入，完整创作章节画面。
@@ -92,10 +98,21 @@ pnpm lint                # 静态检查
 pnpm test:tools          # 工具链测试
 pnpm build               # 校验并构建生产版本
 pnpm build:inspect       # 校验构建文件的归属、大小与 SHA-256
-pnpm courseplay:phase1 -- --help  # 查看 Phase 1 编译与恢复命令
+pnpm courseplay:phase1 -- --help  # 查看 Phase 1 runner 命令
 pnpm audio:extract       # 从 narrations.ts 提取音频分段
 pnpm audio:providers     # 查看可用音频提供方
 ```
+
+Phase 1 的正常路径是先初始化，再逐个 A-page 提交候选内容对，最后统一收束：
+
+```powershell
+pnpm courseplay:phase1 -- init --episode episode-XX
+pnpm courseplay:phase1 -- commit-chapter --episode episode-XX --a-page A001 `
+  --script <script-candidate.md> --outline <outline-candidate.md>
+pnpm courseplay:phase1 -- finalize --episode episode-XX
+```
+
+`status`、`resume` 和 `preflight` 用于诊断或中断恢复。候选文件不能包含 runner marker；runner 会校验 Nx 无损还原、Beat/step 数量、章节顺序和稳定关系引用。
 
 如需生成可选的单章 handoff，可在 `player/` 目录执行：
 
@@ -112,6 +129,9 @@ Courseplay Phase 1 runner 的最小命令、章节内容对契约、中断恢复
 - 未经用户明确批准，不得生成批准口播文件或进入 A-page 阶段。
 - `visual rough` 经用户审阅后再进入 approved，并作为章节制作输入。
 - `inputs/` 只能放经过批准和验证的正式产物。
+- Phase 1 的唯一持久状态是 `script.md` 与 `outline.md`；不创建旁路 `state.json`、review receipt、临时 script blocks 或 narration unit/binding sidecar。
+- Phase 1 的项目级运行输入是 `project.json`、批准的 A-page、approved visual rough，以及 A-page 声明的批准口播文件；已初始化的 `script.md` / `outline.md` 是 runner 管理的正式状态，validation report 只作为治理证据，不是运行依赖。
+- Phase 1 不读取 `narrations.ts`；章节完成后才由下游生成并以它作为最终 step/TTS 文本来源。
 - `.handoffs/` 是派生缓存，不进入 Git。
 - 音频合成前必须先确认分段文本和是否合成。
 - 生产媒体按 `dist/media/episodes/<episode-id>/<kind>/` 隔离，禁止回退为 `dist/assets/` 平铺；规则见 `player/docs/media-build-layout.md`。

@@ -7,6 +7,8 @@
 - `narration-pipeline/`：51 集任务包事实源、口播、A-page v6、visual rough v4 与验证。
 - `player/`：Web Video Studio、51 期播放器实例、章节源码、音频与录屏。
 - `player/episodes/<episode-id>/inputs/`：上游批准正式输入的唯一消费入口。
+- `player/episodes/<episode-id>/{script.md,outline.md}`：Phase 1 runner 管理的唯一持久计划状态。
+- `player/episodes/<episode-id>/.handoffs/`：按需生成的单章交接缓存，不提交 Git。
 - `player/episodes/_shared/covers/`：51 集标准封面内容库。
 - `.tmp/narration-pipeline/`：上游过程文件目录，不是事实源，不提交 Git。
 
@@ -19,6 +21,9 @@ narration-pipeline/episodes/
   -> .tmp/narration-pipeline/
   -> 人工批准与验证
   -> player/episodes/<episode-id>/inputs/
+  -> Phase 1 runner：init -> commit-chapter(Axxx) -> finalize
+  -> script.md + outline.md -> Checkpoint Plan
+  -> 可选 .handoffs/Axxx.json
   -> player/episodes/<episode-id>/src/
   -> player 预览、构建与录屏
 ```
@@ -41,7 +46,14 @@ cd D:\00-workspace\005-coursewebvideo\player
 - 单一 Git 根位于本目录；两个子目录不再拥有独立 Git 历史。
 - 不提交 `.env`、凭据、令牌、`node_modules/`、构建缓存、`.tmp/` 或旧归档。
 - 先确认目标子项目和当前状态，再只提交本任务明确修改的路径。
-- `archives/retired-production-flows/` 是封存历史载荷；未经用户明确授权，Agent 不得读取、解压或将其中内容作为生产依据。
+- `.tmp/archives/` 是迁移后的封存历史载荷；未经用户明确授权，Agent 不得读取、解压或将其中内容作为生产依据。它不进 Git，也不是当前流程输入。
+
+## Phase 1 runner
+
+- 从 `player/` 目录运行 `pnpm courseplay:phase1`；正常路径为 `init`、逐 A 的 `commit-chapter`、`finalize`。
+- `script.md` 与 `outline.md` 是唯一持久状态。不要创建旁路 `state.json`、review receipt、临时 script blocks、`narration-units.json` 或 `narration-bindings.json`。
+- 候选内容在临时位置创作，由 runner 校验后以 script/outline 内容对原子提交；不要手写或复制 runner marker。
+- `status`、`resume`、`preflight` 仅用于诊断和恢复；A-page 集合或顺序发生变化时必须显式处理迁移，不能静默覆盖。
 
 ## 跨项目单集进度投影
 

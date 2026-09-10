@@ -421,10 +421,10 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
   <header class="hero" id="top">
     <span class="badge"><b>A-page v6</b>+<b>visual rough v4</b>+<b>handoff v4</b></span>
     <h1>从冻结任务包，<br>到可验收的<em>成片</em>。</h1>
-    <p class="lede">今后新生产一律走这条主线：单一 Git 仓库内划分 <span class="mono">narration-pipeline/</span> 与 <span class="mono">player/</span> 两个子项目。上游以冻结任务包为唯一事实来源，经过连续口播、A-page 编译与 visual rough 编译；下游按需使用 compact handoff 辅助章节创作，未调用时仍可使用等价的当前章节输入。</p>
+    <p class="lede">今后新生产一律走这条主线：单一 Git 仓库内划分 <span class="mono">narration-pipeline/</span> 与 <span class="mono">player/</span> 两个子项目。上游以冻结任务包为唯一事实来源，经过连续口播、A-page 编译与 visual rough 编译；下游先用确定性的 Phase 1 runner 按 A-page 纵切提交 <span class="mono">script.md</span> / <span class="mono">outline.md</span>，再按需使用 compact handoff 辅助章节创作。</p>
     <p class="note">
       <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.6" stroke="#6B7280" stroke-width="1.3"/><path d="M8 5.2v.2M8 7.4V11" stroke="#6B7280" stroke-width="1.4" stroke-linecap="round"/></svg>
-      <span>当前工具面只接受 v6/v4/handoff-v4；既有 episode 文件保持原样，但不再作为新生产入口。</span>
+      <span>当前工具面接受 A-page v6、visual rough v4、Phase 1 runner 与 handoff v4；旧 narration unit/binding sidecar 不再是生产入口。</span>
     </p>
     <div class="vchips">
       <span class="chip">上游权威 <b>rewrite-course-narration</b></span>
@@ -554,8 +554,8 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
         <div class="fcard">
           <span class="fnum">08</span>
           <div class="fbody">
-            <div class="ftitle">生成 script.md + outline.md</div>
-            <div class="fnote">从每个 A 的 Nx 无损切分 narration beats，产出生产计划。</div>
+            <div class="ftitle">Phase 1 runner：初始化并按 A 提交计划</div>
+            <div class="fnote"><span class="mono">init</span> 创建稳定外壳；每章 <span class="mono">commit-chapter</span> 原子提交 script + outline；<span class="mono">finalize</span> 汇总计划并进入 Checkpoint Plan。</div>
           </div>
           <span class="fzone">下游</span>
         </div>
@@ -698,9 +698,9 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
           </tr>
           <tr>
             <td class="stg"><span class="idx">08</span>下游 Phase 1</td>
-            <td>读取 <span class="mono">inputs/</span> 正式输入；无损派生口播 beats，生成生产计划</td>
-            <td><span class="art">script.md</span><span class="art">outline.md</span><span class="art">project.json</span></td>
-            <td><span class="gcell"><i></i>script / outline 自检；必要时独立 reviewer</span></td>
+            <td>运行确定性的 Phase 1 runner：从批准的 A-page v6 与 visual rough v4 初始化外壳，逐 A 校验并提交 script / outline 内容对，再重新验证并汇总全局计划</td>
+            <td><span class="art">script.md</span><span class="art">outline.md</span><span class="art">metadata / schedule / materials</span></td>
+            <td><span class="gcell"><i></i><span class="mono" style="font-size:11.5px">init → commit-chapter → finalize</span>；不使用旁路状态</span></td>
           </tr>
           <tr class="hard">
             <td class="stg"><span class="idx">09</span>Checkpoint Plan</td>
@@ -818,31 +818,34 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
         <p>章节代码、narrations.ts 与封面；51 期标准封面内容库位于 <span class="mono">episodes/_shared/covers/</span>。</p>
       </div>
     </div>
+    <div class="aside-note reveal">
+      <span>历史归档已迁移到 <span class="mono">.tmp/archives/</span>，不进 Git、不是生产输入；当前流程只以任务包、批准 inputs、Phase 1 正式状态和章节实现为依据。</span>
+    </div>
   </section>
 
   <section id="downstream">
     <div class="sect-head reveal">
       <div class="kicker">05 · Downstream</div>
       <h2>下游真正如何消费</h2>
-      <p>下游分为两个阶段：Phase 1 读取 <span class="mono">inputs/</span> 正式输入做计划，Phase 2 可按 A 发放三源 handoff，章节 Agent 重新创作完整上屏内容。</p>
+      <p>下游分为两个阶段：Phase 1 runner 读取正式输入并按 A 维护唯一的 script / outline 状态，Phase 2 可按 A 发放三源 handoff，章节 Agent 重新创作完整上屏内容。</p>
     </div>
 
     <div class="grid2">
       <div class="phase reveal">
         <div class="ph-top"><span class="ph-num">PHASE 1</span><h3>读取正式输入，生成计划</h3></div>
-        <div class="ph-sub">读取 inputs/ 正式输入，无损派生口播与生产调度。</div>
+        <div class="ph-sub">确定性维护 script / outline 内容对；每章提交一次，支持中断恢复，不产生旁路状态。</div>
         <div class="io">
           <div>
             <div class="lab">输入</div>
-            <div class="box"><span class="mono">player/episodes/&lt;id&gt;/inputs/</span>三份内容产物 + 验证报告</div>
+            <div class="box"><span class="mono">project.json</span> + <span class="mono">A-page v6</span> + <span class="mono">approved visual rough v4</span><span class="mono" style="margin-top:8px">A-page 声明的 approved text（如有）</span></div>
           </div>
           <div class="arr">→</div>
           <div>
             <div class="lab">输出</div>
             <div class="box">
-              <span class="mono">script.md</span>从每个 A 的 Nx 无损切分 narration beats
-              <span class="mono" style="margin-top:8px">outline.md</span>章节、step、semantic state、持续元素与场景调度
-              <span class="mono" style="margin-top:8px">主题 · 素材 · 开发模式建议</span>
+              <span class="mono">init</span>创建模块化 script / outline 外壳
+              <span class="mono" style="margin-top:8px">commit-chapter</span>校验 Nx、Beat/step、顺序与稳定关系后提交内容对
+              <span class="mono" style="margin-top:8px">finalize</span>生成 metadata、schedule、materials 并标记 awaiting-checkpoint-plan
             </div>
           </div>
         </div>
@@ -954,8 +957,8 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
         <div class="cv">决定采用<b>什么表达结构</b></div>
       </div>
       <div class="crow reveal">
-        <div class="ck">Outline</div>
-        <div class="cv">决定<b>制作调度、step 与状态</b></div>
+        <div class="ck">Phase 1 script + outline</div>
+        <div class="cv">决定<b>口播 beats、制作调度、step 与 semantic state</b>；两份文件保持同一事务令牌</div>
       </div>
       <div class="crow reveal">
         <div class="ck">下游章节实现</div>
@@ -984,10 +987,10 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
       <div class="fref">
         <div class="fr-role">下游 · 制作（player）</div>
         <div class="fr-name">web-video-presentation</div>
-        <div class="fr-desc">Phase 1 计划、可选 handoff、章节制作、音频与录屏的下游权威。</div>
+        <div class="fr-desc">Phase 1 runner、可选 handoff、章节制作、音频与录屏的下游权威。</div>
       </div>
     </div>
-    <p class="foot-note">新生产使用本页描述的 v6/v4 主线；handoff v4 按需调用。数据流：任务包 → .tmp 过程文件 → 人工批准与验证 → inputs/ → script/outline → 可选 handoff → src/ → 预览、构建与录屏。</p>
+    <p class="foot-note">新生产使用本页描述的 v6/v4 主线；Phase 1 采用 init → commit-chapter → finalize，handoff v4 按需调用。数据流：任务包 → .tmp 过程文件 → 人工批准与验证 → inputs/ → script/outline → Checkpoint Plan → 可选 handoff → src/ → 预览、构建与录屏。</p>
   </footer>
 
 </div>

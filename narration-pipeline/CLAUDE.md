@@ -13,7 +13,7 @@ docs/                                             # 生产、治理和历史说�
 ../player/episodes/episode-XX/inputs/             # 唯一正式输入
 ```
 
-本目录不再使用 `output/` 或仓库内 `work/`。批准稿、A-page、验证报告和 visual rough 必须发布到 `../player/episodes/<episode-id>/inputs/`；Brief、草稿、compile trace 和候选 rough 写入 `../.tmp/narration-pipeline/`。
+本目录不再使用 `output/` 或仓库内 `work/`。批准稿、A-page、验证报告和 visual rough 必须发布到 `../player/episodes/<episode-id>/inputs/`；Brief、草稿、compile trace 和候选 rough 写入 `../.tmp/narration-pipeline/`。不要额外发布 `narration-units.json` 或 `narration-bindings.json`；它们不是当前生产入口。
 
 ## 生产边界
 
@@ -21,6 +21,7 @@ docs/                                             # 生产、治理和历史说�
 - 新生产入口为 `rewrite-course-narration`，新视觉粗设入口为 `design-course-visual-rough`。
 - 上游正式输入通过人工批准和对应验证后才能发布到播放器 inputs；compact handoff 仅在下游需要时生成，不是发布门禁。
 - 播放器只消费 inputs，不读取任务包或 `.tmp` 补齐页面语义。
+- 发布到 inputs 的正式内容只有批准口播、A-page v6 和 approved visual rough；验证报告用于治理与审计，Phase 1 runner 不把它们当作运行依赖。
 
 作者只读当前阶段的契约卡和合成示例：[`A-page v6`](.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md)、[`visual rough v4`](.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md)。handoff 是下游可选上下文打包工具，规则见 `../player/docs/courseplay-handoff-v4-author-contract.md`；不调用时不要求 handoff 专用 Markdown 排版。
 
@@ -33,7 +34,7 @@ docs/                                             # 生产、治理和历史说�
   -> ../player/episodes/episode-XX/inputs/
 ```
 
-验证报告可以直接写入目标 episode 的 `inputs/`；compile trace 必须留在 `.tmp`，不能发布到播放器。
+验证报告可以直接写入目标 episode 的 `inputs/`，但它们不属于章节创作事实源；compile trace 必须留在 `.tmp`，不能发布为播放器输入。下游 Phase 1 会从三份正式内容产物建立 `script.md` 与 `outline.md`，不依赖上游旁路单元或绑定文件。
 
 ## 修改与验证
 
