@@ -79,7 +79,7 @@ function parseScript(text, pages) {
   const expected = pages.map((page) => page.a_id); const actual = found.map(({ match }) => match[1]);
   if (JSON.stringify(expected) !== JSON.stringify(actual)) fail("HV4_PAGE_SEQUENCE", "script.pages", expected, actual);
   return new Map(found.map(({ match, markdown }) => {
-    const body = markdown.slice(markdown.indexOf("\n") + 1).trim();
+    const body = markdown.slice(markdown.indexOf("\n") + 1).replace(/<!--\s*CHAPTER:[^\n]+-->/gu, "").trim();
     const beats = body.split(/^\s*---\s*$/gmu).map((beat) => beat.trim()).filter(Boolean);
     const page = pages.find((candidate) => candidate.a_id === match[1]);
     if (normalized(beats.join("")) !== normalized(page.nx)) fail("HV4_NX_MISMATCH", `script.${match[1]}`, page.nx, beats.join(""));

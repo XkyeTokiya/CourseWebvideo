@@ -10,19 +10,17 @@ import {
   VISUAL_ROUGH_SCHEMA,
 } from "./courseplay-handoff.mjs";
 
-export const PHASE1_STATE_SCHEMA = "web-video-courseplay-phase1-state/v1";
-
 const ERROR_MESSAGES = {
   PHASE1_INPUT_MISSING: "必需输入不存在或无法解析。",
   PHASE1_VERSION_PAIR: "Phase 1 只接受 A-page v6 与 visual rough v4。",
-  PHASE1_SOURCE_INTEGRITY: "正式输入或 validation 摘要不匹配。",
-  PHASE1_INPUT_NOT_APPROVED: "正式输入尚未通过 production/approved validation。",
-  PHASE1_PAGE_SEQUENCE: "A-page 与 visual rough 页面集合或顺序不一致。",
-  PHASE1_NX_MISMATCH: "script Beat 拼接或 approved_text 与 A-page nx 不一致。",
-  PHASE1_OUTLINE_CONFLICT: "现有 outline 既不是原始模板，也不是可恢复的新格式。",
-  PHASE1_STATE: "命令不符合当前 Phase 1 状态。",
-  PHASE1_BEAT_STEP_MISMATCH: "冻结 script Beat 与 outline step 不一致。",
-  PHASE1_REVIEW: "审查结论或回修目标无效。",
+  PHASE1_SOURCE_INTEGRITY: "正式输入的 episode、来源或批准口播不一致。",
+  PHASE1_INPUT_NOT_APPROVED: "正式输入尚未达到 production/approved。",
+  PHASE1_PAGE_SEQUENCE: "A-page、visual rough 或正式文件的章节集合/顺序不一致。",
+  PHASE1_NX_MISMATCH: "script Beat 拼接与当前 A-page nx 不一致。",
+  PHASE1_ARTIFACT_CONFLICT: "现有 script/outline 既不是原始模板，也不是可恢复的模块化格式。",
+  PHASE1_BEAT_STEP_MISMATCH: "script Beat 与 outline step 不一致。",
+  PHASE1_REFERENCE_UNKNOWN: "outline 丢失必要关系或引用了当前章节未知的稳定 ID。",
+  PHASE1_INCOMPLETE: "仍有章节未完整提交，不能 finalize。",
   PHASE1_TOOL_DEFECT: "Phase 1 runner 出现未登记异常。",
 };
 
@@ -46,7 +44,7 @@ function fail(code, pathName, expected, actual) {
 
 const sha256 = (content) => createHash("sha256").update(content).digest("hex");
 const normalized = (text) => text.replace(/\s+/gu, "");
-const normalizedMarkdown = (text) => text.replace(/\r\n/gu, "\n").replace(/\r/gu, "\n").replace(/^\uFEFF/u, "");
+const markdown = (text) => text.replace(/\r\n/gu, "\n").replace(/\r/gu, "\n").replace(/^\uFEFF/u, "");
 const relative = (root, file) => path.relative(root, file).split(path.sep).join("/");
 
 async function exists(file) {
@@ -62,11 +60,11 @@ async function required(file, label) {
   try {
     return await readFile(file, "utf8");
   } catch {
-    fail("PHASE1_INPUT_MISSING", label, relative(process.cwd(), file), null);
+    fail("PHASE1_INPUT_MISSING", label, file, null);
   }
 }
 
-function json(text, label) {
+function parseJson(text, label) {
   try {
     return JSON.parse(text);
   } catch {
@@ -75,7 +73,7 @@ function json(text, label) {
 }
 
 function frontmatter(text) {
-  const match = normalizedMarkdown(text).match(/^---\s*\n([\s\S]*?)\n---\s*(?:\n|$)/u);
+  const match = markdown(text).match(/^---\s*\n([\s\S]*?)\n---\s*(?:\n|$)/u);
   if (!match) fail("PHASE1_VERSION_PAIR", "visual_rough.frontmatter", VISUAL_ROUGH_SCHEMA, "missing");
   return Object.fromEntries(match[1].split("\n").filter(Boolean).map((line) => {
     const index = line.search(/[:：]/u);
@@ -86,7 +84,6 @@ function frontmatter(text) {
 function standardPaths(root, episodeId) {
   const episodeDir = path.join(root, "episodes", episodeId);
   const inputsDir = path.join(episodeDir, "inputs");
-  const workDir = path.join(root, ".tmp", "player-phase1", episodeId);
   return {
     root,
     episodeId,
@@ -94,158 +91,99 @@ function standardPaths(root, episodeId) {
     inputsDir,
     project: path.join(episodeDir, "project.json"),
     aPage: path.join(inputsDir, `${episodeId}-a-page.json`),
-    aPageValidation: path.join(inputsDir, `${episodeId}-a-page-validation.json`),
     visualRough: path.join(inputsDir, `${episodeId}-visual-rough.md`),
-    visualRoughValidation: path.join(inputsDir, `${episodeId}-visual-rough-validation.json`),
     outline: path.join(episodeDir, "outline.md"),
     script: path.join(episodeDir, "script.md"),
     templateOutline: path.join(root, "templates", "episode", "outline.md"),
-    workDir,
-    state: path.join(workDir, "state.json"),
-    scriptDir: path.join(workDir, "script"),
-    reviewDir: path.join(workDir, "reviews"),
+    templateScript: path.join(root, "templates", "episode", "script.md"),
   };
 }
 
-function validationPass(report, expected) {
-  const failures = Array.isArray(report.failures) ? report.failures : [];
-  const errors = Array.isArray(report.errors) ? report.errors : [];
-  if (report.episode_id !== expected.episodeId || failures.length || errors.length) {
-    fail("PHASE1_INPUT_NOT_APPROVED", expected.label, {
-      episode_id: expected.episodeId,
-      failures: [],
-      errors: [],
-    }, {
-      episode_id: report.episode_id,
-      failures,
-      errors,
-    });
-  }
+function roughSections(text) {
+  text = markdown(text);
+  const matches = [...text.matchAll(/^##\s+(A\d{3})\s*(?:[｜|])\s*(.*?)\s*$/gmu)];
+  return matches.map((match, index) => ({
+    a_id: match[1],
+    title: match[2],
+    markdown: text.slice(match.index, matches[index + 1]?.index ?? text.length).trim(),
+  }));
 }
 
-function orderedRoughSections(text) {
-  return [...normalizedMarkdown(text).matchAll(/^##\s+(A\d{3})\s*(?:[｜|])\s*(.*?)\s*$/gmu)]
-    .map((match, index, matches) => ({
-      a_id: match[1],
-      title: match[2],
-      markdown: normalizedMarkdown(text).slice(match.index, matches[index + 1]?.index ?? text.length).trim(),
-    }));
-}
-
-export async function preflightPhase1({ root = process.cwd(), episodeId }) {
-  const files = standardPaths(path.resolve(root), episodeId);
-  const [projectText, aPageText, aValidationText, roughText, roughValidationText] = await Promise.all([
-    required(files.project, "project.json"),
-    required(files.aPage, "a-page"),
-    required(files.aPageValidation, "a-page-validation"),
-    required(files.visualRough, "visual-rough"),
-    required(files.visualRoughValidation, "visual-rough-validation"),
-  ]);
-  const project = json(projectText, "project.json");
-  const aPage = json(aPageText, "a-page");
-  const aValidation = json(aValidationText, "a-page-validation");
-  const roughValidation = json(roughValidationText, "visual-rough-validation");
+function validateCoreInputs({ files, aPage, roughText }) {
   const roughMeta = frontmatter(roughText);
-
-  if (project.id !== episodeId || aPage.episode_id !== episodeId || roughMeta.episode_id !== episodeId) {
-    fail("PHASE1_SOURCE_INTEGRITY", "episode_id", episodeId, {
-      project: project.id,
-      a_page: aPage.episode_id,
-      visual_rough: roughMeta.episode_id,
-    });
-  }
   if (aPage.schema_version !== A_PAGE_SCHEMA || roughMeta.schema_version !== VISUAL_ROUGH_SCHEMA) {
     fail("PHASE1_VERSION_PAIR", "schema_version", [A_PAGE_SCHEMA, VISUAL_ROUGH_SCHEMA], [aPage.schema_version, roughMeta.schema_version]);
   }
   if (aPage.document_kind !== "production" || roughMeta.document_kind !== "production" || roughMeta.status !== "approved") {
-    fail("PHASE1_INPUT_NOT_APPROVED", "document_status", {
-      a_page: "production",
-      visual_rough: "production/approved",
-    }, {
+    fail("PHASE1_INPUT_NOT_APPROVED", "document_status", "A-page production and visual rough production/approved", {
       a_page: aPage.document_kind,
       visual_rough: `${roughMeta.document_kind}/${roughMeta.status}`,
     });
   }
-
-  validationPass(aValidation, { episodeId, label: "a-page-validation" });
-  validationPass(roughValidation, { episodeId, label: "visual-rough-validation" });
-  if (aValidation.validation_profile !== "a-page-v6" || aValidation.schema_version !== A_PAGE_SCHEMA
-      || aValidation.production_status !== "production") {
-    fail("PHASE1_INPUT_NOT_APPROVED", "a-page-validation.profile", "a-page-v6/production", {
-      profile: aValidation.validation_profile,
-      schema: aValidation.schema_version,
-      status: aValidation.production_status,
+  if (aPage.episode_id !== files.episodeId || roughMeta.episode_id !== files.episodeId) {
+    fail("PHASE1_SOURCE_INTEGRITY", "episode_id", files.episodeId, {
+      a_page: aPage.episode_id,
+      visual_rough: roughMeta.episode_id,
     });
   }
-  if (roughValidation.validation_profile !== "visual-rough-v4" || roughValidation.schema_version !== VISUAL_ROUGH_SCHEMA
-      || roughValidation.status !== "approved") {
-    fail("PHASE1_INPUT_NOT_APPROVED", "visual-rough-validation.profile", "visual-rough-v4/approved", {
-      profile: roughValidation.validation_profile,
-      schema: roughValidation.schema_version,
-      status: roughValidation.status,
-    });
-  }
-
   const pages = Array.isArray(aPage.pages) ? aPage.pages : [];
   const pageIds = pages.map((page) => page.a_id);
   if (!pages.length || pageIds.some((id) => !/^A\d{3}$/u.test(id)) || new Set(pageIds).size !== pageIds.length
       || pages.some((page) => typeof page.nx !== "string" || !page.nx.trim())) {
     fail("PHASE1_PAGE_SEQUENCE", "a_page.pages", "unique Axxx pages with non-empty nx", pageIds);
   }
-  const roughSections = orderedRoughSections(roughText);
-  const roughIds = roughSections.map((section) => section.a_id);
+  const sections = roughSections(roughText);
+  const roughIds = sections.map((section) => section.a_id);
   if (JSON.stringify(pageIds) !== JSON.stringify(roughIds)) {
     fail("PHASE1_PAGE_SEQUENCE", "visual_rough.pages", pageIds, roughIds);
   }
+  let roughById;
   try {
-    parseVisualRoughV4(roughText, pages);
+    roughById = parseVisualRoughV4(roughText, pages);
   } catch (error) {
-    fail("PHASE1_PAGE_SEQUENCE", "visual_rough.structure", "valid v4 page structure", error.detail ?? error.message);
+    fail("PHASE1_SOURCE_INTEGRITY", "visual_rough.structure", "valid visual rough v4", error.detail ?? error.message);
   }
+  return { pages, sections, roughById, roughMeta };
+}
 
+async function loadChapterInputs({ root, episodeId }) {
+  const files = standardPaths(path.resolve(root), episodeId);
+  const [aPageText, roughText] = await Promise.all([
+    required(files.aPage, "a-page"),
+    required(files.visualRough, "visual-rough"),
+  ]);
+  const aPage = parseJson(aPageText, "a-page");
+  return { files, aPage, aPageText, roughText, ...validateCoreInputs({ files, aPage, roughText }) };
+}
+
+export async function preflightPhase1({ root = process.cwd(), episodeId }) {
+  const files = standardPaths(path.resolve(root), episodeId);
+  const [projectText, aPageText, roughText] = await Promise.all([
+    required(files.project, "project.json"),
+    required(files.aPage, "a-page"),
+    required(files.visualRough, "visual-rough"),
+  ]);
+  const project = parseJson(projectText, "project.json");
+  const aPage = parseJson(aPageText, "a-page");
+  if (project.id !== episodeId) fail("PHASE1_SOURCE_INTEGRITY", "project.id", episodeId, project.id);
+  const core = validateCoreInputs({ files, aPage, roughText });
   const aPageDigest = sha256(aPageText);
-  const roughDigest = sha256(roughText);
-  if (roughMeta.source_a_page !== `${episodeId}-a-page.json`
-      || roughMeta.source_a_page_sha256?.toLowerCase() !== aPageDigest
-      || aValidation.input_integrity?.a_page_sha256?.toLowerCase() !== aPageDigest
-      || roughValidation.input_integrity?.a_page_sha256?.toLowerCase() !== aPageDigest
-      || roughValidation.input_integrity?.visual_rough_sha256?.toLowerCase() !== roughDigest) {
-    fail("PHASE1_SOURCE_INTEGRITY", "input_digests", "validation digests match current files", {
-      rough_source: roughMeta.source_a_page_sha256,
-      a_validation: aValidation.input_integrity,
-      rough_validation: roughValidation.input_integrity,
+  if (core.roughMeta.source_a_page !== `${episodeId}-a-page.json`
+      || core.roughMeta.source_a_page_sha256?.toLowerCase() !== aPageDigest) {
+    fail("PHASE1_SOURCE_INTEGRITY", "visual_rough.source_a_page", {
+      file: `${episodeId}-a-page.json`, digest: aPageDigest,
+    }, {
+      file: core.roughMeta.source_a_page, digest: core.roughMeta.source_a_page_sha256,
     });
   }
-
   let approvedText = null;
-  let approvedPath = null;
   if (aPage.approved_text) {
-    approvedPath = path.join(files.inputsDir, aPage.approved_text);
-    approvedText = await required(approvedPath, "approved_text");
-    if (normalized(pages.map((page) => page.nx).join("")) !== normalized(approvedText)) {
-      fail("PHASE1_NX_MISMATCH", "approved_text", "ordered pages[].nx", aPage.approved_text);
-    }
-    if (aValidation.input_integrity?.approved_text_sha256?.toLowerCase() !== sha256(approvedText)) {
-      fail("PHASE1_SOURCE_INTEGRITY", "approved_text.digest", aValidation.input_integrity?.approved_text_sha256, sha256(approvedText));
+    approvedText = await required(path.join(files.inputsDir, aPage.approved_text), "approved_text");
+    if (normalized(core.pages.map((page) => page.nx).join("")) !== normalized(approvedText)) {
+      fail("PHASE1_SOURCE_INTEGRITY", "approved_text", "ordered pages[].nx", aPage.approved_text);
     }
   }
-
-  const roughById = new Map(roughSections.map((section) => [section.a_id, section]));
-  const chapters = pages.map((page) => ({
-    a_id: page.a_id,
-    input_fingerprint: sha256(`${JSON.stringify(page)}\n${roughById.get(page.a_id)?.markdown ?? ""}`),
-  }));
-  return {
-    files,
-    project,
-    aPage,
-    pages,
-    roughText,
-    roughSections,
-    approvedPath,
-    input_fingerprint: sha256(`${aPageDigest}\n${roughDigest}\n${approvedText ? sha256(approvedText) : "none"}`),
-    chapters,
-  };
+  return { files, project, projectText, aPage, aPageText, roughText, approvedText, ...core };
 }
 
 async function atomicWrite(file, content, faultAt, options = {}) {
@@ -260,483 +198,292 @@ async function atomicWrite(file, content, faultAt, options = {}) {
   }
 }
 
-function initialState(preflight) {
-  return {
-    schema_version: PHASE1_STATE_SCHEMA,
-    episode_id: preflight.files.episodeId,
-    phase: "initialized",
-    input_fingerprint: preflight.input_fingerprint,
-    chapters: preflight.chapters.map((chapter) => ({
-      ...chapter,
-      script: { status: "pending", review: null },
-      outline: { status: "pending", review: null },
-    })),
-    global: {
-      metadata: "pending",
-      schedule: "pending",
-      materials: "pending",
-      review: null,
-    },
-    last_successful_transition: "init",
-  };
+const chapterBegin = (aPageId, transaction = "pending") => `<!-- CHAPTER:${aPageId}:BEGIN tx=${transaction} -->`;
+const chapterEnd = (aPageId) => `<!-- CHAPTER:${aPageId}:END -->`;
+const globalBegin = (region) => `<!-- GLOBAL:${region}:BEGIN -->`;
+const globalEnd = (region) => `<!-- GLOBAL:${region}:END -->`;
+
+function scriptShell(pages) {
+  const sections = pages.map((page) => `${chapterBegin(page.a_id)}\n## ${page.a_id} · pending\n\n<!-- CHAPTER-CONTENT: pending -->\n${chapterEnd(page.a_id)}`).join("\n\n");
+  return `# Video Script\n\n${sections}\n`;
 }
 
 function outlineShell(pages) {
-  const sections = pages.map((page, index) => `## ${index + 1}. ${page.a_id} — pending\n\n<!-- PHASE1-BLOCK: ${page.a_id} · pending-script -->\n<!-- CHAPTER-CONTENT: pending -->`).join("\n\n");
-  return `# Video Outline\n\n> **编译状态**：in-progress\n> **主题**：pending（Checkpoint Plan 待选）\n> **章节**：${pages.length}\n\n<!-- GLOBAL-DERIVED: metadata · pending -->\n\n## 整集视觉调度\n\n<!-- GLOBAL-DERIVED: schedule · pending -->\n\n## 0. cover — 封面（1 silent step · fixed 15s）\n\n${sections}\n\n## 素材清单\n\n<!-- GLOBAL-DERIVED: materials · pending -->\n`;
+  const sections = pages.map((page, index) => `${chapterBegin(page.a_id)}\n## ${index + 1}. ${page.a_id.toLowerCase()} — pending（0 steps · ~0s）\n\n**A-page / Chapter**：\`${page.a_id}\`\n\n<!-- CHAPTER-CONTENT: pending -->\n${chapterEnd(page.a_id)}`).join("\n\n");
+  return `# Video Outline\n\n${globalBegin("metadata")}\n> **编译状态**：in-progress\n> **主题**：pending（Checkpoint Plan 待选）\n> **章节**：${pages.length}\n${globalEnd("metadata")}\n\n## 整集视觉调度\n\n${globalBegin("schedule")}\n<!-- GLOBAL-CONTENT: pending -->\n${globalEnd("schedule")}\n\n## 0. cover — 封面（1 silent step · fixed 15s）\n\n${sections}\n\n## 素材清单\n\n${globalBegin("materials")}\n<!-- GLOBAL-CONTENT: pending -->\n${globalEnd("materials")}\n`;
 }
 
-function markerState(outline, aPageId) {
-  return outline.match(new RegExp(`<!-- PHASE1-BLOCK: ${aPageId} · ([a-z-]+) -->`, "u"))?.[1] ?? null;
+function chapterRange(text, aPageId) {
+  const startPattern = new RegExp(`<!-- CHAPTER:${aPageId}:BEGIN tx=([^ ]+) -->`, "u");
+  const start = startPattern.exec(text);
+  const endMarker = chapterEnd(aPageId);
+  const end = start ? text.indexOf(endMarker, start.index + start[0].length) : -1;
+  if (!start || end < 0) fail("PHASE1_ARTIFACT_CONFLICT", aPageId, "chapter boundary markers", null);
+  return {
+    start: start.index,
+    end: end + endMarker.length,
+    contentStart: start.index + start[0].length,
+    contentEnd: end,
+    transaction: start[1],
+  };
 }
 
-function globalState(outline, region) {
-  return outline.match(new RegExp(`<!-- GLOBAL-DERIVED: ${region} · ([a-z-]+) -->`, "u"))?.[1] ?? null;
+function globalRange(text, region) {
+  const begin = globalBegin(region);
+  const endMarker = globalEnd(region);
+  const start = text.indexOf(begin);
+  const end = start < 0 ? -1 : text.indexOf(endMarker, start + begin.length);
+  if (start < 0 || end < 0) fail("PHASE1_ARTIFACT_CONFLICT", `global.${region}`, "global boundary markers", null);
+  return { start, end: end + endMarker.length, contentStart: start + begin.length, contentEnd: end };
 }
 
-function replaceMarker(outline, aPageId, status) {
-  const pattern = new RegExp(`<!-- PHASE1-BLOCK: ${aPageId} · [a-z-]+ -->`, "u");
-  if (!pattern.test(outline)) fail("PHASE1_STATE", `outline.${aPageId}.marker`, "existing marker", null);
-  return outline.replace(pattern, `<!-- PHASE1-BLOCK: ${aPageId} · ${status} -->`);
+function markerIds(text) {
+  return [...text.matchAll(/<!-- CHAPTER:(A\d{3}):BEGIN tx=[^ ]+ -->/gu)].map((match) => match[1]);
 }
 
-function chapterRange(outline, aPageId) {
-  const marker = new RegExp(`<!-- PHASE1-BLOCK: ${aPageId} · [a-z-]+ -->`, "u").exec(outline);
-  if (!marker) fail("PHASE1_STATE", `outline.${aPageId}.marker`, "existing marker", null);
-  const before = outline.slice(0, marker.index);
-  const start = before.lastIndexOf("\n## ") + 1;
-  const next = outline.indexOf("\n## ", marker.index + marker[0].length);
-  return { start, end: next < 0 ? outline.length : next + 1 };
+function assertArtifactOrder(text, pages, label) {
+  const expected = pages.map((page) => page.a_id);
+  const actual = markerIds(text);
+  if (JSON.stringify(actual) !== JSON.stringify(expected)) fail("PHASE1_PAGE_SEQUENCE", label, expected, actual);
+  for (const aPageId of expected) chapterRange(text, aPageId);
+}
+
+function replaceChapter(text, aPageId, transaction, content) {
+  const range = chapterRange(text, aPageId);
+  return `${text.slice(0, range.start)}${chapterBegin(aPageId, transaction)}\n${content.trim()}\n${chapterEnd(aPageId)}${text.slice(range.end)}`;
+}
+
+function replaceGlobal(text, region, content) {
+  const range = globalRange(text, region);
+  return `${text.slice(0, range.start)}${globalBegin(region)}\n${content.trim()}\n${globalEnd(region)}${text.slice(range.end)}`;
+}
+
+function resetGlobals(outline, pageCount) {
+  outline = replaceGlobal(outline, "metadata", `> **编译状态**：in-progress\n> **主题**：pending（Checkpoint Plan 待选）\n> **章节**：${pageCount}`);
+  outline = replaceGlobal(outline, "schedule", "<!-- GLOBAL-CONTENT: pending -->");
+  return replaceGlobal(outline, "materials", "<!-- GLOBAL-CONTENT: pending -->");
 }
 
 function parseScriptBlock(text, aPageId, nx) {
-  text = normalizedMarkdown(text).trim();
+  text = markdown(text).trim();
+  if (/<!--\s*(?:CHAPTER|GLOBAL)/u.test(text)) fail("PHASE1_ARTIFACT_CONFLICT", `script.${aPageId}`, "candidate without runner markers", "marker found");
   const header = text.match(/^##\s+(A\d{3})\s*(?:·|｜|\|)\s+(.+?)\s*$/mu);
   if (!header || header[1] !== aPageId) fail("PHASE1_PAGE_SEQUENCE", `script.${aPageId}.header`, aPageId, header?.[1] ?? null);
   const body = text.slice((header.index ?? 0) + header[0].length).trim();
   const beats = body.split(/^\s*---\s*$/gmu).map((beat) => beat.trim()).filter(Boolean);
-  if (!beats.length || normalized(beats.join("")) !== normalized(nx)) {
-    fail("PHASE1_NX_MISMATCH", `script.${aPageId}`, nx, beats.join(""));
-  }
+  if (!beats.length || normalized(beats.join("")) !== normalized(nx)) fail("PHASE1_NX_MISMATCH", `script.${aPageId}`, nx, beats.join(""));
   return { text: `${text}\n`, title: header[2].trim(), beats };
 }
 
 function parseOutlineSection(text, aPageId, expectedIndex, expectedSteps) {
-  text = normalizedMarkdown(text).trim();
+  text = markdown(text).trim();
+  if (/<!--\s*(?:CHAPTER|GLOBAL)/u.test(text)) fail("PHASE1_ARTIFACT_CONFLICT", `outline.${aPageId}`, "candidate without runner markers", "marker found");
   const heading = text.match(/^##\s+(\d+)\.\s+([a-z0-9-]+)\s*(?:—|–|-)\s+(.+?)\s*[（(](\d+)\s+steps?\s+·\s*~?(\d+)s[）)]\s*$/mu);
   const declaredPage = text.match(/^\s*\*\*A-page\s+\/\s+Chapter\*\*\s*[：:]\s*`?(A\d{3})`?\s*$/mu)?.[1];
   if (!heading || Number(heading[1]) !== expectedIndex || declaredPage !== aPageId) {
     fail("PHASE1_PAGE_SEQUENCE", `outline.${aPageId}`, { index: expectedIndex, a_id: aPageId }, {
-      index: heading?.[1] ?? null,
-      a_id: declaredPage ?? null,
+      index: heading?.[1] ?? null, a_id: declaredPage ?? null,
     });
   }
-  const rows = [...text.matchAll(/^\s*\|\s*(\d+)\s*\|[^\n]*\|\s*$/gmu)]
-    .map((match) => Number(match[1]));
+  const rows = [...text.matchAll(/^\s*\|\s*(\d+)\s*\|[^\n]*\|\s*$/gmu)].map((match) => Number(match[1]));
   const expectedRows = Array.from({ length: expectedSteps }, (_, index) => index + 1);
   if (Number(heading[4]) !== expectedSteps || JSON.stringify(rows) !== JSON.stringify(expectedRows)) {
-    fail("PHASE1_BEAT_STEP_MISMATCH", `outline.${aPageId}`, {
-      heading: expectedSteps,
-      rows: expectedRows,
-    }, {
-      heading: Number(heading?.[4]),
-      rows,
+    fail("PHASE1_BEAT_STEP_MISMATCH", `outline.${aPageId}`, { heading: expectedSteps, rows: expectedRows }, {
+      heading: Number(heading?.[4]), rows,
     });
   }
   const custom = text.match(/^\*\*额外复杂场景\*\*[：:]\s*(.+?)\s*$/mu)?.[1] ?? "none";
   if (!/^`?none`?$/u.test(custom) && !/proposed/u.test(custom)) {
-    fail("PHASE1_REVIEW", `outline.${aPageId}.custom_scene`, "none or proposed", custom);
+    fail("PHASE1_REFERENCE_UNKNOWN", `outline.${aPageId}.custom_scene`, "none or proposed", custom);
   }
   return {
-    text: `${text}\n`,
-    index: Number(heading[1]),
-    id: heading[2],
-    title: heading[3].trim(),
-    steps: expectedSteps,
+    text: `${text}\n`, id: heading[2], title: heading[3].trim(), steps: expectedSteps,
     seconds: Number(heading[5]),
+    baseScene: text.match(/^\*\*基础场景\*\*[：:]\s*`?(.+?)`?\s*$/mu)?.[1]?.replace(/`/gu, "") ?? "unspecified",
+    recipe: text.match(/^\*\*页面配方\*\*[：:]\s*`?(.+?)`?\s*$/mu)?.[1]?.replace(/`/gu, "") ?? "unspecified",
+    custom,
   };
 }
 
-async function readState(files) {
-  if (!(await exists(files.state))) fail("PHASE1_STATE", "state", "run init first", null);
-  const state = json(await required(files.state, "state"), "state");
-  if (state.schema_version !== PHASE1_STATE_SCHEMA || state.episode_id !== files.episodeId) {
-    fail("PHASE1_STATE", "state.schema", PHASE1_STATE_SCHEMA, state.schema_version);
-  }
-  return state;
+function knownReferences(page, rough) {
+  return new Set([
+    page.screen?.title?.screen_item_id,
+    ...(page.screen?.groups ?? []).flatMap((group) => (group.items ?? []).map((item) => item.screen_item_id)),
+    ...(page.protected_relations ?? []).map((relation) => relation.relation_id),
+    ...(rough?.content_units ?? []).map((unit) => unit.unit_id),
+    ...(rough?.media ?? []).map((item) => item.media_id),
+  ].filter(Boolean));
 }
 
-async function writeState(files, state, transition, options) {
-  state.last_successful_transition = transition;
-  await atomicWrite(files.state, `${JSON.stringify(state, null, 2)}\n`, "after-state-write", options);
-}
-
-function chapterById(state, aPageId) {
-  const chapter = state.chapters.find((item) => item.a_id === aPageId);
-  if (!chapter) fail("PHASE1_PAGE_SEQUENCE", "a_page_id", state.chapters.map((item) => item.a_id), aPageId);
-  return chapter;
-}
-
-function assertStateSequence(state, preflight) {
-  const expected = preflight.pages.map((page) => page.a_id);
-  const actual = state.chapters.map((chapter) => chapter.a_id);
-  if (JSON.stringify(actual) !== JSON.stringify(expected)) {
-    fail("PHASE1_PAGE_SEQUENCE", "state.chapters", expected, actual);
+function validateOutlineReferences(text, page, rough) {
+  const references = [...new Set([...text.matchAll(/(?<![A-Za-z0-9-])([SURM]\d{3})(?!\d)/gu)].map((match) => match[1]))];
+  const known = knownReferences(page, rough);
+  const unknown = references.filter((reference) => !known.has(reference));
+  const requiredRelations = (page.protected_relations ?? []).map((relation) => relation.relation_id);
+  const missingRelations = requiredRelations.filter((relation) => !references.includes(relation));
+  if (unknown.length || missingRelations.length) {
+    fail("PHASE1_REFERENCE_UNKNOWN", `outline.${page.a_id}.references`, {
+      known: [...known], required_relations: requiredRelations,
+    }, { unknown, missing_relations: missingRelations });
   }
 }
 
-function markGlobalStale(state, regions) {
-  for (const region of regions) if (state.global[region] === "ready") state.global[region] = "stale";
-  state.global.review = null;
-  if (state.phase === "awaiting-checkpoint-plan") state.phase = "compiling";
+async function ensureArtifact({ file, template, shell, pages, label, faultAt, testFault }) {
+  const current = await exists(file) ? await required(file, label) : null;
+  const legacy = await required(template, `${label}-template`);
+  if (current === null || markdown(current) === markdown(legacy)) {
+    await atomicWrite(file, shell, faultAt, { testFault });
+    return "initialized";
+  }
+  if (markerIds(current).length) {
+    assertArtifactOrder(current, pages, label);
+    return "existing";
+  }
+  fail("PHASE1_ARTIFACT_CONFLICT", relative(path.dirname(path.dirname(file)), file), "pristine template or modular artifact", "existing content");
 }
 
-function syncGlobalMarkers(outline, state) {
-  for (const region of ["metadata", "schedule", "materials"]) {
-    outline = outline.replace(
-      new RegExp(`<!-- GLOBAL-DERIVED: ${region} · [a-z-]+ -->`, "u"),
-      `<!-- GLOBAL-DERIVED: ${region} · ${state.global[region]} -->`,
-    );
-  }
-  return outline;
+function readChapterContent(text, aPageId) {
+  const range = chapterRange(text, aPageId);
+  return { transaction: range.transaction, content: text.slice(range.contentStart, range.contentEnd).trim() };
 }
 
-function nextAction(state) {
-  for (const chapter of state.chapters) {
-    if (["pending", "stale"].includes(chapter.script.status)) return `compile-chapter --a-page ${chapter.a_id} --script <path>`;
-    if (chapter.script.status === "draft") return `review-chapter --a-page ${chapter.a_id} --stage script --verdict PASS|REVISE`;
-    if (["pending", "stale"].includes(chapter.outline.status)) return `compile-chapter --a-page ${chapter.a_id} --outline <path>`;
-    if (chapter.outline.status === "draft") return `review-chapter --a-page ${chapter.a_id} --stage outline --verdict PASS|REVISE`;
-  }
-  if (["metadata", "schedule", "materials"].some((region) => state.global[region] !== "ready")) {
-    return "finalize --schedule <path> --materials <path>";
-  }
-  if (state.global.review !== "PASS") return "review-global --verdict PASS|REVISE";
-  return "awaiting Checkpoint Plan";
+async function inspectArtifacts(files, pages) {
+  const [scriptText, outlineText] = await Promise.all([required(files.script, "script"), required(files.outline, "outline")]);
+  assertArtifactOrder(scriptText, pages, "script.pages");
+  assertArtifactOrder(outlineText, pages, "outline.pages");
+  const chapters = pages.map((page, index) => {
+    const script = readChapterContent(scriptText, page.a_id);
+    const outline = readChapterContent(outlineText, page.a_id);
+    if (script.transaction === "pending" && outline.transaction === "pending") return { a_id: page.a_id, status: "pending" };
+    if (script.transaction !== outline.transaction || script.transaction === "pending") {
+      return { a_id: page.a_id, status: "incomplete", diagnostic: "chapter transaction mismatch" };
+    }
+    try {
+      const parsedScript = parseScriptBlock(script.content, page.a_id, page.nx);
+      parseOutlineSection(outline.content, page.a_id, index + 1, parsedScript.beats.length);
+      return { a_id: page.a_id, status: "committed", transaction: script.transaction };
+    } catch (error) {
+      return { a_id: page.a_id, status: "invalid", diagnostic: error.detail ?? error.message };
+    }
+  });
+  const incomplete = chapters.find((chapter) => chapter.status !== "committed");
+  const metadataRange = globalRange(outlineText, "metadata");
+  const metadata = outlineText.slice(metadataRange.contentStart, metadataRange.contentEnd);
+  const finalized = /\*\*编译状态\*\*[：:]\s*awaiting-checkpoint-plan/u.test(metadata);
+  return {
+    episode_id: files.episodeId,
+    phase: incomplete ? "compiling" : finalized ? "awaiting-checkpoint-plan" : "ready-to-finalize",
+    chapters,
+    next: incomplete ? `commit-chapter --a-page ${incomplete.a_id} --script <path> --outline <path>`
+      : finalized ? "awaiting Checkpoint Plan" : "finalize",
+  };
 }
 
 export async function initPhase1({ root = process.cwd(), episodeId, testFault }) {
-  const preflight = await preflightPhase1({ root, episodeId });
-  const { files } = preflight;
-  const shell = outlineShell(preflight.pages);
-  const current = await exists(files.outline) ? await required(files.outline, "outline") : null;
-  if (current !== null) {
-    const legacy = await required(files.templateOutline, "template-outline");
-    const isNew = /<!-- PHASE1-BLOCK: A\d{3} · [a-z-]+ -->/u.test(current);
-    if (!isNew && normalizedMarkdown(current) !== normalizedMarkdown(legacy)) {
-      fail("PHASE1_OUTLINE_CONFLICT", relative(files.root, files.outline), "pristine legacy template or Phase 1 markers", "existing content");
-    }
-    if (isNew) {
-      if (await exists(files.state)) {
-        const state = await readState(files);
-        assertStateSequence(state, preflight);
-        return { state, next: nextAction(state), resumed: true };
-      }
-      const state = initialState(preflight);
-      await writeState(files, state, "recover-init", { testFault });
-      return { state, next: nextAction(state), resumed: true };
-    }
-  }
-  await atomicWrite(files.outline, shell, "after-outline-init", { testFault });
-  const state = initialState(preflight);
-  await writeState(files, state, "init", { testFault });
-  return { state, next: nextAction(state), resumed: false };
-}
-
-export async function compileChapter({ root = process.cwd(), episodeId, aPageId, script, outline, testFault }) {
-  const preflight = await preflightPhase1({ root, episodeId });
-  const { files } = preflight;
-  const state = await readState(files);
-  assertStateSequence(state, preflight);
-  aPageId = aPageId?.toUpperCase();
-  const chapter = chapterById(state, aPageId);
-  const pageIndex = preflight.pages.findIndex((page) => page.a_id === aPageId);
-  const page = preflight.pages[pageIndex];
-  if (Boolean(script) === Boolean(outline)) {
-    fail("PHASE1_STATE", "compile-chapter.arguments", "exactly one of --script or --outline", { script, outline });
-  }
-  if (script) {
-    const incompletePrevious = state.chapters.slice(0, pageIndex)
-      .find((item) => item.script.status !== "frozen" || item.outline.status !== "frozen");
-    if (incompletePrevious) {
-      fail("PHASE1_STATE", `chapters.${aPageId}.order`, "all previous chapters frozen", incompletePrevious.a_id);
-    }
-    if (!["pending", "stale"].includes(chapter.script.status)) {
-      fail("PHASE1_STATE", `chapters.${aPageId}.script`, "pending or stale", chapter.script.status);
-    }
-    const parsed = parseScriptBlock(await required(path.resolve(script), "script-candidate"), aPageId, page.nx);
-    const output = path.join(files.scriptDir, `${aPageId}.md`);
-    await atomicWrite(output, parsed.text, "after-script-write", { testFault });
-    markGlobalStale(state, ["metadata", "schedule"]);
-    let outlineText = await required(files.outline, "outline");
-    outlineText = replaceMarker(outlineText, aPageId, "script-draft");
-    outlineText = syncGlobalMarkers(outlineText, state);
-    await atomicWrite(files.outline, outlineText, "after-script-marker", { testFault });
-    chapter.script = { status: "draft", review: null, beats: parsed.beats.length, path: relative(files.root, output) };
-    chapter.outline = { status: chapter.outline.status === "pending" ? "pending" : "stale", review: null };
-    state.phase = "compiling";
-    await writeState(files, state, `compile-script:${aPageId}`, { testFault });
-    return { state, next: nextAction(state) };
-  }
-  if (chapter.script.status !== "frozen") {
-    fail("PHASE1_STATE", `chapters.${aPageId}.script`, "frozen", chapter.script.status);
-  }
-  if (!["pending", "stale"].includes(chapter.outline.status)) {
-    fail("PHASE1_STATE", `chapters.${aPageId}.outline`, "pending or stale", chapter.outline.status);
-  }
-  const parsed = parseOutlineSection(await required(path.resolve(outline), "outline-candidate"), aPageId, pageIndex + 1, chapter.script.beats);
-  markGlobalStale(state, ["metadata", "schedule", "materials"]);
-  let outlineText = await required(files.outline, "outline");
-  const range = chapterRange(outlineText, aPageId);
-  const withMarker = parsed.text.replace(/^([^\n]+\n)/u, `$1\n<!-- PHASE1-BLOCK: ${aPageId} · outline-draft -->\n`);
-  outlineText = `${outlineText.slice(0, range.start)}${withMarker}\n${outlineText.slice(range.end)}`;
-  outlineText = syncGlobalMarkers(outlineText, state);
-  await atomicWrite(files.outline, outlineText, "after-outline-section", { testFault });
-  chapter.outline = { status: "draft", review: null, id: parsed.id, title: parsed.title, steps: parsed.steps, seconds: parsed.seconds };
-  state.phase = "compiling";
-  await writeState(files, state, `compile-outline:${aPageId}`, { testFault });
-  return { state, next: nextAction(state) };
-}
-
-export async function reviewChapter({ root = process.cwd(), episodeId, aPageId, stage, verdict, report, testFault }) {
-  const preflight = await preflightPhase1({ root, episodeId });
-  const { files } = preflight;
-  const state = await readState(files);
-  assertStateSequence(state, preflight);
-  aPageId = aPageId?.toUpperCase();
-  verdict = verdict?.toUpperCase();
-  if (!new Set(["script", "outline"]).has(stage) || !new Set(["PASS", "REVISE"]).has(verdict)) {
-    fail("PHASE1_REVIEW", "review-chapter.arguments", "stage script|outline and verdict PASS|REVISE", { stage, verdict });
-  }
-  const chapter = chapterById(state, aPageId);
-  if (chapter[stage].status !== "draft") {
-    fail("PHASE1_STATE", `chapters.${aPageId}.${stage}`, "draft", chapter[stage].status);
-  }
-  const reportText = report ? await required(path.resolve(report), "review-report") : null;
-  const record = { a_page_id: aPageId, stage, verdict, report: reportText };
-  const reviewPath = path.join(files.reviewDir, `${aPageId}-${stage}.json`);
-  await atomicWrite(reviewPath, `${JSON.stringify(record, null, 2)}\n`, "after-review-write", { testFault });
-  let outlineText = await required(files.outline, "outline");
-  if (verdict === "PASS") {
-    chapter[stage].status = "frozen";
-    chapter[stage].review = "PASS";
-    outlineText = replaceMarker(outlineText, aPageId, stage === "script" ? "script-frozen" : "outline-frozen");
-  } else {
-    chapter[stage].status = "stale";
-    chapter[stage].review = "REVISE";
-    outlineText = replaceMarker(outlineText, aPageId, stage === "script" ? "script-stale" : "outline-stale");
-    if (stage === "script") {
-      chapter.outline = { status: chapter.outline.status === "pending" ? "pending" : "stale", review: null };
-      markGlobalStale(state, ["metadata", "schedule"]);
-    } else {
-      markGlobalStale(state, ["metadata", "schedule", "materials"]);
-    }
-  }
-  state.input_fingerprint = preflight.input_fingerprint;
-  outlineText = syncGlobalMarkers(outlineText, state);
-  await atomicWrite(files.outline, outlineText, "after-review-marker", { testFault });
-  await writeState(files, state, `review-${stage}:${aPageId}:${verdict}`, { testFault });
-  return { state, next: nextAction(state) };
-}
-
-function allChapterSections(outline, pageIds) {
-  return pageIds.map((aPageId) => {
-    const range = chapterRange(outline, aPageId);
-    return outline.slice(range.start, range.end).trim();
+  const input = await preflightPhase1({ root, episodeId });
+  const outline = await ensureArtifact({
+    file: input.files.outline, template: input.files.templateOutline, shell: outlineShell(input.pages), pages: input.pages,
+    label: "outline", faultAt: "after-outline-init", testFault,
   });
+  const script = await ensureArtifact({
+    file: input.files.script, template: input.files.templateScript, shell: scriptShell(input.pages), pages: input.pages,
+    label: "script", faultAt: "after-script-init", testFault,
+  });
+  return { ...(await inspectArtifacts(input.files, input.pages)), initialized: { outline, script } };
 }
 
-function replaceGlobalRegion(outline, region, content) {
-  const marker = new RegExp(`<!-- GLOBAL-DERIVED: ${region} · [a-z-]+ -->`, "u").exec(outline);
-  if (!marker) fail("PHASE1_STATE", `global.${region}`, "existing marker", null);
-  if (region === "metadata") {
-    const h1End = outline.indexOf("\n", outline.indexOf("# Video Outline"));
-    return `${outline.slice(0, h1End + 1)}\n${content.trim()}\n\n<!-- GLOBAL-DERIVED: metadata · ready -->${outline.slice(marker.index + marker[0].length)}`;
-  }
-  const nextHeading = outline.indexOf("\n## ", marker.index + marker[0].length);
-  const end = nextHeading < 0 ? outline.length : nextHeading;
-  return `${outline.slice(0, marker.index)}<!-- GLOBAL-DERIVED: ${region} · ready -->\n\n${content.trim()}\n${outline.slice(end)}`;
-}
-
-function validateSchedule(text, pageIds) {
-  const ids = [...text.matchAll(/^\s*\|\s*(A\d{3})\s*\|/gmu)].map((match) => match[1]);
-  if (JSON.stringify(ids) !== JSON.stringify(pageIds)) {
-    fail("PHASE1_PAGE_SEQUENCE", "global.schedule", pageIds, ids);
-  }
-}
-
-function roughMediaIds(roughText) {
-  return [...new Set([...roughText.matchAll(/^\s*-\s+\*\*媒体需求\*\*\s*[：:]\s*`?(M\d{3})\s*\//gmu)].map((match) => match[1]))];
-}
-
-function validateMaterials(text, mediaIds) {
-  const missing = mediaIds.filter((id) => !new RegExp(`(?<![A-Za-z0-9])${id}(?!\\d)`, "u").test(text));
-  if (missing.length) fail("PHASE1_SOURCE_INTEGRITY", "global.materials", mediaIds, { missing });
-}
-
-export async function finalizePhase1({ root = process.cwd(), episodeId, schedule, materials, testFault }) {
-  const preflight = await preflightPhase1({ root, episodeId });
-  const { files } = preflight;
-  const state = await readState(files);
-  assertStateSequence(state, preflight);
-  const incomplete = state.chapters.filter((chapter) => chapter.script.status !== "frozen" || chapter.outline.status !== "frozen");
-  if (incomplete.length) fail("PHASE1_STATE", "chapters", "all script and outline reviews PASS", incomplete.map((item) => item.a_id));
-  if (!schedule || !materials) fail("PHASE1_STATE", "finalize.arguments", "--schedule and --materials", { schedule, materials });
-  const scheduleText = await required(path.resolve(schedule), "schedule");
-  const materialsText = await required(path.resolve(materials), "materials");
-  const pageIds = preflight.pages.map((page) => page.a_id);
-  validateSchedule(scheduleText, pageIds);
-  validateMaterials(materialsText, roughMediaIds(preflight.roughText));
-
-  const blocks = await Promise.all(pageIds.map((aPageId) => required(path.join(files.scriptDir, `${aPageId}.md`), `script.${aPageId}`)));
-  for (let index = 0; index < blocks.length; index += 1) parseScriptBlock(blocks[index], pageIds[index], preflight.pages[index].nx);
-  const scriptText = `# Video Script\n\n${blocks.map((block) => block.trim()).join("\n\n")}\n`;
-  await atomicWrite(files.script, scriptText, "after-script-finalize", { testFault });
-
-  let outlineText = await required(files.outline, "outline");
-  const sections = allChapterSections(outlineText, pageIds);
-  const parsed = sections.map((section, index) => parseOutlineSection(section.replace(/^([^\n]+\n)\n<!-- PHASE1-BLOCK:[^\n]+-->\n/u, "$1"), pageIds[index], index + 1, state.chapters[index].script.beats));
-  const totalSteps = parsed.reduce((sum, chapter) => sum + chapter.steps, 0);
-  const totalSeconds = parsed.reduce((sum, chapter) => sum + chapter.seconds, 0);
-  const accentCount = sections.reduce((sum, section) => sum + (section.match(/^\*\*强调页\*\*[：:]\s*(.+)$/mu)?.[1]?.match(/K-A\d{3}-\d{2}/gu)?.length ?? 0), 0);
-  const customCount = sections.filter((section) => {
-    const value = section.match(/^\*\*额外复杂场景\*\*[：:]\s*(.+)$/mu)?.[1] ?? "none";
-    return !/^`?none`?$/u.test(value);
-  }).length;
-  const metadata = `> **编译状态**：global-review-pending\n> **主题**：pending（Checkpoint Plan 待选）\n> **正文时长**：约 ${Math.floor(totalSeconds / 60)} 分 ${totalSeconds % 60} 秒\n> **章节**：${pageIds.length}\n> **Base scenes**：${pageIds.length}\n> **Accent frames**：${accentCount}\n> **Custom scene candidates**：${customCount}\n> **Narration beats**：${totalSteps}`;
-  const metadataOutline = replaceGlobalRegion(outlineText, "metadata", metadata);
-  const scheduleOutline = replaceGlobalRegion(metadataOutline, "schedule", scheduleText);
-  const finalOutline = replaceGlobalRegion(scheduleOutline, "materials", materialsText);
-  const [projectText, aPageText] = await Promise.all([
-    required(files.project, "project.json"),
-    required(files.aPage, "a-page"),
+export async function commitChapter({ root = process.cwd(), episodeId, aPageId, script, outline, testFault }) {
+  const input = await loadChapterInputs({ root, episodeId });
+  aPageId = aPageId?.toUpperCase();
+  const index = input.pages.findIndex((page) => page.a_id === aPageId);
+  if (index < 0) fail("PHASE1_PAGE_SEQUENCE", "a_page_id", input.pages.map((page) => page.a_id), aPageId);
+  if (!script || !outline) fail("PHASE1_INPUT_MISSING", "commit-chapter.arguments", "--script and --outline", { script, outline });
+  const [scriptText, outlineText, scriptCandidate, outlineCandidate] = await Promise.all([
+    required(input.files.script, "script"), required(input.files.outline, "outline"),
+    required(path.resolve(script), "script-candidate"), required(path.resolve(outline), "outline-candidate"),
   ]);
-  for (const aPageId of pageIds) {
+  assertArtifactOrder(scriptText, input.pages, "script.pages");
+  assertArtifactOrder(outlineText, input.pages, "outline.pages");
+  const page = input.pages[index];
+  const parsedScript = parseScriptBlock(scriptCandidate, aPageId, page.nx);
+  const parsedOutline = parseOutlineSection(outlineCandidate, aPageId, index + 1, parsedScript.beats.length);
+  validateOutlineReferences(parsedOutline.text, page, input.roughById.get(aPageId));
+  const transaction = sha256(`${parsedScript.text}\n${parsedOutline.text}`).slice(0, 16);
+  let nextOutline = replaceChapter(outlineText, aPageId, transaction, parsedOutline.text);
+  nextOutline = resetGlobals(nextOutline, input.pages.length);
+  const nextScript = replaceChapter(scriptText, aPageId, transaction, parsedScript.text);
+  await atomicWrite(input.files.outline, nextOutline, "after-outline-commit", { testFault });
+  await atomicWrite(input.files.script, nextScript, "after-script-commit", { testFault });
+  return inspectArtifacts(input.files, input.pages);
+}
+
+function materialSummary(roughById, pages) {
+  const sections = [];
+  for (const page of pages) {
+    const media = roughById.get(page.a_id)?.media ?? [];
+    if (!media.length) continue;
+    sections.push(`### ${page.a_id}\n\n${media.map((item) => `- \`${item.media_id}\`：${item.media_type}${item.role ? ` — ${item.role}` : ""}`).join("\n")}`);
+  }
+  return sections.length ? sections.join("\n\n") : "<!-- no external media -->";
+}
+
+export async function finalizePhase1({ root = process.cwd(), episodeId, testFault }) {
+  const input = await preflightPhase1({ root, episodeId });
+  const [scriptText, outlineText] = await Promise.all([required(input.files.script, "script"), required(input.files.outline, "outline")]);
+  assertArtifactOrder(scriptText, input.pages, "script.pages");
+  assertArtifactOrder(outlineText, input.pages, "outline.pages");
+  const chapters = input.pages.map((page, index) => {
+    const script = readChapterContent(scriptText, page.a_id);
+    const outline = readChapterContent(outlineText, page.a_id);
+    if (script.transaction === "pending" || script.transaction !== outline.transaction) {
+      fail("PHASE1_INCOMPLETE", `chapters.${page.a_id}`, "matching committed transaction", {
+        script: script.transaction, outline: outline.transaction,
+      });
+    }
+    const parsedScript = parseScriptBlock(script.content, page.a_id, page.nx);
+    const parsedOutline = parseOutlineSection(outline.content, page.a_id, index + 1, parsedScript.beats.length);
+    validateOutlineReferences(parsedOutline.text, page, input.roughById.get(page.a_id));
+    return { page, script: parsedScript, outline: parsedOutline, rawOutline: outline.content };
+  });
+  const totalSteps = chapters.reduce((sum, chapter) => sum + chapter.outline.steps, 0);
+  const totalSeconds = chapters.reduce((sum, chapter) => sum + chapter.outline.seconds, 0);
+  const accentCount = chapters.reduce((sum, chapter) => sum + (chapter.rawOutline.match(/K-A\d{3}-\d{2}/gu)?.length ?? 0), 0);
+  const customCount = chapters.filter((chapter) => !/^`?none`?$/u.test(chapter.outline.custom)).length;
+  const metadata = `> **编译状态**：awaiting-checkpoint-plan\n> **主题**：pending（Checkpoint Plan 待选）\n> **正文时长**：约 ${Math.floor(totalSeconds / 60)} 分 ${totalSeconds % 60} 秒\n> **章节**：${chapters.length}\n> **Base scenes**：${chapters.length}\n> **Accent frames**：${accentCount}\n> **Custom scene candidates**：${customCount}\n> **Narration beats**：${totalSteps}`;
+  const schedule = [
+    "| A-page | Base scene | Recipe | Steps | Duration |", "|---|---|---|---:|---:|",
+    ...chapters.map((chapter) => `| ${chapter.page.a_id} | ${chapter.outline.baseScene} | ${chapter.outline.recipe} | ${chapter.outline.steps} | ~${chapter.outline.seconds}s |`),
+  ].join("\n");
+  let finalOutline = replaceGlobal(outlineText, "metadata", metadata);
+  finalOutline = replaceGlobal(finalOutline, "schedule", schedule);
+  finalOutline = replaceGlobal(finalOutline, "materials", materialSummary(input.roughById, input.pages));
+  for (const page of input.pages) {
     await buildCourseplayHandoffV4Packet({
-      root: files.root,
-      episodeId,
-      aPageId,
-      files,
-      projectText,
-      aPageText,
-      visualRoughText: preflight.roughText,
-      scriptText,
-      outlineText: finalOutline,
+      root: input.files.root, episodeId, aPageId: page.a_id, files: input.files,
+      projectText: input.projectText, aPageText: input.aPageText, visualRoughText: input.roughText,
+      scriptText, outlineText: finalOutline,
     });
   }
-
-  outlineText = metadataOutline;
-  await atomicWrite(files.outline, outlineText, "after-metadata-finalize", { testFault });
-  outlineText = scheduleOutline;
-  await atomicWrite(files.outline, outlineText, "after-schedule-finalize", { testFault });
-  outlineText = finalOutline;
-  await atomicWrite(files.outline, outlineText, "after-materials-finalize", { testFault });
-  state.global.metadata = "ready";
-  state.global.schedule = "ready";
-  state.global.materials = "ready";
-  state.global.review = null;
-  state.phase = "global-review";
-  await writeState(files, state, "finalize", { testFault });
-  return { state, next: nextAction(state), script: relative(files.root, files.script), outline: relative(files.root, files.outline) };
+  await atomicWrite(input.files.outline, finalOutline, "after-finalize", { testFault });
+  return inspectArtifacts(input.files, input.pages);
 }
 
-export async function reviewGlobal({ root = process.cwd(), episodeId, verdict, report, targets = "", testFault }) {
-  const preflight = await preflightPhase1({ root, episodeId });
-  const { files } = preflight;
-  const state = await readState(files);
-  assertStateSequence(state, preflight);
-  verdict = verdict?.toUpperCase();
-  if (!new Set(["PASS", "REVISE"]).has(verdict)) fail("PHASE1_REVIEW", "review-global.verdict", "PASS or REVISE", verdict);
-  if (["metadata", "schedule", "materials"].some((region) => state.global[region] !== "ready")) {
-    fail("PHASE1_STATE", "global", "all regions ready", state.global);
-  }
-  const incomplete = state.chapters.filter((chapter) => chapter.script.status !== "frozen" || chapter.outline.status !== "frozen");
-  if (incomplete.length) {
-    fail("PHASE1_STATE", "chapters", "all chapters frozen", incomplete.map((chapter) => chapter.a_id));
-  }
-  const reportText = report ? await required(path.resolve(report), "global-review-report") : null;
-  const targetList = targets.split(",").map((item) => item.trim()).filter(Boolean);
-  if (verdict === "REVISE" && !targetList.length) fail("PHASE1_REVIEW", "review-global.targets", "one or more explicit targets", []);
-  const allowed = new Set(["metadata", "schedule", "materials", ...state.chapters.map((chapter) => `chapter:${chapter.a_id}`)]);
-  if (targetList.some((target) => !allowed.has(target))) fail("PHASE1_REVIEW", "review-global.targets", [...allowed], targetList);
-  const record = { verdict, targets: targetList, report: reportText };
-  await atomicWrite(path.join(files.reviewDir, "global.json"), `${JSON.stringify(record, null, 2)}\n`, "after-global-review-write", { testFault });
-  if (verdict === "PASS") {
-    const outlineText = (await required(files.outline, "outline"))
-      .replace("> **编译状态**：global-review-pending", "> **编译状态**：global-reviewed");
-    await atomicWrite(files.outline, outlineText, "after-global-pass", { testFault });
-    state.global.review = "PASS";
-    state.phase = "awaiting-checkpoint-plan";
-  } else {
-    state.global.review = "REVISE";
-    let outlineText = await required(files.outline, "outline");
-    for (const target of targetList) {
-      if (target.startsWith("chapter:")) {
-        const aPageId = target.slice("chapter:".length);
-        chapterById(state, aPageId).outline.status = "stale";
-        outlineText = replaceMarker(outlineText, aPageId, "outline-stale");
-      } else {
-        state.global[target] = "stale";
-        outlineText = outlineText.replace(
-          new RegExp(`<!-- GLOBAL-DERIVED: ${target} · [a-z-]+ -->`, "u"),
-          `<!-- GLOBAL-DERIVED: ${target} · stale -->`,
-        );
-      }
-    }
-    await atomicWrite(files.outline, outlineText, "after-global-stale-markers", { testFault });
-    state.phase = "compiling";
-  }
-  await writeState(files, state, `review-global:${verdict}`, { testFault });
-  return { state, next: nextAction(state) };
+async function statusPages(root, episodeId) {
+  const files = standardPaths(path.resolve(root), episodeId);
+  const aPage = parseJson(await required(files.aPage, "a-page"), "a-page");
+  const pages = Array.isArray(aPage.pages) ? aPage.pages : [];
+  if (!pages.length) fail("PHASE1_PAGE_SEQUENCE", "a_page.pages", "non-empty pages", pages);
+  return { files, pages };
 }
 
 export async function statusPhase1({ root = process.cwd(), episodeId }) {
-  const preflight = await preflightPhase1({ root, episodeId });
-  const state = await readState(preflight.files);
-  assertStateSequence(state, preflight);
-  const changes = preflight.chapters.filter((current) => chapterById(state, current.a_id).input_fingerprint !== current.input_fingerprint)
-    .map((item) => item.a_id);
-  return { state, input_changes: changes, next: changes.length ? "resume to mark changed chapters stale" : nextAction(state) };
+  const input = await statusPages(root, episodeId);
+  return inspectArtifacts(input.files, input.pages);
 }
 
 export async function resumePhase1({ root = process.cwd(), episodeId }) {
-  const preflight = await preflightPhase1({ root, episodeId });
-  const { files } = preflight;
-  const state = await readState(files);
-  assertStateSequence(state, preflight);
-  let outlineText = await required(files.outline, "outline");
-  for (const current of preflight.chapters) {
-    const chapter = chapterById(state, current.a_id);
-    if (chapter.input_fingerprint !== current.input_fingerprint) {
-      chapter.input_fingerprint = current.input_fingerprint;
-      chapter.script = { status: "stale", review: null };
-      chapter.outline = { status: "stale", review: null };
-      markGlobalStale(state, ["metadata", "schedule", "materials"]);
-      outlineText = replaceMarker(outlineText, current.a_id, "script-stale");
-      continue;
-    }
-    const marker = markerState(outlineText, current.a_id);
-    if (marker === "script-draft") chapter.script.status = "draft";
-    if (marker === "script-frozen") chapter.script.status = "frozen";
-    if (marker === "script-stale") chapter.script.status = "stale";
-    if (marker === "outline-draft") chapter.outline.status = "draft";
-    if (marker === "outline-frozen") chapter.outline.status = "frozen";
-    if (marker === "outline-stale") chapter.outline.status = "stale";
-    const block = path.join(files.scriptDir, `${current.a_id}.md`);
-    if (chapter.script.status === "pending" && await exists(block)) {
-      const parsed = parseScriptBlock(await required(block, `script.${current.a_id}`), current.a_id, preflight.pages.find((page) => page.a_id === current.a_id).nx);
-      chapter.script = { status: "draft", review: null, beats: parsed.beats.length, path: relative(files.root, block) };
-    }
-  }
-  for (const region of ["metadata", "schedule", "materials"]) {
-    const marker = globalState(outlineText, region);
-    if (marker === "ready" && state.global[region] !== "stale") state.global[region] = "ready";
-    if (marker === "stale") state.global[region] = "stale";
-  }
-  outlineText = syncGlobalMarkers(outlineText, state);
-  await atomicWrite(files.outline, outlineText, "resume-outline", {});
-  await writeState(files, state, "resume", {});
-  return { state, next: nextAction(state) };
+  const input = await preflightPhase1({ root, episodeId });
+  return inspectArtifacts(input.files, input.pages);
 }
 
 function parseArgs(argv) {
@@ -757,13 +504,11 @@ export async function runPhase1(args) {
   const common = { root: args.root ?? path.resolve(process.env.PLAYER_ROOT ?? process.cwd()), episodeId: args.episode };
   if (args.command === "preflight") return preflightPhase1(common);
   if (args.command === "init") return initPhase1(common);
-  if (args.command === "compile-chapter") return compileChapter({ ...common, aPageId: args.aPage, script: args.script, outline: args.outline });
-  if (args.command === "review-chapter") return reviewChapter({ ...common, aPageId: args.aPage, stage: args.stage, verdict: args.verdict, report: args.report });
-  if (args.command === "finalize") return finalizePhase1({ ...common, schedule: args.schedule, materials: args.materials });
-  if (args.command === "review-global") return reviewGlobal({ ...common, verdict: args.verdict, report: args.report, targets: args.targets });
+  if (args.command === "commit-chapter") return commitChapter({ ...common, aPageId: args.aPage, script: args.script, outline: args.outline });
+  if (args.command === "finalize") return finalizePhase1(common);
   if (args.command === "status") return statusPhase1(common);
   if (args.command === "resume") return resumePhase1(common);
-  fail("PHASE1_INPUT_MISSING", "command", "preflight|init|compile-chapter|review-chapter|finalize|review-global|status|resume", args.command);
+  fail("PHASE1_INPUT_MISSING", "command", "preflight|init|commit-chapter|finalize|status|resume", args.command);
 }
 
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
@@ -774,30 +519,20 @@ if (isMain) {
 Usage:
   pnpm courseplay:phase1 -- <command> --episode <episode-id> [options]
 
-Commands:
-  preflight
+Normal path:
   init
-  compile-chapter --a-page <Axxx> (--script <path> | --outline <path>)
-  review-chapter --a-page <Axxx> --stage <script|outline> --verdict <PASS|REVISE> [--report <path>]
-  finalize --schedule <path> --materials <path>
-  review-global --verdict <PASS|REVISE> [--targets <chapter:Axxx|metadata|schedule|materials,...>] [--report <path>]
+  commit-chapter --a-page <Axxx> --script <path> --outline <path>
+  finalize
+
+Diagnostics:
+  preflight
   status
   resume`);
     process.exit(0);
   }
   try {
     const result = await runPhase1(parseArgs(process.argv.slice(2)));
-    const output = result.files ? {
-      episode_id: result.files.episodeId,
-      pages: result.pages.length,
-      input_fingerprint: result.input_fingerprint,
-      status: "preflight-passed",
-    } : {
-      episode_id: result.state.episode_id,
-      phase: result.state.phase,
-      next: result.next,
-      input_changes: result.input_changes ?? [],
-    };
+    const output = result.files ? { episode_id: result.files.episodeId, pages: result.pages.length, status: "preflight-passed" } : result;
     console.log(JSON.stringify(output, null, 2));
   } catch (error) {
     const detail = error.detail ?? new Phase1Error("PHASE1_TOOL_DEFECT", "tool", "registered diagnostic", error.message).detail;
