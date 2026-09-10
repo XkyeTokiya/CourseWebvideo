@@ -4,9 +4,10 @@
 - 上游任务包和正式 inputs 始终只读;不得反向修改、替代或用过程目录/历史工件补齐。Confidence: 0.95
 - 新实例只在 `project.json` 不存在时运行 `pnpm episode:new`;init 可迁移未改动的旧 script/outline 模板,其他既有内容必须 fail-fast,不得覆盖。Confidence: 0.9
 - 正式 `script.md` 与 `outline.md` 是 Phase 1 唯一持久状态;不创建 state.json、review receipt、临时 script block 仓库或手工全局状态。Confidence: 0.95
-- 每章先从当前 A-page 的 `nx` 无损切分 Beat,再派生同章 outline;不套用普通文章的 B 站改写或 60% 门禁,也不从 G/U、槽位、recipe 或时长反推 Beat 数。Confidence: 0.95
+- 每章从当前 A-page 的 `nx` 无损切分 Beat;标点只是候选边界,同一对象的点名→解释、设问→答案或连续 progression 默认先做合并检验,只有独立朗读/播放/同步价值才拆分;G/U 不决定 Beat 数,但同一单元可作为防碎切证据。Confidence: 0.95
 - 每章只调用一次 `commit-chapter` 提交 script+outline 内容对;runner 必须阻止 nx、页序、Beat/step、受保护关系或 S/U/R/M 引用缺失,其他创作质量由作者自检且不持久化结论。Confidence: 0.95
 - A-page 默认一个持续 base-scene;custom-scene 在 Phase 1 只可为 `proposed` 并说明必要性,用户在 Checkpoint Plan 决定。Confidence: 0.9
+- 新 Beat 不自动产生新 semantic state;只有稳定画面的可见信息、权重、焦点或关系结果真实变化才新增 state,否则逐字复用同名 state;Beat 数等于 unique state 数只触发作者复核,不作为硬失败。Confidence: 0.95
 - metadata、schedule、materials 由 finalize 从已提交章节自动生成;Phase 1 不依赖 Phase 2 才创建的 narrations.ts。Confidence: 0.95
 - 中断后用 status 定位 script/outline 事务不一致的章节并只重提该章;任何修订都采用最小范围,不得重写无关章节。Confidence: 0.95
 - 全部章节完成后只做最小全局判断,再调用 finalize 验证内容完整并停在 Checkpoint Plan;独立 reviewer 仅在用户明确要求时使用。Confidence: 0.95
