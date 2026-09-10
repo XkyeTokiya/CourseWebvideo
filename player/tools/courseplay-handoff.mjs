@@ -63,7 +63,7 @@ export function parseVisualRoughV4(text, pages) {
     allUnitIds.push(...contentUnits.map((unit) => unit.unit_id));
     const skeleton = markdown.match(/### 页面骨架\s*\r?\n([\s\S]*?)(?=### 关系保真)/u)?.[1] ?? "";
     const slotBindings = [...skeleton.matchAll(/^-\s+`?([A-Za-z0-9_-]+)\s*<-\s*((?:S|U|M)\d{3}|none)`?\s*$/gmu)].map((item) => ({ slot: item[1], source_id: item[2] }));
-    const relationBlock = markdown.match(/### 关系保真\s*\r?\n([\s\S]*?)(?=^##\s+|$)/mu)?.[1] ?? "";
+    const relationBlock = markdown.match(/### 关系保真\s*\r?\n([\s\S]*)/u)?.[1] ?? "";
     const relationCarriers = [...relationBlock.matchAll(/^\s*-\s+`?\[(R\d{3})\]`?\s*[：:]\s*(\S.*?)\s*$/gmu)].map((item) => ({ relation_id: item[1], carrier: item[2] }));
     const mediaMatch = mediaValue?.match(/^(M\d{3})\s*\/\s*([a-z_]+)$/u);
     result.set(aPageId, { recipe_id: recipeId, content_units: contentUnits, slot_bindings: slotBindings, media: mediaMatch ? [{ media_id: mediaMatch[1], media_type: mediaMatch[2], role: markdown.match(/^\s*-\s+\*\*媒体作用\*\*\s*[：:]\s*(.+?)\s*$/mu)?.[1]?.replace(/`/gu, "") ?? null }] : [], relation_carriers: relationCarriers });
@@ -79,7 +79,7 @@ function parseScript(text, pages) {
   const expected = pages.map((page) => page.a_id); const actual = found.map(({ match }) => match[1]);
   if (JSON.stringify(expected) !== JSON.stringify(actual)) fail("HV4_PAGE_SEQUENCE", "script.pages", expected, actual);
   return new Map(found.map(({ match, markdown }) => {
-    const body = markdown.slice(markdown.indexOf("\n") + 1).trim();
+    const body = markdown.slice(markdown.indexOf("\n") + 1).replace(/<!--\s*CHAPTER:[^\n]+-->/gu, "").trim();
     const beats = body.split(/^\s*---\s*$/gmu).map((beat) => beat.trim()).filter(Boolean);
     const page = pages.find((candidate) => candidate.a_id === match[1]);
     if (normalized(beats.join("")) !== normalized(page.nx)) fail("HV4_NX_MISMATCH", `script.${match[1]}`, page.nx, beats.join(""));

@@ -8,7 +8,7 @@
 > 不得为了通过短句、第二人称、钩子或去 AI 味门禁而改写。若批准稿本身存在风格
 > 问题，只能在 Checkpoint Plan 披露并请求上游修订，不能在 Player 内擅改。
 
-> **三条底线**（任一不过不得冻结；定位到最小失效 chapter block 回修）：
+> **三条底线**（任一不过不得提交；定位到最小失效 chapter 回修）：
 >
 > 1. **信息保留度 ≥ 60%**（详见下一节）—— 口播稿是"换说法"，不是
 >    "摘要"。删冗余 / 修饰可以，删事实 / 数据 / 案例 / 论证链不行。
@@ -55,13 +55,13 @@
 
 **判定失败时怎么修**：先找出缺失事实、案例、论证步骤对应的普通文章内容段，
 再回修相应 chapter script blocks。汇总后的全局比例低于 60%，
-不等于所有章节都失败；禁止重写无关的冻结 block。普通项目只有章节边界本身
+不等于所有章节都失败；禁止重写无关章节。普通项目只有章节边界本身
 划错时，才调整受影响的初始 outline 模块。
 
 ### Courseplay 的替代门禁：批准口播完整性
 
-Courseplay 不计算不存在的 `article.md` 比例，也不执行任何风格改写。每章冻结前必须
-验证：去掉章节标题、Beat 分隔和非语义空白后，script block 的全部 beat 按顺序拼接
+Courseplay 不计算不存在的 `article.md` 比例，也不执行任何风格改写。每章提交前必须
+验证：去掉章节标题、Beat 分隔和非语义空白后，script 候选的全部 beat 按顺序拼接
 与当前 `pages[].nx` 一致；全部章节汇总后再验证 A-page 顺序、页数和逐页拼接一致。
 若 A-page 声明 `approved_text`，还必须验证所有 `pages[].nx` 按顺序拼接后与该正式
 批准文件一致。任一不一致均 fail-fast，不通过改写、补句或删句修复。
@@ -354,17 +354,16 @@ AI 写中文时有强迫症式的整齐感。**口播比文字更怕排比** —
 
 ### 1. 写入当前 chapter script block + 切节拍
 
-按正式 A-page 顺序或模块化 outline 的既有章序，把当前章落到
-`.tmp/player-phase1/<episode-id>/script/<chapter-id>.md`；原文存在时仍保留为
-`article.md`。检查每个 `---` 是否对应可独立成立的 narration beat；长段本身
+按正式 A-page 顺序或模块化 outline 的既有章序创作当前章 script 候选；原文存在时
+仍保留为 `article.md`。检查每个 `---` 是否对应可独立成立的 narration beat；长段本身
 不是拆分理由，短段也不能只是为了增加 step。Courseplay 以当前 A-page 的批准
 `nx` 为准，不得为了视觉槽位、统一时长或模板步数新增口播焦点。Beat 边界一旦
-通过局部审查，就以 script block 中持久化的 `---` 为 Phase 1 权威；恢复和重跑只
-读取这些边界，不重新推断。
+随 script + outline 内容对提交，就以正式 `script.md` 中的 `---` 为 Phase 1 权威；
+恢复和重跑只读取这些边界，不重新推断。
 
 > ⚠️ **自检是硬性流程**：普通文章执行下面的三层自检（形式 / 风骨 / 念出来）；
-> Courseplay 只执行“批准口播完整性 + Beat 边界”门禁。两种模式都必须先完成
-> 局部审查再冻结，禁止未审 script block 直接进入同章 outline 编译。
+> Courseplay 只执行“批准口播完整性 + Beat 边界”门禁。Courseplay 的检查结论
+> 不落盘为 review receipt；通过后与同章 outline 一次提交。
 >
 > **执行方式**（按能力降级）：
 >
@@ -376,16 +375,16 @@ AI 写中文时有强迫症式的整齐感。**口播比文字更怕排比** —
 > 3. **都没有**：自己**严格逐项**核查，特别是「念出来」一定要按字面
 >    执行。
 >
-> 拿到结论后**先按 fail 项修当前 block，再冻结并编译同章 outline**。
+> 拿到结论后先按 fail 项修当前候选，再编译并提交同章 outline。
 
 ### 2. Courseplay chapter-local 自检
 
-- [ ] 当前 block 只含当前 A-page 的 `nx`、章节标题和 Beat 分隔，没有改写、增删或重排
+- [ ] 当前候选只含当前 A-page 的 `nx`、章节标题和 Beat 分隔，没有改写、增删或重排
 - [ ] 全部非空 beat 按顺序拼接并归一化空白后，与当前 `pages[].nx` 一致
 - [ ] 每个 `---` 都位于可朗读的语义边界；没有仅为适配 G/U、槽位、时长或模板步数而切分
-- [ ] Beat 边界已持久化；恢复时不会重新推断或静默改变
+- [ ] Beat 边界将随内容对写入正式 `script.md`；恢复时不会重新推断或静默改变
 
-以上检查通过即允许冻结。下面的 B 站形式、风骨和念出来门禁不适用于 Courseplay
+以上检查通过即允许提交。下面的 B 站形式、风骨和念出来门禁不适用于 Courseplay
 批准稿；发现上游表达问题时只记录并在 Checkpoint Plan 披露。
 
 ### 3. 普通文章 Chapter-local 形式层自检（8 条原则）
@@ -426,34 +425,32 @@ AI 写中文时有强迫症式的整齐感。**口播比文字更怕排比** —
 
 **改完再念。直到三段念下来都自然为止**。
 
-### 6. 冻结当前 script block，再编译同章 outline
+### 6. 编译同章 outline 并一次提交
 
-当前 script block 对应模式的局部自检通过后标记 `script-frozen`，再按
-[`OUTLINE-FORMAT.md`](OUTLINE-FORMAT.md) 原位填充对应 chapter outline section。
-不要在章节之间停下来等用户；Phase 1 内部保持自动连续执行。
+当前 script 候选自检通过后，按 [`OUTLINE-FORMAT.md`](OUTLINE-FORMAT.md)
+创作同章 outline 候选。Courseplay 用 runner 一次提交 script + outline 内容对；
+runner 只替换正式文件中的同章范围。不要在章节之间停下来等用户。
 
 “同一个 Phase 1”只表示用户最终仍在一个 Checkpoint Plan 同时对齐稿子、
 outline、主题、素材和开发模式，不表示 script 与 outline 必须位于同一条模型
 响应或同一次思考。允许每个 chapter 使用独立、可恢复的推理事务，但依赖方向
-必须始终是当前章 `script-frozen → outline`。
+始终是 `当前章 script → 当前章 outline`。
 
 ### 7. 汇总后的 script global review
 
-全部 chapter script blocks 冻结后，按 A-page JSON 或 outline 模块顺序汇总
-`script.md`，再
-检查真正的跨章约束：
+全部章节提交后检查真正的跨章约束：
 
 - [ ] 普通文章模式且 `article.md` 存在时，`len(script.md) ÷ len(article.md) ≥ 0.6`；
 - [ ] 普通文章模式下所有内容段都有对应章节，关键事实、案例、限制条件和论证链
       没有跨章遗漏；
 - [ ] Courseplay 模式下章节集合、顺序和逐页无损拼接均与正式 A-page 一致；声明
       `approved_text` 时，所有 `nx` 汇总还与该批准文件一致；不计算 article 比例；
-- [ ] 开头钩子、章节衔接、全文语气、重复表达和总长度合理；
+- [ ] 普通项目的开头钩子、章节衔接、全文语气、重复表达和总长度合理；
 - [ ] narration beat 顺序稳定，章节连接处没有重复或断裂。
 
-Global Review 发现 fail 时，记录缺失或冲突的 A-page / 内容段，定位对应
-chapter，只将对应 block 标记 stale 并回修。回修后重新汇总和复核受影响的
-全局项；不得借机重写无关章节或重新生成完整 `script.md`。
+发现 fail 时定位缺失或冲突的 A-page / 内容段，只回修并重提对应章节。Courseplay
+的章节顺序、逐页 nx 和批准文本一致性由 runner `finalize` 确定性验证；这些之外的
+质量判断不产生状态或收据。不得借机重写无关章节或完整 `script.md`。
 
 ---
 

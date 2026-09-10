@@ -39,6 +39,7 @@ dist/manifests/assets.json        # 构建产物完整性与归属清单
 cd D:\00-workspace\005-coursewebvideo\player
 pnpm dev
 pnpm episode:check
+pnpm courseplay:phase1 -- --help
 pnpm courseplay:handoff -- --episode episode-04 --a-page A001
 pnpm audio:extract -- --episode episode-04
 pnpm audio:synthesize -- --episode episode-04 --provider edge

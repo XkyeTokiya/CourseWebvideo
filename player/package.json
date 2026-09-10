@@ -12,6 +12,7 @@
     "episode:catalog": "node tools/generate-catalog.mjs",
     "episode:check": "node tools/validate-episodes.mjs",
     "courseplay:handoff": "node tools/courseplay-handoff.mjs",
+    "courseplay:phase1": "node tools/courseplay-phase1.mjs",
     "audio:extract": "node tools/extract-narrations.mjs",
     "audio:synthesize": "node tools/synthesize-audio.mjs",
     "audio:providers": "node tools/synthesize-audio.mjs --list-providers",
