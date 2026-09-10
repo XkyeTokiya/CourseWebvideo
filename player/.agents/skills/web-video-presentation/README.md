@@ -23,7 +23,7 @@ Do not create an episode-level `package.json`, lockfile, `node_modules`, `vite.c
 
 ## Workflow
 
-1. Read the inputs, build an Episode Map, compile each chapter as script block → outline block, then assemble and globally review `script.md` and `outline.md` within Phase 1.
+1. Read the inputs; for Courseplay, initialize a modular `outline.md` shell from the A-page JSON, then compile each chapter as script block → in-place outline section and finish the global-derived regions before review.
 2. Stop at Checkpoint Plan and align script, outline, theme, assets, and development mode.
 3. Create `episodes/<id>/` with `pnpm episode:new`.
 4. Build chapter one in the main thread and wait for approval.

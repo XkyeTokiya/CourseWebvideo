@@ -1,6 +1,6 @@
 ---
 name: web-video-presentation
-description: 把文章或口播稿制作成player/ 子项目内的 Web Video Studio 内可播放、可录屏的点击驱动 16:9 网页演示，可选合成口播音频。流程：原始文章 → Episode Map → 按章节执行 script block → outline block → 装配 script.md + outline.md → 用户一次对齐稿子、outline、主题、素材和开发模式 → 逐章开发 → 可选音频与录屏。新实例必须使用 episodes 下的实例目录、根级 pnpm episode:new 与共享旧播放器运行时，禁止生成独立 Vite 项目。每次点击推进一个口播节拍；连续 step 在同一视觉步组内复用主构图，只更新局部状态。主题由 project.json.theme 动态注入。凡用户要求把文章或口播稿做成网页视频、动态 PPT、交互式解说或录屏课程，均应使用本 Skill。
+description: 把文章或口播稿制作成player/ 子项目内的 Web Video Studio 内可播放、可录屏的点击驱动 16:9 网页演示，可选合成口播音频。流程：输入 → 初始化模块化 outline.md 外壳 → 按章节执行 script block → 原位填充 outline section → 完成 script.md 与全局派生区 → 用户一次对齐稿子、outline、主题、素材和开发模式 → 逐章开发 → 可选音频与录屏。Courseplay 的初始 outline 外壳由 A-page JSON 的 `pages[]` 顺序与 `pages[].a_id` 确定性生成，不提前生成视觉判断。新实例必须使用 episodes 下的实例目录、根级 pnpm episode:new 与共享旧播放器运行时，禁止生成独立 Vite 项目。每次点击推进一个口播节拍；连续 step 在同一视觉步组内复用主构图，只更新局部状态。主题由 project.json.theme 动态注入。凡用户要求把文章或口播稿做成网页视频、动态 PPT、交互式解说或录屏课程，均应使用本 Skill。
 ---
 
 # Web Video Presentation
@@ -27,9 +27,9 @@ token 和原语；每个实例只维护内容、章节、主题选择与音频�
 ```
 Phase 1   内容编译
    1.1  识别用户输入
-   1.2  建立 Episode Map
-   1.3  按章节纵切编译 script block → outline block
-   1.4  装配 script.md + outline.md
+   1.2  初始化模块化 outline.md 外壳
+   1.3  按章节纵切：script block → 原位填充 outline section
+   1.4  完成 script.md + outline 全局派生区
    1.5  全局一致性审查
    ▼
 [Checkpoint Plan]      ← 必须停。一次对齐 5 件事：
@@ -89,8 +89,8 @@ episodes/<episode-id>/
 | 产出 | 自检清单出处 |
 |---|---|
 | chapter script block | [`SCRIPT-STYLE.md`](references/SCRIPT-STYLE.md) chapter-local 三层自检（形式 / 风骨 / 念出来） |
-| chapter outline block | [`OUTLINE-FORMAT.md`](references/OUTLINE-FORMAT.md) chapter-local 自检；Courseplay 模式另读 [`COURSEPLAY-OUTLINE-REVIEW.md`](references/COURSEPLAY-OUTLINE-REVIEW.md) |
-| 装配后的 `script.md` + `outline.md` | 两份 reference 的 global review；只回修被定位为失效的 block |
+| chapter outline section | [`OUTLINE-FORMAT.md`](references/OUTLINE-FORMAT.md) chapter-local 自检；Courseplay 模式另读 [`COURSEPLAY-OUTLINE-REVIEW.md`](references/COURSEPLAY-OUTLINE-REVIEW.md) |
+| 完成后的 `script.md` + `outline.md` | 两份 reference 的 global review；只回修被定位为失效的 block 或 global-derived 区域 |
 | 单章实现完成 | [`CHAPTER-CRAFT.md`](references/CHAPTER-CRAFT.md) 完工自检 |
 
 **执行方式**（按能力降级，**优先用更隔离的方式**）：
@@ -143,11 +143,11 @@ Phase 2.4 的"实现单章"会重复 N 次 —— 每次都要回看核心约束
 
 Phase 1 是一个连续完成的**业务阶段**，不是一个必须塞进同一条模型响应或
 同一次思考的推理事务。1.2–1.5 自动连续执行，章节之间不请求用户确认；只有
-两份正式产物装配并通过全局审查后，才进入唯一的 Checkpoint Plan。
+两份正式产物完成并通过全局审查后，才进入唯一的 Checkpoint Plan。
 
 Phase 1 的基本创作、审查、恢复和修改单位是 **chapter / A-page block**。
-`script.md` 与 `outline.md` 是这些已冻结 block 的装配产物，不是要求模型在
-最后重新生成的两份整稿。
+`script.md` 由已冻结 script blocks 汇总；`outline.md` 从初始化起就是正式文件，
+通过局部 patch 逐章完成。任何阶段都不要求模型重新生成完整 outline。
 
 ### 1.1 识别用户输入
 
@@ -155,55 +155,82 @@ Phase 1 的基本创作、审查、恢复和修改单位是 **chapter / A-page b
 |---|---|
 | 同时提供正式 `courseplay-a-page/v6` + `courseplay-visual-rough/v4` | 进入 Courseplay-bound mode；v6 `screen` 是 guidance，当前 A 口播提供具体素材，rough 提供表达结构。三源创作完整规则只读 `references/CHAPTER-CRAFT.md` |
 | Courseplay 输入不完整，或当前 A-page 缺少可用口播/页面指导 | 报告缺少的内容并请求补充；只要已有等价的当前章节输入，就可继续制作。版本、存放路径和 script 排版只在显式调用 handoff 时按工具契约检查 |
-| 原始文章（书面语 / 公众号 / 论文 / 博客） | 建立 Episode Map，按章节完成 script → outline 编译（1.2–1.5），再过 Checkpoint Plan |
-| 直接的口播稿 / 视频脚本 | 保持原文内容，建立 Episode Map 并按章节派生 outline（1.2–1.5 简化版），再过 Checkpoint Plan |
+| 原始文章（书面语 / 公众号 / 论文 / 博客） | 划定内容章节后初始化模块化 outline 外壳，按章节完成 script → outline 编译（1.2–1.5），再过 Checkpoint Plan |
+| 直接的口播稿 / 视频脚本 | 保持原文内容，按已有章节初始化 outline 外壳并逐章派生（1.2–1.5 简化版），再过 Checkpoint Plan |
 | 啥都没有，只说"帮我做个 X 主题的视频" | **反问**：先给一段素材或大纲。Skill 不替用户构思内容 |
 
-### 1.2 建立 Episode Map
+### 1.2 初始化模块化 outline.md 外壳
 
-先建立轻量 Episode Map，只记录后续纵切编译需要的全局骨架：
+Courseplay-bound mode 直接读取正式 A-page JSON，按 `pages[]` 数组顺序和
+`pages[].a_id` **确定性创建** `outline.md` 外壳。初始化只允许写入：
 
-- chapter id、顺序与 narrative role；
-- 每章拥有的 source span；Courseplay 使用对应 A-page；
-- 前后相邻章与必要的全局约束；
-- `planned / script-frozen / outline-frozen` 状态。
+- 固定封面模块；
+- A-page 数量、顺序和 `A001` 等稳定 ID；
+- 每章 `pending-script` 占位标记；
+- metadata、整集视觉调度与素材清单的 `GLOBAL-DERIVED: pending` 占位区。
 
-Episode Map **不得**提前写详细 scene、step、semantic state 或页面配方。
-这些都必须从当前章已冻结的 script block 派生；否则等同于偷跑
-outline-first。
+初始化器不得写 chapter title、narration beat / step 数、base-scene、页面配方、
+核心判断、结构指纹、关系机制、semantic state、信息池或媒体判断。A-page 的
+`screen` guidance 只能在相应 script block 冻结后参与该章 outline 创作，不能在
+初始化阶段扩写。正式输入的变更由 Git 协作流记录。
 
-Phase 1 使用 Git 忽略的 durable working representation：
+```markdown
+# Video Outline
 
-```text
-.tmp/player-phase1/<episode-id>/
-├── episode-map.md
-├── script/
-│   ├── A001.md
-│   └── A002.md
-└── outline/
-    ├── A001.md
-    └── A002.md
+> **编译状态**：in-progress
+> **章节**：<由 `pages.length` 计数>
+
+## 整集视觉调度
+
+<!-- GLOBAL-DERIVED: pending -->
+
+## 0. cover — 封面（1 silent step · fixed 15s）
+
+## 1. A001 — pending
+
+<!-- PHASE1-BLOCK: A001 · pending-script -->
+<!-- CHAPTER-CONTENT: pending -->
+
+## 素材清单
+
+<!-- GLOBAL-DERIVED: pending -->
 ```
 
-普通项目可使用 `01-cold-open.md` 这类稳定、有序的 chapter id。工作区不是
-正式产物；它用于局部提交、掉线恢复、依赖失效和装配。恢复时先读 Episode
-Map 与已有 block，只从第一个未冻结或 stale 的 block 继续。
+同一 A-page 输入必须产生相同外壳。`outline.md` 已存在时，初始化不得覆盖文件、
+已填写模块或用户修改；只能报告已存在并进入恢复检查。普通 article 没有 A-page
+结构时，Agent 在划定内容章节后创建同格式的最小外壳，但同样不得提前填写视觉
+判断。
+
+Phase 1 只在 Git 忽略目录保存 script 工作块：
+
+```text
+.tmp/player-phase1/<episode-id>/script/
+├── A001.md
+└── A002.md
+```
+
+恢复时读取 `outline.md` 的 block marker 与已有 script blocks，从第一个非
+`outline-frozen` 或已标记 `stale` 的章节继续。
 
 ### 1.3 按章节纵切编译
 
-严格按 Episode Map 顺序处理每一章：
+Courseplay 严格按 A-page JSON 顺序处理每一章；普通项目按初始 outline 模块顺序：
 
-1. 从当前章拥有的 source span 生成 `script/<chapter-id>.md`。普通项目按
+1. 从当前 A-page 或普通文章的当前内容段生成 `script/<chapter-id>.md`。普通项目按
    [`SCRIPT-STYLE.md`](references/SCRIPT-STYLE.md) 改写；Courseplay 按当前
    A-page 的非空 `nx` 无损派生，不改写批准口播。
 2. 对当前 script block 做 chapter-local review；只修当前 block，直到通过，
-   再标记 `script-frozen`。
+   再把 `outline.md` 中对应 marker 更新为 `script-frozen`。
 3. **只在当前 script block 冻结后**，按
-   [`OUTLINE-FORMAT.md`](references/OUTLINE-FORMAT.md) 生成同章
-   `outline/<chapter-id>.md`。切 narration beat、绑定 base-scene、声明语义
-   关系、开放式关系机制、semantic state、场景例外与信息池。
-4. 对当前 outline block 做 chapter-local review；只修当前 block，直到通过，
-   再标记 `outline-frozen`，然后推进下一章。
+   [`OUTLINE-FORMAT.md`](references/OUTLINE-FORMAT.md) **只替换** `outline.md`
+   中同 ID 的 chapter section。切 narration beat、绑定 base-scene、声明语义
+   关系、开放式关系机制、semantic state、场景例外与信息池；其他章节和
+   global-derived 区域保持字节不变。
+4. 对刚替换的 outline section 做 chapter-local review；只修当前 section，直到
+   通过，再把 marker 更新为 `outline-frozen`，然后推进下一章。
+
+外壳初始化完成后，禁止用整份写入覆盖 `outline.md`。只能 patch 当前 chapter
+section 或明确的 global-derived 占位区；一次掉线最多损失当前未完成的局部 patch。
 
 script 始终是 outline 的口播权威来源。章节纵切改变的是事务边界，不改变
 `script → outline` 的依赖方向。显式调用 Courseplay handoff 时，根级输入和
@@ -222,16 +249,16 @@ step 或 state 数，不使用固定全局 state 枚举；accent-frame 允许低
 outline 决定持续构图、结构指纹、内容槽位、每步场景指令与场景例外；chapter agent 决定组件、
 CSS、动画和具体视觉实现；`narrations.ts` 是运行时 step 数与 TTS 文本的最终真相源。
 
-### 1.4 装配正式产物
+### 1.4 完成正式产物
 
-全部 chapter block 冻结后，把 script blocks 按 Episode Map 顺序装配成
-`script.md`，把 outline blocks 装配成兼容现有格式的 `outline.md`。正式文件
-必须由已冻结 block 拼接、计算和补齐 global-derived sections 得到；禁止要求
-模型为了“整理”再输出一次完整 30–50 KB 整稿。
+全部 chapter blocks 冻结后，按 A-page JSON 或既有 outline 模块顺序汇总 script
+blocks，生成正式 `script.md`。`outline.md` 不装配、不重写；只计算并替换顶部统计、
+整集视觉调度和素材汇总等 global-derived 占位区，再清除临时编译状态标记，使其
+保持现有正式格式。禁止为了“整理”再输出一次完整 30–50 KB outline。
 
 ### 1.5 全局一致性审查与最小回修
 
-Global Review 只负责跨章节约束：全文信息保留度、source span 覆盖、开头
+Global Review 只负责跨章节约束：全文信息保留度、A-page / 原文内容覆盖、开头
 钩子、章节衔接、语气一致性、相邻视觉重复、整体节奏、总时长、全局 counts、
 视觉调度和素材汇总。它不重新润色所有已通过的 chapter block。
 
@@ -239,16 +266,17 @@ Global Review 只负责跨章节约束：全文信息保留度、source span 覆
 
 | 修改 | 自动失效 | 保持有效 |
 |---|---|---|
-| Episode Map 章节边界 | 受影响范围内的 script + outline blocks | 无关章节 |
+| A-page 集合或顺序经授权变更 | 增删/移动对应 outline 模块；受影响 script blocks + outline sections | 无关章节 |
 | `script/A006` 文案，beat 不变 | `outline/A006` narration mapping 复核 | 其他章节 |
 | `script/A006` beat 边界 | `outline/A006` steps；全局 beat counts / duration | 其他 chapter blocks |
 | `outline/A006` scene / state | A006 的 global schedule 行与相关统计 | `script/A006`、其他章节 |
 | A006 media | A006 outline/media summary | narration 与无关章节 |
 | Global Review 发现相邻重复 | 被明确选中回修的 chapter blocks | 其他已通过章节 |
 
-**硬原则：Repair the smallest invalidated scope.** 局部失败先定位拥有该问题的
-source span 与 chapter；禁止为了方便重写无关的冻结 block、完整 `script.md`
-或完整 `outline.md`。只有 Episode Map 的边界本身错误时，才重新划分受影响范围。
+**硬原则：Repair the smallest invalidated scope.** 局部失败先定位对应 A-page
+或普通文章内容段与 chapter；禁止为了方便重写无关的冻结 block、完整
+`script.md` 或完整 `outline.md`。普通项目只有章节边界本身错误时，才调整受影响
+模块；Courseplay 章节结构以正式 A-page 为准。
 
 **默认封面规则**：每期自动生成 `00-cover` 封面章节，只有 1 个 silent step，Auto 模式固定保留 `15000ms` 后推进；手动模式仍可点击或按键推进。封面不计入正文口播节拍，不进入 TTS。
 
@@ -276,7 +304,7 @@ JSON 的 `style` 字段。JSON 只提供内容，不决定视觉；视觉由实�
 > 的"内容驱动决策树"自由设计，才有真正的视频感。详见
 > [`CHAPTER-CRAFT.md`](references/CHAPTER-CRAFT.md) Part 0 原则 7。
 
-**装配后必须先走 Global Review 再进 Checkpoint Plan**：按上文「硬性自检
+**正式产物完成后必须先走 Global Review 再进 Checkpoint Plan**：按上文「硬性自检
 协议」分别对 `script.md` / `outline.md` 执行并修复；每个 fail 必须先定位
 到最小失效 block。Courseplay outline 额外按
 [`COURSEPLAY-OUTLINE-REVIEW.md`](references/COURSEPLAY-OUTLINE-REVIEW.md)
@@ -623,7 +651,7 @@ Part 8「常见反馈速查」。**关键**：先定位是哪一层（节奏 / �
 | 文件 | 何时读 | 内容 |
 |---|---|---|
 | [`references/SCRIPT-STYLE.md`](references/SCRIPT-STYLE.md) | Phase 1.2–1.5 必读 | chapter-local 文章 → 口播稿规则、平台变体、全局审查与最小回修 |
-| [`references/OUTLINE-FORMAT.md`](references/OUTLINE-FORMAT.md) | Phase 1.2–1.5 必读 | outline block 与 global-derived sections 的字段 spec、命名约定、章节切分、信息池 |
+| [`references/OUTLINE-FORMAT.md`](references/OUTLINE-FORMAT.md) | Phase 1.2–1.5 必读 | 模块化 outline sections 与 global-derived 区域的字段 spec、命名约定、章节切分、信息池 |
 | [`references/COURSEPLAY-BOUND-MODE.md`](references/COURSEPLAY-BOUND-MODE.md) | 检测到正式 v6/v4 时必读 | 当前版本路由、章节输入边界、场景绑定、semantic state / accent / custom 语义；handoff 语法转引公开作者契约卡 |
 | [`../../../../narration-pipeline/.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md`](../../../../narration-pipeline/.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md) | 需要理解 A-page 字段时 | A-page 作者契约与 canonical example 路由 |
 | [`../../../../narration-pipeline/.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md`](../../../../narration-pipeline/.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md) | 需要理解 visual rough 字段时 | visual rough 作者契约与 canonical example 路由 |

@@ -48,10 +48,10 @@
 压缩硬塞，**告诉用户**："原文 X 字，按 60% 留存最少需要 ~Y 分钟视频，
 要么拉长视频要么拆成多集"。**不要**自作主张缩到 30% 然后假装做完了。
 
-**判定失败时怎么修**：先找出缺失事实、案例、论证步骤对应的 source span，
-再回修拥有这些 span 的 chapter script blocks。装配后的全局比例低于 60%，
-不等于所有章节都失败；禁止重写无关的冻结 block。只有 Episode Map 本身把
-source ownership 或章节边界划错时，才重新划分受影响范围。
+**判定失败时怎么修**：先找出缺失事实、案例、论证步骤对应的 A-page 或普通
+文章内容段，再回修相应 chapter script blocks。汇总后的全局比例低于 60%，
+不等于所有章节都失败；禁止重写无关的冻结 block。普通项目只有章节边界本身
+划错时，才调整受影响的初始 outline 模块。
 
 ---
 
@@ -341,7 +341,7 @@ AI 写中文时有强迫症式的整齐感。**口播比文字更怕排比** —
 
 ### 1. 写入当前 chapter script block + 切节拍
 
-按 Episode Map 的 source ownership，把当前章落到
+按正式 A-page 顺序或模块化 outline 的既有章序，把当前章落到
 `.tmp/player-phase1/<episode-id>/script/<chapter-id>.md`；原文存在时仍保留为
 `article.md`。检查每个 `---` 是否对应可独立成立的 narration beat；长段本身
 不是拆分理由，短段也不能只是为了增加 step。Courseplay 以当前 A-page 的批准
@@ -365,7 +365,7 @@ AI 写中文时有强迫症式的整齐感。**口播比文字更怕排比** —
 
 ### 2. Chapter-local 形式层自检（8 条原则）
 
-- [ ] 当前 block 拥有的 source span 已充分覆盖；关键数字 / 案例 / 论证链
+- [ ] 当前 block 对应的 A-page / 原文内容已充分覆盖；关键数字 / 案例 / 论证链
       逐项对照，不能整段消失。`≥ 60%` 的全文比例留到装配后全局检查
 - [ ] 没出现 emoji / 原文书名号《》 / 括号补充 /「据 XX 报告显示」类
       引文格式（口播念不出来）
@@ -403,8 +403,8 @@ AI 写中文时有强迫症式的整齐感。**口播比文字更怕排比** —
 
 ### 5. 冻结当前 script block，再编译同章 outline
 
-当前 script block 三层自检通过后标记 `script-frozen`，按
-[`OUTLINE-FORMAT.md`](OUTLINE-FORMAT.md) 编译对应 chapter outline block。
+当前 script block 三层自检通过后标记 `script-frozen`，再按
+[`OUTLINE-FORMAT.md`](OUTLINE-FORMAT.md) 原位填充对应 chapter outline section。
 不要在章节之间停下来等用户；Phase 1 内部保持自动连续执行。
 
 “同一个 Phase 1”只表示用户最终仍在一个 Checkpoint Plan 同时对齐稿子、
@@ -412,19 +412,20 @@ outline、主题、素材和开发模式，不表示 script 与 outline 必须�
 响应或同一次思考。允许每个 chapter 使用独立、可恢复的推理事务，但依赖方向
 必须始终是当前章 `script-frozen → outline`。
 
-### 6. 装配后的 script global review
+### 6. 汇总后的 script global review
 
-全部 chapter script blocks 冻结后，按 Episode Map 顺序装配 `script.md`，再
+全部 chapter script blocks 冻结后，按 A-page JSON 或 outline 模块顺序汇总
+`script.md`，再
 检查真正的跨章约束：
 
 - [ ] `len(script.md) ÷ len(article.md) ≥ 0.6`；
-- [ ] 所有 source spans 都有 owning chapter，关键事实、案例、限制条件和论证链
-      没有跨章遗漏；
+- [ ] 所有 A-page 或普通文章内容段都有对应章节，关键事实、案例、限制条件和
+      论证链没有跨章遗漏；
 - [ ] 开头钩子、章节衔接、全文语气、重复表达和总长度合理；
 - [ ] narration beat 顺序稳定，章节连接处没有重复或断裂。
 
-Global Review 发现 fail 时，记录缺失或冲突的 source span，定位 owning
-chapter，只将对应 block 标记 stale 并回修。回修后重新装配和复核受影响的
+Global Review 发现 fail 时，记录缺失或冲突的 A-page / 内容段，定位对应
+chapter，只将对应 block 标记 stale 并回修。回修后重新汇总和复核受影响的
 全局项；不得借机重写无关章节或重新生成完整 `script.md`。
 
 ---

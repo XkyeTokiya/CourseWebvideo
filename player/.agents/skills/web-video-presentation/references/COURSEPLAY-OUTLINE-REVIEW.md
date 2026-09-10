@@ -6,8 +6,8 @@
 
 每次调用必须声明审查范围：
 
-- `review_scope: chapter`：默认，审查一个 chapter outline block；
-- `review_scope: global`：全部 blocks 装配后，只审查跨章节约束与全局派生内容。
+- `review_scope: chapter`：默认，审查 `outline.md` 中一个 chapter section；
+- `review_scope: global`：全部 sections 冻结并填充全局派生区后，只审查跨章节约束。
 
 两个 scope 互补。chapter pass 不代表整集不存在重复；global fail 也不允许
 无理由重写所有已通过章节。
@@ -29,7 +29,7 @@
 
 `review_scope: chapter`：
 
-- 当前 `outline/<Axxx>.md` block；
+- `outline.md` 中当前 A-page 对应的 chapter section；
 - 当前章已冻结的 script block；
 - 对应 A-page；
 - 对应 visual rough 页面；
@@ -37,18 +37,18 @@
 
 `review_scope: global`：
 
-- 装配后的 `outline.md`；
-- Episode Map；
+- 已完成的模块化 `outline.md`；
+- 正式 A-page JSON；
 - 所有 chapter review 结论；
 - 全部 A-page 与 visual rough；
-- 可选：装配后的 `script.md`。
+- 可选：汇总后的 `script.md`。
 
 Reviewer 同时使用
 [`COURSEPLAY-STATE-MECHANISMS.md`](COURSEPLAY-STATE-MECHANISMS.md) 的概念
 边界，但不得把其中的常见机制家族当成封闭白名单。
 
 chapter scope 缺少当前 A-page、visual rough 页面或已冻结 script block 时停止；
-global scope 缺少正式 outline、Episode Map 或完整 A-page / rough 时停止。输出
+global scope 缺少正式 outline 或完整 A-page / rough 时停止。输出
 `REVISE` 并只列出当前 scope 缺少的输入。
 
 ## 分类口径
@@ -149,12 +149,11 @@ REVISE。
 
 ### 5. Global scope：跨章节与派生内容
 
-只在所有 chapter blocks 已通过并装配后检查：
+只在所有 chapter sections 已通过并填充全局派生区后检查：
 
 - 顶部 A-page、base-scene、accent-frame、custom-scene 与 narration beat 统计
   是否与正文一致；
-- Episode Map 中每个 A-page 是否恰好出现一次，顺序、chapter ownership 与
-  正式输入一致；
+- A-page JSON 中每个页面是否在 outline 恰好出现一次，顺序与正式输入一致；
 - 整集视觉调度是否覆盖每章，调度行是否忠实投影各章已冻结字段；
 - 相邻章节是否仅替换文字却复用同一主构图、卡片比例、强调机制和固定 chrome；
 - 全集偏离页占比是否超过 50%，或所有页 beat 数恒等于同一数值，形成系统性
@@ -165,7 +164,7 @@ REVISE。
 - 是否出现所有章节机械使用同一 semantic state 链或强调方式的局部最优。
 
 global fail 必须列出具体 A-page 与证据，并给出最小修改范围。只改全局统计或
-调度行时，不得触碰 chapter block；需要解决相邻重复时，只回修被选中的页。
+调度行时，不得触碰 chapter section；需要解决相邻重复时，只回修被选中的页。
 禁止使用“整期打回”作为未定位问题的默认建议。
 
 ## 判定

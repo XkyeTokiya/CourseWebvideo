@@ -23,7 +23,7 @@ pnpm dev
 
 ## 工作流
 
-1. 阅读输入，在同一 Phase 1 中先建立 Episode Map，再按章节完成 script block → outline block，装配 `script.md` 与 `outline.md` 并通过全局审查。
+1. 阅读输入；Courseplay 由 A-page JSON 初始化模块化 `outline.md` 外壳，再按章节完成 script block → 原位填充 outline section，最后汇总 `script.md`、填充全局派生区并审查。
 2. 在 Checkpoint Plan 对齐稿子、outline、主题、素材和开发模式。
 3. 通过 `pnpm episode:new` 创建 `episodes/<id>/`。
 4. 由主线程完成第 1 章，等待用户验收。
