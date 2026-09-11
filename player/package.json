@@ -8,7 +8,6 @@
     "build": "pnpm run episode:check && pnpm run typecheck && vite build && pnpm run build:inspect",
     "lint": "oxlint src/app src/catalog src/runtime src/shared src/studio tools",
     "typecheck": "tsc --noEmit",
-    "episode:new": "node tools/create-episode.mjs",
     "episode:catalog": "node tools/generate-catalog.mjs",
     "episode:check": "node tools/validate-episodes.mjs",
     "courseplay:handoff": "node tools/courseplay-handoff.mjs",

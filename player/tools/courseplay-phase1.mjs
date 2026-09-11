@@ -17,7 +17,7 @@ const ERROR_MESSAGES = {
   PHASE1_INPUT_NOT_APPROVED: "正式输入尚未达到 production/approved。",
   PHASE1_PAGE_SEQUENCE: "A-page、visual rough 或正式文件的章节集合/顺序不一致。",
   PHASE1_NX_MISMATCH: "script Beat 拼接与当前 A-page nx 不一致。",
-  PHASE1_ARTIFACT_CONFLICT: "现有 script/outline 既不是原始模板，也不是可恢复的模块化格式。",
+  PHASE1_ARTIFACT_CONFLICT: "现有 script/outline 不是可恢复的 Courseplay 模块化格式。",
   PHASE1_BEAT_STEP_MISMATCH: "script Beat 与 outline step 不一致。",
   PHASE1_REFERENCE_UNKNOWN: "outline 丢失必要关系或引用了当前章节未知的稳定 ID。",
   PHASE1_INCOMPLETE: "仍有章节未完整提交，不能 finalize。",
@@ -94,8 +94,6 @@ function standardPaths(root, episodeId) {
     visualRough: path.join(inputsDir, `${episodeId}-visual-rough.md`),
     outline: path.join(episodeDir, "outline.md"),
     script: path.join(episodeDir, "script.md"),
-    templateOutline: path.join(root, "templates", "episode", "outline.md"),
-    templateScript: path.join(root, "templates", "episode", "script.md"),
   };
 }
 
@@ -328,10 +326,9 @@ function validateOutlineReferences(text, page, rough) {
   }
 }
 
-async function ensureArtifact({ file, template, shell, pages, label, faultAt, testFault }) {
+async function ensureArtifact({ file, shell, pages, label, faultAt, testFault }) {
   const current = await exists(file) ? await required(file, label) : null;
-  const legacy = await required(template, `${label}-template`);
-  if (current === null || markdown(current) === markdown(legacy)) {
+  if (current === null) {
     await atomicWrite(file, shell, faultAt, { testFault });
     return "initialized";
   }
@@ -339,7 +336,7 @@ async function ensureArtifact({ file, template, shell, pages, label, faultAt, te
     assertArtifactOrder(current, pages, label);
     return "existing";
   }
-  fail("PHASE1_ARTIFACT_CONFLICT", relative(path.dirname(path.dirname(file)), file), "pristine template or modular artifact", "existing content");
+  fail("PHASE1_ARTIFACT_CONFLICT", relative(path.dirname(path.dirname(file)), file), "missing file or Courseplay modular artifact", "existing content");
 }
 
 function readChapterContent(text, aPageId) {
@@ -382,11 +379,11 @@ async function inspectArtifacts(files, pages) {
 export async function initPhase1({ root = process.cwd(), episodeId, testFault }) {
   const input = await preflightPhase1({ root, episodeId });
   const outline = await ensureArtifact({
-    file: input.files.outline, template: input.files.templateOutline, shell: outlineShell(input.pages), pages: input.pages,
+    file: input.files.outline, shell: outlineShell(input.pages), pages: input.pages,
     label: "outline", faultAt: "after-outline-init", testFault,
   });
   const script = await ensureArtifact({
-    file: input.files.script, template: input.files.templateScript, shell: scriptShell(input.pages), pages: input.pages,
+    file: input.files.script, shell: scriptShell(input.pages), pages: input.pages,
     label: "script", faultAt: "after-script-init", testFault,
   });
   return { ...(await inspectArtifacts(input.files, input.pages)), initialized: { outline, script } };

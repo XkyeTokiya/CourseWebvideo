@@ -55,9 +55,9 @@ A-page 与两份正式产物，因此上游输入暂时不可用时仍可定位�
 
 ## 初始化与唯一状态
 
-`init` 从 A-page `pages[]` 确定性创建两份模块化正式外壳。若 `episode:new` 留下的
-`script.md` / `outline.md` 仍与仓库原始模板一致，runner 会迁移；已有非模板内容
-则以 `PHASE1_ARTIFACT_CONFLICT` 停止，不覆盖。
+`init` 从 A-page `pages[]` 确定性创建两份模块化正式外壳。文件不存在时创建；已有
+Courseplay 模块化产物时进入恢复；任何其他既有内容都以
+`PHASE1_ARTIFACT_CONFLICT` 停止，不覆盖。
 
 每章在两份正式文件中都有稳定边界：
 
@@ -89,8 +89,7 @@ Script 候选：
 第二拍批准口播
 ```
 
-非空 Beat 顺序拼接必须与当前 A-page `nx` 一致。Courseplay 不对批准口播执行
-B 站改写或 `script/article ≥ 60%` 门禁。
+非空 Beat 顺序拼接必须与当前 A-page `nx` 一致。批准口播不得改写。
 
 Outline 候选必须是一个完整章节 section，并满足：
 
@@ -122,7 +121,7 @@ v4 对每章做最终结构校验。成功后 outline 的编译状态变为
 | `PHASE1_INPUT_NOT_APPROVED` | 输入不是 production / approved |
 | `PHASE1_PAGE_SEQUENCE` | 页集合、顺序、候选序号不一致 |
 | `PHASE1_NX_MISMATCH` | Script Beat 无法无损还原当前 nx |
-| `PHASE1_ARTIFACT_CONFLICT` | 现有正式文件不可安全迁移，或候选含 marker |
+| `PHASE1_ARTIFACT_CONFLICT` | 现有正式文件不是 Courseplay 模块化格式，或候选含 marker |
 | `PHASE1_BEAT_STEP_MISMATCH` | Beat 与 step 数/编号不一致 |
 | `PHASE1_REFERENCE_UNKNOWN` | 丢失受保护关系或引用未知稳定 ID |
 | `PHASE1_INCOMPLETE` | 仍有未提交或事务不一致章节 |
