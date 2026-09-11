@@ -44,10 +44,9 @@ Courseplay 的 A-page 是一个完整教学判断，不是一个口播瞬间。�
 
 显式调用 handoff 时，按 [handoff v4 作者契约卡](../../../../docs/courseplay-handoff-v4-author-contract.md) 和 [canonical example](../../../../docs/examples/courseplay-handoff-v4/) 准备 script/outline；其中的固定 Markdown 语法只在调用 handoff 时生效。不调用 handoff 时，可直接提供清楚标明 A-page 和 Beat 的等价输入；纯排版差异本身不构成制作停止条件。
 
-## 继承通用 outline 契约
+## Courseplay outline 契约
 
-Courseplay-bound mode 是通用 outline 格式的增量约束，不是替代格式。除本文件
-新增的 scene / state 字段外，outline 仍必须包含：
+Courseplay outline 必须包含：
 
 - 独立 `00-cover`、通用 metadata、总时长与章节摘要；
 - 每章信息池及来源；

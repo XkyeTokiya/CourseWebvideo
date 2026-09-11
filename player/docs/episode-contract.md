@@ -1,4 +1,4 @@
-# New Episode Contract
+# Courseplay Episode Contract
 
 Studio 只扫描 `episodes/`；旧 `output/` 与 `.archive/` 不导入。共享封面内容库位于
 `episodes/_shared/covers/`，不是 episode 实例。
@@ -6,7 +6,6 @@ Studio 只扫描 `episodes/`；旧 `output/` 与 `.archive/` 不导入。共享�
 ```text
 episodes/<id>/
 ├── project.json
-├── article.md                         # 普通项目按需保留
 ├── script.md
 ├── outline.md
 ├── inputs/
@@ -91,5 +90,3 @@ pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx>
 
 `.handoffs/` 是确定性派生缓存，不进入 `project.json`、catalog、Studio 构建或
 Git 提交。
-
-

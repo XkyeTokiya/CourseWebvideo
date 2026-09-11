@@ -2,7 +2,7 @@
 - 开始 Phase 1 前读取当前层级 CLAUDE、`web-video-presentation` Skill 及其路由的 Courseplay 参考文件;实现文件和历史 episode 不是流程规则来源。Confidence: 0.95
 - 正式输入只从 `episodes/<id>/inputs/` 消费:A-page v6、rough v4 及声明的 approved_text 必须同集、production/approved且内容一致;validation report 可作上游审计,不是 Phase 1 运行依赖。Confidence: 0.95
 - 上游任务包和正式 inputs 始终只读;不得反向修改、替代或用过程目录/历史工件补齐。Confidence: 0.95
-- 新实例只在 `project.json` 不存在时运行 `pnpm episode:new`;init 可迁移未改动的旧 script/outline 模板,其他既有内容必须 fail-fast,不得覆盖。Confidence: 0.9
+- `project.json` 与正式 inputs 必须已存在；`init` 仅在 script/outline 缺失时创建确定性外壳，或恢复合法 Courseplay 模块化产物；其他既有内容必须 fail-fast，不得覆盖。Confidence: 0.95
 - 正式 `script.md` 与 `outline.md` 是 Phase 1 唯一持久状态;不创建 state.json、review receipt、临时 script block 仓库或手工全局状态。Confidence: 0.95
 - 每章从当前 A-page 的 `nx` 无损切分 Beat;标点只是候选边界,同一对象的点名→解释、设问→答案或连续 progression 默认先做合并检验,只有独立朗读/播放/同步价值才拆分;G/U 不决定 Beat 数,但同一单元可作为防碎切证据。Confidence: 0.95
 - 每章只调用一次 `commit-chapter` 提交 script+outline 内容对;runner 必须阻止 nx、页序、Beat/step、受保护关系或 S/U/R/M 引用缺失,其他创作质量由作者自检且不持久化结论。Confidence: 0.95

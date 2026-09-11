@@ -2,7 +2,7 @@
 
 ---
 
-> **Courseplay-bound mode**：v6 + v4 输入时读取
+> **输入契约**：只使用 Courseplay A-page v6 + visual rough v4。读取
 > [`COURSEPLAY-BOUND-MODE.md`](COURSEPLAY-BOUND-MODE.md)，状态映射另读
 > [`COURSEPLAY-STATE-MECHANISMS.md`](COURSEPLAY-STATE-MECHANISMS.md)。handoff 是
 > 可选的当前章节上下文打包工具；Phase 2 可读取 `.handoffs/<Axxx>.json`，也可直接
@@ -69,7 +69,7 @@
 逐项揭示不要求重新构图，也不自动要求新 narration step。step 数来自批准口播；
 一个 step 可以在同一主构图中依次完成多个内部动作并落到一个 semantic state。
 相邻 step 也可以保持同一 semantic state，只更新说明或口播焦点。Courseplay-bound
-mode 下，除 outline 已声明 accent-frame 或 custom-scene 外，禁止把内容项升级成
+流程下，除 outline 已声明 accent-frame 或 custom-scene 外，禁止把内容项升级成
 新 scene。
 
 ---
@@ -91,19 +91,15 @@ hero 标语 / 一个数字 / 一组对比 + 必要的视觉演示。
 
 ---
 
-## 来源：普通项目双源，Courseplay v4 三源
+## Courseplay v4 三源创作（唯一详细规则）
 
-> 普通模式的**节奏 / 顺序 / 节拍切分**跟 **`script.md` 口播稿**；Courseplay
-> 则跟交接包中的 `narration.beats`，并以 `narration.authority=a_page.nx` 为口播权威。
-> **画面细节 / 数据 / 引用 / 案例** 回 **`article.md` 原文章（如有）**抽；Courseplay 只读取
-> 当前 packet，并综合 `screen_guidance`、`narration.beats` 与 `presentation`。
+Courseplay 的**节奏 / 顺序 / 节拍切分**跟交接包中的 `narration.beats`，并以
+`narration.authority=a_page.nx` 为口播权威。画面只读取当前 packet，并综合
+`screen_guidance`、`narration.beats` 与 `presentation`。
 
-`outline.md` 已经在每章首段抽了「信息池」做参考。有 `article.md` 时，**实现
-章节也必须回去翻本章对应段落** —— 那里有比口播稿更多的细节（具体数字、
-引用原话、案例维度、出处时间）。Courseplay 没有 article 时，不得把缺失当成
-阻塞，也不得自行补写事实；使用交接包中的 A-page、visual rough 与素材清单。
-
-### Courseplay v4：三源创作（唯一详细规则）
+`outline.md` 已经在每章首段抽了「信息池」做参考。Courseplay 没有 article 时，
+不得把缺失当成阻塞，也不得自行补写事实；使用交接包中的 A-page、visual rough
+与素材清单。
 
 v6 JSON 给出内容方向、重点、事实边界和 exact 义务；当前 A 的
 `narration.beats` 提供可直接使用的具体素材；visual rough 投影到
@@ -233,10 +229,6 @@ export function A001Chapter({ step }: ChapterStepProps) {
 - 额外 base-scene 或 custom-scene 只能使用 outline 已声明、写明必要性并经
   Checkpoint Plan 确认的场景；不要为了让相邻 step 看起来不同而换场。
 
-[`EXAMPLES/list-reveal/`](EXAMPLES/list-reveal/) 仅是“真实顺序列表”的持续场景
-正例；并列卡片应参考 [`EXAMPLES/equal-group/`](EXAMPLES/equal-group/)，多个
-step 可以共享同一网格和同一 semantic state。
-
 ### 必须用 token（换主题不破的底线）
 
 新章节只使用下列标准 token。旧实例抽取的章节可能还写有
@@ -275,8 +267,8 @@ step 可以共享同一网格和同一 semantic state。
 - **每章必须有 `narrations.ts`**（与 `<Chapter>.tsx` 同目录）：
   - 数组长度 **=** 章节渲染逻辑支持的 step 总数；既可以来自条件分支、
     数组映射或状态机，也可以来自传给持续 Scene 的 `phase`
-  - 每个元素 = 一个 string，该 step 要播的口播文本（普通模式来自 `script.md`
-    对应段；Courseplay 逐项使用交接包 `narration.beats`，不得重新切分或改写）
+  - 每个元素 = 一个 string，该 step 要播的口播文本（Courseplay 逐项使用交接包
+    `narration.beats`，不得重新切分或改写）
   - 完全无音频的过场 step 用空串 `""`，Auto 模式会按字数估时撑过
   - 这是**音频合成 + Auto 模式自动推进的唯一真相源**，写错或漏写
     会让录屏对不上嘴
@@ -291,8 +283,9 @@ step 可以共享同一网格和同一 semantic state。
 > ⚠️ **硬性流程**：章节实现完成后**必须**走完下面的自检 → 修复 → 汇报
 > 三步。**禁止**"实现完成 → 直接汇报给用户"。
 >
-> 所有项目继续使用独立 reviewer → subagent → 自检的降级顺序，并在推进前
-> 修复 fail。模式 A 逐章交给用户确认；模式 B 顺序完成后统一验收。
+> 默认由作者自检。用户明确要求 independent review 时，继续使用独立 reviewer →
+> subagent → 自检的降级顺序。无论哪种模式，都必须在推进前修复 fail；模式 A
+> 逐章交给用户确认，模式 B 顺序完成后统一验收。
 
 写完一章后按职责逐项过；视觉项由当前 visual owner 在浏览器中核对：
 
@@ -301,7 +294,7 @@ step 可以共享同一网格和同一 semantic state。
 - [ ] 字号大、留白舒服、配色舒服
 - [ ] 清单 / 列表按“独立口播焦点 + 独立视觉槽位”逐个揭示；同一槽位的
       组合短语可共同出现，除明确换场外复用同一布局与槽位
-- [ ] 普通项目回原文章抽取了画面细节；Courseplay v4 则以三源重组出足够具体的页面信息，不以“字数多于口播”为门禁
+- [ ] 综合 guidance、beats 与 presentation，页面信息足够具体，不以“字数多于口播”为门禁
 - [ ] 没有紫粉渐变 / 圆角彩色边框 / emoji / 假数据 / 假 logo
 - [ ] 缺的素材用 placeholder，不是 fake
 - [ ] **颜色和字体家族全部走 token**（无硬编码 hex / 字体名）；hero 数字
@@ -318,19 +311,19 @@ step 可以共享同一网格和同一 semantic state。
       step 总数（无论使用分支还是持续 Scene 的 `phase`；不一致 = Auto
       模式录屏会错位）
 - [ ] outline 的视觉步组与实现一致：连续 step 复用主构图，只有内容关系变化才切换页面
-- [ ] 普通模式每条 narration 与 `script.md` 对应段落语义一致；Courseplay
-      narration 与交接包 `narration.beats` 逐项一致，拼接后与 `a_page.nx` 一致
+- [ ] Courseplay narration 与交接包 `narration.beats` 逐项一致，拼接后与
+      `a_page.nx` 一致
 - [ ] `narrations.ts` 改动后运行 `pnpm audio:extract -- --episode <id>`，核对
       `audio-segments.json` 的章节、step 与文本
 - [ ] **每个 step 的视觉动画时长 ≤ 口播时长**（口播 `字数 ÷ 4` ≈ 秒数）—— 
       超出会被 Auto 模式当场切断，动画演到一半就跳下一步
 
-Courseplay-bound mode 还必须检查：
+Courseplay 还必须检查：
 
-- [ ] v3 章节综合了 `screen_guidance`、当前 A beats 与 `presentation`，页面不是逐 S/G 清单，也没有新增内容 IR
-- [ ] v3 每个 `exact` 在至少一个实际 step 中完整逐字可见且有必要上下文；这是渲染审查，不是源码搜索结论
-- [ ] v3 没有 packet 外事实、silent constraint 直接或改写泄漏，也没有提前显示后续 beat 的结论/限制
-- [ ] v3 最终 step 静音可理解主要对象、关系与判断；页面不是上位标签、空槽或逐句字幕
+- [ ] v4 章节综合了 `screen_guidance`、当前 A beats 与 `presentation`，页面不是逐 S/G 清单，也没有新增内容 IR
+- [ ] v4 每个 `exact` 在至少一个实际 step 中完整逐字可见且有必要上下文；这是渲染审查，不是源码搜索结论
+- [ ] v4 没有 packet 外事实、silent constraint 直接或改写泄漏，也没有提前显示后续 beat 的结论/限制
+- [ ] v4 最终 step 静音可理解主要对象、关系与判断；页面不是上位标签、空槽或逐句字幕
 - [ ] 每个 A-page 的 base-scene 数与 outline 声明一致
 - [ ] narration step 与 semantic state 映射符合 outline；state 可以重复，没有机械统一步数
 - [ ] 连续 step 默认复用同一 SceneFrame、媒体区、网格和主要 DOM 位置；场景指令

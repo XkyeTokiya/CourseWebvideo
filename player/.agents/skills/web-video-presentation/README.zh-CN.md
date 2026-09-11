@@ -1,112 +1,22 @@
-# Web Video Presentation Skill
+# Courseplay Web Video Presentation Skill
 
-将文章或口播稿制作成点击驱动的 16:9 网页视频实例，并在本仓库的 **Web Video Studio** 内统一播放与录屏。
+本 Skill 只把正式 Courseplay 输入制作为 Web Video Studio 中的 16:9 课程章节。
+普通文章、自由口播稿、独立 Vite 项目和旧脚手架不在支持范围内。
 
-## 运行时契约
+## 正式流程
 
-本 Skill 不再创建独立 Vite 项目。每个新实例都属于根级 Studio，共享播放器运行时、路由、主题、音频加载器和依赖图。
+1. 从 `episodes/<id>/inputs/` preflight A-page v6、visual rough v4 和批准口播。
+2. 运行 `courseplay:phase1` 的 `init → commit-chapter → finalize`，生成唯一正式
+   `script.md` 与 `outline.md`。
+3. 在 Checkpoint Plan 对齐稿子、视觉计划、主题、素材和开发模式。
+4. 主线程完成第 1 章并等待用户验收，再开发后续章节。
+5. 在 Checkpoint Audio 决定是否生成 TTS；最后使用 Studio 录屏。
 
-```text
-/                 Studio 实例库
-/play/<episode>   实例播放器
-episodes/<id>/    单个实例的内容与章节代码
-```
+权威规则见 [SKILL.md](./SKILL.md)。Phase 1 读取
+[OUTLINE-FORMAT.md](./references/OUTLINE-FORMAT.md)、
+[COURSEPLAY-BOUND-MODE.md](./references/COURSEPLAY-BOUND-MODE.md) 与
+[COURSEPLAY-STATE-MECHANISMS.md](./references/COURSEPLAY-STATE-MECHANISMS.md)；
+章节实现读取 [CHAPTER-CRAFT.md](./references/CHAPTER-CRAFT.md)。
 
-只允许在仓库根目录创建实例：
-
-```powershell
-pnpm episode:new -- --id episode-xx --title "实例标题" --theme newsroom
-pnpm dev
-```
-
-不得在实例内创建 `package.json`、锁文件、`node_modules`、`vite.config.ts` 或独立开发服务器。不要运行 `scripts/scaffold.sh`，它仅作为旧安装方式的迁移拦截器保留。
-
-## 工作流
-
-1. 先 preflight 正式输入；Courseplay 从 A-page v6 初始化或安全迁移模块化 `script.md` 与 `outline.md` 外壳，再按不可改写的 `nx` → script Beat → outline section 每章一次提交。
-2. runner 验证内容完整并自动生成 metadata、schedule、materials；作者只做最小语义自检，然后在 Checkpoint Plan 对齐稿子、outline、主题、custom-scene 候选、素材和开发模式。
-3. 仅在实例尚不存在时通过 `pnpm episode:new` 创建 `episodes/<id>/`；不得覆盖非原始模板 outline。
-4. 由主线程完成第 1 章，等待用户验收。
-5. 按已确认模式开发后续章节。
-6. 在 Checkpoint Audio 停止，先提取 `narrations.ts`，用户确认 segments 后才合成。
-7. 音频就绪时使用 `/play/<id>/?auto=1` 录制。
-
-正式生产流程以 [SKILL.md](./SKILL.md) 为准。各阶段按需读取：
-
-- [SCRIPT-STYLE.md](./references/SCRIPT-STYLE.md)
-- [OUTLINE-FORMAT.md](./references/OUTLINE-FORMAT.md)
-- [CHAPTER-CRAFT.md](./references/CHAPTER-CRAFT.md)
-- [THEMES.md](./references/THEMES.md)
-- [AUDIO.md](./references/AUDIO.md)
-- [RECORDING.md](./references/RECORDING.md)
-
-## 实例契约
-
-```text
-episodes/<id>/
-├── project.json
-├── article.md
-├── script.md
-├── outline.md
-├── audio-segments.json
-├── media/audio/<chapter>/<step>.mp3
-└── src/
-    ├── entry.tsx
-    ├── data/cover.json
-    └── chapters/<NN>-<id>/
-        ├── <Chapter>.tsx
-        ├── <Chapter>.css
-        └── narrations.ts
-```
-
-`project.json.theme` 是运行时主题唯一来源。Phase 1 由已提交 script Beat 决定计划；Phase 2 逐拍复制后，`narrations.ts` 才成为运行时 step 数和音频文本的唯一真相源。`src/entry.tsx` 导出 `id`、`title` 与 `CHAPTERS`。
-
-step 是口播与页面状态单位，不等于一张新页面。同一视觉步组内的连续 step 必须复用主构图，只更新局部状态；内容关系或空间组织真正变化时才切换主构图。
-
-## 主题
-
-主题位于 `themes/<id>/`，必须同时包含 `theme.json` 与 `tokens.css`。Studio 在构建期发现主题，并在播放时按 `project.json.theme` 动态注入。
-
-内置 22 套主题都提供标准调色板与字体 token。新章节使用 `--surface`、`--text`、`--text-mute`、`--accent` 等标准 token。共享运行时仅为已抽取旧章节兼容 `--stage-*` 变量，新章节不得把它们作为 API。
-
-主题创作和验证见 [THEMES.md](./references/THEMES.md)。
-
-## 音频与录屏
-
-在仓库根目录运行：
-
-```powershell
-pnpm audio:extract -- --episode <episode-id>
-pnpm audio:providers
-pnpm audio:synthesize -- --episode <episode-id> --provider minimax
-# 也可使用 edge（免费）、cosyvoice（DashScope）或 openai
-```
-
-Node provider 位于`player/tools/tts-providers/`，必须导出 `check()` 与 `synthesize()`。实例中不得再添加 shell provider。
-
-录屏时运行 `pnpm dev`，使用命令实际输出的站点 URL，并打开：
-
-```text
-/play/<episode-id>/?auto=1
-```
-
-## 验证
-
-实例或共享运行时改动后执行：
-
-```powershell
-pnpm run episode:check
-pnpm run typecheck
-pnpm run lint
-pnpm run build
-```
-
-改动 `narrations.ts` 后还要运行：
-
-```powershell
-pnpm audio:extract -- --episode <episode-id>
-```
-
-## 历史资源
-
-`templates/` 保留的是 Studio 之前的独立运行时，只能用于理解历史实现，不能复制到新实例。`output/` 与 `.archive/` 同样只作为历史资料，不是 Studio 输入。
+所有命令从 `player/` 运行。不得创建 episode 级 package、锁文件、Vite 配置、
+开发服务器或另一套播放器。
