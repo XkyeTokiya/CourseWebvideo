@@ -15,7 +15,7 @@ import {
 const sourceRoot = path.resolve(".");
 const episodeId = "episode-07";
 
-async function fixture({ script = "missing", outline = "missing" } = {}) {
+async function fixture({ script = "legacy", outline = "legacy" } = {}) {
   const fixtureRoot = path.join(sourceRoot, ".tmp", "tool-tests");
   await mkdir(fixtureRoot, { recursive: true });
   const root = await mkdtemp(path.join(fixtureRoot, "courseplay-phase1-min-"));
@@ -23,6 +23,12 @@ async function fixture({ script = "missing", outline = "missing" } = {}) {
   await mkdir(episodeDir, { recursive: true });
   await cp(path.join(sourceRoot, "episodes", episodeId, "project.json"), path.join(episodeDir, "project.json"));
   await cp(path.join(sourceRoot, "episodes", episodeId, "inputs"), path.join(episodeDir, "inputs"), { recursive: true });
+  await mkdir(path.join(root, "templates", "episode"), { recursive: true });
+  for (const name of ["script.md", "outline.md"]) {
+    const template = await readFile(path.join(sourceRoot, "templates", "episode", name), "utf8");
+    await writeFile(path.join(root, "templates", "episode", name), template);
+    if ((name === "script.md" ? script : outline) === "legacy") await writeFile(path.join(episodeDir, name), template);
+  }
   if (script === "conflict") await writeFile(path.join(episodeDir, "script.md"), "# Hand-authored script\n");
   if (outline === "conflict") await writeFile(path.join(episodeDir, "outline.md"), "# Hand-authored outline\n");
   const aPage = JSON.parse(await readFile(path.join(episodeDir, "inputs", `${episodeId}-a-page.json`), "utf8"));
@@ -96,7 +102,7 @@ test("full preflight uses the three content sources, not validation report files
   assert.equal(result.approvedText.trim(), ctx.aPage.pages.map((page) => page.nx).join("").trim());
 });
 
-test("init creates deterministic Courseplay formal shells", async (t) => {
+test("init migrates both legacy templates into deterministic formal shells", async (t) => {
   const ctx = await fixture(); t.after(ctx.cleanup);
   const result = await initPhase1({ root: ctx.root, episodeId });
   assert.equal(result.phase, "compiling");
@@ -129,7 +135,7 @@ test("status reads formal artifacts without visual rough or approved text", asyn
   await expectCode(() => resumePhase1({ root: ctx.root, episodeId }), "PHASE1_INPUT_MISSING");
 });
 
-test("init refuses either non-Courseplay formal artifact", async (t) => {
+test("init refuses either non-template formal artifact", async (t) => {
   const script = await fixture({ script: "conflict" }); t.after(script.cleanup);
   await expectCode(() => initPhase1({ root: script.root, episodeId }), "PHASE1_ARTIFACT_CONFLICT");
   const outline = await fixture({ outline: "conflict" }); t.after(outline.cleanup);
