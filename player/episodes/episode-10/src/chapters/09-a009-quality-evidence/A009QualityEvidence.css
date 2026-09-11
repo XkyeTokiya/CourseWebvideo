@@ -1,0 +1,244 @@
+/* a009-quality-evidence · evidence-cards-with-provenance-boundary
+   mechanism: evidence-with-provenance — 证据卡等权建立，数字与来源归属同区，来源带与归属边界常驻
+   prefix: qe- */
+
+.qe-scene {
+  justify-content: flex-start;
+  gap: 34px;
+}
+
+/* ── headline（S041） ─────────────────────────────────── */
+
+.qe-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: qe-rise 620ms var(--ease-soft);
+}
+
+/* ── 主区：两张证据卡 + 来源带 + 归属边界 ─────────────── */
+
+.qe-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: qe-rise 620ms var(--ease-soft) 140ms;
+}
+
+.qe-cards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1.12fr 1fr;
+  gap: 40px;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.qe-scene.is-focused .qe-card:not(.qe-card-chain) {
+  opacity: 0.28;
+  filter: grayscale(0.55);
+}
+
+/* ── 证据卡 ───────────────────────────────────────────── */
+
+.qe-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 30px 34px;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft),
+    border-color var(--dur-slow) var(--ease-soft);
+}
+
+.qe-scene.is-focused .qe-card-chain {
+  border-color: var(--theme-process);
+}
+
+.qe-card-tag {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.qe-card h2 {
+  margin: 0;
+  font-size: 30px;
+  color: var(--theme-structural);
+}
+
+.qe-sense-row {
+  display: flex;
+  gap: 16px;
+}
+
+.qe-sense {
+  padding: 12px 22px;
+  font-size: 23px;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px solid var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  transition-delay: calc(var(--qe-i) * 120ms);
+}
+
+.qe-link {
+  flex: 1;
+  min-height: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-bottom: 6px;
+}
+
+.qe-link-line {
+  height: 0;
+  border-top: 3px dashed var(--theme-process);
+  transform-origin: left center;
+  animation: qe-draw 900ms var(--ease-soft) 500ms both;
+}
+
+.qe-link-tip {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--theme-process);
+}
+
+.qe-optimize {
+  margin: 0;
+  padding-top: 16px;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+  font-size: 20px;
+  color: var(--text-2);
+}
+
+/* ── 教学重点卡：业务链三段 ───────────────────────────── */
+
+.qe-card-chain {
+  justify-content: flex-start;
+}
+
+.qe-chain {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 14px;
+}
+
+.qe-chain-step {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  transition-delay: calc(var(--qe-i) * 120ms);
+}
+
+.qe-chain-step .hero-num {
+  font-size: 26px;
+  color: var(--theme-process);
+}
+
+.qe-scene.is-focused .qe-chain-step {
+  color: var(--theme-process);
+}
+
+.qe-chain-note {
+  margin: 0;
+  padding-top: 14px;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+  font-size: 19px;
+  color: var(--text-mute);
+}
+
+/* ── 来源带（U025/S045，exact 逐字） ─────────────────── */
+
+.qe-band {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 18px 34px;
+  background: var(--theme-process-surface);
+  border: 3px solid var(--theme-process);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 420ms var(--ease-soft),
+    transform 420ms var(--ease-soft);
+}
+
+.qe-band.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.qe-figure {
+  font-size: 78px;
+  color: var(--theme-process);
+  white-space: nowrap;
+}
+
+.qe-figure i {
+  font-style: normal;
+  font-size: 42px;
+}
+
+.qe-band-line {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+/* ── 归属边界（U026/S046，exact 逐字） ───────────────── */
+
+.qe-boundary {
+  margin: 0;
+  padding: 10px 0 2px;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+  opacity: 0;
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.qe-boundary.is-on {
+  opacity: 1;
+}
+
+/* ── 入场（一次性，不锁状态过渡） ────────────────────── */
+
+@keyframes qe-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes qe-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

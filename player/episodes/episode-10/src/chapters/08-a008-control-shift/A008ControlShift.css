@@ -1,0 +1,746 @@
+/* a008-control-shift · split-compare-with-thesis
+   mechanism: compare-and-reweight — 右栏先立可视化管控（R018 由层内分组承载），
+   左栏随后完成人工经验对照（R017 由两栏对照承载，不画渐变箭头），
+   底部判断条收束 exact 成效与结果归属。与 A005 的中部 pivot 配方明显区分。
+   prefix: cs- */
+
+.cs-scene {
+  gap: 30px;
+}
+
+/* ── headline（S034） ────────────────────────────────── */
+
+.cs-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 60px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: cs-rise 640ms var(--ease-soft);
+}
+
+/* ── 双栏主区：左（经验 · 后立） / 右（管控 · 先立） ──── */
+
+.cs-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 0.94fr 1.06fr;
+  gap: 48px;
+}
+
+.cs-col {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px 28px 22px;
+}
+
+.cs-col-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.cs-col-tag {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.18em;
+  padding: 4px 12px;
+  color: var(--text-mute);
+  border: 2px dashed var(--theme-dashed-line);
+}
+
+.cs-col-tag-now {
+  color: var(--theme-process);
+  border: 2px solid var(--theme-process);
+  background: var(--theme-process-surface);
+}
+
+.cs-col-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 33px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* ── 左栏：ghost 虚线框 → solid 台账卡（step1 完成对照） ─ */
+
+.cs-col-left {
+  position: relative;
+  border: 3px dashed var(--theme-dashed-line);
+  background: transparent;
+  opacity: 0.45;
+  transition:
+    opacity 520ms var(--ease-soft),
+    border-color 520ms var(--ease-soft),
+    background-color 520ms var(--ease-soft),
+    box-shadow 520ms var(--ease-soft);
+}
+
+.cs-col-left.is-solid {
+  border-style: solid;
+  border-color: var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  opacity: 1;
+}
+
+/* 左栏内容：基础态隐藏，is-solid 下按口播顺序带延迟升入（可逆） */
+
+.cs-col-left .cs-col-head,
+.cs-col-left .cs-note,
+.cs-col-left .cs-idle,
+.cs-col-left .cs-triage-lead,
+.cs-col-left .cs-triage-out,
+.cs-col-left .cs-entry {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 460ms var(--ease-soft),
+    transform 460ms var(--ease-soft),
+    color 460ms var(--ease-soft),
+    border-color 460ms var(--ease-soft),
+    background-color 460ms var(--ease-soft),
+    box-shadow 460ms var(--ease-soft);
+}
+
+.cs-col-left.is-solid .cs-col-head {
+  opacity: 1;
+  transform: none;
+  transition-delay: 90ms;
+}
+
+.cs-col-left.is-solid .cs-note:nth-child(1) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 260ms;
+}
+
+.cs-col-left.is-solid .cs-note:nth-child(2) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 440ms;
+}
+
+.cs-col-left.is-solid .cs-idle {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1650ms;
+}
+
+/* 记忆便签（去向 / 历史 · 靠人记） */
+
+.cs-memory {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cs-note {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 20px;
+  background: var(--surface-3);
+  border: 2px dashed var(--theme-dashed-line);
+}
+
+.cs-note i {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+.cs-note b {
+  position: relative;
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  transition: color 420ms var(--ease-soft);
+}
+
+/* 被替代：陶土划线（盖戳后压上） */
+
+.cs-note b::after {
+  content: "";
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  top: 54%;
+  height: 3px;
+  background: var(--theme-warning);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 380ms var(--ease-soft);
+}
+
+.cs-col-left.has-stamp .cs-note b {
+  color: var(--text-mute);
+  transition-delay: 1250ms;
+}
+
+.cs-col-left.has-stamp .cs-note b::after {
+  transform: scaleX(1);
+  transition-delay: 1250ms;
+}
+
+/* 陶土章：不再主要依赖（step1 的主导动作） */
+
+.cs-stamp {
+  position: absolute;
+  top: -18px;
+  right: 4px;
+  padding: 10px 22px;
+  border: 4px solid var(--theme-warning);
+  background: var(--theme-warning-surface);
+  color: var(--theme-warning);
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  transform: rotate(-7deg) scale(1.7);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cs-stamp.is-on {
+  animation: cs-stamp 460ms var(--ease-soft) 950ms both;
+}
+
+/* 闲置 / 浪费产能：有机会被发现（S037 后半，绿 = 改善） */
+
+.cs-idle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.cs-idle b {
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.cs-idle-tag {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  padding: 5px 12px;
+  color: var(--theme-process);
+  border: 2px solid var(--theme-process);
+  background: var(--theme-process-surface);
+  white-space: nowrap;
+}
+
+/* 定位入口（S038，step2 逐一点亮） */
+
+.cs-triage {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+  padding-top: 16px;
+}
+
+.cs-triage-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.cs-entries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cs-entry {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border: 2px dashed var(--theme-dashed-line);
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-mute);
+}
+
+.cs-entry i {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  color: var(--text-faint);
+  transition: color 420ms var(--ease-soft);
+}
+
+.cs-triage.is-on .cs-entry {
+  opacity: 1;
+  transform: translateY(-2px);
+  border: 3px solid var(--theme-process);
+  background: var(--theme-process-surface);
+  color: var(--theme-structural);
+  box-shadow: 3px 4px 0 var(--theme-offset-shadow);
+  transition-delay: calc(var(--cs-i) * 380ms + 320ms);
+}
+
+.cs-triage.is-on .cs-entry i {
+  color: var(--theme-process);
+  transition-delay: calc(var(--cs-i) * 380ms + 320ms);
+}
+
+.cs-triage-out {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  color: var(--text-2);
+}
+
+.cs-triage.is-on .cs-triage-out {
+  opacity: 1;
+  transform: none;
+  transition-delay: 2100ms;
+}
+
+/* ── 右栏：工程台账卡（step0 建立，基础态即落位态） ──── */
+
+.cs-col-right {
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+.is-tracking-visible .cs-col-right .cs-col-head {
+  animation: cs-rise 560ms var(--ease-soft) 140ms both;
+}
+
+.is-tracking-visible .cs-layer-track {
+  animation: cs-rise 560ms var(--ease-soft) 260ms both;
+}
+
+.is-tracking-visible .cs-layer-manage {
+  animation: cs-rise 560ms var(--ease-soft) 2300ms both;
+}
+
+.cs-layer-cap {
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.cs-demo-tag {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  border: 1px solid var(--theme-dashed-line);
+  padding: 2px 10px;
+}
+
+/* 追踪行 ×3：加工次数（计数笔画）/ 位置（网格钉）/ 维护记录（留档线） */
+
+.cs-row {
+  display: grid;
+  grid-template-columns: 150px 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 13px 0;
+}
+
+.cs-row + .cs-row {
+  border-top: 2px dashed var(--theme-dashed-line);
+}
+
+.cs-row-label {
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.cs-row-note {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  color: var(--text-mute);
+}
+
+.is-tracking-visible .cs-row {
+  animation: cs-row-in 520ms var(--ease-soft) both;
+  animation-delay: calc(480ms + var(--cs-i) * 240ms);
+}
+
+/* 演示一：加工次数逐次累加（计数笔画画入，示意不指涉具体数值） */
+
+.cs-tally {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 34px;
+  padding: 0 6px;
+}
+
+.cs-tally i {
+  width: 5px;
+  height: 100%;
+  background: var(--theme-process);
+  transform: scaleY(1);
+  transform-origin: bottom;
+}
+
+.cs-tally-cross {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 13px;
+  height: 5px;
+  background: var(--theme-structural);
+  transform: rotate(-18deg);
+  transform-origin: left center;
+}
+
+.is-tracking-visible .cs-tally i {
+  animation: cs-stroke 420ms var(--ease-soft) both;
+}
+
+.is-tracking-visible .cs-tally i:nth-child(1) { animation-delay: 900ms; }
+.is-tracking-visible .cs-tally i:nth-child(2) { animation-delay: 1010ms; }
+.is-tracking-visible .cs-tally i:nth-child(3) { animation-delay: 1120ms; }
+.is-tracking-visible .cs-tally i:nth-child(4) { animation-delay: 1230ms; }
+
+.is-tracking-visible .cs-tally-cross {
+  animation: cs-cross 460ms var(--ease-soft) 1380ms both;
+}
+
+/* 演示二：位置在网格上被查到（钉子跳两格后锁定） */
+
+.cs-gridmap {
+  position: relative;
+  display: inline-block;
+  width: 132px;
+  height: 40px;
+  background-color: var(--surface-3);
+  background-image:
+    linear-gradient(var(--theme-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--theme-grid-line) 1px, transparent 1px);
+  background-size: 33px 20px, 33px 20px;
+  border: 2px solid var(--theme-grid-line);
+}
+
+.cs-pin {
+  position: absolute;
+  right: 12px;
+  bottom: 8px;
+  width: 14px;
+  height: 14px;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+.is-tracking-visible .cs-pin {
+  animation: cs-pin-hop 1500ms var(--ease-soft) 1550ms both;
+}
+
+/* 演示三：维护记录逐条留档（线画入 + 绿勾落点） */
+
+.cs-ledger {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 128px;
+}
+
+.cs-ledger i {
+  position: relative;
+  height: 7px;
+}
+
+.cs-ledger i::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 24px;
+  height: 100%;
+  background: var(--rule);
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.cs-ledger i::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -3px;
+  width: 13px;
+  height: 13px;
+  background: var(--theme-process);
+}
+
+.is-tracking-visible .cs-ledger i::before {
+  animation: cs-line 440ms var(--ease-soft) both;
+}
+
+.is-tracking-visible .cs-ledger i::after {
+  animation: cs-pop 300ms var(--ease-soft) both;
+}
+
+.is-tracking-visible .cs-ledger i:nth-child(1)::before { animation-delay: 1250ms; }
+.is-tracking-visible .cs-ledger i:nth-child(2)::before { animation-delay: 1420ms; }
+.is-tracking-visible .cs-ledger i:nth-child(3)::before { animation-delay: 1590ms; }
+.is-tracking-visible .cs-ledger i:nth-child(1)::after { animation-delay: 1750ms; }
+.is-tracking-visible .cs-ledger i:nth-child(2)::after { animation-delay: 1920ms; }
+.is-tracking-visible .cs-ledger i:nth-child(3)::after { animation-delay: 2090ms; }
+
+/* R018 层内分组：平台 → 集中管理 → 履历 / 模次统计 / 生产日志 */
+
+.cs-layer-manage {
+  margin-top: auto;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+  padding-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cs-manage-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.cs-platform {
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--surface-2);
+  background: var(--theme-structural);
+  padding: 8px 22px;
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.cs-manage-verb {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.16em;
+  color: var(--theme-process);
+  border-bottom: 3px solid var(--theme-process);
+  padding-bottom: 3px;
+}
+
+.cs-manage-group {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border: 2px dashed var(--theme-dashed-line);
+}
+
+.cs-mchip {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  padding: 12px 10px;
+}
+
+.is-tracking-visible .cs-mchip {
+  animation: cs-pop 420ms var(--ease-soft) both;
+}
+
+.is-tracking-visible .cs-mchip:nth-child(1) { animation-delay: 2500ms; }
+.is-tracking-visible .cs-mchip:nth-child(2) { animation-delay: 2750ms; }
+.is-tracking-visible .cs-mchip:nth-child(3) { animation-delay: 3000ms; }
+
+/* ── bottom-thesis（U022 · S039/S040 exact，预留高度防重排） ── */
+
+.cs-thesis {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 24px 34px;
+  background: var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 560ms var(--ease-soft),
+    transform 560ms var(--ease-soft);
+}
+
+.cs-thesis.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.cs-thesis-kicker {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.24em;
+  color: var(--theme-process-surface);
+  border-left: 6px solid var(--theme-process-surface);
+  padding-left: 14px;
+}
+
+.cs-thesis-body {
+  min-width: 0;
+}
+
+.cs-thesis-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.45;
+  color: var(--surface-2);
+}
+
+.cs-thesis-main em {
+  font-style: normal;
+  color: var(--theme-structural);
+  background: var(--theme-process-surface);
+  padding: 1px 10px;
+  margin: 0 3px;
+}
+
+.cs-thesis-src {
+  margin: 10px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--surface-3);
+}
+
+.cs-src-tag {
+  flex: none;
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  padding: 2px 10px;
+  border: 2px dashed var(--surface-3);
+}
+
+/* ── keyframes（一次性入场，落位态 = 基础态，可逆） ───── */
+
+@keyframes cs-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cs-row-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cs-stroke {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes cs-cross {
+  from {
+    transform: rotate(-18deg) scaleX(0);
+  }
+  to {
+    transform: rotate(-18deg) scaleX(1);
+  }
+}
+
+@keyframes cs-pin-hop {
+  0% {
+    opacity: 0;
+    transform: translate(-72px, -14px);
+  }
+  12% {
+    opacity: 1;
+  }
+  46% {
+    transform: translate(-38px, 6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes cs-line {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes cs-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes cs-stamp {
+  0% {
+    opacity: 0;
+    transform: rotate(-7deg) scale(1.7);
+  }
+  62% {
+    opacity: 1;
+    transform: rotate(-7deg) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-7deg) scale(1);
+  }
+}

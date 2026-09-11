@@ -1,0 +1,597 @@
+/* a004-active-id-positioning · image-with-insight-rail
+   mechanism: persistent-media-reading — 现场图纸持续承载，两条图侧阅读项依次建立不卸载；
+   R007 由首条阅读项的关系链承载，R008 由共同对象竖轨（载体嵌入模具）承载
+   prefix: ap- */
+
+.ap-scene {
+  gap: 24px;
+}
+
+/* ── headline（S014，可见标题保留） ──────────────────── */
+
+.ap-head {
+  display: flex;
+  align-items: baseline;
+  gap: 32px;
+  animation: ap-rise 620ms var(--ease-soft) both;
+}
+
+.ap-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  line-height: 1.12;
+  color: var(--theme-structural);
+}
+
+.ap-head-note {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.2em;
+  color: var(--text-mute);
+}
+
+.ap-head-rule.rule {
+  width: 100%;
+  margin: 0;
+}
+
+/* ── 主区：左图纸 · 右图侧阅读轨 ─────────────────────── */
+
+.ap-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 940px 1fr;
+  gap: 52px;
+  animation: ap-rise 620ms var(--ease-soft) 140ms both;
+}
+
+/* ── 媒体区：工程图纸风 placeholder（M002） ──────────── */
+
+.ap-media {
+  margin: 0;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ap-sheet {
+  position: relative;
+  padding: 16px;
+  background: var(--theme-paper);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ap-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 0 solid var(--theme-structural);
+}
+
+.ap-corner-tl { top: 7px; left: 7px; border-top-width: 3px; border-left-width: 3px; }
+.ap-corner-tr { top: 7px; right: 7px; border-top-width: 3px; border-right-width: 3px; }
+.ap-corner-bl { bottom: 7px; left: 7px; border-bottom-width: 3px; border-left-width: 3px; }
+.ap-corner-br { bottom: 7px; right: 7px; border-bottom-width: 3px; border-right-width: 3px; }
+
+.ap-ph {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 12px;
+  text-align: center;
+  border: 2px dashed var(--theme-dashed-line);
+  background:
+    linear-gradient(var(--theme-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--theme-grid-line) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px;
+}
+
+.ap-ph-tag {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.22em;
+  color: var(--theme-process);
+  border: 2px solid var(--theme-process);
+  background: var(--theme-process-surface);
+  padding: 6px 14px;
+}
+
+.ap-ph-title {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+.ap-ph-note {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  color: var(--text-mute);
+}
+
+.ap-titleblock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 8px 16px;
+  border: 2px solid var(--theme-structural);
+  background: var(--surface-3);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--theme-structural);
+}
+
+.ap-titleblock span:first-child {
+  color: var(--theme-process);
+  font-weight: 700;
+}
+
+.ap-cap {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-mute);
+}
+
+/* ── 图侧阅读轨：共同对象竖轨 + 两条注释条 ───────────── */
+
+.ap-rail {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 30px;
+}
+
+/* 共同对象竖轨：R008 的分组载体，模具持续在场 */
+
+.ap-spine {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.ap-spine-lead {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.ap-report {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  color: var(--theme-process);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 460ms var(--ease-soft), transform 460ms var(--ease-soft);
+}
+
+.ap-report.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.ap-report-arrow {
+  position: relative;
+  width: 3px;
+  height: 26px;
+  background: var(--theme-process);
+}
+
+.ap-report-arrow::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid var(--theme-process);
+}
+
+.ap-report.is-on .ap-report-arrow {
+  animation: ap-report-up 1050ms var(--ease-soft) 2 480ms;
+}
+
+.ap-mold {
+  position: relative;
+  flex: 1;
+  width: 122px;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  padding: 18px 10px;
+  border: 3px solid var(--theme-structural);
+  background:
+    repeating-linear-gradient(45deg, transparent 0 11px, var(--theme-grid-line) 11px 13px),
+    var(--theme-cool-surface);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+}
+
+.ap-mold-name {
+  align-self: flex-start;
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  color: var(--theme-structural);
+  background: var(--theme-paper);
+  padding: 2px 6px;
+  border: 2px solid var(--theme-structural);
+}
+
+/* 主动标识载体：从下方落入模具轮廓内（嵌入演示，非数据容器） */
+
+.ap-chip {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  width: 84px;
+  height: 58px;
+  margin-left: -42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 9px 12px;
+  border: 2px dashed var(--theme-process);
+  background: var(--theme-paper);
+  opacity: 0;
+  transform: translateY(112px);
+  transition: opacity 480ms var(--ease-soft),
+    transform 560ms var(--ease-overshoot),
+    border-color 480ms var(--ease-soft),
+    background-color 480ms var(--ease-soft),
+    box-shadow 480ms var(--ease-soft);
+}
+
+.ap-chip i {
+  display: block;
+  height: 4px;
+  background: var(--theme-dashed-line);
+  transition: background-color 480ms var(--ease-soft);
+}
+
+.ap-chip.is-in {
+  opacity: 1;
+  transform: none;
+  border: 3px solid var(--theme-process);
+  background: var(--theme-process-surface);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.ap-chip.is-in i {
+  background: var(--theme-process);
+}
+
+.ap-mold-legend {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--text-2);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 420ms var(--ease-soft), transform 420ms var(--ease-soft);
+}
+
+.ap-mold-legend.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+/* 注释条本体：图侧逐条建立，等权并排保留 */
+
+.ap-notes {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.ap-note {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 20px 26px;
+  background: var(--theme-paper);
+}
+
+.ap-note-1 { flex: 1.18; }
+.ap-note-2 { flex: 1; }
+
+/* 注释条 → 共同对象竖轨的连接刻线 */
+
+.ap-note::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  width: 30px;
+  border-top: 2px dashed var(--theme-dashed-line);
+}
+
+.ap-note::after {
+  content: "";
+  position: absolute;
+  left: -37px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: var(--theme-structural);
+  border: 2px solid var(--theme-paper);
+}
+
+.ap-note-2 {
+  opacity: 0;
+  transform: translateX(26px);
+  transition: opacity 500ms var(--ease-soft), transform 520ms var(--ease-soft);
+}
+
+.is-embedded .ap-note-2 {
+  opacity: 1;
+  transform: none;
+  transition-delay: 260ms;
+}
+
+.ap-note-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.ap-no {
+  font-size: 34px;
+  color: var(--theme-process);
+}
+
+.ap-note-tag {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+  border-bottom: 2px dashed var(--theme-dashed-line);
+  padding-bottom: 4px;
+}
+
+.ap-claim {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--theme-structural);
+}
+
+/* R007 关系链：标识解析 → 统一管理 → 模具信息 */
+
+.ap-chain {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ap-chain-node {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  white-space: nowrap;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px solid var(--theme-structural);
+  padding: 7px 12px;
+  animation: ap-rise 460ms var(--ease-soft) calc(420ms + var(--ap-i) * 110ms) both;
+}
+
+.ap-chain-node.is-mid {
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border-color: var(--theme-process);
+}
+
+.ap-chain-link {
+  flex: 1;
+  min-width: 16px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  animation: ap-rise 460ms var(--ease-soft) calc(420ms + var(--ap-i) * 110ms) both;
+}
+
+/* S015 下半：打通两套系统（桥带自绘） */
+
+.ap-bridge {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.ap-sys {
+  font-family: var(--font-display-cn);
+  font-size: 19px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2px solid var(--theme-structural);
+  padding: 10px 14px;
+}
+
+.ap-bridge-bar {
+  flex: 1;
+  min-width: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.ap-bridge-bar em {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.18em;
+  color: var(--theme-process);
+}
+
+.ap-bridge-bar i {
+  width: 100%;
+  height: 8px;
+  background: var(--theme-process);
+  transform-origin: left center;
+  animation: ap-draw 900ms var(--ease-soft) 940ms both;
+}
+
+/* S016：嵌入载体后补上的第二条内容（可逆） */
+
+.ap-lineb {
+  margin-top: auto;
+  border-top: 2px dashed var(--theme-dashed-line);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 460ms var(--ease-soft), transform 460ms var(--ease-soft);
+}
+
+.is-embedded .ap-lineb {
+  opacity: 1;
+  transform: none;
+  transition-delay: 120ms;
+}
+
+.ap-claim-b {
+  font-size: 24px;
+}
+
+.ap-does {
+  display: flex;
+  gap: 10px;
+}
+
+.ap-does span {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  padding: 6px 12px;
+}
+
+/* S018：角色判定（第二步收束，前提之后出现） */
+
+.ap-verdict {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 18px 22px;
+  background: var(--theme-process-surface);
+  border: 3px solid var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+  transition: opacity 480ms var(--ease-soft), transform 520ms var(--ease-soft);
+}
+
+.is-reporting .ap-verdict {
+  opacity: 1;
+  transform: none;
+  transition-delay: 120ms;
+}
+
+.ap-verdict-kicker {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  color: var(--theme-process);
+}
+
+.ap-verdict-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 900;
+  line-height: 1.45;
+  color: var(--theme-structural);
+}
+
+.ap-verdict-text em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* ── 入场 / 演示 keyframes（一次性，不锁状态过渡） ───── */
+
+@keyframes ap-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ap-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ap-report-up {
+  0% {
+    transform: translateY(8px);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

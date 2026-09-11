@@ -1,0 +1,212 @@
+[
+  {
+    "chapter": "a001-offsite-context",
+    "step": 1,
+    "text": "一家企业把自己的一副注塑模具，交给外部合作厂商去加工。模具是企业的核心资产，可它一旦离开厂区，企业就很难随时知道它在哪里、被用得怎么样。",
+    "audio": "a001-offsite-context/1.mp3"
+  },
+  {
+    "chapter": "a001-offsite-context",
+    "step": 2,
+    "text": "有一天，用这副模具做出来的产品，精度出现了异常。",
+    "audio": "a001-offsite-context/2.mp3"
+  },
+  {
+    "chapter": "a001-offsite-context",
+    "step": 3,
+    "text": "运营人员想弄清的第一件事是：模具现在在哪儿？总共加工了多少次？最近有没有做过维护？更要紧的是，它有没有在未经批准的情况下被外放，或者被私自调到别的地方去？",
+    "audio": "a001-offsite-context/3.mp3"
+  },
+  {
+    "chapter": "a001-offsite-context",
+    "step": 4,
+    "text": "模具还在生产，企业却看不见、管不住。这一期，我们就来看看，主动标识怎样把这种被动局面扭转过来。",
+    "audio": "a001-offsite-context/4.mp3"
+  },
+  {
+    "chapter": "a002-information-islands",
+    "step": 1,
+    "text": "麻烦不只在距离。模具设计企业、零部件加工企业、模具代工企业和客户方，各自手里都握着设计、生产或者安装信息，可这些信息很难共享。",
+    "audio": "a002-information-islands/1.mp3"
+  },
+  {
+    "chapter": "a002-information-islands",
+    "step": 2,
+    "text": "数据上传的时候，终端 IP 会暴露；数据还要先汇总到物联平台，各方对现场情况的判断很难直接传到设备一端；想反向控制设备，还得把它再唤醒一次。",
+    "audio": "a002-information-islands/2.mp3"
+  },
+  {
+    "chapter": "a002-information-islands",
+    "step": 3,
+    "text": "这几层问题叠在一起，运营往往只能依靠熟练人员的经验，生产管控、加工质量和企业运营之间，就隔出了一片片信息孤岛。",
+    "audio": "a002-information-islands/3.mp3"
+  },
+  {
+    "chapter": "a003-smart-control-goal",
+    "step": 1,
+    "text": "要让模具离开企业后仍然看得见、管得住，就得换一种做法。智能化生产管控把信息技术和制造技术结合起来，让生产过程朝着自动化、数字化、网络化和智能化发展，目标是提高效率、降低成本、提升质量，同时对生产过程做实时监控和优化。",
+    "audio": "a003-smart-control-goal/1.mp3"
+  },
+  {
+    "chapter": "a003-smart-control-goal",
+    "step": 2,
+    "text": "落到这副模具上，重点就是让这个关键对象始终可见、可管理。",
+    "audio": "a003-smart-control-goal/2.mp3"
+  },
+  {
+    "chapter": "a004-active-id-positioning",
+    "step": 1,
+    "text": "所以，方案不是再增设一个被动的扫描点，而是用标识解析把模具信息统一管起来，同时把企业的设计开发系统和生产制造系统打通。",
+    "audio": "a004-active-id-positioning/1.mp3"
+  },
+  {
+    "chapter": "a004-active-id-positioning",
+    "step": 2,
+    "text": "更关键的一步，是在模具里嵌入主动标识载体，让它能主动采集、传输数据，并且和注塑机管理系统互联。",
+    "audio": "a004-active-id-positioning/2.mp3"
+  },
+  {
+    "chapter": "a004-active-id-positioning",
+    "step": 3,
+    "text": "主动标识在这里承担的角色，就是让模具这个对象能够主动报告自己的状态。",
+    "audio": "a004-active-id-positioning/3.mp3"
+  },
+  {
+    "chapter": "a005-bidirectional-flows",
+    "step": 1,
+    "text": "一旦连上，模具和平台之间就有了两个方向的往来。",
+    "audio": "a005-bidirectional-flows/1.mp3"
+  },
+  {
+    "chapter": "a005-bidirectional-flows",
+    "step": 2,
+    "text": "下行方向，平台把工艺参数下发给设备，比如注塑机的温度和压力；",
+    "audio": "a005-bidirectional-flows/2.mp3"
+  },
+  {
+    "chapter": "a005-bidirectional-flows",
+    "step": 3,
+    "text": "上行方向，设备把运行状态传回平台，比如加工中的异常震动。",
+    "audio": "a005-bidirectional-flows/3.mp3"
+  },
+  {
+    "chapter": "a005-bidirectional-flows",
+    "step": 4,
+    "text": "工艺要求和现场状态围着同一副模具来回流动，一套双向监控也就立了起来。",
+    "audio": "a005-bidirectional-flows/4.mp3"
+  },
+  {
+    "chapter": "a006-trackable-history",
+    "step": 1,
+    "text": "那么，模具的使用情况又是怎么被记下来的？传感器采集它的加工次数，同时监测它的位置。",
+    "audio": "a006-trackable-history/1.mp3"
+  },
+  {
+    "chapter": "a006-trackable-history",
+    "step": 2,
+    "text": "企业因此能看到这副外发模具的履历、模次和单日生产信息。",
+    "audio": "a006-trackable-history/2.mp3"
+  },
+  {
+    "chapter": "a006-trackable-history",
+    "step": 3,
+    "text": "过去只能靠事后猜测的违规外放或者私自调拨，现在都变成了能被追踪的记录。",
+    "audio": "a006-trackable-history/3.mp3"
+  },
+  {
+    "chapter": "a006-trackable-history",
+    "step": 4,
+    "text": "这里要说清楚，统一标识始终是对象的锚点，它不等于把全部生产数据都装进去的一段编码。",
+    "audio": "a006-trackable-history/4.mp3"
+  },
+  {
+    "chapter": "a007-condition-monitoring",
+    "step": 1,
+    "text": "除了次数和位置，加工过程中的状态也会被盯住。",
+    "audio": "a007-condition-monitoring/1.mp3"
+  },
+  {
+    "chapter": "a007-condition-monitoring",
+    "step": 2,
+    "text": "主动标识网关采集异常的温度、噪音和震动，平台据此做设备监测；再结合机器学习和深度学习，还能支持预测性维护。",
+    "audio": "a007-condition-monitoring/2.mp3"
+  },
+  {
+    "chapter": "a007-condition-monitoring",
+    "step": 3,
+    "text": "与此同时，标识解析把设计开发系统和生产制造系统也接上了。",
+    "audio": "a007-condition-monitoring/3.mp3"
+  },
+  {
+    "chapter": "a007-condition-monitoring",
+    "step": 4,
+    "text": "主动标识载体和注塑机管理系统互联之后，工艺要求能够下发，运行状态能够上传，模具履历和生产日志继续沉淀，整套方案就转了起来。",
+    "audio": "a007-condition-monitoring/4.mp3"
+  },
+  {
+    "chapter": "a007-condition-monitoring",
+    "step": 5,
+    "text": "在这个案例里，主动标识载体还直接与平台加密通信，减少中间环节的篡改，也减少终端 IP 的暴露，双向监控因此带上了一重安全的考虑。",
+    "audio": "a007-condition-monitoring/5.mp3"
+  },
+  {
+    "chapter": "a008-control-shift",
+    "step": 1,
+    "text": "从结果看，这副模具全生命周期里的加工次数、位置和维护记录，都做到了可视化追踪；平台集中管理模具履历、模次统计和生产日志。",
+    "audio": "a008-control-shift/1.mp3"
+  },
+  {
+    "chapter": "a008-control-shift",
+    "step": 2,
+    "text": "管控不再主要靠熟练人员去记模具的去向和历史，被闲置、被浪费的产能也有机会被发现。",
+    "audio": "a008-control-shift/2.mp3"
+  },
+  {
+    "chapter": "a008-control-shift",
+    "step": 3,
+    "text": "遇到问题时，运营人员可以从加工次数、位置、维护记录和运行异常入手去定位，再决定怎么处理。",
+    "audio": "a008-control-shift/3.mp3"
+  },
+  {
+    "chapter": "a008-control-shift",
+    "step": 4,
+    "text": "案例还把加密通信、双向监控和终端 IP 不暴露列为一项成效。",
+    "audio": "a008-control-shift/4.mp3"
+  },
+  {
+    "chapter": "a009-quality-evidence",
+    "step": 1,
+    "text": "加工质量上也有变化。案例把温度、震动和噪音的实时采集，和人工智能分析结合起来，支持异常预警和预测性维护；工艺参数还能动态优化，比如调整注塑机的温度或压力。",
+    "audio": "a009-quality-evidence/1.mp3"
+  },
+  {
+    "chapter": "a009-quality-evidence",
+    "step": 2,
+    "text": "经过这样的动态优化，良品率提高了 5% 以上。",
+    "audio": "a009-quality-evidence/2.mp3"
+  },
+  {
+    "chapter": "a009-quality-evidence",
+    "step": 3,
+    "text": "真正要讲清楚的，是“采集状态、分析异常、调整工艺”这条业务链，而不是模型内部长什么样。",
+    "audio": "a009-quality-evidence/3.mp3"
+  },
+  {
+    "chapter": "a010-full-circle",
+    "step": 1,
+    "text": "本期总结，回到开头那副外发的模具。",
+    "audio": "a010-full-circle/1.mp3"
+  },
+  {
+    "chapter": "a010-full-circle",
+    "step": 2,
+    "text": "平台负责关联、分析和管理，注塑机负责执行，设计开发系统和生产制造系统由标识解析连接，主动标识则让模具自己开口报告状态：加工了多少次、现在在哪里、运行得是否正常，工艺参数也能顺着同一条通道下发下去。",
+    "audio": "a010-full-circle/2.mp3"
+  },
+  {
+    "chapter": "a010-full-circle",
+    "step": 3,
+    "text": "模具管控的这场变化，正是从这里开始的：从散落在各处的记录，走向一条能追踪、能反馈、能管理的双向链路。",
+    "audio": "a010-full-circle/3.mp3"
+  }
+]

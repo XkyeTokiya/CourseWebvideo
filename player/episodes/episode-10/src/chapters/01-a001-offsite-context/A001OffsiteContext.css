@@ -1,0 +1,373 @@
+/* a001-offsite-context · time-anchor-opening
+   mechanism: scene-anchor-to-question — 交接现场持续承载，待确认项作为并列短项升起，不画排查路径
+   prefix: ao- */
+
+.ao-scene {
+  justify-content: flex-start;
+  gap: 36px;
+}
+
+/* ── headline（S001） ─────────────────────────────────── */
+
+.ao-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: ao-rise 640ms var(--ease-soft);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.ao-scene.is-blind .ao-title {
+  opacity: 0.3;
+  filter: grayscale(0.6);
+}
+
+/* ── 主区：现场锚（媒体+time-anchor）+ 待确认检查单 ──── */
+
+.ao-main {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: 900px 1fr;
+  gap: 64px;
+  animation: ao-rise 640ms var(--ease-soft) 140ms;
+}
+
+.ao-scene.is-blind .ao-media,
+.ao-scene.is-blind .ao-rail {
+  opacity: 0.22;
+  filter: grayscale(0.55);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+/* ── 媒体区：placeholder 按真实比例留位 ──────────────── */
+
+.ao-media {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  min-height: 0;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.ao-frame {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  overflow: hidden;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.ao-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 12px;
+  text-align: center;
+  border: 2px dashed var(--theme-dashed-line);
+  background:
+    linear-gradient(var(--theme-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--theme-grid-line) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px;
+}
+
+.ao-ph-tag {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.22em;
+  color: var(--theme-process);
+  border: 2px solid var(--theme-process);
+  background: var(--theme-process-surface);
+  padding: 6px 14px;
+}
+
+.ao-ph-title {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+.ao-ph-note {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  color: var(--text-mute);
+}
+
+/* ── 异常警示牌（step 2 钉入） ───────────────────────── */
+
+.ao-anomaly {
+  position: absolute;
+  right: 26px;
+  top: 26px;
+  padding: 16px 24px 14px;
+  background: var(--theme-warning-surface);
+  border: 3px solid var(--theme-warning);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  transform: rotate(-2deg) scale(0.92);
+  opacity: 0;
+  transition: opacity 460ms var(--ease-soft),
+    transform 460ms var(--ease-overshoot);
+}
+
+.ao-anomaly.is-on {
+  opacity: 1;
+  transform: rotate(-2deg) scale(1);
+}
+
+.ao-anomaly-pin {
+  position: absolute;
+  left: 50%;
+  top: -9px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--theme-warning);
+  box-shadow: 0 0 0 3px var(--surface-2), 3px 4px 0 var(--theme-offset-shadow);
+}
+
+.ao-anomaly-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+.ao-anomaly-note {
+  margin: 4px 0 0;
+  font-size: 17px;
+  color: var(--text-2);
+}
+
+.ao-cap {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-mute);
+}
+
+/* ── time-anchor 横带：R001 由现场图与标签承载 ───────── */
+
+.ao-anchor {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+  padding-top: 14px;
+}
+
+.ao-anchor-lead {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+}
+
+.ao-parties {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+}
+
+.ao-party {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 18px;
+  background: var(--surface-3);
+  border: 2px solid var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.ao-party b {
+  font-size: 23px;
+  color: var(--theme-structural);
+}
+
+.ao-party i {
+  font-style: normal;
+  font-size: 17px;
+  color: var(--text-mute);
+}
+
+.ao-delegate {
+  align-self: center;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  padding: 10px 14px;
+  white-space: nowrap;
+}
+
+/* ── 待确认检查单（R002 并列短项） ───────────────────── */
+
+.ao-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.ao-rail-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.ao-checklist {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ao-check {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 24px 28px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: transparent;
+  opacity: 0.55;
+  transition: opacity 480ms var(--ease-soft),
+    transform 480ms var(--ease-soft),
+    background-color 480ms var(--ease-soft),
+    border-color 480ms var(--ease-soft),
+    box-shadow 480ms var(--ease-soft);
+  transition-delay: calc(var(--ao-i) * 130ms);
+}
+
+.ao-check-no {
+  font-size: 34px;
+  color: var(--text-faint);
+  transition: color 480ms var(--ease-soft);
+  transition-delay: calc(var(--ao-i) * 130ms);
+}
+
+.ao-check-body {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 420ms var(--ease-soft),
+    transform 420ms var(--ease-soft);
+  transition-delay: calc(var(--ao-i) * 130ms + 120ms);
+}
+
+.ao-check-body h2 {
+  margin: 0 0 4px;
+  font-size: 27px;
+  color: var(--theme-structural);
+}
+
+.ao-check-body p {
+  margin: 0;
+  font-size: 22px;
+  color: var(--text-2);
+}
+
+.ao-check.is-on {
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  opacity: 1;
+}
+
+.ao-check.is-on .ao-check-no {
+  color: var(--theme-process);
+}
+
+.ao-check.is-on .ao-check-body {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── 收束判定：媒体区上的深色 scrim + 大字 ───────────── */
+
+.ao-blind {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 22px;
+  text-align: center;
+  background: color-mix(in srgb, var(--theme-structural) 94%, transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 520ms var(--ease-soft);
+}
+
+.ao-blind.is-on {
+  opacity: 1;
+}
+
+.ao-blind-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 66px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: var(--surface-2);
+  transform: translateY(14px);
+  transition: transform 520ms var(--ease-soft);
+}
+
+.ao-blind.is-on .ao-blind-hero {
+  transform: none;
+}
+
+.ao-blind-hero em {
+  font-style: normal;
+  color: var(--theme-warning);
+}
+
+.ao-blind-note {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  letter-spacing: 0.08em;
+  color: var(--surface-3);
+}
+
+/* ── 入场（一次性，不锁状态过渡） ────────────────────── */
+
+@keyframes ao-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

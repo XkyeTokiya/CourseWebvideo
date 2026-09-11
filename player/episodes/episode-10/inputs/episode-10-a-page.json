@@ -1,0 +1,1130 @@
+{
+  "schema_version": "courseplay-a-page/v6",
+  "document_kind": "production",
+  "episode_id": "episode-10",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "第 10 集标题、来源范围、前置关系、相邻边界和动态风险",
+      "source_locator": "已确认课程架构，第 10 集及第 08–13、37–40 集责任",
+      "verification_status": "not applicable",
+      "allowed_use": "控制单集范围、去重和时长"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "企业将自有模具委托外部合作厂商时，需要监控加工次数、位置、维护记录，防止违规外放或私自调拨",
+      "source_locator": "主教材，1.3.2“1. 应用背景”",
+      "verification_status": "not applicable",
+      "allowed_use": "建立案例业务痛点"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "设计企业、零部件加工企业、模具代工企业及客户之间的设计、生产和安装信息难以共享；终端 IP 暴露、共识难下沉、反向控制需二次唤醒",
+      "source_locator": "主教材，1.3.2“1. 应用背景”",
+      "verification_status": "not applicable",
+      "allowed_use": "解释信息孤岛和控制困难"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "智能化生产管控以自动化、数字化、网络化和智能化为方向，目标包括效率、成本、质量和生产过程监控优化",
+      "source_locator": "主教材，1.3.2“2. 业务模式”",
+      "verification_status": "not applicable",
+      "allowed_use": "给出案例的业务目标"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "需要统一管理模具信息，打通企业设计开发系统与生产制造系统；主动标识载体嵌入模具，具备主动采集与传输能力",
+      "source_locator": "主教材，1.3.2“3. 业务需求”",
+      "verification_status": "not applicable",
+      "allowed_use": "定义主动标识在本案中的角色"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "主动标识载体与注塑机管理系统互联，实现工艺参数下放和数据安全双向监控；下行可包含温度、压力，上行可包含异常震动",
+      "source_locator": "主教材，1.3.2“3. 业务需求”",
+      "verification_status": "not applicable",
+      "allowed_use": "构成双向数据关系主轴"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "传感器采集加工次数和地理位置；平台获得模具履历、模次和单日生产信息，降低违规外放/调拨风险和运营成本",
+      "source_locator": "主教材，1.3.2“4. 解决方案”",
+      "verification_status": "not applicable",
+      "allowed_use": "解释主动采集带来的可追踪性"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "主动标识网关采集异常温度、噪音、震动，结合机器学习、深度学习进行设备监测和预测性维护；设计开发系统与生产制造系统被打通并形成闭环控制",
+      "source_locator": "主教材，1.3.2“4. 解决方案”",
+      "verification_status": "not applicable",
+      "allowed_use": "解释状态分析与闭环控制"
+    },
+    {
+      "evidence_id": "E009",
+      "claim_or_asset": "教材称模具全生命周期（加工次数、位置、维护记录）可视化追踪，平台集中管理模具履历、模次统计、生产日志，降低人工经验依赖和产能浪费",
+      "source_locator": "主教材，1.3.2“5. 应用成效”",
+      "verification_status": "not applicable",
+      "allowed_use": "呈现案例结果，保留教材归属"
+    },
+    {
+      "evidence_id": "E010",
+      "claim_or_asset": "教材称主动标识载体直接与平台加密通信，避免中间环节篡改并减少终端 IP 暴露；双向监控形成安全闭环",
+      "source_locator": "主教材，1.3.2“5. 应用成效”",
+      "verification_status": "not applicable",
+      "allowed_use": "只能以“教材称/教材案例”表述"
+    },
+    {
+      "evidence_id": "E011",
+      "claim_or_asset": "教材称实时采集温度、震动、噪音并结合 AI 分析实现异常预警和预测性维护，工艺参数动态优化，良品率提高 5% 以上",
+      "source_locator": "主教材，1.3.2“5. 应用成效”",
+      "verification_status": "not applicable",
+      "allowed_use": "仅作为教材案例结果呈现"
+    },
+    {
+      "evidence_id": "E012",
+      "claim_or_asset": "教材主动标识方案图展示主动标识、智能数据采集终端、平台应用系统、二级节点、核心物联系统、主动数据上传/操作/分配关系",
+      "source_locator": "教材“基于主动标识的模具智能化生产方案”原图，主教材 1.3.2“4. 解决方案”后原图",
+      "verification_status": "not applicable",
+      "allowed_use": "作为语义重绘的关系证据"
+    },
+    {
+      "evidence_id": "E013",
+      "claim_or_asset": "“模具身份—主动采集—平台分析—参数下发—设备反馈—状态维护”的业务链",
+      "source_locator": "教学归纳：E005–E008、E012",
+      "verification_status": "not applicable",
+      "allowed_use": "串联本集因果链"
+    },
+    {
+      "evidence_id": "E014",
+      "claim_or_asset": "一副外协注塑模具出现异常，运营人员需要判断它在哪里、已加工多少次并回看维护记录",
+      "source_locator": "教学情境：E002–E003",
+      "verification_status": "not applicable",
+      "allowed_use": "以具体问题进入案例"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "一家企业把自己的一副注塑模具，交给外部合作厂商去加工。模具是企业的核心资产，可它一旦离开厂区，企业就很难随时知道它在哪里、被用得怎么样。有一天，用这副模具做出来的产品，精度出现了异常。运营人员想弄清的第一件事是：模具现在在哪儿？总共加工了多少次？最近有没有做过维护？更要紧的是，它有没有在未经批准的情况下被外放，或者被私自调到别的地方去？\n\n模具还在生产，企业却看不见、管不住。这一期，我们就来看看，主动标识怎样把这种被动局面扭转过来。\n\n",
+      "teaching_purpose": "用外协模具情境进入案例，提出模具离厂后“看不见、管不住”的问题，并锁定待确认的四类使用信息。",
+      "single_message": "模具交给外部合作厂商后，位置、加工次数、维护记录和是否违规外放都失去了原来的管控视野。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S001",
+          "guidance_text": "模具离厂后，谁还看得见它",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E002",
+            "E014"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G001",
+            "items": [
+              {
+                "screen_item_id": "S002",
+                "guidance_text": "外协注塑模具、外部合作厂商与运营人员",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              },
+              {
+                "screen_item_id": "S003",
+                "guidance_text": "待确认：位置、加工次数、最近维护、是否违规外放或私自调拨",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G002",
+            "items": [
+              {
+                "screen_item_id": "S004",
+                "guidance_text": "模具仍在生产，企业却看不见、管不住",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E014"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "外协模具",
+          "relation": "被委托给",
+          "to": "外部合作厂商加工",
+          "direction": "对象→场景"
+        },
+        {
+          "relation_id": "R002",
+          "from": "运营人员",
+          "relation": "需要确认",
+          "to": "位置、加工次数、维护记录与合规性",
+          "direction": "问题→待确认项"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C001",
+          "instruction": "外协模具情境只作进入案例的叙事场景，不得包装成真实企业事件、具体订单或已发生的违规调拨",
+          "evidence_refs": [
+            "E014",
+            "E002"
+          ]
+        }
+      ],
+      "entry_condition": "观众已具备第 08 集“对象—环节—产业链”的前置认知",
+      "exit_condition": "观众带着“模具离厂后怎样持续看到它”的问题进入下一页",
+      "timing": {
+        "char_equivalent": 194,
+        "min_seconds": 49,
+        "target_seconds": 51,
+        "max_seconds": 53,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": [],
+      "nx": "麻烦不只在距离。模具设计企业、零部件加工企业、模具代工企业和客户方，各自手里都握着设计、生产或者安装信息，可这些信息很难共享。数据上传的时候，终端 IP 会暴露；数据还要先汇总到物联平台，各方对现场情况的判断很难直接传到设备一端；想反向控制设备，还得把它再唤醒一次。这几层问题叠在一起，运营往往只能依靠熟练人员的经验，生产管控、加工质量和企业运营之间，就隔出了一片片信息孤岛。\n\n",
+      "teaching_purpose": "解释模具使用状态难以掌握的根因：多方主体之间的信息断裂，只保留业务层面的信息孤岛。",
+      "single_message": "设计、加工、代工与客户各自掌握信息却难以共享，运营只能依赖经验，形成信息孤岛。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S005",
+          "guidance_text": "多个主体，信息却连不起来",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G003",
+            "items": [
+              {
+                "screen_item_id": "S006",
+                "guidance_text": "设计企业、零部件加工企业、模具代工企业与客户方各自掌握信息",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              },
+              {
+                "screen_item_id": "S007",
+                "guidance_text": "信息难以共享：终端 IP 暴露、共识难下到现场、反向控制需再唤醒",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G004",
+            "items": [
+              {
+                "screen_item_id": "S008",
+                "guidance_text": "运营依赖熟练人员经验，生产管控、加工质量与运营之间出现信息孤岛",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R003",
+          "from": "多方主体各自持有信息",
+          "relation": "造成",
+          "to": "信息难以共享",
+          "direction": "主体→断点"
+        },
+        {
+          "relation_id": "R004",
+          "from": "信息断点",
+          "relation": "导致",
+          "to": "运营依赖经验与信息孤岛",
+          "direction": "问题→结果"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C002",
+          "instruction": "只讲业务层面的信息断裂，不补充协议、网络拓扑或安全机制细节",
+          "evidence_refs": [
+            "E003"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经接受“模具离厂后难以持续掌握使用状态”",
+      "exit_condition": "观众理解信息断裂造成管控困难的业务原因",
+      "timing": {
+        "char_equivalent": 167.0,
+        "min_seconds": 42,
+        "target_seconds": 44,
+        "max_seconds": 46,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": [],
+      "nx": "要让模具离开企业后仍然看得见、管得住，就得换一种做法。智能化生产管控把信息技术和制造技术结合起来，让生产过程朝着自动化、数字化、网络化和智能化发展，目标是提高效率、降低成本、提升质量，同时对生产过程做实时监控和优化。落到这副模具上，重点就是让这个关键对象始终可见、可管理。\n\n",
+      "teaching_purpose": "给出智能化生产管控的业务目标，并把它落到“让模具始终可见、可管理”这一关键对象上。",
+      "single_message": "智能化生产管控用四个方向和生产目标，让模具这个关键对象始终可见、可管理。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S009",
+          "guidance_text": "智能化生产管控要管什么",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E004"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G005",
+            "items": [
+              {
+                "screen_item_id": "S010",
+                "guidance_text": "四个方向：自动化、数字化、网络化、智能化",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              },
+              {
+                "screen_item_id": "S011",
+                "guidance_text": "目标：提高效率、降低成本、提升质量",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G006",
+            "items": [
+              {
+                "screen_item_id": "S012",
+                "guidance_text": "对生产过程实时监控和优化",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              },
+              {
+                "screen_item_id": "S013",
+                "guidance_text": "落到案例：让模具这一关键对象始终可见、可管理",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R005",
+          "from": "智能化生产管控",
+          "relation": "面向",
+          "to": "生产过程的四个方向",
+          "direction": "方法→方向"
+        },
+        {
+          "relation_id": "R006",
+          "from": "管控目标",
+          "relation": "聚焦",
+          "to": "模具这一关键对象",
+          "direction": "目标→对象"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C003",
+          "instruction": "四个方向只作一句业务目标，不扩写成智慧工厂仪表盘、企业绩效结论或当前产能数据",
+          "evidence_refs": [
+            "E004"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经把问题定位到模具使用状态难以掌握",
+      "exit_condition": "观众理解案例要解决的是模具的生产管控目标",
+      "timing": {
+        "char_equivalent": 122,
+        "min_seconds": 31,
+        "target_seconds": 32,
+        "max_seconds": 34,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": [],
+      "nx": "所以，方案不是再增设一个被动的扫描点，而是用标识解析把模具信息统一管起来，同时把企业的设计开发系统和生产制造系统打通。更关键的一步，是在模具里嵌入主动标识载体，让它能主动采集、传输数据，并且和注塑机管理系统互联。主动标识在这里承担的角色，就是让模具这个对象能够主动报告自己的状态。\n\n",
+      "teaching_purpose": "说明案例对主动标识的定位：统一管理模具信息、在模具中嵌入主动标识载体并与注塑机管理系统互联。",
+      "single_message": "方案不是在模具上增加被动扫描点，而是用主动标识载体让模具主动报告状态。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S014",
+          "guidance_text": "让模具自己报状态",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G007",
+            "items": [
+              {
+                "screen_item_id": "S015",
+                "guidance_text": "统一管理模具信息，打通设计开发系统与生产制造系统",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              },
+              {
+                "screen_item_id": "S016",
+                "guidance_text": "在模具中嵌入主动标识载体，主动采集、传输数据",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G008",
+            "items": [
+              {
+                "screen_item_id": "S017",
+                "guidance_text": "主动标识载体与注塑机管理系统互联",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              },
+              {
+                "screen_item_id": "S018",
+                "guidance_text": "主动标识的角色：让模具这个对象主动报告状态",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R007",
+          "from": "标识解析",
+          "relation": "统一管理",
+          "to": "模具信息",
+          "direction": "机制→对象信息"
+        },
+        {
+          "relation_id": "R008",
+          "from": "主动标识载体",
+          "relation": "嵌入",
+          "to": "模具",
+          "direction": "载体→对象"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C004",
+          "instruction": "主动标识只讲业务作用，不展开载体与 UICC 原理、通信模组、注册上报或服务架构",
+          "evidence_refs": [
+            "E005"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道案例要让模具始终可见、可管理",
+      "exit_condition": "观众能说出主动标识在本案中承担的角色",
+      "timing": {
+        "char_equivalent": 129,
+        "min_seconds": 33,
+        "target_seconds": 34,
+        "max_seconds": 36,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": [],
+      "nx": "一旦连上，模具和平台之间就有了两个方向的往来。下行方向，平台把工艺参数下发给设备，比如注塑机的温度和压力；上行方向，设备把运行状态传回平台，比如加工中的异常震动。工艺要求和现场状态围着同一副模具来回流动，一套双向监控也就立了起来。\n\n",
+      "teaching_purpose": "解释平台与设备之间的双向关系：下行下发工艺参数，上行回传运行状态。",
+      "single_message": "工艺要求下行、现场状态上行，双向监控围绕同一副模具成立。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S019",
+          "guidance_text": "参数下发，状态上报",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E006"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G009",
+            "items": [
+              {
+                "screen_item_id": "S020",
+                "guidance_text": "下行：平台把工艺参数下发给设备，如温度、压力",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G010",
+            "items": [
+              {
+                "screen_item_id": "S021",
+                "guidance_text": "上行：设备把运行状态传回平台，如异常震动",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G011",
+            "items": [
+              {
+                "screen_item_id": "S022",
+                "guidance_text": "工艺要求与现场状态围绕同一副模具形成双向监控",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R009",
+          "from": "平台",
+          "relation": "下行下发",
+          "to": "注塑机的工艺参数（温度、压力）",
+          "direction": "平台→设备"
+        },
+        {
+          "relation_id": "R010",
+          "from": "设备运行状态（异常震动）",
+          "relation": "上行回传",
+          "to": "平台",
+          "direction": "设备→平台"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C005",
+          "instruction": "不展示接口字段、协议、时序或品牌界面，双向关系只表达业务语义",
+          "evidence_refs": [
+            "E006"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道主动标识载体与注塑机管理系统互联",
+      "exit_condition": "观众能区分下行参数与上行状态两个方向",
+      "timing": {
+        "char_equivalent": 105,
+        "min_seconds": 27,
+        "target_seconds": 27,
+        "max_seconds": 29,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": [],
+      "nx": "那么，模具的使用情况又是怎么被记下来的？传感器采集它的加工次数，同时监测它的位置。企业因此能看到这副外发模具的履历、模次和单日生产信息。过去只能靠事后猜测的违规外放或者私自调拨，现在都变成了能被追踪的记录。这里要说清楚，统一标识始终是对象的锚点，它不等于把全部生产数据都装进去的一段编码。\n\n",
+      "teaching_purpose": "说明加工次数与位置的采集如何形成模具履历，并纠正“标识是数据容器”的误解。",
+      "single_message": "采集加工次数和位置形成可追踪履历，但统一标识只是对象锚点，不是数据容器。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S023",
+          "guidance_text": "模具履历变得可追踪",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E007"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G012",
+            "items": [
+              {
+                "screen_item_id": "S024",
+                "guidance_text": "传感器采集加工次数并监测位置",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G013",
+            "items": [
+              {
+                "screen_item_id": "S025",
+                "guidance_text": "形成外发模具的履历、模次与单日生产信息",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              },
+              {
+                "screen_item_id": "S026",
+                "guidance_text": "违规外放或私自调拨由事后猜测变为可追踪记录",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G014",
+            "items": [
+              {
+                "screen_item_id": "S027",
+                "guidance_text": "统一标识是对象锚点，不是装下全部生产数据的编码",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007",
+                  "E013"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R011",
+          "from": "传感器",
+          "relation": "采集",
+          "to": "加工次数与位置",
+          "direction": "采集→数据"
+        },
+        {
+          "relation_id": "R012",
+          "from": "加工次数与位置",
+          "relation": "形成",
+          "to": "模具履历、模次与生产日志",
+          "direction": "数据→记录"
+        },
+        {
+          "relation_id": "R013",
+          "from": "统一标识",
+          "relation": "锚定",
+          "to": "模具这个对象",
+          "direction": "身份→对象"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C006",
+          "instruction": "位置只作语义标签，不绘制真实地图或地理轨迹",
+          "evidence_refs": [
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道下行参数与上行状态构成双向监控",
+      "exit_condition": "观众理解履历可追踪，同时不把统一标识当作数据容器",
+      "timing": {
+        "char_equivalent": 133,
+        "min_seconds": 34,
+        "target_seconds": 35,
+        "max_seconds": 37,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": [],
+      "nx": "除了次数和位置，加工过程中的状态也会被盯住。主动标识网关采集异常的温度、噪音和震动，平台据此做设备监测；再结合机器学习和深度学习，还能支持预测性维护。与此同时，标识解析把设计开发系统和生产制造系统也接上了。主动标识载体和注塑机管理系统互联之后，工艺要求能够下发，运行状态能够上传，模具履历和生产日志继续沉淀，整套方案就转了起来。在这个案例里，主动标识载体还直接与平台加密通信，减少中间环节的篡改，也减少终端 IP 的暴露，双向监控因此带上了一重安全的考虑。\n\n",
+      "teaching_purpose": "解释主动标识网关采集异常状态、平台监测，以及标识解析打通设计开发与生产制造系统；并引出案例中的安全考虑。",
+      "single_message": "状态可采集、记录可回看、系统被打通，案例中的加密通信构成一重安全考虑。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S028",
+          "guidance_text": "异常反馈进入设备监测",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E008"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G015",
+            "items": [
+              {
+                "screen_item_id": "S029",
+                "guidance_text": "主动标识网关采集异常温度、噪音、震动",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S030",
+                "guidance_text": "平台做设备监测，结合机器学习、深度学习支持预测性维护",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G016",
+            "items": [
+              {
+                "screen_item_id": "S031",
+                "guidance_text": "标识解析打通设计开发系统与生产制造系统",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S032",
+                "guidance_text": "载体与注塑机管理系统互联后：工艺下发、状态上传、履历与日志继续沉淀",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008",
+                  "E013"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G017",
+            "items": [
+              {
+                "screen_item_id": "S033",
+                "guidance_text": "案例中主动标识载体与平台加密通信，减少中间环节篡改与终端 IP 暴露",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R014",
+          "from": "主动标识网关",
+          "relation": "采集",
+          "to": "异常温度、噪音、震动",
+          "direction": "网关→状态"
+        },
+        {
+          "relation_id": "R015",
+          "from": "标识解析",
+          "relation": "打通",
+          "to": "设计开发系统与生产制造系统",
+          "direction": "机制→系统"
+        },
+        {
+          "relation_id": "R016",
+          "from": "主动标识载体",
+          "relation": "加密通信",
+          "to": "平台",
+          "direction": "载体→平台"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C007",
+          "instruction": "加密通信与终端 IP 不暴露只作案例中的安全考虑，不延伸为通用安全保证、密码算法或密钥管理",
+          "evidence_refs": [
+            "E010"
+          ]
+        },
+        {
+          "constraint_id": "C008",
+          "instruction": "机器学习与深度学习只解释业务作用，不新增模型架构、准确率、误报率或自动停机",
+          "evidence_refs": [
+            "E008"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经看到加工次数、位置与履历如何被记录",
+      "exit_condition": "观众理解状态监测、系统打通与案例安全考虑构成的业务链",
+      "timing": {
+        "char_equivalent": 206.0,
+        "min_seconds": 52,
+        "target_seconds": 54,
+        "max_seconds": 57,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": [],
+      "nx": "从结果看，这副模具全生命周期里的加工次数、位置和维护记录，都做到了可视化追踪；平台集中管理模具履历、模次统计和生产日志。管控不再主要靠熟练人员去记模具的去向和历史，被闲置、被浪费的产能也有机会被发现。遇到问题时，运营人员可以从加工次数、位置、维护记录和运行异常入手去定位，再决定怎么处理。案例还把加密通信、双向监控和终端 IP 不暴露列为一项成效。\n\n",
+      "teaching_purpose": "呈现案例结果：可视化追踪与平台集中管理，使管控不再主要依赖熟练人员记忆。",
+      "single_message": "案例中履历、模次与日志被平台集中管理，管控从依赖人工记忆转向可视化追踪。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S034",
+          "guidance_text": "从人工经验到可视化管控",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E009"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G018",
+            "items": [
+              {
+                "screen_item_id": "S035",
+                "guidance_text": "案例中模具全生命周期的加工次数、位置、维护记录实现可视化追踪",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E009"
+                ]
+              },
+              {
+                "screen_item_id": "S036",
+                "guidance_text": "平台集中管理模具履历、模次统计与生产日志",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G019",
+            "items": [
+              {
+                "screen_item_id": "S037",
+                "guidance_text": "管控不再主要依赖熟练人员记忆，闲置或浪费的产能有机会被发现",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E009"
+                ]
+              },
+              {
+                "screen_item_id": "S038",
+                "guidance_text": "可从加工次数、位置、维护记录与运行异常入手定位问题",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G020",
+            "items": [
+              {
+                "screen_item_id": "S039",
+                "guidance_text": "加密通信、双向监控与终端 IP 不暴露列为案例成效",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E010"
+                ]
+              },
+              {
+                "screen_item_id": "S040",
+                "guidance_text": "上述结果均为教材所述案例结果",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E009",
+                  "E010"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R017",
+          "from": "可视化追踪",
+          "relation": "替代",
+          "to": "主要依赖人工经验的管控",
+          "direction": "变化前后"
+        },
+        {
+          "relation_id": "R018",
+          "from": "平台",
+          "relation": "集中管理",
+          "to": "履历、模次统计与生产日志",
+          "direction": "平台→记录"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C009",
+          "instruction": "平台只作关联、分析、日志与管理支撑，不表述为保存全部业务数据的中心库",
+          "evidence_refs": [
+            "E009"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经理解异常状态采集与系统打通的业务作用",
+      "exit_condition": "观众理解案例中管控方式的改变，并知道这些结果属于教材案例",
+      "timing": {
+        "char_equivalent": 155.0,
+        "min_seconds": 39,
+        "target_seconds": 40,
+        "max_seconds": 43,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": [],
+      "nx": "加工质量上也有变化。案例把温度、震动和噪音的实时采集，和人工智能分析结合起来，支持异常预警和预测性维护；工艺参数还能动态优化，比如调整注塑机的温度或压力。经过这样的动态优化，良品率提高了 5% 以上。真正要讲清楚的，是“采集状态、分析异常、调整工艺”这条业务链，而不是模型内部长什么样。\n\n",
+      "teaching_purpose": "呈现加工质量环节的异常预警、预测性维护与工艺参数动态优化，并以案例数字收束。",
+      "single_message": "实时采集结合 AI 分析支持异常预警，工艺参数动态优化后良品率提高 5% 以上。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S041",
+          "guidance_text": "异常预警与案例成效数字",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E011"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G021",
+            "items": [
+              {
+                "screen_item_id": "S042",
+                "guidance_text": "实时采集温度、震动、噪音，结合人工智能分析支持异常预警与预测性维护",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E011"
+                ]
+              },
+              {
+                "screen_item_id": "S043",
+                "guidance_text": "工艺参数动态优化，如调整注塑机的温度或压力",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E011"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G022",
+            "items": [
+              {
+                "screen_item_id": "S044",
+                "guidance_text": "教学重点：采集状态、分析异常、调整工艺",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E011"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G023",
+            "items": [
+              {
+                "screen_item_id": "S045",
+                "guidance_text": "工艺参数动态优化后，良品率提高 5% 以上",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E011"
+                ]
+              },
+              {
+                "screen_item_id": "S046",
+                "guidance_text": "上述数字为教材所述案例结果",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E011"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R019",
+          "from": "温度、震动与噪音采集",
+          "relation": "结合 AI 分析",
+          "to": "异常预警与预测性维护",
+          "direction": "数据→判断"
+        },
+        {
+          "relation_id": "R020",
+          "from": "工艺参数动态优化",
+          "relation": "带来",
+          "to": "良品率提高 5% 以上",
+          "direction": "动作→案例结果"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C010",
+          "instruction": "良品率 5% 以上只作教材案例结果，不外推为行业平均、项目承诺或当前现状，也不新增统计周期、样本与算法准确率",
+          "evidence_refs": [
+            "E011"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经理解案例中管控方式的改变",
+      "exit_condition": "观众能把数字理解成教材案例结果，而不是行业普遍结论",
+      "timing": {
+        "char_equivalent": 124.0,
+        "min_seconds": 31,
+        "target_seconds": 32,
+        "max_seconds": 34,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A010",
+      "callback_a_ids": [
+        "A001"
+      ],
+      "nx": "本期总结，回到开头那副外发的模具。平台负责关联、分析和管理，注塑机负责执行，设计开发系统和生产制造系统由标识解析连接，主动标识则让模具自己开口报告状态：加工了多少次、现在在哪里、运行得是否正常，工艺参数也能顺着同一条通道下发下去。模具管控的这场变化，正是从这里开始的：从散落在各处的记录，走向一条能追踪、能反馈、能管理的双向链路。",
+      "teaching_purpose": "回到开场模具，概括平台、注塑机、系统与主动标识的分工，收束可迁移的双向管理机制。",
+      "single_message": "主动标识让模具主动报告状态，管控从分散记录走向能追踪、能反馈、能管理的双向管理。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S047",
+          "guidance_text": "主动标识驱动的双向管理",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E013"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G024",
+            "items": [
+              {
+                "screen_item_id": "S048",
+                "guidance_text": "平台负责关联、分析和管理，注塑机负责执行",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E013"
+                ]
+              },
+              {
+                "screen_item_id": "S049",
+                "guidance_text": "设计开发与生产制造系统由标识解析连接",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E013"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G025",
+            "items": [
+              {
+                "screen_item_id": "S050",
+                "guidance_text": "主动标识让模具主动报告加工与位置状态、接收工艺参数、反馈运行异常",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E013"
+                ]
+              },
+              {
+                "screen_item_id": "S051",
+                "guidance_text": "从分散记录走向能追踪、能反馈、能管理的双向管理",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E013"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R021",
+          "from": "平台、注塑机与两套系统",
+          "relation": "分工协同",
+          "to": "围绕模具的双向管理",
+          "direction": "主体→机制"
+        },
+        {
+          "relation_id": "R022",
+          "from": "主动标识",
+          "relation": "使",
+          "to": "模具成为主动报告状态的生产对象",
+          "direction": "标识→对象"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C011",
+          "instruction": "收束只讲本案例可迁移机制，不预告后续技术模块，不加入标识载体或节点建设细节",
+          "evidence_refs": [
+            "E001",
+            "E013"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经看到案例从问题、机制到结果的完整链路",
+      "exit_condition": "观众能用“对象主动报告状态—双向管理”概括本案例机制",
+      "timing": {
+        "char_equivalent": 148,
+        "min_seconds": 37,
+        "target_seconds": 39,
+        "max_seconds": 41,
+        "short_page_reason": null
+      }
+    }
+  ]
+}
