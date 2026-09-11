@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "coursewebvideo/kanban-pipeline/v1",
+  "name": "CourseWebvideo 生产主线（止于 TTS 前）",
+  "sourceOfTruth": [
+    "README.md §标准生产阶段 / §人工门禁",
+    "production-pipeline.html（整体链条 + 各阶段、产物与门禁）",
+    ".clinerules/team-roles.md（硬不变量与门禁）"
+  ],
+  "scope": {
+    "included": "阶段 01–12：从冻结任务包一直到第 2～N 章制作、审查与验收",
+    "excluded": [
+      "阶段 13 音频（分段提取与 TTS 合成都不做）",
+      "阶段 14 录屏与后期"
+    ],
+    "note": "本流程止于阶段 12，不包含任何音频与录屏工作。要纳入时，在 stages 末尾按顺序追加对应阶段即可。"
+  },
+  "targetSelection": "目标集必须显式传入：--episode 37（或 ep37 / episode-37，脚本规范化为 episode-37）。不提供任何默认集号；缺少 --episode 时脚本直接报错退出。",
+  "defaults": {
+    "agentId": "cline",
+    "clineProvider": "deepseek",
+    "clineModel": "deepseek-flash",
+    "clineReasoningEffort": "medium",
+    "baseRef": "main",
+    "autoReviewEnabled": false,
+    "autoReviewMode": "pr"
+  },
+  "delivery": {
+    "protectedBranch": "main",
+    "rule": "main 受保护：只能通过 PR 合并，禁止直接 commit / push 到 main。",
+    "worktreeState": "kanban 用 `git worktree add --detach` 建任务工作区，初始是 detached HEAD，本来没有分支。",
+    "requiredFlow": "动手提交前先 `git checkout -b <type>/<episodeId>-<stageKey>`；完成后 push 该分支并开 PR；由人类在 kanban 里点 Open PR（不要点 Commit）。",
+    "lostWorkWarning": "未 push 的工作会随 worktree 清理而消失（task done / trash 会删掉 worktree）。",
+    "forbiddenCommits": [".tmp/", "dist/", "媒体文件（*.mp3 / *.mp4 等）", ".env", "凭据与密钥", "与本阶段无关的既有改动"]
+  },
+  "placeholders": {
+    "episodeId": "目标集，如 episode-37（必须由 --episode 显式提供）",
+    "key": "阶段序号，如 01",
+    "name": "阶段名",
+    "title": "从冻结任务包解析出的单集标题",
+    "taskPackage": "冻结任务包的仓库相对路径",
+    "tmpDir": "该集的过程目录（.tmp/narration-pipeline/kanban/<episodeId>）",
+    "repoRoot": "仓库根绝对路径",
+    "protectedBranch": "受保护分支，取自 delivery.protectedBranch"
+  },
+  "commonConstraints": "【交付与合并约束（每张卡都必须遵守）】\n- 本仓库 {{protectedBranch}} 分支受保护：禁止直接 commit 或 push 到 {{protectedBranch}}；任何要落地的改动必须新建分支并通过 PR 合并。\n- kanban 的任务 worktree 是 detached HEAD（没有分支）：动手提交前先 `git checkout -b <type>/{{episodeId}}-{{key}}`（例如 feat/{{episodeId}}-{{key}}）。\n- 未 push 的工作会随 worktree 清理而丢失：收尾前必须 push 分支并开 PR；本阶段确实没有产出的，明确说明后停下。\n- 禁止提交 .tmp/、dist/、媒体文件、.env、凭据或密钥。\n- 只提交本阶段实际改动的路径，不要把无关的既有改动一起提交。\n- 放行由人类完成：人类在 kanban 里使用 Open PR，不要使用 Commit。",
+  "stages": [
+    {
+      "key": "01",
+      "name": "冻结任务包",
+      "zone": "上游",
+      "gate": null,
+      "prompt": "[{{episodeId}}-{{key}}] {{name}}\n\n只读核对冻结任务包：{{taskPackage}}（本集标题：{{title}}）。核对集号、标题、纳入/排除范围、事实边界、受保护术语与受保护关系。任务包是唯一原始事实源，只读——禁止修改、替代或补写。只汇报核对结论（含发现的事实冲突、职责不清或缺口），不生成任何文件。完成即停。"
+    },
+    {
+      "key": "02",
+      "name": "Brief 提炼",
+      "zone": "上游",
+      "gate": null,
+      "prompt": "[{{episodeId}}-{{key}}] {{name}}\n\n在 {{repoRoot}} 内，依 narration-pipeline/.agents/skills/rewrite-course-narration/references/brief-contract.md 提炼 narration-brief.json，写入 {{tmpDir}}/。必须按三分法分层：learners_content_obligations / agent_silent_guardrails / upstream_conflicts。防泄漏（逐条自查）：不得出现旧 N/K、原 B ID 与数量边界、beat 级时长、分镜行结构、旧 Media Plan、图片页安排、重绘或构图提示。小步增量：先落骨架文件再补全字段。禁止写 player/**。完成即停。"
+    },
+    {
+      "key": "03",
+      "name": "批准口播【门禁1】",
+      "zone": "上游",
+      "gate": "narration",
+      "prompt": "[{{episodeId}}-{{key}}] {{name}}\n\n【人工门禁 1·批准连续口播】禁止生成 approved-spoken-text.txt，禁止切 Nx，禁止进入 A-page。只做核对：连续稿对 Brief 的内容义务覆盖、事实边界、硬红线（情境真实性补丁 / 课程来源归属 / 制作与画面说明 / 审计免责声明 / 未来待办）。输出待用户确认的清单和问题点，然后停下，让卡片进入 review 列等用户亲自放行。任何自动化不得越过这道门禁。"
+    },
+    {
+      "key": "04",
+      "name": "A-page v6 编译",
+      "zone": "上游",
+      "gate": null,
+      "prompt": "[{{episodeId}}-{{key}}] {{name}}\n\n前置门禁：player/episodes/{{episodeId}}/inputs/approved-spoken-text.txt 必须已由用户批准并存在。若不存在，立即停下并说明被门禁 1 阻塞——禁止自行生成批准稿。存在时：依 narration-pipeline/.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md 与 references/examples/a-page-v6/ 把批准口播编译为 A-page v6 候选，写入 {{tmpDir}}/；禁止改写批准口播；正式 JSON 不得出现 B ID、B 映射、旧 Media Plan、视觉/媒体/配方/布局字段。"
+    },
+    {
+      "key": "05",
+      "name": "编译追踪",
+      "zone": "上游",
+      "gate": null,
+      "prompt": "[{{episodeId}}-{{key}}] {{name}}\n\n产出 courseplay-b-to-a-trace/v2 trace 到 {{tmpDir}}/。每个任务包编译单元都必须有 visible_source_units；covered 必须指向真实存在的 A/S，omitted 必须有非空理由，unresolved 必须为空。trace 只留在 .tmp，不进入正式 JSON，也不进入 handoff。"
+    },
+    {
+      "key": "06",
+      "name": "A-page 验证",
+      "zone": "上游",
+      "gate": null,
+      "prompt": "[{{episodeId}}-{{key}}] {{name}}\n\n调用 narration-pipeline/.agents/skills/rewrite-course-narration/scripts/verify_compilation.py（--validation-profile a-page-v6 --task-package <冻结任务包> --compile-trace <.tmp trace> --approved-text <批准稿> --compiled-json <A-page> --output <报告>）。要求 coverage_passed=true、failures=[]、unresolved=[]。未通过不得继续，也不得发布到 player/episodes/{{episodeId}}/inputs/；失败只按 references/error-catalog.json 查码。"
+    },
+    {
+      "key": "07",
+      "name": "Visual rough v4【门禁2】",
+      "zone": "上游",
+      "gate": "visualRough",
+      "prompt": "[{{episodeId}}-{{key}}] {{name}}\n\n【人工门禁 2·批准 visual rough】前置：A-page 验证已通过。依 narration-pipeline/.agents/skills/design-course-visual-rough 的作者契约卡与 canonical example 产出 visual rough v4 候选到 {{tmpDir}}/，并调用对应验证入口。候选保持 draft，卡片进入 review 列等用户批准；不得自行改成 approved，也不得替代上游 A-page 的语义。"
+    },
+    {
+      "key": "08",
+      "name": "下游 Phase 1 runner",
+      "zone": "下游",
+      "gate": null,
+      "prompt": "[{{episodeId}}-{{key}}] {{name}}\n\n前置门禁：player/episodes/{{episodeId}}/inputs/ 三份正式产物齐备（approved-spoken-text.txt、{{episodeId}}-a-page.json、{{episodeId}}-visual-rough.md）。在 {{repoRoot}}/player 运行 pnpm courseplay:phase1 -- init / commit-chapter（按 A）/ finalize。禁止手写 script.md 或 outline.md，禁止创建旁路状态。候选内容不得含 runner marker。改完跑 pnpm episode:check && pnpm typecheck && pnpm lint。"
+    },
+    {
+      "key": "09",
+      "name": "Checkpoint Plan【门禁3】",
+      "zone": "下游",
+      "gate": "checkpointPlan",
+      "prompt": "[{{episodeId}}-{{key}}] {{name}}\n\n【人工门禁 3·Checkpoint Plan】整理一次确认所需的五项清单：稿子、Outline、主题、素材方案、开发模式。把清单交给用户，卡片进入 review 列等用户放行；五项没有对齐不得进入网页开发。本阶段不修改任何文件。"
+    },
+    {
+      "key": "10",
+      "name": "可选单章交接",
+      "zone": "下游",
+      "gate": null,
+      "prompt": "[{{episodeId}}-{{key}}] {{name}}\n\n按需执行：仅在需要压缩上下文时，于 {{repoRoot}}/player 运行 pnpm courseplay:handoff 生成 .handoffs/Axxx.json；不需要时直接报告「本阶段不适用」并停下，不要强行生成。.handoffs/ 是派生缓存，不提交 Git，也不作为发布门禁。"
+    },
+    {
+      "key": "11",
+      "name": "第 1 章完整制作【门禁4】",
+      "zone": "下游",
+      "gate": "firstChapter",
+      "prompt": "[{{episodeId}}-{{key}}] {{name}}\n\n【人工门禁 4·第 1 章验收】只按当前章节输入（handoff 或等价的当前章节输入）实现 player/episodes/{{episodeId}}/src/ 的章节。素材必须复制到 src/chapters/<c>/assets/，禁止符号链接或跨目录引用。必须交付完整可验收版本，不允许先交骨架。不得修改 inputs/ 或共享运行时契约。改完跑 pnpm episode:check && pnpm typecheck && pnpm lint；改 narrations.ts 后追加 pnpm audio:extract。第 1 章完成后停下等用户验收，不得直接继续下一章。"
+    },
+    {
+      "key": "12",
+      "name": "第 2～N 章与验收",
+      "zone": "下游",
+      "gate": null,
+      "prompt": "[{{episodeId}}-{{key}}] {{name}}\n\n按既定模式继续第 2～N 章的制作、审查与修复：A 逐章确认 / B 滚动审查 / C 并行但仍需最终验收。不得修改 player/episodes/{{episodeId}}/inputs/，不得改共享运行时契约或主题。每章改完同样跑 pnpm episode:check && pnpm typecheck && pnpm lint。本阶段是本流程的最后一个阶段——不进入音频与录屏。"
+    }
+  ]
+}
