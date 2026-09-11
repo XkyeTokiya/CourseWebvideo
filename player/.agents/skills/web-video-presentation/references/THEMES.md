@@ -100,6 +100,12 @@ Studio 会在构建时发现每个同时包含 `theme.json` 与 `tokens.css` 的
 
 主题由实例 `project.json` 的 `theme` 字段决定，是唯一来源：
 
+新建 episode 时可直接指定主题；创建器会校验主题目录是否完整：
+
+```powershell
+pnpm episode:new -- --id episode-xx --title 标题 --theme newsroom
+```
+
 在 Checkpoint Plan 明确选择主题，再把主题 id 写入当前 episode 的
 `project.json.theme`。目标目录必须同时包含 `theme.json` 与 `tokens.css`；运行
 `pnpm episode:check` 验证主题是否存在且完整。

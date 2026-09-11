@@ -28,8 +28,9 @@ Outline 不写组件名、DOM、CSS、动画类型、keyframe 或毫秒值。
 ## 初始化与持久状态
 
 `courseplay:phase1 init` 从 A-page `pages[]` 顺序和 `a_id` 确定性创建两份正式
-外壳。文件不存在时创建；已有合法 Courseplay marker 时恢复；任何其他既有内容
-返回 `PHASE1_ARTIFACT_CONFLICT`，不得覆盖。
+外壳。文件不存在或仍与仓库原始 episode 模板一致时创建/迁移；已有合法
+Courseplay marker 时恢复；任何其他既有内容返回 `PHASE1_ARTIFACT_CONFLICT`，
+不得覆盖。
 
 ```markdown
 # Video Outline

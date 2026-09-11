@@ -12,7 +12,8 @@ description: 将正式 Courseplay A-page v6 与 visual rough v4 制作为 Web Vi
 ## 唯一流程
 
 ```text
-episodes/<episode-id>/inputs/ 正式输入
+新 episode（如需）→ pnpm episode:new
+  → episodes/<episode-id>/inputs/ 正式输入
   → Phase 1: init → commit-chapter(Axxx) → finalize
   → script.md + outline.md
   → Checkpoint Plan
@@ -53,6 +54,22 @@ episodes/<episode-id>/
 `.handoffs/` 是可重建缓存。Phase 2 创建 `narrations.ts` 后，它成为运行时 step 数和
 TTS 文本的唯一真相源。
 
+## Studio episode 脚手架
+
+仓库现有脚手架必须保留。仅在 episode 目录尚不存在时运行：
+
+```powershell
+pnpm episode:new -- --id <episode-id> --title "<标题>" --theme <主题-id>
+```
+
+创建器验证主题并生成 `project.json`、`00-cover`、`src/data/cover.json`、
+`src/entry.tsx` 以及现有兼容占位文件。Courseplay 不读取模板中的 `article.md`；
+`courseplay:phase1 init` 会把仍与仓库原始模板一致的 `script.md` / `outline.md`
+迁移为确定性模块化外壳。不得覆盖已存在的 episode。
+
+Skill 目录内的 `templates/` 与 `scripts/scaffold.sh` 作为既有兼容资料保留；正式
+episode 仍只使用仓库级 `player/templates/episode/` 和共享 Studio 运行时。
+
 ## 分阶段必读
 
 | 阶段 | 必读 |
@@ -91,8 +108,8 @@ pnpm courseplay:phase1 -- commit-chapter --episode <episode-id> --a-page A001 --
 pnpm courseplay:phase1 -- finalize --episode <episode-id>
 ```
 
-`init` 只根据 `pages[]` 与 `a_id` 创建确定性外壳。文件不存在时创建；已有合法
-Courseplay 模块化产物时恢复；其他既有内容拒绝覆盖。
+`init` 只根据 `pages[]` 与 `a_id` 创建确定性外壳。文件不存在或仍等于仓库原始
+模板时创建/迁移；已有合法 Courseplay 模块化产物时恢复；其他既有内容拒绝覆盖。
 
 逐 A-page 编译：
 
