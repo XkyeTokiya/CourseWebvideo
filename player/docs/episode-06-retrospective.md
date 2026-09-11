@@ -99,7 +99,7 @@ narrations↔script）加红线 grep 是主线程收口的最小动作集，成�
   端口响应确认实际端口再交付预览 URL。
 - entry.tsx 并行写冲突预防：agent 一律不注册章节，主线程按波次注册，
   11 章零冲突、零"未落盘 import"事故。
-- 工作区既有他人/前会话改动（inputs 刷新、production-status 同步输出、
-  taste 学习记录）按 provenance 分账：制作提交（d2965a8/ed26372/201477c）
+- 工作区既有他人/前会话改动（inputs 刷新、taste 学习记录）按 provenance
+  分账：制作提交（d2965a8/ed26372/201477c）
   未混入，统一在复盘后按类分笔入库。
 
