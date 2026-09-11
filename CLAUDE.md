@@ -41,6 +41,19 @@ cd D:\00-workspace\005-coursewebvideo\player
 
 跨子项目的路径、发布规则和治理修改从仓库根目录审查，但不把根目录作为普通 episode 制作工作目录。
 
+## Skill 阅读与路由
+
+- 开始任何需要执行、修改或验证的任务前，先判断任务属于上游、下游还是跨项目，并完整阅读对应目录中的 `SKILL.md`；不要只根据 Skill 文件名或旧对话记忆执行。
+- 上游内容任务从 `narration-pipeline/` 路由：
+  - 口播重写、A-page 和批准口播：`narration-pipeline/.agents/skills/rewrite-course-narration/SKILL.md`
+  - visual rough 与视觉结构：`narration-pipeline/.agents/skills/design-course-visual-rough/SKILL.md`
+  - Stage 1 口播润色：`narration-pipeline/.agents/skills/polish-stage1-narration/SKILL.md`
+  - 中文表达自然度：`narration-pipeline/.agents/skills/humanizer-zh/SKILL.md`
+- 下游播放器、章节画面、presentation 和章节验收任务从 `player/` 路由，阅读 `player/.agents/skills/web-video-presentation/SKILL.md`。
+- 跨项目任务按实际涉及的阶段依次阅读上游和下游 Skill；一个子项目的 Skill 不能替代另一个子项目的规则。根级 `CLAUDE.md` 只负责路由，具体契约以对应 Skill、references 和 examples 为准。
+- `SKILL.md` 引用的必需 `references/`、`examples/`、脚本或模板也必须在执行前按其指示读取或调用；不要把历史报告、taste 记录或 `.tmp` 文件当作当前 Skill 规则。
+- 用户明确点名某个 Skill 时，即使任务跨域，也必须使用该 Skill；若 Skill 缺失或无法读取，先说明阻塞点，再依据当前子项目 `CLAUDE.md` 和作者契约选择最小安全替代方案。
+
 ## Git 与敏感文件
 
 - 单一 Git 根位于本目录；两个子目录不再拥有独立 Git 历史。
