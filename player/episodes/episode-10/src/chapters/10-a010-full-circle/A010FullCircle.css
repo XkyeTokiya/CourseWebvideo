@@ -1,0 +1,566 @@
+/* a010-full-circle · image-with-insight-rail
+   mechanism: persistent-media-reading — 回扣开场的外协模具现场图持续承载，
+   两条图侧短条依次建立分工协同（R021，并列列举不画系统互连）
+   与模具主动报告机制（R022），终态收束为双向链路。
+   prefix: fc- */
+
+.fc-scene {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-family: var(--font-body);
+}
+
+/* ── headline（S047，可见标题保留） ───────────────────── */
+
+.fc-head {
+  animation: fc-rise 620ms var(--ease-soft) both;
+}
+
+.fc-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 60px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+}
+
+.fc-title em {
+  font-style: normal;
+  transition: color 520ms var(--ease-soft);
+}
+
+.fc-scene.is-closed .fc-title em {
+  color: var(--theme-process);
+  transition-delay: 420ms;
+}
+
+.fc-head-rule {
+  margin-top: 18px;
+}
+
+/* ── 主区：左媒体（持续承载）+ 右两条图侧短条 ─────────── */
+
+.fc-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 930px 1fr;
+  gap: 54px;
+  animation: fc-rise 640ms var(--ease-soft) 140ms both;
+}
+
+/* ── 媒体区：M004 工程图纸风 placeholder ──────────────── */
+
+.fc-media {
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.fc-frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 14px;
+  background: var(--theme-paper);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.fc-frame::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px dashed var(--theme-dashed-line);
+  pointer-events: none;
+}
+
+.fc-ph {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 12px;
+  text-align: center;
+  border: 2px dashed var(--theme-dashed-line);
+  background:
+    linear-gradient(var(--theme-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--theme-grid-line) 1px, transparent 1px);
+  background-size: 48px 48px, 48px 48px;
+}
+
+.fc-ph-tag {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.22em;
+  color: var(--theme-process);
+  border: 2px solid var(--theme-process);
+  background: var(--theme-process-surface);
+  padding: 6px 14px;
+}
+
+.fc-ph-title {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.fc-ph-note {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-mute);
+}
+
+/* 回到起点：环回印章（收尾回扣的唯一视觉演示锚） */
+
+.fc-stamp {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  z-index: 2;
+  width: 116px;
+  height: 116px;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  color: var(--theme-process);
+  background: color-mix(in srgb, var(--theme-paper) 86%, transparent);
+  border-radius: 50%;
+  animation: fc-stamp-in 480ms var(--ease-overshoot) 760ms both;
+}
+
+.fc-stamp-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.fc-stamp-text {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--theme-process);
+}
+
+.fc-cap {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  color: var(--text-mute);
+}
+
+/* ── 图侧短条（insight-rail ×2） ─────────────────────── */
+
+.fc-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.fc-band {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 24px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 480ms var(--ease-soft),
+    transform 480ms var(--ease-soft);
+}
+
+.fc-band-roles {
+  flex: 1;
+}
+
+.fc-band-report {
+  flex: 1.45;
+}
+
+.fc-band-roles.is-on,
+.fc-band-report.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.fc-band-report.is-on {
+  transition-delay: 1250ms;
+}
+
+.fc-band-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.fc-no {
+  font-size: 26px;
+  color: var(--theme-process);
+}
+
+.fc-band-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* ── 短条 01（U027）：R021 并列列举，不画系统互连 ─────── */
+
+.fc-rows {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 6px;
+}
+
+.fc-row {
+  padding: 14px 2px;
+}
+
+.fc-row + .fc-row {
+  border-top: 2px dashed var(--theme-dashed-line);
+}
+
+.fc-row-body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 420ms var(--ease-soft),
+    transform 420ms var(--ease-soft);
+}
+
+.fc-band-roles.is-on .fc-row-body {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(340ms + var(--fc-i) * 250ms);
+}
+
+.fc-row-body b {
+  flex: 0 0 190px;
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.fc-row-duty {
+  font-size: 22px;
+  color: var(--text-2);
+}
+
+.fc-sys-group {
+  flex: 0 0 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.fc-sys {
+  font-family: var(--font-display-cn);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  padding: 3px 12px;
+  background: var(--theme-cool-surface);
+  border: 2px solid var(--theme-structural);
+}
+
+.fc-link-tag {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+/* ── 短条 02（U028）：模具开口报告 + 同一条通道双向 ───── */
+
+.fc-speak {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 18px;
+}
+
+.fc-mold {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.fc-mold-chip {
+  padding: 12px 24px;
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--theme-paper);
+  background: var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  transition: background-color 480ms var(--ease-soft);
+}
+
+.fc-scene.is-closed .fc-mold-chip {
+  background: var(--theme-process);
+}
+
+.fc-mold-sub {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+
+.fc-speak-chips {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 14px;
+}
+
+.fc-speak-chip {
+  position: relative;
+  padding: 9px 16px;
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 400ms var(--ease-soft),
+    transform 400ms var(--ease-soft);
+}
+
+.fc-speak-chip::before {
+  content: "";
+  position: absolute;
+  left: -9px;
+  top: 50%;
+  margin-top: -7px;
+  border: 7px solid transparent;
+  border-right-color: var(--theme-process);
+  border-left-width: 0;
+}
+
+.fc-band-report.is-on .fc-speak-chip {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(1800ms + var(--fc-i) * 260ms);
+}
+
+.fc-dir {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 420ms var(--ease-soft),
+    transform 420ms var(--ease-soft);
+}
+
+.fc-band-report.is-on .fc-dir {
+  opacity: 1;
+  transform: none;
+  transition-delay: 2700ms;
+}
+
+.fc-dir-lead {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+  margin-right: 4px;
+}
+
+.fc-dir-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 14px;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  background: var(--theme-cool-surface);
+  border: 2px solid var(--theme-structural);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 380ms var(--ease-soft),
+    transform 380ms var(--ease-soft);
+}
+
+.fc-dir-tag.fc-dir-up {
+  background: var(--theme-process-surface);
+  border-color: var(--theme-process);
+}
+
+.fc-band-report.is-on .fc-dir-tag {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(2950ms + var(--fc-i) * 200ms);
+}
+
+.fc-arr {
+  width: 0;
+  height: 0;
+  border: 7px solid transparent;
+}
+
+.fc-arr-down {
+  border-top-color: var(--theme-structural);
+  border-bottom-width: 0;
+}
+
+.fc-arr-up {
+  border-bottom-color: var(--theme-process);
+  border-top-width: 0;
+}
+
+/* ── 收束（S051，仅 chain-closed）：从散落记录到双向链路 ─ */
+
+.fc-close {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 460ms var(--ease-soft),
+    transform 460ms var(--ease-soft);
+}
+
+.fc-close.is-on {
+  opacity: 1;
+  transform: none;
+  transition-delay: 120ms;
+}
+
+.fc-close-lead {
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-mute);
+}
+
+.fc-close-from {
+  padding: 2px 10px;
+  border: 2px dashed var(--theme-dashed-line);
+  font-family: var(--font-body);
+  font-size: 18px;
+}
+
+.fc-close-to {
+  font-family: var(--font-body);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--theme-process);
+}
+
+.fc-close-chain {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fc-close-node {
+  padding: 10px 18px;
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  background: var(--theme-paper);
+  border: 3px solid var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(10px) scale(0.94);
+  transition: opacity 400ms var(--ease-soft),
+    transform 400ms var(--ease-soft);
+}
+
+.fc-close.is-on .fc-close-node {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(560ms + var(--fc-i) * 260ms);
+}
+
+.fc-close-link {
+  position: relative;
+  width: 34px;
+  height: 3px;
+  background: var(--theme-process);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 360ms var(--ease-soft);
+}
+
+.fc-close-link::before,
+.fc-close-link::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  margin-top: -6px;
+  border: 6px solid transparent;
+}
+
+.fc-close-link::before {
+  left: -9px;
+  border-right-color: var(--theme-process);
+  border-left-width: 0;
+}
+
+.fc-close-link::after {
+  right: -9px;
+  border-left-color: var(--theme-process);
+  border-right-width: 0;
+}
+
+.fc-close.is-on .fc-close-link {
+  transform: scaleX(1);
+  transition-delay: calc(760ms + (var(--fc-i) - 1) * 260ms);
+}
+
+/* ── 入场（一次性，不锁状态过渡） ────────────────────── */
+
+@keyframes fc-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fc-stamp-in {
+  from {
+    opacity: 0;
+    transform: rotate(-8deg) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-8deg) scale(1);
+  }
+}

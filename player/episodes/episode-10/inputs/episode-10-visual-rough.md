@@ -1,6 +1,6 @@
 ---
 schema_version: courseplay-visual-rough/v4
-document_kind: candidate
+document_kind: production
 episode_id: episode-10
 source_a_page: episode-10-a-page.json
 source_a_page_sha256: 95108ea45aa0fd72d304ccf105dd9f65f39c2826e5baa706d0415ed996ebd70e

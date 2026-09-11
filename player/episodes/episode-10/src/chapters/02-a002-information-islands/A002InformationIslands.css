@@ -1,0 +1,377 @@
+/* a002-information-islands · parallel-cards-with-takeaway
+   mechanism: equal-weight-accumulation — 两张并列卡等权补齐，底部结论条收束；不画断裂电缆或网络线
+   prefix: ii- */
+
+.ii-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── headline（S005） ─────────────────────────────────── */
+
+.ii-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+}
+
+.is-fresh .ii-title {
+  animation: ii-rise 640ms var(--ease-soft) both;
+}
+
+/* ── 并列卡区：两卡等权，同时占位、依次补齐 ───────────── */
+
+.ii-cards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  transition: opacity 520ms var(--ease-soft);
+}
+
+.has-islands .ii-cards {
+  opacity: 0.86;
+}
+
+.ii-card {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 30px 34px;
+}
+
+.ii-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+/* 卡 1 · 主体与信息（U003/S006） */
+
+.ii-card-parties {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.ii-party-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.ii-party {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 22px;
+  background: var(--surface-3);
+  border: 2px solid var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.ii-party b {
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* 每家主体手里的一叠信息单（纯 CSS 视觉演示） */
+
+.ii-slips {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex: none;
+}
+
+.ii-slips i {
+  position: absolute;
+  top: 7px;
+  left: 10px;
+  width: 22px;
+  height: 28px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-process);
+}
+
+.ii-slips i:nth-child(1) {
+  transform: translate(-7px, 3px) rotate(-9deg);
+  border-color: var(--theme-dashed-line);
+}
+
+.ii-slips i:nth-child(2) {
+  transform: translate(1px, -1px) rotate(1deg);
+  border-color: var(--theme-structural);
+}
+
+.ii-slips i:nth-child(3) {
+  transform: translate(9px, 5px) rotate(10deg);
+}
+
+/* 卡 1 底部：各自握着设计/生产/安装信息 —— 很难共享 */
+
+.ii-foot {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: var(--rule-w) dashed var(--theme-dashed-line);
+  padding-top: 20px;
+}
+
+.ii-foot-lead {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  color: var(--text-mute);
+  margin-right: 4px;
+  white-space: nowrap;
+}
+
+.ii-chip {
+  padding: 8px 16px;
+  background: var(--surface-3);
+  border: 2px solid var(--theme-structural);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+.ii-foot-warn {
+  margin-left: auto;
+  padding: 8px 18px;
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--theme-warning);
+  white-space: nowrap;
+}
+
+.is-fresh .ii-party {
+  animation: ii-pop 520ms var(--ease-overshoot) both;
+  animation-delay: var(--ii-d);
+}
+
+.is-fresh .ii-foot > * {
+  animation: ii-rise 460ms var(--ease-soft) both;
+  animation-delay: var(--ii-d);
+}
+
+/* 卡 2 · 三个断点（U004/S007）：先以虚线空槽等权占位，讲到再补齐 */
+
+.ii-card-breaks {
+  background: transparent;
+  border: 3px dashed var(--theme-dashed-line);
+  opacity: 0.55;
+  transition: opacity 460ms var(--ease-soft),
+    background-color 460ms var(--ease-soft),
+    border-color 460ms var(--ease-soft),
+    box-shadow 460ms var(--ease-soft);
+}
+
+.has-breaks .ii-card-breaks {
+  background: var(--surface-2);
+  border-color: var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 1;
+}
+
+.ii-break-list {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ii-break {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 460ms var(--ease-soft),
+    transform 460ms var(--ease-soft);
+  /* 回退时立即消失，前进时按口播报到点 stagger */
+  transition-delay: 0s;
+}
+
+.ii-break + .ii-break {
+  border-top: 2px dashed var(--theme-dashed-line);
+}
+
+.has-breaks .ii-break {
+  opacity: 1;
+  transform: none;
+  transition-delay: var(--ii-d);
+}
+
+.ii-break-no {
+  font-size: 40px;
+  color: var(--theme-warning);
+}
+
+.ii-break-body {
+  min-width: 0;
+}
+
+.ii-break-body h2 {
+  margin: 0 0 4px;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.ii-break-body p {
+  margin: 0;
+  font-size: 20px;
+  color: var(--text-2);
+}
+
+.ii-break-mark {
+  margin-left: auto;
+  width: 15px;
+  height: 15px;
+  flex: none;
+  background: var(--theme-warning);
+  box-shadow: 3px 3px 0 var(--theme-offset-shadow);
+}
+
+/* ── takeaway（U005/S008）：深海军蓝结论条，R004 收束 ── */
+
+.ii-takeaway {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 26px 36px;
+  background: var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 520ms var(--ease-soft),
+    transform 520ms var(--ease-soft);
+  pointer-events: none;
+}
+
+.has-islands .ii-takeaway {
+  opacity: 1;
+  transform: none;
+}
+
+.ii-take-label {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.14em;
+  color: var(--surface-3);
+  white-space: nowrap;
+}
+
+.ii-take-exp {
+  margin: 0;
+  font-size: 28px;
+  color: var(--surface-3);
+  white-space: nowrap;
+}
+
+.ii-take-exp b {
+  color: var(--surface-2);
+  font-weight: 900;
+}
+
+/* 生产管控 / 加工质量 / 企业运营 之间被隔开的“孤岛”缺口 */
+
+.ii-domains {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.ii-domain {
+  padding: 12px 20px;
+  border: 2px solid var(--surface-3);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--surface-2);
+  white-space: nowrap;
+}
+
+.ii-gap {
+  width: 40px;
+  height: 30px;
+  border: 2px dashed var(--theme-dashed-line);
+}
+
+.ii-islands-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 900;
+  color: var(--theme-warning);
+  white-space: nowrap;
+  transform: scale(1.25);
+}
+
+.ii-take-label,
+.ii-take-exp,
+.ii-domain,
+.ii-gap {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 420ms var(--ease-soft),
+    transform 420ms var(--ease-soft);
+  transition-delay: 0s;
+}
+
+.ii-islands-hero {
+  opacity: 0;
+  transition: opacity 460ms var(--ease-soft),
+    transform 460ms var(--ease-overshoot);
+  transition-delay: 0s;
+}
+
+.has-islands .ii-take-label,
+.has-islands .ii-take-exp,
+.has-islands .ii-domain,
+.has-islands .ii-gap,
+.has-islands .ii-islands-hero {
+  opacity: 1;
+  transform: none;
+  transition-delay: var(--ii-d);
+}
+
+/* ── 入场（一次性装配，不锁状态过渡） ────────────────── */
+
+@keyframes ii-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ii-pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

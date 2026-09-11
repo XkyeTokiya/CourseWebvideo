@@ -1,0 +1,494 @@
+/* a003-smart-control-goal · condition-key-goal
+   mechanism: cumulative-assembly — 固定结构内逐层组装（方向→目标→监控→落点），已组装层持续保留；
+              step 1 权重转移到 goal 组：弱化/退让，不换构图
+   prefix: cg- */
+
+.cg-scene {
+  justify-content: flex-start;
+  gap: 26px;
+}
+
+/* ── headline（S009） ─────────────────────────────────── */
+
+.cg-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+}
+
+.is-fresh .cg-title {
+  animation: cg-rise 640ms var(--ease-soft) both;
+}
+
+/* step 0 内逐层装配：方法锚 → 名称 → 结合 → 方向标签 → 目标 → 监控 */
+.is-fresh .cg-problem,
+.is-fresh .cg-method,
+.is-fresh .cg-method-name,
+.is-fresh .cg-join-chip,
+.is-fresh .cg-join-x,
+.is-fresh .cg-band-lead {
+  animation: cg-rise 560ms var(--ease-soft) both;
+  animation-delay: var(--cg-d);
+}
+
+/* ── 主区：左侧方法锚 + 右侧逐层组装的三个信息组 ──────── */
+
+.cg-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 44px;
+}
+
+/* 左侧方法锚（智能化生产管控 · 信息技术 × 制造技术） */
+
+.cg-rail {
+  width: 380px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transition: opacity 550ms var(--ease-soft),
+    filter 550ms var(--ease-soft);
+}
+
+.has-focus .cg-rail {
+  opacity: 0.3;
+  filter: grayscale(0.55);
+}
+
+.cg-problem {
+  border: 2px dashed var(--theme-dashed-line);
+  padding: 18px 22px;
+}
+
+.cg-problem-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.2em;
+  color: var(--text-mute);
+  margin-bottom: 8px;
+}
+
+.cg-problem p {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.cg-problem b {
+  color: var(--theme-structural);
+  font-weight: 900;
+}
+
+.cg-method {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  padding: 30px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.cg-method-lead {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.18em;
+  color: var(--theme-process);
+}
+
+.cg-method-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  line-height: 1.2;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.cg-method-rule {
+  width: 100%;
+}
+
+.cg-join {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cg-join-chip {
+  padding: 10px 18px;
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--theme-process);
+  white-space: nowrap;
+}
+
+.cg-join-x {
+  font-family: var(--font-mono);
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* ── 右侧信息组：方向 → 目标（+监控） → 落点 ──────────── */
+
+.cg-bands {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.cg-band {
+  flex: none;
+  display: flex;
+  gap: 24px;
+  transition: opacity 550ms var(--ease-soft),
+    filter 550ms var(--ease-soft);
+}
+
+.has-focus .cg-band {
+  opacity: 0.3;
+  filter: grayscale(0.55);
+}
+
+.cg-band-tag {
+  writing-mode: vertical-rl;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.4em;
+  color: var(--text-mute);
+  padding-top: 6px;
+}
+
+.cg-band-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cg-band-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+/* condition · 四个方向标签（R005 载体，逐个盖章落位） */
+
+.cg-tags {
+  display: flex;
+  gap: 18px;
+}
+
+.cg-tag {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  height: 104px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.is-fresh .cg-tag {
+  animation: cg-stamp 560ms var(--ease-overshoot) both;
+  animation-delay: var(--cg-d);
+}
+
+/* key · 三个目标 + 实时监控和优化 */
+
+.cg-goals {
+  display: flex;
+  gap: 18px;
+}
+
+.cg-goal {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 20px 0;
+  background: var(--theme-process-surface);
+  border: 3px solid var(--theme-process);
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+.is-fresh .cg-goal {
+  animation: cg-up 500ms var(--ease-soft) both;
+  animation-delay: var(--cg-d);
+}
+
+.cg-monitor {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 22px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: var(--surface-3);
+}
+
+.cg-monitor p {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+.cg-monitor b {
+  color: var(--theme-process);
+  font-weight: 900;
+}
+
+.cg-monitor-leds {
+  display: flex;
+  gap: 8px;
+  flex: none;
+}
+
+.cg-monitor-leds i {
+  width: 12px;
+  height: 12px;
+  background: var(--theme-process);
+}
+
+.is-fresh .cg-monitor {
+  animation: cg-up 500ms var(--ease-soft) both;
+  animation-delay: var(--cg-d);
+}
+
+/* goal · 落点：虚线空槽持续占位，step 1 聚焦到位（R006 载体） */
+
+.cg-landing {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  border: 2px dashed var(--theme-dashed-line);
+  transition: background-color 500ms var(--ease-soft),
+    border-color 500ms var(--ease-soft),
+    box-shadow 500ms var(--ease-soft),
+    transform 500ms var(--ease-soft);
+}
+
+.has-focus .cg-landing {
+  background: var(--surface-2);
+  border-color: var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  transform: translateY(-4px);
+}
+
+.cg-landing-tag {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.3em;
+  color: var(--text-faint);
+  transition: color 500ms var(--ease-soft);
+}
+
+.has-focus .cg-landing-tag {
+  color: var(--theme-process);
+}
+
+/* 聚焦取景框：四角绿色角标收拢到模具对象上 */
+
+.cg-corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 0 solid var(--theme-process);
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 420ms var(--ease-soft),
+    transform 420ms var(--ease-overshoot);
+  transition-delay: 0s;
+}
+
+.cg-c-tl {
+  top: -9px;
+  left: -9px;
+  border-top-width: 4px;
+  border-left-width: 4px;
+}
+
+.cg-c-tr {
+  top: -9px;
+  right: -9px;
+  border-top-width: 4px;
+  border-right-width: 4px;
+}
+
+.cg-c-bl {
+  bottom: -9px;
+  left: -9px;
+  border-bottom-width: 4px;
+  border-left-width: 4px;
+}
+
+.cg-c-br {
+  bottom: -9px;
+  right: -9px;
+  border-bottom-width: 4px;
+  border-right-width: 4px;
+}
+
+.has-focus .cg-corner {
+  opacity: 1;
+  transform: none;
+}
+
+.has-focus .cg-c-tl {
+  transition-delay: 0.15s;
+}
+
+.has-focus .cg-c-tr {
+  transition-delay: 0.25s;
+}
+
+.has-focus .cg-c-bl {
+  transition-delay: 0.35s;
+}
+
+.has-focus .cg-c-br {
+  transition-delay: 0.45s;
+}
+
+.cg-landing-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.cg-landing-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.22em;
+  color: var(--text-mute);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 420ms var(--ease-soft),
+    transform 420ms var(--ease-soft);
+  transition-delay: 0s;
+}
+
+.has-focus .cg-landing-lead {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.3s;
+}
+
+.cg-landing-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 68px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: scale(1.35);
+  transition: opacity 460ms var(--ease-soft),
+    transform 460ms var(--ease-overshoot);
+  transition-delay: 0s;
+}
+
+.has-focus .cg-landing-hero {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.45s;
+}
+
+.cg-focus-chips {
+  display: flex;
+  gap: 16px;
+}
+
+.cg-focus-chip {
+  padding: 12px 28px;
+  background: var(--theme-process);
+  color: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 900;
+  box-shadow: 3px 4px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 400ms var(--ease-soft),
+    transform 400ms var(--ease-soft);
+  transition-delay: 0s;
+}
+
+.has-focus .cg-focus-chip {
+  opacity: 1;
+  transform: none;
+}
+
+.has-focus .cg-focus-chip:nth-child(1) {
+  transition-delay: 0.75s;
+}
+
+.has-focus .cg-focus-chip:nth-child(2) {
+  transition-delay: 0.9s;
+}
+
+/* ── 入场（一次性装配，不锁状态过渡） ────────────────── */
+
+@keyframes cg-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cg-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.55) rotate(-2.5deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cg-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

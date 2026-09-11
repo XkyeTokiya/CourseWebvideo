@@ -387,7 +387,7 @@
   "failures": [],
   "input_integrity": {
     "a_page_sha256": "95108ea45aa0fd72d304ccf105dd9f65f39c2826e5baa706d0415ed996ebd70e",
-    "visual_rough_sha256": "d960886c262cdeec69114ce963fa1176420ec2a2a764835b9736d6cb40a00400",
+    "visual_rough_sha256": "e5d8c1e2c8042fc36fa0b7c49eb2b63e4769fec84367afbbc0a92a91ff9d07b7",
     "recipe_registry_sha256": "697ed613616ec9ac5325a38544fe4ac9c8fcf6b3ab5439e614e7a7293b93ef2e"
   }
 }

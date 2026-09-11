@@ -1,0 +1,469 @@
+/* a005-bidirectional-flows · split-compare-with-pivot
+   mechanism: compare-and-reweight — 左右两栏空间持续，先立下行再立上行，
+   两侧等权对照不轮播，最终由中部判据收束为双向监控
+   prefix: bf- */
+
+.bf-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── headline（S019） ─────────────────────────────────── */
+
+.bf-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: bf-rise 640ms var(--ease-soft);
+}
+
+/* ── 主区：左栏（下行） | 中部判据 | 右栏（上行） ─────── */
+
+.bf-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 380px 1fr;
+  gap: 40px;
+  animation: bf-rise 640ms var(--ease-soft) 120ms;
+  animation-fill-mode: backwards;
+}
+
+/* ── 侧栏骨架：虚线留白 → 实线纸卡（is-set 可逆） ─────── */
+
+.bf-lane {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 28px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: transparent;
+  transition: border-color 480ms var(--ease-soft),
+    background-color 480ms var(--ease-soft),
+    box-shadow 480ms var(--ease-soft);
+}
+
+.bf-lane.is-set {
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+.bf-lane-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.bf-lane-tag {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.3em;
+  padding: 7px 12px 7px 16px;
+  background: var(--theme-structural);
+  color: var(--surface-2);
+}
+
+.bf-lane-dir {
+  font-family: var(--font-mono);
+  font-size: 21px;
+  color: var(--text-mute);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 460ms var(--ease-soft) 140ms,
+    transform 460ms var(--ease-soft) 140ms;
+}
+
+.bf-lane.is-set .bf-lane-dir {
+  opacity: 1;
+  transform: none;
+}
+
+.bf-lane-cap {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 460ms var(--ease-soft) 220ms,
+    transform 460ms var(--ease-soft) 220ms;
+}
+
+.bf-lane.is-set .bf-lane-cap {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── 端点节点：平台 / 设备·注塑机（两侧共用同一对主体） ── */
+
+.bf-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 14px 20px;
+  background: var(--surface-3);
+  border: 2px solid var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  text-align: center;
+}
+
+.bf-node b {
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.bf-node i {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-mute);
+}
+
+.bf-node-role {
+  opacity: 0;
+  transition: opacity 460ms var(--ease-soft) 300ms;
+}
+
+.bf-lane.is-set .bf-node-role {
+  opacity: 1;
+}
+
+/* ── 流向轨道：静态虚线轨 + 工业绿流动虚线 + 落点箭头 ── */
+
+.bf-track {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.bf-rail {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  bottom: 8px;
+  width: 0;
+  border-left: 2px dashed var(--theme-dashed-line);
+}
+
+.bf-flow {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  bottom: 8px;
+  width: 6px;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--theme-process) 0 16px,
+    transparent 16px 34px
+  );
+  opacity: 0;
+  transition: opacity 480ms var(--ease-soft);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    currentColor 10%,
+    currentColor 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    currentColor 10%,
+    currentColor 90%,
+    transparent
+  );
+}
+
+.bf-lane-down.is-set .bf-flow {
+  opacity: 0.55;
+  animation: bf-dash-down 880ms linear infinite;
+}
+
+.bf-lane-up.is-set .bf-flow {
+  opacity: 0.55;
+  animation: bf-dash-up 880ms linear infinite;
+}
+
+.bf-tip {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  opacity: 0;
+  transition: opacity 480ms var(--ease-soft) 200ms;
+}
+
+.bf-tip-down {
+  bottom: -2px;
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+  border-top: 18px solid var(--theme-process);
+}
+
+.bf-tip-up {
+  top: -2px;
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+  border-bottom: 18px solid var(--theme-process);
+}
+
+.bf-lane.is-set .bf-tip {
+  opacity: 1;
+}
+
+/* ── 流动内容物：下行参数签（绿）/ 上行状态签（陶土橙） ── */
+
+.bf-chip {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 900;
+  white-space: nowrap;
+  box-shadow: 3px 4px 0 var(--theme-offset-shadow);
+  opacity: 0;
+}
+
+.bf-chip::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: currentColor;
+  flex: none;
+}
+
+.bf-chip-param {
+  color: var(--theme-process);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+}
+
+.bf-chip-status {
+  color: var(--theme-structural);
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+}
+
+.bf-chip-status::before {
+  background: var(--theme-warning);
+}
+
+.bf-lane-down.is-set .bf-chip {
+  animation: bf-travel-down 3.4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.bf-lane-up.is-set .bf-chip {
+  animation: bf-travel-up 3.4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.bf-lane-down.is-set .bf-chip-b {
+  animation-delay: 1.7s;
+}
+
+/* ── 中部判据：模具 + 环绕（围着同一副模具来回流动） ──── */
+
+.bf-pivot {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+
+.bf-mold {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 26px 46px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.bf-mold-name {
+  font-family: var(--font-display-cn);
+  font-size: 46px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: var(--theme-structural);
+}
+
+.bf-mold-note {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+.bf-ring-wrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 264px;
+  height: 264px;
+  margin: -132px 0 0 -132px;
+  opacity: 0;
+  transition: opacity 560ms var(--ease-soft);
+}
+
+.bf-ring {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 3px dashed var(--theme-process);
+  border-radius: 50%;
+}
+
+.bf-pivot.is-closed .bf-ring-wrap {
+  opacity: 0.9;
+}
+
+.bf-pivot.is-closed .bf-ring {
+  animation: bf-spin 26s linear infinite;
+}
+
+.bf-verdict {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.bf-verdict > * {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 480ms var(--ease-soft),
+    transform 480ms var(--ease-soft);
+}
+
+.bf-verdict.is-on > * {
+  opacity: 1;
+  transform: none;
+}
+
+.bf-verdict-chip {
+  transition-delay: 0ms;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.24em;
+  color: var(--theme-process);
+  border: 2px solid var(--theme-process);
+  background: var(--theme-process-surface);
+  padding: 6px 14px 6px 18px;
+}
+
+.bf-verdict-hero {
+  transition-delay: 140ms;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: var(--theme-structural);
+}
+
+.bf-verdict-text {
+  transition-delay: 280ms;
+  margin: 0;
+  max-width: 340px;
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  line-height: 1.7;
+  color: var(--text-2);
+}
+
+/* ── 入场（一次性，不锁状态过渡） ────────────────────── */
+
+@keyframes bf-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 流动虚线：沿轨道向下 / 向上各推进一个周期 */
+@keyframes bf-dash-down {
+  to {
+    background-position-y: 34px;
+  }
+}
+
+@keyframes bf-dash-up {
+  to {
+    background-position-y: -34px;
+  }
+}
+
+/* 内容物沿栏位移动：下行向下落入设备，上行向上落回平台 */
+@keyframes bf-travel-down {
+  0% {
+    top: 2%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  84% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(98% - 62px);
+    opacity: 0;
+  }
+}
+
+@keyframes bf-travel-up {
+  0% {
+    top: calc(98% - 62px);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  84% {
+    opacity: 1;
+  }
+  100% {
+    top: 2%;
+    opacity: 0;
+  }
+}
+
+/* 判据环：绕模具缓慢回转，表达"围着来回流动" */
+@keyframes bf-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
