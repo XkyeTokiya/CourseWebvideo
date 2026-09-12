@@ -1,0 +1,203 @@
+/* A010 · 复核顺序 — chapter prefix .a10- */
+
+.a10-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+  animation: a10-rise 620ms ease both;
+}
+
+@keyframes a10-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 三步核对带（R017/R018：单向，不回环） ──────────────────── */
+.a10-band {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  margin-top: 40px;
+  height: 300px;
+}
+
+.a10-step {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 26px 28px;
+  border: 2px solid var(--rule);
+  opacity: 0.55;
+  transform: scale(0.99);
+  transition: opacity 420ms ease, transform 420ms ease, border-color 420ms ease;
+}
+
+.a10-step.is-active {
+  opacity: 1;
+  transform: none;
+  border-color: var(--accent);
+}
+
+.a10-step.is-done {
+  opacity: 0.62;
+  transform: none;
+}
+
+.a10-no {
+  margin: 0 0 4px;
+  font-size: 40px;
+  color: var(--text-mute);
+  transition: color 420ms ease;
+}
+
+.a10-step.is-active .a10-no {
+  color: var(--accent);
+}
+
+.a10-lead {
+  margin: 0 0 10px;
+  font-family: var(--font-body);
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--industrial-navy);
+}
+
+.a10-step-text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 26px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.a10-arrow {
+  flex: 0 0 46px;
+  align-self: center;
+  stroke: var(--text-mute);
+  stroke-width: 3;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.a10-arrow line,
+.a10-arrow path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 380ms ease;
+}
+
+.a10-arrow.is-in line,
+.a10-arrow.is-in path {
+  stroke-dashoffset: 0;
+}
+
+/* ── 回看区（R019：整体回看，不连回起点） ───────────────────── */
+.a10-recap {
+  flex: 1;
+  min-height: 0;
+  margin-top: 30px;
+  padding: 28px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 8px;
+  opacity: 0.25;
+  transition: opacity 520ms ease;
+}
+
+.a10-recap.is-in {
+  opacity: 1;
+}
+
+.a10-verdict,
+.a10-warn {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-body);
+  font-size: 30px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 480ms ease, transform 480ms ease;
+}
+
+.a10-verdict::before,
+.a10-warn::before {
+  content: "";
+  width: 8px;
+  height: 26px;
+  border-radius: 4px;
+  flex: 0 0 auto;
+}
+
+.a10-verdict::before {
+  background: var(--industrial-green);
+}
+
+.a10-warn::before {
+  background: var(--industrial-orange);
+}
+
+.a10-verdict.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.a10-warn {
+  color: var(--text-2);
+}
+
+.a10-warn.is-in {
+  opacity: 1;
+  transform: none;
+  transition-delay: 240ms;
+}
+
+.a10-ask {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 480ms ease, transform 480ms ease;
+}
+
+.a10-ask.is-in {
+  opacity: 1;
+  transform: none;
+  transition-delay: 240ms;
+}
+
+.a10-ask-lead {
+  margin: 0 0 12px;
+  font-family: var(--font-body);
+  font-size: 27px;
+  color: var(--text-2);
+}
+
+.a10-questions {
+  display: flex;
+  gap: 18px;
+}
+
+.a10-question {
+  flex: 1;
+  margin: 0;
+  padding: 13px 18px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--industrial-navy);
+  text-align: center;
+}

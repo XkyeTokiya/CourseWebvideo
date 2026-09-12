@@ -1,0 +1,132 @@
+/* A009 · 三层关系复核 — chapter prefix .a9- */
+
+.a9-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+  animation: a9-rise 620ms ease both;
+}
+
+@keyframes a9-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 三张并列层卡（R015/R016：按层号排列，卡间无连线，不加第四卡） */
+.a9-cards {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 28px;
+  margin-top: 44px;
+}
+
+.a9-card {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 30px;
+  opacity: 0.32;
+  transition: opacity 520ms ease;
+}
+
+.a9-card.is-in {
+  opacity: 1;
+}
+
+.a9-card-kicker {
+  margin: 0 0 6px;
+  font-family: var(--font-body);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+
+.a9-demo {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  padding: 10px 0 14px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 480ms ease, transform 480ms ease;
+}
+
+.a9-card.is-in .a9-demo {
+  opacity: 1;
+  transform: none;
+}
+
+.a9-card-line {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 29px;
+  line-height: 1.45;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 460ms ease 120ms, transform 460ms ease 120ms;
+}
+
+.a9-card.is-in .a9-card-line {
+  opacity: 1;
+  transform: none;
+}
+
+/* 层卡示意：边界 / 版面 / 功能与美观同现（无认证、合格视觉，C009） */
+.a9-part {
+  fill: var(--surface-3);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+.a9-mark {
+  fill: var(--surface);
+  stroke: var(--industrial-navy);
+  stroke-width: 2.5;
+}
+
+.a9-boundbox {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 560ms ease 260ms;
+}
+
+.a9-card.is-in .a9-boundbox {
+  stroke-dashoffset: 0;
+}
+
+.a9-hero {
+  fill: var(--industrial-navy);
+  opacity: 0.85;
+}
+
+.a9-sub {
+  fill: var(--rule);
+}
+
+.a9-ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 560ms ease 260ms;
+}
+
+.a9-card.is-in .a9-ring {
+  stroke-dashoffset: 0;
+}

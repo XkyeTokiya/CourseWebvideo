@@ -1,0 +1,178 @@
+/* A004 · 先看附着物，再定版面 — chapter prefix .a4- */
+
+.a4-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 60px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+  animation: a4-rise 620ms ease both;
+}
+
+@keyframes a4-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 单向步骤带：否定卡打头 → 两步测量 → 版面终点（R006/R007） ── */
+.a4-band {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  margin-top: 44px;
+}
+
+.a4-step {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 24px;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 520ms ease, transform 520ms ease;
+}
+
+.a4-step.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.a4-step.is-late {
+  transition-delay: 1350ms;
+}
+
+.a4-step.is-final {
+  transition-delay: 0ms;
+}
+
+/* 否定卡（S016，起点标记，持续在场） */
+.a4-nope {
+  animation: a4-rise 620ms ease 140ms both;
+}
+
+.a4-badge {
+  align-self: flex-start;
+  margin: 0 0 14px;
+  font-family: var(--font-body);
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--industrial-orange);
+  border: 2px solid var(--industrial-orange);
+  border-radius: 9px;
+  padding: 4px 14px;
+}
+
+.a4-demo {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  padding: 6px 0 14px;
+}
+
+.a4-demo-part {
+  fill: var(--surface-3);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+/* 先画好的形状：突出轮廓之外，被划掉 */
+.a4-demo-shape {
+  fill: var(--accent-soft);
+  stroke: var(--industrial-navy);
+  stroke-width: 2.5;
+}
+
+.a4-demo-cross line {
+  stroke: var(--industrial-orange);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.a4-no {
+  margin: 0 0 12px;
+  font-size: 40px;
+  color: var(--accent);
+}
+
+.a4-step-text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 27px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* 终端版面卡：阅读终点（S019） */
+.a4-terminal.is-in {
+  background: var(--industrial-navy);
+  border-color: var(--industrial-navy);
+}
+
+.a4-terminal.is-in .a4-no {
+  color: var(--industrial-cyan);
+}
+
+.a4-terminal.is-in .a4-step-text {
+  color: var(--surface);
+  font-weight: 700;
+}
+
+/* 前向箭头：单向，不回流 */
+.a4-arrow {
+  flex: 0 0 46px;
+  align-self: center;
+  stroke: var(--text-mute);
+  stroke-width: 3;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.a4-arrow line,
+.a4-arrow path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 480ms ease 300ms;
+}
+
+.a4-arrow.is-in line,
+.a4-arrow.is-in path {
+  stroke-dashoffset: 0;
+}
+
+.a4-arrow.is-late line,
+.a4-arrow.is-late path {
+  transition-delay: 1650ms;
+}
+
+/* ── 边界短句（step 4，末位卡方向收束） ─────────────────────── */
+.a4-bound {
+  flex: 0 0 auto;
+  margin: 34px 4px 0;
+  text-align: right;
+  font-family: var(--font-body);
+  font-size: 32px;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 560ms ease, transform 560ms ease;
+}
+
+.a4-bound strong {
+  font-weight: 800;
+  color: var(--industrial-green);
+}
+
+.a4-bound.is-in {
+  opacity: 1;
+  transform: none;
+}

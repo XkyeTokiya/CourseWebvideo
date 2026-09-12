@@ -1,0 +1,191 @@
+/* A012 · 工具边界 — chapter prefix .a12- */
+
+.a12-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+  animation: a12-rise 620ms ease both;
+}
+
+@keyframes a12-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 边界框：收住工具与判断的分界（R023 包含关系，无因果箭头） ─ */
+.a12-frame {
+  flex: 1;
+  min-height: 0;
+  margin-top: 38px;
+  border: 2px solid var(--rule);
+  border-radius: var(--r-card);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.a12-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 30px;
+  padding: 32px 36px;
+}
+
+.a12-bands {
+  flex: 1.4;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.a12-band {
+  margin: 0;
+  padding: 20px 26px;
+  background: var(--surface-2);
+  border-radius: 14px;
+  font-family: var(--font-body);
+  font-size: 31px;
+  font-weight: 700;
+  color: var(--industrial-navy);
+  opacity: 0;
+  animation: a12-band-in 500ms ease both;
+  animation-delay: calc(var(--a12-i) * 1250ms);
+}
+
+@keyframes a12-band-in {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.a12-tail {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 26px;
+  color: var(--text-mute);
+  opacity: 0;
+  animation: a12-fade 460ms ease 3950ms forwards;
+}
+
+@keyframes a12-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+/* 侧栏：表达职能（S052，R022 并列布局） */
+.a12-side {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 26px 30px;
+  border-left: 2px solid var(--rule);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 540ms ease, transform 540ms ease;
+}
+
+.a12-side.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.a12-side-kicker {
+  margin: 0 0 12px;
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+.a12-side-line {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 29px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.a12-side-line strong {
+  font-weight: 800;
+  color: var(--text);
+}
+
+/* 边界区（S053）：工具带之内、判断自留 */
+.a12-boundary {
+  flex: 0 0 auto;
+  padding: 22px 36px 26px;
+  border-top: 2px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 540ms ease, transform 540ms ease;
+}
+
+.a12-boundary.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.a12-boundary-kicker {
+  flex: 0 0 auto;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--industrial-orange);
+  border: 2px solid var(--industrial-orange);
+  border-radius: 9px;
+  padding: 5px 14px;
+}
+
+.a12-boundary-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.a12-items {
+  display: flex;
+  gap: 12px;
+}
+
+.a12-item {
+  font-family: var(--font-body);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--industrial-navy);
+  background: var(--surface-2);
+  border-radius: 10px;
+  padding: 9px 18px;
+}
+
+.a12-boundary-line {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--industrial-orange);
+}

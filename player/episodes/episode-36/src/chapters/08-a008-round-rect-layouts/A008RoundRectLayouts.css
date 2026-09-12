@@ -1,0 +1,190 @@
+/* A008 · 圆形与长方形示例 — chapter prefix .a8- */
+
+.a8-head {
+  flex: 0 0 auto;
+}
+
+.a8-title {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+  animation: a8-rise 620ms ease both;
+}
+
+.a8-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -14px;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 640ms ease;
+}
+
+.a8-head.is-focal .a8-title::after {
+  transform: scaleX(1);
+}
+
+@keyframes a8-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 主图（M004 教材原图占位，C008 不复刻图中文字） ─────────── */
+.a8-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 40px;
+  margin-top: 38px;
+}
+
+.a8-image {
+  position: relative;
+  width: 52%;
+  margin: 0;
+  animation: a8-rise 640ms ease 140ms both;
+}
+
+.a8-zones {
+  position: absolute;
+  inset: 26px 26px 56px;
+  width: calc(100% - 52px);
+  height: calc(100% - 82px);
+}
+
+.a8-frame {
+  fill: var(--surface);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+.a8-divider {
+  stroke: var(--rule);
+  stroke-width: 2;
+  stroke-dasharray: 8 8;
+}
+
+.a8-circle {
+  fill: var(--surface-3);
+  stroke: var(--industrial-navy);
+  stroke-width: 2.5;
+}
+
+.a8-circle-inner {
+  fill: none;
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+.a8-circle-core {
+  fill: var(--industrial-navy);
+  opacity: 0.85;
+}
+
+.a8-rectbody {
+  fill: var(--surface-3);
+  stroke: var(--industrial-navy);
+  stroke-width: 2.5;
+}
+
+.a8-rect-hero {
+  fill: var(--industrial-navy);
+  opacity: 0.85;
+}
+
+.a8-rect-sub {
+  fill: var(--rule);
+}
+
+.a8-ph {
+  position: absolute;
+  left: 26px;
+  bottom: 20px;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+}
+
+/* ── 图侧总结带 + 末位判断（R013/R014 无优劣箭头） ──────────── */
+.a8-rail {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.a8-item {
+  padding: 22px 28px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 540ms ease, transform 540ms ease;
+}
+
+.a8-item:first-child,
+.a8-item:nth-child(2) {
+  opacity: 1;
+  transform: none;
+}
+
+.a8-item:first-child {
+  animation: a8-rise 600ms ease 240ms both;
+}
+
+.a8-item:nth-child(2) {
+  animation: a8-rise 600ms ease 700ms both;
+}
+
+.a8-item.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.a8-item-kicker {
+  margin: 0 0 8px;
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.a8-item-line {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 28px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* 末位判断卡：示例边界（S036） */
+.a8-bound {
+  background: var(--industrial-amber);
+  border-color: var(--industrial-warm-line);
+}
+
+.a8-bound-line {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--industrial-orange);
+}

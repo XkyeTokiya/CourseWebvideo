@@ -1,0 +1,266 @@
+/* A007 · 关键信息层级 — chapter prefix .a7- */
+
+.a7-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+  animation: a7-rise 620ms ease both;
+}
+
+@keyframes a7-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 主图（M003，持续；图内不叠文字，C007） ─────────────────── */
+.a7-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 40px;
+  margin-top: 36px;
+}
+
+.a7-image {
+  position: relative;
+  width: 52%;
+  margin: 0;
+  animation: a7-rise 640ms ease 140ms both;
+}
+
+.a7-wire {
+  position: absolute;
+  inset: 28px 28px 58px;
+  width: calc(100% - 56px);
+  height: calc(100% - 86px);
+}
+
+.a7-frame {
+  fill: var(--surface);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+/* 无文字的层级线框：主块 + 辅块 + 说明条 */
+.a7-block {
+  fill: var(--surface-3);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+/* 焦点圈：step 2 落在主块上（重要的先被看到） */
+.a7-ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3.5;
+  stroke-dasharray: 10 8;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  transition: stroke-dashoffset 720ms ease 320ms, opacity 320ms ease 320ms;
+}
+
+.a7-wire.is-ranked .a7-ring {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+.a7-ph {
+  position: absolute;
+  left: 28px;
+  bottom: 22px;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+}
+
+/* ── 图侧注释卡（R012：主图外前后排列） ────────────────────── */
+.a7-rail {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.a7-note {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 28px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 540ms ease, transform 540ms ease;
+}
+
+.a7-note:nth-child(1) {
+  flex: 1.15;
+  opacity: 1;
+  transform: none;
+  animation: a7-rise 600ms ease 240ms both;
+}
+
+.a7-note:nth-child(2) {
+  flex: 1.15;
+}
+
+.a7-note:nth-child(3) {
+  flex: 0.55;
+}
+
+.a7-note.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.a7-note.is-late {
+  transition-delay: 1150ms;
+}
+
+.a7-note-kicker {
+  margin: 0 0 12px;
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+/* 对照：不是放大 → 是排顺序（S028） */
+.a7-reframe {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.a7-reframe-wrong {
+  font-family: var(--font-body);
+  font-size: 27px;
+  color: var(--text-mute);
+  text-decoration: line-through;
+  text-decoration-color: var(--industrial-orange);
+  text-decoration-thickness: 3px;
+}
+
+.a7-reframe-right {
+  font-family: var(--font-body);
+  font-size: 29px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* 先与辅的次序（S029，step 2 落位）：主次用视觉权重区分 */
+.a7-pairs {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.a7-pairs.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.a7-pair {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 28px;
+  padding: 13px 18px;
+  border-radius: 12px;
+}
+
+.a7-pair-main {
+  font-weight: 800;
+  color: var(--industrial-navy);
+  background: var(--accent-soft);
+}
+
+.a7-pair-aux {
+  color: var(--text-mute);
+  border: 1.5px dashed var(--rule);
+}
+
+/* 具体规格三项（S030）：列表展开，不留空档 */
+.a7-specs {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0;
+}
+
+.a7-specs li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 26px;
+  color: var(--text-2);
+  padding: 11px 2px;
+}
+
+.a7-specs li + li {
+  border-top: 1px solid var(--rule);
+}
+
+.a7-specs li::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border: 2px dashed var(--text-faint);
+  border-radius: 2px;
+  flex: 0 0 auto;
+}
+
+.a7-note-line {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 27px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.a7-note-line strong {
+  font-weight: 800;
+  color: var(--text);
+}
+
+/* takeaway 边界（S031） */
+.a7-take {
+  background: var(--industrial-amber);
+  border-color: var(--industrial-warm-line);
+}
+
+.a7-take-line {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-body);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--industrial-orange);
+}
+
+.a7-take-line::before {
+  content: "";
+  width: 8px;
+  height: 26px;
+  border-radius: 4px;
+  background: var(--industrial-orange);
+  flex: 0 0 auto;
+}

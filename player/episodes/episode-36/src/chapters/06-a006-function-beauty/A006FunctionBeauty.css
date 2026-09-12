@@ -1,0 +1,207 @@
+/* A006 · 功能与美观并列 — chapter prefix .a6- */
+
+.a6-head {
+  flex: 0 0 auto;
+}
+
+.a6-title {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+  animation: a6-rise 620ms ease both;
+}
+
+/* step 4：headline 判定成为视觉焦点 */
+.a6-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -14px;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 640ms ease;
+}
+
+.a6-head.is-focal .a6-title::after {
+  transform: scaleX(1);
+}
+
+@keyframes a6-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 左右两栏（等权并列，R010 不画优先级箭头） ──────────────── */
+.a6-cols {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.a6-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 32px;
+}
+
+.a6-col-name {
+  margin: 0 0 10px;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+}
+
+/* 同一个版面线框，两种读法（功能：跳出；美观：秩序） */
+.a6-demo {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  padding: 6px 0 16px;
+  opacity: 0;
+  transition: opacity 560ms ease;
+}
+
+.a6-col.is-in .a6-demo {
+  opacity: 1;
+}
+
+.a6-col.is-late .a6-demo {
+  transition-delay: 900ms;
+}
+
+.a6-labelbody {
+  fill: var(--surface);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+.a6-hero {
+  fill: var(--surface-3);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+.a6-sub {
+  fill: var(--surface-3);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+/* 功能：关键信息块跳出（accent 圈描线） */
+.a6-ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 640ms ease 380ms;
+}
+
+.a6-col.is-in .a6-ring {
+  stroke-dashoffset: 0;
+}
+
+.a6-col.is-late .a6-ring {
+  transition-delay: 1280ms;
+}
+
+/* 美观：对齐参考线（秩序） */
+.a6-guide {
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-dasharray: 8 8;
+  opacity: 0;
+  transition: opacity 520ms ease 320ms;
+}
+
+.a6-col.is-in .a6-guide {
+  opacity: 0.55;
+}
+
+.a6-col.is-late .a6-guide {
+  transition-delay: 1220ms;
+}
+
+.a6-col-line {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 28px;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 480ms ease 200ms, transform 480ms ease 200ms;
+}
+
+.a6-col.is-in .a6-col-line {
+  opacity: 1;
+  transform: none;
+}
+
+.a6-col.is-late .a6-col-line {
+  transition-delay: 1100ms;
+}
+
+/* ── 底部判断条（S027 共同来源，R011 不写成第三栏） ─────────── */
+.a6-thesis {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 30px;
+  padding: 22px 30px;
+  background: var(--surface-2);
+  border-radius: var(--r-card);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 560ms ease, transform 560ms ease;
+}
+
+.a6-thesis.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.a6-thesis-tag {
+  flex: 0 0 auto;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--industrial-green);
+  border: 2px solid var(--industrial-green);
+  border-radius: 9px;
+  padding: 5px 14px;
+}
+
+.a6-thesis-text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 29px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.a6-thesis-text strong {
+  font-weight: 800;
+  color: var(--text);
+}
