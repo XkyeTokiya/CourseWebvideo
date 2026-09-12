@@ -1,0 +1,243 @@
+/* A005 · 材质与张贴位置 — chapter prefix .a5- */
+
+.a5-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+  animation: a5-rise 620ms ease both;
+}
+
+@keyframes a5-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 主图（M002，持续在左） + 图侧洞察短条（R008） ──────────── */
+.a5-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 40px;
+  margin-top: 36px;
+}
+
+.a5-image {
+  position: relative;
+  width: 52%;
+  margin: 0;
+  animation: a5-rise 640ms ease 140ms both;
+}
+
+.a5-forms-scene {
+  position: absolute;
+  inset: 28px 28px 58px;
+  width: calc(100% - 56px);
+  height: calc(100% - 86px);
+}
+
+.a5-vignette {
+  transition: opacity 480ms ease;
+}
+
+.a5-surface {
+  fill: var(--surface-3);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+.a5-arc {
+  fill: none;
+  stroke: var(--rule);
+  stroke-width: 26;
+  stroke-linecap: round;
+}
+
+.a5-fold {
+  fill: var(--surface-3);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+/* 三种形态上的标识示意（图内不加文字） */
+.a5-labelchip {
+  fill: var(--surface);
+  stroke: var(--industrial-navy);
+  stroke-width: 2.5;
+}
+
+.a5-labelchip-arc {
+  transform: rotate(-24deg);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.a5-labelchip-edge {
+  fill: var(--surface);
+  stroke: var(--industrial-navy);
+  stroke-width: 2.5;
+  transform: rotate(38deg);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* step 2：三种形态随首条补齐同步点亮 */
+.a5-vignette {
+  opacity: 0.55;
+}
+
+.a5-forms-scene.is-lit .a5-vignette {
+  opacity: 1;
+}
+
+.a5-ph {
+  position: absolute;
+  left: 28px;
+  bottom: 22px;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+}
+
+/* ── 图侧三条洞察短条（按次序建立） ─────────────────────────── */
+.a5-rail {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+}
+
+.a5-item {
+  padding: 24px 28px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 540ms ease, transform 540ms ease;
+}
+
+.a5-item:first-child {
+  opacity: 1;
+  transform: none;
+  animation: a5-rise 600ms ease 240ms both;
+}
+
+.a5-item.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.a5-item-kicker {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin: 0 0 8px;
+  font-family: var(--font-body);
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--text-mute);
+}
+
+.a5-item-kicker .hero-num {
+  font-size: 34px;
+  color: var(--accent);
+}
+
+.a5-item-line {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 28px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.a5-item-line strong {
+  font-weight: 800;
+  color: var(--text);
+}
+
+/* 三种附着形态（S021，step 2 在首条内补齐） */
+.a5-forms {
+  display: flex;
+  gap: 14px;
+  margin-top: 16px;
+  opacity: 0;
+  transition: opacity 480ms ease;
+}
+
+.a5-forms.is-in {
+  opacity: 1;
+}
+
+.a5-form {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1.5px solid var(--accent);
+  border-radius: 10px;
+  padding: 9px 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+
+.a5-forms.is-in .a5-form {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(var(--a5-i) * 240ms);
+}
+
+.a5-forms-note {
+  margin: 14px 0 0;
+  font-family: var(--font-body);
+  font-size: 26px;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 480ms ease 820ms;
+}
+
+.a5-forms-note.is-in {
+  opacity: 1;
+}
+
+/* ── 末条对照短句（S023，R009 无反向连线） ──────────────────── */
+.a5-contrast {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 16px 0 0;
+  opacity: 0;
+  transition: opacity 500ms ease 420ms;
+}
+
+.a5-contrast-wrong {
+  font-family: var(--font-body);
+  font-size: 26px;
+  color: var(--text-mute);
+  text-decoration: line-through;
+  text-decoration-color: var(--industrial-orange);
+  text-decoration-thickness: 3px;
+}
+
+.a5-contrast-verdict {
+  font-family: var(--font-body);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--industrial-orange);
+}
+
+.is-in .a5-contrast {
+  opacity: 1;
+}

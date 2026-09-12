@@ -1,0 +1,168 @@
+/* A011 · 回到使用环境 — chapter prefix .a11- */
+
+.a11-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+  animation: a11-rise 620ms ease both;
+}
+
+@keyframes a11-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 疑问卡 ×2 与实景图并置（R020 图内不叠文字） ────────────── */
+.a11-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 36px;
+  margin-top: 36px;
+}
+
+.a11-cards {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.a11-issue {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  padding: 26px 30px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 520ms ease, transform 520ms ease;
+}
+
+.a11-issue:first-child {
+  opacity: 1;
+  transform: none;
+  animation: a11-rise 600ms ease 200ms both;
+}
+
+.a11-issue.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.a11-q {
+  position: relative;
+  margin: 0;
+  padding-left: 34px;
+  font-family: var(--font-body);
+  font-size: 31px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--industrial-navy);
+}
+
+.a11-q::before {
+  content: "？";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--industrial-orange);
+}
+
+.a11-image {
+  position: relative;
+  width: 52%;
+  margin: 0;
+  animation: a11-rise 640ms ease 140ms both;
+}
+
+.a11-scene {
+  position: absolute;
+  inset: 26px 26px 56px;
+  width: calc(100% - 52px);
+  height: calc(100% - 82px);
+}
+
+.a11-machine {
+  fill: var(--surface-3);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+.a11-face {
+  fill: var(--surface);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+/* 标签拟贴位置（虚线）与可能遮挡（橙），操作面斜线示警 */
+.a11-labelpos {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-dasharray: 9 7;
+}
+
+.a11-blocker {
+  fill: var(--industrial-orange);
+  fill-opacity: 0.3;
+  stroke: var(--industrial-orange);
+  stroke-width: 2.5;
+}
+
+.a11-opface line {
+  stroke: var(--industrial-warm-line);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.a11-ph {
+  position: absolute;
+  left: 26px;
+  bottom: 20px;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+}
+
+/* ── 底部判断卡（R021：不引出新的环境项） ───────────────────── */
+.a11-answer {
+  flex: 0 0 auto;
+  margin-top: 30px;
+  padding: 24px 32px;
+  background: var(--surface-2);
+  border-radius: var(--r-card);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 560ms ease, transform 560ms ease;
+}
+
+.a11-answer.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.a11-answer-line {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 32px;
+  color: var(--text-2);
+}
+
+.a11-answer-line strong {
+  font-weight: 800;
+  color: var(--industrial-green);
+}

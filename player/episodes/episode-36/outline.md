@@ -2,7 +2,7 @@
 
 <!-- GLOBAL:metadata:BEGIN -->
 > **编译状态**：awaiting-checkpoint-plan
-> **主题**：pending（Checkpoint Plan 待选）
+> **主题**：industrial-clarity（工业清晰）
 > **正文时长**：约 5 分 51 秒
 > **章节**：13
 > **Base scenes**：13
