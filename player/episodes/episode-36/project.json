@@ -1,12 +1,12 @@
 {
   "id": "episode-36",
-  "title": "第 36 期（待制作）",
-  "status": "planned",
-  "theme": "active-identification-note",
+  "title": "标识载体设计：尺寸、位置、耐久与信息层级",
+  "status": "in-progress",
+  "theme": "industrial-clarity",
   "progress": {
-    "completed": 0,
-    "total": 0,
-    "current": null
+    "completed": 1,
+    "total": 13,
+    "current": "a001-opening-limited-space"
   },
-  "updatedAt": "2026-09-02"
+  "updatedAt": "2026-09-12"
 }

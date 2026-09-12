@@ -1,0 +1,550 @@
+/* a001-opening-limited-space · time-anchor-opening
+   mechanism: anchor-and-context — 标题锚与现场图持续承载，大小矛盾与问题重构在固定区域依次补充
+   prefix: ol- · theme: industrial-clarity */
+
+.ol-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── headline（S001）+ 课程定位 kicker ────────────────── */
+
+.ol-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 32px;
+  animation: ol-rise 620ms var(--ease-soft) both;
+}
+
+.ol-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--industrial-navy);
+  letter-spacing: 0.01em;
+}
+
+.ol-headline em {
+  font-style: normal;
+  color: var(--industrial-green);
+  transition: color var(--dur-base) var(--ease-soft);
+}
+
+.ol-scene.is-reframed .ol-headline em {
+  text-decoration: underline;
+  text-decoration-thickness: 6px;
+  text-underline-offset: 12px;
+  text-decoration-color: var(--industrial-green-line);
+}
+
+.ol-kicker {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+/* ── 主区：现场锚（媒体 + 示意 + 片头主题带）与问题栏 ── */
+
+.ol-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 940px 1fr;
+  gap: 56px;
+  animation: ol-rise 620ms var(--ease-soft) 130ms both;
+}
+
+.ol-media {
+  margin: 0;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: opacity var(--dur-slow) var(--ease-soft);
+}
+
+/* ── 媒体框：M001 placeholder + 附着关系示意带 ───────── */
+
+.ol-frame {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 14px;
+  background: var(--surface);
+  border: 2px solid var(--rule);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  transition: opacity var(--dur-slow) var(--ease-soft);
+}
+
+.ol-scene:not(.is-scene-on) .ol-frame {
+  opacity: 0.45;
+}
+
+.ol-scene.is-framed .ol-frame {
+  opacity: 0.55;
+}
+
+.ol-placeholder {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 12px;
+  border: 2px dashed var(--rule);
+  border-radius: 14px;
+  background: var(--surface-2);
+}
+
+.ol-ph-tag {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.22em;
+  color: var(--industrial-blue);
+  border: 2px solid var(--industrial-blue);
+  background: var(--industrial-cyan);
+  padding: 6px 16px;
+  border-radius: 8px;
+}
+
+.ol-ph-title {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--industrial-navy);
+}
+
+.ol-ph-note {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  color: var(--text-mute);
+}
+
+/* ── 示意带：零件表面 + 可用区域 + 三种尝试 ──────────── */
+
+.ol-schematic {
+  height: 216px;
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 520ms var(--ease-soft), transform 520ms var(--ease-soft);
+}
+
+.ol-schematic.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.ol-sch-label {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+}
+
+.ol-sch-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+/* 零件表面 */
+.ol-part {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18px;
+  height: 74px;
+  border: 3px solid var(--industrial-navy);
+  border-radius: 12px;
+  background: var(--surface-3);
+}
+
+.ol-part-name {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.14em;
+  color: var(--industrial-navy);
+}
+
+/* 零件上的其他要素：螺孔与凹槽（做大时会被挡住） */
+.ol-part-feats {
+  position: absolute;
+  right: 20%;
+  top: 50%;
+  width: 120px;
+  height: 0;
+}
+
+.ol-part-feats::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -8px;
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--industrial-navy);
+  border-radius: 50%;
+  background: var(--surface);
+}
+
+.ol-part-feats::after {
+  content: "";
+  position: absolute;
+  left: 34px;
+  top: -2px;
+  width: 86px;
+  height: 0;
+  border-top: 3px solid var(--industrial-navy);
+  box-shadow: 0 -12px 0 -1px var(--industrial-navy);
+  opacity: 0.55;
+}
+
+/* 可用的一小块（S003，step 2 醒立） */
+.ol-zone {
+  position: absolute;
+  left: 210px;
+  top: 8px;
+  bottom: 8px;
+  width: 216px;
+  border: 3px dashed var(--industrial-green);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--industrial-mint) 72%, transparent);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 460ms var(--ease-soft), transform 460ms var(--ease-overshoot);
+}
+
+.ol-zone.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.ol-zone i {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: var(--industrial-green);
+  white-space: nowrap;
+}
+
+/* 尝试一：做大（step 3 落下，越过可用区域并压住其他要素） */
+.ol-att {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 0 18px;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 420ms var(--ease-soft), transform 460ms var(--ease-soft),
+    filter var(--dur-base) var(--ease-soft);
+}
+
+.ol-att-big {
+  left: 64px;
+  bottom: 66px;
+  width: 46%;
+  height: 58px;
+  background: var(--industrial-amber);
+  border: 3px solid var(--industrial-orange);
+  transform: translateY(-26px);
+}
+
+.ol-att-small {
+  left: 60%;
+  bottom: 30px;
+  width: 150px;
+  height: 34px;
+  background: var(--surface);
+  border: 2px dashed var(--industrial-orange);
+  transform: translateY(-14px);
+}
+
+.ol-att-big.is-on {
+  opacity: 1;
+  transform: none;
+  transition-delay: 160ms;
+}
+
+.ol-att-small.is-on {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1250ms;
+}
+
+.ol-att.is-dim,
+.ol-scene.is-reframed .ol-att {
+  opacity: 0.32;
+  filter: saturate(0.5);
+}
+
+.ol-att-name {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  color: var(--industrial-orange);
+  white-space: nowrap;
+}
+
+.ol-att-verdict {
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 900;
+  color: var(--industrial-orange);
+  white-space: nowrap;
+}
+
+.ol-att-small .ol-att-name {
+  font-size: 13px;
+  filter: blur(1.4px);
+}
+
+/* 尝试三：贴合（step 4 落进可用区域，成为正解） */
+.ol-fit {
+  position: absolute;
+  left: 216px;
+  bottom: 26px;
+  width: 210px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--industrial-blue);
+  color: var(--surface);
+  font-family: var(--font-display-cn);
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  transform: scale(0.92) translateY(8px);
+  transition: opacity 440ms var(--ease-soft), transform 520ms var(--ease-overshoot),
+    box-shadow 520ms var(--ease-soft);
+}
+
+.ol-fit.is-on {
+  opacity: 1;
+  transform: none;
+  box-shadow: 0 0 0 4px var(--industrial-green-line);
+}
+
+/* 图注与片头主题带（time-anchor · S002 exact） */
+.ol-cap {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-mute);
+}
+
+.ol-anchor {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: var(--rule-w) solid var(--rule);
+  padding-top: 14px;
+  transition: opacity var(--dur-slow) var(--ease-soft);
+}
+
+.ol-anchor-lead {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+}
+
+.ol-anchor-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--industrial-navy);
+  letter-spacing: 0.01em;
+}
+
+/* ── 问题栏（context-line · U002） ───────────────────── */
+
+.ol-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ol-rail-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 460ms var(--ease-soft), transform 460ms var(--ease-soft);
+}
+
+.ol-rail-lead.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.ol-tension {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.ol-try {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 22px 26px;
+  background: var(--industrial-amber);
+  border: 2px solid var(--industrial-orange);
+  border-radius: var(--r-card);
+  opacity: 0;
+  transform: translateX(26px);
+  transition: opacity 460ms var(--ease-soft), transform 480ms var(--ease-soft),
+    filter var(--dur-base) var(--ease-soft);
+}
+
+.ol-try.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.ol-try.is-late.is-on {
+  transition-delay: 1150ms;
+}
+
+.ol-try.is-dim {
+  opacity: 0.38;
+  filter: saturate(0.55);
+}
+
+.ol-scene.is-framed .ol-try {
+  opacity: 0.3;
+  filter: saturate(0.5);
+}
+
+.ol-try-key {
+  font-size: 52px;
+  color: var(--industrial-orange);
+}
+
+.ol-try-body h2 {
+  margin: 0 0 4px;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--industrial-navy);
+}
+
+.ol-try-body p {
+  margin: 0;
+  font-size: 20px;
+  color: var(--text-2);
+}
+
+/* ── 问题重构（S005，step 4 成为焦点） ───────────────── */
+
+.ol-reframe {
+  margin-top: 6px;
+  padding: 24px 26px;
+  background: var(--industrial-mint);
+  border: 2px solid var(--industrial-green-line);
+  border-radius: var(--r-card);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 500ms var(--ease-soft), transform 520ms var(--ease-soft);
+}
+
+.ol-reframe.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.ol-reframe-no {
+  margin: 0 0 8px;
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--text-mute);
+}
+
+.ol-reframe-yes {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--industrial-navy);
+}
+
+.ol-reframe-yes em {
+  font-style: normal;
+  color: var(--industrial-green);
+}
+
+/* ── 收束（step 5） ──────────────────────────────────── */
+
+.ol-closing {
+  margin-top: auto;
+  padding: 20px 26px;
+  background: var(--industrial-navy);
+  border-radius: var(--r-card);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 500ms var(--ease-soft), transform 520ms var(--ease-soft);
+}
+
+.ol-closing.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.ol-closing p {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--surface);
+}
+
+.ol-closing em {
+  font-style: normal;
+  border-bottom: 4px solid var(--industrial-green-line);
+  padding-bottom: 2px;
+}
+
+/* ── 入场 ────────────────────────────────────────────── */
+
+@keyframes ol-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
