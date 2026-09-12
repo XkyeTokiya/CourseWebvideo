@@ -1,0 +1,250 @@
+/* A003 · 载体与附着物 — chapter prefix .a3- */
+
+.a3-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 60px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+  animation: a3-rise 620ms ease both;
+}
+
+@keyframes a3-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 左右对象对照 + 中部关系判定 ────────────────────────────── */
+.a3-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 36px;
+  margin-top: 34px;
+}
+
+.a3-panel {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 34px;
+}
+
+/* 左区：载体（step 1 建立） */
+.a3-left {
+  animation: a3-rise 620ms ease 140ms both;
+}
+
+/* 右区：附着物（step 2 补齐，空位预告由 flex 槽位保留） */
+.a3-right {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 560ms ease, transform 560ms ease;
+}
+
+.a3-right.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.a3-glyph {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  padding: 8px 0 18px;
+}
+
+.a3-labelbody {
+  fill: var(--surface);
+  stroke: var(--industrial-navy);
+  stroke-width: 2.5;
+}
+
+.a3-code rect,
+.a3-qr rect {
+  fill: var(--industrial-navy);
+}
+
+.a3-textbar {
+  fill: var(--rule);
+}
+
+.a3-partbody {
+  fill: var(--surface-3);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+/* 贴在物件表面的载体：不悬浮（C003） */
+.a3-tag rect {
+  fill: var(--surface);
+  stroke: var(--industrial-navy);
+  stroke-width: 2;
+}
+
+.a3-tag rect + rect {
+  fill: var(--industrial-navy);
+  stroke: none;
+}
+
+/* 贴合缝：step 2 描线强调 */
+.a3-seam {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 680ms ease 520ms;
+}
+
+.a3-right.is-in .a3-seam {
+  stroke-dashoffset: 0;
+}
+
+.a3-name {
+  margin: 0 0 8px;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+}
+
+.a3-desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 26px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* 短标注：不是被动的背景（step 2 强调） */
+.a3-note {
+  margin: 18px 0 0;
+  font-family: var(--font-body);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--industrial-orange);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 480ms ease 760ms, transform 480ms ease 760ms;
+}
+
+.a3-right.is-in .a3-note {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── 中部 pivot：关系判定区（step 3 收束，R004/R005） ──────── */
+.a3-pivot {
+  flex: 0 0 30%;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  opacity: 0.38;
+  transition: opacity 560ms ease, background-color 560ms ease;
+}
+
+.a3-pivot.is-in {
+  opacity: 1;
+  background: var(--card-glass-bg);
+  border-color: var(--accent);
+}
+
+.a3-pivot-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 34px 32px;
+  box-sizing: border-box;
+}
+
+.a3-pivot-tag {
+  margin: 0 0 20px;
+  align-self: flex-start;
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  padding: 6px 16px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 420ms ease 120ms, transform 420ms ease 120ms;
+}
+
+.a3-pivot-line {
+  margin: 0 0 22px;
+  font-family: var(--font-body);
+  font-size: 27px;
+  line-height: 1.45;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 480ms ease 360ms;
+}
+
+.a3-outcomes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.a3-outcomes li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 460ms ease, transform 460ms ease;
+}
+
+.a3-outcomes li::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--industrial-green);
+  flex: 0 0 auto;
+}
+
+.a3-pivot.is-in .a3-pivot-tag {
+  opacity: 1;
+  transform: none;
+}
+
+.a3-pivot.is-in .a3-pivot-line {
+  opacity: 1;
+}
+
+.a3-pivot.is-in .a3-outcomes li {
+  opacity: 1;
+  transform: none;
+}
+
+.a3-pivot.is-in .a3-outcomes li:nth-child(1) {
+  transition-delay: 560ms;
+}
+
+.a3-pivot.is-in .a3-outcomes li:nth-child(2) {
+  transition-delay: 780ms;
+}
+
+.a3-pivot.is-in .a3-outcomes li:nth-child(3) {
+  transition-delay: 1000ms;
+}

@@ -1,0 +1,199 @@
+/* A002 · 一体化定义与四类维度 — chapter prefix .a2- */
+
+.a2-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 60px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+  animation: a2-rise 620ms ease both;
+}
+
+@keyframes a2-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 定义区（S007，固定在上） ───────────────────────────────── */
+.a2-def {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  padding: 26px 36px;
+  background: var(--surface-2);
+  border-radius: var(--r-card);
+  margin-top: 30px;
+  animation: a2-rise 620ms ease 140ms both;
+}
+
+.a2-def-text {
+  margin: 0;
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 36px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.a2-def-text em {
+  font-style: normal;
+  font-weight: 700;
+}
+
+.a2-def-text strong {
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* 一体化合并示意：两形状滑入同一围合 */
+.a2-merge {
+  flex: 0 0 auto;
+  width: 430px;
+  height: auto;
+}
+
+.a2-merge-enclosure {
+  fill: none;
+  stroke: var(--text-mute);
+  stroke-width: 2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: a2-draw 720ms ease 560ms forwards;
+}
+
+@keyframes a2-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.a2-merge-carrier {
+  fill: var(--surface);
+  stroke: var(--industrial-navy);
+  stroke-width: 2.5;
+  animation: a2-slide-left 560ms ease 180ms both;
+}
+
+.a2-merge-attached {
+  fill: var(--surface);
+  stroke: var(--industrial-green);
+  stroke-width: 2.5;
+  animation: a2-slide-right 560ms ease 300ms both;
+}
+
+@keyframes a2-slide-left {
+  from {
+    opacity: 0;
+    transform: translateX(-46px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a2-slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(46px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.a2-merge-label {
+  font-family: var(--font-body);
+  font-size: 26px;
+  font-weight: 700;
+  fill: var(--text-2);
+  opacity: 0;
+  animation: a2-fade 380ms ease 920ms forwards;
+}
+
+@keyframes a2-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── 四张等权维度卡（S008/S009/S010，空槽预告→依次补齐） ────── */
+.a2-cards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 34px;
+}
+
+.a2-card {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 28px;
+  opacity: 0.3;
+  transition: opacity 560ms ease;
+}
+
+.a2-card.is-in {
+  opacity: 1;
+  transition-delay: calc(var(--a2-i) * 1050ms);
+}
+
+.a2-card > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 440ms ease, transform 440ms ease;
+}
+
+.a2-card.is-in > * {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(var(--a2-i) * 1050ms);
+}
+
+.a2-card-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.a2-card-kicker .hero-num {
+  font-size: 44px;
+  color: var(--accent);
+}
+
+.a2-card-name {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+}
+
+.a2-card-rule {
+  display: block;
+  width: 100%;
+  margin: 0 0 16px;
+}
+
+.a2-card-desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 26px;
+  line-height: 1.5;
+  color: var(--text-2);
+}

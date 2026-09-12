@@ -1,0 +1,244 @@
+/* A013 · 设计收束 — chapter prefix .a13- */
+
+.a13-head {
+  flex: 0 0 auto;
+}
+
+.a13-title {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+  animation: a13-rise 620ms ease both;
+}
+
+.a13-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -14px;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 640ms ease;
+}
+
+.a13-head.is-focal .a13-title::after {
+  transform: scaleX(1);
+}
+
+@keyframes a13-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 共同锚点（回收 A001 有限附着区域，持续在场） ───────────── */
+.a13-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 36px;
+  margin-top: 38px;
+}
+
+.a13-anchor {
+  width: 45%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 28px;
+  animation: a13-rise 640ms ease 140ms both;
+}
+
+.a13-scene {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+.a13-part {
+  fill: var(--surface-3);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+.a13-slice {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-dasharray: 9 7;
+}
+
+.a13-mini {
+  fill: var(--surface);
+  stroke: var(--industrial-navy);
+  stroke-width: 2.5;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 460ms ease, transform 460ms ease;
+}
+
+.a13-pair {
+  display: flex;
+  gap: 26px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 480ms ease, transform 480ms ease;
+}
+
+.a13-pair.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.a13-pair.is-in .a13-mini {
+  opacity: 1;
+  transform: none;
+  transition-delay: 200ms;
+}
+
+.a13-pair-row {
+  flex: 1;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 27px;
+  color: var(--text-2);
+  text-align: center;
+}
+
+.a13-pair-name {
+  font-weight: 800;
+  color: var(--industrial-navy);
+  margin-right: 8px;
+}
+
+/* ── 关联分组（S056/S057，等权围合） ───────────────────────── */
+.a13-groups {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 22px;
+}
+
+.a13-group {
+  padding: 28px 32px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 540ms ease, transform 540ms ease;
+}
+
+.a13-group.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.a13-group.is-late {
+  transition-delay: 900ms;
+}
+
+.a13-group-kicker {
+  margin: 0 0 8px;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--industrial-navy);
+}
+
+.a13-group-line {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 28px;
+  color: var(--text-2);
+}
+
+/* ── 边界区（S058，R025 不引入新设计项） ───────────────────── */
+.a13-boundary {
+  flex: 0 0 auto;
+  margin-top: 30px;
+  padding: 24px 32px;
+  background: var(--surface-2);
+  border-radius: var(--r-card);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 560ms ease, transform 560ms ease;
+}
+
+.a13-boundary.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.a13-defer {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--industrial-orange);
+}
+
+.a13-pass {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 480ms ease, transform 480ms ease;
+}
+
+.a13-pass.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.a13-pass-lead {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 28px;
+  color: var(--text-2);
+  flex: 0 0 auto;
+}
+
+.a13-pass-strip {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+}
+
+.a13-pass-item {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1.5px solid var(--accent);
+  border-radius: 10px;
+  padding: 9px 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.a13-pass.is-in .a13-pass-item {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(var(--a13-i) * 180ms);
+}
