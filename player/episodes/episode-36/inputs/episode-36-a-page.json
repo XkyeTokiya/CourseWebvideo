@@ -1,0 +1,1371 @@
+{
+  "schema_version": "courseplay-a-page/v6",
+  "document_kind": "production",
+  "episode_id": "episode-36",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "第 36 集标题、来源范围、前置关系、相邻分集边界与时长责任",
+      "source_locator": "已确认课程架构，Episode Architecture 第 35–37 集",
+      "verification_status": "not applicable",
+      "allowed_use": "控制本集边界、去重与下游关系"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "标识载体设计是综合考虑载体本身及附着物的大小关系、布局、功能和美观的一体化设计",
+      "source_locator": "主教材，4.1.3“标识载体设计”首段",
+      "verification_status": "not applicable",
+      "allowed_use": "建立本集设计问题与总定义"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "设计不仅考虑载体形态，还要根据附着物特点考虑材质和张贴位置",
+      "source_locator": "主教材，4.1.3“标识载体设计”首段",
+      "verification_status": "not applicable",
+      "allowed_use": "解释载体—附着物协同与位置决策"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "出于产品营销、防伪等因素，关键信息应突出，为产品增加美感并吸引、愉悦用户",
+      "source_locator": "主教材，4.1.3“标识载体设计”首段",
+      "verification_status": "not applicable",
+      "allowed_use": "解释功能、美观与信息层级的并列目标"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "汽车领域示例包含营销和防伪作用，图 4-7 左侧为圆形布局，右侧为长方形布局",
+      "source_locator": "主教材，4.1.3；教材图 4-7“汽车行业标识载体设计示例”",
+      "verification_status": "not applicable",
+      "allowed_use": "作为两种版式的教材示例与比较锚点"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "标识载体设计可以使用专业软件、在线专用设计工具或办公软件排版完成",
+      "source_locator": "主教材，4.1.3 末段",
+      "verification_status": "not applicable",
+      "allowed_use": "说明工具是实现手段而非本集操作内容"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "“对象与附着物关系→版式与空间→材质/位置→功能与美观→关键信息层级→设计复核”的教学组织链",
+      "source_locator": "本任务包基于 E002–E006 的组织",
+      "verification_status": "not applicable",
+      "allowed_use": "组织讲稿与确定性关系图"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "通用工业现场将标签贴附到零部件或包装上的设计评审情境",
+      "source_locator": "本任务包教学设计，讲稿 N001、N010–N011",
+      "verification_status": "not applicable",
+      "allowed_use": "让抽象的一体化设计问题可视化"
+    },
+    {
+      "evidence_id": "E009",
+      "claim_or_asset": "工业设计台、仓储/制造现场和产品包装的纪实图片媒体提案",
+      "source_locator": "本任务包媒体规划，M001–M003",
+      "verification_status": "not applicable",
+      "allowed_use": "承载通用场景，不承载标准、参数或企业事实"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "【视频标题】\n标识载体设计：尺寸、位置、耐久与信息层级\n\n【开场导入】\n先看一个很常见的场面。车间里，一枚标识要贴到某个零件上。零件表面只有一小块地方能用。标识做大了，装不上，还会挡住别的东西；做小了，上面的关键信息又看不清。这时候你会发现，问题不是“把标识放上去”这么简单。它还得和所贴附的那个物件配合起来。这一期，我们就聊怎么把这两者当成一件事来设计。\n\n",
+      "teaching_purpose": "用片头标题和通用车间贴标场景提出全片问题：标识不能只贴上去，必须和附着物一起设计",
+      "single_message": "有限附着空间里，标识载体要和附着物一起设计",
+      "screen": {
+        "title": {
+          "screen_item_id": "S001",
+          "guidance_text": "标识载体要和附着物一起设计",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E001",
+            "E008"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G001",
+            "items": [
+              {
+                "screen_item_id": "S002",
+                "guidance_text": "片头给出本集标题《标识载体设计：尺寸、位置、耐久与信息层级》",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E001"
+                ]
+              },
+              {
+                "screen_item_id": "S003",
+                "guidance_text": "标识要贴到某个零件上，零件表面只有一小块地方能用",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G002",
+            "items": [
+              {
+                "screen_item_id": "S004",
+                "guidance_text": "标识做大了装不上、还会挡住别的东西；做小了关键信息又看不清",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S005",
+                "guidance_text": "问题不是把标识放上去，而是让它和所贴附的物件配合、一起设计",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002",
+                  "E008"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "G001",
+          "relation": "先立片头主题，再落到现场问题",
+          "to": "G002",
+          "direction": "context"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C001",
+          "instruction": "片头与开场只建立通用车间情境，不冒充教材企业案例或真实项目数据",
+          "evidence_refs": [
+            "E001",
+            "E008"
+          ]
+        }
+      ],
+      "entry_condition": "观众尚未接触标识载体设计概念",
+      "exit_condition": "观众接受标识要和附着物一起设计，并期待具体设计维度",
+      "timing": {
+        "char_equivalent": 151.0,
+        "min_seconds": 38,
+        "target_seconds": 39,
+        "max_seconds": 42,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": [],
+      "nx": "【正文讲解】\n把两者当成一件事来设计，就是标识载体设计。它要同时考虑几件事：载体和附着物谁大谁小，版面怎么排，要实现什么功能，还要看整体好不好看。\n\n",
+      "teaching_purpose": "给出 4.1.3 的一体化设计定义，并把设计内容展开为大小关系、布局、功能、美观四类维度",
+      "single_message": "标识载体设计把载体和附着物放进同一个设计对象",
+      "screen": {
+        "title": {
+          "screen_item_id": "S006",
+          "guidance_text": "标识载体设计是载体与附着物的一体化设计",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G003",
+            "items": [
+              {
+                "screen_item_id": "S007",
+                "guidance_text": "一体化设计把载体本身和附着物放在同一个设计对象里",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G004",
+            "items": [
+              {
+                "screen_item_id": "S008",
+                "guidance_text": "大小关系：先确定载体和附着物谁大谁小",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G005",
+            "items": [
+              {
+                "screen_item_id": "S009",
+                "guidance_text": "布局：版面怎么排，可用的版面空间有多大",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G006",
+            "items": [
+              {
+                "screen_item_id": "S010",
+                "guidance_text": "功能与美观：要实现什么功能，还要看整体好不好看",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002",
+                  "E004"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R002",
+          "from": "G003",
+          "relation": "由定义展开为四类维度",
+          "to": "G004",
+          "direction": "convergent"
+        },
+        {
+          "relation_id": "R003",
+          "from": "G005",
+          "relation": "四类维度在同一版面上同时成立",
+          "to": "G006",
+          "direction": "convergent"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C002",
+          "instruction": "不补充教材未列出的设计维度，也不给四类维度排固定优先级",
+          "evidence_refs": [
+            "E002",
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "观众已接受标识要和附着物一起设计",
+      "exit_condition": "观众能说出标识载体设计要同时处理的四类维度",
+      "timing": {
+        "char_equivalent": 63.0,
+        "min_seconds": 16,
+        "target_seconds": 16,
+        "max_seconds": 18,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": [],
+      "nx": "先分清两个词。载体，是承载编码的那一层，比如一张标签。附着物，就是载体贴上去的那个物件。附着物不是被动的背景。两者的关系，决定了标识最后怎么被看见、怎么被使用、怎么被维护。\n\n",
+      "teaching_purpose": "分清载体与附着物两个对象，并建立两者关系决定标识如何被看见、使用和维护",
+      "single_message": "附着物不是被动背景，载体与附着物的关系决定标识的命运",
+      "screen": {
+        "title": {
+          "screen_item_id": "S011",
+          "guidance_text": "载体与附着物的关系决定标识如何被使用",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G007",
+            "items": [
+              {
+                "screen_item_id": "S012",
+                "guidance_text": "载体是承载编码的那一层，比如一张标签",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G008",
+            "items": [
+              {
+                "screen_item_id": "S013",
+                "guidance_text": "附着物就是载体贴上去的那个物件，不是被动的背景",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G009",
+            "items": [
+              {
+                "screen_item_id": "S014",
+                "guidance_text": "两者的关系决定标识最后怎么被看见、怎么被使用、怎么被维护",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002",
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R004",
+          "from": "G007",
+          "relation": "两者共同构成设计关系",
+          "to": "G008",
+          "direction": "same-anchor"
+        },
+        {
+          "relation_id": "R005",
+          "from": "G008",
+          "relation": "关系决定标识的使用命运",
+          "to": "G009",
+          "direction": "forward"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C003",
+          "instruction": "不把标识载体画成脱离附着物的悬浮图形或独立对象",
+          "evidence_refs": [
+            "E002"
+          ]
+        }
+      ],
+      "entry_condition": "观众已知道一体化设计包含四类维度",
+      "exit_condition": "观众能区分载体与附着物，并知道两者是关系对象",
+      "timing": {
+        "char_equivalent": 75.0,
+        "min_seconds": 19,
+        "target_seconds": 20,
+        "max_seconds": 21,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": [],
+      "nx": "设计的时候有一件事不能做：先画好一个圆形或者一个方形，再硬贴到产品上去。要反过来。先看清附着物的外形，再量一下可用的区域有多大，再看两者怎么接触。这些看清楚了，才决定载体的形状和版面。没有一套比例能套用到所有产品。真正要服从这个关系的，是版面。\n\n",
+      "teaching_purpose": "建立设计顺序：先看附着物外形、可用区域与接触关系，再决定载体形状和版面",
+      "single_message": "版式服从载体与附着物的关系，不存在通用比例",
+      "screen": {
+        "title": {
+          "screen_item_id": "S015",
+          "guidance_text": "版式要服从载体与附着物的关系",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E002",
+            "E007"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G010",
+            "items": [
+              {
+                "screen_item_id": "S016",
+                "guidance_text": "不能先画好圆形或者方形，再硬贴到产品上去",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G011",
+            "items": [
+              {
+                "screen_item_id": "S017",
+                "guidance_text": "先看清附着物的外形",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G012",
+            "items": [
+              {
+                "screen_item_id": "S018",
+                "guidance_text": "再量一下可用的区域有多大，再看两者怎么接触",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G013",
+            "items": [
+              {
+                "screen_item_id": "S019",
+                "guidance_text": "这些看清楚了才决定载体的形状和版面；没有一套比例能套用到所有产品",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002",
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R006",
+          "from": "G010",
+          "relation": "先否定再建立",
+          "to": "G011",
+          "direction": "pivot"
+        },
+        {
+          "relation_id": "R007",
+          "from": "G012",
+          "relation": "看清对象后才决定形状与版面",
+          "to": "G013",
+          "direction": "forward"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C004",
+          "instruction": "不给出具体尺寸、比例或坐标，也不把某一版式写成通用规则",
+          "evidence_refs": [
+            "E001",
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "观众知道载体与附着物是关系对象",
+      "exit_condition": "观众能按先附着物、后版式的顺序说明设计出发点",
+      "timing": {
+        "char_equivalent": 110.0,
+        "min_seconds": 28,
+        "target_seconds": 29,
+        "max_seconds": 30,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": [],
+      "nx": "这层关系还会牵动两件事：用什么材质，贴在什么位置。同一个标识内容，放在平整的表面、弧面或者包装的边缘，要考虑的东西不一样。接触方式变了，合适的材质和位置也跟着变。所以这两件事，是跟着附着物一起定下来的。先定好材质再去找地方贴，这个顺序是反的。\n\n",
+      "teaching_purpose": "解释附着物特点会牵动材质与张贴位置，两者与对象一起决策",
+      "single_message": "材质和位置跟着附着物一起定，先定材质再找位置顺序是反的",
+      "screen": {
+        "title": {
+          "screen_item_id": "S020",
+          "guidance_text": "材质和张贴位置随附着物一起决定",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G014",
+            "items": [
+              {
+                "screen_item_id": "S021",
+                "guidance_text": "同一个标识内容，放在平整表面、弧面或者包装边缘，要考虑的东西不一样",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003",
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G015",
+            "items": [
+              {
+                "screen_item_id": "S022",
+                "guidance_text": "接触方式变了，合适的材质和位置也跟着变",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G016",
+            "items": [
+              {
+                "screen_item_id": "S023",
+                "guidance_text": "材质和位置是跟着附着物一起定下来的；先定好材质再去找地方贴，顺序是反的",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003",
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R008",
+          "from": "G014",
+          "relation": "对象形态牵动材质与位置",
+          "to": "G015",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R009",
+          "from": "G015",
+          "relation": "决定顺序不能颠倒",
+          "to": "G016",
+          "direction": "boundary"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C005",
+          "instruction": "不虚构材料牌号、胶黏剂型号、温度范围、耐磨等级或粘贴强度",
+          "evidence_refs": [
+            "E003"
+          ]
+        }
+      ],
+      "entry_condition": "观众已知版式服从附着物关系",
+      "exit_condition": "观众会把材质和位置与附着物一起考虑",
+      "timing": {
+        "char_equivalent": 108.0,
+        "min_seconds": 27,
+        "target_seconds": 28,
+        "max_seconds": 30,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": [],
+      "nx": "标识载体还要同时顾两头。一头是功能，一头是美观。产品营销、防伪这些需要，都要求关键信息跳出来。信息跳出来了，产品看着也更有美感，更容易吸引用户，用户看着也更舒服。功能上，关键信息要能被注意到；美观上，整体要有秩序、要耐看。这两头不是二选一，而是要在同一个版面上同时满足的。\n\n",
+      "teaching_purpose": "说明功能与美观是同一版面上的并列目标，营销与防伪要求关键信息突出",
+      "single_message": "功能与美观不是二选一，而是在同一版面上同时满足",
+      "screen": {
+        "title": {
+          "screen_item_id": "S024",
+          "guidance_text": "功能与美观在同一版面上并列成立",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E004",
+            "E007"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G017",
+            "items": [
+              {
+                "screen_item_id": "S025",
+                "guidance_text": "功能：关键信息要能被注意到",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G018",
+            "items": [
+              {
+                "screen_item_id": "S026",
+                "guidance_text": "美观：整体要有秩序、要耐看",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G019",
+            "items": [
+              {
+                "screen_item_id": "S027",
+                "guidance_text": "产品营销、防伪等因素要求关键信息突出，信息突出也让产品更有美感、更容易被接受",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R010",
+          "from": "G017",
+          "relation": "功能与美观并列，不分先后",
+          "to": "G018",
+          "direction": "convergent"
+        },
+        {
+          "relation_id": "R011",
+          "from": "G019",
+          "relation": "营销与防伪是共同来源",
+          "to": "G017",
+          "direction": "context"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C006",
+          "instruction": "不把营销效果改写成量化转化率、认证结论或安全承诺",
+          "evidence_refs": [
+            "E004"
+          ]
+        }
+      ],
+      "entry_condition": "观众已知材质和位置随附着物决定",
+      "exit_condition": "观众能说出功能与美观在版面上并列，而非互相替代",
+      "timing": {
+        "char_equivalent": 119.0,
+        "min_seconds": 30,
+        "target_seconds": 31,
+        "max_seconds": 33,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": [],
+      "nx": "不过，“关键信息突出”不等于把所有字都放大。它更像是给信息排一个先后顺序。重要的先被看到。辅助的说清楚就行，不抢镜。至于放哪些字段，字号多大，颜色占多大比例，这些都没有统一规定。也不该去套用现成的模板。\n\n",
+      "teaching_purpose": "把“关键信息突出”转译为信息先后顺序，并明确没有统一的字段、字号、颜色比例规定",
+      "single_message": "信息突出是排先后次序，不是把所有字放大，也没有统一模板",
+      "screen": {
+        "title": {
+          "screen_item_id": "S028",
+          "guidance_text": "关键信息突出是层级，不是整体放大",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E004",
+            "E007"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G020",
+            "items": [
+              {
+                "screen_item_id": "S029",
+                "guidance_text": "重要的信息先被看到，辅助信息说清楚就行、不抢镜",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G021",
+            "items": [
+              {
+                "screen_item_id": "S030",
+                "guidance_text": "放哪些字段、字号多大、颜色占多大比例，这些都没有统一规定",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004",
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G022",
+            "items": [
+              {
+                "screen_item_id": "S031",
+                "guidance_text": "也不该去套用现成的模板",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004",
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R012",
+          "from": "G020",
+          "relation": "先排主次顺序，再谈具体规格",
+          "to": "G021",
+          "direction": "forward"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C007",
+          "instruction": "不出现可读字段清单、码制或具体字号与颜色比例",
+          "evidence_refs": [
+            "E004",
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "观众已知功能与美观并列",
+      "exit_condition": "观众会用主次顺序而不是统一规格来判断信息层级",
+      "timing": {
+        "char_equivalent": 88.0,
+        "min_seconds": 22,
+        "target_seconds": 23,
+        "max_seconds": 24,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": [],
+      "nx": "再看一个例子。汽车行业里有一种标识设计，左边用的是圆形版式，右边用的是长方形版式。两种都同时考虑了营销和防伪。这个例子想说明的是：同一类设计任务，可以有不同的版面。它不是要说圆形比长方形好，也不是一个能直接搬到所有产品上的尺寸答案。\n\n",
+      "teaching_purpose": "以教材图 4-7 的汽车行业示例说明同一类设计任务可以有不同版面，并把该图限定为示例",
+      "single_message": "圆形与长方形只是两种版式示例，不代表优劣或通用尺寸答案",
+      "screen": {
+        "title": {
+          "screen_item_id": "S032",
+          "guidance_text": "同一类设计任务可以有不同的版面",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G023",
+            "items": [
+              {
+                "screen_item_id": "S033",
+                "guidance_text": "教材图 4-7 是汽车行业的标识载体设计示例",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G024",
+            "items": [
+              {
+                "screen_item_id": "S034",
+                "guidance_text": "左边用的是圆形版式，右边用的是长方形版式",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G025",
+            "items": [
+              {
+                "screen_item_id": "S035",
+                "guidance_text": "两种版式都同时考虑了营销和防伪",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G026",
+            "items": [
+              {
+                "screen_item_id": "S036",
+                "guidance_text": "它不是要说圆形比长方形好，也不是能直接搬到所有产品上的尺寸答案",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005",
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R013",
+          "from": "G023",
+          "relation": "左右两种版式对照",
+          "to": "G024",
+          "direction": "contrast"
+        },
+        {
+          "relation_id": "R014",
+          "from": "G025",
+          "relation": "示例不等于优选规则或通用尺寸",
+          "to": "G026",
+          "direction": "boundary"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C008",
+          "instruction": "不复刻、放大或猜读图 4-7 中的品牌、号码和防伪文字，也不把图中信息转写为新事实",
+          "evidence_refs": [
+            "E005"
+          ]
+        }
+      ],
+      "entry_condition": "观众已知信息层级由主次决定",
+      "exit_condition": "观众把圆形与长方形当作示例而非优选规则",
+      "timing": {
+        "char_equivalent": 106.0,
+        "min_seconds": 27,
+        "target_seconds": 28,
+        "max_seconds": 29,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": [],
+      "nx": "那么，怎么判断一个设计好不好？可以分三层来看。一层是载体和附着物的边界。一层是信息和图形在版面上怎么排。还有一层，是功能和美观有没有一起出现。",
+      "teaching_purpose": "给出复核设计的三个层次：载体与附着物边界、信息与图形的版面布局、功能与美观是否共同出现",
+      "single_message": "三层关系都成立，设计才不是简单贴一张码",
+      "screen": {
+        "title": {
+          "screen_item_id": "S037",
+          "guidance_text": "用三层关系复核一个标识设计",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E007"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G027",
+            "items": [
+              {
+                "screen_item_id": "S038",
+                "guidance_text": "第一层是载体和附着物的边界",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002",
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G028",
+            "items": [
+              {
+                "screen_item_id": "S039",
+                "guidance_text": "第二层是信息和图形在版面上怎么排",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G029",
+            "items": [
+              {
+                "screen_item_id": "S040",
+                "guidance_text": "第三层是功能和美观有没有一起出现",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004",
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R015",
+          "from": "G027",
+          "relation": "依次核对三层关系",
+          "to": "G028",
+          "direction": "sequence"
+        },
+        {
+          "relation_id": "R016",
+          "from": "G028",
+          "relation": "依次核对三层关系",
+          "to": "G029",
+          "direction": "sequence"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C009",
+          "instruction": "三层关系是教学复核，不是认证流程，也不产生自动合格结论",
+          "evidence_refs": [
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "观众已看过教材示例",
+      "exit_condition": "观众能按三层关系检查一个设计",
+      "timing": {
+        "char_equivalent": 64.0,
+        "min_seconds": 16,
+        "target_seconds": 17,
+        "max_seconds": 18,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A010",
+      "callback_a_ids": [],
+      "nx": "把这三层关系排成一个复核顺序。先看对象是什么，能用的区域在哪里。再看版面排得顺不顺。接着回来核对材质和位置合不合适。最后看关键信息和整体协不协调。这三层都站得住，设计才不是简单贴一张码。如果只盯着那一个码，另外两层不管，后面用起来、维护起来就会缺依据。所以看到一张做得很精致的标签，别只问好不好看。还要多问几句：它和附着物相称吗？贴的位置有依据吗？关键信息分出了主次吗？\n\n",
+      "teaching_purpose": "把三层关系排成复核顺序，并把追问从“好不好看”转向相称、依据和主次",
+      "single_message": "复核顺序先对象后版面再材质位置，最后核对关键信息与整体协调",
+      "screen": {
+        "title": {
+          "screen_item_id": "S041",
+          "guidance_text": "把三层关系排成一条复核顺序",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E007"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G030",
+            "items": [
+              {
+                "screen_item_id": "S042",
+                "guidance_text": "先看对象是什么、能用的区域在哪里",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G031",
+            "items": [
+              {
+                "screen_item_id": "S043",
+                "guidance_text": "再看版面排得顺不顺",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G032",
+            "items": [
+              {
+                "screen_item_id": "S044",
+                "guidance_text": "接着回来核对材质和位置合不合适，最后看关键信息和整体协不协调",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003",
+                  "E004",
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G033",
+            "items": [
+              {
+                "screen_item_id": "S045",
+                "guidance_text": "只盯一个码、另外两层不管，后续使用和维护就会缺依据；看到精致标签还要追问相称、依据和主次",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R017",
+          "from": "G030",
+          "relation": "复核先后",
+          "to": "G031",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R018",
+          "from": "G031",
+          "relation": "轮到材质与位置",
+          "to": "G032",
+          "direction": "forward"
+        },
+        {
+          "relation_id": "R019",
+          "from": "G032",
+          "relation": "回到整体判断",
+          "to": "G033",
+          "direction": "convergent"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C010",
+          "instruction": "复核顺序只作为解释性叙事，不写成评分表、检查清单或作业要求",
+          "evidence_refs": [
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "观众已知三层关系",
+      "exit_condition": "观众会按对象—版面—材质位置—信息整体的顺序复核设计",
+      "timing": {
+        "char_equivalent": 167.0,
+        "min_seconds": 42,
+        "target_seconds": 44,
+        "max_seconds": 46,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A011",
+      "callback_a_ids": [],
+      "nx": "这些判断，最后都要回到使用环境。标签会不会被挡住？会不会和操作面打架？维护的时候还看得见吗？答案不在标签本身，而在具体的对象和位置上。\n\n",
+      "teaching_purpose": "把判断落到使用环境：遮挡、与操作面冲突、维护可见性，答案在具体对象和位置上",
+      "single_message": "设计是否成立要在具体对象和使用位置上回答",
+      "screen": {
+        "title": {
+          "screen_item_id": "S046",
+          "guidance_text": "设计判断要回到使用环境",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003",
+            "E008"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G034",
+            "items": [
+              {
+                "screen_item_id": "S047",
+                "guidance_text": "标签会不会被挡住、会不会和操作面打架",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003",
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G035",
+            "items": [
+              {
+                "screen_item_id": "S048",
+                "guidance_text": "维护的时候还看不看得见",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G036",
+            "items": [
+              {
+                "screen_item_id": "S049",
+                "guidance_text": "答案不在标签本身，而在具体的对象和位置上",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003",
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R020",
+          "from": "G034",
+          "relation": "环境提出疑问",
+          "to": "G035",
+          "direction": "context"
+        },
+        {
+          "relation_id": "R021",
+          "from": "G035",
+          "relation": "回到对象与位置作答",
+          "to": "G036",
+          "direction": "convergent"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C011",
+          "instruction": "不给出耐久数值，也不把某种材质或位置说成普遍正确",
+          "evidence_refs": [
+            "E001",
+            "E003"
+          ]
+        }
+      ],
+      "entry_condition": "观众已知复核顺序",
+      "exit_condition": "观众会把遮挡、冲突和可见性带回具体对象与位置",
+      "timing": {
+        "char_equivalent": 60.0,
+        "min_seconds": 15,
+        "target_seconds": 16,
+        "max_seconds": 17,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A012",
+      "callback_a_ids": [],
+      "nx": "至于用什么工具，可以不一样：专业软件可以，在线的专用设计工具可以，办公软件的排版功能也可以。工具只负责把你已经想清楚的版面关系表达出来，替代不了你的判断。附着物、材质、位置、信息主次，这些还得你自己想清楚。\n\n",
+      "teaching_purpose": "说明专业软件、在线专用设计工具和办公软件排版都是表达手段，不能替代设计判断",
+      "single_message": "工具只把已经想清楚的版面关系表达出来，替代不了判断",
+      "screen": {
+        "title": {
+          "screen_item_id": "S050",
+          "guidance_text": "工具是表达手段，替代不了判断",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E006"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G037",
+            "items": [
+              {
+                "screen_item_id": "S051",
+                "guidance_text": "专业软件、在线专用设计工具、办公软件排版都可以用",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G038",
+            "items": [
+              {
+                "screen_item_id": "S052",
+                "guidance_text": "工具只负责把已经想清楚的版面关系表达出来",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006",
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G039",
+            "items": [
+              {
+                "screen_item_id": "S053",
+                "guidance_text": "附着物、材质、位置、信息主次还得自己想清楚",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006",
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R022",
+          "from": "G037",
+          "relation": "三类工具并列",
+          "to": "G038",
+          "direction": "convergent"
+        },
+        {
+          "relation_id": "R023",
+          "from": "G038",
+          "relation": "表达手段不等于设计判断",
+          "to": "G039",
+          "direction": "boundary"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C012",
+          "instruction": "不引入具体软件、界面、版本、按钮、模板或账号，也不做产品推荐",
+          "evidence_refs": [
+            "E006"
+          ]
+        }
+      ],
+      "entry_condition": "观众知道判断要回到使用环境",
+      "exit_condition": "观众把工具当作表达手段，而不是设计结论",
+      "timing": {
+        "char_equivalent": 91.0,
+        "min_seconds": 23,
+        "target_seconds": 24,
+        "max_seconds": 25,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A013",
+      "callback_a_ids": [
+        "A001"
+      ],
+      "nx": "本期总结。回到开头那块有限的地方。标识载体设计，要让几件事一起工作。载体把信息装住。附着物划出边界。材质和位置决定它能不能稳稳待着。功能和美观决定它能不能被看见、被接受。这些关系都理清了，设计才算做完。所以别急着定下一个固定尺寸。先把附着物说清楚，把使用目的说清楚。再用版面、材质、位置和信息主次，一项一项过。",
+      "teaching_purpose": "回收开场的有限空间，把各层关系合成收束，并强调不要先定固定尺寸",
+      "single_message": "把对象、附着物和使用目的说清楚，再用版面、材质、位置和信息主次逐项复核",
+      "screen": {
+        "title": {
+          "screen_item_id": "S054",
+          "guidance_text": "关系都理清了，设计才算做完",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E002",
+            "E007"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G040",
+            "items": [
+              {
+                "screen_item_id": "S055",
+                "guidance_text": "载体把信息装住，附着物划出边界",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G041",
+            "items": [
+              {
+                "screen_item_id": "S056",
+                "guidance_text": "材质和位置决定它能不能稳稳待着",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G042",
+            "items": [
+              {
+                "screen_item_id": "S057",
+                "guidance_text": "功能和美观决定它能不能被看见、被接受",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G043",
+            "items": [
+              {
+                "screen_item_id": "S058",
+                "guidance_text": "别急着定固定尺寸，先把附着物和使用目的说清楚，再用版面、材质、位置和信息主次一项一项过",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R024",
+          "from": "G040",
+          "relation": "两件事一起工作",
+          "to": "G042",
+          "direction": "convergent"
+        },
+        {
+          "relation_id": "R025",
+          "from": "G042",
+          "relation": "先理清关系，再逐项复核",
+          "to": "G043",
+          "direction": "forward"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C013",
+          "instruction": "本集不补齐尺寸、耐久标准和工具操作，也不预告相邻分集内容",
+          "evidence_refs": [
+            "E001",
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "观众已完成全部设计维度与复核链",
+      "exit_condition": "观众能用自己的话复述标识载体设计的工作方式",
+      "timing": {
+        "char_equivalent": 137.0,
+        "min_seconds": 35,
+        "target_seconds": 36,
+        "max_seconds": 38,
+        "short_page_reason": null
+      }
+    }
+  ]
+}
