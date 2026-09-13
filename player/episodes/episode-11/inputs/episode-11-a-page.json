@@ -1,0 +1,1637 @@
+{
+  "schema_version": "courseplay-a-page/v6",
+  "document_kind": "production",
+  "episode_id": "episode-11",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "第 11 集标题、来源范围、前置关系、相邻边界和动态风险",
+      "source_locator": "已确认课程架构，Episode Architecture 第 11 集及第 08–13 集责任",
+      "verification_status": "not applicable",
+      "allowed_use": "控制单集范围、去重和时长"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "供应链信息共享与透明度受数据安全、隐私、需求波动、突发事件和外部不确定性影响",
+      "source_locator": "主教材，1.3.3“1. 应用背景”",
+      "verification_status": "not applicable",
+      "allowed_use": "建立案例问题背景"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "医药行业涉及原材料供应商、生产商、物流商、零售商、药店、医院等主体；传统供应链缺乏统一标准和信息关联手段，存在数据孤岛",
+      "source_locator": "主教材，1.3.3“2. 业务需求”",
+      "verification_status": "not applicable",
+      "allowed_use": "说明跨主体协同难题"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "药品生产包装、仓储、物流系统相互独立；供应链环节冗长、销售规范不透明；药品种类和经营方式多样，安全事件风险影响消费者",
+      "source_locator": "主教材，1.3.3“2. 业务需求”三条痛点",
+      "verification_status": "not applicable",
+      "allowed_use": "构成旧状态问题"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "标识解析为每个物理实体和数字对象提供全球唯一编码，通过解析实现定位和信息查询，支撑全流程管理、追溯和协同",
+      "source_locator": "主教材，1.3.3“3. 业务模式”",
+      "verification_status": "not applicable",
+      "allowed_use": "解释干预机制"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "供应链协同还需要信任机制、信息共享平台、标准化流程和利益分配机制等各方共同努力",
+      "source_locator": "主教材，1.3.3“3. 业务模式”末段",
+      "verification_status": "not applicable",
+      "allowed_use": "说明技术之外的协同条件"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "方案给药品赋予唯一标识码，围绕制药厂、经销商、药店等实体采集跟踪数据，覆盖原料进厂、生产加工、仓储物流、终端销售、市场消费",
+      "source_locator": "主教材，1.3.3“4. 项目方案”",
+      "verification_status": "not applicable",
+      "allowed_use": "构成全链数据主轴"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "教材药品供应链协同图展示供应商、质检、仓库、生产加工、药品包装、发货、药店医院等环节及其下方数据与节点关系",
+      "source_locator": "教材药品供应链协同图，图 1-11 原始像素",
+      "verification_status": "not applicable",
+      "allowed_use": "支持忠实语义重绘"
+    },
+    {
+      "evidence_id": "E009",
+      "claim_or_asset": "集团企业基于标识解析的供应链数据大屏示例",
+      "source_locator": "教材供应链数据大屏，图 1-12 原始像素",
+      "verification_status": "not applicable",
+      "allowed_use": "仅作教材案例视觉参考"
+    },
+    {
+      "evidence_id": "E010",
+      "claim_or_asset": "教材方案效益包括全景监测、供应链更透明、交期缩短 20%；安全运输、防伪、病人用药安全；扫描唯一药品码作为营销入口",
+      "source_locator": "主教材，1.3.3“5. 方案效益”",
+      "verification_status": "not applicable",
+      "allowed_use": "以“教材案例方案效益”呈现"
+    },
+    {
+      "evidence_id": "E011",
+      "claim_or_asset": "药品对象→唯一标识→阶段记录→解析查询→供应链协同与反馈的教学关系链",
+      "source_locator": "教学归纳",
+      "verification_status": "not applicable",
+      "allowed_use": "将案例压缩成可讲授的数据路径"
+    },
+    {
+      "evidence_id": "E012",
+      "claim_or_asset": "药房收货人员核验一盒药品，沿唯一标识追查生产、仓储和配送记录",
+      "source_locator": "教学情境",
+      "verification_status": "not applicable",
+      "allowed_use": "用具体业务问题进入案例"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "在药房收货的时候，工作人员会先核验一盒药品。这个动作看起来很简单，但它后面跟着一串问题：这盒药是谁生产的？中间经过了哪些仓储和物流环节？如果出了问题，应该向谁追查？",
+      "teaching_purpose": "用一次现场核验引出跨阶段追踪问题",
+      "single_message": "认出一盒药品只是追踪的开始。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S001",
+          "guidance_text": "药房收货时的一次核验",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E012"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G001",
+            "items": [
+              {
+                "screen_item_id": "S002",
+                "guidance_text": "现场核验一盒药品的身份",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E012"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G002",
+            "items": [
+              {
+                "screen_item_id": "S003",
+                "guidance_text": "这一盒由谁生产、经过哪一段仓储和物流",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E012"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G003",
+            "items": [
+              {
+                "screen_item_id": "S004",
+                "guidance_text": "出现异常时向哪里追查",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E012"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "G001",
+          "relation": "核验引出对来源与流转的追问",
+          "to": "G002",
+          "direction": "same-anchor"
+        },
+        {
+          "relation_id": "R002",
+          "from": "G002",
+          "relation": "追问最终落到追查去向",
+          "to": "G003",
+          "direction": "convergent"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C001",
+          "instruction": "不要把核验动作表现为已经显示批次结论或患者信息",
+          "evidence_refs": [
+            "E012"
+          ]
+        }
+      ],
+      "entry_condition": "观众知道本页从一盒药品的核验开始",
+      "exit_condition": "观众能说出核验之后仍然待答的问题",
+      "timing": {
+        "char_equivalent": 74.0,
+        "min_seconds": 19,
+        "target_seconds": 19,
+        "max_seconds": 21,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": [
+        "A001"
+      ],
+      "nx": "要回答这些问题，先得看清楚这盒药背后站着多少角色。原材料供应商提供原料，生产商负责制药，物流商负责运输，经销商和零售商把药送出去，药店和医院最终把药交到使用者手里。每个角色都有自己的业务系统，也都在自己的系统里留下了记录。",
+      "teaching_purpose": "展开参与主体与各自的记录来源",
+      "single_message": "参与者越多，记录越分散。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S005",
+          "guidance_text": "供应链上的多个角色",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G004",
+            "items": [
+              {
+                "screen_item_id": "S006",
+                "guidance_text": "原材料供应商、生产商、物流商依次承担一段",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G005",
+            "items": [
+              {
+                "screen_item_id": "S007",
+                "guidance_text": "经销商、零售商、药店和医院把药送到使用者",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G006",
+            "items": [
+              {
+                "screen_item_id": "S008",
+                "guidance_text": "每个角色都有自己的业务系统和记录",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R003",
+          "from": "G004",
+          "relation": "沿同一条链条依次交接",
+          "to": "G005",
+          "direction": "same-anchor"
+        },
+        {
+          "relation_id": "R004",
+          "from": "G004",
+          "relation": "各段记录各自产生",
+          "to": "G006",
+          "direction": "context"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C002",
+          "instruction": "不要把主体清单画成上下级关系",
+          "evidence_refs": [
+            "E003"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道核验之后还有待答的问题",
+      "exit_condition": "观众能说出供应链上至少四类参与角色",
+      "timing": {
+        "char_equivalent": 102.0,
+        "min_seconds": 26,
+        "target_seconds": 27,
+        "max_seconds": 28,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": [
+        "A002"
+      ],
+      "nx": "麻烦在于，有记录不等于信息互相认识。原材料供应商记的是原料批次，生产商记的是生产工单，物流商记的是运输单据，药店记的是销售流水。这些记录各自都很清楚，彼此之间却缺少一个共同的依据。药品供应链很长，参与方又多。不同主体之间的编码规则、数据口径和系统接口如果不一致，上下游的信息就不容易关联起来，也容易形成一个个数据孤岛。",
+      "teaching_purpose": "说明记录清楚但彼此不识别",
+      "single_message": "有记录不等于信息互相认识。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S009",
+          "guidance_text": "有记录不等于互相认识",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003",
+            "E004"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G007",
+            "items": [
+              {
+                "screen_item_id": "S010",
+                "guidance_text": "原料批次、生产工单、运输单据、销售流水各记各的",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G008",
+            "items": [
+              {
+                "screen_item_id": "S011",
+                "guidance_text": "彼此之间缺少一个共同的依据",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G009",
+            "items": [
+              {
+                "screen_item_id": "S012",
+                "guidance_text": "编码规则、数据口径和系统接口不一致",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G010",
+            "items": [
+              {
+                "screen_item_id": "S013",
+                "guidance_text": "上下游信息不易关联，形成数据孤岛",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R005",
+          "from": "G007",
+          "relation": "有记录但并不互相认识",
+          "to": "G008",
+          "direction": "contrast"
+        },
+        {
+          "relation_id": "R006",
+          "from": "G009",
+          "relation": "口径不一致导致信息难以关联",
+          "to": "G010",
+          "direction": "convergent"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C003",
+          "instruction": "不要写成完全没有信息化",
+          "evidence_refs": [
+            "E003"
+          ]
+        }
+      ],
+      "entry_condition": "观众知道链条上有多类角色和各自的记录",
+      "exit_condition": "观众能说出有记录与能互相认识之间的差别",
+      "timing": {
+        "char_equivalent": 145.0,
+        "min_seconds": 37,
+        "target_seconds": 38,
+        "max_seconds": 40,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": [
+        "A003"
+      ],
+      "nx": "这种割裂会带来三方面的困难。生产、包装、仓储和物流系统各管一段，相互独立，环节之间接不上。供应链条拉得很长，跨主体的流向信息不容易连起来，药到底流向了哪里，也就不容易看清楚。药品种类和经营方式又很复杂。一旦发生安全事件，要确定问题出在哪个对象、哪个环节，都很困难。",
+      "teaching_purpose": "归纳割裂带来的三类业务困难",
+      "single_message": "系统独立、流向不清、对象难定。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S014",
+          "guidance_text": "三类具体困难",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E004"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G011",
+            "items": [
+              {
+                "screen_item_id": "S015",
+                "guidance_text": "生产、包装、仓储、物流系统各管一段",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G012",
+            "items": [
+              {
+                "screen_item_id": "S016",
+                "guidance_text": "跨主体的流向信息连不起来",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G013",
+            "items": [
+              {
+                "screen_item_id": "S017",
+                "guidance_text": "安全事件时难以确定对象和环节",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R007",
+          "from": "G011",
+          "relation": "系统独立导致流向不清",
+          "to": "G012",
+          "direction": "convergent"
+        },
+        {
+          "relation_id": "R008",
+          "from": "G012",
+          "relation": "流向不清加重对象与环节的确认难度",
+          "to": "G013",
+          "direction": "convergent"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C004",
+          "instruction": "不要把三类困难写成监管判断或行业统计",
+          "evidence_refs": [
+            "E004"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道记录之间缺少共同依据",
+      "exit_condition": "观众能说出三类困难分别是什么",
+      "timing": {
+        "char_equivalent": 117.0,
+        "min_seconds": 30,
+        "target_seconds": 31,
+        "max_seconds": 32,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": [
+        "A004"
+      ],
+      "nx": "那是不是把这些数据都放到一起共享就行了？也没有这么简单。供应链上的信息共享本身就会受到数据安全和隐私保护的限制，还会受需求波动、突发事件和外部不确定性的影响。想让多个主体长期愿意共享，还需要信任机制、信息共享平台、标准化流程和利益分配机制一起支撑。系统之间可以对接，利益和信任不容易对齐。",
+      "teaching_purpose": "说明共享的约束与协同条件",
+      "single_message": "共享不只看接口，还看约束和协同条件。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S018",
+          "guidance_text": "共享之外还缺什么",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E002",
+            "E006"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G014",
+            "items": [
+              {
+                "screen_item_id": "S019",
+                "guidance_text": "数据安全与隐私保护的约束",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G015",
+            "items": [
+              {
+                "screen_item_id": "S020",
+                "guidance_text": "需求波动、突发事件与外部不确定性",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G016",
+            "items": [
+              {
+                "screen_item_id": "S021",
+                "guidance_text": "信任机制、共享平台、标准流程、利益分配",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R009",
+          "from": "G014",
+          "relation": "两类约束同时存在",
+          "to": "G015",
+          "direction": "contrast"
+        },
+        {
+          "relation_id": "R010",
+          "from": "G014",
+          "relation": "约束之下还需要协同条件",
+          "to": "G016",
+          "direction": "pivot"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C005",
+          "instruction": "不要把四项协同条件做成制度清单或认证标志",
+          "evidence_refs": [
+            "E006"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经理解三类业务困难",
+      "exit_condition": "观众能说出技术对接之外的协同条件",
+      "timing": {
+        "char_equivalent": 133.0,
+        "min_seconds": 34,
+        "target_seconds": 35,
+        "max_seconds": 37,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": [
+        "A005"
+      ],
+      "nx": "这里说的标识解析，是工业互联网语境中的标识解析。它要解决的，是其中最基础的一件事：让每一个对象有自己唯一的身份。它可以为供应链里的物理实体和数字对象赋予全球唯一的编码，再通过解析，找到这个编码对应的位置和相关信息。",
+      "teaching_purpose": "说明标识解析解决的基础问题",
+      "single_message": "标识解析先解决对象的唯一身份与查询。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S022",
+          "guidance_text": "标识解析解决的基础问题",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G017",
+            "items": [
+              {
+                "screen_item_id": "S023",
+                "guidance_text": "为物理实体和数字对象赋予全球唯一编码",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G018",
+            "items": [
+              {
+                "screen_item_id": "S024",
+                "guidance_text": "通过解析找到编码对应的位置和信息",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R011",
+          "from": "G017",
+          "relation": "编码经解析才能落到查询",
+          "to": "G018",
+          "direction": "convergent"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C006",
+          "instruction": "不要补充具体编码体系名称或节点层级架构",
+          "evidence_refs": [
+            "E005"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道多主体共享需要条件",
+      "exit_condition": "观众能说出标识与解析各自回答什么",
+      "timing": {
+        "char_equivalent": 99.0,
+        "min_seconds": 25,
+        "target_seconds": 26,
+        "max_seconds": 27,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": [
+        "A006"
+      ],
+      "nx": "放到药品场景里，还要分清另一套概念。药品监管体系本身有专门的药品追溯码，用来唯一标识药品的销售包装单元。药品追溯码和工业互联网标识不是同一套编码体系，但背后的识别逻辑有相通之处：都要先认出具体对象，再让与这个对象有关的信息能够被查询和关联。下面仍然以一盒药为例，看标识解析在供应链协同里能解决什么问题。",
+      "teaching_purpose": "区分药品追溯码与工业互联网标识",
+      "single_message": "编码体系不同，识别逻辑相通。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S025",
+          "guidance_text": "两套编码体系的区别",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G019",
+            "items": [
+              {
+                "screen_item_id": "S026",
+                "guidance_text": "药品追溯码用于唯一标识销售包装单元",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G020",
+            "items": [
+              {
+                "screen_item_id": "S027",
+                "guidance_text": "与工业互联网标识不是同一套编码体系",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G021",
+            "items": [
+              {
+                "screen_item_id": "S028",
+                "guidance_text": "两者都先识别对象，再关联信息",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R012",
+          "from": "G019",
+          "relation": "两套体系并行存在",
+          "to": "G020",
+          "direction": "contrast"
+        },
+        {
+          "relation_id": "R013",
+          "from": "G020",
+          "relation": "识别逻辑相通",
+          "to": "G021",
+          "direction": "convergent"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C007",
+          "instruction": "不要展开追溯码标准条款或监管要求",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        {
+          "constraint_id": "C008",
+          "instruction": "不要让画面出现任何具体编码样例",
+          "evidence_refs": [
+            "E005"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道工业互联网标识解析的作用",
+      "exit_condition": "观众能说出两套编码体系之间的关系",
+      "timing": {
+        "char_equivalent": 141.0,
+        "min_seconds": 36,
+        "target_seconds": 37,
+        "max_seconds": 39,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": [
+        "A007"
+      ],
+      "nx": "这里还要分清一点：标识不是把所有的业务数据都装进编码里。编码本身是一把钥匙，不是仓库。它也不能替代制药厂的生产系统、经销商的订单系统或者药店的销售系统。各个主体原来怎么干活，还是怎么干活。",
+      "teaching_purpose": "划定标识的能力边界",
+      "single_message": "标识是钥匙，不是仓库，也不替代业务系统。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S029",
+          "guidance_text": "标识不承担什么",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G022",
+            "items": [
+              {
+                "screen_item_id": "S030",
+                "guidance_text": "不是把所有业务数据装进编码",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G023",
+            "items": [
+              {
+                "screen_item_id": "S031",
+                "guidance_text": "不替代生产、订单和销售系统",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G024",
+            "items": [
+              {
+                "screen_item_id": "S032",
+                "guidance_text": "各主体原有的业务方式不变",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R014",
+          "from": "G022",
+          "relation": "边界之一与之二",
+          "to": "G023",
+          "direction": "contrast"
+        },
+        {
+          "relation_id": "R015",
+          "from": "G023",
+          "relation": "原有分工保持不变",
+          "to": "G024",
+          "direction": "convergent"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C009",
+          "instruction": "不要把标识画成中心数据库或自动同步程序",
+          "evidence_refs": [
+            "E005"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道两套编码体系不同",
+      "exit_condition": "观众能说出标识的能力边界",
+      "timing": {
+        "char_equivalent": 86.0,
+        "min_seconds": 22,
+        "target_seconds": 22,
+        "max_seconds": 24,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": [
+        "A008"
+      ],
+      "nx": "真正的变化，是这些阶段的记录有了共同的指向。放在标识解析的应用逻辑里，可以把这盒药看成一个需要被唯一识别的对象，再围绕这个对象的标识，把不同主体的相关记录关联起来。",
+      "teaching_purpose": "说明阶段记录有了共同的指向",
+      "single_message": "记录的共同指向来自同一个对象标识。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S033",
+          "guidance_text": "记录有了共同的指向",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005",
+            "E007"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G025",
+            "items": [
+              {
+                "screen_item_id": "S034",
+                "guidance_text": "这盒药成为需要被唯一识别的对象",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G026",
+            "items": [
+              {
+                "screen_item_id": "S035",
+                "guidance_text": "围绕对象标识关联不同主体的记录",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R016",
+          "from": "G025",
+          "relation": "对象身份使记录可以关联",
+          "to": "G026",
+          "direction": "same-anchor"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C010",
+          "instruction": "不要把关联画成数据集中搬运",
+          "evidence_refs": [
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经接受标识的边界",
+      "exit_condition": "观众能说出共同指向指什么",
+      "timing": {
+        "char_equivalent": 76.0,
+        "min_seconds": 19,
+        "target_seconds": 20,
+        "max_seconds": 21,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A010",
+      "callback_a_ids": [
+        "A009"
+      ],
+      "nx": "为了讲清这个过程，这里把链条拆成五个观察阶段：从原料进厂开始，原料的来源和检验记录留下来；进入生产加工，制造和包装过程形成记录。到了仓储物流，出入库和运输过程被记下来；再往下是终端销售，药店和医院把销售和配送信息接上。一直到市场消费，成为链条末端的观察点。",
+      "teaching_purpose": "建立从原料到消费的全链阶段路径",
+      "single_message": "五个阶段各自留记录，指向同一盒药。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S036",
+          "guidance_text": "五个观察阶段",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E007",
+            "E008"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G027",
+            "items": [
+              {
+                "screen_item_id": "S037",
+                "guidance_text": "原料进厂：来源与检验记录",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007",
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G028",
+            "items": [
+              {
+                "screen_item_id": "S038",
+                "guidance_text": "生产加工：制造与包装记录",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007",
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G029",
+            "items": [
+              {
+                "screen_item_id": "S039",
+                "guidance_text": "仓储物流：出入库与运输记录",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007",
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G030",
+            "items": [
+              {
+                "screen_item_id": "S040",
+                "guidance_text": "终端销售与市场消费：销售配送与末端观察",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R017",
+          "from": "G027",
+          "relation": "同一对象标识贯穿五个阶段",
+          "to": "G030",
+          "direction": "same-anchor"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C011",
+          "instruction": "五阶段是观察顺序，不是接口时序或实施步骤",
+          "evidence_refs": [
+            "E007",
+            "E011"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道记录围绕同一个对象关联",
+      "exit_condition": "观众能按顺序说出五个阶段",
+      "timing": {
+        "char_equivalent": 116.0,
+        "min_seconds": 29,
+        "target_seconds": 30,
+        "max_seconds": 32,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A011",
+      "callback_a_ids": [
+        "A010"
+      ],
+      "nx": "每个阶段的主人没有变，还是各自的主体在完成本阶段的业务。标识做的事情，是让这些阶段的相关记录能够指向同一个对象。",
+      "teaching_purpose": "明确阶段分工不变而指向改变",
+      "single_message": "分工不变，变的是记录的指向。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S041",
+          "guidance_text": "阶段的主人没有变",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E007"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G031",
+            "items": [
+              {
+                "screen_item_id": "S042",
+                "guidance_text": "各阶段仍由相应主体完成业务",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G032",
+            "items": [
+              {
+                "screen_item_id": "S043",
+                "guidance_text": "标识让阶段记录指向同一个对象",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R018",
+          "from": "G031",
+          "relation": "分工不变，指向改变",
+          "to": "G032",
+          "direction": "pivot"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C012",
+          "instruction": "不要把标识写成代替主体完成业务",
+          "evidence_refs": [
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道五个阶段的顺序",
+      "exit_condition": "观众能说出标识改变了什么、没有改变什么",
+      "timing": {
+        "char_equivalent": 52.0,
+        "min_seconds": 13,
+        "target_seconds": 14,
+        "max_seconds": 15,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A012",
+      "callback_a_ids": [
+        "A011"
+      ],
+      "nx": "当不同阶段的相关记录都能通过同一个对象标识被查询和关联时，整条供应链就从一串互不相认的环节，变成了一条可以追踪的对象路径。管理者可以看到一盒药从哪里来、经过了哪些阶段、现在处在哪一类业务环节。真的出了问题，也可以先定位到具体的对象和相关记录，再去组织跨主体的协同处理。",
+      "teaching_purpose": "说明全链记录形成的可追踪结果",
+      "single_message": "互不相认的环节变成可追踪的对象路径。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S044",
+          "guidance_text": "从环节到对象路径",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E011"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G033",
+            "items": [
+              {
+                "screen_item_id": "S045",
+                "guidance_text": "围绕同一标识的可查询记录",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E011"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G034",
+            "items": [
+              {
+                "screen_item_id": "S046",
+                "guidance_text": "形成可追踪的对象路径",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E011"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G035",
+            "items": [
+              {
+                "screen_item_id": "S047",
+                "guidance_text": "异常时先定位对象与记录，再组织协同",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E011"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R019",
+          "from": "G033",
+          "relation": "记录可查询使路径成立",
+          "to": "G034",
+          "direction": "convergent"
+        },
+        {
+          "relation_id": "R020",
+          "from": "G034",
+          "relation": "定位之后才谈协同",
+          "to": "G035",
+          "direction": "pivot"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C013",
+          "instruction": "不要写成实时、无延迟或全自动",
+          "evidence_refs": [
+            "E011"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道阶段记录指向同一个对象",
+      "exit_condition": "观众能说出可追踪路径带来什么",
+      "timing": {
+        "char_equivalent": 125.0,
+        "min_seconds": 32,
+        "target_seconds": 33,
+        "max_seconds": 35,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A013",
+      "callback_a_ids": [
+        "A012"
+      ],
+      "nx": "这两件事要分开看。标识解析提供的是查询入口，它负责帮助定位对象和关联信息。信息能不能被可信地使用，取决于协同机制，取决于各主体之间的授权、标准和流程。",
+      "teaching_purpose": "区分查询入口与协同机制",
+      "single_message": "找得到记录，不等于用得可信。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S048",
+          "guidance_text": "查询入口与协同机制",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005",
+            "E011"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G036",
+            "items": [
+              {
+                "screen_item_id": "S049",
+                "guidance_text": "标识解析提供查询入口",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G037",
+            "items": [
+              {
+                "screen_item_id": "S050",
+                "guidance_text": "协同机制决定信息能否被可信使用",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E011"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R021",
+          "from": "G036",
+          "relation": "入口与机制是两件事",
+          "to": "G037",
+          "direction": "contrast"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C014",
+          "instruction": "不要把查询入口写成信息使用权限",
+          "evidence_refs": [
+            "E005"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道可追踪路径的作用",
+      "exit_condition": "观众能区分查询入口与协同机制",
+      "timing": {
+        "char_equivalent": 68.0,
+        "min_seconds": 17,
+        "target_seconds": 18,
+        "max_seconds": 19,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A014",
+      "callback_a_ids": [
+        "A013"
+      ],
+      "nx": "所以回到一开始的问题。唯一标识改变的不是供应链上有多少参与者，而是参与者之间识别同一个对象的方式。在没有共同标识关联的时候，同一盒药在不同的系统、不同的企业、不同的环节里，往往要靠反复确认才能对上；如果建立了统一的对象识别和查询入口，就可以先定位对象，再沿着各个阶段的记录查找相关信息。但这不等于治理已经完成。数据共享仍然需要授权、需要标准、需要流程、需要信任。有了一套编码，只是有了一个可以对齐的起点。",
+      "teaching_purpose": "收束唯一标识带来的根本改变",
+      "single_message": "改变的不是参与者数量，而是识别方式。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S051",
+          "guidance_text": "改变的是识别方式",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005",
+            "E011"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G038",
+            "items": [
+              {
+                "screen_item_id": "S052",
+                "guidance_text": "参与者数量没有改变",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E011"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G039",
+            "items": [
+              {
+                "screen_item_id": "S053",
+                "guidance_text": "改变的是识别同一对象的方式",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E011"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G040",
+            "items": [
+              {
+                "screen_item_id": "S054",
+                "guidance_text": "过去靠反复确认，现在先定位再加记录",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E011"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R022",
+          "from": "G038",
+          "relation": "对比改变与未变",
+          "to": "G039",
+          "direction": "contrast"
+        },
+        {
+          "relation_id": "R023",
+          "from": "G039",
+          "relation": "识别方式改变带来查询方式改变",
+          "to": "G040",
+          "direction": "convergent"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C015",
+          "instruction": "不要写成治理已经完成",
+          "evidence_refs": [
+            "E011"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经区分查询入口与协同机制",
+      "exit_condition": "观众能说出唯一标识改变的是什么",
+      "timing": {
+        "char_equivalent": 184.0,
+        "min_seconds": 46,
+        "target_seconds": 48,
+        "max_seconds": 51,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A015",
+      "callback_a_ids": [
+        "A014"
+      ],
+      "nx": "还是从药房收货台上那一盒药说起。它背后是原材料供应商、生产商、物流商、经销商、零售商、药店和医院，各自负责一段业务。记录彼此不认识，就会形成数据孤岛，也会让追溯变得困难。",
+      "teaching_purpose": "回到开场对象概括分工",
+      "single_message": "分工照旧，记录需要被认识。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S055",
+          "guidance_text": "回到那盒药",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G041",
+            "items": [
+              {
+                "screen_item_id": "S056",
+                "guidance_text": "原材料到药店医院各自负责一段",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G042",
+            "items": [
+              {
+                "screen_item_id": "S057",
+                "guidance_text": "记录彼此不认识就形成孤岛",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R024",
+          "from": "G041",
+          "relation": "回到开场的对象",
+          "to": "G042",
+          "direction": "context"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C016",
+          "instruction": "不要在总结处引入新的案例或主题",
+          "evidence_refs": [
+            "E003"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道识别方式的改变",
+      "exit_condition": "观众能回到开场对象复述分工",
+      "timing": {
+        "char_equivalent": 74.0,
+        "min_seconds": 19,
+        "target_seconds": 19,
+        "max_seconds": 21,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A016",
+      "callback_a_ids": [
+        "A015"
+      ],
+      "nx": "工业互联网标识解析给物理实体和数字对象建立唯一身份，并提供查询关联信息的入口。放到药品场景里，需要和药品追溯码区分开：药品追溯码用于唯一标识药品销售包装单元，两者不是同一套编码体系，但都强调先识别对象，再关联信息。按照本文的讲法，可以把原料进厂、生产加工、仓储物流、终端销售、市场消费拆成五个观察阶段；这些阶段的记录如果能够围绕同一个对象被查询和关联，跨主体的协同就有了基础。",
+      "teaching_purpose": "复述身份、入口与阶段的关系",
+      "single_message": "先有身份，再有入口，阶段记录才可关联。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S058",
+          "guidance_text": "身份、入口与阶段",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005",
+            "E007"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G043",
+            "items": [
+              {
+                "screen_item_id": "S059",
+                "guidance_text": "为物理实体和数字对象建立唯一身份",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G044",
+            "items": [
+              {
+                "screen_item_id": "S060",
+                "guidance_text": "提供查询与关联信息的入口",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G045",
+            "items": [
+              {
+                "screen_item_id": "S061",
+                "guidance_text": "五个阶段的记录围绕同一对象被查询",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R025",
+          "from": "G043",
+          "relation": "身份先于查询",
+          "to": "G044",
+          "direction": "same-anchor"
+        },
+        {
+          "relation_id": "R026",
+          "from": "G044",
+          "relation": "入口使阶段记录可关联",
+          "to": "G045",
+          "direction": "convergent"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C017",
+          "instruction": "不要在收束处加入下一期主题",
+          "evidence_refs": [
+            "E001"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经能复述供应链分工",
+      "exit_condition": "观众能说出身份、入口与阶段的关系",
+      "timing": {
+        "char_equivalent": 172.0,
+        "min_seconds": 43,
+        "target_seconds": 45,
+        "max_seconds": 47,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A017",
+      "callback_a_ids": [
+        "A016"
+      ],
+      "nx": "这里有一条共同规律：技术解决的是认出同一个对象，协同解决的是愿不愿意把记录交出来。唯一标识是关联的锚点，它让全链数据具备被追踪和关联的基础；而信任、标准和共享机制，决定这条链能不能真正运转起来。",
+      "teaching_purpose": "提炼共同规律与核心判断",
+      "single_message": "技术认出对象，协同决定记录能否共享。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S062",
+          "guidance_text": "共同规律",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E011"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G046",
+            "items": [
+              {
+                "screen_item_id": "S063",
+                "guidance_text": "技术解决认出同一个对象",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E011"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G047",
+            "items": [
+              {
+                "screen_item_id": "S064",
+                "guidance_text": "协同解决愿不愿意交出记录",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E011"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G048",
+            "items": [
+              {
+                "screen_item_id": "S065",
+                "guidance_text": "唯一标识是关联的锚点",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R027",
+          "from": "G046",
+          "relation": "技术与协同各管一段",
+          "to": "G047",
+          "direction": "contrast"
+        },
+        {
+          "relation_id": "R028",
+          "from": "G047",
+          "relation": "锚点使全链可追踪",
+          "to": "G048",
+          "direction": "convergent"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C018",
+          "instruction": "不要在结尾预告相邻主题",
+          "evidence_refs": [
+            "E001"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道身份与入口的作用",
+      "exit_condition": "观众能说出这条共同规律",
+      "timing": {
+        "char_equivalent": 89.0,
+        "min_seconds": 23,
+        "target_seconds": 23,
+        "max_seconds": 25,
+        "short_page_reason": null
+      }
+    }
+  ]
+}
