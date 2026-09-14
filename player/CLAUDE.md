@@ -20,9 +20,10 @@ src/                              # 共享播放器与 Studio
 tools/                            # 播放器工具
 dist/media/episodes/<id>/         # 构建后按期、类型、章节隔离的媒体
 dist/manifests/assets.json        # 构建产物完整性与归属清单
+../.tmp/work/player/<episode-id>/ # Phase 1 候选和播放器过程文件，不提交
 ```
 
-`episodes/_shared/` 不是 episode，不能被目录扫描或播放路由识别为实例。`player/output/` 已废弃，不得重新创建；截图、构建结果和录屏放在外部临时输出位置。
+`episodes/_shared/` 不是 episode，不能被目录扫描或播放路由识别为实例。`player/output/` 与 `player/.tmp/` 已废弃，不得重新创建；Phase 1 候选等单期过程文件写入 `../.tmp/work/player/<episode-id>/`。同一期确有并行尝试时才增加 `attempt-*` 子目录。截图、构建结果和录屏放在外部临时输出位置。
 
 `占位图/` 是不提交 Git 的本地素材库。Agent 使用时必须把选定文件复制到 `episodes/<id>/src/chapters/<chapter>/assets/` 再由组件导入；禁止创建符号链接、目录联接或从章节代码直接跨目录引用素材库。
 
@@ -64,6 +65,8 @@ pnpm build:inspect
 ## 修改与验证
 
 Phase 1 候选在临时位置创作，不得带有 runner marker；提交时 runner 会校验 Nx 无损还原、Beat/step 数量、A-page 顺序和稳定关系引用。`status` 发现 `incomplete` 时只重提受影响章节，不能手工修补另一份正式文件。
+
+临时验证结果写入 `../.tmp/validation/<episode-id>/`，工具测试文件写入 `../.tmp/tests/<task>/`，运行日志写入 `../.tmp/runtime/<service>/`；禁止在根 `.tmp/` 顶层直接放文件。任务完成并确认无需恢复后，只清理本任务自己的 player work 子树。
 
 章节改动必须运行 `pnpm episode:check`、`pnpm typecheck`、`pnpm lint`；改动 `narrations.ts` 追加 `pnpm audio:extract -- --episode <id>`；共享运行时、主题或完整交付追加 `pnpm build`。
 

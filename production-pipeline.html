@@ -543,7 +543,7 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
           <span class="fnum">07</span>
           <div class="fbody">
             <div class="ftitle">发布到 player/episodes/&lt;id&gt;/inputs/</div>
-            <div class="fnote">只有人工批准与验证后的正式文件进入 <span class="mono">inputs/</span>；过程文件留在 <span class="mono">.tmp/narration-pipeline/</span>，不进 Git。</div>
+            <div class="fnote">只有人工批准与验证后的正式文件进入 <span class="mono">inputs/</span>；过程文件留在 <span class="mono">.tmp/work/narration-pipeline/&lt;episode-id&gt;/</span>，不进 Git。</div>
           </div>
           <span class="fzone">下游</span>
         </div>
@@ -657,7 +657,7 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
           <tr>
             <td class="stg"><span class="idx">01</span>Brief</td>
             <td>只读冻结任务包，提炼内容义务、事实边界、受保护关系和静默护栏；任务包事实源位于 <span class="mono">narration-pipeline/episodes/</span></td>
-            <td><span class="art">.tmp/narration-pipeline/&lt;flow&gt;/&lt;id&gt;/narration-brief.json</span></td>
+            <td><span class="art">.tmp/work/narration-pipeline/&lt;id&gt;/narration-brief.json</span></td>
             <td><span class="gcell"><i></i>发生事实冲突或职责不清时停止，请用户决策</span></td>
           </tr>
           <tr>
@@ -782,7 +782,7 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
       </div>
     </div>
     <div class="aside-note reveal">
-      <span><span class="mono">narration-brief.json</span> 与 compile trace 属于过程文件，留在 <span class="mono">.tmp/narration-pipeline/</span>，不进 Git，也不进入 <span class="mono">inputs/</span>。</span>
+      <span><span class="mono">narration-brief.json</span> 与 compile trace 属于过程文件，留在 <span class="mono">.tmp/work/narration-pipeline/&lt;episode-id&gt;/</span>，不进 Git，也不进入 <span class="mono">inputs/</span>。</span>
     </div>
   </section>
 
@@ -802,7 +802,7 @@ footer{border-top:1px solid var(--hair);margin-top:var(--sect-gap);padding:44px 
       <div class="pcard reveal">
         <span class="pidx">02</span>
         <span class="ptag">过程文件 · 不进 Git</span>
-        <span class="pfile">.tmp/narration-pipeline/</span>
+        <span class="pfile">.tmp/work/narration-pipeline/&lt;episode-id&gt;/</span>
         <p>brief、草稿口播、编译追踪等上游过程文件目录，不是事实源，不提交 Git。</p>
       </div>
       <div class="pcard reveal">

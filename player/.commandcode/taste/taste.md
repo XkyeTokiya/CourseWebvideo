@@ -10,6 +10,7 @@
 - 发现非本任务或非本会话改动时先用 diff 定性来源,完整保留并与本次范围隔离;不擅自回滚、代改或混入提交。Confidence: 0.9
 - Bug、工具失败或流程异常先给证据支撑的根因诊断,区分工件、工具、环境与基线问题;被事实纠正时撤回错误结论并基于新证据重算。Confidence: 0.9
 - 规则、流程、设计或多文件改动先确认精确范围与方案;获准后严格执行,任何超出方案的优化都必须显式提出,不得静默扩张。Confidence: 0.9
+- 仓库内过程文件统一进入根级 `.tmp` 的固定分区;Player 单期候选写入 `.tmp/work/player/<episode-id>/`,禁止创建 `player/.tmp` 或在 `.tmp` 顶层落文件,同一期仅在真实并行时增加 `attempt-*`。Confidence: 0.95
 
 # 制作流程硬节点
 - Courseplay Phase 1 只接受正式 inputs 中通过 preflight 的 A-page v6+visual rough v4;runner 从 A-page 初始化正式 script/outline 外壳,每章一次提交内容对并自动生成全局区;主题与 custom 候选留到唯一 Checkpoint Plan,禁止整份覆盖。Confidence: 0.95

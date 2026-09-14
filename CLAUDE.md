@@ -10,7 +10,8 @@
 - `player/episodes/<episode-id>/{script.md,outline.md}`：Phase 1 runner 管理的唯一持久计划状态。
 - `player/episodes/<episode-id>/.handoffs/`：按需生成的单章交接缓存，不提交 Git。
 - `player/episodes/_shared/covers/`：51 集标准封面内容库。
-- `.tmp/narration-pipeline/`：上游过程文件目录，不是事实源，不提交 Git。
+- `.tmp/work/narration-pipeline/<episode-id>/`：上游过程文件目录，不是事实源，不提交 Git。
+- `.tmp/work/player/<episode-id>/`：播放器制作过程文件目录，不是正式计划状态，不提交 Git。
 
 作者契约路由：A-page 读 [`a-page-v6-author-contract.md`](narration-pipeline/.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md)，visual rough 读 [`visual-rough-v4-author-contract.md`](narration-pipeline/.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md)，可选 handoff 读 [`courseplay-handoff-v4-author-contract.md`](player/docs/courseplay-handoff-v4-author-contract.md)。每张卡链接一个合成成功样例和失败时的错误索引；实现文件不是生产规则来源。
 
@@ -18,7 +19,7 @@
 
 ```text
 narration-pipeline/episodes/
-  -> .tmp/narration-pipeline/
+  -> .tmp/work/narration-pipeline/<episode-id>/
   -> 人工批准与验证
   -> player/episodes/<episode-id>/inputs/
   -> Phase 1 runner：init -> commit-chapter(Axxx) -> finalize
@@ -40,6 +41,18 @@ cd D:\00-workspace\005-coursewebvideo\player
 ```
 
 跨子项目的路径、发布规则和治理修改从仓库根目录审查，但不把根目录作为普通 episode 制作工作目录。
+
+仓库内临时文件只允许写入根级 `.tmp/`，固定分区如下：
+
+```text
+.tmp/work/<player|narration-pipeline>/<episode-id>/  # 单期过程文件
+.tmp/runtime/<service>/                              # 日志、PID 与 watch 输出
+.tmp/validation/<episode-id>/                        # 可重新生成的验证结果
+.tmp/tests/<task>/                                   # 测试夹具与测试备份
+.tmp/archives/<archive-id>/                          # 封存历史，不是生产输入
+```
+
+禁止新建 `player/.tmp/`、`narration-pipeline/.tmp/` 或在 `.tmp/` 顶层直接放文件。同一期确有并行尝试时，才在 episode 目录下增加 `attempt-*` 子目录。正式产物发布并确认无需恢复后，清理本任务自己的 work 子树；默认不清理其他任务、runtime、validation、tests 或 archives。
 
 ## Skill 阅读与路由
 
