@@ -1,5 +1,6 @@
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./EnterTheProcess.css";
+import m004 from "./assets/m004.png";
 
 const BANDS = [
   { no: "01", title: "从单点工具出发", desc: "局部系统已经能够完成各自任务" },
@@ -37,10 +38,14 @@ export default function EnterTheProcessChapter({ step }: ChapterStepProps) {
   return (
     <div className="ep-scene scene-pad">
       <div className="ep-body">
-        <div className="ep-media">
-          <span className="ep-media-mark">image · 16:9</span>
-          <span className="ep-media-desc">工业协同工作场景（素材待提供）</span>
-        </div>
+        <figure className="ep-media">
+          <div className="ep-photo">
+            <img src={m004} alt="工业协同工作现场" />
+          </div>
+          <figcaption className="ep-media-cap">
+            <span>工业协同工作现场</span>
+          </figcaption>
+        </figure>
 
         <div className="ep-rail">
           <span className="ep-recall">回到开场的问题——</span>

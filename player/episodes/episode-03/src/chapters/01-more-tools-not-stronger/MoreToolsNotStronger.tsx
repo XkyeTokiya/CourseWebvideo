@@ -32,14 +32,10 @@ export default function MoreToolsNotStronger({ step }: ChapterStepProps) {
       <div className="mt-main">
         <figure className="mt-media">
           <div className="mt-photo">
-            <img src={m001} alt="设想的制造企业现场占位图" />
-            <span className="mt-stamp" aria-hidden="true">
-              教学设想 · 非真实企业
-            </span>
+            <img src={m001} alt="新增设备与信息系统的制造现场" />
           </div>
           <figcaption className="mt-media-cap">
-            <span>制造现场 · 占位图</span>
-            <span>新设备已添置 · 信息系统已增加</span>
+            <span>新增设备与信息系统的制造现场</span>
           </figcaption>
         </figure>
 

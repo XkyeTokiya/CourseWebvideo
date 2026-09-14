@@ -30,7 +30,7 @@ export default function A007InfoHierarchy({ step }: ChapterStepProps) {
             <rect className="a7-block" x="130" y="274" width="382" height="26" rx="8" />
             <rect className="a7-block" x="130" y="316" width="298" height="26" rx="8" />
           </svg>
-          <figcaption className="a7-ph">M003 · 版式评审现场图（待补入）</figcaption>
+          <figcaption className="a7-ph">版式评审现场</figcaption>
         </figure>
 
         <div className="a7-rail">

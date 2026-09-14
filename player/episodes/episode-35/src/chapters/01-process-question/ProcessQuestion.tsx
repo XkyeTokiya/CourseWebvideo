@@ -53,16 +53,14 @@ export default function ProcessQuestion({ step }: ChapterStepProps) {
       <header className={`pq-anchor${questionDominant ? " is-weak" : ""}`}>
         <p className="pq-anchor-title">
           <span className="pq-anchor-badge hero-num">T0</span>
-          设想现场 · 汽车零部件车间
+          汽车零部件车间现场
         </p>
-        <span className="pq-fiction-note">通用制造情境</span>
       </header>
 
       <div className={`pq-main${questionDominant ? " is-weak" : ""}`}>
         <figure className="pq-media">
           <div className="pq-photo-placeholder card" data-tone="image">
-            <span className="pq-ph-label">image · 16:9</span>
-            <span className="pq-ph-desc">M001 表面处理工位实景（待补入）</span>
+            <span className="pq-ph-desc">表面处理工位</span>
           </div>
         </figure>
 

@@ -166,117 +166,23 @@
   font-weight: 700;
 }
 
-/* ── 主图（右）：M005 占位 + 双向流交汇演示 ── */
+/* ── 主图（右）：M005 实景图持续在场 ── */
 .cs-media {
   width: 1040px;
-  height: 585px;
   flex: none;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-.cs-canvas {
-  position: relative;
-  flex: 1;
-  background: var(--surface);
-  overflow: hidden;
-}
-
-.cs-lane-label {
-  position: absolute;
-  top: 22px;
-  font-family: var(--font-mono);
-  font-size: 20px;
-  letter-spacing: 0.12em;
-  color: var(--text-mute);
-}
-.cs-lane-up {
-  left: 24%;
-}
-.cs-lane-down {
-  right: 24%;
-}
-
-.cs-dot {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  opacity: 0;
-}
-.cs-dot-up {
-  left: 27%;
-  bottom: 32%;
-  background: var(--theme-process);
-  animation: cs-up 2.6s linear infinite;
-  animation-delay: calc(var(--cs-d) * 1.3s);
-}
-@keyframes cs-up {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.9;
-  }
-  82% {
-    opacity: 0.9;
-  }
-  100% {
-    transform: translateY(-330px);
-    opacity: 0;
-  }
-}
-.cs-dot-down {
-  right: 27%;
-  top: 16%;
-  background: var(--theme-structural);
-  animation: cs-down 2.6s linear infinite;
-  animation-delay: calc(var(--cs-d) * 1.3s + 0.65s);
-}
-@keyframes cs-down {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.9;
-  }
-  82% {
-    opacity: 0.9;
-  }
-  100% {
-    transform: translateY(300px);
-    opacity: 0;
-  }
-}
-
-.cs-floor {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 24px;
-  display: flex;
-  gap: 64px;
-}
-.cs-machine {
-  width: 124px;
-  height: 84px;
-  background: var(--surface-2);
-  border: 3px solid var(--theme-structural);
-  border-radius: 6px;
-  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+.cs-photo {
   position: relative;
 }
-.cs-machine::after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 12px;
-  height: 12px;
-  background: var(--theme-process);
+.cs-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 .cs-cap {
@@ -286,15 +192,6 @@
   padding: 14px 24px;
   border-top: var(--rule-w) dashed var(--theme-dashed-line);
   background: var(--surface-2);
-}
-.cs-cap-mark {
-  font-family: var(--font-mono);
-  font-size: 20px;
-  letter-spacing: 0.1em;
-  color: var(--theme-structural);
-  background: var(--theme-cool-surface);
-  padding: 4px 14px;
-  border-radius: 6px;
 }
 .cs-cap-desc {
   font-family: var(--font-mono);

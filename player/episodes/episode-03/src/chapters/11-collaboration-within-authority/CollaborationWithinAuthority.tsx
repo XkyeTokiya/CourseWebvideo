@@ -28,11 +28,10 @@ export default function CollaborationWithinAuthority({ step }: ChapterStepProps)
       <div className="ca-main">
         <figure className="ca-media">
           <div className="ca-photo">
-            <img src={m004} alt="多主体围绕生产安排协作占位图" />
+            <img src={m004} alt="多主体围绕生产安排协作的制造现场" />
           </div>
           <figcaption className="ca-media-cap">
-            <span>多主体协作 · 占位图</span>
-            <span>真实场景 · 不指向具体企业</span>
+            <span>多主体围绕生产安排协作的制造现场</span>
           </figcaption>
         </figure>
 

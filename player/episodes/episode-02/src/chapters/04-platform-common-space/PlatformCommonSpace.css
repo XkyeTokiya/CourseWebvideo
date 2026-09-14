@@ -55,68 +55,23 @@
   align-items: center;
 }
 
-/* ── 媒体占位：真实 16:9 留位 + 共同空间资源块微演示 ── */
+/* ── 主图：M002 实景图持续在场 ── */
 .pc-media {
   width: 1060px;
-  height: 596px;
   flex: none;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-.pc-canvas {
+.pc-photo {
   position: relative;
-  flex: 1;
-  background: var(--surface);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-
-.pc-zone {
-  position: relative;
-  width: 560px;
-  height: 330px;
-  border: var(--rule-w) dashed var(--theme-structural);
-  border-radius: 14px;
-  background: var(--surface-2);
-}
-.pc-zone-label {
-  position: absolute;
-  top: -16px;
-  left: 28px;
-  font-family: var(--font-mono);
-  font-size: 20px;
-  letter-spacing: 0.16em;
-  color: var(--theme-structural);
-  background: var(--surface-2);
-  padding: 0 12px;
-}
-
-.pc-block {
-  position: absolute;
-  width: 130px;
-  height: 92px;
-  background: var(--theme-cool-surface);
-  border: 3px solid var(--theme-structural);
-  border-radius: 8px;
-  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
-  animation: pc-bob 3.6s var(--ease-soft) infinite;
-  animation-delay: calc(var(--pc-i) * 420ms);
-}
-.pc-block:nth-child(2) { left: 9%;  top: 18%; }
-.pc-block:nth-child(3) { right: 9%; top: 18%; }
-.pc-block:nth-child(4) { left: 9%;  bottom: 14%; }
-.pc-block:nth-child(5) { right: 9%; bottom: 14%; }
-@keyframes pc-bob {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-9px);
-  }
+.pc-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 .pc-cap {
@@ -126,15 +81,6 @@
   padding: 14px 24px;
   border-top: var(--rule-w) dashed var(--theme-dashed-line);
   background: var(--surface-2);
-}
-.pc-cap-mark {
-  font-family: var(--font-mono);
-  font-size: 20px;
-  letter-spacing: 0.1em;
-  color: var(--theme-structural);
-  background: var(--theme-cool-surface);
-  padding: 4px 14px;
-  border-radius: 6px;
 }
 .pc-cap-desc {
   font-family: var(--font-mono);

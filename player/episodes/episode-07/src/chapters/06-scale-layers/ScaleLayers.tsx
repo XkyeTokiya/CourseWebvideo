@@ -1,5 +1,6 @@
 import type { ChapterStepProps } from "../../../src/runtime/types";
 import "./ScaleLayers.css";
+import m002 from "./assets/m002.png";
 
 // A006 · S-A006(单持续 base-scene,image-with-insight-rail)。
 // narration step → semantic state(见 outline 视觉步组):
@@ -19,37 +20,6 @@ const FLOW_STEPS = ["生产", "加工", "运输", "检测", "服务", "回收"] 
 const VALUE_DIRS =
   "消费品质量追溯 · 数字医疗 · 绿色低碳 · 安全管理 · 城市数字化 · 产业集群";
 const SUPPORT_ITEMS = ["基础设施", "技术产品", "数据流通", "安全保障"] as const;
-
-// M002 占位示意:生产与物流协同现场(无品牌、无编码、无软件界面)。
-function SiteSketch() {
-  return (
-    <svg
-      className="sl-sketch"
-      viewBox="0 0 640 360"
-      role="img"
-      aria-label="生产与物流协同现场示意"
-    >
-      {/* 车间地面线 */}
-      <line x1="40" y1="300" x2="600" y2="300" stroke="var(--theme-structural)" strokeWidth="4" />
-      {/* 两个工作站 */}
-      <rect x="86" y="196" width="150" height="104" rx="8" fill="var(--theme-paper)" stroke="var(--theme-structural)" strokeWidth="3.5" />
-      <rect x="404" y="196" width="150" height="104" rx="8" fill="var(--theme-paper)" stroke="var(--theme-structural)" strokeWidth="3.5" />
-      <rect x="106" y="216" width="52" height="40" rx="4" fill="var(--theme-process-surface)" stroke="var(--theme-process)" strokeWidth="2.5" />
-      <rect x="484" y="216" width="52" height="40" rx="4" fill="var(--theme-process-surface)" stroke="var(--theme-process)" strokeWidth="2.5" />
-      {/* 输送辊道与流转的箱体 */}
-      <line x1="60" y1="252" x2="580" y2="252" stroke="var(--theme-structural)" strokeWidth="3" />
-      <circle cx="150" cy="252" r="8" fill="var(--surface-3)" stroke="var(--theme-structural)" strokeWidth="2.5" />
-      <circle cx="320" cy="252" r="8" fill="var(--surface-3)" stroke="var(--theme-structural)" strokeWidth="2.5" />
-      <circle cx="470" cy="252" r="8" fill="var(--surface-3)" stroke="var(--theme-structural)" strokeWidth="2.5" />
-      <rect x="236" y="216" width="52" height="36" fill="var(--theme-paper)" stroke="var(--theme-structural)" strokeWidth="3" />
-      <line x1="236" y1="228" x2="288" y2="228" stroke="var(--theme-dashed-line)" strokeWidth="2" />
-      {/* 站点间协同(同一标识衔接) */}
-      <path d="M170 150 Q320 96 470 150" fill="none" stroke="var(--theme-process)" strokeWidth="3" strokeDasharray="10 8" />
-      <polygon points="470,150 448,138 452,158" fill="var(--theme-process)" />
-      <circle cx="320" cy="118" r="12" fill="var(--theme-process)" opacity="0.25" />
-    </svg>
-  );
-}
 
 // 第二层明细:关键企业带动上下游,围绕同一标识衔接(S038 + beat 3)。
 function ChainSketch() {
@@ -86,8 +56,12 @@ function ScaleLayersScene({ state }: { state: SceneState }) {
         <div className="sl-main">
           <figure className="sl-media">
             <div className="sl-photo">
-              <SiteSketch />
-              <p className="sl-photo-plate">M002 · 生产与物流协同现场 · 待提供</p>
+              <img
+                className="sl-photo-image"
+                src={m002}
+                alt="生产与物流协同现场"
+              />
+              <p className="sl-photo-plate">生产与物流协同现场</p>
             </div>
           </figure>
 

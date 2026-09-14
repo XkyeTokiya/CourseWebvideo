@@ -46,7 +46,7 @@
     filter var(--dur-slow) var(--ease-soft);
 }
 
-/* ── 媒体区：placeholder 按真实比例留位 ──────────────── */
+/* ── 媒体区：M001 实景图按 16:9 留位 ────────────────── */
 
 .ao-media {
   margin: 0;
@@ -72,42 +72,11 @@
   box-shadow: var(--card-shadow);
 }
 
-.ao-placeholder {
+.ao-frame img {
+  display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
-  display: grid;
-  place-content: center;
-  justify-items: center;
-  gap: 12px;
-  text-align: center;
-  border: 2px dashed var(--theme-dashed-line);
-  background:
-    linear-gradient(var(--theme-grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--theme-grid-line) 1px, transparent 1px);
-  background-size: 24px 24px, 24px 24px;
-}
-
-.ao-ph-tag {
-  font-family: var(--font-mono);
-  font-size: 20px;
-  letter-spacing: 0.22em;
-  color: var(--theme-process);
-  border: 2px solid var(--theme-process);
-  background: var(--theme-process-surface);
-  padding: 6px 14px;
-}
-
-.ao-ph-title {
-  font-family: var(--font-display-cn);
-  font-size: 30px;
-  font-weight: 700;
-  color: var(--theme-structural);
-}
-
-.ao-ph-note {
-  font-family: var(--font-mono);
-  font-size: 19px;
-  color: var(--text-mute);
+  object-fit: cover;
 }
 
 /* ── 异常警示牌（step 2 钉入） ───────────────────────── */

@@ -85,11 +85,10 @@ export default function SharedViewAction({ step }: ChapterStepProps) {
 
         <figure className="sv-media">
           <div className="sv-photo">
-            <img src={m005} alt="现场协作情境占位图" />
+            <img src={m005} alt="现场共同观察与协同行动" />
           </div>
           <figcaption className="sv-media-cap">
-            <span>现场协作 · 占位图</span>
-            <span>不同于开场的共同观察</span>
+            <span>现场共同观察与协同行动</span>
           </figcaption>
         </figure>
       </div>

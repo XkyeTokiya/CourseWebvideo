@@ -1,5 +1,5 @@
 /* ── 06-scale-layers · S-A006 image-with-insight-rail ──
-   主构图:左侧持续现场媒体(M002 占位)| 右侧三层洞察短条递进轨
+   主构图:左侧持续现场媒体(M002)| 右侧三层洞察短条递进轨
    + 底部支撑条。机制 persistent-media-reading:图片持续在场,
    短条逐层加入并向下展开,阅读焦点沿轨道下移。
    基础态 = 最终可见态,隐藏规则只挂 [data-state]。 */
@@ -48,14 +48,15 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   background: var(--surface-3);
-  border: 2px dashed var(--theme-dashed-line);
+  border: 3px solid var(--theme-structural);
   overflow: hidden;
 }
-.sl-sketch {
+.sl-photo-image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 .sl-photo-plate {
   position: absolute;

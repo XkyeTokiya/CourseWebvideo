@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./ScanAndQuestions.css";
+import m001 from "./assets/m001.png";
 
 const states = [
   "scene-confirmed",
@@ -64,16 +65,16 @@ export default function ScanAndQuestions({ step }: ChapterStepProps) {
         <h1 className="sq-headline">
           身份已确认，<em>信息问题才开始</em>
         </h1>
-        <span className="sq-fiction-note">教学情境 · 非真实企业案例</span>
       </header>
 
       <div className={`sq-main${weak ? " is-weak" : ""}`}>
         <figure className="sq-media">
-          <div className="sq-photo-placeholder card" data-tone="image">
-            <span className="sq-ph-label">image · 16:9</span>
-            <span className="sq-ph-desc">
-              M001 收货质检现场：金属零部件与扫码终端（占位，待正式素材）
-            </span>
+          <div className="sq-photo-card card" data-tone="image">
+            <img
+              className="sq-photo-shot"
+              src={m001}
+              alt="收货质检与扫码终端现场"
+            />
           </div>
         </figure>
 

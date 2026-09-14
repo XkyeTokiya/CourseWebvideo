@@ -1,6 +1,6 @@
 /* Episode 08 · A001 onsite-question — prefix: oq-
    mechanism: premise-to-question — 问题卡持续补齐，底部结论条逐步接管视觉重心
-   比例参照 ep35 A001：媒体列大幅占位、卡片填充列高、大字号、晚现内容只做状态过渡 */
+   比例参照 ep35 A001：媒体列大幅留图、卡片填充列高、大字号、晚现内容只做状态过渡 */
 
 .oq-scene {
   justify-content: flex-start;
@@ -156,7 +156,7 @@
   transform: translateY(0);
 }
 
-/* ── media column：撑满列高的现场图占位 ─────────────────── */
+/* ── media column：撑满列高的现场图 ───────────────────── */
 
 .oq-media {
   margin: 0;
@@ -170,38 +170,15 @@
   flex: 1;
   min-height: 440px;
   background: var(--surface-3);
-  border: 3px dashed var(--theme-dashed-line);
+  border: 3px solid var(--theme-structural);
   overflow: hidden;
 }
 
-.oq-placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  text-align: center;
-  padding: 0 48px;
-}
-
-.oq-ph-label {
-  font-size: 26px;
-  letter-spacing: 0.1em;
-}
-
-.oq-ph-desc {
-  font-family: var(--font-body);
-  font-size: 27px;
-  font-weight: 700;
-  color: var(--text-2);
-}
-
-.oq-ph-note {
-  font-family: var(--font-body);
-  font-size: 19px;
-  color: var(--text-mute);
+.oq-shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* scan demo: one sweep on entry, then the confirmed-object focus */

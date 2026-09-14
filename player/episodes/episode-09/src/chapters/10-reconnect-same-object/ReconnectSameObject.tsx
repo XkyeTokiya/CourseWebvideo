@@ -34,7 +34,7 @@ function ReconnectScene({ state }: { state: ReconnectState }) {
       <div className="rs-main">
         <figure className="rs-media">
           <div className="rs-photo">
-            <img src={m004} alt="M004 收束回扣现场占位图" />
+            <img src={m004} alt="收束回扣现场" />
             <span className="rs-recall-chip" aria-hidden="true">
               回到开头 · 同一台发动机
             </span>

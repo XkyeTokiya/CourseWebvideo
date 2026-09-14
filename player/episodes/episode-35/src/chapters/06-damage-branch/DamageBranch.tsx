@@ -200,8 +200,7 @@ export default function DamageBranch({ step }: ChapterStepProps) {
         <div className="db-side">
           <figure className="db-media">
             <div className="db-photo-placeholder card">
-              <span className="db-ph-label">image · 16:9</span>
-              <span className="db-ph-desc">M004 污损与划伤识别载体特写（待补入）</span>
+              <span className="db-ph-desc">污损与划伤识别载体特写</span>
             </div>
           </figure>
 

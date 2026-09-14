@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./A001OnsiteQuestion.css";
+import m001 from "./assets/m001.png";
 
 const states = [
   "object-identified",
@@ -68,15 +69,11 @@ export default function A001OnsiteQuestion({ step }: ChapterStepProps) {
 
         <figure className="oq-media">
           <div className="oq-frame">
-            <div className="oq-placeholder">
-              <span className="oq-ph-label label-mono">image · 16:9</span>
-              <span className="oq-ph-desc">
-                M001 工业泵检修现场 · 服务人员核验设备（待生成）
-              </span>
-              <span className="oq-ph-note">
-                photorealistic_ai · 不含编码、品牌与界面
-              </span>
-            </div>
+            <img
+              className="oq-shot"
+              src={m001}
+              alt="工业设备检查与检修现场，工作人员核验设备"
+            />
             <div className="oq-scan" aria-hidden="true">
               <span className="oq-scan-line" />
               <span className="oq-scan-target">
@@ -86,7 +83,7 @@ export default function A001OnsiteQuestion({ step }: ChapterStepProps) {
             </div>
           </div>
           <figcaption className="oq-cap">
-            <span>M001 · 现场检修（placeholder）</span>
+            <span>设备检查与检修现场</span>
             <span>扫码只完成身份确认</span>
           </figcaption>
         </figure>

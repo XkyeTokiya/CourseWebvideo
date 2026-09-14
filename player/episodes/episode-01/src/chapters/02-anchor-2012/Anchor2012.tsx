@@ -1,5 +1,6 @@
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./Anchor2012.css";
+import m001 from "./assets/m001.png";
 
 const stateByStep = [
   "anchor-set",
@@ -24,10 +25,14 @@ export default function Anchor2012Chapter({ step }: ChapterStepProps) {
             通用电气 GE，正是在这一年提出
             <em>“工业互联网”</em>
           </div>
-          <div className="an-media-ph">
-            <span className="an-media-ph-mark">image · 16:9</span>
-            <span className="an-media-ph-desc">2012 年前后的工业现场（素材待提供）</span>
-          </div>
+          <figure className="an-media">
+            <div className="an-photo">
+              <img src={m001} alt="2012 年前后的工业现场" />
+            </div>
+            <figcaption className="an-media-cap">
+              <span>2012 年前后的工业现场</span>
+            </figcaption>
+          </figure>
         </div>
 
         <div className="an-right">

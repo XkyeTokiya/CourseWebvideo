@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./A007IndustryActors.css";
+import m003 from "./assets/m003.png";
 
 const states = ["actors-local-systems", "align-then-resolve"] as const;
 
@@ -19,18 +20,14 @@ export default function A007IndustryActors({ step }: ChapterStepProps) {
       <div className="ia-main">
         <figure className="ia-media">
           <div className="ia-frame">
-            <div className="ia-placeholder">
-              <span className="label-mono">image · 16:9</span>
-              <span className="ia-ph-desc">
-                M003 跨主体实物交接与核验现场（待生成）
-              </span>
-              <span className="ia-ph-note">
-                photorealistic_ai · 不含界面、订单数据与企业标识
-              </span>
-            </div>
+            <img
+              className="ia-shot"
+              src={m003}
+              alt="跨主体实物交接与核验现场"
+            />
           </div>
           <figcaption className="ia-cap">
-            <span>M003 · 跨主体交接现场（placeholder）</span>
+            <span>跨主体实物交接与核验现场</span>
             <span>多方各自系统 · 无自动共享</span>
           </figcaption>
         </figure>

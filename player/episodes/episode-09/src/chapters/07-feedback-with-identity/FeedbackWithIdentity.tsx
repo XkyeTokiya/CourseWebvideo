@@ -68,11 +68,10 @@ export default function FeedbackWithIdentity({ step }: ChapterStepProps) {
         {/* 媒体区 M003 · 场景图全程持续；不叠加完整句、回流路径或虚构系统界面 */}
         <figure className="fw-media">
           <div className="fw-photo">
-            <img src={m003} alt="M003 售后查询与反馈现场占位图" />
+            <img src={m003} alt="售后查询与反馈现场" />
           </div>
           <figcaption className="fw-media-cap">
-            <span>M003 · 售后查询与反馈现场（占位图）</span>
-            <span>不显示缺陷判定结果、软件界面或可读业务数据</span>
+            <span>售后查询与反馈现场</span>
           </figcaption>
         </figure>
 

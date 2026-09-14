@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./IdentityKey.css";
+import m002 from "./assets/m002.png";
 
 const states = [
   "key-defined",
@@ -74,10 +75,11 @@ export default function IdentityKey({ step }: ChapterStepProps) {
         <div className="ik-media-col">
           <figure className="ik-media">
             <div className="ik-photo card">
-              <span className="ik-ph-label">image · 16:9</span>
-              <span className="ik-ph-desc">
-                M002 被确认零部件的特写镜头 —— 延续同一收货现场（占位，待正式素材）
-              </span>
+              <img
+                className="ik-photo-shot"
+                src={m002}
+                alt="被确认零部件的现场质检特写"
+              />
             </div>
           </figure>
 

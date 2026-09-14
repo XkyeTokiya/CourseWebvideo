@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./A007ConditionMonitoring.css";
+import m003 from "./assets/m003.png";
 
 const states = [
   "condition-focus-opened",
@@ -55,19 +56,18 @@ export default function A007ConditionMonitoring({ step }: ChapterStepProps) {
         <figure className="cm-media">
           <div className="cm-frame">
             <div className="cm-ph-wrap">
-              <div className="cm-ph">
-                <span className="cm-ph-tag">IMAGE · 16:9</span>
-                <span className="cm-ph-title">模具维护与传感器采集现场</span>
-                <span className="cm-ph-note">素材待提供(photorealistic_ai)</span>
-              </div>
+              <img
+                className="cm-shot"
+                src={m003}
+                alt="模具维护工位上，维护人员正在检查模具与现场采集部件"
+              />
               <div className="cm-focus">
                 <span className="cm-focus-label">加工过程 · 状态进入视野</span>
               </div>
             </div>
           </div>
           <figcaption className="cm-cap">
-            <span>M003 · 模具维护与传感器采集现场(placeholder)</span>
-            <span>现场图不显示仪表盘与阈值</span>
+            <span>模具维护与传感器采集现场</span>
           </figcaption>
         </figure>
 

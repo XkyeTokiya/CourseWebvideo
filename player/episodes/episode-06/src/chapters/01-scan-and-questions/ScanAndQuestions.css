@@ -51,7 +51,7 @@
   animation: sq-fade-in 560ms var(--ease-overshoot) 260ms backwards;
 }
 
-/* ── 主区：现场图占位 + 查询轨道 ─────────────────────── */
+/* ── 主区：收货现场图 + 查询轨道 ─────────────────────── */
 
 .sq-main {
   flex: 1;
@@ -75,32 +75,19 @@
   display: flex;
 }
 
-.sq-photo-placeholder {
+.sq-photo-card {
+  position: relative;
   flex: 1;
   min-height: 420px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  border-style: dashed;
-  border-width: 3px;
+  overflow: hidden;
   animation: sq-fade-in 620ms var(--ease-soft) 160ms backwards;
 }
 
-.sq-ph-label {
-  font-family: var(--font-mono);
-  font-size: 30px;
-  letter-spacing: 0.1em;
-  color: var(--text-mute);
-}
-
-.sq-ph-desc {
-  font-size: 26px;
-  color: var(--text-faint);
-  text-align: center;
-  max-width: 460px;
-  line-height: 1.5;
+.sq-photo-shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .sq-rail {

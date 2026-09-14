@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./PlatformCommonSpace.css";
+import m002 from "./assets/m002.png";
 
 const stateByStep = [
   "common-space-established",
@@ -28,8 +29,6 @@ const RAIL = [
   },
 ] as const;
 
-const BLOCKS = [0, 1, 2, 3] as const;
-
 export default function PlatformCommonSpaceChapter({ step }: ChapterStepProps) {
   const state: State = stateByStep[step] ?? stateByStep[stateByStep.length - 1];
   const idx = stateByStep.indexOf(state);
@@ -45,17 +44,11 @@ export default function PlatformCommonSpaceChapter({ step }: ChapterStepProps) {
 
       <div className="pc-main">
         <figure className="card pc-media">
-          <div className="pc-canvas" aria-hidden="true">
-            <div className="pc-zone">
-              <span className="pc-zone-label">共同空间</span>
-              {BLOCKS.map((i) => (
-                <span key={i} className="pc-block" style={{ "--pc-i": i } as CSSProperties} />
-              ))}
-            </div>
+          <div className="pc-photo">
+            <img src={m002} alt="制造车间里不同岗位围绕同一生产任务协同作业" />
           </div>
           <figcaption className="pc-cap">
-            <span className="pc-cap-mark">image · 16:9</span>
-            <span className="pc-cap-desc">统一生产运营环境 · M002（素材待提供）</span>
+            <span className="pc-cap-desc">统一生产运营环境 · 跨岗位协同共处同一现场</span>
           </figcaption>
         </figure>
 

@@ -1,5 +1,6 @@
 import type { ChapterStepProps } from "../../../src/runtime/types";
 import "./WrapCheck.css";
+import m003 from "./assets/m003.png";
 
 // A007 · S-A007(单持续 base-scene,image-with-summary-rail)。
 // narration step → semantic state(见 outline 视觉步组):
@@ -19,41 +20,6 @@ const CHAIN_NODES = ["编码设计", "数据建模", "载体选择", "节点建�
 const ENTRY_WORDS = ["对象", "环节", "产业链"] as const;
 const CRITERIA = ["是否进入流程？", "是否连接不同主体？", "能否持续运行？"] as const;
 
-// M003 占位示意:回扣 A001 开篇的产线扫码现场(同场景,静态驻留)。
-function SiteEcho() {
-  return (
-    <svg
-      className="wc-sketch"
-      viewBox="0 0 640 360"
-      role="img"
-      aria-label="回扣开篇的产线扫码现场示意"
-    >
-      <line x1="52" y1="286" x2="588" y2="286" stroke="var(--theme-structural)" strokeWidth="4" />
-      <line x1="118" y1="286" x2="118" y2="322" stroke="var(--theme-structural)" strokeWidth="4" />
-      <line x1="522" y1="286" x2="522" y2="322" stroke="var(--theme-structural)" strokeWidth="4" />
-      <circle cx="170" cy="286" r="9" fill="var(--surface-3)" stroke="var(--theme-structural)" strokeWidth="3" />
-      <circle cx="300" cy="286" r="9" fill="var(--surface-3)" stroke="var(--theme-structural)" strokeWidth="3" />
-      <circle cx="430" cy="286" r="9" fill="var(--surface-3)" stroke="var(--theme-structural)" strokeWidth="3" />
-      <rect x="236" y="234" width="150" height="52" fill="var(--theme-paper)" stroke="var(--theme-structural)" strokeWidth="3.5" />
-      <line x1="236" y1="252" x2="386" y2="252" stroke="var(--theme-dashed-line)" strokeWidth="2" strokeDasharray="7 6" />
-      <g transform="rotate(-14 462 152)">
-        <rect x="430" y="104" width="64" height="98" rx="10" fill="var(--theme-paper)" stroke="var(--theme-structural)" strokeWidth="3.5" />
-        <rect x="440" y="116" width="44" height="52" rx="4" fill="var(--theme-process-surface)" stroke="var(--theme-structural)" strokeWidth="2.5" />
-      </g>
-      <polygon points="446,206 466,206 382,234 322,234" fill="var(--theme-process)" opacity="0.14" />
-      <line
-        x1="452"
-        y1="206"
-        x2="352"
-        y2="232"
-        stroke="var(--theme-process)"
-        strokeWidth="2.5"
-        strokeDasharray="8 7"
-      />
-    </svg>
-  );
-}
-
 function WrapCheckScene({ state }: { state: SceneState }) {
   return (
     <div className="scene wc" data-state={state}>
@@ -66,8 +32,12 @@ function WrapCheckScene({ state }: { state: SceneState }) {
         <div className="wc-main">
           <figure className="wc-media">
             <div className="wc-photo">
-              <SiteEcho />
-              <p className="wc-photo-plate">M003 · 回扣开篇工业现场 · 待提供</p>
+              <img
+                className="wc-photo-image"
+                src={m003}
+                alt="回扣开篇工业现场的生产与质检协作"
+              />
+              <p className="wc-photo-plate">回扣开篇工业现场</p>
             </div>
           </figure>
 

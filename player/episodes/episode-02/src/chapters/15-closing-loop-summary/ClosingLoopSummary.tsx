@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./ClosingLoopSummary.css";
+import m005 from "./assets/m005.png";
 
 const stateByStep = [
   "connect-aggregate-recalled",
@@ -77,22 +78,11 @@ export default function ClosingLoopSummaryChapter({ step }: ChapterStepProps) {
         </div>
 
         <figure className="card cs-media">
-          <div className="cs-canvas" aria-hidden="true">
-            <span className="cs-lane-label cs-lane-up">信息上行</span>
-            <span className="cs-lane-label cs-lane-down">决策下行</span>
-            <span className="cs-dot cs-dot-up" style={{ "--cs-d": 0 } as CSSProperties} />
-            <span className="cs-dot cs-dot-up" style={{ "--cs-d": 1 } as CSSProperties} />
-            <span className="cs-dot cs-dot-down" style={{ "--cs-d": 0 } as CSSProperties} />
-            <span className="cs-dot cs-dot-down" style={{ "--cs-d": 1 } as CSSProperties} />
-            <div className="cs-floor">
-              <span className="cs-machine" />
-              <span className="cs-machine" />
-              <span className="cs-machine" />
-            </div>
+          <div className="cs-photo">
+            <img src={m005} alt="生产现场依设备反馈调整工艺动作，并确认调整后的生产对象" />
           </div>
           <figcaption className="cs-cap">
-            <span className="cs-cap-mark">image · 16:9</span>
-            <span className="cs-cap-desc">判断与行动回到现场 · M005（素材待提供）</span>
+            <span className="cs-cap-desc">判断与行动回到现场 · 生产持续调整</span>
           </figcaption>
         </figure>
       </div>

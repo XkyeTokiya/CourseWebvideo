@@ -23,11 +23,10 @@ export default function ConnectionSharedAwareness({ step }: ChapterStepProps) {
       <div className="cs-main">
         <figure className="cs-media">
           <div className="cs-photo">
-            <img src={m003} alt="人、机器、产品与工业现场共同工作占位图" />
+            <img src={m003} alt="人、机器、产品共同工作的制造现场" />
           </div>
           <figcaption className="cs-media-cap">
-            <span>工业现场 · 占位图</span>
-            <span>人、机器、产品共同工作</span>
+            <span>人、机器、产品共同工作的制造现场</span>
           </figcaption>
         </figure>
 

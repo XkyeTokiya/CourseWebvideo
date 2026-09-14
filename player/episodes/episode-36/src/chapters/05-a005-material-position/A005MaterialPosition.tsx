@@ -40,7 +40,7 @@ export default function A005MaterialPosition({ step }: ChapterStepProps) {
               <path className="a5-labelchip-edge" d="M 576 128 L 636 128 L 668 168 L 608 168 Z" />
             </g>
           </svg>
-          <figcaption className="a5-ph">M002 · 平面、弧面与包装边缘现场图（待补入）</figcaption>
+          <figcaption className="a5-ph">平面、弧面与包装边缘现场</figcaption>
         </figure>
 
         <div className="a5-rail">

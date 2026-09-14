@@ -39,7 +39,7 @@ export default function A011UseEnvironment({ step }: ChapterStepProps) {
               <line x1="540" y1="270" x2="640" y2="170" />
             </g>
           </svg>
-          <figcaption className="a11-ph">M005 · 使用环境附着位置实景图（待补入）</figcaption>
+          <figcaption className="a11-ph">使用环境中的实际附着位置</figcaption>
         </figure>
       </div>
 
