@@ -1,0 +1,94 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * Theme · active-identification-signal-grid
+ *   Engineering notebook for industrial education and technical systems.
+ *   Deep navy carries hierarchy and structure; industrial green expresses
+ *   active flow, trustworthy operation, and improvement; clay orange marks
+ *   risk and attention. SIGNATURE: a 48px engineering grid combined with
+ *   heavy navy structure and low offset paper shadows.
+ * ───────────────────────────────────────────────────────────────────── */
+:root {
+  /* ─── standard compatibility palette ─── */
+  --shell:        #dce8e2;
+  --surface:      #eff6f2;
+  --surface-2:    #ffffff;
+  --surface-3:    #e5efea;
+  --text:         #0b345f;
+  --text-2:       #456879;
+  --text-mute:    #607d80;
+  --text-faint:   #71898a;
+  --rule:         #abc5c2;
+  --accent:       #0f9961;
+  --accent-soft:  rgba(15, 153, 97, 0.10);
+  --accent-glow:  rgba(15, 153, 97, 0.23);
+
+  /* ─── narrow identity layer: recurring source semantics ─── */
+  --theme-structural:       #0b345f;
+  --theme-process:          #0f9961;
+  --theme-warning:          #e87426;
+  --theme-danger:           #c94f4a;
+  --theme-process-surface:  #e9f5ee;
+  --theme-warning-surface:  #fff0e4;
+  --theme-danger-surface:   #f9e8e2;
+  --theme-cool-surface:     #e5efea;
+  --theme-paper:            #ffffff;
+  --theme-grid-line:        #c9ddd5;
+  --theme-dashed-line:      #abc5c2;
+  --theme-offset-shadow:    rgba(29, 66, 60, 0.17);
+
+  /* compatibility aliases for extracted source components */
+  --industrial-navy:       var(--theme-structural);
+  --industrial-blue:       var(--theme-structural);
+  --industrial-green:      var(--theme-process);
+  --industrial-orange:     var(--theme-warning);
+  --industrial-cyan:       var(--theme-cool-surface);
+  --industrial-mint:       var(--theme-process-surface);
+  --industrial-amber:      var(--theme-warning-surface);
+  --industrial-soft:       var(--theme-paper);
+  --industrial-green-line: #9fd7be;
+  --industrial-warm-line:  #edb890;
+
+  /* ─── fonts: preserve the source fallback order ─── */
+  --font-display-cn: "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", Arial, sans-serif;
+  --font-display-en: Georgia, "Times New Roman", serif;
+  --font-body:       "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", Arial, sans-serif;
+  --font-mono:       ui-monospace, "JetBrains Mono", "Cascadia Mono", Consolas, "Courier New", monospace;
+  --font-features:   "tnum";
+
+  /* ─── measured, mechanical motion baseline ─── */
+  --dur-base:       520ms;
+  --dur-slow:       760ms;
+  --dur-cinematic:  1100ms;
+
+  /* ─── identity: sturdy paper labels and engineering structure ─── */
+  --r-card:           16px;
+  --r-stage:          0;
+  --rule-w:           2px;
+  --rule-style:       dashed;
+  --hero-num-font:    var(--font-mono);
+  --hero-num-style:   normal;
+  --hero-num-weight:  900;
+  --hero-num-track:   -0.03em;
+  --stage-pad-x:      110px;
+  --stage-pad-y:      84px;
+  --card-shadow:
+    0 0 0 3px var(--theme-structural),
+    7px 8px 0 var(--theme-offset-shadow);
+  --card-glass-bg:     rgba(255, 255, 255, 0.94);
+  --card-glass-border: rgba(11, 52, 95, 0.20);
+  --shadow-stage:
+    0 44px 120px rgba(29, 66, 60, 0.20),
+    0 0 0 1px rgba(29, 66, 60, 0.08);
+  --stage-border: none;
+
+  /* ─── SIGNATURE: engineering graph-paper grid ─── */
+  --surface-pattern:
+    linear-gradient(rgba(91, 136, 127, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91, 136, 127, 0.12) 1px, transparent 1px),
+    radial-gradient(circle, rgba(15, 153, 97, 0.28) 1.5px, transparent 2px);
+  --surface-pattern-size: 48px 48px, 48px 48px, 96px 96px;
+  --surface-pattern-blend: normal;
+  --surface-pattern-opacity: 0.86;
+  --surface-vignette: linear-gradient(90deg, transparent 0 40%, rgba(15, 153, 97, 0.10) 40% calc(40% + 1px), transparent calc(40% + 1px)),
+    linear-gradient(transparent 0 24%, rgba(15, 153, 97, 0.10) 24% calc(24% + 1px), transparent calc(24% + 1px));
+  --text-shadow: none;
+}

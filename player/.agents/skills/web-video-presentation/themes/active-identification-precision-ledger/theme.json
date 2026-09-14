@@ -1,0 +1,31 @@
+{
+  "id": "active-identification-precision-ledger",
+  "name": "Active Identification Precision Ledger",
+  "nameZh": "主动标识·精密记录纸",
+  "description": "An engineering-notebook visual system with graph paper, deep navy structure, industrial green process semantics, clay warning cues, and sturdy offset paper shadows, refined as a cool precision inspection ledger with major/minor registration grids.",
+  "descriptionZh": "工程方格纸上的工业教学视觉系统：深海军蓝建立粗结构，工业绿表达主动流动与改善，陶土橙承担风险提示，低位硬投影形成可靠的工程贴纸质感；本变体使用冷白精密记录纸与主次注册网格。",
+  "mood": [
+    "light",
+    "industrial",
+    "engineering",
+    "technical",
+    "educational",
+    "structured",
+    "tactile"
+  ],
+  "bestFor": [
+    "工业互联网与智能制造",
+    "工程技术与设备原理讲解",
+    "企业技术培训",
+    "生产流程和闭环控制",
+    "B2B 解决方案演示",
+    "职业教育与教材信息图",
+    "数据驱动的运营汇报"
+  ],
+  "preview": {
+    "shell": "#e4edf5",
+    "surface": "#f4f8fb",
+    "text": "#0b3566",
+    "accent": "#0b9560"
+  }
+}

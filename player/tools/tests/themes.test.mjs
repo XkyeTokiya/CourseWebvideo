@@ -18,6 +18,9 @@ test("theme registry exposes every complete theme to the runtime", async () => {
 test("theme registry hides compatibility themes from selection", async () => {
   const ids = await listSelectableThemeIds();
   assert.ok(ids.includes("active-identification-note"));
+  assert.ok(ids.includes("active-identification-precision-ledger"));
+  assert.ok(ids.includes("active-identification-warm-paper"));
+  assert.ok(ids.includes("active-identification-signal-grid"));
   assert.ok(!ids.includes("industrial-clarity"));
   await assertThemeExists("industrial-clarity");
   await assert.rejects(assertThemeSelectable("industrial-clarity"), /主题不可选/);

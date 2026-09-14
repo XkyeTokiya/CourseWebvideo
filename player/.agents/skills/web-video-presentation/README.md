@@ -67,7 +67,7 @@ A step is a narration-to-implementation handoff unit. Consecutive steps in one v
 
 Themes live in `themes/<id>/` and require both `theme.json` and `tokens.css`. Studio discovers them at build time and injects the theme selected in `project.json.theme` at playback.
 
-All 21 selectable bundled themes provide the standard palette and font token contract; compatibility themes marked with `selectable: false` remain loadable only for existing episodes. New chapters use standard tokens such as `--surface`, `--text`, `--text-mute`, and `--accent`. The shared runtime maps legacy `--stage-*` variables only to keep extracted older chapters working.
+All 24 selectable bundled themes provide the standard palette and font token contract; compatibility themes marked with `selectable: false` remain loadable only for existing episodes. New chapters use standard tokens such as `--surface`, `--text`, `--text-mute`, and `--accent`. The shared runtime maps legacy `--stage-*` variables only to keep extracted older chapters working.
 
 See [THEMES.md](./references/THEMES.md) for theme authoring and validation.
 

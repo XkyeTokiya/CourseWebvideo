@@ -67,7 +67,7 @@ step 是口播与页面状态单位，不等于一张新页面。同一视觉步
 
 主题位于 `themes/<id>/`，必须同时包含 `theme.json` 与 `tokens.css`。Studio 在构建期发现主题，并在播放时按 `project.json.theme` 动态注入。
 
-内置 21 套可选主题都提供标准调色板与字体 token；标记 `selectable: false` 的兼容主题只供旧实例加载。新章节使用 `--surface`、`--text`、`--text-mute`、`--accent` 等标准 token。共享运行时仅为已抽取旧章节兼容 `--stage-*` 变量，新章节不得把它们作为 API。
+内置 24 套可选主题都提供标准调色板与字体 token；标记 `selectable: false` 的兼容主题只供旧实例加载。新章节使用 `--surface`、`--text`、`--text-mute`、`--accent` 等标准 token。共享运行时仅为已抽取旧章节兼容 `--stage-*` 变量，新章节不得把它们作为 API。
 
 主题创作和验证见 [THEMES.md](./references/THEMES.md)。
 

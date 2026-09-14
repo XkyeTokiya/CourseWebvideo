@@ -53,7 +53,7 @@
 
 ## 内置主题
 
-21 套可选主题，每个都有**独立的设计 DNA** —— 不是简单的换色版。挑一个
+24 套可选主题，每个都有**独立的设计 DNA**。挑一个
 匹配你主题情绪的，或者作为你自己主题的起点。
 
 ### 深色主题
@@ -85,6 +85,9 @@
 | `kraft-paper`        | 牛皮纸 —— **深棕当墨** + 牛皮米。Fraunces + Source Serif + 紫铜 accent。老笔记本 / 老信封感。**粗暖纸纹**是签名。慢速 tactile（1.55s）。                                                                       |
 | `dune`               | 沙丘 —— **炭褐当墨** + 沙底 + 几乎无 accent（muted clay）。Inter display + Source Serif 正文。**无装饰 + 极宽 padding（140×100）**是签名。建筑手册 / 画廊感。最慢节奏（1.75s）。                                |
 | `swiss-ikb`          | 瑞士国际主义。**极细 200 weight Inter / Helvetica** + 净暖白底 + IKB 克莱因蓝 + **1px 发丝网格 (64px)**。`r-card: 0` 直角。Massimo Vignelli / Helvetica Forever 能量。punchy + linear（400/650ms）。           |
+| `active-identification-precision-ledger` | 主动标识·精密记录纸。冷白检验纸 + 主次注册网格，保留深海军蓝结构、工业绿流程、陶土橙警示与硬投影几何。 |
+| `active-identification-warm-paper` | 主动标识·暖纸检验单。当代象牙色纤维纸 + 克制检验横线，保留原主题的信息编码和排版性格。 |
+| `active-identification-signal-grid` | 主动标识·信号矩阵。矿物灰绿纸面 + 低对比矩阵 + 稀疏信号节点，避免霓虹和赛博感。 |
 
 
 随时列出可选主题：
