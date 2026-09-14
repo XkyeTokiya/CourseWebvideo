@@ -72,29 +72,38 @@
   border-radius: 8px;
 }
 
-.an-media-ph {
+/* 实景图：16:9 卡框 + 图注（图注不出现 M/E 编号） */
+.an-media {
   flex: 1;
   min-height: 0;
-  border: var(--rule-w) dashed var(--theme-dashed-line);
-  border-radius: var(--r-card);
-  background: var(--surface-3);
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 16px;
   animation: an-fade-up 620ms var(--ease-quart) 560ms backwards;
 }
-.an-media-ph-mark {
-  font-family: var(--font-mono);
-  font-size: 30px;
-  letter-spacing: 0.18em;
-  color: var(--text-mute);
+.an-photo {
+  position: relative;
+  padding: 14px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
 }
-.an-media-ph-desc {
-  font-family: var(--font-body);
-  font-size: 21px;
-  color: var(--text-faint);
+.an-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.an-media-cap {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  line-height: 1.4;
+  color: var(--text-mute);
 }
 
 /* ── 右栏：两个固定上下文槽 ── */

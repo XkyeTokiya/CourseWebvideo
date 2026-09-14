@@ -123,11 +123,10 @@ export default function ObjectConstraint({ step }: ChapterStepProps) {
       <div className="oc-main">
         <figure className="oc-media">
           <div className="oc-photo-placeholder card" data-tone="image">
-            <span className="oc-ph-label">image · 16:9</span>
-            <span className="oc-ph-desc">M002 曲面齿形金属零部件实景（待补入）</span>
+            <span className="oc-ph-desc">曲面齿形金属零部件</span>
           </div>
           <div className="oc-schematic card">
-            <p className="oc-schematic-caption">示意 · 齿面刻码与检查</p>
+            <p className="oc-schematic-caption">齿面刻码与检查</p>
             <GearDemo engraved={engraved} checked={checked} />
           </div>
         </figure>

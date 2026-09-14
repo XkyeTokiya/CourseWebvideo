@@ -38,13 +38,13 @@ export default function A008RoundRectLayouts({ step }: ChapterStepProps) {
               <rect className="a8-rect-sub" x="444" y="208" width="76" height="16" rx="8" />
             </g>
           </svg>
-          <figcaption className="a8-ph">M004 · 教材图 4-7 原图（待补入）</figcaption>
+          <figcaption className="a8-ph">圆形与长方形版式</figcaption>
         </figure>
 
         <div className="a8-rail">
           <article className="a8-item card">
             <p className="a8-item-kicker">例子来源</p>
-            <p className="a8-item-line">教材图 4-7 是汽车行业的标识载体设计示例</p>
+            <p className="a8-item-line">汽车行业的标识载体设计示例</p>
           </article>
 
           <article className="a8-item card">

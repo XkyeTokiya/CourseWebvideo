@@ -61,8 +61,8 @@
 .sc-photo img {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 
 /* 读图注解区：先读传统侧 → 再读新方向 */

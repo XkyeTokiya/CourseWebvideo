@@ -22,7 +22,7 @@ export default function SharedCarrier({ step }: ChapterStepProps) {
       <div className="sc-main">
         <figure className="sc-media">
           <div className="sc-photo">
-            <img src={m003} alt="M003 教材图 1-3 原图占位图" />
+            <img src={m003} alt="传统工业 IT 架构和工业互联网架构" />
           </div>
         </figure>
 

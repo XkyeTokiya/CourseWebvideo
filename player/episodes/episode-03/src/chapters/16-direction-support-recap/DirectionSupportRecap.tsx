@@ -15,7 +15,7 @@ export default function DirectionSupportRecap({ step }: ChapterStepProps) {
   const state: DirectionSupportRecapState =
     states[step] ?? states[states.length - 1];
   const policyOn = states.indexOf(state) >= 1;
-  const runOn = state === "run-boundary-complete";
+  const runOn = state === "support-and-boundary-complete";
 
   return (
     <div className="dr-scene scene-pad">
@@ -84,11 +84,10 @@ export default function DirectionSupportRecap({ step }: ChapterStepProps) {
 
         <figure className="dr-media">
           <div className="dr-photo">
-            <img src={m006} alt="现代工业现场整体运行占位图" />
+            <img src={m006} alt="现代工业整体运行现场" />
           </div>
           <figcaption className="dr-media-cap">
-            <span>现代工业现场 · 占位图</span>
-            <span>全期收束</span>
+            <span>现代工业整体运行现场</span>
           </figcaption>
         </figure>
       </div>

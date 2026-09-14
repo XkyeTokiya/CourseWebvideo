@@ -1,5 +1,6 @@
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./A009ReturnOnsite.css";
+import m004 from "./assets/m004.png";
 
 const states = [
   "object-confirmed-found",
@@ -58,14 +59,14 @@ export default function A009ReturnOnsite({ step }: ChapterStepProps) {
 
         <figure className="ro-media">
           <div className="ro-frame">
-            <div className="ro-placeholder">
-              <span className="label-mono">image · 16:9</span>
-              <span className="ro-ph-desc">M004 回到开场的检修现场（待生成）</span>
-              <span className="ro-ph-note">photorealistic_ai · 不含界面、字段与诊断结论</span>
-            </div>
+            <img
+              className="ro-shot"
+              src={m004}
+              alt="回到同一对象的检修现场"
+            />
           </div>
           <figcaption className="ro-cap">
-            <span>M004 · 开场现场回扣（placeholder）</span>
+            <span>回到同一对象的检修现场</span>
             <span>三层机制落回同一对象</span>
           </figcaption>
         </figure>

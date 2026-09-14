@@ -20,6 +20,7 @@ export default defineConfig(({ command }) => {
       },
     },
     server: {
+      host: "127.0.0.1",
       port: 5174,
       fs: { allow: ["."] },
       watch: {

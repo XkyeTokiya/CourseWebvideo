@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./DnsAnalogyLimits.css";
+import m003 from "./assets/m003.png";
 
 const states = [
   "dns-example-set",
@@ -65,15 +66,8 @@ export default function DnsAnalogyLimits({ step }: ChapterStepProps) {
 
       <div className="da-main">
         <figure className="da-media">
-          <div className="da-media-ph card">
-            <span className="da-ph-tag">textbook_original · 图 1-5</span>
-            <div className="da-ph-center">
-              <span className="da-ph-label">教材原图占位</span>
-              <span className="da-ph-desc">
-                教材 DNS 类比原图（图 1-5）· 待正式素材替换
-              </span>
-            </div>
-            <span className="da-ph-source">M003 · 教材原图</span>
+          <div className="da-media-photo card">
+            <img src={m003} alt="标识解析系统与 DNS 类比" />
           </div>
         </figure>
 

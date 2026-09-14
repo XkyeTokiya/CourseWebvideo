@@ -18,10 +18,9 @@
   min-height: 0;
 }
 
-/* ── 媒体占位：真实 16:9 留位 + 产线上行情境演示 ── */
+/* ── 主图：M001 实景图持续在场 ── */
 .ol-media {
   width: 1120px;
-  height: 630px;
   flex: none;
   display: flex;
   flex-direction: column;
@@ -29,87 +28,14 @@
   position: relative;
 }
 
-.ol-canvas {
-  position: relative;
-  flex: 1;
-  background: var(--surface);
-}
-
-.ol-ping {
-  position: absolute;
-  bottom: 24%;
-  width: 15px;
-  height: 15px;
-  background: var(--theme-process);
-  opacity: 0;
-  animation: ol-rise 2.8s linear infinite;
-  animation-delay: calc(var(--ol-i) * 560ms);
-}
-.ol-ping:nth-child(1) { left: 18%; }
-.ol-ping:nth-child(2) { left: 30%; }
-.ol-ping:nth-child(3) { left: 42%; }
-.ol-ping:nth-child(4) { left: 54%; }
-.ol-ping:nth-child(5) { left: 66%; }
-@keyframes ol-rise {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  14% {
-    opacity: 0.9;
-  }
-  78% {
-    opacity: 0.9;
-  }
-  100% {
-    transform: translateY(-340px);
-    opacity: 0;
-  }
-}
-
-.ol-edge {
-  position: absolute;
-  left: 7%;
-  right: 7%;
-  top: 44%;
-  border-top: var(--rule-w) dashed var(--theme-dashed-line);
-}
-.ol-edge-label {
-  position: absolute;
-  right: 0;
-  top: -36px;
-  font-family: var(--font-mono);
-  font-size: 20px;
-  letter-spacing: 0.12em;
-  color: var(--text-mute);
-}
-
-.ol-rack {
-  position: absolute;
-  left: 9%;
-  right: 9%;
-  bottom: 9%;
-  display: flex;
-  justify-content: center;
-  gap: 110px;
-}
-.ol-machine {
-  width: 140px;
-  height: 94px;
-  background: var(--surface-2);
-  border: 3px solid var(--theme-structural);
-  border-radius: 6px;
-  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+.ol-photo {
   position: relative;
 }
-.ol-machine::after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 12px;
-  height: 12px;
-  background: var(--theme-process);
+.ol-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 .ol-cap {
@@ -119,15 +45,6 @@
   padding: 14px 24px;
   border-top: var(--rule-w) dashed var(--theme-dashed-line);
   background: var(--surface-2);
-}
-.ol-cap-mark {
-  font-family: var(--font-mono);
-  font-size: 20px;
-  letter-spacing: 0.1em;
-  color: var(--theme-structural);
-  background: var(--theme-cool-surface);
-  padding: 4px 14px;
-  border-radius: 6px;
 }
 .ol-cap-desc {
   font-family: var(--font-mono);

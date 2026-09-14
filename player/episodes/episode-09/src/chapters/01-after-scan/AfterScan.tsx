@@ -32,7 +32,7 @@ export default function AfterScan({ step }: ChapterStepProps) {
       <div className={`as-main${gapDominant ? " is-weak" : ""}`}>
         <figure className="as-media">
           <div className="as-photo">
-            <img src={m001} alt="M001 发动机售后服务现场占位图" />
+            <img src={m001} alt="发动机售后服务现场" />
             {state === "scene-and-first-questions" ? (
               <span className="as-scanline" aria-hidden="true" />
             ) : null}
@@ -41,8 +41,7 @@ export default function AfterScan({ step }: ChapterStepProps) {
             </span>
           </div>
           <figcaption className="as-media-cap">
-            <span>M001 · 售后服务现场（占位图）</span>
-            <span>教学设想，非真实企业照片</span>
+            <span>售后服务现场</span>
           </figcaption>
         </figure>
 

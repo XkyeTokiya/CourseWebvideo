@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./FiveBusinessDirections.css";
+import m004 from "./assets/m004.png";
 
 const stateByStep = [
   "common-base-shown",
@@ -10,8 +11,6 @@ const stateByStep = [
 ] as const;
 
 type State = (typeof stateByStep)[number];
-
-const STATIONS = [0, 1, 2, 3] as const;
 
 export default function FiveBusinessDirectionsChapter({ step }: ChapterStepProps) {
   const state: State = stateByStep[step] ?? stateByStep[stateByStep.length - 1];
@@ -29,17 +28,11 @@ export default function FiveBusinessDirectionsChapter({ step }: ChapterStepProps
 
       <div className="fv-main">
         <figure className="card fv-media">
-          <div className="fv-canvas" aria-hidden="true">
-            <div className="fv-line" />
-            <div className="fv-stations">
-              {STATIONS.map((i) => (
-                <span key={i} className="fv-station" style={{ "--fv-s": i } as CSSProperties} />
-              ))}
-            </div>
+          <div className="fv-photo">
+            <img src={m004} alt="柔性制造现场：不同规格产品在同一生产环境中分流处理" />
           </div>
           <figcaption className="fv-cap">
-            <span className="fv-cap-mark">image · 16:9</span>
-            <span className="fv-cap-desc">柔性制造多业务落点 · M004（素材待提供）</span>
+            <span className="fv-cap-desc">柔性制造场景 · 生产调整与跨环节协同并存</span>
           </figcaption>
         </figure>
 

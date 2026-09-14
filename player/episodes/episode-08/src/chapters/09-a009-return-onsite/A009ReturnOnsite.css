@@ -121,33 +121,15 @@
   flex: 1;
   min-height: 440px;
   background: var(--surface-3);
-  border: 3px dashed var(--theme-dashed-line);
+  border: 3px solid var(--theme-structural);
   overflow: hidden;
 }
 
-.ro-placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  text-align: center;
-  padding: 0 48px;
-}
-
-.ro-ph-desc {
-  font-family: var(--font-body);
-  font-size: 27px;
-  font-weight: 700;
-  color: var(--text-2);
-}
-
-.ro-ph-note {
-  font-family: var(--font-body);
-  font-size: 19px;
-  color: var(--text-mute);
+.ro-shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .ro-cap {

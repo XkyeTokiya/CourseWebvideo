@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./A004AnchorNotContainer.css";
+import m002 from "./assets/m002.png";
 
 const states = ["same-object-pointed", "query-from-one"] as const;
 
@@ -55,20 +56,18 @@ export default function A004AnchorNotContainer({ step }: ChapterStepProps) {
 
         <figure className="an-media">
           <div className="an-frame">
-            <div className="an-placeholder">
-              <span className="label-mono">image · 16:9</span>
-              <span className="an-ph-desc">
-                M002 设备本体与标识区域特写（待生成）
-              </span>
-              <span className="an-ph-note">photorealistic_ai · 不含编码与界面</span>
-            </div>
+            <img
+              className="an-shot"
+              src={m002}
+              alt="工业泵阀设备本体与标识区域特写"
+            />
             <div className="an-tag-zone" aria-hidden="true">
               <i />
               <b>设备标识区域</b>
             </div>
           </div>
           <figcaption className="an-cap">
-            <span>M002 · 设备与标识（placeholder）</span>
+            <span>设备本体与标识区域特写</span>
             <span>标识区域可见 · 不含数据</span>
           </figcaption>
         </figure>

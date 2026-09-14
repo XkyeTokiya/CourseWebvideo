@@ -54,15 +54,14 @@ export default function ReceivingBreakpoint({ step }: ChapterStepProps) {
       <header className={`rb-anchor${closed ? " is-weak" : ""}`}>
         <p className="rb-anchor-title">
           <span className="rb-anchor-badge hero-num">T0</span>
-          设想现场 · 跨企业收货
+          跨企业收货现场
         </p>
-        <span className="rb-fiction-note">教学情境 · 非真实企业案例</span>
       </header>
 
       <div className="rb-main">
         <figure className={`rb-media${closed ? " is-closed" : ""}`}>
           <div className="rb-media-frame card">
-            <img src={m001} alt="收货扫码核验现场占位图" className="rb-photo" />
+            <img src={m001} alt="收货人员扫码核验包装标签" className="rb-photo" />
             <div className="rb-media-tags">
               <span className="rb-chip">供应商发货</span>
               <span className="rb-chip-arrow" aria-hidden>

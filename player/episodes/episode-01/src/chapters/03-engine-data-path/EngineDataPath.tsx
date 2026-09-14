@@ -1,5 +1,6 @@
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./EngineDataPath.css";
+import m002 from "./assets/m002.png";
 
 const BANDS = [
   { no: "01", title: "采集飞行数据", desc: "发动机传感器记录真实运行状态" },
@@ -46,10 +47,14 @@ export default function EngineDataPathChapter({ step }: ChapterStepProps) {
           })}
         </div>
 
-        <div className="ed-media">
-          <span className="ed-media-mark">image · 16:9</span>
-          <span className="ed-media-desc">航空发动机运行与维护场景（素材待提供）</span>
-        </div>
+        <figure className="ed-media">
+          <div className="ed-photo">
+            <img src={m002} alt="航空发动机运行与维护现场" />
+          </div>
+          <figcaption className="ed-media-cap">
+            <span>航空发动机运行与维护</span>
+          </figcaption>
+        </figure>
       </div>
 
       <div className="ed-bottom" data-strong={state === "collaboration-trackable"}>

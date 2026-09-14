@@ -56,69 +56,23 @@
   align-items: center;
 }
 
-/* ── 主图（左）：M004 占位 + 柔性产线巡检演示 ── */
+/* ── 主图（左）：M004 实景图持续在场 ── */
 .fv-media {
   width: 990px;
-  height: 557px;
   flex: none;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-.fv-canvas {
-  position: relative;
-  flex: 1;
-  background: var(--surface);
-}
-
-.fv-line {
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  top: 56%;
-  border-top: var(--rule-w) dashed var(--theme-dashed-line);
-}
-
-.fv-stations {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 32%;
-  display: flex;
-  gap: 70px;
-}
-.fv-station {
-  width: 140px;
-  height: 96px;
-  background: var(--surface-2);
-  border: 3px solid var(--theme-structural);
-  border-radius: 8px;
-  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+.fv-photo {
   position: relative;
 }
-.fv-station::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: -21px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--theme-dashed-line);
-  animation: fv-sweep 3.6s var(--ease-soft) infinite;
-  animation-delay: calc(var(--fv-s) * 0.9s);
-}
-@keyframes fv-sweep {
-  0%,
-  100% {
-    background: var(--theme-dashed-line);
-  }
-  18%,
-  30% {
-    background: var(--theme-process);
-  }
+.fv-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 .fv-cap {
@@ -128,15 +82,6 @@
   padding: 14px 24px;
   border-top: var(--rule-w) dashed var(--theme-dashed-line);
   background: var(--surface-2);
-}
-.fv-cap-mark {
-  font-family: var(--font-mono);
-  font-size: 20px;
-  letter-spacing: 0.1em;
-  color: var(--theme-structural);
-  background: var(--theme-cool-surface);
-  padding: 4px 14px;
-  border-radius: 6px;
 }
 .fv-cap-desc {
   font-family: var(--font-mono);

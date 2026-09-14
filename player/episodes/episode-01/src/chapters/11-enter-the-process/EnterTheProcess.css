@@ -16,29 +16,37 @@
   min-height: 0;
 }
 
-/* ── 媒体占位（区别于开场的协同场景） ── */
+/* ── 协同场景实景图（区别于开场） ── */
 .ep-media {
-  border: var(--rule-w) dashed var(--theme-dashed-line);
-  border-radius: var(--r-card);
-  background: var(--surface-3);
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 16px;
   min-height: 0;
   animation: ep-fade 700ms var(--ease-quart) backwards;
 }
-.ep-media-mark {
-  font-family: var(--font-mono);
-  font-size: 30px;
-  letter-spacing: 0.18em;
-  color: var(--text-mute);
+.ep-photo {
+  position: relative;
+  padding: 14px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
 }
-.ep-media-desc {
-  font-family: var(--font-body);
-  font-size: 21px;
-  color: var(--text-faint);
+.ep-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.ep-media-cap {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  line-height: 1.4;
+  color: var(--text-mute);
 }
 @keyframes ep-fade {
   0% {

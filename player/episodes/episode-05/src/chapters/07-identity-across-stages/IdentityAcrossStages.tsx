@@ -24,11 +24,11 @@ export default function IdentityAcrossStages({ step }: ChapterStepProps) {
       </h1>
 
       <div className="ias-main">
-        {/* 证据锚点：教材图 1-4 原图完整落位，不裁切（M003 占位） */}
+        {/* 证据锚点：教材图 1-4 原图完整落位，不裁切（M003） */}
         <figure className="ias-figure card">
           <img
             src={m003}
-            alt="教材图 1-4：物理世界四环节向数字世界的映射（占位图）"
+            alt="物理世界四环节向数字世界的映射"
             className="ias-photo"
           />
         </figure>

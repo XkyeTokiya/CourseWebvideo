@@ -18,33 +18,44 @@
 
 /* ── 原图主区：持续不卸载 ── */
 .tp-media {
-  border: var(--rule-w) dashed var(--theme-dashed-line);
-  border-radius: var(--r-card);
-  background: var(--surface-3);
-  position: relative;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 16px;
   min-height: 0;
   animation: tp-fade 700ms var(--ease-quart) backwards;
 }
-.tp-media-mark {
+.tp-photo {
+  position: relative;
+  padding: 14px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+.tp-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+.tp-media-cap {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
   font-family: var(--font-mono);
-  font-size: 30px;
-  letter-spacing: 0.18em;
+  font-size: 19px;
+  line-height: 1.4;
   color: var(--text-mute);
 }
-.tp-media-desc {
-  font-family: var(--font-body);
-  font-size: 21px;
-  color: var(--text-faint);
+/* 待替换为教材原图：图注转为警示色，替换后移除 data-pending 即恢复常态 */
+.tp-media[data-pending="true"] .tp-media-cap {
+  color: var(--theme-warning);
 }
 .tp-media-stamp {
   position: absolute;
-  right: 36px;
-  bottom: 28px;
+  right: 30px;
+  bottom: 22px;
   font-size: 96px;
   color: var(--theme-warning);
   opacity: 0.85;

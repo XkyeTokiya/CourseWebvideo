@@ -20,7 +20,7 @@ export default function JudgmentToAction({ step }: ChapterStepProps) {
       <div className="jt-main">
         <figure className="jt-media">
           <div className="jt-photo">
-            <img src={m002} alt="M002 无品牌生产现场占位图" />
+            <img src={m002} alt="数据形成判断并进入业务行动的生产现场" />
           </div>
           <figcaption className="jt-cap">
             <span>判断与行动，落回这片现场</span>
