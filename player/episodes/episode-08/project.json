@@ -1,12 +1,12 @@
 {
   "id": "episode-08",
-  "title": "第 08 期（待制作）",
-  "status": "planned",
+  "title": "工业互联网标识解析作用与意义",
+  "status": "in-progress",
   "theme": "active-identification-note",
   "progress": {
-    "completed": 0,
-    "total": 0,
-    "current": null
+    "completed": 12,
+    "total": 12,
+    "current": "a012-summary-judgment"
   },
-  "updatedAt": "2026-09-02"
+  "updatedAt": "2026-09-14"
 }

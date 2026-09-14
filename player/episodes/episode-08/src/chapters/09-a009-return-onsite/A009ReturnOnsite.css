@@ -1,0 +1,172 @@
+/* Episode 08 · A009 return-onsite — prefix: ro-
+   mechanism: persistent-media-reading — 回扣主图持续在场，图侧阅读项按观察顺序
+   迁移焦点，末步同区并置收束；不画查询箭头、不画闭环
+   （C009：查询路径只到信息或访问入口，不展示接口、字段或返回页面） */
+
+.ro-scene {
+  justify-content: flex-start;
+}
+
+.ro-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-structural);
+  animation: ro-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.ro-main {
+  flex: 1;
+  min-height: 0;
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: 1fr 760px;
+  gap: 56px;
+  align-items: stretch;
+}
+
+/* ── 图侧阅读轨：三条阅读项按观察顺序迁移焦点 ───────────── */
+
+.ro-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  min-width: 0;
+}
+
+.ro-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 26px 30px;
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+
+.ro-item-no {
+  font-size: 44px;
+  color: var(--theme-process);
+}
+
+.ro-item-body {
+  min-width: 0;
+}
+
+.ro-item-lead {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 30px;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.ro-item-lead b {
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.ro-item-note {
+  margin: 10px 0 0;
+  font-family: var(--font-body);
+  font-size: 25px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.ro-item-note b {
+  font-weight: 900;
+  color: var(--text);
+}
+
+/* 阅读焦点迁移：当前项保持，先前项弱化，收束步全体回等权 */
+.ro-item.is-dim {
+  opacity: 0.5;
+}
+
+.ro-item.is-focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 24px var(--accent-glow);
+}
+
+/* 第 02/03 项默认隐藏，所属 step 亮出 */
+.ro-item-late {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.ro-item-late.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ro-item-workline.is-on {
+  border-color: var(--accent);
+  box-shadow: 0 0 26px var(--accent-glow);
+}
+
+/* ── 右侧主图：开场现场回扣，持续在场 ───────────────────── */
+
+.ro-media {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.ro-frame {
+  position: relative;
+  flex: 1;
+  min-height: 440px;
+  background: var(--surface-3);
+  border: 3px dashed var(--theme-dashed-line);
+  overflow: hidden;
+}
+
+.ro-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  text-align: center;
+  padding: 0 48px;
+}
+
+.ro-ph-desc {
+  font-family: var(--font-body);
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.ro-ph-note {
+  font-family: var(--font-body);
+  font-size: 19px;
+  color: var(--text-mute);
+}
+
+.ro-cap {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-mute);
+}
+
+@keyframes ro-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

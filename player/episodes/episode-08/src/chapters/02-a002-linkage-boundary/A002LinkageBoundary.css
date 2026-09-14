@@ -1,0 +1,303 @@
+/* Episode 08 · A002 linkage-boundary — prefix: lb-
+   mechanism: compare-and-reweight — 左右两栏空间持续，误解逐条出现并被排除标记，
+   权重从右栏移回左栏含义与底部判断；不画中转路径或断桥 */
+
+.lb-scene {
+  justify-content: flex-start;
+}
+
+.lb-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-structural);
+  animation: lb-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.lb-main {
+  flex: 1;
+  min-height: 0;
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: stretch;
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    filter var(--dur-slow) var(--ease-soft);
+}
+
+.lb-scene.is-thesis .lb-main {
+  opacity: 0.55;
+  filter: grayscale(0.3);
+}
+
+.lb-col-kicker {
+  margin: 0 0 20px;
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-mute);
+}
+
+/* ── 左栏：前提（exact）+ 贯通含义 ──────────────────────── */
+
+.lb-left {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.lb-premises {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lb-premise {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 34px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.lb-premise b {
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.lb-premise-1,
+.lb-premise-2 {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: lb-line-in 620ms var(--ease-soft) forwards;
+}
+
+.lb-premise-1 {
+  animation-delay: 200ms;
+}
+
+.lb-premise-2 {
+  animation-delay: 900ms;
+}
+
+@keyframes lb-line-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lb-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 贯通含义：step 2 亮出目标行，step 3 补全访问入口行；槽位从首拍预留 */
+.lb-meaning {
+  margin-top: 32px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  padding: 32px 36px;
+  background: var(--theme-process-surface);
+  border-radius: var(--r-card);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+
+.lb-meaning.is-goal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lb-meaning-lead {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+.lb-meaning-line {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 30px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.lb-meaning-line b {
+  font-weight: 900;
+  color: var(--text);
+}
+
+/* 第二行槽位常驻，step 3 以 opacity 显示，卡片尺寸稳定 */
+.lb-meaning-second {
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+
+.lb-meaning.is-full .lb-meaning-second {
+  opacity: 1;
+}
+
+/* ── 右栏：两种误解，逐条出现并排除 ─────────────────────── */
+
+.lb-right {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  min-width: 0;
+}
+
+.lb-mis {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: 30px 36px;
+}
+
+.lb-mis-text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 31px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.lb-mis-text em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+.lb-mis-verdict {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--theme-warning);
+  opacity: 0;
+}
+
+/* 排除划线 */
+.lb-mis::after {
+  content: "";
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  top: 50%;
+  height: 3px;
+  background: var(--theme-warning);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* 状态触发的出现与排除序列，延迟挂在状态 class 下，基础态可逆 */
+.lb-right .lb-col-kicker,
+.lb-right .lb-mis {
+  opacity: 0;
+}
+
+.lb-right.is-on .lb-col-kicker {
+  animation: lb-fade-in 480ms var(--ease-soft) forwards;
+}
+
+.lb-right.is-on .lb-mis {
+  animation: lb-mis-in 520ms var(--ease-soft) forwards;
+}
+
+.lb-right.is-on .lb-mis-1 {
+  animation-delay: 300ms;
+}
+
+.lb-right.is-on .lb-mis-2 {
+  animation-delay: 3300ms;
+}
+
+.lb-right.is-on .lb-mis::after {
+  animation: lb-strike 620ms var(--ease-soft) forwards;
+}
+
+.lb-right.is-on .lb-mis-1::after {
+  animation-delay: 1600ms;
+}
+
+.lb-right.is-on .lb-mis-2::after {
+  animation-delay: 4600ms;
+}
+
+.lb-right.is-on .lb-mis-verdict {
+  animation: lb-fade-in 480ms var(--ease-soft) forwards;
+}
+
+.lb-right.is-on .lb-mis-1 .lb-mis-verdict {
+  animation-delay: 2300ms;
+}
+
+.lb-right.is-on .lb-mis-2 .lb-mis-verdict {
+  animation-delay: 5300ms;
+}
+
+@keyframes lb-mis-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lb-strike {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ── 底部判断条：虚线基线常显，收束句 step 4 亮出 ───────── */
+
+.lb-thesis {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: var(--rule-w) var(--rule-style) var(--rule);
+}
+
+.lb-thesis-line {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 33px;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+
+.lb-thesis-line.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lb-thesis-line em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--text);
+}

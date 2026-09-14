@@ -1,0 +1,200 @@
+/* Episode 08 · A010 capability-boundary — prefix: cb-
+   mechanism: cumulative-assembly — 台账固定结构内逐层组装：先立责任行，再补共同
+   条件，最后补齐责任列；不画能力塔或权限层级
+   （C010：不扩写成效结论，不补充接口、字段、权限模型或实施顺序） */
+
+.cb-scene {
+  justify-content: flex-start;
+}
+
+.cb-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-structural);
+  animation: cb-fade-in 560ms var(--ease-soft) backwards;
+}
+
+/* ── 共同条件区：槽位居顶预留，step 2 亮出 ───────────────── */
+
+.cb-condition {
+  margin-top: 32px;
+  padding: 26px 34px;
+  background: var(--theme-process-surface);
+  border-radius: var(--r-card);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+
+.cb-condition.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cb-condition-lead {
+  margin: 0 0 8px;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+.cb-condition-text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 29px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.cb-condition-text b {
+  font-weight: 900;
+  color: var(--text);
+}
+
+/* ── 责任行：两项"不自动"，step 1 依次亮出 ───────────────── */
+
+.cb-rows {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+
+.cb-rows-kicker {
+  margin: 0 0 4px;
+  font-family: var(--font-body);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-mute);
+}
+
+.cb-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 28px;
+  background: var(--theme-warning-surface);
+  border-radius: var(--r-card);
+  opacity: 0;
+  transform: translateY(14px);
+  animation: cb-row-in 520ms var(--ease-soft) forwards;
+}
+
+.cb-row:nth-of-type(2) {
+  animation-delay: 260ms;
+}
+
+.cb-row:nth-of-type(3) {
+  animation-delay: 900ms;
+}
+
+@keyframes cb-row-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cb-row i {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--theme-warning);
+}
+
+.cb-row p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 30px;
+  color: var(--text-2);
+}
+
+.cb-row b {
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+/* ── 边界列与责任列并置：step 3 补齐，台账收束 ───────────── */
+
+.cb-duties {
+  margin-top: 32px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+
+.cb-duties.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cb-duties-lead {
+  margin: 0 0 18px;
+  font-family: var(--font-body);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-mute);
+}
+
+.cb-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.cb-col {
+  margin: 0;
+  padding: 20px 28px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: var(--r-card);
+}
+
+.cb-col-duty {
+  border-style: solid;
+  border-color: var(--rule);
+}
+
+.cb-col li {
+  font-family: var(--font-body);
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 420ms var(--ease-soft), transform 420ms var(--ease-soft);
+  transition-delay: calc(400ms + var(--cb-i) * 140ms);
+}
+
+.cb-col-duty li {
+  color: var(--text);
+}
+
+.cb-duties.is-on .cb-col li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes cb-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,223 @@
+/* Episode 08 · A003 two-object-kinds — prefix: tk-
+   mechanism: groups-anchor-enclosure — 两列对象等权展开后共同围合到同一身份锚点，
+   由锚点与关联组的围合层级表达依赖关系；不画中心辐射或网络图 */
+
+.tk-scene {
+  justify-content: flex-start;
+}
+
+.tk-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-structural);
+  animation: tk-fade-in 560ms var(--ease-soft) backwards;
+}
+
+/* ── 顶部共同锚点：槽位常驻，step 2 亮起 ─────────────────── */
+
+.tk-anchor {
+  margin-top: 30px;
+  padding: 28px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  opacity: 0;
+  transform: translateY(-14px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-soft);
+}
+
+.tk-scene.is-anchored .tk-anchor {
+  opacity: 1;
+  transform: translateY(0);
+  border-color: var(--accent);
+  box-shadow: 0 0 28px var(--accent-glow);
+}
+
+.tk-anchor-label {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+.tk-anchor-reqs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tk-anchor-reqs p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 26px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.tk-anchor-reqs b {
+  font-weight: 900;
+  color: var(--text);
+}
+
+/* ── 中部两列关联组 + 围合线 ─────────────────────────────── */
+
+.tk-groups {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin-top: 34px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+  align-items: stretch;
+}
+
+.tk-enclosure {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.tk-enclosure rect {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.tk-scene.is-anchored .tk-enclosure rect {
+  animation: tk-draw 980ms var(--ease-soft) 420ms forwards;
+}
+
+@keyframes tk-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.tk-group {
+  display: flex;
+  flex-direction: column;
+  padding: 34px 40px;
+  opacity: 0;
+  transform: translateY(20px) scale(0.97);
+  animation: tk-group-in 560ms var(--ease-soft) forwards;
+}
+
+.tk-group:nth-child(2) {
+  animation-delay: 300ms;
+}
+
+.tk-group:nth-child(3) {
+  animation-delay: 1300ms;
+}
+
+@keyframes tk-group-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tk-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.tk-group-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.tk-items {
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tk-items li {
+  font-family: var(--font-body);
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--text);
+  padding-left: 30px;
+  position: relative;
+}
+
+.tk-items li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 14px;
+  height: 3px;
+  transform: translateY(-50%);
+  background: var(--theme-process);
+}
+
+.tk-exact {
+  margin: auto 0 0;
+  padding-top: 22px;
+  font-family: var(--font-body);
+  font-size: 20px;
+  color: var(--text-mute);
+}
+
+/* ── 底部支持注：虚线基线常显，具体化判断 step 3 亮出 ────── */
+
+.tk-note {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: var(--rule-w) var(--rule-style) var(--rule);
+}
+
+.tk-note-line {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 33px;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+
+.tk-note-line.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tk-note-line em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--text);
+}
