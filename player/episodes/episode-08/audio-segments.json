@@ -1,0 +1,212 @@
+[
+  {
+    "chapter": "a001-onsite-question",
+    "step": 1,
+    "text": "一台工业泵已经交付到用户现场。有一天它出现运行异常，服务人员赶到现场，扫一下泵体上的标识，就能确认这是哪一台泵。",
+    "audio": "a001-onsite-question/1.mp3"
+  },
+  {
+    "chapter": "a001-onsite-question",
+    "step": 2,
+    "text": "可要判断问题出在哪里，光认出这一台还不够。他还得查设计型号、生产批次、质检记录、交付信息和历次维护记录。",
+    "audio": "a001-onsite-question/2.mp3"
+  },
+  {
+    "chapter": "a001-onsite-question",
+    "step": 3,
+    "text": "这些信息产生在不同阶段，往往躺在不同系统里，甚至由不同企业保管。",
+    "audio": "a001-onsite-question/3.mp3"
+  },
+  {
+    "chapter": "a001-onsite-question",
+    "step": 4,
+    "text": "设备是认出来了，信息还是散的。同一台设备的信息，怎样才能从分散走向关联？",
+    "audio": "a001-onsite-question/4.mp3"
+  },
+  {
+    "chapter": "a002-linkage-boundary",
+    "step": 1,
+    "text": "标识回答“查的是谁”，解析回答“到哪里查、能够得到什么”，这两个前提已经具备。",
+    "audio": "a002-linkage-boundary/1.mp3"
+  },
+  {
+    "chapter": "a002-linkage-boundary",
+    "step": 2,
+    "text": "再往前一步，是让分散的信息围绕同一个对象连成关系。",
+    "audio": "a002-linkage-boundary/2.mp3"
+  },
+  {
+    "chapter": "a002-linkage-boundary",
+    "step": 3,
+    "text": "这里说的“贯通”，边界要先划清楚：它不是把所有企业的数据搬进同一个数据库，也不是让任何人都能扫码看到全部信息，而是让分散的系统和主体围绕同一个对象身份，寻找彼此能够提供的信息或访问入口。",
+    "audio": "a002-linkage-boundary/3.mp3"
+  },
+  {
+    "chapter": "a002-linkage-boundary",
+    "step": 4,
+    "text": "有了可以关联、可以查询的关系，协作才有共同的起点。",
+    "audio": "a002-linkage-boundary/4.mp3"
+  },
+  {
+    "chapter": "a003-two-object-kinds",
+    "step": 1,
+    "text": "先看对象这一层。能被标识的对象，不只是产品、设备、零部件这些物理对象，也包括模型、算法、工艺这类数字对象。",
+    "audio": "a003-two-object-kinds/1.mp3"
+  },
+  {
+    "chapter": "a003-two-object-kinds",
+    "step": 2,
+    "text": "一台设备进入数字世界需要稳定的身份，数字模型和工艺资料，同样需要有一个明确的指向。",
+    "audio": "a003-two-object-kinds/2.mp3"
+  },
+  {
+    "chapter": "a003-two-object-kinds",
+    "step": 3,
+    "text": "系统讨论的对象，不再是模糊的“同类设备”，而是具体到某一台，以及和它相关的数字资源。",
+    "audio": "a003-two-object-kinds/3.mp3"
+  },
+  {
+    "chapter": "a004-anchor-not-container",
+    "step": 1,
+    "text": "回到开头那台泵。泵体上的标识并不是一个装满资料的容器，它的作用是身份锚点，让现场的这台设备、它的设计型号、制造记录和服务档案指向同一个对象。",
+    "audio": "a004-anchor-not-container/1.mp3"
+  },
+  {
+    "chapter": "a004-anchor-not-container",
+    "step": 2,
+    "text": "只要这层关系能被系统识别，查询就能从“这一台泵”出发，不必在大量相似记录里靠人工比对。",
+    "audio": "a004-anchor-not-container/2.mp3"
+  },
+  {
+    "chapter": "a005-six-stages",
+    "step": 1,
+    "text": "对象有了稳定的指向，接着看它走过的业务环节。一件工业产品，通常要经历研发设计、生产制造、质量检验、仓储运输、配送交付和售后服务。",
+    "audio": "a005-six-stages/1.mp3"
+  },
+  {
+    "chapter": "a005-six-stages",
+    "step": 2,
+    "text": "每个环节都会留下记录，可能分别存放在产品生命周期管理、制造执行、仓储管理和售后服务等系统里。",
+    "audio": "a005-six-stages/2.mp3"
+  },
+  {
+    "chapter": "a005-six-stages",
+    "step": 3,
+    "text": "系统之间彼此异构，各用各的技术，相互并不直接连通，但它们仍然可以围绕同一个对象身份建立清楚的关联。",
+    "audio": "a005-six-stages/3.mp3"
+  },
+  {
+    "chapter": "a006-records-to-thread",
+    "step": 1,
+    "text": "这些记录原本是一段一段的，关联起来以后，就成为一条可以追溯的生命周期线索：",
+    "audio": "a006-records-to-thread/1.mp3"
+  },
+  {
+    "chapter": "a006-records-to-thread",
+    "step": 2,
+    "text": "设计阶段说明对象按什么要求形成，生产和质检记录说明它怎样被制造、被确认，仓储配送记录说明它怎样流转，售后记录说明它交付后的状态和服务历史。",
+    "audio": "a006-records-to-thread/2.mp3"
+  },
+  {
+    "chapter": "a006-records-to-thread",
+    "step": 3,
+    "text": "遇到业务问题，相关系统沿着对象身份就能找到可以提供的记录或入口，不必把每个环节重新人工核对一遍。",
+    "audio": "a006-records-to-thread/3.mp3"
+  },
+  {
+    "chapter": "a007-industry-actors",
+    "step": 1,
+    "text": "再把视野扩大到产业链。供应商、制造企业、物流服务商、经销或使用单位，通常各自维护自己的系统和数据。",
+    "audio": "a007-industry-actors/1.mp3"
+  },
+  {
+    "chapter": "a007-industry-actors",
+    "step": 2,
+    "text": "标识解析在这里的作用，不是要求大家换成同一套软件，而是让各方在跨地域、跨行业、跨企业协作时，先对齐大家说的是不是同一个对象，再通过解析关系找到对应的信息服务范围。",
+    "audio": "a007-industry-actors/2.mp3"
+  },
+  {
+    "chapter": "a008-three-scales",
+    "step": 1,
+    "text": "到这里，三个尺度就衔接起来了：对象这一层，身份把物理对象和数字资源对应起来；",
+    "audio": "a008-three-scales/1.mp3"
+  },
+  {
+    "chapter": "a008-three-scales",
+    "step": 2,
+    "text": "环节这一层，不同系统的记录围绕对象形成生命周期线索；",
+    "audio": "a008-three-scales/2.mp3"
+  },
+  {
+    "chapter": "a008-three-scales",
+    "step": 3,
+    "text": "产业链这一层，不同主体围绕同一个身份来查询和共享信息。",
+    "audio": "a008-three-scales/3.mp3"
+  },
+  {
+    "chapter": "a008-three-scales",
+    "step": 4,
+    "text": "标识负责稳定指向，解析负责寻找联系，业务应用再使用查到的信息。",
+    "audio": "a008-three-scales/4.mp3"
+  },
+  {
+    "chapter": "a009-return-onsite",
+    "step": 1,
+    "text": "再看那台工业泵。服务人员从现场标识确认对象，沿着可用的查询关系，找到与这台设备关联的型号、制造、交付或维护信息；",
+    "audio": "a009-return-onsite/1.mp3"
+  },
+  {
+    "chapter": "a009-return-onsite",
+    "step": 2,
+    "text": "如果某项信息由上游主体提供，解析关系可以继续指向相应的信息或访问入口。",
+    "audio": "a009-return-onsite/2.mp3"
+  },
+  {
+    "chapter": "a009-return-onsite",
+    "step": 3,
+    "text": "现场的故障、历史记录和协作各方，因此围绕同一个对象，连成了同一条工作线索。",
+    "audio": "a009-return-onsite/3.mp3"
+  },
+  {
+    "chapter": "a010-capability-boundary",
+    "step": 1,
+    "text": "不过，这条线索不会自动保证结果。标识贴上去以后，数据不会自己变完整，企业内部系统也不会自动互通。",
+    "audio": "a010-capability-boundary/1.mp3"
+  },
+  {
+    "chapter": "a010-capability-boundary",
+    "step": 2,
+    "text": "这套关系提供的是基础能力：用统一可识别的身份和解析关系，为全生命周期管理和产业链协同建立信息连接。",
+    "audio": "a010-capability-boundary/2.mp3"
+  },
+  {
+    "chapter": "a010-capability-boundary",
+    "step": 3,
+    "text": "至于接口怎么建、数据怎么管、访问怎么控制、流程怎么组织，属于数据管理、系统集成、访问控制和项目实施要解决的问题。",
+    "audio": "a010-capability-boundary/3.mp3"
+  },
+  {
+    "chapter": "a011-four-questions",
+    "step": 1,
+    "text": "判断一个场景里标识解析起了多大作用，可以沿着同一组问题去看：识别的是什么对象，连接了哪些环节，涉及哪些主体，查询把信息带到了哪里。",
+    "audio": "a011-four-questions/1.mp3"
+  },
+  {
+    "chapter": "a012-summary-judgment",
+    "step": 1,
+    "text": "本期总结，回到开头那台泵。标识让这台设备和它的数字资料有了稳定的指向；解析让不同系统、不同环节、不同主体围绕这个指向，找到可以提供的记录或入口；业务应用再拿这些信息支持检修、维护和协作。",
+    "audio": "a012-summary-judgment/1.mp3"
+  },
+  {
+    "chapter": "a012-summary-judgment",
+    "step": 2,
+    "text": "三个尺度连起来，分散的数据才有可能变成可以协作的信息关系：先有可指向的身份，才有可关联的记录；记录能围绕身份关联，跨主体的查询和共享才有落脚点。",
+    "audio": "a012-summary-judgment/2.mp3"
+  },
+  {
+    "chapter": "a012-summary-judgment",
+    "step": 3,
+    "text": "这就是标识解析在对象、环节和产业链之间的贯通作用。",
+    "audio": "a012-summary-judgment/3.mp3"
+  }
+]
