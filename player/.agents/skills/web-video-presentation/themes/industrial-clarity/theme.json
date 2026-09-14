@@ -1,5 +1,6 @@
 {
   "id": "industrial-clarity",
+  "selectable": false,
   "name": "Industrial Clarity",
   "nameZh": "工业清晰",
   "description": "A clear industrial information system: navy structure, technical blue, process green, and teaching orange on a white canvas with softly rounded panels.",

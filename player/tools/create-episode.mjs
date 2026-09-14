@@ -1,7 +1,7 @@
 import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
-import { assertThemeExists } from "./theme-registry.mjs";
+import { assertThemeSelectable } from "./theme-registry.mjs";
 
 const root = path.resolve(process.env.PLAYER_ROOT ?? process.cwd());
 const args = new Map();
@@ -15,12 +15,12 @@ for (let index = 2; index < process.argv.length; index += 1) {
 
 const id = args.get("id");
 const title = args.get("title") || "未命名视频实例";
-const theme = args.get("theme") || "industrial-clarity";
+const theme = args.get("theme") || "active-identification-note";
 if (!id || !/^episode-[a-z0-9-]+$/.test(id)) {
   console.error("用法：pnpm episode:new -- --id episode-xx [--title 标题] [--theme 主题]");
   process.exit(1);
 }
-try { await assertThemeExists(theme, root); }
+try { await assertThemeSelectable(theme, root); }
 catch (error) {
   console.error(error.message ?? error);
   process.exit(1);

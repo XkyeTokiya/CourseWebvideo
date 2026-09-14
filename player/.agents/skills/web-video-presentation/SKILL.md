@@ -117,7 +117,7 @@ Phase 2.4 的"实现单章"会重复 N 次 —— 每次都要回看核心约束
 | 阶段 | 必读（每次都看） | 一次性看完 / 按需查 |
 |---|---|---|
 | Phase 1.1-1.5 内容编译 | `references/SCRIPT-STYLE.md` + `references/OUTLINE-FORMAT.md` + `article.md`（用户原文，如有）；检测到正式 Courseplay 输入时另读 `references/COURSEPLAY-BOUND-MODE.md` 与 `references/COURSEPLAY-STATE-MECHANISMS.md` | 独立审查只在用户明确要求时按当前章输入执行 |
-| **Checkpoint Plan 选主题** | —— | `themes/*/theme.json`（动态读全部，列清单 + `bestFor` 推荐 + `descriptionZh`）；`references/THEMES.md`（用户想了解主题系统时） |
+| **Checkpoint Plan 选主题** | —— | `themes/*/theme.json`（动态读取并跳过 `selectable: false`，列清单 + `bestFor` 推荐 + `descriptionZh`）；`references/THEMES.md`（用户想了解主题系统时） |
 | Phase 2.1 脚手架 | —— | SKILL.md 本节看一次 |
 | **Phase 2.4 实现单章（×N 次，被 2.2 / 2.3 调用）** | **`references/CHAPTER-CRAFT.md`** 单一创作入口 + 当前主题 + 当前 outline 章节块 + article 对应段落（如有）+ 素材清单；Courseplay 可使用当前 `.handoffs/<Axxx>.json` + `references/COURSEPLAY-BOUND-MODE.md` + `references/COURSEPLAY-STATE-MECHANISMS.md`，或直接提供等价的当前章节输入 | `references/EXAMPLES/`（结构示意，不是抄袭模板）；`references/THEMES.md` 完整 token 契约 |
 | Phase 3 音频合成 | `references/AUDIO.md`（含 narrations.ts → segments.json → 任意 provider 流程，内置 minimax / edge / cosyvoice / openai） | `docs/tts-providers.md`（换 provider / 自带 TTS 时） |
@@ -290,7 +290,7 @@ Beat/step 和稳定引用完整、全局派生内容可生成。它不计算 art
 历史 `.archive/` 猜测封面。`episode:new` 生成的默认 JSON 是可继续编辑的结构占位。
 组件必须显式映射 `course`、`module`、`task`、`point`、`lede`、`chips`，并忽略
 JSON 的 `style` 字段。JSON 只提供内容，不决定视觉；视觉由实例当前主题决定。
-`industrial-clarity` 与 `active-identification-note` 分别对应 `base` 与 `note` 语义。
+`base` 保留为旧实例兼容语义，`active-identification-note` 对应 `note` 语义。
 
 `point.title` 是主标题；源 JSON 没有 `subtitle` 时，使用 `lede` 作为封面副标题说明，不从正文第一句机械截取。
 
@@ -321,8 +321,8 @@ JSON 的 `style` 字段。JSON 只提供内容，不决定视觉；视觉由实�
 
 ### agent 此时要做的预备工作
 
-1. 读所有 `themes/*/theme.json` 拿 `nameZh` / `descriptionZh` / `bestFor`
-   / `mood` —— **不要硬编码清单**
+1. 读所有 `themes/*/theme.json`，跳过 `selectable: false`，再取
+   `nameZh` / `descriptionZh` / `bestFor` / `mood` —— **不要硬编码清单**
 2. 根据 `script.md` 的内容类型 / 关键词 / 语气，**主动**从主题里挑 2~3
    套**最匹配的推荐**（匹配 `bestFor` 字段）
 3. 扫一遍 `outline.md` 末尾"素材清单"部分
