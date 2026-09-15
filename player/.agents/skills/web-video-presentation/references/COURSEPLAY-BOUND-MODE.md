@@ -235,7 +235,7 @@ handoff 是可选的上下文打包工具。需要隔离当前章节输入时，
 pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx>
 ```
 
-默认不生成并记录 `handoff=skipped`。只有明确请求、上下文超过当前任务预算、接收方不能安全读取正式输入的跨 Agent/任务/工作树交接，或诊断/回归/兼容测试时才运行；沿用现有任务日志说明原因、消费者和生命周期，不增加新流程。生成的 `episodes/<episode-id>/.handoffs/<Axxx>.json` 可作为紧凑输入；也可以直接
+生成的 `episodes/<episode-id>/.handoffs/<Axxx>.json` 可作为紧凑输入；也可以直接
 提供等价的当前章节输入。v4 包提供当前 A 的准确
 beats、`screen_guidance`、`presentation`、steps、关系、护栏和素材片段。使用包时，
 章节 Agent 只读该包、本文件、`COURSEPLAY-STATE-MECHANISMS.md`、`CHAPTER-CRAFT.md`、

@@ -1,16 +1,6 @@
 # handoff v4 作者契约卡
 
-handoff 是 `script/outline` 之后、章节制作之前的条件式派生缓存，不是默认步骤或门禁。`init`、`finalize` 和章节制作默认不生成；未触发时记录 `handoff=skipped`。作者只需读取本卡、[canonical example](examples/courseplay-handoff-v4/) 和失败时的 [error index](handoff-v4-error-catalog.json)；CLI/parser 是黑盒实现，不是规则来源。不调用 handoff 时，不要求输入套用本卡的 Markdown 排版。
-
-## 触发策略
-
-只允许四类触发：用户/Agent 明确请求、上下文超过当前任务预算、接收方不能安全读取当前正式输入的跨 Agent/任务/工作树交接，以及诊断、回归或兼容测试。沿用现有任务日志说明生成原因、消费者和生命周期；不为此增加新的状态文件、CLI 参数或审批节点。
-
-```powershell
-pnpm courseplay:handoff -- --episode episode-04 --a-page A001
-```
-
-handoff 不能读取或补齐任务包、validation report、`.tmp` 或其他非正式输入；正式输入不足时应失败，而不是回退。
+handoff 是 `script/outline` 之后、章节制作之前默认不生成的可选上下文打包工具，不是门禁。作者只需读取本卡、[canonical example](examples/courseplay-handoff-v4/) 和失败时的 [error index](handoff-v4-error-catalog.json)；CLI/parser 是黑盒实现，不是规则来源。不调用 handoff 时，不要求输入套用本卡的 Markdown 排版。
 
 ## 固定输入、输出与职责
 

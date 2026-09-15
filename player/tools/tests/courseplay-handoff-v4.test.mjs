@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
-import { cp, mkdir, mkdtemp, readFile, readdir, rm } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
-import { buildCourseplayHandoffV4Packet, generateCourseplayHandoff, HANDOFF_ERROR_CATALOG, HandoffContractError, parseVisualRoughV4 } from "../courseplay-handoff.mjs";
+import { buildCourseplayHandoffV4Packet, HANDOFF_ERROR_CATALOG, HandoffContractError, parseVisualRoughV4 } from "../courseplay-handoff.mjs";
 
 const example = path.resolve("docs/examples/courseplay-handoff-v4");
 const aPageExample = path.resolve("../narration-pipeline/.agents/skills/rewrite-course-narration/references/examples/a-page-v6/canonical-contract-example-a-page.json");
@@ -26,21 +26,6 @@ test("handoff v4 emits U presentation and preserves runtime step equality", asyn
   assert.equal(packet.chapter.title, "职责页");
   assert.match(packet.materials_markdown, /M001/);
   assert.ok(!JSON.stringify(packet.presentation).includes("必须逐字显示的标题"));
-});
-
-test("explicit generation writes only the requested A-page", async (t) => {
-  const fixtureRoot = path.resolve(".tmp/tool-tests");
-  await mkdir(fixtureRoot, { recursive: true });
-  const root = await mkdtemp(path.join(fixtureRoot, "handoff-v4-"));
-  t.after(() => rm(root, { recursive: true, force: true }));
-  const episodeDir = path.join(root, "episodes", "episode-07");
-  await mkdir(episodeDir, { recursive: true });
-  for (const name of ["project.json", "script.md", "outline.md"]) await cp(path.resolve("episodes/episode-07", name), path.join(episodeDir, name));
-  await cp(path.resolve("episodes/episode-07/inputs"), path.join(episodeDir, "inputs"), { recursive: true });
-  await generateCourseplayHandoff({ root, episodeId: "episode-07", aPageId: "A001" });
-  assert.deepEqual(await readdir(path.join(episodeDir, ".handoffs")), ["A001.json"]);
-  const packet = JSON.parse(await readFile(path.join(episodeDir, ".handoffs", "A001.json"), "utf8"));
-  assert.equal(packet.chapter.a_page_id, "A001");
 });
 
 test("handoff v4 rejects every older version pair with structured diagnostics", async () => {

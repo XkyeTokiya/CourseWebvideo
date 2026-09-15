@@ -66,7 +66,7 @@ CourseWebvideo 是一套面向课程视频的网页化生产工程，使用单�
 7. Visual rough v4：确定视觉结构和媒体方案。
 8. 下游 Phase 1 runner：`init` 初始化章节外壳，按 A 使用 `commit-chapter` 成对提交 `script.md` 与 `outline.md`，`finalize` 汇总生产计划。
 9. Checkpoint Plan：确认稿子、Outline、主题、素材和开发模式。
-10. 可选单章交接：仅在明确请求、上下文超预算、无法安全读取正式输入的跨 Agent/任务/工作树交接，或诊断测试时生成 `.handoffs/Axxx.json`；其他情况记录 `handoff=skipped`。
+10. 可选单章交接：需要压缩上下文时生成 `.handoffs/Axxx.json`。
 11. 章节制作：根据 handoff（如有）或等价的当前章节输入，完整创作章节画面。
 12. 后续章节：按既定模式生产、审查和修复。
 13. 音频：提取并在确认后合成音频分段。
@@ -119,10 +119,10 @@ pnpm courseplay:phase1 -- finalize --episode episode-XX
 
 `status`、`resume` 和 `preflight` 用于诊断或中断恢复。候选文件不能包含 runner marker；runner 会校验 Nx 无损还原、Beat/step 数量、章节顺序和稳定关系引用。
 
-handoff 默认跳过，且不能作为补齐任务包、validation report 或其他非正式输入的回退路径。确有消费者时，在现有任务记录中说明生成原因、消费者和生命周期，并在 `player/` 目录显式运行原有命令：
+如需生成可选的单章 handoff，可在 `player/` 目录执行：
 
 ```powershell
-pnpm courseplay:handoff -- --episode episode-XX --a-page A001
+pnpm courseplay:handoff -- --help
 ```
 
 Courseplay Phase 1 runner 的最小命令、章节内容对契约、中断恢复和错误码见

@@ -523,11 +523,9 @@ Diagnostics:
     process.exit(0);
   }
   try {
-    const parsed = parseArgs(process.argv.slice(2));
-    const result = await runPhase1(parsed);
+    const result = await runPhase1(parseArgs(process.argv.slice(2)));
     const output = result.files ? { episode_id: result.files.episodeId, pages: result.pages.length, status: "preflight-passed" } : result;
     console.log(JSON.stringify(output, null, 2));
-    if (["init", "commit-chapter", "finalize"].includes(parsed.command)) console.log("handoff=skipped");
   } catch (error) {
     const detail = error.detail ?? new Phase1Error("PHASE1_TOOL_DEFECT", "tool", "registered diagnostic", error.message).detail;
     console.error(JSON.stringify(detail));
