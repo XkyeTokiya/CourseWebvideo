@@ -22,7 +22,7 @@
 - 涉及制作或文件修改时先实际读取当前目录与上级 CLAUDE;涉及网页视频再读 `web-video-presentation` Skill。涉及验证、Git、工作区异常、恢复任务或 subagent 时,动手前还必须读取 [workflow/taste.md](workflow/taste.md),不能只凭会话记忆,并向用户说明实际读取范围与当前阶段。Confidence: 0.95
 - 新建或接续 Courseplay、检查正式输入、生成或修订 script/outline 时,动手前必须读取 [courseplay-planning/taste.md](courseplay-planning/taste.md)。Confidence: 0.95
 - 制作或修订章节 TSX/CSS/narrations 时,动手前必须读取 [courseplay-chapter/taste.md](courseplay-chapter/taste.md) 与 [visual-design/taste.md](visual-design/taste.md),并同时读取 workflow 分包;若任务同时改动输入、script、outline 与章节实现,还必须读取 courseplay-planning 分包。Confidence: 0.95
-- 路由按触发条件累加命中:处理视觉反馈时读取 [interaction/taste.md](interaction/taste.md) 与 visual-design 分包,涉及 TSX/CSS 或验证时再加 courseplay-chapter 与 workflow;出现 shell、浏览器、dev server、TTS 或跨平台问题时先识别当前环境,再读取 [environment/taste.md](environment/taste.md)。Confidence: 0.9
+- 路由按触发条件累加且按职责归属:planning 负责输入/Beat/outline,chapter 负责 state/narration/animation,visual-design 负责构图/层级/布局,workflow 负责 subagent/验证/Git,interaction 负责反馈/Checkpoint,environment 负责运行环境;视觉反馈读取 [interaction/taste.md](interaction/taste.md)+visual,涉及 TSX/CSS/验证再加 chapter+workflow,出现 shell、浏览器、dev server、TTS 或跨平台问题再读 [environment/taste.md](environment/taste.md)。Confidence: 0.9
 - 修改 `.commandcode/taste` 前必须读取 [taste-maint/taste.md](taste-maint/taste.md);只讨论或审计 Taste 时不得顺带推进 episode 制作。Confidence: 0.95
 
 # Taste 维护
