@@ -20,11 +20,32 @@
 - 全部网页章节完成后停在 Checkpoint Audio;音频合成是逐实例授权项,单次授权不外推,未获授权不得自动合成或进入录屏。Confidence: 0.95
 
 # 强制选读路由
-- 涉及制作或文件修改时先实际读取当前目录与上级 CLAUDE;涉及网页视频再读 `web-video-presentation` Skill。涉及验证、Git、工作区异常、恢复任务或 subagent 时,动手前还必须读取 [workflow/taste.md](workflow/taste.md),不能只凭会话记忆,并向用户说明实际读取范围与当前阶段。Confidence: 0.95
-- 新建或接续 Courseplay、检查正式输入、生成或修订 script/outline 时,动手前必须读取 [courseplay-planning/taste.md](courseplay-planning/taste.md)。Confidence: 0.95
-- 制作或修订章节 TSX/CSS/narrations 时,动手前必须读取 [courseplay-chapter/taste.md](courseplay-chapter/taste.md) 与 [visual-design/taste.md](visual-design/taste.md),并同时读取 workflow 分包。Confidence: 0.95
-- 处理视觉反馈时读取 [交互/taste.md](交互/taste.md) 与 visual-design 分包;出现 shell、浏览器、dev server、TTS 或跨平台问题时先识别当前环境,再读取 [environment/taste.md](environment/taste.md)。Confidence: 0.9
-- 修改 `.commandcode/taste` 前必须读取 [taste-maint/taste.md](taste-maint/taste.md);只讨论或审计 Taste 时不得顺带推进 episode 制作。Confidence: 0.95
+- 涉及制作或文件修改时先实际读取当前目录与上级 CLAUDE;涉及网页视频再读 `web-video-presentation` Skill。涉及验证、Git、工作区异常、恢复任务或 subagent 时,动手前还必须读取 workflow 分包,不能只凭会话记忆,并向用户说明实际读取范围与当前阶段。Confidence: 0.95
+- 新建或接续 Courseplay、检查正式输入、生成或修订 script/outline 时,动手前必须读取 courseplay-planning 分包。Confidence: 0.95
+- 制作或修订章节 TSX/CSS/narrations 时,动手前必须读取 courseplay-chapter 分包 与 visual-design 分包,并同时读取 workflow 分包;若任务同时改动输入、script、outline 与章节实现,还必须读取 courseplay-planning 分包。Confidence: 0.95
+- 路由按触发条件累加且按职责归属:planning 负责输入/Beat/outline,chapter 负责 state/narration/animation,visual-design 负责构图/层级/布局,workflow 负责 subagent/验证/Git,interaction 负责反馈/Checkpoint,environment 负责运行环境;视觉反馈读取 interaction 分包+visual,涉及 TSX/CSS/验证再加 chapter+workflow,出现 shell、浏览器、dev server、TTS 或跨平台问题再读 environment 分包。Confidence: 0.9
+- 修改 `.commandcode/taste` 前必须读取 taste-maint 分包;只讨论或审计 Taste 时不得顺带推进 episode 制作。Confidence: 0.95
+
+# courseplay-planning
+See [courseplay-planning/taste.md](courseplay-planning/taste.md)
+
+# courseplay-chapter
+See [courseplay-chapter/taste.md](courseplay-chapter/taste.md)
+
+# visual-design
+See [visual-design/taste.md](visual-design/taste.md)
+
+# workflow
+See [workflow/taste.md](workflow/taste.md)
+
+# interaction
+See [interaction/taste.md](interaction/taste.md)
+
+# environment
+See [environment/taste.md](environment/taste.md)
+
+# taste-maint
+See [taste-maint/taste.md](taste-maint/taste.md)
 
 # Taste 维护
 - 只有本文件直接注入上下文,其他分包均为选读;遗漏会造成越权、破坏事实源或跨 checkpoint 的规则必须留在本文件,不能只沉入分包。Confidence: 0.95
