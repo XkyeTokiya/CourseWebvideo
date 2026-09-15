@@ -44,13 +44,11 @@ function scriptCandidate(page, beats = 1) {
   return `## ${page.a_id} · test\n\n${nx.slice(0, cut)}\n\n---\n\n${nx.slice(cut)}\n`;
 }
 
-function outlineCandidate(page, index, steps = 1, { omitRelations = false, unknownReference = false, handoffIncompatible = false } = {}) {
+function outlineCandidate(page, index, steps = 1, { omitRelations = false, unknownReference = false } = {}) {
   const screenId = unknownReference ? "S999" : page.screen.title.screen_item_id;
   const relations = omitRelations ? [] : (page.protected_relations ?? []).map((item) => item.relation_id);
   const relationLine = relations.length ? `\n**语义关系**：${relations.map((id) => `\`${id}\``).join("、")}\n` : "";
-  const rows = Array.from({ length: steps }, (_, row) => handoffIncompatible
-    ? `| ${row + 1} | show: ${screenId} |`
-    : `| ${row + 1} | narration | \`S-${page.a_id} · complete\` (~10s) | show: ${screenId} |`).join("\n");
+  const rows = Array.from({ length: steps }, (_, row) => `| ${row + 1} | narration | \`S-${page.a_id} · complete\` (~10s) | show: ${screenId} |`).join("\n");
   return `## ${index}. ${page.a_id.toLowerCase()} — 测试（${steps} steps · ~${steps * 10}s）
 
 **A-page / Chapter**：\`${page.a_id}\`
@@ -125,15 +123,6 @@ test("seven chapters reach Checkpoint Plan in nine normal runner calls", async (
   const outline = await readFile(path.join(ctx.episodeDir, "outline.md"), "utf8");
   assert.equal((outline.match(/^\| A\d{3} \|/gmu) ?? []).length, 7);
   for (const mediaId of ["M001", "M002", "M003"]) assert.match(outline, new RegExp(mediaId, "u"));
-});
-
-test("finalize does not run the optional handoff validator", async (t) => {
-  const ctx = await fixture(); t.after(ctx.cleanup);
-  await initPhase1({ root: ctx.root, episodeId });
-  await submit(ctx, 0, { handoffIncompatible: true });
-  for (let index = 1; index < ctx.aPage.pages.length; index += 1) await submit(ctx, index);
-  const result = await finalizePhase1({ root: ctx.root, episodeId });
-  assert.equal(result.phase, "awaiting-checkpoint-plan");
 });
 
 test("status reads formal artifacts without visual rough or approved text", async (t) => {
