@@ -5,7 +5,6 @@ import process from "node:process";
 import { fileURLToPath } from "node:url";
 import {
   A_PAGE_SCHEMA,
-  buildCourseplayHandoffV4Packet,
   parseVisualRoughV4,
   VISUAL_ROUGH_SCHEMA,
 } from "./courseplay-handoff.mjs";
@@ -457,13 +456,6 @@ export async function finalizePhase1({ root = process.cwd(), episodeId, testFaul
   let finalOutline = replaceGlobal(outlineText, "metadata", metadata);
   finalOutline = replaceGlobal(finalOutline, "schedule", schedule);
   finalOutline = replaceGlobal(finalOutline, "materials", materialSummary(input.roughById, input.pages));
-  for (const page of input.pages) {
-    await buildCourseplayHandoffV4Packet({
-      root: input.files.root, episodeId, aPageId: page.a_id, files: input.files,
-      projectText: input.projectText, aPageText: input.aPageText, visualRoughText: input.roughText,
-      scriptText, outlineText: finalOutline,
-    });
-  }
   await atomicWrite(input.files.outline, finalOutline, "after-finalize", { testFault });
   return inspectArtifacts(input.files, input.pages);
 }

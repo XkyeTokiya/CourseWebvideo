@@ -418,8 +418,7 @@ pnpm dev
 `stepDurationsMs = [15000]`。实现首章后将 `project.json.status` 更新为
 `in-progress`，Studio 即可预览。
 
-**Courseplay 单章交接包**：需要为主线程或 subagent 生成隔离的当前章节上下文时，
-可以执行：
+**Courseplay 单章交接包**：默认不生成。明确需要为主线程或 subagent 压缩、隔离当前章节上下文时，可以执行：
 
 ```powershell
 pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx>

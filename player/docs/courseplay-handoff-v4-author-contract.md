@@ -1,6 +1,6 @@
 # handoff v4 作者契约卡
 
-handoff 是 `script/outline` 之后、章节制作之前的可选上下文打包工具，不是门禁。作者只需读取本卡、[canonical example](examples/courseplay-handoff-v4/) 和失败时的 [error index](handoff-v4-error-catalog.json)；CLI/parser 是黑盒实现，不是规则来源。不调用 handoff 时，不要求输入套用本卡的 Markdown 排版。
+handoff 是 `script/outline` 之后、章节制作之前默认不生成的可选上下文打包工具，不是门禁。作者只需读取本卡、[canonical example](examples/courseplay-handoff-v4/) 和失败时的 [error index](handoff-v4-error-catalog.json)；CLI/parser 是黑盒实现，不是规则来源。不调用 handoff 时，不要求输入套用本卡的 Markdown 排版。
 
 ## 固定输入、输出与职责
 

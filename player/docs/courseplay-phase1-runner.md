@@ -105,9 +105,8 @@ Outline 候选必须是一个完整章节 section，并满足：
 ## Finalize
 
 `finalize` 要求每章 script / outline 都存在且拥有相同 `tx`，重新验证无损 nx、
-Beat/step 和稳定引用，然后自动生成 metadata、视觉调度与素材汇总，并用 handoff
-v4 对每章做最终结构校验。成功后 outline 的编译状态变为
-`awaiting-checkpoint-plan`。
+Beat/step 和稳定引用，然后自动生成 metadata、视觉调度与素材汇总；不构建或
+校验可选 handoff。成功后 outline 的编译状态变为 `awaiting-checkpoint-plan`。
 
 语气、钩子、视觉美感和相邻章节差异由 Agent 在提交前/最终确认时自行判断；它们
 不是 runner 状态，也不生成 PASS 收据。发现质量问题时只重提受影响章节。
