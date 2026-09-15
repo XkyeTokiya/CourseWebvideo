@@ -5,8 +5,10 @@
 - Outline 的页面配方、结构指纹、关系机制、持续元素、可见标题、scene/state 和场景例外是实现硬约束;三源重组只能在这些槽位内设计,不得借“自由设计”改变章结构。Confidence: 0.95
 - `screen_guidance` 只给方向、重点和事实边界,不是逐条落屏清单;必须综合 guidance、当前 A beats 与 presentation 重组完整画面,禁止 G/S 分组、tag/chip 换皮、一 S 一块或逐句字幕式映射。Confidence: 0.95
 - 一个 A-page 默认使用一个持续 Scene;step 显式映射到描述结束稳定画面的 semantic state,允许连续 step 重复 state。只有真实顺序关系才使用 active/past/upcoming,不得把 step 当通用 active 索引或可见数量。Confidence: 0.95
+- semantic state 的可见性必须通过显式、穷尽且有终态兜底的映射解析;不得用 state 位置、拍号或元素数量隐式决定可见性;完拍走到最后一步时逐项确认所有应出现内容均可达,防止尾项因元素数超过 step 数而永不显示。Confidence: 0.95
 - Accent 只承载核心判断、转折或边界且保持低成本;先核实共享组件是否真实存在,存在则复用,不存在则章内实现,不得虚构 import。Accent 前后映射服从 outline,不新增复杂关系场景。Confidence: 0.9
 - 获准使用本地占位图时按画幅复制到当前章 `assets/` 再相对导入;禁止符号链接、跨章或跨目录直接引用素材库,正式媒体后续在章内原位替换。Confidence: 0.95
 - 状态触发的 animation/transition-delay 必须挂在状态 class 或属性下,基础态保持可逆;动画结束必须有明确可见落位态,选择器只命中目标元素,不得在隐藏挂载期预播或换步时误重触发。Confidence: 0.95
+- 进入态的 animation/transition-delay 只挂在进入态或状态选择器上;基础态保持即时可逆,反向导航不得继承进入延迟。Confidence: 0.95
 - 每个 step 的揭示顺序与口播报到点对齐,关键结论在前提之后出现,整条动画链在本拍口播窗口内收完;实例秒数只作调试参考,不得固化为跨章阈值。Confidence: 0.9
 - 完章后先核对 narration、终态内容和 outline 映射,再按仓库契约运行确定性验证;代码检查通过后提供精确验收指针,最终视觉判断仍等待用户。Confidence: 0.95

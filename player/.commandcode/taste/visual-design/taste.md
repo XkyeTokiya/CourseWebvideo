@@ -8,6 +8,7 @@
 - 视觉反馈先定位节奏、内容、布局、状态或代码层,再修改最小切片;修复一个已确认的机制缺陷时同步扫描当前授权范围内的同类模式,但不越界修改已冻结 episode。Confidence: 0.9
 
 # 已验证视觉模式
+- 舞台内容必须落在主题安全区内:根舞台或等价容器消费主题 token 的边距,全屏 scene 也不得贴画布边缘;具体 primitive 可随配方变化,不把单一 class 当唯一实现。Confidence: 0.95
 - 垂直构图以主内容或媒体区主导视口为目标,可参考约 75–80% 高度;短 takeaway 可参考约 84px。主区仅约 59% 而单句占据大块下半页不合格;收束时可参考 `scale(.985)`、`opacity:.85` 让主构图轻微退让。Confidence: 0.9
 - 结尾句可用媒体区上的深色 scrim 与大字呈现,不另建白色底卡;晚现遮罩、提示行或第二问句从首拍占据稳定槽位再以 opacity 显示。收束与序列末项重合时,可把末项做成 endpoint,避免重复判断条。Confidence: 0.9
 - ghost 槽标签与实际内容同时保留在 DOM,通过 opacity/visibility 做真正 cross-fade,并让内容略晚进入;禁止用 `display:none` 到 `block` 的硬切替代状态过渡。Confidence: 0.9

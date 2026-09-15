@@ -11,3 +11,4 @@
 - Subagent 只在用户选择并行开发或明确要求独立审查时使用;制作任务按可验证的单章交付实例派发,并发数和批次范围服从用户当前指令,不固化某一 episode 的数量经验。Confidence: 0.95
 - 制作 subagent 只写获分配的章节目录并返回文件、narration 对账和自检结果;主线程独占 entry.tsx、project.json、跨章文件、完整验证、Git 提交与验收汇报,不得让多个 Agent 写同一路径。Confidence: 0.95
 - Subagent 完成只认实际返回结果与磁盘工件,不把面板状态、运行时长或零落盘单独当完成/僵死证据;重派前先停止旧实例并核对其产物,避免双写和丢失可恢复成果。Confidence: 0.9
+- 章节 subagent 交付报告必须逐章列出 states 映射、逐拍主导动作、动画预算、状态门控选择器、narration 对账、自检 pass/fail 与偏离;主线程据此复核并重跑确定性检查,不得把可编译或 agent 自报完成视为视觉完成。Confidence: 0.95
