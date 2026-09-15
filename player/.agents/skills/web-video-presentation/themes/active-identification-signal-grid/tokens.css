@@ -88,7 +88,16 @@
   --surface-pattern-size: 48px 48px, 48px 48px, 96px 96px;
   --surface-pattern-blend: normal;
   --surface-pattern-opacity: 0.86;
-  --surface-vignette: linear-gradient(90deg, transparent 0 40%, rgba(15, 153, 97, 0.10) 40% calc(40% + 1px), transparent calc(40% + 1px)),
-    linear-gradient(transparent 0 24%, rgba(15, 153, 97, 0.10) 24% calc(24% + 1px), transparent calc(24% + 1px));
+  --surface-vignette:
+    radial-gradient(circle, rgba(15, 153, 97, 0.34) 0 3px, transparent 3.5px) 40% 24% / 8px 8px no-repeat,
+    radial-gradient(circle, rgba(15, 153, 97, 0.34) 0 3px, transparent 3.5px) 68% 24% / 8px 8px no-repeat,
+    radial-gradient(circle, rgba(15, 153, 97, 0.34) 0 3px, transparent 3.5px) 68% 61% / 8px 8px no-repeat,
+    linear-gradient(90deg, rgba(15, 153, 97, 0.15), rgba(15, 153, 97, 0.15)) 40% 24% / 28% 1px no-repeat,
+    linear-gradient(rgba(15, 153, 97, 0.15), rgba(15, 153, 97, 0.15)) 68% 24% / 1px 37% no-repeat,
+    repeating-linear-gradient(90deg, rgba(11, 52, 95, 0.22) 0 1px, transparent 1px 96px) 58px 30px / calc(100% - 116px) 15px no-repeat,
+    repeating-linear-gradient(90deg, rgba(11, 52, 95, 0.12) 0 1px, transparent 1px 24px) 58px 36px / calc(100% - 116px) 7px no-repeat,
+    linear-gradient(rgba(11, 52, 95, 0.15), rgba(11, 52, 95, 0.15)) 58px 44px / calc(100% - 116px) 1px no-repeat,
+    repeating-linear-gradient(180deg, rgba(11, 52, 95, 0.18) 0 1px, transparent 1px 96px) 30px 58px / 13px calc(100% - 116px) no-repeat,
+    linear-gradient(90deg, rgba(11, 52, 95, 0.14), rgba(11, 52, 95, 0.14)) 44px 58px / 1px calc(100% - 116px) no-repeat;
   --text-shadow: none;
 }
