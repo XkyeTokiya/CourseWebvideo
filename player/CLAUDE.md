@@ -51,7 +51,7 @@ pnpm courseplay:phase1 -- finalize --episode episode-04
 pnpm courseplay:phase1 -- status --episode episode-04
 pnpm courseplay:phase1 -- resume --episode episode-04
 pnpm courseplay:phase1 -- preflight --episode episode-04
-pnpm courseplay:handoff -- --episode episode-04 --a-page A001
+pnpm courseplay:handoff -- --episode episode-04 --a-page A001 --reason explicit-request --consumer chapter-agent-A001 --lifecycle delete-after-consumption
 pnpm audio:extract -- --episode episode-04
 pnpm audio:synthesize -- --episode episode-04 --provider edge
 pnpm typecheck

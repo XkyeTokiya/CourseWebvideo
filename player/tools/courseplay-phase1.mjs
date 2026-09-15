@@ -5,7 +5,6 @@ import process from "node:process";
 import { fileURLToPath } from "node:url";
 import {
   A_PAGE_SCHEMA,
-  buildCourseplayHandoffV4Packet,
   parseVisualRoughV4,
   VISUAL_ROUGH_SCHEMA,
 } from "./courseplay-handoff.mjs";
@@ -389,7 +388,7 @@ export async function initPhase1({ root = process.cwd(), episodeId, testFault })
     file: input.files.script, template: input.files.templateScript, shell: scriptShell(input.pages), pages: input.pages,
     label: "script", faultAt: "after-script-init", testFault,
   });
-  return { ...(await inspectArtifacts(input.files, input.pages)), initialized: { outline, script } };
+  return { ...(await inspectArtifacts(input.files, input.pages)), initialized: { outline, script }, handoff: "skipped" };
 }
 
 export async function commitChapter({ root = process.cwd(), episodeId, aPageId, script, outline, testFault }) {
@@ -414,7 +413,7 @@ export async function commitChapter({ root = process.cwd(), episodeId, aPageId, 
   const nextScript = replaceChapter(scriptText, aPageId, transaction, parsedScript.text);
   await atomicWrite(input.files.outline, nextOutline, "after-outline-commit", { testFault });
   await atomicWrite(input.files.script, nextScript, "after-script-commit", { testFault });
-  return inspectArtifacts(input.files, input.pages);
+  return { ...await inspectArtifacts(input.files, input.pages), handoff: "skipped" };
 }
 
 function materialSummary(roughById, pages) {
@@ -457,15 +456,8 @@ export async function finalizePhase1({ root = process.cwd(), episodeId, testFaul
   let finalOutline = replaceGlobal(outlineText, "metadata", metadata);
   finalOutline = replaceGlobal(finalOutline, "schedule", schedule);
   finalOutline = replaceGlobal(finalOutline, "materials", materialSummary(input.roughById, input.pages));
-  for (const page of input.pages) {
-    await buildCourseplayHandoffV4Packet({
-      root: input.files.root, episodeId, aPageId: page.a_id, files: input.files,
-      projectText: input.projectText, aPageText: input.aPageText, visualRoughText: input.roughText,
-      scriptText, outlineText: finalOutline,
-    });
-  }
   await atomicWrite(input.files.outline, finalOutline, "after-finalize", { testFault });
-  return inspectArtifacts(input.files, input.pages);
+  return { ...await inspectArtifacts(input.files, input.pages), handoff: "skipped" };
 }
 
 async function statusPages(root, episodeId) {
@@ -534,6 +526,7 @@ Diagnostics:
     const result = await runPhase1(parseArgs(process.argv.slice(2)));
     const output = result.files ? { episode_id: result.files.episodeId, pages: result.pages.length, status: "preflight-passed" } : result;
     console.log(JSON.stringify(output, null, 2));
+    if (result.handoff) console.log(`handoff=${result.handoff}`);
   } catch (error) {
     const detail = error.detail ?? new Phase1Error("PHASE1_TOOL_DEFECT", "tool", "registered diagnostic", error.message).detail;
     console.error(JSON.stringify(detail));

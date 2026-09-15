@@ -418,14 +418,13 @@ pnpm dev
 `stepDurationsMs = [15000]`。实现首章后将 `project.json.status` 更新为
 `in-progress`，Studio 即可预览。
 
-**Courseplay 单章交接包**：需要为主线程或 subagent 生成隔离的当前章节上下文时，
-可以执行：
+**Courseplay 单章交接包**：默认不生成，并在流程记录中写 `handoff=skipped`。仅当用户/Agent 明确请求、上下文有数值证据表明确已超预算、跨 Agent/任务/工作树且接收方不能安全读取正式输入，或诊断/回归/兼容测试需要载荷时，可以执行：
 
 ```powershell
-pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx>
+pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx> --reason <explicit-request|context-budget-exceeded|cross-agent|diagnostic> --consumer <consumer-id> --lifecycle <policy>
 ```
 
-handoff 是可选上下文打包工具，不是章节制作前置门禁。固定路径、script/outline 语法、
+触发时必须使用当前 A-page 并记录 episode、A ID、reason、consumer 与 lifecycle；`context-budget-exceeded` 还要传 `--context-bytes` 和 `--context-budget`。handoff 是条件式派生缓存，不是章节制作前置门禁，也不能作为补齐任务包、validation report、`.tmp` 或其他非正式输入的回退路径。固定路径、script/outline 语法、
 normalizer 边界和真实检查范围只读 [`handoff v4 作者契约卡`](../../../docs/courseplay-handoff-v4-author-contract.md)、
 [`canonical example`](../../../docs/examples/courseplay-handoff-v4/)；失败时才按
 [`error index`](../../../docs/handoff-v4-error-catalog.json) 查码。不要读取 CLI/parser/validator 实现，

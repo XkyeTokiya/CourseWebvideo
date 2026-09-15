@@ -10,6 +10,7 @@
     {"code":"HV4_REFERENCE_UNKNOWN","mutation":"reference U999"},
     {"code":"HV4_RELATION_CARRIER","mutation":"duplicate R001 carrier"},
     {"code":"HV4_MEDIA_MATERIAL","mutation":"remove A001 material section"},
+    {"code":"HV4_TRIGGER_POLICY","mutation":"omit generation metadata"},
     {"code":"HV4_TOOL_DEFECT","mutation":"unregistered tool exception"}
   ]
 }

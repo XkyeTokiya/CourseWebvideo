@@ -106,6 +106,7 @@ test("init migrates both legacy templates into deterministic formal shells", asy
   const ctx = await fixture(); t.after(ctx.cleanup);
   const result = await initPhase1({ root: ctx.root, episodeId });
   assert.equal(result.phase, "compiling");
+  assert.equal(result.handoff, "skipped");
   assert.equal(result.next.includes("A001"), true);
   assert.match(await readFile(path.join(ctx.episodeDir, "script.md"), "utf8"), /CHAPTER:A007:BEGIN tx=pending/u);
   assert.match(await readFile(path.join(ctx.episodeDir, "outline.md"), "utf8"), /GLOBAL:materials:BEGIN/u);
@@ -120,6 +121,8 @@ test("seven chapters reach Checkpoint Plan in nine normal runner calls", async (
   const result = await finalizePhase1({ root: ctx.root, episodeId });
   assert.equal(result.phase, "awaiting-checkpoint-plan");
   assert.equal(result.next, "awaiting Checkpoint Plan");
+  assert.equal(result.handoff, "skipped");
+  await assert.rejects(readFile(path.join(ctx.episodeDir, ".handoffs", "A001.json")), { code: "ENOENT" });
   const outline = await readFile(path.join(ctx.episodeDir, "outline.md"), "utf8");
   assert.equal((outline.match(/^\| A\d{3} \|/gmu) ?? []).length, 7);
   for (const mediaId of ["M001", "M002", "M003"]) assert.match(outline, new RegExp(mediaId, "u"));
@@ -186,6 +189,7 @@ test("cross-file interruption is visible as one incomplete chapter and is recove
   assert.match(resumed.next, /commit-chapter.*A001/u);
   const recovered = await submit(ctx, 0);
   assert.equal(recovered.chapters[0].status, "committed");
+  assert.equal(recovered.handoff, "skipped");
 });
 
 test("finalize fails fast on missing chapters and commits atomically", async (t) => {

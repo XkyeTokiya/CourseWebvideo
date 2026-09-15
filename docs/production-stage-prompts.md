@@ -225,7 +225,7 @@ player/episodes/{{episodeId}}/inputs/ 中：
 【第二段：首章制作】
 获得 Checkpoint Plan 确认后：
 1. 写入已确认的主题和开发模式。
-2. 按需生成第 1 个 A-page 的 compact handoff。
+2. 默认记录 `handoff=skipped` 并直接使用当前正式输入；只有明确请求、已证实上下文超预算、接收方不能安全读取正式输入的跨 Agent/任务/工作树交接，或诊断/兼容测试时，才为当前 A-page 生成 compact handoff，并记录 reason、consumer、lifecycle。handoff 不得用于补齐任务包、validation report 或其他非正式输入。
 3. 综合 guidance、beats 和 presentation 完整实现第 1 章的 TSX、CSS、narrations.ts 和必需素材。
 4. 运行 `pnpm episode:check && pnpm typecheck && pnpm lint`。
 5. 提供预览方式和验收要点，等待用户验收。

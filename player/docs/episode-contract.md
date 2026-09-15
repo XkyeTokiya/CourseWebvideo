@@ -81,7 +81,7 @@ outline 调度、主题和素材，也可以使用 handoff 生成紧凑输入。
 需要为章节开发生成隔离上下文时，可以生成交接包：
 
 ```powershell
-pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx>
+pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx> --reason <explicit-request|context-budget-exceeded|cross-agent|diagnostic> --consumer <consumer-id> --lifecycle <policy>
 ```
 
 `episodes/<episode-id>/.handoffs/<Axxx>.json` 可作为紧凑的 Phase 2 输入。v4 包只含当前 A 的准确 beats、`screen_guidance`、`presentation`、steps、关系、
@@ -91,5 +91,4 @@ pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx>
 
 `.handoffs/` 是确定性派生缓存，不进入 `project.json`、catalog、Studio 构建或
 Git 提交。
-
 

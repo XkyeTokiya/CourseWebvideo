@@ -232,10 +232,10 @@ v4 不继承上述“标题默认必须显示”的来源义务。标题 S 是�
 handoff 是可选的上下文打包工具。需要隔离当前章节输入时，可以执行：
 
 ```powershell
-pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx>
+pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx> --reason <explicit-request|context-budget-exceeded|cross-agent|diagnostic> --consumer <consumer-id> --lifecycle <policy>
 ```
 
-生成的 `episodes/<episode-id>/.handoffs/<Axxx>.json` 可作为紧凑输入；也可以直接
+默认不生成并记录 `handoff=skipped`。只有明确请求、已证实超出上下文预算、接收方不能安全读取正式输入的跨 Agent/任务/工作树交接，或诊断/回归/兼容测试时才运行；触发时记录 reason、consumer、lifecycle，超预算另记录实际大小和预算。生成的 `episodes/<episode-id>/.handoffs/<Axxx>.json` 可作为紧凑输入；也可以直接
 提供等价的当前章节输入。v4 包提供当前 A 的准确
 beats、`screen_guidance`、`presentation`、steps、关系、护栏和素材片段。使用包时，
 章节 Agent 只读该包、本文件、`COURSEPLAY-STATE-MECHANISMS.md`、`CHAPTER-CRAFT.md`、
