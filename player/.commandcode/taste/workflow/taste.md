@@ -3,6 +3,7 @@
 - 多组修改按组推进:每组动手前用一句话说明目标,完成后立即重读文件并检查 diff 是否符合目标,再进入下一组。Confidence: 0.9
 - 派生工件与冻结输入的逐字、计数或映射关系优先用一次性脚本验证并输出 PASS/FAIL 与差异上下文;先验证脚本自身解析口径,不得据脚本 bug 断言工件错误。Confidence: 0.9
 - 验证失败先按改动范围归因,区分本次回归、既有基线债、数据问题、环境问题和工具缺陷;必要时在临时目录用最小 fixture 复现,范围外债务只报告不顺带修复。Confidence: 0.9
+- Player 过程稿按期写入根级 `.tmp/work/player/<episode-id>/`,临时验证、测试和运行日志分别写入 `.tmp/validation/<episode-id>/`、`.tmp/tests/<task>/`、`.tmp/runtime/<service>/`;任务收束只清理自己的 work 子树。Confidence: 0.95
 - Episode 章节改动按仓库契约运行 `episode:check`、`typecheck`、`lint`;改动 narrations 追加音频提取,完整交付或共享改动追加 build,实际命令以当前 CLAUDE 与 package scripts 为准。Confidence: 0.9
 - 完成交付按四项汇报:修改或新增文件、运行命令、验证结果、仍需人工处理的问题;任务含显式禁令或边界时逐项说明遵从情况,不把绿勾等同于用户视觉验收。Confidence: 0.9
 - 契约、治理与 episode 交付使用 scoped conventional commit,提交前只 stage 任务路径并复核 staged diff;用户本人手改内容与 Agent 改动分开提交,Taste 自动学习与人工重构也分开记录。Confidence: 0.85

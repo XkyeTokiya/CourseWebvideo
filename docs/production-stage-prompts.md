@@ -25,7 +25,7 @@
 
 【需要完成】
 1. 检查当前 HEAD、分支、git status、worktree、origin 和 {{protectedBranch}} 的关系。
-2. 检查 {{episodeId}} 已有的 `.tmp/narration-pipeline/`、`player/episodes/{{episodeId}}/inputs/`、`script.md`、`outline.md` 和 `src/`，判断可恢复到哪个阶段。
+2. 检查 {{episodeId}} 已有的 `.tmp/work/narration-pipeline/{{episodeId}}/`、`.tmp/work/player/{{episodeId}}/`、`player/episodes/{{episodeId}}/inputs/`、`script.md`、`outline.md` 和 `src/`，判断可恢复到哪个阶段。
 3. 创建、跟踪或复用 {{episodeBranch}}。分支已在其他 worktree 使用时，报告其位置和状态，不重复创建。
 
 【完成标准】
@@ -198,7 +198,7 @@ player/episodes/{{episodeId}}/inputs/ 中：
 - 用户已明确授权。
 - 五个正式文件齐备、来源一致且验证通过。
 - visual rough 为 approved/production。
-- compile trace 仍保留在 `.tmp`，未进入 inputs。
+- compile trace 仍保留在 `.tmp/work/narration-pipeline/{{episodeId}}/`，未进入 inputs。
 - 改动已 push 到 {{episodeBranch}}。
 
 【结束输出】
