@@ -106,7 +106,7 @@ Outline 候选必须是一个完整章节 section，并满足：
 
 `finalize` 要求每章 script / outline 都存在且拥有相同 `tx`，重新验证无损 nx、
 Beat/step 和稳定引用，然后自动生成 metadata、视觉调度与素材汇总。它不构建、
-派生或校验 handoff，成功日志明确返回 `handoff: "skipped"`；outline 的编译状态变为
+派生或校验 handoff，成功日志明确输出 `handoff=skipped`；outline 的编译状态变为
 `awaiting-checkpoint-plan`。handoff 专用格式不能成为 Phase 1 的隐式门禁。
 
 语气、钩子、视觉美感和相邻章节差异由 Agent 在提交前/最终确认时自行判断；它们

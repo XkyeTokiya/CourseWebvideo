@@ -11,7 +11,6 @@ async function inputs() {
   const read = (name) => readFile(path.join(example, name), "utf8");
   return {
     root: path.resolve("."), episodeId: "canonical-contract-example", aPageId: "A002",
-    generation: { reason: "explicit-request", consumer: "test-consumer", lifecycle: "delete-after-test" },
     files: { episodeDir: example, project: path.join(example, "project.json"), aPage: aPageExample, visualRough: visualExample, script: path.join(example, "script.md"), outline: path.join(example, "outline.md") },
     projectText: await read("project.json"), aPageText: await readFile(aPageExample, "utf8"), visualRoughText: await readFile(visualExample, "utf8"), scriptText: await read("script.md"), outlineText: await read("outline.md"),
   };
@@ -20,7 +19,6 @@ async function inputs() {
 test("handoff v4 emits U presentation and preserves runtime step equality", async () => {
   const { packet } = await buildCourseplayHandoffV4Packet(await inputs());
   assert.equal(packet.schema_version, "web-video-courseplay-chapter-handoff/v4");
-  assert.deepEqual(packet.generation, { reason: "explicit-request", consumer: "test-consumer", lifecycle: "delete-after-test" });
   assert.deepEqual(packet.presentation.content_units[0], { unit_id: "U003", source_group_ids: ["G003"] });
   assert.equal(packet.narration.beats.length, packet.steps.length);
   assert.equal(packet.steps.length, packet.chapter.step_count);
@@ -30,27 +28,7 @@ test("handoff v4 emits U presentation and preserves runtime step equality", asyn
   assert.ok(!JSON.stringify(packet.presentation).includes("必须逐字显示的标题"));
 });
 
-test("handoff v4 accepts cross-agent and evidenced context-budget triggers", async () => {
-  const crossAgent = await inputs();
-  crossAgent.generation = { reason: "cross-agent", consumer: "chapter-agent-A002", lifecycle: "delete-after-consumption" };
-  assert.equal((await buildCourseplayHandoffV4Packet(crossAgent)).packet.generation.reason, "cross-agent");
-
-  const oversized = await inputs();
-  oversized.generation = { reason: "context-budget-exceeded", consumer: "chapter-agent-A002", lifecycle: "delete-after-consumption", contextBytes: 120001, contextBudget: 120000 };
-  assert.deepEqual((await buildCourseplayHandoffV4Packet(oversized)).packet.generation, {
-    reason: "context-budget-exceeded", consumer: "chapter-agent-A002", lifecycle: "delete-after-consumption", context_bytes: 120001, context_budget: 120000,
-  });
-});
-
-test("handoff v4 rejects missing trigger metadata and unproven budget overflow", async () => {
-  const missing = await inputs(); delete missing.generation;
-  await assert.rejects(() => buildCourseplayHandoffV4Packet(missing), (error) => error.detail.code === "HV4_TRIGGER_POLICY");
-  const notOversized = await inputs();
-  notOversized.generation = { reason: "context-budget-exceeded", consumer: "agent", lifecycle: "delete-after-consumption", contextBytes: 100, contextBudget: 100 };
-  await assert.rejects(() => buildCourseplayHandoffV4Packet(notOversized), (error) => error.detail.code === "HV4_TRIGGER_POLICY");
-});
-
-test("explicit generation writes only the requested A-page with consumer evidence", async (t) => {
+test("explicit generation writes only the requested A-page", async (t) => {
   const fixtureRoot = path.resolve(".tmp/tool-tests");
   await mkdir(fixtureRoot, { recursive: true });
   const root = await mkdtemp(path.join(fixtureRoot, "handoff-v4-"));
@@ -59,11 +37,10 @@ test("explicit generation writes only the requested A-page with consumer evidenc
   await mkdir(episodeDir, { recursive: true });
   for (const name of ["project.json", "script.md", "outline.md"]) await cp(path.resolve("episodes/episode-07", name), path.join(episodeDir, name));
   await cp(path.resolve("episodes/episode-07/inputs"), path.join(episodeDir, "inputs"), { recursive: true });
-  await generateCourseplayHandoff({ root, episodeId: "episode-07", aPageId: "A001", reason: "explicit-request", consumer: "chapter-agent-A001", lifecycle: "delete-after-consumption" });
+  await generateCourseplayHandoff({ root, episodeId: "episode-07", aPageId: "A001" });
   assert.deepEqual(await readdir(path.join(episodeDir, ".handoffs")), ["A001.json"]);
   const packet = JSON.parse(await readFile(path.join(episodeDir, ".handoffs", "A001.json"), "utf8"));
   assert.equal(packet.chapter.a_page_id, "A001");
-  assert.equal(packet.generation.consumer, "chapter-agent-A001");
 });
 
 test("handoff v4 rejects every older version pair with structured diagnostics", async () => {

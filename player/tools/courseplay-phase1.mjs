@@ -388,7 +388,7 @@ export async function initPhase1({ root = process.cwd(), episodeId, testFault })
     file: input.files.script, template: input.files.templateScript, shell: scriptShell(input.pages), pages: input.pages,
     label: "script", faultAt: "after-script-init", testFault,
   });
-  return { ...(await inspectArtifacts(input.files, input.pages)), initialized: { outline, script }, handoff: "skipped" };
+  return { ...(await inspectArtifacts(input.files, input.pages)), initialized: { outline, script } };
 }
 
 export async function commitChapter({ root = process.cwd(), episodeId, aPageId, script, outline, testFault }) {
@@ -413,7 +413,7 @@ export async function commitChapter({ root = process.cwd(), episodeId, aPageId, 
   const nextScript = replaceChapter(scriptText, aPageId, transaction, parsedScript.text);
   await atomicWrite(input.files.outline, nextOutline, "after-outline-commit", { testFault });
   await atomicWrite(input.files.script, nextScript, "after-script-commit", { testFault });
-  return { ...await inspectArtifacts(input.files, input.pages), handoff: "skipped" };
+  return inspectArtifacts(input.files, input.pages);
 }
 
 function materialSummary(roughById, pages) {
@@ -457,7 +457,7 @@ export async function finalizePhase1({ root = process.cwd(), episodeId, testFaul
   finalOutline = replaceGlobal(finalOutline, "schedule", schedule);
   finalOutline = replaceGlobal(finalOutline, "materials", materialSummary(input.roughById, input.pages));
   await atomicWrite(input.files.outline, finalOutline, "after-finalize", { testFault });
-  return { ...await inspectArtifacts(input.files, input.pages), handoff: "skipped" };
+  return inspectArtifacts(input.files, input.pages);
 }
 
 async function statusPages(root, episodeId) {
@@ -523,10 +523,11 @@ Diagnostics:
     process.exit(0);
   }
   try {
-    const result = await runPhase1(parseArgs(process.argv.slice(2)));
+    const parsed = parseArgs(process.argv.slice(2));
+    const result = await runPhase1(parsed);
     const output = result.files ? { episode_id: result.files.episodeId, pages: result.pages.length, status: "preflight-passed" } : result;
     console.log(JSON.stringify(output, null, 2));
-    if (result.handoff) console.log(`handoff=${result.handoff}`);
+    if (["init", "commit-chapter", "finalize"].includes(parsed.command)) console.log("handoff=skipped");
   } catch (error) {
     const detail = error.detail ?? new Phase1Error("PHASE1_TOOL_DEFECT", "tool", "registered diagnostic", error.message).detail;
     console.error(JSON.stringify(detail));

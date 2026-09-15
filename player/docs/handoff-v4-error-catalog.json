@@ -10,7 +10,6 @@
     {"code":"HV4_REFERENCE_UNKNOWN","message":"handoff step 或 presentation 引用了未知稳定 ID。","hint":"仅引用当前 A-page 与 rough 已声明的 S/U/R/M。","contractSection":"references"},
     {"code":"HV4_RELATION_CARRIER","message":"protected relation 与载体不是严格一一对应。","hint":"为每个 R 保留唯一载体。","contractSection":"relations"},
     {"code":"HV4_MEDIA_MATERIAL","message":"rough 要求媒体但 outline 缺少素材清单。","hint":"为该 A-page 增加素材状态记录。","contractSection":"media"},
-    {"code":"HV4_TRIGGER_POLICY","message":"handoff 未提供合法的条件触发记录。","hint":"声明 reason、consumer 和 lifecycle；超预算触发还需提供实际大小与预算。","contractSection":"trigger-policy"},
     {"code":"HV4_TOOL_DEFECT","message":"出现未登记的 handoff 工具异常。","hint":"报告工具缺陷，不要读取实现猜规则。","contractSection":"tooling"}
   ]
 }

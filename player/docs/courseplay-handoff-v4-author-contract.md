@@ -4,14 +4,13 @@ handoff 是 `script/outline` 之后、章节制作之前的条件式派生缓存
 
 ## 触发策略
 
-只允许四类触发：用户/Agent 明确请求（`explicit-request`）、有数值证据的上下文超预算（`context-budget-exceeded`）、接收方不能安全读取当前正式输入的跨 Agent/任务/工作树交接（`cross-agent`），以及诊断、回归或兼容测试（`diagnostic`）。每次必须显式指定当前 episode、A ID、`reason`、`consumer` 和 `lifecycle`；超预算还必须给出 `context-bytes` 与 `context-budget`，且前者大于后者。
+只允许四类触发：用户/Agent 明确请求、上下文超过当前任务预算、接收方不能安全读取当前正式输入的跨 Agent/任务/工作树交接，以及诊断、回归或兼容测试。沿用现有任务日志说明生成原因、消费者和生命周期；不为此增加新的状态文件、CLI 参数或审批节点。
 
 ```powershell
-pnpm courseplay:handoff -- --episode episode-04 --a-page A001 `
-  --reason cross-agent --consumer chapter-agent-A001 --lifecycle delete-after-consumption
+pnpm courseplay:handoff -- --episode episode-04 --a-page A001
 ```
 
-输出包的 `generation` 字段保留这些证据。handoff 不能读取或补齐任务包、validation report、`.tmp` 或其他非正式输入；正式输入不足时应失败，而不是回退。
+handoff 不能读取或补齐任务包、validation report、`.tmp` 或其他非正式输入；正式输入不足时应失败，而不是回退。
 
 ## 固定输入、输出与职责
 

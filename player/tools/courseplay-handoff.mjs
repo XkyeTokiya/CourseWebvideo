@@ -8,7 +8,6 @@ import { fileURLToPath } from "node:url";
 export const COURSEPLAY_HANDOFF_SCHEMA = "web-video-courseplay-chapter-handoff/v4";
 export const A_PAGE_SCHEMA = "courseplay-a-page/v6";
 export const VISUAL_ROUGH_SCHEMA = "courseplay-visual-rough/v4";
-export const HANDOFF_REASONS = new Set(["explicit-request", "context-budget-exceeded", "cross-agent", "diagnostic"]);
 
 const ERROR_CATALOG_PATH = fileURLToPath(new URL("../docs/handoff-v4-error-catalog.json", import.meta.url));
 const ERROR_CATALOG = JSON.parse(readFileSync(ERROR_CATALOG_PATH, "utf8"));
@@ -109,24 +108,7 @@ export function assertBeatStepContract({ aPageId, beats, steps }) {
   if (new Set(Object.values(counts)).size !== 1 || steps.some((step, index) => step.index !== index + 1)) fail("HV4_BEAT_STEP_MISMATCH", aPageId, "equal counts and continuous steps", counts);
 }
 
-export function validateHandoffGeneration({ reason, consumer, lifecycle, contextBytes, contextBudget }) {
-  if (!HANDOFF_REASONS.has(reason) || !consumer?.trim() || !lifecycle?.trim()) {
-    fail("HV4_TRIGGER_POLICY", "generation", "registered reason, consumer, and lifecycle", { reason, consumer, lifecycle });
-  }
-  if (reason === "context-budget-exceeded"
-      && (!Number.isFinite(contextBytes) || !Number.isFinite(contextBudget) || contextBytes <= contextBudget)) {
-    fail("HV4_TRIGGER_POLICY", "generation.context_budget", "contextBytes > contextBudget", { contextBytes, contextBudget });
-  }
-  return {
-    reason,
-    consumer: consumer.trim(),
-    lifecycle: lifecycle.trim(),
-    ...(reason === "context-budget-exceeded" ? { context_bytes: contextBytes, context_budget: contextBudget } : {}),
-  };
-}
-
-export async function buildCourseplayHandoffV4Packet({ root = process.cwd(), episodeId, aPageId, files, projectText, aPageText, visualRoughText, scriptText, outlineText, generation }) {
-  generation = validateHandoffGeneration(generation ?? {});
+export async function buildCourseplayHandoffV4Packet({ root = process.cwd(), episodeId, aPageId, files, projectText, aPageText, visualRoughText, scriptText, outlineText }) {
   const project = json(projectText, "project.json"); const aPage = json(aPageText, "A-page"); const roughMeta = frontmatter(visualRoughText);
   if (project.id !== episodeId) fail("HV4_SOURCE_INTEGRITY", "project.id", episodeId, project.id);
   if (aPage.schema_version !== A_PAGE_SCHEMA || roughMeta.schema_version !== VISUAL_ROUGH_SCHEMA) fail("HV4_VERSION_PAIR", "schema_version", [A_PAGE_SCHEMA, VISUAL_ROUGH_SCHEMA], [aPage.schema_version, roughMeta.schema_version]);
@@ -141,7 +123,7 @@ export async function buildCourseplayHandoffV4Packet({ root = process.cwd(), epi
   for (const step of chapter.steps) for (const ref of step.show_refs) if (!knownRefs.has(ref)) fail("HV4_REFERENCE_UNKNOWN", `${aPageId}.steps[${step.index}]`, [...knownRefs], ref);
   const expectedRelations = (page.protected_relations ?? []).map((r) => r.relation_id); const actualRelations = rough.relation_carriers.map((r) => r.relation_id);
   if (JSON.stringify([...expectedRelations].sort()) !== JSON.stringify([...actualRelations].sort()) || new Set(actualRelations).size !== actualRelations.length) fail("HV4_RELATION_CARRIER", `${aPageId}.presentation.relation_carriers`, expectedRelations, actualRelations);
-  return { packet: { schema_version: COURSEPLAY_HANDOFF_SCHEMA, episode_id: episodeId, generation, chapter: { index: chapter.index, id: chapter.id, title: chapter.title, a_page_id: aPageId, step_count: chapter.stepCount }, narration: { authority: "a_page.nx", beats: script.beats }, screen_guidance: page.screen, presentation: rough, steps: chapter.steps, protected_relations: page.protected_relations ?? [], silent_constraints: page.silent_constraints ?? [], materials_markdown: outline.materials.get(aPageId) ?? null, runtime_contract: "script beat = outline step", sources: { project: { path: relative(root, files.project), sha256: sha256(projectText) }, a_page: { path: relative(root, files.aPage), sha256: sha256(aPageText) }, visual_rough: { path: relative(root, files.visualRough), sha256: sha256(visualRoughText) }, outline: { path: relative(root, files.outline), sha256: sha256(outlineText) }, script: { path: relative(root, files.script), sha256: sha256(scriptText) } } }, episodeDir: files.episodeDir };
+  return { packet: { schema_version: COURSEPLAY_HANDOFF_SCHEMA, episode_id: episodeId, chapter: { index: chapter.index, id: chapter.id, title: chapter.title, a_page_id: aPageId, step_count: chapter.stepCount }, narration: { authority: "a_page.nx", beats: script.beats }, screen_guidance: page.screen, presentation: rough, steps: chapter.steps, protected_relations: page.protected_relations ?? [], silent_constraints: page.silent_constraints ?? [], materials_markdown: outline.materials.get(aPageId) ?? null, runtime_contract: "script beat = outline step", sources: { project: { path: relative(root, files.project), sha256: sha256(projectText) }, a_page: { path: relative(root, files.aPage), sha256: sha256(aPageText) }, visual_rough: { path: relative(root, files.visualRough), sha256: sha256(visualRoughText) }, outline: { path: relative(root, files.outline), sha256: sha256(outlineText) }, script: { path: relative(root, files.script), sha256: sha256(scriptText) } } }, episodeDir: files.episodeDir };
 }
 
 async function standardInputs(root, episodeId) {
@@ -151,26 +133,23 @@ async function standardInputs(root, episodeId) {
   return files;
 }
 
-export async function buildCourseplayHandoffPacket({ root = path.resolve(process.env.PLAYER_ROOT ?? process.cwd()), episodeId, aPageId, generation }) {
+export async function buildCourseplayHandoffPacket({ root = path.resolve(process.env.PLAYER_ROOT ?? process.cwd()), episodeId, aPageId }) {
   aPageId = aPageId?.toUpperCase(); const files = await standardInputs(root, episodeId);
   const [projectText, aPageText, visualRoughText, scriptText, outlineText] = await Promise.all([required(files.project, "project"), required(files.aPage, "a-page"), required(files.visualRough, "visual-rough"), required(files.script, "script"), required(files.outline, "outline")]);
-  return buildCourseplayHandoffV4Packet({ root, episodeId, aPageId, files, projectText, aPageText, visualRoughText, scriptText, outlineText, generation });
+  return buildCourseplayHandoffV4Packet({ root, episodeId, aPageId, files, projectText, aPageText, visualRoughText, scriptText, outlineText });
 }
 
-export async function generateCourseplayHandoff({ root = path.resolve(process.env.PLAYER_ROOT ?? process.cwd()), episodeId, aPageId, check = false, reason, consumer, lifecycle, contextBytes, contextBudget }) {
-  aPageId = aPageId.toUpperCase(); const generation = { reason, consumer, lifecycle, contextBytes, contextBudget };
-  const { packet, episodeDir } = await buildCourseplayHandoffPacket({ root, episodeId, aPageId, generation }); const content = `${JSON.stringify(packet, null, 2)}\n`; const output = path.join(episodeDir, ".handoffs", `${aPageId}.json`);
-  if (check) { const current = await required(output, "handoff"); if (current !== content) fail("HV4_SOURCE_INTEGRITY", relative(root, output), "current deterministic packet", "stale packet"); return { output, bytes: Buffer.byteLength(current), checked: true, generation: packet.generation }; }
+export async function generateCourseplayHandoff({ root = path.resolve(process.env.PLAYER_ROOT ?? process.cwd()), episodeId, aPageId, check = false }) {
+  aPageId = aPageId.toUpperCase(); const { packet, episodeDir } = await buildCourseplayHandoffPacket({ root, episodeId, aPageId }); const content = `${JSON.stringify(packet, null, 2)}\n`; const output = path.join(episodeDir, ".handoffs", `${aPageId}.json`);
+  if (check) { const current = await required(output, "handoff"); if (current !== content) fail("HV4_SOURCE_INTEGRITY", relative(root, output), "current deterministic packet", "stale packet"); return { output, bytes: Buffer.byteLength(current), checked: true }; }
   await mkdir(path.dirname(output), { recursive: true }); const temp = path.join(path.dirname(output), `.${aPageId}.${process.pid}.tmp`);
   try { await writeFile(temp, content); await rename(temp, output); } finally { await rm(temp, { force: true }).catch(() => {}); }
-  return { output, bytes: Buffer.byteLength(content), checked: false, generation: packet.generation };
+  return { output, bytes: Buffer.byteLength(content), checked: false };
 }
 
-function args(argv) { const out = { episodeId: null, aPageId: null, check: false }; for (let i = 0; i < argv.length; i += 1) { const value = argv[i]; if (value === "--check") out.check = true; else if (value === "--episode") out.episodeId = argv[++i]; else if (value === "--a-page") out.aPageId = argv[++i]; else if (value === "--reason") out.reason = argv[++i]; else if (value === "--consumer") out.consumer = argv[++i]; else if (value === "--lifecycle") out.lifecycle = argv[++i]; else if (value === "--context-bytes") out.contextBytes = Number(argv[++i]); else if (value === "--context-budget") out.contextBudget = Number(argv[++i]); } if (!out.episodeId || !out.aPageId) fail("HV4_INPUT_MISSING", "arguments", "--episode and --a-page", argv); return out; }
+function args(argv) { const out = { episodeId: null, aPageId: null, check: false }; for (let i = 0; i < argv.length; i += 1) { if (argv[i] === "--check") out.check = true; else if (argv[i] === "--episode") out.episodeId = argv[++i]; else if (argv[i] === "--a-page") out.aPageId = argv[++i]; } if (!out.episodeId || !out.aPageId) fail("HV4_INPUT_MISSING", "arguments", "--episode and --a-page", argv); return out; }
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
-if (isMain && (process.argv.includes("--help") || process.argv.includes("-h"))) {
-  console.log(`Usage: pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx> --reason <explicit-request|context-budget-exceeded|cross-agent|diagnostic> --consumer <id> --lifecycle <policy> [--context-bytes N --context-budget N] [--check]`);
-} else if (isMain) try { const result = await generateCourseplayHandoff(args(process.argv.slice(2))); console.log(`handoff=${result.checked ? "checked" : "generated"} reason=${result.generation.reason} consumer=${result.generation.consumer} lifecycle=${result.generation.lifecycle} path=${relative(process.cwd(), result.output)} bytes=${result.bytes}`); } catch (error) {
+if (isMain) try { const result = await generateCourseplayHandoff(args(process.argv.slice(2))); console.log(`${result.checked ? "checked" : "generated"} ${relative(process.cwd(), result.output)} (${result.bytes} bytes)`); } catch (error) {
   const detail = error.detail ?? new HandoffContractError("HV4_TOOL_DEFECT", "tool", "registered diagnostic", error.message).detail;
   console.error(JSON.stringify(detail));
   process.exitCode = 1;

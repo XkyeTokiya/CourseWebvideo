@@ -119,11 +119,10 @@ pnpm courseplay:phase1 -- finalize --episode episode-XX
 
 `status`、`resume` 和 `preflight` 用于诊断或中断恢复。候选文件不能包含 runner marker；runner 会校验 Nx 无损还原、Beat/step 数量、章节顺序和稳定关系引用。
 
-handoff 默认跳过，且不能作为补齐任务包、validation report 或其他非正式输入的回退路径。确有消费者时，在 `player/` 目录显式记录生成原因、消费者和生命周期：
+handoff 默认跳过，且不能作为补齐任务包、validation report 或其他非正式输入的回退路径。确有消费者时，在现有任务记录中说明生成原因、消费者和生命周期，并在 `player/` 目录显式运行原有命令：
 
 ```powershell
-pnpm courseplay:handoff -- --episode episode-XX --a-page A001 `
-  --reason explicit-request --consumer chapter-agent-A001 --lifecycle delete-after-consumption
+pnpm courseplay:handoff -- --episode episode-XX --a-page A001
 ```
 
 Courseplay Phase 1 runner 的最小命令、章节内容对契约、中断恢复和错误码见

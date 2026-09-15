@@ -82,7 +82,7 @@ outline 必须让 chapter agent 知道“固定什么、变化什么、何时允
 handoff 是可选的隔离上下文工具。需要为主线程或 subagent 生成紧凑输入时，可以执行：
 
 ```powershell
-pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx> --reason <explicit-request|context-budget-exceeded|cross-agent|diagnostic> --consumer <consumer-id> --lifecycle <policy>
+pnpm courseplay:handoff -- --episode <episode-id> --a-page <Axxx>
 ```
 
 生成的 `episodes/<episode-id>/.handoffs/<Axxx>.json` 是一种紧凑输入。也可以直接
