@@ -5,7 +5,8 @@
 段落，请在**同一调色板内**降对比、收聚光，而不是翻转表面色。
 
 主题 = 一组 CSS 设计 token + 一个 `theme.json` 元数据。Studio 构建期发现
-完整主题，播放页按实例 `project.json.theme` 动态注入；不得把某套 token
+完整主题，播放页按实例 `project.json.theme` 动态注入；`selectable: false`
+的兼容主题只供已有实例继续加载，Agent 列表、推荐和新建实例必须跳过。不得把某套 token
 复制到实例或静态写死为全局正式主题。
 
 **章节对 token 的消费分两层**：
@@ -45,14 +46,14 @@
 
 | make_cover 风格 | 项目主题 ID | 主题特征 |
 |---|---|---|
-| `base` | `industrial-clarity` | 白色画布、蓝绿工业编码、柔和圆角面板 |
+| `base` | 兼容主题（不可选） | 仅供已有实例继续加载 |
 | `note` | `active-identification-note` | 工程方格纸、深海军蓝结构、工业绿、陶土橙、硬投影 |
 
 使用这两个主题时，封面组件应优先使用主题 token，避免另写一套颜色和材质值。所有主题都遵循同一规则：JSON 只提供内容，忽略 `style`；视觉由实例当前主题 token 决定。`flat` 与 `cream` 仍可作为历史 `make_cover.py` 的兼容风格记录，但不覆盖实例主题。
 
 ## 内置主题
 
-22 套主题，每个都有**独立的设计 DNA** —— 不是简单的换色版。挑一个
+24 套可选主题，每个都有**独立的设计 DNA**。挑一个
 匹配你主题情绪的，或者作为你自己主题的起点。
 
 ### 深色主题
@@ -84,12 +85,15 @@
 | `kraft-paper`        | 牛皮纸 —— **深棕当墨** + 牛皮米。Fraunces + Source Serif + 紫铜 accent。老笔记本 / 老信封感。**粗暖纸纹**是签名。慢速 tactile（1.55s）。                                                                       |
 | `dune`               | 沙丘 —— **炭褐当墨** + 沙底 + 几乎无 accent（muted clay）。Inter display + Source Serif 正文。**无装饰 + 极宽 padding（140×100）**是签名。建筑手册 / 画廊感。最慢节奏（1.75s）。                                |
 | `swiss-ikb`          | 瑞士国际主义。**极细 200 weight Inter / Helvetica** + 净暖白底 + IKB 克莱因蓝 + **1px 发丝网格 (64px)**。`r-card: 0` 直角。Massimo Vignelli / Helvetica Forever 能量。punchy + linear（400/650ms）。           |
+| `active-identification-precision-ledger` | 主动标识·精密记录纸。冷白检验纸 + 主次注册网格，保留深海军蓝结构、工业绿流程、陶土橙警示与硬投影几何。 |
+| `active-identification-warm-paper` | 主动标识·暖纸检验单。当代象牙色纤维纸 + 克制检验横线，保留原主题的信息编码和排版性格。 |
+| `active-identification-signal-grid` | 主动标识·信号矩阵。矿物灰绿纸面 + 低对比矩阵 + 稀疏信号节点，避免霓虹和赛博感。 |
 
 
-随时列出可用主题：
+随时列出可选主题：
 
 ```powershell
-Get-ChildItem .agents/skills/web-video-presentation/themes -Directory | Select-Object -ExpandProperty Name
+node -e "import('./tools/theme-registry.mjs').then(async m => console.log((await m.listSelectableThemeIds()).join('\\n')))"
 ```
 
 Studio 会在构建时发现每个同时包含 `theme.json` 与 `tokens.css` 的目录，并按实例 `project.json.theme` 动态注入对应 token。
@@ -104,8 +108,9 @@ Studio 会在构建时发现每个同时包含 `theme.json` 与 `tokens.css` 的
 pnpm episode:new -- --id episode-xx --title 标题 --theme newsroom
 ```
 
-不传 `--theme` 时默认 `industrial-clarity`。`episode:new` 会先校验主题
-目录存在且完整（`theme.json` + `tokens.css` 齐全），不通过直接拒绝。
+不传 `--theme` 时默认 `active-identification-note`。`episode:new` 会先校验主题
+目录存在且完整（`theme.json` + `tokens.css` 齐全），并且未标记
+`selectable: false`；不通过直接拒绝。
 
 ---
 
@@ -286,6 +291,7 @@ Copy-Item .agents/skills/web-video-presentation/themes/monochrome-print `
 ```json
 {
   "id": "my-theme",
+  "selectable": true,
   "name": "My Theme",
   "nameZh": "我的主题",
   "description": "一句英文描述它的气质。",
@@ -308,6 +314,7 @@ Copy-Item .agents/skills/web-video-presentation/themes/monochrome-print `
 | 字段 | 必填 | 取值 | 决定什么 |
 |---|---|---|---|
 | `id` / `name` / `nameZh` | ✓ | 字符串 | 主题标识 |
+| `selectable` | — | 布尔值，默认 `true` | Agent 列表、推荐与新建实例是否可选 |
 | `description` / `descriptionZh` | ✓ | 一句话 | Checkpoint Plan 列清单时的简介 |
 | `mood` | ✓ | 标签数组 | 模糊匹配用 |
 | `bestFor` | ✓ | 场景数组 | Checkpoint Plan 智能推荐时的命中点 |

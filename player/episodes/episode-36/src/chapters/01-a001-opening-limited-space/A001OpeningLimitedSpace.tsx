@@ -39,7 +39,7 @@ export default function A001OpeningLimitedSpace({ step }: ChapterStepProps) {
               可用 · 只有一小块
             </text>
           </svg>
-          <figcaption className="a1-ph">M001 · 工业设计台现场图（待补入）</figcaption>
+          <figcaption className="a1-ph">工业设计台现场</figcaption>
         </figure>
 
         <div className="a1-context">

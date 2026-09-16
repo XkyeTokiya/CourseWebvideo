@@ -9,11 +9,11 @@ episodes/<module>/episode-XX-...-task-package.md  # 唯一原始事实源，只�
 docs/                                             # 生产、治理和历史说明
 .agents/skills/                                   # 上游 Skill
 .commandcode/                                     # 上游命令与 taste
-../.tmp/narration-pipeline/<task>/episode-XX/     # 过程文件，不提交
+../.tmp/work/narration-pipeline/episode-XX/       # 过程文件，不提交
 ../player/episodes/episode-XX/inputs/             # 唯一正式输入
 ```
 
-本目录不再使用 `output/` 或仓库内 `work/`。批准稿、A-page、验证报告和 visual rough 必须发布到 `../player/episodes/<episode-id>/inputs/`；Brief、草稿、compile trace 和候选 rough 写入 `../.tmp/narration-pipeline/`。不要额外发布 `narration-units.json` 或 `narration-bindings.json`；它们不是当前生产入口。
+本目录不再使用 `output/`、子项目内 `work/` 或 `narration-pipeline/.tmp/`。批准稿、A-page、验证报告和 visual rough 必须发布到 `../player/episodes/<episode-id>/inputs/`；Brief、草稿、compile trace 和候选 rough 写入 `../.tmp/work/narration-pipeline/<episode-id>/`。可重新生成的临时验证结果写入 `../.tmp/validation/<episode-id>/`。不要额外发布 `narration-units.json` 或 `narration-bindings.json`；它们不是当前生产入口。
 
 ## 生产边界
 
@@ -29,12 +29,14 @@ docs/                                             # 生产、治理和历史说�
 
 ```text
 冻结任务包
-  -> ../.tmp/narration-pipeline/<task>/episode-XX/
+  -> ../.tmp/work/narration-pipeline/episode-XX/
   -> 人工批准与验证
   -> ../player/episodes/episode-XX/inputs/
 ```
 
 验证报告可以直接写入目标 episode 的 `inputs/`，但它们不属于章节创作事实源；compile trace 必须留在 `.tmp`，不能发布为播放器输入。下游 Phase 1 会从三份正式内容产物建立 `script.md` 与 `outline.md`，不依赖上游旁路单元或绑定文件。
+
+每期只有一个默认 work 目录；确有并行尝试时，才在其下增加 `attempt-*`。发布完成并确认无需恢复后，删除本任务自己的 work 子树，不触碰其他期次、其他分区或 `.tmp/archives/`。
 
 ## 修改与验证
 

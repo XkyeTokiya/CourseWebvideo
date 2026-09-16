@@ -88,7 +88,6 @@ export default function A008ControlShift({ step }: ChapterStepProps) {
           <div className="cs-layer cs-layer-track">
             <p className="cs-layer-cap">
               这副模具的全生命周期 · 可视化追踪
-              <span className="cs-demo-tag">示意演示</span>
             </p>
             <div className="cs-row" style={{ "--cs-i": "0" } as CSSProperties}>
               <b className="cs-row-label">加工次数</b>

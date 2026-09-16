@@ -11,7 +11,7 @@ description: 仅限人类明确调用。用于局部润色连续口播稿或 cou
 
 ### 连续稿模式
 
-- 口播稿：`..\.tmp\narration-pipeline\<任务目录>\episode-XX/stage1-continuous-draft.md`
+- 口播稿：`..\.tmp\work\narration-pipeline\episode-XX\stage1-continuous-draft.md`
 - 事实约束：同目录 `narration-brief.json`
 
 适用于 A-page 尚未发布，或用户明确要求润色连续稿的情况。
@@ -24,7 +24,7 @@ description: 仅限人类明确调用。用于局部润色连续口播稿或 cou
 
 适用于用户明确要求润色成品 JSON、A-page、某个 `a_id` 或 `pages[*].nx` 的情况。此模式必须完整读取 [references/finished-a-page-mode.md](references/finished-a-page-mode.md)，并把 A-page 的页面语义、证据和受保护关系视为不可越过的事实契约。
 
-若用户同时明确给出对应 `narration-brief.json`，一并读取；不要仅凭相同 `episode_id` 从 `.tmp/narration-pipeline/` 中猜选旧 brief。
+若用户同时明确给出对应 `narration-brief.json`，一并读取；不要仅凭相同 `episode_id` 从 `.tmp/work/narration-pipeline/` 中猜选旧 brief 或 `attempt-*`。
 
 ## 与重写 Skill 的职责边界
 

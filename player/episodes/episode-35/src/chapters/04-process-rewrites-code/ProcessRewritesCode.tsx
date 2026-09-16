@@ -116,9 +116,8 @@ export default function ProcessRewritesCode({ step }: ChapterStepProps) {
       <div className="pr-main">
         <figure className="pr-media">
           <div className="pr-photo card" data-tone="image">
-            <span className="pr-ph-label">image · 4:3</span>
             <span className="pr-ph-desc">
-              教材图 4-4 工艺前后码面对比原图（待补入）
+              工艺前后码面状态对比
             </span>
           </div>
         </figure>

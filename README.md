@@ -9,7 +9,7 @@ CourseWebvideo 是一套面向课程视频的网页化生产工程，使用单�
 ```text
 冻结任务包
   -> narration-pipeline/episodes/
-  -> .tmp/narration-pipeline/        # brief、草稿和追踪文件，不进 Git
+  -> .tmp/work/narration-pipeline/<id>/ # brief、草稿和追踪文件，不进 Git
   -> 人工批准与机器验证
   -> player/episodes/<id>/inputs/    # 三份正式内容产物
   -> Phase 1 runner                 # init -> 按 A 提交 -> finalize
@@ -32,7 +32,10 @@ CourseWebvideo 是一套面向课程视频的网页化生产工程，使用单�
 | `player/episodes/<id>/script.md`、`outline.md` | Phase 1 runner 管理的唯一持久计划状态 |
 | `player/episodes/<id>/.handoffs/` | 按需生成的单章交接包，派生缓存，不提交 Git |
 | `player/episodes/<id>/src/` | 章节组件、样式和 `narrations.ts` |
-| `.tmp/` | 过程文件和派生缓存，不提交 Git |
+| `.tmp/work/<player\|narration-pipeline>/<id>/` | 按领域、期次隔离的过程文件，不提交 Git |
+| `.tmp/runtime/<service>/` | 本地服务日志、PID 和 watch 输出，不提交 Git |
+| `.tmp/validation/<id>/` | 可重新生成的临时验证结果，不提交 Git |
+| `.tmp/tests/<task>/` | 测试夹具和测试备份，不提交 Git |
 | `.tmp/archives/` | 已迁移的历史归档载荷，不是生产输入，不提交 Git |
 | `production-pipeline.html` | 生产主线的可视化说明页 |
 
@@ -44,7 +47,9 @@ CourseWebvideo 是一套面向课程视频的网页化生产工程，使用单�
 2. `episode-XX-a-page.json`：每页的 Nx、screen guidance、evidence、relations 和约束。
 3. `episode-XX-visual-rough.md`：页面配方、G→U 映射、S/U/M 骨架、媒体需求和 R 关系载体。
 
-验证报告用于治理和验收，不作为章节创作素材。`narration-brief.json` 与 compile trace 等过程文件保留在 `.tmp/narration-pipeline/`。
+验证报告用于治理和验收，不作为章节创作素材。`narration-brief.json` 与 compile trace 等过程文件保留在 `.tmp/work/narration-pipeline/<episode-id>/`。
+
+仓库只使用根级 `.tmp/`，不再创建 `player/.tmp/` 或 `narration-pipeline/.tmp/`，也不在 `.tmp/` 顶层直接放文件。每个领域、每期默认只有一个 work 目录；确有并行尝试时才在期次目录下增加 `attempt-*`。正式产物发布并确认无需恢复后，只清理对应任务的 work 子树；其他期次以及 runtime、validation、tests、archives 不随任务顺带删除。
 
 作者入口：A-page 使用 [A-page v6 作者契约卡](narration-pipeline/.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md) 与 [合成示例](narration-pipeline/.agents/skills/rewrite-course-narration/references/examples/a-page-v6/)；visual rough 使用 [visual rough v4 作者契约卡](narration-pipeline/.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md)、[合成示例](narration-pipeline/.agents/skills/design-course-visual-rough/references/examples/visual-rough-v4/) 和当前 recipe；章节 handoff 使用 [handoff v4 作者契约卡](player/docs/courseplay-handoff-v4-author-contract.md) 与 [合成示例](player/docs/examples/courseplay-handoff-v4/)。
 

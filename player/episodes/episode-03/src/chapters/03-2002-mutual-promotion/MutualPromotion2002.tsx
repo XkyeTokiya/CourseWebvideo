@@ -33,11 +33,10 @@ export default function MutualPromotion2002({ step }: ChapterStepProps) {
 
         <figure className="mp-media">
           <div className="mp-photo">
-            <img src={m002} alt="工业生产历史语境占位图" />
+            <img src={m002} alt="2002 年前后的工业生产现场" />
           </div>
           <figcaption className="mp-media-cap">
-            <span>工业生产实景 · 占位图</span>
-            <span>建立历史语境 · 不替代史实证据</span>
+            <span>2002 年前后的工业生产现场</span>
           </figcaption>
         </figure>
       </div>

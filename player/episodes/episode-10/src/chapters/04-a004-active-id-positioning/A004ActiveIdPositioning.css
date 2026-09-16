@@ -50,7 +50,7 @@
   animation: ap-rise 620ms var(--ease-soft) 140ms both;
 }
 
-/* ── 媒体区：工程图纸风 placeholder（M002） ──────────── */
+/* ── 媒体区：M002 实景图（工程图纸图框） ─────────────── */
 
 .ap-media {
   margin: 0;
@@ -84,61 +84,11 @@
 .ap-corner-bl { bottom: 7px; left: 7px; border-bottom-width: 3px; border-left-width: 3px; }
 .ap-corner-br { bottom: 7px; right: 7px; border-bottom-width: 3px; border-right-width: 3px; }
 
-.ap-ph {
+.ap-shot {
+  display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
-  display: grid;
-  place-content: center;
-  justify-items: center;
-  gap: 12px;
-  text-align: center;
-  border: 2px dashed var(--theme-dashed-line);
-  background:
-    linear-gradient(var(--theme-grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--theme-grid-line) 1px, transparent 1px);
-  background-size: 24px 24px, 24px 24px;
-}
-
-.ap-ph-tag {
-  font-family: var(--font-mono);
-  font-size: 20px;
-  letter-spacing: 0.22em;
-  color: var(--theme-process);
-  border: 2px solid var(--theme-process);
-  background: var(--theme-process-surface);
-  padding: 6px 14px;
-}
-
-.ap-ph-title {
-  font-family: var(--font-display-cn);
-  font-size: 30px;
-  font-weight: 700;
-  color: var(--theme-structural);
-}
-
-.ap-ph-note {
-  font-family: var(--font-mono);
-  font-size: 19px;
-  color: var(--text-mute);
-}
-
-.ap-titleblock {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 8px 16px;
-  border: 2px solid var(--theme-structural);
-  background: var(--surface-3);
-  font-family: var(--font-mono);
-  font-size: 18px;
-  letter-spacing: 0.08em;
-  color: var(--theme-structural);
-}
-
-.ap-titleblock span:first-child {
-  color: var(--theme-process);
-  font-weight: 700;
+  object-fit: cover;
 }
 
 .ap-cap {

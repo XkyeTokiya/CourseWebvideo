@@ -55,7 +55,7 @@ export default function FragmentedRecords({ step }: ChapterStepProps) {
       <div className="fr-main">
         <figure className="fr-media">
           <div className="fr-photo">
-            <img src={m002} alt="M002 教材数据割裂原图占位图" />
+            <img src={m002} alt="跨企业、跨系统造成产品数据割裂" />
           </div>
         </figure>
 

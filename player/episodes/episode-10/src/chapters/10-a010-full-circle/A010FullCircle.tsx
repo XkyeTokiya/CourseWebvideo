@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import type { CSSProperties } from "react";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./A010FullCircle.css";
+import m004 from "./assets/m004.png";
 
 const states = [
   "callback-set",
@@ -48,11 +49,11 @@ export default function A010FullCircle({ step }: ChapterStepProps) {
       <div className="fc-main">
         <figure className="fc-media">
           <div className="fc-frame">
-            <div className="fc-ph">
-              <span className="fc-ph-tag">IMAGE · 16:9</span>
-              <span className="fc-ph-title">外协模具现场 · 回扣开场</span>
-              <span className="fc-ph-note">素材待提供（photorealistic_ai）</span>
-            </div>
+            <img
+              className="fc-shot"
+              src={m004}
+              alt="回到开场的外协模具现场，两人在车间里核对同一副模具"
+            />
             <div className="fc-stamp" aria-hidden="true">
               <svg className="fc-stamp-ring" viewBox="0 0 120 120">
                 <circle
@@ -70,8 +71,7 @@ export default function A010FullCircle({ step }: ChapterStepProps) {
             </div>
           </div>
           <figcaption className="fc-cap">
-            <span>M004 · 外协模具现场 · 回扣开场（placeholder）</span>
-            <span>图片不承担系统关系与数据展示</span>
+            <span>外协模具现场 · 回扣开场</span>
           </figcaption>
         </figure>
 

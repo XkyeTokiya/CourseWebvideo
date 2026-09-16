@@ -62,7 +62,7 @@ python -m unittest discover -s .agents/skills/rewrite-course-narration/tests -p 
 python .agents/skills/rewrite-course-narration/scripts/verify_compilation.py \
   --validation-profile a-page-v6 \
   --task-package episodes/<module>/episode-XX-...-task-package.md \
-  --compile-trace ..\.tmp\narration-pipeline\<task>\episode-XX/episode-XX-b-to-a-compile-trace.json \
+  --compile-trace ..\.tmp\work\narration-pipeline\episode-XX\episode-XX-b-to-a-compile-trace.json \
   --approved-text ..\player\episodes\episode-XX\inputs/approved-spoken-text.txt \
   --compiled-json ..\player\episodes\episode-XX\inputs/episode-XX-a-page.json \
   --output ..\player\episodes\episode-XX\inputs/episode-XX-a-page-validation.json

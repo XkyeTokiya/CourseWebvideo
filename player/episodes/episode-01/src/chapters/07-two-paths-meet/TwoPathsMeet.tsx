@@ -1,5 +1,6 @@
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./TwoPathsMeet.css";
+import m003 from "./assets/m003.png";
 
 const NOTES = [
   { no: "方向一", title: "互联网向产业延伸", desc: "从消费等场景，不断走向产业活动" },
@@ -23,13 +24,19 @@ export default function TwoPathsMeetChapter({ step }: ChapterStepProps) {
   return (
     <div className="tp-scene scene-pad">
       <div className="tp-body">
-        <div className="tp-media">
-          <span className="tp-media-mark">教材原图 · 完整呈现</span>
-          <span className="tp-media-desc">图 1-1“工业互联网的产生”（原图待提供）</span>
-          {converged && (
-            <span className="tp-media-stamp hero-num">2012</span>
-          )}
-        </div>
+        {/* M003 需为教材图 1-1 原图（textbook_original）；当前为参考示意图，
+            data-pending 标记该项仍待替换；替换为教材原图后，移除该属性与图注。 */}
+        <figure className="tp-media" data-pending="true">
+          <div className="tp-photo">
+            <img src={m003} alt="互联网发展演进" />
+            {converged && (
+              <span className="tp-media-stamp hero-num">2012</span>
+            )}
+          </div>
+          <figcaption className="tp-media-cap">
+            <span></span>
+          </figcaption>
+        </figure>
 
         <div className="tp-notes">
           {NOTES.map((n, i) => {

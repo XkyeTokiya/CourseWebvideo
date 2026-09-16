@@ -3,11 +3,15 @@
 - 多组修改按组推进:每组动手前用一句话说明目标,完成后立即重读文件并检查 diff 是否符合目标,再进入下一组。Confidence: 0.9
 - 派生工件与冻结输入的逐字、计数或映射关系优先用一次性脚本验证并输出 PASS/FAIL 与差异上下文;先验证脚本自身解析口径,不得据脚本 bug 断言工件错误。Confidence: 0.9
 - 验证失败先按改动范围归因,区分本次回归、既有基线债、数据问题、环境问题和工具缺陷;必要时在临时目录用最小 fixture 复现,范围外债务只报告不顺带修复。Confidence: 0.9
+- Player 过程稿按期写入根级 `.tmp/work/player/<episode-id>/`,临时验证、测试和运行日志分别写入 `.tmp/validation/<episode-id>/`、`.tmp/tests/<task>/`、`.tmp/runtime/<service>/`;任务收束只清理自己的 work 子树。Confidence: 0.95
 - Episode 章节改动按仓库契约运行 `episode:check`、`typecheck`、`lint`;改动 narrations 追加音频提取,完整交付或共享改动追加 build,实际命令以当前 CLAUDE 与 package scripts 为准。Confidence: 0.9
+- 用户验收修订须保持批准 narration 与拍数不变;删除视觉元素时同步清理 TSX/CSS/outline 引用并重跑检查,若要改口播或规划先回到 planning checkpoint。Confidence: 0.9
 - 完成交付按四项汇报:修改或新增文件、运行命令、验证结果、仍需人工处理的问题;任务含显式禁令或边界时逐项说明遵从情况,不把绿勾等同于用户视觉验收。Confidence: 0.9
 - 契约、治理与 episode 交付使用 scoped conventional commit,提交前只 stage 任务路径并复核 staged diff;用户本人手改内容与 Agent 改动分开提交,Taste 自动学习与人工重构也分开记录。Confidence: 0.85
 - 中断或失败后先盘点磁盘工件、验证状态和准确接续点,沿用已确认且完整的成果;未落盘思考不算进度,不得默认从零重做或假报完成。Confidence: 0.95
+- 连续验收否决时先停在当前 checkpoint,区分实现缺陷与方向不合,报告最近已接受里程碑和回退候选;未经用户确认不清理、全量回退或扩大修补。Confidence: 0.9
 - 风险性规则或设计改动先在隔离环境用真实输入试点,记录明确 PASS/FAIL、影响范围与回滚方法;未经验证的构想不得写成现行契约或 Taste 硬规则。Confidence: 0.9
 - Subagent 只在用户选择并行开发或明确要求独立审查时使用;制作任务按可验证的单章交付实例派发,并发数和批次范围服从用户当前指令,不固化某一 episode 的数量经验。Confidence: 0.95
-- 制作 subagent 只写获分配的章节目录并返回文件、narration 对账和自检结果;主线程独占 entry.tsx、project.json、跨章文件、完整验证、Git 提交与验收汇报,不得让多个 Agent 写同一路径。Confidence: 0.95
+- 制作 subagent 只写获分配章节并返回文件、narration 对账和自检;不提交、不留 dev server、不跑 build/audio;主线程独占 entry.tsx、project.json、跨章文件、完整验证、Git 与验收,不得多 Agent 写同一路径。Confidence: 0.95
 - Subagent 完成只认实际返回结果与磁盘工件,不把面板状态、运行时长或零落盘单独当完成/僵死证据;重派前先停止旧实例并核对其产物,避免双写和丢失可恢复成果。Confidence: 0.9
+- 章节 subagent 交付报告必须逐章列出已提交文件与 outline 设计块指针、states 映射、逐拍主导动作、动画预算、状态门控选择器、narration 对账、自检 pass/fail 与偏离;交接冲突以已提交工件为准,entry.tsx 不得指向未落盘章,主线程据此复核并重跑确定性检查,不得把可编译或 agent 自报完成视为视觉完成。Confidence: 0.95

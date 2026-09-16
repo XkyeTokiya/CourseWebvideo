@@ -2,8 +2,10 @@ import type { CSSProperties, ReactNode } from "react";
 import { useStageScale } from "../hooks/useStageScale";
 
 interface Props {
-  onAdvance(): void;
+  onAdvance?(): void;
   children: ReactNode;
+  /** Preview keeps the interactive, letterboxed presentation behavior. */
+  variant?: "preview" | "capture";
 }
 
 /**
@@ -19,8 +21,9 @@ interface Props {
  * Surface colors come from the active theme's CSS custom properties
  * (var(--shell), var(--surface)) — see themes/<id>/tokens.css.
  */
-export function Stage({ onAdvance, children }: Props) {
-  const scale = useStageScale();
+export function Stage({ onAdvance, children, variant = "preview" }: Props) {
+  const capture = variant === "capture";
+  const scale = useStageScale(1920, 1080, capture ? 0 : 80, capture ? 0 : 100);
   const fitterStyle: CSSProperties = {
     width: 1920 * scale,
     height: 1080 * scale,
@@ -29,12 +32,13 @@ export function Stage({ onAdvance, children }: Props) {
     transform: `scale(${scale})`,
   };
   return (
-    <div className="app-shell">
+    <div className={`app-shell ${capture ? "app-shell-capture" : ""}`}>
       <div className="stage-fitter" style={fitterStyle}>
         <div
           className="stage-frame"
           style={frameStyle}
           onClick={(e) => {
+            if (capture || !onAdvance) return;
             const t = e.target as HTMLElement;
             if (t.closest("button, a, input, [data-no-advance]")) return;
             onAdvance();

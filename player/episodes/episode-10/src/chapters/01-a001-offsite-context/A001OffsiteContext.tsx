@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./A001OffsiteContext.css";
+import m001 from "./assets/m001.png";
 
 const states = [
   "offsite-anchored",
@@ -31,11 +32,10 @@ export default function A001OffsiteContext({ step }: ChapterStepProps) {
       <div className="ao-main">
         <figure className="ao-media">
           <div className="ao-frame">
-            <div className="ao-placeholder">
-              <span className="ao-ph-tag">IMAGE · 16:9</span>
-              <span className="ao-ph-title">外协模具委托加工 · 交接现场</span>
-              <span className="ao-ph-note">素材待提供（photorealistic_ai）</span>
-            </div>
+            <img
+              src={m001}
+              alt="制造车间里，运营人员与外部厂商技术人员正围着一副钢制模具核对实物状态"
+            />
             <div className={`ao-anomaly${anomalyOn ? " is-on" : ""}`} aria-hidden={!anomalyOn}>
               <span className="ao-anomaly-pin" aria-hidden="true" />
               <p className="ao-anomaly-title">产品精度异常</p>
@@ -43,8 +43,7 @@ export default function A001OffsiteContext({ step }: ChapterStepProps) {
             </div>
           </div>
           <figcaption className="ao-cap">
-            <span>M001 · 外协模具交接现场（placeholder）</span>
-            <span>素材待提供 · 不显示数据与结论</span>
+            <span>外协模具委托加工 · 交接现场</span>
           </figcaption>
 
           <div className="ao-anchor">

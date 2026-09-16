@@ -70,7 +70,7 @@ function LoopbackScene({ state }: { state: LosState }) {
           <div className="los-media-frame card">
             <img
               src={m004}
-              alt="回扣收货区：完成核验后的现场（占位图）"
+              alt="完成身份核验后的收货区现场"
               className="los-photo"
             />
             <div className="los-media-tags">
@@ -87,7 +87,6 @@ function LoopbackScene({ state }: { state: LosState }) {
                 核验完成
               </span>
             </div>
-            <span className="los-fiction">教学情境 · 非真实企业案例</span>
           </div>
         </figure>
 

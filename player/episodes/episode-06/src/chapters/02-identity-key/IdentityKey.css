@@ -54,7 +54,7 @@
   animation: ik-grow 720ms var(--ease-soft) 220ms backwards;
 }
 
-/* ── 主区：左 = 特写图占位（M002，持续） + 锚点图示；右 = 洞察栏 ── */
+/* ── 主区：左 = 特写图（M002，持续） + 锚点图示；右 = 洞察栏 ── */
 
 .ik-main {
   flex: 1;
@@ -80,29 +80,16 @@
 .ik-photo {
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-style: dashed;
-  border-width: 3px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
+  overflow: hidden;
+  border: 3px solid var(--theme-structural);
   animation: ik-rise 620ms var(--ease-soft) 140ms backwards;
 }
 
-.ik-ph-label {
-  font-family: var(--font-mono);
-  font-size: 28px;
-  letter-spacing: 0.1em;
-  color: var(--text-mute);
-}
-
-.ik-ph-desc {
-  font-size: 24px;
-  color: var(--text-faint);
-  text-align: center;
-  max-width: 480px;
-  line-height: 1.5;
+.ik-photo-shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ── 锚点图示：键块恒定 + 其下信息项挂载/更替（持续元素） ── */

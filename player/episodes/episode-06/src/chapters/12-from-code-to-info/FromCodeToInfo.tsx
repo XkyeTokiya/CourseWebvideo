@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./FromCodeToInfo.css";
+import m004 from "./assets/m004.png";
 
 const states = [
   "chain-replayed",
@@ -92,12 +93,13 @@ export default function FromCodeToInfo({ step }: ChapterStepProps) {
       <div className="fc-main">
         <figure className="fc-media">
           <div className="fc-photo card">
-            <span className="fc-ph-label">image · 16:9</span>
-            <span className="fc-ph-desc">
-              M004 收货现场延续镜头：质检员与扫码终端（占位，待正式素材）
-            </span>
+            <img
+              className="fc-photo-shot"
+              src={m004}
+              alt="从编码到信息查询的收货检验现场"
+            />
           </div>
-          <span className="fc-ph-echo">教学情境 · 回到开场的收货现场</span>
+          <span className="fc-ph-echo">回到开场的收货现场</span>
         </figure>
 
         <div className="fc-rail">

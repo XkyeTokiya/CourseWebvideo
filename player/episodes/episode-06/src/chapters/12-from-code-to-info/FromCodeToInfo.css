@@ -34,7 +34,7 @@
   animation: fc-fade-in 560ms var(--ease-soft) 200ms backwards;
 }
 
-/* ── 主区：现场回扣图占位（16:9 比例框） + 总结栏 ────────── */
+/* ── 主区：现场回扣图（16:9 比例框） + 总结栏 ────────── */
 
 .fc-main {
   flex: 1;
@@ -56,29 +56,16 @@
 .fc-photo {
   width: 100%;
   aspect-ratio: 16 / 9;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  border-style: dashed;
-  border-width: 3px;
+  overflow: hidden;
+  border: 3px solid var(--theme-structural);
   animation: fc-fade-in 620ms var(--ease-soft) 140ms backwards;
 }
 
-.fc-ph-label {
-  font-family: var(--font-mono);
-  font-size: 30px;
-  letter-spacing: 0.1em;
-  color: var(--text-mute);
-}
-
-.fc-ph-desc {
-  font-size: 25px;
-  color: var(--text-faint);
-  text-align: center;
-  max-width: 460px;
-  line-height: 1.5;
+.fc-photo-shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .fc-ph-echo {

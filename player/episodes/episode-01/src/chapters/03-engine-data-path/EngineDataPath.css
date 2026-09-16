@@ -146,29 +146,37 @@
   color: var(--text-2);
 }
 
-/* ── 右：发动机媒体占位（持续不卸载） ── */
+/* ── 右：发动机实景图（持续不卸载） ── */
 .ed-media {
-  border: var(--rule-w) dashed var(--theme-dashed-line);
-  border-radius: var(--r-card);
-  background: var(--surface-3);
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 16px;
   min-height: 0;
   animation: ed-fade 700ms var(--ease-quart) backwards;
 }
-.ed-media-mark {
-  font-family: var(--font-mono);
-  font-size: 30px;
-  letter-spacing: 0.18em;
-  color: var(--text-mute);
+.ed-photo {
+  position: relative;
+  padding: 14px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
 }
-.ed-media-desc {
-  font-family: var(--font-body);
-  font-size: 21px;
-  color: var(--text-faint);
+.ed-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.ed-media-cap {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  line-height: 1.4;
+  color: var(--text-mute);
 }
 @keyframes ed-fade {
   0% {

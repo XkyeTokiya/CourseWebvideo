@@ -9,7 +9,7 @@
 
 ## 1. Brief
 
-只读冻结任务包，产出 `.tmp/narration-pipeline/<task>/episode-XX/narration-brief.json`。把学习者内容、静默护栏和上游冲突分开；任务包、旧稿和停用流程不作为 Stage 1 输入。
+只读冻结任务包，产出 `.tmp/work/narration-pipeline/episode-XX/narration-brief.json`。把学习者内容、静默护栏和上游冲突分开；任务包、旧稿和停用流程不作为 Stage 1 输入。
 
 ## 2. 隔离连续稿
 

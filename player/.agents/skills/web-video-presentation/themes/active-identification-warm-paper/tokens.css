@@ -1,0 +1,102 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * Theme · active-identification-warm-paper
+ *   Engineering notebook for industrial education and technical systems.
+ *   Deep navy carries hierarchy and structure; industrial green expresses
+ *   active flow, trustworthy operation, and improvement; clay orange marks
+ *   risk and attention. SIGNATURE: a 48px engineering grid combined with
+ *   heavy navy structure and low offset paper shadows.
+ * ───────────────────────────────────────────────────────────────────── */
+:root {
+  /* ─── standard compatibility palette ─── */
+  --shell:        #e6dfd3;
+  --surface:      #f6f2e9;
+  --surface-2:    #fffdfa;
+  --surface-3:    #eee8dc;
+  --text:         #0c3564;
+  --text-2:       #52677b;
+  --text-mute:    #6d7c88;
+  --text-faint:   #7c898f;
+  --rule:         #b8c3c8;
+  --accent:       #11925d;
+  --accent-soft:  rgba(17, 146, 93, 0.10);
+  --accent-glow:  rgba(17, 146, 93, 0.22);
+
+  /* ─── narrow identity layer: recurring source semantics ─── */
+  --theme-structural:       #0c3564;
+  --theme-process:          #11925d;
+  --theme-warning:          #e36f28;
+  --theme-danger:           #c65348;
+  --theme-process-surface:  #edf5ee;
+  --theme-warning-surface:  #fff0e4;
+  --theme-danger-surface:   #f9e8e2;
+  --theme-cool-surface:     #edf0ef;
+  --theme-paper:            #fffdfa;
+  --theme-grid-line:        #d9d4c9;
+  --theme-dashed-line:      #b8c3c8;
+  --theme-offset-shadow:    rgba(60, 55, 48, 0.18);
+
+  /* compatibility aliases for extracted source components */
+  --industrial-navy:       var(--theme-structural);
+  --industrial-blue:       var(--theme-structural);
+  --industrial-green:      var(--theme-process);
+  --industrial-orange:     var(--theme-warning);
+  --industrial-cyan:       var(--theme-cool-surface);
+  --industrial-mint:       var(--theme-process-surface);
+  --industrial-amber:      var(--theme-warning-surface);
+  --industrial-soft:       var(--theme-paper);
+  --industrial-green-line: #a7d4bf;
+  --industrial-warm-line:  #e9b48f;
+
+  /* ─── fonts: preserve the source fallback order ─── */
+  --font-display-cn: "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", Arial, sans-serif;
+  --font-display-en: Georgia, "Times New Roman", serif;
+  --font-body:       "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", Arial, sans-serif;
+  --font-mono:       ui-monospace, "JetBrains Mono", "Cascadia Mono", Consolas, "Courier New", monospace;
+  --font-features:   "tnum";
+
+  /* ─── measured, mechanical motion baseline ─── */
+  --dur-base:       520ms;
+  --dur-slow:       760ms;
+  --dur-cinematic:  1100ms;
+
+  /* ─── identity: sturdy paper labels and engineering structure ─── */
+  --r-card:           16px;
+  --r-stage:          0;
+  --rule-w:           2px;
+  --rule-style:       dashed;
+  --hero-num-font:    var(--font-mono);
+  --hero-num-style:   normal;
+  --hero-num-weight:  900;
+  --hero-num-track:   -0.03em;
+  --stage-pad-x:      110px;
+  --stage-pad-y:      84px;
+  --card-shadow:
+    0 0 0 3px var(--theme-structural),
+    7px 8px 0 var(--theme-offset-shadow);
+  --card-glass-bg:     rgba(255, 253, 250, 0.94);
+  --card-glass-border: rgba(12, 53, 100, 0.20);
+  --shadow-stage:
+    0 44px 120px rgba(60, 55, 48, 0.20),
+    0 0 0 1px rgba(60, 55, 48, 0.08);
+  --stage-border: none;
+
+  /* ─── SIGNATURE: engineering graph-paper grid ─── */
+  --surface-pattern:
+    linear-gradient(rgba(91, 112, 128, 0.11) 1px, transparent 1px),
+    radial-gradient(circle at 20% 30%, rgba(113, 91, 67, 0.075) 0.7px, transparent 0.9px),
+    radial-gradient(circle at 70% 65%, rgba(113, 91, 67, 0.055) 0.6px, transparent 0.85px);
+  --surface-pattern-size: 100% 48px, 17px 19px, 23px 29px;
+  --surface-pattern-blend: multiply;
+  --surface-pattern-opacity: 0.78;
+  --surface-vignette:
+    radial-gradient(circle, transparent 0 7px, rgba(12, 53, 100, 0.20) 7px 8px, transparent 8px) 22px 22px / 24px 24px no-repeat,
+    radial-gradient(circle, transparent 0 7px, rgba(12, 53, 100, 0.20) 7px 8px, transparent 8px) calc(100% - 46px) 22px / 24px 24px no-repeat,
+    repeating-linear-gradient(90deg, rgba(12, 53, 100, 0.22) 0 1px, transparent 1px 96px) 58px 30px / calc(100% - 116px) 15px no-repeat,
+    repeating-linear-gradient(90deg, rgba(12, 53, 100, 0.12) 0 1px, transparent 1px 24px) 58px 36px / calc(100% - 116px) 7px no-repeat,
+    linear-gradient(rgba(12, 53, 100, 0.16), rgba(12, 53, 100, 0.16)) 58px 44px / calc(100% - 116px) 1px no-repeat,
+    repeating-linear-gradient(90deg, rgba(12, 53, 100, 0.18) 0 1px, transparent 1px 96px) 58px calc(100% - 45px) / calc(100% - 116px) 13px no-repeat,
+    linear-gradient(rgba(12, 53, 100, 0.13), rgba(12, 53, 100, 0.13)) 58px calc(100% - 45px) / calc(100% - 116px) 1px no-repeat,
+    repeating-linear-gradient(180deg, rgba(12, 53, 100, 0.18) 0 1px, transparent 1px 96px) 30px 58px / 13px calc(100% - 116px) no-repeat,
+    linear-gradient(90deg, rgba(12, 53, 100, 0.14), rgba(12, 53, 100, 0.14)) 44px 58px / 1px calc(100% - 116px) no-repeat;
+  --text-shadow: none;
+}

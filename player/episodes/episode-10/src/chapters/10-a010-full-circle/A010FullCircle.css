@@ -51,7 +51,7 @@
   animation: fc-rise 640ms var(--ease-soft) 140ms both;
 }
 
-/* ── 媒体区：M004 工程图纸风 placeholder ──────────────── */
+/* ── 媒体区：M004 实景图（工程图纸图框） ──────────────── */
 
 .fc-media {
   margin: 0;
@@ -72,50 +72,11 @@
   box-shadow: var(--card-shadow);
 }
 
-.fc-frame::before {
-  content: "";
-  position: absolute;
-  inset: 7px;
-  border: 1px dashed var(--theme-dashed-line);
-  pointer-events: none;
-}
-
-.fc-ph {
+.fc-shot {
+  display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
-  display: grid;
-  place-content: center;
-  justify-items: center;
-  gap: 12px;
-  text-align: center;
-  border: 2px dashed var(--theme-dashed-line);
-  background:
-    linear-gradient(var(--theme-grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--theme-grid-line) 1px, transparent 1px);
-  background-size: 48px 48px, 48px 48px;
-}
-
-.fc-ph-tag {
-  font-family: var(--font-mono);
-  font-size: 19px;
-  letter-spacing: 0.22em;
-  color: var(--theme-process);
-  border: 2px solid var(--theme-process);
-  background: var(--theme-process-surface);
-  padding: 6px 14px;
-}
-
-.fc-ph-title {
-  font-family: var(--font-display-cn);
-  font-size: 30px;
-  font-weight: 900;
-  color: var(--theme-structural);
-}
-
-.fc-ph-note {
-  font-family: var(--font-mono);
-  font-size: 18px;
-  color: var(--text-mute);
+  object-fit: cover;
 }
 
 /* 回到起点：环回印章（收尾回扣的唯一视觉演示锚） */

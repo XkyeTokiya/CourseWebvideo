@@ -32,15 +32,14 @@ export default function ProblemScene({ step }: ChapterStepProps) {
       <header className={`ps-anchor${questionRaised ? " is-weak" : ""}`}>
         <p className="ps-anchor-time">
           <span className="ps-anchor-t0 hero-num">T0</span>
-          设想一家工厂
+          一家工厂现场
         </p>
-        <span className="ps-fiction-badge">设想情境</span>
       </header>
 
       <div className={`ps-main${questionRaised ? " is-weak" : ""}`}>
         <figure className="ps-media">
           <div className="ps-photo">
-            <img src={m001} alt="M001 无品牌工厂设想现场占位图" />
+            <img src={m001} alt="无品牌工厂现场" />
           </div>
         </figure>
 

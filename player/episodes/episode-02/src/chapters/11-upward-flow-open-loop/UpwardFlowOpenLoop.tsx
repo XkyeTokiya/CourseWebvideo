@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./UpwardFlowOpenLoop.css";
+import m003 from "./assets/m003.png";
 
 const stateByStep = [
   "sources-shown",
@@ -33,10 +34,6 @@ const RAIL = [
     desc: "只停在报表或提示的结果，还没有作用于生产现场。",
   },
 ] as const;
-
-const MACHINES = [0, 1, 2] as const;
-const DOTS = [0, 1, 2] as const;
-const BARS = [0, 1, 2] as const;
 
 export default function UpwardFlowOpenLoopChapter({ step }: ChapterStepProps) {
   const state: State = stateByStep[step] ?? stateByStep[stateByStep.length - 1];
@@ -76,29 +73,11 @@ export default function UpwardFlowOpenLoopChapter({ step }: ChapterStepProps) {
         </div>
 
         <figure className="card uf-media">
-          <div className="uf-canvas" aria-hidden="true">
-            <div className="uf-report">
-              <span className="uf-report-label">报表 · 提示</span>
-              <div className="uf-bars">
-                {BARS.map((i) => (
-                  <span key={i} className="uf-bar" style={{ "--uf-b": i } as CSSProperties} />
-                ))}
-              </div>
-            </div>
-            <div className="uf-dots">
-              {DOTS.map((i) => (
-                <span key={i} className="uf-dot" style={{ "--uf-i": i } as CSSProperties} />
-              ))}
-            </div>
-            <div className="uf-floor">
-              {MACHINES.map((i) => (
-                <span key={i} className="uf-machine" />
-              ))}
-            </div>
+          <div className="uf-photo">
+            <img src={m003} alt="隔着观察窗集中查看生产状态的现场，产线仍按原有方式运行" />
           </div>
           <figcaption className="uf-cap">
-            <span className="uf-cap-mark">image · 16:9</span>
-            <span className="uf-cap-desc">集中观察而现场未改 · M003（素材待提供）</span>
+            <span className="uf-cap-desc">工业现场被集中观察 · 现场动作尚未改变</span>
           </figcaption>
         </figure>
       </div>

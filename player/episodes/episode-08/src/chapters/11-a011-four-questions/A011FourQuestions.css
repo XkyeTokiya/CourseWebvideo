@@ -1,0 +1,110 @@
+/* Episode 08 · A011 four-questions — prefix: fq-
+   mechanism: equal-weight-accumulation — 三卡在同一 step 内按阅读顺序依次补齐
+   四问，完成后三卡等权稳定；不画思维导图、辐射线或箭头
+   （C011：只给通用追问方式，不点名行业案例、不预告相邻主题） */
+
+.fq-scene {
+  justify-content: flex-start;
+}
+
+.fq-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-structural);
+  animation: fq-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.fq-cards {
+  flex: 1;
+  min-height: 0;
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  align-items: stretch;
+}
+
+.fq-card {
+  display: flex;
+  flex-direction: column;
+  padding: 34px 32px;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fq-card-in 560ms var(--ease-soft) forwards;
+}
+
+.fq-card:nth-child(2) {
+  animation-delay: 200ms;
+}
+
+.fq-card:nth-child(3) {
+  animation-delay: 400ms;
+}
+
+@keyframes fq-card-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fq-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fq-card-label {
+  margin: 0 0 22px;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+.fq-card-questions {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.fq-question {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fq-question-in 520ms var(--ease-soft) forwards;
+  animation-delay: calc(900ms + var(--fq-i) * 900ms);
+}
+
+@keyframes fq-question-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fq-question-no {
+  font-size: 34px;
+  color: var(--theme-structural);
+}
+
+.fq-question p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 29px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text);
+}

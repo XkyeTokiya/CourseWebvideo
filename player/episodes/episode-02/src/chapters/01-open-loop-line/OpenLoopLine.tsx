@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./OpenLoopLine.css";
+import m001 from "./assets/m001.png";
 
 const stateByStep = [
   "line-streaming",
@@ -29,8 +30,6 @@ const CARDS = [
   },
 ] as const;
 
-const PINGS = [0, 1, 2, 3, 4] as const;
-
 export default function OpenLoopLineChapter({ step }: ChapterStepProps) {
   const state: State = stateByStep[step] ?? stateByStep[stateByStep.length - 1];
   const idx = stateByStep.indexOf(state);
@@ -41,24 +40,11 @@ export default function OpenLoopLineChapter({ step }: ChapterStepProps) {
     <div className={`ol-scene scene-pad${closed ? " is-closed" : ""}`}>
       <div className="ol-main">
         <figure className="card ol-media">
-          <div className="ol-canvas" aria-hidden="true">
-            <div className="ol-pings">
-              {PINGS.map((i) => (
-                <span key={i} className="ol-ping" style={{ "--ol-i": i } as CSSProperties} />
-              ))}
-            </div>
-            <div className="ol-edge">
-              <span className="ol-edge-label">现场边界</span>
-            </div>
-            <div className="ol-rack">
-              <span className="ol-machine" />
-              <span className="ol-machine" />
-              <span className="ol-machine" />
-            </div>
+          <div className="ol-photo">
+            <img src={m001} alt="已联网的制造产线上，现场人员仍在手工查看设备并通报异常" />
           </div>
           <figcaption className="ol-cap">
-            <span className="ol-cap-mark">image · 16:9</span>
-            <span className="ol-cap-desc">已联网产线 · M001（素材待提供）</span>
+            <span className="ol-cap-desc">已联网产线 · 异常仍依赖人工发现</span>
           </figcaption>
           <div className="ol-mask" data-on={closed}>
             <span className="ol-mask-kicker">本页收束</span>

@@ -1,0 +1,222 @@
+/* Episode 08 · A005 six-stages — prefix: sx-
+   mechanism: ordered-progression — 阶段带按真实先后完整排开并逐段补充内容，
+   共享对象身份标签贯穿；不画时间轴里程碑、流程箭头图形或数据流
+   （段间"→"为批准 exact 文本 S026 的组成部分，逐字上屏） */
+
+.sx-scene {
+  justify-content: flex-start;
+}
+
+.sx-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 40px;
+  animation: sx-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.sx-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+/* 对象不变锚点：step 1 建立，step 3 判断时亮起强调（R006 载体） */
+.sx-anchor {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 26px;
+  font-family: var(--font-body);
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--text-2);
+  background: var(--surface-2);
+  border: 2px solid var(--theme-dashed-line);
+  border-radius: var(--r-card);
+  white-space: nowrap;
+  transition: border-color var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-soft), color var(--dur-base) var(--ease-soft);
+}
+
+.sx-anchor i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.sx-scene.is-judged .sx-anchor {
+  border-color: var(--accent);
+  box-shadow: 0 0 26px var(--accent-glow);
+  color: var(--text);
+}
+
+/* ── 六段阶段带：按真实先后排开，逐段补齐后全部稳定 ─────── */
+
+.sx-band {
+  flex: 1;
+  min-height: 0;
+  margin-top: 36px;
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.sx-stage-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.sx-arrow {
+  flex: 0 0 auto;
+  padding: 0 2px;
+  font-family: var(--font-body);
+  font-size: 26px;
+  color: var(--text-mute);
+  opacity: 0;
+  animation: sx-item-in 400ms var(--ease-soft) forwards;
+  animation-delay: calc(320ms + var(--sx-i) * 220ms);
+}
+
+.sx-stage {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+  padding: 22px 20px;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  animation: sx-stage-in 520ms var(--ease-overshoot) forwards;
+  animation-delay: calc(220ms + var(--sx-i) * 220ms);
+}
+
+@keyframes sx-stage-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sx-item-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sx-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.sx-stage-no {
+  font-size: 32px;
+  color: var(--theme-process);
+}
+
+.sx-stage-name {
+  font-family: var(--font-body);
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+/* ── 记录与归属系统（step 2） ────────────────────────────── */
+
+.sx-records {
+  margin-top: 34px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 48px;
+  padding: 28px 36px;
+  background: var(--surface-2);
+  border-radius: var(--r-card);
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+
+.sx-records.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sx-records-lead {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.sx-records-systems {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 27px;
+  line-height: 1.55;
+  color: var(--text-2);
+  text-align: right;
+}
+
+/* ── 底部判断带：异构（warning）→ 仍可关联（process） ────── */
+
+.sx-judgment {
+  margin-top: 34px;
+  padding-top: 26px;
+  border-top: var(--rule-w) var(--rule-style) var(--rule);
+}
+
+.sx-judgment-line {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+
+.sx-judgment-line.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sx-hetero {
+  font-family: var(--font-body);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--theme-warning);
+}
+
+.sx-linked {
+  font-family: var(--font-body);
+  font-size: 30px;
+  color: var(--theme-process);
+}
+
+.sx-linked b {
+  font-weight: 900;
+}

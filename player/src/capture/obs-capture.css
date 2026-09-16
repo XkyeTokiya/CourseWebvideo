@@ -1,0 +1,21 @@
+html[data-webvideo-view="capture"],
+html[data-webvideo-view="capture"] body,
+html[data-webvideo-view="capture"] #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--surface, #000);
+}
+
+.obs-capture-root,
+.app-shell-capture {
+  width: 100%;
+  height: 100%;
+  background: var(--surface, #000);
+}
+
+.app-shell-capture .stage-frame {
+  box-shadow: none;
+  border-radius: 0;
+  cursor: default;
+}

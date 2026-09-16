@@ -25,7 +25,7 @@
 
 【需要完成】
 1. 检查当前 HEAD、分支、git status、worktree、origin 和 {{protectedBranch}} 的关系。
-2. 检查 {{episodeId}} 已有的 `.tmp/narration-pipeline/`、`player/episodes/{{episodeId}}/inputs/`、`script.md`、`outline.md` 和 `src/`，判断可恢复到哪个阶段。
+2. 检查 {{episodeId}} 已有的 `.tmp/work/narration-pipeline/{{episodeId}}/`、`.tmp/work/player/{{episodeId}}/`、`player/episodes/{{episodeId}}/inputs/`、`script.md`、`outline.md` 和 `src/`，判断可恢复到哪个阶段。
 3. 创建、跟踪或复用 {{episodeBranch}}。分支已在其他 worktree 使用时，报告其位置和状态，不重复创建。
 
 【完成标准】
@@ -198,7 +198,7 @@ player/episodes/{{episodeId}}/inputs/ 中：
 - 用户已明确授权。
 - 五个正式文件齐备、来源一致且验证通过。
 - visual rough 为 approved/production。
-- compile trace 仍保留在 `.tmp`，未进入 inputs。
+- compile trace 仍保留在 `.tmp/work/narration-pipeline/{{episodeId}}/`，未进入 inputs。
 - 改动已 push 到 {{episodeBranch}}。
 
 【结束输出】
@@ -225,7 +225,7 @@ player/episodes/{{episodeId}}/inputs/ 中：
 【第二段：首章制作】
 获得 Checkpoint Plan 确认后：
 1. 写入已确认的主题和开发模式。
-2. 按需生成第 1 个 A-page 的 compact handoff。
+2. 默认不生成 handoff；只有当前任务明确需要压缩或隔离上下文时，才调用现有命令为第 1 个 A-page 生成 compact handoff。
 3. 综合 guidance、beats 和 presentation 完整实现第 1 章的 TSX、CSS、narrations.ts 和必需素材。
 4. 运行 `pnpm episode:check && pnpm typecheck && pnpm lint`。
 5. 提供预览方式和验收要点，等待用户验收。

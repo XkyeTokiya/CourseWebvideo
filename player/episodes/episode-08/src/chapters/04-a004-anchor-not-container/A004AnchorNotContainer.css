@@ -1,0 +1,238 @@
+/* Episode 08 · A004 anchor-not-container — prefix: an-
+   mechanism: persistent-media-reading — 主图持续在场，图侧洞察按阅读顺序迁移焦点；
+   不卸载媒体、不画标识向外流出的数据路径 */
+
+.an-scene {
+  justify-content: flex-start;
+}
+
+.an-head {
+  animation: an-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.an-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+.an-title b {
+  color: var(--theme-process);
+}
+
+.an-sub {
+  margin: 12px 0 0;
+  font-family: var(--font-body);
+  font-size: 28px;
+  color: var(--text-mute);
+}
+
+.an-main {
+  flex: 1;
+  min-height: 0;
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: 1fr 760px;
+  gap: 56px;
+  align-items: stretch;
+}
+
+/* ── 图侧洞察轨：两条洞察先后排布，阅读焦点迁移 ─────────── */
+
+.an-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  min-width: 0;
+}
+
+.an-insight {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 32px 36px;
+  transition: opacity var(--dur-slow) var(--ease-soft);
+}
+
+.an-insight-no {
+  font-size: 52px;
+  color: var(--theme-process);
+}
+
+.an-insight-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.an-insight.is-dim {
+  opacity: 0.5;
+}
+
+.an-points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 30px;
+}
+
+.an-points li {
+  font-family: var(--font-body);
+  font-size: 29px;
+  font-weight: 700;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: an-item-in 460ms var(--ease-soft) forwards;
+  animation-delay: calc(420ms + var(--an-i) * 240ms);
+}
+
+@keyframes an-item-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.an-points-verdict {
+  margin: 16px 0 0;
+  font-family: var(--font-body);
+  font-size: 31px;
+  color: var(--text-2);
+  opacity: 0;
+  animation: an-item-in 520ms var(--ease-soft) 1500ms forwards;
+}
+
+.an-points-verdict b {
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+/* 第二条洞察：step 2 阅读焦点迁入 */
+.an-insight-query {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+
+.an-insight-query.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.an-query-lead {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 36px;
+  color: var(--text);
+}
+
+.an-query-lead b {
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.an-query-note {
+  margin: 12px 0 0;
+  font-family: var(--font-body);
+  font-size: 28px;
+  color: var(--text-2);
+}
+
+.an-query-note b {
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+/* ── 右侧主图：持续在场，标识区域可见不含数据 ───────────── */
+
+.an-media {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.an-frame {
+  position: relative;
+  flex: 1;
+  min-height: 440px;
+  background: var(--surface-3);
+  border: 3px solid var(--theme-structural);
+  overflow: hidden;
+}
+
+.an-shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.an-tag-zone {
+  position: absolute;
+  left: 56%;
+  top: 34%;
+  opacity: 0;
+  animation: an-tag-in 520ms var(--ease-soft) 700ms forwards;
+}
+
+@keyframes an-tag-in {
+  from {
+    opacity: 0;
+    transform: scale(1.14);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.an-tag-zone i {
+  display: block;
+  width: 60px;
+  height: 60px;
+  border: 3px solid var(--accent);
+  border-radius: 8px;
+}
+
+.an-tag-zone b {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 9px 16px;
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.an-cap {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-mute);
+}
+
+@keyframes an-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

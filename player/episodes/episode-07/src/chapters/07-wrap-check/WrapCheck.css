@@ -1,5 +1,5 @@
 /* ── 07-wrap-check · S-A007 image-with-summary-rail ──
-   主构图:左侧回扣开篇的现场媒体(M003 占位)| 右侧自上而下:
+   主构图:左侧回扣开篇的现场媒体(M003)| 右侧自上而下:
    总结带 → 应用链检验行 → 下一集入口行。
    机制 persistent-media-reading:图片持续在场,右列按阅读顺序逐行补充。
    基础态 = 最终可见态,隐藏规则只挂 [data-state];各行首拍占位,零回流。 */
@@ -46,14 +46,15 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   background: var(--surface-3);
-  border: 2px dashed var(--theme-dashed-line);
+  border: 3px solid var(--theme-structural);
   overflow: hidden;
 }
-.wc-sketch {
+.wc-photo-image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 .wc-photo-plate {
   position: absolute;

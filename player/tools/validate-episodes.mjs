@@ -1,7 +1,7 @@
 import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
-import { listThemeIds } from "./theme-registry.mjs";
+import { listInstalledThemeIds } from "./theme-registry.mjs";
 
 const root = path.resolve(process.env.PLAYER_ROOT ?? process.cwd());
 const episodeFlag = process.argv.indexOf("--episode");
@@ -10,7 +10,7 @@ const episodesRoot = path.join(root, "episodes");
 const statusValues = new Set(["planned", "in-progress", "ready"]);
 const errors = [];
 const warnings = [];
-const themeIds = new Set(await listThemeIds(root));
+const themeIds = new Set(await listInstalledThemeIds(root));
 
 async function exists(file) {
   try { await access(file); return true; } catch { return false; }

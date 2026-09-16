@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 import "./A004ActiveIdPositioning.css";
+import m002 from "./assets/m002.png";
 
 const states = [
   "systems-unified",
@@ -39,21 +40,14 @@ export default function A004ActiveIdPositioning({ step }: ChapterStepProps) {
             <i className="ap-corner ap-corner-bl" aria-hidden="true" />
             <i className="ap-corner ap-corner-br" aria-hidden="true" />
 
-            <div className="ap-ph">
-              <span className="ap-ph-tag">IMAGE · 16:9</span>
-              <span className="ap-ph-title">注塑机与模具生产现场</span>
-              <span className="ap-ph-note">素材待提供（photorealistic_ai）</span>
-            </div>
-
-            <div className="ap-titleblock">
-              <span>M002</span>
-              <span>注塑机与模具生产现场</span>
-              <span>16:9</span>
-            </div>
+            <img
+              className="ap-shot"
+              src={m002}
+              alt="注塑机与模具生产现场，技术人员在设备旁观察模具与生产状态"
+            />
           </div>
           <figcaption className="ap-cap">
-            <span>M002 · 注塑机与模具生产现场（placeholder）</span>
-            <span>设备面板不显示可读参数</span>
+            <span>注塑机与模具生产现场</span>
           </figcaption>
         </figure>
 

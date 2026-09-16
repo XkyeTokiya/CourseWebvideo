@@ -1,5 +1,5 @@
 /* dns-analogy-limits · A004 image-with-insight-rail
-   mechanism: persistent-media-reading — 教材原图（M003 占位）持续承载映射直觉，
+   mechanism: persistent-media-reading — 教材原图（M003）持续承载映射直觉，
    图侧短条逐拍给出两侧映射与三条边界，阅读项全部在图外
    prefix: da- */
 
@@ -48,7 +48,7 @@
   z-index: -1;
 }
 
-/* ── 主区：教材原图占位（持续不卸载）+ 图侧短条 ───────── */
+/* ── 主区：教材原图（持续不卸载）+ 图侧短条 ──────────── */
 
 .da-main {
   flex: 1;
@@ -64,58 +64,22 @@
   min-height: 0;
 }
 
-.da-media-ph {
+.da-media-photo {
   flex: 1;
   position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 18px;
   padding: 40px;
-  border: 3px dashed var(--rule);
+  border: 3px solid var(--theme-structural);
   animation: da-rise 640ms var(--ease-soft) 140ms backwards;
 }
 
-.da-ph-tag,
-.da-ph-source {
-  position: absolute;
-  font-family: var(--font-mono);
-  font-size: 21px;
-  letter-spacing: 0.12em;
-  color: var(--text-mute);
-}
-
-.da-ph-tag {
-  top: 22px;
-  left: 26px;
-}
-
-.da-ph-source {
-  bottom: 20px;
-  right: 26px;
-}
-
-.da-ph-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
-
-.da-ph-label {
-  font-family: var(--font-mono);
-  font-size: 30px;
-  letter-spacing: 0.22em;
-  color: var(--text-mute);
-}
-
-.da-ph-desc {
-  max-width: 480px;
-  font-size: 25px;
-  line-height: 1.5;
-  text-align: center;
-  color: var(--text-faint);
+.da-media-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 /* ── 图侧短条：映射组 / 边界组两组 cap ────────────────── */

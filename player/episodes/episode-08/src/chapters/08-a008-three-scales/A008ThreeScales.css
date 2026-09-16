@@ -1,0 +1,121 @@
+/* Episode 08 · A008 three-scales — prefix: ts-
+   mechanism: equal-weight-accumulation — 三卡按左中右阅读顺序依次补齐后保持等权，
+   由阅读顺序承载逐层扩展；不画递进箭头，分工由底部结论条承载
+   （C008：三层只作理解机制，不冠以教材或标准架构名称） */
+
+.ts-scene {
+  justify-content: flex-start;
+}
+
+.ts-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-structural);
+  animation: ts-fade-in 560ms var(--ease-soft) backwards;
+}
+
+.ts-cards {
+  flex: 1;
+  min-height: 0;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  align-items: stretch;
+}
+
+.ts-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: 36px 34px;
+  border-style: solid;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+
+.ts-card.is-filled {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 空置框架：虚线占位，等待所属 step 补齐 */
+.ts-card:not(.is-filled) {
+  border-style: dashed;
+  background: transparent;
+  box-shadow: none;
+}
+
+.ts-card-no {
+  font-size: 40px;
+  color: var(--theme-process);
+}
+
+.ts-card-layer {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.ts-card-text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 28px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+@keyframes ts-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 底部结论条：三方分工（S048/S049 exact + S050） ──────── */
+
+.ts-takeaway {
+  margin-top: 36px;
+  padding-top: 26px;
+  border-top: var(--rule-w) var(--rule-style) var(--rule);
+}
+
+.ts-division {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 36px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--dur-slow) var(--ease-soft),
+    transform var(--dur-slow) var(--ease-soft);
+}
+
+.ts-division.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ts-division span {
+  font-family: var(--font-body);
+  font-size: 29px;
+  color: var(--text-2);
+}
+
+.ts-division b {
+  font-weight: 900;
+  color: var(--text);
+}
