@@ -1,12 +1,12 @@
 {
   "id": "episode-12",
-  "title": "第 12 期（待制作）",
-  "status": "planned",
+  "title": "汽车零部件精益管理：一物一码如何减少错装与串货",
+  "status": "in-progress",
   "theme": "active-identification-note",
   "progress": {
-    "completed": 0,
-    "total": 0,
-    "current": null
+    "completed": 1,
+    "total": 10,
+    "current": "opening-check"
   },
-  "updatedAt": "2026-09-02"
+  "updatedAt": "2026-09-17"
 }

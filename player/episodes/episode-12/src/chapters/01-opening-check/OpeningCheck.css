@@ -1,0 +1,511 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * 01-opening-check · 开场情境页（S-A001 · time-anchor-opening）
+ * 前缀 .oc- · 状态机：
+ *   opening-established → parts-at-station → checks-paired
+ *   → risks-visible → question-dominant
+ * ───────────────────────────────────────────────────────────────────── */
+
+.oc-pad {
+  gap: 0;
+}
+
+/* ── headline（S001）─────────────────────────────────────────────── */
+.oc-headline {
+  margin: 0;
+  font-size: 58px;
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--text);
+  transition: opacity 0.6s ease;
+}
+
+.state-opening-established .oc-headline {
+  animation: oc-rise-in 0.8s ease-out both;
+}
+
+/* ── 主区：场景图 + 核对区 ───────────────────────────────────────── */
+.oc-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 44px;
+  margin-top: 30px;
+  transition: opacity 0.6s ease;
+}
+
+.oc-media {
+  width: 55%;
+  margin: 0;
+  padding: 16px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.state-opening-established .oc-media {
+  animation: oc-stamp-in 0.9s ease-out 0.15s both;
+}
+
+.oc-media img {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  object-fit: contain;
+  background: var(--surface-3);
+}
+
+.oc-media-caption {
+  margin-top: 12px;
+  font-size: 17px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+/* 传送带导轨：第一步即作为总装线家具存在，零件第二步到达 */
+.oc-rail {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: 19%;
+  height: 0;
+}
+
+.oc-rail::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  border-top: 3px dashed var(--rule);
+}
+
+/* 两件外观几乎一样的零部件（刻意完全同款），跨在导轨上 */
+.oc-part {
+  position: absolute;
+  top: -26px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 46px;
+  padding: 0 14px;
+  background: var(--surface-2);
+  border: 3px solid var(--text);
+  box-shadow: 4px 4px 0 var(--theme-offset-shadow);
+  transform: translateX(-130%);
+  transition: transform 1s cubic-bezier(0.2, 0.85, 0.3, 1.1);
+}
+
+.oc-part-code {
+  width: 36px;
+  height: 20px;
+  background: repeating-linear-gradient(90deg, var(--text) 0 3px, transparent 3px 8px);
+}
+
+.oc-part-dot {
+  width: 13px;
+  height: 13px;
+  background: var(--accent-soft);
+  border: 2px solid var(--accent);
+}
+
+.oc-part-a {
+  left: 14%;
+}
+
+.oc-part-b {
+  left: 47%;
+}
+
+/* 状态：零件到场（仅本拍带错峰，后续拍保持即时） */
+.state-parts-at-station .oc-part {
+  transform: translateX(0);
+}
+
+.state-parts-at-station .oc-part-a {
+  transition-delay: 0.15s;
+}
+
+.state-parts-at-station .oc-part-b {
+  transition-delay: 0.75s;
+}
+
+.state-checks-paired .oc-part,
+.state-risks-visible .oc-part,
+.state-question-dominant .oc-part {
+  transform: translateX(0);
+}
+
+/* ── 核对区（time-anchor · U001）────────────────────────────────── */
+.oc-checks {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  min-width: 0;
+}
+
+.oc-checks-lead {
+  margin: 0 0 2px;
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.oc-check {
+  position: relative;
+  padding: 24px 30px;
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.oc-check-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 16px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+}
+
+.oc-check-question {
+  margin: 14px 0 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+/* 核对扫描线：只在 checks-paired 拍发生一次 */
+.oc-scan {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 0;
+  width: 3px;
+  background: var(--accent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.state-checks-paired .oc-scan {
+  animation: oc-scan 1.5s ease-in-out both;
+}
+
+/* 核对通过的角标：扫描完成后落位并持续 */
+.oc-check::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* 状态：两道核对成立（nth-child(2)=核对1，nth-child(3)=核对2） */
+.state-checks-paired .oc-checks-lead,
+.state-risks-visible .oc-checks-lead,
+.state-question-dominant .oc-checks-lead {
+  opacity: 1;
+  transform: none;
+}
+
+.state-checks-paired .oc-check,
+.state-risks-visible .oc-check,
+.state-question-dominant .oc-check {
+  opacity: 1;
+  transform: none;
+}
+
+.state-checks-paired .oc-check:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.state-checks-paired .oc-check:nth-child(3) {
+  transition-delay: 0.8s;
+}
+
+.state-checks-paired .oc-check:nth-child(2) .oc-scan {
+  animation-delay: 1.2s;
+}
+
+.state-checks-paired .oc-check:nth-child(3) .oc-scan {
+  animation-delay: 2.2s;
+}
+
+.state-checks-paired .oc-check:nth-child(2)::after {
+  transition-delay: 2.8s;
+}
+
+.state-checks-paired .oc-check:nth-child(3)::after {
+  transition-delay: 3.8s;
+}
+
+.state-risks-visible .oc-check::after,
+.state-question-dominant .oc-check::after {
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+/* ── 风险带（context-line · U002 · R001 对照排布）───────────────── */
+.oc-risk-band {
+  display: flex;
+  align-items: stretch;
+  gap: 30px;
+  margin-top: 30px;
+  transition: opacity 0.6s ease;
+}
+
+.oc-risk-cause {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-body);
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--text-2);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.oc-risk-arrow {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.oc-risks {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+}
+
+.oc-risk {
+  flex: 1;
+  padding: 20px 0 18px;
+  text-align: center;
+  font-size: 35px;
+  font-weight: 900;
+  color: var(--text);
+  background: var(--theme-warning-surface);
+  border-top: 6px solid var(--theme-warning);
+  opacity: 0;
+  transform: translateY(-16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* 状态：风险显露（仅本拍错峰落下，后续拍保持） */
+.state-risks-visible .oc-risk-cause,
+.state-question-dominant .oc-risk-cause {
+  opacity: 1;
+  transform: none;
+}
+
+.state-risks-visible .oc-risk,
+.state-question-dominant .oc-risk {
+  opacity: 1;
+  transform: none;
+}
+
+.state-risks-visible .oc-risk:nth-child(1) {
+  transition-delay: 0.25s;
+}
+
+.state-risks-visible .oc-risk:nth-child(2) {
+  transition-delay: 0.45s;
+}
+
+.state-risks-visible .oc-risk:nth-child(3) {
+  transition-delay: 0.65s;
+}
+
+/* ── 主问题（question-dominant）─────────────────────────────────── */
+.oc-question {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1250px;
+  padding: 44px 64px 50px;
+  text-align: center;
+  opacity: 0;
+  transform: translate(-50%, -46%) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.state-question-dominant .oc-question {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+/* 场景退让：核对与风险保持在场但让出视觉权重 */
+.state-question-dominant .oc-headline,
+.state-question-dominant .oc-main,
+.state-question-dominant .oc-risk-band {
+  opacity: 0.14;
+}
+
+.oc-question-lead {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-mute);
+}
+
+.oc-question-mid {
+  margin: 18px 0 0;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.oc-question-hero {
+  margin: 10px 0 0;
+  font-size: 88px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.oc-question-hero em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* 身份线：四个环节 + 身份点贯通后驻留 */
+.oc-track {
+  position: relative;
+  margin-top: 36px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 34px;
+}
+
+.oc-stop {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.oc-stop::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background: var(--surface-2);
+  border: 3px solid var(--text);
+  box-shadow: 3px 3px 0 var(--theme-offset-shadow);
+}
+
+.oc-stop b {
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.oc-thread {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 45px;
+  right: 45px;
+  border-top: 3px dashed var(--rule);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.8s ease 0.45s;
+}
+
+.state-question-dominant .oc-thread {
+  transform: scaleX(1);
+}
+
+.oc-dot {
+  position: absolute;
+  z-index: 3;
+  top: 2px;
+  left: 45px;
+  width: 18px;
+  height: 18px;
+  margin-left: -9px;
+  background: var(--accent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.state-question-dominant .oc-dot {
+  animation: oc-travel 2.6s ease-in-out 0.9s both;
+}
+
+/* ── keyframes ──────────────────────────────────────────────────── */
+@keyframes oc-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes oc-stamp-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes oc-scan {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  88% {
+    opacity: 0.9;
+  }
+  100% {
+    left: calc(100% - 3px);
+    opacity: 0;
+  }
+}
+
+@keyframes oc-travel {
+  0% {
+    left: 45px;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 45px);
+    opacity: 1;
+  }
+}
