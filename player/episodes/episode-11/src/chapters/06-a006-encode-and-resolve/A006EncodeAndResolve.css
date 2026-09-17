@@ -1,0 +1,313 @@
+/* encode-and-resolve · linear-steps-with-takeaway
+   mechanism: linear single-direction —— 赋码条 → 解析条 单向阅读顺序承载 R011；
+   第二拍内顺序点亮、顺序收敛（不轮流高亮），两步与结论条最终稳定保留。
+   prefix: er- */
+
+.er-scene {
+  justify-content: flex-start;
+  gap: 28px;
+}
+
+/* ── 头部：语境限定 + 标题（beat 1 建立） ───────────────── */
+
+.er-head {
+  flex: none;
+}
+
+.er-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  animation: er-fadein 560ms var(--ease-soft) both;
+}
+
+.er-title {
+  margin: 12px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+  animation: er-rise 620ms var(--ease-soft) 140ms both;
+}
+
+.er-rule {
+  margin-top: 22px;
+  animation: er-fadein 700ms var(--ease-soft) 320ms both;
+}
+
+/* ── 基础问题条：第一拍的视觉中心，第二拍弱化上收 ───────── */
+
+.er-question {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 34px 42px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  transform: translateY(300px) scale(1.03);
+  transition: transform 720ms var(--ease-soft), opacity 720ms var(--ease-soft);
+  animation: er-question-in 700ms var(--ease-soft) 420ms backwards;
+}
+
+.er-question-label {
+  flex: none;
+  margin: 0;
+  padding: 10px 16px;
+  background: var(--theme-structural);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--surface-2);
+}
+
+.er-question-text {
+  position: relative;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--theme-structural);
+}
+
+.er-key {
+  position: relative;
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.er-key::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 6px;
+  background: var(--accent);
+  transform: scaleX(1);
+  transform-origin: left center;
+  animation: er-underline 640ms var(--ease-soft) 1250ms backwards;
+}
+
+.is-resolved .er-question {
+  transform: translateY(0) scale(1);
+  opacity: 0.93;
+}
+
+/* ── 步骤区：赋码条 → 连接件 → 解析条 → 结论条 ──────────── */
+
+.er-steps {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.er-bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 26px 36px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+}
+
+.er-bar-tag {
+  flex: none;
+  min-width: 108px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--theme-structural);
+  text-align: center;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--surface-2);
+}
+
+.er-bar-text {
+  flex: 1;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 29px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.er-demo {
+  flex: none;
+  width: 300px;
+}
+
+.er-demo-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.er-demo-text {
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 700;
+  fill: var(--text-2);
+}
+
+.er-joint {
+  flex: none;
+  width: 40px;
+  height: 46px;
+  margin: 6px 0 6px 70px;
+  opacity: 0;
+}
+
+.er-joint svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.er-takeaway {
+  flex: none;
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 36px;
+  background: var(--theme-process-surface);
+  border: 3px solid var(--theme-process);
+  border-radius: var(--r-card);
+  opacity: 0;
+}
+
+.er-takeaway-mark {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  background: var(--theme-process);
+  transform: rotate(45deg);
+}
+
+.er-takeaway p {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 33px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* ── 第二拍：顺序点亮，收敛后全部稳定保留 ───────────────── */
+
+.is-resolved .er-bar-encode {
+  opacity: 1;
+  animation: er-bar-in 600ms var(--ease-soft) 420ms both;
+}
+
+.is-resolved .er-joint {
+  opacity: 1;
+  animation: er-fadein 480ms var(--ease-soft) 3600ms both;
+}
+
+.is-resolved .er-bar-resolve {
+  opacity: 1;
+  animation: er-bar-in 600ms var(--ease-soft) 4600ms both;
+}
+
+.is-resolved .er-takeaway {
+  opacity: 1;
+  animation: er-stamp 640ms var(--ease-overshoot) 7600ms both;
+}
+
+/* 赋码演示：编码芯片先后落到物理实体与数字对象上 */
+
+.is-resolved .er-chip {
+  animation: er-chip 460ms var(--ease-overshoot) both;
+  animation-delay: calc(1500ms + var(--er-k) * 600ms);
+}
+
+/* 解析演示：查询路径自绘，记录卡展开出位置与信息 */
+
+.er-query line {
+  stroke-dasharray: 100;
+}
+
+.is-resolved .er-query line {
+  animation: er-draw 620ms var(--ease-soft) 5600ms both;
+}
+
+.is-resolved .er-query polyline {
+  animation: er-fadein 300ms var(--ease-soft) 6150ms both;
+}
+
+.is-resolved .er-record {
+  animation: er-rise 560ms var(--ease-soft) 6400ms both;
+}
+
+/* ── keyframes ─────────────────────────────────────────── */
+
+@keyframes er-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@keyframes er-fadein {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes er-question-in {
+  from {
+    opacity: 0;
+    transform: translateY(324px) scale(1.04);
+  }
+}
+
+@keyframes er-underline {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes er-bar-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+}
+
+@keyframes er-stamp {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+
+@keyframes er-chip {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes er-draw {
+  from {
+    stroke-dashoffset: 100;
+  }
+}

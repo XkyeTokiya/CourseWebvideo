@@ -1,0 +1,599 @@
+/* three-layer-recap · image-with-reading-notes
+   mechanism: persistent-media-reading — M005 主图区持续在场（未就位，素净空白版位），
+   阅读顺序沿注释条推进：身份条先于入口条（R025）；要点区补入追溯码区分说明；
+   注释区按序点亮五个观察阶段复述条；最终五条记录线向同一对象汇聚成收束判断（R026）。
+   prefix: tl- */
+
+.tl-scene {
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+/* ── 头部：主题 kicker + 标题（S058 · reference） ─────── */
+
+.tl-head {
+  flex: none;
+}
+
+.tl-kicker {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+  animation: tl-rise 520ms var(--ease-soft) both;
+}
+
+.tl-title {
+  margin: 10px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: tl-rise 520ms var(--ease-soft) 140ms both;
+}
+
+/* ── 主体行：M005 空白版位（左） + 注释条列（右） ─────── */
+
+.tl-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 52px;
+}
+
+/* M005 未就位：只保留素净空白版位，不放任何占位图或占位文案 */
+
+.tl-media {
+  flex: none;
+  width: 640px;
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+  opacity: 0;
+  animation: tl-fade 560ms var(--ease-soft) 240ms both;
+}
+
+.tl-notes {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 18px;
+}
+
+/* ── 注释条 01/02：身份条 → 入口条，沿阅读顺序先后亮起（R025） ── */
+
+.tl-note {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 18px 26px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.tl-note--identity {
+  opacity: 0;
+  animation: tl-note-in 560ms var(--ease-soft) 320ms both;
+}
+
+.tl-note--entry {
+  opacity: 0;
+  animation: tl-note-in 560ms var(--ease-soft) 1280ms both;
+}
+
+.tl-note-no {
+  flex: none;
+  font-size: 44px;
+  color: var(--theme-structural);
+}
+
+.tl-note-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.tl-note-copy h2 {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.tl-note-copy p {
+  margin: 8px 0 0;
+  font-size: 23px;
+  font-weight: 400;
+  color: var(--text-2);
+}
+
+/* 身份条小演示：物理实体（实线）与数字对象（虚线）各被盖上一枚身份签 */
+
+.tl-id-demo,
+.tl-entry-demo {
+  flex: none;
+  width: 200px;
+  height: 84px;
+  overflow: visible;
+}
+
+.tl-id-solid {
+  fill: var(--surface-3);
+  stroke: var(--theme-structural);
+  stroke-width: 4;
+}
+
+.tl-id-dashed {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 4;
+  stroke-dasharray: 7 6;
+}
+
+.tl-id-chip {
+  fill: var(--theme-process);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tl-stamp 360ms var(--ease-overshoot) forwards;
+}
+
+.tl-id-chip--a {
+  animation-delay: 950ms;
+}
+
+.tl-id-chip--b {
+  animation-delay: 1230ms;
+}
+
+.tl-id-dot {
+  fill: var(--surface-2);
+  opacity: 0;
+  animation: tl-fade 240ms var(--ease-soft) forwards;
+}
+
+.tl-id-dot--a {
+  animation-delay: 1190ms;
+}
+
+.tl-id-dot--b {
+  animation-delay: 1470ms;
+}
+
+/* 入口条小演示：查询箭头进入节点，关联信息向外引出 */
+
+.tl-entry-line {
+  stroke: var(--theme-structural);
+  stroke-width: 4;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: tl-draw 460ms var(--ease-soft) 1860ms forwards;
+}
+
+.tl-entry-head {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 4;
+  opacity: 0;
+  animation: tl-fade 200ms var(--ease-soft) 2260ms forwards;
+}
+
+.tl-entry-node {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 4;
+}
+
+.tl-entry-fan line {
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+}
+
+.tl-entry-fan rect {
+  fill: var(--theme-process);
+}
+
+.tl-entry-fan {
+  opacity: 0;
+  animation: tl-fade 260ms var(--ease-soft) forwards;
+}
+
+.tl-entry-fan--a {
+  animation-delay: 2420ms;
+}
+
+.tl-entry-fan--b {
+  animation-delay: 2580ms;
+}
+
+.tl-entry-fan--c {
+  animation-delay: 2740ms;
+}
+
+/* ── 要点区：与药品追溯码区分开（第 2 拍补入，区别于注释条的aside） ── */
+
+.tl-keypoint {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 20px 26px;
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 480ms var(--ease-soft),
+    transform 520ms var(--ease-soft);
+}
+
+.is-distinct .tl-keypoint {
+  opacity: 1;
+  transform: none;
+}
+
+.tl-key-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.tl-key-copy h2 {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.tl-key-chips {
+  margin: 12px 0 0;
+  display: flex;
+  gap: 14px;
+}
+
+.tl-key-chips span {
+  padding: 5px 16px;
+  border: 2px solid var(--theme-warning);
+  background: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--theme-warning);
+}
+
+.tl-key-bridge {
+  margin: 12px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+.tl-key-bridge svg {
+  flex: none;
+  width: 34px;
+  height: 16px;
+}
+
+.tl-key-bridge polyline {
+  fill: none;
+  stroke: var(--theme-warning);
+  stroke-width: 3.5;
+}
+
+/* 两套编码各是各的样子：条码状笔画 | 虚线分隔 | 标识解析的点-枝结构 */
+
+.tl-code-demo {
+  flex: none;
+  width: 210px;
+  height: 96px;
+  overflow: visible;
+}
+
+.tl-code-glyph line {
+  stroke: var(--theme-structural);
+}
+
+.tl-code-glyph circle {
+  fill: var(--theme-structural);
+}
+
+.tl-code-glyph .tl-code-tick {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.tl-code-glyph {
+  opacity: 0;
+  transition: opacity 420ms var(--ease-soft) 260ms;
+}
+
+.tl-code-divider {
+  stroke: var(--theme-warning);
+  stroke-width: 3;
+  stroke-dasharray: 5 7;
+  opacity: 0;
+  transition: opacity 420ms var(--ease-soft) 480ms;
+}
+
+.is-distinct .tl-code-glyph,
+.is-distinct .tl-code-divider {
+  opacity: 1;
+}
+
+/* ── 注释区：五个观察阶段复述条，沿虚线轨道依次点亮（第 3 拍） ── */
+
+.tl-stages {
+  flex: none;
+  padding: 14px 8px 10px;
+}
+
+.tl-stages-kicker {
+  margin: 0 0 6px;
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-mute);
+  opacity: 0;
+  transition: opacity 360ms var(--ease-soft);
+}
+
+.is-staged .tl-stages-kicker {
+  opacity: 1;
+}
+
+.tl-stage-band {
+  position: relative;
+}
+
+.tl-rail-line {
+  position: absolute;
+  left: 88px;
+  right: 88px;
+  top: 7px;
+  height: 0;
+  border-top: 3px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-staged .tl-rail-line {
+  opacity: 1;
+}
+
+.tl-stage-rail {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tl-stage {
+  position: relative;
+  width: 176px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 400ms var(--ease-soft),
+    transform 400ms var(--ease-soft);
+  transition-delay: calc(280ms + var(--tl-i) * 600ms);
+}
+
+.is-staged .tl-stage {
+  opacity: 1;
+  transform: none;
+}
+
+.tl-stage-node {
+  width: 18px;
+  height: 18px;
+  background: var(--surface-2);
+  border: 4px solid var(--rule);
+  transition: background-color 280ms var(--ease-soft),
+    border-color 280ms var(--ease-soft);
+  transition-delay: calc(560ms + var(--tl-i) * 600ms);
+}
+
+.is-staged .tl-stage-node {
+  background: var(--theme-process);
+  border-color: var(--theme-process);
+}
+
+.tl-stage-name {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  white-space: nowrap;
+  color: var(--theme-structural);
+}
+
+/* ── 收束判断：五条记录线向同一对象汇聚（第 4 拍亮出，C017：不加下一期） ── */
+
+.tl-takeaway {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 18px 26px;
+  background: var(--theme-process-surface);
+  border: 3px solid var(--theme-process);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 460ms var(--ease-soft),
+    transform 540ms var(--ease-soft);
+}
+
+.is-settled .tl-takeaway {
+  opacity: 1;
+  transform: none;
+}
+
+.tl-converge {
+  flex: none;
+  width: 190px;
+  height: 96px;
+  overflow: visible;
+}
+
+.tl-converge-tick {
+  fill: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 300ms var(--ease-soft);
+}
+
+.tl-converge-line {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 520ms var(--ease-soft);
+}
+
+.tl-converge-node {
+  fill: var(--theme-structural);
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0.2);
+  transition: transform 420ms var(--ease-overshoot) 760ms;
+}
+
+.is-settled .tl-converge-tick {
+  opacity: 1;
+}
+
+.tl-converge-tick--1 { transition-delay: 80ms; }
+.tl-converge-tick--2 { transition-delay: 160ms; }
+.tl-converge-tick--3 { transition-delay: 240ms; }
+.tl-converge-tick--4 { transition-delay: 320ms; }
+.tl-converge-tick--5 { transition-delay: 400ms; }
+
+.is-settled .tl-converge-tick--1 { transition-delay: 80ms; }
+.is-settled .tl-converge-tick--2 { transition-delay: 160ms; }
+.is-settled .tl-converge-tick--3 { transition-delay: 240ms; }
+.is-settled .tl-converge-tick--4 { transition-delay: 320ms; }
+.is-settled .tl-converge-tick--5 { transition-delay: 400ms; }
+
+.is-settled .tl-converge-line {
+  stroke-dashoffset: 0;
+}
+
+.tl-converge-line--c { transition-delay: 140ms; }
+.tl-converge-line--b,
+.tl-converge-line--d { transition-delay: 240ms; }
+.tl-converge-line--a,
+.tl-converge-line--e { transition-delay: 340ms; }
+
+.is-settled .tl-converge-line--c { transition-delay: 140ms; }
+.is-settled .tl-converge-line--b,
+.is-settled .tl-converge-line--d { transition-delay: 240ms; }
+.is-settled .tl-converge-line--a,
+.is-settled .tl-converge-line--e { transition-delay: 340ms; }
+
+.is-settled .tl-converge-node {
+  transform: scale(1);
+}
+
+.tl-takeaway-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.tl-take-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 700;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 400ms var(--ease-soft),
+    transform 400ms var(--ease-soft);
+}
+
+.is-settled .tl-take-line {
+  opacity: 1;
+  transform: none;
+  transition-delay: 560ms;
+}
+
+.is-settled .tl-take-line--basis {
+  transition-delay: 800ms;
+}
+
+.tl-take-strong {
+  color: var(--theme-structural);
+  font-weight: 900;
+}
+
+.tl-take-line--basis {
+  margin-top: 8px;
+  font-size: 37px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.tl-take-mark {
+  color: var(--theme-process);
+}
+
+/* ── keyframes（仅一次性入场与盖章/自绘，终态与稳定画面一致） ── */
+
+@keyframes tl-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tl-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes tl-note-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tl-stamp {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes tl-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

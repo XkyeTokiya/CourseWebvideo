@@ -1,0 +1,320 @@
+[
+  {
+    "chapter": "pharmacy-verification",
+    "step": 1,
+    "text": "在药房收货的时候，工作人员会先核验一盒药品。",
+    "audio": "pharmacy-verification/1.mp3"
+  },
+  {
+    "chapter": "pharmacy-verification",
+    "step": 2,
+    "text": "这个动作看起来很简单，但它后面跟着一串问题：这盒药是谁生产的？中间经过了哪些仓储和物流环节？",
+    "audio": "pharmacy-verification/2.mp3"
+  },
+  {
+    "chapter": "pharmacy-verification",
+    "step": 3,
+    "text": "如果出了问题，应该向谁追查？",
+    "audio": "pharmacy-verification/3.mp3"
+  },
+  {
+    "chapter": "a002-chain-roles",
+    "step": 1,
+    "text": "要回答这些问题，先得看清楚这盒药背后站着多少角色。",
+    "audio": "a002-chain-roles/1.mp3"
+  },
+  {
+    "chapter": "a002-chain-roles",
+    "step": 2,
+    "text": "原材料供应商提供原料，生产商负责制药，物流商负责运输，经销商和零售商把药送出去，药店和医院最终把药交到使用者手里。",
+    "audio": "a002-chain-roles/2.mp3"
+  },
+  {
+    "chapter": "a002-chain-roles",
+    "step": 3,
+    "text": "每个角色都有自己的业务系统，也都在自己的系统里留下了记录。",
+    "audio": "a002-chain-roles/3.mp3"
+  },
+  {
+    "chapter": "a003-records-unrecognized",
+    "step": 1,
+    "text": "麻烦在于，有记录不等于信息互相认识。",
+    "audio": "a003-records-unrecognized/1.mp3"
+  },
+  {
+    "chapter": "a003-records-unrecognized",
+    "step": 2,
+    "text": "原材料供应商记的是原料批次，生产商记的是生产工单，物流商记的是运输单据，药店记的是销售流水。",
+    "audio": "a003-records-unrecognized/2.mp3"
+  },
+  {
+    "chapter": "a003-records-unrecognized",
+    "step": 3,
+    "text": "这些记录各自都很清楚，彼此之间却缺少一个共同的依据。",
+    "audio": "a003-records-unrecognized/3.mp3"
+  },
+  {
+    "chapter": "a003-records-unrecognized",
+    "step": 4,
+    "text": "药品供应链很长，参与方又多。不同主体之间的编码规则、数据口径和系统接口如果不一致，上下游的信息就不容易关联起来，也容易形成一个个数据孤岛。",
+    "audio": "a003-records-unrecognized/4.mp3"
+  },
+  {
+    "chapter": "a004-three-breaks",
+    "step": 1,
+    "text": "这种割裂会带来三方面的困难。",
+    "audio": "a004-three-breaks/1.mp3"
+  },
+  {
+    "chapter": "a004-three-breaks",
+    "step": 2,
+    "text": "生产、包装、仓储和物流系统各管一段，相互独立，环节之间接不上。",
+    "audio": "a004-three-breaks/2.mp3"
+  },
+  {
+    "chapter": "a004-three-breaks",
+    "step": 3,
+    "text": "供应链条拉得很长，跨主体的流向信息不容易连起来，药到底流向了哪里，也就不容易看清楚。",
+    "audio": "a004-three-breaks/3.mp3"
+  },
+  {
+    "chapter": "a004-three-breaks",
+    "step": 4,
+    "text": "药品种类和经营方式又很复杂。一旦发生安全事件，要确定问题出在哪个对象、哪个环节，都很困难。",
+    "audio": "a004-three-breaks/4.mp3"
+  },
+  {
+    "chapter": "a005-beyond-connection",
+    "step": 1,
+    "text": "那是不是把这些数据都放到一起共享就行了？也没有这么简单。",
+    "audio": "a005-beyond-connection/1.mp3"
+  },
+  {
+    "chapter": "a005-beyond-connection",
+    "step": 2,
+    "text": "供应链上的信息共享本身就会受到数据安全和隐私保护的限制，还会受需求波动、突发事件和外部不确定性的影响。",
+    "audio": "a005-beyond-connection/2.mp3"
+  },
+  {
+    "chapter": "a005-beyond-connection",
+    "step": 3,
+    "text": "想让多个主体长期愿意共享，还需要信任机制、信息共享平台、标准化流程和利益分配机制一起支撑。",
+    "audio": "a005-beyond-connection/3.mp3"
+  },
+  {
+    "chapter": "a005-beyond-connection",
+    "step": 4,
+    "text": "系统之间可以对接，利益和信任不容易对齐。",
+    "audio": "a005-beyond-connection/4.mp3"
+  },
+  {
+    "chapter": "a006-encode-and-resolve",
+    "step": 1,
+    "text": "这里说的标识解析，是工业互联网语境中的标识解析。它要解决的，是其中最基础的一件事：让每一个对象有自己唯一的身份。",
+    "audio": "a006-encode-and-resolve/1.mp3"
+  },
+  {
+    "chapter": "a006-encode-and-resolve",
+    "step": 2,
+    "text": "它可以为供应链里的物理实体和数字对象赋予全球唯一的编码，再通过解析，找到这个编码对应的位置和相关信息。",
+    "audio": "a006-encode-and-resolve/2.mp3"
+  },
+  {
+    "chapter": "a007-two-code-systems",
+    "step": 1,
+    "text": "放到药品场景里，还要分清另一套概念。药品监管体系本身有专门的药品追溯码，用来唯一标识药品的销售包装单元。",
+    "audio": "a007-two-code-systems/1.mp3"
+  },
+  {
+    "chapter": "a007-two-code-systems",
+    "step": 2,
+    "text": "药品追溯码和工业互联网标识不是同一套编码体系，但背后的识别逻辑有相通之处：都要先认出具体对象，再让与这个对象有关的信息能够被查询和关联。",
+    "audio": "a007-two-code-systems/2.mp3"
+  },
+  {
+    "chapter": "a007-two-code-systems",
+    "step": 3,
+    "text": "下面仍然以一盒药为例，看标识解析在供应链协同里能解决什么问题。",
+    "audio": "a007-two-code-systems/3.mp3"
+  },
+  {
+    "chapter": "a008-capability-boundary",
+    "step": 1,
+    "text": "这里还要分清一点：标识不是把所有的业务数据都装进编码里。编码本身是一把钥匙，不是仓库。",
+    "audio": "a008-capability-boundary/1.mp3"
+  },
+  {
+    "chapter": "a008-capability-boundary",
+    "step": 2,
+    "text": "它也不能替代制药厂的生产系统、经销商的订单系统或者药店的销售系统。",
+    "audio": "a008-capability-boundary/2.mp3"
+  },
+  {
+    "chapter": "a008-capability-boundary",
+    "step": 3,
+    "text": "各个主体原来怎么干活，还是怎么干活。",
+    "audio": "a008-capability-boundary/3.mp3"
+  },
+  {
+    "chapter": "a009-shared-anchor",
+    "step": 1,
+    "text": "真正的变化，是这些阶段的记录有了共同的指向。",
+    "audio": "a009-shared-anchor/1.mp3"
+  },
+  {
+    "chapter": "a009-shared-anchor",
+    "step": 2,
+    "text": "放在标识解析的应用逻辑里，可以把这盒药看成一个需要被唯一识别的对象，再围绕这个对象的标识，把不同主体的相关记录关联起来。",
+    "audio": "a009-shared-anchor/2.mp3"
+  },
+  {
+    "chapter": "a010-five-stages",
+    "step": 1,
+    "text": "为了讲清这个过程，这里把链条拆成五个观察阶段：从原料进厂开始，原料的来源和检验记录留下来；",
+    "audio": "a010-five-stages/1.mp3"
+  },
+  {
+    "chapter": "a010-five-stages",
+    "step": 2,
+    "text": "进入生产加工，制造和包装过程形成记录。",
+    "audio": "a010-five-stages/2.mp3"
+  },
+  {
+    "chapter": "a010-five-stages",
+    "step": 3,
+    "text": "到了仓储物流，出入库和运输过程被记下来；",
+    "audio": "a010-five-stages/3.mp3"
+  },
+  {
+    "chapter": "a010-five-stages",
+    "step": 4,
+    "text": "再往下是终端销售，药店和医院把销售和配送信息接上。",
+    "audio": "a010-five-stages/4.mp3"
+  },
+  {
+    "chapter": "a010-five-stages",
+    "step": 5,
+    "text": "一直到市场消费，成为链条末端的观察点。",
+    "audio": "a010-five-stages/5.mp3"
+  },
+  {
+    "chapter": "a011-division-unchanged",
+    "step": 1,
+    "text": "每个阶段的主人没有变，还是各自的主体在完成本阶段的业务。",
+    "audio": "a011-division-unchanged/1.mp3"
+  },
+  {
+    "chapter": "a011-division-unchanged",
+    "step": 2,
+    "text": "标识做的事情，是让这些阶段的相关记录能够指向同一个对象。",
+    "audio": "a011-division-unchanged/2.mp3"
+  },
+  {
+    "chapter": "a012-traceable-path",
+    "step": 1,
+    "text": "当不同阶段的相关记录都能通过同一个对象标识被查询和关联时，整条供应链就从一串互不相认的环节，变成了一条可以追踪的对象路径。",
+    "audio": "a012-traceable-path/1.mp3"
+  },
+  {
+    "chapter": "a012-traceable-path",
+    "step": 2,
+    "text": "管理者可以看到一盒药从哪里来、经过了哪些阶段、现在处在哪一类业务环节。",
+    "audio": "a012-traceable-path/2.mp3"
+  },
+  {
+    "chapter": "a012-traceable-path",
+    "step": 3,
+    "text": "真的出了问题，也可以先定位到具体的对象和相关记录，再去组织跨主体的协同处理。",
+    "audio": "a012-traceable-path/3.mp3"
+  },
+  {
+    "chapter": "a013-entry-vs-mechanism",
+    "step": 1,
+    "text": "这两件事要分开看。标识解析提供的是查询入口，它负责帮助定位对象和关联信息。",
+    "audio": "a013-entry-vs-mechanism/1.mp3"
+  },
+  {
+    "chapter": "a013-entry-vs-mechanism",
+    "step": 2,
+    "text": "信息能不能被可信地使用，取决于协同机制，取决于各主体之间的授权、标准和流程。",
+    "audio": "a013-entry-vs-mechanism/2.mp3"
+  },
+  {
+    "chapter": "a014-what-changes",
+    "step": 1,
+    "text": "所以回到一开始的问题。唯一标识改变的不是供应链上有多少参与者，而是参与者之间识别同一个对象的方式。",
+    "audio": "a014-what-changes/1.mp3"
+  },
+  {
+    "chapter": "a014-what-changes",
+    "step": 2,
+    "text": "在没有共同标识关联的时候，同一盒药在不同的系统、不同的企业、不同的环节里，往往要靠反复确认才能对上；",
+    "audio": "a014-what-changes/2.mp3"
+  },
+  {
+    "chapter": "a014-what-changes",
+    "step": 3,
+    "text": "如果建立了统一的对象识别和查询入口，就可以先定位对象，再沿着各个阶段的记录查找相关信息。",
+    "audio": "a014-what-changes/3.mp3"
+  },
+  {
+    "chapter": "a014-what-changes",
+    "step": 4,
+    "text": "但这不等于治理已经完成。数据共享仍然需要授权、需要标准、需要流程、需要信任。",
+    "audio": "a014-what-changes/4.mp3"
+  },
+  {
+    "chapter": "a014-what-changes",
+    "step": 5,
+    "text": "有了一套编码，只是有了一个可以对齐的起点。",
+    "audio": "a014-what-changes/5.mp3"
+  },
+  {
+    "chapter": "a015-back-to-the-box",
+    "step": 1,
+    "text": "还是从药房收货台上那一盒药说起。它背后是原材料供应商、生产商、物流商、经销商、零售商、药店和医院，各自负责一段业务。",
+    "audio": "a015-back-to-the-box/1.mp3"
+  },
+  {
+    "chapter": "a015-back-to-the-box",
+    "step": 2,
+    "text": "记录彼此不认识，就会形成数据孤岛，也会让追溯变得困难。",
+    "audio": "a015-back-to-the-box/2.mp3"
+  },
+  {
+    "chapter": "a016-three-layer-recap",
+    "step": 1,
+    "text": "工业互联网标识解析给物理实体和数字对象建立唯一身份，并提供查询关联信息的入口。",
+    "audio": "a016-three-layer-recap/1.mp3"
+  },
+  {
+    "chapter": "a016-three-layer-recap",
+    "step": 2,
+    "text": "放到药品场景里，需要和药品追溯码区分开：药品追溯码用于唯一标识药品销售包装单元，两者不是同一套编码体系，但都强调先识别对象，再关联信息。",
+    "audio": "a016-three-layer-recap/2.mp3"
+  },
+  {
+    "chapter": "a016-three-layer-recap",
+    "step": 3,
+    "text": "按照本文的讲法，可以把原料进厂、生产加工、仓储物流、终端销售、市场消费拆成五个观察阶段；",
+    "audio": "a016-three-layer-recap/3.mp3"
+  },
+  {
+    "chapter": "a016-three-layer-recap",
+    "step": 4,
+    "text": "这些阶段的记录如果能够围绕同一个对象被查询和关联，跨主体的协同就有了基础。",
+    "audio": "a016-three-layer-recap/4.mp3"
+  },
+  {
+    "chapter": "a017-beyond-technology",
+    "step": 1,
+    "text": "这里有一条共同规律：技术解决的是认出同一个对象，协同解决的是愿不愿意把记录交出来。",
+    "audio": "a017-beyond-technology/1.mp3"
+  },
+  {
+    "chapter": "a017-beyond-technology",
+    "step": 2,
+    "text": "唯一标识是关联的锚点，它让全链数据具备被追踪和关联的基础；而信任、标准和共享机制，决定这条链能不能真正运转起来。",
+    "audio": "a017-beyond-technology/2.mp3"
+  }
+]
