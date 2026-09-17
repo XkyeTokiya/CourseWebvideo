@@ -1,12 +1,12 @@
 {
   "id": "episode-13",
-  "title": "第 13 期（待制作）",
-  "status": "planned",
+  "title": "第 13 期 · 基于工业软件连接器的异构数据共享",
+  "status": "in-progress",
   "theme": "active-identification-note",
   "progress": {
-    "completed": 0,
-    "total": 0,
-    "current": null
+    "completed": 1,
+    "total": 14,
+    "current": "01-opening-question"
   },
-  "updatedAt": "2026-09-02"
+  "updatedAt": "2026-09-17"
 }
