@@ -7,6 +7,10 @@ import ExistingSystems from "./chapters/02-existing-systems/ExistingSystems";
 import { narrations as existingSystemsNarrations } from "./chapters/02-existing-systems/narrations";
 import AssemblyVerification from "./chapters/05-assembly-verification/AssemblyVerification";
 import { narrations as assemblyVerificationNarrations } from "./chapters/05-assembly-verification/narrations";
+import SupplySideDrift from "./chapters/03-supply-side-drift/SupplySideDrift";
+import { narrations as supplySideDriftNarrations } from "./chapters/03-supply-side-drift/narrations";
+import InstallArchive from "./chapters/06-install-archive/InstallArchive";
+import { narrations as installArchiveNarrations } from "./chapters/06-install-archive/narrations";
 
 export const id = "episode-12";
 export const title = "汽车零部件精益管理：一物一码如何减少错装与串货";
@@ -32,9 +36,21 @@ export const CHAPTERS: ChapterDef[] = [
     Component: ExistingSystems,
   },
   {
+    id: "supply-side-drift",
+    title: "断裂归因页",
+    narrations: supplySideDriftNarrations,
+    Component: SupplySideDrift,
+  },
+  {
     id: "assembly-verification",
     title: "装配校验页",
     narrations: assemblyVerificationNarrations,
     Component: AssemblyVerification,
+  },
+  {
+    id: "install-archive",
+    title: "装机档案页",
+    narrations: installArchiveNarrations,
+    Component: InstallArchive,
   },
 ];

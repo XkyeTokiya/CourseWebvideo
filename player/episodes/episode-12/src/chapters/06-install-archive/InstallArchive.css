@@ -1,0 +1,745 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * 06-install-archive · 装机档案页（S-A027 · layered-bands-with-side-notes）
+ * 前缀 .ia- · 状态机（与 outline step 表逐字一致）：
+ *   archive-stage-set → archive-band-in → side-note-traceback
+ * 关系机制 anchor-and-context：档案带为持续锚点，回查语境在侧注区补充。
+ * 基础态 = 终态（step3 收束画面）；早期状态只做隐藏与一次性入场动画，
+ * 全部 animation / transition-delay 仅挂在 .state-* 选择器下，保证可逆。
+ * ───────────────────────────────────────────────────────────────────── */
+
+.ia-pad {
+  gap: 22px;
+}
+
+/* ── headline（S027）────────────────────────────────────────────── */
+.ia-headline {
+  margin: 0;
+  font-size: 58px;
+  font-weight: 900;
+  line-height: 1.12;
+  color: var(--text);
+}
+
+.state-archive-stage-set .ia-headline {
+  animation: ia-rise-in 0.6s ease-out both;
+}
+
+/* ── 档案带（U015 · ordered bands：三条装机记录汇入同一整车）────── */
+.ia-archive {
+  flex: 1.22;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 22px 30px 24px;
+}
+
+.state-archive-stage-set .ia-archive {
+  animation: ia-drop-in 0.7s cubic-bezier(0.2, 0.85, 0.3, 1.05) 0.12s both;
+}
+
+.ia-band-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.ia-band-tag {
+  padding: 4px 12px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--text-2);
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+}
+
+.ia-band-note {
+  font-size: 16px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+}
+
+.state-archive-stage-set .ia-band-tag {
+  animation: ia-fade-in 0.45s ease-out 0.4s both;
+}
+
+.state-archive-stage-set .ia-band-note {
+  animation: ia-fade-in 0.45s ease-out 0.55s both;
+}
+
+.ia-band-body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+/* 空槽：仅骨架期可见，记录补齐后让位 */
+.ia-slots {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 68px;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.ia-slot {
+  display: grid;
+  place-items: center;
+  border: 2px dashed var(--rule);
+  color: var(--text-faint);
+  font-size: 17px;
+  letter-spacing: 0.3em;
+  opacity: 0;
+}
+
+.state-archive-stage-set .ia-slot {
+  animation: ia-fade-in 0.45s ease-out both;
+}
+
+.state-archive-stage-set .ia-slot:nth-child(1) { animation-delay: 0.85s; }
+.state-archive-stage-set .ia-slot:nth-child(2) { animation-delay: 1.05s; }
+.state-archive-stage-set .ia-slot:nth-child(3) { animation-delay: 1.25s; }
+
+/* 记录行网格：标识列 · 记录行 · 整车列 */
+.ia-rows {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 320px;
+  grid-template-rows: repeat(3, 1fr);
+  column-gap: 24px;
+}
+
+.ia-guide {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  border-right: 2px dashed var(--rule);
+  font-size: 18px;
+  letter-spacing: 0.42em;
+  color: var(--text-2);
+}
+
+.state-archive-stage-set .ia-guide {
+  animation: ia-fade-in 0.5s ease-out 0.7s both;
+}
+
+.ia-row {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+.ia-row-1 { grid-row: 1; }
+.ia-row-2 { grid-row: 2; }
+.ia-row-3 { grid-row: 3; }
+
+.state-archive-stage-set .ia-row {
+  opacity: 0;
+}
+
+.ia-part {
+  flex: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 20px;
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+}
+
+.ia-part b {
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+/* 标识码片：抽象示意，无具体编码字段（C008） */
+.ia-mark {
+  position: relative;
+  width: 38px;
+  height: 22px;
+  border: 2px solid var(--text);
+  background: repeating-linear-gradient(90deg, var(--text) 0 2px, transparent 2px 7px) content-box;
+  padding: 3px 5px;
+}
+
+.ia-mark::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 3px solid var(--accent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 记录连接线：零部件 → 进入 → 整车 */
+.ia-rec {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ia-rec-line {
+  flex: 1;
+  height: 0;
+  border-top: 3px solid var(--theme-process);
+  transform-origin: left center;
+  transition: border-color 0.4s ease;
+}
+
+.ia-rec-label {
+  flex: none;
+  font-style: normal;
+  font-size: 16px;
+  letter-spacing: 0.3em;
+  color: var(--text-mute);
+}
+
+.ia-rec-arrow {
+  flex: none;
+  width: 0;
+  height: 0;
+  border-left: 9px solid var(--theme-process);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  transition: border-color 0.4s ease;
+}
+
+/* 整车列：三条记录的汇入锚 */
+.ia-vehicle {
+  grid-column: 3;
+  grid-row: 1 / span 3;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: var(--surface);
+  border: 3px solid var(--text);
+  box-shadow: 5px 5px 0 var(--theme-offset-shadow);
+  transition: border-color 0.4s ease;
+}
+
+.ia-vehicle b {
+  font-size: 46px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.ia-mark-vehicle {
+  width: 60px;
+  height: 34px;
+  border-width: 3px;
+}
+
+.ia-vehicle::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 3px solid var(--accent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.state-archive-stage-set .ia-vehicle {
+  opacity: 0;
+}
+
+/* step2 · 档案带补齐：整车先立，三条记录按带序逐行写入，最后回锚整车 */
+.state-archive-band-in .ia-part {
+  animation: ia-spring-in 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.25) both;
+}
+
+.state-archive-band-in .ia-row-1 .ia-part { animation-delay: 2.1s; }
+.state-archive-band-in .ia-row-2 .ia-part { animation-delay: 3.4s; }
+.state-archive-band-in .ia-row-3 .ia-part { animation-delay: 4.7s; }
+
+.state-archive-band-in .ia-vehicle {
+  animation: ia-drop-in 0.6s cubic-bezier(0.2, 0.85, 0.3, 1.05) 0.9s both;
+}
+
+.state-archive-band-in .ia-rec-line {
+  animation: ia-draw 0.5s ease-out both;
+}
+
+.state-archive-band-in .ia-row-1 .ia-rec-line { animation-delay: 2.55s; }
+.state-archive-band-in .ia-row-2 .ia-rec-line { animation-delay: 3.85s; }
+.state-archive-band-in .ia-row-3 .ia-rec-line { animation-delay: 5.15s; }
+
+.state-archive-band-in .ia-rec-label {
+  animation: ia-fade-in 0.4s ease-out both;
+}
+
+.state-archive-band-in .ia-row-1 .ia-rec-label { animation-delay: 2.7s; }
+.state-archive-band-in .ia-row-2 .ia-rec-label { animation-delay: 4s; }
+.state-archive-band-in .ia-row-3 .ia-rec-label { animation-delay: 5.3s; }
+
+.state-archive-band-in .ia-rec-arrow {
+  animation: ia-pop-in 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.3) both;
+}
+
+.state-archive-band-in .ia-row-1 .ia-rec-arrow { animation-delay: 2.95s; }
+.state-archive-band-in .ia-row-2 .ia-rec-arrow { animation-delay: 4.25s; }
+.state-archive-band-in .ia-row-3 .ia-rec-arrow { animation-delay: 5.55s; }
+
+/* 围绕同一标识：三枚码片同刻一圈脉冲；记录齐后整车回锚一次 */
+.state-archive-band-in .ia-part .ia-mark::after {
+  animation: ia-echo 0.8s ease-out 0.25s both;
+}
+
+.state-archive-band-in .ia-vehicle::after {
+  animation: ia-echo 0.9s ease-out 6.2s both;
+}
+
+/* step3 · 回查命中：侧注路径点中的记录行与整车列短暂提亮并保持 */
+.state-side-note-traceback .ia-row-2 .ia-part {
+  animation: ia-ring-in 0.5s ease-out 4.5s both;
+}
+
+.state-side-note-traceback .ia-row-2 .ia-rec-line {
+  border-color: var(--accent);
+  transition-delay: 4.5s;
+}
+
+.state-side-note-traceback .ia-row-2 .ia-rec-arrow {
+  border-left-color: var(--accent);
+  transition-delay: 4.5s;
+}
+
+.state-side-note-traceback .ia-vehicle {
+  border-color: var(--accent);
+  transition-delay: 4.5s;
+}
+
+/* ── 支持连接（R011 载体 · 档案带 enables 回查侧注）─────────────── */
+.ia-support {
+  flex: none;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 150px;
+}
+
+.state-archive-stage-set .ia-support,
+.state-archive-band-in .ia-support {
+  opacity: 0;
+}
+
+.ia-support-line {
+  flex: 1;
+  height: 0;
+  border-top: 2px dashed var(--rule);
+}
+
+.ia-support-line-l {
+  transform-origin: right center;
+}
+
+.ia-support-line-r {
+  transform-origin: left center;
+}
+
+.ia-support-label {
+  flex: none;
+  font-size: 17px;
+  letter-spacing: 0.24em;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+.ia-support-arrow {
+  flex: none;
+  width: 0;
+  height: 0;
+  border-top: 10px solid var(--text-mute);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+
+/* step3 · 支持连接成立 */
+.state-side-note-traceback .ia-support {
+  animation: ia-fade-in 0.4s ease-out 0.25s both;
+}
+
+.state-side-note-traceback .ia-support-line {
+  animation: ia-draw 0.55s ease-out 0.35s both;
+}
+
+.state-side-note-traceback .ia-support-line-r {
+  animation-delay: 0.47s;
+}
+
+.state-side-note-traceback .ia-support-label {
+  animation: ia-label-in 0.45s ease-out 0.4s both;
+}
+
+.state-side-note-traceback .ia-support-arrow {
+  animation: ia-pop-in 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.3) 0.95s both;
+}
+
+/* ── 回查侧注（U016 · 上下层级的下层语境区）────────────────────── */
+.ia-side {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 34px;
+  padding: 24px 34px;
+  background: var(--surface-3);
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+}
+
+.state-archive-stage-set .ia-side,
+.state-archive-band-in .ia-side {
+  opacity: 0;
+}
+
+.ia-trace {
+  flex: 1.45;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.ia-flag {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 22px;
+  background: var(--theme-warning-surface);
+  border: 3px solid var(--theme-warning);
+  box-shadow: 4px 4px 0 var(--theme-offset-shadow);
+}
+
+.ia-flag b {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.ia-flag-dot {
+  width: 15px;
+  height: 15px;
+  background: var(--theme-warning);
+  transform: rotate(45deg);
+}
+
+.state-side-note-traceback .ia-flag {
+  animation: ia-spring-in 0.55s cubic-bezier(0.2, 0.9, 0.3, 1.25) 1.2s both;
+}
+
+.ia-path {
+  flex: 1;
+  min-width: 70px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ia-path-line {
+  flex: 1;
+  height: 0;
+  border-top: 3px dashed var(--accent);
+  transform-origin: left center;
+}
+
+.state-side-note-traceback .ia-path-line {
+  animation: ia-draw 0.7s ease-out 2.7s both;
+}
+
+.ia-path-label {
+  flex: none;
+  font-style: normal;
+  padding: 4px 12px;
+  font-size: 17px;
+  letter-spacing: 0.24em;
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.state-side-note-traceback .ia-path-label {
+  animation: ia-label-in 0.4s ease-out 2.95s both;
+}
+
+.ia-path-arrow {
+  flex: none;
+  width: 0;
+  height: 0;
+  border-left: 10px solid var(--accent);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.state-side-note-traceback .ia-path-arrow {
+  animation: ia-pop-in 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.3) 3.35s both;
+}
+
+.ia-hits {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ia-hit {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 20px;
+  background: var(--surface-2);
+  border: 3px solid var(--text);
+  box-shadow: 4px 4px 0 var(--theme-offset-shadow);
+}
+
+.ia-hit b {
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.ia-mark-hit {
+  width: 34px;
+  height: 20px;
+  border-color: var(--accent);
+  background: repeating-linear-gradient(90deg, var(--accent) 0 2px, transparent 2px 7px) content-box;
+}
+
+.state-side-note-traceback .ia-hit {
+  animation: ia-spring-in 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.25) both;
+}
+
+.state-side-note-traceback .ia-hit:nth-child(1) { animation-delay: 3.7s; }
+.state-side-note-traceback .ia-hit:nth-child(2) { animation-delay: 4.3s; }
+
+/* 对照组：互相孤立的记录堆 + 来回跳 ✕（被避开的旧路径） */
+.ia-contrast {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding-left: 34px;
+  border-left: 2px dashed var(--rule);
+}
+
+.ia-scatter {
+  position: relative;
+  width: 100%;
+  height: 82px;
+}
+
+.ia-chip {
+  position: absolute;
+  width: 96px;
+  height: 30px;
+  background: var(--surface-2);
+  border: 2px dashed var(--text-faint);
+  opacity: 0;
+}
+
+.ia-chip::after {
+  content: "";
+  position: absolute;
+  inset: 8px 18px;
+  background: repeating-linear-gradient(90deg, var(--rule) 0 3px, transparent 3px 9px);
+}
+
+.ia-chip-1 { left: 2%; top: 8px; transform: rotate(-5deg); }
+.ia-chip-2 { left: 35%; top: 40px; transform: rotate(3deg); }
+.ia-chip-3 { left: 67%; top: 2px; transform: rotate(-2deg); }
+
+.state-side-note-traceback .ia-chip {
+  animation: ia-fade-in 0.5s ease-out both;
+}
+
+.state-side-note-traceback .ia-chip-1 { animation-delay: 6.8s; }
+.state-side-note-traceback .ia-chip-2 { animation-delay: 6.95s; }
+.state-side-note-traceback .ia-chip-3 { animation-delay: 7.1s; }
+
+.ia-zig {
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 100%;
+  height: 36px;
+}
+
+.ia-zig polyline {
+  fill: none;
+  stroke: var(--theme-danger);
+  stroke-width: 3;
+  stroke-dasharray: 7 6;
+  stroke-linecap: round;
+}
+
+.state-side-note-traceback .ia-zig {
+  animation: ia-wipe 0.8s ease-out 7.5s both;
+}
+
+.ia-zig-x {
+  position: absolute;
+  right: 3%;
+  bottom: 26px;
+  width: 30px;
+  height: 30px;
+  opacity: 0;
+}
+
+.ia-zig-x::before,
+.ia-zig-x::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 30px;
+  height: 4px;
+  background: var(--theme-danger);
+}
+
+.ia-zig-x::before { transform: rotate(45deg); }
+.ia-zig-x::after { transform: rotate(-45deg); }
+
+.state-side-note-traceback .ia-zig-x {
+  animation: ia-pop-in 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.3) 8.35s both;
+}
+
+.ia-contrast-text {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-2);
+  text-align: center;
+}
+
+.ia-contrast-text em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-danger);
+}
+
+.state-side-note-traceback .ia-contrast-text {
+  animation: ia-fade-in 0.5s ease-out 8s both;
+}
+
+/* ── keyframes（一次性动效，全部只被 .state-* 引用）─────────────── */
+@keyframes ia-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ia-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ia-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ia-spring-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ia-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ia-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ia-label-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ia-echo {
+  from {
+    opacity: 0.75;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes ia-ring-in {
+  from {
+    box-shadow: 0 0 0 0 var(--accent-soft);
+  }
+  to {
+    box-shadow: 0 0 0 3px var(--accent);
+  }
+}
+
+@keyframes ia-wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
