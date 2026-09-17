@@ -13,6 +13,8 @@ import InstallArchive from "./chapters/06-install-archive/InstallArchive";
 import { narrations as installArchiveNarrations } from "./chapters/06-install-archive/narrations";
 import PartsSingleItem from "./chapters/07-parts-single-item/PartsSingleItem";
 import { narrations as partsSingleItemNarrations } from "./chapters/07-parts-single-item/narrations";
+import RepairTraceback from "./chapters/08-repair-traceback/RepairTraceback";
+import { narrations as repairTracebackNarrations } from "./chapters/08-repair-traceback/narrations";
 import CaseResults from "./chapters/09-case-results/CaseResults";
 import { narrations as caseResultsNarrations } from "./chapters/09-case-results/narrations";
 import OneItemOneCode from "./chapters/04-one-item-one-code/OneItemOneCode";
@@ -72,6 +74,12 @@ export const CHAPTERS: ChapterDef[] = [
     title: "配件流转页",
     narrations: partsSingleItemNarrations,
     Component: PartsSingleItem,
+  },
+  {
+    id: "repair-traceback",
+    title: "维修追溯页",
+    narrations: repairTracebackNarrations,
+    Component: RepairTraceback,
   },
   {
     id: "case-results",
