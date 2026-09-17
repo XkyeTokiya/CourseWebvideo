@@ -1,0 +1,239 @@
+/* pharmacy-verification · issue-cards-with-image
+   mechanism: premise-to-question — 核验场景持续承载，问题卡升起后向收束追问汇聚
+   prefix: pv- */
+
+.pv-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── 头部：标题 + 语境条 + M001 空白留位 ─────────────── */
+
+.pv-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 56px;
+}
+
+.pv-head-copy {
+  min-width: 0;
+}
+
+.pv-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 60px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: pv-rise 640ms var(--ease-soft);
+}
+
+.pv-context {
+  margin: 18px 0 0;
+  padding-left: 18px;
+  border-left: 6px solid var(--theme-process);
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-2);
+  animation: pv-rise 640ms var(--ease-soft) 160ms backwards;
+}
+
+/* M001 未就位：只保留空白版位，不放任何占位图 */
+
+.pv-media {
+  flex: none;
+  width: 645px;
+  aspect-ratio: 16 / 9;
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+}
+
+/* ── 演示带：柜台 + 药盒 + 扫描核验 + 指向追问的虚线 ── */
+
+.pv-demo {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.pv-demo-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.pv-counter {
+  fill: var(--theme-structural);
+}
+
+.pv-beam {
+  opacity: 0;
+  animation: pv-sweep 1650ms var(--ease-soft) 420ms 1 forwards;
+}
+
+@keyframes pv-sweep {
+  0% { transform: translateX(118px); opacity: 0; }
+  14% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(372px); opacity: 0; }
+}
+
+.pv-ring,
+.pv-check {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.pv-ring {
+  animation: pv-draw 560ms var(--ease-soft) 2150ms 1 forwards;
+}
+
+.pv-check {
+  animation: pv-draw 420ms var(--ease-soft) 2680ms 1 forwards;
+}
+
+@keyframes pv-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.pv-verdict-label {
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 700;
+  fill: var(--theme-process);
+  opacity: 0;
+  animation: pv-fade 420ms var(--ease-soft) 3050ms 1 forwards;
+}
+
+.pv-lead-path {
+  opacity: 0;
+  animation: pv-fade 700ms var(--ease-soft) 3250ms 1 forwards;
+}
+
+.pv-lead-arrow {
+  opacity: 0;
+  animation: pv-fade 320ms var(--ease-soft) 3980ms 1 forwards;
+}
+
+@keyframes pv-fade {
+  to { opacity: 1; }
+}
+
+/* ── 问题卡行：两张并列追问 + 汇聚连线 + 收束追问 ───── */
+
+.pv-cards {
+  flex: none;
+  display: grid;
+  grid-template-columns: 460px 460px 1fr 470px;
+  gap: 34px;
+  align-items: stretch;
+}
+
+.pv-issue,
+.pv-takeaway {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 26px 30px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.pv-issue {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 480ms var(--ease-soft),
+    transform 480ms var(--ease-soft);
+  transition-delay: calc(var(--pv-i) * 190ms);
+}
+
+.pv-issue.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pv-issue-no {
+  font-size: 46px;
+  color: var(--theme-structural);
+}
+
+.pv-issue-body {
+  min-width: 0;
+}
+
+.pv-issue-body h2 {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.pv-issue-body p {
+  margin: 10px 0 0;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--text-2);
+}
+
+.pv-converge {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: visible;
+}
+
+.pv-converge-path {
+  opacity: 0;
+  transition: opacity 560ms var(--ease-soft);
+}
+
+.pv-converge-path--b {
+  transition-delay: 140ms;
+}
+
+.pv-converge-arrow {
+  opacity: 0;
+  transition: opacity 320ms var(--ease-soft) 560ms;
+}
+
+.is-converged .pv-converge-path {
+  opacity: 1;
+}
+
+.is-converged .pv-converge-arrow {
+  opacity: 1;
+}
+
+.pv-takeaway {
+  border-color: var(--theme-process);
+  background: var(--theme-process-surface);
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 440ms var(--ease-soft),
+    transform 440ms var(--ease-overshoot);
+}
+
+.pv-takeaway.is-on {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.pv-takeaway .pv-issue-no {
+  color: var(--theme-process);
+}
+
+@keyframes pv-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

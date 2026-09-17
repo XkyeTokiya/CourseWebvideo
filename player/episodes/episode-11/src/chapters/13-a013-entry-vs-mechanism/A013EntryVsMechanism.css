@@ -1,0 +1,410 @@
+/* entry-vs-mechanism · parallel-cards-with-takeaway
+   mechanism: compare-and-reweight — 两卡左右并列边界持续，权重随判断推进，不轮流高亮
+   prefix: ev- */
+
+.ev-scene {
+  justify-content: flex-start;
+  gap: 26px;
+}
+
+/* ── 头部：标题 + 工程分割线 ─────────────────────────── */
+
+.ev-head {
+  flex: none;
+}
+
+.ev-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: ev-rise 640ms var(--ease-soft) both;
+}
+
+.ev-rule {
+  margin-top: 20px;
+  animation: ev-fade 700ms var(--ease-soft) 180ms backwards;
+}
+
+/* ── 并列双卡：入口卡（左）｜边界｜机制卡（右） ─────────
+   R021 由两卡之间的左右并列边界承载 */
+
+.ev-cards {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 34px;
+}
+
+.ev-card {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 34px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+.ev-card-entry {
+  animation: ev-rise 560ms var(--ease-soft) 240ms both;
+}
+
+/* 机制卡第一拍保持虚线待亮状态，第二拍激活为实线卡 */
+
+.ev-card-mechanism {
+  border: 3px dashed var(--rule);
+  background: var(--surface-3);
+  box-shadow: none;
+  animation: ev-rise 560ms var(--ease-soft) 400ms both;
+  transition: border-color 420ms var(--ease-soft) 60ms,
+    background-color 420ms var(--ease-soft) 60ms,
+    box-shadow 420ms var(--ease-soft) 60ms;
+}
+
+.is-mechanism .ev-card-mechanism {
+  border-style: solid;
+  border-color: var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+.ev-card-tag {
+  flex: none;
+  align-self: flex-start;
+  padding: 4px 16px;
+  border: 2px solid var(--theme-structural);
+  background: var(--surface-3);
+  font-family: var(--font-display-cn);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--theme-structural);
+  transition: color 420ms var(--ease-soft), border-color 420ms var(--ease-soft),
+    background-color 420ms var(--ease-soft);
+}
+
+.is-mechanism .ev-card-mechanism .ev-card-tag {
+  border-color: var(--theme-process);
+  background: var(--theme-process-surface);
+  color: var(--theme-process);
+}
+
+.ev-glyph {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+}
+
+.ev-glyph-svg {
+  width: 100%;
+  max-height: 100%;
+  overflow: visible;
+}
+
+.ev-card-title {
+  flex: none;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--theme-structural);
+}
+
+.ev-card-caption {
+  flex: none;
+  margin: 10px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 23px;
+  font-weight: 400;
+  color: var(--text-2);
+}
+
+/* ── 左卡内部演示：查询入口 → 对象 / 关联信息（第一拍） ── */
+
+.ev-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ev-pop 440ms var(--ease-overshoot) 950ms both;
+}
+
+.ev-mag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ev-pop 400ms var(--ease-overshoot) 1120ms both;
+}
+
+.ev-lead {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: ev-draw 560ms var(--ease-soft) both;
+  animation-delay: calc(1240ms + var(--ev-i) * 170ms);
+}
+
+.ev-lead-arrow {
+  opacity: 0;
+  animation: ev-fade 280ms var(--ease-soft) both;
+  animation-delay: calc(1730ms + var(--ev-i) * 170ms);
+}
+
+.ev-target {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ev-pop 420ms var(--ease-overshoot) both;
+  animation-delay: calc(1400ms + var(--ev-i) * 170ms);
+}
+
+.ev-target-label {
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 700;
+  fill: var(--theme-structural);
+}
+
+/* ── R021 边界：虚线分栏 + 竖排"两件事" ──────────────── */
+
+.ev-divider {
+  flex: none;
+  width: 56px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ev-divider::before,
+.ev-divider::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 0;
+  border-left: 2px dashed var(--theme-dashed-line);
+}
+
+.ev-divider::before {
+  top: 4px;
+  height: 40%;
+}
+
+.ev-divider::after {
+  bottom: 4px;
+  height: 40%;
+}
+
+.ev-divider-mark {
+  writing-mode: vertical-rl;
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  color: var(--text-mute);
+  animation: ev-fade 700ms var(--ease-soft) 900ms both;
+}
+
+/* ── 右卡内部：信息 → 授权 → 标准 → 流程 → 可信使用 ────
+   机制卡内容第一拍全部待亮，第二拍依次落位 */
+
+.ev-card-mechanism .ev-card-tag {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 420ms var(--ease-soft) 200ms,
+    transform 420ms var(--ease-soft) 200ms,
+    color 420ms var(--ease-soft) 620ms,
+    border-color 420ms var(--ease-soft) 620ms,
+    background-color 420ms var(--ease-soft) 620ms;
+}
+
+.is-mechanism .ev-card-mechanism .ev-card-tag {
+  opacity: 1;
+  transform: none;
+}
+
+.ev-card-mechanism .ev-glyph,
+.ev-card-mechanism .ev-card-title,
+.ev-card-mechanism .ev-card-caption {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 420ms var(--ease-soft), transform 420ms var(--ease-soft);
+}
+
+.ev-card-mechanism .ev-glyph {
+  transition-delay: 80ms;
+}
+
+.ev-card-mechanism .ev-card-title {
+  transition-delay: 360ms;
+}
+
+.ev-card-mechanism .ev-card-caption {
+  transition-delay: 520ms;
+}
+
+.is-mechanism .ev-card-mechanism .ev-glyph,
+.is-mechanism .ev-card-mechanism .ev-card-title,
+.is-mechanism .ev-card-mechanism .ev-card-caption {
+  opacity: 1;
+  transform: none;
+}
+
+.ev-gate rect,
+.ev-gate text {
+  transition: fill 340ms var(--ease-soft), stroke 340ms var(--ease-soft);
+  transition-delay: calc(700ms + var(--ev-k) * 330ms);
+}
+
+.is-mechanism .ev-gate rect {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-process);
+}
+
+.is-mechanism .ev-gate text {
+  fill: var(--theme-process);
+}
+
+.ev-gate-label {
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 700;
+  fill: var(--theme-structural);
+}
+
+.ev-check-circle,
+.ev-check-mark {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 380ms var(--ease-soft);
+}
+
+.is-mechanism .ev-check-circle {
+  stroke-dashoffset: 0;
+  transition-delay: 1700ms;
+}
+
+.is-mechanism .ev-check-mark {
+  stroke-dashoffset: 0;
+  transition-delay: 2000ms;
+}
+
+.ev-check-label {
+  font-family: var(--font-display-cn);
+  font-size: 23px;
+  font-weight: 700;
+  fill: var(--theme-process);
+  opacity: 0;
+  transition: opacity 360ms var(--ease-soft) 2280ms;
+}
+
+.is-mechanism .ev-check-label {
+  opacity: 1;
+}
+
+/* ── 判断条：找得到记录 ≠ 用得可信（仅第二拍出现） ───── */
+
+.ev-takeaway {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 18px 32px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 480ms var(--ease-soft) 2560ms,
+    transform 480ms var(--ease-soft) 2560ms;
+}
+
+.is-mechanism .ev-takeaway {
+  opacity: 1;
+  transform: none;
+}
+
+.ev-take-tag {
+  flex: none;
+  padding: 6px 16px;
+  background: var(--theme-structural);
+  color: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.ev-equation {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.ev-term {
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.ev-neq {
+  font-size: 48px;
+  color: var(--theme-process);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: transform 460ms var(--ease-overshoot) 2920ms,
+    opacity 300ms var(--ease-soft) 2920ms;
+}
+
+.is-mechanism .ev-neq {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ev-term-trust {
+  color: var(--theme-process);
+}
+
+/* ── keyframes ──────────────────────────────────────── */
+
+@keyframes ev-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ev-pop {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ev-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ev-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

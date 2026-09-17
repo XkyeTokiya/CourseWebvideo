@@ -1,0 +1,341 @@
+/* division-unchanged · image-with-insight-rail
+   mechanism: persistent-media-reading — 主图区持续，阅读焦点沿图侧短条下移，判断随短条推进
+   prefix: du- */
+
+.du-scene {
+  justify-content: flex-start;
+  gap: 26px;
+}
+
+/* ── 头部：标题 + 工程分割线 ─────────────────────────── */
+
+.du-head {
+  flex: none;
+}
+
+.du-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: du-rise 640ms var(--ease-soft) both;
+}
+
+.du-rule {
+  margin-top: 20px;
+  animation: du-fade 700ms var(--ease-soft) 180ms backwards;
+}
+
+/* ── 主区：主图列（左） + 图侧洞察短条（右） ───────────
+   R018 由左右分栏与短条上下顺序承载 */
+
+.du-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 48px;
+}
+
+.du-stage-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* M003 未就位：素净空白版位预留，不放任何占位图 / 占位卡 / 文案 */
+
+.du-media {
+  flex: 1;
+  min-height: 0;
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+  animation: du-fade 720ms var(--ease-soft) 240ms backwards;
+}
+
+/* ── 演示带：三站照常作业 → 记录升起汇聚指向同一对象 ── */
+
+.du-demo {
+  flex: none;
+  height: 250px;
+}
+
+.du-demo-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.du-station {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: du-pop 460ms var(--ease-overshoot) both;
+  animation-delay: calc(500ms + var(--du-i) * 170ms);
+}
+
+.du-chip {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 380ms var(--ease-soft), transform 380ms var(--ease-soft);
+  transition-delay: calc(200ms + var(--du-i) * 120ms);
+}
+
+.is-repointed .du-chip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.du-lead {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 640ms var(--ease-soft);
+  transition-delay: calc(520ms + var(--du-i) * 140ms);
+}
+
+.is-repointed .du-lead {
+  stroke-dashoffset: 0;
+}
+
+.du-lead-arrow {
+  opacity: 0;
+  transition: opacity 280ms var(--ease-soft);
+  transition-delay: calc(1060ms + var(--du-i) * 130ms);
+}
+
+.is-repointed .du-lead-arrow {
+  opacity: 1;
+}
+
+.du-object {
+  opacity: 0;
+  transform: translateY(14px) scale(0.92);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity 420ms var(--ease-soft) 1250ms,
+    transform 420ms var(--ease-overshoot) 1250ms;
+}
+
+.is-repointed .du-object {
+  opacity: 1;
+  transform: none;
+}
+
+.du-object-label {
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 700;
+  fill: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 380ms var(--ease-soft) 1470ms;
+}
+
+.is-repointed .du-object-label {
+  opacity: 1;
+}
+
+/* ── 图侧洞察短条：轨道 + 阅读焦点 + 三条短条 ───────── */
+
+.du-rail {
+  flex: none;
+  width: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.du-rail-inner {
+  --du-bar-h: 160px;
+  --du-rail-gap: 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--du-rail-gap);
+}
+
+.du-track {
+  position: absolute;
+  left: -38px;
+  top: 6px;
+  bottom: 6px;
+  border-left: 2px dashed var(--theme-dashed-line);
+}
+
+.du-track-dot {
+  position: absolute;
+  left: -47px;
+  top: calc(var(--du-bar-h) / 2 - 9px);
+  width: 18px;
+  height: 18px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  opacity: 0;
+  animation: du-fade 420ms var(--ease-soft) 1400ms forwards;
+  transition: top 640ms var(--ease-soft),
+    background-color 300ms var(--ease-soft) 320ms,
+    border-color 300ms var(--ease-soft) 320ms;
+}
+
+.is-repointed .du-track-dot {
+  top: calc(var(--du-bar-h) * 1.5 + var(--du-rail-gap) - 9px);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.du-bar {
+  min-height: var(--du-bar-h);
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 20px 26px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.du-bar-glyph-svg {
+  flex: none;
+  width: 96px;
+  height: 88px;
+  overflow: visible;
+}
+
+.du-bar-body {
+  min-width: 0;
+}
+
+.du-bar-tag {
+  display: inline-block;
+  padding: 3px 12px;
+  border: 2px solid var(--theme-structural);
+  background: var(--surface-3);
+  font-family: var(--font-display-cn);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--theme-structural);
+  transition: color 420ms var(--ease-soft), border-color 420ms var(--ease-soft),
+    background-color 300ms var(--ease-soft);
+}
+
+.du-bar-body h2 {
+  margin: 8px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: var(--theme-structural);
+  transition: color 420ms var(--ease-soft);
+}
+
+/* 短条一：第一拍亮出；第二拍保持，仅弱化退居次位（不消失） */
+
+.du-bar-owner {
+  animation: du-rise 520ms var(--ease-soft) 1350ms both;
+  transition: background-color 420ms var(--ease-soft);
+}
+
+.du-fig {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: du-pop 380ms var(--ease-overshoot) both;
+  animation-delay: calc(1560ms + var(--du-i) * 150ms);
+}
+
+.is-repointed .du-bar-owner {
+  background: var(--surface-3);
+}
+
+.is-repointed .du-bar-owner .du-bar-tag {
+  color: var(--text-2);
+  border-color: var(--text-2);
+}
+
+.is-repointed .du-bar-owner .du-bar-body h2 {
+  color: var(--text-2);
+}
+
+/* 短条二：第二拍焦点下移点亮 */
+
+.du-bar-point {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 460ms var(--ease-soft) 140ms,
+    transform 460ms var(--ease-soft) 140ms,
+    background-color 300ms var(--ease-soft) 420ms,
+    border-color 300ms var(--ease-soft) 420ms;
+}
+
+.is-repointed .du-bar-point {
+  opacity: 1;
+  transform: none;
+  background: var(--theme-process-surface);
+  border-color: var(--theme-process);
+}
+
+.is-repointed .du-bar-point .du-bar-tag {
+  color: var(--theme-process);
+  border-color: var(--theme-process);
+  background: var(--surface-2);
+}
+
+/* 短条三（转折收束）：第二拍末尾落定的深色判断条 */
+
+.du-bar-pivot {
+  opacity: 0;
+  transform: translateY(18px) scale(0.96);
+  background: var(--theme-structural);
+  border-color: var(--theme-structural);
+  transition: opacity 440ms var(--ease-soft) 1500ms,
+    transform 440ms var(--ease-overshoot) 1500ms;
+}
+
+.is-repointed .du-bar-pivot {
+  opacity: 1;
+  transform: none;
+}
+
+.du-bar-pivot .du-bar-body h2 {
+  font-size: 32px;
+  color: var(--surface-2);
+}
+
+.du-bar-pivot .du-bar-body h2 em {
+  font-style: normal;
+  color: var(--industrial-green-line);
+}
+
+/* ── keyframes ──────────────────────────────────────── */
+
+@keyframes du-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes du-pop {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes du-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

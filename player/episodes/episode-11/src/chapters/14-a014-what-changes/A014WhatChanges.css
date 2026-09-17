@@ -1,0 +1,773 @@
+/* what-changes · A014 · split-compare-with-thesis
+   mechanism: compare-and-reweight —— 左右两栏「未变 / 改变」对照持续承载 R022，
+   过去/现在两栏的方式差异承载 R023（左栏反复确认 · 右栏先定位再沿记录查找）。
+   第 1 拍建立骨架并亮出 exact 论点；第 2/3 拍分别补入两栏旧/新方式；
+   第 4 拍弱化对照、判断条补入治理项；第 5 拍切全屏 accent。
+   guardrail C015: 判断条写「不等于治理已经完成」，不写成治理已经完成。
+   prefix: wc- （本章独占） */
+
+.wc-scene {
+  justify-content: flex-start;
+  gap: 26px;
+  font-family: var(--font-body);
+}
+
+/* ── headline slot · S051 ─────────────────────────────── */
+
+.wc-head {
+  flex: none;
+}
+
+.wc-kicker {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  animation: wc-fade 460ms var(--ease-soft) 60ms backwards;
+}
+
+.wc-title {
+  margin: 10px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 60px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: wc-rise 640ms var(--ease-soft) 140ms backwards;
+}
+
+/* ── compare row · 左未变 | 右改变 ─────────────────────── */
+
+.wc-compare {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 44px;
+  transition: opacity 560ms var(--ease-soft);
+}
+
+/* 第 4 拍权重移向判断条：对照弱化但不消失 */
+.is-governance-open .wc-compare {
+  opacity: 0.66;
+}
+
+.wc-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 34px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.wc-col--past {
+  animation: wc-rise 600ms var(--ease-soft) 320ms backwards;
+}
+
+.wc-col--present {
+  animation: wc-fade 600ms var(--ease-soft) 460ms backwards;
+}
+
+.wc-axis-row {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.wc-axis {
+  flex: none;
+  padding: 7px 14px;
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--theme-paper);
+  background: var(--theme-structural);
+  animation: wc-pop 440ms var(--ease-overshoot) 620ms backwards;
+}
+
+.wc-col--present .wc-axis {
+  background: var(--theme-process);
+  animation-delay: 740ms;
+}
+
+.wc-cap {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+.wc-col--past .wc-cap {
+  animation: wc-rise 520ms var(--ease-soft) 700ms backwards;
+}
+
+.wc-col--present .wc-cap {
+  animation: wc-rise 520ms var(--ease-soft) 820ms backwards;
+}
+
+/* 过去/现在条件行：橙=过去没有共同标识，绿=现在统一识别（R023 轴线配色） */
+
+.wc-cond {
+  flex: none;
+  margin: 16px 0 0;
+  padding-left: 12px;
+  border-left: 5px solid var(--theme-warning);
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 420ms var(--ease-soft), transform 420ms var(--ease-soft);
+}
+
+.wc-col--present .wc-cond {
+  border-left-color: var(--theme-process);
+}
+
+.is-past-shown .wc-col--past .wc-cond,
+.is-present-shown .wc-col--present .wc-cond {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 100ms;
+}
+
+/* ── 演示区：第 1 拍为虚线待补版位，随第 2/3 拍各自补入 ── */
+
+.wc-body {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  margin-top: 14px;
+}
+
+.wc-body-ph {
+  position: absolute;
+  inset: 0;
+  border: 2px dashed var(--theme-dashed-line);
+  transition: opacity 460ms var(--ease-soft);
+}
+
+.wc-demo-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.is-past-shown .wc-col--past .wc-body-ph,
+.is-present-shown .wc-col--present .wc-body-ph {
+  opacity: 0;
+}
+
+/* ── 左栏演示 · 第 2 拍补入：同一盒药 → 各自记录 → 反复确认 ── */
+
+.wc-same-box,
+.wc-panel {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 460ms var(--ease-soft), transform 460ms var(--ease-soft);
+}
+
+.wc-link,
+.wc-loop,
+.wc-loop-label {
+  opacity: 0;
+  transition: opacity 400ms var(--ease-soft);
+}
+
+.is-past-shown .wc-same-box {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 240ms;
+}
+
+.is-past-shown .wc-panel-0 { opacity: 1; transform: translateY(0); transition-delay: 700ms; }
+.is-past-shown .wc-panel-1 { opacity: 1; transform: translateY(0); transition-delay: 1250ms; }
+.is-past-shown .wc-panel-2 { opacity: 1; transform: translateY(0); transition-delay: 1800ms; }
+
+.is-past-shown .wc-link-0 { opacity: 1; transition-delay: 2350ms; }
+.is-past-shown .wc-link-1 { opacity: 1; transition-delay: 2650ms; }
+.is-past-shown .wc-link-2 { opacity: 1; transition-delay: 2950ms; }
+
+.is-past-shown .wc-loop {
+  opacity: 1;
+  transition-delay: 3450ms;
+}
+
+.is-past-shown .wc-loop-label {
+  opacity: 1;
+  transition-delay: 4000ms;
+}
+
+/* 回环虚线行进两轮：确认 traffic 在盒与记录之间往返 */
+.is-past-shown .wc-loop-path {
+  animation: wc-march 1150ms linear 4700ms 2;
+}
+
+.wc-sb-frame {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 4;
+}
+
+.wc-sb-tag {
+  fill: var(--theme-cool-surface);
+  stroke: var(--theme-structural);
+  stroke-width: 2;
+}
+
+.wc-sb-cross-v,
+.wc-sb-cross-h {
+  fill: var(--theme-process);
+}
+
+.wc-sb-cap {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 900;
+  fill: var(--theme-structural);
+}
+
+.wc-pn-frame {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.wc-pn-box {
+  fill: var(--surface-3);
+  stroke: var(--theme-structural);
+  stroke-width: 2;
+}
+
+/* 各自记录：虚线空条 = 没有共同标识（对应右栏的实心统一标识条） */
+.wc-pn-strip {
+  fill: var(--surface-2);
+  stroke: var(--theme-dashed-line);
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+}
+
+.wc-pn-line {
+  stroke: var(--theme-structural);
+  stroke-width: 2;
+}
+
+.wc-pn-cap {
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 700;
+  fill: var(--text-2);
+}
+
+.wc-link-line {
+  stroke: var(--theme-warning);
+  stroke-width: 3;
+  stroke-dasharray: 7 8;
+}
+
+.wc-link-mark {
+  fill: var(--surface-2);
+  stroke: var(--theme-warning);
+  stroke-width: 3;
+}
+
+.wc-link-q {
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 900;
+  fill: var(--theme-warning);
+}
+
+.wc-loop-path {
+  fill: none;
+  stroke: var(--theme-warning);
+  stroke-width: 3;
+  stroke-dasharray: 8 9;
+}
+
+.wc-loop-head {
+  fill: none;
+  stroke: var(--theme-warning);
+  stroke-width: 3.5;
+  stroke-linecap: square;
+}
+
+.wc-loop-label {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 900;
+  fill: var(--theme-warning);
+}
+
+/* ── 右栏演示 · 第 3 拍补入：入口 → 定位 → 沿记录查找 ── */
+
+.wc-entry,
+.wc-object {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 460ms var(--ease-soft), transform 460ms var(--ease-soft);
+}
+
+.wc-entry-head,
+.wc-loc-label,
+.wc-chain-cap {
+  opacity: 0;
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.wc-entry-link,
+.wc-fan {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 500ms var(--ease-soft);
+}
+
+.wc-reticle {
+  opacity: 0;
+  transform: scale(1.6);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity 280ms var(--ease-soft) 1750ms,
+    transform 520ms var(--ease-overshoot) 1750ms;
+}
+
+.wc-rd-on {
+  opacity: 0;
+  transform: scale(0.86);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity 380ms var(--ease-soft), transform 380ms var(--ease-overshoot);
+}
+
+.is-present-shown .wc-entry {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 350ms;
+}
+
+.is-present-shown .wc-entry-link {
+  stroke-dashoffset: 0;
+  transition-delay: 850ms;
+}
+
+.is-present-shown .wc-entry-head {
+  opacity: 1;
+  transition-delay: 1250ms;
+}
+
+.is-present-shown .wc-object {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1150ms;
+}
+
+.is-present-shown .wc-reticle {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.is-present-shown .wc-loc-label {
+  opacity: 1;
+  transition-delay: 2300ms;
+}
+
+.is-present-shown .wc-fan-0 { stroke-dashoffset: 0; transition-delay: 2850ms; }
+.is-present-shown .wc-fan-1 { stroke-dashoffset: 0; transition-delay: 2950ms; }
+.is-present-shown .wc-fan-2 { stroke-dashoffset: 0; transition-delay: 3050ms; }
+.is-present-shown .wc-fan-3 { stroke-dashoffset: 0; transition-delay: 3150ms; }
+
+.is-present-shown .wc-record-0 .wc-rd-on { opacity: 1; transform: scale(1); transition-delay: 3500ms; }
+.is-present-shown .wc-record-1 .wc-rd-on { opacity: 1; transform: scale(1); transition-delay: 3760ms; }
+.is-present-shown .wc-record-2 .wc-rd-on { opacity: 1; transform: scale(1); transition-delay: 4020ms; }
+.is-present-shown .wc-record-3 .wc-rd-on { opacity: 1; transform: scale(1); transition-delay: 4280ms; }
+
+/* 扫查箭头沿记录链走过一遍：查找动作本身 */
+.is-present-shown .wc-scan {
+  animation: wc-scan-run 1800ms var(--ease-soft) 4700ms 1 both;
+}
+
+.is-present-shown .wc-chain-cap {
+  opacity: 1;
+  transition-delay: 5300ms;
+}
+
+.wc-en-ring {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 3.5;
+}
+
+.wc-en-dot {
+  fill: var(--theme-process);
+}
+
+.wc-en-tick {
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.wc-en-cap {
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 700;
+  fill: var(--text-2);
+}
+
+.wc-entry-link {
+  stroke: var(--theme-structural);
+  stroke-width: 3.5;
+}
+
+.wc-entry-head {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 4;
+  stroke-linecap: square;
+}
+
+.wc-ob-frame {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 4;
+}
+
+.wc-ob-box {
+  fill: var(--surface-3);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+}
+
+.wc-ob-tag {
+  fill: var(--theme-cool-surface);
+  stroke: var(--theme-structural);
+  stroke-width: 1.5;
+}
+
+/* 统一标识条：实心绿框，与左栏各自的虚线条相对 */
+.wc-ob-chip {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-process);
+  stroke-width: 2.5;
+}
+
+.wc-ob-chip-text {
+  font-family: var(--font-display-cn);
+  font-size: 20px;
+  font-weight: 900;
+  fill: var(--theme-structural);
+}
+
+.wc-reticle path {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 4;
+  stroke-linecap: square;
+}
+
+.wc-loc-label {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 900;
+  fill: var(--theme-process);
+}
+
+.wc-fan {
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+}
+
+.wc-rd-frame {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.wc-rd-on {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-process);
+  stroke-width: 3;
+}
+
+.wc-rd-line {
+  stroke: var(--theme-structural);
+  stroke-width: 2;
+}
+
+.wc-scan {
+  fill: var(--theme-process);
+  opacity: 0;
+}
+
+.wc-chain-cap {
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 700;
+  fill: var(--text-2);
+}
+
+/* ── bottom-thesis slot · U042：exact S053 + 第 4 拍治理项 ── */
+
+.wc-thesis {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  min-height: 118px;
+  padding: 18px 30px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  animation: wc-rise 620ms var(--ease-soft) 1040ms backwards;
+}
+
+.wc-thesis-lead {
+  flex: none;
+  margin: 0;
+  padding: 9px 16px;
+  background: var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--theme-paper);
+  animation: wc-fade 420ms var(--ease-soft) 1300ms backwards;
+}
+
+.wc-thesis-text {
+  flex: none;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  white-space: nowrap;
+  animation: wc-rise 520ms var(--ease-soft) 1440ms backwards;
+}
+
+.wc-thesis-text em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.wc-thesis-divider {
+  flex: none;
+  align-self: stretch;
+  border-left: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transition: opacity 400ms var(--ease-soft);
+}
+
+.is-governance-open .wc-thesis-divider {
+  opacity: 1;
+}
+
+.wc-gov {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.wc-gov-kicker {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: var(--theme-warning);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 420ms var(--ease-soft) 150ms, transform 420ms var(--ease-soft) 150ms;
+}
+
+.wc-gov-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.wc-gov-lead {
+  flex: none;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 420ms var(--ease-soft) 550ms, transform 420ms var(--ease-soft) 550ms;
+}
+
+.wc-gov-chip {
+  flex: none;
+  padding: 7px 16px;
+  background: var(--surface-3);
+  border: 2.5px solid var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: scale(0.8);
+  transform-origin: center;
+  transition: opacity 400ms var(--ease-soft), transform 400ms var(--ease-overshoot);
+}
+
+.wc-gov-chip:nth-child(2) { transition-delay: 950ms; }
+.wc-gov-chip:nth-child(3) { transition-delay: 1350ms; }
+.wc-gov-chip:nth-child(4) { transition-delay: 1750ms; }
+.wc-gov-chip:nth-child(5) { transition-delay: 2150ms; }
+
+.is-governance-open .wc-gov-kicker,
+.is-governance-open .wc-gov-lead {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.is-governance-open .wc-gov-chip {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── K-A014-01 · accent：低成本全屏 StatementFrame ── */
+
+.wc-statement {
+  justify-content: center;
+  gap: 30px;
+}
+
+.wc-statement-rule {
+  flex: none;
+  width: 132px;
+  height: 6px;
+  background: var(--theme-process);
+  transform-origin: left center;
+  animation: wc-grow 480ms var(--ease-soft) 160ms backwards;
+}
+
+.wc-statement-kicker {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--text-mute);
+  animation: wc-fade 460ms var(--ease-soft) 80ms backwards;
+}
+
+.wc-statement-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 84px;
+  font-weight: 900;
+  line-height: 1.22;
+  color: var(--theme-structural);
+  animation: wc-rise 680ms var(--ease-soft) 260ms backwards;
+}
+
+.wc-statement-line em {
+  position: relative;
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* 「可以对齐的起点」下划线随口播落定 */
+.wc-statement-line em::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: -10px;
+  height: 8px;
+  background: var(--theme-process);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: wc-underline 560ms var(--ease-soft) 1050ms forwards;
+}
+
+/* ── keyframes ── */
+
+@keyframes wc-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wc-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes wc-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes wc-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes wc-march {
+  to {
+    stroke-dashoffset: -34;
+  }
+}
+
+@keyframes wc-scan-run {
+  0% {
+    transform: translateX(96px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  86% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(656px);
+    opacity: 0;
+  }
+}
+
+@keyframes wc-underline {
+  to {
+    transform: scaleX(1);
+  }
+}

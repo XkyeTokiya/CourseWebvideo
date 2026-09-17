@@ -1,0 +1,640 @@
+/* records-unrecognized · A003 · split-compare-with-thesis
+   mechanism: R005 两栏对照 —— 由共同命题标题与左右两栏并列等高承载，不轮播高亮；
+              R006 汇聚 —— 由中部口径条向底部判断条的单向收束（只朝下的箭头）承载。
+   guardrail C003: 各记录本身清楚扎实（左侧实心账目 + 绿色核记），
+                   缺的是互认依据，不是信息化。
+   prefix: ru- （本章独占） */
+
+.ru-scene {
+  justify-content: flex-start;
+  gap: 24px;
+  font-family: var(--font-body);
+}
+
+/* ── headline slot · S009 —— 两栏共同的命题 ─────────────── */
+
+.ru-head {
+  flex: none;
+}
+
+.ru-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: ru-rise 640ms var(--ease-soft) backwards;
+}
+
+.ru-not {
+  padding: 0 8px 2px;
+  background: var(--theme-warning-surface);
+  border-bottom: 6px solid var(--theme-warning);
+}
+
+.ru-head-rule {
+  margin-top: 18px;
+  animation: ru-fade 560ms var(--ease-soft) 240ms backwards;
+}
+
+/* ── compare columns · U007 | U008 —— 并列等高承载 R005 ── */
+
+.ru-columns {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 44px;
+}
+
+.ru-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 30px 20px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  animation: ru-rise 640ms var(--ease-soft) backwards;
+}
+
+.ru-col--ledger { animation-delay: 180ms; }
+.ru-col--gap    { animation-delay: 320ms; }
+
+.ru-col-cap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 14px;
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+.ru-col-cap::before {
+  content: "";
+  flex: none;
+  width: 12px;
+  height: 12px;
+  background: var(--theme-structural);
+}
+
+.ru-col--gap .ru-col-cap::before {
+  background: var(--theme-warning);
+}
+
+/* ── 左栏：账目式四条记录（骨架为虚线槽位，补入后坐实） ── */
+
+.ru-ledger {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ru-rec {
+  flex: none;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 16px;
+  border: 2px dashed var(--theme-dashed-line);
+  transition: background-color 420ms var(--ease-soft);
+}
+
+.ru-rec > * {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 460ms var(--ease-soft), transform 460ms var(--ease-soft);
+}
+
+.has-records .ru-rec {
+  background: var(--surface-2);
+}
+
+.has-records .ru-rec > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.has-records .ru-rec-0,
+.has-records .ru-rec-0 > * { transition-delay: 60ms; }
+.has-records .ru-rec-1,
+.has-records .ru-rec-1 > * { transition-delay: 300ms; }
+.has-records .ru-rec-2,
+.has-records .ru-rec-2 > * { transition-delay: 540ms; }
+.has-records .ru-rec-3,
+.has-records .ru-rec-3 > * { transition-delay: 780ms; }
+
+.ru-rec .ru-rec-no {
+  flex: none;
+  font-size: 28px;
+  color: var(--text-faint);
+}
+
+.ru-rec-party {
+  flex: none;
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+.ru-rec-lead {
+  position: relative;
+  flex: 1;
+  height: 0;
+  border-top: 2px dashed var(--theme-dashed-line);
+}
+
+.ru-rec-lead i {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 8px;
+  font-style: normal;
+  font-size: 20px;
+  color: var(--text-mute);
+  background: var(--surface-2);
+  white-space: nowrap;
+}
+
+.ru-rec-chip {
+  flex: none;
+  padding: 7px 18px;
+  background: var(--theme-structural);
+  color: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* ── 左栏核记（第 3 拍：记录本身是清楚的） ── */
+
+.ru-verdict {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 480ms var(--ease-soft), transform 480ms var(--ease-soft);
+}
+
+.has-gap .ru-verdict {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1120ms;
+}
+
+.ru-verdict span {
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+.ru-verdict-mark {
+  flex: none;
+  width: 26px;
+  height: 26px;
+}
+
+.ru-verdict-path {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  stroke-linecap: square;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 420ms var(--ease-soft);
+}
+
+.has-gap .ru-verdict-path {
+  stroke-dashoffset: 0;
+  transition-delay: 1240ms;
+}
+
+/* ── 右栏：彼此之间 —— 四条记录两两对不上 ── */
+
+.ru-gap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+}
+
+.ru-gap-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.ru-chip {
+  padding: 9px 18px;
+  background: var(--theme-structural);
+  color: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: scale(0.86);
+  transition: opacity 380ms var(--ease-soft), transform 460ms var(--ease-overshoot);
+}
+
+.has-gap .ru-chip {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.has-gap .ru-chip-0 { transition-delay: 40ms; }
+.has-gap .ru-chip-1 { transition-delay: 220ms; }
+.has-gap .ru-chip-2 { transition-delay: 400ms; }
+.has-gap .ru-chip-3 { transition-delay: 580ms; }
+
+.ru-break {
+  flex: none;
+  width: 38px;
+  height: 26px;
+  overflow: visible;
+}
+
+.ru-break-line {
+  stroke: var(--theme-warning);
+  stroke-width: 4.5;
+  stroke-linecap: square;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 360ms var(--ease-soft);
+}
+
+.has-gap .ru-break-line {
+  stroke-dashoffset: 0;
+}
+
+.has-gap .ru-break-0 .ru-break-line { transition-delay: 360ms; }
+.has-gap .ru-break-1 .ru-break-line { transition-delay: 540ms; }
+.has-gap .ru-break-2 .ru-break-line { transition-delay: 720ms; }
+
+.ru-gap-line {
+  margin: 0;
+}
+
+.ru-gap-mark {
+  display: inline-block;
+  padding: 6px 18px;
+  background: var(--theme-warning-surface);
+  border-bottom: 5px solid var(--theme-warning);
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 560ms var(--ease-soft), transform 560ms var(--ease-soft);
+}
+
+.has-gap .ru-gap-mark {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 900ms;
+}
+
+/* ── medium slot · U009/G009：三类不一致（虚线槽位 → 坐实的口径条） ── */
+
+.ru-mid {
+  flex: none;
+  height: 124px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.ru-inc {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 18px;
+  padding: 0 26px;
+  border: 3px dashed var(--theme-dashed-line);
+  box-shadow: 0 0 0 3px transparent, 7px 8px 0 transparent;
+  transition: background-color 460ms var(--ease-soft),
+    border-color 460ms var(--ease-soft), box-shadow 460ms var(--ease-soft);
+}
+
+.has-mid .ru-inc {
+  background: var(--surface-2);
+  border-color: var(--theme-structural);
+  border-style: solid;
+  box-shadow: 0 0 0 3px var(--theme-structural), 7px 8px 0 var(--theme-offset-shadow);
+}
+
+.has-mid .ru-inc-0 { transition-delay: 0ms; }
+.has-mid .ru-inc-1 { transition-delay: 420ms; }
+.has-mid .ru-inc-2 { transition-delay: 840ms; }
+
+.ru-inc-glyph {
+  flex: none;
+  width: 104px;
+  height: 44px;
+  overflow: visible;
+  opacity: 0;
+  transition: opacity 320ms var(--ease-soft);
+}
+
+.has-mid .ru-inc-glyph {
+  opacity: 1;
+}
+
+.has-mid .ru-inc-0 .ru-inc-glyph { transition-delay: 100ms; }
+.has-mid .ru-inc-1 .ru-inc-glyph { transition-delay: 520ms; }
+.has-mid .ru-inc-2 .ru-inc-glyph { transition-delay: 940ms; }
+
+.ru-inc-guide {
+  stroke: var(--theme-dashed-line);
+  stroke-width: 2;
+  stroke-dasharray: 4 5;
+}
+
+.ru-inc-rule {
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+/* 刻度起点都在共用基准线上，激活后滑向各自的错位 —— 演示“对不上” */
+.ru-inc-tick {
+  stroke: var(--theme-warning);
+  stroke-width: 4;
+  transform: translateX(var(--ru-align, 0px));
+  transition: transform 620ms var(--ease-soft);
+}
+
+.ru-inc-0 .ru-inc-tick-a { --ru-align: 14px; }
+.ru-inc-0 .ru-inc-tick-b { --ru-align: -14px; }
+.ru-inc-1 .ru-inc-tick-a { --ru-align: 22px; }
+.ru-inc-1 .ru-inc-tick-b { --ru-align: -22px; }
+.ru-inc-2 .ru-inc-tick-a { --ru-align: 8px; }
+.ru-inc-2 .ru-inc-tick-b { --ru-align: -8px; }
+
+.has-mid .ru-inc-tick {
+  transform: translateX(0);
+}
+
+.has-mid .ru-inc-0 .ru-inc-tick { transition-delay: 120ms; }
+.has-mid .ru-inc-1 .ru-inc-tick { transition-delay: 540ms; }
+.has-mid .ru-inc-2 .ru-inc-tick { transition-delay: 960ms; }
+
+.ru-inc-term {
+  flex: none;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 420ms var(--ease-soft), transform 420ms var(--ease-soft);
+}
+
+.has-mid .ru-inc-term {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.has-mid .ru-inc-0 .ru-inc-term { transition-delay: 200ms; }
+.has-mid .ru-inc-1 .ru-inc-term { transition-delay: 620ms; }
+.has-mid .ru-inc-2 .ru-inc-term { transition-delay: 1040ms; }
+
+.ru-inc-tag {
+  flex: none;
+  padding: 6px 14px;
+  background: var(--theme-warning);
+  color: var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 320ms var(--ease-soft), transform 420ms var(--ease-overshoot);
+}
+
+.has-mid .ru-inc-tag {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.has-mid .ru-inc-0 .ru-inc-tag { transition-delay: 400ms; }
+.has-mid .ru-inc-1 .ru-inc-tag { transition-delay: 820ms; }
+.has-mid .ru-inc-2 .ru-inc-tag { transition-delay: 1240ms; }
+
+/* ── 单向收束：只朝下的箭头，口径条 → 判断条 ── */
+
+.ru-drop {
+  flex: none;
+  height: 34px;
+}
+
+.ru-drop-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.ru-drop-arrow {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 5;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 320ms var(--ease-soft), transform 380ms var(--ease-soft);
+}
+
+.has-mid .ru-drop-arrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.has-mid .ru-drop-0 { transition-delay: 1420ms; }
+.has-mid .ru-drop-1 { transition-delay: 1580ms; }
+.has-mid .ru-drop-2 { transition-delay: 1740ms; }
+
+/* ── bottom-thesis slot · U009/G010：判断条（虚线槽位 → 坐实） ── */
+
+.ru-thesis {
+  flex: none;
+  height: 172px;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  padding: 0 32px;
+  border: 3px dashed var(--theme-dashed-line);
+  box-shadow: 7px 8px 0 transparent;
+  transition: background-color 480ms var(--ease-soft),
+    border-color 480ms var(--ease-soft), box-shadow 480ms var(--ease-soft);
+}
+
+.has-thesis .ru-thesis {
+  background: var(--surface-2);
+  border-color: var(--theme-danger);
+  border-style: solid;
+  box-shadow: 7px 8px 0 var(--theme-offset-shadow);
+  transition-delay: 1880ms;
+}
+
+.ru-thesis-copy {
+  flex: none;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ru-thesis-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 480ms var(--ease-soft), transform 480ms var(--ease-soft);
+}
+
+.has-thesis .ru-thesis-line {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 2020ms;
+}
+
+.ru-thesis-verdict {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-danger);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 520ms var(--ease-soft), transform 520ms var(--ease-soft);
+}
+
+.has-thesis .ru-thesis-verdict {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 2200ms;
+}
+
+/* 长链条上的一座座孤岛：链条虚影常在，岛屿坐实后错位断开 */
+.ru-islands {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  overflow: visible;
+}
+
+.ru-chain {
+  stroke: var(--theme-dashed-line);
+  stroke-width: 3;
+  stroke-dasharray: 10 12;
+}
+
+.ru-island {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 560ms var(--ease-soft), transform 560ms var(--ease-soft);
+}
+
+.has-thesis .ru-island {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.has-thesis .ru-island-0 { transition-delay: 2320ms; }
+.has-thesis .ru-island-1 { transition-delay: 2600ms; }
+.has-thesis .ru-island-2 { transition-delay: 2880ms; }
+.has-thesis .ru-island-3 { transition-delay: 3160ms; }
+
+.ru-island-base {
+  stroke: var(--theme-structural);
+  stroke-width: 5;
+}
+
+.ru-island-mound {
+  fill: var(--theme-danger-surface);
+  stroke: var(--theme-danger);
+  stroke-width: 3;
+}
+
+.ru-island-label {
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 700;
+  fill: var(--theme-structural);
+}
+
+.ru-cut {
+  opacity: 0;
+  transition: opacity 340ms var(--ease-soft);
+}
+
+.ru-cut line {
+  stroke: var(--theme-danger);
+  stroke-width: 4;
+  stroke-linecap: square;
+}
+
+.has-thesis .ru-cut {
+  opacity: 1;
+}
+
+.has-thesis .ru-cut-0 { transition-delay: 3560ms; }
+.has-thesis .ru-cut-1 { transition-delay: 3700ms; }
+.has-thesis .ru-cut-2 { transition-delay: 3840ms; }
+
+/* ── keyframes（仅首拍建立时使用一次） ── */
+
+@keyframes ru-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ru-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

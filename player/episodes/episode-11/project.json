@@ -1,12 +1,12 @@
 {
   "id": "episode-11",
-  "title": "第 11 期（待制作）",
-  "status": "planned",
+  "title": "药品供应链协同：唯一标识让一盒药全程可查可追",
+  "status": "in-progress",
   "theme": "active-identification-note",
   "progress": {
-    "completed": 0,
-    "total": 0,
+    "completed": 17,
+    "total": 17,
     "current": null
   },
-  "updatedAt": "2026-09-02"
+  "updatedAt": "2026-09-16"
 }

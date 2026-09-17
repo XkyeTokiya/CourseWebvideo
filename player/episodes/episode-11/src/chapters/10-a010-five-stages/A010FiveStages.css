@@ -1,0 +1,615 @@
+/* five-stages · lifecycle-identity-continuity
+   mechanism: ordered-progression —— 五条阶段带按观察顺序逐拍点亮；
+   已过阶段两级弱化（fresh past / deep past）但保持可见、位置不动。
+   R017：同一锚点标签（fs-anchor）从第一带贯穿到第五带承载；
+   阶段带之间不设连线、无箭头 —— 不是流程图。
+   护栏 C011：五阶段是观察顺序，不是接口时序 —— 全页无连线/无进度条/无时序轴。
+   每拍主导动作不同：m1 场景建立+左→右扫亮+记录条自上落入；
+   m2 右→左扫亮+右侧滑入+编号翻转；m3 扫描光带+记录条盖章落定；
+   m4 顶部亮线自中心展开+两条记录条左右相接；m5 整带沉降落定+末端观察点。
+   prefix: fs- */
+
+.fs-scene {
+  justify-content: flex-start;
+  gap: 34px;
+}
+
+/* ── 标题 ───────────────────────────────────────────────── */
+
+.fs-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 66px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+  animation: fs-rise 640ms var(--ease-soft) both;
+}
+
+/* ── 板面：贯穿锚点 + 五条阶段带 ────────────────────────── */
+
+.fs-board {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 30px;
+}
+
+/* 贯穿锚点：一条与五带等高的标签轨，同一对象贯穿每个观察阶段 */
+
+.fs-anchor {
+  flex: none;
+  display: flex;
+}
+
+.fs-anchor-rail {
+  position: relative;
+  width: 92px;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr); /* 与 .fs-bands 的五行对齐 */
+  gap: 26px;
+  background: var(--theme-structural);
+  clip-path: inset(0 0 100% 0);
+  animation: fs-anchor-grow 760ms var(--ease-soft) 260ms 1 forwards;
+}
+
+@keyframes fs-anchor-grow {
+  to {
+    clip-path: inset(0 0 0% 0);
+  }
+}
+
+.fs-anchor-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+  color: var(--surface-2);
+  white-space: nowrap;
+}
+
+/* 轨上五枚对位标记：同一标识在各阶段都有锚定点（非带间连线） */
+
+.fs-anchor-tick {
+  align-self: center;
+  justify-self: center;
+  width: 12px;
+  height: 12px;
+  background: var(--theme-process);
+  opacity: 0;
+  animation: fs-tick 380ms var(--ease-overshoot) calc(1050ms + var(--fs-i) * 110ms) 1 forwards;
+}
+
+@keyframes fs-tick {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── 五条阶段带 ─────────────────────────────────────────── */
+
+.fs-bands {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.fs-band {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 96px 300px 1fr auto;
+  align-items: center;
+  gap: 30px;
+  padding: 0 36px 0 32px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  animation: fs-band-in 520ms var(--ease-soft) calc(420ms + var(--fs-i) * 130ms) 1 backwards;
+  transition:
+    background-color 640ms var(--ease-soft),
+    border-color 640ms var(--ease-soft),
+    box-shadow 640ms var(--ease-soft),
+    opacity 640ms var(--ease-soft);
+}
+
+@keyframes fs-band-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 状态门控：upcoming = 虚位（无任何文字），active = 亮带，past = 已过 */
+
+.fs-band.is-upcoming {
+  background: var(--surface);
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+.fs-band.is-upcoming .fs-band-no,
+.fs-band.is-upcoming .fs-band-name,
+.fs-band.is-upcoming .fs-band-slips,
+.fs-band.is-upcoming .fs-endcap {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.fs-band.is-past {
+  background: var(--surface-3);
+  border-color: var(--rule);
+  box-shadow: none;
+}
+
+.fs-band.is-past .fs-band-no {
+  color: var(--text-mute);
+}
+
+.fs-band.is-past .fs-band-name h2 {
+  color: var(--text-2);
+}
+
+.fs-band.is-past .fs-band-name p {
+  color: var(--text-mute);
+}
+
+.fs-band.is-past .fs-slip {
+  border-color: var(--rule);
+  color: var(--text-2);
+  opacity: 0.66;
+}
+
+.fs-band.is-past .fs-slip-mark {
+  background: var(--text-mute);
+}
+
+.fs-band.is-past .fs-endcap {
+  border-color: var(--rule);
+  color: var(--text-mute);
+}
+
+/* 越早的阶段弱化越深：两级弱化，可见但不与当前带争权重 */
+
+.fs-band.is-past-deep {
+  opacity: 0.6;
+}
+
+/* ── 带内元素 ───────────────────────────────────────────── */
+
+.fs-band-no {
+  font-size: 46px;
+  color: var(--theme-process);
+}
+
+.fs-band-name {
+  min-width: 0;
+}
+
+.fs-band-name h2 {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.fs-band-name p {
+  margin: 8px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-2);
+}
+
+.fs-band-slips {
+  display: flex;
+  gap: 20px;
+  min-width: 0;
+}
+
+.fs-slip {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  border: 2px solid var(--theme-structural);
+  background: var(--theme-paper);
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  white-space: nowrap;
+  transition:
+    border-color 640ms var(--ease-soft),
+    color 640ms var(--ease-soft),
+    opacity 640ms var(--ease-soft);
+}
+
+.fs-slip-mark {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  background: var(--theme-process);
+  transition: background-color 640ms var(--ease-soft);
+}
+
+.fs-endcap {
+  padding: 12px 20px;
+  border: 2px solid var(--theme-process);
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: var(--theme-process);
+  white-space: nowrap;
+}
+
+/* 伪元素层：各带点亮动作的载体 */
+
+.fs-band::before,
+.fs-band::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 640ms var(--ease-soft);
+}
+
+/* ── m1 · 原料进厂：左→右扫亮，记录条自上落入 ──────────── */
+
+.fs-band--m1.is-active::before {
+  inset: 0;
+  background: var(--accent-soft);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: fs-wipe-ltr 900ms var(--ease-soft) 1750ms 1 forwards;
+}
+
+@keyframes fs-wipe-ltr {
+  0% {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  72% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+
+.fs-band--m1.is-active .fs-band-name {
+  animation: fs-rise 480ms var(--ease-soft) 1900ms 1 backwards;
+}
+
+.fs-band--m1.is-active .fs-band-no {
+  animation: fs-pop 440ms var(--ease-overshoot) 2120ms 1 backwards;
+}
+
+.fs-band--m1.is-active .fs-slip {
+  animation: fs-drop 520ms var(--ease-overshoot) calc(2420ms + var(--fs-s) * 300ms) 1 backwards;
+}
+
+/* ── m2 · 生产加工：右→左扫亮，名称与记录条自右滑入，编号翻转 ── */
+
+.fs-band--m2.is-active::before {
+  inset: 0;
+  background: var(--accent-soft);
+  transform: scaleX(0);
+  transform-origin: right center;
+  animation: fs-wipe-rtl 760ms var(--ease-soft) 160ms 1 forwards;
+}
+
+@keyframes fs-wipe-rtl {
+  0% {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  72% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+
+.fs-band--m2.is-active .fs-band-name {
+  animation: fs-slide-left 480ms var(--ease-soft) 240ms 1 backwards;
+}
+
+.fs-band--m2.is-active .fs-band-no {
+  animation: fs-flip 460ms var(--ease-overshoot) 380ms 1 backwards;
+}
+
+.fs-band--m2.is-active .fs-slip {
+  animation: fs-slide-left 500ms var(--ease-soft) calc(560ms + var(--fs-s) * 260ms) 1 backwards;
+}
+
+/* ── m3 · 仓储物流：一道光带横向扫过，记录条盖章式落定 ──── */
+
+.fs-band--m3.is-active::before {
+  top: 0;
+  bottom: 0;
+  left: -170px;
+  width: 120px;
+  background: var(--accent-glow);
+  animation: fs-scan 820ms var(--ease-soft) 200ms 1 forwards;
+}
+
+@keyframes fs-scan {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(1760px);
+    opacity: 0;
+  }
+}
+
+.fs-band--m3.is-active .fs-band-name {
+  animation: fs-rise 460ms var(--ease-soft) 260ms 1 backwards;
+}
+
+.fs-band--m3.is-active .fs-band-no {
+  animation: fs-pop 420ms var(--ease-overshoot) 420ms 1 backwards;
+}
+
+.fs-band--m3.is-active .fs-slip {
+  animation: fs-stamp 460ms var(--ease-overshoot) calc(520ms + var(--fs-s) * 280ms) 1 backwards;
+}
+
+/* ── m4 · 终端销售：顶部亮线自中心展开，两条信息左右相接 ── */
+
+.fs-band--m4.is-active::after {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--theme-process);
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: fs-line-center 520ms var(--ease-soft) 180ms 1 forwards;
+}
+
+@keyframes fs-line-center {
+  from {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* 已过态保留一条淡线，示意“已接入” */
+
+.fs-band.is-past::after {
+  opacity: 0.25;
+}
+
+.fs-band--m4.is-active .fs-band-name {
+  animation: fs-rise 460ms var(--ease-soft) 200ms 1 backwards;
+}
+
+.fs-band--m4.is-active .fs-band-name p {
+  animation: fs-fade 420ms var(--ease-soft) 980ms 1 backwards;
+}
+
+.fs-band--m4.is-active .fs-band-no {
+  animation: fs-pop 420ms var(--ease-overshoot) 360ms 1 backwards;
+}
+
+.fs-band--m4.is-active .fs-slip {
+  animation-duration: 560ms;
+  animation-timing-function: var(--ease-overshoot);
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+}
+
+.fs-band--m4.is-active .fs-slip:nth-child(1) {
+  animation-name: fs-meet-l;
+  animation-delay: 340ms;
+}
+
+.fs-band--m4.is-active .fs-slip:nth-child(2) {
+  animation-name: fs-meet-r;
+  animation-delay: 600ms;
+}
+
+/* ── m5 · 市场消费：整带沉降落定，末端观察点亮出 ────────── */
+
+.fs-band--m5.is-active {
+  animation: fs-settle 520ms var(--ease-soft) 120ms 1 backwards;
+}
+
+@keyframes fs-settle {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fs-band--m5.is-active .fs-band-name {
+  animation: fs-rise 460ms var(--ease-soft) 220ms 1 backwards;
+}
+
+.fs-band--m5.is-active .fs-band-no {
+  animation: fs-pop 420ms var(--ease-overshoot) 400ms 1 backwards;
+}
+
+.fs-band--m5.is-active .fs-endcap {
+  animation: fs-stamp 460ms var(--ease-overshoot) 620ms 1 backwards;
+}
+
+/* ── 通用关键帧 ─────────────────────────────────────────── */
+
+@keyframes fs-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fs-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fs-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fs-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-34px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fs-slide-left {
+  from {
+    opacity: 0;
+    transform: translateX(56px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fs-flip {
+  from {
+    opacity: 0;
+    transform: rotateX(80deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}
+
+@keyframes fs-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.22);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fs-meet-l {
+  from {
+    opacity: 0;
+    transform: translateX(-64px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fs-meet-r {
+  from {
+    opacity: 0;
+    transform: translateX(64px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 收束判断：槽位全程预留（无重排），仅末拍亮出 ───────── */
+
+.fs-verdict {
+  flex: none;
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fs-verdict-text {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+.is-settled .fs-verdict-text {
+  animation: fs-rise 520ms var(--ease-soft) 820ms 1 forwards;
+}
+
+.fs-verdict-line {
+  width: 96px;
+  height: 0;
+  border-top: 3px dashed var(--theme-dashed-line);
+}
+
+.fs-verdict-obj {
+  color: var(--theme-process);
+}
