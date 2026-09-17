@@ -1,0 +1,505 @@
+/* A003 · 环节目标 —— 前缀 .sg- 仅本章使用；颜色/字体全部走主题 token。 */
+
+.sg-root {
+  gap: 26px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题 + 主题细线 ───────────────────────────────────── */
+
+.sg-head {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.sg-headline {
+  margin: 0 0 14px;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 58px;
+  line-height: 1.12;
+  color: var(--theme-structural);
+  animation: sg-fade-up 0.5s ease backwards;
+}
+
+.sg-head-rule {
+  margin: 0;
+  animation: sg-fade-in 0.5s ease 0.3s backwards;
+}
+
+/* ── 条件带：采集→整合→分析→应用 顺序链（s1 首拍内按序落位） ── */
+
+.sg-condition {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sg-stage {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 26px 40px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.sg-stage-no {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  background: var(--theme-process);
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--surface-2);
+}
+
+.sg-stage-name {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1;
+  color: var(--theme-structural);
+}
+
+/* 环节间连接：随下一环节落位自绘生长（箭头随线一起出现） */
+.sg-link {
+  position: relative;
+  flex: 1 1 40px;
+  min-width: 34px;
+  height: 0;
+  border-top: 4px solid var(--theme-process);
+  transform-origin: left center;
+}
+
+.sg-link::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: -8.5px;
+  border-left: 15px solid var(--theme-process);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+[data-state="pipeline-to-goals"] .sg-stage:nth-of-type(1) {
+  animation: sg-node-in 0.55s ease 1s backwards;
+}
+
+[data-state="pipeline-to-goals"] .sg-stage:nth-of-type(2) {
+  animation: sg-node-in 0.55s ease 2.4s backwards;
+}
+
+[data-state="pipeline-to-goals"] .sg-stage:nth-of-type(3) {
+  animation: sg-node-in 0.55s ease 3.8s backwards;
+}
+
+[data-state="pipeline-to-goals"] .sg-stage:nth-of-type(4) {
+  animation: sg-node-in 0.55s ease 5.2s backwards;
+}
+
+[data-state="pipeline-to-goals"] .sg-link[data-link="1"] {
+  animation: sg-link-grow 0.55s ease-out 2.2s backwards;
+}
+
+[data-state="pipeline-to-goals"] .sg-link[data-link="2"] {
+  animation: sg-link-grow 0.55s ease-out 3.6s backwards;
+}
+
+[data-state="pipeline-to-goals"] .sg-link[data-link="3"] {
+  animation: sg-link-grow 0.55s ease-out 5s backwards;
+}
+
+/* ── 关键判断区：s1 为服务流虚位，s2 成为对照判断焦点 ───────── */
+
+.sg-key {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.sg-key-ghost {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 2px dashed var(--theme-dashed-line);
+}
+
+[data-state="pipeline-to-goals"] .sg-key-ghost {
+  animation: sg-fade-in 0.5s ease 6.3s backwards;
+}
+
+.sg-key-ghost-arrow {
+  font-family: var(--font-mono);
+  font-size: 40px;
+  line-height: 1;
+  color: var(--theme-process);
+  transform: rotate(90deg);
+}
+
+.sg-key-ghost-label {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.24em;
+  color: var(--text-mute);
+}
+
+[data-state="meaning-clarified"] .sg-key-ghost {
+  opacity: 0;
+  transition: opacity 0.45s ease 0.15s;
+}
+
+.sg-key-body {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: stretch;
+  padding: 24px 32px;
+  opacity: 0;
+  transform: scale(0.985);
+}
+
+[data-state="meaning-clarified"] .sg-key-body {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.55s ease 0.1s,
+    transform 0.55s ease 0.1s;
+}
+
+/* 「不是」侧：警告底色 + 搬运演示被划除 */
+.sg-not {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: 30px 36px;
+  background: var(--theme-warning-surface);
+  border: 2px solid color-mix(in srgb, var(--theme-warning) 40%, transparent);
+}
+
+.sg-key-tag {
+  align-self: flex-start;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 42px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+  border-bottom: 7px solid var(--theme-warning);
+  padding-bottom: 2px;
+  opacity: 0;
+}
+
+.sg-tag-but {
+  border-bottom-color: var(--theme-process);
+}
+
+[data-state="meaning-clarified"] .sg-tag-not {
+  opacity: 1;
+  transition: opacity 0.4s ease 0.7s;
+}
+
+[data-state="meaning-clarified"] .sg-tag-but {
+  opacity: 1;
+  transition: opacity 0.4s ease 3.9s;
+}
+
+.sg-not-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 1.35;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+[data-state="meaning-clarified"] .sg-not-text {
+  opacity: 1;
+  transition: opacity 0.4s ease 0.85s;
+}
+
+.sg-move {
+  position: relative;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+[data-state="meaning-clarified"] .sg-move {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.4s ease 1s,
+    transform 0.4s ease 1s;
+}
+
+.sg-move-box {
+  flex: 0 0 auto;
+  padding: 14px 20px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-structural);
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  color: var(--theme-structural);
+}
+
+.sg-move-track {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 60px;
+  height: 0;
+  border-top: 3px dashed var(--rule);
+  margin: 0 6px;
+}
+
+.sg-move-chip {
+  position: absolute;
+  top: -13px;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background: var(--theme-structural);
+}
+
+[data-state="meaning-clarified"] .sg-move-chip {
+  left: calc(100% - 24px);
+  transition: left 1.4s cubic-bezier(0.45, 0.05, 0.55, 0.95) 1.6s;
+}
+
+.sg-move-strike {
+  position: absolute;
+  left: -10px;
+  right: -10px;
+  top: 50%;
+  height: 6px;
+  margin-top: -3px;
+  background: var(--theme-warning);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+[data-state="meaning-clarified"] .sg-move-strike {
+  transform: scaleX(1);
+  transition: transform 0.55s ease 3.2s;
+}
+
+/* 中缝分隔线：对照成立时生长 */
+.sg-key-divider {
+  flex: 0 0 auto;
+  width: 0;
+  border-left: 2px dashed var(--theme-dashed-line);
+  margin: 10px 30px;
+  transform: scaleY(0.2);
+  opacity: 0;
+}
+
+[data-state="meaning-clarified"] .sg-key-divider {
+  transform: scaleY(1);
+  opacity: 1;
+  transition:
+    transform 0.5s ease 3.8s,
+    opacity 0.5s ease 3.8s;
+}
+
+/* 「而是」侧：过程底色，三个能力依次点亮 */
+.sg-but {
+  flex: 1.2 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: 30px 36px;
+  background: var(--theme-process-surface);
+  border: 2px solid color-mix(in srgb, var(--theme-process) 40%, transparent);
+}
+
+.sg-but-lead {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 27px;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+[data-state="meaning-clarified"] .sg-but-lead {
+  opacity: 1;
+  transition: opacity 0.4s ease 4.1s;
+}
+
+.sg-but-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 38px;
+  line-height: 1.7;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+[data-state="meaning-clarified"] .sg-but-text {
+  opacity: 1;
+  transition: opacity 0.4s ease 4.3s;
+}
+
+.sg-lit {
+  display: inline-block;
+  padding: 2px 12px;
+  margin: 0 6px;
+  background: var(--theme-process);
+  border: 2px solid var(--theme-process);
+  font-weight: 900;
+  color: var(--surface-2);
+}
+
+[data-state="meaning-clarified"] .sg-but-text .sg-lit:nth-of-type(1) {
+  animation: sg-lit-pop 0.5s ease 4.6s backwards;
+}
+
+[data-state="meaning-clarified"] .sg-but-text .sg-lit:nth-of-type(2) {
+  animation: sg-lit-pop 0.5s ease 5.2s backwards;
+}
+
+[data-state="meaning-clarified"] .sg-but-text .sg-lit:nth-of-type(3) {
+  animation: sg-lit-pop 0.5s ease 5.8s backwards;
+}
+
+/* ── 目标带：四项目标依次亮起（s1 后半段） ──────────────────── */
+
+.sg-goal {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: stretch;
+  gap: 22px;
+}
+
+.sg-goal-cell {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  background: var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 38px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  color: var(--surface-2);
+}
+
+[data-state="pipeline-to-goals"] .sg-goal-cell:nth-of-type(1) {
+  animation: sg-goal-in 0.6s cubic-bezier(0.25, 0.9, 0.3, 1.15) 8.2s backwards;
+}
+
+[data-state="pipeline-to-goals"] .sg-goal-cell:nth-of-type(2) {
+  animation: sg-goal-in 0.6s cubic-bezier(0.25, 0.9, 0.3, 1.15) 9.4s backwards;
+}
+
+[data-state="pipeline-to-goals"] .sg-goal-cell:nth-of-type(3) {
+  animation: sg-goal-in 0.6s cubic-bezier(0.25, 0.9, 0.3, 1.15) 10.6s backwards;
+}
+
+[data-state="pipeline-to-goals"] .sg-goal-cell:nth-of-type(4) {
+  animation: sg-goal-in 0.6s cubic-bezier(0.25, 0.9, 0.3, 1.15) 11.8s backwards;
+}
+
+/* ── s2 焦点转移：上下两条带弱化让位，key 区成为视觉中心 ────── */
+
+[data-state="meaning-clarified"] .sg-condition,
+[data-state="meaning-clarified"] .sg-goal {
+  opacity: 0.5;
+  filter: saturate(0.6);
+  transition:
+    opacity 0.6s ease,
+    filter 0.6s ease;
+}
+
+/* ── keyframes ──────────────────────────────────────────────── */
+
+@keyframes sg-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sg-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sg-node-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sg-link-grow {
+  from {
+    opacity: 0.3;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes sg-goal-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sg-lit-pop {
+  0% {
+    background: var(--surface-2);
+    color: var(--theme-process);
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

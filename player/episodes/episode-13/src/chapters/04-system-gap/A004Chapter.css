@@ -1,0 +1,531 @@
+/* A004 · 系统差异 —— 前缀 .gp- 仅本章使用；颜色/字体全部走主题 token。
+ * 构图：左三张系统卡逐拍落位 ↔ 中间对照轴（连线受阻→逐套适配）↔ 右差异区；
+ * 底部论点条：第 1 拍承载设问，之后弱化为空槽，第 6 拍换成结论收束。 */
+
+.gp-root {
+  gap: 26px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题（两色方块 = 左右对照的种子） ─────────────────── */
+
+.gp-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.gp-head-mark {
+  position: relative;
+  flex: 0 0 66px;
+  height: 30px;
+}
+
+.gp-head-mark::before,
+.gp-head-mark::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+}
+
+.gp-head-mark::before {
+  top: 0;
+  left: 0;
+  background: var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.gp-head-mark::after {
+  top: 2px;
+  right: 0;
+  background: var(--theme-warning);
+}
+
+.gp-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 58px;
+  line-height: 1.12;
+  color: var(--theme-structural);
+}
+
+/* ── 主区：系统卡区 | 对照轴 | 差异区 ─────────────────────────── */
+
+.gp-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 150px 0.92fr;
+  gap: 28px;
+  transition: opacity 0.6s ease;
+}
+
+[data-state="custom-connection-cost"] .gp-main {
+  opacity: 0.8;
+}
+
+/* 左：三个空置卡槽（虚线框先在，卡片逐拍落入盖住槽号） */
+.gp-systems {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.gp-slot {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  border: 2px dashed var(--theme-dashed-line);
+  background: var(--surface-3);
+}
+
+.gp-slot-no {
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.gp-sys-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 26px;
+  padding: 18px 24px 18px 18px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  transition:
+    opacity 0.6s cubic-bezier(0.2, 0.7, 0.3, 1),
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+/* 状态门控：仅 question-open 隐藏三卡；其后各 state 均保持可见 */
+[data-state="question-open"] .gp-sys-card {
+  opacity: 0;
+  transform: translateY(-26px);
+}
+
+/* 进入态延迟只挂在进入态选择器下，回退/离开即时可逆 */
+[data-state="mes-introduced"] .gp-slot:nth-child(1) .gp-sys-card {
+  transition-delay: 0.2s, 0.2s;
+}
+
+[data-state="erp-added"] .gp-slot:nth-child(2) .gp-sys-card {
+  transition-delay: 0.2s, 0.2s;
+}
+
+[data-state="plm-added"] .gp-slot:nth-child(3) .gp-sys-card {
+  transition-delay: 0.2s, 0.2s;
+}
+
+.gp-sys-abbr {
+  flex: 0 0 112px;
+  display: grid;
+  place-items: center;
+  background: var(--theme-structural);
+  color: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.gp-sys-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.gp-sys-name {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+.gp-sys-duty {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--text-2);
+}
+
+.gp-sys-duty::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 14px;
+  background: var(--theme-process);
+}
+
+/* 中：对照轴 —— 连线自左卡画向差异区，环=对接不上的缺口，方块=逐套加装的适配 */
+.gp-axis {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.gp-axis-row {
+  position: relative;
+  flex: 1 1 0;
+}
+
+.gp-link {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  border-top: 3px dashed var(--theme-warning);
+  transition: width 0.8s cubic-bezier(0.3, 0.6, 0.25, 1);
+}
+
+[data-state="differences-stated"] .gp-link,
+[data-state="custom-connection-cost"] .gp-link {
+  width: 100%;
+}
+
+[data-state="differences-stated"] .gp-axis-row:nth-child(1) .gp-link {
+  transition-delay: 0.1s;
+}
+
+[data-state="differences-stated"] .gp-axis-row:nth-child(2) .gp-link {
+  transition-delay: 0.3s;
+}
+
+[data-state="differences-stated"] .gp-axis-row:nth-child(3) .gp-link {
+  transition-delay: 0.5s;
+}
+
+.gp-gap {
+  position: absolute;
+  top: 50%;
+  left: 52%;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border: 3px solid var(--theme-warning);
+  border-radius: 50%;
+  background: var(--surface);
+  opacity: 0;
+  transform: scale(0.4);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s cubic-bezier(0.3, 1.4, 0.4, 1);
+}
+
+[data-state="differences-stated"] .gp-gap,
+[data-state="custom-connection-cost"] .gp-gap {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-state="differences-stated"] .gp-axis-row:nth-child(1) .gp-gap {
+  transition-delay: 0.85s, 0.85s;
+}
+
+[data-state="differences-stated"] .gp-axis-row:nth-child(2) .gp-gap {
+  transition-delay: 1.05s, 1.05s;
+}
+
+[data-state="differences-stated"] .gp-axis-row:nth-child(3) .gp-gap {
+  transition-delay: 1.25s, 1.25s;
+}
+
+.gp-adapter {
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  width: 36px;
+  height: 24px;
+  margin: -12px 0 0 -18px;
+  background: var(--theme-structural);
+  opacity: 0;
+  transform: scale(0.5);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.3, 1.35, 0.4, 1);
+}
+
+.gp-adapter::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  top: 50%;
+  height: 3px;
+  margin-top: -1.5px;
+  background: var(--surface-2);
+}
+
+[data-state="custom-connection-cost"] .gp-adapter {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-state="custom-connection-cost"] .gp-axis-row:nth-child(1) .gp-adapter {
+  transition-delay: 0.5s, 0.5s;
+}
+
+[data-state="custom-connection-cost"] .gp-axis-row:nth-child(2) .gp-adapter {
+  transition-delay: 0.85s, 0.85s;
+}
+
+[data-state="custom-connection-cost"] .gp-axis-row:nth-child(3) .gp-adapter {
+  transition-delay: 1.2s, 1.2s;
+}
+
+/* 右：差异区 —— 四点差异逐个亮起 */
+.gp-diffzone {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px 26px 26px;
+  border: 2px dashed var(--theme-dashed-line);
+}
+
+.gp-diffzone-label {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="differences-stated"] .gp-diffzone-label,
+[data-state="custom-connection-cost"] .gp-diffzone-label {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="differences-stated"] .gp-diffzone-label {
+  transition-delay: 0.05s, 0.05s;
+}
+
+.gp-diffs {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.gp-diff {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 24px;
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  box-shadow: 5px 6px 0 color-mix(in srgb, var(--theme-warning) 28%, transparent);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 28px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateX(30px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.gp-diff::before {
+  content: "";
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+  background: var(--theme-warning);
+}
+
+[data-state="differences-stated"] .gp-diff,
+[data-state="custom-connection-cost"] .gp-diff {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="differences-stated"] .gp-diff:nth-child(1) {
+  transition-delay: 0.3s, 0.3s;
+}
+
+[data-state="differences-stated"] .gp-diff:nth-child(2) {
+  transition-delay: 0.55s, 0.55s;
+}
+
+[data-state="differences-stated"] .gp-diff:nth-child(3) {
+  transition-delay: 0.8s, 0.8s;
+}
+
+[data-state="differences-stated"] .gp-diff:nth-child(4) {
+  transition-delay: 1.05s, 1.05s;
+}
+
+/* ── 底部：论点条（设问 → 空槽 → 结论的三段重量变化） ─────────── */
+
+.gp-thesis {
+  position: relative;
+  flex: 0 0 128px;
+  border: 2px dashed var(--theme-dashed-line);
+  transition:
+    background-color 0.55s ease,
+    border-color 0.55s ease,
+    box-shadow 0.55s ease;
+}
+
+[data-state="question-open"] .gp-thesis {
+  background: var(--surface-2);
+  border-color: var(--theme-structural);
+  border-width: 3px;
+  border-style: solid;
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="custom-connection-cost"] .gp-thesis {
+  background: var(--theme-warning-surface);
+  border-color: var(--theme-warning);
+  border-width: 3px;
+  border-style: solid;
+  box-shadow: 6px 7px 0 color-mix(in srgb, var(--theme-warning) 30%, transparent);
+}
+
+.gp-thesis-q {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 38px;
+  color: var(--theme-structural);
+  opacity: 0.2;
+  transition: opacity 0.55s ease;
+}
+
+[data-state="question-open"] .gp-thesis-q {
+  opacity: 1;
+}
+
+[data-state="custom-connection-cost"] .gp-thesis-q {
+  opacity: 0;
+}
+
+.gp-thesis-t {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+[data-state="custom-connection-cost"] .gp-thesis-t {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.55s, 0.55s;
+}
+
+.gp-thesis-lead {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 25px;
+  color: var(--text-2);
+}
+
+.gp-thesis-main {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 45px;
+  color: var(--theme-structural);
+}
+
+.gp-thesis-main::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background: var(--theme-warning);
+}
+
+/* ── 第 1 拍（question-open）的一次性入场：只挂在本态选择器下 ── */
+
+@keyframes gp-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gp-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+[data-state="question-open"] .gp-head {
+  animation: gp-rise 0.55s ease both;
+}
+
+[data-state="question-open"] .gp-thesis-q {
+  animation: gp-rise 0.6s ease 0.4s both;
+}
+
+[data-state="question-open"] .gp-slot {
+  animation: gp-fade 0.5s ease both;
+}
+
+[data-state="question-open"] .gp-slot:nth-child(1) {
+  animation-delay: 0.15s;
+}
+
+[data-state="question-open"] .gp-slot:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+[data-state="question-open"] .gp-slot:nth-child(3) {
+  animation-delay: 0.45s;
+}
+
+[data-state="question-open"] .gp-axis {
+  animation: gp-fade 0.55s ease 0.55s both;
+}
+
+[data-state="question-open"] .gp-diffzone {
+  animation: gp-fade 0.55s ease 0.65s both;
+}

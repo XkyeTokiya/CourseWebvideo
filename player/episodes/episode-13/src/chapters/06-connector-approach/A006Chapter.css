@@ -1,0 +1,593 @@
+/* A006 · 连接方案 —— 前缀 .ck- 仅本章使用；颜色/字体全部走主题 token。
+ * 配方 image-with-insight-rail：左侧 M002 协同情境图持续承载语境；
+ * 右侧洞察 rail 依次落位：三环节（相邻排布、读作一句）→ 汇聚漏斗自绘 +
+ * 数据脉冲流入 → 统一规范两半条目亮起 → 第 2/3 拍累计增补要点；
+ * 第 4 拍判断条落位收束（rail 全程保持完整，不压暗）。 */
+
+.ck-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题 + 短强调段 ───────────────────────────────────── */
+
+.ck-head {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ck-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 58px;
+  line-height: 1.12;
+  color: var(--theme-structural);
+}
+
+.ck-head-mark {
+  width: 148px;
+  height: 8px;
+  background: var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  transform-origin: left center;
+}
+
+/* ── 主区：左情境图 + 右洞察 rail ────────────────────────────── */
+
+.ck-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: 44px;
+}
+
+.ck-media {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 8px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-dashed-line);
+  box-shadow: var(--card-shadow);
+}
+
+.ck-media-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ck-media-caption {
+  padding-top: 7px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: var(--text-mute);
+}
+
+/* ── rail：环节带（研发设计、生产制造、供应链管理）────────────── */
+
+.ck-rail {
+  flex: 0 0 780px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ck-areas {
+  padding: 16px 18px 18px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.ck-areas-label {
+  display: block;
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+}
+
+.ck-areas-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.ck-chip {
+  padding: 10px 16px;
+  background: var(--theme-cool-surface);
+  border: 2px solid var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 34px;
+  line-height: 1.15;
+  white-space: nowrap;
+  color: var(--theme-structural);
+}
+
+.ck-areas-sep {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--text-mute);
+}
+
+/* 汇聚漏斗：三线自绘收拢 + 数据脉冲流向汇合点（R007 汇聚载体） */
+.ck-funnel-wrap {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.ck-funnel {
+  display: block;
+  width: 780px;
+  height: 96px;
+}
+
+.ck-funnel-line {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  stroke-dasharray: 1;
+  stroke-linecap: round;
+}
+
+.ck-pulse {
+  opacity: 0;
+  fill: var(--theme-process);
+  stroke: var(--surface-2);
+  stroke-width: 2;
+}
+
+.ck-conn-tag {
+  position: absolute;
+  top: 88px;
+  left: 50%;
+  padding: 7px 16px;
+  background: var(--theme-process);
+  border: 2px solid var(--surface-2);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 24px;
+  white-space: nowrap;
+  color: var(--surface-2);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s cubic-bezier(0.34, 1.35, 0.4, 1);
+}
+
+/* ── 规范带：两半条目由「与」衔接（S028 完整读作一句）────────── */
+
+.ck-norm {
+  padding: 16px 20px 20px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.ck-norm-label {
+  display: block;
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+}
+
+.ck-norm-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.ck-half {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 38px;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+.ck-half-sep {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 26px;
+  color: var(--theme-process);
+}
+
+/* ── 要点行：第 2/3 拍累计增补（虚线框 = 后补要点）────────────── */
+
+.ck-points {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ck-point {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 22px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-dashed-line);
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.ck-point-mark {
+  flex: 0 0 14px;
+  height: 14px;
+  background: var(--theme-process);
+  box-shadow: 3px 4px 0 var(--theme-offset-shadow);
+}
+
+.ck-point-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.ck-point-em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* ── 底部：判断条（第 4 拍收束，rail 不压暗）─────────────────── */
+
+.ck-judge {
+  flex: 0 0 118px;
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  padding: 0 40px 0 34px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-left: 12px solid var(--theme-process);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.ck-judge-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 40px;
+  white-space: nowrap;
+  color: var(--theme-structural);
+}
+
+.ck-judge-em {
+  position: relative;
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.ck-judge-em::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 5px;
+  background: var(--theme-process);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.55s cubic-bezier(0.3, 0.6, 0.3, 1);
+}
+
+.ck-judge-div {
+  flex: 0 0 2px;
+  align-self: stretch;
+  margin: 26px 0;
+  background: var(--rule);
+}
+
+.ck-judge-neg {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 34px;
+  white-space: nowrap;
+  color: var(--text);
+}
+
+.ck-judge-not {
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+.ck-judge-mono {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 29px;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+}
+
+/* ── 第 1 拍（new-approach-standardized）一次性入场 ───────────── */
+
+[data-state="new-approach-standardized"] .ck-head {
+  animation: ck-rise 0.55s ease 0.15s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-head-mark {
+  animation: ck-grow-x 0.5s cubic-bezier(0.3, 0.6, 0.3, 1) 0.6s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-media {
+  animation: ck-unveil 1s cubic-bezier(0.3, 0.6, 0.3, 1) 0.5s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-media-caption {
+  animation: ck-fade 0.5s ease 1.5s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-areas {
+  animation: ck-fade 0.5s ease 3.5s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-areas-label {
+  animation: ck-fade 0.45s ease 3.9s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-chip-1 {
+  animation: ck-chip-in 0.5s cubic-bezier(0.3, 1.25, 0.4, 1) 4.2s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-areas-sep-1 {
+  animation: ck-fade 0.4s ease 5s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-chip-2 {
+  animation: ck-chip-in 0.5s cubic-bezier(0.3, 1.25, 0.4, 1) 5.5s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-areas-sep-2 {
+  animation: ck-fade 0.4s ease 6.3s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-chip-3 {
+  animation: ck-chip-in 0.5s cubic-bezier(0.3, 1.25, 0.4, 1) 6.8s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-funnel-a {
+  animation: ck-draw 0.9s cubic-bezier(0.3, 0.6, 0.3, 1) 7.7s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-funnel-b {
+  animation: ck-draw 0.9s cubic-bezier(0.3, 0.6, 0.3, 1) 7.9s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-funnel-c {
+  animation: ck-draw 0.9s cubic-bezier(0.3, 0.6, 0.3, 1) 8.1s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-pulse-a {
+  animation: ck-flow-a 1.5s ease-in-out 8.9s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-pulse-b {
+  animation: ck-flow-b 1.5s ease-in-out 9.05s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-pulse-c {
+  animation: ck-flow-c 1.5s ease-in-out 9.2s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-norm {
+  animation: ck-fade 0.5s ease 10s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-norm-label {
+  animation: ck-fade 0.45s ease 10.3s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-half-1 {
+  animation: ck-rise 0.55s ease 10.4s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-half-sep {
+  animation: ck-fade 0.4s ease 11.1s backwards;
+}
+
+[data-state="new-approach-standardized"] .ck-half-2 {
+  animation: ck-rise 0.55s ease 11.5s backwards;
+}
+
+/* ── 第 2 拍（roles-preserved）：增补「保留原有业务职责」──────── */
+
+[data-state="roles-preserved"] .ck-point-1,
+[data-state="connector-handles-transfer"] .ck-point-1,
+[data-state="judgment-stated"] .ck-point-1 {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="roles-preserved"] .ck-point-1 {
+  transition-delay: 0.5s, 0.5s;
+}
+
+/* ── 第 3 拍（connector-handles-transfer）：连接器接管汇合点 ──── */
+
+[data-state="connector-handles-transfer"] .ck-point-2,
+[data-state="judgment-stated"] .ck-point-2 {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="connector-handles-transfer"] .ck-point-2 {
+  transition-delay: 0.6s, 0.6s;
+}
+
+[data-state="connector-handles-transfer"] .ck-conn-tag,
+[data-state="judgment-stated"] .ck-conn-tag {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+[data-state="connector-handles-transfer"] .ck-conn-tag {
+  transition-delay: 0.35s, 0.35s;
+}
+
+[data-state="connector-handles-transfer"] .ck-pulse-a {
+  animation: ck-flow-a 1.5s ease-in-out 0.55s backwards;
+}
+
+[data-state="connector-handles-transfer"] .ck-pulse-b {
+  animation: ck-flow-b 1.5s ease-in-out 0.7s backwards;
+}
+
+[data-state="connector-handles-transfer"] .ck-pulse-c {
+  animation: ck-flow-c 1.5s ease-in-out 0.85s backwards;
+}
+
+/* ── 第 4 拍（judgment-stated）：判断条落位收束 ───────────────── */
+
+[data-state="judgment-stated"] .ck-judge {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.3s, 0.3s;
+}
+
+[data-state="judgment-stated"] .ck-judge-em::after {
+  transform: scaleX(1);
+  transition-delay: 1s;
+}
+
+/* ── keyframes ───────────────────────────────────────────────── */
+
+@keyframes ck-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ck-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ck-grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ck-unveil {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.4;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+@keyframes ck-chip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ck-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ck-flow-a {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  12% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(240px, 88px);
+  }
+}
+
+@keyframes ck-flow-b {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  12% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(18px, 88px);
+  }
+}
+
+@keyframes ck-flow-c {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  12% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-221px, 88px);
+  }
+}

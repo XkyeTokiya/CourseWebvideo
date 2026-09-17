@@ -1,0 +1,620 @@
+/* A010 · 数据形态 —— 前缀 .df- 仅本章使用；颜色/字体全部走主题 token。
+ * 配方 parallel-cards-self-contained，关系机制 parallel-then-transform：
+ * 三张形态卡等权落位 → 映射带汇入「解析→转换→映射」→ 统一的数据规范 → takeaway 收束。
+ * 状态门控显式穷尽；进入态 delay 只挂进入态选择器，基础态即时可逆。 */
+
+.df-root {
+  gap: 22px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题 + 贯穿细线 + 引入句 ───────────────────────────── */
+
+.df-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.df-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 1.12;
+  color: var(--theme-structural);
+}
+
+.df-head-rule {
+  flex: 1 1 auto;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+.df-head-note {
+  flex: 0 0 auto;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+[data-state="structured-card-shown"] .df-head-rule {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.5s, 0.5s;
+}
+
+[data-state="structured-card-shown"] .df-head-note {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1.15s, 1.15s;
+}
+
+[data-state="semi-structured-added"] .df-head-rule,
+[data-state="three-forms-equal"] .df-head-rule,
+[data-state="mapping-to-standard"] .df-head-rule {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="semi-structured-added"] .df-head-note,
+[data-state="three-forms-equal"] .df-head-note,
+[data-state="mapping-to-standard"] .df-head-note {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── 主区：三张等权形态卡 ─────────────────────────────────────── */
+
+.df-cards {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 44px;
+}
+
+.df-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 28px 32px 30px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(38px);
+  transition:
+    opacity 0.6s cubic-bezier(0.2, 0.7, 0.25, 1),
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.25, 1);
+}
+
+[data-state="structured-card-shown"] .df-card-1 {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.85s, 0.85s;
+}
+
+[data-state="semi-structured-added"] .df-card-1,
+[data-state="three-forms-equal"] .df-card-1,
+[data-state="mapping-to-standard"] .df-card-1 {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="semi-structured-added"] .df-card-2 {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.25s, 0.25s;
+}
+
+[data-state="three-forms-equal"] .df-card-2,
+[data-state="mapping-to-standard"] .df-card-2 {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="three-forms-equal"] .df-card-3 {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.25s, 0.25s;
+}
+
+[data-state="mapping-to-standard"] .df-card-3 {
+  opacity: 1;
+  transform: none;
+}
+
+.df-card-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  color: var(--theme-structural);
+}
+
+.df-card-term {
+  display: block;
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.df-card-desc {
+  display: block;
+  margin-top: 6px;
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-2);
+}
+
+.df-card-fig {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 卡 1 图示：规整表格 —— 表头行先行，单元格逐格点亮 */
+.df-table {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  align-content: center;
+  padding: 0 6px;
+}
+
+.df-cell {
+  position: relative;
+  height: 52px;
+  border: 2px dashed var(--rule);
+  background: var(--surface-3);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.df-cell-head {
+  border: 2px solid var(--theme-structural);
+  background: var(--theme-structural);
+}
+
+.df-cell-body::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 58%;
+  height: 7px;
+  transform: translate(-50%, -50%);
+  background: color-mix(in srgb, var(--theme-structural) 26%, transparent);
+}
+
+[data-state="structured-card-shown"] .df-cell {
+  opacity: 1;
+  transition-delay: calc(1.75s + var(--i) * 0.09s);
+}
+
+[data-state="semi-structured-added"] .df-cell,
+[data-state="three-forms-equal"] .df-cell,
+[data-state="mapping-to-standard"] .df-cell {
+  opacity: 1;
+}
+
+/* 卡 2 图示：带标签和层次的日志 —— 行按层次缩进，逐行画出 */
+.df-log {
+  gap: 16px;
+  padding: 0 6px;
+}
+
+.df-log-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.df-log-l0 {
+  margin-left: 0;
+}
+
+.df-log-l1 {
+  margin-left: 38px;
+}
+
+.df-log-l2 {
+  margin-left: 76px;
+}
+
+.df-log-tag {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  background: var(--theme-structural);
+}
+
+.df-log-bar {
+  height: 18px;
+  background: color-mix(in srgb, var(--theme-structural) 22%, var(--surface-3));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.25, 0.7, 0.3, 1);
+}
+
+.df-log-l0 .df-log-bar {
+  width: 84%;
+}
+
+.df-log-l1 .df-log-bar {
+  width: 74%;
+}
+
+.df-log-l2 .df-log-bar {
+  width: 58%;
+}
+
+[data-state="semi-structured-added"] .df-log-line {
+  opacity: 1;
+  transition-delay: calc(1.15s + var(--i) * 0.13s);
+}
+
+[data-state="semi-structured-added"] .df-log-bar {
+  transform: scaleX(1);
+  transition-delay: calc(1.15s + var(--i) * 0.13s);
+}
+
+[data-state="three-forms-equal"] .df-log-line,
+[data-state="mapping-to-standard"] .df-log-line {
+  opacity: 1;
+}
+
+[data-state="three-forms-equal"] .df-log-bar,
+[data-state="mapping-to-standard"] .df-log-bar {
+  transform: scaleX(1);
+}
+
+/* 卡 3 图示：图纸、图片和文档 —— 三张纸片错落叠放，依次摆正落位 */
+.df-shapes {
+  position: relative;
+  padding: 0 6px;
+}
+
+.df-shape {
+  position: absolute;
+  top: 50%;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  opacity: 0;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.df-shape i {
+  display: block;
+  background: color-mix(in srgb, var(--theme-structural) 26%, transparent);
+}
+
+.df-shape-sheet {
+  left: 1%;
+  width: 40%;
+  height: 62%;
+  padding: 20px 18px 0;
+  transform: translateY(-38%) rotate(-15deg);
+}
+
+.df-shape-sheet i {
+  height: 7px;
+  margin-bottom: 14px;
+}
+
+.df-shape-sheet i:nth-child(2) {
+  width: 72%;
+}
+
+.df-shape-sheet i:nth-child(3) {
+  width: 46%;
+}
+
+.df-shape-photo {
+  left: 50%;
+  z-index: 2;
+  width: 44%;
+  height: 78%;
+  padding: 16px;
+  background: var(--theme-cool-surface);
+  box-shadow: var(--card-shadow);
+  transform: translate(-50%, -30%) rotate(9deg) scale(0.94);
+}
+
+.df-photo-sun {
+  position: absolute;
+  right: 16%;
+  top: 14%;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: none;
+  border: 3px solid var(--theme-structural);
+}
+
+.df-photo-hill {
+  position: absolute;
+  left: 14%;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  background: none;
+  border-left: 48px solid transparent;
+  border-right: 48px solid transparent;
+  border-bottom: 66px solid color-mix(in srgb, var(--theme-structural) 58%, var(--theme-cool-surface));
+}
+
+.df-shape-doc {
+  right: 1%;
+  width: 40%;
+  height: 66%;
+  padding: 18px 16px 0;
+  transform: translateY(-64%) rotate(16deg);
+}
+
+.df-shape-doc i {
+  height: 7px;
+  margin-bottom: 12px;
+}
+
+.df-shape-doc i:nth-child(2) {
+  width: 82%;
+}
+
+.df-shape-doc i:nth-child(4) {
+  width: 56%;
+}
+
+[data-state="three-forms-equal"] .df-shape {
+  opacity: 1;
+  transition-delay: calc(0.95s + var(--i) * 0.3s), calc(0.95s + var(--i) * 0.3s);
+}
+
+[data-state="three-forms-equal"] .df-shape-sheet {
+  transform: translateY(-50%) rotate(-7deg);
+}
+
+[data-state="three-forms-equal"] .df-shape-photo {
+  transform: translate(-50%, -50%) rotate(2deg);
+}
+
+[data-state="three-forms-equal"] .df-shape-doc {
+  transform: translateY(-50%) rotate(6deg);
+}
+
+[data-state="mapping-to-standard"] .df-shape {
+  opacity: 1;
+}
+
+[data-state="mapping-to-standard"] .df-shape-sheet {
+  transform: translateY(-50%) rotate(-7deg);
+}
+
+[data-state="mapping-to-standard"] .df-shape-photo {
+  transform: translate(-50%, -50%) rotate(2deg);
+}
+
+[data-state="mapping-to-standard"] .df-shape-doc {
+  transform: translateY(-50%) rotate(6deg);
+}
+
+/* ── 映射带：三卡汇入 → 解析 · 转换 · 映射 → 统一的数据规范 ────── */
+
+.df-mapping {
+  flex: 0 0 168px;
+  position: relative;
+  min-height: 0;
+}
+
+.df-mapping-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.df-map-drop,
+.df-map-rail {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+[data-state="mapping-to-standard"] .df-mapping-svg path {
+  animation: df-draw 0.55s ease-out both;
+  animation-delay: calc(0.2s + var(--i) * 0.22s);
+}
+
+@keyframes df-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.df-merge-node {
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  width: 18px;
+  height: 18px;
+  background: var(--theme-process);
+  opacity: 0;
+}
+
+[data-state="mapping-to-standard"] .df-merge-node {
+  animation: df-node-pop 0.55s cubic-bezier(0.3, 1.2, 0.5, 1) 1.6s both;
+}
+
+@keyframes df-node-pop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(45deg) scale(0.3);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.25);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+  }
+}
+
+.df-flow {
+  position: absolute;
+  left: 51.5%;
+  right: 21%;
+  top: 56%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.df-flow-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.df-flow-chip {
+  padding: 10px 20px;
+  background: var(--surface-2);
+  border: 2.5px solid var(--theme-process);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.df-flow-arrow {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  line-height: 1;
+  color: var(--theme-process);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+[data-state="mapping-to-standard"] .df-flow-chip {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(2.1s + var(--i) * 0.45s), calc(2.1s + var(--i) * 0.45s);
+}
+
+[data-state="mapping-to-standard"] .df-flow-arrow {
+  opacity: 1;
+  transition-delay: calc(2.32s + var(--i) * 0.45s);
+}
+
+.df-standard {
+  position: absolute;
+  left: 81%;
+  right: 0;
+  top: 56%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 22px;
+  background: var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(-50%) scale(0.9);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s cubic-bezier(0.3, 1.3, 0.5, 1);
+}
+
+.df-standard::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 18px solid var(--theme-structural);
+}
+
+.df-standard-text {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 31px;
+  letter-spacing: 0.04em;
+  color: var(--surface-2);
+  white-space: nowrap;
+}
+
+[data-state="mapping-to-standard"] .df-standard {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+  transition-delay: 3.7s, 3.7s;
+}
+
+/* ── 收束：takeaway —— 本拍内收完 ─────────────────────────────── */
+
+.df-takeaway {
+  flex: 0 0 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+.df-take-mark {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  background: var(--theme-structural);
+  transform: rotate(45deg);
+}
+
+.df-take-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 36px;
+  color: var(--theme-structural);
+}
+
+[data-state="mapping-to-standard"] .df-takeaway {
+  opacity: 1;
+  transform: none;
+  transition-delay: 5.4s, 5.4s;
+}

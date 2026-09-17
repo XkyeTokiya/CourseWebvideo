@@ -1,0 +1,1083 @@
+/* A012 · 机制对比 —— 前缀 .ba- 仅本章使用；颜色/字体全部走主题 token。
+   构图：headline + 全宽情境图像带 + rail-before / rail-after 两个持续对照区
+   + 中央「转向」轴（R014 载体）；关系机制 compare-and-reweight。 */
+
+.ba-root {
+  gap: 22px;
+  min-height: 0;
+}
+
+/* ── headline ────────────────────────────────────────────────────── */
+
+.ba-head {
+  flex: 0 0 auto;
+}
+
+.ba-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 58px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+.ba-hl-from {
+  box-shadow: inset 0 -16px 0 var(--theme-warning-surface);
+}
+
+.ba-hl-to {
+  box-shadow: inset 0 -16px 0 var(--theme-process-surface);
+}
+
+/* ── scene-image：产线语境图像带（持续） ─────────────────────────── */
+
+.ba-media {
+  position: relative;
+  flex: 0 0 188px;
+  margin: 0;
+  overflow: hidden;
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(-12px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.ba-media-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+}
+
+.ba-media-caption {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  padding: 5px 12px;
+  background: color-mix(in srgb, var(--surface-2) 90%, transparent);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+/* ── 舞台：rail-before ｜ 转向轴 ｜ rail-after ───────────────────── */
+
+.ba-stage {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 18px;
+}
+
+.ba-zone {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 24px;
+  border: 2px dashed var(--rule);
+  background: color-mix(in srgb, var(--surface) 55%, transparent);
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s ease,
+    flex-grow 0.9s cubic-bezier(0.3, 0.6, 0.25, 1),
+    filter 0.8s ease,
+    border-width 0.8s ease,
+    border-color 0.8s ease,
+    background-color 0.8s ease,
+    box-shadow 0.8s ease;
+}
+
+.ba-zone-tag {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ba-tag-mark {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+.ba-tag-mark-before {
+  background: var(--theme-warning);
+}
+
+.ba-tag-mark-after {
+  background: var(--theme-process);
+}
+
+.ba-zone-title {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 27px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* ── rail-before：点对点接口网 + 工作量增长 ──────────────────────── */
+
+.ba-before-sub {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 21px;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.ba-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ba-mesh {
+  flex: 0 1 auto;
+  min-height: 0;
+  max-width: 520px;
+  margin: 2px auto 0;
+}
+
+.ba-mesh line {
+  stroke: color-mix(in srgb, var(--theme-warning) 60%, transparent);
+  stroke-width: 3;
+}
+
+.ba-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ba-tangle {
+  fill: var(--theme-warning);
+  stroke: var(--surface-2);
+  stroke-width: 3;
+  opacity: 0;
+  transform: scale(0);
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s cubic-bezier(0.34, 1.4, 0.4, 1);
+}
+
+.ba-dot {
+  fill: var(--theme-warning);
+  stroke: var(--surface-2);
+  stroke-width: 3;
+  opacity: 0;
+  transform: scale(0);
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.34, 1.4, 0.4, 1);
+}
+
+.ba-node {
+  opacity: 0;
+  transform: scale(0.6);
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s cubic-bezier(0.34, 1.4, 0.4, 1);
+}
+
+.ba-node rect {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+}
+
+.ba-node text {
+  fill: var(--theme-structural);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 22px;
+  text-anchor: middle;
+}
+
+.ba-cost {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.ba-cost-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.ba-cost-title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-2);
+}
+
+.ba-cost-note {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 21px;
+  color: var(--theme-warning);
+  opacity: 0;
+  transition: opacity 0.55s ease;
+}
+
+.ba-cost-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ba-cost-label {
+  flex: 0 0 58px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 700;
+  text-align: right;
+  color: var(--text-mute);
+  font-variant-numeric: tabular-nums;
+}
+
+.ba-cost-track {
+  flex: 1 1 auto;
+  height: 26px;
+  background: var(--surface-3);
+}
+
+.ba-cost-bar {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--theme-warning);
+  transition: width 0.85s cubic-bezier(0.3, 0.6, 0.25, 1);
+}
+
+/* ── 转向轴：R014 shift 的持续载体，拍 3 激活 ────────────────────── */
+
+.ba-axis {
+  position: relative;
+  flex: 0 0 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.ba-axis-line {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 50%;
+  border-left: 2px dashed var(--rule);
+  transition: border-color 0.6s ease;
+}
+
+.ba-axis-tag {
+  position: relative;
+  writing-mode: vertical-rl;
+  padding: 12px 5px;
+  border: 2px solid var(--rule);
+  background: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.42em;
+  color: var(--text-faint);
+  transition:
+    color 0.6s ease,
+    border-color 0.6s ease;
+}
+
+.ba-axis-arrow {
+  position: relative;
+  width: 60px;
+  height: 47px;
+  fill: var(--rule);
+  transition:
+    fill 0.6s ease,
+    transform 0.7s cubic-bezier(0.3, 0.6, 0.25, 1);
+}
+
+/* ── rail-after：空置占位 → 连接器汇流图 ─────────────────────────── */
+
+.ba-afterbody {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.ba-ghost {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border: 2px dashed var(--rule);
+  opacity: 0;
+  transition: opacity 0.65s ease;
+}
+
+.ba-ghost-dash {
+  width: 46%;
+  border-top: 3px dashed var(--rule);
+}
+
+.ba-ghost-dash:nth-child(2) {
+  width: 32%;
+}
+
+.ba-ghost-dash:nth-child(3) {
+  width: 40%;
+}
+
+.ba-flowwrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.ba-flow {
+  flex: 0 1 auto;
+  min-height: 0;
+  max-width: 600px;
+}
+
+.ba-chipline {
+  stroke: color-mix(in srgb, var(--theme-process) 55%, transparent);
+  stroke-width: 2.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.9s ease;
+}
+
+.ba-flowin {
+  stroke: color-mix(in srgb, var(--theme-process) 72%, transparent);
+  stroke-width: 3;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ba-flowout {
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+}
+
+.ba-flowdash {
+  stroke: var(--accent-glow);
+  stroke-width: 5.5;
+  stroke-linecap: round;
+  stroke-dasharray: 8 14;
+  opacity: 0;
+}
+
+.ba-hub {
+  opacity: 0;
+  transform: scale(0.7);
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s cubic-bezier(0.34, 1.4, 0.4, 1);
+}
+
+.ba-hub rect {
+  fill: var(--theme-process);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+}
+
+.ba-hub text {
+  fill: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 27px;
+  letter-spacing: 0.14em;
+  text-anchor: middle;
+}
+
+.ba-chip {
+  opacity: 0;
+  transform: translateY(-10px);
+  transform-box: fill-box;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.ba-chip rect {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-process);
+  stroke-width: 2;
+}
+
+.ba-chip text {
+  fill: var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 21px;
+  letter-spacing: 0.06em;
+  text-anchor: middle;
+}
+
+.ba-anode {
+  opacity: 0;
+  transform: translateX(-12px);
+  transform-box: fill-box;
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.ba-anode rect {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+}
+
+.ba-anode text {
+  fill: var(--theme-structural);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 21px;
+  text-anchor: middle;
+}
+
+.ba-module {
+  opacity: 0;
+  transform: translateY(12px);
+  transform-box: fill-box;
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.ba-module rect {
+  fill: var(--theme-cool-surface);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+}
+
+.ba-module-name {
+  fill: var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 25px;
+  text-anchor: middle;
+}
+
+.ba-module-sub {
+  fill: var(--text-mute);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.2em;
+  text-anchor: middle;
+}
+
+.ba-banner {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 29px;
+  text-align: center;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+.ba-banner-hl {
+  box-shadow: inset 0 -13px 0 var(--accent-soft);
+}
+
+.ba-after-notes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.ba-note {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 21px;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.ba-note-mark {
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+}
+
+.ba-note-1 .ba-note-mark {
+  background: var(--theme-structural);
+}
+
+.ba-note-2 .ba-note-mark {
+  background: var(--theme-process);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   状态门控 —— 显式穷举 4 个 semantic state：
+   S1 before-p2p-interfaces / S2 before-cost-growing
+   S3 after-common-rules   / S4 after-division-preserved
+   进入态 delay 只挂在「本拍进入」的 state 选择器上；其余即时可逆。
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── 持续骨架：headline / scene-image / 两对照区 / 转向轴（S1 起） ── */
+
+[data-state="before-p2p-interfaces"] .ba-headline,
+[data-state="before-cost-growing"] .ba-headline,
+[data-state="after-common-rules"] .ba-headline,
+[data-state="after-division-preserved"] .ba-headline {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="before-p2p-interfaces"] .ba-headline {
+  transition-delay: 0.1s, 0.1s;
+}
+
+[data-state="before-p2p-interfaces"] .ba-media,
+[data-state="before-cost-growing"] .ba-media,
+[data-state="after-common-rules"] .ba-media,
+[data-state="after-division-preserved"] .ba-media {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="before-p2p-interfaces"] .ba-media {
+  transition-delay: 0.3s, 0.3s;
+}
+
+[data-state="before-p2p-interfaces"] .ba-zone,
+[data-state="before-cost-growing"] .ba-zone,
+[data-state="after-common-rules"] .ba-zone,
+[data-state="after-division-preserved"] .ba-zone {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="before-p2p-interfaces"] .ba-zone-before {
+  transition-delay: 0.45s, 0.45s, 0s, 0s, 0s, 0s, 0s, 0s;
+}
+
+[data-state="before-p2p-interfaces"] .ba-zone-after {
+  transition-delay: 0.75s, 0.75s, 0s, 0s, 0s, 0s, 0s, 0s;
+}
+
+[data-state="before-p2p-interfaces"] .ba-zone-tag,
+[data-state="before-cost-growing"] .ba-zone-tag,
+[data-state="after-common-rules"] .ba-zone-tag,
+[data-state="after-division-preserved"] .ba-zone-tag {
+  opacity: 1;
+}
+
+[data-state="before-p2p-interfaces"] .ba-zone-before .ba-zone-tag {
+  transition-delay: 0.7s;
+}
+
+[data-state="before-p2p-interfaces"] .ba-zone-after .ba-zone-tag {
+  transition-delay: 1s;
+}
+
+[data-state="before-p2p-interfaces"] .ba-axis,
+[data-state="before-cost-growing"] .ba-axis,
+[data-state="after-common-rules"] .ba-axis,
+[data-state="after-division-preserved"] .ba-axis {
+  opacity: 1;
+}
+
+[data-state="before-p2p-interfaces"] .ba-axis {
+  transition-delay: 1.05s;
+}
+
+/* rail-after 空置占位：仅 S1–S2 */
+[data-state="before-p2p-interfaces"] .ba-ghost,
+[data-state="before-cost-growing"] .ba-ghost {
+  opacity: 1;
+}
+
+[data-state="before-p2p-interfaces"] .ba-ghost {
+  transition-delay: 0.95s;
+}
+
+/* ── S1 落位：rail-before 的说明与系统节点 ───────────────────────── */
+
+[data-state="before-p2p-interfaces"] .ba-before-sub,
+[data-state="before-cost-growing"] .ba-before-sub,
+[data-state="after-common-rules"] .ba-before-sub,
+[data-state="after-division-preserved"] .ba-before-sub {
+  opacity: 1;
+}
+
+[data-state="before-p2p-interfaces"] .ba-before-sub {
+  transition-delay: 1.5s;
+}
+
+[data-state="before-p2p-interfaces"] .ba-node,
+[data-state="before-cost-growing"] .ba-node,
+[data-state="after-common-rules"] .ba-node,
+[data-state="after-division-preserved"] .ba-node {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="before-p2p-interfaces"] .ba-node:nth-of-type(1) {
+  transition-delay: 0.9s, 0.9s;
+}
+
+[data-state="before-p2p-interfaces"] .ba-node:nth-of-type(2) {
+  transition-delay: 1.2s, 1.2s;
+}
+
+[data-state="before-p2p-interfaces"] .ba-node:nth-of-type(3) {
+  transition-delay: 1.5s, 1.5s;
+}
+
+[data-state="before-p2p-interfaces"] .ba-node:nth-of-type(4) {
+  transition-delay: 1.8s, 1.8s;
+}
+
+/* ── S1 落位：前三条点对点接口自绘 ───────────────────────────────── */
+
+[data-state="before-p2p-interfaces"] .ba-line-1,
+[data-state="before-cost-growing"] .ba-line-1,
+[data-state="after-common-rules"] .ba-line-1,
+[data-state="after-division-preserved"] .ba-line-1 {
+  stroke-dashoffset: 0;
+}
+
+[data-state="before-p2p-interfaces"] .ba-line-2,
+[data-state="before-cost-growing"] .ba-line-2,
+[data-state="after-common-rules"] .ba-line-2,
+[data-state="after-division-preserved"] .ba-line-2 {
+  stroke-dashoffset: 0;
+}
+
+[data-state="before-p2p-interfaces"] .ba-line-5,
+[data-state="before-cost-growing"] .ba-line-5,
+[data-state="after-common-rules"] .ba-line-5,
+[data-state="after-division-preserved"] .ba-line-5 {
+  stroke-dashoffset: 0;
+}
+
+[data-state="before-p2p-interfaces"] .ba-line-1 {
+  transition-delay: 2.3s;
+}
+
+[data-state="before-p2p-interfaces"] .ba-line-2 {
+  transition-delay: 2.9s;
+}
+
+[data-state="before-p2p-interfaces"] .ba-line-5 {
+  transition-delay: 3.5s;
+}
+
+[data-state="before-p2p-interfaces"] .ba-dot-1,
+[data-state="before-cost-growing"] .ba-dot-1,
+[data-state="after-common-rules"] .ba-dot-1,
+[data-state="after-division-preserved"] .ba-dot-1,
+[data-state="before-p2p-interfaces"] .ba-dot-2,
+[data-state="before-cost-growing"] .ba-dot-2,
+[data-state="after-common-rules"] .ba-dot-2,
+[data-state="after-division-preserved"] .ba-dot-2,
+[data-state="before-p2p-interfaces"] .ba-dot-5,
+[data-state="before-cost-growing"] .ba-dot-5,
+[data-state="after-common-rules"] .ba-dot-5,
+[data-state="after-division-preserved"] .ba-dot-5 {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="before-p2p-interfaces"] .ba-dot-1 {
+  transition-delay: 2.75s, 2.75s;
+}
+
+[data-state="before-p2p-interfaces"] .ba-dot-2 {
+  transition-delay: 3.35s, 3.35s;
+}
+
+[data-state="before-p2p-interfaces"] .ba-dot-5 {
+  transition-delay: 3.95s, 3.95s;
+}
+
+/* ── S2 补齐：网状纠缠完成 + 工作量增长演示 ──────────────────────── */
+
+[data-state="before-cost-growing"] .ba-line-3,
+[data-state="after-common-rules"] .ba-line-3,
+[data-state="after-division-preserved"] .ba-line-3,
+[data-state="before-cost-growing"] .ba-line-4,
+[data-state="after-common-rules"] .ba-line-4,
+[data-state="after-division-preserved"] .ba-line-4,
+[data-state="before-cost-growing"] .ba-line-6,
+[data-state="after-common-rules"] .ba-line-6,
+[data-state="after-division-preserved"] .ba-line-6 {
+  stroke-dashoffset: 0;
+}
+
+[data-state="before-cost-growing"] .ba-line-3 {
+  transition-delay: 0.4s;
+}
+
+[data-state="before-cost-growing"] .ba-line-4 {
+  transition-delay: 1s;
+}
+
+[data-state="before-cost-growing"] .ba-line-6 {
+  transition-delay: 1.6s;
+}
+
+[data-state="before-cost-growing"] .ba-dot-3,
+[data-state="after-common-rules"] .ba-dot-3,
+[data-state="after-division-preserved"] .ba-dot-3,
+[data-state="before-cost-growing"] .ba-dot-4,
+[data-state="after-common-rules"] .ba-dot-4,
+[data-state="after-division-preserved"] .ba-dot-4 {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="before-cost-growing"] .ba-dot-3 {
+  transition-delay: 0.85s, 0.85s;
+}
+
+[data-state="before-cost-growing"] .ba-dot-4 {
+  transition-delay: 1.45s, 1.45s;
+}
+
+[data-state="before-cost-growing"] .ba-tangle,
+[data-state="after-common-rules"] .ba-tangle,
+[data-state="after-division-preserved"] .ba-tangle {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="before-cost-growing"] .ba-tangle {
+  transition-delay: 2.4s, 2.4s;
+}
+
+[data-state="before-cost-growing"] .ba-cost,
+[data-state="after-common-rules"] .ba-cost,
+[data-state="after-division-preserved"] .ba-cost {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="before-cost-growing"] .ba-cost {
+  transition-delay: 0.15s, 0.15s;
+}
+
+[data-state="before-cost-growing"] .ba-cost-bar-1,
+[data-state="after-common-rules"] .ba-cost-bar-1,
+[data-state="after-division-preserved"] .ba-cost-bar-1 {
+  width: 30%;
+}
+
+[data-state="before-cost-growing"] .ba-cost-bar-2,
+[data-state="after-common-rules"] .ba-cost-bar-2,
+[data-state="after-division-preserved"] .ba-cost-bar-2 {
+  width: 58%;
+}
+
+[data-state="before-cost-growing"] .ba-cost-bar-3,
+[data-state="after-common-rules"] .ba-cost-bar-3,
+[data-state="after-division-preserved"] .ba-cost-bar-3 {
+  width: 100%;
+}
+
+[data-state="before-cost-growing"] .ba-cost-bar-1 {
+  transition-delay: 0.5s;
+}
+
+[data-state="before-cost-growing"] .ba-cost-bar-2 {
+  transition-delay: 1s;
+}
+
+[data-state="before-cost-growing"] .ba-cost-bar-3 {
+  transition-delay: 1.5s;
+}
+
+[data-state="before-cost-growing"] .ba-cost-note,
+[data-state="after-common-rules"] .ba-cost-note,
+[data-state="after-division-preserved"] .ba-cost-note {
+  opacity: 1;
+}
+
+[data-state="before-cost-growing"] .ba-cost-note {
+  transition-delay: 2.7s;
+}
+
+/* ── S3 转向：rail-after 激活，rail-before 弱化但保持可见 ────────── */
+
+[data-state="before-p2p-interfaces"] .ba-zone-before,
+[data-state="before-cost-growing"] .ba-zone-before {
+  border-color: color-mix(in srgb, var(--theme-warning) 55%, transparent);
+  background-color: color-mix(in srgb, var(--theme-warning-surface) 55%, transparent);
+}
+
+[data-state="after-common-rules"] .ba-zone-before,
+[data-state="after-division-preserved"] .ba-zone-before {
+  flex-grow: 0.62;
+  opacity: 0.52;
+  filter: saturate(0.45);
+  border-color: var(--rule);
+  background-color: color-mix(in srgb, var(--surface) 30%, transparent);
+}
+
+[data-state="after-common-rules"] .ba-zone-after,
+[data-state="after-division-preserved"] .ba-zone-after {
+  flex-grow: 1.42;
+  border-width: 3px;
+  border-color: var(--theme-process);
+  background-color: var(--surface-2);
+  box-shadow: 8px 9px 0 var(--accent-soft);
+}
+
+[data-state="after-common-rules"] .ba-axis-arrow,
+[data-state="after-division-preserved"] .ba-axis-arrow {
+  fill: var(--theme-process);
+  transform: translateX(12px);
+}
+
+[data-state="after-common-rules"] .ba-axis-arrow {
+  transition-delay: 0.25s, 0.25s;
+}
+
+[data-state="after-common-rules"] .ba-axis-tag,
+[data-state="after-division-preserved"] .ba-axis-tag {
+  color: var(--theme-process);
+  border-color: var(--theme-process);
+}
+
+[data-state="after-common-rules"] .ba-axis-line,
+[data-state="after-division-preserved"] .ba-axis-line {
+  border-color: color-mix(in srgb, var(--theme-process) 50%, transparent);
+}
+
+/* ── S3 落位：统一标识 / 数据规范 / 连接器 → 按共同规则转换交换 ──── */
+
+[data-state="after-common-rules"] .ba-chip,
+[data-state="after-division-preserved"] .ba-chip {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="after-common-rules"] .ba-chip-1 {
+  transition-delay: 0.7s, 0.7s;
+}
+
+[data-state="after-common-rules"] .ba-chip-2 {
+  transition-delay: 1.2s, 1.2s;
+}
+
+[data-state="after-common-rules"] .ba-chipline-1,
+[data-state="after-division-preserved"] .ba-chipline-1,
+[data-state="after-common-rules"] .ba-chipline-2,
+[data-state="after-division-preserved"] .ba-chipline-2 {
+  stroke-dashoffset: 0;
+}
+
+[data-state="after-common-rules"] .ba-chipline-1 {
+  transition-delay: 0.8s;
+}
+
+[data-state="after-common-rules"] .ba-chipline-2 {
+  transition-delay: 1.3s;
+}
+
+[data-state="after-common-rules"] .ba-hub,
+[data-state="after-division-preserved"] .ba-hub {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="after-common-rules"] .ba-hub {
+  transition-delay: 1.7s, 1.7s;
+}
+
+[data-state="after-common-rules"] .ba-anode,
+[data-state="after-division-preserved"] .ba-anode {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="after-common-rules"] .ba-anode-1 {
+  transition-delay: 2.2s, 2.2s;
+}
+
+[data-state="after-common-rules"] .ba-anode-2 {
+  transition-delay: 2.45s, 2.45s;
+}
+
+[data-state="after-common-rules"] .ba-anode-3 {
+  transition-delay: 2.7s, 2.7s;
+}
+
+[data-state="after-common-rules"] .ba-anode-4 {
+  transition-delay: 2.95s, 2.95s;
+}
+
+[data-state="after-common-rules"] .ba-flowin-1,
+[data-state="after-division-preserved"] .ba-flowin-1,
+[data-state="after-common-rules"] .ba-flowin-2,
+[data-state="after-division-preserved"] .ba-flowin-2,
+[data-state="after-common-rules"] .ba-flowin-3,
+[data-state="after-division-preserved"] .ba-flowin-3,
+[data-state="after-common-rules"] .ba-flowin-4,
+[data-state="after-division-preserved"] .ba-flowin-4 {
+  stroke-dashoffset: 0;
+}
+
+[data-state="after-common-rules"] .ba-flowin-1 {
+  transition-delay: 2.5s;
+}
+
+[data-state="after-common-rules"] .ba-flowin-2 {
+  transition-delay: 2.8s;
+}
+
+[data-state="after-common-rules"] .ba-flowin-3 {
+  transition-delay: 3.1s;
+}
+
+[data-state="after-common-rules"] .ba-flowin-4 {
+  transition-delay: 3.4s;
+}
+
+[data-state="after-common-rules"] .ba-banner,
+[data-state="after-division-preserved"] .ba-banner {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="after-common-rules"] .ba-banner {
+  transition-delay: 4.7s, 4.7s;
+}
+
+/* ── S4 补齐：业务分工保持 + 连接器协作通道点亮 ──────────────────── */
+
+[data-state="after-division-preserved"] .ba-module {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="after-division-preserved"] .ba-module-1 {
+  transition-delay: 0.3s, 0.3s;
+}
+
+[data-state="after-division-preserved"] .ba-module-2 {
+  transition-delay: 0.65s, 0.65s;
+}
+
+[data-state="after-division-preserved"] .ba-module-3 {
+  transition-delay: 1s, 1s;
+}
+
+[data-state="after-division-preserved"] .ba-flowout-1,
+[data-state="after-division-preserved"] .ba-flowout-2,
+[data-state="after-division-preserved"] .ba-flowout-3 {
+  opacity: 1;
+}
+
+[data-state="after-division-preserved"] .ba-flowout-1 {
+  transition-delay: 1.4s;
+}
+
+[data-state="after-division-preserved"] .ba-flowout-2 {
+  transition-delay: 1.75s;
+}
+
+[data-state="after-division-preserved"] .ba-flowout-3 {
+  transition-delay: 2.1s;
+}
+
+[data-state="after-division-preserved"] .ba-flowdash {
+  animation:
+    ba-dash-in 0.5s ease 2.9s forwards,
+    ba-dash-flow 1.15s linear 3.4s infinite;
+}
+
+[data-state="after-division-preserved"] .ba-note {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="after-division-preserved"] .ba-note-1 {
+  transition-delay: 3.1s, 3.1s;
+}
+
+[data-state="after-division-preserved"] .ba-note-2 {
+  transition-delay: 3.5s, 3.5s;
+}
+
+@keyframes ba-dash-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ba-dash-flow {
+  from {
+    stroke-dashoffset: 22;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}

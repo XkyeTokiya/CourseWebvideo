@@ -1,0 +1,545 @@
+/* A002 · 挑战来源 —— 前缀 .cs- 仅本章使用；颜色/字体全部走主题 token。 */
+
+.cs-root {
+  gap: 26px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题 + 自绘下划线 ─────────────────────────────────── */
+
+.cs-head {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cs-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 66px;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: cs-fade-up 0.6s ease backwards;
+}
+
+.cs-head-rule {
+  width: 264px;
+  height: 8px;
+  background: var(--theme-process);
+  transform-origin: left center;
+  animation: cs-rule-grow 0.5s ease 0.35s backwards;
+}
+
+/* ── 引入条：基础判断 + 难点强调（整章持续，s5 起弱化） ──────── */
+
+.cs-intro {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: 8px;
+  animation: cs-fade-up 0.6s ease 0.55s backwards;
+}
+
+.cs-intro-base {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 30px;
+  color: var(--text-2);
+}
+
+.cs-intro-hard {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 1.25;
+  color: var(--theme-structural);
+  border-bottom: 6px solid var(--theme-warning);
+  padding-bottom: 2px;
+}
+
+/* ── 主区：左·三条挑战带等权落位 ＋ 右·侧栏孤岛注记 ──────────── */
+
+.cs-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 40px;
+}
+
+.cs-bands {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* 带框：基础态 = 空置待落位的虚线槽位（s1 可见），落位后变实带 */
+.cs-band {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  border: 2px dashed var(--theme-dashed-line);
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0 16px,
+    color-mix(in srgb, var(--theme-grid-line) 60%, transparent) 16px 18px
+  );
+  animation: cs-fade-in 0.6s ease backwards;
+}
+
+.cs-band:nth-child(1) {
+  animation-delay: 0.9s;
+}
+
+.cs-band:nth-child(2) {
+  animation-delay: 1.2s;
+}
+
+.cs-band:nth-child(3) {
+  animation-delay: 1.5s;
+}
+
+/* 落位后的带框（进入态：带过渡；后续态：保持原样即时可逆） */
+[data-state="heterogeneous-shown"] .cs-band:nth-child(1),
+[data-state="distributed-shown"] .cs-band:nth-child(2),
+[data-state="three-differences-equal"] .cs-band:nth-child(3) {
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  transition:
+    border-color 0.5s ease 0.2s,
+    background-color 0.5s ease 0.2s,
+    box-shadow 0.5s ease 0.2s;
+}
+
+[data-state="distributed-shown"] .cs-band:nth-child(1),
+[data-state="three-differences-equal"] .cs-band:nth-child(-n + 2),
+[data-state="silos-formed"] .cs-band,
+[data-state="silos-everywhere"] .cs-band {
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+/* 带内容：基础态隐藏，逐拍落位 */
+.cs-band-body {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 0 40px;
+  opacity: 0;
+  transform: translateY(-18px);
+}
+
+[data-state="heterogeneous-shown"] .cs-band:nth-child(1) .cs-band-body,
+[data-state="distributed-shown"] .cs-band:nth-child(2) .cs-band-body,
+[data-state="three-differences-equal"] .cs-band:nth-child(3) .cs-band-body {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.5s ease 0.35s,
+    transform 0.6s cubic-bezier(0.25, 0.9, 0.3, 1.2) 0.35s;
+}
+
+[data-state="distributed-shown"] .cs-band:nth-child(1) .cs-band-body,
+[data-state="three-differences-equal"] .cs-band:nth-child(-n + 2) .cs-band-body,
+[data-state="silos-formed"] .cs-band .cs-band-body,
+[data-state="silos-everywhere"] .cs-band .cs-band-body {
+  opacity: 1;
+  transform: none;
+}
+
+.cs-band-no {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border: 3px solid var(--theme-structural);
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+.cs-band-term {
+  margin: 0;
+  flex: 0 0 auto;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 58px;
+  line-height: 1;
+  color: var(--theme-structural);
+}
+
+.cs-band-colon {
+  flex: 0 0 auto;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 44px;
+  color: var(--text-faint);
+}
+
+.cs-band-desc {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-right: 150px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 31px;
+  line-height: 1.4;
+  color: var(--text-2);
+}
+
+.cs-band-mark {
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 118px;
+  letter-spacing: -0.04em;
+  color: color-mix(in srgb, var(--theme-structural) 9%, transparent);
+  pointer-events: none;
+}
+
+/* ── 侧栏：孤岛注记（s1–s4 空置＋号，s5 起成为叠加结果） ─────── */
+
+.cs-side {
+  flex: 0 0 440px;
+  min-height: 0;
+  display: flex;
+}
+
+.cs-side-note {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 28px 30px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0 16px,
+    color-mix(in srgb, var(--theme-grid-line) 60%, transparent) 16px 18px
+  );
+  animation: cs-fade-in 0.6s ease 1.5s backwards;
+}
+
+[data-state="silos-formed"] .cs-side-note {
+  border: 3px solid var(--theme-warning);
+  background: var(--surface-2);
+  box-shadow: 7px 8px 0 color-mix(in srgb, var(--theme-warning) 30%, transparent);
+  transition:
+    border-color 0.5s ease,
+    background-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+[data-state="silos-everywhere"] .cs-side-note {
+  border: 3px solid var(--theme-warning);
+  background: var(--surface-2);
+  box-shadow: 7px 8px 0 color-mix(in srgb, var(--theme-warning) 30%, transparent);
+}
+
+.cs-side-plus {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 84px;
+  line-height: 1;
+  color: var(--rule);
+  animation: cs-fade-in 0.6s ease 1.9s backwards;
+}
+
+[data-state="silos-formed"] .cs-side-plus {
+  opacity: 0;
+  transition: opacity 0.4s ease 0.1s;
+}
+
+[data-state="silos-everywhere"] .cs-side-plus {
+  opacity: 0;
+}
+
+/* 侧栏内容（占位常驻，内容按拍点亮） */
+.cs-side-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.cs-side-kicker {
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.22em;
+  color: var(--text-mute);
+  opacity: 0;
+}
+
+[data-state="silos-formed"] .cs-side-kicker {
+  opacity: 1;
+  transition: opacity 0.4s ease 0.15s;
+}
+
+[data-state="silos-everywhere"] .cs-side-kicker {
+  opacity: 1;
+}
+
+/* 叠加体：三枚差异片依次落进同一叠层，虚线框随后勾出孤岛边界 */
+.cs-silo {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 28px;
+}
+
+.cs-silo-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.cs-silo-rect {
+  fill: none;
+  stroke: var(--theme-warning);
+  stroke-width: 2.5;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+[data-state="silos-formed"] .cs-silo-rect {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s ease 1.35s;
+}
+
+[data-state="silos-everywhere"] .cs-silo-rect {
+  stroke-dashoffset: 0;
+}
+
+.cs-silo-chip {
+  position: relative;
+  z-index: 1;
+  padding: 10px 0;
+  background: var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 27px;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  text-align: center;
+  color: var(--surface-2);
+  opacity: 0;
+  transform: translateY(-14px);
+}
+
+[data-state="silos-formed"] .cs-silo-chip {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.45s ease,
+    transform 0.5s cubic-bezier(0.25, 0.9, 0.3, 1.2);
+}
+
+[data-state="silos-formed"] .cs-silo-chip:nth-of-type(1) {
+  transition-delay: 0.25s, 0.25s;
+}
+
+[data-state="silos-formed"] .cs-silo-chip:nth-of-type(2) {
+  transition-delay: 0.6s, 0.6s;
+}
+
+[data-state="silos-formed"] .cs-silo-chip:nth-of-type(3) {
+  transition-delay: 0.95s, 0.95s;
+}
+
+[data-state="silos-everywhere"] .cs-silo-chip {
+  opacity: 1;
+  transform: none;
+}
+
+.cs-silo-arrow {
+  font-family: var(--font-mono);
+  font-size: 34px;
+  line-height: 1;
+  color: var(--theme-warning);
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+[data-state="silos-formed"] .cs-silo-arrow {
+  opacity: 1;
+  transition: opacity 0.35s ease 2.45s;
+}
+
+[data-state="silos-everywhere"] .cs-silo-arrow {
+  opacity: 1;
+}
+
+.cs-silo-term {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 62px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+  border-bottom: 8px solid var(--theme-warning);
+  padding-bottom: 6px;
+  opacity: 0;
+  transform: scale(0.94);
+}
+
+[data-state="silos-formed"] .cs-silo-term {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.45s ease 2.6s,
+    transform 0.5s ease 2.6s;
+}
+
+[data-state="silos-everywhere"] .cs-silo-term {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── 孤岛范围（s6 扩展：企业之间 / 企业内部） ───────────────── */
+
+.cs-scope {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  padding-top: 20px;
+  opacity: 0;
+}
+
+[data-state="silos-everywhere"] .cs-scope {
+  opacity: 1;
+  transition: opacity 0.3s ease 0.3s;
+}
+
+.cs-scope-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+[data-state="silos-everywhere"] .cs-scope-row {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="silos-everywhere"] .cs-scope-row:nth-of-type(1) {
+  transition-delay: 0.4s, 0.4s;
+}
+
+[data-state="silos-everywhere"] .cs-scope-row:nth-of-type(2) {
+  transition-delay: 0.85s, 0.85s;
+}
+
+.cs-scope-dot {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  margin-top: 12px;
+  background: var(--theme-warning);
+}
+
+.cs-scope-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cs-scope-name {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 34px;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+.cs-scope-note {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 23px;
+  line-height: 1.4;
+  color: var(--text-mute);
+  opacity: 0;
+}
+
+[data-state="silos-everywhere"] .cs-scope-note {
+  opacity: 1;
+  transition: opacity 0.5s ease 1.3s;
+}
+
+/* ── 收束：侧栏成焦点时引入条弱化 ───────────────────────────── */
+
+[data-state="silos-formed"] .cs-intro {
+  opacity: 0.55;
+  transition: opacity 0.6s ease;
+}
+
+[data-state="silos-everywhere"] .cs-intro {
+  opacity: 0.55;
+}
+
+/* ── keyframes（仅用于章节首拍挂载入场） ─────────────────────── */
+
+@keyframes cs-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cs-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cs-rule-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

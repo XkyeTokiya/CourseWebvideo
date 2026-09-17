@@ -1,0 +1,639 @@
+/* A009 · 下层链路 —— 前缀 .lc- 仅本章使用；颜色/字体全部走主题 token。
+ * 状态门控：进入态 delay 只挂进入态 state 选择器，基础态即时可逆，不用 display:none。 */
+
+.lc-root {
+  gap: 20px;
+  min-height: 0;
+}
+
+/* ── 顶部标题 ───────────────────────────────────────────────────── */
+
+.lc-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.lc-heading-mark {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 56px;
+  background: var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  transform-origin: bottom;
+  animation: lc-mark-grow 0.5s cubic-bezier(0.2, 0.7, 0.3, 1) 0.1s both;
+}
+
+@keyframes lc-mark-grow {
+  from {
+    transform: scaleY(0.2);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.lc-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 1.25;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+/* ── 层叠主轴：HUB 衔接 → MES 功能带 → 设备带 → 链路汇总条 ──────── */
+
+.lc-stack {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 第 1 拍衔接：数据 HUB 下方是 MES（上一场景对象以虚位幽灵态出场） */
+
+.lc-bridge {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: opacity 0.6s ease;
+}
+
+[data-state="chain-summarized"] .lc-bridge {
+  opacity: 0.5;
+}
+
+.lc-hub-chip {
+  padding: 6px 26px;
+  border: 2px dashed var(--text-mute);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 25px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  color: var(--text-mute);
+  opacity: 0;
+  transform: translateY(-12px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="mes-internals-shown"] .lc-hub-chip,
+[data-state="devices-connected"] .lc-hub-chip,
+[data-state="chain-summarized"] .lc-hub-chip {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="mes-internals-shown"] .lc-hub-chip {
+  transition-delay: 0.15s, 0.15s;
+}
+
+.lc-bridge-link {
+  width: 3px;
+  height: 34px;
+  background: repeating-linear-gradient(180deg, var(--text-mute) 0 6px, transparent 6px 12px);
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 0.45s ease;
+}
+
+[data-state="mes-internals-shown"] .lc-bridge-link,
+[data-state="devices-connected"] .lc-bridge-link,
+[data-state="chain-summarized"] .lc-bridge-link {
+  transform: scaleY(1);
+}
+
+[data-state="mes-internals-shown"] .lc-bridge-link {
+  transition-delay: 0.5s;
+}
+
+.lc-bridge-tag {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.28em;
+  color: var(--text-mute);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+[data-state="mes-internals-shown"] .lc-bridge-tag,
+[data-state="devices-connected"] .lc-bridge-tag,
+[data-state="chain-summarized"] .lc-bridge-tag {
+  opacity: 1;
+}
+
+[data-state="mes-internals-shown"] .lc-bridge-tag {
+  transition-delay: 0.85s;
+}
+
+/* ── MES 功能带：内部分区 ＋ 展示终端 ───────────────────────────── */
+
+.lc-mes {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: stretch;
+  gap: 26px;
+  padding: 18px 30px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+[data-state="mes-internals-shown"] .lc-mes,
+[data-state="devices-connected"] .lc-mes,
+[data-state="chain-summarized"] .lc-mes {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="mes-internals-shown"] .lc-mes {
+  transition-delay: 0.6s, 0.6s;
+}
+
+.lc-mes-id {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding-right: 28px;
+  border-right: 2px dashed var(--rule);
+}
+
+.lc-mes-abbr {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+}
+
+.lc-mes-name {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--text-mute);
+}
+
+.lc-mes-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.lc-mes-label {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+}
+
+.lc-functions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lc-fn-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s cubic-bezier(0.3, 0.8, 0.3, 1.15);
+}
+
+[data-state="mes-internals-shown"] .lc-fn-item,
+[data-state="devices-connected"] .lc-fn-item,
+[data-state="chain-summarized"] .lc-fn-item {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="mes-internals-shown"] .lc-fn-item:nth-child(1) {
+  transition-delay: 2.1s, 2.1s;
+}
+
+[data-state="mes-internals-shown"] .lc-fn-item:nth-child(2) {
+  transition-delay: 3.3s, 3.3s;
+}
+
+[data-state="mes-internals-shown"] .lc-fn-item:nth-child(3) {
+  transition-delay: 4.5s, 4.5s;
+}
+
+.lc-fn-chip {
+  padding: 12px 30px;
+  background: var(--surface-3);
+  border: 2.5px solid var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 34px;
+  white-space: nowrap;
+  color: var(--theme-structural);
+}
+
+.lc-fn-sep {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 32px;
+  color: var(--theme-structural);
+}
+
+.lc-terminal {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-left: 28px;
+  border-left: 2px dashed var(--rule);
+  opacity: 0;
+  transform: translateX(14px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="mes-internals-shown"] .lc-terminal,
+[data-state="devices-connected"] .lc-terminal,
+[data-state="chain-summarized"] .lc-terminal {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="mes-internals-shown"] .lc-terminal {
+  transition-delay: 5.4s, 5.4s;
+}
+
+.lc-terminal-tag {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.lc-terminal-chip {
+  padding: 10px 26px;
+  background: var(--theme-process-surface);
+  border: 2.5px solid var(--theme-process);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  white-space: nowrap;
+  color: var(--theme-process);
+}
+
+/* ── 驱动连接排：功能带 → 现场设备（第 2 拍长出并流动）──────────── */
+
+.lc-trunks {
+  position: relative;
+  flex: 0 0 44px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.lc-trunk {
+  justify-self: center;
+  width: 3px;
+  height: 100%;
+  background: repeating-linear-gradient(180deg, var(--theme-process) 0 6px, transparent 6px 13px);
+  background-position: 0 0;
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 0.5s ease;
+}
+
+[data-state="devices-connected"] .lc-trunk,
+[data-state="chain-summarized"] .lc-trunk {
+  transform: scaleY(1);
+  animation: lc-flow 0.9s linear infinite;
+}
+
+[data-state="devices-connected"] .lc-trunk:nth-child(1) {
+  transition-delay: 0.25s;
+}
+
+[data-state="devices-connected"] .lc-trunk:nth-child(2) {
+  transition-delay: 0.5s;
+}
+
+[data-state="devices-connected"] .lc-trunk:nth-child(3) {
+  transition-delay: 0.75s;
+}
+
+[data-state="devices-connected"] .lc-trunk:nth-child(4) {
+  transition-delay: 1s;
+}
+
+[data-state="devices-connected"] .lc-trunk:nth-child(5) {
+  transition-delay: 1.25s;
+}
+
+@keyframes lc-flow {
+  to {
+    background-position: 0 13px;
+  }
+}
+
+.lc-trunk-tag {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 4px 16px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-process);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--theme-process);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="devices-connected"] .lc-trunk-tag,
+[data-state="chain-summarized"] .lc-trunk-tag {
+  opacity: 1;
+}
+
+[data-state="devices-connected"] .lc-trunk-tag {
+  transition-delay: 1.5s;
+}
+
+/* ── 现场设备带：五类设备依次落位 ───────────────────────────────── */
+
+.lc-devices {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.lc-device {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 116px;
+  padding: 14px 10px;
+  background: var(--surface-2);
+  border: 2.5px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(-18px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s cubic-bezier(0.25, 0.8, 0.3, 1.15);
+}
+
+[data-state="devices-connected"] .lc-device,
+[data-state="chain-summarized"] .lc-device {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="devices-connected"] .lc-device:nth-child(1) {
+  transition-delay: 0.9s, 0.9s;
+}
+
+[data-state="devices-connected"] .lc-device:nth-child(2) {
+  transition-delay: 1.8s, 1.8s;
+}
+
+[data-state="devices-connected"] .lc-device:nth-child(3) {
+  transition-delay: 2.7s, 2.7s;
+}
+
+[data-state="devices-connected"] .lc-device:nth-child(4) {
+  transition-delay: 3.6s, 3.6s;
+}
+
+[data-state="devices-connected"] .lc-device:nth-child(5) {
+  transition-delay: 4.5s, 4.5s;
+}
+
+.lc-device-tick {
+  width: 36px;
+  height: 5px;
+  background: var(--theme-process);
+}
+
+.lc-device-name {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 27px;
+  white-space: nowrap;
+  color: var(--theme-structural);
+}
+
+/* ── 汇流连接排：设备带 → 链路汇总条（第 3 拍自绘收束）──────────── */
+
+.lc-collect {
+  position: relative;
+  flex: 0 0 46px;
+}
+
+.lc-collect-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.lc-collect-path {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 2.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+[data-state="chain-summarized"] .lc-collect-path {
+  stroke-dashoffset: 0;
+}
+
+[data-state="chain-summarized"] .lc-collect-path:nth-of-type(1) {
+  transition-delay: 0.15s;
+}
+
+[data-state="chain-summarized"] .lc-collect-path:nth-of-type(2) {
+  transition-delay: 0.3s;
+}
+
+[data-state="chain-summarized"] .lc-collect-path:nth-of-type(3) {
+  transition-delay: 0.45s;
+}
+
+[data-state="chain-summarized"] .lc-collect-path:nth-of-type(4) {
+  transition-delay: 0.6s;
+}
+
+[data-state="chain-summarized"] .lc-collect-path:nth-of-type(5) {
+  transition-delay: 0.75s;
+}
+
+[data-state="chain-summarized"] .lc-collect-path:nth-of-type(6) {
+  transition-delay: 1s;
+  transition-duration: 0.45s;
+}
+
+[data-state="chain-summarized"] .lc-collect-path:nth-of-type(7) {
+  transition-delay: 1.35s;
+  transition-duration: 0.4s;
+}
+
+.lc-collect-tag {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 4px 16px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-process);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 20px;
+  white-space: nowrap;
+  color: var(--theme-process);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="chain-summarized"] .lc-collect-tag {
+  opacity: 1;
+  transition-delay: 1.7s;
+}
+
+/* ── 链路汇总条：terminal-result，本拍内收完 ────────────────────── */
+
+.lc-chain {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  padding: 16px 34px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+[data-state="chain-summarized"] .lc-chain {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.35s, 0.35s;
+}
+
+.lc-chain-tag {
+  padding: 8px 20px;
+  background: var(--theme-process-surface);
+  border: 2.5px solid var(--theme-process);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 26px;
+  white-space: nowrap;
+  color: var(--theme-process);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+[data-state="chain-summarized"] .lc-chain-tag {
+  opacity: 1;
+  transition-delay: 0.8s;
+}
+
+.lc-seg {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 38px;
+  white-space: nowrap;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="chain-summarized"] .lc-seg {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="chain-summarized"] .lc-seg-1 {
+  transition-delay: 1.3s, 1.3s;
+}
+
+[data-state="chain-summarized"] .lc-seg-2 {
+  transition-delay: 2.25s, 2.25s;
+}
+
+[data-state="chain-summarized"] .lc-seg-3 {
+  transition-delay: 3.15s, 3.15s;
+}
+
+.lc-hop {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+[data-state="chain-summarized"] .lc-hop {
+  opacity: 1;
+}
+
+[data-state="chain-summarized"] .lc-hop-1 {
+  transition-delay: 1.75s;
+}
+
+[data-state="chain-summarized"] .lc-hop-2 {
+  transition-delay: 2.7s;
+}
+
+.lc-hop em {
+  font-style: normal;
+  font-family: var(--font-display-cn);
+  font-size: 16px;
+  color: var(--text-mute);
+}
+
+.lc-hop b {
+  font-family: var(--font-display-en);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--theme-process);
+}
