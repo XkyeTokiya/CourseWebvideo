@@ -11,6 +11,10 @@ import SupplySideDrift from "./chapters/03-supply-side-drift/SupplySideDrift";
 import { narrations as supplySideDriftNarrations } from "./chapters/03-supply-side-drift/narrations";
 import InstallArchive from "./chapters/06-install-archive/InstallArchive";
 import { narrations as installArchiveNarrations } from "./chapters/06-install-archive/narrations";
+import PartsSingleItem from "./chapters/07-parts-single-item/PartsSingleItem";
+import { narrations as partsSingleItemNarrations } from "./chapters/07-parts-single-item/narrations";
+import CaseResults from "./chapters/09-case-results/CaseResults";
+import { narrations as caseResultsNarrations } from "./chapters/09-case-results/narrations";
 
 export const id = "episode-12";
 export const title = "汽车零部件精益管理：一物一码如何减少错装与串货";
@@ -52,5 +56,17 @@ export const CHAPTERS: ChapterDef[] = [
     title: "装机档案页",
     narrations: installArchiveNarrations,
     Component: InstallArchive,
+  },
+  {
+    id: "parts-single-item",
+    title: "配件流转页",
+    narrations: partsSingleItemNarrations,
+    Component: PartsSingleItem,
+  },
+  {
+    id: "case-results",
+    title: "案例结果页",
+    narrations: caseResultsNarrations,
+    Component: CaseResults,
   },
 ];

@@ -4,9 +4,9 @@
   "status": "in-progress",
   "theme": "active-identification-note",
   "progress": {
-    "completed": 5,
+    "completed": 7,
     "total": 10,
-    "current": "install-archive"
+    "current": "case-results"
   },
   "updatedAt": "2026-09-17"
 }
