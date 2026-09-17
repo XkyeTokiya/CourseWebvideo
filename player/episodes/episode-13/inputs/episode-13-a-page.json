@@ -1,0 +1,1349 @@
+{
+  "schema_version": "courseplay-a-page/v6",
+  "document_kind": "production",
+  "episode_id": "episode-13",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "本集的范围、前置关系与相邻分集边界",
+      "source_locator": "已确认课程架构，Episode Architecture 第 13 集",
+      "verification_status": "not applicable",
+      "allowed_use": "控制本集范围、去重和时长"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "数据共享是发挥工业数据价值和实现工业互联网创新发展的关键基础；异构、异地、异主数据流转和汇聚是挑战；企业内外存在信息孤岛",
+      "source_locator": "主教材 1.3.5“1. 应用背景”",
+      "verification_status": "not applicable",
+      "allowed_use": "建立案例问题和技术背景"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "数据共享包含数据采集、整合、分析和应用，目标包括提高效率、降低成本、提升质量和促进新业态",
+      "source_locator": "主教材 1.3.5“2. 业务模式”",
+      "verification_status": "not applicable",
+      "allowed_use": "组织案例的业务目标"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "MES、ERP、PLM 等系统由不同厂商硬件和软件平台支撑，接口协议和数据格式差异显著；存在适配差、协同低、成本高和需求错位四类痛点",
+      "source_locator": "主教材 1.3.5“3. 业务需求”",
+      "verification_status": "not applicable",
+      "allowed_use": "解释异构系统为何难共享"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "企业可研发面向研发设计、生产制造、供应链管理的工业软件连接器，以标准化数据连接器和统一数据交互规范实现工业软件对接",
+      "source_locator": "主教材 1.3.5“4. 项目方案”第 1 段",
+      "verification_status": "not applicable",
+      "allowed_use": "说明干预方案和作用"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "连接器基于工业互联网标识解析体系，对接国家顶级节点、二级节点和企业节点，建立统一标识体系和数据规范，实现跨系统、跨平台数据交互整合",
+      "source_locator": "主教材 1.3.5“4. 项目方案”第 2 段",
+      "verification_status": "not verified—version unspecified",
+      "allowed_use": "解释架构角色和数据规范"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "方案支持结构化、半结构化、非结构化数据转换映射，构建多级数据资源管理体系并制定连接器部署运营标准，覆盖企业全产业链应用场景",
+      "source_locator": "主教材 1.3.5“4. 项目方案”第 2 段",
+      "verification_status": "not verified—version unspecified",
+      "allowed_use": "解释能力边界"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "SAP、PLM、CRM、SRM 通过“数据 HUB（开发软件接口）”连接到 MES；MES 内含展示终端、生产管控、质量管控、物流管控，并连接现场、安灯、数据采集、DNC、打码机等操作端",
+      "source_locator": "教材图 1-14“基于工业软件连接器实现异构数据共享”",
+      "verification_status": "not applicable",
+      "allowed_use": "作为架构关系核对和确定性重绘依据"
+    },
+    {
+      "evidence_id": "E009",
+      "claim_or_asset": "教材案例成效：对接开发周期平均缩短 45%，开发人力投入降低 30%，企业 IT 运营成本降低 15%，物料单据标识编码率提升至 75%，应用场景覆盖率达 90%",
+      "source_locator": "主教材 1.3.5“5. 应用成效”",
+      "verification_status": "not applicable",
+      "allowed_use": "仅以“教材所述案例”呈现"
+    },
+    {
+      "evidence_id": "E010",
+      "claim_or_asset": "教学主链：信息孤岛、异构适配痛点、统一标识与数据规范、连接器转换与汇聚、MES 业务使用（案例结果一拍经上游决策移除）",
+      "source_locator": "本任务包基于教材的教学组织（E002–E009）",
+      "verification_status": "not applicable",
+      "allowed_use": "组织讲稿和确定性信息图"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "想象一座正在运转的工厂：生产计划放在一套软件里，设计文档放在另一套里，客户信息和物料采购信息又分别由不同的软件管理。每套系统都能完成自己的任务，可一到系统交界处，名称对不上、格式不一致、接口也不兼容，数据便卡住了。数据明明已经存在，为什么还是共享不了？工业软件连接器要解决的，正是这个问题。",
+      "teaching_purpose": "用工厂情境提出主问题",
+      "single_message": "数据已经存在，难点在交界处互不兼容。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S001",
+          "guidance_text": "数据已经存在，为什么共享不了",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G001",
+            "items": [
+              {
+                "screen_item_id": "S002",
+                "guidance_text": "生产计划、设计文档、客户信息、物料采购信息分属不同软件系统",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G002",
+            "items": [
+              {
+                "screen_item_id": "S003",
+                "guidance_text": "名称、格式、接口在系统交界处互不兼容",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G003",
+            "items": [
+              {
+                "screen_item_id": "S004",
+                "guidance_text": "工业软件连接器要解决的正是这个问题",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "G001",
+          "relation": "数据流动受阻于",
+          "to": "G002",
+          "direction": "blocked-at"
+        },
+        {
+          "relation_id": "R002",
+          "from": "G002",
+          "relation": "引出",
+          "to": "G003",
+          "direction": "leads-to"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C001",
+          "instruction": "不把开场情境指定为具体真实企业或案例现场",
+          "evidence_refs": [
+            "E001"
+          ]
+        }
+      ],
+      "entry_condition": "观众准备进入本集",
+      "exit_condition": "观众能说出主问题：数据存在但无法共享",
+      "timing": {
+        "char_equivalent": 131,
+        "min_seconds": 33,
+        "target_seconds": 34,
+        "max_seconds": 36,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": [
+        "A001"
+      ],
+      "nx": "数据共享是工业数据流通和应用的基础，但真正做起来并不容易。难点主要来自三个方面：数据由不同系统产生，结构和格式各不相同，这是“异构”；数据分布在不同地点，这是“异地”；数据又归属于不同主体，这是“异主”。三类差异叠加在一起，就形成了信息孤岛。这样的孤岛不仅存在于企业之间，在同一家企业的不同部门、不同系统之间也很常见。",
+      "teaching_purpose": "解释挑战的来源",
+      "single_message": "异构、异地、异主叠加形成信息孤岛。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S005",
+          "guidance_text": "数据共享难在哪里",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G004",
+            "items": [
+              {
+                "screen_item_id": "S006",
+                "guidance_text": "异构：数据由不同系统产生，结构和格式各不相同",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E002"
+                ]
+              },
+              {
+                "screen_item_id": "S007",
+                "guidance_text": "异地：数据分布在不同地点",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E002"
+                ]
+              },
+              {
+                "screen_item_id": "S008",
+                "guidance_text": "异主：数据归属不同主体",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G005",
+            "items": [
+              {
+                "screen_item_id": "S009",
+                "guidance_text": "信息孤岛存在于企业之间，也存在于企业内部",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R003",
+          "from": "G004",
+          "relation": "叠加导致",
+          "to": "G005",
+          "direction": "causal"
+        }
+      ],
+      "silent_constraints": [],
+      "entry_condition": "观众带着主问题进入背景",
+      "exit_condition": "观众能说出异构、异地、异主与信息孤岛",
+      "timing": {
+        "char_equivalent": 138,
+        "min_seconds": 35,
+        "target_seconds": 36,
+        "max_seconds": 38,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": [
+        "A002"
+      ],
+      "nx": "从业务过程来看，数据共享贯穿数据采集、整合、分析和应用等环节，最终是为了提高效率、降低成本、改善质量，并为新的业务模式提供条件。这里的“共享”，不是简单地把数据从一套系统搬到另一套系统，而是要让生产、研发和供应链等环节拿到能够识别、理解并直接使用的数据。",
+      "teaching_purpose": "建立共享的环节与目标",
+      "single_message": "共享是多环节协同增效，不是搬运数据。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S010",
+          "guidance_text": "数据共享的环节与目标",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G006",
+            "items": [
+              {
+                "screen_item_id": "S011",
+                "guidance_text": "数据采集、整合、分析、应用",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G007",
+            "items": [
+              {
+                "screen_item_id": "S012",
+                "guidance_text": "提高效率、降低成本、改善质量、为新的业务模式提供条件",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E003"
+                ]
+              },
+              {
+                "screen_item_id": "S013",
+                "guidance_text": "让各环节拿到能识别、理解并直接使用的数据",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R004",
+          "from": "G006",
+          "relation": "服务于",
+          "to": "G007",
+          "direction": "supports"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C002",
+          "instruction": "不添加证据范围之外的量化指标或实施步骤",
+          "evidence_refs": [
+            "E003"
+          ]
+        }
+      ],
+      "entry_condition": "观众已知挑战来源",
+      "exit_condition": "观众能说出数据共享的环节与目标",
+      "timing": {
+        "char_equivalent": 112,
+        "min_seconds": 28,
+        "target_seconds": 29,
+        "max_seconds": 31,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": [
+        "A003"
+      ],
+      "nx": "问题是，现有系统为什么很难做到这一点？工厂里常见的业务系统有很多。比如，制造执行系统 MES 负责生产执行与现场管控；企业资源计划 ERP 负责企业资源和经营计划；产品生命周期管理系统 PLM 负责产品从设计到退役的相关数据。这些系统往往来自不同厂商，运行在不同的软硬件平台上，接口协议和数据格式也不统一。要把它们连接起来，通常需要逐套开发接口、逐项适配数据。",
+      "teaching_purpose": "解释异构系统难互通的原因",
+      "single_message": "接口与格式差异使连接依赖逐套定制。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S014",
+          "guidance_text": "现有系统为什么难以做到",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E004"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G008",
+            "items": [
+              {
+                "screen_item_id": "S015",
+                "guidance_text": "制造执行系统 MES：生产执行与现场管控",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E004"
+                ]
+              },
+              {
+                "screen_item_id": "S016",
+                "guidance_text": "企业资源计划 ERP：企业资源与经营计划",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E004"
+                ]
+              },
+              {
+                "screen_item_id": "S017",
+                "guidance_text": "产品生命周期管理系统 PLM：产品从设计到退役的数据",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G009",
+            "items": [
+              {
+                "screen_item_id": "S018",
+                "guidance_text": "来自不同厂商、不同软硬件平台，接口协议和数据格式不统一",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              },
+              {
+                "screen_item_id": "S019",
+                "guidance_text": "连接需要逐套开发接口、逐项适配数据",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R005",
+          "from": "G008",
+          "relation": "差异导致",
+          "to": "G009",
+          "direction": "triggers"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C003",
+          "instruction": "不虚构具体厂商、协议名称或接口字段",
+          "evidence_refs": [
+            "E004"
+          ]
+        }
+      ],
+      "entry_condition": "观众已知共享目标",
+      "exit_condition": "观众能说出三类系统及其接口与格式差异",
+      "timing": {
+        "char_equivalent": 156.5,
+        "min_seconds": 40,
+        "target_seconds": 41,
+        "max_seconds": 43,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": [
+        "A004"
+      ],
+      "nx": "这样一来，问题就出现了：系统适配能力有限，跨系统协同效率不高，实施和维护成本不断增加，供应商提供的方案还可能与企业的实际需求错位。这些问题会互相影响。系统越难适配，对定制开发的依赖就越强；定制接口越多，后续维护和扩展也就越困难。",
+      "teaching_purpose": "呈现痛点及其放大关系",
+      "single_message": "四类痛点相互放大，定制路径不可持续。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S020",
+          "guidance_text": "四类痛点相互放大",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E004"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G010",
+            "items": [
+              {
+                "screen_item_id": "S021",
+                "guidance_text": "系统适配能力有限",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E004"
+                ]
+              },
+              {
+                "screen_item_id": "S022",
+                "guidance_text": "跨系统协同效率不高",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E004"
+                ]
+              },
+              {
+                "screen_item_id": "S023",
+                "guidance_text": "实施和维护成本不断增加",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E004"
+                ]
+              },
+              {
+                "screen_item_id": "S024",
+                "guidance_text": "供应商方案与实际需求错位",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G011",
+            "items": [
+              {
+                "screen_item_id": "S025",
+                "guidance_text": "越难适配越依赖定制，定制越多越难维护扩展",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R006",
+          "from": "G010",
+          "relation": "相互放大形成",
+          "to": "G011",
+          "direction": "chain"
+        }
+      ],
+      "silent_constraints": [],
+      "entry_condition": "观众已知系统差异",
+      "exit_condition": "观众能说出四类痛点及其放大关系",
+      "timing": {
+        "char_equivalent": 103,
+        "min_seconds": 26,
+        "target_seconds": 27,
+        "max_seconds": 29,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": [
+        "A005"
+      ],
+      "nx": "工业软件连接器提供了另一种连接思路：不再让每套系统彼此单独适配，而是在研发设计、生产制造和供应链管理等环节之间，建立标准化的数据连接方式和统一的数据交互规范。原有系统不需要推倒重来，仍然各自承担原来的业务职责；跨系统的数据转换和交换，则交给连接器处理。所以，连接器改变的是系统之间的连接方式，并不是把 MES、ERP、PLM 合并成一套大系统。",
+      "teaching_purpose": "说明连接器方案的干预方式",
+      "single_message": "连接器改变连接方式，不把原有系统合并成一套。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S026",
+          "guidance_text": "连接器改变连接方式",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G012",
+            "items": [
+              {
+                "screen_item_id": "S027",
+                "guidance_text": "研发设计、生产制造、供应链管理",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G013",
+            "items": [
+              {
+                "screen_item_id": "S028",
+                "guidance_text": "标准化的数据连接方式与统一的数据交互规范",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E005"
+                ]
+              },
+              {
+                "screen_item_id": "S029",
+                "guidance_text": "原有系统保留原有业务职责",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              },
+              {
+                "screen_item_id": "S030",
+                "guidance_text": "跨系统数据转换和交换交给连接器处理",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R007",
+          "from": "G012",
+          "relation": "由统一规范衔接",
+          "to": "G013",
+          "direction": "convergent"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C004",
+          "instruction": "不声称现有产品或具体厂商方案",
+          "evidence_refs": [
+            "E005"
+          ]
+        }
+      ],
+      "entry_condition": "观众理解痛点链",
+      "exit_condition": "观众能说出连接器方案与三类业务环节",
+      "timing": {
+        "char_equivalent": 151.5,
+        "min_seconds": 38,
+        "target_seconds": 40,
+        "max_seconds": 42,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": [
+        "A006"
+      ],
+      "nx": "这套方案以工业互联网标识解析体系为基础。连接器可以对接国家顶级节点、二级节点和企业节点，并在此基础上建立统一标识体系和数据规范。统一标识给跨系统、跨平台的数据确定共同身份，数据规范则约定数据怎样描述、怎样交换。有了这两项基础，不同系统里的数据才有可能准确对应。",
+      "teaching_purpose": "说明标识解析的锚点作用",
+      "single_message": "统一标识和数据规范让不同系统数据准确对应。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S031",
+          "guidance_text": "统一标识与数据规范作为共同基础",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E006"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G014",
+            "items": [
+              {
+                "screen_item_id": "S032",
+                "guidance_text": "国家顶级节点、二级节点、企业节点",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G015",
+            "items": [
+              {
+                "screen_item_id": "S033",
+                "guidance_text": "统一标识体系和数据规范",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E006"
+                ]
+              },
+              {
+                "screen_item_id": "S034",
+                "guidance_text": "为跨系统、跨平台数据确定共同身份并约定交换方式",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R008",
+          "from": "G014",
+          "relation": "支撑",
+          "to": "G015",
+          "direction": "grounds"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C005",
+          "instruction": "不扩展节点职责、数量、地域分布或运行规模",
+          "evidence_refs": [
+            "E006"
+          ]
+        }
+      ],
+      "entry_condition": "观众知道连接器改变连接方式",
+      "exit_condition": "观众能说出三类节点与统一标识、数据规范",
+      "timing": {
+        "char_equivalent": 120,
+        "min_seconds": 30,
+        "target_seconds": 31,
+        "max_seconds": 33,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": [
+        "A007"
+      ],
+      "nx": "再来看它在工厂系统中的位置。上层是各类业务系统：例如 SAP 的 ERP 系统管理生产计划，PLM 管理设计图纸和技术文档，CRM 管理客户信息，SRM 管理供应商和物料采购。它们通过数据 HUB 与下层系统连接。这里的数据 HUB 承担软件接口、数据交换和汇聚等工作。",
+      "teaching_purpose": "建立架构上层认知",
+      "single_message": "各类业务系统经数据 HUB 与下层系统连接。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S035",
+          "guidance_text": "业务系统经数据 HUB 连接下层",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E008"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G016",
+            "items": [
+              {
+                "screen_item_id": "S036",
+                "guidance_text": "SAP：生产计划",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S037",
+                "guidance_text": "PLM：设计图纸和技术文档",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S038",
+                "guidance_text": "CRM：客户信息",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S039",
+                "guidance_text": "SRM：供应商和物料采购",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G017",
+            "items": [
+              {
+                "screen_item_id": "S040",
+                "guidance_text": "数据 HUB（开发软件接口）：软件接口、数据交换与汇聚",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R009",
+          "from": "G016",
+          "relation": "经",
+          "to": "G017",
+          "direction": "flows-into"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C006",
+          "instruction": "不新增系统或改变系统与职责的对应",
+          "evidence_refs": [
+            "E008"
+          ]
+        }
+      ],
+      "entry_condition": "观众已建立共同基础",
+      "exit_condition": "观众能说出四类业务系统与数据 HUB 的职责",
+      "timing": {
+        "char_equivalent": 104.5,
+        "min_seconds": 27,
+        "target_seconds": 27,
+        "max_seconds": 29,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": [
+        "A008"
+      ],
+      "nx": "数据 HUB 下方是 MES。MES 内部通常包括生产管控、质量管控和物流管控等功能，并配有相应的展示终端。再往下，则连接现场终端、安灯系统、数据采集装置、DNC 设备和打码机等现场设备。这样便形成了一条从业务系统，经接口与制造执行系统，再到现场设备的数据链路。",
+      "teaching_purpose": "建立架构下层认知",
+      "single_message": "MES 分区与现场设备构成完整数据链路。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S041",
+          "guidance_text": "MES 功能分区与现场设备",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E008"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G018",
+            "items": [
+              {
+                "screen_item_id": "S042",
+                "guidance_text": "生产管控、质量管控、物流管控",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S043",
+                "guidance_text": "展示终端",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G019",
+            "items": [
+              {
+                "screen_item_id": "S044",
+                "guidance_text": "现场终端、安灯系统、数据采集装置、DNC 设备、打码机",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G020",
+            "items": [
+              {
+                "screen_item_id": "S045",
+                "guidance_text": "业务系统、接口、制造执行系统到现场设备的数据链路",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R010",
+          "from": "G018",
+          "relation": "驱动",
+          "to": "G019",
+          "direction": "drives"
+        },
+        {
+          "relation_id": "R011",
+          "from": "G019",
+          "relation": "汇成",
+          "to": "G020",
+          "direction": "converges"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C007",
+          "instruction": "不把链路解释为接口调用顺序、数据库拓扑或实时同步承诺",
+          "evidence_refs": [
+            "E008"
+          ]
+        }
+      ],
+      "entry_condition": "观众已知数据 HUB",
+      "exit_condition": "观众能按层说出 MES 分区、展示终端与现场设备",
+      "timing": {
+        "char_equivalent": 108,
+        "min_seconds": 27,
+        "target_seconds": 28,
+        "max_seconds": 30,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A010",
+      "callback_a_ids": [
+        "A009"
+      ],
+      "nx": "连接器面对的数据也不只有一种形态。表格中规整的记录属于结构化数据；带有一定标签和层次的日志可以看作半结构化数据；图纸、图片和文档则属于非结构化数据。连接器需要对这些数据进行解析、转换和映射，使它们符合统一的数据规范。",
+      "teaching_purpose": "区分三种数据形态",
+      "single_message": "不同形态的数据都要转换到统一规范。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S046",
+          "guidance_text": "三种数据形态",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E007"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G021",
+            "items": [
+              {
+                "screen_item_id": "S047",
+                "guidance_text": "结构化数据：表格中规整的记录",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E007"
+                ]
+              },
+              {
+                "screen_item_id": "S048",
+                "guidance_text": "半结构化数据：带有标签和层次的日志",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E007"
+                ]
+              },
+              {
+                "screen_item_id": "S049",
+                "guidance_text": "非结构化数据：图纸、图片和文档",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G022",
+            "items": [
+              {
+                "screen_item_id": "S050",
+                "guidance_text": "解析、转换和映射，使其符合统一数据规范",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R012",
+          "from": "G021",
+          "relation": "经解析转换映射进入",
+          "to": "G022",
+          "direction": "transform"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C008",
+          "instruction": "不发明算法、字段或转换步骤细节",
+          "evidence_refs": [
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "观众看清架构分层",
+      "exit_condition": "观众能说出三种数据形态与转换映射",
+      "timing": {
+        "char_equivalent": 100,
+        "min_seconds": 25,
+        "target_seconds": 26,
+        "max_seconds": 28,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A011",
+      "callback_a_ids": [
+        "A010"
+      ],
+      "nx": "在此基础上，方案还要建立多级数据资源管理体系，并明确连接器的部署和运营标准，以适应企业产业链中的不同应用场景。不同来源、不同形态的数据经过转换和汇聚后，才能交给相应的业务系统继续使用。",
+      "teaching_purpose": "说明资源管理与运营边界",
+      "single_message": "资源体系和标准保障数据交到业务系统使用。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S051",
+          "guidance_text": "资源管理与部署运营标准",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E007"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G023",
+            "items": [
+              {
+                "screen_item_id": "S052",
+                "guidance_text": "多级数据资源管理体系",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E007"
+                ]
+              },
+              {
+                "screen_item_id": "S053",
+                "guidance_text": "连接器部署和运营标准",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E007"
+                ]
+              },
+              {
+                "screen_item_id": "S054",
+                "guidance_text": "适应企业产业链中的不同应用场景",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G024",
+            "items": [
+              {
+                "screen_item_id": "S055",
+                "guidance_text": "不同来源、不同形态的数据经转换汇聚后交给业务系统使用",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R013",
+          "from": "G023",
+          "relation": "保障",
+          "to": "G024",
+          "direction": "enables"
+        }
+      ],
+      "silent_constraints": [],
+      "entry_condition": "观众已知三种数据形态",
+      "exit_condition": "观众能说出资源管理体系与部署运营标准",
+      "timing": {
+        "char_equivalent": 85,
+        "min_seconds": 22,
+        "target_seconds": 22,
+        "max_seconds": 24,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A012",
+      "callback_a_ids": [
+        "A011"
+      ],
+      "nx": "前后的差别可以这样理解：没有统一规范时，每两套系统之间都可能要单独开发一条接口。系统数量越多，接口关系越复杂，定制和维护的工作量也增长得越快。有了统一标识、数据规范和连接器，各套系统就可以按照共同规则完成数据转换和交换。生产、质量、物流仍由各自的业务模块负责，连接器则提供跨系统协作的通道。",
+      "teaching_purpose": "对比机制转变前后",
+      "single_message": "共同规则取代逐一适配，业务职责保持分工。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S056",
+          "guidance_text": "从逐一适配到共同规则",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E010"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G025",
+            "items": [
+              {
+                "screen_item_id": "S057",
+                "guidance_text": "没有统一规范：每两套系统单独开发接口，工作量随系统数量增长",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G026",
+            "items": [
+              {
+                "screen_item_id": "S058",
+                "guidance_text": "有统一标识、数据规范和连接器：按共同规则完成转换和交换",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              },
+              {
+                "screen_item_id": "S059",
+                "guidance_text": "生产、质量、物流仍由各自业务模块负责",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              },
+              {
+                "screen_item_id": "S060",
+                "guidance_text": "连接器提供跨系统协作通道",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R014",
+          "from": "G025",
+          "relation": "转向",
+          "to": "G026",
+          "direction": "shift"
+        }
+      ],
+      "silent_constraints": [],
+      "entry_condition": "观众已知资源与标准",
+      "exit_condition": "观众能说出机制转变前后的差别",
+      "timing": {
+        "char_equivalent": 132,
+        "min_seconds": 33,
+        "target_seconds": 34,
+        "max_seconds": 36,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A013",
+      "callback_a_ids": [
+        "A001",
+        "A012"
+      ],
+      "nx": "回到开头那座工厂。生产计划、设计文档、客户信息和物料采购信息，仍然保存在各自的系统里，这是正常的业务分工。统一标识为这些数据确定共同身份，数据规范约定交换规则，连接器则负责数据的转换、汇聚和传递，把数据送到需要它的业务环节。",
+      "teaching_purpose": "收束分工与协作关系",
+      "single_message": "分工保留，统一标识、规范与连接器完成协作。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S061",
+          "guidance_text": "回到工厂：分工与协作",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E010"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G027",
+            "items": [
+              {
+                "screen_item_id": "S062",
+                "guidance_text": "生产计划、设计文档、客户信息、物料采购信息仍保存在各自系统",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S063",
+                "guidance_text": "这是正常的业务分工",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G028",
+            "items": [
+              {
+                "screen_item_id": "S064",
+                "guidance_text": "统一标识为数据确定共同身份",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              },
+              {
+                "screen_item_id": "S065",
+                "guidance_text": "数据规范约定交换规则",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              },
+              {
+                "screen_item_id": "S066",
+                "guidance_text": "连接器负责数据的转换、汇聚和传递",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R015",
+          "from": "G027",
+          "relation": "依托",
+          "to": "G028",
+          "direction": "anchored"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C009",
+          "instruction": "不呈现案例成效数字，不外推为行业平均或项目承诺",
+          "evidence_refs": [
+            "E009"
+          ]
+        }
+      ],
+      "entry_condition": "观众掌握机制转变",
+      "exit_condition": "观众能复述各层分工与连接器职责",
+      "timing": {
+        "char_equivalent": 101,
+        "min_seconds": 26,
+        "target_seconds": 26,
+        "max_seconds": 28,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A014",
+      "callback_a_ids": [
+        "A013"
+      ],
+      "nx": "这也延续了前面几期的线索：从认识工业互联网和标识解析，到识别对象、连接业务环节，再到产业链协同和典型应用，统一身份始终服务于跨系统、跨主体的数据协作。因此，这一集的核心可以归结为一句话：工业软件连接器不替代原有系统，而是让异构数据按照同一套规则流动，从而减少重复定制，降低系统协同和后续维护的成本。",
+      "teaching_purpose": "收束阶段主线与核心判断",
+      "single_message": "连接器让异构数据按同一套规则流动。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S067",
+          "guidance_text": "连接器不替代系统",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E010"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G029",
+            "items": [
+              {
+                "screen_item_id": "S068",
+                "guidance_text": "从工业互联网和标识解析，到对象、业务环节、产业链协同和典型应用",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              },
+              {
+                "screen_item_id": "S069",
+                "guidance_text": "统一身份始终服务于跨系统、跨主体的数据协作",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G030",
+            "items": [
+              {
+                "screen_item_id": "S070",
+                "guidance_text": "异构数据按照同一套规则流动",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              },
+              {
+                "screen_item_id": "S071",
+                "guidance_text": "减少重复定制，降低系统协同和后续维护成本",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R016",
+          "from": "G029",
+          "relation": "收束于",
+          "to": "G030",
+          "direction": "converges"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C010",
+          "instruction": "不预告其他模块或相邻分集主题",
+          "evidence_refs": [
+            "E001"
+          ]
+        }
+      ],
+      "entry_condition": "观众已回顾分工与协作",
+      "exit_condition": "观众能复述核心判断：不替代系统，按同一套规则流动",
+      "timing": {
+        "char_equivalent": 136,
+        "min_seconds": 34,
+        "target_seconds": 35,
+        "max_seconds": 38,
+        "short_page_reason": null
+      }
+    }
+  ]
+}
