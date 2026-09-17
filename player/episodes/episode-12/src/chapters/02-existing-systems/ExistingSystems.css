@@ -1,0 +1,912 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * 02-existing-systems · 既有系统页（S-A004 · layered-bands-with-side-notes）
+ * 前缀 .es- · 状态机（与 outline step 表逐字一致）：
+ *   workshop-context → qts-band-in → systems-equal
+ *   → limits-visible → chain-break-takeaway
+ * 基础态 = 终态（step5 收束画面）；早期状态只做隐藏与一次性入场动画，
+ * 全部 animation / transition-delay 仅挂在 .state-* 选择器下，保证可逆。
+ * ───────────────────────────────────────────────────────────────────── */
+
+.es-pad {
+  gap: 20px;
+}
+
+/* ── headline（S004）────────────────────────────────────────────── */
+.es-headline {
+  margin: 0;
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.12;
+  color: var(--text);
+}
+
+.state-workshop-context .es-headline {
+  animation: es-rise-in 0.6s ease-out both;
+}
+
+/* ── 分带骨架（上下两带 + 左侧竖排旁注）────────────────────────── */
+.es-band {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  padding: 20px 28px 20px 18px;
+}
+
+.es-rail {
+  flex: none;
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+  border-right: 2px dashed var(--rule);
+}
+
+.es-rail-label {
+  writing-mode: vertical-rl;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: var(--text-2);
+}
+
+.es-band-body {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* ── 上带 · 既有系统记录带（U003 · 两条带等权）──────────────────── */
+.state-workshop-context .es-band-records {
+  animation: es-drop-in 0.7s cubic-bezier(0.2, 0.85, 0.3, 1.05) 0.15s both;
+}
+
+.es-syscell {
+  position: relative;
+  display: flex;
+  min-width: 0;
+}
+
+/* 空槽待补：仅骨架期可见，补齐后让位给系统带 */
+.es-slot-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border: 2px dashed var(--rule);
+  color: var(--text-faint);
+  font-size: 17px;
+  letter-spacing: 0.3em;
+  opacity: 0;
+}
+
+.state-workshop-context .es-slot-empty {
+  animation: es-fade-in 0.5s ease-out 0.35s both;
+}
+
+.state-qts-band-in .es-slot-b {
+  opacity: 1;
+}
+
+.es-sys {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 26px 18px;
+}
+
+.state-workshop-context .es-sys {
+  opacity: 0;
+}
+
+.state-qts-band-in .es-mes {
+  opacity: 0;
+}
+
+.state-qts-band-in .es-qts {
+  animation: es-drop-in 0.65s cubic-bezier(0.2, 0.85, 0.3, 1.05) both;
+}
+
+.state-systems-equal .es-mes {
+  animation: es-drop-in 0.65s cubic-bezier(0.2, 0.85, 0.3, 1.05) 0.1s both;
+}
+
+.es-sys-tag {
+  align-self: flex-start;
+  padding: 3px 10px;
+  font-size: 16px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+}
+
+.es-sys-name {
+  margin: 2px 0 0;
+  font-size: 33px;
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.es-sys-en {
+  font-family: var(--font-display-en);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--text-2);
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
+.es-sys-duty {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 21px;
+  color: var(--text-2);
+}
+
+.es-duty-label {
+  flex: none;
+  padding: 2px 10px;
+  font-size: 16px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* 记录条：系统持续写入的采集条目（抽象条，非数据） */
+.es-slats {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+  height: 15px;
+}
+
+.es-slat {
+  flex: 1;
+  height: 100%;
+  background: var(--accent-soft);
+  border-bottom: 3px solid var(--accent);
+  transform-origin: left center;
+}
+
+.state-qts-band-in .es-qts .es-slat {
+  animation: es-slat-write 0.45s ease-out both;
+}
+
+.state-qts-band-in .es-qts .es-slat:nth-child(1) { animation-delay: 0.85s; }
+.state-qts-band-in .es-qts .es-slat:nth-child(2) { animation-delay: 1.07s; }
+.state-qts-band-in .es-qts .es-slat:nth-child(3) { animation-delay: 1.29s; }
+.state-qts-band-in .es-qts .es-slat:nth-child(4) { animation-delay: 1.51s; }
+.state-qts-band-in .es-qts .es-slat:nth-child(5) { animation-delay: 1.73s; }
+
+.state-systems-equal .es-mes .es-slat {
+  animation: es-slat-write 0.45s ease-out both;
+}
+
+.state-systems-equal .es-mes .es-slat:nth-child(1) { animation-delay: 0.95s; }
+.state-systems-equal .es-mes .es-slat:nth-child(2) { animation-delay: 1.13s; }
+.state-systems-equal .es-mes .es-slat:nth-child(3) { animation-delay: 1.31s; }
+.state-systems-equal .es-mes .es-slat:nth-child(4) { animation-delay: 1.49s; }
+.state-systems-equal .es-mes .es-slat:nth-child(5) { animation-delay: 1.67s; }
+
+/* ── 承接连接线（R002 / R003 载体的一部分）──────────────────────── */
+.es-link {
+  flex: none;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 70px;
+}
+
+.state-workshop-context .es-link,
+.state-qts-band-in .es-link,
+.state-systems-equal .es-link,
+.state-limits-visible .es-link-take {
+  opacity: 0;
+}
+
+.es-link-line {
+  flex: 1;
+  height: 0;
+  border-top: 2px dashed var(--rule);
+}
+
+.es-link-line:nth-child(1) {
+  transform-origin: right center;
+}
+
+.es-link-line:nth-child(3) {
+  transform-origin: left center;
+}
+
+.es-link-label {
+  flex: none;
+  font-size: 17px;
+  letter-spacing: 0.22em;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+.es-link-arrow {
+  flex: none;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 9px solid var(--text-mute);
+}
+
+.state-limits-visible .es-link-records {
+  animation: es-link-in 0.7s ease-out both;
+}
+
+.state-chain-break-takeaway .es-link-take {
+  animation: es-link-in 0.7s ease-out both;
+}
+
+.state-limits-visible .es-link-records .es-link-line,
+.state-chain-break-takeaway .es-link-take .es-link-line {
+  animation: es-line-draw 0.6s ease-out both;
+}
+
+.state-limits-visible .es-link-records .es-link-line:nth-child(3),
+.state-chain-break-takeaway .es-link-take .es-link-line:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.state-limits-visible .es-link-records .es-link-label,
+.state-chain-break-takeaway .es-link-take .es-link-label {
+  animation: es-label-in 0.5s ease-out 0.1s both;
+}
+
+.state-limits-visible .es-link-records .es-link-arrow,
+.state-chain-break-takeaway .es-link-take .es-link-arrow {
+  animation: es-arrow-in 0.45s ease-out 0.55s both;
+}
+
+/* ── 下带 · 局限带（U004）：骨架先立、内容 step4 补齐 ───────────── */
+.es-band-limits {
+  transition: opacity 0.5s ease;
+}
+
+.state-workshop-context .es-band-limits,
+.state-qts-band-in .es-band-limits,
+.state-systems-equal .es-band-limits {
+  opacity: 0.28;
+}
+
+.state-workshop-context .es-rail-label-limits,
+.state-qts-band-in .es-rail-label-limits,
+.state-systems-equal .es-rail-label-limits {
+  opacity: 0;
+}
+
+.state-limits-visible .es-rail-label-limits {
+  animation: es-label-in 0.5s ease-out both;
+}
+
+.es-limits-body {
+  align-items: stretch;
+}
+
+.es-limit-cell {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4px 10px;
+}
+
+.state-workshop-context .es-limit-cell,
+.state-qts-band-in .es-limit-cell,
+.state-systems-equal .es-limit-cell {
+  opacity: 0;
+}
+
+.state-limits-visible .es-limit-cell {
+  animation: es-rise-in 0.6s ease-out both;
+}
+
+.state-limits-visible .es-limit-cell:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.es-limit-lead {
+  margin: 0 0 16px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.es-limit-warn {
+  margin-left: 6px;
+  padding: 0 8px 2px;
+  color: var(--text);
+  background: var(--theme-warning-surface);
+  border-bottom: 4px solid var(--theme-warning);
+  font-weight: 900;
+}
+
+/* 采集记录刻度：实心 = 已采到，虚框/歪斜 = 不及时、不准确 */
+.es-ticks {
+  position: relative;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+.es-ticks::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  border-top: 2px dashed var(--rule);
+}
+
+.es-tick {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  background: var(--theme-process);
+  border: 2px solid var(--theme-process);
+}
+
+.es-tick-miss {
+  background: transparent;
+  border: 2px dashed var(--theme-warning);
+}
+
+.es-tick-off {
+  background: transparent;
+  border: 2px solid var(--theme-warning);
+  transform: rotate(14deg) translateY(-4px);
+}
+
+.state-limits-visible .es-tick {
+  animation: es-tick-pop 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+/* 歪斜刻度用专用关键帧，收尾保留自身rotate（fill both 不覆盖基础态） */
+.state-limits-visible .es-tick-off {
+  animation-name: es-tick-off-pop;
+}
+
+.state-limits-visible .es-tick:nth-child(1) { animation-delay: 0.55s; }
+.state-limits-visible .es-tick:nth-child(2) { animation-delay: 0.67s; }
+.state-limits-visible .es-tick:nth-child(3) { animation-delay: 0.79s; }
+.state-limits-visible .es-tick:nth-child(4) { animation-delay: 0.91s; }
+.state-limits-visible .es-tick:nth-child(5) { animation-delay: 1.03s; }
+.state-limits-visible .es-tick:nth-child(6) { animation-delay: 1.15s; }
+
+/* 质量码流转磨损演示：码片沿 仓储 → 运输 → 装卸 走，逐渐磨花、掉屑 */
+.es-journey {
+  position: relative;
+  height: 86px;
+  margin-top: 14px;
+}
+
+.es-journey-line {
+  position: absolute;
+  left: 2%;
+  right: 2%;
+  top: 14px;
+  border-top: 2px dashed var(--rule);
+  transform-origin: left center;
+}
+
+.state-limits-visible .es-journey-line {
+  animation: es-line-draw 0.6s ease-out 0.4s both;
+}
+
+.es-stop {
+  position: absolute;
+  top: 8px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+}
+
+.es-stop-1 { left: 8%; }
+.es-stop-2 { left: 50%; }
+.es-stop-3 { left: 92%; }
+
+.es-stop-mark {
+  width: 12px;
+  height: 12px;
+  background: var(--surface-2);
+  border: 3px solid var(--text);
+}
+
+.es-stop b {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--text-2);
+}
+
+.state-limits-visible .es-stop {
+  animation: es-stop-pop 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+.state-limits-visible .es-stop-1 { animation-delay: 0.5s; }
+.state-limits-visible .es-stop-2 { animation-delay: 0.75s; }
+.state-limits-visible .es-stop-3 { animation-delay: 1s; }
+
+.es-code {
+  position: absolute;
+  top: -2px;
+  left: 92%;
+  transform: translateX(-50%);
+  width: 74px;
+  height: 32px;
+  background: var(--surface-2);
+  border: 3px solid var(--text);
+  box-shadow: 3px 3px 0 var(--theme-offset-shadow);
+}
+
+.es-code-stripes {
+  position: absolute;
+  inset: 4px;
+  background: repeating-linear-gradient(90deg, var(--text) 0 3px, transparent 3px 9px);
+  opacity: 0.4;
+}
+
+.es-code-scratch {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 26%,
+    var(--surface-2) 36%,
+    var(--surface-2) 44%,
+    transparent 52%,
+    transparent 62%,
+    var(--surface-2) 72%,
+    var(--surface-2) 80%,
+    transparent 88%
+  );
+  opacity: 0.9;
+}
+
+.es-code-flake {
+  position: absolute;
+  top: 40px;
+  left: calc(92% + 8px);
+  width: 11px;
+  height: 8px;
+  background: var(--text);
+  transform: rotate(38deg);
+  opacity: 0.85;
+}
+
+.state-limits-visible .es-code {
+  animation: es-code-travel 3.6s ease-in-out 1.1s both;
+}
+
+.state-limits-visible .es-code-stripes {
+  animation: es-code-erode 3.6s linear 1.1s both;
+}
+
+.state-limits-visible .es-code-scratch {
+  animation: es-scratch-in 3.6s linear 1.1s both;
+}
+
+.state-limits-visible .es-code-flake {
+  animation: es-flake-fall 0.55s ease-in 4.3s both;
+}
+
+/* ── 结论行（U005 · takeaway）：身份链在中间断开 ────────────────── */
+.es-takeaway {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  padding: 26px 46px;
+}
+
+.state-workshop-context .es-takeaway,
+.state-qts-band-in .es-takeaway,
+.state-systems-equal .es-takeaway,
+.state-limits-visible .es-takeaway {
+  opacity: 0;
+}
+
+.state-chain-break-takeaway .es-takeaway {
+  animation: es-rise-in 0.6s ease-out 0.2s both;
+}
+
+.es-take-judge {
+  flex: 1.05;
+  min-width: 0;
+}
+
+.es-take-lead {
+  display: block;
+  font-size: 17px;
+  letter-spacing: 0.3em;
+  color: var(--text-mute);
+}
+
+.es-take-hero {
+  margin: 10px 0 0;
+  font-size: 82px;
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.es-take-hero em {
+  font-style: normal;
+  padding: 0 12px;
+  color: var(--theme-danger);
+}
+
+.state-chain-break-takeaway .es-take-lead {
+  animation: es-label-in 0.5s ease-out 0.45s both;
+}
+
+.state-chain-break-takeaway .es-take-hero {
+  animation: es-rise-in 0.55s ease-out 0.55s both;
+}
+
+/* 单件 ↔ 记录 的对接演示：链在中间崩断 */
+.es-take-demo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.es-part-chip {
+  flex: none;
+  padding: 16px 22px;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 3px solid var(--text);
+  box-shadow: 4px 4px 0 var(--theme-offset-shadow);
+}
+
+.es-part-record {
+  color: var(--text-2);
+  background: var(--surface-3);
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.state-chain-break-takeaway .es-part-chip {
+  animation: es-rise-in 0.5s ease-out both;
+}
+
+.state-chain-break-takeaway .es-part-now {
+  animation-delay: 0.85s;
+}
+
+.state-chain-break-takeaway .es-part-record {
+  animation-delay: 1s;
+}
+
+.es-chain {
+  position: relative;
+  flex: 1;
+  min-width: 60px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+}
+
+.es-chain-seg {
+  flex: 1;
+  height: 0;
+  border-top: 4px solid var(--theme-structural);
+}
+
+.es-chain-l {
+  transform-origin: left center;
+}
+
+.es-chain-r {
+  transform-origin: right center;
+}
+
+.es-chain-link {
+  flex: none;
+  width: 18px;
+  height: 26px;
+  margin: 0 4px;
+  background: var(--surface-2);
+  border: 4px solid var(--theme-structural);
+  border-radius: 9px;
+  transform: translate(-6px, 18px) rotate(28deg);
+  opacity: 0.15;
+}
+
+/* 断口 ✕：由两根错位的短杠组成，压在链中央 */
+.es-chain-gap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+}
+
+.es-chain-gap::before,
+.es-chain-gap::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30px;
+  height: 5px;
+  background: var(--theme-danger);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.es-chain-gap::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.state-chain-break-takeaway .es-chain-seg {
+  animation: es-chain-draw 0.7s ease-out both;
+}
+
+.state-chain-break-takeaway .es-chain-l {
+  animation-delay: 1.15s;
+}
+
+.state-chain-break-takeaway .es-chain-r {
+  animation-delay: 1.35s;
+}
+
+.state-chain-break-takeaway .es-chain-link {
+  animation: es-link-snap 1.4s ease-in 1.9s both;
+}
+
+.state-chain-break-takeaway .es-chain-gap {
+  animation: es-gap-in 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.4) 3.1s both;
+}
+
+/* ── keyframes（一次性动效，全部只被 .state-* 引用）─────────────── */
+@keyframes es-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes es-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes es-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes es-slat-write {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes es-link-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes es-line-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes es-label-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes es-arrow-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes es-tick-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes es-tick-off-pop {
+  from {
+    opacity: 0;
+    transform: rotate(14deg) translateY(-4px) scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(14deg) translateY(-4px);
+  }
+}
+
+@keyframes es-stop-pop {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes es-code-travel {
+  0% {
+    left: 8%;
+  }
+  18% {
+    left: 8%;
+  }
+  44% {
+    left: 50%;
+  }
+  60% {
+    left: 50%;
+  }
+  86% {
+    left: 92%;
+  }
+  100% {
+    left: 92%;
+  }
+}
+
+@keyframes es-code-erode {
+  0% {
+    opacity: 1;
+  }
+  44% {
+    opacity: 0.85;
+  }
+  60% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes es-scratch-in {
+  0% {
+    opacity: 0;
+  }
+  43% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0.55;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes es-flake-fall {
+  0% {
+    top: 4px;
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  55% {
+    top: 22px;
+    transform: rotate(18deg);
+    opacity: 0.9;
+  }
+  100% {
+    top: 40px;
+    transform: rotate(38deg);
+    opacity: 0.85;
+  }
+}
+
+@keyframes es-chain-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes es-link-snap {
+  0% {
+    transform: none;
+    opacity: 0;
+  }
+  12% {
+    transform: none;
+    opacity: 1;
+  }
+  55% {
+    transform: none;
+    opacity: 1;
+  }
+  75% {
+    transform: translate(-10px, 10px) rotate(-16deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-6px, 18px) rotate(28deg);
+    opacity: 0.15;
+  }
+}
+
+@keyframes es-gap-in {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

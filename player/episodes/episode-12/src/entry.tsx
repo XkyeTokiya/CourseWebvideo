@@ -3,6 +3,10 @@ import Cover from "./chapters/00-cover/Cover";
 import { narrations as coverNarrations } from "./chapters/00-cover/narrations";
 import OpeningCheck from "./chapters/01-opening-check/OpeningCheck";
 import { narrations as openingNarrations } from "./chapters/01-opening-check/narrations";
+import ExistingSystems from "./chapters/02-existing-systems/ExistingSystems";
+import { narrations as existingSystemsNarrations } from "./chapters/02-existing-systems/narrations";
+import AssemblyVerification from "./chapters/05-assembly-verification/AssemblyVerification";
+import { narrations as assemblyVerificationNarrations } from "./chapters/05-assembly-verification/narrations";
 
 export const id = "episode-12";
 export const title = "汽车零部件精益管理：一物一码如何减少错装与串货";
@@ -20,5 +24,17 @@ export const CHAPTERS: ChapterDef[] = [
     title: "开场情境页",
     narrations: openingNarrations,
     Component: OpeningCheck,
+  },
+  {
+    id: "existing-systems",
+    title: "既有系统页",
+    narrations: existingSystemsNarrations,
+    Component: ExistingSystems,
+  },
+  {
+    id: "assembly-verification",
+    title: "装配校验页",
+    narrations: assemblyVerificationNarrations,
+    Component: AssemblyVerification,
   },
 ];

@@ -4,9 +4,9 @@
   "status": "in-progress",
   "theme": "active-identification-note",
   "progress": {
-    "completed": 1,
+    "completed": 3,
     "total": 10,
-    "current": "opening-check"
+    "current": "assembly-verification"
   },
   "updatedAt": "2026-09-17"
 }
