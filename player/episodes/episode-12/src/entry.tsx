@@ -15,6 +15,10 @@ import PartsSingleItem from "./chapters/07-parts-single-item/PartsSingleItem";
 import { narrations as partsSingleItemNarrations } from "./chapters/07-parts-single-item/narrations";
 import CaseResults from "./chapters/09-case-results/CaseResults";
 import { narrations as caseResultsNarrations } from "./chapters/09-case-results/narrations";
+import OneItemOneCode from "./chapters/04-one-item-one-code/OneItemOneCode";
+import { narrations as oneItemOneCodeNarrations } from "./chapters/04-one-item-one-code/narrations";
+import SummaryAnchor from "./chapters/10-summary-anchor/SummaryAnchor";
+import { narrations as summaryAnchorNarrations } from "./chapters/10-summary-anchor/narrations";
 
 export const id = "episode-12";
 export const title = "汽车零部件精益管理：一物一码如何减少错装与串货";
@@ -52,6 +56,12 @@ export const CHAPTERS: ChapterDef[] = [
     Component: AssemblyVerification,
   },
   {
+    id: "one-item-one-code",
+    title: "平台读图页",
+    narrations: oneItemOneCodeNarrations,
+    Component: OneItemOneCode,
+  },
+  {
     id: "install-archive",
     title: "装机档案页",
     narrations: installArchiveNarrations,
@@ -68,5 +78,11 @@ export const CHAPTERS: ChapterDef[] = [
     title: "案例结果页",
     narrations: caseResultsNarrations,
     Component: CaseResults,
+  },
+  {
+    id: "summary-anchor",
+    title: "总结页",
+    narrations: summaryAnchorNarrations,
+    Component: SummaryAnchor,
   },
 ];
