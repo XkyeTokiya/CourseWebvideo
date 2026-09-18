@@ -79,15 +79,15 @@
 }
 
 [data-state="factory-scene-set"] .aq-lane:nth-child(2) {
-  transition-delay: 1.5s, 1.5s;
+  transition-delay: 0.65s, 0.65s;
 }
 
 [data-state="factory-scene-set"] .aq-lane:nth-child(3) {
-  transition-delay: 2.8s, 2.8s;
+  transition-delay: 0.96s, 0.96s;
 }
 
 [data-state="factory-scene-set"] .aq-lane:nth-child(4) {
-  transition-delay: 3.6s, 3.6s;
+  transition-delay: 1.14s, 1.14s;
 }
 
 [data-state="boundary-blocked"] .aq-lane,
@@ -190,28 +190,28 @@
 }
 
 [data-state="boundary-blocked"] .aq-dot {
-  transition-delay: 3.8s, 3.8s, 4.8s;
+  transition-delay: 1.19s, 1.19s, 1.42s;
 }
 
 [data-state="boundary-blocked"] .aq-dot:nth-child(2) {
   left: 81%;
   top: 22%;
   transition-duration: 1.3s, 1.3s, 0.5s;
-  animation: aq-bump 0.45s ease-out 5.15s 1;
+  animation: aq-bump 0.45s ease-out 1.5s 1;
 }
 
 [data-state="boundary-blocked"] .aq-dot:nth-child(3) {
   left: 87%;
   top: 50%;
   transition-duration: 1.15s, 1.15s, 0.5s;
-  animation: aq-bump 0.45s ease-out 5s 1;
+  animation: aq-bump 0.45s ease-out 1.47s 1;
 }
 
 [data-state="boundary-blocked"] .aq-dot:nth-child(4) {
   left: 93%;
   top: 78%;
   transition-duration: 1s, 1s, 0.5s;
-  animation: aq-bump 0.45s ease-out 4.85s 1;
+  animation: aq-bump 0.45s ease-out 1.43s 1;
 }
 
 [data-state="question-raised"] .aq-dot:nth-child(2) {
@@ -289,15 +289,15 @@
 }
 
 [data-state="boundary-blocked"] .aq-conflict:nth-of-type(2) {
-  transition-delay: 1.6s;
+  transition-delay: 0.68s;
 }
 
 [data-state="boundary-blocked"] .aq-conflict:nth-of-type(3) {
-  transition-delay: 2.4s;
+  transition-delay: 0.86s;
 }
 
 [data-state="boundary-blocked"] .aq-conflict:nth-of-type(4) {
-  transition-delay: 3.2s;
+  transition-delay: 1.05s;
 }
 
 .aq-conflict:nth-of-type(2) {
@@ -417,7 +417,7 @@
 
 [data-state="question-raised"] .aq-question-answer {
   opacity: 1;
-  transition-delay: 3.5s;
+  transition-delay: 1.12s;
 }
 
 /* ── 收束：前提弱化，问题条成为视觉中心 ─────────────────────── */

@@ -111,7 +111,7 @@
 }
 
 [data-state="mes-internals-shown"] .lc-bridge-link {
-  transition-delay: 0.5s;
+  transition-delay: 0.42s;
 }
 
 .lc-bridge-tag {
@@ -130,7 +130,7 @@
 }
 
 [data-state="mes-internals-shown"] .lc-bridge-tag {
-  transition-delay: 0.85s;
+  transition-delay: 0.5s;
 }
 
 /* ── MES 功能带：内部分区 ＋ 展示终端 ───────────────────────────── */
@@ -159,7 +159,7 @@
 }
 
 [data-state="mes-internals-shown"] .lc-mes {
-  transition-delay: 0.6s, 0.6s;
+  transition-delay: 0.44s, 0.44s;
 }
 
 .lc-mes-id {
@@ -229,15 +229,15 @@
 }
 
 [data-state="mes-internals-shown"] .lc-fn-item:nth-child(1) {
-  transition-delay: 2.1s, 2.1s;
+  transition-delay: 0.77s, 0.77s;
 }
 
 [data-state="mes-internals-shown"] .lc-fn-item:nth-child(2) {
-  transition-delay: 3.3s, 3.3s;
+  transition-delay: 1.04s, 1.04s;
 }
 
 [data-state="mes-internals-shown"] .lc-fn-item:nth-child(3) {
-  transition-delay: 4.5s, 4.5s;
+  transition-delay: 1.3s, 1.3s;
 }
 
 .lc-fn-chip {
@@ -282,7 +282,7 @@
 }
 
 [data-state="mes-internals-shown"] .lc-terminal {
-  transition-delay: 5.4s, 5.4s;
+  transition-delay: 1.5s, 1.5s;
 }
 
 .lc-terminal-tag {
@@ -334,19 +334,19 @@
 }
 
 [data-state="devices-connected"] .lc-trunk:nth-child(2) {
-  transition-delay: 0.5s;
+  transition-delay: 0.42s;
 }
 
 [data-state="devices-connected"] .lc-trunk:nth-child(3) {
-  transition-delay: 0.75s;
+  transition-delay: 0.48s;
 }
 
 [data-state="devices-connected"] .lc-trunk:nth-child(4) {
-  transition-delay: 1s;
+  transition-delay: 0.53s;
 }
 
 [data-state="devices-connected"] .lc-trunk:nth-child(5) {
-  transition-delay: 1.25s;
+  transition-delay: 0.59s;
 }
 
 @keyframes lc-flow {
@@ -377,7 +377,7 @@
 }
 
 [data-state="devices-connected"] .lc-trunk-tag {
-  transition-delay: 1.5s;
+  transition-delay: 0.64s;
 }
 
 /* ── 现场设备带：五类设备依次落位 ───────────────────────────────── */
@@ -414,23 +414,23 @@
 }
 
 [data-state="devices-connected"] .lc-device:nth-child(1) {
-  transition-delay: 0.9s, 0.9s;
+  transition-delay: 0.51s, 0.51s;
 }
 
 [data-state="devices-connected"] .lc-device:nth-child(2) {
-  transition-delay: 1.8s, 1.8s;
+  transition-delay: 0.71s, 0.71s;
 }
 
 [data-state="devices-connected"] .lc-device:nth-child(3) {
-  transition-delay: 2.7s, 2.7s;
+  transition-delay: 0.91s, 0.91s;
 }
 
 [data-state="devices-connected"] .lc-device:nth-child(4) {
-  transition-delay: 3.6s, 3.6s;
+  transition-delay: 1.1s, 1.1s;
 }
 
 [data-state="devices-connected"] .lc-device:nth-child(5) {
-  transition-delay: 4.5s, 4.5s;
+  transition-delay: 1.3s, 1.3s;
 }
 
 .lc-device-tick {
@@ -484,24 +484,24 @@
 }
 
 [data-state="chain-summarized"] .lc-collect-path:nth-of-type(3) {
-  transition-delay: 0.45s;
+  transition-delay: 0.41s;
 }
 
 [data-state="chain-summarized"] .lc-collect-path:nth-of-type(4) {
-  transition-delay: 0.6s;
+  transition-delay: 0.44s;
 }
 
 [data-state="chain-summarized"] .lc-collect-path:nth-of-type(5) {
-  transition-delay: 0.75s;
+  transition-delay: 0.48s;
 }
 
 [data-state="chain-summarized"] .lc-collect-path:nth-of-type(6) {
-  transition-delay: 1s;
+  transition-delay: 0.53s;
   transition-duration: 0.45s;
 }
 
 [data-state="chain-summarized"] .lc-collect-path:nth-of-type(7) {
-  transition-delay: 1.35s;
+  transition-delay: 0.61s;
   transition-duration: 0.4s;
 }
 
@@ -524,7 +524,7 @@
 
 [data-state="chain-summarized"] .lc-collect-tag {
   opacity: 1;
-  transition-delay: 1.7s;
+  transition-delay: 0.69s;
 }
 
 /* ── 链路汇总条：terminal-result，本拍内收完 ────────────────────── */
@@ -568,7 +568,7 @@
 
 [data-state="chain-summarized"] .lc-chain-tag {
   opacity: 1;
-  transition-delay: 0.8s;
+  transition-delay: 0.49s;
 }
 
 .lc-seg {
@@ -590,15 +590,15 @@
 }
 
 [data-state="chain-summarized"] .lc-seg-1 {
-  transition-delay: 1.3s, 1.3s;
+  transition-delay: 0.6s, 0.6s;
 }
 
 [data-state="chain-summarized"] .lc-seg-2 {
-  transition-delay: 2.25s, 2.25s;
+  transition-delay: 0.81s, 0.81s;
 }
 
 [data-state="chain-summarized"] .lc-seg-3 {
-  transition-delay: 3.15s, 3.15s;
+  transition-delay: 1.01s, 1.01s;
 }
 
 .lc-hop {
@@ -616,11 +616,11 @@
 }
 
 [data-state="chain-summarized"] .lc-hop-1 {
-  transition-delay: 1.75s;
+  transition-delay: 0.7s;
 }
 
 [data-state="chain-summarized"] .lc-hop-2 {
-  transition-delay: 2.7s;
+  transition-delay: 0.91s;
 }
 
 .lc-hop em {

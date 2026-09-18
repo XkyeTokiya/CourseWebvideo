@@ -76,15 +76,15 @@
 }
 
 [data-state="four-pains-equal"] .pm-band:nth-child(2) {
-  animation-delay: 0.65s;
+  animation-delay: 0.58s;
 }
 
 [data-state="four-pains-equal"] .pm-band:nth-child(3) {
-  animation-delay: 1.05s;
+  animation-delay: 0.88s;
 }
 
 [data-state="four-pains-equal"] .pm-band:nth-child(4) {
-  animation-delay: 1.45s;
+  animation-delay: 1.17s;
 }
 
 .pm-band-no {
@@ -199,7 +199,7 @@
 [data-state="amplification-complete"] .pm-link-2 {
   opacity: 1;
   transform: none;
-  transition-delay: 0.55s, 0.55s;
+  transition-delay: 0.51s, 0.51s;
 }
 
 .pm-arrow {
@@ -277,5 +277,5 @@
 }
 
 [data-state="four-pains-equal"] .pm-chain {
-  animation: pm-fade 0.6s ease 1.9s both;
+  animation: pm-fade 0.6s ease 1.5s both;
 }

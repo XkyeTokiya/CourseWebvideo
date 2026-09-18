@@ -41,7 +41,7 @@
   align-items: baseline;
   flex-wrap: wrap;
   column-gap: 8px;
-  animation: cs-fade-up 0.6s ease 0.55s backwards;
+  animation: cs-fade-up 0.6s ease 0.48s backwards;
 }
 
 .cs-intro-base {
@@ -94,15 +94,15 @@
 }
 
 .cs-band:nth-child(1) {
-  animation-delay: 0.9s;
+  animation-delay: 0.65s;
 }
 
 .cs-band:nth-child(2) {
-  animation-delay: 1.2s;
+  animation-delay: 0.8s;
 }
 
 .cs-band:nth-child(3) {
-  animation-delay: 1.5s;
+  animation-delay: 0.95s;
 }
 
 /* 落位后的带框（进入态：带过渡；后续态：保持原样即时可逆） */
@@ -237,7 +237,7 @@
     transparent 0 16px,
     color-mix(in srgb, var(--theme-grid-line) 60%, transparent) 16px 18px
   );
-  animation: cs-fade-in 0.6s ease 1.5s backwards;
+  animation: cs-fade-in 0.6s ease 0.95s backwards;
 }
 
 [data-state="silos-formed"] .cs-side-note {
@@ -266,7 +266,7 @@
   font-size: 84px;
   line-height: 1;
   color: var(--rule);
-  animation: cs-fade-in 0.6s ease 1.9s backwards;
+  animation: cs-fade-in 0.6s ease 1.15s backwards;
 }
 
 [data-state="silos-formed"] .cs-side-plus {
@@ -332,7 +332,7 @@
 
 [data-state="silos-formed"] .cs-silo-rect {
   stroke-dashoffset: 0;
-  transition: stroke-dashoffset 1s ease 1.35s;
+  transition: stroke-dashoffset 1s ease 0.88s;
 }
 
 [data-state="silos-everywhere"] .cs-silo-rect {
@@ -368,11 +368,11 @@
 }
 
 [data-state="silos-formed"] .cs-silo-chip:nth-of-type(2) {
-  transition-delay: 0.6s, 0.6s;
+  transition-delay: 0.5s, 0.5s;
 }
 
 [data-state="silos-formed"] .cs-silo-chip:nth-of-type(3) {
-  transition-delay: 0.95s, 0.95s;
+  transition-delay: 0.68s, 0.68s;
 }
 
 [data-state="silos-everywhere"] .cs-silo-chip {
@@ -391,7 +391,7 @@
 
 [data-state="silos-formed"] .cs-silo-arrow {
   opacity: 1;
-  transition: opacity 0.35s ease 2.45s;
+  transition: opacity 0.35s ease 1.43s;
 }
 
 [data-state="silos-everywhere"] .cs-silo-arrow {
@@ -415,8 +415,8 @@
   opacity: 1;
   transform: none;
   transition:
-    opacity 0.45s ease 2.6s,
-    transform 0.5s ease 2.6s;
+    opacity 0.45s ease 1.5s,
+    transform 0.5s ease 1.5s;
 }
 
 [data-state="silos-everywhere"] .cs-silo-term {
@@ -462,7 +462,7 @@
 }
 
 [data-state="silos-everywhere"] .cs-scope-row:nth-of-type(2) {
-  transition-delay: 0.85s, 0.85s;
+  transition-delay: 0.63s, 0.63s;
 }
 
 .cs-scope-dot {
@@ -499,7 +499,7 @@
 
 [data-state="silos-everywhere"] .cs-scope-note {
   opacity: 1;
-  transition: opacity 0.5s ease 1.3s;
+  transition: opacity 0.5s ease 0.85s;
 }
 
 /* ── 收束：侧栏成焦点时引入条弱化 ───────────────────────────── */

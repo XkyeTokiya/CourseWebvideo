@@ -53,13 +53,13 @@
 [data-state="structured-card-shown"] .df-head-rule {
   opacity: 1;
   transform: none;
-  transition-delay: 0.5s, 0.5s;
+  transition-delay: 0.42s, 0.42s;
 }
 
 [data-state="structured-card-shown"] .df-head-note {
   opacity: 1;
   transform: none;
-  transition-delay: 1.15s, 1.15s;
+  transition-delay: 0.57s, 0.57s;
 }
 
 [data-state="semi-structured-added"] .df-head-rule,
@@ -104,7 +104,7 @@
 [data-state="structured-card-shown"] .df-card-1 {
   opacity: 1;
   transform: none;
-  transition-delay: 0.85s, 0.85s;
+  transition-delay: 0.5s, 0.5s;
 }
 
 [data-state="semi-structured-added"] .df-card-1,
@@ -204,7 +204,7 @@
 
 [data-state="structured-card-shown"] .df-cell {
   opacity: 1;
-  transition-delay: calc(1.75s + var(--i) * 0.09s);
+  transition-delay: calc(0.7s + var(--i) * 0.09s);
 }
 
 [data-state="semi-structured-added"] .df-cell,
@@ -268,12 +268,12 @@
 
 [data-state="semi-structured-added"] .df-log-line {
   opacity: 1;
-  transition-delay: calc(1.15s + var(--i) * 0.13s);
+  transition-delay: calc(0.57s + var(--i) * 0.13s);
 }
 
 [data-state="semi-structured-added"] .df-log-bar {
   transform: scaleX(1);
-  transition-delay: calc(1.15s + var(--i) * 0.13s);
+  transition-delay: calc(0.57s + var(--i) * 0.13s);
 }
 
 [data-state="three-forms-equal"] .df-log-line,
@@ -386,7 +386,7 @@
 
 [data-state="three-forms-equal"] .df-shape {
   opacity: 1;
-  transition-delay: calc(0.95s + var(--i) * 0.3s), calc(0.95s + var(--i) * 0.3s);
+  transition-delay: calc(0.52s + var(--i) * 0.3s), calc(0.52s + var(--i) * 0.3s);
 }
 
 [data-state="three-forms-equal"] .df-shape-sheet {
@@ -467,7 +467,7 @@
 }
 
 [data-state="mapping-to-standard"] .df-merge-node {
-  animation: df-node-pop 0.55s cubic-bezier(0.3, 1.2, 0.5, 1) 1.6s both;
+  animation: df-node-pop 0.55s cubic-bezier(0.3, 1.2, 0.5, 1) 0.66s both;
 }
 
 @keyframes df-node-pop {
@@ -529,12 +529,12 @@
 [data-state="mapping-to-standard"] .df-flow-chip {
   opacity: 1;
   transform: none;
-  transition-delay: calc(2.1s + var(--i) * 0.45s), calc(2.1s + var(--i) * 0.45s);
+  transition-delay: calc(0.77s + var(--i) * 0.41s), calc(0.77s + var(--i) * 0.41s);
 }
 
 [data-state="mapping-to-standard"] .df-flow-arrow {
   opacity: 1;
-  transition-delay: calc(2.32s + var(--i) * 0.45s);
+  transition-delay: calc(0.82s + var(--i) * 0.41s);
 }
 
 .df-standard {
@@ -578,7 +578,7 @@
 [data-state="mapping-to-standard"] .df-standard {
   opacity: 1;
   transform: translateY(-50%) scale(1);
-  transition-delay: 3.7s, 3.7s;
+  transition-delay: 1.13s, 1.13s;
 }
 
 /* ── 收束：takeaway —— 本拍内收完 ─────────────────────────────── */
@@ -616,5 +616,5 @@
 [data-state="mapping-to-standard"] .df-takeaway {
   opacity: 1;
   transform: none;
-  transition-delay: 5.4s, 5.4s;
+  transition-delay: 1.5s, 1.5s;
 }

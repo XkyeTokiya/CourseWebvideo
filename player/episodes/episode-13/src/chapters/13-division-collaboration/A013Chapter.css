@@ -39,7 +39,7 @@
 }
 
 [data-state="division-preserved"] .dc-head-rule {
-  animation: dc-grow-x 0.6s cubic-bezier(0.3, 0.6, 0.3, 1) 0.5s backwards;
+  animation: dc-grow-x 0.6s cubic-bezier(0.3, 0.6, 0.3, 1) 0.41s backwards;
 }
 
 /* ── 主区：左锚点图 560px ＋ 右侧内容列 ───────────────────────── */
@@ -85,11 +85,11 @@
 }
 
 [data-state="division-preserved"] .dc-media {
-  animation: dc-unveil 0.9s cubic-bezier(0.3, 0.6, 0.3, 1) 0.45s backwards;
+  animation: dc-unveil 0.9s cubic-bezier(0.3, 0.6, 0.3, 1) 0.41s backwards;
 }
 
 [data-state="division-preserved"] .dc-media-caption {
-  animation: dc-fade 0.5s ease 1.3s backwards;
+  animation: dc-fade 0.5s ease 0.51s backwards;
 }
 
 /* 右内容列：division / interface / rail / judgment 自上而下 */
@@ -192,27 +192,27 @@
 }
 
 [data-state="division-preserved"] .dc-band-head {
-  animation: dc-rise 0.5s ease 1.7s backwards;
+  animation: dc-rise 0.5s ease 0.56s backwards;
 }
 
 [data-state="division-preserved"] .dc-tile-1 {
-  animation: dc-settle 0.6s ease 2.4s backwards;
+  animation: dc-settle 0.6s ease 0.64s backwards;
 }
 
 [data-state="division-preserved"] .dc-tile-2 {
-  animation: dc-settle 0.6s ease 3.6s backwards;
+  animation: dc-settle 0.6s ease 0.79s backwards;
 }
 
 [data-state="division-preserved"] .dc-tile-3 {
-  animation: dc-settle 0.6s ease 4.8s backwards;
+  animation: dc-settle 0.6s ease 0.94s backwards;
 }
 
 [data-state="division-preserved"] .dc-tile-4 {
-  animation: dc-settle 0.6s ease 6s backwards;
+  animation: dc-settle 0.6s ease 1.08s backwards;
 }
 
 [data-state="division-preserved"] .dc-normal {
-  animation: dc-stamp 0.5s cubic-bezier(0.3, 1.2, 0.4, 1) 7.4s backwards;
+  animation: dc-stamp 0.5s cubic-bezier(0.3, 1.2, 0.4, 1) 1.26s backwards;
 }
 
 /* ── 分工→协作接口条：拍 2 激活，数据包由此落下 ────────────────── */
@@ -279,16 +279,16 @@
 
 [data-state="collaboration-complete"] .dc-interface-arrow {
   opacity: 1;
-  transition-delay: 0.85s;
+  transition-delay: 0.46s;
 }
 
 [data-state="collaboration-complete"] .dc-interface-tag {
   opacity: 1;
-  transition-delay: 0.8s;
+  transition-delay: 0.45s;
 }
 
 [data-state="collaboration-complete"] .dc-drop-pkt {
-  animation: dc-drop 0.55s cubic-bezier(0.5, 0, 0.8, 0.4) 5.7s backwards;
+  animation: dc-drop 0.55s cubic-bezier(0.5, 0, 0.8, 0.4) 1.05s backwards;
 }
 
 /* ── summary-rail：三项协作注记依次落位，数据包横向投递 ────────── */
@@ -408,7 +408,7 @@
 
 [data-state="collaboration-complete"] .dc-track-run {
   transform: scaleX(1);
-  transition-delay: 4.3s;
+  transition-delay: 0.88s;
 }
 
 [data-state="collaboration-complete"] .dc-node {
@@ -417,36 +417,36 @@
 }
 
 [data-state="collaboration-complete"] .dc-node-1 {
-  transition-delay: 1.2s, 1.2s;
+  transition-delay: 0.5s, 0.5s;
 }
 
 [data-state="collaboration-complete"] .dc-node-2 {
-  transition-delay: 2.2s, 2.2s;
+  transition-delay: 0.62s, 0.62s;
 }
 
 [data-state="collaboration-complete"] .dc-node-3 {
-  transition-delay: 3.2s, 3.2s;
+  transition-delay: 0.74s, 0.74s;
 }
 
 [data-state="collaboration-complete"] .dc-elbow {
   transform: scaleY(1);
-  transition-delay: 5.1s;
+  transition-delay: 0.97s;
 }
 
 [data-state="collaboration-complete"] .dc-run-pkt {
-  animation: dc-run 2.3s linear 6.3s backwards;
+  animation: dc-run 2.3s linear 1.12s backwards;
 }
 
 [data-state="collaboration-complete"] .dc-node-1::after {
-  animation: dc-ring 0.6s ease-out 6.45s backwards;
+  animation: dc-ring 0.6s ease-out 1.14s backwards;
 }
 
 [data-state="collaboration-complete"] .dc-node-2::after {
-  animation: dc-ring 0.6s ease-out 7.3s backwards;
+  animation: dc-ring 0.6s ease-out 1.24s backwards;
 }
 
 [data-state="collaboration-complete"] .dc-node-3::after {
-  animation: dc-ring 0.6s ease-out 8.15s backwards;
+  animation: dc-ring 0.6s ease-out 1.35s backwards;
 }
 
 /* ── final-judgment：投递终点，本拍内收束 ─────────────────────── */
@@ -512,16 +512,16 @@
 [data-state="collaboration-complete"] .dc-judgment {
   opacity: 1;
   transform: none;
-  transition-delay: 8.8s, 8.8s;
+  transition-delay: 1.43s, 1.43s;
 }
 
 [data-state="collaboration-complete"] .dc-judgment-em::after {
   transform: scaleX(1);
-  transition-delay: 9.4s;
+  transition-delay: 1.5s;
 }
 
 [data-state="collaboration-complete"] .dc-judgment-port {
-  animation: dc-port 0.7s ease-out 9s backwards;
+  animation: dc-port 0.7s ease-out 1.45s backwards;
 }
 
 /* ── keyframes ───────────────────────────────────────────────── */

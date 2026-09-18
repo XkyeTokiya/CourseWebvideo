@@ -126,19 +126,19 @@
 }
 
 [data-state="series-thread-shown"] .cj-stop-1 {
-  transition-delay: 1.3s, 1.3s;
+  transition-delay: 0.52s, 0.52s;
 }
 
 [data-state="series-thread-shown"] .cj-stop-2 {
-  transition-delay: 2.9s, 2.9s;
+  transition-delay: 0.72s, 0.72s;
 }
 
 [data-state="series-thread-shown"] .cj-stop-3 {
-  transition-delay: 4.5s, 4.5s;
+  transition-delay: 0.92s, 0.92s;
 }
 
 [data-state="series-thread-shown"] .cj-stop-4 {
-  transition-delay: 6.1s, 6.1s;
+  transition-delay: 1.13s, 1.13s;
 }
 
 [data-state="series-thread-shown"] .cj-conn-line {
@@ -146,15 +146,15 @@
 }
 
 [data-state="series-thread-shown"] .cj-conn-1 .cj-conn-line {
-  transition-delay: 1.95s;
+  transition-delay: 0.6s;
 }
 
 [data-state="series-thread-shown"] .cj-conn-2 .cj-conn-line {
-  transition-delay: 3.55s;
+  transition-delay: 0.8s;
 }
 
 [data-state="series-thread-shown"] .cj-conn-3 .cj-conn-line {
-  transition-delay: 5.15s;
+  transition-delay: 1.01s;
 }
 
 [data-state="series-thread-shown"] .cj-conn-tip {
@@ -162,15 +162,15 @@
 }
 
 [data-state="series-thread-shown"] .cj-conn-1 .cj-conn-tip {
-  transition-delay: 2.3s;
+  transition-delay: 0.64s;
 }
 
 [data-state="series-thread-shown"] .cj-conn-2 .cj-conn-tip {
-  transition-delay: 3.9s;
+  transition-delay: 0.85s;
 }
 
 [data-state="series-thread-shown"] .cj-conn-3 .cj-conn-tip {
-  transition-delay: 5.5s;
+  transition-delay: 1.05s;
 }
 
 /* ── support：exact 句逐字完整可见（S069）────────────────────── */
@@ -224,18 +224,18 @@
 
 [data-state="series-thread-shown"] .cj-quote {
   opacity: 1;
-  transition-delay: 8s;
+  transition-delay: 1.37s;
 }
 
 [data-state="series-thread-shown"] .cj-support-text {
   opacity: 1;
   transform: none;
-  transition-delay: 8.3s, 8.3s;
+  transition-delay: 1.41s, 1.41s;
 }
 
 [data-state="series-thread-shown"] .cj-support-text::after {
   transform: scaleX(1);
-  transition-delay: 9s;
+  transition-delay: 1.5s;
 }
 
 /* ── R016 汇聚载体：主线带末端向下收进结论条（拍 2）───────────── */
@@ -265,12 +265,12 @@
 
 [data-state="core-judgment-complete"] .cj-drop {
   transform: scaleY(1);
-  transition-delay: 1.6s;
+  transition-delay: 0.55s;
 }
 
 [data-state="core-judgment-complete"] .cj-drop-arrow {
   opacity: 1;
-  transition-delay: 2.35s;
+  transition-delay: 0.65s;
 }
 
 /* ── takeaway：反白终点面板（拍 2 落位，成为视觉终点）─────────── */
@@ -308,11 +308,11 @@
 [data-state="core-judgment-complete"] .cj-takeaway {
   opacity: 1;
   transform: none;
-  transition-delay: 0.5s, 0.5s;
+  transition-delay: 0.41s, 0.41s;
 }
 
 [data-state="core-judgment-complete"] .cj-takeaway::before {
-  animation: cj-land 0.8s ease-out 2.5s backwards;
+  animation: cj-land 0.8s ease-out 0.67s backwards;
 }
 
 .cj-take-main {
@@ -405,24 +405,24 @@
 
 [data-state="core-judgment-complete"] .cj-take-tag {
   opacity: 1;
-  transition-delay: 1.3s;
+  transition-delay: 0.52s;
 }
 
 [data-state="core-judgment-complete"] .cj-take-line-1 {
   opacity: 1;
   transform: none;
-  transition-delay: 2.9s, 2.9s;
+  transition-delay: 0.72s, 0.72s;
 }
 
 [data-state="core-judgment-complete"] .cj-take-line-2 {
   opacity: 1;
   transform: none;
-  transition-delay: 3.7s, 3.7s;
+  transition-delay: 0.82s, 0.82s;
 }
 
 [data-state="core-judgment-complete"] .cj-lane {
   opacity: 1;
-  transition-delay: 4.5s;
+  transition-delay: 0.92s;
 }
 
 [data-state="core-judgment-complete"] .cj-glyph {
@@ -430,15 +430,15 @@
 }
 
 [data-state="core-judgment-complete"] .cj-glyph-a {
-  animation-delay: 4.8s;
+  animation-delay: 0.96s;
 }
 
 [data-state="core-judgment-complete"] .cj-glyph-b {
-  animation-delay: 6s;
+  animation-delay: 1.12s;
 }
 
 [data-state="core-judgment-complete"] .cj-glyph-c {
-  animation-delay: 7.2s;
+  animation-delay: 1.27s;
 }
 
 /* 收益栏 */
@@ -483,19 +483,19 @@
 [data-state="core-judgment-complete"] .cj-gain-1 {
   opacity: 1;
   transform: none;
-  transition-delay: 5.6s, 5.6s;
+  transition-delay: 1.07s, 1.07s;
 }
 
 [data-state="core-judgment-complete"] .cj-gain-2 {
   opacity: 1;
   transform: none;
-  transition-delay: 6.3s, 6.3s;
+  transition-delay: 1.15s, 1.15s;
 }
 
 /* 拍 2：主线带轻幅弱化，焦点让位给终点面板 */
 [data-state="core-judgment-complete"] .cj-thread {
   opacity: 0.78;
-  transition-delay: 0.6s;
+  transition-delay: 0.43s;
 }
 
 [data-state="core-judgment-complete"] .cj-stop,

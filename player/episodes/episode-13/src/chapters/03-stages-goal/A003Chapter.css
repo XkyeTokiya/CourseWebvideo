@@ -90,31 +90,31 @@
 }
 
 [data-state="pipeline-to-goals"] .sg-stage:nth-of-type(1) {
-  animation: sg-node-in 0.55s ease 1s backwards;
+  animation: sg-node-in 0.55s ease 0.46s backwards;
 }
 
 [data-state="pipeline-to-goals"] .sg-stage:nth-of-type(2) {
-  animation: sg-node-in 0.55s ease 2.4s backwards;
+  animation: sg-node-in 0.55s ease 0.59s backwards;
 }
 
 [data-state="pipeline-to-goals"] .sg-stage:nth-of-type(3) {
-  animation: sg-node-in 0.55s ease 3.8s backwards;
+  animation: sg-node-in 0.55s ease 0.73s backwards;
 }
 
 [data-state="pipeline-to-goals"] .sg-stage:nth-of-type(4) {
-  animation: sg-node-in 0.55s ease 5.2s backwards;
+  animation: sg-node-in 0.55s ease 0.86s backwards;
 }
 
 [data-state="pipeline-to-goals"] .sg-link[data-link="1"] {
-  animation: sg-link-grow 0.55s ease-out 2.2s backwards;
+  animation: sg-link-grow 0.55s ease-out 0.57s backwards;
 }
 
 [data-state="pipeline-to-goals"] .sg-link[data-link="2"] {
-  animation: sg-link-grow 0.55s ease-out 3.6s backwards;
+  animation: sg-link-grow 0.55s ease-out 0.71s backwards;
 }
 
 [data-state="pipeline-to-goals"] .sg-link[data-link="3"] {
-  animation: sg-link-grow 0.55s ease-out 5s backwards;
+  animation: sg-link-grow 0.55s ease-out 0.84s backwards;
 }
 
 /* ── 关键判断区：s1 为服务流虚位，s2 成为对照判断焦点 ───────── */
@@ -137,7 +137,7 @@
 }
 
 [data-state="pipeline-to-goals"] .sg-key-ghost {
-  animation: sg-fade-in 0.5s ease 6.3s backwards;
+  animation: sg-fade-in 0.5s ease 0.97s backwards;
 }
 
 .sg-key-ghost-arrow {
@@ -209,12 +209,12 @@
 
 [data-state="meaning-clarified"] .sg-tag-not {
   opacity: 1;
-  transition: opacity 0.4s ease 0.7s;
+  transition: opacity 0.4s ease 0.43s;
 }
 
 [data-state="meaning-clarified"] .sg-tag-but {
   opacity: 1;
-  transition: opacity 0.4s ease 3.9s;
+  transition: opacity 0.4s ease 0.74s;
 }
 
 .sg-not-text {
@@ -229,7 +229,7 @@
 
 [data-state="meaning-clarified"] .sg-not-text {
   opacity: 1;
-  transition: opacity 0.4s ease 0.85s;
+  transition: opacity 0.4s ease 0.44s;
 }
 
 .sg-move {
@@ -244,8 +244,8 @@
   opacity: 1;
   transform: none;
   transition:
-    opacity 0.4s ease 1s,
-    transform 0.4s ease 1s;
+    opacity 0.4s ease 0.46s,
+    transform 0.4s ease 0.46s;
 }
 
 .sg-move-box {
@@ -281,7 +281,7 @@
 
 [data-state="meaning-clarified"] .sg-move-chip {
   left: calc(100% - 24px);
-  transition: left 1.4s cubic-bezier(0.45, 0.05, 0.55, 0.95) 1.6s;
+  transition: left 1.4s cubic-bezier(0.45, 0.05, 0.55, 0.95) 0.52s;
 }
 
 .sg-move-strike {
@@ -298,7 +298,7 @@
 
 [data-state="meaning-clarified"] .sg-move-strike {
   transform: scaleX(1);
-  transition: transform 0.55s ease 3.2s;
+  transition: transform 0.55s ease 0.67s;
 }
 
 /* 中缝分隔线：对照成立时生长 */
@@ -315,8 +315,8 @@
   transform: scaleY(1);
   opacity: 1;
   transition:
-    transform 0.5s ease 3.8s,
-    opacity 0.5s ease 3.8s;
+    transform 0.5s ease 0.73s,
+    opacity 0.5s ease 0.73s;
 }
 
 /* 「而是」侧：过程底色，三个能力依次点亮 */
@@ -343,7 +343,7 @@
 
 [data-state="meaning-clarified"] .sg-but-lead {
   opacity: 1;
-  transition: opacity 0.4s ease 4.1s;
+  transition: opacity 0.4s ease 0.76s;
 }
 
 .sg-but-text {
@@ -358,7 +358,7 @@
 
 [data-state="meaning-clarified"] .sg-but-text {
   opacity: 1;
-  transition: opacity 0.4s ease 4.3s;
+  transition: opacity 0.4s ease 0.78s;
 }
 
 .sg-lit {
@@ -372,15 +372,15 @@
 }
 
 [data-state="meaning-clarified"] .sg-but-text .sg-lit:nth-of-type(1) {
-  animation: sg-lit-pop 0.5s ease 4.6s backwards;
+  animation: sg-lit-pop 0.5s ease 0.81s backwards;
 }
 
 [data-state="meaning-clarified"] .sg-but-text .sg-lit:nth-of-type(2) {
-  animation: sg-lit-pop 0.5s ease 5.2s backwards;
+  animation: sg-lit-pop 0.5s ease 0.86s backwards;
 }
 
 [data-state="meaning-clarified"] .sg-but-text .sg-lit:nth-of-type(3) {
-  animation: sg-lit-pop 0.5s ease 5.8s backwards;
+  animation: sg-lit-pop 0.5s ease 0.92s backwards;
 }
 
 /* ── 目标带：四项目标依次亮起（s1 后半段） ──────────────────── */
@@ -409,19 +409,19 @@
 }
 
 [data-state="pipeline-to-goals"] .sg-goal-cell:nth-of-type(1) {
-  animation: sg-goal-in 0.6s cubic-bezier(0.25, 0.9, 0.3, 1.15) 8.2s backwards;
+  animation: sg-goal-in 0.6s cubic-bezier(0.25, 0.9, 0.3, 1.15) 1.15s backwards;
 }
 
 [data-state="pipeline-to-goals"] .sg-goal-cell:nth-of-type(2) {
-  animation: sg-goal-in 0.6s cubic-bezier(0.25, 0.9, 0.3, 1.15) 9.4s backwards;
+  animation: sg-goal-in 0.6s cubic-bezier(0.25, 0.9, 0.3, 1.15) 1.27s backwards;
 }
 
 [data-state="pipeline-to-goals"] .sg-goal-cell:nth-of-type(3) {
-  animation: sg-goal-in 0.6s cubic-bezier(0.25, 0.9, 0.3, 1.15) 10.6s backwards;
+  animation: sg-goal-in 0.6s cubic-bezier(0.25, 0.9, 0.3, 1.15) 1.38s backwards;
 }
 
 [data-state="pipeline-to-goals"] .sg-goal-cell:nth-of-type(4) {
-  animation: sg-goal-in 0.6s cubic-bezier(0.25, 0.9, 0.3, 1.15) 11.8s backwards;
+  animation: sg-goal-in 0.6s cubic-bezier(0.25, 0.9, 0.3, 1.15) 1.5s backwards;
 }
 
 /* ── s2 焦点转移：上下两条带弱化让位，key 区成为视觉中心 ────── */

@@ -362,31 +362,31 @@
 }
 
 [data-state="foundation-stated"] .if-foundation {
-  animation: if-rise 0.55s ease 0.7s backwards;
+  animation: if-rise 0.55s ease 0.45s backwards;
 }
 
 [data-state="foundation-stated"] .if-foundation-mark {
-  animation: if-pop 0.45s cubic-bezier(0.34, 1.4, 0.4, 1) 1.1s backwards;
+  animation: if-pop 0.45s cubic-bezier(0.34, 1.4, 0.4, 1) 0.51s backwards;
 }
 
 [data-state="foundation-stated"] .if-ghost-1 {
-  animation: if-fade 0.5s ease 1.5s backwards;
+  animation: if-fade 0.5s ease 0.57s backwards;
 }
 
 [data-state="foundation-stated"] .if-ghost-2 {
-  animation: if-fade 0.5s ease 1.7s backwards;
+  animation: if-fade 0.5s ease 0.6s backwards;
 }
 
 [data-state="foundation-stated"] .if-ghost-3 {
-  animation: if-fade 0.5s ease 1.9s backwards;
+  animation: if-fade 0.5s ease 0.64s backwards;
 }
 
 [data-state="foundation-stated"] .if-key {
-  animation: if-fade 0.5s ease 1.7s backwards;
+  animation: if-fade 0.5s ease 0.6s backwards;
 }
 
 [data-state="foundation-stated"] .if-goal {
-  animation: if-fade 0.5s ease 2s backwards;
+  animation: if-fade 0.5s ease 0.65s backwards;
 }
 
 /* ── 第 2 拍（nodes-and-basics-built）：节点落位 → 支柱 → 两基础 ─ */
@@ -399,7 +399,7 @@
 }
 
 [data-state="nodes-and-basics-built"] .if-node-1 {
-  transition-delay: 1.2s, 1.2s;
+  transition-delay: 0.53s, 0.53s;
 }
 
 [data-state="nodes-and-basics-built"] .if-node-2,
@@ -410,7 +410,7 @@
 }
 
 [data-state="nodes-and-basics-built"] .if-node-2 {
-  transition-delay: 2.6s, 2.6s;
+  transition-delay: 0.75s, 0.75s;
 }
 
 [data-state="nodes-and-basics-built"] .if-node-3,
@@ -421,7 +421,7 @@
 }
 
 [data-state="nodes-and-basics-built"] .if-node-3 {
-  transition-delay: 4s, 4s;
+  transition-delay: 0.97s, 0.97s;
 }
 
 [data-state="nodes-and-basics-built"] .if-node-sep-1,
@@ -431,7 +431,7 @@
 }
 
 [data-state="nodes-and-basics-built"] .if-node-sep-1 {
-  transition-delay: 2.6s;
+  transition-delay: 0.75s;
 }
 
 [data-state="nodes-and-basics-built"] .if-node-sep-2,
@@ -441,7 +441,7 @@
 }
 
 [data-state="nodes-and-basics-built"] .if-node-sep-2 {
-  transition-delay: 4s;
+  transition-delay: 0.97s;
 }
 
 [data-state="nodes-and-basics-built"] .if-ghost-1,
@@ -451,7 +451,7 @@
 }
 
 [data-state="nodes-and-basics-built"] .if-ghost-1 {
-  transition-delay: 1.2s;
+  transition-delay: 0.53s;
 }
 
 [data-state="nodes-and-basics-built"] .if-ghost-2,
@@ -461,7 +461,7 @@
 }
 
 [data-state="nodes-and-basics-built"] .if-ghost-2 {
-  transition-delay: 2.6s;
+  transition-delay: 0.75s;
 }
 
 [data-state="nodes-and-basics-built"] .if-ghost-3,
@@ -471,7 +471,7 @@
 }
 
 [data-state="nodes-and-basics-built"] .if-ghost-3 {
-  transition-delay: 4s;
+  transition-delay: 0.97s;
 }
 
 [data-state="nodes-and-basics-built"] .if-pillar-1,
@@ -481,7 +481,7 @@
 }
 
 [data-state="nodes-and-basics-built"] .if-pillar-1 {
-  transition-delay: 4.8s;
+  transition-delay: 1.09s;
 }
 
 [data-state="nodes-and-basics-built"] .if-pillar-2,
@@ -491,7 +491,7 @@
 }
 
 [data-state="nodes-and-basics-built"] .if-pillar-2 {
-  transition-delay: 5s;
+  transition-delay: 1.12s;
 }
 
 [data-state="nodes-and-basics-built"] .if-pillar-3,
@@ -501,7 +501,7 @@
 }
 
 [data-state="nodes-and-basics-built"] .if-pillar-3 {
-  transition-delay: 5.2s;
+  transition-delay: 1.15s;
 }
 
 [data-state="nodes-and-basics-built"] .if-key,
@@ -515,9 +515,9 @@
 
 [data-state="nodes-and-basics-built"] .if-key {
   transition:
-    background-color 0.5s ease 5.6s,
-    border-color 0.5s ease 5.6s,
-    box-shadow 0.5s ease 5.6s;
+    background-color 0.5s ease 1.22s,
+    border-color 0.5s ease 1.22s,
+    box-shadow 0.5s ease 1.22s;
 }
 
 [data-state="nodes-and-basics-built"] .if-title-1,
@@ -528,7 +528,7 @@
 }
 
 [data-state="nodes-and-basics-built"] .if-title-1 {
-  transition-delay: 6.2s, 6.2s;
+  transition-delay: 1.31s, 1.31s;
 }
 
 [data-state="nodes-and-basics-built"] .if-base-sep,
@@ -538,7 +538,7 @@
 }
 
 [data-state="nodes-and-basics-built"] .if-base-sep {
-  transition-delay: 7s;
+  transition-delay: 1.44s;
 }
 
 [data-state="nodes-and-basics-built"] .if-title-2,
@@ -549,7 +549,7 @@
 }
 
 [data-state="nodes-and-basics-built"] .if-title-2 {
-  transition-delay: 7.4s, 7.4s;
+  transition-delay: 1.5s, 1.5s;
 }
 
 /* ── 第 3 拍（roles-explained）：两类基础各自展开作用 ──────────── */
@@ -561,7 +561,7 @@
 }
 
 [data-state="roles-explained"] .if-base-1 {
-  transition-delay: 0.6s, 0.6s;
+  transition-delay: 0.43s, 0.43s;
 }
 
 [data-state="roles-explained"] .if-stamp-1,
@@ -571,7 +571,7 @@
 }
 
 [data-state="roles-explained"] .if-stamp-1 {
-  transition-delay: 1.4s, 1.4s;
+  transition-delay: 0.56s, 0.56s;
 }
 
 [data-state="roles-explained"] .if-stamp-2,
@@ -581,7 +581,7 @@
 }
 
 [data-state="roles-explained"] .if-stamp-2 {
-  transition-delay: 2.2s, 2.2s;
+  transition-delay: 0.68s, 0.68s;
 }
 
 [data-state="roles-explained"] .if-base-2,
@@ -591,7 +591,7 @@
 }
 
 [data-state="roles-explained"] .if-base-2 {
-  transition-delay: 5.8s, 5.8s;
+  transition-delay: 1.25s, 1.25s;
 }
 
 [data-state="roles-explained"] .if-role-underline,
@@ -600,7 +600,7 @@
 }
 
 [data-state="roles-explained"] .if-role-underline {
-  transition-delay: 6.6s;
+  transition-delay: 1.37s;
 }
 
 /* ── 第 4 拍（accurate-matching）：goal 落位，两枚数据对位锁定 ─── */
@@ -625,23 +625,23 @@
 
 [data-state="accurate-matching"] .if-match-l {
   transform: translateX(0);
-  transition-delay: 0.9s;
+  transition-delay: 0.48s;
 }
 
 [data-state="accurate-matching"] .if-match-r {
   transform: translateX(0);
-  transition-delay: 0.9s;
+  transition-delay: 0.48s;
 }
 
 [data-state="accurate-matching"] .if-match-node {
   transform: rotate(45deg) scale(1);
-  transition-delay: 2.1s;
-  animation: if-meet 0.6s ease 2.35s backwards;
+  transition-delay: 0.67s;
+  animation: if-meet 0.6s ease 0.71s backwards;
 }
 
 [data-state="accurate-matching"] .if-goal-em {
   color: var(--theme-process);
-  transition-delay: 2.4s;
+  transition-delay: 0.71s;
 }
 
 /* ── keyframes ───────────────────────────────────────────────── */

@@ -336,87 +336,87 @@
 }
 
 [data-state="new-approach-standardized"] .ck-head-mark {
-  animation: ck-grow-x 0.5s cubic-bezier(0.3, 0.6, 0.3, 1) 0.6s backwards;
+  animation: ck-grow-x 0.5s cubic-bezier(0.3, 0.6, 0.3, 1) 0.42s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-media {
-  animation: ck-unveil 1s cubic-bezier(0.3, 0.6, 0.3, 1) 0.5s backwards;
+  animation: ck-unveil 1s cubic-bezier(0.3, 0.6, 0.3, 1) 0.41s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-media-caption {
-  animation: ck-fade 0.5s ease 1.5s backwards;
+  animation: ck-fade 0.5s ease 0.51s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-areas {
-  animation: ck-fade 0.5s ease 3.5s backwards;
+  animation: ck-fade 0.5s ease 0.71s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-areas-label {
-  animation: ck-fade 0.45s ease 3.9s backwards;
+  animation: ck-fade 0.45s ease 0.75s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-chip-1 {
-  animation: ck-chip-in 0.5s cubic-bezier(0.3, 1.25, 0.4, 1) 4.2s backwards;
+  animation: ck-chip-in 0.5s cubic-bezier(0.3, 1.25, 0.4, 1) 0.78s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-areas-sep-1 {
-  animation: ck-fade 0.4s ease 5s backwards;
+  animation: ck-fade 0.4s ease 0.86s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-chip-2 {
-  animation: ck-chip-in 0.5s cubic-bezier(0.3, 1.25, 0.4, 1) 5.5s backwards;
+  animation: ck-chip-in 0.5s cubic-bezier(0.3, 1.25, 0.4, 1) 0.91s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-areas-sep-2 {
-  animation: ck-fade 0.4s ease 6.3s backwards;
+  animation: ck-fade 0.4s ease 0.98s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-chip-3 {
-  animation: ck-chip-in 0.5s cubic-bezier(0.3, 1.25, 0.4, 1) 6.8s backwards;
+  animation: ck-chip-in 0.5s cubic-bezier(0.3, 1.25, 0.4, 1) 1.03s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-funnel-a {
-  animation: ck-draw 0.9s cubic-bezier(0.3, 0.6, 0.3, 1) 7.7s backwards;
+  animation: ck-draw 0.9s cubic-bezier(0.3, 0.6, 0.3, 1) 1.12s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-funnel-b {
-  animation: ck-draw 0.9s cubic-bezier(0.3, 0.6, 0.3, 1) 7.9s backwards;
+  animation: ck-draw 0.9s cubic-bezier(0.3, 0.6, 0.3, 1) 1.14s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-funnel-c {
-  animation: ck-draw 0.9s cubic-bezier(0.3, 0.6, 0.3, 1) 8.1s backwards;
+  animation: ck-draw 0.9s cubic-bezier(0.3, 0.6, 0.3, 1) 1.16s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-pulse-a {
-  animation: ck-flow-a 1.5s ease-in-out 8.9s backwards;
+  animation: ck-flow-a 1.5s ease-in-out 1.24s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-pulse-b {
-  animation: ck-flow-b 1.5s ease-in-out 9.05s backwards;
+  animation: ck-flow-b 1.5s ease-in-out 1.26s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-pulse-c {
-  animation: ck-flow-c 1.5s ease-in-out 9.2s backwards;
+  animation: ck-flow-c 1.5s ease-in-out 1.27s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-norm {
-  animation: ck-fade 0.5s ease 10s backwards;
+  animation: ck-fade 0.5s ease 1.35s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-norm-label {
-  animation: ck-fade 0.45s ease 10.3s backwards;
+  animation: ck-fade 0.45s ease 1.38s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-half-1 {
-  animation: ck-rise 0.55s ease 10.4s backwards;
+  animation: ck-rise 0.55s ease 1.39s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-half-sep {
-  animation: ck-fade 0.4s ease 11.1s backwards;
+  animation: ck-fade 0.4s ease 1.46s backwards;
 }
 
 [data-state="new-approach-standardized"] .ck-half-2 {
-  animation: ck-rise 0.55s ease 11.5s backwards;
+  animation: ck-rise 0.55s ease 1.5s backwards;
 }
 
 /* ── 第 2 拍（roles-preserved）：增补「保留原有业务职责」──────── */
@@ -429,7 +429,7 @@
 }
 
 [data-state="roles-preserved"] .ck-point-1 {
-  transition-delay: 0.5s, 0.5s;
+  transition-delay: 0.41s, 0.41s;
 }
 
 /* ── 第 3 拍（connector-handles-transfer）：连接器接管汇合点 ──── */
@@ -441,7 +441,7 @@
 }
 
 [data-state="connector-handles-transfer"] .ck-point-2 {
-  transition-delay: 0.6s, 0.6s;
+  transition-delay: 0.42s, 0.42s;
 }
 
 [data-state="connector-handles-transfer"] .ck-conn-tag,
@@ -455,15 +455,15 @@
 }
 
 [data-state="connector-handles-transfer"] .ck-pulse-a {
-  animation: ck-flow-a 1.5s ease-in-out 0.55s backwards;
+  animation: ck-flow-a 1.5s ease-in-out 0.41s backwards;
 }
 
 [data-state="connector-handles-transfer"] .ck-pulse-b {
-  animation: ck-flow-b 1.5s ease-in-out 0.7s backwards;
+  animation: ck-flow-b 1.5s ease-in-out 0.43s backwards;
 }
 
 [data-state="connector-handles-transfer"] .ck-pulse-c {
-  animation: ck-flow-c 1.5s ease-in-out 0.85s backwards;
+  animation: ck-flow-c 1.5s ease-in-out 0.44s backwards;
 }
 
 /* ── 第 4 拍（judgment-stated）：判断条落位收束 ───────────────── */
@@ -476,7 +476,7 @@
 
 [data-state="judgment-stated"] .ck-judge-em::after {
   transform: scaleX(1);
-  transition-delay: 1s;
+  transition-delay: 0.46s;
 }
 
 /* ── keyframes ───────────────────────────────────────────────── */

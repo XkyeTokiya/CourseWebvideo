@@ -108,13 +108,26 @@
     transform 0.6s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
-/* 状态门控：仅 question-open 隐藏三卡；其后各 state 均保持可见 */
+/* 状态门控：三卡按拍次逐张落位，已落位的卡在后续 state 持续可见且等权。
+ * question-open → 0 张；mes-introduced → MES；erp-added → MES + ERP；
+ * plm-added 起 → 三卡齐。落位卡不留“当前选中”样式，符合并列等权关系。 */
 [data-state="question-open"] .gp-sys-card {
   opacity: 0;
   transform: translateY(-26px);
 }
 
-/* 进入态延迟只挂在进入态选择器下，回退/离开即时可逆 */
+[data-state="mes-introduced"] .gp-slot:nth-child(2) .gp-sys-card,
+[data-state="mes-introduced"] .gp-slot:nth-child(3) .gp-sys-card {
+  opacity: 0;
+  transform: translateY(-26px);
+}
+
+[data-state="erp-added"] .gp-slot:nth-child(3) .gp-sys-card {
+  opacity: 0;
+  transform: translateY(-26px);
+}
+
+/* 落位延迟只挂在进入态选择器下，回退/离开即时可逆 */
 [data-state="mes-introduced"] .gp-slot:nth-child(1) .gp-sys-card {
   transition-delay: 0.2s, 0.2s;
 }

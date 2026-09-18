@@ -615,11 +615,11 @@
 }
 
 [data-state="before-p2p-interfaces"] .ba-zone-before {
-  transition-delay: 0.45s, 0.45s, 0s, 0s, 0s, 0s, 0s, 0s;
+  transition-delay: 0.41s, 0.41s, 0s, 0s, 0s, 0s, 0s, 0s;
 }
 
 [data-state="before-p2p-interfaces"] .ba-zone-after {
-  transition-delay: 0.75s, 0.75s, 0s, 0s, 0s, 0s, 0s, 0s;
+  transition-delay: 0.49s, 0.49s, 0s, 0s, 0s, 0s, 0s, 0s;
 }
 
 [data-state="before-p2p-interfaces"] .ba-zone-tag,
@@ -630,11 +630,11 @@
 }
 
 [data-state="before-p2p-interfaces"] .ba-zone-before .ba-zone-tag {
-  transition-delay: 0.7s;
+  transition-delay: 0.48s;
 }
 
 [data-state="before-p2p-interfaces"] .ba-zone-after .ba-zone-tag {
-  transition-delay: 1s;
+  transition-delay: 0.55s;
 }
 
 [data-state="before-p2p-interfaces"] .ba-axis,
@@ -645,7 +645,7 @@
 }
 
 [data-state="before-p2p-interfaces"] .ba-axis {
-  transition-delay: 1.05s;
+  transition-delay: 0.57s;
 }
 
 /* rail-after 空置占位：仅 S1–S2 */
@@ -655,7 +655,7 @@
 }
 
 [data-state="before-p2p-interfaces"] .ba-ghost {
-  transition-delay: 0.95s;
+  transition-delay: 0.54s;
 }
 
 /* ── S1 落位：rail-before 的说明与系统节点 ───────────────────────── */
@@ -668,7 +668,7 @@
 }
 
 [data-state="before-p2p-interfaces"] .ba-before-sub {
-  transition-delay: 1.5s;
+  transition-delay: 0.68s;
 }
 
 [data-state="before-p2p-interfaces"] .ba-node,
@@ -680,19 +680,19 @@
 }
 
 [data-state="before-p2p-interfaces"] .ba-node:nth-of-type(1) {
-  transition-delay: 0.9s, 0.9s;
+  transition-delay: 0.53s, 0.53s;
 }
 
 [data-state="before-p2p-interfaces"] .ba-node:nth-of-type(2) {
-  transition-delay: 1.2s, 1.2s;
+  transition-delay: 0.6s, 0.6s;
 }
 
 [data-state="before-p2p-interfaces"] .ba-node:nth-of-type(3) {
-  transition-delay: 1.5s, 1.5s;
+  transition-delay: 0.68s, 0.68s;
 }
 
 [data-state="before-p2p-interfaces"] .ba-node:nth-of-type(4) {
-  transition-delay: 1.8s, 1.8s;
+  transition-delay: 0.76s, 0.76s;
 }
 
 /* ── S1 落位：前三条点对点接口自绘 ───────────────────────────────── */
@@ -719,15 +719,15 @@
 }
 
 [data-state="before-p2p-interfaces"] .ba-line-1 {
-  transition-delay: 2.3s;
+  transition-delay: 0.89s;
 }
 
 [data-state="before-p2p-interfaces"] .ba-line-2 {
-  transition-delay: 2.9s;
+  transition-delay: 1.04s;
 }
 
 [data-state="before-p2p-interfaces"] .ba-line-5 {
-  transition-delay: 3.5s;
+  transition-delay: 1.19s;
 }
 
 [data-state="before-p2p-interfaces"] .ba-dot-1,
@@ -747,15 +747,15 @@
 }
 
 [data-state="before-p2p-interfaces"] .ba-dot-1 {
-  transition-delay: 2.75s, 2.75s;
+  transition-delay: 1s, 1s;
 }
 
 [data-state="before-p2p-interfaces"] .ba-dot-2 {
-  transition-delay: 3.35s, 3.35s;
+  transition-delay: 1.15s, 1.15s;
 }
 
 [data-state="before-p2p-interfaces"] .ba-dot-5 {
-  transition-delay: 3.95s, 3.95s;
+  transition-delay: 1.31s, 1.31s;
 }
 
 /* ── S2 补齐：网状纠缠完成 + 工作量增长演示 ──────────────────────── */
@@ -777,11 +777,11 @@
 }
 
 [data-state="before-cost-growing"] .ba-line-4 {
-  transition-delay: 1s;
+  transition-delay: 0.55s;
 }
 
 [data-state="before-cost-growing"] .ba-line-6 {
-  transition-delay: 1.6s;
+  transition-delay: 0.71s;
 }
 
 [data-state="before-cost-growing"] .ba-dot-3,
@@ -795,11 +795,11 @@
 }
 
 [data-state="before-cost-growing"] .ba-dot-3 {
-  transition-delay: 0.85s, 0.85s;
+  transition-delay: 0.52s, 0.52s;
 }
 
 [data-state="before-cost-growing"] .ba-dot-4 {
-  transition-delay: 1.45s, 1.45s;
+  transition-delay: 0.67s, 0.67s;
 }
 
 [data-state="before-cost-growing"] .ba-tangle,
@@ -810,7 +810,7 @@
 }
 
 [data-state="before-cost-growing"] .ba-tangle {
-  transition-delay: 2.4s, 2.4s;
+  transition-delay: 0.91s, 0.91s;
 }
 
 [data-state="before-cost-growing"] .ba-cost,
@@ -843,15 +843,15 @@
 }
 
 [data-state="before-cost-growing"] .ba-cost-bar-1 {
-  transition-delay: 0.5s;
+  transition-delay: 0.43s;
 }
 
 [data-state="before-cost-growing"] .ba-cost-bar-2 {
-  transition-delay: 1s;
+  transition-delay: 0.55s;
 }
 
 [data-state="before-cost-growing"] .ba-cost-bar-3 {
-  transition-delay: 1.5s;
+  transition-delay: 0.68s;
 }
 
 [data-state="before-cost-growing"] .ba-cost-note,
@@ -861,7 +861,7 @@
 }
 
 [data-state="before-cost-growing"] .ba-cost-note {
-  transition-delay: 2.7s;
+  transition-delay: 0.99s;
 }
 
 /* ── S3 转向：rail-after 激活，rail-before 弱化但保持可见 ────────── */
@@ -920,11 +920,11 @@
 }
 
 [data-state="after-common-rules"] .ba-chip-1 {
-  transition-delay: 0.7s, 0.7s;
+  transition-delay: 0.48s, 0.48s;
 }
 
 [data-state="after-common-rules"] .ba-chip-2 {
-  transition-delay: 1.2s, 1.2s;
+  transition-delay: 0.6s, 0.6s;
 }
 
 [data-state="after-common-rules"] .ba-chipline-1,
@@ -935,11 +935,11 @@
 }
 
 [data-state="after-common-rules"] .ba-chipline-1 {
-  transition-delay: 0.8s;
+  transition-delay: 0.5s;
 }
 
 [data-state="after-common-rules"] .ba-chipline-2 {
-  transition-delay: 1.3s;
+  transition-delay: 0.63s;
 }
 
 [data-state="after-common-rules"] .ba-hub,
@@ -949,7 +949,7 @@
 }
 
 [data-state="after-common-rules"] .ba-hub {
-  transition-delay: 1.7s, 1.7s;
+  transition-delay: 0.73s, 0.73s;
 }
 
 [data-state="after-common-rules"] .ba-anode,
@@ -959,19 +959,19 @@
 }
 
 [data-state="after-common-rules"] .ba-anode-1 {
-  transition-delay: 2.2s, 2.2s;
+  transition-delay: 0.86s, 0.86s;
 }
 
 [data-state="after-common-rules"] .ba-anode-2 {
-  transition-delay: 2.45s, 2.45s;
+  transition-delay: 0.92s, 0.92s;
 }
 
 [data-state="after-common-rules"] .ba-anode-3 {
-  transition-delay: 2.7s, 2.7s;
+  transition-delay: 0.99s, 0.99s;
 }
 
 [data-state="after-common-rules"] .ba-anode-4 {
-  transition-delay: 2.95s, 2.95s;
+  transition-delay: 1.05s, 1.05s;
 }
 
 [data-state="after-common-rules"] .ba-flowin-1,
@@ -986,19 +986,19 @@
 }
 
 [data-state="after-common-rules"] .ba-flowin-1 {
-  transition-delay: 2.5s;
+  transition-delay: 0.94s;
 }
 
 [data-state="after-common-rules"] .ba-flowin-2 {
-  transition-delay: 2.8s;
+  transition-delay: 1.01s;
 }
 
 [data-state="after-common-rules"] .ba-flowin-3 {
-  transition-delay: 3.1s;
+  transition-delay: 1.09s;
 }
 
 [data-state="after-common-rules"] .ba-flowin-4 {
-  transition-delay: 3.4s;
+  transition-delay: 1.17s;
 }
 
 [data-state="after-common-rules"] .ba-banner,
@@ -1008,7 +1008,7 @@
 }
 
 [data-state="after-common-rules"] .ba-banner {
-  transition-delay: 4.7s, 4.7s;
+  transition-delay: 1.5s, 1.5s;
 }
 
 /* ── S4 补齐：业务分工保持 + 连接器协作通道点亮 ──────────────────── */
@@ -1023,11 +1023,11 @@
 }
 
 [data-state="after-division-preserved"] .ba-module-2 {
-  transition-delay: 0.65s, 0.65s;
+  transition-delay: 0.46s, 0.46s;
 }
 
 [data-state="after-division-preserved"] .ba-module-3 {
-  transition-delay: 1s, 1s;
+  transition-delay: 0.55s, 0.55s;
 }
 
 [data-state="after-division-preserved"] .ba-flowout-1,
@@ -1037,21 +1037,21 @@
 }
 
 [data-state="after-division-preserved"] .ba-flowout-1 {
-  transition-delay: 1.4s;
+  transition-delay: 0.66s;
 }
 
 [data-state="after-division-preserved"] .ba-flowout-2 {
-  transition-delay: 1.75s;
+  transition-delay: 0.75s;
 }
 
 [data-state="after-division-preserved"] .ba-flowout-3 {
-  transition-delay: 2.1s;
+  transition-delay: 0.83s;
 }
 
 [data-state="after-division-preserved"] .ba-flowdash {
   animation:
-    ba-dash-in 0.5s ease 2.9s forwards,
-    ba-dash-flow 1.15s linear 3.4s infinite;
+    ba-dash-in 0.5s ease 1.04s forwards,
+    ba-dash-flow 1.15s linear 1.17s infinite;
 }
 
 [data-state="after-division-preserved"] .ba-note {
@@ -1060,11 +1060,11 @@
 }
 
 [data-state="after-division-preserved"] .ba-note-1 {
-  transition-delay: 3.1s, 3.1s;
+  transition-delay: 1.09s, 1.09s;
 }
 
 [data-state="after-division-preserved"] .ba-note-2 {
-  transition-delay: 3.5s, 3.5s;
+  transition-delay: 1.19s, 1.19s;
 }
 
 @keyframes ba-dash-in {
