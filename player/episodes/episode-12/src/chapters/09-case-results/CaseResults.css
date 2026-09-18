@@ -1,0 +1,597 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * 09-case-results · 案例结果页（S-A041 · evidence-cards-with-provenance-boundary）
+ * 前缀 .cr- · 状态机（evidence-with-scope）：
+ *   first-evidence-card → second-evidence-card → third-evidence-card
+ *   → results-scope-bounded
+ * 四张证据卡等权累积，完成后不留选中项；来源边界带（虚线框）自首拍
+ * 与数字同屏包住卡组（R015 · scope），末拍 inference-boundary 收束。
+ * ───────────────────────────────────────────────────────────────────── */
+
+.cr-pad {
+  gap: 0;
+}
+
+/* ── headline（S041，可见标题：保留）────────────────────────────── */
+.cr-head {
+  display: flex;
+  align-items: baseline;
+  gap: 30px;
+}
+
+/* .cr-head 是 flex 行，而 hr.rule 带 width:100%（base.css .rule）→ 其 flex
+ * base size 等于整行 1700px。若不钉住标题与注记的收缩，负自由空间会按
+ * shrink×basis 摊派到三者，标题被压到 ≈348px 而折行（固有 504px）。
+ * 故：标题与注记 flex:none 保持固有宽，hr 改 flex:1 + width:auto 只占余量。 */
+.cr-headline {
+  flex: none;
+  margin: 0;
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.cr-head-note {
+  flex: none;
+  font-size: 17px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+}
+
+.cr-head-rule {
+  flex: 1;
+  width: auto;
+  margin-top: 22px;
+  transform-origin: left center;
+}
+
+.state-first-evidence-card .cr-headline {
+  animation: cr-rise-in 0.6s ease-out both;
+}
+
+.state-first-evidence-card .cr-head-note {
+  animation: cr-rise-in 0.6s ease-out 0.3s both;
+}
+
+.state-first-evidence-card .cr-head-rule {
+  animation: cr-rule-draw 0.7s ease-out 0.2s both;
+}
+
+/* ── provenance-band（U024 · S046/S047 方向）：来源边界带＝虚线框 ── */
+.cr-scope {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin-top: 34px;
+  padding: 26px 28px 28px;
+  border: 3px dashed var(--theme-structural);
+  display: flex;
+}
+
+.state-first-evidence-card .cr-scope {
+  animation: cr-frame-in 0.55s ease-out 0.1s both;
+}
+
+/* 归属标签：贴在上边界线上的工程标签 */
+.cr-scope-tab {
+  position: absolute;
+  top: -18px;
+  left: 26px;
+  padding: 6px 18px;
+  font-size: 16px;
+  letter-spacing: 0.14em;
+  color: var(--surface-2);
+  background: var(--theme-structural);
+}
+
+/* 范围标注：与数字同屏的上边界右端标注 */
+.cr-scope-mark {
+  position: absolute;
+  top: -13px;
+  right: 26px;
+  padding: 0 12px;
+  font-size: 16px;
+  letter-spacing: 0.26em;
+  color: var(--text-mute);
+  background: var(--surface);
+}
+
+/* ── evidence-cards（U023）：2×2 等权网格 ───────────────────────── */
+.cr-grid {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 22px;
+}
+
+/* 骨架期：虚线待补；填充后转实，四卡等权 */
+.cr-ev {
+  position: relative;
+  min-height: 0;
+  padding: 22px 26px 24px;
+  background: var(--surface-3);
+  border: 2px dashed var(--rule);
+  box-shadow: none;
+  transition: background-color 0.45s ease, border-color 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+/* 填充态：证据卡就位后转实（逐卡建立，之后保持等权） */
+.state-first-evidence-card .cr-ev-1,
+.state-second-evidence-card .cr-ev-1,
+.state-third-evidence-card .cr-ev-1,
+.state-results-scope-bounded .cr-ev-1,
+.state-second-evidence-card .cr-ev-2,
+.state-third-evidence-card .cr-ev-2,
+.state-results-scope-bounded .cr-ev-2,
+.state-third-evidence-card .cr-ev-3,
+.state-results-scope-bounded .cr-ev-3,
+.state-results-scope-bounded .cr-ev-4 {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+/* 待补面：被证据内容补齐（补齐而非消失） */
+.cr-slot {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+  letter-spacing: 0.4em;
+  color: var(--text-faint);
+}
+
+.state-first-evidence-card .cr-ev-1 .cr-slot,
+.state-second-evidence-card .cr-ev-1 .cr-slot,
+.state-third-evidence-card .cr-ev-1 .cr-slot,
+.state-results-scope-bounded .cr-ev-1 .cr-slot,
+.state-second-evidence-card .cr-ev-2 .cr-slot,
+.state-third-evidence-card .cr-ev-2 .cr-slot,
+.state-results-scope-bounded .cr-ev-2 .cr-slot,
+.state-third-evidence-card .cr-ev-3 .cr-slot,
+.state-results-scope-bounded .cr-ev-3 .cr-slot,
+.state-results-scope-bounded .cr-ev-4 .cr-slot {
+  opacity: 0;
+}
+
+/* 待补面退场只发生在本卡填充拍（错峰与内容入场衔接） */
+.state-first-evidence-card .cr-ev-1 .cr-slot {
+  animation: cr-slot-out 0.3s ease 4.15s both;
+}
+
+.state-second-evidence-card .cr-ev-2 .cr-slot {
+  animation: cr-slot-out 0.3s ease 0.1s both;
+}
+
+.state-third-evidence-card .cr-ev-3 .cr-slot {
+  animation: cr-slot-out 0.3s ease 0.1s both;
+}
+
+.state-results-scope-bounded .cr-ev-4 .cr-slot {
+  animation: cr-slot-out 0.3s ease 0.1s both;
+}
+
+/* 证据内容面 */
+.cr-face {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+}
+
+/* 内容面可见性：填充后保持 */
+.state-first-evidence-card .cr-ev-1 .cr-face,
+.state-second-evidence-card .cr-ev-1 .cr-face,
+.state-third-evidence-card .cr-ev-1 .cr-face,
+.state-results-scope-bounded .cr-ev-1 .cr-face,
+.state-second-evidence-card .cr-ev-2 .cr-face,
+.state-third-evidence-card .cr-ev-2 .cr-face,
+.state-results-scope-bounded .cr-ev-2 .cr-face,
+.state-third-evidence-card .cr-ev-3 .cr-face,
+.state-results-scope-bounded .cr-ev-3 .cr-face,
+.state-results-scope-bounded .cr-ev-4 .cr-face {
+  opacity: 1;
+}
+
+/* 内容面入场（一次性，只挂各自填充拍；与口播焦点对位） */
+.state-first-evidence-card .cr-ev-1 .cr-face {
+  animation: cr-stamp-in 0.5s ease-out 4.2s both;
+}
+
+.state-second-evidence-card .cr-ev-2 .cr-face {
+  animation: cr-stamp-in 0.5s ease-out 0.15s both;
+}
+
+.state-third-evidence-card .cr-ev-3 .cr-face {
+  animation: cr-stamp-in 0.5s ease-out 0.15s both;
+}
+
+.state-results-scope-bounded .cr-ev-4 .cr-face {
+  animation: cr-stamp-in 0.5s ease-out 0.15s both;
+}
+
+.cr-ev-tag {
+  font-size: 16px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.cr-ev-title {
+  margin: 14px 0 0;
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.cr-ev-demo {
+  flex: 1;
+  min-height: 0;
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* exact 陈述：卡底记录行（S042 / S043 / S044 逐字上屏） */
+.cr-ev-exact {
+  margin: auto 0 0;
+  padding-top: 14px;
+  border-top: 2px dashed var(--rule);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ── 卡 1 演示：服务误判额预计降低（方向箭头 + hero 数字）──────── */
+.cr-demo-misjudge {
+  gap: 34px;
+}
+
+.state-first-evidence-card .cr-demo-misjudge {
+  animation: cr-rise-in 0.55s ease-out 6.1s both;
+}
+
+.cr-drop {
+  position: relative;
+  width: 34px;
+  height: 86px;
+  flex: none;
+}
+
+.cr-drop-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 26px;
+  border-left: 3px dashed var(--accent);
+  transform: translateX(-50%);
+}
+
+.cr-drop-stem {
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  width: 10px;
+  height: 30px;
+  margin-left: -5px;
+  background: var(--accent);
+}
+
+.cr-drop-head {
+  position: absolute;
+  top: 56px;
+  left: 50%;
+  margin-left: -13px;
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+  border-top: 18px solid var(--accent);
+}
+
+/* 箭头落位只发生在第 1 拍（“降低 5000 万”讲到时） */
+.state-first-evidence-card .cr-drop {
+  animation: cr-drop-in 0.55s var(--ease-soft) 6.35s both;
+}
+
+.cr-hero {
+  font-size: 84px;
+  color: var(--text);
+}
+
+.cr-hero-unit {
+  margin-left: 8px;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  color: var(--text-2);
+}
+
+/* ── 卡 2 演示：一致性环充满到 100%（第 2 拍仅 3s，动画极短）───── */
+.cr-ring {
+  width: 92px;
+  height: 92px;
+  flex: none;
+  transform: rotate(-90deg);
+}
+
+.cr-ring-track,
+.cr-ring-fill {
+  fill: none;
+  stroke-width: 9;
+}
+
+.cr-ring-track {
+  stroke: var(--rule);
+}
+
+.cr-ring-fill {
+  stroke: var(--accent);
+  stroke-dasharray: 188.5;
+  stroke-dashoffset: 188.5;
+  transition: stroke-dashoffset 0.85s var(--ease-soft);
+}
+
+/* 充满后保持（不回退、不重播） */
+.state-second-evidence-card .cr-ring-fill,
+.state-third-evidence-card .cr-ring-fill,
+.state-results-scope-bounded .cr-ring-fill {
+  stroke-dashoffset: 0;
+}
+
+/* 充满只发生在第 2 拍 */
+.state-second-evidence-card .cr-ring-fill {
+  transition-delay: 0.5s;
+}
+
+/* ── 卡 3 演示：整批拆成单件（块拆分 + 损耗减少）───────────────── */
+.cr-demo-units {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 22px;
+}
+
+.cr-units {
+  position: relative;
+  height: 40px;
+  width: 100%;
+}
+
+.cr-unit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 46px;
+  height: 40px;
+  background: var(--accent-soft);
+  border: 2px solid var(--accent);
+}
+
+/* 拆分终态（基础态即等权单件排开） */
+.cr-unit:nth-child(1) { transform: translateX(0); }
+.cr-unit:nth-child(2) { transform: translateX(60px); }
+.cr-unit:nth-child(3) { transform: translateX(120px); }
+.cr-unit:nth-child(4) { transform: translateX(180px); }
+.cr-unit:nth-child(5) { transform: translateX(240px); }
+.cr-unit:nth-child(6) { transform: translateX(300px); }
+
+/* 拆分只发生在第 3 拍（从整块错峰拆开） */
+.state-third-evidence-card .cr-unit {
+  animation: cr-unit-split 0.65s var(--ease-soft) both;
+}
+
+.state-third-evidence-card .cr-unit:nth-child(1) { animation-delay: 0.55s; }
+.state-third-evidence-card .cr-unit:nth-child(2) { animation-delay: 0.66s; }
+.state-third-evidence-card .cr-unit:nth-child(3) { animation-delay: 0.77s; }
+.state-third-evidence-card .cr-unit:nth-child(4) { animation-delay: 0.88s; }
+.state-third-evidence-card .cr-unit:nth-child(5) { animation-delay: 0.99s; }
+.state-third-evidence-card .cr-unit:nth-child(6) { animation-delay: 1.1s; }
+
+.cr-loss-row {
+  display: flex;
+  gap: 14px;
+}
+
+.cr-loss-chip {
+  padding: 7px 16px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-2);
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.cr-loss-chip b {
+  margin-left: 6px;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.state-third-evidence-card .cr-loss-chip {
+  opacity: 1;
+  transform: none;
+}
+
+.state-third-evidence-card .cr-loss-chip:nth-child(1) {
+  transition-delay: 3.4s;
+}
+
+.state-third-evidence-card .cr-loss-chip:nth-child(2) {
+  transition-delay: 3.65s;
+}
+
+/* ── 卡 4 内容：服务与满意度三条改善（逐条与口播对位）──────────── */
+.cr-svc {
+  flex: 1;
+  min-height: 0;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.cr-svc-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.cr-svc-row::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  flex: none;
+  background: var(--accent);
+}
+
+.state-results-scope-bounded .cr-svc-row {
+  opacity: 1;
+  transform: none;
+}
+
+.state-results-scope-bounded .cr-svc-row:nth-child(1) {
+  transition-delay: 0.5s;
+}
+
+.state-results-scope-bounded .cr-svc-row:nth-child(2) {
+  transition-delay: 2.1s;
+}
+
+.state-results-scope-bounded .cr-svc-row:nth-child(3) {
+  transition-delay: 3.7s;
+}
+
+/* ── inference-boundary（U025）：第 4 拍收束外推边界 ───────────── */
+.cr-boundary {
+  flex: none;
+  margin-top: 24px;
+  height: 94px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 0 30px;
+  background: var(--theme-process-surface);
+  border: 3px dashed var(--theme-structural);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.state-results-scope-bounded .cr-boundary {
+  opacity: 1;
+  transform: none;
+  transition-delay: 4.6s;
+}
+
+.cr-boundary-label {
+  flex: none;
+  padding: 7px 16px;
+  font-size: 16px;
+  letter-spacing: 0.14em;
+  color: var(--surface-2);
+  background: var(--theme-structural);
+}
+
+.cr-boundary-text {
+  margin: 0;
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.cr-boundary-text em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* ── keyframes ──────────────────────────────────────────────────── */
+@keyframes cr-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cr-rule-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes cr-frame-in {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cr-stamp-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cr-slot-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes cr-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cr-unit-split {
+  from {
+    transform: translateX(0);
+    opacity: 0.3;
+  }
+}
