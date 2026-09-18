@@ -65,60 +65,60 @@ export const GENERATED_EPISODES = [
     "id": "episode-05",
     "project": {
       "id": "episode-05",
-      "title": "第 05 期（待制作）",
-      "status": "planned",
+      "title": "对象身份锚点",
+      "status": "in-progress",
       "theme": "active-identification-note",
       "progress": {
-        "completed": 0,
-        "total": 0,
+        "completed": 11,
+        "total": 11,
         "current": null
       },
-      "updatedAt": "2026-09-02"
+      "updatedAt": "2026-09-04"
     }
   },
   {
     "id": "episode-06",
     "project": {
       "id": "episode-06",
-      "title": "第 06 期（待制作）",
-      "status": "planned",
+      "title": "标识解析体系与层级",
+      "status": "ready",
       "theme": "active-identification-note",
       "progress": {
-        "completed": 0,
-        "total": 0,
+        "completed": 13,
+        "total": 13,
         "current": null
       },
-      "updatedAt": "2026-09-02"
+      "updatedAt": "2026-09-06"
     }
   },
   {
     "id": "episode-07",
     "project": {
       "id": "episode-07",
-      "title": "第 07 期（待制作）",
-      "status": "planned",
+      "title": "我国标识解析从建设走向规模应用",
+      "status": "in-progress",
       "theme": "active-identification-note",
       "progress": {
-        "completed": 0,
-        "total": 0,
+        "completed": 8,
+        "total": 8,
         "current": null
       },
-      "updatedAt": "2026-09-02"
+      "updatedAt": "2026-09-09"
     }
   },
   {
     "id": "episode-08",
     "project": {
       "id": "episode-08",
-      "title": "第 08 期（待制作）",
-      "status": "planned",
+      "title": "工业互联网标识解析作用与意义",
+      "status": "in-progress",
       "theme": "active-identification-note",
       "progress": {
-        "completed": 0,
-        "total": 0,
-        "current": null
+        "completed": 12,
+        "total": 12,
+        "current": "a012-summary-judgment"
       },
-      "updatedAt": "2026-09-02"
+      "updatedAt": "2026-09-14"
     }
   },
   {
@@ -140,15 +140,15 @@ export const GENERATED_EPISODES = [
     "id": "episode-10",
     "project": {
       "id": "episode-10",
-      "title": "第 10 期（待制作）",
-      "status": "planned",
+      "title": "注塑模具智能化生产管控：主动标识让模具开口报告状态",
+      "status": "in-progress",
       "theme": "active-identification-note",
       "progress": {
-        "completed": 0,
-        "total": 0,
+        "completed": 10,
+        "total": 10,
         "current": null
       },
-      "updatedAt": "2026-09-02"
+      "updatedAt": "2026-09-11"
     }
   },
   {
@@ -185,15 +185,15 @@ export const GENERATED_EPISODES = [
     "id": "episode-13",
     "project": {
       "id": "episode-13",
-      "title": "第 13 期（待制作）",
-      "status": "planned",
+      "title": "第 13 期 · 基于工业软件连接器的异构数据共享",
+      "status": "in-progress",
       "theme": "active-identification-note",
       "progress": {
-        "completed": 0,
-        "total": 0,
-        "current": null
+        "completed": 14,
+        "total": 14,
+        "current": "14-closing-judgment"
       },
-      "updatedAt": "2026-09-02"
+      "updatedAt": "2026-09-17"
     }
   },
   {
@@ -515,30 +515,30 @@ export const GENERATED_EPISODES = [
     "id": "episode-35",
     "project": {
       "id": "episode-35",
-      "title": "第 35 期（待制作）",
-      "status": "planned",
+      "title": "标识载体选型",
+      "status": "ready",
       "theme": "active-identification-note",
       "progress": {
-        "completed": 0,
-        "total": 0,
+        "completed": 12,
+        "total": 12,
         "current": null
       },
-      "updatedAt": "2026-09-02"
+      "updatedAt": "2026-09-03"
     }
   },
   {
     "id": "episode-36",
     "project": {
       "id": "episode-36",
-      "title": "第 36 期（待制作）",
-      "status": "planned",
-      "theme": "active-identification-note",
+      "title": "标识载体设计：尺寸、位置、耐久与信息层级",
+      "status": "in-progress",
+      "theme": "industrial-clarity",
       "progress": {
-        "completed": 0,
-        "total": 0,
-        "current": null
+        "completed": 13,
+        "total": 13,
+        "current": "a013-design-recap"
       },
-      "updatedAt": "2026-09-02"
+      "updatedAt": "2026-09-12"
     }
   },
   {

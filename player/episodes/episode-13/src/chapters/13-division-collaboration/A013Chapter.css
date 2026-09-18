@@ -1,0 +1,657 @@
+/* A013 · 分工协作 —— 前缀 .dc- 仅本章使用；颜色/字体全部走主题 token。
+ *
+ * 配方 image-with-summary-rail · 关系机制 anchor-and-context：
+ * 左侧工厂情境图为持续回扣锚点；右列上下分层 —— division（四类信息各归其位）
+ * 在上，summary-rail（三项协作注记）在下，final-judgment 承接投递收束。
+ * 拍 1 主导动作：分工瓦片依次「归位」；拍 2 主导动作：数据包沿协作通道投递。
+ */
+
+.dc-root {
+  gap: 26px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题 + 尾随工程虚线 ───────────────────────────────── */
+
+.dc-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.dc-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+.dc-head-rule {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+[data-state="division-preserved"] .dc-headline {
+  animation: dc-rise 0.55s ease 0.25s backwards;
+}
+
+[data-state="division-preserved"] .dc-head-rule {
+  animation: dc-grow-x 0.6s cubic-bezier(0.3, 0.6, 0.3, 1) 0.41s backwards;
+}
+
+/* ── 主区：左锚点图 560px ＋ 右侧内容列 ───────────────────────── */
+
+.dc-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 44px;
+}
+
+/* 锚点媒体：满高取景框，图覆盖填充，说明条压底 */
+.dc-media {
+  position: relative;
+  margin: 0;
+  flex: 0 0 560px;
+  overflow: hidden;
+  background: var(--surface-3);
+  border: 2px solid var(--theme-dashed-line);
+  box-shadow: var(--card-shadow);
+}
+
+.dc-media-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dc-media-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 16px;
+  background: color-mix(in srgb, var(--surface-2) 90%, transparent);
+  border-top: 1px solid var(--theme-grid-line);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  color: var(--text-mute);
+}
+
+[data-state="division-preserved"] .dc-media {
+  animation: dc-unveil 0.9s cubic-bezier(0.3, 0.6, 0.3, 1) 0.41s backwards;
+}
+
+[data-state="division-preserved"] .dc-media-caption {
+  animation: dc-fade 0.5s ease 0.51s backwards;
+}
+
+/* 右内容列：division / interface / rail / judgment 自上而下 */
+.dc-right {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── division 区：四类信息各归其位（拍 1 依次落位）────────────── */
+
+.dc-division {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.dc-band-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+
+.dc-band-mark {
+  align-self: center;
+  width: 14px;
+  height: 34px;
+  background: var(--theme-structural);
+}
+
+.dc-band-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 34px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.dc-band-note {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 22px;
+  color: var(--text-2);
+}
+
+.dc-tiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.dc-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 22px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.dc-tile-name {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 31px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.dc-tile-tag {
+  padding-top: 9px;
+  border-top: 1px dashed var(--rule);
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.05em;
+  color: var(--text-mute);
+}
+
+.dc-normal {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--theme-process);
+}
+
+.dc-normal-mark {
+  flex: 0 0 auto;
+  width: 13px;
+  height: 13px;
+  background: var(--theme-process);
+  box-shadow: 0 0 0 5px var(--accent-soft);
+}
+
+[data-state="division-preserved"] .dc-band-head {
+  animation: dc-rise 0.5s ease 0.56s backwards;
+}
+
+[data-state="division-preserved"] .dc-tile-1 {
+  animation: dc-settle 0.6s ease 0.64s backwards;
+}
+
+[data-state="division-preserved"] .dc-tile-2 {
+  animation: dc-settle 0.6s ease 0.79s backwards;
+}
+
+[data-state="division-preserved"] .dc-tile-3 {
+  animation: dc-settle 0.6s ease 0.94s backwards;
+}
+
+[data-state="division-preserved"] .dc-tile-4 {
+  animation: dc-settle 0.6s ease 1.08s backwards;
+}
+
+[data-state="division-preserved"] .dc-normal {
+  animation: dc-stamp 0.5s cubic-bezier(0.3, 1.2, 0.4, 1) 1.26s backwards;
+}
+
+/* ── 分工→协作接口条：拍 2 激活，数据包由此落下 ────────────────── */
+
+.dc-interface {
+  position: relative;
+  flex: 0 0 64px;
+}
+
+.dc-interface-line {
+  position: absolute;
+  left: 96px;
+  top: 4px;
+  bottom: 12px;
+  width: 0;
+  border-left: 3px dashed var(--theme-process);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.5s cubic-bezier(0.3, 0.6, 0.3, 1);
+}
+
+.dc-interface-arrow {
+  position: absolute;
+  left: 91px;
+  bottom: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 10px solid var(--theme-process);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dc-interface-tag {
+  position: absolute;
+  left: 122px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.14em;
+  color: var(--theme-process);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.dc-drop-pkt {
+  position: absolute;
+  left: 97.5px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  background: var(--theme-process);
+  box-shadow:
+    0 0 0 3px var(--surface-2),
+    0 0 0 5px var(--accent-glow);
+  opacity: 0;
+}
+
+[data-state="collaboration-complete"] .dc-interface-line {
+  transform: scaleY(1);
+  transition-delay: 0.4s;
+}
+
+[data-state="collaboration-complete"] .dc-interface-arrow {
+  opacity: 1;
+  transition-delay: 0.46s;
+}
+
+[data-state="collaboration-complete"] .dc-interface-tag {
+  opacity: 1;
+  transition-delay: 0.45s;
+}
+
+[data-state="collaboration-complete"] .dc-drop-pkt {
+  animation: dc-drop 0.55s cubic-bezier(0.5, 0, 0.8, 0.4) 1.05s backwards;
+}
+
+/* ── summary-rail：三项协作注记依次落位，数据包横向投递 ────────── */
+
+.dc-rail {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: 96px;
+  padding: 0 90px 0 24px;
+}
+
+.dc-track {
+  position: absolute;
+  left: 96px;
+  right: 30px;
+  top: 50%;
+  height: 0;
+  border-top: 3px dashed var(--rule);
+}
+
+.dc-track-run {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1.5px;
+  border-top: 3px solid var(--theme-process);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.3, 0.6, 0.3, 1);
+}
+
+.dc-node {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 24px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+.dc-node-role {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.dc-node-duty {
+  font-family: var(--font-body);
+  font-size: 21px;
+  color: var(--text-2);
+}
+
+/* 数据包经过时节点收包的脉冲环 */
+.dc-node::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 74px;
+  height: 74px;
+  margin: -37px 0 0 -37px;
+  border: 4px solid var(--theme-process);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dc-elbow {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  bottom: -26px;
+  width: 0;
+  border-right: 3px solid var(--theme-process);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s cubic-bezier(0.3, 0.6, 0.3, 1);
+}
+
+.dc-elbow::after {
+  content: "";
+  position: absolute;
+  right: -9.5px;
+  bottom: -1px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 11px solid var(--theme-process);
+}
+
+.dc-run-pkt {
+  position: absolute;
+  left: 96px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  background: var(--theme-process);
+  box-shadow:
+    0 0 0 3px var(--surface-2),
+    0 0 0 5px var(--accent-glow);
+  opacity: 0;
+}
+
+[data-state="collaboration-complete"] .dc-track-run {
+  transform: scaleX(1);
+  transition-delay: 0.88s;
+}
+
+[data-state="collaboration-complete"] .dc-node {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="collaboration-complete"] .dc-node-1 {
+  transition-delay: 0.5s, 0.5s;
+}
+
+[data-state="collaboration-complete"] .dc-node-2 {
+  transition-delay: 0.62s, 0.62s;
+}
+
+[data-state="collaboration-complete"] .dc-node-3 {
+  transition-delay: 0.74s, 0.74s;
+}
+
+[data-state="collaboration-complete"] .dc-elbow {
+  transform: scaleY(1);
+  transition-delay: 0.97s;
+}
+
+[data-state="collaboration-complete"] .dc-run-pkt {
+  animation: dc-run 2.3s linear 1.12s backwards;
+}
+
+[data-state="collaboration-complete"] .dc-node-1::after {
+  animation: dc-ring 0.6s ease-out 1.14s backwards;
+}
+
+[data-state="collaboration-complete"] .dc-node-2::after {
+  animation: dc-ring 0.6s ease-out 1.24s backwards;
+}
+
+[data-state="collaboration-complete"] .dc-node-3::after {
+  animation: dc-ring 0.6s ease-out 1.35s backwards;
+}
+
+/* ── final-judgment：投递终点，本拍内收束 ─────────────────────── */
+
+.dc-judgment {
+  position: relative;
+  flex: 0 0 176px;
+  display: flex;
+  align-items: center;
+  padding: 0 150px 0 36px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+.dc-judgment-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 42px;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+.dc-judgment-em {
+  position: relative;
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.dc-judgment-em::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+  height: 6px;
+  background: var(--accent-glow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.3, 0.6, 0.3, 1);
+}
+
+/* 投递落点：判断框顶边的接收光晕 */
+.dc-judgment-port {
+  position: absolute;
+  top: -1px;
+  right: 18px;
+  width: 26px;
+  height: 26px;
+  margin-top: -13px;
+  border-radius: 50%;
+  background: var(--accent-glow);
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-state="collaboration-complete"] .dc-judgment {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1.43s, 1.43s;
+}
+
+[data-state="collaboration-complete"] .dc-judgment-em::after {
+  transform: scaleX(1);
+  transition-delay: 1.5s;
+}
+
+[data-state="collaboration-complete"] .dc-judgment-port {
+  animation: dc-port 0.7s ease-out 1.45s backwards;
+}
+
+/* ── keyframes ───────────────────────────────────────────────── */
+
+@keyframes dc-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dc-grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes dc-unveil {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.4;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+@keyframes dc-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dc-settle {
+  0% {
+    opacity: 0;
+    transform: translateY(-34px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dc-stamp {
+  0% {
+    opacity: 0;
+    transform: scale(1.28);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes dc-drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  30% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(52px);
+  }
+}
+
+@keyframes dc-run {
+  0% {
+    opacity: 0;
+    left: 96px;
+  }
+  4% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: 1066px;
+  }
+}
+
+@keyframes dc-ring {
+  0% {
+    opacity: 0.85;
+    transform: scale(0.45);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes dc-port {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.1);
+  }
+}

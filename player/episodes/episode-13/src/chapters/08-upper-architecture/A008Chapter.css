@@ -1,0 +1,677 @@
+/* A008 · 上层读图 —— 前缀 .ua- 仅本章使用；颜色/字体全部走主题 token。
+ * 状态门控：进入态 delay 只挂进入态 state 选择器，基础态即时可逆，不用 display:none。 */
+
+.ua-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+/* ── 顶部标题：第 1-2 拍为读图定位句，第 3-4 拍换为论点判断 ─────── */
+
+.ua-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.ua-heading-mark {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 56px;
+  background: var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  transform-origin: bottom;
+  animation: ua-mark-grow 0.5s cubic-bezier(0.2, 0.7, 0.3, 1) 0.1s both;
+}
+
+@keyframes ua-mark-grow {
+  from {
+    transform: scaleY(0.2);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.ua-headline {
+  position: relative;
+  flex: 1;
+  height: 78px;
+  margin: 0;
+}
+
+.ua-headline-pos,
+.ua-headline-judge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 1.25;
+  white-space: nowrap;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="upper-position-open"] .ua-headline-pos,
+[data-state="four-systems-read"] .ua-headline-pos {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="hub-connection-shown"] .ua-headline-pos,
+[data-state="hub-role-stated"] .ua-headline-pos {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+[data-state="hub-connection-shown"] .ua-headline-judge,
+[data-state="hub-role-stated"] .ua-headline-judge {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="hub-connection-shown"] .ua-headline-judge {
+  transition-delay: 0.15s, 0.15s;
+}
+
+/* ── 主区：左侧教材原图持续在场 ＋ 右侧读图注记栏 ───────────────── */
+
+.ua-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 46px;
+}
+
+/* 教材原图：persistent-media-reading，第 1 拍建立后不再卸载 */
+
+.ua-figure {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.ua-figure-frame {
+  position: relative;
+  padding: 10px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="upper-position-open"] .ua-figure-frame {
+  animation: ua-frame-in 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) 0.15s both;
+}
+
+@keyframes ua-frame-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ua-figure-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+[data-state="upper-position-open"] .ua-figure-img {
+  animation: ua-soft-in 0.8s ease 0.35s both;
+}
+
+[data-state="upper-position-open"] .ua-figure-caption {
+  animation: ua-soft-in 0.55s ease 0.46s both;
+}
+
+@keyframes ua-soft-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ua-figure-caption {
+  padding: 8px 0;
+  background: var(--surface-3);
+  border: 2px dashed var(--theme-dashed-line);
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: var(--text-mute);
+}
+
+/* 读图区带 1：上层系统区（第 2 拍随注记扫出） */
+
+.ua-fig-band {
+  position: absolute;
+  left: 3%;
+  right: 3%;
+  top: 15%;
+  height: 36%;
+  border: 2px dashed var(--theme-structural);
+  background: color-mix(in srgb, var(--theme-structural) 6%, transparent);
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transition:
+    opacity 0.5s ease,
+    clip-path 0.85s cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+
+[data-state="four-systems-read"] .ua-fig-band,
+[data-state="hub-connection-shown"] .ua-fig-band,
+[data-state="hub-role-stated"] .ua-fig-band {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+[data-state="four-systems-read"] .ua-fig-band {
+  transition-delay: 0.42s, 0.43s;
+}
+
+.ua-fig-band-tag {
+  position: absolute;
+  top: -17px;
+  right: 14px;
+  padding: 4px 12px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-structural);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  white-space: nowrap;
+  color: var(--theme-structural);
+}
+
+/* 读图区带 2：数据 HUB 焦点（第 3 拍阅读焦点迁移至此） */
+
+.ua-fig-focus {
+  position: absolute;
+  left: 30%;
+  top: 38%;
+  width: 40%;
+  height: 38%;
+  border: 3px dashed var(--theme-warning);
+  border-radius: 20px;
+  opacity: 0;
+  transform: scale(0.96);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+[data-state="hub-connection-shown"] .ua-fig-focus,
+[data-state="hub-role-stated"] .ua-fig-focus {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="hub-connection-shown"] .ua-fig-focus {
+  transition-delay: 0.43s, 0.43s;
+}
+
+.ua-fig-focus-tag {
+  position: absolute;
+  bottom: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 14px;
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  font-family: var(--font-mono);
+  font-size: 17px;
+  white-space: nowrap;
+  color: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="hub-connection-shown"] .ua-fig-focus-tag,
+[data-state="hub-role-stated"] .ua-fig-focus-tag {
+  opacity: 1;
+}
+
+[data-state="hub-connection-shown"] .ua-fig-focus-tag {
+  transition-delay: 0.48s;
+}
+
+/* ── 右栏：reading-order 注记（空置待落位 → 逐条盖印落位）──────── */
+
+.ua-rail {
+  flex: 0 0 620px;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ua-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition:
+    opacity 0.6s ease,
+    filter 0.6s ease;
+}
+
+[data-state="hub-connection-shown"] .ua-notes,
+[data-state="hub-role-stated"] .ua-notes {
+  opacity: 0.72;
+  filter: saturate(0.85);
+}
+
+.ua-note {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 92px;
+  padding: 14px 22px;
+  border: 2px dashed var(--rule);
+  background: transparent;
+  transition:
+    background-color 0.5s ease,
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+/* 引线：注记指向左侧教材原图 */
+.ua-note::after {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  width: 46px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="four-systems-read"] .ua-note,
+[data-state="hub-connection-shown"] .ua-note,
+[data-state="hub-role-stated"] .ua-note {
+  border-style: solid;
+  border-width: 2.5px;
+  border-color: var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="four-systems-read"] .ua-note::after,
+[data-state="hub-connection-shown"] .ua-note::after,
+[data-state="hub-role-stated"] .ua-note::after {
+  opacity: 1;
+}
+
+[data-state="four-systems-read"] .ua-note {
+  animation: ua-press 0.55s cubic-bezier(0.3, 0.7, 0.3, 1.2) both;
+}
+
+[data-state="four-systems-read"] .ua-note:nth-child(1) {
+  animation-delay: 0.43s;
+  transition-delay: 0.43s;
+}
+
+[data-state="four-systems-read"] .ua-note:nth-child(2) {
+  animation-delay: 0.81s;
+  transition-delay: 0.81s;
+}
+
+[data-state="four-systems-read"] .ua-note:nth-child(3) {
+  animation-delay: 1.19s;
+  transition-delay: 1.19s;
+}
+
+[data-state="four-systems-read"] .ua-note:nth-child(4) {
+  animation-delay: 1.49s;
+  transition-delay: 1.49s;
+}
+
+[data-state="four-systems-read"] .ua-note:nth-child(1)::after {
+  transition-delay: 0.43s;
+}
+
+[data-state="four-systems-read"] .ua-note:nth-child(2)::after {
+  transition-delay: 0.81s;
+}
+
+[data-state="four-systems-read"] .ua-note:nth-child(3)::after {
+  transition-delay: 1.19s;
+}
+
+[data-state="four-systems-read"] .ua-note:nth-child(4)::after {
+  transition-delay: 1.49s;
+}
+
+@keyframes ua-press {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.968);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.ua-note-idx {
+  flex: 0 0 auto;
+  padding: 5px 10px;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--text-faint);
+  background: transparent;
+  transition:
+    color 0.5s ease,
+    background-color 0.5s ease;
+}
+
+[data-state="four-systems-read"] .ua-note-idx,
+[data-state="hub-connection-shown"] .ua-note-idx,
+[data-state="hub-role-stated"] .ua-note-idx {
+  color: var(--surface-2);
+  background: var(--theme-structural);
+}
+
+[data-state="four-systems-read"] .ua-note:nth-child(1) .ua-note-idx {
+  transition-delay: 0.43s;
+}
+
+[data-state="four-systems-read"] .ua-note:nth-child(2) .ua-note-idx {
+  transition-delay: 0.81s;
+}
+
+[data-state="four-systems-read"] .ua-note:nth-child(3) .ua-note-idx {
+  transition-delay: 1.19s;
+}
+
+[data-state="four-systems-read"] .ua-note:nth-child(4) .ua-note-idx {
+  transition-delay: 1.49s;
+}
+
+.ua-note-title {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.25;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="four-systems-read"] .ua-note-title,
+[data-state="hub-connection-shown"] .ua-note-title,
+[data-state="hub-role-stated"] .ua-note-title {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="four-systems-read"] .ua-note:nth-child(1) .ua-note-title {
+  transition-delay: 0.44s, 0.44s;
+}
+
+[data-state="four-systems-read"] .ua-note:nth-child(2) .ua-note-title {
+  transition-delay: 0.81s, 0.81s;
+}
+
+[data-state="four-systems-read"] .ua-note:nth-child(3) .ua-note-title {
+  transition-delay: 1.2s, 1.2s;
+}
+
+[data-state="four-systems-read"] .ua-note:nth-child(4) .ua-note-title {
+  transition-delay: 1.5s, 1.5s;
+}
+
+.ua-abbr {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  margin-right: 2px;
+}
+
+/* ── key-points：数据 HUB 汇流 → 职责呈现（第 3-4 拍）──────────── */
+
+.ua-hub {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.ua-hub-merge {
+  width: 210px;
+  height: 48px;
+  margin-left: 30px;
+  overflow: visible;
+}
+
+.ua-hub-merge-path {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.65s ease;
+}
+
+[data-state="hub-connection-shown"] .ua-hub-merge-path,
+[data-state="hub-role-stated"] .ua-hub-merge-path {
+  stroke-dashoffset: 0;
+}
+
+[data-state="hub-connection-shown"] .ua-hub-merge-path {
+  transition-delay: 0.42s;
+}
+
+.ua-hub-merge-node {
+  fill: var(--theme-process);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="hub-connection-shown"] .ua-hub-merge-node,
+[data-state="hub-role-stated"] .ua-hub-merge-node {
+  opacity: 1;
+}
+
+[data-state="hub-connection-shown"] .ua-hub-merge-node {
+  transition-delay: 0.48s;
+}
+
+.ua-hub-plate {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 24px;
+  background: var(--theme-process-surface);
+  border: 3px solid var(--theme-process);
+  box-shadow: 7px 8px 0 color-mix(in srgb, var(--theme-process) 22%, transparent);
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+[data-state="hub-connection-shown"] .ua-hub-plate,
+[data-state="hub-role-stated"] .ua-hub-plate {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="hub-connection-shown"] .ua-hub-plate {
+  transition-delay: 0.35s, 0.35s;
+}
+
+.ua-hub-name-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.ua-hub-name {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+.ua-hub-ext {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 23px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+[data-state="hub-role-stated"] .ua-hub-ext {
+  opacity: 1;
+  transition-delay: 0.41s;
+}
+
+.ua-hub-down-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ua-hub-drop {
+  width: 3px;
+  height: 28px;
+  background: repeating-linear-gradient(180deg, var(--theme-process) 0 6px, transparent 6px 13px);
+  background-position: 0 0;
+  animation: ua-flow 0.85s linear infinite;
+}
+
+@keyframes ua-flow {
+  to {
+    background-position: 0 13px;
+  }
+}
+
+.ua-hub-drop-head {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 9px solid var(--theme-process);
+}
+
+.ua-hub-down-tag {
+  margin-left: 8px;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 25px;
+  color: var(--theme-process);
+  white-space: nowrap;
+}
+
+/* 职责行：grid-rows 0fr→1fr 展开，内部词块逐个点落 */
+.ua-hub-details {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.55s cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+
+[data-state="hub-role-stated"] .ua-hub-details {
+  grid-template-rows: 1fr;
+}
+
+.ua-hub-details-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.ua-hub-duty-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 14px;
+  border-top: 2px dashed var(--theme-dashed-line);
+}
+
+.ua-duty-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ua-duty-sep {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 28px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.ua-duty {
+  padding: 7px 18px;
+  background: var(--surface-2);
+  border: 2.5px solid var(--theme-process);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 27px;
+  white-space: nowrap;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(10px) scale(0.92);
+  transition:
+    opacity 0.4s ease,
+    transform 0.45s cubic-bezier(0.3, 0.8, 0.3, 1.15);
+}
+
+[data-state="hub-role-stated"] .ua-duty,
+[data-state="hub-role-stated"] .ua-duty-sep {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="hub-role-stated"] .ua-sep-1 {
+  transition-delay: 0.48s;
+}
+
+[data-state="hub-role-stated"] .ua-duty-1 {
+  transition-delay: 0.49s, 0.49s;
+}
+
+[data-state="hub-role-stated"] .ua-sep-2 {
+  transition-delay: 0.6s;
+}
+
+[data-state="hub-role-stated"] .ua-duty-2 {
+  transition-delay: 0.61s, 0.61s;
+}
+
+[data-state="hub-role-stated"] .ua-duty-3 {
+  transition-delay: 0.73s, 0.73s;
+}

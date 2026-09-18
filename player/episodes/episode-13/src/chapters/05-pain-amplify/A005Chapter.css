@@ -1,0 +1,281 @@
+/* A005 · 痛点放大 —— 前缀 .pm- 仅本章使用；颜色/字体全部走主题 token。
+ * 构图：四条痛点带整幅横排（第 1 拍从左向右生长揭示，完成后等权）；
+ * 底部放大链条带：循环标记 + 两环，第 2/3 拍逐环亮起收束。 */
+
+.pm-root {
+  gap: 28px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题（四道横条 = 四条痛点带的缩影，末道警示色） ───── */
+
+.pm-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.pm-head-mark {
+  position: relative;
+  flex: 0 0 46px;
+  height: 40px;
+}
+
+.pm-head-mark::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 46px;
+  height: 7px;
+  background: var(--theme-structural);
+  box-shadow:
+    0 11px 0 var(--theme-structural),
+    0 22px 0 var(--theme-structural),
+    0 33px 0 var(--theme-warning);
+}
+
+.pm-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 58px;
+  line-height: 1.12;
+  color: var(--theme-structural);
+}
+
+/* ── 四条痛点带：等权整幅横排，生长式揭示 ─────────────────────── */
+
+.pm-bands {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.pm-band {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  padding: 0 44px 0 36px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="four-pains-equal"] .pm-band {
+  animation: pm-reveal 0.7s cubic-bezier(0.25, 0.7, 0.3, 1) both;
+}
+
+[data-state="four-pains-equal"] .pm-band:nth-child(1) {
+  animation-delay: 0.25s;
+}
+
+[data-state="four-pains-equal"] .pm-band:nth-child(2) {
+  animation-delay: 0.58s;
+}
+
+[data-state="four-pains-equal"] .pm-band:nth-child(3) {
+  animation-delay: 0.88s;
+}
+
+[data-state="four-pains-equal"] .pm-band:nth-child(4) {
+  animation-delay: 1.17s;
+}
+
+.pm-band-no {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+.pm-band-text {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 42px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+/* ── 放大链条带：循环标记 + 两环逐个亮起 ─────────────────────── */
+
+.pm-chain {
+  flex: 0 0 170px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 0 36px;
+  border: 2px dashed var(--theme-dashed-line);
+  transition:
+    background-color 0.55s ease,
+    border-color 0.55s ease;
+}
+
+[data-state="amplification-complete"] .pm-chain {
+  background: var(--surface-2);
+  border-color: var(--theme-structural);
+  border-width: 3px;
+  border-style: solid;
+}
+
+.pm-chain-label {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.pm-loop-svg {
+  width: 46px;
+  height: 46px;
+  opacity: 0.35;
+  transition: opacity 0.5s ease;
+}
+
+.pm-loop-svg path {
+  stroke: var(--theme-process);
+  stroke-linecap: round;
+}
+
+.pm-loop-svg polygon {
+  fill: var(--theme-process);
+}
+
+[data-state="amplification-started"] .pm-loop-svg,
+[data-state="amplification-complete"] .pm-loop-svg {
+  opacity: 1;
+}
+
+/* “互相影响”的一次性循环旋转，只挂在本态选择器下，转满一周即回位 */
+[data-state="amplification-started"] .pm-loop-svg {
+  animation: pm-spin 1s cubic-bezier(0.45, 0.15, 0.3, 1) 0.4s both;
+}
+
+.pm-chain-name {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--text-mute);
+}
+
+.pm-link {
+  padding: 20px 32px;
+  border: 3px solid var(--theme-warning);
+  background: var(--theme-warning-surface);
+  box-shadow: 5px 6px 0 color-mix(in srgb, var(--theme-warning) 28%, transparent);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateX(28px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+/* 第一环：amplification-started 亮起，其后保持 */
+[data-state="amplification-started"] .pm-link-1,
+[data-state="amplification-complete"] .pm-link-1 {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="amplification-started"] .pm-link-1 {
+  transition-delay: 0.35s, 0.35s;
+}
+
+/* 第二环：仅 amplification-complete 亮起，链条补齐 */
+[data-state="amplification-complete"] .pm-link-2 {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.51s, 0.51s;
+}
+
+.pm-arrow {
+  position: relative;
+  flex: 0 0 76px;
+  height: 4px;
+  background: var(--theme-warning);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s cubic-bezier(0.3, 0.6, 0.3, 1);
+}
+
+.pm-arrow::after {
+  content: "";
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-left: 15px solid var(--theme-warning);
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  transform: translateY(-50%);
+}
+
+[data-state="amplification-complete"] .pm-arrow {
+  transform: scaleX(1);
+  transition-delay: 0.25s;
+}
+
+/* ── 第 1 拍（four-pains-equal）的一次性入场 ──────────────────── */
+
+@keyframes pm-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.35;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+@keyframes pm-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pm-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pm-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+[data-state="four-pains-equal"] .pm-head {
+  animation: pm-rise 0.55s ease both;
+}
+
+[data-state="four-pains-equal"] .pm-chain {
+  animation: pm-fade 0.6s ease 1.5s both;
+}
