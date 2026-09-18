@@ -1,0 +1,514 @@
+/* traceable-path · linear-steps-to-result
+   mechanism: linear single-direction + pivot ——
+   R019：可查询记录步 → 对象路径步 的单向步骤顺序（同拍先记录、后路径，顺序收敛，两步稳定保留）；
+   R020：路径步与定位步之间的转向排布（肘形连接线自路径末端下行，进入终端结果区）。
+   护栏 C013：定位与协同只写成“可以做到”（先…再…），不写成实时、无延迟或全自动。
+   prefix: tp- */
+
+.tp-scene {
+  justify-content: flex-start;
+  gap: 22px;
+}
+
+/* ── 头部：标题（beat 1 建立） ─────────────────────────────── */
+
+.tp-head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.tp-mark {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  background: var(--theme-process);
+  animation: tp-fadein 480ms var(--ease-soft) both;
+}
+
+.tp-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+  animation: tp-rise 620ms var(--ease-soft) 120ms both;
+}
+
+/* ── 主演示：环节 → 围绕同一标识的可查询记录 → 可追踪的对象路径 ── */
+
+.tp-demo {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+.tp-path-svg {
+  width: 100%;
+  height: 100%;
+  transition: opacity 640ms var(--ease-soft);
+}
+
+.is-terminal .tp-path-svg {
+  opacity: 0.84;
+}
+
+.tp-caption {
+  font-family: var(--font-body);
+  font-size: 27px;
+  font-weight: 700;
+  fill: var(--text-2);
+  animation: tp-fadein 520ms var(--ease-soft) 280ms both;
+}
+
+.tp-caption-key {
+  fill: var(--theme-process);
+  font-weight: 900;
+}
+
+/* 前提：一串互不相认的环节（虚线框 + 断开的连接残段） */
+
+.tp-stage {
+  animation: tp-rise 460ms var(--ease-soft) both;
+  animation-delay: calc(var(--tp-k) * 90ms);
+}
+
+.tp-stage-box {
+  fill: var(--surface-2);
+  stroke: var(--theme-dashed-line);
+  stroke-width: 3;
+  stroke-dasharray: 10 9;
+  animation: tp-solidify 700ms var(--ease-soft) 2360ms forwards;
+}
+
+.tp-stage-name {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  fill: var(--theme-structural);
+  text-anchor: middle;
+}
+
+.tp-gap {
+  stroke: var(--theme-dashed-line);
+  stroke-width: 4;
+  animation: tp-fadein 460ms var(--ease-soft) 420ms both;
+}
+
+/* R019 第一步：围绕同一标识的可查询记录（同拍先亮） */
+
+.tp-record {
+  animation: tp-drop 560ms var(--ease-soft) both;
+  animation-delay: calc(880ms + var(--tp-k) * 190ms);
+}
+
+.tp-record-box {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.tp-record-title {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  fill: var(--theme-structural);
+  text-anchor: middle;
+}
+
+.tp-record-chip {
+  fill: var(--theme-process);
+}
+
+.tp-record-chip-text {
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 700;
+  fill: var(--surface-2);
+  letter-spacing: 0.08em;
+  text-anchor: middle;
+}
+
+.tp-link {
+  stroke: var(--theme-dashed-line);
+  stroke-width: 3;
+  stroke-dasharray: 6 8;
+  animation: tp-fadein 420ms var(--ease-soft) both;
+  animation-delay: calc(1120ms + var(--tp-k) * 190ms);
+}
+
+/* R019 第二步：路径自绘贯穿，环节由虚转实（同拍后亮） */
+
+.tp-path {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 6;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: tp-draw 1400ms var(--ease-soft) 2360ms forwards;
+}
+
+.tp-path-arrow {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 6;
+  opacity: 0;
+  animation: tp-fadein 320ms var(--ease-soft) 3720ms forwards;
+}
+
+.tp-path-label {
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  fill: var(--theme-process);
+  text-anchor: end;
+  animation: tp-fadein 460ms var(--ease-soft) 3820ms both;
+}
+
+/* beat 2：对象标记落位 + 路径沿线读取点 */
+
+.tp-parcel-line {
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+  stroke-dasharray: 5 6;
+  opacity: 0;
+}
+
+.is-readable .tp-parcel-line {
+  animation: tp-fadein 300ms var(--ease-soft) 140ms forwards;
+}
+
+.tp-parcel-box {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.tp-parcel-band {
+  fill: var(--theme-cool-surface);
+}
+
+.tp-parcel-tape {
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+}
+
+.tp-parcel {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.is-readable .tp-parcel {
+  animation: tp-pop 520ms var(--ease-overshoot) 400ms forwards;
+}
+
+.tp-parcel-label {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 700;
+  fill: var(--text-2);
+  opacity: 0;
+}
+
+.is-readable .tp-parcel-label {
+  animation: tp-fadein 380ms var(--ease-soft) 780ms forwards;
+}
+
+.tp-read-tag {
+  fill: var(--surface-2);
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+.tp-read-text {
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 900;
+  fill: var(--theme-structural);
+}
+
+.tp-read-pointer {
+  stroke: var(--theme-process);
+  stroke-width: 3;
+}
+
+.tp-bracket {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3;
+}
+
+.tp-read {
+  opacity: 0;
+}
+
+.is-readable .tp-read {
+  animation: tp-rise 540ms var(--ease-soft) both;
+  animation-delay: calc(1080ms + var(--tp-k) * 640ms);
+}
+
+/* beat 3：定位框在对象上收拢 */
+
+.tp-locate-mark {
+  fill: none;
+  stroke: var(--theme-warning);
+  stroke-width: 4;
+  stroke-linecap: square;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.is-terminal .tp-locate-mark {
+  animation: tp-draw 480ms var(--ease-soft) 1180ms forwards;
+}
+
+/* ── R020 转向排布：肘形连接线自路径末端下行进入终端结果区 ── */
+
+.tp-result {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tp-elbow {
+  display: block;
+  width: 100%;
+  height: 56px;
+}
+
+.tp-elbow-turn {
+  fill: none;
+  stroke: var(--theme-warning);
+  stroke-width: 4;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.is-terminal .tp-elbow-turn {
+  animation: tp-draw 720ms var(--ease-soft) 120ms forwards;
+}
+
+.tp-elbow-arrow {
+  fill: none;
+  stroke: var(--theme-warning);
+  stroke-width: 4;
+  opacity: 0;
+}
+
+.is-terminal .tp-elbow-arrow {
+  animation: tp-fadein 300ms var(--ease-soft) 800ms forwards;
+}
+
+/* ── 终端结果区：先定位，再协同（顺序点亮，稳定保留） ─────── */
+
+.tp-band {
+  flex: none;
+  display: flex;
+  align-items: stretch;
+  gap: 26px;
+  min-height: 172px;
+}
+
+.tp-band-head {
+  flex: none;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0;
+}
+
+.is-terminal .tp-band-head {
+  animation: tp-rise 520ms var(--ease-soft) 420ms both;
+}
+
+.tp-band-head h2 {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+.tp-band-head p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.tp-card {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 26px 30px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+}
+
+.is-terminal .tp-locate {
+  animation: tp-rise 560ms var(--ease-soft) 940ms both;
+}
+
+.is-terminal .tp-coordinate {
+  animation: tp-rise 560ms var(--ease-soft) 2440ms both;
+}
+
+.tp-card.tp-coordinate {
+  border-color: var(--theme-process);
+}
+
+.tp-tag {
+  flex: none;
+  padding: 10px 18px;
+  background: var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--surface-2);
+}
+
+.tp-tag--go {
+  background: var(--theme-process);
+}
+
+.tp-card-text {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.tp-band-arrow {
+  flex: none;
+  align-self: center;
+  width: 52px;
+  opacity: 0;
+}
+
+.is-terminal .tp-band-arrow {
+  animation: tp-fadein 300ms var(--ease-soft) 2160ms forwards;
+}
+
+.tp-band-arrow line {
+  stroke: var(--theme-structural);
+  stroke-width: 4;
+}
+
+.tp-band-arrow polyline {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 4;
+}
+
+.tp-mini {
+  flex: none;
+  width: 112px;
+}
+
+.tp-corners {
+  fill: none;
+  stroke: var(--theme-warning);
+  stroke-width: 4;
+  stroke-linecap: square;
+}
+
+.tp-obj {
+  fill: var(--theme-warning);
+}
+
+.tp-rec-line {
+  fill: var(--rule);
+}
+
+.tp-subject {
+  fill: var(--theme-structural);
+}
+
+.tp-net {
+  stroke: var(--theme-process);
+  stroke-width: 3;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.is-terminal .tp-net {
+  animation: tp-draw 420ms var(--ease-soft) both;
+  animation-delay: calc(2980ms + var(--tp-k) * 160ms);
+}
+
+.tp-joint {
+  fill: var(--theme-process);
+}
+
+/* ── keyframes ────────────────────────────────────────────── */
+
+@keyframes tp-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tp-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tp-fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes tp-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.55) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes tp-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes tp-solidify {
+  to {
+    stroke: var(--theme-process);
+    stroke-dasharray: 12 0;
+  }
+}

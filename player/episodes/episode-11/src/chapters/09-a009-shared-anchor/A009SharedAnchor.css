@@ -1,0 +1,321 @@
+/* shared-anchor · common-anchor-association-groups
+   mechanism: anchor-centric-assembly —— 共享锚点持续居中，记录组围绕锚点逐组落位并保持邻近
+   R016 由关联项围合共享锚点的邻近关系承载（虚线围合环 + 静态关联虚线，无流向箭头）
+   护栏 C010：不把关联画成数据集中搬运 —— 记录不搬家，只有静态关联虚线
+   prefix: sa- */
+
+.sa-scene {
+  justify-content: flex-start;
+  gap: 18px;
+}
+
+/* ── 头部：标题（beat 1 建立，持续保留） ─────────────────── */
+
+.sa-head {
+  flex: none;
+}
+
+.sa-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+  animation: sa-rise 620ms var(--ease-soft) both;
+}
+
+/* ── 命题条（beat 1 亮出，第二拍保持原位不重排） ─────────── */
+
+.sa-proposition {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 24px 36px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  animation: sa-rise 640ms var(--ease-soft) 260ms both;
+}
+
+.sa-prop-tag {
+  flex: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: var(--theme-process);
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: var(--surface-2);
+}
+
+.sa-prop-text {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* 指向轴：自绘方向线 + 目标环，表达"共同的指向"本身 */
+
+.sa-prop-axis {
+  flex: none;
+  width: 440px;
+  opacity: 0;
+  animation: sa-fadein 400ms var(--ease-soft) 900ms both;
+}
+
+.sa-axis-line {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: sa-draw 820ms var(--ease-soft) 1000ms both;
+}
+
+.sa-axis-arrow {
+  opacity: 0;
+  animation: sa-fadein 320ms var(--ease-soft) 1720ms both;
+}
+
+.sa-axis-target {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sa-pop 380ms var(--ease-overshoot) 1840ms both;
+}
+
+/* ── 舞台：锚点居中 + 记录组围合（beat 2 填充） ───────────── */
+
+.sa-stage {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+/* 围合环：最后封口，虚线与主题分割线同性格 */
+
+.sa-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1700px;
+  height: 620px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.sa-ring-ellipse {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.is-assembled .sa-ring-ellipse {
+  animation: sa-seal 900ms var(--ease-soft) 4050ms both;
+}
+
+/* 静态关联虚线：各组 → 同一锚点，只表邻近关系，无流向 */
+
+.sa-tick {
+  opacity: 0;
+}
+
+.is-assembled .sa-tick {
+  animation: sa-fadein 480ms var(--ease-soft) calc(3250ms + var(--sa-k) * 120ms) both;
+}
+
+/* 共享锚点：这盒药 · 唯一标识 */
+
+.sa-anchor {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sa-anchor-in {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  opacity: 0;
+}
+
+.is-assembled .sa-anchor-in {
+  opacity: 1;
+  animation: sa-rise 640ms var(--ease-soft) 300ms both;
+}
+
+.sa-anchor-box {
+  flex: none;
+  width: 136px;
+}
+
+.sa-tag {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.is-assembled .sa-tag {
+  animation: sa-pop 460ms var(--ease-overshoot) 980ms both;
+}
+
+.sa-anchor-copy {
+  min-width: 0;
+}
+
+.sa-scope {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-mute);
+}
+
+.sa-anchor-name {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-display-cn);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.sa-anchor-sub {
+  display: block;
+  margin-top: 8px;
+  font-size: 23px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+/* 关联记录组：围绕锚点落位（左 → 右 → 底），落位后不再移动 */
+
+.sa-group {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.sa-group--left {
+  left: calc(50% - 590px);
+  top: 50%;
+}
+
+.sa-group--right {
+  left: calc(50% + 590px);
+  top: 50%;
+}
+
+.sa-group--bottom {
+  left: 50%;
+  top: calc(50% + 200px);
+}
+
+.sa-group-in {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 300px;
+  padding: 18px 22px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+}
+
+.is-assembled .sa-group-in {
+  opacity: 1;
+  animation: sa-rise 560ms var(--ease-soft) calc(1500ms + var(--sa-k) * 450ms) both;
+}
+
+.sa-doc {
+  flex: none;
+  width: 34px;
+}
+
+.sa-group-copy {
+  min-width: 0;
+}
+
+.sa-group-owner {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-mute);
+}
+
+.sa-group-record {
+  display: block;
+  margin-top: 5px;
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* 支撑说明（U027）：围合稳定后出现 */
+
+.sa-support {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.is-assembled .sa-support {
+  opacity: 1;
+  animation: sa-fadein 560ms var(--ease-soft) 5450ms both;
+}
+
+/* ── keyframes ───────────────────────────────────────────── */
+
+@keyframes sa-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+}
+
+@keyframes sa-fadein {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes sa-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+@keyframes sa-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes sa-seal {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,372 @@
+/* capability-boundary · layered-bands-with-side-notes
+   mechanism: cumulative-assembly —— 固定带层内逐层补齐边界说明，最后收束到底部边界判断
+   R014 由两条边界说明的上下并列承载；R015 由侧栏短卡与文字带的邻接承载
+   护栏 C009：不把标识画成中心数据库或自动同步程序（演示只有锁/钥匙与仓库）
+   prefix: cb- */
+
+.cb-scene {
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+/* ── 头部：标题（beat 1 建立，持续保留） ─────────────────── */
+
+.cb-head {
+  flex: none;
+}
+
+.cb-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+  animation: cb-rise 620ms var(--ease-soft) both;
+}
+
+.cb-rule {
+  margin-top: 20px;
+  animation: cb-fadein 700ms var(--ease-soft) 200ms both;
+}
+
+/* ── 带层：两条边界说明上下并列（R014） ───────────────────── */
+
+.cb-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.cb-band {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  padding: 28px 38px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+}
+
+.cb-band-first {
+  flex: 1.4;
+  min-height: 0;
+  animation: cb-rise 640ms var(--ease-soft) 180ms both;
+}
+
+.cb-band-second {
+  flex: 1;
+  opacity: 0;
+}
+
+.is-systems .cb-band-second {
+  opacity: 1;
+  animation: cb-rise 640ms var(--ease-soft) 300ms both;
+}
+
+.cb-band-tag {
+  flex: none;
+  padding: 9px 16px;
+  border-radius: 6px;
+  background: var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: var(--surface-2);
+}
+
+.cb-band-tag--warm {
+  background: var(--theme-warning);
+}
+
+.cb-band-text {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: var(--theme-structural);
+}
+
+.cb-band-text--second {
+  flex: none;
+  font-size: 36px;
+}
+
+.cb-em {
+  position: relative;
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.cb-em::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 6px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: cb-sweep 600ms var(--ease-soft) 950ms both;
+}
+
+/* ── 钥匙比喻演示：钥匙开锁，数据装不进去 ─────────────────── */
+
+.cb-metaphor {
+  flex: none;
+  width: 640px;
+}
+
+.cb-metaphor-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  animation: cb-fadein 520ms var(--ease-soft) 420ms both;
+}
+
+.cb-svg-label {
+  font-family: var(--font-body);
+  font-size: 25px;
+  font-weight: 700;
+  fill: var(--text-2);
+}
+
+.cb-svg-label--open {
+  fill: var(--theme-process);
+}
+
+.cb-svg-neq {
+  font-family: var(--font-mono);
+  font-size: 42px;
+  font-weight: 700;
+  fill: var(--theme-danger);
+}
+
+/* 钥匙滑入锁孔并转动（开锁） */
+
+.cb-key {
+  transform-box: view-box;
+  transform-origin: 200px 120px;
+  animation: cb-key-turn 1500ms var(--ease-soft) 1250ms both;
+}
+
+/* 数据块试图离开仓库装进编码，在分隔处被挡回 */
+
+.cb-hop {
+  animation: cb-hop 1500ms var(--ease-soft) 2850ms both;
+}
+
+.cb-hit {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: cb-flash 900ms var(--ease-soft) 3450ms both;
+}
+
+/* ── 侧栏短卡（U023）：与文字带邻接（R015），第二拍补入 ───── */
+
+.cb-notes {
+  flex: none;
+  display: flex;
+  gap: 18px;
+}
+
+.cb-note {
+  width: 268px;
+  padding: 18px 20px 16px;
+  background: var(--surface-3);
+  border: 2.5px solid var(--rule);
+  border-radius: var(--r-card);
+  opacity: 0;
+}
+
+.is-systems .cb-note {
+  opacity: 1;
+  animation: cb-rise 560ms var(--ease-soft) calc(760ms + var(--cb-k) * 400ms) both;
+}
+
+.cb-note-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cb-note-owner {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-mute);
+}
+
+.cb-note-badge {
+  flex: none;
+  padding: 4px 12px;
+  border: 2px solid var(--theme-process);
+  border-radius: 6px;
+  background: var(--theme-process-surface);
+  font-size: 19px;
+  font-weight: 900;
+  color: var(--theme-process);
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.is-systems .cb-note-badge {
+  opacity: 1;
+  transform: scale(1);
+  animation: cb-pop 460ms var(--ease-overshoot) calc(1160ms + var(--cb-k) * 400ms) both;
+}
+
+.cb-note-system {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* ── 底部边界判断（U024）：第三拍收束 ─────────────────────── */
+
+.cb-boundary {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 24px 38px;
+  background: var(--theme-warning-surface);
+  border: 3px solid var(--theme-warning);
+  border-radius: var(--r-card);
+  opacity: 0;
+}
+
+.is-settled .cb-boundary {
+  opacity: 1;
+  animation: cb-rise 640ms var(--ease-soft) 250ms both;
+}
+
+.cb-boundary-tag {
+  flex: none;
+  padding: 9px 16px;
+  border-radius: 6px;
+  background: var(--theme-warning);
+  font-family: var(--font-display-cn);
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: var(--surface-2);
+}
+
+.cb-boundary-body {
+  min-width: 0;
+}
+
+.cb-boundary-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.cb-still {
+  font-style: normal;
+  color: var(--theme-structural);
+}
+
+/* 第三拍主导动作：判断落定时"还是怎么干活"墨色沉为过程绿（与第一拍的下划线扫入区分） */
+
+.is-settled .cb-still {
+  color: var(--theme-process);
+  transition: color 620ms var(--ease-soft) 950ms;
+}
+
+.cb-boundary-sub {
+  margin: 8px 0 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+/* ── keyframes ───────────────────────────────────────────── */
+
+@keyframes cb-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+}
+
+@keyframes cb-fadein {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes cb-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+}
+
+@keyframes cb-sweep {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes cb-key-turn {
+  0% {
+    transform: translateX(-72px) rotate(0deg);
+  }
+  46% {
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateX(0) rotate(86deg);
+  }
+}
+
+@keyframes cb-hop {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  42% {
+    transform: translateX(-224px) translateY(-10px);
+  }
+  54% {
+    transform: translateX(-196px) translateY(0);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes cb-flash {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}

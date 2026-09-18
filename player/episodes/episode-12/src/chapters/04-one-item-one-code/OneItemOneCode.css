@@ -1,0 +1,841 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * 04-one-item-one-code · 平台读图页（S-A017 · image-with-reading-notes）
+ * 前缀 .oo- · 状态机（persistent-media-reading）：
+ *   question-to-platform → coding-steps → identity-bound
+ *   → boundary-noted → collaboration-mapped
+ * 教材原图（M002）从首拍起持续在场不卸载；阅读顺序（U010）与要点
+ *（U011）在右侧固定注记区逐拍迁移；第 3 拍起读图判断大字沉淀在原图
+ * 下方；笔记页边线在末拍点亮为 R008 协作组卡向锚点卡的回指路径。
+ * ───────────────────────────────────────────────────────────────────── */
+
+.oo-pad {
+  gap: 0;
+}
+
+/* ── headline（S017，可见标题：保留）────────────────────────────── */
+.oo-headline {
+  margin: 0;
+  font-size: 54px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.state-question-to-platform .oo-headline {
+  animation: oo-rise-in 0.7s ease-out both;
+}
+
+.oo-head-rule {
+  margin-top: 16px;
+  transform-origin: left center;
+}
+
+.state-question-to-platform .oo-head-rule {
+  animation: oo-rule-draw 0.7s var(--ease-soft) 0.15s both;
+}
+
+/* ── 主区：教材原图（左）＋ 固定注记区（右）────────────────────── */
+.oo-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 40px;
+  margin-top: 22px;
+}
+
+/* image 槽 · M002（textbook_original）：首拍在场，之后一直保持 */
+.oo-media-col {
+  width: 930px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.oo-media {
+  margin: 0;
+  padding: 16px 16px 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.state-question-to-platform .oo-media {
+  animation: oo-stamp-in 0.85s ease-out 0.2s both;
+}
+
+.oo-media-img {
+  width: 100%;
+  max-height: 640px;
+  object-fit: contain;
+  background: var(--surface-3);
+}
+
+.oo-media-caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 12px;
+}
+
+.oo-media-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+
+.oo-media-note {
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+/* 读图判断大字：第 3 拍起沉淀在原图下方，之后保持（hero ≥80px 级） */
+.oo-reading-hero {
+  margin: 22px 0 0;
+  font-size: 80px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease, transform 0.6s var(--ease-soft);
+}
+
+.state-identity-bound .oo-reading-hero,
+.state-boundary-noted .oo-reading-hero,
+.state-collaboration-mapped .oo-reading-hero {
+  opacity: 1;
+  transform: none;
+}
+
+.state-identity-bound .oo-reading-hero {
+  transition-delay: 0.2s;
+}
+
+/* ── 固定注记区：笔记页边线（持续）＋ R008 回指路径（末拍点亮）── */
+.oo-notes {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  padding-left: 52px;
+  display: flex;
+  flex-direction: column;
+}
+
+.oo-rail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 52px;
+  pointer-events: none;
+}
+
+/* 笔记页边线：全拍持续的构图家具 */
+.oo-rail-margin {
+  position: absolute;
+  left: 16px;
+  top: 4px;
+  bottom: 4px;
+  border-left: 2px dashed var(--theme-dashed-line);
+  opacity: 0.75;
+}
+
+/* R008：协作组卡 → 锚点卡，沿边线自下而上点亮 */
+.oo-rail-refline {
+  position: absolute;
+  left: 15px;
+  top: 175px;
+  bottom: 200px;
+  border-left: 3px solid var(--accent);
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform 0.85s var(--ease-soft);
+}
+
+.oo-rail-refhead {
+  position: absolute;
+  left: 8px;
+  top: 159px;
+  border-bottom: 14px solid var(--accent);
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.oo-rail-reflabel {
+  position: absolute;
+  left: 4px;
+  top: 305px;
+  writing-mode: vertical-rl;
+  font-size: 16px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.state-collaboration-mapped .oo-rail-refline {
+  transform: scaleY(1);
+  transition-delay: 2.05s;
+}
+
+.state-collaboration-mapped .oo-rail-refhead {
+  opacity: 1;
+  transform: none;
+  transition-delay: 2.9s;
+}
+
+.state-collaboration-mapped .oo-rail-reflabel {
+  opacity: 1;
+  transition-delay: 3.1s;
+}
+
+/* ── U010 · reading-order（固定注记区一）───────────────────────── */
+.oo-reading {
+  min-height: 0;
+}
+
+/* 设问：由下方的锚点卡接住 */
+.oo-question {
+  position: relative;
+  margin: 0 0 10px;
+  height: 52px;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-2);
+}
+
+.state-question-to-platform .oo-question {
+  animation: oo-rise-in 0.5s ease-out 0.55s both;
+}
+
+.oo-catch {
+  position: absolute;
+  left: 6px;
+  bottom: 0;
+  height: 15px;
+  border-left: 3px solid var(--accent);
+  transform-origin: top center;
+}
+
+.oo-catch::after {
+  content: "";
+  position: absolute;
+  left: -7px;
+  bottom: -2px;
+  border-top: 8px solid var(--accent);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+
+.state-question-to-platform .oo-catch {
+  animation: oo-draw-down 0.35s ease-out 1s both;
+}
+
+/* 平台锚点卡（G010 · S018 exact）——第 1 拍立起，R008 的回指目标 */
+.oo-anchor {
+  height: 226px;
+  padding: 22px 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+.state-question-to-platform .oo-anchor {
+  animation: oo-stamp-in 0.6s var(--ease-soft) 1.3s both;
+}
+
+.oo-anchor-tag {
+  align-self: flex-start;
+  padding: 3px 10px;
+  font-size: 16px;
+  letter-spacing: 0.14em;
+  color: var(--surface-2);
+  background: var(--theme-structural);
+}
+
+.oo-anchor-hero {
+  margin: 10px 0 0;
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.oo-anchor-sub {
+  margin: 6px 0 0;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+
+/* 锚点说明的补齐行（第 3 拍出现；槽位自首拍预留，不引起重排） */
+.oo-anchor-extra {
+  margin-top: 10px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.state-identity-bound .oo-anchor-extra,
+.state-boundary-noted .oo-anchor-extra,
+.state-collaboration-mapped .oo-anchor-extra {
+  opacity: 1;
+  transform: none;
+}
+
+.state-identity-bound .oo-anchor-extra {
+  transition-delay: 0.25s;
+}
+
+.oo-anchor-extra-rule {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.6s var(--ease-soft);
+}
+
+.state-identity-bound .oo-anchor-extra-rule,
+.state-boundary-noted .oo-anchor-extra-rule,
+.state-collaboration-mapped .oo-anchor-extra-rule {
+  transform: scaleX(1);
+}
+
+.state-identity-bound .oo-anchor-extra-rule {
+  transition-delay: 0.45s;
+}
+
+.oo-anchor-extra-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+/* 标识“钉”上本体的微型演示：芯片滑到本体边缘并锁合 */
+.oo-fuse {
+  position: relative;
+  width: 92px;
+  height: 50px;
+  flex: none;
+}
+
+.oo-fuse-body {
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 64px;
+  height: 32px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 5px;
+}
+
+.oo-fuse-code {
+  position: absolute;
+  left: 48px;
+  top: 0;
+  width: 42px;
+  height: 24px;
+  padding: 3px 5px;
+  background-color: var(--surface-2);
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--theme-structural) 0 4px,
+    transparent 4px 8px
+  );
+  border: 2px solid var(--theme-structural);
+  transform: translate(-34px, 16px) rotate(-9deg);
+  transition: transform 0.65s var(--ease-soft);
+}
+
+.state-identity-bound .oo-fuse-code,
+.state-boundary-noted .oo-fuse-code,
+.state-collaboration-mapped .oo-fuse-code {
+  transform: none;
+}
+
+.state-identity-bound .oo-fuse-code {
+  transition-delay: 0.75s;
+}
+
+.oo-fuse-joint {
+  position: absolute;
+  left: 54px;
+  top: 12px;
+  width: 13px;
+  height: 13px;
+  background: var(--accent);
+}
+
+.state-identity-bound .oo-fuse-joint {
+  animation: oo-joint-pop 0.45s ease-out 1.5s both;
+}
+
+.oo-anchor-extra-text {
+  margin: 0;
+  min-width: 0;
+}
+
+.oo-extra-sub {
+  display: block;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+
+/* ── R007 · 两步赋码（G011）：锚点说明在前、赋码说明在后 ───────── */
+.oo-seq {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  height: 122px;
+  margin-top: 16px;
+}
+
+.oo-stepcard {
+  flex: 1;
+  min-width: 0;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.state-coding-steps .oo-stepcard,
+.state-identity-bound .oo-stepcard,
+.state-boundary-noted .oo-stepcard,
+.state-collaboration-mapped .oo-stepcard {
+  opacity: 1;
+  transform: none;
+}
+
+.state-coding-steps .oo-stepcard-a {
+  transition-delay: 0.3s;
+}
+
+.state-coding-steps .oo-stepcard-b {
+  transition-delay: 1.85s;
+}
+
+.oo-step-tag {
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+
+.oo-step-title {
+  margin: 8px 0 0;
+  font-size: 27px;
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.oo-step-sub {
+  margin: 6px 0 0;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+
+/* 先后连线：第 2 拍自左向右画出，之后保持 */
+.oo-conn {
+  position: relative;
+  width: 74px;
+  flex: none;
+}
+
+.oo-conn-line {
+  position: absolute;
+  left: 0;
+  right: 12px;
+  top: 50%;
+  border-top: 3px dashed var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.6s var(--ease-soft);
+}
+
+.oo-conn-head {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -8px;
+  border-left: 13px solid var(--accent);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.state-coding-steps .oo-conn-line,
+.state-identity-bound .oo-conn-line,
+.state-boundary-noted .oo-conn-line,
+.state-collaboration-mapped .oo-conn-line {
+  transform: scaleX(1);
+}
+
+.state-coding-steps .oo-conn-head,
+.state-identity-bound .oo-conn-head,
+.state-boundary-noted .oo-conn-head,
+.state-collaboration-mapped .oo-conn-head {
+  opacity: 1;
+}
+
+.state-coding-steps .oo-conn-line {
+  transition-delay: 1.15s;
+}
+
+.state-coding-steps .oo-conn-head {
+  transition-delay: 1.7s;
+}
+
+/* ── 第 4 拍 · 边界说明：不是塞数据，先解决身份 ────────────────── */
+.oo-boundary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  height: 116px;
+  margin-top: 16px;
+  padding: 0 22px;
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.state-boundary-noted .oo-boundary,
+.state-collaboration-mapped .oo-boundary {
+  opacity: 1;
+  transform: none;
+}
+
+.state-boundary-noted .oo-boundary {
+  transition-delay: 0.25s;
+}
+
+.oo-boundary-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.oo-mark {
+  flex: none;
+  width: 78px;
+  padding: 4px 0;
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+}
+
+.oo-mark-no {
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+}
+
+.oo-mark-yes {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 2px solid var(--accent);
+}
+
+.oo-no-text {
+  position: relative;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+/* 划除线：只在第 4 拍画出一次 */
+.oo-no-strike {
+  position: absolute;
+  left: -6px;
+  right: -6px;
+  top: 50%;
+  height: 3px;
+  margin-top: -1px;
+  background: var(--theme-warning);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s ease;
+}
+
+.state-boundary-noted .oo-no-strike,
+.state-collaboration-mapped .oo-no-strike {
+  transform: scaleX(1);
+}
+
+.state-boundary-noted .oo-no-strike {
+  transition-delay: 0.9s;
+}
+
+.oo-yes-line {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.oo-yes-arrow {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.oo-yes-line2 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-2);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.state-boundary-noted .oo-yes-line,
+.state-collaboration-mapped .oo-yes-line,
+.state-boundary-noted .oo-yes-arrow,
+.state-collaboration-mapped .oo-yes-arrow,
+.state-boundary-noted .oo-yes-line2,
+.state-collaboration-mapped .oo-yes-line2 {
+  opacity: 1;
+  transform: none;
+}
+
+.state-boundary-noted .oo-yes-line {
+  transition-delay: 1.5s;
+}
+
+.state-boundary-noted .oo-yes-arrow {
+  transition-delay: 2.1s;
+}
+
+.state-boundary-noted .oo-yes-line2 {
+  transition-delay: 2.45s;
+}
+
+/* ── U011 · key-points · 五方围绕标识协作（仅第 5 拍出现）──────── */
+.oo-keypoints {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: 18px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.state-collaboration-mapped .oo-keypoints {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.15s;
+}
+
+.oo-note-label {
+  margin: 0 0 10px;
+  font-size: 16px;
+  letter-spacing: 0.22em;
+  color: var(--text-mute);
+}
+
+.oo-collab {
+  flex: 1;
+  min-height: 0;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.oo-collab-hang {
+  margin: 0 0 8px;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  color: var(--text-mute);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.state-collaboration-mapped .oo-collab-hang {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.7s;
+}
+
+.oo-collab-hang-arrow {
+  margin-right: 8px;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.oo-collab-title {
+  margin: 0 0 12px;
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--text);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.state-collaboration-mapped .oo-collab-title {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.95s;
+}
+
+.oo-parties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.oo-party {
+  padding: 8px 13px;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--surface-3);
+  border: 2px solid var(--theme-structural);
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: scale(0.75);
+  transition: opacity 0.4s ease, transform 0.4s var(--ease-soft);
+}
+
+/* 五方等权落位：依次出现，完成后不留任何“当前选中项” */
+.state-collaboration-mapped .oo-party {
+  opacity: 1;
+  transform: none;
+}
+
+.state-collaboration-mapped .oo-party:nth-child(1) {
+  transition-delay: 1.15s;
+}
+
+.state-collaboration-mapped .oo-party:nth-child(2) {
+  transition-delay: 1.29s;
+}
+
+.state-collaboration-mapped .oo-party:nth-child(3) {
+  transition-delay: 1.43s;
+}
+
+.state-collaboration-mapped .oo-party:nth-child(4) {
+  transition-delay: 1.57s;
+}
+
+.state-collaboration-mapped .oo-party:nth-child(5) {
+  transition-delay: 1.71s;
+}
+
+.oo-collab-foot {
+  margin: 0;
+  font-size: 19px;
+  color: var(--text-2);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.state-collaboration-mapped .oo-collab-foot {
+  opacity: 1;
+  transform: none;
+  transition-delay: 2s;
+}
+
+.oo-collab-foot b {
+  color: var(--accent);
+}
+
+/* ── keyframes ──────────────────────────────────────────────────── */
+@keyframes oo-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes oo-rule-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes oo-stamp-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes oo-draw-down {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes oo-joint-pop {
+  0% {
+    transform: scale(0);
+  }
+  65% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,625 @@
+{
+  "episode_id": "episode-11",
+  "validation_profile": "visual-rough-v4",
+  "schema_version": "courseplay-visual-rough/v4",
+  "status": "approved",
+  "validation_summary": {
+    "pages": [
+      {
+        "a_id": "A001",
+        "source": {
+          "S": [
+            "S001",
+            "S002",
+            "S003",
+            "S004"
+          ],
+          "G": [
+            "G001",
+            "G002",
+            "G003"
+          ],
+          "R": [
+            "R001",
+            "R002"
+          ]
+        },
+        "recipe": {
+          "requested": "issue-cards-with-image",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M001"
+        }
+      },
+      {
+        "a_id": "A002",
+        "source": {
+          "S": [
+            "S005",
+            "S006",
+            "S007",
+            "S008"
+          ],
+          "G": [
+            "G004",
+            "G005",
+            "G006"
+          ],
+          "R": [
+            "R003",
+            "R004"
+          ]
+        },
+        "recipe": {
+          "requested": "time-anchor-opening",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M002"
+        }
+      },
+      {
+        "a_id": "A003",
+        "source": {
+          "S": [
+            "S009",
+            "S010",
+            "S011",
+            "S012",
+            "S013"
+          ],
+          "G": [
+            "G007",
+            "G008",
+            "G009",
+            "G010"
+          ],
+          "R": [
+            "R005",
+            "R006"
+          ]
+        },
+        "recipe": {
+          "requested": "split-compare-with-thesis",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A004",
+        "source": {
+          "S": [
+            "S014",
+            "S015",
+            "S016",
+            "S017"
+          ],
+          "G": [
+            "G011",
+            "G012",
+            "G013"
+          ],
+          "R": [
+            "R007",
+            "R008"
+          ]
+        },
+        "recipe": {
+          "requested": "parallel-cards-self-contained",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A005",
+        "source": {
+          "S": [
+            "S018",
+            "S019",
+            "S020",
+            "S021"
+          ],
+          "G": [
+            "G014",
+            "G015",
+            "G016"
+          ],
+          "R": [
+            "R009",
+            "R010"
+          ]
+        },
+        "recipe": {
+          "requested": "condition-key-goal",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A006",
+        "source": {
+          "S": [
+            "S022",
+            "S023",
+            "S024"
+          ],
+          "G": [
+            "G017",
+            "G018"
+          ],
+          "R": [
+            "R011"
+          ]
+        },
+        "recipe": {
+          "requested": "linear-steps-with-takeaway",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A007",
+        "source": {
+          "S": [
+            "S025",
+            "S026",
+            "S027",
+            "S028"
+          ],
+          "G": [
+            "G019",
+            "G020",
+            "G021"
+          ],
+          "R": [
+            "R012",
+            "R013"
+          ]
+        },
+        "recipe": {
+          "requested": "split-compare-with-pivot",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A008",
+        "source": {
+          "S": [
+            "S029",
+            "S030",
+            "S031",
+            "S032"
+          ],
+          "G": [
+            "G022",
+            "G023",
+            "G024"
+          ],
+          "R": [
+            "R014",
+            "R015"
+          ]
+        },
+        "recipe": {
+          "requested": "layered-bands-with-side-notes",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A009",
+        "source": {
+          "S": [
+            "S033",
+            "S034",
+            "S035"
+          ],
+          "G": [
+            "G025",
+            "G026"
+          ],
+          "R": [
+            "R016"
+          ]
+        },
+        "recipe": {
+          "requested": "common-anchor-association-groups",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A010",
+        "source": {
+          "S": [
+            "S036",
+            "S037",
+            "S038",
+            "S039",
+            "S040"
+          ],
+          "G": [
+            "G027",
+            "G028",
+            "G029",
+            "G030"
+          ],
+          "R": [
+            "R017"
+          ]
+        },
+        "recipe": {
+          "requested": "lifecycle-identity-continuity",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 4,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A011",
+        "source": {
+          "S": [
+            "S041",
+            "S042",
+            "S043"
+          ],
+          "G": [
+            "G031",
+            "G032"
+          ],
+          "R": [
+            "R018"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-insight-rail",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M003"
+        }
+      },
+      {
+        "a_id": "A012",
+        "source": {
+          "S": [
+            "S044",
+            "S045",
+            "S046",
+            "S047"
+          ],
+          "G": [
+            "G033",
+            "G034",
+            "G035"
+          ],
+          "R": [
+            "R019",
+            "R020"
+          ]
+        },
+        "recipe": {
+          "requested": "linear-steps-to-result",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A013",
+        "source": {
+          "S": [
+            "S048",
+            "S049",
+            "S050"
+          ],
+          "G": [
+            "G036",
+            "G037"
+          ],
+          "R": [
+            "R021"
+          ]
+        },
+        "recipe": {
+          "requested": "parallel-cards-with-takeaway",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A014",
+        "source": {
+          "S": [
+            "S051",
+            "S052",
+            "S053",
+            "S054"
+          ],
+          "G": [
+            "G038",
+            "G039",
+            "G040"
+          ],
+          "R": [
+            "R022",
+            "R023"
+          ]
+        },
+        "recipe": {
+          "requested": "split-compare-with-thesis",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A015",
+        "source": {
+          "S": [
+            "S055",
+            "S056",
+            "S057"
+          ],
+          "G": [
+            "G041",
+            "G042"
+          ],
+          "R": [
+            "R024"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-summary-rail",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M004"
+        }
+      },
+      {
+        "a_id": "A016",
+        "source": {
+          "S": [
+            "S058",
+            "S059",
+            "S060",
+            "S061"
+          ],
+          "G": [
+            "G043",
+            "G044",
+            "G045"
+          ],
+          "R": [
+            "R025",
+            "R026"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-reading-notes",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M005"
+        }
+      },
+      {
+        "a_id": "A017",
+        "source": {
+          "S": [
+            "S062",
+            "S063",
+            "S064",
+            "S065"
+          ],
+          "G": [
+            "G046",
+            "G047",
+            "G048"
+          ],
+          "R": [
+            "R027",
+            "R028"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-insight-rail",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M006"
+        }
+      }
+    ]
+  },
+  "image_allocation": {
+    "required_page_count": 6,
+    "assigned_page_count": 6
+  },
+  "logic_diagrams": {
+    "page_limit": 0,
+    "assigned_page_count": 0
+  },
+  "errors": [],
+  "failures": [],
+  "input_integrity": {
+    "a_page_sha256": "a34cb4c27689fe6a3997bc46400cdda9ea057665b7f6188efe13f374e4eaa3c2",
+    "visual_rough_sha256": "81668be5c1fc2df5b10b295490a95bce201b4acc963ad08b0dc5db003f9dfdef",
+    "recipe_registry_sha256": "697ed613616ec9ac5325a38544fe4ac9c8fcf6b3ab5439e614e7a7293b93ef2e"
+  }
+}

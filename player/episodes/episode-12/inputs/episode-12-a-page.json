@@ -1,0 +1,1076 @@
+{
+  "schema_version": "courseplay-a-page/v6",
+  "document_kind": "production",
+  "episode_id": "episode-12",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "第 12 集标题、来源范围与相邻分集边界",
+      "source_locator": "已确认课程架构 Episode Architecture 第 12 集",
+      "verification_status": "confirmed",
+      "allowed_use": "控制单集范围、去重和时长"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "QTS 与 MES 已用于采集追溯零部件信息，但采集存在时效性与准确率局限，质量码在流通中可能损毁或丢失",
+      "source_locator": "主教材 1.3.4 应用背景",
+      "verification_status": "not applicable",
+      "allowed_use": "建立案例旧状态和核心矛盾"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "整车生产可形成装机档案，配件管理可获得配件流转过程，维修环节可核验真实性；产品赋码与标识解析贯通上下游数据链",
+      "source_locator": "主教材 1.3.4 应用模式",
+      "verification_status": "not applicable",
+      "allowed_use": "支撑装配、流转、维修三条应用路径"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "多类供应商使用私有标识且物流链长，标识可能被覆盖、丢失或损毁；进入主机厂后出现采集错误、一物多码与一码多物，导致串货率高、质量难追溯",
+      "source_locator": "主教材 1.3.4 业务需求",
+      "verification_status": "not applicable",
+      "allowed_use": "解释身份断裂和采集混乱的原因"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "构建一件一码精益化管理平台，供应商获取编码并在零部件本体打刻或打印；生产实时采集并进行订单一致性与产品一致性校验，以规避错装漏装",
+      "source_locator": "主教材 1.3.4 项目方案",
+      "verification_status": "not applicable",
+      "allowed_use": "支撑干预与装配校验主轴"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "质量问题可追溯到具体安装工位和供应商，质量指标分析可为供应商绩效评价提供参考",
+      "source_locator": "主教材 1.3.4 项目方案末段",
+      "verification_status": "not applicable",
+      "allowed_use": "解释质量追溯和供应商评价路径"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "二级节点、一物一码平台、供应商、主机厂、修理厂和质量追溯系统之间通过标识建立的业务关系",
+      "source_locator": "教材图 1-13 基于标识解析的精益化管理",
+      "verification_status": "not applicable",
+      "allowed_use": "作为关系核对依据"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "案例成效：本体永久标识预计降低服务误判额 5000 万，订单一致性提升至 100%，配件物流管理细化到单件并减少丢失和物料损耗，服务准确性和客户满意度提升",
+      "source_locator": "主教材 1.3.4 应用成效",
+      "verification_status": "not applicable",
+      "allowed_use": "仅以案例结果呈现，不外推"
+    },
+    {
+      "evidence_id": "E009",
+      "claim_or_asset": "零部件本体唯一标识经实时采集、两类一致性校验、装机档案、配件流转与维修核验贯通质量追溯的教学主链",
+      "source_locator": "基于主教材 1.3.4 的教学组织链",
+      "verification_status": "not applicable",
+      "allowed_use": "组织讲稿语义与关系锚点"
+    },
+    {
+      "evidence_id": "E010",
+      "claim_or_asset": "总装工位装配前核对一件外观相近零部件的开场情境",
+      "source_locator": "开场教学情境设计",
+      "verification_status": "not applicable",
+      "allowed_use": "让错装问题具体化"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "【视频标题】\n汽车零部件精益管理：一物一码如何减少错装与串货\n\n【开场导入】\n在汽车总装线上，两件外观几乎一样的零部件，同时送到了同一个工位。操作员拿起其中一件，要确认的不只是“这是什么零件”，还有两个更要紧的问题：它是不是当前这张订单要的零件？它该不该装到眼前这辆车上？这两项核对只要错一处，后面就可能出现错装、漏装，配件环节还可能出串货。所以问题就来了：一件零部件，从供应商出发，要经过装配、配件、维修这么多环节，怎样才能让每个环节都认得出它、对得上它，让它的身份始终不断线？\n\n",
+      "teaching_purpose": "用装配前核对情境提出全集主问题",
+      "single_message": "错装、漏装和串货源于零部件身份在环节之间对不上",
+      "screen": {
+        "title": {
+          "screen_item_id": "S001",
+          "guidance_text": "汽车总装工位的装配前核对",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E010"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G001",
+            "items": [
+              {
+                "screen_item_id": "S002",
+                "guidance_text": "当前订单与当前车辆两项核对关系",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G002",
+            "items": [
+              {
+                "screen_item_id": "S003",
+                "guidance_text": "错装、漏装、串货三类风险",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "G001",
+          "relation": "核对失败引发",
+          "to": "G002",
+          "direction": "causal"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C001",
+          "instruction": "开场保持通用匿名情境，不指向可识别企业、真实订单或事故记录",
+          "evidence_refs": [
+            "E010"
+          ]
+        },
+        {
+          "constraint_id": "C002",
+          "instruction": "标题与开场不引入相邻分集或后续课程主题",
+          "evidence_refs": [
+            "E001"
+          ]
+        }
+      ],
+      "entry_condition": "观众看到总装工位上两件外观相近的零部件",
+      "exit_condition": "观众能说出全集要解决的问题是零部件身份跨环节不断线",
+      "timing": {
+        "char_equivalent": 208.0,
+        "min_seconds": 52,
+        "target_seconds": 54,
+        "max_seconds": 57,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": [
+        "A001"
+      ],
+      "nx": "【正文讲解】\n先看工厂里原本有什么。汽车行业早就在用信息系统管零部件：一类叫质量追踪系统，英文是 Quality Tracking System，简称 QTS，专门追踪质量相关的信息；另一类叫制造执行系统，简称 MES，管的是生产执行环节的信息。这两类系统一直在采集零部件的信息，用来做追溯。但实际用起来，采集有时候不够及时，也不够准确；零件上的质量码，经过仓储、运输、装卸，还可能磨花、脱落。结果就是：系统里明明有记录，可要把“眼前这件零件”和“记录里那件零件”稳稳对上，这条身份链还是会断。\n\n",
+      "teaching_purpose": "说明既有系统为何拼不出连续身份链",
+      "single_message": "系统有记录不等于单件身份连续",
+      "screen": {
+        "title": {
+          "screen_item_id": "S004",
+          "guidance_text": "既有系统与单件身份缺口",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G003",
+            "items": [
+              {
+                "screen_item_id": "S005",
+                "guidance_text": "质量追踪系统（Quality Tracking System，QTS）职责标注",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E002"
+                ]
+              },
+              {
+                "screen_item_id": "S006",
+                "guidance_text": "制造执行系统（MES）职责标注",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G004",
+            "items": [
+              {
+                "screen_item_id": "S007",
+                "guidance_text": "采集及时性与准确率局限",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              },
+              {
+                "screen_item_id": "S008",
+                "guidance_text": "质量码流通中损毁或丢失",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G005",
+            "items": [
+              {
+                "screen_item_id": "S009",
+                "guidance_text": "有记录不等于身份链连续",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R002",
+          "from": "G003",
+          "relation": "提供采集记录",
+          "to": "G004",
+          "direction": "basis"
+        },
+        {
+          "relation_id": "R003",
+          "from": "G004",
+          "relation": "导致",
+          "to": "G005",
+          "direction": "causal"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C003",
+          "instruction": "不展开既有系统的完整功能、接口与内部架构",
+          "evidence_refs": [
+            "E002"
+          ]
+        }
+      ],
+      "entry_condition": "观众已接受装配前身份核对的问题",
+      "exit_condition": "观众能说出既有记录的局限与身份链断点",
+      "timing": {
+        "char_equivalent": 197.5,
+        "min_seconds": 50,
+        "target_seconds": 52,
+        "max_seconds": 54,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": [
+        "A002"
+      ],
+      "nx": "这些问题，从供应那一端就开始积累。一家集团车企，要向各种各样的供应商采购零部件，各家供应商用的标识大多是自己的一套，也就是私有标识。物流链一长，标识可能被覆盖、弄丢，也可能损毁到读不出来。等零件进了主机厂，来源不一的标识对不齐，采集的时候还会出错。更麻烦的还有两种情况：一种叫一物多码，同一件东西在不同地方有好几个码，记录拼不到一起；另一种叫一码多物，一个码底下对了好几件东西，对象边界就乱了。串货率高、质量难追溯，病根不在企业没有系统，而在缺少一个稳定、唯一、跨环节都能对上的身份锚点。\n\n",
+      "teaching_purpose": "解释身份断裂从供应端积累的原因",
+      "single_message": "缺少稳定唯一的身份锚点是串货与难追溯的根源",
+      "screen": {
+        "title": {
+          "screen_item_id": "S010",
+          "guidance_text": "身份断裂从供应端积累",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E004"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G006",
+            "items": [
+              {
+                "screen_item_id": "S011",
+                "guidance_text": "多种供应商各自的私有标识",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G007",
+            "items": [
+              {
+                "screen_item_id": "S012",
+                "guidance_text": "标识被覆盖、丢失或损毁",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              },
+              {
+                "screen_item_id": "S013",
+                "guidance_text": "主机厂环节的采集错误",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G008",
+            "items": [
+              {
+                "screen_item_id": "S014",
+                "guidance_text": "一物多码：同一对象记录难以合并",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E004"
+                ]
+              },
+              {
+                "screen_item_id": "S015",
+                "guidance_text": "一码多物：对象边界混乱",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G009",
+            "items": [
+              {
+                "screen_item_id": "S016",
+                "guidance_text": "缺少稳定、唯一、可跨环节关联的身份锚点",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R004",
+          "from": "G006",
+          "relation": "经物流链失真",
+          "to": "G007",
+          "direction": "causal"
+        },
+        {
+          "relation_id": "R005",
+          "from": "G007",
+          "relation": "叠加恶化",
+          "to": "G008",
+          "direction": "convergent"
+        },
+        {
+          "relation_id": "R006",
+          "from": "G008",
+          "relation": "共同指向",
+          "to": "G009",
+          "direction": "root-cause"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C004",
+          "instruction": "不新增伪造、盗用、恶意篡改或监管违法等未支持的原因",
+          "evidence_refs": [
+            "E004"
+          ]
+        }
+      ],
+      "entry_condition": "观众知道既有记录无法对上单件身份",
+      "exit_condition": "观众能列举供应端身份断裂的来源与表现",
+      "timing": {
+        "char_equivalent": 218.0,
+        "min_seconds": 55,
+        "target_seconds": 57,
+        "max_seconds": 60,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": [
+        "A003"
+      ],
+      "nx": "怎么把断掉的链子接上？车企的做法，是建起一件一码精益化管理平台。做法分两步：供应商先从平台获取编码，再把标识直接打刻或者打印到零部件本体上。这样一来，每件零件从离开供应商起，就带着一个跟本体分不开的身份。要注意，一件一码不是把业务数据塞进这个码里，它先解决一件事：让每件零部件有明确身份，让不同环节的记录都能围绕它关联起来。平台也不是孤立的，二级节点、供应商、主机厂、修理厂，还有质量追溯系统，都通过零部件的标识建立起业务联系，各管一段，彼此衔接。\n\n",
+      "teaching_purpose": "说明一件一码平台如何建立共同身份",
+      "single_message": "本体唯一标识让各环节记录围绕同一对象关联",
+      "screen": {
+        "title": {
+          "screen_item_id": "S017",
+          "guidance_text": "一件一码建立共同身份",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G010",
+            "items": [
+              {
+                "screen_item_id": "S018",
+                "guidance_text": "一件一码精益化管理平台",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G011",
+            "items": [
+              {
+                "screen_item_id": "S019",
+                "guidance_text": "供应商获取编码并在零部件本体打刻或打印",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G012",
+            "items": [
+              {
+                "screen_item_id": "S020",
+                "guidance_text": "二级节点、供应商、主机厂、修理厂、质量追溯系统围绕零部件标识建立业务联系",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R007",
+          "from": "G010",
+          "relation": "获取编码后完成",
+          "to": "G011",
+          "direction": "sequence"
+        },
+        {
+          "relation_id": "R008",
+          "from": "G012",
+          "relation": "围绕标识协作",
+          "to": "G010",
+          "direction": "supports"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C005",
+          "instruction": "不推断打刻工艺细节、编码内容、校验字段、系统接口或数据存储位置",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        {
+          "constraint_id": "C006",
+          "instruction": "平台不呈现为吞并全部业务数据的中心存储",
+          "evidence_refs": [
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "观众知道缺少跨环节身份锚点",
+      "exit_condition": "观众能说出平台赋码路径与各方协作关系",
+      "timing": {
+        "char_equivalent": 201.0,
+        "min_seconds": 51,
+        "target_seconds": 52,
+        "max_seconds": 55,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": [
+        "A004"
+      ],
+      "nx": "零件进了生产环节，这个身份马上派上用场。系统实时采集每一件待装零件的信息，然后做两道核对：一道叫订单一致性，核对它是不是当前订单要的零件；另一道叫产品一致性，核对它是不是当前装配对象上该装的那个零件。有了这两道核对，拿错零件、装错位置这样的不一致，大多在装配之前就会暴露出来，错装、漏装就能提前规避。要说清楚的是，这套核对不会自动停线，也不会自动判定责任，它改变的是检查的位置：把事后查找，前移到了装配关系建立之前。\n\n",
+      "teaching_purpose": "解释实时采集与两类一致性校验的作用",
+      "single_message": "两类校验让错误在装配之前暴露",
+      "screen": {
+        "title": {
+          "screen_item_id": "S021",
+          "guidance_text": "装配前的两类一致性校验",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G013",
+            "items": [
+              {
+                "screen_item_id": "S022",
+                "guidance_text": "实时采集待装件信息",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G014",
+            "items": [
+              {
+                "screen_item_id": "S023",
+                "guidance_text": "订单一致性：核对当前订单",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E005"
+                ]
+              },
+              {
+                "screen_item_id": "S024",
+                "guidance_text": "产品一致性：核对当前装配对象",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G015",
+            "items": [
+              {
+                "screen_item_id": "S025",
+                "guidance_text": "不一致在装配前暴露，规避错装漏装",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              },
+              {
+                "screen_item_id": "S026",
+                "guidance_text": "检查位置由事后查找前移到装配之前",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R009",
+          "from": "G013",
+          "relation": "供给核对",
+          "to": "G014",
+          "direction": "sequence"
+        },
+        {
+          "relation_id": "R010",
+          "from": "G014",
+          "relation": "作用结果",
+          "to": "G015",
+          "direction": "causal"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C007",
+          "instruction": "不设计校验字段、阈值、报警界面或任何自动阻断与责任判定动作",
+          "evidence_refs": [
+            "E005"
+          ]
+        }
+      ],
+      "entry_condition": "观众知道每件零部件已有本体身份",
+      "exit_condition": "观众能区分订单一致性与产品一致性的核对对象",
+      "timing": {
+        "char_equivalent": 188.0,
+        "min_seconds": 47,
+        "target_seconds": 49,
+        "max_seconds": 52,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": [
+        "A005"
+      ],
+      "nx": "装配完成之后，身份还在继续发挥作用。围绕同一个标识，可以建立整车装机档案，把哪些零部件进入了哪辆整车记录下来。往后这辆车出现质量异常，就能围绕具体的零部件和车辆去回查，不用在一堆互相孤立的记录之间来回跳。\n\n",
+      "teaching_purpose": "建立零部件与整车的装配关系档案",
+      "single_message": "装机档案让质量异常可围绕具体对象回查",
+      "screen": {
+        "title": {
+          "screen_item_id": "S027",
+          "guidance_text": "装机档案把零部件连到整车",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G016",
+            "items": [
+              {
+                "screen_item_id": "S028",
+                "guidance_text": "围绕同一标识建立整车装机档案",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G017",
+            "items": [
+              {
+                "screen_item_id": "S029",
+                "guidance_text": "质量异常时围绕具体零部件和车辆回查",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R011",
+          "from": "G016",
+          "relation": "支持质量异常",
+          "to": "G017",
+          "direction": "enables"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C008",
+          "instruction": "不新增车型、车架号、时间、工位字段或可操作界面",
+          "evidence_refs": [
+            "E003"
+          ]
+        }
+      ],
+      "entry_condition": "观众知道装配前已完成两类校验",
+      "exit_condition": "观众能说出装机档案回答的问题",
+      "timing": {
+        "char_equivalent": 94.0,
+        "min_seconds": 24,
+        "target_seconds": 25,
+        "max_seconds": 26,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": [
+        "A006"
+      ],
+      "nx": "到了配件管理环节，唯一身份把管理的颗粒度从“一批货”细化到了“一件货”。配件的流转过程可以按单件说清楚，每一步有据可查，串货就多了一道实实在在的约束。当然，避免串货是一个管理目标，它靠每个环节正确采集、保住身份记录来实现，不是说有了码就万事大吉。\n\n",
+      "teaching_purpose": "说明配件管理从批次到单件的细化",
+      "single_message": "单件流转让避免串货成为可执行的管理目标",
+      "screen": {
+        "title": {
+          "screen_item_id": "S030",
+          "guidance_text": "配件流转细化到单件",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G018",
+            "items": [
+              {
+                "screen_item_id": "S031",
+                "guidance_text": "管理粒度从一批货推进到一件货",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G019",
+            "items": [
+              {
+                "screen_item_id": "S032",
+                "guidance_text": "单件流转过程可核验，用于避免串货",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              },
+              {
+                "screen_item_id": "S033",
+                "guidance_text": "避免串货是管理目标，依赖各环节正确采集",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R012",
+          "from": "G018",
+          "relation": "细化支撑",
+          "to": "G019",
+          "direction": "enables"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C009",
+          "instruction": "不承诺绝对消除串货，不新增具体流向、库存或异常结论",
+          "evidence_refs": [
+            "E003"
+          ]
+        }
+      ],
+      "entry_condition": "观众知道装机档案已建立",
+      "exit_condition": "观众能说出单件流转对串货管理的作用与边界",
+      "timing": {
+        "char_equivalent": 109.0,
+        "min_seconds": 28,
+        "target_seconds": 28,
+        "max_seconds": 30,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": [
+        "A006",
+        "A007"
+      ],
+      "nx": "再往后是维修环节。修理厂要更换零部件时，可以围绕零部件的标识核对维修对象，再调出装机档案、配件流转和质量记录。几边一对，这次维修是不是真实发生、换的件对不对，就有依据了。虚假索赔和说不清的争议，也能减少。不过要说明，标识提供的是查询入口，责任认定、索赔审批这样的事，它不会单独完成。\n\n这条链还有一层价值：把质量问题带回生产侧。出了质量问题，可以追溯到具体的安装工位，查到对应的供应商；对这些质量指标的分析，还能为供应商绩效评价提供参考。系统在这里提供的是更可核对的数据依据，不是自动的根因分析，更不是自动的处罚。\n\n",
+      "teaching_purpose": "闭合维修真实性核验与质量追溯路径",
+      "single_message": "标识提供核验与追溯入口，不替代责任判定",
+      "screen": {
+        "title": {
+          "screen_item_id": "S034",
+          "guidance_text": "维修核验与质量追溯",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G020",
+            "items": [
+              {
+                "screen_item_id": "S035",
+                "guidance_text": "围绕零部件标识核对维修对象",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G021",
+            "items": [
+              {
+                "screen_item_id": "S036",
+                "guidance_text": "关联装机档案、配件流转和质量记录",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              },
+              {
+                "screen_item_id": "S037",
+                "guidance_text": "判断维修真实性，减少虚假索赔和争议",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              },
+              {
+                "screen_item_id": "S038",
+                "guidance_text": "标识提供查询入口，不单独完成责任认定或索赔审批",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G022",
+            "items": [
+              {
+                "screen_item_id": "S039",
+                "guidance_text": "质量问题追溯到安装工位与供应商",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              },
+              {
+                "screen_item_id": "S040",
+                "guidance_text": "质量指标分析为供应商绩效评价提供参考",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R013",
+          "from": "G020",
+          "relation": "调取关联",
+          "to": "G021",
+          "direction": "sequence"
+        },
+        {
+          "relation_id": "R014",
+          "from": "G021",
+          "relation": "延伸回查",
+          "to": "G022",
+          "direction": "traces-back"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C010",
+          "instruction": "不新增自动化的原因定位、供应商排名、评分公式、处罚结果或审批规则",
+          "evidence_refs": [
+            "E006"
+          ]
+        }
+      ],
+      "entry_condition": "观众知道单件流转可核验",
+      "exit_condition": "观众能说出维修核验与质量追溯的数据依据",
+      "timing": {
+        "char_equivalent": 229.0,
+        "min_seconds": 58,
+        "target_seconds": 60,
+        "max_seconds": 63,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": [
+        "A008"
+      ],
+      "nx": "这套做法在这个案例里交出的结果有四项：零部件本体的永久标识，预计能把服务误判额降低 5000 万；订单一致性提升到了 100%；配件物流管理细化到单件，丢失和物料损耗都减少了；服务准确性提高，客户等待的时间变短，满意度也有明显提升。\n\n",
+      "teaching_purpose": "呈现案例结果及其适用范围",
+      "single_message": "四项结果只在案例范围内成立",
+      "screen": {
+        "title": {
+          "screen_item_id": "S041",
+          "guidance_text": "案例结果与适用范围",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E008"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G023",
+            "items": [
+              {
+                "screen_item_id": "S042",
+                "guidance_text": "预计降低服务误判额 5000 万",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S043",
+                "guidance_text": "订单一致性提升至 100%",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S044",
+                "guidance_text": "配件物流管理细化到单件",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S045",
+                "guidance_text": "服务准确性提高、客户等待减少、满意度显著提升",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G024",
+            "items": [
+              {
+                "screen_item_id": "S046",
+                "guidance_text": "结果归属该案例",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S047",
+                "guidance_text": "适用范围标注与数字同屏呈现",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R015",
+          "from": "G023",
+          "relation": "归属限定于",
+          "to": "G024",
+          "direction": "scope"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C011",
+          "instruction": "成效数字不外推为行业基准、当前状态或项目承诺，不虚构统计要素",
+          "evidence_refs": [
+            "E008"
+          ]
+        }
+      ],
+      "entry_condition": "观众已看完完整业务链",
+      "exit_condition": "观众能复述四项结果及其案例限定",
+      "timing": {
+        "char_equivalent": 100.0,
+        "min_seconds": 25,
+        "target_seconds": 26,
+        "max_seconds": 28,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A010",
+      "callback_a_ids": [
+        "A001",
+        "A009"
+      ],
+      "nx": "本期总结。回到开头那个总装工位。一物一码能减少错装和串货，靠的不是多贴一个标签，而是让同一件零部件从供应、装配、配件流转到维修核验，一路保持同一个可以关联的身份。QTS 管质量追踪，MES 管生产执行，质量追溯系统管质量记录的回查，各司其职；唯一标识做的事，是把零部件这个对象和各环节的记录连起来。先把零部件认准，再把跨环节的记录连准，精益管理才有可靠的起点。",
+      "teaching_purpose": "收束共同身份机制与各系统分工",
+      "single_message": "先认准零部件再连准记录，精益管理才有可靠起点",
+      "screen": {
+        "title": {
+          "screen_item_id": "S048",
+          "guidance_text": "本期总结：共同身份是精益管理的起点",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E009"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G025",
+            "items": [
+              {
+                "screen_item_id": "S049",
+                "guidance_text": "供应、装配、配件流转、维修核验保持同一可关联身份",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G026",
+            "items": [
+              {
+                "screen_item_id": "S050",
+                "guidance_text": "QTS、MES、质量追溯系统各司其职，唯一标识连接对象与记录",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E009"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R016",
+          "from": "G025",
+          "relation": "共同身份连接",
+          "to": "G026",
+          "direction": "anchor"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C012",
+          "instruction": "收束不预告相邻分集或后续课程内容",
+          "evidence_refs": [
+            "E001"
+          ]
+        }
+      ],
+      "entry_condition": "观众知道案例结果的适用范围",
+      "exit_condition": "观众能用共同身份机制解释错装与串货的减少",
+      "timing": {
+        "char_equivalent": 158.0,
+        "min_seconds": 40,
+        "target_seconds": 41,
+        "max_seconds": 44,
+        "short_page_reason": null
+      }
+    }
+  ]
+}

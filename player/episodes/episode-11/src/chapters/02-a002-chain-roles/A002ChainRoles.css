@@ -1,0 +1,341 @@
+/* chain-roles · role-axis-with-records
+   mechanism: equal-weight-accumulation — 五段角色条沿同一水平轴从上游到下游依次落位，
+   完成后全链等权保留、不产生当前选中项；记录带为角色条下方的从属层级（R004）。
+   prefix: cr- */
+
+.cr-scene {
+  justify-content: flex-start;
+  gap: 26px;
+}
+
+/* ── 头部：标题 + 多少角色的引导 + M002 空白版位 ──────── */
+
+.cr-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 56px;
+  flex: none;
+}
+
+.cr-head-copy {
+  min-width: 0;
+  padding-top: 10px;
+}
+
+.cr-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 68px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: cr-rise 560ms var(--ease-soft) both;
+}
+
+.cr-lead {
+  margin: 18px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text-2);
+  animation: cr-rise 560ms var(--ease-soft) 160ms both;
+}
+
+.cr-lead::before {
+  content: "";
+  flex: none;
+  width: 30px;
+  height: 8px;
+  background: var(--theme-process);
+}
+
+/* M002 未就位：只保留空白版位，不放任何占位图 */
+
+.cr-media {
+  flex: none;
+  width: 560px;
+  aspect-ratio: 16 / 9;
+  background: var(--surface-2);
+  border: 2px dashed var(--rule);
+  opacity: 0;
+  animation: cr-fade 500ms var(--ease-soft) 260ms both;
+}
+
+/* ── 角色轴：五段角色条 + 交接箭头 + 底部水平轴（第 1 拍空轴建立） ── */
+
+.cr-chain {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.cr-bays {
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr 40px 1fr 40px 1fr 40px 1fr;
+  align-items: stretch;
+}
+
+.cr-role:nth-of-type(1) { grid-column: 1; }
+.cr-role:nth-of-type(2) { grid-column: 3; }
+.cr-role:nth-of-type(3) { grid-column: 5; }
+.cr-role:nth-of-type(4) { grid-column: 7; }
+.cr-role:nth-of-type(5) { grid-column: 9; }
+
+.cr-role {
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 11px;
+  padding: 26px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(-44px);
+  transition: opacity 460ms var(--ease-soft),
+    transform 560ms var(--ease-overshoot);
+  transition-delay: calc(500ms + var(--cr-i) * 1500ms);
+}
+
+.is-laid .cr-role {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cr-role-no {
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+.cr-role-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  white-space: nowrap;
+  color: var(--theme-structural);
+}
+
+.cr-role-duty {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text-2);
+}
+
+/* 交接箭头：随相邻角色条落位逐个点亮 */
+
+.cr-flow {
+  grid-column: auto;
+  align-self: center;
+  justify-self: center;
+  width: 22px;
+  height: 34px;
+  opacity: 0;
+  transition: opacity 320ms var(--ease-soft);
+  transition-delay: calc(1750ms + var(--cr-k) * 1500ms);
+}
+
+.cr-flow:nth-of-type(1) { grid-column: 2; }
+.cr-flow:nth-of-type(2) { grid-column: 4; }
+.cr-flow:nth-of-type(3) { grid-column: 6; }
+.cr-flow:nth-of-type(4) { grid-column: 8; }
+
+.is-laid .cr-flow {
+  opacity: 1;
+}
+
+/* 水平轴：第 1 拍自左向右自绘，之后持续保留 */
+
+.cr-axis-wrap {
+  position: relative;
+  height: 8px;
+  flex: none;
+}
+
+.cr-axis {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 100%;
+  height: 6px;
+  background: var(--theme-structural);
+  transform-origin: left center;
+  animation: cr-axis-in 760ms var(--ease-soft) 300ms both;
+}
+
+.cr-axis-head {
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  width: 18px;
+  height: 24px;
+  transform: translateY(-50%);
+  opacity: 0;
+  animation: cr-fade 300ms var(--ease-soft) 960ms both;
+}
+
+/* 空轴上的提问标记：角色条落位时被回答、退场 */
+
+.cr-mark {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  height: 210px;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.cr-mark-pop {
+  animation: cr-mark-in 560ms var(--ease-overshoot) 980ms both;
+}
+
+.cr-mark-glyph {
+  font-size: 150px;
+  color: var(--theme-warning);
+  transition: opacity 340ms var(--ease-soft) 120ms,
+    transform 340ms var(--ease-soft) 120ms;
+}
+
+.is-laid .cr-mark-glyph {
+  opacity: 0;
+  transform: scale(0.72);
+}
+
+/* ── 记录带：链条下方的从属层级，第 3 拍补入 ──────────── */
+
+.cr-records {
+  flex: none;
+  padding-top: 26px;
+  opacity: 0;
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-attributed .cr-records {
+  opacity: 1;
+}
+
+.cr-slips {
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr 40px 1fr 40px 1fr 40px 1fr;
+}
+
+.cr-slip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 17px 0;
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 480ms var(--ease-soft),
+    transform 480ms var(--ease-soft);
+  transition-delay: calc(300ms + var(--cr-i) * 140ms);
+}
+
+.cr-slip:nth-of-type(1) { grid-column: 1; }
+.cr-slip:nth-of-type(2) { grid-column: 3; }
+.cr-slip:nth-of-type(3) { grid-column: 5; }
+.cr-slip:nth-of-type(4) { grid-column: 7; }
+.cr-slip:nth-of-type(5) { grid-column: 9; }
+
+/* 引线：从水平轴垂到各自角色条正下方的记录签（26px 场景间距 + 26px 带内留白） */
+
+.cr-slip::before {
+  content: "";
+  position: absolute;
+  top: -52px;
+  left: 50%;
+  width: 0;
+  height: 52px;
+  border-left: 2px dashed var(--rule);
+}
+
+.is-attributed .cr-slip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cr-slip-doc {
+  flex: none;
+  width: 38px;
+  height: 48px;
+}
+
+.cr-slip-label {
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--text-mute);
+}
+
+.cr-records-title {
+  margin: 16px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 480ms var(--ease-soft) 80ms,
+    transform 480ms var(--ease-soft) 80ms;
+}
+
+.is-attributed .cr-records-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── keyframes（仅一次性入场，终态与稳定画面一致） ─────── */
+
+@keyframes cr-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cr-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cr-axis-in {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes cr-mark-in {
+  from {
+    opacity: 0;
+    transform: scale(0.55);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

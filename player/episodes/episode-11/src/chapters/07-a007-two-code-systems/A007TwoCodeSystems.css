@@ -1,0 +1,465 @@
+/* two-code-systems · A007 · split-compare-with-pivot
+   mechanism: compare-and-reweight —— 左右两栏并列边界持续承载 R012；
+   中部判据条位于两栏之间，先亮「不是同一套」，再把对照收束到右栏相通的
+   识别逻辑（R013，底部键点向两侧栏边搭接）。
+   guardrail C007: 不展开追溯码标准条款或监管要求。
+   guardrail C008: 画面不出现任何具体编码样例 —— 包装标签只留空白版面。
+   prefix: tc- （本章独占） */
+
+.tc-scene {
+  justify-content: flex-start;
+  gap: 26px;
+  font-family: var(--font-body);
+}
+
+/* ── headline slot · S025 ─────────────────────────────── */
+
+.tc-head {
+  flex: none;
+}
+
+.tc-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 60px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: tc-rise 640ms var(--ease-soft) backwards;
+}
+
+.tc-head-rule {
+  margin-top: 18px;
+  animation: tc-fade 560ms var(--ease-soft) 240ms backwards;
+}
+
+/* ── compare row · left | pivot | right ───────────────── */
+
+.tc-compare {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 42px;
+}
+
+/* 左栏第 1 拍直接坐实；右栏第 1 拍保持虚线空位，第 2 拍坐实成同构实体卡 */
+.tc-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 36px 28px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.tc-col--drug {
+  animation: tc-rise 640ms var(--ease-soft) 160ms backwards;
+}
+
+.tc-col--shared {
+  background: transparent;
+  border: 3px dashed var(--theme-dashed-line);
+  box-shadow: 0 0 0 3px transparent, 7px 8px 0 transparent;
+  transition: background-color 520ms var(--ease-soft),
+    border-color 520ms var(--ease-soft), box-shadow 520ms var(--ease-soft);
+  animation: tc-fade 620ms var(--ease-soft) 320ms backwards;
+}
+
+.is-related .tc-col--shared {
+  background: var(--surface-2);
+  border-color: var(--theme-structural);
+  border-style: solid;
+  box-shadow: var(--card-shadow);
+}
+
+.tc-col-tag {
+  margin: 0 0 10px;
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+/* 右栏的栏名属于第 2 拍，不在第 1 拍提前出现 */
+.tc-col--shared .tc-col-tag,
+.tc-col--shared .tc-cap {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 480ms var(--ease-soft), transform 480ms var(--ease-soft);
+}
+
+.is-related .tc-col--shared .tc-col-tag {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 760ms;
+}
+
+.is-related .tc-col--shared .tc-cap {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 920ms;
+}
+
+.tc-cap {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+/* ── 左栏演示：销售包装单元逐个贴上空白标签 ──────────────
+   （C008：标签只有空白版面，无条码、无编码字符串） */
+
+.tc-demo {
+  flex: 1;
+  min-height: 0;
+  margin-top: 18px;
+}
+
+.tc-demo-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.tc-shelf {
+  stroke: var(--theme-structural);
+  stroke-width: 5;
+  transform-origin: 14px 280px;
+  animation: tc-grow 520ms var(--ease-soft) 460ms backwards;
+}
+
+.tc-unit {
+  opacity: 0;
+  animation: tc-rise 480ms var(--ease-soft) forwards;
+}
+
+.tc-unit-0 { animation-delay: 640ms; }
+.tc-unit-1 { animation-delay: 820ms; }
+.tc-unit-2 { animation-delay: 1000ms; }
+
+.tc-box {
+  fill: var(--surface-3);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+/* 逐盒盖章：虚位标签转入绿框 —— 每个销售包装单元各得一个身份 */
+.tc-box-tag {
+  fill: var(--surface-2);
+  stroke: var(--theme-dashed-line);
+  stroke-width: 2.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tc-stamp 560ms var(--ease-soft) forwards;
+}
+
+.tc-unit-0 .tc-box-tag { animation-delay: 2100ms; }
+.tc-unit-1 .tc-box-tag { animation-delay: 3500ms; }
+.tc-unit-2 .tc-box-tag { animation-delay: 4900ms; }
+
+.tc-demo-cap {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 700;
+  fill: var(--text-mute);
+  opacity: 0;
+  animation: tc-fade 460ms var(--ease-soft) 1300ms forwards;
+}
+
+/* ── 两栏同构的收束标注：左 S026 / 右 S028 ─────────────── */
+
+.tc-claim {
+  flex: none;
+  margin: 20px 0 0;
+  padding: 16px 22px;
+  background: var(--theme-process-surface);
+  border-left: 6px solid var(--theme-process);
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--theme-structural);
+}
+
+.tc-claim em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+/* 左栏定位说明讲到「用来唯一标识……」时落位（第 1 拍一次建立） */
+.tc-col--drug .tc-claim {
+  opacity: 0;
+  animation: tc-rise 480ms var(--ease-soft) 7000ms forwards;
+}
+
+/* 右栏收束随第 2 拍补入 */
+.tc-claim--shared {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 520ms var(--ease-soft), transform 520ms var(--ease-soft);
+}
+
+.is-related .tc-claim--shared {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 3120ms;
+}
+
+/* ── pivot slot · U020：中部判据条（竖排判据，位于两栏之间） ── */
+
+.tc-pivot {
+  flex: none;
+  width: 158px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 26px 0;
+  border: 3px dashed var(--theme-dashed-line);
+  background: transparent;
+  box-shadow: 0 0 0 3px transparent, 7px 8px 0 transparent;
+  transition: background-color 520ms var(--ease-soft),
+    border-color 520ms var(--ease-soft), box-shadow 520ms var(--ease-soft);
+  animation: tc-fade 620ms var(--ease-soft) 320ms backwards;
+}
+
+.is-related .tc-pivot {
+  background: var(--surface-2);
+  border-color: var(--theme-structural);
+  border-style: solid;
+  box-shadow: var(--card-shadow);
+}
+
+/* 竖排判据：一个连续文本行（S027 逐字），在固定行高内折成右→左两列 */
+.tc-pivot-line {
+  margin: 0;
+  height: 348px;
+  writing-mode: vertical-rl;
+  font-family: var(--font-display-cn);
+  font-size: 33px;
+  font-weight: 900;
+  line-height: 1.6;
+  letter-spacing: 0.12em;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(-16px);
+  transition: opacity 560ms var(--ease-soft), transform 560ms var(--ease-soft);
+}
+
+.tc-pivot-line em {
+  font-style: normal;
+  color: var(--theme-warning);
+}
+
+.is-related .tc-pivot-line {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 300ms;
+}
+
+/* 键点：判据条向两侧栏边搭接 —— 位于两栏之间的相通收束（R013） */
+.tc-bond {
+  flex: none;
+  width: 118px;
+  height: 52px;
+  overflow: visible;
+  opacity: 0;
+  transition: opacity 460ms var(--ease-soft);
+}
+
+.is-related .tc-bond {
+  opacity: 1;
+  transition-delay: 1250ms;
+}
+
+.tc-bond-line {
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+  stroke-dasharray: 7 8;
+}
+
+.tc-bond-node {
+  fill: var(--theme-process);
+}
+
+/* ── right slot · U021：相通的识别逻辑（两步等权，先…再…） ── */
+
+.tc-logic {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 18px;
+}
+
+.tc-logic-cap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 420ms var(--ease-soft), transform 420ms var(--ease-soft);
+}
+
+.tc-logic-cap::before {
+  content: "";
+  flex: none;
+  width: 26px;
+  height: 5px;
+  background: var(--theme-process);
+}
+
+.is-related .tc-logic-cap {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1180ms;
+}
+
+.tc-logic-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+}
+
+.tc-logic-bar {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 15px 22px;
+  background: var(--surface-3);
+  border: 2px solid var(--theme-structural);
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 460ms var(--ease-soft), transform 460ms var(--ease-soft);
+}
+
+.is-related .tc-logic-bar--a {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1480ms;
+}
+
+.is-related .tc-logic-bar--b {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 2240ms;
+}
+
+.tc-logic-no {
+  flex: none;
+  font-size: 30px;
+  color: var(--theme-structural);
+}
+
+.tc-logic-body {
+  min-width: 0;
+}
+
+.tc-logic-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+.tc-logic-note {
+  margin: 6px 0 0;
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--text-2);
+}
+
+/* 先…再… 的顺序连接件：随第 2 步一起补入 */
+.tc-logic-link {
+  flex: none;
+  width: 36px;
+  height: 34px;
+  margin-left: 52px;
+  overflow: visible;
+  opacity: 0;
+  transition: opacity 360ms var(--ease-soft);
+}
+
+.is-related .tc-logic-link {
+  opacity: 1;
+  transition-delay: 2020ms;
+}
+
+.tc-logic-link-line {
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+  stroke-dasharray: 5 6;
+}
+
+.tc-logic-link-arrow {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  stroke-linecap: square;
+}
+
+/* ── keyframes（仅第 1 拍建立时使用一次，第 2 拍全部走状态过渡） ── */
+
+@keyframes tc-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tc-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes tc-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes tc-stamp {
+  0% {
+    stroke: var(--theme-dashed-line);
+    transform: scale(1);
+  }
+  45% {
+    stroke: var(--theme-process);
+    transform: scale(1.09);
+  }
+  100% {
+    stroke: var(--theme-process);
+    transform: scale(1);
+  }
+}

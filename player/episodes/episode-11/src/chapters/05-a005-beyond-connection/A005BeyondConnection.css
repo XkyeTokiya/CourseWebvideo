@@ -1,0 +1,522 @@
+/* beyond-connection · condition-key-goal
+   mechanism: compare-and-reweight — 两类约束左右并列持续，权重折向四柱协同条件，收束于全屏核心句
+   prefix: bc- */
+
+.bc-scene {
+  justify-content: flex-start;
+  gap: 22px;
+}
+
+/* ── headline 槽位：全程持续 ── */
+
+.bc-head {
+  flex: none;
+}
+
+.bc-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+  animation: bc-rise 620ms var(--ease-soft);
+}
+
+/* ── 设问区：固定高度，弱化时字号变化不引起下方重排 ── */
+
+.bc-ask {
+  flex: none;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.bc-question {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 76px;
+  line-height: 1.15;
+  font-weight: 900;
+  color: var(--theme-structural);
+  transition: opacity 700ms var(--ease-soft), font-size 700ms var(--ease-soft);
+  animation: bc-rise 720ms var(--ease-soft) 180ms backwards;
+}
+
+.bc-turn {
+  margin: 0;
+  width: fit-content;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 900;
+  color: var(--theme-structural);
+  background-image: linear-gradient(var(--theme-warning-surface), var(--theme-warning-surface));
+  background-repeat: no-repeat;
+  background-position: 0 74%;
+  background-size: 0% 82%;
+  transition: opacity 700ms var(--ease-soft), font-size 700ms var(--ease-soft);
+  animation: bc-rise 520ms var(--ease-soft) 1250ms backwards,
+    bc-sweep 640ms var(--ease-soft) 1650ms 1 forwards;
+}
+
+.bc-ask.is-weakened .bc-question {
+  opacity: 0.4;
+  font-size: 46px;
+}
+
+.bc-ask.is-weakened .bc-turn {
+  opacity: 0.6;
+  font-size: 29px;
+}
+
+/* ── 约束区：R009 两类约束左右并列等权；beat 3 整体弱化让位 ── */
+
+.bc-constraints {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+}
+
+.bc-constraint {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 24px 34px 20px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 520ms var(--ease-soft), transform 520ms var(--ease-soft);
+}
+
+.bc-constraint:nth-child(2) {
+  transition-delay: 170ms;
+}
+
+.bc-constraints.is-on .bc-constraint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bc-constraints.is-past .bc-constraint {
+  opacity: 0.52;
+  transform: translateY(0) scale(0.985);
+}
+
+.bc-tag {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.bc-tag::before {
+  content: "";
+  flex: none;
+  width: 12px;
+  height: 12px;
+  background: var(--theme-structural);
+}
+
+.bc-constraint--data .bc-tag::before {
+  background: var(--theme-warning);
+}
+
+.bc-constraint h2 {
+  margin: 6px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  line-height: 1.25;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.bc-fig {
+  flex: 1;
+  min-height: 0;
+}
+
+.bc-fig svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.bc-fig text {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+}
+
+/* 卡 A：数据流被隐私与安全边界拦下，包排队积压 */
+
+.bc-node {
+  fill: var(--theme-cool-surface);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.bc-node-line {
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+  opacity: 0.45;
+}
+
+.bc-track {
+  stroke: var(--theme-dashed-line);
+  stroke-width: 2.5;
+  stroke-dasharray: 9 11;
+}
+
+.bc-wall {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scaleY(0);
+}
+
+.bc-constraints.is-on .bc-wall {
+  animation: bc-wall 520ms var(--ease-soft) 780ms both;
+}
+
+.bc-wall-label {
+  fill: var(--surface);
+  font-size: 20px;
+}
+
+.bc-pkt {
+  fill: var(--theme-process);
+}
+
+.bc-constraints.is-on .bc-pkt-1 {
+  animation: bc-halt-1 850ms var(--ease-soft) 1450ms forwards;
+}
+
+.bc-constraints.is-on .bc-pkt-2 {
+  animation: bc-halt-2 850ms var(--ease-soft) 1950ms forwards;
+}
+
+.bc-constraints.is-on .bc-pkt-3 {
+  animation: bc-halt-3 850ms var(--ease-soft) 2450ms forwards;
+}
+
+/* 卡 B：需求曲线的波动、突发尖峰与不确定扇区 */
+
+.bc-axis {
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+.bc-wave,
+.bc-spike {
+  fill: none;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.bc-wave {
+  stroke: var(--theme-structural);
+  stroke-width: 3.5;
+}
+
+.bc-spike {
+  stroke: var(--theme-warning);
+  stroke-width: 4;
+}
+
+.bc-constraints.is-on .bc-wave {
+  animation: bc-draw 1250ms var(--ease-soft) 620ms forwards;
+}
+
+.bc-constraints.is-on .bc-spike {
+  animation: bc-draw 560ms var(--ease-soft) 1900ms forwards;
+}
+
+.bc-cone {
+  fill: none;
+  stroke: var(--theme-dashed-line);
+  stroke-width: 2.5;
+  stroke-dasharray: 7 9;
+  opacity: 0;
+  transition: opacity 620ms var(--ease-soft) 2500ms;
+}
+
+.bc-constraints.is-on .bc-cone {
+  opacity: 1;
+}
+
+/* ── 折向条：R010 由约束卡向左转出协同条件的折线 ── */
+
+.bc-pivot {
+  flex: none;
+  height: 44px;
+}
+
+.bc-pivot svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.bc-pivot-origin {
+  fill: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 300ms var(--ease-soft) 40ms;
+}
+
+.bc-pivot-path {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 3.5;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.bc-pivot-arrow {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 4.5;
+  opacity: 0;
+  transition: opacity 340ms var(--ease-soft) 860ms;
+}
+
+.bc-pivot.is-on .bc-pivot-origin {
+  opacity: 1;
+}
+
+.bc-pivot.is-on .bc-pivot-path {
+  animation: bc-draw 880ms var(--ease-soft) 80ms forwards;
+}
+
+.bc-pivot.is-on .bc-pivot-arrow {
+  opacity: 1;
+}
+
+/* ── 协同条件：四柱等权托举，非清单非认证 ── */
+
+.bc-goal {
+  flex: none;
+  height: 296px;
+  display: flex;
+  gap: 40px;
+}
+
+.bc-goal-caption {
+  flex: none;
+  width: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 480ms var(--ease-soft) 140ms, transform 480ms var(--ease-soft) 140ms;
+}
+
+.bc-goal.is-on .bc-goal-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bc-goal-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.bc-goal-note {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+
+.bc-goal-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.bc-slab {
+  flex: none;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--theme-process-surface);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 620ms var(--ease-soft), transform 620ms var(--ease-overshoot);
+  transition-delay: 1180ms;
+}
+
+.bc-goal.is-on .bc-slab {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bc-slab span {
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: var(--theme-structural);
+}
+
+.bc-pillars {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-evenly;
+}
+
+.bc-pillar {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: opacity 560ms var(--ease-soft), transform 560ms var(--ease-soft);
+}
+
+.bc-pillar:nth-child(1) { transition-delay: 240ms; }
+.bc-pillar:nth-child(2) { transition-delay: 380ms; }
+.bc-pillar:nth-child(3) { transition-delay: 520ms; }
+.bc-pillar:nth-child(4) { transition-delay: 660ms; }
+
+.bc-goal.is-on .bc-pillar {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.bc-pillar span {
+  writing-mode: vertical-rl;
+  font-family: var(--font-display-cn);
+  font-size: 33px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  color: var(--theme-structural);
+}
+
+.bc-ground {
+  flex: none;
+  height: 8px;
+  background: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 420ms var(--ease-soft) 200ms;
+}
+
+.bc-goal.is-on .bc-ground {
+  opacity: 1;
+}
+
+/* ── K-A005-01 · accent：低成本全屏核心句 ── */
+
+.bc-statement {
+  justify-content: center;
+  gap: 30px;
+}
+
+.bc-statement-rule {
+  flex: none;
+  width: 104px;
+  height: 5px;
+  background: var(--theme-process);
+  transform-origin: left center;
+  animation: bc-grow 480ms var(--ease-soft) 160ms backwards;
+}
+
+.bc-statement-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  color: var(--text-mute);
+  animation: bc-fade 460ms var(--ease-soft) 80ms backwards;
+}
+
+.bc-statement-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 86px;
+  line-height: 1.18;
+  font-weight: 900;
+  color: var(--theme-structural);
+  animation: bc-rise 680ms var(--ease-soft) 260ms backwards;
+}
+
+.bc-statement-hard {
+  width: fit-content;
+  background-image: linear-gradient(var(--theme-warning-surface), var(--theme-warning-surface));
+  background-repeat: no-repeat;
+  background-position: 0 76%;
+  background-size: 0% 82%;
+  animation: bc-rise 680ms var(--ease-soft) 460ms backwards,
+    bc-sweep 720ms var(--ease-soft) 1150ms 1 forwards;
+}
+
+/* ── keyframes ── */
+
+@keyframes bc-rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bc-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bc-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes bc-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes bc-wall {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes bc-sweep {
+  from { background-size: 0% 82%; }
+  to { background-size: 100% 82%; }
+}
+
+@keyframes bc-halt-1 {
+  to { transform: translateX(146px); }
+}
+
+@keyframes bc-halt-2 {
+  to { transform: translateX(118px); }
+}
+
+@keyframes bc-halt-3 {
+  to { transform: translateX(90px); }
+}

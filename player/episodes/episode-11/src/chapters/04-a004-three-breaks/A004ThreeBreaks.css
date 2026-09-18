@@ -1,0 +1,326 @@
+/* three-breaks · parallel-cards-self-contained
+   mechanism: equal-weight-accumulation —— 三张等权困难卡按相邻顺序补齐；
+   R007 由卡一/卡二相邻顺序承载，R008 由卡二/卡三同列延续承载；
+   补齐后三卡等权，不留当前选中项。prefix: tb- */
+
+.tb-scene {
+  justify-content: flex-start;
+  gap: 36px;
+}
+
+/* ── 头部：标题 + 语境行（beat 1 建立） ─────────────────── */
+
+.tb-head {
+  flex: none;
+}
+
+.tb-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 66px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+}
+
+.tb-context {
+  margin: 16px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+/* beat 1 的一次性入场（is-framed 仅在第一拍存在） */
+
+.is-framed .tb-title {
+  animation: tb-rise 620ms var(--ease-soft) both;
+}
+
+.is-framed .tb-context {
+  animation: tb-rise 620ms var(--ease-soft) 180ms both;
+}
+
+.is-framed .tb-card {
+  animation: tb-frame 640ms var(--ease-soft) both;
+  animation-delay: calc(300ms + var(--tb-i) * 170ms);
+}
+
+/* ── 三张等权卡 + 两个相邻关系连接件 ───────────────────── */
+
+.tb-cards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 56px 1fr 56px 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.tb-card {
+  position: relative;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 34px 36px 30px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+}
+
+.tb-card-top {
+  flex: none;
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+
+.tb-no {
+  font-size: 48px;
+  color: var(--theme-structural);
+}
+
+.tb-card-head {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.tb-demo {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tb-demo-svg {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  overflow: visible;
+}
+
+.tb-demo-text {
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 700;
+  fill: var(--theme-structural);
+}
+
+.tb-fq-mark {
+  font-size: 34px;
+  fill: var(--theme-warning);
+}
+
+.tb-note {
+  flex: none;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 24px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+/* 空卡态：编号可见，其余内容待本拍补入（布局占位不变，不重排） */
+
+.tb-card-head,
+.tb-demo,
+.tb-note {
+  opacity: 0;
+}
+
+.tb-empty {
+  position: absolute;
+  inset: 108px 34px 30px;
+  border: 2px dashed var(--rule);
+  border-radius: 12px;
+  transition: opacity 320ms var(--ease-soft);
+}
+
+.tb-card.is-on .tb-empty {
+  opacity: 0;
+}
+
+.tb-card.is-on .tb-card-head {
+  opacity: 1;
+  animation: tb-rise 520ms var(--ease-soft) 40ms both;
+}
+
+.tb-card.is-on .tb-demo {
+  opacity: 1;
+  animation: tb-fadein 460ms var(--ease-soft) 140ms both;
+}
+
+.tb-card.is-on .tb-note {
+  opacity: 1;
+  animation: tb-rise 520ms var(--ease-soft) 300ms both;
+}
+
+/* ── 卡一演示：四段块件落位，间隙留在中间（各管一段、接不上） ── */
+
+.is-on .tb-seg {
+  animation: tb-drop 460ms var(--ease-overshoot) both;
+  animation-delay: calc(620ms + var(--tb-k) * 150ms);
+}
+
+.is-on .tb-stub {
+  animation: tb-fadein 420ms var(--ease-soft) 1450ms both;
+}
+
+/* ── 卡二演示：链路自绘，远端消散成问号（流向看不清） ────── */
+
+.is-on .tb-fnode {
+  animation: tb-pop 440ms var(--ease-overshoot) both;
+  animation-delay: calc(560ms + var(--tb-k) * 150ms);
+}
+
+.is-on .tb-flink {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: tb-grow 520ms var(--ease-soft) both;
+  animation-delay: calc(1060ms + var(--tb-k) * 170ms);
+}
+
+.tb-ftail {
+  opacity: 0.32;
+}
+
+.is-on .tb-ftail {
+  animation: tb-tail 1500ms var(--ease-soft) 1750ms both;
+}
+
+.is-on .tb-fq {
+  animation: tb-fadein 560ms var(--ease-soft) 2450ms both;
+}
+
+/* ── 卡三演示：扫描掠过全场，没有落点（对象与环节难确定） ── */
+
+.tb-scan {
+  opacity: 0;
+}
+
+.is-on .tb-obj {
+  animation: tb-pop 420ms var(--ease-overshoot) both;
+  animation-delay: calc(520ms + var(--tb-k) * 110ms);
+}
+
+.is-on .tb-scan {
+  animation: tb-scan 1500ms var(--ease-soft) 1350ms both;
+}
+
+.is-on .tb-bracket {
+  animation: tb-fadein 620ms var(--ease-soft) 2750ms both;
+}
+
+/* ── 相邻关系连接件（R007 / R008 载体） ─────────────────── */
+
+.tb-link {
+  align-self: center;
+  width: 56px;
+}
+
+.tb-link-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tb-link-path {
+  opacity: 0;
+}
+
+.tb-link.is-on .tb-link-path {
+  opacity: 1;
+  animation: tb-link-in 520ms var(--ease-soft) both;
+}
+
+.tb-link--a.is-on .tb-link-path {
+  animation-delay: 1500ms;
+}
+
+.tb-link--b.is-on .tb-link-path {
+  animation-delay: 1800ms;
+}
+
+/* ── keyframes ─────────────────────────────────────────── */
+
+@keyframes tb-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@keyframes tb-frame {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.985);
+  }
+}
+
+@keyframes tb-fadein {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes tb-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes tb-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
+
+@keyframes tb-grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes tb-tail {
+  0% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.32;
+  }
+}
+
+@keyframes tb-scan {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.85;
+  }
+  90% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateX(392px);
+    opacity: 0;
+  }
+}
+
+@keyframes tb-link-in {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+}

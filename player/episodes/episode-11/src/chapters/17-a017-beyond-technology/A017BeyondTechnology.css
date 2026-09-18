@@ -1,0 +1,442 @@
+/* beyond-technology · image-with-insight-rail
+   mechanism: persistent-media-reading — 现场语境主图持续在场，技术条与协同条
+   左右对置亮出（R027：中央分界线上两股相向的力）；第 2 拍对置短条保持，
+   下移补入锚点条（S065 exact）与全链说明条的上下收束（R028）。
+   prefix: bt- */
+
+.bt-scene {
+  justify-content: flex-start;
+  gap: 26px;
+}
+
+/* ── 头部：标题 + 语境引导 + M006 空白版位 ────────────── */
+
+.bt-head {
+  flex: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 56px;
+}
+
+.bt-head-copy {
+  min-width: 0;
+  padding-top: 14px;
+}
+
+.bt-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 66px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: bt-rise 560ms var(--ease-soft) both;
+}
+
+.bt-lead {
+  margin: 16px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--text-2);
+  animation: bt-rise 560ms var(--ease-soft) 160ms both;
+}
+
+/* M006 未就位：只保留素净空白版位，不放任何占位图或占位文案 */
+
+.bt-media {
+  flex: none;
+  width: 460px;
+  aspect-ratio: 16 / 9;
+  background: var(--surface-2);
+  border: 2px dashed var(--rule);
+  opacity: 0;
+  animation: bt-fade 480ms var(--ease-soft) 240ms both;
+}
+
+/* ── 洞察对置区：技术条（左）— 分界线 — 协同条（右） ──── */
+
+.bt-pair {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+.bt-side {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 38px 24px;
+  box-shadow: var(--card-shadow);
+}
+
+.bt-side--tech {
+  background: var(--theme-cool-surface);
+  border: 3px solid var(--theme-structural);
+  opacity: 0;
+  transform: translateX(-44px);
+  animation: bt-in-left 560ms var(--ease-soft) 400ms both;
+}
+
+.bt-side--coop {
+  background: var(--theme-process-surface);
+  border: 3px solid var(--theme-process);
+  opacity: 0;
+  transform: translateX(44px);
+  animation: bt-in-right 560ms var(--ease-soft) 820ms both;
+}
+
+.bt-side-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.bt-side--tech .bt-side-name {
+  color: var(--theme-structural);
+}
+
+.bt-side--coop .bt-side-name {
+  color: var(--theme-process);
+}
+
+.bt-side-role {
+  margin: 8px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--text-mute);
+}
+
+.bt-side-claim {
+  margin: 6px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+}
+
+.bt-side--tech .bt-side-claim {
+  color: var(--theme-structural);
+}
+
+.bt-side--coop .bt-side-claim {
+  color: var(--theme-process);
+}
+
+/* 演示：左 — 两端同一对象被虚线与识别点连成同一个；
+   右 — 一份记录越过组织边界被交出 */
+
+.bt-demo {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  margin-top: 18px;
+}
+
+.bt-obj {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 3.5;
+}
+
+.bt-obj-tag {
+  fill: var(--theme-cool-surface);
+  stroke: var(--theme-structural);
+  stroke-width: 2;
+}
+
+.bt-recognize {
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  stroke-dasharray: 10 12;
+  opacity: 0;
+  animation: bt-fade 420ms var(--ease-soft) 1560ms both;
+}
+
+.bt-match {
+  fill: var(--surface-2);
+  stroke: var(--theme-process);
+  stroke-width: 4;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bt-pop 380ms var(--ease-overshoot) 2020ms both;
+}
+
+.bt-boundary {
+  stroke: var(--rule);
+  stroke-width: 3;
+  stroke-dasharray: 8 10;
+}
+
+.bt-record {
+  animation: bt-hand-over 1250ms var(--ease-soft) 1760ms both;
+}
+
+.bt-record rect {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.bt-rec-line {
+  stroke-width: 3.5;
+}
+
+.bt-rec-line--a { stroke: var(--theme-structural); }
+.bt-rec-line--b,
+.bt-rec-line--c { stroke: var(--rule); }
+
+.bt-hand {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 4.5;
+  stroke-linecap: square;
+  opacity: 0;
+  animation: bt-fade 320ms var(--ease-soft) 3040ms both;
+}
+
+/* 中央分界线 + 两股相向的力：对置关系的载体 */
+
+.bt-divider {
+  flex: none;
+  width: 88px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+}
+
+.bt-divider-line {
+  width: 0;
+  height: 56%;
+  border-left: 2px dashed var(--rule);
+  transform-origin: top center;
+  animation: bt-draw-y 460ms var(--ease-soft) 1140ms both;
+}
+
+.bt-force {
+  flex: none;
+  width: 26px;
+  height: 34px;
+  opacity: 0;
+}
+
+.bt-force polyline {
+  fill: none;
+  stroke-width: 4.5;
+  stroke-linecap: square;
+}
+
+.bt-force--a polyline { stroke: var(--theme-structural); }
+.bt-force--b polyline { stroke: var(--theme-process); }
+
+.bt-force--a { animation: bt-fade 300ms var(--ease-soft) 1420ms both; }
+.bt-force--b { animation: bt-fade 300ms var(--ease-soft) 1580ms both; }
+
+/* ── 收束区：锚点条（上） + 全链说明条（下），第 2 拍补入 ─ */
+
+.bt-close {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bt-anchor {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 18px 30px;
+  background: var(--theme-process-surface);
+  border: 3px solid var(--theme-process);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 460ms var(--ease-soft),
+    transform 560ms var(--ease-soft);
+}
+
+.is-anchored .bt-anchor {
+  opacity: 1;
+  transform: none;
+}
+
+.bt-anchor-glyph {
+  flex: none;
+  width: 58px;
+  height: 58px;
+  overflow: visible;
+}
+
+.bt-anchor-glyph circle,
+.bt-anchor-glyph line,
+.bt-anchor-glyph path {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 4.5;
+  stroke-linecap: square;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 640ms var(--ease-soft) 240ms;
+}
+
+.is-anchored .bt-anchor-glyph circle,
+.is-anchored .bt-anchor-glyph line,
+.is-anchored .bt-anchor-glyph path {
+  stroke-dashoffset: 0;
+}
+
+.bt-anchor-text {
+  margin: 0;
+  min-width: 0;
+}
+
+/* S065 为 exact：此处逐字完整可见 */
+
+.bt-anchor-key {
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.bt-anchor-rest {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--text-2);
+}
+
+.bt-operation {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 18px 30px;
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 460ms var(--ease-soft) 420ms,
+    transform 560ms var(--ease-soft) 420ms;
+}
+
+.is-anchored .bt-operation {
+  opacity: 1;
+  transform: none;
+}
+
+.bt-cond {
+  flex: none;
+  padding: 10px 26px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 380ms var(--ease-soft),
+    transform 380ms var(--ease-soft);
+}
+
+.bt-cond:nth-of-type(1) { transition-delay: 760ms; }
+.bt-cond:nth-of-type(2) { transition-delay: 940ms; }
+.bt-cond:nth-of-type(3) { transition-delay: 1120ms; }
+
+.is-anchored .bt-cond {
+  opacity: 1;
+  transform: none;
+}
+
+.bt-operation-text {
+  margin: 0 0 0 10px;
+  padding-left: 26px;
+  border-left: 3px dashed var(--rule);
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 420ms var(--ease-soft) 1320ms;
+}
+
+.is-anchored .bt-operation-text {
+  opacity: 1;
+}
+
+/* ── keyframes（仅一次性入场，终态与稳定画面一致） ─────── */
+
+@keyframes bt-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bt-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bt-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-44px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bt-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(44px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bt-draw-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes bt-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bt-hand-over {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(268px);
+  }
+}

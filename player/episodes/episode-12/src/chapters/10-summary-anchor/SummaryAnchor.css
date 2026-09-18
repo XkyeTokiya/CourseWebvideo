@@ -1,0 +1,909 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * 10-summary-anchor · 总结页（S-A048 · lifecycle-identity-continuity）
+ * 前缀 .sa- · 状态机（invariant-anchor-continuity）：
+ *   opening-revisited → identity-continuous → roles-anchored
+ *   → continuity-judged
+ * 不变锚点承载“同一个可关联身份”；阶段链按真实顺序（供应→装配→
+ * 配件流转→维修核验）点亮后整体保持；职责区出现并经 R016 连线回指
+ * 锚点；末拍 continuity-judgment 收束。总装工位为本章自绘回访意象。
+ * ───────────────────────────────────────────────────────────────────── */
+
+.sa-pad {
+  gap: 0;
+}
+
+/* ── headline（S048，可见标题：保留）────────────────────────────── */
+.sa-head {
+  display: flex;
+  align-items: baseline;
+  gap: 30px;
+}
+
+/* .sa-head 是 flex 行，而 hr.rule 带 width:100%（base.css .rule）→ 其 flex
+ * base size 等于整行 1700px。若不钉住标题与注记的收缩，负自由空间会按
+ * shrink×basis 摊派到三者，标题被压到 ≈509px 而折行（固有 850px）。
+ * 故：标题与注记 flex:none 保持固有宽，hr 改 flex:1 + width:auto 只占余量。 */
+.sa-headline {
+  flex: none;
+  margin: 0;
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.sa-head-note {
+  flex: none;
+  margin-left: auto;
+  font-size: 16px;
+  letter-spacing: 0.22em;
+  color: var(--text-mute);
+}
+
+.sa-head-rule {
+  flex: 1;
+  width: auto;
+  margin-top: 20px;
+  transform-origin: left center;
+}
+
+.state-opening-revisited .sa-headline {
+  animation: sa-rise-in 0.6s ease-out both;
+}
+
+.state-opening-revisited .sa-head-note {
+  animation: sa-rise-in 0.6s ease-out 0.25s both;
+}
+
+.state-opening-revisited .sa-head-rule {
+  animation: sa-rule-draw 0.7s ease-out 0.15s both;
+}
+
+/* ── 主体网格：左列（工位回访 + 锚点）跨两行，右列上下两槽 ───────── */
+.sa-body {
+  flex: 1;
+  min-height: 0;
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: 600px 1fr;
+  grid-template-rows: auto 1fr;
+  column-gap: 64px;
+  row-gap: 26px;
+}
+
+.sa-left {
+  grid-row: 1 / span 2;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* ── 总装工位回访意象（本章自绘，不引用其他章素材）───────────────── */
+.sa-station {
+  position: relative;
+  height: 296px;
+  padding: 22px 26px 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.state-opening-revisited .sa-station {
+  animation: sa-stamp-in 0.55s ease-out 0.25s both;
+}
+
+.sa-station-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+/* 龙门工位架 */
+.sa-gantry {
+  position: absolute;
+  left: 17%;
+  right: 17%;
+  top: 8px;
+  height: 76px;
+  border: 5px solid var(--theme-structural);
+  border-bottom: none;
+}
+
+.state-opening-revisited .sa-gantry {
+  animation: sa-gantry-in 0.5s ease-out 0.5s both;
+}
+
+/* 输送线 + 底部刻度 */
+.sa-belt {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: 30px;
+  height: 10px;
+  background: var(--theme-structural);
+  transform-origin: left center;
+}
+
+.sa-belt::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 14px;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--rule) 0 3px,
+    transparent 3px 22px
+  );
+}
+
+.state-opening-revisited .sa-belt {
+  animation: sa-rule-draw 0.5s ease-out 0.4s both;
+}
+
+/* 两件外观几乎一样的零部件落在工位上 */
+.sa-part {
+  position: absolute;
+  bottom: 40px;
+  width: 58px;
+  height: 50px;
+  background: var(--surface-3);
+  border: 4px solid var(--theme-structural);
+  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+}
+
+.sa-part-a {
+  left: 30%;
+}
+
+.sa-part-b {
+  left: 46%;
+}
+
+.state-opening-revisited .sa-part-a {
+  animation: sa-part-drop 0.5s var(--ease-soft) 0.7s both;
+}
+
+.state-opening-revisited .sa-part-b {
+  animation: sa-part-drop 0.5s var(--ease-soft) 0.95s both;
+}
+
+/* 锚点立起后，零件带上同一枚身份点（首尾呼应，只此一次） */
+.sa-part-mark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+.state-identity-continuous .sa-part-mark,
+.state-roles-anchored .sa-part-mark,
+.state-continuity-judged .sa-part-mark {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.state-identity-continuous .sa-part-mark {
+  transition: opacity 0.4s ease, transform 0.4s var(--ease-soft);
+  transition-delay: 9.9s;
+}
+
+.state-roles-anchored .sa-part-mark,
+.state-continuity-judged .sa-part-mark {
+  transition: none;
+}
+
+.sa-station-cap {
+  padding-top: 14px;
+  border-top: 2px dashed var(--rule);
+  font-size: 16px;
+  letter-spacing: 0.2em;
+  color: var(--text-mute);
+}
+
+.state-opening-revisited .sa-station-cap {
+  animation: sa-rise-in 0.5s ease-out 1.2s both;
+}
+
+/* ── invariant-anchor（U026）：首拍空槽待补，第 2 拍立起锚点 ─────── */
+.sa-anchor {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  padding: 24px 30px;
+  background: var(--surface-3);
+  border: 3px dashed var(--rule);
+  box-shadow: none;
+  transition: background-color 0.45s ease, border-color 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+.state-identity-continuous .sa-anchor,
+.state-roles-anchored .sa-anchor,
+.state-continuity-judged .sa-anchor {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.state-opening-revisited .sa-anchor {
+  animation: sa-stamp-in 0.55s ease-out 1.1s both;
+}
+
+/* 空槽：被锚点补齐（补齐而非消失） */
+.sa-slot {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+  letter-spacing: 0.4em;
+  color: var(--text-faint);
+}
+
+.state-identity-continuous .sa-slot {
+  animation: sa-fade-out 0.35s ease 0.1s both;
+}
+
+.state-roles-anchored .sa-slot,
+.state-continuity-judged .sa-slot {
+  opacity: 0;
+}
+
+/* “不是多贴一个标签”：划掉的标签chip + 划线 */
+.sa-not-tag {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+}
+
+.state-identity-continuous .sa-not-tag,
+.state-roles-anchored .sa-not-tag,
+.state-continuity-judged .sa-not-tag {
+  opacity: 1;
+}
+
+.state-identity-continuous .sa-not-tag {
+  animation: sa-rise-in 0.45s ease-out 0.7s both;
+}
+
+.sa-tag-chip {
+  position: relative;
+  padding: 5px 14px;
+  font-size: 16px;
+  letter-spacing: 0.14em;
+  color: var(--text-2);
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+}
+
+.sa-tag-chip::after {
+  content: "";
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  /* 32px 内联盒里的 16px 字形，其视觉中线比盒中心高约 4px；取 50% 会把线
+   * 切在字的下缘，读成下划线而非删除线，故上移 4px 使其穿过字的中宫。 */
+  top: calc(50% - 4px);
+  height: 3px;
+  margin-top: -1.5px;
+  background: var(--theme-warning);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.state-identity-continuous .sa-tag-chip::after {
+  animation: sa-strike 0.35s ease-out 1.25s both;
+}
+
+.state-roles-anchored .sa-tag-chip::after,
+.state-continuity-judged .sa-tag-chip::after {
+  transform: scaleX(1);
+}
+
+.sa-not-tag-text {
+  /* 与 .sa-tag-chip 等高（padding 5×2 + line-height 24 + border 2×2 = 38px），
+   * 使 align-items:center 对齐时两段文字的视觉中心重合（否则 19px 字的中心
+   * 会比 38px chip 低约 5.6px）。 */
+  line-height: 38px;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+/* 锚点本体：身份图形 + hero 语句 */
+.sa-anchor-face {
+  position: relative;
+  z-index: 1;
+  height: calc(100% - 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  opacity: 0;
+}
+
+.state-identity-continuous .sa-anchor-face,
+.state-roles-anchored .sa-anchor-face,
+.state-continuity-judged .sa-anchor-face {
+  opacity: 1;
+}
+
+.state-identity-continuous .sa-anchor-face {
+  animation: sa-stamp-in 0.6s ease-out 4.2s both;
+}
+
+.sa-anchor-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+/* 身份图形：环 + 芯，与阶段节点同族（同一身份） */
+.sa-glyph {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  flex: none;
+}
+
+.sa-glyph-ring {
+  position: absolute;
+  inset: 0;
+  border: 5px solid var(--accent);
+  border-radius: 50%;
+}
+
+.sa-glyph-core {
+  position: absolute;
+  inset: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.state-identity-continuous .sa-glyph {
+  animation: sa-glyph-pop 0.5s var(--ease-overshoot) 4.5s both;
+}
+
+.sa-hero-id {
+  margin: 0;
+  font-size: 80px;
+  font-weight: 900;
+  line-height: 1.08;
+  color: var(--text);
+}
+
+.sa-hero-id span {
+  display: block;
+}
+
+.sa-anchor-sub {
+  margin: 0;
+  font-size: 16px;
+  letter-spacing: 0.26em;
+  color: var(--text-mute);
+}
+
+/* ── ordered-stages（U026）：真实顺序链，按先后点亮，完成后整体保持 ─ */
+.sa-stages {
+  position: relative;
+  padding: 30px 10px 8px;
+}
+
+.sa-stages-cap {
+  position: absolute;
+  top: 0;
+  left: 8px;
+  font-size: 16px;
+  letter-spacing: 0.24em;
+  color: var(--text-mute);
+  opacity: 0;
+}
+
+.state-identity-continuous .sa-stages-cap,
+.state-roles-anchored .sa-stages-cap,
+.state-continuity-judged .sa-stages-cap {
+  opacity: 1;
+}
+
+.state-identity-continuous .sa-stages-cap {
+  animation: sa-rise-in 0.5s ease-out 5.2s both;
+}
+
+/* 身份线：从首个节点贯穿到最后节点（时间线对位口播四阶段） */
+.sa-thread {
+  position: absolute;
+  top: 50px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 4px;
+  background: var(--theme-structural);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.state-identity-continuous .sa-thread {
+  transform: scaleX(1);
+  transition: transform 4s var(--ease-soft);
+  transition-delay: 5.4s;
+}
+
+.state-roles-anchored .sa-thread,
+.state-continuity-judged .sa-thread {
+  transform: scaleX(1);
+  transition: none;
+}
+
+.sa-stage-row {
+  display: flex;
+}
+
+.sa-stage {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.state-identity-continuous .sa-stage,
+.state-roles-anchored .sa-stage,
+.state-continuity-judged .sa-stage {
+  opacity: 1;
+  transform: none;
+}
+
+.state-identity-continuous .sa-stage {
+  animation: sa-node-in 0.55s var(--ease-soft) both;
+}
+
+.state-identity-continuous .sa-stage:nth-child(1) {
+  animation-delay: 6.1s;
+}
+
+.state-identity-continuous .sa-stage:nth-child(2) {
+  animation-delay: 7s;
+}
+
+.state-identity-continuous .sa-stage:nth-child(3) {
+  animation-delay: 7.9s;
+}
+
+.state-identity-continuous .sa-stage:nth-child(4) {
+  animation-delay: 8.8s;
+}
+
+/* 节点：与锚点同族的环+芯，四个完全相同＝同一个身份 */
+.sa-stage-node {
+  height: 44px;
+  display: grid;
+  place-items: center;
+}
+
+.sa-stage-dot {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 4px solid var(--accent);
+  background: var(--surface-2);
+}
+
+.sa-stage-dot::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.sa-stage-name {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.sa-stage-idx {
+  font-size: 16px;
+  letter-spacing: 0.2em;
+  color: var(--text-mute);
+}
+
+/* ── stage-purpose（U027）：职责区出现，R016 连线回指锚点 ────────── */
+.sa-roles {
+  position: relative;
+  min-height: 0;
+  padding: 24px 28px;
+  border: 2px dashed var(--rule);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.state-roles-anchored .sa-roles,
+.state-continuity-judged .sa-roles {
+  opacity: 1;
+  transform: none;
+  background: var(--surface-2);
+}
+
+.state-roles-anchored .sa-roles {
+  animation: sa-frame-in 0.55s ease-out 0.3s both;
+}
+
+.state-continuity-judged .sa-roles {
+  animation: none;
+}
+
+/* R016 载体：虚线连线 + 箭头回指左列锚点 */
+/* R016 回指标记：从职责区左边界向左伸入两栏间隙，箭头指向锚点。
+ * .sa-roles 左边界到 .sa-anchor 右边界只有 grid column-gap 的 64px，
+ * 原来 width:120px 会越界 56px 压在锚点卡片上（实测重叠 43.1px），
+ * 收窄到 44px 让箭头（含 12px 箭头翼）完整落在间隙内。 */
+.sa-link {
+  position: absolute;
+  top: 42%;
+  right: 100%;
+  width: 44px;
+  border-top: 3px dashed var(--theme-structural);
+  opacity: 0;
+}
+
+.state-roles-anchored .sa-link,
+.state-continuity-judged .sa-link {
+  opacity: 1;
+}
+
+.state-roles-anchored .sa-link {
+  animation: sa-link-in 0.8s ease-out 11.2s both;
+}
+
+.sa-link-head {
+  position: absolute;
+  left: -2px;
+  top: -7px;
+  border-left: 12px solid transparent;
+  border-right: 12px solid var(--theme-structural);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.sa-link-chip {
+  position: absolute;
+  /* 贴连接线右端（职责区左边界）对齐：标签宽约 98px，而两栏间隙只有
+   * grid column-gap 的 64px，无法完整落在间隙内。选择贴右侧、把不可避免的
+   * 侵入放在左卡方向，并收紧 padding 与字距把侵入压到最小；箭头留在间隙里。 */
+  right: 0;
+  top: 0;
+  transform: translateY(-50%);
+  padding: 4px 8px;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: var(--theme-structural);
+  background: var(--surface);
+}
+
+.sa-roles-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+
+.sa-roles-tag {
+  font-size: 16px;
+  letter-spacing: 0.2em;
+  color: var(--text-mute);
+}
+
+.sa-roles-title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--text);
+  opacity: 0;
+}
+
+.state-roles-anchored .sa-roles-title,
+.state-continuity-judged .sa-roles-title {
+  opacity: 1;
+}
+
+.state-roles-anchored .sa-roles-title {
+  animation: sa-rise-in 0.5s ease-out 9.4s both;
+}
+
+.sa-role-list {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sa-role {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.state-roles-anchored .sa-role,
+.state-continuity-judged .sa-role {
+  opacity: 1;
+  transform: none;
+}
+
+.state-roles-anchored .sa-role:nth-child(1) {
+  animation: sa-rise-in 0.5s ease-out 0.6s both;
+}
+
+.state-roles-anchored .sa-role:nth-child(2) {
+  animation: sa-rise-in 0.5s ease-out 3.2s both;
+}
+
+.state-roles-anchored .sa-role:nth-child(3) {
+  animation: sa-rise-in 0.5s ease-out 5.8s both;
+}
+
+.sa-role-sys {
+  flex: none;
+  min-width: 176px;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--surface-2);
+  background: var(--theme-structural);
+}
+
+.sa-role-duty {
+  font-size: 29px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+/* 唯一标识的连接作用（R016 陈述句） */
+.sa-connect {
+  margin: auto 0 0;
+  padding-top: 18px;
+  border-top: 2px dashed var(--rule);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.state-roles-anchored .sa-connect,
+.state-continuity-judged .sa-connect {
+  opacity: 1;
+  transform: none;
+}
+
+.state-roles-anchored .sa-connect {
+  animation: sa-rise-in 0.6s ease-out 10.4s both;
+}
+
+.sa-connect em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+/* ── continuity-judgment（U028）：末拍收束，此前绝不出现 ─────────── */
+.sa-judgment {
+  flex: none;
+  margin-top: 26px;
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 0 30px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  opacity: 0;
+}
+
+.state-continuity-judged .sa-judgment {
+  animation: sa-rise-in 0.6s ease-out 0.5s both;
+}
+
+.sa-judgment-label {
+  flex: none;
+  padding: 8px 18px;
+  font-size: 16px;
+  letter-spacing: 0.18em;
+  color: var(--surface-2);
+  background: var(--theme-structural);
+}
+
+.sa-judgment-text {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.sa-judgment-text em {
+  position: relative;
+  padding: 0 4px;
+  font-style: normal;
+  color: var(--accent);
+}
+
+.sa-judgment-text em::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: -7px;
+  height: 6px;
+  background: var(--accent-soft);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.state-continuity-judged .sa-judgment-text em::after {
+  animation: sa-underline 0.45s ease-out both;
+}
+
+.state-continuity-judged .sa-em-aim::after {
+  animation-delay: 1.6s;
+}
+
+.state-continuity-judged .sa-em-link::after {
+  animation-delay: 3.6s;
+}
+
+.sa-judgment-dash {
+  margin: 0 8px;
+  font-weight: 400;
+  color: var(--text-mute);
+}
+
+/* ── keyframes ──────────────────────────────────────────────────── */
+@keyframes sa-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sa-rule-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes sa-stamp-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sa-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes sa-strike {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes sa-gantry-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sa-part-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sa-glyph-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sa-node-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sa-frame-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 只用透明度渐入，不做水平位移：该动画带 11.2s 延迟且 fill 为 both，位移一旦
+ * 停在起始帧会把整个回指标记（含「共同身份」标签）右移 16px 压到锚点卡片上。
+ * 去掉位移后无论动画处于延迟/运行/填充哪个阶段，标记的水平位置都不变。 */
+@keyframes sa-link-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sa-underline {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

@@ -1,0 +1,249 @@
+/* back-to-the-box · image-with-summary-rail
+   mechanism: persistent-media-reading — 主图回扣开场并在左侧持续在场，
+   编号总结带七站依次落位、链线自上而下自绘成一条完整链条；第 2 拍主图与
+   总结带保持并弱化，最终判断条在下方收束（R024 上下位置）。
+   prefix: bb- */
+
+.bb-scene {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+/* ── 头部：标题 + 分工引导（S055 / S056） ─────────────── */
+
+.bb-head {
+  flex: none;
+}
+
+.bb-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 68px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--theme-structural);
+  animation: bb-rise 560ms var(--ease-soft) both;
+}
+
+.bb-lead {
+  margin: 16px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--text-2);
+  animation: bb-rise 560ms var(--ease-soft) 160ms both;
+}
+
+/* ── 主体行：M004 空白版位（左） + 编号总结带（右）并列 ── */
+
+.bb-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 48px;
+}
+
+/* M004 未就位：只保留素净空白版位，不放任何占位图或占位文案 */
+
+.bb-media {
+  flex: none;
+  width: 620px;
+  background: var(--surface-2);
+  border: 2px dashed var(--rule);
+  opacity: 0;
+  animation: bb-fade 520ms var(--ease-soft) 260ms both;
+}
+
+/* 编号总结带：一条竖向链线，七站等权落位 */
+
+.bb-band {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  display: flex;
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-settled .bb-band {
+  opacity: 0.74;
+}
+
+.bb-band-line {
+  position: absolute;
+  left: 21px;
+  top: 6px;
+  bottom: 6px;
+  width: 4px;
+  background: var(--theme-structural);
+  transform-origin: top center;
+  animation: bb-draw 860ms var(--ease-soft) 420ms both;
+}
+
+.bb-stops {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bb-stop {
+  display: grid;
+  grid-template-columns: 46px 108px 1fr;
+  align-items: center;
+  opacity: 0;
+  animation: bb-stop-in 440ms var(--ease-soft)
+    calc(560ms + var(--bb-i) * 1050ms) both;
+}
+
+.bb-stop-node {
+  grid-column: 1;
+  justify-self: center;
+  width: 18px;
+  height: 18px;
+  background: var(--surface-2);
+  border: 4px solid var(--theme-structural);
+}
+
+.bb-stop-no {
+  grid-column: 2;
+  font-size: 26px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+.bb-stop-name {
+  grid-column: 3;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* ── 最终判断区：孤岛小图 + 因果链（第 2 拍收束） ──────── */
+
+.bb-judgment {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 26px 40px;
+  background: var(--theme-warning-surface);
+  border: 3px solid var(--theme-warning);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 460ms var(--ease-soft),
+    transform 560ms var(--ease-soft);
+}
+
+.is-settled .bb-judgment {
+  opacity: 1;
+  transform: none;
+}
+
+.bb-islands {
+  flex: none;
+  width: 200px;
+  height: 66px;
+  overflow: visible;
+}
+
+.bb-island {
+  fill: var(--surface-2);
+  stroke: var(--theme-warning);
+  stroke-width: 3.5;
+  opacity: 0;
+  transition: opacity 360ms var(--ease-soft);
+}
+
+.is-settled .bb-island--a { opacity: 1; transition-delay: 200ms; }
+.is-settled .bb-island--b { opacity: 1; transition-delay: 360ms; }
+.is-settled .bb-island--c { opacity: 1; transition-delay: 520ms; }
+
+.bb-broken {
+  stroke: var(--theme-warning);
+  stroke-width: 3.5;
+  stroke-dasharray: 7 9;
+  opacity: 0;
+  transition: opacity 360ms var(--ease-soft) 640ms;
+}
+
+.is-settled .bb-broken {
+  opacity: 0.85;
+}
+
+.bb-chain {
+  margin: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.bb-chain-item {
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  white-space: nowrap;
+  color: var(--theme-structural);
+}
+
+.bb-chain-arrow {
+  flex: none;
+  width: 30px;
+  height: 24px;
+  opacity: 0;
+  transition: opacity 320ms var(--ease-soft);
+}
+
+.bb-chain-arrow polyline {
+  fill: none;
+  stroke: var(--theme-warning);
+  stroke-width: 4.5;
+  stroke-linecap: square;
+}
+
+.is-settled .bb-chain-arrow--a { opacity: 1; transition-delay: 480ms; }
+.is-settled .bb-chain-arrow--b { opacity: 1; transition-delay: 680ms; }
+
+/* ── keyframes（仅一次性入场，终态与稳定画面一致） ─────── */
+
+@keyframes bb-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bb-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bb-draw {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes bb-stop-in {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
