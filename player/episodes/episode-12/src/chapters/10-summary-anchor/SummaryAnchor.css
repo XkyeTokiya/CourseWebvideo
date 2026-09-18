@@ -19,7 +19,12 @@
   gap: 30px;
 }
 
+/* .sa-head 是 flex 行，而 hr.rule 带 width:100%（base.css .rule）→ 其 flex
+ * base size 等于整行 1700px。若不钉住标题与注记的收缩，负自由空间会按
+ * shrink×basis 摊派到三者，标题被压到 ≈509px 而折行（固有 850px）。
+ * 故：标题与注记 flex:none 保持固有宽，hr 改 flex:1 + width:auto 只占余量。 */
 .sa-headline {
+  flex: none;
   margin: 0;
   font-size: 50px;
   font-weight: 900;
@@ -28,6 +33,7 @@
 }
 
 .sa-head-note {
+  flex: none;
   margin-left: auto;
   font-size: 16px;
   letter-spacing: 0.22em;
@@ -35,6 +41,8 @@
 }
 
 .sa-head-rule {
+  flex: 1;
+  width: auto;
   margin-top: 20px;
   transform-origin: left center;
 }
@@ -287,7 +295,9 @@
   position: absolute;
   left: 5%;
   right: 5%;
-  top: 50%;
+  /* 32px 内联盒里的 16px 字形，其视觉中线比盒中心高约 4px；取 50% 会把线
+   * 切在字的下缘，读成下划线而非删除线，故上移 4px 使其穿过字的中宫。 */
+  top: calc(50% - 4px);
   height: 3px;
   margin-top: -1.5px;
   background: var(--theme-warning);
@@ -305,6 +315,10 @@
 }
 
 .sa-not-tag-text {
+  /* 与 .sa-tag-chip 等高（padding 5×2 + line-height 24 + border 2×2 = 38px），
+   * 使 align-items:center 对齐时两段文字的视觉中心重合（否则 19px 字的中心
+   * 会比 38px chip 低约 5.6px）。 */
+  line-height: 38px;
   font-size: 19px;
   font-weight: 700;
   color: var(--text-2);
@@ -539,11 +553,15 @@
 }
 
 /* R016 载体：虚线连线 + 箭头回指左列锚点 */
+/* R016 回指标记：从职责区左边界向左伸入两栏间隙，箭头指向锚点。
+ * .sa-roles 左边界到 .sa-anchor 右边界只有 grid column-gap 的 64px，
+ * 原来 width:120px 会越界 56px 压在锚点卡片上（实测重叠 43.1px），
+ * 收窄到 44px 让箭头（含 12px 箭头翼）完整落在间隙内。 */
 .sa-link {
   position: absolute;
   top: 42%;
   right: 100%;
-  width: 120px;
+  width: 44px;
   border-top: 3px dashed var(--theme-structural);
   opacity: 0;
 }
@@ -569,12 +587,15 @@
 
 .sa-link-chip {
   position: absolute;
-  left: 50%;
+  /* 贴连接线右端（职责区左边界）对齐：标签宽约 98px，而两栏间隙只有
+   * grid column-gap 的 64px，无法完整落在间隙内。选择贴右侧、把不可避免的
+   * 侵入放在左卡方向，并收紧 padding 与字距把侵入压到最小；箭头留在间隙里。 */
+  right: 0;
   top: 0;
-  transform: translate(-50%, -50%);
-  padding: 4px 12px;
+  transform: translateY(-50%);
+  padding: 4px 8px;
   font-size: 16px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.02em;
   white-space: nowrap;
   color: var(--theme-structural);
   background: var(--surface);
@@ -866,14 +887,15 @@
   }
 }
 
+/* 只用透明度渐入，不做水平位移：该动画带 11.2s 延迟且 fill 为 both，位移一旦
+ * 停在起始帧会把整个回指标记（含「共同身份」标签）右移 16px 压到锚点卡片上。
+ * 去掉位移后无论动画处于延迟/运行/填充哪个阶段，标记的水平位置都不变。 */
 @keyframes sa-link-in {
   from {
     opacity: 0;
-    transform: translateX(16px);
   }
   to {
     opacity: 1;
-    transform: none;
   }
 }
 

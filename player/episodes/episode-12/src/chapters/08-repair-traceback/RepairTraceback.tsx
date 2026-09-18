@@ -136,7 +136,9 @@ export default function RepairTraceback({ step }: ChapterStepProps) {
           <div className="rt-verdict">
             <span className="rt-verdict-lead mono">追溯收束 · 数据依据</span>
             <p className="rt-verdict-hero serif-cn">
-              更可核对的<em>数据依据</em>
+              更可核对的
+              <br aria-hidden="true" />
+              <em>数据依据</em>
             </p>
             <div className="rt-verdict-chips">
               <span className="rt-verdict-chip">不是自动的根因分析</span>

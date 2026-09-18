@@ -431,10 +431,17 @@
 .state-flow-verifiable-card .ps-stop:nth-child(5) .ps-stop-tick { animation-delay: 2.12s; }
 .state-flow-verifiable-card .ps-stop:nth-child(6) .ps-stop-tick { animation-delay: 2.36s; }
 
+/* 徽标与标语改为上下两行：两者均 nowrap，并排时 167+232+12 = 411px，
+ * 超过流转卡内容宽 357px，多出的 54px 越过 padding box 画到卡片边框之外
+ * （宽度来源：1920 舞台 − 2×110 内边距 = 1700；减 .ps-main gap 40 后按
+ * .ps-cards flex 1.5 / .ps-media flex 1 分配 → 双卡区 996px；grid
+ * 1fr/118px/1fr + 2×24 gap → 每卡 415px；再减卡片 padding 2×28 + border 2）。
+ * .ps-issue 与 .ps-flowcell 均为 min-width:0 且无 overflow:hidden，
+ * 故文字直接压到右侧语境图上。拆行后单行最宽 232px，余量 125px。 */
 .ps-flow-caption {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 12px;
 }
 

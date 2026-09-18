@@ -183,11 +183,13 @@
   animation: rt-fade 0.4s ease-out 0.5s both;
 }
 
-/* 两栏卡片共同骨架 */
+/* 两栏卡片共同骨架
+ * padding 由 18px 收到 14px：右栏是 rail 里最高的一项，实测其高度直接决定
+ * 能否容下 .rt-trace，进而决定两个「延伸回查」标签是否重叠（见 .rt-trace）。 */
 .rt-col {
   display: flex;
   flex-direction: column;
-  padding: 18px 24px;
+  padding: 14px 24px;
   opacity: 0;
   transform: translateY(20px);
 }
@@ -457,7 +459,7 @@
 }
 
 .rt-judge-lead {
-  margin: 12px 0 0;
+  margin: 8px 0 0;
   font-size: 20px;
   letter-spacing: 0.06em;
   color: var(--text-2);
@@ -465,7 +467,7 @@
 }
 
 .rt-judge-hero {
-  margin: 4px 0 0;
+  margin: 2px 0 0;
   font-size: 36px;
   font-weight: 900;
   line-height: 1.2;
@@ -502,14 +504,14 @@
 .rt-judge-chips {
   display: flex;
   gap: 14px;
-  margin-top: 14px;
+  margin-top: 6px;
 }
 
 .rt-judge-chip {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 40px;
+  height: 34px;
   padding: 0 18px;
   font-size: 22px;
   font-weight: 700;
@@ -547,13 +549,13 @@
 /* 查询入口边界句（S038 方向）：step4 栏内补入，此后保持 */
 .rt-bound {
   margin-top: auto;
-  padding-top: 12px;
+  padding-top: 8px;
   opacity: 0;
   transform: translateY(10px);
 }
 
 .rt-bound-rule {
-  margin: 0 0 12px;
+  margin: 0 0 8px;
   transform-origin: left center;
 }
 
@@ -600,15 +602,22 @@
 }
 
 /* ── R014 延伸回查连接（step5 出现，向下指向生产侧）─────────────── */
+/* 竖虚线（绝对定位 width:0）不进 flex 流，标签仅靠 padding-left 起排，两者
+ * 贴得过近。这里保留虚线原位置，把标签起点右移并拉开间距，使线与文字之间
+ * 留出明确空隙（箭头左右各占 7px，文字从 74px 起排）。 */
 .rt-trace {
   position: relative;
   flex: none;
   height: 56px;
+  /* 本行是 .rt-rail 的末项，下方紧接着 .rt-final 的「延伸回查 · 生产侧」。
+   * rail 高度被 footer 挤到 495.6px 时其内容需 578.2px，本行会被压出 rail
+   * 边界并直接压到该标签上（实测重叠 26.6px）。因此这里不再额外加 margin：
+   * 间距只能来自 rail 的真实富余，靠减少 .rt-col-judge 高度换回来。 */
   margin-top: auto;
-  padding-left: 56px;
+  padding-left: 74px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 18px;
   opacity: 0;
 }
 
@@ -692,7 +701,9 @@
   display: flex;
   align-items: stretch;
   gap: 32px;
-  padding: 20px 36px;
+  /* 上下内边距 20→10：本卡是页面最高的固定项，其高度全部由 .rt-main 让出。
+   * 实测它每减 20px，.rt-trace 超出 .rt-rail 的量就少 20px。 */
+  padding: 10px 36px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.45s ease;
@@ -924,10 +935,10 @@
 }
 
 .rt-verdict-hero {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   font-size: 80px;
   font-weight: 900;
-  line-height: 1.05;
+  line-height: 1.0;
   color: var(--text);
   opacity: 0;
   transform: translateY(20px);
@@ -941,7 +952,7 @@
 .rt-verdict-chips {
   display: flex;
   gap: 14px;
-  margin-top: 14px;
+  margin-top: 10px;
 }
 
 .rt-verdict-chip {

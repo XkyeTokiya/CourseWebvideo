@@ -18,7 +18,12 @@
   gap: 30px;
 }
 
+/* .cr-head 是 flex 行，而 hr.rule 带 width:100%（base.css .rule）→ 其 flex
+ * base size 等于整行 1700px。若不钉住标题与注记的收缩，负自由空间会按
+ * shrink×basis 摊派到三者，标题被压到 ≈348px 而折行（固有 504px）。
+ * 故：标题与注记 flex:none 保持固有宽，hr 改 flex:1 + width:auto 只占余量。 */
 .cr-headline {
+  flex: none;
   margin: 0;
   font-size: 56px;
   font-weight: 900;
@@ -27,12 +32,15 @@
 }
 
 .cr-head-note {
+  flex: none;
   font-size: 17px;
   letter-spacing: 0.18em;
   color: var(--text-mute);
 }
 
 .cr-head-rule {
+  flex: 1;
+  width: auto;
   margin-top: 22px;
   transform-origin: left center;
 }
