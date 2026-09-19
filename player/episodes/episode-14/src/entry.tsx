@@ -11,6 +11,8 @@ import A004Chapter from "./chapters/04-uniqueness-scope/A004Chapter";
 import { narrations as a004Narrations } from "./chapters/04-uniqueness-scope/narrations";
 import A005Chapter from "./chapters/05-compatibility-bridge/A005Chapter";
 import { narrations as a005Narrations } from "./chapters/05-compatibility-bridge/narrations";
+import A006Chapter from "./chapters/06-practicality-field/A006Chapter";
+import { narrations as a006Narrations } from "./chapters/06-practicality-field/narrations";
 
 export const id = "episode-14";
 export const title = "第 14 期 · 标识编码体系认知";
@@ -52,5 +54,11 @@ export const CHAPTERS: ChapterDef[] = [
     title: "兼容性与迁移延续",
     narrations: a005Narrations,
     Component: A005Chapter,
+  },
+  {
+    id: "06-practicality-field",
+    title: "实用性与现场条件",
+    narrations: a006Narrations,
+    Component: A006Chapter,
   },
 ];
