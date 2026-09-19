@@ -13,6 +13,8 @@ import A005Chapter from "./chapters/05-compatibility-bridge/A005Chapter";
 import { narrations as a005Narrations } from "./chapters/05-compatibility-bridge/narrations";
 import A006Chapter from "./chapters/06-practicality-field/A006Chapter";
 import { narrations as a006Narrations } from "./chapters/06-practicality-field/narrations";
+import A007Chapter from "./chapters/07-extensibility-reserve/A007Chapter";
+import { narrations as a007Narrations } from "./chapters/07-extensibility-reserve/narrations";
 
 export const id = "episode-14";
 export const title = "第 14 期 · 标识编码体系认知";
@@ -60,5 +62,11 @@ export const CHAPTERS: ChapterDef[] = [
     title: "实用性与现场条件",
     narrations: a006Narrations,
     Component: A006Chapter,
+  },
+  {
+    id: "07-extensibility-reserve",
+    title: "扩展性与容量预留",
+    narrations: a007Narrations,
+    Component: A007Chapter,
   },
 ];

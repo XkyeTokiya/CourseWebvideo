@@ -4,9 +4,9 @@
   "status": "in-progress",
   "theme": "active-identification-signal-grid",
   "progress": {
-    "completed": 6,
+    "completed": 7,
     "total": 10,
-    "current": "06-practicality-field"
+    "current": "07-extensibility-reserve"
   },
   "updatedAt": "2026-09-19"
 }
