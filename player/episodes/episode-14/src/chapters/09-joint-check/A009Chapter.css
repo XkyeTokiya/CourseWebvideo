@@ -1,0 +1,506 @@
+/* A009 · 五问联检 —— 前缀 .jc- 仅本章使用；颜色/字体全部走主题 token。
+   首拍入场用 keyframe（挂载即播）；后续状态切换用 transition（基础态即时可逆）。
+   三段推进：风险映射 → 误解对照 → 追问检查表；已收束的段压缩为摘要条。 */
+
+.jc-root {
+  gap: 18px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题 ───────────────────────────────────────────────── */
+
+.jc-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.jc-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 主区：内容列 ＋ 评审现场图 ───────────────────────────────── */
+
+.jc-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+}
+
+.jc-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.jc-media {
+  margin: 0;
+  flex: 0 0 560px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.jc-media-img {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--theme-dashed-line);
+  box-shadow: var(--card-shadow);
+}
+
+.jc-media-caption {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: var(--text-mute);
+}
+
+/* ── 段落通用 ─────────────────────────────────────────────────── */
+
+.jc-band {
+  padding: 18px 26px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 4px 16px 4px 16px;
+  box-shadow: var(--card-shadow);
+}
+
+.jc-band-title {
+  margin: 0 0 12px;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 26px;
+  color: var(--theme-structural);
+}
+
+.jc-band-b,
+.jc-band-c {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="length-myth"] .jc-band-b,
+[data-state="novelty-myth"] .jc-band-b,
+[data-state="short-sight-myth"] .jc-band-b,
+[data-state="myths-concluded"] .jc-band-b,
+[data-state="five-questions-lit"] .jc-band-b,
+[data-state="checklist-formed"] .jc-band-b,
+[data-state="five-questions-lit"] .jc-band-c,
+[data-state="checklist-formed"] .jc-band-c {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── A 段：风险映射 ───────────────────────────────────────────── */
+
+.jc-a-full,
+.jc-b-full {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 1;
+  transition:
+    max-height 0.6s ease,
+    opacity 0.4s ease;
+}
+
+[data-state="risks-mapped-with-judgment"] .jc-a-full {
+  max-height: 420px;
+}
+
+[data-state="length-myth"] .jc-b-full,
+[data-state="novelty-myth"] .jc-b-full,
+[data-state="short-sight-myth"] .jc-b-full,
+[data-state="myths-concluded"] .jc-b-full {
+  max-height: 380px;
+}
+
+.jc-a-compact,
+.jc-b-compact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.6s ease,
+    opacity 0.4s ease 0.25s;
+}
+
+[data-state="length-myth"] .jc-a-full,
+[data-state="novelty-myth"] .jc-a-full,
+[data-state="short-sight-myth"] .jc-a-full,
+[data-state="myths-concluded"] .jc-a-full,
+[data-state="five-questions-lit"] .jc-a-full,
+[data-state="checklist-formed"] .jc-a-full {
+  max-height: 0;
+  opacity: 0;
+}
+
+[data-state="length-myth"] .jc-a-compact,
+[data-state="novelty-myth"] .jc-a-compact,
+[data-state="short-sight-myth"] .jc-a-compact,
+[data-state="myths-concluded"] .jc-a-compact,
+[data-state="five-questions-lit"] .jc-a-compact,
+[data-state="checklist-formed"] .jc-a-compact {
+  max-height: 60px;
+  opacity: 1;
+}
+
+[data-state="five-questions-lit"] .jc-b-full,
+[data-state="checklist-formed"] .jc-b-full {
+  max-height: 0;
+  opacity: 0;
+}
+
+[data-state="five-questions-lit"] .jc-b-compact,
+[data-state="checklist-formed"] .jc-b-compact {
+  max-height: 60px;
+  opacity: 1;
+}
+
+.jc-risk-row {
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateX(-18px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.jc-risk-name {
+  flex: 0 0 118px;
+  padding: 5px 0;
+  text-align: center;
+  background: var(--theme-structural);
+  color: var(--surface-2);
+  font-weight: 900;
+  font-size: 22px;
+  border-radius: 4px;
+}
+
+.jc-risk-arrow {
+  color: var(--theme-process);
+  font-weight: 900;
+}
+
+.jc-a-judgment {
+  margin: 12px 0 0;
+  align-self: flex-start;
+  padding: 8px 20px;
+  background: var(--theme-warning-surface);
+  border-left: 4px solid var(--theme-warning);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 23px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+/* 压缩条元素 */
+.jc-compact-chip {
+  padding: 7px 16px;
+  background: var(--theme-structural);
+  color: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 19px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.jc-compact-note {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--theme-process);
+  white-space: nowrap;
+}
+
+/* ── B 段：误解对照 ───────────────────────────────────────────── */
+
+.jc-myth-row {
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 23px;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateX(20px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.jc-chip {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 19px;
+}
+
+.jc-chip-myth {
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  color: var(--theme-structural);
+}
+
+.jc-chip-fix {
+  background: var(--theme-process);
+  color: var(--surface-2);
+}
+
+.jc-myth-arrow {
+  color: var(--theme-process);
+  font-weight: 900;
+}
+
+.jc-b-conclusion {
+  margin: 12px 0 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 24px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+/* ── C 段：追问检查表 ─────────────────────────────────────────── */
+
+.jc-band-c {
+  background: var(--theme-process-surface);
+}
+
+.jc-question {
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateX(-18px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.jc-q-no {
+  flex: 0 0 52px;
+  padding: 4px 0;
+  text-align: center;
+  background: var(--theme-process);
+  color: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+.jc-closing {
+  margin: 12px 0 0;
+  padding: 12px 22px;
+  background: var(--theme-structural);
+  color: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 25px;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+/* ── 首拍入场节拍（keyframe：挂载即播） ───────────────────────── */
+
+[data-state="risk-question-raised"] .jc-header {
+  animation: jc-rise-in 0.5s ease 0.1s both;
+}
+
+[data-state="risk-question-raised"] .jc-media {
+  animation: jc-media-in 0.6s ease 0.35s both;
+}
+
+[data-state="risk-question-raised"] .jc-band-a {
+  animation: jc-band-in 0.55s ease 0.55s both;
+}
+
+@keyframes jc-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes jc-media-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes jc-band-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 状态可见性开启（延迟规则只负责错峰，开启在这里统一声明） ──── */
+
+[data-state="risks-mapped-with-judgment"] .jc-risk-row {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="risks-mapped-with-judgment"] .jc-a-judgment {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="length-myth"] .jc-myth-row:nth-of-type(1),
+[data-state="novelty-myth"] .jc-myth-row:nth-of-type(1),
+[data-state="short-sight-myth"] .jc-myth-row:nth-of-type(1),
+[data-state="myths-concluded"] .jc-myth-row:nth-of-type(1),
+[data-state="novelty-myth"] .jc-myth-row:nth-of-type(2),
+[data-state="short-sight-myth"] .jc-myth-row:nth-of-type(2),
+[data-state="myths-concluded"] .jc-myth-row:nth-of-type(2),
+[data-state="short-sight-myth"] .jc-myth-row:nth-of-type(3),
+[data-state="myths-concluded"] .jc-myth-row:nth-of-type(3) {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="myths-concluded"] .jc-b-conclusion {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="five-questions-lit"] .jc-question,
+[data-state="checklist-formed"] .jc-question {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="checklist-formed"] .jc-closing {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── 状态进入延迟：只挂在进入态选择器上 ───────────────────────── */
+
+[data-state="risks-mapped-with-judgment"] .jc-risk-row:nth-of-type(1) {
+  transition-delay: 0.3s, 0.3s;
+}
+
+[data-state="risks-mapped-with-judgment"] .jc-risk-row:nth-of-type(2) {
+  transition-delay: 0.7s, 0.7s;
+}
+
+[data-state="risks-mapped-with-judgment"] .jc-risk-row:nth-of-type(3) {
+  transition-delay: 1.1s, 1.1s;
+}
+
+[data-state="risks-mapped-with-judgment"] .jc-risk-row:nth-of-type(4) {
+  transition-delay: 1.5s, 1.5s;
+}
+
+[data-state="risks-mapped-with-judgment"] .jc-risk-row:nth-of-type(5) {
+  transition-delay: 1.9s, 1.9s;
+}
+
+[data-state="risks-mapped-with-judgment"] .jc-a-judgment {
+  transition-delay: 2.6s, 2.6s;
+}
+
+[data-state="length-myth"] .jc-myth-row:nth-of-type(1) {
+  transition-delay: 0.25s, 0.25s;
+}
+
+[data-state="novelty-myth"] .jc-myth-row:nth-of-type(2) {
+  transition-delay: 0.25s, 0.25s;
+}
+
+[data-state="short-sight-myth"] .jc-myth-row:nth-of-type(3) {
+  transition-delay: 0.25s, 0.25s;
+}
+
+[data-state="myths-concluded"] .jc-b-conclusion {
+  transition-delay: 0.3s, 0.3s;
+}
+
+[data-state="five-questions-lit"] .jc-question:nth-of-type(1) {
+  transition-delay: 0.9s, 0.9s;
+}
+
+[data-state="five-questions-lit"] .jc-question:nth-of-type(2) {
+  transition-delay: 2s, 2s;
+}
+
+[data-state="five-questions-lit"] .jc-question:nth-of-type(3) {
+  transition-delay: 3.1s, 3.1s;
+}
+
+[data-state="five-questions-lit"] .jc-question:nth-of-type(4) {
+  transition-delay: 4.2s, 4.2s;
+}
+
+[data-state="five-questions-lit"] .jc-question:nth-of-type(5) {
+  transition-delay: 5.3s, 5.3s;
+}
+
+[data-state="checklist-formed"] .jc-closing {
+  transition-delay: 0.25s, 0.25s;
+}
