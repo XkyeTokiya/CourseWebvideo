@@ -15,6 +15,8 @@ import A006Chapter from "./chapters/06-practicality-field/A006Chapter";
 import { narrations as a006Narrations } from "./chapters/06-practicality-field/narrations";
 import A007Chapter from "./chapters/07-extensibility-reserve/A007Chapter";
 import { narrations as a007Narrations } from "./chapters/07-extensibility-reserve/narrations";
+import A008Chapter from "./chapters/08-scientific-structure/A008Chapter";
+import { narrations as a008Narrations } from "./chapters/08-scientific-structure/narrations";
 
 export const id = "episode-14";
 export const title = "第 14 期 · 标识编码体系认知";
@@ -68,5 +70,11 @@ export const CHAPTERS: ChapterDef[] = [
     title: "扩展性与容量预留",
     narrations: a007Narrations,
     Component: A007Chapter,
+  },
+  {
+    id: "08-scientific-structure",
+    title: "科学性与结构校验",
+    narrations: a008Narrations,
+    Component: A008Chapter,
   },
 ];
