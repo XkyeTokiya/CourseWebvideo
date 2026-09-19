@@ -1,0 +1,667 @@
+/* A008 · 相容表达与生命周期锚点 —— 前缀 .lia- 仅本章使用；颜色/字体全部走主题 token。
+   首拍入场用 transition（基础态即时可逆）；状态内的演示动作用 keyframe（只挂进入态选择器）。
+   动画预算：拍1 ~1.8s / 拍2 ~2.2s / 拍3 ~16s（按口播报到点落位）/ 拍4 ~2.0s。 */
+
+.lia-root {
+  gap: 26px;
+}
+
+/* ── 顶部标题（S032） ─────────────────────────────────────────── */
+
+.lia-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  opacity: 0;
+  transform: translateY(-12px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+[data-state="compatible-forms-shown"] .lia-header,
+[data-state="identity-invariant"] .lia-header,
+[data-state="stages-traversed"] .lia-header,
+[data-state="anchor-judged"] .lia-header {
+  opacity: 1;
+  transform: none;
+}
+
+.lia-heading-mark {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 54px;
+  background: var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.lia-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 包含盒：锚点铭牌骑跨盒沿，阶段带收纳于盒内（R008） ───────── */
+
+.lia-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+}
+
+.lia-box {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 44px 34px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: 8px 10px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+[data-state="compatible-forms-shown"] .lia-box,
+[data-state="identity-invariant"] .lia-box,
+[data-state="stages-traversed"] .lia-box,
+[data-state="anchor-judged"] .lia-box {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="compatible-forms-shown"] .lia-box {
+  transition-delay: 0.15s, 0.15s;
+}
+
+/* ── 固定身份铭牌（invariant-anchor · U021） ──────────────────── */
+
+.lia-plate {
+  position: relative;
+  flex: 0 0 auto;
+  margin: -54px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 18px 34px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(-18px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+[data-state="compatible-forms-shown"] .lia-plate,
+[data-state="identity-invariant"] .lia-plate,
+[data-state="stages-traversed"] .lia-plate,
+[data-state="anchor-judged"] .lia-plate {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="compatible-forms-shown"] .lia-plate {
+  transition-delay: 0.45s, 0.45s;
+}
+
+/* 拍 2 聚焦：四角取景框从外侧合拢，之后保持在场 */
+.lia-focus i {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 4px solid var(--theme-process);
+  opacity: 0;
+}
+
+.lia-focus i:nth-of-type(1) {
+  top: -15px;
+  left: -15px;
+  border-right: none;
+  border-bottom: none;
+  --lia-fx: -34px;
+  --lia-fy: -34px;
+}
+
+.lia-focus i:nth-of-type(2) {
+  top: -15px;
+  right: -15px;
+  border-left: none;
+  border-bottom: none;
+  --lia-fx: 34px;
+  --lia-fy: -34px;
+}
+
+.lia-focus i:nth-of-type(3) {
+  bottom: -15px;
+  left: -15px;
+  border-right: none;
+  border-top: none;
+  --lia-fx: -34px;
+  --lia-fy: 34px;
+}
+
+.lia-focus i:nth-of-type(4) {
+  bottom: -15px;
+  right: -15px;
+  border-left: none;
+  border-top: none;
+  --lia-fx: 34px;
+  --lia-fy: 34px;
+}
+
+[data-state="identity-invariant"] .lia-focus i,
+[data-state="stages-traversed"] .lia-focus i,
+[data-state="anchor-judged"] .lia-focus i {
+  opacity: 1;
+}
+
+[data-state="identity-invariant"] .lia-focus i {
+  animation: lia-focus-snap 0.55s cubic-bezier(0.3, 0.6, 0.25, 1) both;
+}
+
+[data-state="identity-invariant"] .lia-focus i:nth-of-type(1) {
+  animation-delay: 0.15s;
+}
+
+[data-state="identity-invariant"] .lia-focus i:nth-of-type(2) {
+  animation-delay: 0.24s;
+}
+
+[data-state="identity-invariant"] .lia-focus i:nth-of-type(3) {
+  animation-delay: 0.33s;
+}
+
+[data-state="identity-invariant"] .lia-focus i:nth-of-type(4) {
+  animation-delay: 0.42s;
+}
+
+@keyframes lia-focus-snap {
+  from {
+    opacity: 0;
+    transform: translate(var(--lia-fx), var(--lia-fy));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 身份图块：拍 2 内框翻转一次 —— 表达换、对象不变 */
+.lia-plate-tile {
+  position: relative;
+  flex: 0 0 auto;
+  width: 96px;
+  height: 96px;
+  display: grid;
+  place-items: center;
+  background: var(--theme-structural);
+  color: var(--surface-2);
+  border-radius: 10px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.lia-plate-flip {
+  position: absolute;
+  inset: 9px;
+  border: 2px solid var(--theme-process);
+  border-radius: 6px;
+}
+
+[data-state="identity-invariant"] .lia-plate-flip {
+  animation: lia-flip 1.3s ease-in-out 0.9s both;
+}
+
+@keyframes lia-flip {
+  0% {
+    transform: perspective(320px) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(320px) rotateY(86deg);
+  }
+  100% {
+    transform: perspective(320px) rotateY(0deg);
+  }
+}
+
+.lia-glyph {
+  width: 52px;
+  height: 52px;
+}
+
+.lia-plate-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lia-plate-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 42px;
+  line-height: 1.12;
+  color: var(--theme-structural);
+}
+
+.lia-plate-sub {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1.3;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="compatible-forms-shown"] .lia-plate-sub,
+[data-state="identity-invariant"] .lia-plate-sub,
+[data-state="stages-traversed"] .lia-plate-sub,
+[data-state="anchor-judged"] .lia-plate-sub {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="compatible-forms-shown"] .lia-plate-sub-1 {
+  transition-delay: 1s, 1s;
+}
+
+[data-state="compatible-forms-shown"] .lia-plate-sub-2 {
+  transition-delay: 1.25s, 1.25s;
+}
+
+/* 拍 2 收拢句：场景换 · 表达换 · 身份不变 */
+.lia-plate-formula {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 6px 0 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 25px;
+  color: var(--theme-process);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="identity-invariant"] .lia-plate-formula,
+[data-state="stages-traversed"] .lia-plate-formula,
+[data-state="anchor-judged"] .lia-plate-formula {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="identity-invariant"] .lia-plate-formula {
+  transition-delay: 1.7s, 1.7s;
+}
+
+.lia-formula-bar {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 8px;
+  background: var(--theme-process);
+}
+
+/* ── 无连线阶段带（ordered-stages · U022）：空格待命 → 逐格落位 ── */
+
+.lia-stages {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 26px;
+  border: 2px dashed var(--theme-dashed-line);
+  transition:
+    border-color 0.6s ease,
+    background-color 0.6s ease,
+    box-shadow 0.6s ease;
+}
+
+[data-state="stages-traversed"] .lia-stages,
+[data-state="anchor-judged"] .lia-stages {
+  border-color: var(--theme-structural);
+  background: var(--theme-process-surface);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+}
+
+/* 拍 3：四格落齐后阶段带整体收拢定格（口播 ~15.4s 处） */
+[data-state="stages-traversed"] .lia-stages {
+  transition-delay: 15.4s, 15.4s, 15.4s;
+}
+
+.lia-stage {
+  position: relative;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 22px 20px;
+  background: var(--surface-2);
+  border: 2px solid transparent;
+  transition:
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+/* 待命虚线壳：拍 1~2 四格均为空位，落位时按格淡出 */
+.lia-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px dashed var(--theme-dashed-line);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.lia-stage-punch {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 12px;
+  height: 12px;
+  background: var(--theme-structural);
+}
+
+[data-state="stages-traversed"] .lia-stage,
+[data-state="anchor-judged"] .lia-stage {
+  border-color: var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+[data-state="stages-traversed"] .lia-stage::before,
+[data-state="anchor-judged"] .lia-stage::before {
+  opacity: 0;
+}
+
+/* 逐格落位延迟 = 口播报到点（生产 ~3.6s / 销售 ~8s / 维护 ~13.8s / 回收 ~14.15s） */
+[data-state="stages-traversed"] .lia-stage:nth-of-type(1) {
+  transition-delay: 3.6s, 3.6s;
+}
+
+[data-state="stages-traversed"] .lia-stage:nth-of-type(2) {
+  transition-delay: 8s, 8s;
+}
+
+[data-state="stages-traversed"] .lia-stage:nth-of-type(3) {
+  transition-delay: 13.8s, 13.8s;
+}
+
+[data-state="stages-traversed"] .lia-stage:nth-of-type(4) {
+  transition-delay: 14.15s, 14.15s;
+}
+
+[data-state="stages-traversed"] .lia-stage:nth-of-type(1)::before {
+  transition-delay: 3.6s;
+}
+
+[data-state="stages-traversed"] .lia-stage:nth-of-type(2)::before {
+  transition-delay: 8s;
+}
+
+[data-state="stages-traversed"] .lia-stage:nth-of-type(3)::before {
+  transition-delay: 13.8s;
+}
+
+[data-state="stages-traversed"] .lia-stage:nth-of-type(4)::before {
+  transition-delay: 14.15s;
+}
+
+.lia-stage-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="stages-traversed"] .lia-stage-body,
+[data-state="anchor-judged"] .lia-stage-body {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="stages-traversed"] .lia-stage:nth-of-type(1) .lia-stage-body {
+  animation: lia-stage-in 0.55s cubic-bezier(0.3, 0.6, 0.25, 1) 3.6s both;
+}
+
+[data-state="stages-traversed"] .lia-stage:nth-of-type(2) .lia-stage-body {
+  animation: lia-stage-in 0.55s cubic-bezier(0.3, 0.6, 0.25, 1) 8s both;
+}
+
+[data-state="stages-traversed"] .lia-stage:nth-of-type(3) .lia-stage-body {
+  animation: lia-stage-in 0.55s cubic-bezier(0.3, 0.6, 0.25, 1) 13.8s both;
+}
+
+[data-state="stages-traversed"] .lia-stage:nth-of-type(4) .lia-stage-body {
+  animation: lia-stage-in 0.55s cubic-bezier(0.3, 0.6, 0.25, 1) 14.15s both;
+}
+
+@keyframes lia-stage-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.lia-stage-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.lia-stage-note {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* ── 连续性判断区（continuity-judgment · U023，拍 4 收束） ────── */
+
+.lia-judgment {
+  flex: 0 0 150px;
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  padding: 0 38px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: 8px 10px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+[data-state="anchor-judged"] .lia-judgment {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.2s, 0.2s;
+}
+
+/* 分散记录对齐到同一锚点：纸片从散乱收拢成排，落在锚块上方 */
+.lia-slips {
+  position: relative;
+  flex: 0 0 200px;
+  height: 106px;
+}
+
+.lia-slip {
+  position: absolute;
+  top: 0;
+  width: 56px;
+  height: 72px;
+  background: var(--surface-3);
+  border: 2px dashed var(--theme-dashed-line);
+}
+
+.lia-slip-1 {
+  left: 14px;
+}
+
+.lia-slip-2 {
+  left: 78px;
+}
+
+.lia-slip-3 {
+  left: 142px;
+}
+
+[data-state="anchor-judged"] .lia-slip-1 {
+  animation: lia-slip-1 0.7s cubic-bezier(0.3, 0.6, 0.25, 1) 0.7s both;
+}
+
+[data-state="anchor-judged"] .lia-slip-2 {
+  animation: lia-slip-2 0.7s cubic-bezier(0.3, 0.6, 0.25, 1) 0.85s both;
+}
+
+[data-state="anchor-judged"] .lia-slip-3 {
+  animation: lia-slip-3 0.7s cubic-bezier(0.3, 0.6, 0.25, 1) 1s both;
+}
+
+@keyframes lia-slip-1 {
+  from {
+    transform: translate(-30px, 16px) rotate(-13deg);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes lia-slip-2 {
+  from {
+    transform: translate(6px, -20px) rotate(9deg);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes lia-slip-3 {
+  from {
+    transform: translate(28px, 22px) rotate(-7deg);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.lia-slip-anchor {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
+  display: grid;
+  place-items: center;
+  background: var(--theme-structural);
+  color: var(--surface-2);
+  border-radius: 8px;
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  transform: scale(0.4);
+  opacity: 0;
+}
+
+[data-state="anchor-judged"] .lia-slip-anchor {
+  animation: lia-anchor-pop 0.45s cubic-bezier(0.3, 0.6, 0.25, 1) 1.5s both;
+}
+
+@keyframes lia-anchor-pop {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.lia-slip-anchor .lia-glyph {
+  width: 28px;
+  height: 28px;
+}
+
+.lia-judgment-copy {
+  min-width: 0;
+}
+
+.lia-judgment-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 1.25;
+  color: var(--theme-structural);
+}
+
+.lia-judgment-main em {
+  position: relative;
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.lia-judgment-main em::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 5px;
+  background: var(--theme-process);
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+[data-state="anchor-judged"] .lia-judgment-main em::after {
+  animation: lia-underline 0.5s cubic-bezier(0.3, 0.6, 0.25, 1) 1.3s both;
+}
+
+@keyframes lia-underline {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.lia-judgment-sub {
+  margin: 12px 0 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--text-2);
+}

@@ -1,0 +1,710 @@
+/* A006 · 整条编码的读法 —— 前缀 .fcr- 仅本章使用；颜色/字体全部走主题 token。
+   首拍入场序列用 keyframe（挂载即播）；后续状态切换用 transition（基础态即时可逆）。
+   关系机制 ordered-progression：编码三区按读码顺序依次聚焦，已读区保持可见（读过 = 绿底保留），
+   分隔符只作连接标记。 */
+
+.fcr-root {
+  gap: 26px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题（S024） ───────────────────────────────────────── */
+
+.fcr-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+[data-state="code-assembled"] .fcr-header {
+  animation: fcr-fade-down 0.6s ease both;
+}
+
+.fcr-heading-mark {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 54px;
+  background: var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.fcr-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 主区：左读码区 + 右情境图与洞察带 ───────────────────────── */
+
+.fcr-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 32px;
+}
+
+.fcr-reading {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 52px;
+}
+
+/* ── 编码条：头 / 中 / 尾三区拼回一条 ────────────────────────── */
+
+.fcr-strip {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
+
+.fcr-grp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition:
+    opacity 0.5s ease,
+    filter 0.5s ease;
+}
+
+@keyframes fcr-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fcr-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fcr-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(70px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-state="code-assembled"] .fcr-grp-head {
+  animation: fcr-in-left 0.7s cubic-bezier(0.3, 0.6, 0.25, 1) 0.25s both;
+}
+
+[data-state="code-assembled"] .fcr-grp-mid {
+  animation: fcr-in-up 0.7s cubic-bezier(0.3, 0.6, 0.25, 1) 0.45s both;
+}
+
+[data-state="code-assembled"] .fcr-grp-tail {
+  animation: fcr-in-right 0.7s cubic-bezier(0.3, 0.6, 0.25, 1) 0.65s both;
+}
+
+/* 待读区压暗；已读区保持可见 */
+[data-state="head-anchored"] .fcr-grp-mid,
+[data-state="head-anchored"] .fcr-grp-tail {
+  opacity: 0.45;
+  filter: saturate(0.6);
+}
+
+[data-state="layers-swept"] .fcr-grp-head {
+  opacity: 0.6;
+}
+
+[data-state="layers-swept"] .fcr-grp-tail {
+  opacity: 0.45;
+  filter: saturate(0.6);
+}
+
+.fcr-digits {
+  display: grid;
+  place-items: center;
+  height: 150px;
+  padding: 0 24px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  font-family: var(--font-mono);
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--theme-structural);
+  transition: background-color 0.45s ease, color 0.45s ease;
+}
+
+.fcr-digits-head {
+  padding: 0 26px;
+  font-size: 60px;
+}
+
+.fcr-tail-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  padding: 0 28px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 38px;
+  color: var(--theme-structural);
+  transition: background-color 0.45s ease, color 0.45s ease;
+}
+
+/* 已读 = 绿底保留（头从 layers-swept 起，中从 layers-swept 起，尾从 tail-connected 起） */
+[data-state="layers-swept"] .fcr-digits-head,
+[data-state="tail-connected"] .fcr-digits-head,
+[data-state="slash-explained"] .fcr-digits-head,
+[data-state="reading-purpose-set"] .fcr-digits-head,
+[data-state="layers-swept"] .fcr-mid-row .fcr-digits,
+[data-state="tail-connected"] .fcr-mid-row .fcr-digits,
+[data-state="slash-explained"] .fcr-mid-row .fcr-digits,
+[data-state="reading-purpose-set"] .fcr-mid-row .fcr-digits,
+[data-state="tail-connected"] .fcr-tail-name,
+[data-state="slash-explained"] .fcr-tail-name,
+[data-state="reading-purpose-set"] .fcr-tail-name {
+  background: var(--theme-process-surface);
+}
+
+/* 当前聚焦区 = 深底反白（只在本拍聚焦时成立） */
+[data-state="head-anchored"] .fcr-digits-head {
+  background: var(--theme-structural);
+  color: var(--surface-2);
+}
+
+[data-state="tail-connected"] .fcr-tail-name {
+  background: var(--theme-structural);
+  color: var(--surface-2);
+}
+
+/* 中部三层逐格点亮：口播报到一位、点亮一位（依次对位） */
+@keyframes fcr-cell-pulse {
+  0%,
+  100% {
+    box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  }
+  45% {
+    box-shadow:
+      0 0 0 9px var(--accent-glow),
+      5px 6px 0 var(--theme-offset-shadow);
+  }
+}
+
+[data-state="layers-swept"] .fcr-mid-row .fcr-cell:nth-of-type(1) .fcr-digits {
+  animation: fcr-cell-pulse 0.6s ease 0.45s both;
+}
+
+[data-state="layers-swept"] .fcr-mid-row .fcr-cell:nth-of-type(2) .fcr-digits {
+  animation: fcr-cell-pulse 0.6s ease 1.75s both;
+}
+
+[data-state="layers-swept"] .fcr-mid-row .fcr-cell:nth-of-type(3) .fcr-digits {
+  animation: fcr-cell-pulse 0.6s ease 3.05s both;
+}
+
+/* 段位标签：稳定槽位，逐个升起 */
+.fcr-cell-label {
+  display: grid;
+  place-items: center;
+  height: 48px;
+  margin-top: 10px;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 26px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="head-anchored"] .fcr-label-head {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.25s, 0.25s;
+}
+
+[data-state="layers-swept"] .fcr-label-head,
+[data-state="tail-connected"] .fcr-label-head,
+[data-state="slash-explained"] .fcr-label-head,
+[data-state="reading-purpose-set"] .fcr-label-head {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="layers-swept"] .fcr-mid-row .fcr-cell:nth-of-type(1) .fcr-label-mid {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.95s, 0.95s;
+}
+
+[data-state="layers-swept"] .fcr-mid-row .fcr-cell:nth-of-type(2) .fcr-label-mid {
+  opacity: 1;
+  transform: none;
+  transition-delay: 2.25s, 2.25s;
+}
+
+[data-state="layers-swept"] .fcr-mid-row .fcr-cell:nth-of-type(3) .fcr-label-mid {
+  opacity: 1;
+  transform: none;
+  transition-delay: 3.55s, 3.55s;
+}
+
+[data-state="tail-connected"] .fcr-label-mid,
+[data-state="slash-explained"] .fcr-label-mid,
+[data-state="reading-purpose-set"] .fcr-label-mid {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="slash-explained"] .fcr-label-tail {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.85s, 0.85s;
+}
+
+[data-state="reading-purpose-set"] .fcr-label-tail {
+  opacity: 1;
+  transform: none;
+}
+
+/* 中部括线：三层共同归入服务机构代码 */
+.fcr-bracket {
+  width: 100%;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+[data-state="layers-swept"] .fcr-bracket,
+[data-state="tail-connected"] .fcr-bracket,
+[data-state="slash-explained"] .fcr-bracket,
+[data-state="reading-purpose-set"] .fcr-bracket {
+  opacity: 1;
+}
+
+.fcr-bracket-svg {
+  width: 100%;
+  height: 30px;
+  display: block;
+}
+
+.fcr-bracket-path {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 3.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+[data-state="layers-swept"] .fcr-bracket-path {
+  animation: fcr-draw 0.7s cubic-bezier(0.3, 0.6, 0.25, 1) 4.4s both;
+}
+
+@keyframes fcr-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.fcr-bracket-label {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--theme-structural);
+}
+
+.fcr-bracket-lead {
+  margin-right: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--theme-process);
+}
+
+[data-state="layers-swept"] .fcr-bracket-label {
+  animation: fcr-rise 0.5s ease 5.15s both;
+}
+
+@keyframes fcr-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 分隔符：只作连接标记 */
+.fcr-sep {
+  display: grid;
+  place-items: center;
+  height: 150px;
+  font-family: var(--font-mono);
+  font-size: 74px;
+  font-weight: 700;
+  color: var(--text-2);
+  transition:
+    color 0.45s ease,
+    filter 0.45s ease;
+}
+
+[data-state="code-assembled"] .fcr-sep {
+  animation: fcr-sep-pop 0.55s cubic-bezier(0.3, 0.6, 0.25, 1) 1.35s both;
+}
+
+@keyframes fcr-sep-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  70% {
+    transform: scale(1.12);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+[data-state="tail-connected"] .fcr-sep {
+  animation: fcr-sep-pulse 0.6s ease 0.2s both;
+}
+
+@keyframes fcr-sep-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+[data-state="tail-connected"] .fcr-sep,
+[data-state="slash-explained"] .fcr-sep,
+[data-state="reading-purpose-set"] .fcr-sep {
+  color: var(--theme-process);
+  filter: drop-shadow(0 0 10px var(--accent-glow));
+}
+
+[data-state="slash-explained"] .fcr-sep {
+  animation: fcr-sep-pulse 0.8s ease 0.15s both;
+}
+
+/* ── 读码进度轨：开头 → 中间 → 末尾 ─────────────────────────── */
+
+.fcr-progress {
+  position: relative;
+  width: 84%;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+[data-state="code-assembled"] .fcr-progress {
+  animation: fcr-rise 0.6s ease 1s both;
+}
+
+.fcr-progress-line {
+  position: absolute;
+  top: 10px;
+  left: 7%;
+  right: 7%;
+  height: 3px;
+  background: var(--theme-dashed-line);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.65s ease;
+}
+
+[data-state="head-anchored"] .fcr-progress-line {
+  transform: scaleX(0.24);
+}
+
+[data-state="layers-swept"] .fcr-progress-line {
+  transform: scaleX(0.62);
+}
+
+[data-state="tail-connected"] .fcr-progress-line,
+[data-state="slash-explained"] .fcr-progress-line,
+[data-state="reading-purpose-set"] .fcr-progress-line {
+  transform: scaleX(1);
+}
+
+.fcr-stop {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.fcr-stop-dot {
+  width: 20px;
+  height: 20px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  transform: rotate(45deg) scale(0.9);
+  transition:
+    background-color 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.fcr-stop-no {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.fcr-stop-name {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 28px;
+  color: var(--text-mute);
+  transition: color 0.4s ease;
+}
+
+[data-state="head-anchored"] .fcr-progress div:nth-of-type(1) .fcr-stop-dot,
+[data-state="layers-swept"] .fcr-progress div:nth-of-type(1) .fcr-stop-dot,
+[data-state="tail-connected"] .fcr-progress div:nth-of-type(1) .fcr-stop-dot,
+[data-state="slash-explained"] .fcr-progress div:nth-of-type(1) .fcr-stop-dot,
+[data-state="reading-purpose-set"] .fcr-progress div:nth-of-type(1) .fcr-stop-dot,
+[data-state="layers-swept"] .fcr-progress div:nth-of-type(2) .fcr-stop-dot,
+[data-state="tail-connected"] .fcr-progress div:nth-of-type(2) .fcr-stop-dot,
+[data-state="slash-explained"] .fcr-progress div:nth-of-type(2) .fcr-stop-dot,
+[data-state="reading-purpose-set"] .fcr-progress div:nth-of-type(2) .fcr-stop-dot,
+[data-state="tail-connected"] .fcr-progress div:nth-of-type(3) .fcr-stop-dot,
+[data-state="slash-explained"] .fcr-progress div:nth-of-type(3) .fcr-stop-dot,
+[data-state="reading-purpose-set"] .fcr-progress div:nth-of-type(3) .fcr-stop-dot {
+  background: var(--theme-process);
+  border-color: var(--theme-process);
+  box-shadow: 0 0 0 6px var(--accent-soft);
+}
+
+[data-state="head-anchored"] .fcr-progress div:nth-of-type(1) .fcr-stop-name,
+[data-state="layers-swept"] .fcr-progress div:nth-of-type(1) .fcr-stop-name,
+[data-state="tail-connected"] .fcr-progress div:nth-of-type(1) .fcr-stop-name,
+[data-state="slash-explained"] .fcr-progress div:nth-of-type(1) .fcr-stop-name,
+[data-state="reading-purpose-set"] .fcr-progress div:nth-of-type(1) .fcr-stop-name,
+[data-state="layers-swept"] .fcr-progress div:nth-of-type(2) .fcr-stop-name,
+[data-state="tail-connected"] .fcr-progress div:nth-of-type(2) .fcr-stop-name,
+[data-state="slash-explained"] .fcr-progress div:nth-of-type(2) .fcr-stop-name,
+[data-state="reading-purpose-set"] .fcr-progress div:nth-of-type(2) .fcr-stop-name,
+[data-state="tail-connected"] .fcr-progress div:nth-of-type(3) .fcr-stop-name,
+[data-state="slash-explained"] .fcr-progress div:nth-of-type(3) .fcr-stop-name,
+[data-state="reading-purpose-set"] .fcr-progress div:nth-of-type(3) .fcr-stop-name {
+  color: var(--theme-structural);
+}
+
+[data-state="head-anchored"] .fcr-progress div:nth-of-type(1) .fcr-stop-dot {
+  animation: fcr-stop-pop 0.5s ease 0.25s both;
+}
+
+[data-state="layers-swept"] .fcr-progress div:nth-of-type(2) .fcr-stop-dot {
+  animation: fcr-stop-pop 0.5s ease 0.25s both;
+}
+
+[data-state="tail-connected"] .fcr-progress div:nth-of-type(3) .fcr-stop-dot {
+  animation: fcr-stop-pop 0.5s ease 0.25s both;
+}
+
+@keyframes fcr-stop-pop {
+  0% {
+    transform: rotate(45deg) scale(0.7);
+  }
+  60% {
+    transform: rotate(45deg) scale(1.18);
+  }
+  100% {
+    transform: rotate(45deg) scale(0.9);
+  }
+}
+
+/* 收束扫读：一道accent光从开头走到末尾（层级怎么排） */
+.fcr-sweep {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 110px;
+  height: 5px;
+  background: var(--theme-process);
+  opacity: 0;
+}
+
+[data-state="reading-purpose-set"] .fcr-sweep {
+  animation: fcr-sweep-run 1.15s cubic-bezier(0.4, 0.2, 0.3, 1) 0.45s both;
+}
+
+@keyframes fcr-sweep-run {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.85;
+  }
+  100% {
+    left: calc(100% - 110px);
+    opacity: 0;
+  }
+}
+
+/* ── 右栏：情境图（M003 占位）+ 洞察带 ───────────────────────── */
+
+.fcr-side {
+  flex: 0 0 460px;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.fcr-media {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="code-assembled"] .fcr-media {
+  animation: fcr-rise 0.7s ease 0.2s both;
+}
+
+.fcr-media-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.fcr-media-cap {
+  padding: 8px 14px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  font-family: var(--font-display-cn);
+  font-size: 20px;
+  color: var(--text-mute);
+}
+
+.fcr-rail {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 64px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 16px;
+  border: 2px dashed var(--theme-dashed-line);
+}
+
+[data-state="code-assembled"] .fcr-rail {
+  animation: fcr-rise 0.6s ease 0.9s both;
+}
+
+.fcr-rail-ghost {
+  position: absolute;
+  top: 2px;
+  right: 16px;
+  font-family: var(--font-mono);
+  font-size: 88px;
+  font-weight: 700;
+  color: var(--rule);
+  opacity: 0.45;
+}
+
+.fcr-rail-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.fcr-note-tick {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  margin-top: 9px;
+  background: var(--theme-process);
+  transform: rotate(45deg);
+}
+
+.fcr-note-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.5;
+  color: var(--theme-structural);
+}
+
+[data-state="slash-explained"] .fcr-note-slash {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.3s, 0.3s;
+}
+
+[data-state="reading-purpose-set"] .fcr-note-slash {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="reading-purpose-set"] .fcr-note-purpose {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.15s, 0.15s;
+}
+
+.fcr-note-purpose .fcr-note-text {
+  font-weight: 900;
+  font-size: 28px;
+}

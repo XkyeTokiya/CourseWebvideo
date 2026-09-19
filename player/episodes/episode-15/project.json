@@ -4,9 +4,9 @@
   "status": "in-progress",
   "theme": "active-identification-signal-grid",
   "progress": {
-    "completed": 5,
+    "completed": 9,
     "total": 11,
-    "current": "05-internal-coding"
+    "current": "09-rules-hierarchy"
   },
   "updatedAt": "2026-09-19"
 }

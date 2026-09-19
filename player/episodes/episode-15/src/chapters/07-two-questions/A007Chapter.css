@@ -1,0 +1,769 @@
+/* A007 · 为什么要单独留一段 —— 前缀 .twq- 仅本章使用；颜色/字体全部走主题 token。
+   首拍入场序列用 keyframe（挂载即播）；后续状态切换用 transition（基础态即时可逆）。
+   关系机制 compare-and-reweight：设问条先行并弱化为标题区，左右两栏逐栏填充后等权，
+   bottom-thesis 汇合收束；不制造权限等级。 */
+
+.twq-root {
+  gap: 26px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题（S028） ───────────────────────────────────────── */
+
+.twq-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+[data-state="question-raised"] .twq-header {
+  animation: twq-fade-down 0.6s ease both;
+}
+
+.twq-heading-mark {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 54px;
+  background: var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.twq-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 主区：设问条 → 两栏 → 底部论断 ──────────────────────────── */
+
+.twq-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 设问条：首拍独占主区，之后弱化为标题区 */
+.twq-question {
+  position: relative;
+  flex: 0 1 96px;
+  min-height: 0;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: var(--surface-3);
+  transition:
+    flex-grow 0.75s cubic-bezier(0.3, 0.6, 0.25, 1),
+    flex-basis 0.75s cubic-bezier(0.3, 0.6, 0.25, 1),
+    background-color 0.55s ease;
+}
+
+[data-state="question-raised"] .twq-question {
+  flex-grow: 1;
+  flex-basis: 0px;
+  background: var(--theme-structural);
+}
+
+.twq-question-ghost {
+  position: absolute;
+  top: 50%;
+  right: 56px;
+  transform: translateY(-50%);
+  font-family: var(--font-display-en);
+  font-size: 180px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--surface-2);
+  opacity: 0;
+  transition: opacity 0.55s ease;
+}
+
+[data-state="question-raised"] .twq-question-ghost {
+  opacity: 0.2;
+  animation: twq-ghost-in 0.8s ease 0.7s both;
+}
+
+@keyframes twq-ghost-in {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.85);
+  }
+  to {
+    opacity: 0.2;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+.twq-question-text {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--text-2);
+  transition:
+    font-size 0.7s ease,
+    color 0.55s ease;
+}
+
+[data-state="question-raised"] .twq-question-text {
+  font-size: 54px;
+  color: var(--surface-2);
+  animation: twq-question-in 0.7s cubic-bezier(0.3, 0.6, 0.25, 1) 0.25s both;
+}
+
+@keyframes twq-question-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 两栏：左右骨架立起，逐栏填充，完成后等权 ────────────────── */
+
+.twq-cols {
+  position: relative;
+  flex: 0.0001 1 0px;
+  min-height: 0;
+  display: flex;
+  gap: 80px;
+  opacity: 0;
+  transition:
+    flex-grow 0.75s cubic-bezier(0.3, 0.6, 0.25, 1),
+    opacity 0.6s ease;
+}
+
+[data-state="two-tracks-split"] .twq-cols,
+[data-state="unified-side-filled"] .twq-cols,
+[data-state="internal-side-filled"] .twq-cols,
+[data-state="coexistence-concluded"] .twq-cols {
+  flex-grow: 1;
+  opacity: 1;
+}
+
+.twq-divider {
+  position: absolute;
+  top: 10%;
+  bottom: 6%;
+  left: 50%;
+  border-left: 2px dashed var(--theme-dashed-line);
+}
+
+.twq-badge {
+  position: absolute;
+  top: 24%;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%) scale(0.7);
+  padding: 10px 22px;
+  background: var(--theme-warning-surface);
+  border: 3px solid var(--theme-warning);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 28px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="two-tracks-split"] .twq-badge {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  transition-delay: 0.9s, 0.9s;
+}
+
+[data-state="unified-side-filled"] .twq-badge,
+[data-state="internal-side-filled"] .twq-badge,
+[data-state="coexistence-concluded"] .twq-badge {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.twq-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 28px;
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-dashed-line);
+  transition:
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+[data-state="unified-side-filled"] .twq-col-unified {
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="internal-side-filled"] .twq-col,
+[data-state="coexistence-concluded"] .twq-col {
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.twq-col-kicker {
+  align-self: flex-start;
+  margin: 0;
+  padding: 4px 14px;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--surface-2);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.twq-col-unified .twq-col-kicker {
+  background: var(--theme-structural);
+}
+
+.twq-col-internal .twq-col-kicker {
+  background: var(--theme-process);
+}
+
+[data-state="two-tracks-split"] .twq-col-kicker {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="two-tracks-split"] .twq-col-unified .twq-col-kicker {
+  transition-delay: 1.05s, 1.05s;
+}
+
+[data-state="two-tracks-split"] .twq-col-internal .twq-col-kicker {
+  transition-delay: 1.2s, 1.2s;
+}
+
+[data-state="unified-side-filled"] .twq-col-kicker,
+[data-state="internal-side-filled"] .twq-col-kicker,
+[data-state="coexistence-concluded"] .twq-col-kicker {
+  opacity: 1;
+  transform: none;
+}
+
+.twq-col-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 46px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="two-tracks-split"] .twq-col-name {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="two-tracks-split"] .twq-col-unified .twq-col-name {
+  transition-delay: 1.2s, 1.2s;
+}
+
+[data-state="two-tracks-split"] .twq-col-internal .twq-col-name {
+  transition-delay: 1.35s, 1.35s;
+}
+
+[data-state="unified-side-filled"] .twq-col-name,
+[data-state="internal-side-filled"] .twq-col-name,
+[data-state="coexistence-concluded"] .twq-col-name {
+  opacity: 1;
+  transform: none;
+}
+
+.twq-col-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 12px;
+  border: 2px dashed transparent;
+  transition: border-color 0.5s ease;
+}
+
+/* 骨架态：正文区留空槽虚线 */
+[data-state="two-tracks-split"] .twq-col-body {
+  border-color: var(--theme-dashed-line);
+}
+
+.twq-claim {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 34px;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.twq-claim-em {
+  font-weight: 900;
+  color: var(--theme-structural);
+  border-bottom: 6px solid var(--theme-process);
+}
+
+[data-state="unified-side-filled"] .twq-col-unified .twq-claim {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.25s, 0.25s;
+}
+
+[data-state="internal-side-filled"] .twq-claim,
+[data-state="coexistence-concluded"] .twq-claim {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="internal-side-filled"] .twq-col-internal .twq-claim {
+  transition-delay: 0.25s, 0.25s;
+}
+
+/* ── 左栏图：统一上层结构覆盖跨企业、跨地域的认同 ─────────────── */
+
+.twq-diagram {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="unified-side-filled"] .twq-diagram,
+[data-state="internal-side-filled"] .twq-diagram,
+[data-state="coexistence-concluded"] .twq-diagram {
+  opacity: 1;
+}
+
+.twq-dg {
+  height: 180px;
+  width: auto;
+}
+
+.twq-dg-bar {
+  fill: var(--theme-structural);
+}
+
+.twq-dg-bar-text,
+.twq-dg-object-text {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 27px;
+  text-anchor: middle;
+  fill: var(--surface-2);
+}
+
+.twq-dg-scope {
+  fill: var(--theme-cool-surface);
+  stroke: var(--theme-dashed-line);
+  stroke-width: 2.5;
+}
+
+.twq-dg-scope-label {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 22px;
+  text-anchor: middle;
+  fill: var(--text-mute);
+}
+
+.twq-dg-line {
+  stroke: var(--theme-dashed-line);
+  stroke-width: 2.5;
+  stroke-dasharray: 5 6;
+}
+
+.twq-dg-dot {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+}
+
+.twq-dg-object {
+  fill: var(--surface-2);
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+}
+
+/* 图内元素基础可见，进入态用 keyframe 依次呈现（容器整体门控） */
+[data-state="unified-side-filled"] .twq-dg-bar {
+  animation: twq-drop 0.5s ease 0.6s both;
+}
+
+[data-state="unified-side-filled"] .twq-dg-scope {
+  animation: twq-fade 0.6s ease 1.6s both;
+}
+
+[data-state="unified-side-filled"] .twq-dg-scope-label {
+  animation: twq-fade 0.4s ease 2.4s both;
+}
+
+[data-state="unified-side-filled"] .twq-dg-line:nth-of-type(1) {
+  animation: twq-fade 0.4s ease 4.6s both;
+}
+
+[data-state="unified-side-filled"] .twq-dg-line:nth-of-type(2) {
+  animation: twq-fade 0.4s ease 4.9s both;
+}
+
+[data-state="unified-side-filled"] .twq-dg-line:nth-of-type(3) {
+  animation: twq-fade 0.4s ease 5.2s both;
+}
+
+[data-state="unified-side-filled"] .twq-dg-line:nth-of-type(4) {
+  animation: twq-fade 0.4s ease 5.5s both;
+}
+
+[data-state="unified-side-filled"] .twq-dg-dot:nth-of-type(1) {
+  animation: twq-fade 0.35s ease 4.8s both;
+}
+
+[data-state="unified-side-filled"] .twq-dg-dot:nth-of-type(2) {
+  animation: twq-fade 0.35s ease 5.1s both;
+}
+
+[data-state="unified-side-filled"] .twq-dg-dot:nth-of-type(3) {
+  animation: twq-fade 0.35s ease 5.4s both;
+}
+
+[data-state="unified-side-filled"] .twq-dg-dot:nth-of-type(4) {
+  animation: twq-fade 0.35s ease 5.7s both;
+}
+
+[data-state="unified-side-filled"] .twq-dg-object {
+  animation: twq-fade 0.5s ease 6.2s both;
+}
+
+[data-state="unified-side-filled"] .twq-dg-object-text {
+  animation: twq-fade 0.5s ease 6.35s both;
+}
+
+@keyframes twq-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes twq-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.twq-answer {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.twq-answer-strong {
+  font-weight: 900;
+  font-size: 28px;
+  color: var(--theme-structural);
+}
+
+[data-state="unified-side-filled"] .twq-col-unified .twq-answer {
+  opacity: 1;
+  transform: none;
+  transition-delay: 7.6s, 7.6s;
+}
+
+[data-state="internal-side-filled"] .twq-col-unified .twq-answer,
+[data-state="coexistence-concluded"] .twq-col-unified .twq-answer {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── 右栏：组织产品的台账行 + 随时调整 ───────────────────────── */
+
+.twq-ledger {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 6px 8px;
+}
+
+.twq-ledger-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.twq-ledger-name {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 32px;
+  color: var(--theme-structural);
+}
+
+.twq-ledger-slot {
+  flex: 1 1 auto;
+  height: 36px;
+  border-bottom: 3px dashed var(--theme-dashed-line);
+}
+
+[data-state="internal-side-filled"] .twq-ledger-row:nth-of-type(1) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 3.2s, 3.2s;
+}
+
+[data-state="internal-side-filled"] .twq-ledger-row:nth-of-type(2) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 4.2s, 4.2s;
+}
+
+[data-state="coexistence-concluded"] .twq-ledger-row {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="internal-side-filled"] .twq-answer-adjust {
+  opacity: 1;
+  transform: none;
+  transition-delay: 5.4s, 5.4s;
+}
+
+[data-state="coexistence-concluded"] .twq-answer-adjust {
+  opacity: 1;
+  transform: none;
+}
+
+.twq-adjust-wrap {
+  display: inline-flex;
+  color: var(--theme-process);
+}
+
+.twq-adjust {
+  width: 42px;
+  height: 42px;
+}
+
+[data-state="internal-side-filled"] .twq-adjust-wrap {
+  animation: twq-adjust-spin 0.9s ease 5.6s both;
+}
+
+@keyframes twq-adjust-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* ── 底部论断：两栏汇合收束 ──────────────────────────────────── */
+
+.twq-thesis {
+  position: relative;
+  flex: 0 1 0px;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid transparent;
+  transition:
+    flex-grow 0.8s cubic-bezier(0.3, 0.6, 0.25, 1),
+    background-color 0.55s ease,
+    border-color 0.55s ease;
+}
+
+[data-state="coexistence-concluded"] .twq-thesis {
+  flex-grow: 0.62;
+  background: var(--theme-process-surface);
+  border-color: var(--theme-structural);
+}
+
+.twq-conv {
+  flex: 0 0 auto;
+  width: 640px;
+  height: 36px;
+  margin: 0 auto;
+  display: block;
+}
+
+.twq-conv-path {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 4;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+[data-state="coexistence-concluded"] .twq-conv-path:nth-of-type(1) {
+  animation: twq-draw 0.85s cubic-bezier(0.3, 0.6, 0.25, 1) 0.35s both;
+}
+
+[data-state="coexistence-concluded"] .twq-conv-path:nth-of-type(2) {
+  animation: twq-draw 0.85s cubic-bezier(0.3, 0.6, 0.25, 1) 0.55s both;
+}
+
+@keyframes twq-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.twq-thesis-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 34px 14px;
+}
+
+.twq-thesis-lead {
+  align-self: center;
+  margin: 0;
+  padding: 6px 20px;
+  background: var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 26px;
+  color: var(--surface-2);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="coexistence-concluded"] .twq-thesis-lead {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1.4s, 1.4s;
+}
+
+.twq-thesis-items {
+  display: flex;
+  gap: 26px;
+  justify-content: center;
+}
+
+.twq-thesis-item {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 22px;
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.twq-item-tick {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  background: var(--theme-process);
+  transform: rotate(45deg);
+}
+
+.twq-item-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 28px;
+  color: var(--theme-structural);
+}
+
+[data-state="coexistence-concluded"] .twq-thesis-item:nth-of-type(1) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 2.4s, 2.4s;
+}
+
+[data-state="coexistence-concluded"] .twq-thesis-item:nth-of-type(2) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 4.8s, 4.8s;
+}
+
+.twq-thesis-strong {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 44px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="coexistence-concluded"] .twq-thesis-strong {
+  opacity: 1;
+  transform: none;
+  transition-delay: 7.6s, 7.6s;
+}
+
+@keyframes twq-fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

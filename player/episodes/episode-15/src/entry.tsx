@@ -11,6 +11,14 @@ import A004Chapter from "./chapters/04-service-org-layers/A004Chapter";
 import { narrations as a004Narrations } from "./chapters/04-service-org-layers/narrations";
 import A005Chapter from "./chapters/05-internal-coding/A005Chapter";
 import { narrations as a005Narrations } from "./chapters/05-internal-coding/narrations";
+import A006Chapter from "./chapters/06-full-code-reading/A006Chapter";
+import { narrations as a006Narrations } from "./chapters/06-full-code-reading/narrations";
+import A007Chapter from "./chapters/07-two-questions/A007Chapter";
+import { narrations as a007Narrations } from "./chapters/07-two-questions/narrations";
+import A008Chapter from "./chapters/08-lifecycle-anchor/A008Chapter";
+import { narrations as a008Narrations } from "./chapters/08-lifecycle-anchor/narrations";
+import A009Chapter from "./chapters/09-rules-hierarchy/A009Chapter";
+import { narrations as a009Narrations } from "./chapters/09-rules-hierarchy/narrations";
 
 export const id = "episode-15";
 export const title = "第 15 期 · VAA 编码：从发码机构到企业内部编码";
@@ -52,5 +60,29 @@ export const CHAPTERS: ChapterDef[] = [
     title: "第三段：企业内部编码",
     narrations: a005Narrations,
     Component: A005Chapter,
+  },
+  {
+    id: "06-full-code-reading",
+    title: "整条编码的读法",
+    narrations: a006Narrations,
+    Component: A006Chapter,
+  },
+  {
+    id: "07-two-questions",
+    title: "为什么要单独留一段",
+    narrations: a007Narrations,
+    Component: A007Chapter,
+  },
+  {
+    id: "08-lifecycle-anchor",
+    title: "相容表达与生命周期锚点",
+    narrations: a008Narrations,
+    Component: A008Chapter,
+  },
+  {
+    id: "09-rules-hierarchy",
+    title: "规则依据的两个层次",
+    narrations: a009Narrations,
+    Component: A009Chapter,
   },
 ];
