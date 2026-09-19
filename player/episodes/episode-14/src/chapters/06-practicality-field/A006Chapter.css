@@ -50,10 +50,10 @@
 
 .pf-media {
   margin: 0;
-  flex: 0 0 720px;
+  flex: 0 0 820px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   align-self: center;
 }
 
@@ -142,65 +142,55 @@
   transform: none;
 }
 
-/* ── 底部判断条（拍 3） ───────────────────────────────────────── */
+/* ── 收束：全屏遮罩大字（拍 3） ───────────────────────────────── */
 
-.pf-judgment {
-  flex: 0 0 116px;
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  padding: 0 36px;
-  border: 2px dashed var(--theme-dashed-line);
-  transition:
-    background-color 0.5s ease,
-    border-color 0.5s ease,
-    box-shadow 0.5s ease;
-}
-
-.pf-judgment-mark {
-  flex: 0 0 auto;
-  width: 18px;
-  height: 48px;
-  background: var(--theme-process);
-  box-shadow: 4px 4px 0 var(--theme-offset-shadow);
+.pf-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  padding: 0 130px;
+  background: color-mix(in srgb, var(--theme-structural) 92%, transparent);
   opacity: 0;
-  transition: opacity 0.4s ease;
+  visibility: hidden;
+  transition:
+    opacity 0.65s ease,
+    visibility 0s linear 0.65s;
 }
 
-.pf-judgment-text {
+[data-state="usability-judgment"] .pf-scrim {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.65s ease;
+}
+
+.pf-scrim-text {
   margin: 0;
   font-family: var(--font-display-cn);
   font-weight: 900;
-  font-size: 34px;
-  line-height: 1.3;
-  color: var(--theme-structural);
+  font-size: 56px;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--surface-2);
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(16px);
   transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
+    opacity 0.55s ease,
+    transform 0.55s ease;
 }
 
-.pf-judgment-em {
-  color: var(--theme-process);
-  text-decoration: underline;
-  text-decoration-thickness: 4px;
-  text-underline-offset: 8px;
-}
-
-[data-state="usability-judgment"] .pf-judgment {
-  background: var(--surface-2);
-  border: 3px solid var(--theme-structural);
-  box-shadow: var(--card-shadow);
-}
-
-[data-state="usability-judgment"] .pf-judgment-mark {
-  opacity: 1;
-}
-
-[data-state="usability-judgment"] .pf-judgment-text {
+[data-state="usability-judgment"] .pf-scrim-text {
   opacity: 1;
   transform: none;
+  transition-delay: 0.35s, 0.35s;
+}
+
+.pf-scrim-em {
+  color: var(--theme-process);
+  text-decoration: underline;
+  text-decoration-thickness: 5px;
+  text-underline-offset: 10px;
 }
 
 /* 拍 3：条件区与反例弱化为背景，图区保持语境 */
@@ -270,10 +260,6 @@
 
 /* ── 状态进入延迟：只挂在进入态选择器上 ───────────────────────── */
 
-[data-state="usability-judgment"] .pf-judgment-mark {
-  transition-delay: 0.25s;
-}
-
-[data-state="usability-judgment"] .pf-judgment-text {
+[data-state="usability-judgment"] .pf-scrim-text {
   transition-delay: 0.35s, 0.35s;
 }

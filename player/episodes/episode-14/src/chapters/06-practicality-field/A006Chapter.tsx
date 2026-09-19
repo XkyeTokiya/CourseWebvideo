@@ -57,10 +57,10 @@ export default function A006Chapter({ step }: ChapterStepProps) {
         </div>
       </div>
 
-      <div className="pf-judgment">
-        <span className="pf-judgment-mark" aria-hidden="true" />
-        <p className="pf-judgment-text">
-          规则最终是<span className="pf-judgment-em">给人用、给系统用的</span>
+      <div className="pf-scrim">
+        <p className="pf-scrim-text">
+          规则最终是<span className="pf-scrim-em">给人用、给系统用的</span>
+          <br />
           ——现场用不起来，设计得再精致也没有意义
         </p>
       </div>
