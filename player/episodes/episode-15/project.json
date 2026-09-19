@@ -4,9 +4,9 @@
   "status": "in-progress",
   "theme": "active-identification-signal-grid",
   "progress": {
-    "completed": 0,
+    "completed": 5,
     "total": 11,
-    "current": "01-identity-question"
+    "current": "05-internal-coding"
   },
   "updatedAt": "2026-09-19"
 }

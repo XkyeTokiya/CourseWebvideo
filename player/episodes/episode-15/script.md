@@ -1,6 +1,6 @@
 # Video Script
 
-<!-- CHAPTER:A001:BEGIN tx=c13c5a736331cf0f -->
+<!-- CHAPTER:A001:BEGIN tx=f7286c68a560284b -->
 ## A001 · 片头与开场情境
 
 【视频标题】VAA 编码：从发码机构到企业内部编码

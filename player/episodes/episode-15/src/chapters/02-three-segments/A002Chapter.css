@@ -1,0 +1,395 @@
+/* A002 · 三段结构总览 —— 前缀 .tsg- 仅本章使用；颜色/字体全部走主题 token。
+   首拍入场序列用 keyframe（挂载即播）；后续状态切换用 transition（基础态即时可逆，
+   进入态才挂 transition-delay）。配方 layered-bands-with-side-notes：
+   headline | ordered-bands | side-notes | boundary | takeaway。 */
+
+.tsg-root {
+  gap: 30px;
+  min-height: 0;
+}
+
+/* ── headline：标题 + 三段名称总述（S005 + S006 exact） ─────────── */
+
+@keyframes tsg-descend {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.tsg-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  opacity: 0;
+}
+
+.tsg-header,
+.tsg-heading-copy {
+  transition: opacity 0.5s ease;
+}
+
+[data-state="bands-established"] .tsg-header,
+[data-state="duties-annotated"] .tsg-header,
+[data-state="identity-combined"] .tsg-header {
+  opacity: 1;
+}
+
+[data-state="bands-established"] .tsg-header {
+  animation: tsg-descend 0.6s ease 0.1s both;
+}
+
+.tsg-heading-mark {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 78px;
+  background: var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.tsg-heading-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tsg-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 50px;
+  line-height: 1.12;
+  color: var(--theme-structural);
+}
+
+.tsg-headline-note {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 25px;
+  color: var(--text-2);
+}
+
+[data-state="bands-established"] .tsg-headline-note {
+  animation: tsg-descend 0.5s ease 0.32s both;
+}
+
+/* ── ordered-bands + boundary：三条有序段带，外框为边界线 ───────── */
+
+@keyframes tsg-band-in {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.tsg-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tsg-frame {
+  padding: 30px 34px;
+  border: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transition:
+    opacity 0.6s ease,
+    border-color 0.5s ease,
+    background-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+[data-state="bands-established"] .tsg-frame,
+[data-state="duties-annotated"] .tsg-frame,
+[data-state="identity-combined"] .tsg-frame {
+  opacity: 1;
+}
+
+[data-state="bands-established"] .tsg-frame {
+  animation: tsg-descend 0.6s ease 0.3s both;
+}
+
+/* 收束：边界线由虚线合拢为实线框，承住合拢后的完整身份 */
+[data-state="identity-combined"] .tsg-frame {
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  transition-delay: 0.1s;
+}
+
+.tsg-bands {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  transition: gap 0.8s cubic-bezier(0.3, 0.6, 0.25, 1) 0.1s;
+}
+
+[data-state="identity-combined"] .tsg-bands {
+  gap: 0;
+}
+
+.tsg-band {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  padding: 26px 38px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 4px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateX(-30px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    border-color 0.6s ease,
+    box-shadow 0.6s ease,
+    border-radius 0.6s ease;
+}
+
+[data-state="bands-established"] .tsg-band,
+[data-state="duties-annotated"] .tsg-band,
+[data-state="identity-combined"] .tsg-band {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="bands-established"] .tsg-band:nth-of-type(1) {
+  animation: tsg-band-in 0.55s cubic-bezier(0.3, 0.6, 0.25, 1) 0.45s both;
+}
+
+[data-state="bands-established"] .tsg-band:nth-of-type(2) {
+  animation: tsg-band-in 0.55s cubic-bezier(0.3, 0.6, 0.25, 1) 0.67s both;
+}
+
+[data-state="bands-established"] .tsg-band:nth-of-type(3) {
+  animation: tsg-band-in 0.55s cubic-bezier(0.3, 0.6, 0.25, 1) 0.89s both;
+}
+
+/* 收束：三带合拢为一条连续身份条，段与段只留浅色分隔 */
+[data-state="identity-combined"] .tsg-band {
+  border-color: transparent;
+  border-radius: 0;
+  box-shadow: 5px 6px 0 transparent;
+}
+
+[data-state="identity-combined"] .tsg-band + .tsg-band {
+  border-top-color: var(--theme-dashed-line);
+}
+
+.tsg-band-no {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  background: var(--theme-structural);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--surface-2);
+}
+
+.tsg-band-name {
+  flex: 0 0 auto;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 44px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+/* ── side-notes：逐段补充各段回答的问题（U005） ─────────────────── */
+
+.tsg-note {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+}
+
+.tsg-note-tick {
+  flex: 0 0 auto;
+  width: 58px;
+  border-top: 3px dashed var(--theme-dashed-line);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.45s ease;
+}
+
+.tsg-note-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 27px;
+  color: var(--text-2);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.tsg-note-lead {
+  margin-right: 10px;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+[data-state="duties-annotated"] .tsg-note-tick,
+[data-state="identity-combined"] .tsg-note-tick {
+  transform: scaleX(1);
+}
+
+[data-state="duties-annotated"] .tsg-note-text,
+[data-state="identity-combined"] .tsg-note-text {
+  opacity: 1;
+  transform: none;
+}
+
+/* 旁注按口播报到点逐段落位：只挂在进入态 duties-annotated 上 */
+[data-state="duties-annotated"] .tsg-band:nth-of-type(1) .tsg-note-tick {
+  transition-delay: 2.4s;
+}
+
+[data-state="duties-annotated"] .tsg-band:nth-of-type(1) .tsg-note-text {
+  transition-delay: 2.55s, 2.55s;
+}
+
+[data-state="duties-annotated"] .tsg-band:nth-of-type(2) .tsg-note-tick {
+  transition-delay: 5.6s;
+}
+
+[data-state="duties-annotated"] .tsg-band:nth-of-type(2) .tsg-note-text {
+  transition-delay: 5.75s, 5.75s;
+}
+
+[data-state="duties-annotated"] .tsg-band:nth-of-type(3) .tsg-note-tick {
+  transition-delay: 11.6s;
+}
+
+[data-state="duties-annotated"] .tsg-band:nth-of-type(3) .tsg-note-text {
+  transition-delay: 11.75s, 11.75s;
+}
+
+/* ── takeaway 收束区：先占位，收束拍承接“合在一起” ──────────────── */
+
+.tsg-landing {
+  position: relative;
+  flex: 0 0 172px;
+  border: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transition:
+    opacity 0.6s ease,
+    border-color 0.5s ease,
+    background-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+[data-state="bands-established"] .tsg-landing,
+[data-state="duties-annotated"] .tsg-landing,
+[data-state="identity-combined"] .tsg-landing {
+  opacity: 1;
+}
+
+[data-state="bands-established"] .tsg-landing {
+  animation: tsg-descend 0.6s ease 0.55s both;
+}
+
+[data-state="identity-combined"] .tsg-landing {
+  border-color: var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.tsg-ghost {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  opacity: 0.55;
+  transition: opacity 0.4s ease;
+}
+
+.tsg-ghost i {
+  width: 46px;
+  height: 30px;
+  border: 2px dashed var(--rule);
+  border-radius: 3px;
+}
+
+[data-state="identity-combined"] .tsg-ghost {
+  opacity: 0;
+}
+
+.tsg-takeaway {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  padding: 0 56px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+[data-state="identity-combined"] .tsg-takeaway {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.9s, 0.9s;
+}
+
+.tsg-takeaway-mark {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 66px;
+  background: var(--theme-process);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.tsg-takeaway-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tsg-takeaway-lead {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--text-2);
+}
+
+.tsg-takeaway-strong {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 44px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}

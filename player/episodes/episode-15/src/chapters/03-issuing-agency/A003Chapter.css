@@ -1,0 +1,752 @@
+/* A003 · 第一段：发码机构代码 —— 前缀 .fda- 仅本章使用；颜色/字体全部走主题 token。
+   首拍入场序列用 keyframe（挂载即播）；后续状态切换用 transition（基础态即时可逆，
+   进入态才挂 transition-delay）。配方 image-with-reading-notes：
+   headline | image | reading-order | key-points | takeaway。
+   媒体 M001 为占位素材（教材原图 · 占位），持续在场不卸载。 */
+
+.fda-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+/* ── headline（S010） ───────────────────────────────────────────── */
+
+@keyframes fda-descend {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fda-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="first-segment-focused"] .fda-header,
+[data-state="duties-established"] .fda-header,
+[data-state="position-secured"] .fda-header,
+[data-state="vaa-anchored"] .fda-header {
+  opacity: 1;
+}
+
+[data-state="first-segment-focused"] .fda-header {
+  animation: fda-descend 0.5s ease 0.05s both;
+}
+
+.fda-heading-mark {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 54px;
+  background: var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.fda-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 主区：左图右注 ─────────────────────────────────────────────── */
+
+.fda-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 40px;
+}
+
+.fda-media-col {
+  flex: 0 0 57%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* image（M001）：教材原图占位，四拍持续在场 */
+.fda-media {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0;
+  padding: 12px;
+  display: flex;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+[data-state="first-segment-focused"] .fda-media,
+[data-state="duties-established"] .fda-media,
+[data-state="position-secured"] .fda-media,
+[data-state="vaa-anchored"] .fda-media {
+  opacity: 1;
+}
+
+[data-state="first-segment-focused"] .fda-media {
+  animation: fda-media-in 0.7s ease 0.3s both;
+}
+
+@keyframes fda-media-in {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fda-media-img {
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.fda-media-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 12px;
+  background: var(--surface-2);
+  border: 1.5px dashed var(--theme-dashed-line);
+  font-family: var(--font-display-cn);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-mute);
+}
+
+.fda-media-caption {
+  flex: 0 0 auto;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="first-segment-focused"] .fda-media-caption,
+[data-state="duties-established"] .fda-media-caption,
+[data-state="position-secured"] .fda-media-caption,
+[data-state="vaa-anchored"] .fda-media-caption {
+  opacity: 1;
+}
+
+[data-state="first-segment-focused"] .fda-media-caption {
+  animation: fda-descend 0.4s ease 0.85s both;
+}
+
+/* ── reading-order：读图注记（U007），拍 3 逐项补上 ──────────────── */
+
+.fda-reading {
+  flex: 0 0 196px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 18px 26px;
+  border: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transition:
+    opacity 0.5s ease,
+    border-color 0.5s ease;
+}
+
+[data-state="first-segment-focused"] .fda-reading,
+[data-state="duties-established"] .fda-reading,
+[data-state="position-secured"] .fda-reading,
+[data-state="vaa-anchored"] .fda-reading {
+  opacity: 1;
+}
+
+[data-state="first-segment-focused"] .fda-reading {
+  animation: fda-descend 0.5s ease 0.55s both;
+}
+
+.fda-reading-lines {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fda-reading-negate {
+  position: relative;
+  margin: 0;
+  align-self: flex-start;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 25px;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.fda-reading-negate::after {
+  content: "";
+  position: absolute;
+  top: 54%;
+  left: -2%;
+  right: -2%;
+  height: 4px;
+  background: var(--theme-danger);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+[data-state="position-secured"] .fda-reading-negate,
+[data-state="vaa-anchored"] .fda-reading-negate {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1.4s, 1.4s;
+}
+
+[data-state="position-secured"] .fda-reading-negate::after {
+  animation: fda-strike 0.45s cubic-bezier(0.3, 0.6, 0.25, 1) 1.95s both;
+}
+
+.fda-reading-affirm {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 27px;
+  line-height: 1.3;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+[data-state="position-secured"] .fda-reading-affirm,
+[data-state="vaa-anchored"] .fda-reading-affirm {
+  opacity: 1;
+  transform: none;
+  transition-delay: 4.6s, 4.6s;
+}
+
+@keyframes fda-strike {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* 读图小图：入口 → 后面两段共同的上级 */
+.fda-reading-figure {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.fda-hierarchy {
+  width: 244px;
+  height: 111px;
+  overflow: visible;
+}
+
+.fda-hd-root {
+  fill: var(--theme-structural);
+  opacity: 0;
+}
+
+.fda-hd-root-label {
+  font-family: var(--font-display-cn);
+  font-size: 19px;
+  font-weight: 900;
+  fill: var(--surface-2);
+  text-anchor: middle;
+  opacity: 0;
+}
+
+.fda-hd-link {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+  stroke-dasharray: 210;
+  stroke-dashoffset: 0;
+  opacity: 0;
+}
+
+.fda-hd-leaf {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+  opacity: 0;
+}
+
+.fda-hd-leaf-label {
+  font-family: var(--font-display-cn);
+  font-size: 17px;
+  font-weight: 700;
+  fill: var(--theme-structural);
+  text-anchor: middle;
+  opacity: 0;
+}
+
+[data-state="position-secured"] .fda-hd-root,
+[data-state="vaa-anchored"] .fda-hd-root,
+[data-state="position-secured"] .fda-hd-root-label,
+[data-state="vaa-anchored"] .fda-hd-root-label,
+[data-state="position-secured"] .fda-hd-link,
+[data-state="vaa-anchored"] .fda-hd-link,
+[data-state="position-secured"] .fda-hd-leaf,
+[data-state="vaa-anchored"] .fda-hd-leaf,
+[data-state="position-secured"] .fda-hd-leaf-label,
+[data-state="vaa-anchored"] .fda-hd-leaf-label {
+  opacity: 1;
+}
+
+[data-state="position-secured"] .fda-hd-root {
+  animation: fda-svg-in 0.45s ease 8.6s both;
+}
+
+[data-state="position-secured"] .fda-hd-root-label {
+  animation: fda-svg-in 0.45s ease 8.6s both;
+}
+
+[data-state="position-secured"] .fda-hd-link {
+  animation: fda-link-draw 0.7s ease-in-out 9.4s both;
+}
+
+[data-state="position-secured"] .fda-hd-leaf-1 {
+  animation: fda-svg-in 0.45s ease 10.2s both;
+}
+
+[data-state="position-secured"] .fda-hd-leaf-2 {
+  animation: fda-svg-in 0.45s ease 10.35s both;
+}
+
+[data-state="position-secured"] .fda-hd-leaf-label-1 {
+  animation: fda-svg-in 0.45s ease 10.2s both;
+}
+
+[data-state="position-secured"] .fda-hd-leaf-label-2 {
+  animation: fda-svg-in 0.45s ease 10.35s both;
+}
+
+@keyframes fda-svg-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fda-link-draw {
+  from {
+    stroke-dashoffset: 210;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.fda-reading-caption {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--text-mute);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="position-secured"] .fda-reading-caption,
+[data-state="vaa-anchored"] .fda-reading-caption {
+  opacity: 1;
+  transition-delay: 10.9s;
+}
+
+/* ── key-points：职责卡（U006），拍 2 逐张建立 ──────────────────── */
+
+.fda-side-col {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.fda-duties {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="duties-established"] .fda-duties,
+[data-state="position-secured"] .fda-duties {
+  opacity: 1;
+}
+
+[data-state="vaa-anchored"] .fda-duties {
+  opacity: 0.42;
+  transition-delay: 0.2s;
+}
+
+.fda-duties-kicker {
+  flex: 0 0 auto;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 23px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.fda-duties-kicker::before {
+  content: "";
+  width: 12px;
+  height: 22px;
+  background: var(--theme-process);
+}
+
+[data-state="duties-established"] .fda-duties-kicker,
+[data-state="position-secured"] .fda-duties-kicker,
+[data-state="vaa-anchored"] .fda-duties-kicker {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="duties-established"] .fda-duties-kicker {
+  transition-delay: 0.5s, 0.5s;
+}
+
+@keyframes fda-duty-in {
+  from {
+    opacity: 0;
+    transform: translateX(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fda-duty {
+  flex: 1 1 0;
+  max-height: 118px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 24px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 4px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateX(26px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+[data-state="duties-established"] .fda-duty,
+[data-state="position-secured"] .fda-duty,
+[data-state="vaa-anchored"] .fda-duty {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="duties-established"] .fda-duty:nth-of-type(1) {
+  animation: fda-duty-in 0.55s cubic-bezier(0.3, 0.6, 0.25, 1) 1.2s both;
+}
+
+[data-state="duties-established"] .fda-duty:nth-of-type(2) {
+  animation: fda-duty-in 0.55s cubic-bezier(0.3, 0.6, 0.25, 1) 4.2s both;
+}
+
+[data-state="duties-established"] .fda-duty:nth-of-type(3) {
+  animation: fda-duty-in 0.55s cubic-bezier(0.3, 0.6, 0.25, 1) 7.8s both;
+}
+
+.fda-duty-no {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  background: var(--theme-structural);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--surface-2);
+}
+
+.fda-duty-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fda-duty-lead {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.05em;
+  color: var(--text-mute);
+}
+
+.fda-duty-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 27px;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+/* ── takeaway（U008）：入口卡，拍 4 聚焦收束 ────────────────────── */
+
+.fda-entrance {
+  position: relative;
+  flex: 0 0 280px;
+  border: 2px dashed var(--theme-dashed-line);
+  transition:
+    border-color 0.5s ease,
+    background-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+[data-state="vaa-anchored"] .fda-entrance {
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+.fda-entrance-ghost {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  opacity: 0.55;
+  transition: opacity 0.4s ease;
+}
+
+.fda-entrance-ghost i {
+  width: 44px;
+  height: 28px;
+  border: 2px dashed var(--rule);
+  border-radius: 3px;
+}
+
+[data-state="vaa-anchored"] .fda-entrance-ghost {
+  opacity: 0;
+}
+
+.fda-entrance-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 13px;
+  padding: 26px 34px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+[data-state="vaa-anchored"] .fda-entrance-card {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.3s, 0.3s;
+}
+
+.fda-entrance-tag {
+  position: absolute;
+  top: -17px;
+  left: 26px;
+  padding: 3px 14px;
+  background: var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--surface-2);
+}
+
+@keyframes fda-tile-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fda-vaa-tiles {
+  display: flex;
+  gap: 10px;
+}
+
+.fda-vaa-tiles span {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  background: var(--theme-structural);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--surface-2);
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+[data-state="vaa-anchored"] .fda-vaa-tiles span:nth-child(1) {
+  animation: fda-tile-in 0.45s cubic-bezier(0.3, 0.6, 0.25, 1) 1.1s both;
+}
+
+[data-state="vaa-anchored"] .fda-vaa-tiles span:nth-child(2) {
+  animation: fda-tile-in 0.45s cubic-bezier(0.3, 0.6, 0.25, 1) 1.24s both;
+}
+
+[data-state="vaa-anchored"] .fda-vaa-tiles span:nth-child(3) {
+  animation: fda-tile-in 0.45s cubic-bezier(0.3, 0.6, 0.25, 1) 1.38s both;
+}
+
+.fda-entrance-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 1.3;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+[data-state="vaa-anchored"] .fda-entrance-main {
+  animation: fda-descend 0.5s ease 1.8s both;
+}
+
+.fda-entrance-main em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.fda-entrance-negatives {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 2px;
+}
+
+.fda-negate {
+  position: relative;
+  padding: 6px 16px;
+  background: var(--theme-danger-surface);
+  border: 2px solid var(--theme-danger);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 21px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.fda-negate::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 6%;
+  right: 6%;
+  height: 3.5px;
+  background: var(--theme-danger);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+[data-state="vaa-anchored"] .fda-negate {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="vaa-anchored"] .fda-negate:nth-child(1) {
+  transition-delay: 4.6s, 4.6s;
+}
+
+[data-state="vaa-anchored"] .fda-negate:nth-child(2) {
+  transition-delay: 7.4s, 7.4s;
+}
+
+[data-state="vaa-anchored"] .fda-negate:nth-child(1)::after {
+  animation: fda-strike 0.45s cubic-bezier(0.3, 0.6, 0.25, 1) 5.1s both;
+}
+
+[data-state="vaa-anchored"] .fda-negate:nth-child(2)::after {
+  animation: fda-strike 0.45s cubic-bezier(0.3, 0.6, 0.25, 1) 7.9s both;
+}
+
+.fda-entrance-affirm {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 26px;
+  color: var(--theme-process);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="vaa-anchored"] .fda-entrance-affirm {
+  opacity: 1;
+  transform: none;
+  transition-delay: 10.2s, 10.2s;
+}
