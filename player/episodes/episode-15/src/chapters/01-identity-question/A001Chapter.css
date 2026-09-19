@@ -1,0 +1,769 @@
+/* A001 · 片头与开场情境 —— 前缀 .iq- 仅本章使用；颜色/字体全部走主题 token。
+   首拍入场序列用 keyframe（挂载即播）；后续状态切换用 transition（基础态即时可逆）。 */
+
+.iq-root {
+  gap: 30px;
+  min-height: 0;
+}
+
+/* ── 顶部：问题标题（S001） ───────────────────────────────────── */
+
+.iq-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  opacity: 0;
+  transform: translateY(-12px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease,
+    filter 0.6s ease;
+}
+
+[data-state="journey-established"] .iq-header,
+[data-state="records-scattered"] .iq-header,
+[data-state="question-dominant"] .iq-header,
+[data-state="identity-proposed"] .iq-header,
+[data-state="layering-question"] .iq-header {
+  opacity: 1;
+  transform: none;
+}
+
+.iq-heading-mark {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 54px;
+  background: var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.iq-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 主区：片头标题卡 ↔ 电池旅程带 ────────────────────────────── */
+
+.iq-main {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  transition:
+    opacity 0.75s ease,
+    filter 0.75s ease;
+}
+
+/* 片头标题卡：仅首拍占据主区中心 */
+.iq-title {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+  opacity: 1;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+[data-state="journey-established"] .iq-title,
+[data-state="records-scattered"] .iq-title,
+[data-state="question-dominant"] .iq-title,
+[data-state="identity-proposed"] .iq-title,
+[data-state="layering-question"] .iq-title {
+  opacity: 0;
+  transform: translateY(-16px) scale(0.985);
+  pointer-events: none;
+}
+
+[data-state="title-established"] .iq-title-kicker {
+  animation: iq-rise 0.5s ease 0.2s both;
+}
+
+[data-state="title-established"] .iq-title-main {
+  animation: iq-rise 0.6s ease 0.38s both;
+}
+
+[data-state="title-established"] .iq-title-sub {
+  animation: iq-rise 0.6s ease 0.56s both;
+}
+
+.iq-title-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.3em;
+  color: var(--theme-process);
+}
+
+.iq-title-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 108px;
+  line-height: 1.05;
+  color: var(--theme-structural);
+  text-shadow: 6px 7px 0 var(--theme-offset-shadow);
+}
+
+.iq-title-sub {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 42px;
+  color: var(--text-2);
+}
+
+@keyframes iq-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 旅程带：五个环节沿一条路线 */
+.iq-journey {
+  position: relative;
+  margin: auto 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+[data-state="journey-established"] .iq-journey,
+[data-state="records-scattered"] .iq-journey,
+[data-state="question-dominant"] .iq-journey,
+[data-state="identity-proposed"] .iq-journey,
+[data-state="layering-question"] .iq-journey {
+  opacity: 1;
+}
+
+.iq-route-rail {
+  position: absolute;
+  top: 29px;
+  left: 10%;
+  right: 10%;
+  height: 4px;
+  background: var(--theme-structural);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+[data-state="journey-established"] .iq-route-rail,
+[data-state="records-scattered"] .iq-route-rail,
+[data-state="question-dominant"] .iq-route-rail,
+[data-state="identity-proposed"] .iq-route-rail,
+[data-state="layering-question"] .iq-route-rail {
+  transform: scaleX(1);
+}
+
+[data-state="journey-established"] .iq-route-rail {
+  animation: iq-rail-draw 0.9s cubic-bezier(0.3, 0.6, 0.25, 1) 0.3s both;
+}
+
+.iq-battery {
+  position: absolute;
+  top: -3px;
+  left: 10%;
+  z-index: 2;
+  width: 64px;
+  height: 64px;
+  margin-left: -32px;
+  display: grid;
+  place-items: center;
+  color: var(--surface-2);
+  background: var(--theme-structural);
+  border-radius: 10px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.iq-glyph {
+  width: 36px;
+  height: 36px;
+}
+
+[data-state="journey-established"] .iq-battery {
+  animation: iq-battery-travel 2.4s cubic-bezier(0.35, 0.65, 0.3, 1) 1.7s both;
+}
+
+[data-state="records-scattered"] .iq-battery,
+[data-state="question-dominant"] .iq-battery,
+[data-state="identity-proposed"] .iq-battery,
+[data-state="layering-question"] .iq-battery {
+  left: 90%;
+}
+
+@keyframes iq-rail-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes iq-battery-travel {
+  from {
+    left: 10%;
+  }
+  to {
+    left: 90%;
+  }
+}
+
+.iq-station {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(-14px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+[data-state="journey-established"] .iq-station,
+[data-state="records-scattered"] .iq-station,
+[data-state="question-dominant"] .iq-station,
+[data-state="identity-proposed"] .iq-station,
+[data-state="layering-question"] .iq-station {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="journey-established"] .iq-journey > div:nth-of-type(1) {
+  animation: iq-station-in 0.55s ease 0.5s both;
+}
+
+[data-state="journey-established"] .iq-journey > div:nth-of-type(2) {
+  animation: iq-station-in 0.55s ease 0.72s both;
+}
+
+[data-state="journey-established"] .iq-journey > div:nth-of-type(3) {
+  animation: iq-station-in 0.55s ease 0.94s both;
+}
+
+[data-state="journey-established"] .iq-journey > div:nth-of-type(4) {
+  animation: iq-station-in 0.55s ease 1.16s both;
+}
+
+[data-state="journey-established"] .iq-journey > div:nth-of-type(5) {
+  animation: iq-station-in 0.55s ease 1.38s both;
+}
+
+@keyframes iq-station-in {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.iq-node {
+  z-index: 1;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.iq-node-no {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--theme-structural);
+}
+
+.iq-station-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+/* 记录卡：互不相干的系统、各不相同的编号 */
+.iq-record {
+  position: relative;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 14px 18px;
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: scale(1.14);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="records-scattered"] .iq-record,
+[data-state="question-dominant"] .iq-record,
+[data-state="identity-proposed"] .iq-record,
+[data-state="layering-question"] .iq-record {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.iq-journey > div:nth-of-type(odd) .iq-record {
+  border-radius: 3px 12px 3px 12px;
+}
+
+.iq-journey > div:nth-of-type(even) .iq-record {
+  border-radius: 12px 3px 12px 3px;
+}
+
+.iq-record-tag {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 23px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.iq-record-system {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+.iq-record-code {
+  padding: 2px 10px;
+  border: 1.5px dashed var(--theme-warning);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: var(--theme-structural);
+  background: var(--theme-warning-surface);
+}
+
+.iq-record-q {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  transform: translate(50%, -50%) scale(0.4);
+  display: grid;
+  place-items: center;
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  border-radius: 50%;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 17px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+[data-state="records-scattered"] .iq-record-q,
+[data-state="question-dominant"] .iq-record-q,
+[data-state="identity-proposed"] .iq-record-q,
+[data-state="layering-question"] .iq-record-q {
+  opacity: 1;
+  transform: translate(50%, -50%) scale(1);
+}
+
+/* 记录卡与问号徽标的进入延迟：只挂在进入态选择器上 */
+[data-state="records-scattered"] .iq-journey > div:nth-of-type(1) .iq-record {
+  transition-delay: 0.2s, 0.2s;
+}
+
+[data-state="records-scattered"] .iq-journey > div:nth-of-type(2) .iq-record {
+  transition-delay: 0.55s, 0.55s;
+}
+
+[data-state="records-scattered"] .iq-journey > div:nth-of-type(3) .iq-record {
+  transition-delay: 0.9s, 0.9s;
+}
+
+[data-state="records-scattered"] .iq-journey > div:nth-of-type(4) .iq-record {
+  transition-delay: 1.25s, 1.25s;
+}
+
+[data-state="records-scattered"] .iq-journey > div:nth-of-type(5) .iq-record {
+  transition-delay: 1.6s, 1.6s;
+}
+
+[data-state="records-scattered"] .iq-journey > div:nth-of-type(1) .iq-record-q {
+  transition-delay: 0.95s, 0.95s;
+}
+
+[data-state="records-scattered"] .iq-journey > div:nth-of-type(2) .iq-record-q {
+  transition-delay: 1.3s, 1.3s;
+}
+
+[data-state="records-scattered"] .iq-journey > div:nth-of-type(3) .iq-record-q {
+  transition-delay: 1.65s, 1.65s;
+}
+
+[data-state="records-scattered"] .iq-journey > div:nth-of-type(4) .iq-record-q {
+  transition-delay: 2s, 2s;
+}
+
+/* ── 收束区：前提弱化后的问题 → 层级身份 → 过渡问句 ───────────── */
+
+[data-state="question-dominant"] .iq-header,
+[data-state="question-dominant"] .iq-main,
+[data-state="identity-proposed"] .iq-header,
+[data-state="identity-proposed"] .iq-main,
+[data-state="layering-question"] .iq-header,
+[data-state="layering-question"] .iq-main {
+  opacity: 0.16;
+  filter: saturate(0.55);
+}
+
+.iq-landing {
+  position: relative;
+  flex: 0 0 264px;
+  border: 2px dashed var(--theme-dashed-line);
+  transition:
+    background-color 0.55s ease,
+    border-color 0.55s ease,
+    box-shadow 0.55s ease;
+}
+
+.iq-landing-ghost {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display-en);
+  font-size: 92px;
+  font-weight: 700;
+  color: var(--rule);
+  opacity: 0.6;
+  transition: opacity 0.55s ease;
+}
+
+[data-state="title-established"] .iq-landing-ghost,
+[data-state="journey-established"] .iq-landing-ghost,
+[data-state="records-scattered"] .iq-landing-ghost {
+  opacity: 0.6;
+}
+
+[data-state="question-dominant"] .iq-landing,
+[data-state="identity-proposed"] .iq-landing,
+[data-state="layering-question"] .iq-landing {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="question-dominant"] .iq-landing-ghost,
+[data-state="identity-proposed"] .iq-landing-ghost,
+[data-state="layering-question"] .iq-landing-ghost {
+  opacity: 0;
+}
+
+/* 问题条：question-dominant 独占 */
+.iq-question {
+  position: absolute;
+  inset: 0;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+[data-state="question-dominant"] .iq-question {
+  opacity: 1;
+  transition-delay: 0.35s;
+}
+
+.iq-question-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 1.25;
+  color: var(--text-2);
+}
+
+.iq-question-strong {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+/* 身份回应：否定对照 + VAA 层级身份 */
+.iq-identity {
+  position: absolute;
+  inset: 0;
+  padding: 0 44px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="identity-proposed"] .iq-identity {
+  opacity: 1;
+}
+
+[data-state="layering-question"] .iq-identity {
+  opacity: 0.22;
+}
+
+.iq-reject {
+  position: relative;
+  flex: 0 0 34%;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 22px 28px;
+  background: var(--theme-danger-surface);
+  border: 2px solid var(--theme-danger);
+  border-radius: 3px 12px 3px 12px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="identity-proposed"] .iq-reject {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.15s, 0.15s;
+}
+
+[data-state="identity-proposed"] .iq-reject::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 7%;
+  right: 7%;
+  height: 4px;
+  background: var(--theme-danger);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: iq-strike 0.5s cubic-bezier(0.3, 0.6, 0.25, 1) 0.6s both;
+}
+
+@keyframes iq-strike {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.iq-reject-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 38px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+.iq-reject-sub {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--text-2);
+}
+
+.iq-vaa {
+  flex: 1 1 auto;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 22px 30px;
+  background: var(--theme-process-surface);
+  border: 3px solid var(--theme-process);
+  border-radius: 12px 3px 12px 3px;
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="identity-proposed"] .iq-vaa {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.9s, 0.9s;
+}
+
+.iq-layers {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.iq-layers i {
+  display: block;
+  height: 14px;
+  border-radius: 3px;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.iq-layers i:nth-of-type(1) {
+  width: 150px;
+  background: var(--theme-structural);
+}
+
+.iq-layers i:nth-of-type(2) {
+  width: 114px;
+  background: var(--theme-process);
+}
+
+.iq-layers i:nth-of-type(3) {
+  width: 82px;
+  background: var(--rule);
+}
+
+[data-state="identity-proposed"] .iq-layers i:nth-of-type(1) {
+  animation: iq-bar-in 0.45s cubic-bezier(0.3, 0.6, 0.25, 1) 1.2s both;
+}
+
+[data-state="identity-proposed"] .iq-layers i:nth-of-type(2) {
+  animation: iq-bar-in 0.45s cubic-bezier(0.3, 0.6, 0.25, 1) 1.36s both;
+}
+
+[data-state="identity-proposed"] .iq-layers i:nth-of-type(3) {
+  animation: iq-bar-in 0.45s cubic-bezier(0.3, 0.6, 0.25, 1) 1.52s both;
+}
+
+@keyframes iq-bar-in {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.iq-vaa-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.iq-vaa-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 38px;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+.iq-vaa-sub {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--text-2);
+}
+
+/* 过渡问句：layering-question 收束 */
+.iq-teaser {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="layering-question"] .iq-teaser {
+  opacity: 1;
+}
+
+[data-state="layering-question"] .iq-teaser-main {
+  animation: iq-rise 0.45s ease 0.15s both;
+}
+
+[data-state="layering-question"] .iq-teaser-sub {
+  animation: iq-rise 0.45s ease 0.32s both;
+}
+
+[data-state="layering-question"] .iq-teaser-stairs {
+  animation: iq-rise 0.45s ease 0.5s both;
+}
+
+.iq-teaser-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+.iq-teaser-sub {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--theme-process);
+}
+
+.iq-teaser-stairs {
+  margin-top: 6px;
+  width: 132px;
+  height: 48px;
+  color: var(--theme-process);
+}
+
+.iq-stairs {
+  width: 100%;
+  height: 100%;
+}
