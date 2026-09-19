@@ -19,6 +19,8 @@ import A008Chapter from "./chapters/08-scientific-structure/A008Chapter";
 import { narrations as a008Narrations } from "./chapters/08-scientific-structure/narrations";
 import A009Chapter from "./chapters/09-joint-check/A009Chapter";
 import { narrations as a009Narrations } from "./chapters/09-joint-check/narrations";
+import A010Chapter from "./chapters/10-boundary-closing/A010Chapter";
+import { narrations as a010Narrations } from "./chapters/10-boundary-closing/narrations";
 
 export const id = "episode-14";
 export const title = "第 14 期 · 标识编码体系认知";
@@ -84,5 +86,11 @@ export const CHAPTERS: ChapterDef[] = [
     title: "五问联检",
     narrations: a009Narrations,
     Component: A009Chapter,
+  },
+  {
+    id: "10-boundary-closing",
+    title: "边界与收束",
+    narrations: a010Narrations,
+    Component: A010Chapter,
   },
 ];
