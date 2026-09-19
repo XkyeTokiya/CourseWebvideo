@@ -19,6 +19,10 @@ import A008Chapter from "./chapters/08-lifecycle-anchor/A008Chapter";
 import { narrations as a008Narrations } from "./chapters/08-lifecycle-anchor/narrations";
 import A009Chapter from "./chapters/09-rules-hierarchy/A009Chapter";
 import { narrations as a009Narrations } from "./chapters/09-rules-hierarchy/narrations";
+import A010Chapter from "./chapters/10-three-step-reading/A010Chapter";
+import { narrations as a010Narrations } from "./chapters/10-three-step-reading/narrations";
+import A011Chapter from "./chapters/11-three-duties-recap/A011Chapter";
+import { narrations as a011Narrations } from "./chapters/11-three-duties-recap/narrations";
 
 export const id = "episode-15";
 export const title = "第 15 期 · VAA 编码：从发码机构到企业内部编码";
@@ -84,5 +88,17 @@ export const CHAPTERS: ChapterDef[] = [
     title: "规则依据的两个层次",
     narrations: a009Narrations,
     Component: A009Chapter,
+  },
+  {
+    id: "10-three-step-reading",
+    title: "三步读法与职责边界",
+    narrations: a010Narrations,
+    Component: A010Chapter,
+  },
+  {
+    id: "11-three-duties-recap",
+    title: "三层职责收束",
+    narrations: a011Narrations,
+    Component: A011Chapter,
   },
 ];
