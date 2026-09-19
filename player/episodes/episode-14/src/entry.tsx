@@ -7,6 +7,8 @@ import A002Chapter from "./chapters/02-definition-resources/A002Chapter";
 import { narrations as a002Narrations } from "./chapters/02-definition-resources/narrations";
 import A003Chapter from "./chapters/03-beyond-distinction/A003Chapter";
 import { narrations as a003Narrations } from "./chapters/03-beyond-distinction/narrations";
+import A004Chapter from "./chapters/04-uniqueness-scope/A004Chapter";
+import { narrations as a004Narrations } from "./chapters/04-uniqueness-scope/narrations";
 
 export const id = "episode-14";
 export const title = "第 14 期 · 标识编码体系认知";
@@ -36,5 +38,11 @@ export const CHAPTERS: ChapterDef[] = [
     title: "起点与判断标准",
     narrations: a003Narrations,
     Component: A003Chapter,
+  },
+  {
+    id: "04-uniqueness-scope",
+    title: "唯一性与范围限定",
+    narrations: a004Narrations,
+    Component: A004Chapter,
   },
 ];
