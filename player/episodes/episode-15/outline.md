@@ -2,7 +2,7 @@
 
 <!-- GLOBAL:metadata:BEGIN -->
 > **编译状态**：awaiting-checkpoint-plan
-> **主题**：active-identification-signal-grid · 主动标识·信号矩阵（Checkpoint Plan 已确认）
+> **主题**：pending（Checkpoint Plan 待选）
 > **正文时长**：约 7 分 13 秒
 > **章节**：11
 > **Base scenes**：11
@@ -16,7 +16,7 @@
 <!-- GLOBAL:schedule:BEGIN -->
 | A-page | Base scene | Recipe | Steps | Duration |
 |---|---|---|---:|---:|
-| A001 | S-A001 — 提问页：片头标题区、电池跨环节旅程带与分散记录前提区持续承载情境，中心问题条与 VAA 层级身份落点在下方依次接棒 | central-question | 6 | ~51s |
+| A001 | S-A001 — 提问页：问题标题区、电池跨环节旅程带与分散记录前提区持续承载情境，中心问题条与 VAA 层级身份落点在下方依次接棒 | central-question | 6 | ~51s |
 | A002 | S-A002 — 结构总览页：标题与三条有序段带持续承载三段结构，每段旁注区补充各自回答的问题，收束区合拢为一条身份 | layered-bands-with-side-notes | 3 | ~32s |
 | A003 | S-A003 — 读图页：教材示例原图持续呈现，读图序与要点区在图侧并列承载入口定位与职责，入口卡收束 VAA 的位置 | image-with-reading-notes | 4 | ~39s |
 | A004 | S-A004 — 层级读法页：三张层级卡持续呈现国家、行业、企业三部分，情境图提供现场语境，takeaway 收束示例边界 | issue-cards-with-image | 4 | ~36s |
@@ -31,17 +31,17 @@
 
 ## 0. cover — 封面（1 silent step · fixed 15s）
 
-<!-- CHAPTER:A001:BEGIN tx=c13c5a736331cf0f -->
+<!-- CHAPTER:A001:BEGIN tx=f7286c68a560284b -->
 ## 1. 01-identity-question — 片头与开场情境（6 steps · ~51s）
 
 **A-page / Chapter**：`A001`
-**基础场景**：`S-A001` — 提问页：片头标题区、电池跨环节旅程带与分散记录前提区持续承载情境，中心问题条与 VAA 层级身份落点在下方依次接棒
+**基础场景**：`S-A001` — 提问页：问题标题区、电池跨环节旅程带与分散记录前提区持续承载情境，中心问题条与 VAA 层级身份落点在下方依次接棒
 **页面配方**：`central-question`
 **核心判断**：跨组织记录要确认指向同一个对象，靠的是带层级的身份，而不是再加一串编号
 **结构指纹**：`headline | premise-tags | question`
 **语义关系**：分散记录的前提汇聚到中心问题与层级落点
 **关系机制**：`premise-to-question` — 旅程与记录前提持续存在并逐级弱化，视觉中心转移到确认问题与层级身份落点
-**持续元素**：片头标题、电池旅程带、分散记录前提区、中心问题与层级落点区
+**持续元素**：问题标题、电池旅程带、分散记录前提区、中心问题与层级落点区
 **内容槽位**：`headline`←S001 同一个对象怎样被认出来；`premise-tags`←U001 电池经运输、销售、维护、回收的旅程与 U002 各环节系统互不相干的分散记录；`question`←U003 VAA 给对象一个带层级、可被管理的身份
 **可见标题**：`保留`
 **强调页**：`none`
@@ -60,7 +60,9 @@
 
 | Step | Narration focus | Scene · Semantic state | 本步场景指令 |
 |---|---|---|---|
-| 1 | 片头标题 | `S-A001 · title-established` (~5s) | 建立片头标题区，呈现本集标题；情境槽位暂不展开 |
+| 1 | 片头标题口播（标题呈现职能由封面承载） | `S-A001 · scene-opened` (~5s) | 建立问题标题区与底部待答槽位，旅程区留白待绘；不渲染片头标题卡 |
+
+（说明：首拍口播为片头标题，其画面职能由封面承载，本拍仅建立基础构图，不另设片头卡）
 | 2 | 电池跨环节旅程 | `S-A001 · journey-established` (~10s) | headline 落位后，premise-tags 建立旅程带：下线、运输、销售、维护、回收节点依次呈现 |
 | 3 | 各环节系统各自记录 | `S-A001 · records-scattered` (~9s) | 保持旅程带，同一前提区补充各环节系统与编号互不相同的分散记录标签；不产生当前选中项 |
 | 4 | 各方如何确认同一块电池 | `S-A001 · question-dominant` (~8s) | 分散记录前提弱化为背景，中心问题条聚焦：他们记录的是不是同一块电池 |

@@ -2,7 +2,7 @@ import "./A001Chapter.css";
 import type { ChapterStepProps } from "../../../../../src/shared/presentation-runtime/registry/types";
 
 const stateByStep = [
-  "title-established",
+  "scene-opened",
   "journey-established",
   "records-scattered",
   "question-dominant",
@@ -55,12 +55,6 @@ export default function A001Chapter({ step }: ChapterStepProps) {
       </header>
 
       <div className="iq-main">
-        <div className="iq-title">
-          <p className="iq-title-kicker">第 15 期 · 标识编码</p>
-          <p className="iq-title-main">VAA 编码</p>
-          <p className="iq-title-sub">从发码机构到企业内部编码</p>
-        </div>
-
         <div className="iq-journey">
           <span className="iq-route-rail" aria-hidden="true" />
           <span className="iq-battery" aria-hidden="true">
