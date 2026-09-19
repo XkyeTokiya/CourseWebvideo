@@ -9,6 +9,8 @@ import A003Chapter from "./chapters/03-beyond-distinction/A003Chapter";
 import { narrations as a003Narrations } from "./chapters/03-beyond-distinction/narrations";
 import A004Chapter from "./chapters/04-uniqueness-scope/A004Chapter";
 import { narrations as a004Narrations } from "./chapters/04-uniqueness-scope/narrations";
+import A005Chapter from "./chapters/05-compatibility-bridge/A005Chapter";
+import { narrations as a005Narrations } from "./chapters/05-compatibility-bridge/narrations";
 
 export const id = "episode-14";
 export const title = "第 14 期 · 标识编码体系认知";
@@ -44,5 +46,11 @@ export const CHAPTERS: ChapterDef[] = [
     title: "唯一性与范围限定",
     narrations: a004Narrations,
     Component: A004Chapter,
+  },
+  {
+    id: "05-compatibility-bridge",
+    title: "兼容性与迁移延续",
+    narrations: a005Narrations,
+    Component: A005Chapter,
   },
 ];
