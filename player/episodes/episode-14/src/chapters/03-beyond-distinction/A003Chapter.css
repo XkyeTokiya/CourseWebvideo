@@ -1,0 +1,435 @@
+/* A003 · 起点与判断标准 —— 前缀 .bd- 仅本章使用；颜色/字体全部走主题 token。
+   首拍入场用 keyframe（挂载即播）；后续状态切换用 transition（基础态即时可逆）。 */
+
+.bd-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题 ───────────────────────────────────────────────── */
+
+.bd-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.bd-heading-mark {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 56px;
+  background: var(--theme-warning);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.bd-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 58px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 主区：起点 → 判断 → 原则 的上行阶梯 ──────────────────────── */
+
+.bd-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.bd-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 46px 34px 28px;
+  min-height: 370px;
+}
+
+.bd-card-condition {
+  flex: 0 0 496px;
+  margin-top: 240px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 4px 16px 4px 16px;
+  box-shadow: var(--card-shadow);
+}
+
+.bd-card-judgment {
+  flex: 0 0 496px;
+  margin-top: 120px;
+  background: var(--surface-2);
+  border: 3px dashed var(--theme-dashed-line);
+  border-radius: 4px 16px 4px 16px;
+  transition: border-color 0.5s ease;
+}
+
+.bd-card-goal {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-top: 0;
+  background: var(--surface-2);
+  border: 3px dashed var(--theme-dashed-line);
+  border-radius: 4px 16px 4px 16px;
+  transition: border-color 0.5s ease;
+}
+
+[data-state="judgment-dimensions"] .bd-card-judgment,
+[data-state="five-principles-named"] .bd-card-judgment,
+[data-state="five-principles-named"] .bd-card-goal {
+  border-style: solid;
+  border-color: var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.bd-tab {
+  position: absolute;
+  top: -20px;
+  left: 26px;
+  padding: 7px 18px;
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-dashed-line);
+  color: var(--text-mute);
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  border-radius: 4px;
+  transition:
+    background-color 0.45s ease,
+    color 0.45s ease,
+    border-color 0.45s ease;
+}
+
+.bd-card-condition .bd-tab,
+[data-state="judgment-dimensions"] .bd-card-judgment .bd-tab,
+[data-state="five-principles-named"] .bd-card-judgment .bd-tab,
+[data-state="five-principles-named"] .bd-card-goal .bd-tab {
+  background: var(--theme-structural);
+  border: 2px solid var(--theme-structural);
+  color: var(--surface-2);
+  box-shadow: 4px 4px 0 var(--theme-offset-shadow);
+}
+
+.bd-card-claim {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 44px;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+.bd-card-claim small {
+  display: block;
+  margin-top: 6px;
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.bd-card-kicker {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="judgment-dimensions"] .bd-card-judgment .bd-card-kicker,
+[data-state="five-principles-named"] .bd-card-judgment .bd-card-kicker,
+[data-state="five-principles-named"] .bd-card-goal .bd-card-kicker {
+  opacity: 1;
+}
+
+/* 失效反例（拍 2） */
+.bd-failures {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bd-failure {
+  margin: 0;
+  padding: 12px 18px;
+  background: var(--theme-warning-surface);
+  border-left: 4px solid var(--theme-warning);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.3;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateX(-18px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="failure-cases-shown"] .bd-failure,
+[data-state="judgment-dimensions"] .bd-failure,
+[data-state="five-principles-named"] .bd-failure {
+  opacity: 1;
+  transform: none;
+}
+
+.bd-verdict {
+  margin: 0;
+  align-self: flex-start;
+  padding: 8px 20px;
+  background: var(--theme-warning);
+  color: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 24px;
+  border-radius: 4px;
+  box-shadow: 4px 4px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: scale(0.85);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+[data-state="failure-cases-shown"] .bd-verdict,
+[data-state="judgment-dimensions"] .bd-verdict,
+[data-state="five-principles-named"] .bd-verdict {
+  opacity: 1;
+  transform: none;
+}
+
+/* 三个判断维度（拍 3） */
+.bd-dimensions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bd-dimension {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 27px;
+  line-height: 1.3;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="judgment-dimensions"] .bd-dimension,
+[data-state="five-principles-named"] .bd-dimension {
+  opacity: 1;
+  transform: none;
+}
+
+.bd-dimension-no {
+  flex: 0 0 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  background: var(--theme-process);
+  color: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+/* 五项原则（拍 4） */
+.bd-goal-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 46px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="five-principles-named"] .bd-goal-title {
+  opacity: 1;
+  transform: none;
+}
+
+.bd-principle-chain {
+  margin: 4px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.bd-principle {
+  display: inline-block;
+  font-weight: 900;
+  font-size: 36px;
+  color: var(--theme-process);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="five-principles-named"] .bd-principle {
+  opacity: 1;
+}
+
+.bd-chain-sep {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="five-principles-named"] .bd-chain-sep {
+  opacity: 1;
+}
+
+/* 阶梯连接箭头 */
+.bd-chevron {
+  align-self: flex-start;
+  margin-top: 365px;
+  flex: 0 0 auto;
+  font-family: var(--font-display-en);
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  opacity: 0.3;
+  transition:
+    opacity 0.5s ease,
+    color 0.5s ease;
+}
+
+[data-state="judgment-dimensions"] .bd-chevron,
+[data-state="five-principles-named"] .bd-chevron {
+  opacity: 1;
+  color: var(--theme-process);
+}
+
+/* ── 首拍入场节拍（keyframe：挂载即播） ───────────────────────── */
+
+[data-state="minimum-bar-named"] .bd-header {
+  animation: bd-rise-in 0.5s ease 0.1s both;
+}
+
+[data-state="minimum-bar-named"] .bd-card-condition {
+  animation: bd-card-pop 0.55s cubic-bezier(0.3, 0.7, 0.3, 1.15) 0.3s both;
+}
+
+[data-state="minimum-bar-named"] .bd-card-condition .bd-tab {
+  animation: bd-tab-stamp 0.4s cubic-bezier(0.3, 0.7, 0.3, 1.25) 0.8s both;
+}
+
+[data-state="minimum-bar-named"] .bd-chevron {
+  animation: bd-fade-in 0.5s ease 1s both;
+}
+
+@keyframes bd-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bd-card-pop {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bd-tab-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bd-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+
+/* ── 状态进入延迟：只挂在进入态选择器上 ───────────────────────── */
+
+[data-state="failure-cases-shown"] .bd-failure:nth-of-type(1) {
+  transition-delay: 0.2s, 0.2s;
+}
+
+[data-state="failure-cases-shown"] .bd-failure:nth-of-type(2) {
+  transition-delay: 0.75s, 0.75s;
+}
+
+[data-state="failure-cases-shown"] .bd-verdict {
+  transition-delay: 1.5s, 1.5s;
+}
+
+[data-state="judgment-dimensions"] .bd-dimension:nth-of-type(1) {
+  transition-delay: 0.35s, 0.35s;
+}
+
+[data-state="judgment-dimensions"] .bd-dimension:nth-of-type(2) {
+  transition-delay: 0.75s, 0.75s;
+}
+
+[data-state="judgment-dimensions"] .bd-dimension:nth-of-type(3) {
+  transition-delay: 1.15s, 1.15s;
+}
+
+[data-state="five-principles-named"] .bd-goal-title {
+  transition-delay: 0.2s, 0.2s;
+}
+
+[data-state="five-principles-named"] .bd-principle-chain > span:nth-child(1) .bd-principle,
+[data-state="five-principles-named"] .bd-principle-chain > span:nth-child(1) .bd-chain-sep {
+  transition-delay: 0.55s;
+}
+
+[data-state="five-principles-named"] .bd-principle-chain > span:nth-child(2) .bd-principle,
+[data-state="five-principles-named"] .bd-principle-chain > span:nth-child(2) .bd-chain-sep {
+  transition-delay: 0.72s;
+}
+
+[data-state="five-principles-named"] .bd-principle-chain > span:nth-child(3) .bd-principle,
+[data-state="five-principles-named"] .bd-principle-chain > span:nth-child(3) .bd-chain-sep {
+  transition-delay: 0.89s;
+}
+
+[data-state="five-principles-named"] .bd-principle-chain > span:nth-child(4) .bd-principle,
+[data-state="five-principles-named"] .bd-principle-chain > span:nth-child(4) .bd-chain-sep {
+  transition-delay: 1.06s;
+}
+
+[data-state="five-principles-named"] .bd-principle-chain > span:nth-child(5) .bd-principle {
+  transition-delay: 1.23s;
+}
