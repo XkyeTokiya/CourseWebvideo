@@ -1,0 +1,1141 @@
+{
+  "schema_version": "courseplay-a-page/v6",
+  "document_kind": "production",
+  "episode_id": "episode-15",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "跨环节记录分散，需要确认记录指向同一对象",
+      "source_locator": "episode-15 task package / E010, N001 情境",
+      "verification_status": "not applicable",
+      "allowed_use": "只承载问题情境，不承载事实或企业身份"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "VAA 基本结构由发码机构代码、服务机构代码和企业内部编码组成",
+      "source_locator": "episode-15 task package / E005, N004",
+      "verification_status": "not applicable",
+      "allowed_use": "讲解三层结构与编码读法顺序"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "发码机构负责 VAA 前缀分配与管理、提供编码规则应用指导",
+      "source_locator": "episode-15 task package / E003",
+      "verification_status": "not verified—version unspecified",
+      "allowed_use": "解释发码、前缀管理和应用指导职责；不延伸为授权现状结论"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "在教材示例中 VAA 是发码机构代码，是整套编码的入口",
+      "source_locator": "episode-15 task package / E005, E007",
+      "verification_status": "not applicable",
+      "allowed_use": "讲解第一段在编码中的位置"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "服务机构代码可分为国家代码、行业代码和企业代码",
+      "source_locator": "episode-15 task package / E006",
+      "verification_status": "not applicable",
+      "allowed_use": "解释服务机构层级；不补充固定长度或编码表"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "示例中 088、100、12345678 分别表示国家、行业、企业层级，服务机构代码与企业内部编码以分隔符连接",
+      "source_locator": "episode-15 task package / E007, VAA 编码示例图",
+      "verification_status": "not applicable",
+      "allowed_use": "作为层级读法示例；不解释为可注册编码"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "企业内部编码由企业自行管理和分配",
+      "source_locator": "episode-15 task package / E006",
+      "verification_status": "not applicable",
+      "allowed_use": "解释企业责任边界；不补字段、长度或校验规则"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "发码机构治理位置与服务机构的层级定位，为跨环节记录提供共同落点",
+      "source_locator": "episode-15 task package / E009",
+      "verification_status": "not applicable",
+      "allowed_use": "组织讲解顺序与边界"
+    },
+    {
+      "evidence_id": "E009",
+      "claim_or_asset": "同一标识对象在不同场景可采用相容表达并相互映射，生命周期各环节围绕同一身份关联记录",
+      "source_locator": "episode-15 task package / E008, E009",
+      "verification_status": "not applicable",
+      "allowed_use": "解释映射关系与共同身份锚点；不列形式细节"
+    },
+    {
+      "evidence_id": "E010",
+      "claim_or_asset": "编码规则参照国际通行标识编码系列标准，并由各行业编码导则落地",
+      "source_locator": "episode-15 task package / E004",
+      "verification_status": "not verified—version unspecified",
+      "allowed_use": "说明规则依据层次；不点标准编号、名称与版本"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "【视频标题】VAA 编码：从发码机构到企业内部编码\n\n【开场导入】\n一块新能源汽车电池从生产企业下线，接着要经过运输、销售、维护，最后还可能进入回收。每经过一个环节，都会有一套自己的系统把它记录一次，各自的编号也各不相同。\n\n怎样让运输方、销售方、维修方和回收方都确认，他们记录的是同一块电池？\n\n再加一串编号解决不了这件事，那只是又给它起了一个名字。VAA 编码的思路不一样，它给对象一个带层级的身份，让身份本身可以被管理起来。\n\n这套层级怎么搭？我们一层一层看。",
+      "teaching_purpose": "提出跨环节身份问题",
+      "single_message": "跨组织记录要确认指向同一个对象，靠的是带层级的身份，而不是再加一串编号。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S001",
+          "guidance_text": "同一个对象怎样被认出来",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E001"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G001",
+            "items": [
+              {
+                "screen_item_id": "S002",
+                "guidance_text": "一块电池会经过运输、销售、维护和回收，每个环节都有自己的系统和编号",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E001"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G002",
+            "items": [
+              {
+                "screen_item_id": "S003",
+                "guidance_text": "记录分散时，各方无法确认说的是不是同一个对象",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E001"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G003",
+            "items": [
+              {
+                "screen_item_id": "S004",
+                "guidance_text": "VAA 给对象一个带层级的身份，身份本身可以被管理",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "G001",
+          "relation": "提出",
+          "to": "G003",
+          "direction": "setup"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C001",
+          "instruction": "写实问题情境不得冒充真实企业注册现场或真实电池",
+          "evidence_refs": [
+            "E001"
+          ]
+        }
+      ],
+      "entry_condition": "观众知道课程讨论标识编码",
+      "exit_condition": "观众能说出跨环节身份要解决的确认问题",
+      "timing": {
+        "char_equivalent": 195.0,
+        "min_seconds": 49,
+        "target_seconds": 51,
+        "max_seconds": 54,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": [
+        "A001"
+      ],
+      "nx": "\n\n【正文讲解】\nVAA 的基本结构分成三段：发码机构代码、服务机构代码和企业内部编码。\n\n三段各回答一个问题。第一段回答由哪个发码机构管理，第二段回答这个对象在什么国家、什么行业、哪家企业里，第三段才回答企业内部具体是哪一个对象。职责不同，合在一起才形成一条能继续关联下去的身份。",
+      "teaching_purpose": "建立三段式结构",
+      "single_message": "VAA 分成发码机构代码、服务机构代码和企业内部编码，三段各回答一个问题。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S005",
+          "guidance_text": "VAA 的三段结构",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G004",
+            "items": [
+              {
+                "screen_item_id": "S006",
+                "guidance_text": "三段分别是发码机构代码、服务机构代码和企业内部编码",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G005",
+            "items": [
+              {
+                "screen_item_id": "S007",
+                "guidance_text": "第一段回答由哪个发码机构管理",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G006",
+            "items": [
+              {
+                "screen_item_id": "S008",
+                "guidance_text": "第二段回答在什么国家、什么行业、哪家企业里",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G007",
+            "items": [
+              {
+                "screen_item_id": "S009",
+                "guidance_text": "第三段回答企业内部具体是哪一个对象",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R002",
+          "from": "G004",
+          "relation": "依次构成",
+          "to": "G007",
+          "direction": "sequence"
+        }
+      ],
+      "silent_constraints": [],
+      "entry_condition": "观众已接受身份需要带层级",
+      "exit_condition": "观众能说出三段名称与各自回答的问题",
+      "timing": {
+        "char_equivalent": 120.5,
+        "min_seconds": 31,
+        "target_seconds": 31,
+        "max_seconds": 33,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": [
+        "A002"
+      ],
+      "nx": "\n\n先看第一段，发码机构代码。\n\n发码机构处在整套体系的入口。它负责 VAA 前缀的分配和管理，也为使用方提供编码规则上的指导。企业不是随手取一段字符就开始编号，而是先取得一个由发码机构管理的位置。入口定下来，后面两段才有共同的上级。\n\n在编码里，VAA 这三个字母就是发码机构代码。它不是一个产品型号，也不是企业自己挑的品牌缩写，而是整套编码的入口。",
+      "teaching_purpose": "说明发码机构在体系中的入口位置",
+      "single_message": "发码机构提供被管理的位置：分配和管理前缀，并提供编码规则指导。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S010",
+          "guidance_text": "第一段：发码机构代码",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G008",
+            "items": [
+              {
+                "screen_item_id": "S011",
+                "guidance_text": "发码机构负责 VAA 前缀的分配和管理",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G009",
+            "items": [
+              {
+                "screen_item_id": "S012",
+                "guidance_text": "使用方得到的不是自取的字符，而是由发码机构管理的位置",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G010",
+            "items": [
+              {
+                "screen_item_id": "S013",
+                "guidance_text": "入口固定后，后面两段才有共同的上级",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G011",
+            "items": [
+              {
+                "screen_item_id": "S014",
+                "guidance_text": "在编码里，VAA 这三个字母就是发码机构代码",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R003",
+          "from": "G008",
+          "relation": "提供",
+          "to": "G011",
+          "direction": "enable"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C002",
+          "instruction": "不得断言发码机构的当前授权状态、授权机构名单或平台可用性",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        {
+          "constraint_id": "C003",
+          "instruction": "不演示注册平台界面、申请入口或接口",
+          "evidence_refs": [
+            "E003"
+          ]
+        }
+      ],
+      "entry_condition": "观众知道三段中第一段是发码机构代码",
+      "exit_condition": "观众能说出发码机构负责什么，以及 VAA 在编码中的作用",
+      "timing": {
+        "char_equivalent": 150.0,
+        "min_seconds": 38,
+        "target_seconds": 39,
+        "max_seconds": 41,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": [
+        "A003"
+      ],
+      "nx": "\n\n再看第二段，服务机构代码。\n\n这一段标明对象处在哪个服务层级上，由国家代码、行业代码和企业代码三部分组成。\n\n以一条完整编码为例，VAA 后面的 088 表示国家层级，接着的 100 表示行业层级，12345678 表示企业层级。\n\n这里要留意：这些数字是帮我们看懂层级的例子，不是说每个行业都用这几个固定数字，也不是说每一层都有固定长度。",
+      "teaching_purpose": "读服务机构代码的国家、行业、企业层级",
+      "single_message": "服务机构代码由三层组成，示例数字只用于说明层级读法。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S015",
+          "guidance_text": "第二段：服务机构代码的三层",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G012",
+            "items": [
+              {
+                "screen_item_id": "S016",
+                "guidance_text": "服务机构代码由国家代码、行业代码和企业代码组成",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G013",
+            "items": [
+              {
+                "screen_item_id": "S017",
+                "guidance_text": "示例中 088 表示国家层级，100 表示行业层级，12345678 表示企业层级",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G014",
+            "items": [
+              {
+                "screen_item_id": "S018",
+                "guidance_text": "这些数字是层级读法的例子，不是固定数字或固定长度",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R004",
+          "from": "G012",
+          "relation": "分层定位",
+          "to": "G014",
+          "direction": "decompose"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C004",
+          "instruction": "不得把示例数字写成固定长度、编码表或申请规则",
+          "evidence_refs": [
+            "E005"
+          ]
+        }
+      ],
+      "entry_condition": "观众知道第二段是服务机构代码",
+      "exit_condition": "观众能按示例读出三层含义，并知道数字只是示例",
+      "timing": {
+        "char_equivalent": 136.5,
+        "min_seconds": 35,
+        "target_seconds": 36,
+        "max_seconds": 38,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": [
+        "A004"
+      ],
+      "nx": "\n\n第三段是企业内部编码，由企业自行管理和分配。它用来把产品、批次或者其他对象区分开，怎么写由企业按自己的业务需要决定。这一段承担的是企业自己的对象细分，不承担体系层级的定位。",
+      "teaching_purpose": "说明企业内部编码的职责边界",
+      "single_message": "第三段由企业自行管理和分配，承担对象细分而非体系层级定位。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S019",
+          "guidance_text": "第三段：企业内部编码",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E007"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G015",
+            "items": [
+              {
+                "screen_item_id": "S020",
+                "guidance_text": "企业内部编码由企业自行管理和分配",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G016",
+            "items": [
+              {
+                "screen_item_id": "S021",
+                "guidance_text": "它用来区分产品、批次或者其他对象",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G017",
+            "items": [
+              {
+                "screen_item_id": "S022",
+                "guidance_text": "怎么写由企业按自己的业务需要决定",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G018",
+            "items": [
+              {
+                "screen_item_id": "S023",
+                "guidance_text": "这一段是对象细分，不承担体系层级定位",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R005",
+          "from": "G015",
+          "relation": "区别于",
+          "to": "G018",
+          "direction": "contrast"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C005",
+          "instruction": "不得补写企业内部编码的字段清单、长度、校验位或版本规则",
+          "evidence_refs": [
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "观众已能读出服务机构代码的层级",
+      "exit_condition": "观众能区分对象细分与体系层级定位",
+      "timing": {
+        "char_equivalent": 79.0,
+        "min_seconds": 20,
+        "target_seconds": 21,
+        "max_seconds": 22,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": [
+        "A005"
+      ],
+      "nx": "\n\n把三段拼回一条编码，读法就清楚了。开头是 VAA，这是发码机构代码；接着的 088、100、12345678 依次是国家、行业和企业层级，共同组成服务机构代码；末尾用分隔符接上企业内部编码。示例里的斜杠起的就是这个连接作用，斜杠后面那一段，是留给企业自己管理的内容。读它是为了看懂层级怎么排。",
+      "teaching_purpose": "把三段拼回一条编码的读法",
+      "single_message": "整条编码的读法是：发码机构代码，接国家、行业、企业层级，末尾由分隔符接企业内部编码。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S024",
+          "guidance_text": "整条编码的读法",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G019",
+            "items": [
+              {
+                "screen_item_id": "S025",
+                "guidance_text": "开头是发码机构代码",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G020",
+            "items": [
+              {
+                "screen_item_id": "S026",
+                "guidance_text": "中间是国家、行业、企业层级，共同组成服务机构代码",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G021",
+            "items": [
+              {
+                "screen_item_id": "S027",
+                "guidance_text": "末尾用分隔符接上企业内部编码，斜杠后那一段留给企业管理",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R006",
+          "from": "G019",
+          "relation": "连接",
+          "to": "G021",
+          "direction": "concat"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C006",
+          "instruction": "分隔符只按示例说明连接作用，不得解释为接口路径或目录",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        {
+          "constraint_id": "C007",
+          "instruction": "示例字符串不得解释为可注册编码或真实企业对象",
+          "evidence_refs": [
+            "E002"
+          ]
+        }
+      ],
+      "entry_condition": "观众已分别认识三段",
+      "exit_condition": "观众能按顺序读出一条编码的层级",
+      "timing": {
+        "char_equivalent": 120.5,
+        "min_seconds": 31,
+        "target_seconds": 31,
+        "max_seconds": 33,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": [
+        "A006"
+      ],
+      "nx": "\n\n讲到这里，有人会问：企业本来就有内部编号，为什么还要单独留一段？\n\n因为统一体系和企业日常运营，解决的是两类问题。统一的上层结构管跨企业、跨地域的认同，让别处的系统知道这个对象属于哪个体系、哪家企业。企业内部编码解决的则是企业怎么组织产品的问题。哪个型号、哪个批次，企业最清楚，也最需要随时调整。两件事连起来，对象在体系内有了唯一的位置，企业原有的管理习惯也能延续，不用为了接入统一体系把内部那一套推倒重来。",
+      "teaching_purpose": "解释统一体系与企业自治为什么并存",
+      "single_message": "统一上层结构管跨企业认同，企业内部编码管对象组织，两者解决不同问题。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S028",
+          "guidance_text": "为什么要单独留一段",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E008"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G022",
+            "items": [
+              {
+                "screen_item_id": "S029",
+                "guidance_text": "统一的上层结构管跨企业、跨地域的认同",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G023",
+            "items": [
+              {
+                "screen_item_id": "S030",
+                "guidance_text": "企业内部编码管企业自己怎么组织产品",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G024",
+            "items": [
+              {
+                "screen_item_id": "S031",
+                "guidance_text": "两件事连起来，对象有了唯一位置，原有管理习惯也能延续",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R007",
+          "from": "G022",
+          "relation": "共存于",
+          "to": "G024",
+          "direction": "complement"
+        }
+      ],
+      "silent_constraints": [],
+      "entry_condition": "观众已能读出完整编码",
+      "exit_condition": "观众能说出两类问题分别由哪一段承担",
+      "timing": {
+        "char_equivalent": 183.0,
+        "min_seconds": 46,
+        "target_seconds": 48,
+        "max_seconds": 50,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": [
+        "A007"
+      ],
+      "nx": "\n\n还有一点。同一个标识对象在不同场景里可以采用彼此相容的表达方式，这些形式之间可以相互映射转化。场景换了，表达可以跟着换，指向的仍然是同一个身份。\n\n把编码放回电池的生命周期，作用更清楚。生产时记录企业内部的对象信息，销售时可以沿服务机构代码的层级找到它属于哪家企业，到了维护和回收，各个环节仍然围绕同一个标识关联记录。VAA 不是把所有业务数据塞进编码，而是给这些分散的记录提供一个共同的身份锚点。",
+      "teaching_purpose": "说明相容表达与生命周期中的共同身份",
+      "single_message": "同一标识对象可以采用相容表达并相互映射，各环节记录围绕同一个身份锚点。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S032",
+          "guidance_text": "共同的身份锚点",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E009"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G025",
+            "items": [
+              {
+                "screen_item_id": "S033",
+                "guidance_text": "同一标识对象在不同场景可以采用相容表达，形式之间可相互映射转化",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G026",
+            "items": [
+              {
+                "screen_item_id": "S034",
+                "guidance_text": "生产记录企业内部对象，销售沿服务机构层级定位所属企业",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G027",
+            "items": [
+              {
+                "screen_item_id": "S035",
+                "guidance_text": "维护和回收仍围绕同一个标识关联记录",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G028",
+            "items": [
+              {
+                "screen_item_id": "S036",
+                "guidance_text": "VAA 不承载全部业务数据，只提供共同身份锚点",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E009"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R008",
+          "from": "G025",
+          "relation": "贯穿",
+          "to": "G028",
+          "direction": "anchor"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C008",
+          "instruction": "不得列出形式的数量、名称或转换步骤，也不得补写系统、接口或数据字段",
+          "evidence_refs": [
+            "E009"
+          ]
+        }
+      ],
+      "entry_condition": "观众知道统一体系与企业自治并存",
+      "exit_condition": "观众能在生命周期各环节看到同一个身份锚点",
+      "timing": {
+        "char_equivalent": 180.5,
+        "min_seconds": 46,
+        "target_seconds": 47,
+        "max_seconds": 50,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": [
+        "A008"
+      ],
+      "nx": "\n\n那这套编码规则从哪来？不是凭空定的。它参照国际通行的标识编码系列标准来编写，让上层做法跟通行标准对得上。在这个基础上，不同行业还会形成各自的编码导则，把通用规则落到具体的行业对象上。",
+      "teaching_purpose": "说明编码规则的依据层次",
+      "single_message": "规则参照国际通行的标识编码系列标准，各行业再形成自己的编码导则。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S037",
+          "guidance_text": "规则依据的两个层次",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E010"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G029",
+            "items": [
+              {
+                "screen_item_id": "S038",
+                "guidance_text": "编码规则参照国际通行的标识编码系列标准编写",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G030",
+            "items": [
+              {
+                "screen_item_id": "S039",
+                "guidance_text": "上层做法要与通行标准对得上",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G031",
+            "items": [
+              {
+                "screen_item_id": "S040",
+                "guidance_text": "不同行业形成各自的编码导则，把通用规则落到行业对象上",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R009",
+          "from": "G029",
+          "relation": "细化为",
+          "to": "G031",
+          "direction": "generalize"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C009",
+          "instruction": "不得点出标准编号、导则名称或行业文件名称",
+          "evidence_refs": [
+            "E010"
+          ]
+        },
+        {
+          "constraint_id": "C010",
+          "instruction": "不得声称任何标准或导则的版本当前有效",
+          "evidence_refs": [
+            "E010"
+          ]
+        }
+      ],
+      "entry_condition": "观众已看到编码在生命周期中的作用",
+      "exit_condition": "观众能说出通行标准与行业导则的分工",
+      "timing": {
+        "char_equivalent": 84.0,
+        "min_seconds": 21,
+        "target_seconds": 22,
+        "max_seconds": 23,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A010",
+      "callback_a_ids": [
+        "A009"
+      ],
+      "nx": "\n\n回到读法。拿到一条 VAA 编码，三步就够了：先看开头的发码机构代码，再看服务机构代码里的国家、行业、企业层级，最后看企业内部编码怎样区分具体对象。前面两段是体系和企业层级的定位，是共有的；末尾一段是企业自己的对象细分。分开看，就不会把企业内部编号误当成全球层级的代码。\n\n企业内部编码具体写什么字段、多长、要不要校验位，由企业按自身业务决定。",
+      "teaching_purpose": "收束三步读法与职责边界",
+      "single_message": "三步读法：发码机构代码、服务机构层级、企业内部编码；末段属于企业自治范围。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S041",
+          "guidance_text": "三步读法与边界",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G032",
+            "items": [
+              {
+                "screen_item_id": "S042",
+                "guidance_text": "第一步看开头的发码机构代码",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G033",
+            "items": [
+              {
+                "screen_item_id": "S043",
+                "guidance_text": "第二步看服务机构代码里的国家、行业、企业层级",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G034",
+            "items": [
+              {
+                "screen_item_id": "S044",
+                "guidance_text": "第三步看企业内部编码怎样区分具体对象",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G035",
+            "items": [
+              {
+                "screen_item_id": "S045",
+                "guidance_text": "前两段是共有的体系定位，末尾一段是企业自己的对象细分",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G036",
+            "items": [
+              {
+                "screen_item_id": "S046",
+                "guidance_text": "字段、长度与校验位由企业按自身业务决定",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R010",
+          "from": "G032",
+          "relation": "排序",
+          "to": "G036",
+          "direction": "sequence"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C011",
+          "instruction": "不得把企业自治范围扩写为字段设计或校验方案",
+          "evidence_refs": [
+            "E002"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经认识全部三段依据",
+      "exit_condition": "观众能独立完成三步读法并区分共有与自治部分",
+      "timing": {
+        "char_equivalent": 149.5,
+        "min_seconds": 38,
+        "target_seconds": 39,
+        "max_seconds": 41,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A011",
+      "callback_a_ids": [
+        "A010"
+      ],
+      "nx": "\n\n【本期总结】\n回到开头那块电池。它一路经过运输、销售、维护和回收，每个环节都留下了记录。VAA 给它的身份分了三层。\n\n发码机构代码是入口，指明这套身份由谁管理，让后面的定位有共同的上级；服务机构代码负责定位，用国家、行业、企业三层说清它属于谁；企业内部编码负责细分，由企业决定怎样把产品、批次和具体对象区分开。\n\n三层合起来，就是这一集的核心判断：统一的上层结构提供可管理的位置，企业自己的那一段保留管理弹性。两者连在一起，对象才能既被整个体系认出来，又不必放弃企业原有的管理方式。\n\n身份放在一个被管理的位置上，跨环节的记录才有共同的落点，企业换系统、换流程的时候，这个对象的身份也不用跟着重来。",
+      "teaching_purpose": "回到开场对象并收束三层职责",
+      "single_message": "三层合起来：发码机构代码给入口，服务机构代码给位置，企业内部编码给对象细分。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S047",
+          "guidance_text": "三层职责的收束",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G037",
+            "items": [
+              {
+                "screen_item_id": "S048",
+                "guidance_text": "发码机构代码是入口，指明身份由谁管理",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G038",
+            "items": [
+              {
+                "screen_item_id": "S049",
+                "guidance_text": "服务机构代码负责定位，说清对象属于谁",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G039",
+            "items": [
+              {
+                "screen_item_id": "S050",
+                "guidance_text": "企业内部编码负责细分，由企业决定对象区分",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G040",
+            "items": [
+              {
+                "screen_item_id": "S051",
+                "guidance_text": "统一的上层结构提供可管理的位置，企业那一段保留管理弹性",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R011",
+          "from": "G037",
+          "relation": "汇合为",
+          "to": "G040",
+          "direction": "converge"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C012",
+          "instruction": "不得引出其他编码体系或横向选型",
+          "evidence_refs": [
+            "E003"
+          ]
+        }
+      ],
+      "entry_condition": "观众已掌握三步读法",
+      "exit_condition": "观众能复述三层分工与核心判断",
+      "timing": {
+        "char_equivalent": 260.5,
+        "min_seconds": 66,
+        "target_seconds": 68,
+        "max_seconds": 72,
+        "short_page_reason": null
+      }
+    }
+  ]
+}
