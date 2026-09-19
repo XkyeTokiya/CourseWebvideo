@@ -1,0 +1,490 @@
+/* A002 · 定义与作用 —— 前缀 .dr- 仅本章使用；颜色/字体全部走主题 token。
+   首拍入场用 keyframe（挂载即播）；后续状态切换用 transition（基础态即时可逆）。 */
+
+.dr-root {
+  gap: 26px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题 ───────────────────────────────────────────────── */
+
+.dr-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.dr-heading-mark {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border: 4px solid var(--theme-structural);
+  border-radius: 6px;
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.dr-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 主区：教材图占位 ＋ 图外读图卡 ───────────────────────────── */
+
+.dr-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 34px;
+}
+
+.dr-media {
+  margin: 0;
+  flex: 0 0 660px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dr-media-frame {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: var(--card-shadow);
+}
+
+.dr-media-id {
+  position: absolute;
+  top: -20px;
+  right: 26px;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  color: var(--surface-2);
+  background: var(--theme-structural);
+  border-radius: 9px;
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.dr-id-glyph {
+  width: 30px;
+  height: 30px;
+}
+
+.dr-media-placeholder {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--theme-structural);
+}
+
+.dr-media-desc {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 18px;
+  color: var(--text-mute);
+}
+
+.dr-media-caption {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: var(--text-mute);
+}
+
+.dr-rail {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+}
+
+.dr-resource {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 30px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 4px 14px 4px 14px;
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateX(30px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="two-resources-placed"] .dr-resource,
+[data-state="resources-annotated"] .dr-resource,
+[data-state="silo-benefit-stated"] .dr-resource,
+[data-state="shared-foundation"] .dr-resource {
+  opacity: 1;
+  transform: none;
+}
+
+.dr-resource-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dr-resource-id {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: var(--theme-structural);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  border-radius: 8px;
+}
+
+.dr-resource-id .dr-id-glyph {
+  width: 26px;
+  height: 26px;
+}
+
+.dr-resource-kind {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 34px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.dr-resource-detail {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.35;
+  color: var(--theme-structural);
+}
+
+.dr-resource-note {
+  margin: 0;
+  padding-left: 14px;
+  border-left: 3px solid var(--theme-process);
+  font-family: var(--font-display-cn);
+  font-size: 19px;
+  line-height: 1.4;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="resources-annotated"] .dr-resource-note,
+[data-state="silo-benefit-stated"] .dr-resource-note,
+[data-state="shared-foundation"] .dr-resource-note {
+  opacity: 1;
+}
+
+.dr-rail-shared {
+  margin: 0;
+  align-self: center;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 21px;
+  letter-spacing: 0.02em;
+  color: var(--theme-process);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="resources-annotated"] .dr-rail-shared,
+[data-state="silo-benefit-stated"] .dr-rail-shared,
+[data-state="shared-foundation"] .dr-rail-shared {
+  opacity: 1;
+}
+
+/* ── 底部：takeaway 收束带（信息孤岛 → 共同身份桥接） ─────────── */
+
+.dr-takeaway {
+  flex: 0 0 236px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 14px 30px;
+  border: 2px dashed var(--theme-dashed-line);
+  transition:
+    background-color 0.55s ease,
+    border-color 0.55s ease,
+    box-shadow 0.55s ease;
+}
+
+[data-state="silo-benefit-stated"] .dr-takeaway,
+[data-state="shared-foundation"] .dr-takeaway {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.dr-islands {
+  flex: 0 0 540px;
+  height: 100%;
+  min-height: 0;
+}
+
+.dr-isle path {
+  fill: var(--theme-cool-surface);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+}
+
+.dr-isle rect {
+  fill: var(--theme-structural);
+  opacity: 0.55;
+}
+
+.dr-isle text {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  fill: var(--theme-structural);
+}
+
+.dr-isle {
+  opacity: 0;
+  transform: translateY(10px) scale(0.94);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="silo-benefit-stated"] .dr-isle,
+[data-state="shared-foundation"] .dr-isle {
+  opacity: 1;
+  transform: none;
+}
+
+.dr-hub rect {
+  fill: var(--theme-structural);
+  stroke: none;
+}
+
+.dr-hub text {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  fill: var(--surface-2);
+}
+
+.dr-hub {
+  color: var(--surface-2);
+  opacity: 0;
+  transform: scale(0.85);
+  transform-origin: 260px 29px;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+[data-state="shared-foundation"] .dr-hub {
+  opacity: 1;
+  transform: none;
+}
+
+.dr-bridge {
+  stroke: var(--theme-process);
+  stroke-width: 3;
+  stroke-dasharray: 7 9;
+  stroke-dashoffset: 240;
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    stroke-dashoffset 0.7s ease;
+}
+
+[data-state="shared-foundation"] .dr-bridge {
+  opacity: 1;
+  stroke-dashoffset: 0;
+}
+
+.dr-takeaway-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dr-takeaway-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 34px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="silo-benefit-stated"] .dr-takeaway-main,
+[data-state="shared-foundation"] .dr-takeaway-main {
+  opacity: 1;
+  transform: none;
+}
+
+.dr-takeaway-silo {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 20px;
+  line-height: 1.4;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="silo-benefit-stated"] .dr-takeaway-silo,
+[data-state="shared-foundation"] .dr-takeaway-silo {
+  opacity: 1;
+}
+
+.dr-takeaway-share {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1.4;
+  color: var(--theme-process);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="shared-foundation"] .dr-takeaway-share {
+  opacity: 1;
+}
+
+/* ── 首拍入场节拍（keyframe：挂载即播） ───────────────────────── */
+
+[data-state="definition-anchored"] .dr-header {
+  animation: dr-rise-in 0.55s ease 0.1s both;
+}
+
+[data-state="definition-anchored"] .dr-media {
+  animation: dr-media-in 0.6s ease 0.3s both;
+}
+
+[data-state="definition-anchored"] .dr-media-id {
+  animation: dr-id-stamp 0.45s cubic-bezier(0.3, 0.7, 0.3, 1.2) 0.95s both;
+}
+
+@keyframes dr-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dr-media-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dr-id-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.5) rotate(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 状态进入延迟：只挂在进入态选择器上 ───────────────────────── */
+
+[data-state="two-resources-placed"] .dr-rail > .dr-resource:nth-of-type(1) {
+  transition-delay: 0.15s, 0.15s;
+}
+
+[data-state="two-resources-placed"] .dr-rail > .dr-resource:nth-of-type(2) {
+  transition-delay: 0.45s, 0.45s;
+}
+
+[data-state="resources-annotated"] .dr-resource:nth-of-type(1) .dr-resource-note {
+  transition-delay: 0.15s;
+}
+
+[data-state="resources-annotated"] .dr-resource:nth-of-type(2) .dr-resource-note {
+  transition-delay: 0.3s;
+}
+
+[data-state="resources-annotated"] .dr-rail-shared {
+  transition-delay: 0.6s;
+}
+
+[data-state="silo-benefit-stated"] .dr-islands g:nth-of-type(1) {
+  transition-delay: 0.15s, 0.15s;
+}
+
+[data-state="silo-benefit-stated"] .dr-islands g:nth-of-type(2) {
+  transition-delay: 0.4s, 0.4s;
+}
+
+[data-state="silo-benefit-stated"] .dr-islands g:nth-of-type(3) {
+  transition-delay: 0.65s, 0.65s;
+}
+
+[data-state="silo-benefit-stated"] .dr-takeaway-main {
+  transition-delay: 0.25s, 0.25s;
+}
+
+[data-state="silo-benefit-stated"] .dr-takeaway-silo {
+  transition-delay: 0.5s;
+}
+
+[data-state="shared-foundation"] .dr-hub {
+  transition-delay: 0.1s, 0.1s;
+}
+
+[data-state="shared-foundation"] .dr-bridge-1 {
+  transition-delay: 0.15s, 0.2s;
+}
+
+[data-state="shared-foundation"] .dr-bridge-2 {
+  transition-delay: 0.45s, 0.5s;
+}
+
+[data-state="shared-foundation"] .dr-bridge-3 {
+  transition-delay: 0.75s, 0.8s;
+}
+
+[data-state="shared-foundation"] .dr-takeaway-share {
+  transition-delay: 0.95s;
+}

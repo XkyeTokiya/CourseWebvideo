@@ -3,6 +3,8 @@ import Cover from "./chapters/00-cover/Cover";
 import { narrations as coverNarrations } from "./chapters/00-cover/narrations";
 import A001Chapter from "./chapters/01-opening-question/A001Chapter";
 import { narrations as a001Narrations } from "./chapters/01-opening-question/narrations";
+import A002Chapter from "./chapters/02-definition-resources/A002Chapter";
+import { narrations as a002Narrations } from "./chapters/02-definition-resources/narrations";
 
 export const id = "episode-14";
 export const title = "第 14 期 · 标识编码体系认知";
@@ -20,5 +22,11 @@ export const CHAPTERS: ChapterDef[] = [
     title: "情境提问",
     narrations: a001Narrations,
     Component: A001Chapter,
+  },
+  {
+    id: "02-definition-resources",
+    title: "定义与作用",
+    narrations: a002Narrations,
+    Component: A002Chapter,
   },
 ];
