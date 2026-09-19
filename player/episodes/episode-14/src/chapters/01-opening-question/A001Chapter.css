@@ -1,0 +1,429 @@
+/* A001 · 情境提问 —— 前缀 .oq- 仅本章使用；颜色/字体全部走主题 token。
+   首拍入场序列用 keyframe（挂载即播）；后续状态切换用 transition（基础态即时可逆）。 */
+
+.oq-root {
+  gap: 30px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题 ───────────────────────────────────────────────── */
+
+.oq-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  transition:
+    opacity 0.75s ease,
+    filter 0.75s ease;
+}
+
+.oq-heading-mark {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 56px;
+  background: var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.oq-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 58px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 主区：零部件跨环节旅程带 ─────────────────────────────────── */
+
+.oq-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  transition:
+    opacity 0.75s ease,
+    filter 0.75s ease;
+}
+
+.oq-journey {
+  position: relative;
+  margin: auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* 路线：首拍自左向右绘出 */
+.oq-route-rail {
+  position: absolute;
+  top: 31px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 4px;
+  background: var(--theme-structural);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+[data-state="journey-established"] .oq-route-rail,
+[data-state="records-scattered"] .oq-route-rail,
+[data-state="confirmation-question"] .oq-route-rail,
+[data-state="episode-question"] .oq-route-rail {
+  transform: scaleX(1);
+}
+
+[data-state="journey-established"] .oq-route-rail {
+  animation: oq-rail-draw 0.9s cubic-bezier(0.3, 0.6, 0.25, 1) 0.25s both;
+}
+
+/* 零部件标记：沿路线从工厂行进到维修 */
+.oq-part-marker {
+  position: absolute;
+  top: -2px;
+  left: 12.5%;
+  z-index: 2;
+  width: 68px;
+  height: 68px;
+  margin-left: -34px;
+  display: grid;
+  place-items: center;
+  color: var(--surface-2);
+  background: var(--theme-structural);
+  border-radius: 10px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.oq-glyph {
+  width: 36px;
+  height: 36px;
+}
+
+[data-state="journey-established"] .oq-part-marker {
+  animation: oq-marker-travel 2.3s cubic-bezier(0.35, 0.65, 0.3, 1) 1.55s both;
+}
+
+[data-state="records-scattered"] .oq-part-marker,
+[data-state="confirmation-question"] .oq-part-marker,
+[data-state="episode-question"] .oq-part-marker {
+  left: 87.5%;
+}
+
+@keyframes oq-rail-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes oq-marker-travel {
+  from {
+    left: 12.5%;
+  }
+  to {
+    left: 87.5%;
+  }
+}
+
+/* 站点：节点 + 环节名 + 记录卡 */
+.oq-station {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(-14px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+[data-state="journey-established"] .oq-station,
+[data-state="records-scattered"] .oq-station,
+[data-state="confirmation-question"] .oq-station,
+[data-state="episode-question"] .oq-station {
+  opacity: 1;
+  transform: none;
+}
+
+.oq-node {
+  z-index: 1;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.oq-node-no {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--theme-structural);
+}
+
+.oq-station-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+/* 记录卡：互不相干的系统各记各的 */
+.oq-record {
+  position: relative;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 24px;
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: scale(1.14);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="records-scattered"] .oq-record,
+[data-state="confirmation-question"] .oq-record,
+[data-state="episode-question"] .oq-record {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.oq-journey > div:nth-of-type(odd) .oq-record {
+  border-radius: 3px 12px 3px 12px;
+}
+
+.oq-journey > div:nth-of-type(even) .oq-record {
+  border-radius: 12px 3px 12px 3px;
+}
+
+.oq-record-tag {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.oq-record-system {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+/* 记录之间的对不上问号 */
+.oq-record-q {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 1;
+  width: 34px;
+  height: 34px;
+  transform: translate(50%, -50%) scale(0.4);
+  display: grid;
+  place-items: center;
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  border-radius: 50%;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+[data-state="records-scattered"] .oq-record-q,
+[data-state="confirmation-question"] .oq-record-q,
+[data-state="episode-question"] .oq-record-q {
+  opacity: 1;
+  transform: translate(50%, -50%) scale(1);
+}
+
+/* ── 首拍入场节拍（keyframe：挂载即播，回看本拍时重播） ─────────── */
+
+[data-state="journey-established"] .oq-journey > div:nth-of-type(1) {
+  animation: oq-station-in 0.55s ease 0.45s both;
+}
+
+[data-state="journey-established"] .oq-journey > div:nth-of-type(2) {
+  animation: oq-station-in 0.55s ease 0.67s both;
+}
+
+[data-state="journey-established"] .oq-journey > div:nth-of-type(3) {
+  animation: oq-station-in 0.55s ease 0.89s both;
+}
+
+[data-state="journey-established"] .oq-journey > div:nth-of-type(4) {
+  animation: oq-station-in 0.55s ease 1.11s both;
+}
+
+@keyframes oq-station-in {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 记录卡与问号徽标的进入延迟：只挂在进入态选择器上 */
+[data-state="records-scattered"] .oq-journey > div:nth-of-type(1) .oq-record {
+  transition-delay: 0.2s, 0.2s;
+}
+
+[data-state="records-scattered"] .oq-journey > div:nth-of-type(2) .oq-record {
+  transition-delay: 0.55s, 0.55s;
+}
+
+[data-state="records-scattered"] .oq-journey > div:nth-of-type(3) .oq-record {
+  transition-delay: 0.9s, 0.9s;
+}
+
+[data-state="records-scattered"] .oq-journey > div:nth-of-type(4) .oq-record {
+  transition-delay: 1.25s, 1.25s;
+}
+
+[data-state="records-scattered"] .oq-journey > div:nth-of-type(1) .oq-record-q {
+  transition-delay: 0.95s, 0.95s;
+}
+
+[data-state="records-scattered"] .oq-journey > div:nth-of-type(2) .oq-record-q {
+  transition-delay: 1.3s, 1.3s;
+}
+
+[data-state="records-scattered"] .oq-journey > div:nth-of-type(3) .oq-record-q {
+  transition-delay: 1.65s, 1.65s;
+}
+
+/* ── 收束：前提弱化，问题条成为视觉中心 ───────────────────────── */
+
+[data-state="confirmation-question"] .oq-header,
+[data-state="confirmation-question"] .oq-main,
+[data-state="episode-question"] .oq-header,
+[data-state="episode-question"] .oq-main {
+  opacity: 0.16;
+  filter: saturate(0.55);
+}
+
+/* 问题条：前两拍为虚线空槽，收束拍成为实卡焦点 */
+.oq-question {
+  position: relative;
+  flex: 0 0 190px;
+  border: 2px dashed var(--theme-dashed-line);
+  transition:
+    background-color 0.55s ease,
+    border-color 0.55s ease,
+    box-shadow 0.55s ease;
+}
+
+.oq-question-ghost {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display-en);
+  font-size: 96px;
+  font-weight: 700;
+  color: var(--rule);
+  opacity: 0.6;
+  transition: opacity 0.55s ease;
+}
+
+.oq-question-confirm,
+.oq-question-final {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+}
+
+.oq-question-confirm {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 52px;
+  line-height: 1.25;
+  color: var(--theme-structural);
+  transition: opacity 0.6s ease;
+}
+
+.oq-question-final {
+  gap: 12px;
+}
+
+.oq-question-kicker {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.04em;
+  color: var(--theme-process);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.oq-question-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 1.2;
+  color: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+[data-state="confirmation-question"] .oq-question,
+[data-state="episode-question"] .oq-question {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="confirmation-question"] .oq-question-ghost,
+[data-state="episode-question"] .oq-question-ghost {
+  opacity: 0;
+}
+
+[data-state="confirmation-question"] .oq-question-confirm {
+  opacity: 1;
+  transition-delay: 0.35s;
+}
+
+[data-state="episode-question"] .oq-question-final {
+  opacity: 1;
+}
+
+[data-state="episode-question"] .oq-question-kicker {
+  opacity: 1;
+  transition-delay: 0.15s;
+}
+
+[data-state="episode-question"] .oq-question-main {
+  opacity: 1;
+  transition-delay: 0.5s;
+}
