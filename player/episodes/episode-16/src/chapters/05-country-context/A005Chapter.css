@@ -1,0 +1,534 @@
+/* A005 · 国家语境 —— 前缀 .nc- 仅本章使用；颜色/字体全部走主题 token。
+   配方 layered-bands-with-side-notes：两级职责条纵向排布持续作锚点
+   （R004 委托分配由纵向排布承载），旁注补充语境，示例 86 落点收束。
+   首拍建立用 keyframe（挂载即播）；后续状态切换的 delay 一律挂在
+   [data-state] 选择器下，基础态保持可逆。 */
+
+.nc-root {
+  gap: 22px;
+  min-height: 0;
+}
+
+@keyframes nc-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes nc-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes nc-band-grow {
+  from {
+    clip-path: inset(0 0 100% 0);
+    opacity: 0.4;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+@keyframes nc-line-draw {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes nc-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes nc-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes nc-chevron-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) rotate(45deg) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(45deg) scale(1);
+  }
+}
+
+/* ── 顶部：标题（headline 槽位，可见标题保留） ─────────────────── */
+
+.nc-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+}
+
+[data-state="national-band-established"] .nc-header {
+  animation: nc-rise-in 0.5s ease 0.05s both;
+}
+
+.nc-header-mark {
+  align-self: center;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nc-header-mark::before {
+  content: "";
+  width: 54px;
+  height: 10px;
+  background: var(--theme-structural);
+}
+
+.nc-header-mark::after {
+  content: "";
+  width: 34px;
+  height: 10px;
+  background: var(--theme-warning);
+}
+
+.nc-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+.nc-header-sub {
+  margin-left: auto;
+  padding-bottom: 8px;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--text-2);
+}
+
+/* ── 主区：左职责条纵向排布 ＋ 右旁注栏 ────────────────────────── */
+
+.nc-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 44px;
+}
+
+[data-state="national-band-established"] .nc-main {
+  animation: nc-fade-in 0.5s ease 0.15s both;
+}
+
+.nc-bands {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 职责条：纵向生长（自上而下揭示），持续作锚点 */
+.nc-band {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 28px 34px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  clip-path: inset(0 0 100% 0);
+  opacity: 0;
+  transition:
+    clip-path 0.6s cubic-bezier(0.3, 0.6, 0.25, 1),
+    opacity 0.4s ease;
+}
+
+.nc-band-tier {
+  flex: 0 0 auto;
+  padding: 6px 14px;
+  border: 2px dashed var(--theme-dashed-line);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+
+.nc-band-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nc-band-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 42px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+.nc-band-note {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 25px;
+  color: var(--text-2);
+}
+
+.nc-pin {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 50px;
+  color: var(--theme-warning);
+}
+
+/* 委托分配连接件：R004 由纵向排布承载 */
+.nc-delegate {
+  flex: 0 0 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nc-delegate-line {
+  width: 5px;
+  flex: 1 1 auto;
+  min-height: 30px;
+  background: var(--theme-process);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.45s ease;
+}
+
+.nc-delegate-head {
+  width: 0;
+  height: 0;
+  border-top: 15px solid var(--theme-process);
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* 继续下分的轨迹：示例落点之后的延伸方向 */
+.nc-continue {
+  flex: 0 0 58px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.nc-continue-chevron {
+  width: 16px;
+  height: 16px;
+  border-right: 4px solid var(--theme-process);
+  border-bottom: 4px solid var(--theme-process);
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+[data-state="national-band-established"] .nc-band-a,
+[data-state="example-86-anchored"] .nc-band-a {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+
+[data-state="national-band-established"] .nc-band-a {
+  animation: nc-band-grow 0.65s cubic-bezier(0.3, 0.6, 0.25, 1) 0.25s both;
+}
+
+[data-state="national-band-established"] .nc-delegate-line,
+[data-state="example-86-anchored"] .nc-delegate-line {
+  transform: scaleY(1);
+  animation: nc-line-draw 0.45s ease 0.85s both;
+}
+
+[data-state="national-band-established"] .nc-delegate-head,
+[data-state="example-86-anchored"] .nc-delegate-head {
+  opacity: 1;
+  animation: nc-fade-in 0.3s ease 1.15s both;
+}
+
+[data-state="national-band-established"] .nc-band-b,
+[data-state="example-86-anchored"] .nc-band-b {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+
+[data-state="national-band-established"] .nc-band-b {
+  animation: nc-band-grow 0.65s cubic-bezier(0.3, 0.6, 0.25, 1) 1.2s both;
+}
+
+/* 示例实例标签：抽象职责条在第二拍接到具体机构 */
+.nc-band-instance {
+  position: absolute;
+  top: -18px;
+  right: 26px;
+  padding: 7px 18px;
+  background: var(--theme-warning);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 21px;
+  color: var(--surface-2);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: scale(1.2);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+[data-state="example-86-anchored"] .nc-band-instance {
+  opacity: 1;
+  transform: scale(1);
+  animation: nc-pop-in 0.45s ease 0.95s both;
+}
+
+[data-state="example-86-anchored"] .nc-continue-chevron {
+  opacity: 1;
+}
+
+[data-state="example-86-anchored"] .nc-continue-chevron:nth-child(1) {
+  animation: nc-chevron-in 0.35s ease 1.25s both;
+}
+
+[data-state="example-86-anchored"] .nc-continue-chevron:nth-child(2) {
+  animation: nc-chevron-in 0.35s ease 1.5s both;
+}
+
+[data-state="example-86-anchored"] .nc-continue-chevron:nth-child(3) {
+  animation: nc-chevron-in 0.35s ease 1.75s both;
+}
+
+/* ── 旁注栏：分配语境 ＋ 示例 86 锚点卡 ────────────────────────── */
+
+.nc-side {
+  flex: 0 0 500px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 44px;
+}
+
+.nc-note {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 26px;
+  background: var(--surface-3);
+  border: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="national-band-established"] .nc-note,
+[data-state="example-86-anchored"] .nc-note {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="national-band-established"] .nc-note {
+  animation: nc-rise-in 0.5s ease 1.7s both;
+}
+
+.nc-note-kicker {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.nc-note-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.45;
+  color: var(--theme-structural);
+}
+
+.nc-anchor {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 26px 30px 24px;
+  background: var(--theme-warning-surface);
+  border: 3px solid var(--theme-warning);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="example-86-anchored"] .nc-anchor {
+  opacity: 1;
+  transform: none;
+  animation: nc-rise-in 0.5s ease 0.2s both;
+}
+
+.nc-anchor-kicker {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 21px;
+  color: var(--theme-structural);
+}
+
+.nc-anchor-kicker::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: var(--theme-warning);
+}
+
+.nc-anchor-num {
+  font-size: 128px;
+  color: var(--theme-structural);
+}
+
+[data-state="example-86-anchored"] .nc-anchor-num {
+  animation: nc-stamp 0.5s cubic-bezier(0.3, 0.7, 0.3, 1) 0.45s both;
+}
+
+.nc-anchor-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--theme-structural);
+}
+
+/* ── 底部：边界 ＋ takeaway 收束（第二拍） ─────────────────────── */
+
+.nc-bottom {
+  flex: 0 0 132px;
+  display: flex;
+  align-items: stretch;
+  gap: 30px;
+}
+
+.nc-boundary {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 32px;
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.nc-boundary-kicker {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+.nc-boundary-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 34px;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+.nc-bottom-sep {
+  width: 0;
+  border-left: 2px dashed var(--theme-dashed-line);
+}
+
+.nc-takeaway {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.nc-continue-glyph {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 40px;
+  color: var(--theme-process);
+}
+
+.nc-takeaway-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 46px;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+[data-state="example-86-anchored"] .nc-boundary {
+  opacity: 1;
+  transform: none;
+  animation: nc-rise-in 0.5s ease 1.5s both;
+}
+
+[data-state="example-86-anchored"] .nc-takeaway {
+  opacity: 1;
+  transform: none;
+  animation: nc-rise-in 0.55s ease 1.75s both;
+}

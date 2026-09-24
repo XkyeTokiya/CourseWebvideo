@@ -1,0 +1,727 @@
+/* A004 · 治理分工 —— 前缀 .gd- 仅本章使用；颜色/字体全部走主题 token。
+   配方 image-with-reading-notes：现场图像持续在场（不反复卸载），
+   读图焦点先 DONA 后 MPA 迁移。首拍建立用 keyframe（挂载即播）；
+   后续状态切换的 delay 一律挂在 [data-state] 选择器下，基础态保持可逆。 */
+
+.gd-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+@keyframes gd-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes gd-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gd-focus-pop {
+  from {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gd-path-draw {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes gd-slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(-22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes gd-arrow-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ── 顶部：标题（headline 槽位，可见标题保留） ─────────────────── */
+
+.gd-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+}
+
+[data-state="dona-established"] .gd-header {
+  animation: gd-rise-in 0.55s ease 0.05s both;
+}
+
+.gd-header-mark {
+  align-self: center;
+  flex: 0 0 auto;
+  display: flex;
+  gap: 6px;
+}
+
+.gd-header-mark::before {
+  content: "";
+  width: 12px;
+  height: 50px;
+  background: var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.gd-header-mark::after {
+  content: "";
+  width: 12px;
+  height: 50px;
+  border: 3px solid var(--theme-process);
+  background: var(--theme-process-surface);
+}
+
+.gd-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 52px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+.gd-header-sub {
+  margin-left: auto;
+  padding-bottom: 8px;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--text-2);
+}
+
+/* ── 主区：左读图注记栏 ＋ 右现场图像（M002 持续在场） ─────────── */
+
+.gd-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 40px;
+}
+
+[data-state="dona-established"] .gd-main {
+  animation: gd-fade-in 0.5s ease 0.15s both;
+}
+
+.gd-notes {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* 现场图像：全章持续的语境锚点 */
+.gd-scene {
+  position: relative;
+  flex: 0 0 780px;
+  min-height: 0;
+  margin: 0;
+  padding: 12px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="dona-established"] .gd-scene {
+  animation: gd-rise-in 0.6s ease 0.2s both;
+}
+
+.gd-scene-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gd-scene-caption {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 18px;
+  background: color-mix(in srgb, var(--theme-structural) 84%, transparent);
+}
+
+.gd-scene-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--surface-2);
+}
+
+.gd-scene-badge::before {
+  content: "";
+  width: 8px;
+  height: 20px;
+  background: var(--theme-process);
+}
+
+.gd-scene-note {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: var(--surface-2);
+  opacity: 0.75;
+}
+
+/* 图上读图焦点：① DONA（上层）→ ② MPA（下层）迁移 */
+.gd-focus {
+  position: absolute;
+  border: 3px dashed var(--theme-process);
+  opacity: 0;
+  transform: scale(1.08);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease,
+    border-color 0.45s ease;
+}
+
+.gd-focus-tag {
+  position: absolute;
+  left: -3px;
+  padding: 6px 14px;
+  background: var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--surface-2);
+  white-space: nowrap;
+  transition: opacity 0.45s ease;
+}
+
+.gd-focus-dona {
+  top: 9%;
+  left: 6%;
+  width: 46%;
+  height: 27%;
+}
+
+.gd-focus-dona .gd-focus-tag {
+  top: -46px;
+}
+
+.gd-focus-mpa {
+  top: 55%;
+  left: 24%;
+  width: 54%;
+  height: 27%;
+}
+
+.gd-focus-mpa .gd-focus-tag {
+  bottom: -46px;
+}
+
+/* 读图路径：从 ① 向下引到 ②，第二拍自绘 */
+.gd-reading-path {
+  position: absolute;
+  left: 4.5%;
+  top: 15%;
+  height: 52%;
+  border-left: 3px dashed var(--theme-process);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.5s ease;
+}
+
+[data-state="dona-established"] .gd-focus-dona,
+[data-state="mpa-annotated"] .gd-focus-dona,
+[data-state="chain-summarized"] .gd-focus-dona {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-state="dona-established"] .gd-focus-dona {
+  animation: gd-focus-pop 0.5s ease 0.75s both;
+}
+
+[data-state="mpa-annotated"] .gd-focus-dona,
+[data-state="chain-summarized"] .gd-focus-dona {
+  opacity: 0.32;
+  border-color: var(--theme-dashed-line);
+}
+
+[data-state="mpa-annotated"] .gd-focus-dona .gd-focus-tag,
+[data-state="chain-summarized"] .gd-focus-dona .gd-focus-tag {
+  opacity: 0.45;
+}
+
+[data-state="mpa-annotated"] .gd-focus-mpa,
+[data-state="chain-summarized"] .gd-focus-mpa {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-state="mpa-annotated"] .gd-focus-mpa {
+  animation: gd-focus-pop 0.5s ease 0.35s both;
+}
+
+[data-state="mpa-annotated"] .gd-reading-path,
+[data-state="chain-summarized"] .gd-reading-path {
+  transform: scaleY(1);
+  animation: gd-path-draw 0.55s ease 0.2s both;
+}
+
+/* ── 读图序：两级机构按阅读顺序点亮，读过的降为已读 ───────────── */
+
+.gd-reading {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gd-reading-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.gd-stops {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.gd-stops::before {
+  content: "";
+  position: absolute;
+  left: 45px;
+  top: 44px;
+  bottom: 44px;
+  border-left: 2px dashed var(--theme-dashed-line);
+}
+
+.gd-stop {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  padding: 20px 24px 20px 18px;
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+.gd-stop-num {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--theme-structural);
+  background: var(--surface-3);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--theme-structural);
+  transition:
+    background-color 0.45s ease,
+    color 0.45s ease;
+}
+
+.gd-stop-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gd-stop-name-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.gd-stop-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+.gd-stop-abbr {
+  padding: 3px 14px;
+  border: 2px solid var(--theme-process);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0.14em;
+  color: var(--theme-process);
+}
+
+.gd-stop-duty {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--text-2);
+}
+
+.gd-stop-verbs {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 24px;
+  color: var(--theme-process);
+}
+
+.gd-stop-read {
+  position: absolute;
+  top: -12px;
+  right: 18px;
+  padding: 3px 12px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: var(--surface-3);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text-mute);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* 读点 01：首拍建立并点亮，之后降为已读 */
+[data-state="dona-established"] .gd-stop-dona,
+[data-state="mpa-annotated"] .gd-stop-dona,
+[data-state="chain-summarized"] .gd-stop-dona {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="dona-established"] .gd-stop-dona {
+  border-color: var(--theme-structural);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  animation: gd-rise-in 0.5s ease 0.55s both;
+}
+
+[data-state="dona-established"] .gd-stop-dona .gd-stop-num {
+  background: var(--theme-structural);
+  color: var(--surface-2);
+}
+
+[data-state="mpa-annotated"] .gd-stop-dona,
+[data-state="chain-summarized"] .gd-stop-dona {
+  opacity: 0.62;
+  border-style: dashed;
+  border-color: var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+[data-state="mpa-annotated"] .gd-stop-dona .gd-stop-read,
+[data-state="chain-summarized"] .gd-stop-dona .gd-stop-read {
+  opacity: 1;
+  transition-delay: 0.35s;
+}
+
+/* 读点 02：第二拍下移点亮，末拍随收束一并落定 */
+[data-state="mpa-annotated"] .gd-stop-mpa,
+[data-state="chain-summarized"] .gd-stop-mpa {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="mpa-annotated"] .gd-stop-mpa {
+  border-color: var(--theme-structural);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  animation: gd-rise-in 0.5s ease 0.6s both;
+}
+
+[data-state="mpa-annotated"] .gd-stop-mpa .gd-stop-num {
+  background: var(--theme-structural);
+  color: var(--surface-2);
+}
+
+[data-state="chain-summarized"] .gd-stop-mpa {
+  opacity: 0.62;
+  border-style: dashed;
+  border-color: var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+[data-state="chain-summarized"] .gd-stop-mpa .gd-stop-read {
+  opacity: 1;
+  transition-delay: 0.35s;
+}
+
+/* ── 要点区：MPA 落点 ＋ 前缀嵌套示意（第二拍补充） ────────────── */
+
+.gd-keypoints {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 20px 26px;
+  background: var(--theme-process-surface);
+  border: 2px dashed var(--theme-process);
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="mpa-annotated"] .gd-keypoints,
+[data-state="chain-summarized"] .gd-keypoints {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="mpa-annotated"] .gd-keypoints {
+  animation: gd-rise-in 0.5s ease 1s both;
+}
+
+.gd-keypoints-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gd-keypoints-kicker {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0.16em;
+  color: var(--theme-process);
+}
+
+.gd-keypoints-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 1.3;
+  color: var(--theme-structural);
+}
+
+.gd-nest-wrap {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.gd-nest {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border: 2px solid var(--theme-structural);
+  background: var(--surface-2);
+}
+
+.gd-nest-outer-label {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 20px;
+  color: var(--theme-structural);
+}
+
+.gd-nest-inner {
+  padding: 9px 14px;
+  border: 2px dashed var(--theme-process);
+  background: var(--theme-process-surface);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--theme-structural);
+}
+
+.gd-keypoints-note {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  color: var(--text-mute);
+}
+
+/* ── takeaway：分配链条收束（第三拍） ──────────────────────────── */
+
+.gd-takeaway {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: 24px 28px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="chain-summarized"] .gd-takeaway {
+  opacity: 1;
+  transform: none;
+  animation: gd-rise-in 0.55s ease 0.15s both;
+}
+
+.gd-takeaway-lead {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 40px;
+  color: var(--theme-structural);
+}
+
+.gd-takeaway-lead::before {
+  content: "";
+  width: 14px;
+  height: 34px;
+  background: var(--theme-process);
+}
+
+.gd-chain {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.gd-chain-node {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+  opacity: 0;
+  transform: translateX(-20px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.gd-chain-tier {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 26px;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+.gd-chain-note {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.35;
+  color: var(--text-2);
+}
+
+.gd-chain-arrow {
+  flex: 0 0 24px;
+  align-self: center;
+  position: relative;
+  height: 4px;
+  background: var(--theme-process);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.gd-chain-arrow::after {
+  content: "";
+  position: absolute;
+  right: -9px;
+  top: 50%;
+  translate: 0 -50%;
+  border-left: 10px solid var(--theme-process);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+[data-state="chain-summarized"] .gd-chain-node {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="chain-summarized"] .gd-chain-node:nth-child(1) {
+  animation: gd-slide-right 0.45s ease 0.55s both;
+}
+
+[data-state="chain-summarized"] .gd-chain-arrow:nth-child(2) {
+  transform: scaleX(1);
+  animation: gd-arrow-draw 0.3s ease 0.85s both;
+}
+
+[data-state="chain-summarized"] .gd-chain-node:nth-child(3) {
+  animation: gd-slide-right 0.45s ease 0.95s both;
+}
+
+[data-state="chain-summarized"] .gd-chain-arrow:nth-child(4) {
+  transform: scaleX(1);
+  animation: gd-arrow-draw 0.3s ease 1.2s both;
+}
+
+[data-state="chain-summarized"] .gd-chain-node:nth-child(5) {
+  animation: gd-slide-right 0.45s ease 1.3s both;
+}
