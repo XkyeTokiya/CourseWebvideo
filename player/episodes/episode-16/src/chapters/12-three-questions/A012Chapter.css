@@ -1,0 +1,740 @@
+/* A012 · 三问检查 —— 前缀 .tq- 仅本章使用；颜色/字体全部走主题 token。
+   首拍建立用 keyframe（挂载即播）；后续状态切换的 delay 一律挂在
+   [data-state] 选择器下，基础态保持可逆。 */
+
+.tq-root {
+  gap: 20px;
+  min-height: 0;
+}
+
+@keyframes tq-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tq-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tq-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes tq-grow-v {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes tq-note-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tq-draw-line {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes tq-tick-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 汇聚线带位移与倾斜，keyframe 必须携带完整 transform */
+@keyframes tq-converge-draw {
+  from {
+    transform: translateX(-50%) rotate(var(--tq-lean, 0deg)) scaleY(0);
+  }
+  to {
+    transform: translateX(-50%) rotate(var(--tq-lean, 0deg)) scaleY(1);
+  }
+}
+
+/* ── 顶部：标题（可见标题保留） ─────────────────────────────── */
+
+.tq-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+[data-state="questions-established"] .tq-header {
+  animation: tq-drop-in 0.55s ease 0.05s both;
+}
+
+.tq-heading-mark {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 5px;
+}
+
+.tq-heading-mark::before,
+.tq-heading-mark::after {
+  content: "";
+  width: 9px;
+  height: 52px;
+  background: var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.tq-heading-mark::after {
+  height: 36px;
+  align-self: flex-end;
+  background: var(--theme-process);
+}
+
+.tq-heading-text {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+}
+
+.tq-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+.tq-subline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--text-2);
+}
+
+/* ── Handle 结构标尺：完整标识括弧 + 前缀/后缀分段 + 三根探针 ── */
+
+.tq-ruler {
+  position: relative;
+  flex: 0 0 172px;
+  display: flex;
+  flex-direction: column;
+}
+
+[data-state="questions-established"] .tq-ruler {
+  animation: tq-fade-in 0.5s ease 0.2s both;
+}
+
+.tq-brace {
+  position: relative;
+  height: 32px;
+  margin: 0 6px;
+  border: 2px solid var(--theme-structural);
+  border-bottom: none;
+}
+
+.tq-brace-label {
+  position: absolute;
+  left: 50%;
+  bottom: -13px;
+  transform: translateX(-50%);
+  padding: 1px 16px;
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  color: var(--theme-structural);
+}
+
+.tq-bar {
+  flex: 0 0 94px;
+  min-height: 0;
+  display: flex;
+  margin-top: 14px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+.tq-seg {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.tq-seg--prefix {
+  background: var(--theme-process-surface);
+  border-right: 3px solid var(--theme-structural);
+}
+
+.tq-seg--suffix {
+  background: var(--theme-cool-surface);
+}
+
+[data-state="questions-established"] .tq-seg--prefix {
+  animation: tq-rise-in 0.5s ease 0.35s both;
+}
+
+[data-state="questions-established"] .tq-seg--suffix {
+  animation: tq-rise-in 0.5s ease 0.5s both;
+}
+
+.tq-seg-name {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 24px;
+  color: var(--theme-structural);
+}
+
+.tq-seg-glyph {
+  width: 96px;
+  height: 28px;
+  color: var(--theme-structural);
+  opacity: 0.55;
+}
+
+/* 三根检查探针：从标尺垂到三张问句卡 */
+.tq-probe {
+  position: absolute;
+  top: 140px;
+  bottom: 0;
+  width: 0;
+  border-left: 3px dashed var(--theme-dashed-line);
+}
+
+.tq-probe--1 {
+  left: 16.66%;
+}
+
+.tq-probe--2 {
+  left: 50%;
+}
+
+.tq-probe--3 {
+  left: 83.33%;
+}
+
+[data-state="questions-established"] .tq-probe--1 {
+  animation: tq-grow-v 0.45s cubic-bezier(0.3, 0.6, 0.25, 1) 0.75s both;
+}
+
+[data-state="questions-established"] .tq-probe--2 {
+  animation: tq-grow-v 0.45s cubic-bezier(0.3, 0.6, 0.25, 1) 0.9s both;
+}
+
+[data-state="questions-established"] .tq-probe--3 {
+  animation: tq-grow-v 0.45s cubic-bezier(0.3, 0.6, 0.25, 1) 1.05s both;
+}
+
+/* ── 三张问句卡：等权排布（R011 载体），不产生当前选中项 ───── */
+
+.tq-cards {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.tq-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  padding: 20px 26px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="questions-established"] .tq-card:nth-child(1) {
+  animation: tq-rise-in 0.55s ease 0.55s both;
+}
+
+[data-state="questions-established"] .tq-card:nth-child(2) {
+  animation: tq-rise-in 0.55s ease 0.75s both;
+}
+
+[data-state="questions-established"] .tq-card:nth-child(3) {
+  animation: tq-rise-in 0.55s ease 0.95s both;
+}
+
+.tq-card-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.tq-card-no {
+  padding: 3px 14px;
+  background: var(--theme-structural);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--surface-2);
+}
+
+.tq-card-role {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 24px;
+  color: var(--theme-process);
+}
+
+.tq-card-q {
+  flex: 0 0 auto;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 1.3;
+  color: var(--theme-structural);
+}
+
+/* 卡内演示区：三问各看一段机制 */
+.tq-card-demo {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 0;
+}
+
+.tq-demo-svg {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+}
+
+.tq-demo-note {
+  flex: 0 0 auto;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+
+/* 演示一：命名空间边界 */
+.tq-ns-ground {
+  fill: var(--rule);
+}
+
+.tq-ns-block rect {
+  fill: var(--surface-3);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+}
+
+.tq-ns-block path {
+  stroke: var(--theme-structural);
+  opacity: 0.5;
+}
+
+.tq-ns-block text {
+  font-family: var(--font-body);
+  font-size: 15px;
+  fill: var(--text-2);
+}
+
+.tq-ns-block {
+  transition: transform 0.5s ease;
+}
+
+.tq-ns-block--a {
+  transform: translateX(0);
+}
+
+.tq-ns-block--b {
+  transform: translateX(0);
+}
+
+.tq-ns-boundary {
+  color: var(--theme-process);
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: 110px 16px;
+  transform-box: view-box;
+}
+
+.tq-ns-boundary path {
+  stroke: currentColor;
+}
+
+[data-state="governance-guarded"] .tq-ns-boundary,
+[data-state="internal-retained"] .tq-ns-boundary,
+[data-state="info-converged"] .tq-ns-boundary,
+[data-state="triad-locked"] .tq-ns-boundary {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+[data-state="governance-guarded"] .tq-ns-boundary {
+  animation: tq-grow-v 0.45s cubic-bezier(0.3, 0.6, 0.25, 1) 0.15s both;
+}
+
+[data-state="governance-guarded"] .tq-ns-block--a,
+[data-state="internal-retained"] .tq-ns-block--a,
+[data-state="info-converged"] .tq-ns-block--a,
+[data-state="triad-locked"] .tq-ns-block--a {
+  transform: translateX(-9px);
+  transition-delay: 0.3s;
+}
+
+[data-state="governance-guarded"] .tq-ns-block--b,
+[data-state="internal-retained"] .tq-ns-block--b,
+[data-state="info-converged"] .tq-ns-block--b,
+[data-state="triad-locked"] .tq-ns-block--b {
+  transform: translateX(9px);
+  transition-delay: 0.3s;
+}
+
+/* 演示二：同一组织内部的不同对象 */
+.tq-ob-frame {
+  fill: none;
+  stroke: var(--theme-dashed-line);
+  stroke-width: 2;
+}
+
+.tq-obj circle,
+.tq-obj rect,
+.tq-obj > path:not(.tq-obj-tick) {
+  fill: var(--surface-3);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+  transition: stroke 0.4s ease;
+}
+
+.tq-obj-tick {
+  stroke: var(--theme-process);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+[data-state="internal-retained"] .tq-obj circle,
+[data-state="info-converged"] .tq-obj circle,
+[data-state="triad-locked"] .tq-obj circle,
+[data-state="internal-retained"] .tq-obj rect,
+[data-state="info-converged"] .tq-obj rect,
+[data-state="triad-locked"] .tq-obj rect,
+[data-state="internal-retained"] .tq-obj > path:not(.tq-obj-tick),
+[data-state="info-converged"] .tq-obj > path:not(.tq-obj-tick),
+[data-state="triad-locked"] .tq-obj > path:not(.tq-obj-tick) {
+  stroke: var(--theme-process);
+}
+
+[data-state="internal-retained"] .tq-obj-tick,
+[data-state="info-converged"] .tq-obj-tick,
+[data-state="triad-locked"] .tq-obj-tick {
+  opacity: 1;
+}
+
+[data-state="internal-retained"] .tq-obj:nth-of-type(1) .tq-obj-tick {
+  animation: tq-tick-in 0.4s ease 0.2s both;
+}
+
+[data-state="internal-retained"] .tq-obj:nth-of-type(2) .tq-obj-tick {
+  animation: tq-tick-in 0.4s ease 0.38s both;
+}
+
+[data-state="internal-retained"] .tq-obj:nth-of-type(3) .tq-obj-tick {
+  animation: tq-tick-in 0.4s ease 0.56s both;
+}
+
+/* 演示三：分散信息围绕同一身份汇聚 */
+.tq-cv-line {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 2.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.tq-cv-chip rect {
+  fill: var(--theme-warning-surface);
+  stroke: var(--theme-warning);
+  stroke-width: 2;
+}
+
+.tq-cv-chip path {
+  stroke: var(--theme-warning);
+}
+
+.tq-cv-chip {
+  opacity: 0;
+}
+
+.tq-cv-node circle {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.tq-cv-node path {
+  stroke: var(--theme-structural);
+}
+
+[data-state="info-converged"] .tq-cv-line,
+[data-state="triad-locked"] .tq-cv-line {
+  stroke-dashoffset: 0;
+}
+
+[data-state="info-converged"] .tq-cv-line:nth-of-type(1) {
+  animation: tq-draw-line 0.5s ease 0.2s both;
+}
+
+[data-state="info-converged"] .tq-cv-line:nth-of-type(2) {
+  animation: tq-draw-line 0.5s ease 0.38s both;
+}
+
+[data-state="info-converged"] .tq-cv-line:nth-of-type(3) {
+  animation: tq-draw-line 0.5s ease 0.56s both;
+}
+
+[data-state="info-converged"] .tq-cv-chip,
+[data-state="triad-locked"] .tq-cv-chip {
+  opacity: 1;
+}
+
+[data-state="info-converged"] .tq-cv-chip:nth-of-type(1) {
+  animation: tq-fade-in 0.4s ease 0.3s both;
+}
+
+[data-state="info-converged"] .tq-cv-chip:nth-of-type(2) {
+  animation: tq-fade-in 0.4s ease 0.48s both;
+}
+
+[data-state="info-converged"] .tq-cv-chip:nth-of-type(3) {
+  animation: tq-fade-in 0.4s ease 0.66s both;
+}
+
+/* ── 价值注记：逐卡补充，完成后等权共存 ───────────────────── */
+
+.tq-value {
+  flex: 0 0 auto;
+  padding-top: 10px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.tq-value-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 27px;
+  line-height: 1.3;
+  color: var(--theme-structural);
+}
+
+.tq-value-sub {
+  margin: 4px 0 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-2);
+}
+
+[data-state="governance-guarded"] .tq-value--1,
+[data-state="internal-retained"] .tq-value--1,
+[data-state="info-converged"] .tq-value--1,
+[data-state="triad-locked"] .tq-value--1,
+[data-state="internal-retained"] .tq-value--2,
+[data-state="info-converged"] .tq-value--2,
+[data-state="triad-locked"] .tq-value--2,
+[data-state="info-converged"] .tq-value--3,
+[data-state="triad-locked"] .tq-value--3 {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="governance-guarded"] .tq-value--1 {
+  animation: tq-note-in 0.45s ease 0.45s both;
+}
+
+[data-state="internal-retained"] .tq-value--2 {
+  animation: tq-note-in 0.45s ease 0.45s both;
+}
+
+[data-state="info-converged"] .tq-value--3 {
+  animation: tq-note-in 0.45s ease 0.75s both;
+}
+
+/* ── 三问汇聚线 + takeaway：缺一不可（R011 convergent 落点） ── */
+
+.tq-converge {
+  position: relative;
+  flex: 0 0 32px;
+}
+
+.tq-converge-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 3px solid var(--theme-structural);
+  transform: translateX(-50%) rotate(var(--tq-lean, 0deg)) scaleY(0);
+  transform-origin: top center;
+}
+
+.tq-converge-line--l {
+  left: 16.66%;
+}
+
+.tq-converge-line--c {
+  left: 50%;
+}
+
+.tq-converge-line--r {
+  left: 83.33%;
+}
+
+[data-state="triad-locked"] .tq-converge-line {
+  transform: translateX(-50%) rotate(var(--tq-lean, 0deg)) scaleY(1);
+}
+
+[data-state="triad-locked"] .tq-converge-line--l {
+  animation: tq-converge-draw 0.4s cubic-bezier(0.3, 0.6, 0.25, 1) 0.1s both;
+}
+
+[data-state="triad-locked"] .tq-converge-line--c {
+  animation: tq-converge-draw 0.4s cubic-bezier(0.3, 0.6, 0.25, 1) 0.24s both;
+}
+
+[data-state="triad-locked"] .tq-converge-line--r {
+  animation: tq-converge-draw 0.4s cubic-bezier(0.3, 0.6, 0.25, 1) 0.38s both;
+}
+
+.tq-takeaway {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 16px 30px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="triad-locked"] .tq-takeaway {
+  opacity: 1;
+  transform: none;
+  animation: tq-rise-in 0.5s ease 0.4s both;
+}
+
+.tq-triad {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 12px;
+}
+
+.tq-triad-tag {
+  padding: 7px 16px;
+  border: 2px dashed var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+[data-state="triad-locked"] .tq-triad-tag {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="triad-locked"] .tq-triad-tag:nth-child(1) {
+  animation: tq-note-in 0.4s ease 0.7s both;
+}
+
+[data-state="triad-locked"] .tq-triad-tag:nth-child(2) {
+  animation: tq-note-in 0.4s ease 0.86s both;
+}
+
+[data-state="triad-locked"] .tq-triad-tag:nth-child(3) {
+  animation: tq-note-in 0.4s ease 1.02s both;
+}
+
+.tq-verdict {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.tq-verdict-strong {
+  flex: 0 0 auto;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 50px;
+  line-height: 1.1;
+  color: var(--theme-process);
+}
+
+.tq-verdict-risk {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.3;
+  color: var(--text-2);
+}
+
+.tq-verdict-risk em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-warning);
+}

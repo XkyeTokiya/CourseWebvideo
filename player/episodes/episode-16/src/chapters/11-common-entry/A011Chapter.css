@@ -1,0 +1,830 @@
+/* A011 · 共同入口 —— 前缀 .ce- 仅本章使用；颜色/字体全部走主题 token。
+   首拍级联用 keyframe（挂载即播）；后续状态切换的 delay 一律挂在
+   [data-state] 选择器下，基础态保持可逆。 */
+
+.ce-root {
+  gap: 22px;
+  min-height: 0;
+}
+
+@keyframes ce-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ce-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ce-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ce-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ce-break-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+@keyframes ce-draw-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ce-arch-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ce-arrow-go {
+  0% {
+    transform: translateX(-8px);
+  }
+  60% {
+    transform: translateX(8px);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+/* ── 顶部：标题（S031，可见标题保留） ─────────────────────────── */
+
+.ce-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+[data-state="silos-established"] .ce-header {
+  animation: ce-drop-in 0.55s ease 0.05s both;
+}
+
+.ce-mark {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 46px;
+}
+
+.ce-mark-bar {
+  stroke: var(--theme-structural);
+  stroke-width: 3.4;
+}
+
+.ce-mark-arch {
+  stroke: var(--theme-process);
+  stroke-width: 3.4;
+}
+
+.ce-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 步骤区：分散系统 → 共同入口 → 关联访问（线性推进） ───────── */
+
+.ce-steps {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+}
+
+.ce-station {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* 推进后，已走过的分散系统轻微退让 */
+[data-state="common-entry-reached"] .ce-station-silos,
+[data-state="linkage-clarified"] .ce-station-silos {
+  opacity: 0.78;
+}
+
+/* 站 1：三个互不连通的系统 */
+.ce-station-silos {
+  flex: 0 0 640px;
+}
+
+.ce-towers {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 36px 24px 0;
+}
+
+.ce-tower {
+  width: 168px;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+[data-state="silos-established"] .ce-tower,
+[data-state="common-entry-reached"] .ce-tower,
+[data-state="linkage-clarified"] .ce-tower {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="silos-established"] .ce-tower-1 {
+  animation: ce-rise-in 0.5s ease 0.3s both;
+}
+
+[data-state="silos-established"] .ce-tower-2 {
+  animation: ce-rise-in 0.5s ease 0.55s both;
+}
+
+[data-state="silos-established"] .ce-tower-3 {
+  animation: ce-rise-in 0.5s ease 0.8s both;
+}
+
+.ce-tower-name {
+  display: block;
+  padding: 12px 8px;
+  background: var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 23px;
+  line-height: 1.1;
+  text-align: center;
+  color: var(--surface-2);
+}
+
+.ce-tower-sub {
+  padding: 7px 6px;
+  border-bottom: 2px dashed var(--theme-dashed-line);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  color: var(--text-mute);
+}
+
+.ce-slips {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 12px;
+  opacity: 0;
+}
+
+[data-state="silos-established"] .ce-slips,
+[data-state="common-entry-reached"] .ce-slips,
+[data-state="linkage-clarified"] .ce-slips {
+  opacity: 1;
+}
+
+[data-state="silos-established"] .ce-tower-1 .ce-slips {
+  animation: ce-fade-in 0.4s ease 1.05s both;
+}
+
+[data-state="silos-established"] .ce-tower-2 .ce-slips {
+  animation: ce-fade-in 0.4s ease 1.25s both;
+}
+
+[data-state="silos-established"] .ce-tower-3 .ce-slips {
+  animation: ce-fade-in 0.4s ease 1.45s both;
+}
+
+.ce-slip {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 12px;
+  background: var(--surface-3);
+  border: 2px dashed var(--theme-dashed-line);
+}
+
+.ce-slip-line {
+  display: block;
+  border-top: 2px dashed var(--rule);
+}
+
+.ce-slip-line-a {
+  width: 72%;
+}
+
+.ce-slip-line-b {
+  width: 46%;
+}
+
+/* 断链记号：系统之间的空隙里，连接被划断 */
+.ce-break {
+  position: absolute;
+  top: 150px;
+  width: 48px;
+  height: 36px;
+  color: var(--theme-warning);
+  opacity: 0;
+  transform: translateX(-50%) scale(0.6);
+}
+
+.ce-break-1 {
+  left: 214px;
+}
+
+.ce-break-2 {
+  left: 426px;
+}
+
+[data-state="silos-established"] .ce-break,
+[data-state="common-entry-reached"] .ce-break,
+[data-state="linkage-clarified"] .ce-break {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+[data-state="silos-established"] .ce-break-1 {
+  animation: ce-break-in 0.4s ease 1.9s both;
+}
+
+[data-state="silos-established"] .ce-break-2 {
+  animation: ce-break-in 0.4s ease 2.15s both;
+}
+
+.ce-break-glyph {
+  width: 48px;
+  height: 36px;
+}
+
+.ce-break-glyph path {
+  stroke: currentColor;
+  stroke-width: 3.2;
+}
+
+.ce-ground {
+  flex: 0 0 auto;
+  padding: 16px 24px 0;
+}
+
+.ce-ground-line {
+  display: block;
+  height: 0;
+  border-top: 3px dashed var(--theme-dashed-line);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+[data-state="silos-established"] .ce-ground-line,
+[data-state="common-entry-reached"] .ce-ground-line,
+[data-state="linkage-clarified"] .ce-ground-line {
+  transform: scaleX(1);
+}
+
+[data-state="silos-established"] .ce-ground-line {
+  animation: ce-draw-x 0.5s cubic-bezier(0.3, 0.6, 0.25, 1) 2.5s both;
+}
+
+.ce-ground-note {
+  margin: 12px 0 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+[data-state="silos-established"] .ce-ground-note,
+[data-state="common-entry-reached"] .ce-ground-note,
+[data-state="linkage-clarified"] .ce-ground-note {
+  opacity: 1;
+}
+
+[data-state="silos-established"] .ce-ground-note {
+  animation: ce-fade-in 0.5s ease 2.7s both;
+}
+
+/* 推进箭头 */
+.ce-arrow {
+  flex: 0 0 70px;
+  display: grid;
+  place-items: center;
+  color: var(--rule);
+  transition: color 0.4s ease;
+}
+
+.ce-chev {
+  width: 40px;
+  height: 48px;
+}
+
+.ce-chev path {
+  stroke: currentColor;
+  stroke-width: 5;
+}
+
+[data-state="common-entry-reached"] .ce-arrow-1,
+[data-state="linkage-clarified"] .ce-arrow-1,
+[data-state="linkage-clarified"] .ce-arrow-2 {
+  color: var(--theme-process);
+}
+
+[data-state="common-entry-reached"] .ce-arrow-1 {
+  animation: ce-arrow-go 0.6s ease 0.15s;
+}
+
+[data-state="linkage-clarified"] .ce-arrow-2 {
+  animation: ce-arrow-go 0.6s ease 0.1s;
+}
+
+/* 站 2：共同入口 */
+.ce-station-entry {
+  flex: 0 0 420px;
+  align-items: center;
+  justify-content: center;
+}
+
+.ce-gate {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  padding: 24px 22px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+[data-state="common-entry-reached"] .ce-gate,
+[data-state="linkage-clarified"] .ce-gate {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="common-entry-reached"] .ce-gate {
+  animation: ce-rise-in 0.55s ease 0.35s both;
+}
+
+.ce-arch {
+  width: 150px;
+  height: 120px;
+}
+
+.ce-arch-base {
+  stroke: var(--theme-dashed-line);
+  stroke-width: 3;
+  stroke-dasharray: 7 7;
+}
+
+.ce-arch-path {
+  stroke: var(--theme-structural);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+[data-state="common-entry-reached"] .ce-arch-path {
+  animation: ce-arch-draw 0.7s ease-out 0.8s both;
+}
+
+.ce-arch-key {
+  fill: var(--theme-process);
+  opacity: 0;
+}
+
+[data-state="common-entry-reached"] .ce-arch-key,
+[data-state="linkage-clarified"] .ce-arch-key {
+  opacity: 1;
+}
+
+[data-state="common-entry-reached"] .ce-arch-key {
+  animation: ce-fade-in 0.4s ease 1.5s both;
+}
+
+.ce-gate-code {
+  display: inline-flex;
+  padding: 10px 18px;
+  border: 2px dashed var(--theme-dashed-line);
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+[data-state="common-entry-reached"] .ce-gate-code,
+[data-state="linkage-clarified"] .ce-gate-code {
+  opacity: 1;
+}
+
+[data-state="common-entry-reached"] .ce-gate-code {
+  animation: ce-fade-in 0.4s ease 1.2s both;
+}
+
+.ce-codebars {
+  width: 150px;
+  height: 34px;
+}
+
+.ce-codebars path {
+  stroke: currentColor;
+  stroke-width: 3;
+}
+
+.ce-gate-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 29px;
+  line-height: 1.2;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+[data-state="common-entry-reached"] .ce-gate-title,
+[data-state="linkage-clarified"] .ce-gate-title {
+  opacity: 1;
+}
+
+[data-state="common-entry-reached"] .ce-gate-title {
+  animation: ce-fade-in 0.4s ease 1.35s both;
+}
+
+.ce-gate-tag {
+  padding: 8px 18px;
+  background: var(--theme-process-surface);
+  border: 2.5px solid var(--theme-process);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 21px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: scale(0.85);
+}
+
+[data-state="common-entry-reached"] .ce-gate-tag,
+[data-state="linkage-clarified"] .ce-gate-tag {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-state="common-entry-reached"] .ce-gate-tag {
+  animation: ce-pop-in 0.45s ease 1.55s both;
+}
+
+/* 站 3：关联和访问的关系 */
+.ce-station-link {
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.ce-linkwrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+  padding: 0 8px;
+}
+
+.ce-relation {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ce-chip {
+  position: relative;
+  width: 150px;
+  height: 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+[data-state="linkage-clarified"] .ce-chip {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="linkage-clarified"] .ce-chip-id {
+  animation: ce-rise-in 0.45s ease 0.2s both;
+}
+
+[data-state="linkage-clarified"] .ce-chip-info {
+  animation: ce-rise-in 0.45s ease 0.35s both;
+}
+
+.ce-chip-code {
+  display: inline-flex;
+  color: var(--theme-structural);
+}
+
+.ce-chip-code .ce-codebars {
+  width: 84px;
+  height: 20px;
+}
+
+.ce-chip-box {
+  width: 46px;
+  height: 30px;
+  border: 2.5px dashed var(--theme-structural);
+  background: repeating-linear-gradient(
+    180deg,
+    var(--theme-dashed-line) 0 2px,
+    transparent 2px 8px
+  );
+}
+
+.ce-chip-name {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.ce-link {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 110px;
+  max-width: 210px;
+  height: 96px;
+}
+
+.ce-link-label {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 20px;
+  white-space: nowrap;
+  color: var(--theme-process);
+  opacity: 0;
+}
+
+[data-state="linkage-clarified"] .ce-link-label {
+  opacity: 1;
+}
+
+[data-state="linkage-clarified"] .ce-link-label {
+  animation: ce-fade-in 0.4s ease 0.7s both;
+}
+
+.ce-link-line {
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  right: 24px;
+  height: 0;
+  border-top: 3px solid var(--theme-structural);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+[data-state="linkage-clarified"] .ce-link-line {
+  transform: scaleX(1);
+}
+
+[data-state="linkage-clarified"] .ce-link-line {
+  animation: ce-draw-x 0.6s cubic-bezier(0.3, 0.6, 0.25, 1) 0.55s both;
+}
+
+.ce-link-tip {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 13px;
+  height: 13px;
+  margin-top: -7px;
+  background: var(--theme-structural);
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+[data-state="linkage-clarified"] .ce-link-tip {
+  opacity: 1;
+}
+
+[data-state="linkage-clarified"] .ce-link-tip {
+  animation: ce-fade-in 0.3s ease 0.95s both;
+}
+
+.ce-chip-anchor {
+  position: absolute;
+  right: -16px;
+  bottom: -16px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  background: var(--theme-process-surface);
+  border: 2.5px solid var(--theme-process);
+  border-radius: 50%;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+[data-state="linkage-clarified"] .ce-chip-anchor {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-state="linkage-clarified"] .ce-chip-anchor {
+  animation: ce-pop-in 0.45s ease 1.5s both;
+}
+
+.ce-anchor-glyph {
+  width: 20px;
+  height: 24px;
+}
+
+.ce-anchor-glyph path,
+.ce-anchor-glyph circle {
+  stroke: currentColor;
+  stroke-width: 2.6;
+}
+
+.ce-notransfer {
+  color: var(--theme-warning);
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+[data-state="linkage-clarified"] .ce-notransfer {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="linkage-clarified"] .ce-notransfer {
+  animation: ce-rise-in 0.45s ease 1.2s both;
+}
+
+.ce-notransfer-glyph {
+  width: 220px;
+  height: 48px;
+}
+
+.ce-notransfer-glyph path,
+.ce-notransfer-glyph circle {
+  stroke: currentColor;
+  stroke-width: 3.5;
+}
+
+/* ── 终端结果区：ghost 槽交叉淡替为收束句 ─────────────────────── */
+
+.ce-terminal {
+  position: relative;
+  flex: 0 0 196px;
+}
+
+.ce-terminal-ghost {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  border: 3px dashed var(--theme-dashed-line);
+  transition: opacity 0.45s ease;
+}
+
+.ce-terminal-ghost span {
+  width: 14px;
+  height: 14px;
+  background: var(--rule);
+}
+
+[data-state="linkage-clarified"] .ce-terminal-ghost {
+  opacity: 0;
+}
+
+.ce-terminal-fill {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 0 56px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.5s ease,
+    visibility 0s linear 0.5s;
+}
+
+[data-state="linkage-clarified"] .ce-terminal-fill {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="linkage-clarified"] .ce-terminal-fill {
+  animation: ce-rise-in 0.5s ease 0.4s both;
+}
+
+.ce-terminal-mark {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 72px;
+  background: var(--theme-process);
+}
+
+.ce-terminal-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 46px;
+  line-height: 1.25;
+  color: var(--theme-structural);
+}
+
+.ce-terminal-key {
+  color: var(--theme-process);
+}
+
+.ce-terminal-sub {
+  margin: 10px 0 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.4;
+  color: var(--text-2);
+}
+
+[data-state="linkage-clarified"] .ce-terminal-hero {
+  animation: ce-rise-in 0.5s ease 0.65s both;
+}
+
+[data-state="linkage-clarified"] .ce-terminal-sub {
+  animation: ce-fade-in 0.5s ease 0.95s both;
+}

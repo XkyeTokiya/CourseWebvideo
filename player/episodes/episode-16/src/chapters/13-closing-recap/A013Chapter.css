@@ -1,0 +1,670 @@
+/* A013 · 收束回扣 —— 前缀 .cr- 仅本章使用；颜色/字体全部走主题 token。
+   首拍建立用 keyframe（挂载即播）；后续状态切换的 delay 一律挂在
+   [data-state] 选择器下，基础态保持可逆。 */
+
+.cr-root {
+  gap: 22px;
+  min-height: 0;
+}
+
+@keyframes cr-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cr-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cr-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cr-grow-v {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes cr-note-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 顶部：标题（可见标题保留） ─────────────────────────────── */
+
+.cr-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+[data-state="callback-established"] .cr-header {
+  animation: cr-drop-in 0.55s ease 0.05s both;
+}
+
+.cr-heading-mark {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 5px;
+}
+
+.cr-heading-mark::before,
+.cr-heading-mark::after {
+  content: "";
+  width: 9px;
+  height: 52px;
+  background: var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.cr-heading-mark::after {
+  height: 36px;
+  align-self: flex-end;
+  background: var(--theme-process);
+}
+
+.cr-heading-text {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+}
+
+.cr-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+.cr-subline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--text-2);
+}
+
+/* ── 左右分栏：左·旅程与机制收束 ／ 右·电池锚点与共同规律 ───── */
+
+.cr-split {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 11fr 9fr;
+  gap: 36px;
+}
+
+[data-state="callback-established"] .cr-split {
+  animation: cr-fade-in 0.5s ease 0.2s both;
+}
+
+.cr-left,
+.cr-right {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cr-right {
+  border-left: 2px dashed var(--theme-dashed-line);
+  padding-left: 36px;
+}
+
+.cr-zone-label {
+  flex: 0 0 auto;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+
+.cr-zone-label::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: var(--theme-structural);
+}
+
+/* 左栏 · 旅程阶梯：五站各被系统记录 */
+.cr-journey {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 4px 0;
+}
+
+.cr-rail {
+  position: absolute;
+  top: 18px;
+  bottom: 18px;
+  left: 14px;
+  width: 3px;
+  background: var(--theme-structural);
+}
+
+[data-state="callback-established"] .cr-rail {
+  animation: cr-grow-v 0.6s cubic-bezier(0.3, 0.6, 0.25, 1) 0.35s both;
+  transform-origin: top;
+}
+
+.cr-stop {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+[data-state="callback-established"] .cr-stop:nth-child(2) {
+  animation: cr-rise-in 0.45s ease 0.5s both;
+}
+
+[data-state="callback-established"] .cr-stop:nth-child(3) {
+  animation: cr-rise-in 0.45s ease 0.66s both;
+}
+
+[data-state="callback-established"] .cr-stop:nth-child(4) {
+  animation: cr-rise-in 0.45s ease 0.82s both;
+}
+
+[data-state="callback-established"] .cr-stop:nth-child(5) {
+  animation: cr-rise-in 0.45s ease 0.98s both;
+}
+
+[data-state="callback-established"] .cr-stop:nth-child(6) {
+  animation: cr-rise-in 0.45s ease 1.14s both;
+}
+
+.cr-stop-node {
+  flex: 0 0 auto;
+  width: 31px;
+  height: 31px;
+  display: grid;
+  place-items: center;
+  background: var(--theme-structural);
+  font-family: var(--font-mono);
+  font-size: 17px;
+  color: var(--surface-2);
+}
+
+.cr-stop-name {
+  flex: 0 0 auto;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 28px;
+  color: var(--theme-structural);
+}
+
+.cr-stop-record {
+  margin-left: 6px;
+  padding: 3px 12px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: var(--theme-cool-surface);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: var(--text-2);
+}
+
+/* 左栏 · 机制收成一句 */
+.cr-mech {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 6px;
+  padding-top: 14px;
+  border-top: 2px dashed var(--theme-dashed-line);
+}
+
+.cr-mech-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="mechanism-condensed"] .cr-mech-row,
+[data-state="entry-stabilized"] .cr-mech-row,
+[data-state="pattern-stated"] .cr-mech-row,
+[data-state="thesis-landed"] .cr-mech-row {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="mechanism-condensed"] .cr-mech-row:nth-of-type(1) {
+  animation: cr-note-in 0.5s ease 0.2s both;
+}
+
+[data-state="mechanism-condensed"] .cr-mech-row:nth-of-type(2) {
+  animation: cr-note-in 0.5s ease 0.4s both;
+}
+
+[data-state="mechanism-condensed"] .cr-mech-row:nth-of-type(3) {
+  animation: cr-note-in 0.5s ease 0.6s both;
+}
+
+.cr-mech-part {
+  flex: 0 0 auto;
+  min-width: 118px;
+  padding: 5px 14px;
+  background: var(--theme-structural);
+  text-align: center;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--surface-2);
+}
+
+.cr-mech-arrow {
+  flex: 0 0 auto;
+  position: relative;
+  width: 30px;
+  height: 3px;
+  background: var(--theme-process);
+}
+
+.cr-mech-arrow::after {
+  content: "";
+  position: absolute;
+  right: -9px;
+  top: -5.5px;
+  border-left: 10px solid var(--theme-process);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+.cr-mech-does {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--theme-structural);
+}
+
+/* 右栏 · 同一块电池锚点 */
+.cr-identity {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 24px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="callback-established"] .cr-identity {
+  animation: cr-rise-in 0.55s ease 0.3s both;
+}
+
+.cr-identity-battery {
+  flex: 0 0 auto;
+  width: 84px;
+  height: 84px;
+  display: grid;
+  place-items: center;
+  background: var(--theme-structural);
+  color: var(--surface-2);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.cr-batteryglyph {
+  width: 52px;
+  height: 52px;
+}
+
+.cr-identity-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cr-identity-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--theme-structural);
+}
+
+.cr-identity-code {
+  display: flex;
+  color: var(--theme-process);
+}
+
+.cr-codeglyph {
+  width: 150px;
+  height: 34px;
+}
+
+.cr-identity-note {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+/* 右栏 · 查询引线：把查询引到信息真正所在的地方 */
+.cr-query {
+  position: relative;
+  flex: 0 0 46px;
+  display: flex;
+  justify-content: center;
+}
+
+.cr-query-line {
+  position: absolute;
+  top: 0;
+  bottom: 12px;
+  width: 0;
+  border-left: 3px dashed var(--theme-process);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.cr-query-head {
+  position: absolute;
+  bottom: 0;
+  border-top: 11px solid var(--theme-process);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  opacity: 0;
+}
+
+.cr-query-tag {
+  position: absolute;
+  left: calc(50% + 18px);
+  top: 8px;
+  padding: 2px 12px;
+  border: 2px dashed var(--theme-process);
+  background: var(--theme-process-surface);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.12em;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+[data-state="thesis-landed"] .cr-query-line {
+  transform: scaleY(1);
+  animation: cr-grow-v 0.5s cubic-bezier(0.3, 0.6, 0.25, 1) 0.15s both;
+}
+
+[data-state="thesis-landed"] .cr-query-head {
+  opacity: 1;
+  animation: cr-fade-in 0.35s ease 0.55s both;
+}
+
+[data-state="thesis-landed"] .cr-query-tag {
+  opacity: 1;
+  animation: cr-note-in 0.4s ease 0.65s both;
+}
+
+/* 右栏 · 共同规律：只给身份和入口，内容留在原处 */
+.cr-pattern {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cr-pattern-line {
+  flex: 0 0 auto;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 34px;
+  line-height: 1.3;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.cr-pattern-line em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+[data-state="pattern-stated"] .cr-pattern-line,
+[data-state="thesis-landed"] .cr-pattern-line {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="pattern-stated"] .cr-pattern-line {
+  animation: cr-note-in 0.5s ease 0.3s both;
+}
+
+.cr-stay {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-content: center;
+}
+
+.cr-stay-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="pattern-stated"] .cr-stay-slot,
+[data-state="thesis-landed"] .cr-stay-slot {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="pattern-stated"] .cr-stay-slot:nth-child(1) {
+  animation: cr-note-in 0.45s ease 0.55s both;
+}
+
+[data-state="pattern-stated"] .cr-stay-slot:nth-child(2) {
+  animation: cr-note-in 0.45s ease 0.71s both;
+}
+
+[data-state="pattern-stated"] .cr-stay-slot:nth-child(3) {
+  animation: cr-note-in 0.45s ease 0.87s both;
+}
+
+.cr-stay-card {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 16px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: var(--theme-warning-surface);
+}
+
+.cr-stay-stroke {
+  width: 62%;
+  height: 4px;
+  background: var(--theme-warning);
+  opacity: 0.75;
+}
+
+.cr-stay-stroke--short {
+  width: 38%;
+}
+
+.cr-stay-stage {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.12em;
+  color: var(--text-2);
+}
+
+.cr-pattern-stay {
+  flex: 0 0 auto;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+[data-state="pattern-stated"] .cr-pattern-stay,
+[data-state="thesis-landed"] .cr-pattern-stay {
+  opacity: 1;
+  transition-delay: 1.05s;
+}
+
+/* ── 底部统一结论条：R012 载体 ─────────────────────────────── */
+
+.cr-thesis {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 30px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="entry-stabilized"] .cr-thesis,
+[data-state="pattern-stated"] .cr-thesis,
+[data-state="thesis-landed"] .cr-thesis {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="entry-stabilized"] .cr-thesis {
+  animation: cr-rise-in 0.55s ease 0.15s both;
+}
+
+.cr-thesis-entry {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.35;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.cr-thesis-entry em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+[data-state="entry-stabilized"] .cr-thesis-entry,
+[data-state="pattern-stated"] .cr-thesis-entry,
+[data-state="thesis-landed"] .cr-thesis-entry {
+  opacity: 1;
+}
+
+[data-state="entry-stabilized"] .cr-thesis-entry {
+  animation: cr-fade-in 0.45s ease 0.4s both;
+}
+
+.cr-thesis-final {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="thesis-landed"] .cr-thesis-final {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="thesis-landed"] .cr-thesis-strong {
+  animation: cr-note-in 0.5s ease 0.5s both;
+}
+
+[data-state="thesis-landed"] .cr-thesis-sub {
+  animation: cr-note-in 0.5s ease 0.7s both;
+}
+
+.cr-thesis-strong {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 44px;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+.cr-thesis-sub {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.35;
+  color: var(--text-2);
+}

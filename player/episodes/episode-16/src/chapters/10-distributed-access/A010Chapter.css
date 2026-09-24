@@ -1,0 +1,766 @@
+/* A010 · 分布式访问 —— 前缀 .da- 仅本章使用；颜色/字体全部走主题 token。
+   首拍级联用 keyframe（挂载即播）；后续状态切换的 delay 一律挂在
+   [data-state] 选择器下，基础态保持可逆。 */
+
+.da-root {
+  gap: 22px;
+  min-height: 0;
+}
+
+@keyframes da-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes da-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes da-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes da-edge-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes da-arrow-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes da-box-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes da-pin-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes da-baseline-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes da-badge-in {
+  from {
+    opacity: 0;
+    transform: rotate(-2deg) scale(0.82);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-2deg) scale(1);
+  }
+}
+
+@keyframes da-car-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes da-judgment-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 顶部：标题（S029，可见标题保留） ─────────────────────────── */
+
+.da-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+[data-state="access-established"] .da-header {
+  animation: da-drop-in 0.55s ease 0.05s both;
+}
+
+.da-mark {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+}
+
+.da-mark-dot {
+  fill: var(--theme-process);
+}
+
+.da-mark-line {
+  stroke: var(--theme-structural);
+  stroke-width: 3.4;
+}
+
+.da-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 主区：教材原图（M005）＋ 访问关系图（R010 关联边载体） ────── */
+
+.da-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 36px;
+  transition:
+    opacity 0.6s ease,
+    filter 0.6s ease;
+}
+
+[data-state="access-established"] .da-main {
+  animation: da-fade-in 0.5s ease 0.2s both;
+}
+
+/* 教材原图：持续在场的证据锚点，不反复卸载 */
+.da-figure {
+  position: relative;
+  flex: 0 0 700px;
+  min-height: 0;
+  margin: 0;
+  padding: 12px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="access-established"] .da-figure {
+  animation: da-rise-in 0.6s ease 0.25s both;
+}
+
+.da-figure-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.da-figure-caption {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 16px;
+  background: color-mix(in srgb, var(--theme-structural) 84%, transparent);
+}
+
+.da-figure-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--surface-2);
+}
+
+.da-figure-badge::before {
+  content: "";
+  width: 8px;
+  height: 20px;
+  background: var(--theme-process);
+}
+
+.da-figure-note {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  color: var(--surface-2);
+  opacity: 0.75;
+}
+
+/* 访问关系图：标识节点 → 多个信息容器的关联边 */
+.da-map {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+}
+
+.da-edges {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.da-edge {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+[data-state="access-established"] .da-edge-1 {
+  animation: da-edge-draw 0.6s ease-out 1.25s both;
+}
+
+[data-state="access-established"] .da-edge-2 {
+  animation: da-edge-draw 0.6s ease-out 1.85s both;
+}
+
+[data-state="access-established"] .da-edge-3 {
+  animation: da-edge-draw 0.6s ease-out 2.45s both;
+}
+
+[data-state="access-established"] .da-edge-4 {
+  animation: da-edge-draw 0.6s ease-out 3.05s both;
+}
+
+.da-arrow {
+  fill: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+[data-state="access-established"] .da-arrow,
+[data-state="distribution-clarified"] .da-arrow,
+[data-state="entry-anchored"] .da-arrow,
+[data-state="judgment-formed"] .da-arrow {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="access-established"] .da-arrow-1 {
+  animation: da-arrow-in 0.3s ease 1.7s both;
+}
+
+[data-state="access-established"] .da-arrow-2 {
+  animation: da-arrow-in 0.3s ease 2.3s both;
+}
+
+[data-state="access-established"] .da-arrow-3 {
+  animation: da-arrow-in 0.3s ease 2.9s both;
+}
+
+[data-state="access-established"] .da-arrow-4 {
+  animation: da-arrow-in 0.3s ease 3.5s both;
+}
+
+/* 查询脉冲：只在“共同入口”一拍沿线流动 */
+.da-pulses {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+[data-state="entry-anchored"] .da-pulses {
+  opacity: 1;
+}
+
+.da-pulse {
+  fill: var(--theme-process);
+}
+
+/* 标识节点：定位用 calc，避免与入场动画的 transform 冲突 */
+.da-node {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 320px);
+  width: 640px;
+  height: 128px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="access-established"] .da-node {
+  animation: da-rise-in 0.55s ease 0.9s both;
+}
+
+.da-node-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.da-node-name {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.da-node-tag {
+  padding: 3px 12px;
+  border: 2px dashed var(--theme-dashed-line);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--text-2);
+}
+
+.da-node-code {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 27px;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+}
+
+/* 共同入口徽标（拍 3） */
+.da-badge {
+  position: absolute;
+  top: -18px;
+  right: -22px;
+  padding: 8px 16px;
+  background: var(--theme-process-surface);
+  border: 2.5px solid var(--theme-process);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 20px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: rotate(-2deg) scale(0.82);
+}
+
+[data-state="entry-anchored"] .da-badge,
+[data-state="judgment-formed"] .da-badge {
+  opacity: 1;
+  transform: rotate(-2deg) scale(1);
+}
+
+[data-state="entry-anchored"] .da-badge {
+  animation: da-badge-in 0.45s ease 0.15s both;
+}
+
+/* 信息容器：错落高度表达“不集中一处” */
+.da-box {
+  position: absolute;
+  width: 190px;
+  height: 116px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: var(--surface-2);
+  border: 2.5px dashed var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+[data-state="access-established"] .da-box,
+[data-state="distribution-clarified"] .da-box,
+[data-state="entry-anchored"] .da-box,
+[data-state="judgment-formed"] .da-box {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="access-established"] .da-box-1 {
+  animation: da-box-in 0.45s ease 1.7s both;
+}
+
+[data-state="access-established"] .da-box-2 {
+  animation: da-box-in 0.45s ease 2.3s both;
+}
+
+[data-state="access-established"] .da-box-3 {
+  animation: da-box-in 0.45s ease 2.9s both;
+}
+
+[data-state="access-established"] .da-box-4 {
+  animation: da-box-in 0.45s ease 3.5s both;
+}
+
+.da-box-type {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 27px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.da-box-lines {
+  width: 116px;
+  height: 16px;
+  background: repeating-linear-gradient(
+    180deg,
+    var(--theme-dashed-line) 0 2px,
+    transparent 2px 8px
+  );
+}
+
+/* 位置锚（拍 2）：容器留在各自业务需要的位置 */
+.da-pin {
+  position: absolute;
+  width: 24px;
+  height: 30px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+[data-state="distribution-clarified"] .da-pin,
+[data-state="entry-anchored"] .da-pin,
+[data-state="judgment-formed"] .da-pin {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="distribution-clarified"] .da-pin-1 {
+  animation: da-pin-in 0.45s ease 0.2s both;
+}
+
+[data-state="distribution-clarified"] .da-pin-2 {
+  animation: da-pin-in 0.45s ease 0.42s both;
+}
+
+[data-state="distribution-clarified"] .da-pin-3 {
+  animation: da-pin-in 0.45s ease 0.64s both;
+}
+
+[data-state="distribution-clarified"] .da-pin-4 {
+  animation: da-pin-in 0.45s ease 0.86s both;
+}
+
+.da-pin-glyph {
+  width: 24px;
+  height: 30px;
+}
+
+.da-pin-glyph path,
+.da-pin-glyph circle {
+  stroke: currentColor;
+  stroke-width: 2.6;
+}
+
+.da-baseline {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 6px;
+  height: 0;
+  border-top: 3px dashed var(--theme-dashed-line);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+[data-state="distribution-clarified"] .da-baseline,
+[data-state="entry-anchored"] .da-baseline,
+[data-state="judgment-formed"] .da-baseline {
+  transform: scaleX(1);
+}
+
+[data-state="distribution-clarified"] .da-baseline {
+  animation: da-baseline-draw 0.5s cubic-bezier(0.3, 0.6, 0.25, 1) 0.15s both;
+}
+
+/* 关联边图例（示意标注） */
+.da-legend {
+  position: absolute;
+  top: 6px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-dashed-line);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+[data-state="access-established"] .da-legend,
+[data-state="distribution-clarified"] .da-legend,
+[data-state="entry-anchored"] .da-legend,
+[data-state="judgment-formed"] .da-legend {
+  opacity: 1;
+}
+
+[data-state="access-established"] .da-legend {
+  animation: da-fade-in 0.45s ease 3.6s both;
+}
+
+.da-legend-line {
+  position: relative;
+  width: 30px;
+  border-top: 3px solid var(--theme-structural);
+}
+
+.da-legend-line::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: -5px;
+  width: 8px;
+  height: 8px;
+  background: var(--theme-structural);
+  transform: rotate(45deg);
+}
+
+/* ── 底部：汇总轨（拍 1–3 累积）与最终判断区（拍 4 收束） ──────── */
+
+.da-bottom {
+  position: relative;
+  flex: 0 0 212px;
+}
+
+.da-rail {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  padding: 0 8px;
+  transition: opacity 0.45s ease;
+}
+
+[data-state="judgment-formed"] .da-rail {
+  opacity: 0;
+}
+
+.da-rail-line {
+  position: absolute;
+  top: 26px;
+  left: 8px;
+  right: 8px;
+  height: 3px;
+  background: var(--theme-structural);
+}
+
+.da-rail-line::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--theme-dashed-line) 0 2px,
+    transparent 2px 26px
+  );
+}
+
+.da-car {
+  position: relative;
+  flex: 1 1 0;
+  padding: 46px 26px 0 30px;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.da-car-tick {
+  position: absolute;
+  top: 16px;
+  left: 30px;
+  width: 4px;
+  height: 16px;
+  background: var(--theme-structural);
+}
+
+.da-car-label {
+  display: inline-flex;
+  padding: 3px 12px;
+  border: 2px solid var(--theme-structural);
+  background: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--theme-structural);
+}
+
+.da-car-text {
+  margin: 10px 0 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+[data-state="access-established"] .da-car-1,
+[data-state="distribution-clarified"] .da-car-1,
+[data-state="entry-anchored"] .da-car-1 {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="access-established"] .da-car-1 {
+  animation: da-car-in 0.5s ease 2.2s both;
+}
+
+[data-state="distribution-clarified"] .da-car-2,
+[data-state="entry-anchored"] .da-car-2 {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="distribution-clarified"] .da-car-2 {
+  animation: da-car-in 0.5s ease 0.9s both;
+}
+
+[data-state="entry-anchored"] .da-car-3 {
+  opacity: 1;
+  transform: none;
+  animation: da-car-in 0.5s ease 0.5s both;
+}
+
+/* 最终判断区：深色收束，与汇总轨交叉淡替 */
+.da-judgment {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  padding: 0 56px;
+  background: color-mix(in srgb, var(--theme-structural) 93%, transparent);
+  border-top: 3px solid var(--theme-process);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.5s ease,
+    visibility 0s linear 0.5s;
+}
+
+[data-state="judgment-formed"] .da-judgment {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease;
+}
+
+.da-judgment-hero {
+  position: relative;
+  margin: 0;
+  padding-bottom: 12px;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 58px;
+  line-height: 1.1;
+  color: var(--surface-2);
+}
+
+.da-judgment-hero::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: 0;
+  height: 8px;
+  background: var(--theme-process);
+}
+
+.da-judgment-div {
+  align-self: center;
+  width: 0;
+  height: 96px;
+  border-left: 2px solid var(--rule);
+}
+
+.da-judgment-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.da-judgment-lines p {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.35;
+  color: var(--surface-2);
+}
+
+.da-judgment-lines p + p {
+  color: color-mix(in srgb, var(--theme-process) 55%, var(--surface-2));
+}
+
+[data-state="judgment-formed"] .da-judgment-hero {
+  animation: da-judgment-in 0.5s ease 0.45s both;
+}
+
+[data-state="judgment-formed"] .da-judgment-div {
+  animation: da-judgment-in 0.5s ease 0.65s both;
+}
+
+[data-state="judgment-formed"] .da-judgment-lines p:nth-child(1) {
+  animation: da-judgment-in 0.5s ease 0.8s both;
+}
+
+[data-state="judgment-formed"] .da-judgment-lines p:nth-child(2) {
+  animation: da-judgment-in 0.5s ease 0.95s both;
+}
+
+/* 收束时主构图轻微退让 */
+[data-state="judgment-formed"] .da-main {
+  opacity: 0.3;
+  filter: saturate(0.55);
+}

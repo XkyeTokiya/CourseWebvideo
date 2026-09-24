@@ -19,6 +19,14 @@ import A008Chapter from "./chapters/08-suffix-objects/A008Chapter";
 import { narrations as a008Narrations } from "./chapters/08-suffix-objects/narrations";
 import A009Chapter from "./chapters/09-full-handle-reading/A009Chapter";
 import { narrations as a009Narrations } from "./chapters/09-full-handle-reading/narrations";
+import A010Chapter from "./chapters/10-distributed-access/A010Chapter";
+import { narrations as a010Narrations } from "./chapters/10-distributed-access/narrations";
+import A011Chapter from "./chapters/11-common-entry/A011Chapter";
+import { narrations as a011Narrations } from "./chapters/11-common-entry/narrations";
+import A012Chapter from "./chapters/12-three-questions/A012Chapter";
+import { narrations as a012Narrations } from "./chapters/12-three-questions/narrations";
+import A013Chapter from "./chapters/13-closing-recap/A013Chapter";
+import { narrations as a013Narrations } from "./chapters/13-closing-recap/narrations";
 
 export const id = "episode-16";
 export const title = "第 16 期 · Handle 编码：前缀、后缀与分布式解析";
@@ -84,5 +92,29 @@ export const CHAPTERS: ChapterDef[] = [
     title: "完整示例",
     narrations: a009Narrations,
     Component: A009Chapter,
+  },
+  {
+    id: "10-distributed-access",
+    title: "分布式访问",
+    narrations: a010Narrations,
+    Component: A010Chapter,
+  },
+  {
+    id: "11-common-entry",
+    title: "共同入口",
+    narrations: a011Narrations,
+    Component: A011Chapter,
+  },
+  {
+    id: "12-three-questions",
+    title: "三问检查",
+    narrations: a012Narrations,
+    Component: A012Chapter,
+  },
+  {
+    id: "13-closing-recap",
+    title: "收束回扣",
+    narrations: a013Narrations,
+    Component: A013Chapter,
   },
 ];
