@@ -1,0 +1,584 @@
+/* A005 · 第三段：企业内部编码 —— 前缀 .int- 仅本章使用；颜色/字体全部走主题 token。
+   首拍（挂载）入场用 keyframe；后续 step 揭示用 transition，delay 只挂在进入态选择器上。
+   构图：左右职责区对称外靠，中部虚线分界；判据牌横跨分界，第三拍落位并接管视觉重心。 */
+
+.int-root {
+  gap: 26px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题（S019） ───────────────────────────────────────── */
+
+.int-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+[data-state="self-managed-named"] .int-header {
+  animation: int-descend 0.6s ease both;
+}
+
+.int-heading-mark {
+  position: relative;
+  flex: 0 0 auto;
+  width: 18px;
+  height: 54px;
+  background: var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.int-heading-mark::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -12px;
+  width: 18px;
+  height: 10px;
+  background: var(--theme-process);
+  box-shadow: 3px 4px 0 var(--theme-offset-shadow);
+}
+
+.int-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 46px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 对照主区：左（归属）｜分界｜右（用途） ─────────────────────── */
+
+.int-split {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 90px 1fr;
+}
+
+.int-zone {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 36px 34px;
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-dashed-line);
+  transition:
+    opacity 0.55s ease,
+    filter 0.55s ease;
+}
+
+[data-state="boundary-pivoted"] .int-zone {
+  opacity: 0.42;
+  filter: saturate(0.55);
+}
+
+.int-zone-left {
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.int-zone-right {
+  align-items: flex-end;
+  justify-content: center;
+  text-align: right;
+}
+
+.int-zone-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--text-mute);
+}
+
+.int-right-kicker {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="use-scope-set"] .int-right-kicker,
+[data-state="boundary-pivoted"] .int-right-kicker {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="use-scope-set"] .int-right-kicker {
+  transition-delay: 0.15s, 0.15s;
+}
+
+/* 左区：归属句（G015 exact）+ 自管自配回路图 */
+.int-claim {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 1.3;
+  color: var(--theme-structural);
+}
+
+.int-claim-em {
+  color: var(--theme-process);
+}
+
+.int-loop {
+  width: 460px;
+  height: auto;
+  margin-top: 8px;
+}
+
+.int-loop-node {
+  fill: var(--surface-3);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.int-loop-node-text {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 27px;
+  fill: var(--theme-structural);
+}
+
+.int-loop-flow {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  stroke-dasharray: 1;
+}
+
+.int-loop-head {
+  fill: var(--theme-process);
+}
+
+.int-loop-label {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 19px;
+  fill: var(--theme-process);
+}
+
+[data-state="self-managed-named"] .int-zone-left .int-zone-kicker {
+  animation: int-rise 0.45s ease 0.15s both;
+}
+
+[data-state="self-managed-named"] .int-claim {
+  animation: int-rise 0.55s ease 0.35s both;
+}
+
+[data-state="self-managed-named"] .int-loop-flow {
+  animation: int-draw 0.7s ease 0.9s both;
+}
+
+[data-state="self-managed-named"] .int-loop-flow-b {
+  animation-delay: 1.35s;
+}
+
+[data-state="self-managed-named"] .int-loop-head,
+[data-state="self-managed-named"] .int-loop-label {
+  animation: int-fade 0.4s ease both;
+}
+
+[data-state="self-managed-named"] .int-loop-head-a {
+  animation-delay: 1.55s;
+}
+
+[data-state="self-managed-named"] .int-loop-label-a {
+  animation-delay: 1.65s;
+}
+
+[data-state="self-managed-named"] .int-loop-head-b {
+  animation-delay: 2s;
+}
+
+[data-state="self-managed-named"] .int-loop-label-b {
+  animation-delay: 2.1s;
+}
+
+@keyframes int-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes int-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 右区：区分对象 + 写法决定权 */
+.int-use-lead {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 27px;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="use-scope-set"] .int-use-lead,
+[data-state="boundary-pivoted"] .int-use-lead {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="use-scope-set"] .int-use-lead {
+  transition-delay: 0.3s, 0.3s;
+}
+
+.int-objects {
+  display: flex;
+  align-items: stretch;
+  gap: 48px;
+  width: 580px;
+  max-width: 100%;
+}
+
+.int-object {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 10px 16px;
+  background: var(--surface-3);
+  border: 2px solid var(--theme-structural);
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="use-scope-set"] .int-object,
+[data-state="boundary-pivoted"] .int-object {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="use-scope-set"] .int-object:nth-of-type(1) {
+  transition-delay: 0.55s, 0.55s;
+}
+
+[data-state="use-scope-set"] .int-object:nth-of-type(2) {
+  transition-delay: 0.8s, 0.8s;
+}
+
+[data-state="use-scope-set"] .int-object:nth-of-type(3) {
+  transition-delay: 1.05s, 1.05s;
+}
+
+/* 身份帽标：三个对象被区分开后各自取得不同标记 */
+.int-object-cap {
+  display: block;
+  width: 100%;
+  height: 8px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.35s ease;
+}
+
+[data-state="use-scope-set"] .int-object-cap,
+[data-state="boundary-pivoted"] .int-object-cap {
+  transform: scaleX(1);
+}
+
+[data-state="use-scope-set"] .int-object:nth-of-type(1) .int-object-cap {
+  transition-delay: 3.2s;
+}
+
+[data-state="use-scope-set"] .int-object:nth-of-type(2) .int-object-cap {
+  transition-delay: 3.35s;
+}
+
+[data-state="use-scope-set"] .int-object:nth-of-type(3) .int-object-cap {
+  transition-delay: 3.5s;
+}
+
+[data-state="use-scope-set"] .int-object:nth-of-type(1) .int-object-cap,
+[data-state="boundary-pivoted"] .int-object:nth-of-type(1) .int-object-cap {
+  background: var(--theme-structural);
+}
+
+[data-state="use-scope-set"] .int-object:nth-of-type(2) .int-object-cap,
+[data-state="boundary-pivoted"] .int-object:nth-of-type(2) .int-object-cap {
+  background: var(--theme-process);
+}
+
+[data-state="use-scope-set"] .int-object:nth-of-type(3) .int-object-cap,
+[data-state="boundary-pivoted"] .int-object:nth-of-type(3) .int-object-cap {
+  background: var(--theme-warning);
+}
+
+.int-object-name {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 29px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+/* 区分切割线：落在两两对象之间 */
+.int-sep {
+  position: absolute;
+  top: 50%;
+  right: -25px;
+  width: 0;
+  height: 72px;
+  border-left: 2px dashed var(--theme-warning);
+  transform: translateY(-50%) scaleY(0);
+  transform-origin: top center;
+  transition: transform 0.4s ease;
+}
+
+[data-state="use-scope-set"] .int-sep,
+[data-state="boundary-pivoted"] .int-sep {
+  transform: translateY(-50%) scaleY(1);
+}
+
+[data-state="use-scope-set"] .int-object:nth-of-type(1) .int-sep {
+  transition-delay: 2.6s;
+}
+
+[data-state="use-scope-set"] .int-object:nth-of-type(2) .int-sep {
+  transition-delay: 2.8s;
+}
+
+.int-decide {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 27px;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="use-scope-set"] .int-decide,
+[data-state="boundary-pivoted"] .int-decide {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="use-scope-set"] .int-decide {
+  transition-delay: 4.6s, 4.6s;
+}
+
+/* ── 中部：分界轨 + 判据牌（R005 载体） ─────────────────────────── */
+
+.int-rail {
+  position: relative;
+}
+
+.int-rail-line {
+  position: absolute;
+  top: 5%;
+  bottom: 5%;
+  left: 50%;
+  border-left: 2px dashed var(--theme-dashed-line);
+  transition: border-color 0.5s ease;
+}
+
+[data-state="boundary-pivoted"] .int-rail-line {
+  border-color: var(--theme-structural);
+}
+
+.int-rail-ghost {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 74px;
+  height: 74px;
+  transform: translate(-50%, -50%);
+  background: var(--surface);
+  border: 2px dashed var(--text-faint);
+  border-radius: 50%;
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="boundary-pivoted"] .int-rail-ghost {
+  opacity: 0;
+}
+
+.int-pivot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: 430px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 30px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.94);
+  pointer-events: none;
+}
+
+[data-state="boundary-pivoted"] .int-pivot {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  animation: int-pivot-in 0.55s cubic-bezier(0.3, 0.6, 0.25, 1) 0.3s both;
+}
+
+@keyframes int-pivot-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.int-pivot-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+[data-state="boundary-pivoted"] .int-pivot-row:nth-of-type(1) {
+  animation: int-rise 0.45s ease 0.6s both;
+}
+
+[data-state="boundary-pivoted"] .int-pivot-row:nth-of-type(2) {
+  animation: int-rise 0.45s ease 0.85s both;
+}
+
+.int-pivot-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.int-pivot-tag {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--text-mute);
+}
+
+.int-pivot-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.int-pivot-yes {
+  font-size: 33px;
+  color: var(--theme-process);
+}
+
+.int-pivot-no {
+  font-size: 29px;
+  color: var(--theme-warning);
+}
+
+.int-pivot-divider {
+  height: 0;
+  border-top: 2px dashed var(--rule);
+}
+
+/* 判据标记：✓ / ✕ 均为 CSS 短线，非 emoji */
+.int-mark-check,
+.int-mark-x {
+  position: relative;
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+}
+
+.int-mark-check::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  bottom: 7px;
+  width: 10px;
+  height: 4px;
+  background: var(--theme-process);
+  transform: rotate(45deg);
+}
+
+.int-mark-check::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  bottom: 9.5px;
+  width: 17px;
+  height: 4px;
+  background: var(--theme-process);
+  transform: rotate(-45deg);
+}
+
+.int-mark-x::before,
+.int-mark-x::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  margin-top: -2px;
+  background: var(--theme-warning);
+}
+
+.int-mark-x::before {
+  transform: rotate(45deg);
+}
+
+.int-mark-x::after {
+  transform: rotate(-45deg);
+}
+
+@keyframes int-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes int-descend {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

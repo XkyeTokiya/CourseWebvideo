@@ -1,0 +1,1047 @@
+{
+  "schema_version": "courseplay-a-page/v6",
+  "document_kind": "production",
+  "episode_id": "episode-14",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "第 14 集范围、前置关系、后续 VAA–GS1 分集和去重边界",
+      "source_locator": "已确认课程架构，Episode Architecture 第 14 集及相邻集",
+      "verification_status": "not applicable",
+      "allowed_use": "控制单集范围与叙事顺序"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "统一标识编码可打破信息孤岛，促进企业与系统互联互通和产业链协同",
+      "source_locator": "主教材，2.1.1“标识编码体系”第 1–2 段",
+      "verification_status": "not applicable",
+      "allowed_use": "建立问题背景和作用"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "标识编码是用于唯一识别机器、产品等物理资源以及算法、工序等虚拟资源的身份符号，可支撑定位、查询、跨企业跨地域管理和追踪溯源",
+      "source_locator": "主教材，2.1.1“工业互联网标识编码”第 3–4 段",
+      "verification_status": "not applicable",
+      "allowed_use": "定义编码对象和业务价值"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "唯一性：在一定范围内每个编码仅对应一个对象，便于无歧义区分和快速定位",
+      "source_locator": "主教材，2.1.1“（1）唯一性”",
+      "verification_status": "not applicable",
+      "allowed_use": "解释第一项原则"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "兼容性：新标识应尽可能兼容既有标识，与国内相关编码标准协调，保持继承性和使用延续性",
+      "source_locator": "主教材，2.1.1“（2）兼容性”",
+      "verification_status": "not applicable",
+      "allowed_use": "解释迁移与协同约束"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "实用性：编码规则应符合行业普遍认识，考虑行业属性、企业信息化建设和实际应用现状",
+      "source_locator": "主教材，2.1.1“（3）实用性”",
+      "verification_status": "not applicable",
+      "allowed_use": "解释落地约束"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "扩展性：设计要有前瞻性，能够随标识发展和需求创新演进，并合理规划编码容量，为未来扩展预留空间",
+      "source_locator": "主教材，2.1.1“（4）扩展性”",
+      "verification_status": "not applicable",
+      "allowed_use": "解释生命周期约束"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "科学性：结构简洁明确，参考行业标准或国家命名标准，在有限长度内统一规范，必要时设置校验码位和安全码以保证正确性与安全性",
+      "source_locator": "主教材，2.1.1“（5）科学性”",
+      "verification_status": "not applicable",
+      "allowed_use": "解释结构和校验边界"
+    },
+    {
+      "evidence_id": "E009",
+      "claim_or_asset": "匿名新能源汽车零部件编码评审情境，用同一对象依次检视五项原则",
+      "source_locator": "讲稿 N001–N014、媒体 M001",
+      "verification_status": "not applicable",
+      "allowed_use": "让抽象原则落到对象和业务链"
+    },
+    {
+      "evidence_id": "E010",
+      "claim_or_asset": "五项原则组成“唯一定位—兼容迁移—业务可用—持续演进—规范校验”的检查框架",
+      "source_locator": "E004–E008",
+      "verification_status": "not applicable",
+      "allowed_use": "组织讲稿、流程图和结论"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "【开场导入】\n想象一件新能源汽车零部件，从工厂下线出发，经过仓储、装配，一直到维修环节。沿途每一个环节都会把它记录一次，可记录它的却是好几套互不相干的系统。真正麻烦的地方不在于给它贴一张标签，而在于每个环节都要能确认：我这条记录和别人的记录，说的是不是同一件东西？\n\n这正是标识编码要回答的设计问题。那么，它到底是一种什么样的编码，又承担着哪些职责？\n\n",
+      "teaching_purpose": "用跨环节记录情境提出对象身份问题",
+      "single_message": "难点不是贴标签，而是确认多条记录指向同一对象。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S001",
+          "guidance_text": "同一件零部件，为什么认不出来",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E009"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G001",
+            "items": [
+              {
+                "screen_item_id": "S002",
+                "guidance_text": "零部件在工厂、仓储、装配和维修中被多次记录",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G002",
+            "items": [
+              {
+                "screen_item_id": "S003",
+                "guidance_text": "同一对象的多条记录必须能互相对应",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E009"
+                ]
+              },
+              {
+                "screen_item_id": "S004",
+                "guidance_text": "对象身份问题是标识编码的设计问题",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "记录分散在不同系统",
+          "relation": "surface",
+          "to": "身份需要唯一确认",
+          "direction": "problem-to-question"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C001",
+          "instruction": "不把零部件情境指定为真实企业、订单或项目",
+          "evidence_refs": [
+            "E009"
+          ]
+        }
+      ],
+      "entry_condition": "观众准备进入本集",
+      "exit_condition": "观众能说出主问题：多条记录如何确认指向同一对象",
+      "timing": {
+        "char_equivalent": 155,
+        "min_seconds": 39,
+        "target_seconds": 40,
+        "max_seconds": 43,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": [
+        "A001"
+      ],
+      "nx": "【正文讲解】\n工业互联网标识编码，是一种用来区分对象的身份符号。它能识别机器、产品这类物理资源，也能识别算法、工序这类虚拟资源。物理资源是看得见摸得着的实物，虚拟资源则是生产过程里的方法和步骤，它们同样需要在系统里被认出来。\n\n用一套统一的编码，好处是减少信息孤岛。所谓信息孤岛，就是各个系统、各个部门各自保存着自己的数据，彼此对不上。统一编码之后，不同企业、不同系统之间的数据才容易关联起来。跨企业、跨地域的管理，追踪溯源，还有多方协同，都要靠这个共同基础。\n\n",
+      "teaching_purpose": "建立标识编码的定义与作用",
+      "single_message": "统一编码让对象有共同身份，数据才易于关联。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S005",
+          "guidance_text": "标识编码是什么",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G003",
+            "items": [
+              {
+                "screen_item_id": "S006",
+                "guidance_text": "物理资源：机器、产品等实物对象",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G004",
+            "items": [
+              {
+                "screen_item_id": "S007",
+                "guidance_text": "虚拟资源：算法、工序等方法与步骤",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G005",
+            "items": [
+              {
+                "screen_item_id": "S008",
+                "guidance_text": "统一编码减少系统与部门之间的信息孤岛",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              },
+              {
+                "screen_item_id": "S009",
+                "guidance_text": "跨企业、跨地域管理与追踪溯源依赖共同身份",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R002",
+          "from": "两类资源",
+          "relation": "share",
+          "to": "同一个身份符号",
+          "direction": "shared-anchor"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C002",
+          "instruction": "不展开实体分类学与虚拟对象建模",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        {
+          "constraint_id": "C003",
+          "instruction": "不把统一编码写成行业统计或政策结论",
+          "evidence_refs": [
+            "E002"
+          ]
+        }
+      ],
+      "entry_condition": "观众带着对象身份问题进入定义",
+      "exit_condition": "观众能说出编码识别两类资源并支撑跨主体关联",
+      "timing": {
+        "char_equivalent": 202,
+        "min_seconds": 51,
+        "target_seconds": 53,
+        "max_seconds": 56,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": [
+        "A001",
+        "A002"
+      ],
+      "nx": "不过，能区分对象只是最低要求。一套编码今天能用，明天却跟旧系统完全不兼容，或者现场人员看不懂、系统接不上，它仍然不是好设计。所以判断一套标识编码值不值得长期用，不能只看它眼下能不能把对象分开，还要看它怎样面对已有的体系，怎样适应真实的使用条件，又要为未来的变化留出什么。\n\n常用的判断方式，是看五项原则：唯一性、兼容性、实用性、扩展性和科学性。\n\n",
+      "teaching_purpose": "把判断标准从能否区分推进到五项设计约束",
+      "single_message": "能区分对象只是起点，要看长期使用的条件。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S010",
+          "guidance_text": "能区分对象只是起点",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E004"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G006",
+            "items": [
+              {
+                "screen_item_id": "S011",
+                "guidance_text": "与旧系统不兼容、现场看不懂的编码不是好设计",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              },
+              {
+                "screen_item_id": "S012",
+                "guidance_text": "判断要覆盖既有体系、真实使用条件和未来变化",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G007",
+            "items": [
+              {
+                "screen_item_id": "S013",
+                "guidance_text": "唯一性、兼容性、实用性、扩展性、科学性",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R003",
+          "from": "最低要求",
+          "relation": "insufficient-for",
+          "to": "长期可用的判断",
+          "direction": "progression"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C004",
+          "instruction": "不把长度、复杂度或新旧程度当作判断标准",
+          "evidence_refs": [
+            "E010"
+          ]
+        }
+      ],
+      "entry_condition": "观众已理解编码的作用",
+      "exit_condition": "观众能说出五项原则的名称与用途",
+      "timing": {
+        "char_equivalent": 152,
+        "min_seconds": 38,
+        "target_seconds": 40,
+        "max_seconds": 42,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": [
+        "A002",
+        "A003"
+      ],
+      "nx": "第一项是唯一性。在一定范围内，每个编码只对应一个对象，系统才能无歧义地区分对象，需要的时候还能快速定位。这里最容易被忽略的是“一定范围内”这个限定。用一套编码之前，先要明确对象边界和适用范围，唯一性限定的是这个范围，不是脱离场景的绝对承诺。\n\n",
+      "teaching_purpose": "解释唯一性及其范围限定",
+      "single_message": "唯一性成立在明确的适用范围内。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S014",
+          "guidance_text": "第一项：唯一性",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E004"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G008",
+            "items": [
+              {
+                "screen_item_id": "S015",
+                "guidance_text": "在一定范围内，一个编码只对应一个对象",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G009",
+            "items": [
+              {
+                "screen_item_id": "S016",
+                "guidance_text": "先明确对象边界和适用范围",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              },
+              {
+                "screen_item_id": "S017",
+                "guidance_text": "唯一性不等于脱离场景的绝对承诺",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R004",
+          "from": "范围限定",
+          "relation": "constrains",
+          "to": "一对一对应",
+          "direction": "scoped-by"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C005",
+          "instruction": "不把唯一性扩写为全球绝对唯一",
+          "evidence_refs": [
+            "E004"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道五项原则",
+      "exit_condition": "观众能说出唯一性及其适用范围限定",
+      "timing": {
+        "char_equivalent": 108,
+        "min_seconds": 27,
+        "target_seconds": 28,
+        "max_seconds": 30,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": [
+        "A003",
+        "A004"
+      ],
+      "nx": "第二项是兼容性。新标识产生的时候，要尽可能兼容已经存在的标识，并且跟国内已有的相关编码标准协调。兼容不等于把旧编码原样复制一份，而是让已有的记录在迁移和协同的过程中仍然保持延续性。换个说法，就是不要为了上一个新方案，把历史数据和业务流程全部推倒重来。\n\n",
+      "teaching_purpose": "解释兼容性与迁移延续性",
+      "single_message": "兼容让历史记录在迁移和协同中保持延续。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S018",
+          "guidance_text": "第二项：兼容性",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G010",
+            "items": [
+              {
+                "screen_item_id": "S019",
+                "guidance_text": "新标识尽可能兼容既有标识",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              },
+              {
+                "screen_item_id": "S020",
+                "guidance_text": "与国内已有的相关编码标准协调",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G011",
+            "items": [
+              {
+                "screen_item_id": "S021",
+                "guidance_text": "兼容不是原样复制旧编码",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              },
+              {
+                "screen_item_id": "S022",
+                "guidance_text": "迁移和协同中保持历史记录的延续性",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R005",
+          "from": "既有记录",
+          "relation": "continues-into",
+          "to": "新标识",
+          "direction": "bridge"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C006",
+          "instruction": "不给出标准编号或映射与转换算法",
+          "evidence_refs": [
+            "E005"
+          ]
+        }
+      ],
+      "entry_condition": "观众已理解唯一性",
+      "exit_condition": "观众能说出兼容的对象与延续性要求",
+      "timing": {
+        "char_equivalent": 116,
+        "min_seconds": 29,
+        "target_seconds": 30,
+        "max_seconds": 32,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": [
+        "A004",
+        "A005"
+      ],
+      "nx": "第三项是实用性。编码规则要符合行业的普遍认识，既要考虑标识对象的行业属性，也要看企业的信息化建设水平和实际应用现状。一个理论上很完整、现场却没法稳定采集和使用的编码，不会因为结构漂亮就算成功。规则最终是给人用、给系统用的，现场用不起来，设计得再精致也没有意义。\n\n",
+      "teaching_purpose": "解释行业与企业现场约束",
+      "single_message": "现场用得起来，编码设计才算成立。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S023",
+          "guidance_text": "第三项：实用性",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E006"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G012",
+            "items": [
+              {
+                "screen_item_id": "S024",
+                "guidance_text": "符合行业普遍认识",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              },
+              {
+                "screen_item_id": "S025",
+                "guidance_text": "考虑标识对象的行业属性",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G013",
+            "items": [
+              {
+                "screen_item_id": "S026",
+                "guidance_text": "结合企业信息化建设水平",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              },
+              {
+                "screen_item_id": "S027",
+                "guidance_text": "结合实际应用现状，保证可稳定采集和使用",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R006",
+          "from": "行业与现场条件",
+          "relation": "determines",
+          "to": "规则可用性",
+          "direction": "grounding"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C007",
+          "instruction": "不代替企业需求调研，不给出具体企业现状",
+          "evidence_refs": [
+            "E006"
+          ]
+        }
+      ],
+      "entry_condition": "观众已理解兼容性",
+      "exit_condition": "观众能说出实用性要看哪些现场条件",
+      "timing": {
+        "char_equivalent": 119,
+        "min_seconds": 30,
+        "target_seconds": 31,
+        "max_seconds": 33,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": [
+        "A005",
+        "A006"
+      ],
+      "nx": "第四项是扩展性。设计要有前瞻性，能够随着标识的发展和需求的变化继续演进，同时合理规划编码容量，为未来的扩展预留空间。需要注意，扩展性不是提前把所有可能用到的字段都塞进去，而是保留一份可以管理的成长余地。塞得太满，反而失去调整的弹性。\n\n",
+      "teaching_purpose": "解释前瞻性与容量预留",
+      "single_message": "扩展性保留可管理的成长余地。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S028",
+          "guidance_text": "第四项：扩展性",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E007"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G014",
+            "items": [
+              {
+                "screen_item_id": "S029",
+                "guidance_text": "设计要有前瞻性",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              },
+              {
+                "screen_item_id": "S030",
+                "guidance_text": "随标识发展和需求变化继续演进",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G015",
+            "items": [
+              {
+                "screen_item_id": "S031",
+                "guidance_text": "合理规划编码容量，为未来扩展预留空间",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              },
+              {
+                "screen_item_id": "S032",
+                "guidance_text": "不是提前塞入所有可能的字段",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R007",
+          "from": "当前需求",
+          "relation": "leaves-room-for",
+          "to": "未来变化",
+          "direction": "reserved"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C008",
+          "instruction": "不给出容量、长度、字段或版本号方案",
+          "evidence_refs": [
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "观众已理解实用性",
+      "exit_condition": "观众能说出扩展性预留什么、不做什么",
+      "timing": {
+        "char_equivalent": 106,
+        "min_seconds": 27,
+        "target_seconds": 28,
+        "max_seconds": 29,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": [
+        "A006",
+        "A007"
+      ],
+      "nx": "第五项是科学性。编码结构应当简洁明确，参考行业标准或国家命名标准，在有限长度内形成统一规范。必要的时候，还可以设置校验码位和安全码，帮助保证编码的正确性和安全性。这两个部分不是必选项，用不用要看实际需要。\n\n",
+      "teaching_purpose": "解释结构规范与校验边界",
+      "single_message": "科学性让结构和校验有依据。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S033",
+          "guidance_text": "第五项：科学性",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E008"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G016",
+            "items": [
+              {
+                "screen_item_id": "S034",
+                "guidance_text": "编码结构简洁明确",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S035",
+                "guidance_text": "参考行业标准或国家命名标准，在有限长度内统一规范",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G017",
+            "items": [
+              {
+                "screen_item_id": "S036",
+                "guidance_text": "必要时设置校验码位和安全码",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E008"
+                ]
+              },
+              {
+                "screen_item_id": "S037",
+                "guidance_text": "校验码位与安全码用于保证正确性和安全性",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R008",
+          "from": "规范结构",
+          "relation": "supports",
+          "to": "正确性与安全性",
+          "direction": "reinforcing"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C009",
+          "instruction": "不展开校验算法、密码机制或标准版本",
+          "evidence_refs": [
+            "E008"
+          ]
+        }
+      ],
+      "entry_condition": "观众已理解扩展性",
+      "exit_condition": "观众能说出结构规范要求与校验码位的必要前提",
+      "timing": {
+        "char_equivalent": 93,
+        "min_seconds": 24,
+        "target_seconds": 24,
+        "max_seconds": 26,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": [
+        "A007",
+        "A008"
+      ],
+      "nx": "五项原则为什么要放在一起看？因为它们应对的是不同的风险。唯一性防止对象混淆，兼容性降低迁移和协同的阻力，实用性保证现场真的能用，扩展性应对未来的变化，科学性让结构和校验有据可依。只满足其中一项，替代不了其余四项。\n\n这就带来三个常见的误解。有人觉得编号够长就一定唯一，其实长度和唯一性没有必然关系。有人觉得结构越新越先进，可全新的编码往往最难兼容旧记录。还有人觉得只要完全贴合今天的流程就够了，但今天够用的短码，可能没有为将来出现的对象和业务留下容量。长度、结构复杂度、新旧程度，都代替不了设计判断。\n\n更实际的做法是沿着一件对象连续追问。它在适用范围内是不是只指向这一件零部件？能不能跟已有的标识和相关标准协调？行业人员和现有系统用不用得起来？需求变化之后还有没有合理的扩展空间？结构是否简洁规范，需要的时候能不能校验？这五个问题连起来，就是一张可以反复使用的检查表。\n\n",
+      "teaching_purpose": "说明五项原则互补并给出联检追问",
+      "single_message": "五项原则应对不同风险，不能互相替代。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S038",
+          "guidance_text": "五项原则要一起检查",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E010"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G018",
+            "items": [
+              {
+                "screen_item_id": "S039",
+                "guidance_text": "唯一性防止对象混淆",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              },
+              {
+                "screen_item_id": "S040",
+                "guidance_text": "兼容性降低迁移和协同阻力",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              },
+              {
+                "screen_item_id": "S041",
+                "guidance_text": "实用性保证现场可用",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G019",
+            "items": [
+              {
+                "screen_item_id": "S042",
+                "guidance_text": "扩展性应对未来变化",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              },
+              {
+                "screen_item_id": "S043",
+                "guidance_text": "科学性让结构和校验有依据",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G020",
+            "items": [
+              {
+                "screen_item_id": "S044",
+                "guidance_text": "编号够长不等于唯一，全新结构也可能难以兼容旧记录",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G021",
+            "items": [
+              {
+                "screen_item_id": "S045",
+                "guidance_text": "沿同一对象连续追问五个问题，形成检查表",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E009"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R009",
+          "from": "五项原则",
+          "relation": "complement",
+          "to": "同一套设计判断",
+          "direction": "convergent"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C010",
+          "instruction": "不给出原则权重、排序或评分办法",
+          "evidence_refs": [
+            "E010"
+          ]
+        },
+        {
+          "constraint_id": "C011",
+          "instruction": "不把检查表做成学习者作答、练习或测验",
+          "evidence_refs": [
+            "E010"
+          ]
+        }
+      ],
+      "entry_condition": "观众已分别理解五项原则",
+      "exit_condition": "观众能用五个问题检查一套编码",
+      "timing": {
+        "char_equivalent": 351,
+        "min_seconds": 88,
+        "target_seconds": 92,
+        "max_seconds": 96,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A010",
+      "callback_a_ids": [
+        "A008",
+        "A009"
+      ],
+      "nx": "还要分清一件事。我们讲的是编码设计原则，它不等于某一种具体编码体系的结构。原则也不等于承载编码的标签载体，更不等于解析环节的设备与系统。原则和实现分开看，比较不同方案的时候，才不会被表面的结构差异带偏。\n\n把这五项放到一起，得到的其实是一整套判断的依据。它管的不是某一种编码长什么样，而是一套编码换到别的环节、别的年份还能不能继续用。\n\n【本期总结】\n回到开头那件零部件。它从工厂到仓储、装配、维修，一路被反复记录过很多次，而五项原则各自守住一道关口：唯一性让它不被认错，兼容性让新旧记录接得上，实用性让现场用得起来，扩展性让以后的变化有地方安放，科学性让结构和校验站得住。\n\n这五项原则指向的其实是同一个目标，让同一个对象的身份，在不同环节、不同系统、不同企业之间始终认得出来。\n\n所以好的标识编码不是越长越安全，也不是越新越先进，而是在唯一、兼容、实用、扩展和科学之间取得可以解释的平衡。只有把对象身份稳定地带进生产、流通和服务环节，不同的编码方案之间才有比较和改进的依据。",
+      "teaching_purpose": "收束总结并划清原则与实现边界",
+      "single_message": "原则先明确，方案之间才有比较和改进的依据。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S046",
+          "guidance_text": "回到那件零部件",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E009"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G022",
+            "items": [
+              {
+                "screen_item_id": "S047",
+                "guidance_text": "唯一性让它不被认错，兼容性让新旧记录接得上",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004",
+                  "E005"
+                ]
+              },
+              {
+                "screen_item_id": "S048",
+                "guidance_text": "实用性让现场用得起来，扩展性让变化有地方安放",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006",
+                  "E007"
+                ]
+              },
+              {
+                "screen_item_id": "S049",
+                "guidance_text": "科学性让结构和校验有依据",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G023",
+            "items": [
+              {
+                "screen_item_id": "S050",
+                "guidance_text": "原则不等于具体编码体系结构、标签载体或解析设备",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E001"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G024",
+            "items": [
+              {
+                "screen_item_id": "S051",
+                "guidance_text": "同一对象的身份在不同环节、系统和主体之间保持一致",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R010",
+          "from": "五项原则",
+          "relation": "converge-on",
+          "to": "对象身份稳定带入业务环节",
+          "direction": "closing"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C012",
+          "instruction": "不预告其他分集或其他主题",
+          "evidence_refs": [
+            "E001"
+          ]
+        },
+        {
+          "constraint_id": "C013",
+          "instruction": "不把原则等同于任何具体编码体系结构",
+          "evidence_refs": [
+            "E001"
+          ]
+        }
+      ],
+      "entry_condition": "观众已掌握五项原则与联检方式",
+      "exit_condition": "观众能说出五项原则的共同目标与核心判断",
+      "timing": {
+        "char_equivalent": 390,
+        "min_seconds": 98,
+        "target_seconds": 102,
+        "max_seconds": 107,
+        "short_page_reason": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,906 @@
+/* A011 · 三层职责收束 —— 前缀 .tdr- 仅本章使用；颜色/字体全部走主题 token。
+   拍内序列用 keyframe（进入态挂载即播，报到点后紧凑展开）；
+   状态切换用 transition（基础态即时可逆，delay 只挂进入态选择器）。
+   构图：旅程带回扣区在上、三卡并列居中、takeaway 判断区收底；与 A010 的媒体+读法轨不同族。 */
+
+.tdr-root {
+  gap: 12px;
+  min-height: 0;
+}
+
+/* ── 顶部标题（S047） ─────────────────────────────────────────── */
+
+.tdr-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+[data-state="recap-established"] .tdr-header {
+  animation: tdr-rise 0.6s ease 0.1s both;
+}
+
+.tdr-heading-mark {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 54px;
+  background: var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.tdr-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+@keyframes tdr-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tdr-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tdr-draw-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes tdr-draw-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes tdr-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── 回扣区：电池旅程带（拍 1 重现，拍 6 补共同落点） ─────────── */
+
+.tdr-recap {
+  position: relative;
+  flex: 0 0 148px;
+  display: grid;
+  grid-template-columns: 110px repeat(4, 1fr) 320px;
+  align-items: start;
+  transition:
+    opacity 0.6s ease,
+    filter 0.6s ease;
+}
+
+/* 拍 2~5：前提带弱化，让位给职责卡 */
+[data-state="entry-card-set"] .tdr-recap,
+[data-state="position-card-set"] .tdr-recap,
+[data-state="segment-card-set"] .tdr-recap,
+[data-state="judgment-converged"] .tdr-recap {
+  opacity: 0.38;
+  filter: saturate(0.6);
+}
+
+.tdr-route {
+  position: absolute;
+  top: 30px;
+  left: 55px;
+  right: 330px;
+  height: 4px;
+  background: var(--theme-structural);
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+[data-state="recap-established"] .tdr-route {
+  animation: tdr-draw-x 0.8s cubic-bezier(0.3, 0.6, 0.25, 1) 0.6s both;
+}
+
+.tdr-battery {
+  justify-self: center;
+  width: 60px;
+  height: 60px;
+  margin-top: 2px;
+  display: grid;
+  place-items: center;
+  background: var(--theme-structural);
+  border-radius: 10px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  color: var(--surface-2);
+}
+
+[data-state="recap-established"] .tdr-battery {
+  animation: tdr-pop 0.5s ease 0.4s both;
+}
+
+.tdr-glyph {
+  width: 34px;
+  height: 34px;
+}
+
+.tdr-station {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-top: 24px;
+}
+
+[data-state="recap-established"] .tdr-st-1 {
+  animation: tdr-rise 0.5s ease 1.4s both;
+}
+
+[data-state="recap-established"] .tdr-st-2 {
+  animation: tdr-rise 0.5s ease 2s both;
+}
+
+[data-state="recap-established"] .tdr-st-3 {
+  animation: tdr-rise 0.5s ease 2.6s both;
+}
+
+[data-state="recap-established"] .tdr-st-4 {
+  animation: tdr-rise 0.5s ease 3.2s both;
+}
+
+.tdr-station-dot {
+  width: 16px;
+  height: 16px;
+  background: var(--theme-structural);
+  border-radius: 3px;
+}
+
+.tdr-station-name {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.tdr-record {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  background: var(--surface-2);
+  border: 1.5px dashed var(--theme-dashed-line);
+  border-radius: 2px;
+  font-family: var(--font-display-cn);
+  font-size: 16px;
+  color: var(--text-2);
+}
+
+.tdr-record i {
+  width: 8px;
+  height: 8px;
+  background: var(--theme-process);
+}
+
+[data-state="recap-established"] .tdr-st-1 .tdr-record {
+  animation: tdr-pop 0.35s ease 6.6s both;
+}
+
+[data-state="recap-established"] .tdr-st-2 .tdr-record {
+  animation: tdr-pop 0.35s ease 6.78s both;
+}
+
+[data-state="recap-established"] .tdr-st-3 .tdr-record {
+  animation: tdr-pop 0.35s ease 6.96s both;
+}
+
+[data-state="recap-established"] .tdr-st-4 .tdr-record {
+  animation: tdr-pop 0.35s ease 7.14s both;
+}
+
+/* 拍 6：记录沿短茎落向共同落点线 */
+.tdr-stub {
+  width: 3px;
+  height: 24px;
+  background: var(--theme-structural);
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 0.35s ease;
+}
+
+[data-state="anchor-returned"] .tdr-stub {
+  transform: scaleY(1);
+}
+
+[data-state="anchor-returned"] .tdr-st-1 .tdr-stub {
+  transition-delay: 4.4s;
+}
+
+[data-state="anchor-returned"] .tdr-st-2 .tdr-stub {
+  transition-delay: 4.55s;
+}
+
+[data-state="anchor-returned"] .tdr-st-3 .tdr-stub {
+  transition-delay: 4.7s;
+}
+
+[data-state="anchor-returned"] .tdr-st-4 .tdr-stub {
+  transition-delay: 4.85s;
+}
+
+/* 三层预告：阶梯错位的层条 */
+.tdr-preview {
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 8px;
+}
+
+.tdr-preview-layers {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tdr-preview-layers i {
+  display: block;
+  width: 130px;
+  height: 10px;
+  border-radius: 2px;
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.tdr-preview-layers i:nth-of-type(1) {
+  background: var(--theme-structural);
+}
+
+.tdr-preview-layers i:nth-of-type(2) {
+  margin-left: 16px;
+  background: var(--theme-process);
+}
+
+.tdr-preview-layers i:nth-of-type(3) {
+  margin-left: 32px;
+  background: var(--rule);
+}
+
+[data-state="recap-established"] .tdr-preview-layers i:nth-of-type(1) {
+  animation: tdr-draw-x 0.4s ease 9.5s both;
+}
+
+[data-state="recap-established"] .tdr-preview-layers i:nth-of-type(2) {
+  animation: tdr-draw-x 0.4s ease 9.65s both;
+}
+
+[data-state="recap-established"] .tdr-preview-layers i:nth-of-type(3) {
+  animation: tdr-draw-x 0.4s ease 9.8s both;
+}
+
+.tdr-preview-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-2);
+}
+
+[data-state="recap-established"] .tdr-preview-text {
+  animation: tdr-rise 0.5s ease 9.3s both;
+}
+
+/* 拍 6：共同落点线 + 落点标记 */
+.tdr-anchor-line {
+  position: absolute;
+  left: 55px;
+  right: 330px;
+  bottom: 10px;
+  height: 3px;
+  background: var(--theme-structural);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.7s cubic-bezier(0.3, 0.6, 0.25, 1);
+}
+
+[data-state="anchor-returned"] .tdr-anchor-line {
+  transform: scaleX(1);
+  transition-delay: 5.2s;
+}
+
+.tdr-anchor-tip {
+  position: absolute;
+  right: 336px;
+  bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+[data-state="anchor-returned"] .tdr-anchor-tip {
+  opacity: 1;
+  transform: none;
+  transition-delay: 5.9s, 5.9s;
+}
+
+.tdr-anchor-tip i {
+  width: 12px;
+  height: 12px;
+  background: var(--theme-structural);
+}
+
+/* ── 汇合连接：三卡 → 判断区 ─────────────────────────────────── */
+
+.tdr-join {
+  position: relative;
+  flex: 0 0 34px;
+}
+
+.tdr-join span {
+  position: absolute;
+  top: 0;
+  bottom: 3px;
+  width: 3px;
+  background: var(--theme-structural);
+  transform: scaleY(1);
+  transform-origin: top center;
+}
+
+.tdr-join span::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 9px;
+  height: 9px;
+  transform: translateX(-50%);
+  background: var(--theme-structural);
+  border-radius: 50%;
+}
+
+.tdr-join span:nth-of-type(1) {
+  left: calc((100% - 48px) / 6 - 1.5px);
+}
+
+.tdr-join span:nth-of-type(2) {
+  left: calc(50% - 1.5px);
+}
+
+.tdr-join span:nth-of-type(3) {
+  left: calc(100% - (100% - 48px) / 6 - 1.5px);
+}
+
+[data-state="judgment-converged"] .tdr-join span:nth-of-type(1) {
+  animation: tdr-draw-y 0.35s ease 0.3s both;
+}
+
+[data-state="judgment-converged"] .tdr-join span:nth-of-type(2) {
+  animation: tdr-draw-y 0.35s ease 0.5s both;
+}
+
+[data-state="judgment-converged"] .tdr-join span:nth-of-type(3) {
+  animation: tdr-draw-y 0.35s ease 0.7s both;
+}
+
+/* ── 三张职责卡：并列等权，逐拍补齐 ──────────────────────────── */
+
+.tdr-cards {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  transition:
+    opacity 0.6s ease,
+    filter 0.6s ease;
+}
+
+/* 拍 5~6：判断汇合时三卡整体退让 */
+[data-state="judgment-converged"] .tdr-cards,
+[data-state="anchor-returned"] .tdr-cards {
+  opacity: 0.45;
+  filter: saturate(0.7);
+}
+
+.tdr-slot {
+  position: relative;
+  min-height: 0;
+}
+
+.tdr-ghost {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: 4px;
+  opacity: 1;
+  transition: opacity 0.45s ease;
+}
+
+.tdr-ghost span {
+  font-family: var(--font-display-en);
+  font-weight: 700;
+  font-size: 56px;
+  color: var(--rule);
+}
+
+/* ghost 与卡片交叉淡切：卡片设置后 ghost 不再出现 */
+[data-state="entry-card-set"] .tdr-slot-1 .tdr-ghost,
+[data-state="position-card-set"] .tdr-slot-1 .tdr-ghost,
+[data-state="segment-card-set"] .tdr-slot-1 .tdr-ghost,
+[data-state="judgment-converged"] .tdr-slot-1 .tdr-ghost,
+[data-state="anchor-returned"] .tdr-slot-1 .tdr-ghost,
+[data-state="position-card-set"] .tdr-slot-2 .tdr-ghost,
+[data-state="segment-card-set"] .tdr-slot-2 .tdr-ghost,
+[data-state="judgment-converged"] .tdr-slot-2 .tdr-ghost,
+[data-state="anchor-returned"] .tdr-slot-2 .tdr-ghost,
+[data-state="segment-card-set"] .tdr-slot-3 .tdr-ghost,
+[data-state="judgment-converged"] .tdr-slot-3 .tdr-ghost,
+[data-state="anchor-returned"] .tdr-slot-3 .tdr-ghost {
+  opacity: 0;
+}
+
+[data-state="entry-card-set"] .tdr-slot-1 .tdr-ghost {
+  transition-delay: 0.35s;
+}
+
+[data-state="position-card-set"] .tdr-slot-2 .tdr-ghost {
+  transition-delay: 0.35s;
+}
+
+[data-state="segment-card-set"] .tdr-slot-3 .tdr-ghost {
+  transition-delay: 0.35s;
+}
+
+.tdr-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 24px 18px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 4px;
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+/* 各卡从自身进入态起保持可见（穷尽后续状态，基础态隐藏） */
+[data-state="entry-card-set"] .tdr-slot-1 .tdr-card,
+[data-state="position-card-set"] .tdr-slot-1 .tdr-card,
+[data-state="segment-card-set"] .tdr-slot-1 .tdr-card,
+[data-state="judgment-converged"] .tdr-slot-1 .tdr-card,
+[data-state="anchor-returned"] .tdr-slot-1 .tdr-card,
+[data-state="position-card-set"] .tdr-slot-2 .tdr-card,
+[data-state="segment-card-set"] .tdr-slot-2 .tdr-card,
+[data-state="judgment-converged"] .tdr-slot-2 .tdr-card,
+[data-state="anchor-returned"] .tdr-slot-2 .tdr-card,
+[data-state="segment-card-set"] .tdr-slot-3 .tdr-card,
+[data-state="judgment-converged"] .tdr-slot-3 .tdr-card,
+[data-state="anchor-returned"] .tdr-slot-3 .tdr-card {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes tdr-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-state="entry-card-set"] .tdr-slot-1 .tdr-card {
+  animation: tdr-card-in 0.6s cubic-bezier(0.3, 0.6, 0.25, 1) 0.4s both;
+}
+
+[data-state="position-card-set"] .tdr-slot-2 .tdr-card {
+  animation: tdr-card-in 0.6s cubic-bezier(0.3, 0.6, 0.25, 1) 0.4s both;
+}
+
+[data-state="segment-card-set"] .tdr-slot-3 .tdr-card {
+  animation: tdr-card-in 0.6s cubic-bezier(0.3, 0.6, 0.25, 1) 0.4s both;
+}
+
+.tdr-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tdr-card-kicker {
+  padding: 3px 12px;
+  background: var(--theme-structural);
+  color: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.2em;
+}
+
+.tdr-card-no {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+}
+
+.tdr-card-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 38px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+.tdr-card-diagram {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+}
+
+.tdr-card-body {
+  margin: 0;
+  padding-top: 12px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--text-2);
+}
+
+/* 卡一图示：共同的上级 → 后面的定位 */
+.tdr-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tdr-entry-root {
+  padding: 3px 12px;
+  background: var(--theme-structural);
+  border-radius: 2px;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--surface-2);
+}
+
+.tdr-entry-stem {
+  width: 2px;
+  height: 10px;
+  background: var(--theme-structural);
+  transform: scaleY(1);
+  transform-origin: top center;
+}
+
+[data-state="entry-card-set"] .tdr-entry-stem {
+  animation: tdr-draw-y 0.3s ease 1s both;
+}
+
+.tdr-entry-branch {
+  width: 200px;
+  height: 2px;
+  background: var(--theme-structural);
+  transform: scaleX(1);
+}
+
+[data-state="entry-card-set"] .tdr-entry-branch {
+  animation: tdr-draw-x 0.3s ease 1.15s both;
+}
+
+.tdr-entry-slots {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tdr-entry-slots span {
+  width: 84px;
+  height: 24px;
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: 2px;
+}
+
+[data-state="entry-card-set"] .tdr-entry-slots span {
+  animation: tdr-fade 0.3s ease 1.3s both;
+}
+
+.tdr-entry-cap {
+  margin-top: 6px;
+  font-family: var(--font-display-cn);
+  font-size: 16px;
+  color: var(--text-mute);
+}
+
+/* 卡二图示：国家 / 行业 / 企业 三层 */
+.tdr-tiers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.tdr-tier {
+  display: grid;
+  place-items: center;
+  height: 28px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-structural);
+  border-radius: 3px;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--theme-structural);
+}
+
+.tdr-tier:nth-of-type(1) {
+  width: 220px;
+}
+
+.tdr-tier:nth-of-type(2) {
+  width: 176px;
+}
+
+.tdr-tier:nth-of-type(3) {
+  width: 132px;
+}
+
+[data-state="position-card-set"] .tdr-tier:nth-of-type(1) {
+  animation: tdr-rise 0.4s ease 0.9s both;
+}
+
+[data-state="position-card-set"] .tdr-tier:nth-of-type(2) {
+  animation: tdr-rise 0.4s ease 1.05s both;
+}
+
+[data-state="position-card-set"] .tdr-tier:nth-of-type(3) {
+  animation: tdr-rise 0.4s ease 1.2s both;
+}
+
+/* 卡三图示：产品 / 批次 / 具体对象，虚线格 = 由企业定 */
+.tdr-tiles {
+  display: flex;
+  gap: 10px;
+}
+
+.tdr-tile {
+  padding: 8px 16px;
+  background: var(--theme-process-surface);
+  border: 2px dashed var(--theme-process);
+  border-radius: 3px;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--theme-structural);
+}
+
+[data-state="segment-card-set"] .tdr-tile:nth-of-type(1) {
+  animation: tdr-rise 0.4s ease 0.9s both;
+}
+
+[data-state="segment-card-set"] .tdr-tile:nth-of-type(2) {
+  animation: tdr-rise 0.4s ease 1.05s both;
+}
+
+[data-state="segment-card-set"] .tdr-tile:nth-of-type(3) {
+  animation: tdr-rise 0.4s ease 1.2s both;
+}
+
+/* ── takeaway 判断区：拍 5 汇合 ──────────────────────────────── */
+
+.tdr-takeaway {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 44px 22px;
+  border: 3px solid transparent;
+  border-radius: 4px;
+  transition:
+    border-color 0.5s ease,
+    background-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+[data-state="judgment-converged"] .tdr-takeaway,
+[data-state="anchor-returned"] .tdr-takeaway {
+  background: var(--surface-2);
+  border-color: var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.tdr-take-ghost {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border: 2px dashed var(--theme-dashed-line);
+  border-radius: 4px;
+  opacity: 1;
+  transition: opacity 0.45s ease;
+}
+
+.tdr-take-ghost span {
+  font-family: var(--font-display-en);
+  font-weight: 700;
+  font-size: 52px;
+  color: var(--rule);
+}
+
+[data-state="judgment-converged"] .tdr-take-ghost,
+[data-state="anchor-returned"] .tdr-take-ghost {
+  opacity: 0;
+}
+
+.tdr-take-lead {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 21px;
+  letter-spacing: 0.12em;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.tdr-take-clause {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 42px;
+  line-height: 1.2;
+  opacity: 0;
+}
+
+.tdr-take-a {
+  color: var(--theme-structural);
+}
+
+.tdr-take-b {
+  color: var(--theme-process);
+}
+
+.tdr-take-connect {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+[data-state="judgment-converged"] .tdr-take-lead {
+  animation: tdr-rise 0.5s ease 0.8s both;
+}
+
+[data-state="judgment-converged"] .tdr-take-a {
+  animation: tdr-rise 0.55s ease 4.8s both;
+}
+
+[data-state="judgment-converged"] .tdr-take-b {
+  animation: tdr-rise 0.55s ease 8.4s both;
+}
+
+[data-state="judgment-converged"] .tdr-take-connect {
+  animation: tdr-rise 0.55s ease 12.2s both;
+}
+
+/* 拍 6：判断区内容保持可见 */
+[data-state="anchor-returned"] .tdr-take-lead,
+[data-state="anchor-returned"] .tdr-take-clause,
+[data-state="anchor-returned"] .tdr-take-connect {
+  opacity: 1;
+}
+
+/* ── 拍 6 收束：身份落点（槽位自首拍预留，零回流） ───────────── */
+
+.tdr-final {
+  flex: 0 0 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.tdr-final-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.tdr-final-strong {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="anchor-returned"] .tdr-final-line {
+  opacity: 1;
+  transform: none;
+  transition-delay: 3.8s, 3.8s;
+}
+
+[data-state="anchor-returned"] .tdr-final-strong {
+  opacity: 1;
+  transform: none;
+  transition-delay: 7.4s, 7.4s;
+}
+
+.tdr-final-strong span {
+  position: relative;
+}
+
+.tdr-final-strong span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 4px;
+  background: var(--theme-process);
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+[data-state="anchor-returned"] .tdr-final-strong span::after {
+  animation: tdr-draw-x 0.5s cubic-bezier(0.3, 0.6, 0.25, 1) 8.4s both;
+}

@@ -1,0 +1,1034 @@
+{
+  "schema_version": "courseplay-a-page/v6",
+  "document_kind": "production",
+  "episode_id": "episode-16",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "第 16 集标题、范围、前置关系、相邻边界与动态风险",
+      "source_locator": "已确认课程架构，Episode Architecture 第 14–20 集",
+      "verification_status": "not applicable",
+      "allowed_use": "控制单集范围、去重与时长"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "Handle 体系同时包含编码规则、独立于互联网域名系统的解析体系和全球分布式管理架构",
+      "source_locator": "主教材，知识准备 2.1.2“2. Handle”第 1 段",
+      "verification_status": "not applicable",
+      "allowed_use": "解释体系构成与分布式机制定位"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "治理层负责 Handle 全球注册及解析服务的运营、管理、维护和协调，并负责分配和管理一级前缀下的子前缀",
+      "source_locator": "主教材，知识准备 2.1.2“2. Handle”第 1 段",
+      "verification_status": "not verified—version unspecified",
+      "allowed_use": "按来源归属说明治理职责分层"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "国家级一级前缀由该国管理机构继续往下分配子前缀",
+      "source_locator": "主教材，知识准备 2.1.2“2. Handle”第 1 段",
+      "verification_status": "not verified—version unspecified",
+      "allowed_use": "说明国家级一级前缀的分配语境"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "Handle 标识由前缀和后缀构成，以斜杠分隔；前缀是分配给企业或组织的唯一标识，后缀用于标识内部具体产品",
+      "source_locator": "主教材，知识准备 2.1.2“2. Handle”第 3 段",
+      "verification_status": "not applicable",
+      "allowed_use": "讲解核心结构与职责边界"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "前缀从一级前缀开始从左向右依次扩展；后缀可使用本地化标识，由企业内部定义并可关联产品信息",
+      "source_locator": "主教材，知识准备 2.1.2“2. Handle”第 3 段",
+      "verification_status": "not applicable",
+      "allowed_use": "解释分级前缀与企业内部对象区分"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "电池示例前缀 86.100.12、后缀 00121336401058520109 与完整编码 86.100.12/00121336401058520109",
+      "source_locator": "主教材，知识准备 2.1.2“2. Handle”第 3–4 段；Handle 编码示例图 图 2-3",
+      "verification_status": "not applicable",
+      "allowed_use": "用于结构读取与示例逐段核对"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "Handle 系统允许通过完整编码访问分布式数据库中保存的电池产品信息，包括规格、生产日期、批次号、序列号",
+      "source_locator": "主教材，知识准备 2.1.2“2. Handle”第 4 段",
+      "verification_status": "not applicable",
+      "allowed_use": "解释完整标识与对象信息的访问关系"
+    },
+    {
+      "evidence_id": "E009",
+      "claim_or_asset": "分配前缀→前缀定位管理范围→后缀区分内部对象→完整标识关联分布式信息的教学主链",
+      "source_locator": "本任务包基于 E002–E008 的教学组织",
+      "verification_status": "not applicable",
+      "allowed_use": "组织页面关系与确定性示意"
+    },
+    {
+      "evidence_id": "E010",
+      "claim_or_asset": "同一块电池在生产、维护和回收环节需要以同一身份查询信息的教学情境",
+      "source_locator": "本任务包教学设计",
+      "verification_status": "not applicable",
+      "allowed_use": "把抽象机制落到具体对象上"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "【视频标题】Handle 编码：前缀、后缀与分布式解析\n\n【开场导入】\n想象一块工业电池离开工厂，接着还要经历运输、装配、维护和回收。每到一处都会留下记录，而这些记录并不集中放在同一个地方。电池的规格、生产日期、批次、维修历史，也不会都写进那串身份符号里。\n\n那么问题就来了。信息根本不在编码里面，这串符号凭什么帮系统认出同一块电池，又顺着它找到相关的信息？这正是理解 Handle 的入口。\n\n",
+      "teaching_purpose": "用跨环节流转情境提出对象身份与信息查询问题",
+      "single_message": "难点不是信息分散，而是一串身份符号怎样认出同一对象并找到关联信息。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S001",
+          "guidance_text": "同一块电池，为什么认不出来",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E010"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G001",
+            "items": [
+              {
+                "screen_item_id": "S002",
+                "guidance_text": "用跨环节流转情境提出对象身份与信息查询问题",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010",
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G002",
+            "items": [
+              {
+                "screen_item_id": "S003",
+                "guidance_text": "难点不是信息分散，而是一串身份符号怎样认出同一对象并找到关联信息。",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "记录分散在不同位置",
+          "relation": "raises-question",
+          "to": "同一对象身份需要稳定",
+          "direction": "problem-to-question"
+        }
+      ],
+      "silent_constraints": [],
+      "entry_condition": "观众准备进入本集",
+      "exit_condition": "观众能说出主问题：编码不装信息，凭什么认出同一对象",
+      "timing": {
+        "char_equivalent": 160.0,
+        "min_seconds": 40,
+        "target_seconds": 42,
+        "max_seconds": 44,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": [
+        "A001"
+      ],
+      "nx": "【正文讲解】\n要回答这个问题，先得看清 Handle 是什么。它是一整套体系，不只是一套编码规则。除了编码规则，它还有自己的解析体系，这套解析体系独立于互联网域名系统；它还有一套分布式的管理架构。所以 Handle 不能当成一串带斜杠的字符来背。编码负责标明身份，管理体系负责分配命名空间，解析体系负责把标识和对象信息联系起来。把这三部分放在一起，机制就有了先后：先确定谁来管一段前缀，再确定组织内部怎样区分具体对象，最后才是怎样通过完整标识去访问信息。\n\n",
+      "teaching_purpose": "建立 Handle 是编码、管理、解析三部分合一的体系",
+      "single_message": "Handle 不只是编码规则，管理体系和解析体系同样属于这套体系。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S004",
+          "guidance_text": "Handle 不只是编码规则",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G003",
+            "items": [
+              {
+                "screen_item_id": "S005",
+                "guidance_text": "建立 Handle 是编码、管理、解析三部分合一的体系",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002",
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G004",
+            "items": [
+              {
+                "screen_item_id": "S006",
+                "guidance_text": "Handle 不只是编码规则，管理体系和解析体系同样属于这套体系。",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R002",
+          "from": "编码规则",
+          "relation": "joins-with",
+          "to": "管理体系与解析体系",
+          "direction": "three-part"
+        }
+      ],
+      "silent_constraints": [],
+      "entry_condition": "观众带着对象查询问题进入体系认识",
+      "exit_condition": "观众能说出 Handle 的三个组成部分",
+      "timing": {
+        "char_equivalent": 197.0,
+        "min_seconds": 50,
+        "target_seconds": 51,
+        "max_seconds": 54,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": [
+        "A002"
+      ],
+      "nx": "前缀是这套体系的起点。一级前缀的使用权不是随便写的，它由治理层分配，再往下交给各国的管理机构，管理机构再往下分配子前缀。企业或组织拿到属于自己的前缀之后，才在它下面继续区分对象。也就是说，前缀不是企业自己挑的字符串，而是它在分级管理体系里被安排到的那个位置。\n\n",
+      "teaching_purpose": "解释一级前缀的分配链条",
+      "single_message": "一级前缀由治理层分配，企业或组织拿到的位置不是自己挑的。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S007",
+          "guidance_text": "一级前缀是谁分配的",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G005",
+            "items": [
+              {
+                "screen_item_id": "S008",
+                "guidance_text": "解释一级前缀的分配链条",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003",
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G006",
+            "items": [
+              {
+                "screen_item_id": "S009",
+                "guidance_text": "一级前缀由治理层分配，企业或组织拿到的位置不是自己挑的。",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R003",
+          "from": "治理层",
+          "relation": "assigns",
+          "to": "一级前缀使用权",
+          "direction": "top-down"
+        }
+      ],
+      "silent_constraints": [],
+      "entry_condition": "观众已知道体系三部分",
+      "exit_condition": "观众能说出前缀由治理层逐级分配下来",
+      "timing": {
+        "char_equivalent": 119,
+        "min_seconds": 30,
+        "target_seconds": 31,
+        "max_seconds": 33,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": [
+        "A003"
+      ],
+      "nx": "再往上看一层治理结构。Handle 的全球注册以及解析服务，由一家全球性的机构负责运营、管理、维护和协调，这就是数字对象编码规范机构，英文缩写 DONA。在它下面，全球并联顶级前缀管理机构，也就是 MPA，负责分配和管理一级前缀下面的子前缀。一级前缀由上面分配下来，子前缀一层一层往下走，企业或组织再在自己的前缀下区分对象。\n\n",
+      "teaching_purpose": "说明一级前缀之上两级机构的分工",
+      "single_message": "一级前缀由上级分配，子前缀逐层往下，组织在自己的前缀下区分对象。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S010",
+          "guidance_text": "治理层与实际分配",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G007",
+            "items": [
+              {
+                "screen_item_id": "S011",
+                "guidance_text": "说明一级前缀之上两级机构的分工",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003",
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G008",
+            "items": [
+              {
+                "screen_item_id": "S012",
+                "guidance_text": "一级前缀由上级分配，子前缀逐层往下，组织在自己的前缀下区分对象。",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [],
+      "silent_constraints": [
+        {
+          "constraint_id": "C001",
+          "instruction": "不声称任何机构的现行状态、权限归属或机构名单",
+          "evidence_refs": [
+            "E003",
+            "E004"
+          ]
+        },
+        {
+          "constraint_id": "C002",
+          "instruction": "不把组织名称改写成其他译名或简称",
+          "evidence_refs": [
+            "E003",
+            "E004"
+          ]
+        }
+      ],
+      "entry_condition": "观众已知道前缀由治理层分配",
+      "exit_condition": "观众能区分上级机构与各国管理机构的职责层次",
+      "timing": {
+        "char_equivalent": 138.5,
+        "min_seconds": 35,
+        "target_seconds": 36,
+        "max_seconds": 38,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": [
+        "A004"
+      ],
+      "nx": "具体到国家一级，有些一级前缀对应到某个国家，由这个国家的管理机构接着往下分配。示例前缀 86 就属于这种国家级的一级前缀，中国 MPA 负责管理 86，相关的子前缀从这里继续往下分。\n\n",
+      "teaching_purpose": "说明国家级一级前缀的分配语境",
+      "single_message": "一级前缀可对应到某个国家，由该国管理机构继续往下分配。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S013",
+          "guidance_text": "国家级一级前缀",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E004"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G009",
+            "items": [
+              {
+                "screen_item_id": "S014",
+                "guidance_text": "说明国家级一级前缀的分配语境",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004",
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G010",
+            "items": [
+              {
+                "screen_item_id": "S015",
+                "guidance_text": "一级前缀可对应到某个国家，由该国管理机构继续往下分配。",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R004",
+          "from": "国家级一级前缀",
+          "relation": "delegates-to",
+          "to": "该国管理机构",
+          "direction": "delegation"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C003",
+          "instruction": "不把示例前缀变成可注册、可申请或可扫描的凭据",
+          "evidence_refs": [
+            "E004",
+            "E007"
+          ]
+        },
+        {
+          "constraint_id": "C004",
+          "instruction": "不补机构名单与时间断言",
+          "evidence_refs": [
+            "E004",
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "观众已理解治理分工",
+      "exit_condition": "观众能说出国家级一级前缀如何继续往下分配",
+      "timing": {
+        "char_equivalent": 76.5,
+        "min_seconds": 20,
+        "target_seconds": 20,
+        "max_seconds": 21,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": [
+        "A003",
+        "A005"
+      ],
+      "nx": "现在回到那串字符本身，看看前缀和后缀各做什么。一个 Handle 标识由两部分组成，中间用一个斜杠分开。斜杠前面的部分叫前缀，它是分配给企业或组织的唯一标识，回答的是这段身份由哪个管理范围负责。斜杠后面的部分叫后缀，由企业内部用来标识具体产品，回答的是在这个组织内部，究竟是哪一个对象。两个问题分工不同，一个定位管理范围，一个区分内部对象，合起来才是完整的对象身份。\n\n",
+      "teaching_purpose": "拆解前缀与后缀各自的职责",
+      "single_message": "前缀回答由谁管，后缀回答内部是哪一个对象。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S016",
+          "guidance_text": "前缀和后缀各回答什么",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G011",
+            "items": [
+              {
+                "screen_item_id": "S017",
+                "guidance_text": "拆解前缀与后缀各自的职责",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005",
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G012",
+            "items": [
+              {
+                "screen_item_id": "S018",
+                "guidance_text": "前缀回答由谁管，后缀回答内部是哪一个对象。",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R005",
+          "from": "前缀",
+          "relation": "locates",
+          "to": "管理范围",
+          "direction": "split-role"
+        },
+        {
+          "relation_id": "R006",
+          "from": "后缀",
+          "relation": "distinguishes",
+          "to": "组织内部对象",
+          "direction": "split-role"
+        }
+      ],
+      "silent_constraints": [],
+      "entry_condition": "观众已理解前缀的分配位置",
+      "exit_condition": "观众能说出前后缀各自的职责",
+      "timing": {
+        "char_equivalent": 163.0,
+        "min_seconds": 41,
+        "target_seconds": 43,
+        "max_seconds": 45,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": [
+        "A006"
+      ],
+      "nx": "前缀本身也是分层的。从一级前缀开始，前缀可以向右依次扩展。以示例前缀为例，86 扩展一段变成 86.100，再扩展一段变成 86.100.12。每向右多一段，管理的位置就更细一层：先是国家这一级，再收到行业这一级，最后落到具体企业这一级。刚才那三段前缀，只是说明分级会逐层细化，并不代表所有前缀都固定是三层，也不说明每一段必须用固定的长度。\n\n",
+      "teaching_purpose": "解释前缀向右逐级细化及其非固定边界",
+      "single_message": "前缀逐级细化，但不固定层数，也不固定每段长度。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S019",
+          "guidance_text": "前缀怎样逐级扩展",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E006"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G013",
+            "items": [
+              {
+                "screen_item_id": "S020",
+                "guidance_text": "解释前缀向右逐级细化及其非固定边界",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006",
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G014",
+            "items": [
+              {
+                "screen_item_id": "S021",
+                "guidance_text": "前缀逐级细化，但不固定层数，也不固定每段长度。",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R007",
+          "from": "一级前缀",
+          "relation": "extends-rightward-to",
+          "to": "子前缀",
+          "direction": "progressive"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C005",
+          "instruction": "不补固定层数、长度、码表、校验位或申请步骤",
+          "evidence_refs": [
+            "E006"
+          ]
+        },
+        {
+          "constraint_id": "C006",
+          "instruction": "不把分级扩展画成树状命名或其他体系的层级",
+          "evidence_refs": [
+            "E006"
+          ]
+        }
+      ],
+      "entry_condition": "观众已能区分前后缀职责",
+      "exit_condition": "观众能说出扩展方向与不固定层数、长度的边界",
+      "timing": {
+        "char_equivalent": 143.5,
+        "min_seconds": 36,
+        "target_seconds": 37,
+        "max_seconds": 40,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": [
+        "A007"
+      ],
+      "nx": "后缀这一半，承担的是本地化的对象区分。后缀可以直接使用本地化的标识，通常由企业内部自己定义，并且可以关联产品规格、生产批次、生产日期这些信息。这里的关键词是关联。信息不必全都编码进后缀，后缀首先要能够稳定地区分对象，再由系统把对象和它背后的信息连接起来。企业愿意把后缀握在自己手里，也是这个道理：对象名称和批次规则最熟悉的人在企业内部，前缀只需要保证这家企业在外面的位置是唯一的。\n\n",
+      "teaching_purpose": "说明后缀的本地化对象区分与信息关联",
+      "single_message": "信息不必编码进后缀，后缀先稳定区分对象，再由系统连接信息。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S022",
+          "guidance_text": "后缀区分的是内部对象",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E006"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G015",
+            "items": [
+              {
+                "screen_item_id": "S023",
+                "guidance_text": "说明后缀的本地化对象区分与信息关联",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006",
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G016",
+            "items": [
+              {
+                "screen_item_id": "S024",
+                "guidance_text": "信息不必编码进后缀，后缀先稳定区分对象，再由系统连接信息。",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R008",
+          "from": "后缀",
+          "relation": "associates",
+          "to": "对象信息",
+          "direction": "linked-not-embedded"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C007",
+          "instruction": "不把规格、日期、批次号、序列号硬编码进后缀，也不给字段方案",
+          "evidence_refs": [
+            "E006"
+          ]
+        }
+      ],
+      "entry_condition": "观众已理解前缀的层级",
+      "exit_condition": "观众能说出后缀为何关联而不装载信息",
+      "timing": {
+        "char_equivalent": 175,
+        "min_seconds": 44,
+        "target_seconds": 46,
+        "max_seconds": 48,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": [
+        "A005",
+        "A008"
+      ],
+      "nx": "把两部分拼起来，就能读出一串完整的 Handle。还以上面那三段前缀为例，前缀是 86.100.12，中间一个斜杠，后缀是 00121336401058520109，连起来写作 86.100.12/00121336401058520109。前缀这部分还可以按层级拆开读：86 是国家这一级，86.100 是行业这一级，86.100.12 是这一级里的企业。一串字符读下来，前半段说明它是谁管的，后半段说明管的是哪一个。\n\n",
+      "teaching_purpose": "逐段读出完整 Handle 示例",
+      "single_message": "完整标识别把谁管与管哪一个拼在一起。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S025",
+          "guidance_text": "读懂一串完整的 Handle",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E007"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G017",
+            "items": [
+              {
+                "screen_item_id": "S026",
+                "guidance_text": "逐段读出完整 Handle 示例",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007",
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G018",
+            "items": [
+              {
+                "screen_item_id": "S027",
+                "guidance_text": "完整标识别把谁管与管哪一个拼在一起。",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R009",
+          "from": "前缀与后缀",
+          "relation": "compose",
+          "to": "完整 Handle 标识",
+          "direction": "assembled"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C008",
+          "instruction": "不改写受保护示例串，不把斜杠解释为网址或接口路径",
+          "evidence_refs": [
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "观众已分别理解前后缀",
+      "exit_condition": "观众能按前缀、斜杠、后缀读出完整标识",
+      "timing": {
+        "char_equivalent": 147.0,
+        "min_seconds": 37,
+        "target_seconds": 38,
+        "max_seconds": 41,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A010",
+      "callback_a_ids": [
+        "A006",
+        "A009"
+      ],
+      "nx": "结构读懂了，再看它在系统里怎么起作用。Handle 系统允许通过完整编码去访问保存在分布式数据库中的电池产品信息，比如规格、生产日期、批次号和序列号。分布式保存的意思是，这些信息不必集中在同一个地方，可以留在各自业务需要的位置上。完整标识提供的是共同的查询入口，数据仍然放在原处。所以 Handle 编码本身不装数据，它负责稳定地指认对象，再把查询引到信息真正所在的地方。\n\n",
+      "teaching_purpose": "解释完整标识与分布式保存信息的访问关系",
+      "single_message": "编码不装数据，它提供共同入口，数据仍在原处。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S028",
+          "guidance_text": "完整标识连接分布式信息",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E008"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G019",
+            "items": [
+              {
+                "screen_item_id": "S029",
+                "guidance_text": "解释完整标识与分布式保存信息的访问关系",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008",
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G020",
+            "items": [
+              {
+                "screen_item_id": "S030",
+                "guidance_text": "编码不装数据，它提供共同入口，数据仍在原处。",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R010",
+          "from": "完整标识",
+          "relation": "accesses",
+          "to": "分布式保存的对象信息",
+          "direction": "access"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C009",
+          "instruction": "不新增服务器、节点顺序、缓存、接口、数据库地址或权限",
+          "evidence_refs": [
+            "E008"
+          ]
+        }
+      ],
+      "entry_condition": "观众已能读出完整标识",
+      "exit_condition": "观众能说出标识与对象信息是访问关系",
+      "timing": {
+        "char_equivalent": 163.0,
+        "min_seconds": 41,
+        "target_seconds": 43,
+        "max_seconds": 45,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A011",
+      "callback_a_ids": [
+        "A010"
+      ],
+      "nx": "工业场景里常见的情况是，一块电池的信息分散在生产企业、维护单位和回收单位各自的系统里，彼此之间并不连通。现在它们有了共同的入口，这个入口就是那串完整的 Handle 标识。标识和对象信息之间是关联和访问的关系，编码没有把数据搬进字符串，也没有改变数据的保存位置。\n\n",
+      "teaching_purpose": "说明工业场景中信息分散与共同入口的关系",
+      "single_message": "分散在各自系统的信息，可以通过共同入口被找到。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S031",
+          "guidance_text": "信息分散，入口共同",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E008"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G021",
+            "items": [
+              {
+                "screen_item_id": "S032",
+                "guidance_text": "说明工业场景中信息分散与共同入口的关系",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008",
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G022",
+            "items": [
+              {
+                "screen_item_id": "S033",
+                "guidance_text": "分散在各自系统的信息，可以通过共同入口被找到。",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E008"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [],
+      "silent_constraints": [],
+      "entry_condition": "观众已理解访问关系",
+      "exit_condition": "观众能说出共同入口不改变数据的保存位置",
+      "timing": {
+        "char_equivalent": 117.0,
+        "min_seconds": 30,
+        "target_seconds": 31,
+        "max_seconds": 32,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A012",
+      "callback_a_ids": [
+        "A009",
+        "A011"
+      ],
+      "nx": "理解了原理，最后可以留三个问题给自己。看到一段 Handle，先问前缀属于哪个管理范围，再问后缀区分的是哪个内部对象，最后问完整标识关联着哪些对象信息。第一问保护的是命名空间的治理位置，让不同组织的编码不会撞在一起；第二问保留的是企业内部管理对象的能力，谁的对象谁最清楚；第三问让分散保存的信息，围绕同一个身份被查询。三个问题缺一个，都会把 Handle 误读成普通的内部编号。\n\n",
+      "teaching_purpose": "用三个问题收束职责分工与边界",
+      "single_message": "前缀管范围，后缀管对象，完整标识关联信息，缺一不可。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S034",
+          "guidance_text": "三个问题检查一次 Handle",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E009"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G023",
+            "items": [
+              {
+                "screen_item_id": "S035",
+                "guidance_text": "用三个问题收束职责分工与边界",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G024",
+            "items": [
+              {
+                "screen_item_id": "S036",
+                "guidance_text": "前缀管范围，后缀管对象，完整标识关联信息，缺一不可。",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E009"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R011",
+          "from": "三个检查问题",
+          "relation": "guard",
+          "to": "治理位置与内部对象区分",
+          "direction": "convergent"
+        }
+      ],
+      "silent_constraints": [],
+      "entry_condition": "观众已理解完整机制",
+      "exit_condition": "观众能用三个问题检查一段 Handle",
+      "timing": {
+        "char_equivalent": 166.0,
+        "min_seconds": 42,
+        "target_seconds": 43,
+        "max_seconds": 46,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A013",
+      "callback_a_ids": [
+        "A012"
+      ],
+      "nx": "【本期总结】\n回到开头那块电池。它从工厂到运输、装配、维护和回收，一路被很多套系统记录过。Handle 的机制可以收成一句：前缀定位组织和管理范围，后缀识别组织内部的具体对象，完整标识再通过解析体系连接对象信息。三者合起来，那串字符就成了一个稳定的身份入口，让分散的记录围绕同一块电池被找到。\n\n共同规律也在这里：编码只负责给对象一个身份和一个入口，内容仍然留在它原本的管理范围里。所以完整的一串 Handle 不需要装下电池的全部资料，它只要能稳定地指认这块电池，再把查询引到信息真正所在的地方就够了。",
+      "teaching_purpose": "回到开场对象收束机制与共同规律",
+      "single_message": "前缀定位、后缀识别、完整标识解析，编码只给身份和入口。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S037",
+          "guidance_text": "回到那块电池",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E010"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G025",
+            "items": [
+              {
+                "screen_item_id": "S038",
+                "guidance_text": "回到开场对象收束机制与共同规律",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010",
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G026",
+            "items": [
+              {
+                "screen_item_id": "S039",
+                "guidance_text": "前缀定位、后缀识别、完整标识解析，编码只给身份和入口。",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R012",
+          "from": "前缀、后缀与完整标识",
+          "relation": "converge-on",
+          "to": "稳定的身份入口",
+          "direction": "closing"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C010",
+          "instruction": "不预告其他分集或其他主题",
+          "evidence_refs": [
+            "E001"
+          ]
+        }
+      ],
+      "entry_condition": "观众已走完整条机制链",
+      "exit_condition": "观众能说出三层结论与共同规律",
+      "timing": {
+        "char_equivalent": 220.0,
+        "min_seconds": 55,
+        "target_seconds": 57,
+        "max_seconds": 60,
+        "short_page_reason": null
+      }
+    }
+  ]
+}

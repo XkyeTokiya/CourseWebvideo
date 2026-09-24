@@ -1,0 +1,696 @@
+/* A009 · 完整示例 —— 前缀 .fh- 仅本章使用；颜色/字体全部走主题 token。
+   首拍建立序列用 keyframe（挂载即播）；后续状态切换的 delay 一律挂在
+   [data-state="..."] 选择器下，基础态保持可逆。受保护示例串逐字上屏。 */
+
+.fh-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+@keyframes fh-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fh-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fh-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fh-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fh-code-in {
+  from {
+    opacity: 0;
+    transform: scale(1.14);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── 顶部：标题（S026，可见标题保留） ─────────────────────────── */
+
+.fh-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+[data-state="assembly-goal-set"] .fh-header {
+  animation: fh-drop-in 0.5s ease 0.05s both;
+}
+
+/* 标题记号：两段相拼 —— 实心段 ＋ 连线 ＋ 描边段 */
+.fh-header-mark {
+  position: relative;
+  width: 66px;
+  height: 22px;
+  background: linear-gradient(var(--theme-structural), var(--theme-structural)) center / 22px 3px no-repeat;
+}
+
+.fh-header-mark::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--theme-structural);
+  box-shadow: 3px 4px 0 var(--theme-offset-shadow);
+}
+
+.fh-header-mark::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid var(--theme-process);
+  background: var(--theme-process-surface);
+}
+
+.fh-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 拼接轨道：读图序按横向顺序落位（R009 载体） ───────────────── */
+
+.fh-track-zone {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+}
+
+[data-state="assembly-goal-set"] .fh-track-zone,
+[data-state="string-assembled"] .fh-track-zone,
+[data-state="prefix-decomposed"] .fh-track-zone,
+[data-state="reading-summarized"] .fh-track-zone {
+  opacity: 1;
+}
+
+[data-state="assembly-goal-set"] .fh-track-zone {
+  animation: fh-fade-in 0.5s ease 0.25s both;
+}
+
+.fh-track {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.fh-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 30px;
+  border: 2.5px dashed var(--theme-dashed-line);
+  background: transparent;
+  transition:
+    background-color 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+/* 段落落位后：虚线框由浅转深、垫上纸面 */
+[data-state="string-assembled"] .fh-slot,
+[data-state="prefix-decomposed"] .fh-slot,
+[data-state="reading-summarized"] .fh-slot {
+  border-color: var(--theme-structural);
+  background: var(--surface-2);
+}
+
+.fh-code {
+  font-family: var(--font-mono);
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: scale(1.14);
+}
+
+[data-state="string-assembled"] .fh-code,
+[data-state="prefix-decomposed"] .fh-code,
+[data-state="reading-summarized"] .fh-code {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-state="string-assembled"] .fh-slot--prefix .fh-code {
+  animation: fh-code-in 0.45s ease 0.2s both;
+}
+
+[data-state="string-assembled"] .fh-slot--suffix .fh-code {
+  animation: fh-code-in 0.45s ease 1.1s both;
+}
+
+.fh-slash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+[data-state="string-assembled"] .fh-slash,
+[data-state="prefix-decomposed"] .fh-slash,
+[data-state="reading-summarized"] .fh-slash {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="string-assembled"] .fh-slash {
+  animation: fh-fade-up 0.4s ease 0.7s both;
+}
+
+.fh-code--slash {
+  font-size: 64px;
+}
+
+.fh-slot-label {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--text-mute);
+  transition: color 0.45s ease;
+}
+
+[data-state="string-assembled"] .fh-slot-label,
+[data-state="prefix-decomposed"] .fh-slot-label,
+[data-state="reading-summarized"] .fh-slot-label {
+  color: var(--theme-structural);
+}
+
+/* 前缀拆读时的焦点环（仅拆读拍） */
+[data-state="prefix-decomposed"] .fh-slot--prefix {
+  box-shadow: 0 0 0 3px var(--theme-process);
+}
+
+/* 收束拍：轨道两半按职责着色，与 takeaway 色块对应 */
+[data-state="reading-summarized"] .fh-slot--prefix {
+  background: var(--theme-cool-surface);
+}
+
+[data-state="reading-summarized"] .fh-slot--suffix {
+  background: var(--theme-process-surface);
+}
+
+/* 拼接结果槽：目标语 ↔ 完整串 cross-fade */
+.fh-joined {
+  position: relative;
+  flex: 0 0 88px;
+  border: 2.5px dashed var(--theme-dashed-line);
+  background: transparent;
+  transition:
+    background-color 0.45s ease,
+    border-color 0.45s ease;
+}
+
+[data-state="string-assembled"] .fh-joined,
+[data-state="prefix-decomposed"] .fh-joined,
+[data-state="reading-summarized"] .fh-joined {
+  border-color: var(--theme-structural);
+  background: var(--surface-2);
+}
+
+.fh-joined-goal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+[data-state="assembly-goal-set"] .fh-joined-goal {
+  opacity: 1;
+}
+
+[data-state="string-assembled"] .fh-joined-goal {
+  transition-delay: 1.5s;
+}
+
+.fh-joined-row {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="string-assembled"] .fh-joined-row,
+[data-state="prefix-decomposed"] .fh-joined-row,
+[data-state="reading-summarized"] .fh-joined-row {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="string-assembled"] .fh-joined-row {
+  transition-delay: 1.65s;
+}
+
+.fh-joined-tag {
+  padding: 6px 16px;
+  background: var(--theme-process);
+  border: 2px solid var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 20px;
+  color: var(--surface-2);
+  white-space: nowrap;
+}
+
+.fh-joined-string {
+  font-family: var(--font-mono);
+  font-weight: 900;
+  font-size: 46px;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+/* ── 主区：教材原图证据板 ＋ 读图序 ｜ 要点区层级拆读 ─────────── */
+
+.fh-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 30px;
+}
+
+.fh-evidence {
+  flex: 0 0 640px;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.fh-plate {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0;
+  padding: 12px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="assembly-goal-set"] .fh-plate {
+  animation: fh-rise-in 0.6s ease 0.3s both;
+}
+
+.fh-plate-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fh-plate-caption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: color-mix(in srgb, var(--theme-structural) 86%, transparent);
+  opacity: 0;
+}
+
+[data-state="assembly-goal-set"] .fh-plate-caption,
+[data-state="string-assembled"] .fh-plate-caption,
+[data-state="prefix-decomposed"] .fh-plate-caption,
+[data-state="reading-summarized"] .fh-plate-caption {
+  opacity: 1;
+}
+
+[data-state="assembly-goal-set"] .fh-plate-caption {
+  animation: fh-fade-in 0.45s ease 0.65s both;
+}
+
+.fh-plate-badge {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 19px;
+  color: var(--surface-2);
+}
+
+.fh-plate-badge::before {
+  content: "";
+  width: 6px;
+  height: 18px;
+  background: var(--theme-process);
+}
+
+.fh-plate-note {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  color: var(--surface-2);
+  opacity: 0.75;
+}
+
+/* 读图序：① 前缀 → ② 斜杠 → ③ 后缀，随段落落位逐个点亮 */
+.fh-order {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 14px 18px;
+  border: 2.5px dashed var(--theme-dashed-line);
+  opacity: 0;
+}
+
+[data-state="assembly-goal-set"] .fh-order,
+[data-state="string-assembled"] .fh-order,
+[data-state="prefix-decomposed"] .fh-order,
+[data-state="reading-summarized"] .fh-order {
+  opacity: 1;
+}
+
+[data-state="assembly-goal-set"] .fh-order {
+  animation: fh-fade-in 0.5s ease 0.8s both;
+}
+
+.fh-order-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.38;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="string-assembled"] .fh-order-item:nth-child(1) {
+  opacity: 1;
+  transition-delay: 0.35s;
+}
+
+[data-state="string-assembled"] .fh-order-item:nth-child(2) {
+  opacity: 1;
+  transition-delay: 0.85s;
+}
+
+[data-state="string-assembled"] .fh-order-item:nth-child(3) {
+  opacity: 1;
+  transition-delay: 1.3s;
+}
+
+[data-state="prefix-decomposed"] .fh-order-item,
+[data-state="reading-summarized"] .fh-order-item {
+  opacity: 1;
+}
+
+.fh-order-num {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--theme-structural);
+  background: var(--surface-2);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--theme-structural);
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+[data-state="string-assembled"] .fh-order-item .fh-order-num,
+[data-state="prefix-decomposed"] .fh-order-item .fh-order-num,
+[data-state="reading-summarized"] .fh-order-item .fh-order-num {
+  background: var(--theme-process);
+  color: var(--surface-2);
+}
+
+/* 编号点亮与条目淡入同拍对齐 */
+[data-state="string-assembled"] .fh-order-item:nth-child(1) .fh-order-num {
+  transition-delay: 0.35s;
+}
+
+[data-state="string-assembled"] .fh-order-item:nth-child(2) .fh-order-num {
+  transition-delay: 0.85s;
+}
+
+[data-state="string-assembled"] .fh-order-item:nth-child(3) .fh-order-num {
+  transition-delay: 1.3s;
+}
+
+.fh-order-name {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 24px;
+  color: var(--theme-structural);
+}
+
+.fh-order-arrow {
+  position: relative;
+  width: 30px;
+  height: 2.5px;
+  margin: 0 6px;
+  background: var(--theme-dashed-line);
+}
+
+.fh-order-arrow::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: -4.5px;
+  border-left: 9px solid var(--theme-dashed-line);
+  border-top: 5.5px solid transparent;
+  border-bottom: 5.5px solid transparent;
+}
+
+/* 要点区：前缀按层级拆开读，代码逐级生长 */
+.fh-points {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 14px 36px;
+  border: 2.5px dashed var(--theme-dashed-line);
+  opacity: 0;
+}
+
+[data-state="prefix-decomposed"] .fh-points,
+[data-state="reading-summarized"] .fh-points {
+  opacity: 1;
+}
+
+[data-state="prefix-decomposed"] .fh-points {
+  animation: fh-fade-in 0.45s ease 0.2s both;
+}
+
+.fh-points-lead {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+[data-state="prefix-decomposed"] .fh-points-lead,
+[data-state="reading-summarized"] .fh-points-lead {
+  opacity: 1;
+}
+
+[data-state="prefix-decomposed"] .fh-points-lead {
+  animation: fh-fade-up 0.4s ease 0.35s both;
+}
+
+.fh-point {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+[data-state="prefix-decomposed"] .fh-point,
+[data-state="reading-summarized"] .fh-point {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="prefix-decomposed"] .fh-point:nth-of-type(1) {
+  animation: fh-fade-up 0.45s ease 0.5s both;
+}
+
+[data-state="prefix-decomposed"] .fh-point:nth-of-type(2) {
+  animation: fh-fade-up 0.45s ease 0.85s both;
+}
+
+[data-state="prefix-decomposed"] .fh-point:nth-of-type(3) {
+  animation: fh-fade-up 0.45s ease 1.2s both;
+}
+
+.fh-point-code {
+  flex: 0 0 auto;
+  min-width: 300px;
+  font-family: var(--font-mono);
+  font-weight: 900;
+  font-size: 40px;
+  letter-spacing: 0.02em;
+  color: var(--theme-structural);
+}
+
+.fh-point-tail {
+  color: var(--theme-process);
+}
+
+.fh-point-dash {
+  flex: 1 1 auto;
+  height: 0;
+  border-top: 2px dashed var(--theme-dashed-line);
+}
+
+.fh-point-level {
+  flex: 0 0 auto;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--theme-structural);
+}
+
+/* ── takeaway：前半段谁管 ｜ 后半段管哪一个 ───────────────────── */
+
+.fh-takeaway {
+  flex: 0 0 128px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 0 44px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+[data-state="reading-summarized"] .fh-takeaway {
+  opacity: 1;
+  transform: none;
+  animation: fh-rise-in 0.5s ease 0.4s both;
+}
+
+.fh-half {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  opacity: 0;
+}
+
+[data-state="reading-summarized"] .fh-half {
+  opacity: 1;
+}
+
+[data-state="reading-summarized"] .fh-half:nth-of-type(1) {
+  animation: fh-fade-in 0.4s ease 0.7s both;
+}
+
+[data-state="reading-summarized"] .fh-half:nth-of-type(2) {
+  animation: fh-fade-in 0.4s ease 0.9s both;
+}
+
+.fh-swatch {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+}
+
+.fh-swatch--who {
+  background: var(--theme-cool-surface);
+  border: 2.5px solid var(--theme-structural);
+}
+
+.fh-swatch--which {
+  background: var(--theme-process-surface);
+  border: 2.5px solid var(--theme-process);
+}
+
+.fh-half-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 38px;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+.fh-divider {
+  flex: 0 0 auto;
+  width: 0;
+  height: 64px;
+  border-left: 2.5px dashed var(--theme-dashed-line);
+}

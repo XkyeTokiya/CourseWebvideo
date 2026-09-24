@@ -1,0 +1,265 @@
+/* A006 · 实用性与现场条件 —— 前缀 .pf- 仅本章使用；颜色/字体全部走主题 token。
+   首拍入场用 keyframe（挂载即播）；后续状态切换用 transition（基础态即时可逆）。 */
+
+.pf-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题 ───────────────────────────────────────────────── */
+
+.pf-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.pf-index {
+  padding: 6px 14px;
+  border: 2px solid var(--theme-dashed-line);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.pf-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 58px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 主区：情境图 ＋ 两级条件轨 ───────────────────────────────── */
+
+.pf-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 36px;
+  transition:
+    opacity 0.75s ease,
+    filter 0.75s ease;
+}
+
+.pf-media {
+  margin: 0;
+  flex: 0 0 820px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-self: center;
+}
+
+.pf-media-img {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--theme-dashed-line);
+  box-shadow: var(--card-shadow);
+}
+
+.pf-media-caption {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: var(--text-mute);
+}
+
+.pf-rail {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.pf-tier {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pf-tier-tag {
+  align-self: flex-start;
+  padding: 6px 16px;
+  background: var(--theme-structural);
+  color: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  border-radius: 4px;
+}
+
+.pf-tier-tag-field {
+  background: var(--theme-warning);
+}
+
+.pf-row {
+  margin: 0;
+  padding: 15px 24px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 4px 14px 4px 14px;
+  box-shadow: var(--card-shadow);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.35;
+  color: var(--theme-structural);
+}
+
+/* 反例条（拍 2） */
+.pf-usage {
+  margin: 4px 0 0;
+  padding: 18px 24px;
+  background: var(--theme-warning-surface);
+  border: 2px dashed var(--theme-warning);
+  border-radius: 4px 14px 4px 14px;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 1.5;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateX(30px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="field-failure"] .pf-usage,
+[data-state="usability-judgment"] .pf-usage {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── 收束：全屏遮罩大字（拍 3） ───────────────────────────────── */
+
+.pf-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  padding: 0 130px;
+  background: color-mix(in srgb, var(--theme-structural) 92%, transparent);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.65s ease,
+    visibility 0s linear 0.65s;
+}
+
+[data-state="usability-judgment"] .pf-scrim {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.65s ease;
+}
+
+.pf-scrim-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--surface-2);
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+[data-state="usability-judgment"] .pf-scrim-text {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.35s, 0.35s;
+}
+
+.pf-scrim-em {
+  color: var(--theme-process);
+  text-decoration: underline;
+  text-decoration-thickness: 5px;
+  text-underline-offset: 10px;
+}
+
+/* 拍 3：条件区与反例弱化为背景，图区保持语境 */
+[data-state="usability-judgment"] .pf-rail {
+  opacity: 0.28;
+  filter: saturate(0.55);
+}
+
+/* ── 首拍入场节拍（keyframe：挂载即播） ───────────────────────── */
+
+[data-state="field-conditions"] .pf-header {
+  animation: pf-rise-in 0.5s ease 0.1s both;
+}
+
+[data-state="field-conditions"] .pf-media {
+  animation: pf-media-in 0.6s ease 0.3s both;
+}
+
+[data-state="field-conditions"] .pf-tier:nth-of-type(1) .pf-row:nth-of-type(1) {
+  animation: pf-row-in 0.45s ease 0.75s both;
+}
+
+[data-state="field-conditions"] .pf-tier:nth-of-type(1) .pf-row:nth-of-type(2) {
+  animation: pf-row-in 0.45s ease 0.95s both;
+}
+
+[data-state="field-conditions"] .pf-tier:nth-of-type(2) .pf-row:nth-of-type(1) {
+  animation: pf-row-in 0.45s ease 1.15s both;
+}
+
+[data-state="field-conditions"] .pf-tier:nth-of-type(2) .pf-row:nth-of-type(2) {
+  animation: pf-row-in 0.45s ease 1.35s both;
+}
+
+@keyframes pf-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pf-media-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pf-row-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 状态进入延迟：只挂在进入态选择器上 ───────────────────────── */
+
+[data-state="usability-judgment"] .pf-scrim-text {
+  transition-delay: 0.35s, 0.35s;
+}

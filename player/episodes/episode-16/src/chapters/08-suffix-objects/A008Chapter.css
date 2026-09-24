@@ -1,0 +1,658 @@
+/* A008 · 后缀对象 —— 前缀 .so- 仅本章使用；颜色/字体全部走主题 token。
+   首拍建立序列用 keyframe（挂载即播）；后续状态切换的 delay 一律挂在
+   [data-state="..."] 选择器下，基础态保持可逆。 */
+
+.so-root {
+  gap: 26px;
+  min-height: 0;
+}
+
+@keyframes so-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes so-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes so-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes so-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes so-pop-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.14);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes so-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes so-draw-line {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ── 顶部：标题（S023，可见标题保留） ─────────────────────────── */
+
+.so-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+[data-state="suffix-role-established"] .so-header {
+  animation: so-drop-in 0.55s ease 0.05s both;
+}
+
+/* 标题记号：实心方块（对象）＋ 虚线方块（信息） */
+.so-header-mark {
+  position: relative;
+  width: 46px;
+  height: 44px;
+}
+
+.so-header-mark::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.so-header-mark::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  border: 2.5px dashed var(--theme-process);
+}
+
+.so-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 主区：现场图像（M003）＋ 对象标记 ＋ 右侧洞察带 ───────────── */
+
+.so-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 34px;
+}
+
+.so-stage {
+  position: relative;
+  flex: 0 0 900px;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 现场图像：持续在场的语境锚点 */
+.so-scene {
+  position: relative;
+  flex: 0 0 540px;
+  min-height: 0;
+  margin: 0;
+  padding: 12px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="suffix-role-established"] .so-scene {
+  animation: so-rise-in 0.6s ease 0.2s both;
+}
+
+.so-scene-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 对象标记：示意性结构标注，钉在现场图像上 */
+.so-obj {
+  position: absolute;
+  z-index: 4;
+  transform: translate(-50%, -50%);
+  padding: 8px 16px;
+  background: var(--surface-2);
+  border: 2.5px solid var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 21px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+  white-space: nowrap;
+  opacity: 0;
+}
+
+[data-state="suffix-role-established"] .so-obj,
+[data-state="association-framed"] .so-obj,
+[data-state="rationale-completed"] .so-obj {
+  opacity: 1;
+}
+
+[data-state="suffix-role-established"] .so-obj:nth-of-type(1) {
+  animation: so-pop-in 0.45s ease 0.5s both;
+}
+
+[data-state="suffix-role-established"] .so-obj:nth-of-type(2) {
+  animation: so-pop-in 0.45s ease 0.68s both;
+}
+
+[data-state="suffix-role-established"] .so-obj:nth-of-type(3) {
+  animation: so-pop-in 0.45s ease 0.86s both;
+}
+
+[data-state="suffix-role-established"] .so-obj:nth-of-type(4) {
+  animation: so-pop-in 0.45s ease 1.04s both;
+}
+
+/* 被核验的对象：绿色外框 ＋ 角标 */
+.so-obj--verified::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border: 2.5px solid var(--theme-process);
+}
+
+.so-obj-badge {
+  position: absolute;
+  top: -15px;
+  right: -16px;
+  padding: 3px 10px;
+  background: var(--theme-process);
+  border: 2px solid var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 1.2;
+  color: var(--surface-2);
+}
+
+/* 现场语境角注：紧凑置于左下，不横贯整图 */
+.so-scene-caption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: color-mix(in srgb, var(--theme-structural) 86%, transparent);
+  opacity: 0;
+}
+
+[data-state="suffix-role-established"] .so-scene-caption,
+[data-state="association-framed"] .so-scene-caption,
+[data-state="rationale-completed"] .so-scene-caption {
+  opacity: 1;
+}
+
+[data-state="suffix-role-established"] .so-scene-caption {
+  animation: so-fade-in 0.45s ease 0.55s both;
+}
+
+.so-scene-badge {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 19px;
+  color: var(--surface-2);
+}
+
+.so-scene-badge::before {
+  content: "";
+  width: 6px;
+  height: 18px;
+  background: var(--theme-process);
+}
+
+.so-scene-note {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--surface-2);
+  opacity: 0.75;
+}
+
+/* ── 信息容器：对象背后的信息，由引线连接（R008 载体） ─────────── */
+
+.so-container {
+  position: relative;
+  z-index: 2;
+  flex: 1 1 auto;
+  min-height: 0;
+  margin-top: 26px;
+  padding: 16px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background: var(--surface-2);
+  border: 3px dashed var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+[data-state="association-framed"] .so-container,
+[data-state="rationale-completed"] .so-container {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="association-framed"] .so-container {
+  animation: so-rise-in 0.5s ease 0.55s both;
+}
+
+/* 引线落点：容器顶边的连接端口 */
+.so-container::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  margin-left: -8px;
+  background: var(--theme-process);
+  border: 2.5px solid var(--theme-structural);
+}
+
+.so-container-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.so-container-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--theme-structural);
+}
+
+.so-container-tag {
+  padding: 4px 14px;
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+.so-info-row {
+  display: flex;
+  gap: 18px;
+}
+
+.so-info {
+  padding: 12px 26px;
+  background: var(--surface-3);
+  border: 2px solid var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+.so-container-note {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-mute);
+  opacity: 0;
+}
+
+[data-state="association-framed"] .so-container-tag,
+[data-state="rationale-completed"] .so-container-tag,
+[data-state="association-framed"] .so-info,
+[data-state="rationale-completed"] .so-info,
+[data-state="association-framed"] .so-container-note,
+[data-state="rationale-completed"] .so-container-note {
+  opacity: 1;
+}
+
+[data-state="association-framed"] .so-container-tag {
+  animation: so-fade-in 0.4s ease 0.85s both;
+}
+
+[data-state="association-framed"] .so-info:nth-child(1) {
+  animation: so-fade-up 0.4s ease 0.95s both;
+}
+
+[data-state="association-framed"] .so-info:nth-child(2) {
+  animation: so-fade-up 0.4s ease 1.1s both;
+}
+
+[data-state="association-framed"] .so-info:nth-child(3) {
+  animation: so-fade-up 0.4s ease 1.25s both;
+}
+
+[data-state="association-framed"] .so-container-note {
+  animation: so-fade-in 0.4s ease 1.45s both;
+}
+
+/* ── 引线标注：对象单元 → 信息容器（自绘） ─────────────────────── */
+
+.so-leader {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.so-leader-path {
+  fill: none;
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.so-leader-dot {
+  fill: var(--theme-process);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+  opacity: 0;
+}
+
+.so-leader-tag {
+  position: absolute;
+  z-index: 5;
+  left: 486px;
+  top: 342px;
+  padding: 6px 18px;
+  background: var(--theme-process);
+  border: 2.5px solid var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 24px;
+  color: var(--surface-2);
+  opacity: 0;
+}
+
+[data-state="association-framed"] .so-leader-path,
+[data-state="rationale-completed"] .so-leader-path {
+  stroke-dashoffset: 0;
+}
+
+[data-state="association-framed"] .so-leader-dot,
+[data-state="rationale-completed"] .so-leader-dot,
+[data-state="association-framed"] .so-leader-tag,
+[data-state="rationale-completed"] .so-leader-tag {
+  opacity: 1;
+}
+
+[data-state="association-framed"] .so-leader-path {
+  animation: so-draw-line 0.9s cubic-bezier(0.3, 0.6, 0.25, 1) 0.2s both;
+}
+
+[data-state="association-framed"] .so-leader-dot {
+  animation: so-fade-in 0.4s ease 0.15s both;
+}
+
+[data-state="association-framed"] .so-leader-tag {
+  animation: so-pop-tag 0.4s ease 1.05s both;
+}
+
+@keyframes so-pop-tag {
+  from {
+    opacity: 0;
+    transform: scale(1.18);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── 洞察带：脊线 ＋ 三格洞察，沿「区分→关联→道理」推进 ───────── */
+
+.so-rail {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 18px;
+}
+
+.so-rail::before {
+  content: "";
+  position: absolute;
+  left: 27px;
+  top: 34px;
+  bottom: 34px;
+  border-left: 2px dashed var(--theme-dashed-line);
+}
+
+.so-insight {
+  display: flex;
+  gap: 20px;
+}
+
+.so-node {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  margin: 30px 0 0 20px;
+  background: var(--surface-2);
+  border: 2.5px solid var(--theme-structural);
+  transition: background-color 0.3s ease;
+}
+
+[data-state="suffix-role-established"] .so-insight:nth-child(1) .so-node,
+[data-state="association-framed"] .so-insight:nth-child(1) .so-node,
+[data-state="rationale-completed"] .so-insight:nth-child(1) .so-node,
+[data-state="association-framed"] .so-insight:nth-child(2) .so-node,
+[data-state="rationale-completed"] .so-insight:nth-child(2) .so-node,
+[data-state="rationale-completed"] .so-insight:nth-child(3) .so-node {
+  background: var(--theme-process);
+}
+
+.so-card {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 20px 28px;
+  border: 2.5px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transform: translateX(26px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease,
+    background-color 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+[data-state="suffix-role-established"] .so-insight:nth-child(1) .so-card,
+[data-state="association-framed"] .so-insight:nth-child(1) .so-card,
+[data-state="rationale-completed"] .so-insight:nth-child(1) .so-card,
+[data-state="association-framed"] .so-insight:nth-child(2) .so-card,
+[data-state="rationale-completed"] .so-insight:nth-child(2) .so-card,
+[data-state="rationale-completed"] .so-insight:nth-child(3) .so-card {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="suffix-role-established"] .so-insight:nth-child(1) .so-card {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  animation: so-slide-in 0.5s ease 0.7s both;
+}
+
+[data-state="association-framed"] .so-insight:nth-child(2) .so-card {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  animation: so-slide-in 0.5s ease 0.9s both;
+}
+
+[data-state="rationale-completed"] .so-insight:nth-child(3) .so-card {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  animation: so-slide-in 0.5s ease 0.25s both;
+}
+
+/* 已读卡退为次级：保持可读，让位当前焦点 */
+[data-state="association-framed"] .so-insight:nth-child(1) .so-card,
+[data-state="rationale-completed"] .so-insight:nth-child(1) .so-card,
+[data-state="rationale-completed"] .so-insight:nth-child(2) .so-card {
+  opacity: 0.8;
+  background: transparent;
+  border: 2.5px dashed var(--theme-dashed-line);
+  box-shadow: none;
+}
+
+.so-card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px dashed var(--theme-dashed-line);
+}
+
+.so-idx {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.so-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 1.2;
+  color: var(--theme-structural);
+}
+
+.so-line {
+  margin: 0 0 6px;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+.so-line--link {
+  color: var(--theme-structural);
+}
+
+.so-line--link::before {
+  content: "";
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  margin-right: 12px;
+  background: var(--theme-process);
+}
+
+/* 内 / 外对照：实心方块＝企业内部，空心方块＝外部 */
+.so-line--in::before,
+.so-line--out::before {
+  content: "";
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  margin-right: 12px;
+}
+
+.so-line--in::before {
+  background: var(--theme-structural);
+}
+
+.so-line--out::before {
+  border: 2px solid var(--theme-structural);
+}
+
+.so-judge {
+  margin: 4px 0 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 38px;
+  line-height: 1.3;
+  color: var(--theme-structural);
+}

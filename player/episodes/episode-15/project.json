@@ -1,12 +1,12 @@
 {
   "id": "episode-15",
-  "title": "第 15 期（待制作）",
-  "status": "planned",
-  "theme": "active-identification-note",
+  "title": "第 15 期 · VAA 编码：从发码机构到企业内部编码",
+  "status": "in-progress",
+  "theme": "active-identification-signal-grid",
   "progress": {
-    "completed": 0,
-    "total": 0,
-    "current": null
+    "completed": 11,
+    "total": 11,
+    "current": "11-three-duties-recap"
   },
-  "updatedAt": "2026-09-02"
+  "updatedAt": "2026-09-19"
 }

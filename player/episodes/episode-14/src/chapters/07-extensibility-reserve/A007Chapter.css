@@ -1,0 +1,404 @@
+/* A007 · 扩展性与容量预留 —— 前缀 .ex- 仅本章使用；颜色/字体全部走主题 token。
+   首拍入场用 keyframe（挂载即播）；后续状态切换用 transition（基础态即时可逆）。 */
+
+.ex-root {
+  gap: 26px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题 ───────────────────────────────────────────────── */
+
+.ex-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.ex-index {
+  padding: 6px 14px;
+  border: 2px solid var(--theme-dashed-line);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.ex-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 58px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 主区：演进双卡 ＋ 容量带 ─────────────────────────────────── */
+
+.ex-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.ex-cards {
+  flex: 0 0 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.ex-card {
+  position: relative;
+  padding: 42px 38px 38px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 4px 16px 4px 16px;
+  box-shadow: var(--card-shadow);
+}
+
+.ex-card:nth-child(2) {
+  margin-left: 52px;
+}
+
+.ex-card-tag {
+  position: absolute;
+  top: -18px;
+  left: 24px;
+  padding: 6px 16px;
+  background: var(--theme-structural);
+  color: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  border-radius: 4px;
+}
+
+.ex-card-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 34px;
+  line-height: 1.35;
+  color: var(--theme-structural);
+}
+
+/* 容量带：当前需求段 ＋ 留白区 */
+.ex-capacity {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.ex-track {
+  position: relative;
+  height: 152px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 14px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: border-color 0.45s ease;
+}
+
+.ex-track-current {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 34%;
+  display: grid;
+  place-items: center;
+  background: var(--theme-process-surface);
+  border-right: 3px solid var(--theme-process);
+}
+
+.ex-track-current-label {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--theme-structural);
+}
+
+.ex-track-reserve {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 34%;
+  right: 0;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  transition: background-color 0.5s ease;
+}
+
+[data-state="room-reserved"] .ex-track-reserve,
+[data-state="flexibility-lost"] .ex-track-reserve {
+  background: var(--accent-soft);
+}
+
+.ex-reserve-keep,
+.ex-reserve-manage {
+  grid-area: 1 / 1;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.04em;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="evolution-cards"] .ex-reserve-keep {
+  opacity: 1;
+}
+
+[data-state="room-reserved"] .ex-reserve-manage {
+  opacity: 1;
+  transition-delay: 0.35s;
+}
+
+.ex-reserve-manage {
+  color: var(--theme-process);
+}
+
+/* 塞满态（拍 3）：块阵挤占留白 */
+.ex-reserve-crowd {
+  grid-area: 1 / 1;
+  justify-self: stretch;
+  align-self: stretch;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 14px;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+[data-state="flexibility-lost"] .ex-reserve-crowd {
+  opacity: 1;
+}
+
+.ex-crowd-block {
+  flex: 1 1 auto;
+  height: 84px;
+  background: var(--theme-warning);
+  opacity: 0.72;
+  border-radius: 4px;
+}
+
+[data-state="flexibility-lost"] .ex-track {
+  border-color: var(--theme-warning);
+}
+
+.ex-reserve-keep,
+.ex-reserve-manage,
+.ex-reserve-crowd {
+  transition: opacity 0.5s ease;
+}
+
+/* 支撑要点（拍 2） */
+.ex-support {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ex-support-row {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.4;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.ex-support-row::before {
+  content: "";
+  flex: 0 0 14px;
+  height: 14px;
+  background: var(--theme-process);
+  border-radius: 3px;
+}
+
+[data-state="room-reserved"] .ex-support-row,
+[data-state="flexibility-lost"] .ex-support-row {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── 底部 takeaway（拍 3） ────────────────────────────────────── */
+
+.ex-takeaway {
+  flex: 0 0 110px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 36px;
+  border: 2px dashed var(--theme-dashed-line);
+  transition:
+    background-color 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+.ex-takeaway-tag {
+  flex: 0 0 auto;
+  padding: 9px 20px;
+  background: var(--theme-warning);
+  color: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 26px;
+  border-radius: 6px;
+  box-shadow: 4px 4px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: scale(0.85);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.ex-takeaway-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 36px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="flexibility-lost"] .ex-takeaway {
+  background: var(--theme-warning-surface);
+  border: 3px solid var(--theme-warning);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="flexibility-lost"] .ex-takeaway-tag {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="flexibility-lost"] .ex-takeaway-text {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── 首拍入场节拍（keyframe：挂载即播） ───────────────────────── */
+
+[data-state="evolution-cards"] .ex-header {
+  animation: ex-rise-in 0.5s ease 0.1s both;
+}
+
+[data-state="evolution-cards"] .ex-card:nth-child(1) {
+  animation: ex-card-in 0.5s ease 0.4s both;
+}
+
+[data-state="evolution-cards"] .ex-card:nth-child(2) {
+  animation: ex-card-in 0.5s ease 0.7s both;
+}
+
+[data-state="evolution-cards"] .ex-track {
+  animation: ex-track-in 0.6s ease 1s both;
+}
+
+[data-state="evolution-cards"] .ex-track-current {
+  animation: ex-current-in 0.55s cubic-bezier(0.3, 0.7, 0.3, 1.1) 1.5s both;
+}
+
+[data-state="evolution-cards"] .ex-reserve-keep {
+  animation: ex-fade-in 0.5s ease 2s both;
+}
+
+@keyframes ex-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ex-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ex-track-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ex-current-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ex-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── 状态进入延迟：只挂在进入态选择器上 ───────────────────────── */
+
+[data-state="room-reserved"] .ex-support-row:nth-of-type(1) {
+  transition-delay: 0.3s, 0.3s;
+}
+
+[data-state="room-reserved"] .ex-support-row:nth-of-type(2) {
+  transition-delay: 0.75s, 0.75s;
+}
+
+[data-state="flexibility-lost"] .ex-takeaway-tag {
+  transition-delay: 0.15s, 0.15s;
+}
+
+[data-state="flexibility-lost"] .ex-takeaway-text {
+  transition-delay: 0.4s, 0.4s;
+}

@@ -1,0 +1,427 @@
+/* A004 · 唯一性与范围限定 —— 前缀 .uq- 仅本章使用；颜色/字体全部走主题 token。
+   首拍入场用 keyframe（挂载即播）；后续状态切换用 transition（基础态即时可逆）。 */
+
+.uq-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+/* ── 顶部：标题 ───────────────────────────────────────────────── */
+
+.uq-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.uq-index {
+  padding: 6px 14px;
+  border: 2px solid var(--theme-dashed-line);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.uq-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 58px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 主区：范围围栏内的 1:1 图 ＋ 右栏边界说明 ─────────────────── */
+
+.uq-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 40px;
+}
+
+.uq-enclosure {
+  position: relative;
+  flex: 0 0 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  padding: 60px 40px;
+}
+
+.uq-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+}
+
+.uq-ring rect {
+  stroke: var(--theme-dashed-line);
+  stroke-width: 4;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition:
+    stroke-dashoffset 0.75s ease,
+    stroke 0.4s ease;
+}
+
+[data-state="scope-marked"] .uq-ring rect,
+[data-state="boundary-concluded"] .uq-ring rect {
+  stroke: var(--theme-warning);
+  stroke-dashoffset: 0;
+}
+
+.uq-ring-label {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.7);
+  padding: 9px 24px;
+  background: var(--theme-warning);
+  color: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 27px;
+  letter-spacing: 0.08em;
+  border-radius: 6px;
+  box-shadow: 5px 5px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+[data-state="scope-marked"] .uq-ring-label,
+[data-state="boundary-concluded"] .uq-ring-label {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.uq-pair {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.uq-chip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 26px;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  border-radius: 8px;
+}
+
+.uq-chip-code {
+  background: var(--theme-structural);
+  color: var(--surface-2);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.uq-chip-object {
+  background: var(--surface-2);
+  color: var(--theme-structural);
+  border: 3px solid var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.uq-glyph {
+  width: 32px;
+  height: 32px;
+}
+
+.uq-pair-link {
+  position: relative;
+  width: 130px;
+  height: 24px;
+}
+
+.uq-pair-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  border-top: 4px solid var(--theme-process);
+}
+
+.uq-pair-ratio {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 3px 10px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-process);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--theme-structural);
+}
+
+.uq-claim {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 31px;
+  line-height: 1.35;
+  text-align: center;
+  color: var(--theme-structural);
+}
+
+.uq-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.uq-benefit {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 23px;
+  color: var(--text-2);
+}
+
+.uq-benefit::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: var(--theme-process);
+  border-radius: 3px;
+}
+
+/* 右栏：边界说明 */
+.uq-boundary {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.uq-boundary-kicker {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--text-2);
+}
+
+.uq-boundary-row {
+  margin: 0;
+  padding: 16px 24px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  border-radius: 4px 14px 4px 14px;
+  box-shadow: var(--card-shadow);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--theme-structural);
+}
+
+.uq-boundary-note {
+  margin: 6px 0 0;
+  padding: 16px 22px;
+  background: var(--theme-warning-surface);
+  border-left: 5px solid var(--theme-warning);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 25px;
+  line-height: 1.4;
+  color: var(--theme-structural);
+}
+
+.uq-boundary-kicker,
+.uq-boundary-row,
+.uq-boundary-note {
+  opacity: 0;
+  transform: translateX(30px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+[data-state="boundary-concluded"] .uq-boundary-kicker,
+[data-state="boundary-concluded"] .uq-boundary-row,
+[data-state="boundary-concluded"] .uq-boundary-note {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── 底部论点条 ───────────────────────────────────────────────── */
+
+.uq-thesis {
+  position: relative;
+  flex: 0 0 108px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 0 36px;
+  border: 2px dashed var(--theme-dashed-line);
+  transition:
+    background-color 0.5s ease,
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+.uq-thesis-mark {
+  width: 18px;
+  height: 46px;
+  background: var(--theme-warning);
+  box-shadow: 4px 4px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.uq-thesis-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 42px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.uq-thesis-scope {
+  color: var(--theme-warning);
+  text-decoration: underline;
+  text-decoration-thickness: 5px;
+  text-underline-offset: 8px;
+  text-decoration-color: var(--theme-warning);
+}
+
+[data-state="boundary-concluded"] .uq-thesis {
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="boundary-concluded"] .uq-thesis-mark,
+[data-state="boundary-concluded"] .uq-thesis-text {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── 首拍入场节拍（keyframe：挂载即播） ───────────────────────── */
+
+[data-state="one-to-one-established"] .uq-header {
+  animation: uq-rise-in 0.5s ease 0.1s both;
+}
+
+[data-state="one-to-one-established"] .uq-chip-code {
+  animation: uq-chip-in 0.5s cubic-bezier(0.3, 0.7, 0.3, 1.15) 0.45s both;
+}
+
+[data-state="one-to-one-established"] .uq-pair-link {
+  animation: uq-fade-in 0.45s ease 0.85s both;
+}
+
+[data-state="one-to-one-established"] .uq-chip-object {
+  animation: uq-chip-in 0.5s cubic-bezier(0.3, 0.7, 0.3, 1.15) 1.05s both;
+}
+
+[data-state="one-to-one-established"] .uq-claim {
+  animation: uq-claim-in 0.55s ease 1.45s both;
+}
+
+[data-state="one-to-one-established"] .uq-benefit:nth-of-type(1) {
+  animation: uq-fade-in 0.45s ease 1.95s both;
+}
+
+[data-state="one-to-one-established"] .uq-benefit:nth-of-type(2) {
+  animation: uq-fade-in 0.45s ease 2.2s both;
+}
+
+@keyframes uq-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes uq-chip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes uq-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes uq-claim-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 状态进入延迟：只挂在进入态选择器上 ───────────────────────── */
+
+[data-state="scope-marked"] .uq-ring-label {
+  transition-delay: 0.55s, 0.55s;
+}
+
+[data-state="boundary-concluded"] .uq-boundary-kicker {
+  transition-delay: 0.15s, 0.15s;
+}
+
+[data-state="boundary-concluded"] .uq-boundary-row:nth-of-type(1) {
+  transition-delay: 0.4s, 0.4s;
+}
+
+[data-state="boundary-concluded"] .uq-boundary-row:nth-of-type(2) {
+  transition-delay: 0.7s, 0.7s;
+}
+
+[data-state="boundary-concluded"] .uq-boundary-note {
+  transition-delay: 1s, 1s;
+}
+
+[data-state="boundary-concluded"] .uq-thesis-mark {
+  transition-delay: 1.35s;
+}
+
+[data-state="boundary-concluded"] .uq-thesis-text {
+  transition-delay: 1.35s, 1.35s;
+}

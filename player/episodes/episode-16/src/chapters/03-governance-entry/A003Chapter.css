@@ -1,0 +1,623 @@
+/* A003 · 治理入口 —— 前缀 .ge- 仅本章使用；颜色/字体全部走主题 token。
+   首拍「职责行自上而下落位」的 keyframe 挂在 [data-state="chain-established"] 下；
+   后续状态切换的 delay 一律挂在状态选择器下，基础态保持可逆（反向导航不继承进入延迟）。
+   R003 由上下层级阅读顺序承载：阶梯缩进 + 纵向虚线轨，不画跨级箭头。 */
+
+.ge-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+@keyframes ge-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ge-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ge-rail-draw {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes ge-row-in {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ge-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ge-object-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ge-grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ge-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-36px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 标题区（headline 槽位，可见标题保留） ─────────────────────── */
+
+.ge-header {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+[data-state="chain-established"] .ge-header {
+  animation: ge-fade-in 0.5s ease 0.05s both;
+}
+
+.ge-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+.ge-header-bar {
+  width: 96px;
+  height: 8px;
+  background: var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+/* ── 共同条件区：链条的公共前提 ───────────────────────────────── */
+
+.ge-condition {
+  flex: 0 0 92px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 30px;
+  background: var(--surface-3);
+  border: 2px dashed var(--theme-dashed-line);
+}
+
+[data-state="chain-established"] .ge-condition {
+  animation: ge-slide-down 0.5s ease 0.25s both;
+}
+
+.ge-condition-mark {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 44px;
+  background: var(--theme-structural);
+}
+
+.ge-condition-lead {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 32px;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+.ge-condition-sep {
+  flex: 0 0 auto;
+  width: 0;
+  height: 40px;
+  border-left: 2px dashed var(--theme-dashed-line);
+}
+
+.ge-condition-sub {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+
+/* ── 主区：职责行（左）＋ 职责列 / 边界列（右） ────────────────── */
+
+.ge-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 36px;
+}
+
+/* 职责行：上下层级，阶梯缩进 + 纵向虚线轨承载阅读顺序 */
+.ge-rows {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  padding-left: 64px;
+}
+
+.ge-rail {
+  position: absolute;
+  left: 26px;
+  top: 92px;
+  bottom: 92px;
+  width: 0;
+  border-left: 3px dashed var(--theme-dashed-line);
+  transform-origin: top center;
+}
+
+[data-state="chain-established"] .ge-rail {
+  animation: ge-rail-draw 0.7s cubic-bezier(0.3, 0.6, 0.25, 1) 0.5s both;
+}
+
+.ge-row {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  height: 150px;
+  padding: 0 28px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.ge-rows .ge-row:nth-of-type(2) {
+  margin-left: 90px;
+}
+
+.ge-rows .ge-row:nth-of-type(3) {
+  margin-left: 180px;
+}
+
+[data-state="chain-established"] .ge-row:nth-of-type(1) {
+  animation: ge-row-in 0.5s cubic-bezier(0.3, 0.6, 0.25, 1) 0.65s both;
+}
+
+[data-state="chain-established"] .ge-row:nth-of-type(2) {
+  animation: ge-row-in 0.5s cubic-bezier(0.3, 0.6, 0.25, 1) 0.95s both;
+}
+
+[data-state="chain-established"] .ge-row:nth-of-type(3) {
+  animation: ge-row-in 0.5s cubic-bezier(0.3, 0.6, 0.25, 1) 1.25s both;
+}
+
+.ge-row-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ge-row-index {
+  padding: 3px 10px;
+  background: var(--theme-structural);
+  color: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.08em;
+}
+
+.ge-row-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.ge-row-action {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 25px;
+  color: var(--text-2);
+}
+
+/* 职责列 / 边界列：右侧合拢收束，未激活时保留虚线空框 */
+.ge-columns {
+  flex: 0 0 660px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 0;
+}
+
+.ge-duty,
+.ge-boundary {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 20px;
+  border: 2px dashed color-mix(in srgb, var(--theme-dashed-line) 55%, transparent);
+  transition:
+    border-color 0.45s ease,
+    background-color 0.45s ease;
+}
+
+.ge-duty {
+  flex: 0 0 270px;
+}
+
+.ge-boundary {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+[data-state="enterprise-positioned"] .ge-duty,
+[data-state="position-assigned"] .ge-duty {
+  border-color: var(--theme-process);
+  background: var(--surface-2);
+}
+
+[data-state="position-assigned"] .ge-boundary {
+  border-color: var(--theme-structural);
+  background: var(--surface-2);
+}
+
+.ge-col-head {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  color: var(--text-mute);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="enterprise-positioned"] .ge-duty .ge-col-head,
+[data-state="position-assigned"] .ge-duty .ge-col-head {
+  opacity: 1;
+  animation: ge-fade-in 0.4s ease 0.15s both;
+}
+
+[data-state="position-assigned"] .ge-boundary .ge-col-head {
+  opacity: 1;
+  animation: ge-fade-in 0.4s ease 0.15s both;
+}
+
+/* 职责落点：企业或组织在前缀下区分对象 */
+.ge-landing {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.ge-landing-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.ge-landing-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.4;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="enterprise-positioned"] .ge-landing-name,
+[data-state="position-assigned"] .ge-landing-name,
+[data-state="enterprise-positioned"] .ge-landing-text,
+[data-state="position-assigned"] .ge-landing-text {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="enterprise-positioned"] .ge-landing-name {
+  animation: ge-item-in 0.45s ease 0.3s both;
+}
+
+[data-state="enterprise-positioned"] .ge-landing-text {
+  animation: ge-item-in 0.45s ease 0.45s both;
+}
+
+.ge-landing-scheme {
+  width: 78%;
+  margin-top: 4px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px 18px;
+}
+
+.ge-scheme-bar {
+  grid-column: 1 / -1;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--theme-structural);
+  color: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.2em;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.ge-scheme-tick {
+  justify-self: center;
+  width: 0;
+  height: 14px;
+  border-left: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.ge-scheme-object {
+  height: 40px;
+  border: 2px dashed var(--theme-process);
+  background: var(--theme-process-surface);
+  opacity: 0;
+  transform: translateY(12px) scale(0.92);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+[data-state="enterprise-positioned"] .ge-scheme-bar,
+[data-state="position-assigned"] .ge-scheme-bar,
+[data-state="enterprise-positioned"] .ge-scheme-tick,
+[data-state="position-assigned"] .ge-scheme-tick,
+[data-state="enterprise-positioned"] .ge-scheme-object,
+[data-state="position-assigned"] .ge-scheme-object {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="enterprise-positioned"] .ge-scheme-bar {
+  animation: ge-item-in 0.4s ease 0.6s both;
+}
+
+[data-state="enterprise-positioned"] .ge-scheme-tick {
+  animation: ge-fade-in 0.4s ease 0.75s both;
+}
+
+[data-state="enterprise-positioned"] .ge-scheme-object:nth-of-type(1) {
+  animation: ge-object-in 0.4s ease 0.9s both;
+}
+
+[data-state="enterprise-positioned"] .ge-scheme-object:nth-of-type(2) {
+  animation: ge-object-in 0.4s ease 1.2s both;
+}
+
+[data-state="enterprise-positioned"] .ge-scheme-object:nth-of-type(3) {
+  animation: ge-object-in 0.4s ease 1.5s both;
+}
+
+.ge-scheme-tag {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  padding: 2px 8px;
+  border: 1.5px dashed var(--theme-dashed-line);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="enterprise-positioned"] .ge-scheme-tag,
+[data-state="position-assigned"] .ge-scheme-tag {
+  opacity: 1;
+}
+
+[data-state="enterprise-positioned"] .ge-scheme-tag {
+  animation: ge-fade-in 0.4s ease 0.6s both;
+}
+
+/* 边界列：位置是被安排的，不是自己挑的 */
+.ge-judgment {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ge-judgment-not {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--text-mute);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.ge-not-pick {
+  text-decoration: line-through;
+  text-decoration-color: var(--theme-danger);
+  text-decoration-thickness: 3px;
+}
+
+.ge-judgment-but {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 46px;
+  line-height: 1.25;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.ge-assigned {
+  display: block;
+  color: var(--theme-process);
+}
+
+[data-state="position-assigned"] .ge-judgment-not,
+[data-state="position-assigned"] .ge-judgment-but {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="position-assigned"] .ge-judgment-not {
+  animation: ge-item-in 0.45s ease 0.35s both;
+}
+
+[data-state="position-assigned"] .ge-judgment-but {
+  animation: ge-item-in 0.45s ease 0.65s both;
+}
+
+/* 分级阶梯：四级落位，位置标记落在最末的空位上 */
+.ge-ladder {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  margin-top: 6px;
+}
+
+.ge-ladder-step {
+  position: absolute;
+  height: 12px;
+  background: var(--theme-structural);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.4s ease;
+}
+
+.ge-ladder-step-1 {
+  left: 0;
+  top: 4px;
+  width: 64px;
+}
+
+.ge-ladder-step-2 {
+  left: 76px;
+  top: 32px;
+  width: 64px;
+}
+
+.ge-ladder-step-3 {
+  left: 152px;
+  top: 60px;
+  width: 64px;
+}
+
+.ge-ladder-step-4 {
+  left: 228px;
+  top: 88px;
+  width: 64px;
+  background: transparent;
+  border: 2px dashed var(--theme-process);
+}
+
+[data-state="position-assigned"] .ge-ladder-step {
+  transform: scaleX(1);
+}
+
+[data-state="position-assigned"] .ge-ladder-step-1 {
+  animation: ge-grow-x 0.4s ease 0.55s both;
+}
+
+[data-state="position-assigned"] .ge-ladder-step-2 {
+  animation: ge-grow-x 0.4s ease 0.8s both;
+}
+
+[data-state="position-assigned"] .ge-ladder-step-3 {
+  animation: ge-grow-x 0.4s ease 1.05s both;
+}
+
+[data-state="position-assigned"] .ge-ladder-step-4 {
+  animation: ge-grow-x 0.4s ease 1.3s both;
+}
+
+.ge-ladder-marker {
+  position: absolute;
+  left: 236px;
+  top: 51px;
+  padding: 4px 12px;
+  background: var(--theme-process);
+  color: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 19px;
+  white-space: nowrap;
+  opacity: 0;
+}
+
+[data-state="position-assigned"] .ge-ladder-marker {
+  opacity: 1;
+  animation: ge-drop 0.5s cubic-bezier(0.3, 0.6, 0.25, 1) 1.55s both;
+}

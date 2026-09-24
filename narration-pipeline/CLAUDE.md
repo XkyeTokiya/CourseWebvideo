@@ -1,43 +1,44 @@
-# Narration Pipeline 控制面
+# Narration Pipeline 上游约束
 
-本目录是 Courseplay 内容上游子项目。所有上游命令和 Skill 默认从 `narration-pipeline/` 目录执行；单仓库根目录的跨项目规则见 `../CLAUDE.md`。
+上游任务从仓库根目录开始，先遵守 [根 CLAUDE.md](../CLAUDE.md)。本文只补充上游独有约束。下列路径相对仓库根目录；现有 Skill 内的相对命令默认从 `narration-pipeline/` 执行，不要直接在根目录照抄。
 
-## 目录契约
+## 事实源与创作
 
-```text
-episodes/<module>/episode-XX-...-task-package.md  # 唯一原始事实源，只读
-docs/                                             # 生产、治理和历史说明
-.agents/skills/                                   # 上游 Skill
-.commandcode/                                     # 上游命令与 taste
-../.tmp/work/narration-pipeline/episode-XX/       # 过程文件，不提交
-../player/episodes/episode-XX/inputs/             # 唯一正式输入
+- `narration-pipeline/episodes/<module>/episode-XX-...-task-package.md` 是唯一原始事实源，只读；不得为通过验证而修改或替代任务包。
+- 口播与 A-page 入口为 `.agents/skills/rewrite-course-narration/SKILL.md`，视觉粗设入口为 `.agents/skills/design-course-visual-rough/SKILL.md`（两者相对本文件目录）。
+- 用户明确批准连续口播后，才能生成 `approved-spoken-text.txt` 并进入 A-page 编译；visual rough 通过验证并经用户审阅后才能由 `draft` 转为 `approved`。
+- 创作按 [A-page v6 作者契约](.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md)、[visual rough v4 作者契约](.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md) 及各自 Skill 指定的示例、模板和 recipe 执行。实现不作为作者规则来源；工具维护可检查实现与测试。
+
+## 产物与发布
+
+过程文件放在 `.tmp/work/narration-pipeline/<episode-id>/`：Brief、草稿、compile trace、候选 rough。trace 无未解决项且对应验证通过后，按阶段发布到 `player/episodes/<episode-id>/inputs/`：
+
+| 类别 | 文件 | 发布要求 |
+| --- | --- | --- |
+| 正式内容 | `approved-spoken-text.txt` | 用户批准的连续口播 |
+| 正式内容 | `episode-XX-a-page.json` | A-page v6，验证通过 |
+| 正式内容 | `episode-XX-visual-rough.md` | visual rough v4，验证通过且 approved |
+| 治理证据 | `episode-XX-a-page-validation.json` | 随对应 A-page 发布的最终通过报告 |
+| 治理证据 | `episode-XX-visual-rough-validation.json` | 随对应 rough 发布的最终通过报告 |
+
+最终报告必须与所发布版本对应并保存在 inputs；中间或失败报告写入 `.tmp/validation/<episode-id>/`。报告不属于章节创作事实源，也不是 Phase 1 runner 的运行依赖。三份正式内容齐备后才能交给下游 Phase 1。compile trace 不发布；不额外发布 `narration-units.json`、`narration-bindings.json`。下游可选 handoff 不是上游发布门禁。
+
+可用 `scripts/publish_handoff.py` 复制已经批准且验证通过的文件。以下示例从仓库根目录执行，先将 `episode-XX` 替换为目标期次：
+
+```sh
+python narration-pipeline/scripts/publish_handoff.py --episode episode-XX --source-dir .tmp/work/narration-pipeline/episode-XX --player-root player --dry-run
 ```
 
-本目录不再使用 `output/`、子项目内 `work/` 或 `narration-pipeline/.tmp/`。批准稿、A-page、验证报告和 visual rough 必须发布到 `../player/episodes/<episode-id>/inputs/`；Brief、草稿、compile trace 和候选 rough 写入 `../.tmp/work/narration-pipeline/<episode-id>/`。可重新生成的临时验证结果写入 `../.tmp/validation/<episode-id>/`。不要额外发布 `narration-units.json` 或 `narration-bindings.json`；它们不是当前生产入口。
-
-## 生产边界
-
-- 任务包保持只读，不为通过验证而修改或替代任务包。
-- 新生产入口为 `rewrite-course-narration`，新视觉粗设入口为 `design-course-visual-rough`。
-- 上游正式输入通过人工批准和对应验证后才能发布到播放器 inputs；compact handoff 仅在下游需要时生成，不是发布门禁。
-- 播放器只消费 inputs，不读取任务包或 `.tmp` 补齐页面语义。
-- 发布到 inputs 的正式内容只有批准口播、A-page v6 和 approved visual rough；验证报告用于治理与审计，Phase 1 runner 不把它们当作运行依赖。
-
-作者只读当前阶段的契约卡和合成示例：[`A-page v6`](.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md)、[`visual rough v4`](.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md)。handoff 是下游可选上下文打包工具，规则见 `../player/docs/courseplay-handoff-v4-author-contract.md`；不调用时不要求 handoff 专用 Markdown 排版。
-
-## 过程与发布
-
-```text
-冻结任务包
-  -> ../.tmp/work/narration-pipeline/episode-XX/
-  -> 人工批准与验证
-  -> ../player/episodes/episode-XX/inputs/
-```
-
-验证报告可以直接写入目标 episode 的 `inputs/`，但它们不属于章节创作事实源；compile trace 必须留在 `.tmp`，不能发布为播放器输入。下游 Phase 1 会从三份正式内容产物建立 `script.md` 与 `outline.md`，不依赖上游旁路单元或绑定文件。
-
-每期只有一个默认 work 目录；确有并行尝试时，才在其下增加 `attempt-*`。发布完成并确认无需恢复后，删除本任务自己的 work 子树，不触碰其他期次、其他分区或 `.tmp/archives/`。
+确认待发布清单及前置条件后，移除 `--dry-run` 执行复制。该工具只复制源目录中存在的白名单文件，并替换目标同名文件；不验证批准、完整性或报告结果，也不保证整套文件的事务性更新。复制成功不能代替验收。若产物已按阶段写入 inputs，直接核对已发布版本，无需再次复制。
 
 ## 修改与验证
 
-活跃 Skill、references、templates、`.commandcode` 和 taste 必须使用上述路径。历史报告可保留旧路径，但需明确标注为历史事实，不得作为当前入口。修改任务包以外的 Skill 或脚本后，运行对应 Skill 测试；修改跨项目路径后，同时运行 pipeline 和 player 的路径残留检查。
+内容修改调用对应作者契约中的黑盒验证入口。Skill 或工具修改运行对应测试；以下命令从仓库根目录执行（系统只提供 `python3` 时替换命令名）：
+
+```sh
+python -m unittest discover -s narration-pipeline/.agents/skills/rewrite-course-narration/tests -p "test_*.py" -v
+python -m unittest discover -s narration-pipeline/.agents/skills/design-course-visual-rough/tests -p "test_*.py" -v
+python -m unittest discover -s narration-pipeline/.agents/skills/polish-stage1-narration/tests -p "test_*.py" -v
+```
+
+只运行受改动影响的测试组。路径迁移时，用 `rg -n --hidden -F '实际旧路径' narration-pipeline/.agents narration-pipeline/.commandcode narration-pipeline/scripts player/.agents player/tools` 检查活跃入口，并补查本次涉及的其他配置；搜索无匹配时退出码 1 属正常结果。历史报告可保留旧路径，但必须标为历史，不能作为当前入口。

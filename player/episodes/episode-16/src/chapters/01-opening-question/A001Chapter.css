@@ -1,0 +1,790 @@
+/* A001 · 开场提问 —— 前缀 .oq- 仅本章使用；颜色/字体全部走主题 token。
+   首拍建立序列用 keyframe（挂载即播）；后续状态切换用 transition/keyframe，
+   delay 一律挂在状态选择器下，基础态保持可逆。 */
+
+.oq-root {
+  gap: 26px;
+  min-height: 0;
+}
+
+@keyframes oq-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes oq-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes oq-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes oq-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--oq-drop, 0)) rotate(var(--oq-tilt, 0deg)) scale(1.12);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(var(--oq-drop, 0)) rotate(var(--oq-tilt, 0deg)) scale(1);
+  }
+}
+
+/* ── 顶部：问题标题（S001，可见标题保留） ─────────────────────── */
+
+.oq-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+[data-state="scene-opened"] .oq-header {
+  animation: oq-drop-in 0.55s ease 0.05s both;
+}
+
+.oq-heading-mark {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 5px;
+}
+
+.oq-heading-mark::before,
+.oq-heading-mark::after {
+  content: "";
+  width: 9px;
+  height: 54px;
+  background: var(--theme-structural);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.oq-heading-mark::after {
+  height: 38px;
+  align-self: flex-end;
+  background: var(--theme-process);
+}
+
+.oq-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+/* ── 主区：现场图像（M001）＋ 时间锚点流转带 ─────────────────── */
+
+.oq-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 36px;
+  transition:
+    opacity 0.6s ease,
+    filter 0.6s ease;
+}
+
+[data-state="scene-opened"] .oq-main {
+  animation: oq-fade-in 0.5s ease 0.2s both;
+}
+
+/* 现场图像：持续在场的语境锚点 */
+.oq-scene {
+  position: relative;
+  flex: 0 0 560px;
+  min-height: 0;
+  margin: 0;
+  padding: 10px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="scene-opened"] .oq-scene {
+  animation: oq-rise-in 0.6s ease 0.25s both;
+}
+
+.oq-scene-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.oq-scene-caption {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 16px;
+  background: color-mix(in srgb, var(--theme-structural) 84%, transparent);
+}
+
+.oq-scene-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 23px;
+  color: var(--surface-2);
+}
+
+.oq-scene-badge::before {
+  content: "";
+  width: 8px;
+  height: 22px;
+  background: var(--theme-process);
+}
+
+.oq-scene-note {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--surface-2);
+  opacity: 0.72;
+}
+
+/* 流转带：时间锚点轨道 + 五个环节 */
+.oq-flow {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.oq-timeline {
+  position: relative;
+  flex: 0 0 150px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: start;
+}
+
+[data-state="scene-opened"] .oq-timeline {
+  animation: oq-fade-in 0.5s ease 0.5s both;
+}
+
+.oq-rail {
+  position: absolute;
+  top: 9px;
+  left: 3%;
+  right: 3%;
+  height: 4px;
+  background: var(--theme-structural);
+}
+
+/* 轨道下的刻度：时间锚点的尺感 */
+.oq-rail::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  height: 9px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--theme-dashed-line) 0 2px,
+    transparent 2px 26px
+  );
+}
+
+.oq-battery {
+  position: absolute;
+  top: -19px;
+  left: 10%;
+  z-index: 2;
+  width: 62px;
+  height: 62px;
+  margin-left: -31px;
+  display: grid;
+  place-items: center;
+  color: var(--surface-2);
+  background: var(--theme-structural);
+  border-radius: 10px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+}
+
+.oq-glyph {
+  width: 36px;
+  height: 36px;
+}
+
+[data-state="journey-established"] .oq-battery,
+[data-state="records-scattered"] .oq-battery,
+[data-state="info-outside-code"] .oq-battery,
+[data-state="question-dominant"] .oq-battery,
+[data-state="entry-framed"] .oq-battery {
+  left: 90%;
+}
+
+@keyframes oq-travel {
+  from {
+    left: 10%;
+  }
+  to {
+    left: 90%;
+  }
+}
+
+[data-state="journey-established"] .oq-battery {
+  animation: oq-travel 2.6s cubic-bezier(0.35, 0.65, 0.3, 1) 1.1s both;
+}
+
+.oq-stop {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.oq-stop-tick {
+  width: 5px;
+  height: 26px;
+  margin-top: -2px;
+  background: var(--theme-structural);
+}
+
+.oq-stop-label {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 27px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+[data-state="journey-established"] .oq-stop-label,
+[data-state="records-scattered"] .oq-stop-label,
+[data-state="info-outside-code"] .oq-stop-label,
+[data-state="question-dominant"] .oq-stop-label,
+[data-state="entry-framed"] .oq-stop-label {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes oq-label-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-state="journey-established"] .oq-stop:nth-of-type(1) .oq-stop-label {
+  animation: oq-label-in 0.45s ease 0.25s both;
+}
+
+[data-state="journey-established"] .oq-stop:nth-of-type(2) .oq-stop-label {
+  animation: oq-label-in 0.45s ease 0.47s both;
+}
+
+[data-state="journey-established"] .oq-stop:nth-of-type(3) .oq-stop-label {
+  animation: oq-label-in 0.45s ease 0.69s both;
+}
+
+[data-state="journey-established"] .oq-stop:nth-of-type(4) .oq-stop-label {
+  animation: oq-label-in 0.45s ease 0.91s both;
+}
+
+[data-state="journey-established"] .oq-stop:nth-of-type(5) .oq-stop-label {
+  animation: oq-label-in 0.45s ease 1.13s both;
+}
+
+/* 记录散落区：位置与倾角本身表达“不集中存放” */
+.oq-records {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.oq-record {
+  position: absolute;
+  top: 6px;
+  translate: -50% 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 13px 20px;
+  background: var(--surface-2);
+  border: 2px dashed var(--theme-dashed-line);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(var(--oq-drop, 0)) rotate(var(--oq-tilt, 0deg)) scale(1.12);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+/* 与时间锚点轨道的五个环节对位：记录散落在运输、装配、维护、回收下方 */
+.oq-record:nth-of-type(1) {
+  left: 30%;
+}
+
+.oq-record:nth-of-type(2) {
+  left: 50%;
+}
+
+.oq-record:nth-of-type(3) {
+  left: 70%;
+}
+
+.oq-record:nth-of-type(4) {
+  left: 90%;
+}
+
+[data-state="records-scattered"] .oq-record,
+[data-state="info-outside-code"] .oq-record,
+[data-state="question-dominant"] .oq-record,
+[data-state="entry-framed"] .oq-record {
+  opacity: 1;
+  transform: translateY(var(--oq-drop, 0)) rotate(var(--oq-tilt, 0deg)) scale(1);
+}
+
+[data-state="records-scattered"] .oq-record:nth-of-type(1) {
+  animation: oq-pop-in 0.45s ease 0.2s both;
+}
+
+[data-state="records-scattered"] .oq-record:nth-of-type(2) {
+  animation: oq-pop-in 0.45s ease 0.42s both;
+}
+
+[data-state="records-scattered"] .oq-record:nth-of-type(3) {
+  animation: oq-pop-in 0.45s ease 0.64s both;
+}
+
+[data-state="records-scattered"] .oq-record:nth-of-type(4) {
+  animation: oq-pop-in 0.45s ease 0.86s both;
+}
+
+.oq-record-leader {
+  width: 0;
+  height: 26px;
+  border-left: 2px dashed var(--theme-dashed-line);
+}
+
+.oq-record-system {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 1.1;
+  color: var(--theme-structural);
+}
+
+.oq-record-code {
+  padding: 2px 12px;
+  border: 1.5px dashed var(--theme-warning);
+  background: var(--theme-warning-surface);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: var(--theme-structural);
+}
+
+.oq-records-note {
+  margin: auto 24px 0 0;
+  align-self: flex-end;
+  padding-top: 10px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 21px;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="records-scattered"] .oq-records-note,
+[data-state="info-outside-code"] .oq-records-note,
+[data-state="question-dominant"] .oq-records-note,
+[data-state="entry-framed"] .oq-records-note {
+  opacity: 1;
+  transition-delay: 1.15s;
+}
+
+/* ── 情境行：身份符号胶囊 ＋ 留在外面的信息 ───────────────────── */
+
+.oq-context {
+  position: relative;
+  flex: 0 0 148px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 0 34px;
+  border: 2px dashed var(--theme-dashed-line);
+  transition:
+    opacity 0.6s ease,
+    filter 0.6s ease;
+}
+
+[data-state="scene-opened"] .oq-context {
+  animation: oq-fade-in 0.5s ease 0.7s both;
+}
+
+.oq-context-ghost {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--rule);
+  opacity: 0.4;
+  transition: opacity 0.45s ease;
+}
+
+.oq-context-ghost .oq-codeglyph {
+  width: 200px;
+  height: 54px;
+}
+
+.oq-capsule {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 26px;
+  background: var(--surface-2);
+  border: 3px dashed var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.oq-capsule-label {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 26px;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+.oq-capsule-code {
+  display: grid;
+  place-items: center;
+  color: var(--theme-structural);
+}
+
+.oq-capsule-code .oq-codeglyph {
+  width: 132px;
+  height: 34px;
+}
+
+.oq-barrier {
+  align-self: center;
+  width: 0;
+  height: 84px;
+  border-left: 3px dashed var(--theme-warning);
+}
+
+.oq-outside {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.oq-tags {
+  display: flex;
+  gap: 16px;
+}
+
+.oq-tag {
+  padding: 9px 22px;
+  border: 2px dashed var(--theme-warning);
+  background: var(--theme-warning-surface);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 23px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.oq-outside-note {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-mute);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+@keyframes oq-capsule-in {
+  from {
+    opacity: 0;
+    transform: translateX(-26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes oq-draw-down {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes oq-tag-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-state="info-outside-code"] .oq-context-ghost,
+[data-state="question-dominant"] .oq-context-ghost,
+[data-state="entry-framed"] .oq-context-ghost {
+  opacity: 0;
+}
+
+[data-state="info-outside-code"] .oq-capsule,
+[data-state="question-dominant"] .oq-capsule,
+[data-state="entry-framed"] .oq-capsule {
+  opacity: 1;
+}
+
+[data-state="info-outside-code"] .oq-capsule {
+  animation: oq-capsule-in 0.5s ease 0.15s both;
+}
+
+[data-state="info-outside-code"] .oq-barrier,
+[data-state="question-dominant"] .oq-barrier,
+[data-state="entry-framed"] .oq-barrier {
+  animation: oq-draw-down 0.45s cubic-bezier(0.3, 0.6, 0.25, 1) 0.55s both;
+}
+
+[data-state="info-outside-code"] .oq-tag,
+[data-state="question-dominant"] .oq-tag,
+[data-state="entry-framed"] .oq-tag {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="info-outside-code"] .oq-tag:nth-child(1) {
+  animation: oq-tag-in 0.4s ease 0.75s both;
+}
+
+[data-state="info-outside-code"] .oq-tag:nth-child(2) {
+  animation: oq-tag-in 0.4s ease 0.93s both;
+}
+
+[data-state="info-outside-code"] .oq-tag:nth-child(3) {
+  animation: oq-tag-in 0.4s ease 1.11s both;
+}
+
+[data-state="info-outside-code"] .oq-tag:nth-child(4) {
+  animation: oq-tag-in 0.4s ease 1.29s both;
+}
+
+[data-state="info-outside-code"] .oq-outside-note,
+[data-state="question-dominant"] .oq-outside-note,
+[data-state="entry-framed"] .oq-outside-note {
+  opacity: 1;
+  transition-delay: 1.55s;
+}
+
+/* ── 问题行：前提弱化后聚焦中心问题（R001 上下分层） ─────────── */
+
+[data-state="question-dominant"] .oq-main,
+[data-state="entry-framed"] .oq-main,
+[data-state="question-dominant"] .oq-context,
+[data-state="entry-framed"] .oq-context {
+  opacity: 0.15;
+  filter: saturate(0.5);
+}
+
+.oq-landing {
+  position: relative;
+  flex: 0 0 208px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 56px;
+  border: 2px dashed var(--theme-dashed-line);
+  transition:
+    flex-grow 0.7s cubic-bezier(0.3, 0.6, 0.25, 1),
+    background-color 0.55s ease,
+    border-color 0.55s ease,
+    box-shadow 0.55s ease;
+}
+
+[data-state="scene-opened"] .oq-landing {
+  animation: oq-fade-in 0.5s ease 0.9s both;
+}
+
+[data-state="question-dominant"] .oq-landing,
+[data-state="entry-framed"] .oq-landing {
+  flex-grow: 1;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+.oq-landing-ghost {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transition: opacity 0.5s ease;
+}
+
+.oq-landing-ghost::before {
+  content: "？";
+  width: 132px;
+  height: 132px;
+  display: grid;
+  place-items: center;
+  border: 2px dashed var(--rule);
+  border-radius: 50%;
+  font-family: var(--font-display-en);
+  font-size: 72px;
+  font-weight: 700;
+  color: var(--rule);
+}
+
+[data-state="question-dominant"] .oq-landing-ghost,
+[data-state="entry-framed"] .oq-landing-ghost {
+  opacity: 0;
+}
+
+.oq-question {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="question-dominant"] .oq-question,
+[data-state="entry-framed"] .oq-question {
+  opacity: 1;
+}
+
+.oq-question-lead {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.25;
+  color: var(--text-2);
+}
+
+.oq-question-strong {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 52px;
+  line-height: 1.3;
+  color: var(--theme-structural);
+}
+
+@keyframes oq-question-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-state="question-dominant"] .oq-question-lead {
+  animation: oq-question-in 0.5s ease 0.4s both;
+}
+
+[data-state="question-dominant"] .oq-question-strong {
+  animation: oq-question-in 0.5s ease 0.62s both;
+}
+
+.oq-entry {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+[data-state="entry-framed"] .oq-entry {
+  opacity: 1;
+}
+
+.oq-entry-mark {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 62px;
+  color: var(--theme-process);
+}
+
+.oq-entryglyph {
+  width: 58px;
+  height: 44px;
+}
+
+.oq-entry-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 46px;
+  line-height: 1.2;
+  color: var(--theme-process);
+}
+
+[data-state="entry-framed"] .oq-entry-mark {
+  animation: oq-question-in 0.45s ease 0.15s both;
+}
+
+[data-state="entry-framed"] .oq-entry-line {
+  animation: oq-question-in 0.45s ease 0.32s both;
+}

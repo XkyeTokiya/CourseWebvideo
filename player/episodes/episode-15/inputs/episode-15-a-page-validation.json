@@ -1,0 +1,28 @@
+{
+  "episode_id": "episode-15",
+  "validation_profile": "a-page-v6",
+  "schema_version": "courseplay-a-page/v6",
+  "document_kind": "production",
+  "production_status": "production",
+  "screen_guidance": {
+    "item_count": 51,
+    "group_count": 40,
+    "silent_constraint_count": 12
+  },
+  "a_pages": {
+    "count": 11,
+    "total_target_seconds": 433,
+    "short_page_exceptions": []
+  },
+  "failures": [],
+  "errors": [],
+  "compile_coverage": {
+    "coverage_passed": true,
+    "trace_sha256": "316dfe7204500fa64e32ffba5148eeeb7446ee088e21bb89f50b4c459a1922b0"
+  },
+  "input_integrity": {
+    "task_package_sha256": "ba21ae8f2bdd6bac9237fade3018a10b33b82c18d3d522d72267598df8374ce4",
+    "approved_text_sha256": "1ed624b37d06097cbf3c573ed43a6a733d1c67abd23c952542eabe4a7cac96cd",
+    "a_page_sha256": "4b6116f29b53351462897aa8280221de1ac48a4f60c1a5934aacc435ef69f8eb"
+  }
+}
