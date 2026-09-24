@@ -1,0 +1,1300 @@
+{
+  "schema_version": "courseplay-a-page/v6",
+  "document_kind": "production",
+  "episode_id": "episode-17",
+  "approved_text": "approved-spoken-text.txt",
+  "timing_model": {
+    "han_weight": 1,
+    "fullwidth_punctuation_weight": 0,
+    "other_non_whitespace_weight": 0.5,
+    "chars_per_minute": {
+      "minimum": 220,
+      "target": 230,
+      "maximum": 240
+    }
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "E001",
+      "claim_or_asset": "第 17 集标题、OID 单集边界与相邻分集去重",
+      "source_locator": "已确认课程架构，Episode Architecture 第 14–19 集",
+      "verification_status": "not applicable",
+      "allowed_use": "控制范围、叙事顺序和去重"
+    },
+    {
+      "evidence_id": "E002",
+      "claim_or_asset": "OID 是对象标识符，用于对任意对象、概念或事物进行全球无歧义、唯一的命名；体系包含命名规则、分配方案、编码规则和解析管理体系",
+      "source_locator": "主教材 2.1.2“3. OID”第 1–2 段",
+      "verification_status": "not applicable",
+      "allowed_use": "定义和机制主线"
+    },
+    {
+      "evidence_id": "E003",
+      "claim_or_asset": "根到叶的路径顺序、上级与下级的包含关系，以及可扩展性与灵活性不自动保证数据采集正确",
+      "source_locator": "本任务包基于 E002、E005、E006 的组织",
+      "verification_status": "not applicable",
+      "allowed_use": "组织口播和确定性图解"
+    },
+    {
+      "evidence_id": "E004",
+      "claim_or_asset": "OID 根节点分为 ITU（0）、ISO（1）、ITU&ISO 联合（2）三个分支",
+      "source_locator": "主教材 2.1.2“3. OID”第 2 段",
+      "verification_status": "not verified—version unspecified",
+      "allowed_use": "解释根节点和分支关系"
+    },
+    {
+      "evidence_id": "E005",
+      "claim_or_asset": "OID 编码为树状结构，层级以点号分隔，编码由根到叶全部路径上的节点顺序组合成字符串",
+      "source_locator": "主教材 2.1.2“3. OID”第 3 段及图 2-4 说明",
+      "verification_status": "not applicable",
+      "allowed_use": "解释编码结构和唯一性机制"
+    },
+    {
+      "evidence_id": "E006",
+      "claim_or_asset": "教材记载我国在 ISO 分支和 ISO-ITU 联合分支下的 OID 分支前缀为 1.2.156 和 2.16.156",
+      "source_locator": "主教材 2.1.2“3. OID”第 2 段",
+      "verification_status": "not verified—version unspecified",
+      "allowed_use": "仅作为教材历史与示例背景"
+    },
+    {
+      "evidence_id": "E007",
+      "claim_or_asset": "电池示例：OID 前缀 1.2.156.3001，1.2.156 代表中国，3001 是中国制造业领域分支，企业代码 0501，产品编号 1001.01",
+      "source_locator": "主教材 2.1.2“3. OID”图 2-5 及其说明",
+      "verification_status": "not verified—version unspecified",
+      "allowed_use": "用于逐级拼接示例"
+    },
+    {
+      "evidence_id": "E008",
+      "claim_or_asset": "点号是层级分隔符，不是运算符号，也不是接口调用符号",
+      "source_locator": "本任务包基于 E005 的术语界定",
+      "verification_status": "not applicable",
+      "allowed_use": "约束点号的解释方式"
+    },
+    {
+      "evidence_id": "E009",
+      "claim_or_asset": "用一件工业电池作为匿名教学对象，演示路径逐级变长而对象身份不被改写",
+      "source_locator": "本任务包教学设计",
+      "verification_status": "not applicable",
+      "allowed_use": "建立直观对象和树形关系"
+    },
+    {
+      "evidence_id": "E010",
+      "claim_or_asset": "唯一性来自完整路径；两个企业可能有相似内部编号，分配边界、记录和采集出问题时字符串本身不纠错",
+      "source_locator": "主教材 2.1.2“3. OID”及本任务包综合",
+      "verification_status": "not applicable",
+      "allowed_use": "解释唯一性机制与其边界"
+    },
+    {
+      "evidence_id": "E011",
+      "claim_or_asset": "全球唯一是命名和分配体系要达到的目标，不等于注册已完成，也不等于系统能返回对象详情",
+      "source_locator": "主教材 2.1.2“3. OID”及本任务包事实边界",
+      "verification_status": "not applicable",
+      "allowed_use": "限定唯一性口径"
+    },
+    {
+      "evidence_id": "E012",
+      "claim_or_asset": "解析管理是 OID 体系的组成部分；具体接口与运行部署不属于本集内容",
+      "source_locator": "本任务包排除范围与动态核验状态",
+      "verification_status": "not applicable",
+      "allowed_use": "划出解析管理的口播边界"
+    },
+    {
+      "evidence_id": "E013",
+      "claim_or_asset": "根节点到叶节点的四步机制与“根提供方向、分支提供范围、叶节点指向对象”的分工",
+      "source_locator": "本任务包基于 E002、E005、E006 的组织",
+      "verification_status": "not applicable",
+      "allowed_use": "收束机制与共同规律"
+    }
+  ],
+  "pages": [
+    {
+      "a_id": "A001",
+      "callback_a_ids": [],
+      "nx": "【视频标题】OID 编码：树状命名如何保证唯一性\n\n",
+      "teaching_purpose": "建立开场对象与命名问题",
+      "single_message": "同一个对象被越多地方引用，越需要一条能区分又能扩展的命名路径。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S001",
+          "guidance_text": "标题：OID 编码，树状命名如何保证唯一性",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E001"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G001",
+            "items": [
+              {
+                "screen_item_id": "S002",
+                "guidance_text": "一件工业电池在不同组织和系统的记录里被反复引用",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E009"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G002",
+            "items": [
+              {
+                "screen_item_id": "S003",
+                "guidance_text": "只写“某企业的一块电池”会重名，也说不清它落在哪个层级、归哪个分支管",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E001"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R001",
+          "from": "G001",
+          "relation": "引出命名难题",
+          "to": "G002",
+          "direction": "cause"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C001",
+          "instruction": "不要为本页对象补充企业名称、品牌、编码或注册结果",
+          "evidence_refs": [
+            "E009"
+          ]
+        }
+      ],
+      "entry_condition": "观众看到一件要被反复引用的工业对象",
+      "exit_condition": "观众能说出只写企业加电池为什么不够",
+      "timing": {
+        "char_equivalent": 18.5,
+        "min_seconds": 5,
+        "target_seconds": 5,
+        "max_seconds": 6,
+        "short_page_reason": "本页只交代开场对象与命名问题，需要独立建立疑问后再进入 OID 定义。"
+      }
+    },
+    {
+      "a_id": "A002",
+      "callback_a_ids": [
+        "A001"
+      ],
+      "nx": "【开场导入】\n一件工业电池，会在不同组织和系统之间被反复引用。出厂、装配、维护和回收的记录里，都会出现它。\n\n",
+      "teaching_purpose": "给出 OID 的定义与适用对象",
+      "single_message": "OID 是对象标识符，可对任意类型的对象做全球无歧义、唯一的命名。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S004",
+          "guidance_text": "对象标识符（Object Identifier，OID）",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G003",
+            "items": [
+              {
+                "screen_item_id": "S005",
+                "guidance_text": "命名对象包括产品、算法、文件等需要被区分开的数字对象",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G004",
+            "items": [
+              {
+                "screen_item_id": "S006",
+                "guidance_text": "一个对象有了这样的名字，换到哪个组织、哪个系统都只对应一份解释",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R002",
+          "from": "G003",
+          "relation": "共同纳入",
+          "to": "G004",
+          "direction": "scope"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C002",
+          "instruction": "不要把对象范围收窄为只讲产品，也不扩写到本集之外的标识体系",
+          "evidence_refs": [
+            "E002"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道开场对象需要一条命名路径",
+      "exit_condition": "观众能说出 OID 是什么、能命名哪些对象",
+      "timing": {
+        "char_equivalent": 44,
+        "min_seconds": 11,
+        "target_seconds": 11,
+        "max_seconds": 12,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A003",
+      "callback_a_ids": [
+        "A001"
+      ],
+      "nx": "可是只写“某企业的一块电池”还不够。这个名字可能和别处的重复，也说不清它落在哪个层级、归哪个分支管。引用它的地方越多，越需要一条大家都能对上号的命名路径。\n\n那么，怎样把这样一件对象，放进一条既能相互区分、又能继续往下扩展的命名路径里？\n\n",
+      "teaching_purpose": "按体系组成面说明 OID 不只是数字串",
+      "single_message": "命名规则、分配方案、编码规则和解析管理合起来，才构成可运行的 OID 体系。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S007",
+          "guidance_text": "OID 是一套命名体系",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E002"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G005",
+            "items": [
+              {
+                "screen_item_id": "S008",
+                "guidance_text": "命名规则与分配方案",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G006",
+            "items": [
+              {
+                "screen_item_id": "S009",
+                "guidance_text": "编码规则与解析管理体系",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E002"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G007",
+            "items": [
+              {
+                "screen_item_id": "S010",
+                "guidance_text": "四个组成面合起来像一棵有管理边界的树",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R003",
+          "from": "G005",
+          "relation": "与",
+          "to": "G006",
+          "direction": "composition"
+        },
+        {
+          "relation_id": "R004",
+          "from": "G005",
+          "relation": "共同构成",
+          "to": "G007",
+          "direction": "convergent"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C003",
+          "instruction": "不要补写解析接口、服务器部署、权限或安全机制",
+          "evidence_refs": [
+            "E002"
+          ]
+        }
+      ],
+      "entry_condition": "观众已接受 OID 是一种对象命名方式",
+      "exit_condition": "观众能说出 OID 体系的四个组成面，并知道它像一棵树",
+      "timing": {
+        "char_equivalent": 104,
+        "min_seconds": 26,
+        "target_seconds": 27,
+        "max_seconds": 29,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A004",
+      "callback_a_ids": [
+        "A001"
+      ],
+      "nx": "【正文讲解】\nOID 是对象标识符，英文是 Object Identifier。它用来对任意类型的对象、概念或者事物进行全球无歧义、唯一的命名。这里说的对象范围很宽，既可以是产品，也可以是算法、文件，或者任何需要被区分开的数字对象。一个对象有了这样的名字，换到哪个组织、哪个系统，都只对应这一份解释。\n\n还要说明一点，OID 是一套命名体系，但它不只是一个数字串。命名规则、分配方案、编码规则和解析管理体系，都属于同一套体系。把这四部分放在一起看，它更像一棵有管理边界的树：先定下从哪里分叉，再定下每个分支怎样继续往下命名，把走过的整条路径写成编码。学 OID，重点是看清这棵树的形状。\n\n",
+      "teaching_purpose": "展开根节点下的三个分支",
+      "single_message": "根节点下按管理和命名分成 ITU、ISO 与联合三个分支，编号是 0、1、2。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S011",
+          "guidance_text": "根节点下的三个根分支",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E004"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G008",
+            "items": [
+              {
+                "screen_item_id": "S012",
+                "guidance_text": "ITU 分支，国际电信联盟，用数字 0 表示",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G009",
+            "items": [
+              {
+                "screen_item_id": "S013",
+                "guidance_text": "ISO 分支，国际标准化组织，用数字 1 表示",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G010",
+            "items": [
+              {
+                "screen_item_id": "S014",
+                "guidance_text": "ITU 与 ISO 联合分支，用数字 2 表示",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E004"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R005",
+          "from": "G008",
+          "relation": "并列分叉",
+          "to": "G009",
+          "direction": "parallel"
+        },
+        {
+          "relation_id": "R006",
+          "from": "G009",
+          "relation": "并列分叉",
+          "to": "G010",
+          "direction": "parallel"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C004",
+          "instruction": "不得把分支编号写成产品类别、业务状态或行业分类代码",
+          "evidence_refs": [
+            "E004"
+          ]
+        },
+        {
+          "constraint_id": "C005",
+          "instruction": "不补充根分支的治理归属、机构职责与现行状态",
+          "evidence_refs": [
+            "E004"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道 OID 像一棵有管理边界的树",
+      "exit_condition": "观众能说出三个根分支各自用什么数字表示",
+      "timing": {
+        "char_equivalent": 242.5,
+        "min_seconds": 61,
+        "target_seconds": 63,
+        "max_seconds": 67,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A005",
+      "callback_a_ids": [
+        "A004"
+      ],
+      "nx": "从最上面的根节点开始看。根下面分出三个分支。ITU 分支用数字 0 表示，ITU 是国际电信联盟。ISO 分支用数字 1 表示，ISO 是国际标准化组织。还有一个由两者联合管理的分支，用数字 2 表示。\n\n这三个编号不是产品类别，而是根部的管理和命名分叉。选定了走哪一条，后面的节点就沿着这条分支继续展开。\n\n",
+      "teaching_purpose": "说明树状编码的形状与点号分隔",
+      "single_message": "编码是树状结构，由根到叶全部路径上的节点顺序组合而成。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S015",
+          "guidance_text": "树状结构与点号分隔",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E005"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G011",
+            "items": [
+              {
+                "screen_item_id": "S016",
+                "guidance_text": "上层节点包含下层节点，层级之间用点号分隔",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G012",
+            "items": [
+              {
+                "screen_item_id": "S017",
+                "guidance_text": "编码由根到叶全部路径上的节点顺序组合而成",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G013",
+            "items": [
+              {
+                "screen_item_id": "S018",
+                "guidance_text": "叶节点是树上不再往下分的那一层，也就是具体对象所在的位置",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G014",
+            "items": [
+              {
+                "screen_item_id": "S019",
+                "guidance_text": "前面的数字说明来自哪棵树、哪个分支，后面的节点收窄到行业、企业或具体对象",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G015",
+            "items": [
+              {
+                "screen_item_id": "S020",
+                "guidance_text": "编码不负责把规格、批次等业务属性塞进字符串",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E005"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R007",
+          "from": "G011",
+          "relation": "逐级包含",
+          "to": "G012",
+          "direction": "hierarchical"
+        },
+        {
+          "relation_id": "R008",
+          "from": "G012",
+          "relation": "收窄范围",
+          "to": "G013",
+          "direction": "narrowing"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C006",
+          "instruction": "不补节点分配算法、编号位数、码表、校验位或字段规则",
+          "evidence_refs": [
+            "E005"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道根下面有三个分支",
+      "exit_condition": "观众能按根到叶的顺序复述编码是怎样组成的",
+      "timing": {
+        "char_equivalent": 121.5,
+        "min_seconds": 31,
+        "target_seconds": 32,
+        "max_seconds": 34,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A006",
+      "callback_a_ids": [
+        "A004"
+      ],
+      "nx": "编码的形状也是这样来的。OID 采用树状结构，上层节点包含下层节点，层级之间用点号分隔。一个对象的编码，由根到叶全部路径上的节点顺序组合而成。叶节点是树上不再往下分的那一层，也就是具体对象所在的位置。前面的数字说明这个对象从哪棵树、哪个分支来，后面的节点再把范围收窄到行业、企业或者某一个具体对象。它并不负责把产品规格、批次这些业务属性都塞进一串字符里。\n\n",
+      "teaching_purpose": "定位我国在根分支里的前缀位置",
+      "single_message": "我国在 ISO 分支和联合分支下分别有 1.2.156 与 2.16.156 两条分支前缀。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S021",
+          "guidance_text": "我国的两条 OID 分支前缀",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E006"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G016",
+            "items": [
+              {
+                "screen_item_id": "S022",
+                "guidance_text": "ISO 分支下是 1.2.156",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G017",
+            "items": [
+              {
+                "screen_item_id": "S023",
+                "guidance_text": "联合分支下是 2.16.156",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E006"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G018",
+            "items": [
+              {
+                "screen_item_id": "S024",
+                "guidance_text": "前缀里的 1.2.156 代表中国，其下 3001 是中国制造业领域的一个分支",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R009",
+          "from": "G016",
+          "relation": "与",
+          "to": "G017",
+          "direction": "parallel"
+        },
+        {
+          "relation_id": "R010",
+          "from": "G017",
+          "relation": "逐级收窄",
+          "to": "G018",
+          "direction": "narrowing"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C007",
+          "instruction": "前缀只作本集示例，不补充机构、年份、注册状态或注册入口",
+          "evidence_refs": [
+            "E006"
+          ]
+        }
+      ],
+      "entry_condition": "观众已理解点分路径的组成方式",
+      "exit_condition": "观众能指出我国两条分支前缀所在的位置",
+      "timing": {
+        "char_equivalent": 160.5,
+        "min_seconds": 41,
+        "target_seconds": 42,
+        "max_seconds": 44,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A007",
+      "callback_a_ids": [
+        "A006"
+      ],
+      "nx": "我国的分支正好可以说明这种位置关系。根下面这三个分支里，ISO 分支下有一条我国的前缀，是 1.2.156；联合分支下还有一条，是 2.16.156。它们说明我国在这两个根分支里各自处在什么位置。\n\n具体到数字，前缀里的 1.2.156 代表中国。在它下面，3001 是中国制造业领域的一个分支。越往右走，范围收得越窄。\n\n接下来用一件工业电池的示例，把这条路径完整走一遍。这家生产商的 OID 前缀是 1.2.156.3001，企业代码是 0501，它给这块具体电池分配的产品编号是 1001.01。\n\n",
+      "teaching_purpose": "用工业电池示例拼出完整路径",
+      "single_message": "示例的前缀、企业代码和产品编号按层级连成一条从根到叶的路径。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S025",
+          "guidance_text": "工业电池示例的层级拼接",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E007"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G019",
+            "items": [
+              {
+                "screen_item_id": "S026",
+                "guidance_text": "生产商 OID 前缀 1.2.156.3001，企业代码 0501，产品编号 1001.01",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G020",
+            "items": [
+              {
+                "screen_item_id": "S027",
+                "guidance_text": "路径顺序：先经过 1、2、156，再到 3001，接着到 0501，最后落到 1001.01",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E005",
+                  "E007"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G021",
+            "items": [
+              {
+                "screen_item_id": "S028",
+                "guidance_text": "每个点号表示一次层级推进，整条路径连起来读就是 1.2.156.3001.0501.1001.01",
+                "usage_policy": "exact",
+                "evidence_refs": [
+                  "E005",
+                  "E007"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R011",
+          "from": "G019",
+          "relation": "逐级拼接",
+          "to": "G020",
+          "direction": "sequential"
+        },
+        {
+          "relation_id": "R012",
+          "from": "G020",
+          "relation": "合成完整编码",
+          "to": "G021",
+          "direction": "composition"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C008",
+          "instruction": "示例数字只作教学示例，不补充企业名、规格、日期或当前注册数据",
+          "evidence_refs": [
+            "E007"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道我国分支前缀的位置",
+      "exit_condition": "观众能按顺序读出这条从根到叶的路径",
+      "timing": {
+        "char_equivalent": 190.5,
+        "min_seconds": 48,
+        "target_seconds": 50,
+        "max_seconds": 52,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A008",
+      "callback_a_ids": [
+        "A006"
+      ],
+      "nx": "把这些层级按顺序连起来，就得到一条从根到叶的路径：先经过 1、2、156，再到 3001，接着到 0501，最后落到 1001.01。每个点号都表示一次层级推进。整条路径连起来读，就是 1.2.156.3001.0501.1001.01。\n\n这里有一个容易忽略的细节。下游节点不会抹掉上级路径，而是在既有分支下继续细化对象范围。每往下一层，节点管住的范围都更窄，可它前面那段路径一直保留着。\n\n",
+      "teaching_purpose": "说明下游节点保留上级路径",
+      "single_message": "下游节点不抹掉上级路径，而是在既有分支下继续细化对象范围。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S029",
+          "guidance_text": "下级节点与上级路径的关系",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G022",
+            "items": [
+              {
+                "screen_item_id": "S030",
+                "guidance_text": "下游节点不会抹掉上级路径，而是在既有分支下继续细化对象范围",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G023",
+            "items": [
+              {
+                "screen_item_id": "S031",
+                "guidance_text": "每往下一层，节点管住的范围都更窄，它前面那段路径一直保留着",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R013",
+          "from": "G022",
+          "relation": "保留上级语境",
+          "to": "G023",
+          "direction": "narrowing"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C009",
+          "instruction": "不要把层级保留写成自动判重、自动分配或数据质量保证",
+          "evidence_refs": [
+            "E003"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经读出完整的根到叶路径",
+      "exit_condition": "观众能说明为什么后面的节点不会取代前面的路径",
+      "timing": {
+        "char_equivalent": 148.5,
+        "min_seconds": 38,
+        "target_seconds": 39,
+        "max_seconds": 41,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A009",
+      "callback_a_ids": [
+        "A008"
+      ],
+      "nx": "树状命名的好处，也就在这里显出来了。要新增一个行业或者一家企业，可以在已有的上级节点下面继续分配子节点；要新增一块产品，再在这家企业的节点下面添一个叶节点。往下长出来的新枝，可以一层一层接上去，不必为了增加对象去改动已经分好的路径。命名结构留了余地，用起来就比较灵活。\n\n这里的灵活，说的是命名结构上留了余地。数据采集不会因为有了一个好名字，就自动变准确。\n\n",
+      "teaching_purpose": "解释树状命名带来的可扩展性",
+      "single_message": "新增对象时在更深的层级继续分配子节点，不必改动已经分好的路径。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S032",
+          "guidance_text": "在同一上级节点下继续扩展",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G024",
+            "items": [
+              {
+                "screen_item_id": "S033",
+                "guidance_text": "新增行业或企业，可以在已有的上级节点下面继续分配子节点",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G025",
+            "items": [
+              {
+                "screen_item_id": "S034",
+                "guidance_text": "新增产品，再在企业节点下添一个叶节点，新枝一层一层接上去",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G026",
+            "items": [
+              {
+                "screen_item_id": "S035",
+                "guidance_text": "命名结构留了余地，用起来就比较灵活",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R014",
+          "from": "G024",
+          "relation": "向下扩展",
+          "to": "G025",
+          "direction": "hierarchical"
+        },
+        {
+          "relation_id": "R015",
+          "from": "G025",
+          "relation": "形成灵活结构",
+          "to": "G026",
+          "direction": "emergent"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C010",
+          "instruction": "不把可扩展写成无需管理，也不补规则设计或分配流程",
+          "evidence_refs": [
+            "E003"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经理解层级保留的关系",
+      "exit_condition": "观众能说明扩展为什么发生在更深的层级",
+      "timing": {
+        "char_equivalent": 161,
+        "min_seconds": 41,
+        "target_seconds": 42,
+        "max_seconds": 44,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A010",
+      "callback_a_ids": [
+        "A009"
+      ],
+      "nx": "再说唯一性。判断两个对象是不是同一个，要看完整路径，不能只看末尾那一段。两家企业完全可能有相似的内部编号，可只要它们位于不同的上级分支，完整的点分路径就能把这两个对象区分开。\n\n",
+      "teaching_purpose": "区分命名结构的灵活与数据采集的准确",
+      "single_message": "命名结构留有余地，不代表数据采集会自动变准确。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S036",
+          "guidance_text": "灵活性的适用边界",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E010"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G027",
+            "items": [
+              {
+                "screen_item_id": "S037",
+                "guidance_text": "这里的灵活，说的是命名结构上留了余地",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G028",
+            "items": [
+              {
+                "screen_item_id": "S038",
+                "guidance_text": "数据采集不会因为有了一个好名字，就自动变准确",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R016",
+          "from": "G027",
+          "relation": "不能推出",
+          "to": "G028",
+          "direction": "boundary"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C011",
+          "instruction": "不要把命名灵活写成数据质量或业务治理的保证",
+          "evidence_refs": [
+            "E010"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道命名结构可以继续扩展",
+      "exit_condition": "观众能区分命名结构与数据采集两件事",
+      "timing": {
+        "char_equivalent": 80,
+        "min_seconds": 20,
+        "target_seconds": 21,
+        "max_seconds": 22,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A011",
+      "callback_a_ids": [
+        "A010"
+      ],
+      "nx": "不过这里有一条边界要说清楚。如果分配边界没划清、后来的记录和采集出了问题，OID 字符串本身不会替你纠错。它能把对象放在一条明确的路径上，却保证不了每一个环节的操作都正确。\n\n",
+      "teaching_purpose": "用完整路径解释唯一性",
+      "single_message": "唯一性看的是完整路径，而不是只看末尾那一段。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S039",
+          "guidance_text": "完整路径与末段的区别",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E010"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G029",
+            "items": [
+              {
+                "screen_item_id": "S040",
+                "guidance_text": "判断两个对象是不是同一个，要看完整路径，不能只看末尾那一段",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G030",
+            "items": [
+              {
+                "screen_item_id": "S041",
+                "guidance_text": "两家企业可能有相似的内部编号，位于不同上级分支时，完整的点分路径能把对象区分开",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E010"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R017",
+          "from": "G029",
+          "relation": "用于区分",
+          "to": "G030",
+          "direction": "pivot"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C012",
+          "instruction": "不得把完整路径的区分能力写成系统自动判重或数据永不重复",
+          "evidence_refs": [
+            "E010"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经知道层级可以继续扩展",
+      "exit_condition": "观众能说明为什么末段相同也能被区分",
+      "timing": {
+        "char_equivalent": 77.5,
+        "min_seconds": 20,
+        "target_seconds": 20,
+        "max_seconds": 22,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A012",
+      "callback_a_ids": [
+        "A011"
+      ],
+      "nx": "还有一层也需要区分。全球唯一，是这套命名和分配体系要努力达到的目标。从根到叶的完整路径，说明的就是这个目标怎样落到层级结构上。它不等于每家企业的注册都已经办妥，也不等于系统已经能够查出这个对象的详情。解析管理确实是 OID 体系的一部分，但具体的接口和运行部署是另一层内容，这里讲的是从命名、分配、编码到解析管理这层机制上的分工。\n\n把整套机制收一下，就是四个动作：选根分支，走到国家或者领域节点，进入企业和产品节点，把从根到叶的顺序写成点分编码。每走一步，对象的范围都更小一点，而上级的语境一直保留在路径里。\n\n",
+      "teaching_purpose": "划出字符串不纠错与解析管理的边界",
+      "single_message": "OID 字符串本身不会纠错，全球唯一是命名与分配体系要达到的目标。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S042",
+          "guidance_text": "分配边界与字符串能力的区别",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E011"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G031",
+            "items": [
+              {
+                "screen_item_id": "S043",
+                "guidance_text": "分配边界没划清、记录和采集出了问题，OID 字符串本身不会替你纠错",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E011"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G032",
+            "items": [
+              {
+                "screen_item_id": "S044",
+                "guidance_text": "它能做的是把对象放在一条明确的路径上",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E011"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G033",
+            "items": [
+              {
+                "screen_item_id": "S045",
+                "guidance_text": "全球唯一是命名和分配体系要努力达到的目标，完整路径说明目标怎样落到层级结构上",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G034",
+            "items": [
+              {
+                "screen_item_id": "S046",
+                "guidance_text": "它不等于每家企业的注册都已办妥，也不等于系统已经能查出对象详情",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E012"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G035",
+            "items": [
+              {
+                "screen_item_id": "S047",
+                "guidance_text": "解析管理是 OID 体系的一部分，具体接口和运行部署属于另一层内容",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E012"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R018",
+          "from": "G031",
+          "relation": "限定",
+          "to": "G032",
+          "direction": "boundary"
+        },
+        {
+          "relation_id": "R019",
+          "from": "G033",
+          "relation": "不推出",
+          "to": "G034",
+          "direction": "boundary"
+        },
+        {
+          "relation_id": "R020",
+          "from": "G034",
+          "relation": "与",
+          "to": "G035",
+          "direction": "scope"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C013",
+          "instruction": "不把标识写成能自动返回对象详情，也不补接口、协议、部署与权限",
+          "evidence_refs": [
+            "E012"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经理解唯一性来自完整路径",
+      "exit_condition": "观众能分清命名目标、注册状态和解析接口三层区别",
+      "timing": {
+        "char_equivalent": 228.5,
+        "min_seconds": 58,
+        "target_seconds": 60,
+        "max_seconds": 63,
+        "short_page_reason": null
+      }
+    },
+    {
+      "a_id": "A013",
+      "callback_a_ids": [
+        "A007",
+        "A009"
+      ],
+      "nx": "【本期总结】\n回到开头那件工业电池。它要在好几个组织和系统之间被反复引用，靠的不是名字起得花哨，而是一条有边界的树路径，让它在每一级上都被清楚地命名。\n\n这套机制的分工可以这样概括：根节点提供方向，分支提供范围，叶节点指向具体对象，完整路径把这几层串成一个可以说清楚的身份。同一件对象之所以不会和别处的重名混在一起，是因为它走的路径和别人的不一样，而且这条路径还能继续往深处扩展。\n\n理解了这棵树，就抓住了 OID 最关键的地方：它用一条从根到叶的路径，把命名、范围和唯一性放在同一套结构里表达出来。",
+      "teaching_purpose": "收束机制四步并回到开场对象",
+      "single_message": "根节点提供方向，分支提供范围，叶节点指向具体对象，完整路径支撑无歧义和可扩展的身份。",
+      "screen": {
+        "title": {
+          "screen_item_id": "S048",
+          "guidance_text": "OID 机制的四个动作",
+          "usage_policy": "reference",
+          "evidence_refs": [
+            "E003"
+          ]
+        },
+        "groups": [
+          {
+            "group_id": "G036",
+            "items": [
+              {
+                "screen_item_id": "S049",
+                "guidance_text": "选根分支，走到国家或者领域节点，进入企业和产品节点，把从根到叶的顺序写成点分编码",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G037",
+            "items": [
+              {
+                "screen_item_id": "S050",
+                "guidance_text": "根节点提供方向，分支提供范围，叶节点指向具体对象，完整路径串成一个可以说清楚的身份",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          },
+          {
+            "group_id": "G038",
+            "items": [
+              {
+                "screen_item_id": "S051",
+                "guidance_text": "这条路径把命名、范围和唯一性放在同一套结构里表达出来",
+                "usage_policy": "reference",
+                "evidence_refs": [
+                  "E003"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "protected_relations": [
+        {
+          "relation_id": "R021",
+          "from": "G036",
+          "relation": "概括为",
+          "to": "G037",
+          "direction": "convergent"
+        },
+        {
+          "relation_id": "R022",
+          "from": "G037",
+          "relation": "收束到",
+          "to": "G038",
+          "direction": "conclusion"
+        }
+      ],
+      "silent_constraints": [
+        {
+          "constraint_id": "C014",
+          "instruction": "不预告、不比较其他标识体系，也不暗示编码方案设计",
+          "evidence_refs": [
+            "E001"
+          ]
+        }
+      ],
+      "entry_condition": "观众已经掌握路径、扩展和边界三层关系",
+      "exit_condition": "观众能用根、分支、叶节点和完整路径概括 OID 的价值",
+      "timing": {
+        "char_equivalent": 221.5,
+        "min_seconds": 56,
+        "target_seconds": 58,
+        "max_seconds": 61,
+        "short_page_reason": null
+      }
+    }
+  ]
+}
