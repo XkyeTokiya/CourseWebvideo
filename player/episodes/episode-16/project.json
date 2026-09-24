@@ -4,9 +4,9 @@
   "status": "in-progress",
   "theme": "active-identification-signal-grid",
   "progress": {
-    "completed": 5,
+    "completed": 9,
     "total": 13,
-    "current": "05-country-context"
+    "current": "09-full-handle-reading"
   },
   "updatedAt": "2026-09-24"
 }
