@@ -1,0 +1,676 @@
+/* 05-tree-encoding · A006 树状编码 —— 前缀 .te- 仅本章使用;颜色/字体全部走主题 token。
+   首拍落位元素基础态保持终态、进入动画只挂 structure-framed 选择器;
+   晚拍元素基础态隐藏、由状态选择器点亮,进入态 delay 只挂在进入态选择器下,基础态即时可逆。 */
+
+.te-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+@keyframes te-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes te-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes te-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes te-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* SVG 连线自绘:配合 pathLength=1 使用 */
+@keyframes te-dash {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes te-node-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── 头部:可见标题(outline 槽位 headline ← S021,按口播填充) ── */
+
+.te-header {
+  flex: 0 0 auto;
+}
+
+.te-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+[data-state="structure-framed"] .te-headline {
+  animation: te-drop-in 0.55s ease 0.05s both;
+}
+
+/* ── 并列要点卡:两卡等权、一致内部骨架(标题+副题+flex 居中图示) ── */
+
+.te-cards {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 40px;
+}
+
+.te-card {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 32px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="structure-framed"] .te-card:nth-child(1) {
+  animation: te-fade-in 0.5s ease 0.3s both;
+}
+
+[data-state="structure-framed"] .te-card:nth-child(2) {
+  animation: te-fade-in 0.5s ease 0.45s both;
+}
+
+.te-card-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.te-card-sub {
+  margin: 8px 0 0;
+  font-size: 22px;
+  color: var(--text-2);
+}
+
+.te-card-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+
+/* ── 卡 1:嵌套包含 + 点号分隔(第 1 拍落位,随口播"树状结构→包含→点号"推进) ── */
+
+.te-nest {
+  display: flex;
+  justify-content: center;
+}
+
+.te-nest-outer {
+  position: relative;
+  width: 76%;
+  height: 200px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-3);
+  transition: background 0.5s ease;
+}
+
+.te-nest-tag {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+.te-nest-inner {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 100px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  transition: background 0.5s ease;
+}
+
+.te-dotline {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 18px;
+}
+
+.te-dotline span {
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.te-dotsep {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--theme-process);
+}
+
+.te-dotnote {
+  margin: 0;
+  text-align: center;
+  font-size: 20px;
+  color: var(--text-mute);
+}
+
+[data-state="structure-framed"] .te-card:nth-child(1) .te-card-title {
+  animation: te-rise-in 0.5s ease 3s both;
+}
+
+[data-state="structure-framed"] .te-card:nth-child(1) .te-card-sub {
+  animation: te-fade-in 0.45s ease 3.3s both;
+}
+
+[data-state="structure-framed"] .te-nest-outer {
+  animation: te-rise-in 0.5s ease 3.6s both;
+}
+
+[data-state="structure-framed"] .te-nest-inner {
+  animation: te-fade-in 0.5s ease 4.2s both;
+}
+
+[data-state="structure-framed"] .te-dotline span:nth-child(1) {
+  animation: te-fade-in 0.4s ease 5.4s both;
+}
+
+[data-state="structure-framed"] .te-dotline span:nth-child(3) {
+  animation: te-fade-in 0.4s ease 5.55s both;
+}
+
+[data-state="structure-framed"] .te-dotsep {
+  animation: te-pop-in 0.45s ease 5.8s both;
+}
+
+[data-state="structure-framed"] .te-dotnote {
+  animation: te-fade-in 0.45s ease 6.4s both;
+}
+
+/* 第 3 拍:卡 1 层级由外向内点亮(外层=来源侧,内层=收窄侧) */
+[data-state="scope-narrowed"] .te-nest-outer,
+[data-state="attribute-boundary-set"] .te-nest-outer {
+  background: var(--accent-soft);
+}
+
+[data-state="scope-narrowed"] .te-nest-outer {
+  transition-delay: 6.3s;
+}
+
+[data-state="scope-narrowed"] .te-nest-inner {
+  transition-delay: 7.3s;
+}
+
+/* ── 卡 2:根到叶路径(第 1 拍仅空卡位,第 2 拍内容与空槽 cross-fade) ── */
+
+.te-c2 {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+[data-state="path-assembled"] .te-c2,
+[data-state="scope-narrowed"] .te-c2,
+[data-state="attribute-boundary-set"] .te-c2 {
+  opacity: 1;
+}
+
+.te-c2-slot {
+  position: absolute;
+  inset: 22px;
+  border: 2px dashed var(--theme-dashed-line);
+  opacity: 1;
+  transition: opacity 0.45s ease;
+}
+
+[data-state="path-assembled"] .te-c2-slot,
+[data-state="scope-narrowed"] .te-c2-slot,
+[data-state="attribute-boundary-set"] .te-c2-slot {
+  opacity: 0;
+}
+
+.te-path {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.te-link {
+  stroke: var(--theme-structural);
+  stroke-width: 4;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+[data-state="path-assembled"] .te-link {
+  animation: te-dash 0.5s ease both;
+}
+
+[data-state="path-assembled"] .te-l1 {
+  animation-delay: 0.8s;
+}
+
+[data-state="path-assembled"] .te-l2 {
+  animation-delay: 1.35s;
+}
+
+[data-state="path-assembled"] .te-l3 {
+  animation-delay: 1.9s;
+}
+
+[data-state="path-assembled"] .te-l4 {
+  animation-delay: 2.45s;
+}
+
+.te-node {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: stroke 0.4s ease, fill 0.4s ease;
+}
+
+.te-node-leaf {
+  fill: var(--theme-structural);
+}
+
+[data-state="path-assembled"] .te-node {
+  animation: te-node-pop 0.45s ease both;
+}
+
+[data-state="path-assembled"] .te-n1 .te-node {
+  animation-delay: 0.7s;
+}
+
+[data-state="path-assembled"] .te-n2 .te-node {
+  animation-delay: 1.25s;
+}
+
+[data-state="path-assembled"] .te-n3 .te-node {
+  animation-delay: 1.8s;
+}
+
+[data-state="path-assembled"] .te-n4 .te-node {
+  animation-delay: 2.35s;
+}
+
+[data-state="path-assembled"] .te-n5 .te-node {
+  animation-delay: 2.9s;
+}
+
+.te-node-label {
+  font-family: var(--font-display-cn);
+  font-size: 23px;
+  font-weight: 700;
+  fill: var(--text);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="path-assembled"] .te-node-label,
+[data-state="scope-narrowed"] .te-node-label,
+[data-state="attribute-boundary-set"] .te-node-label {
+  opacity: 1;
+}
+
+[data-state="path-assembled"] .te-node-label {
+  animation: te-fade-in 0.4s ease both;
+}
+
+[data-state="path-assembled"] .te-n1 .te-node-label {
+  animation-delay: 0.85s;
+}
+
+[data-state="path-assembled"] .te-n2 .te-node-label {
+  animation-delay: 1.4s;
+}
+
+[data-state="path-assembled"] .te-n3 .te-node-label {
+  animation-delay: 1.95s;
+}
+
+[data-state="path-assembled"] .te-n4 .te-node-label {
+  animation-delay: 2.5s;
+}
+
+[data-state="path-assembled"] .te-n5 .te-node-label {
+  animation-delay: 3.05s;
+}
+
+/* 第 3 拍:路径节点按"前面定来源→后面收窄"方向依次点亮 */
+[data-state="scope-narrowed"] .te-node,
+[data-state="attribute-boundary-set"] .te-node {
+  stroke: var(--theme-process);
+  fill: var(--accent-soft);
+}
+
+[data-state="scope-narrowed"] .te-node-leaf,
+[data-state="attribute-boundary-set"] .te-node-leaf {
+  fill: var(--theme-structural);
+}
+
+[data-state="scope-narrowed"] .te-n1 .te-node {
+  transition-delay: 6.3s;
+}
+
+[data-state="scope-narrowed"] .te-n2 .te-node {
+  transition-delay: 6.75s;
+}
+
+[data-state="scope-narrowed"] .te-n3 .te-node {
+  transition-delay: 7.2s;
+}
+
+[data-state="scope-narrowed"] .te-n4 .te-node {
+  transition-delay: 7.65s;
+}
+
+[data-state="scope-narrowed"] .te-n5 .te-node {
+  transition-delay: 8.1s;
+}
+
+/* 第 3 拍:来源/收窄分组括线,按口播报到点先后落位 */
+.te-brackets {
+  position: relative;
+  height: 58px;
+  margin-top: 4px;
+}
+
+.te-bracket {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.te-bracket::before {
+  content: "";
+  width: 100%;
+  height: 12px;
+  border: 3px solid var(--theme-process);
+  border-bottom: none;
+}
+
+.te-bracket span {
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+
+.te-bracket-src {
+  left: 5%;
+  width: 28%;
+}
+
+.te-bracket-narrow {
+  left: 46%;
+  width: 48%;
+}
+
+[data-state="scope-narrowed"] .te-bracket-src {
+  opacity: 1;
+  animation: te-rise-in 0.5s ease 0.6s both;
+}
+
+[data-state="scope-narrowed"] .te-bracket-narrow {
+  opacity: 1;
+  animation: te-rise-in 0.5s ease 5.9s both;
+}
+
+[data-state="attribute-boundary-set"] .te-bracket {
+  opacity: 1;
+}
+
+/* 叶节点注记:第 2 拍后半句"叶节点是……"报到时落位 */
+.te-leafnote {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.te-leafnote b {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.te-leafnote span {
+  font-size: 22px;
+  color: var(--text-2);
+}
+
+[data-state="path-assembled"] .te-leafnote {
+  opacity: 1;
+  animation: te-rise-in 0.5s ease 7s both;
+}
+
+[data-state="scope-narrowed"] .te-leafnote,
+[data-state="attribute-boundary-set"] .te-leafnote {
+  opacity: 1;
+}
+
+/* ── 收束区:叶节点位置 + 属性边界(第 4 拍落位,槽位高度首拍预留) ── */
+
+.te-takeaway {
+  flex: 0 0 150px;
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  padding-top: 22px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="attribute-boundary-set"] .te-takeaway {
+  opacity: 1;
+}
+
+.te-take-leaf {
+  flex: 1 1 0;
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-right: 44px;
+  border-right: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.te-take-leaf b {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.te-take-leaf span {
+  font-size: 28px;
+  color: var(--text-2);
+}
+
+[data-state="attribute-boundary-set"] .te-take-leaf {
+  opacity: 1;
+  animation: te-rise-in 0.5s ease 0.4s both;
+}
+
+.te-take-gate {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.te-gate-attrs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.te-gate-tags {
+  display: flex;
+  gap: 12px;
+}
+
+.te-gate-tags b {
+  padding: 6px 16px;
+  border: 2px solid var(--theme-warning);
+  background: var(--theme-warning-surface);
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+.te-gate-attrs > span {
+  font-size: 18px;
+  color: var(--text-mute);
+}
+
+[data-state="attribute-boundary-set"] .te-gate-attrs {
+  opacity: 1;
+  animation: te-rise-in 0.5s ease 1s both;
+}
+
+.te-gate-bar {
+  position: relative;
+  width: 6px;
+  height: 76px;
+  background: var(--theme-warning);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.te-gate-bar em {
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-style: normal;
+  font-size: 21px;
+  font-weight: 900;
+  color: var(--theme-warning);
+  white-space: nowrap;
+}
+
+[data-state="attribute-boundary-set"] .te-gate-bar {
+  opacity: 1;
+  animation: te-rise-in 0.45s ease 1.5s both;
+}
+
+.te-gate-code {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.te-gate-dots {
+  display: flex;
+  gap: 12px;
+}
+
+.te-gate-dots i {
+  width: 14px;
+  height: 14px;
+  background: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.te-gate-code > span {
+  font-size: 18px;
+  color: var(--text-mute);
+}
+
+[data-state="attribute-boundary-set"] .te-gate-code {
+  opacity: 1;
+  animation: te-fade-in 0.4s ease 1.8s both;
+}
+
+[data-state="attribute-boundary-set"] .te-gate-dots i {
+  opacity: 1;
+  animation: te-pop-in 0.35s ease both;
+}
+
+[data-state="attribute-boundary-set"] .te-gate-dots i:nth-child(1) {
+  animation-delay: 1.9s;
+}
+
+[data-state="attribute-boundary-set"] .te-gate-dots i:nth-child(2) {
+  animation-delay: 2.05s;
+}
+
+[data-state="attribute-boundary-set"] .te-gate-dots i:nth-child(3) {
+  animation-delay: 2.2s;
+}
