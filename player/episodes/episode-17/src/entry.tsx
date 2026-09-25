@@ -11,6 +11,14 @@ import A005Chapter from "./chapters/04-root-branches/A005Chapter";
 import { narrations as a005Narrations } from "./chapters/04-root-branches/narrations";
 import A006Chapter from "./chapters/05-tree-encoding/A006Chapter";
 import { narrations as a006Narrations } from "./chapters/05-tree-encoding/narrations";
+import A007Chapter from "./chapters/06-china-prefixes/A007Chapter";
+import { narrations as a007Narrations } from "./chapters/06-china-prefixes/narrations";
+import A008Chapter from "./chapters/07-full-path/A008Chapter";
+import { narrations as a008Narrations } from "./chapters/07-full-path/narrations";
+import A009Chapter from "./chapters/08-flexible-growth/A009Chapter";
+import { narrations as a009Narrations } from "./chapters/08-flexible-growth/narrations";
+import A010Chapter from "./chapters/09-uniqueness-path/A010Chapter";
+import { narrations as a010Narrations } from "./chapters/09-uniqueness-path/narrations";
 
 export const id = "episode-17";
 export const title = "OID 编码：树状命名如何保证唯一性";
@@ -53,5 +61,29 @@ export const CHAPTERS: ChapterDef[] = [
     title: "树状编码",
     narrations: a006Narrations,
     Component: A006Chapter,
+  },
+  {
+    id: "06-china-prefixes",
+    title: "我国前缀与示例",
+    narrations: a007Narrations,
+    Component: A007Chapter,
+  },
+  {
+    id: "07-full-path",
+    title: "完整路径",
+    narrations: a008Narrations,
+    Component: A008Chapter,
+  },
+  {
+    id: "08-flexible-growth",
+    title: "灵活扩展",
+    narrations: a009Narrations,
+    Component: A009Chapter,
+  },
+  {
+    id: "09-uniqueness-path",
+    title: "唯一性判断",
+    narrations: a010Narrations,
+    Component: A010Chapter,
   },
 ];
