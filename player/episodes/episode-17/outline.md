@@ -2,7 +2,7 @@
 
 <!-- GLOBAL:metadata:BEGIN -->
 > **编译状态**：awaiting-checkpoint-plan
-> **主题**：pending（Checkpoint Plan 待选）
+> **主题**：active-identification-precision-ledger（主动标识·精密记录纸，Checkpoint Plan 已确认）
 > **正文时长**：约 7 分 45 秒
 > **章节**：13
 > **Base scenes**：13

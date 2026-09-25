@@ -1,0 +1,416 @@
+/* 01-opening · A001+A002 合并章 —— 前缀 .op- 仅本章使用；颜色/字体全部走主题 token。
+   首拍建立序列用 keyframe（挂载即播）；状态切换用 transition，
+   delay 只挂在进入态选择器下，基础态保持即时可逆。 */
+
+.op-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+@keyframes op-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes op-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes op-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes op-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes op-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ── 头部：标题 → 前提标签 → 问句，同区上下分层（R001） ────────── */
+
+.op-header {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.op-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 62px;
+  line-height: 1.12;
+  color: var(--theme-structural);
+  transition: font-size 0.5s ease, color 0.5s ease;
+}
+
+[data-state="title-established"] .op-headline {
+  animation: op-drop-in 0.55s ease 0.05s both;
+}
+
+/* 标题弱化让位：口播焦点移向电池对象（更新固定槽位，不消失） */
+[data-state="object-in-context"] .op-headline,
+[data-state="records-mapped"] .op-headline {
+  font-size: 38px;
+  color: var(--text-2);
+}
+
+.op-oid-badge {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  padding: 6px 18px;
+  border: 2px solid var(--theme-process);
+  background: var(--theme-process-surface);
+  font-family: var(--font-mono);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--theme-process);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="object-in-context"] .op-oid-badge,
+[data-state="records-mapped"] .op-oid-badge {
+  opacity: 1;
+  animation: op-pop-in 0.4s ease 0.35s both;
+}
+
+.op-premises {
+  display: flex;
+  gap: 16px;
+}
+
+.op-premise {
+  padding: 8px 20px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: var(--surface-2);
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--text-2);
+  opacity: 0.55;
+  transition: opacity 0.5s ease, color 0.5s ease, border-color 0.5s ease,
+    background 0.5s ease;
+}
+
+[data-state="title-established"] .op-premise {
+  animation: op-fade-in 0.55s ease both;
+}
+
+[data-state="title-established"] .op-premise-object {
+  animation-delay: 0.7s;
+}
+
+[data-state="title-established"] .op-premise-naming {
+  animation-delay: 0.95s;
+}
+
+/* 口播报到“被反复引用”：前提一转正（其余保持弱化） */
+[data-state="object-in-context"] .op-premise-object {
+  opacity: 1;
+  color: var(--theme-structural);
+  border-color: var(--theme-process);
+  background: var(--theme-process-surface);
+}
+
+/* 记录落位后，前提标签整体退让 */
+[data-state="records-mapped"] .op-premise {
+  opacity: 0.35;
+}
+
+[data-state="records-mapped"] .op-premise-object {
+  opacity: 0.55;
+}
+
+.op-question {
+  margin: 0;
+  font-size: 24px;
+  color: var(--text-mute);
+}
+
+[data-state="title-established"] .op-question {
+  animation: op-fade-in 0.55s ease 1.25s both;
+}
+
+/* ── 主区：现场图像（M001）＋ 引用登记栏 ─────────────────────── */
+
+.op-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 40px;
+}
+
+[data-state="title-established"] .op-main {
+  animation: op-fade-in 0.5s ease 0.25s both;
+}
+
+.op-object {
+  position: relative;
+  flex: 0 0 620px;
+  min-height: 0;
+  margin: 0;
+  padding: 12px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.op-object-img {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+.op-object-caption {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.op-object-badge {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.op-object-note {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-faint);
+}
+
+/* 登记栏：ghost（组织/系统）与记录同槽 cross-fade，无 display 硬切 */
+.op-ledger {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px 28px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+.op-ledger-head {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.op-rows {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.op-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 14px;
+  border-bottom: 2px dashed var(--theme-grid-line);
+}
+
+.op-row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.op-row-leader {
+  flex: 0 0 36px;
+  height: 0;
+  border-top: 2px dashed var(--theme-dashed-line);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+
+[data-state="object-in-context"] .op-row-leader,
+[data-state="records-mapped"] .op-row-leader {
+  transform: scaleX(1);
+}
+
+[data-state="object-in-context"] .op-row-leader {
+  animation: op-draw 0.5s ease both;
+}
+
+[data-state="object-in-context"] .op-row:nth-child(2) .op-row-leader {
+  animation-delay: 0.12s;
+}
+
+[data-state="object-in-context"] .op-row:nth-child(3) .op-row-leader {
+  animation-delay: 0.24s;
+}
+
+[data-state="object-in-context"] .op-row:nth-child(4) .op-row-leader {
+  animation-delay: 0.36s;
+}
+
+.op-row-index {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-faint);
+}
+
+/* ghost 与记录同槽叠放：ghost 绝对定位不参与布局，隐去不留空洞 */
+.op-row-slot {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+}
+
+.op-row-ghost {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-mute);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+[data-state="object-in-context"] .op-row-ghost {
+  opacity: 1;
+  transition-delay: 0.3s;
+}
+
+[data-state="object-in-context"] .op-row:nth-child(2) .op-row-ghost {
+  transition-delay: 0.42s;
+}
+
+[data-state="object-in-context"] .op-row:nth-child(3) .op-row-ghost {
+  transition-delay: 0.54s;
+}
+
+[data-state="object-in-context"] .op-row:nth-child(4) .op-row-ghost {
+  transition-delay: 0.66s;
+}
+
+[data-state="records-mapped"] .op-row-ghost {
+  opacity: 0;
+  transition-delay: 0s;
+}
+
+.op-row-record {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+[data-state="records-mapped"] .op-row-record {
+  opacity: 1;
+}
+
+[data-state="records-mapped"] .op-row:nth-child(2) .op-row-record {
+  transition-delay: 0.14s;
+}
+
+[data-state="records-mapped"] .op-row:nth-child(3) .op-row-record {
+  transition-delay: 0.28s;
+}
+
+[data-state="records-mapped"] .op-row:nth-child(4) .op-row-record {
+  transition-delay: 0.42s;
+}
+
+.op-row-record b {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.op-row-record span {
+  font-size: 22px;
+  color: var(--text-2);
+}
+
+/* ── 收束：登记栏归并标签（U004 · R002） ─────────────────────── */
+
+.op-takeaway {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.op-takeaway-line {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 14px 30px;
+  background: var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+[data-state="records-mapped"] .op-takeaway-line {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.85s;
+}
+
+.op-takeaway-line b {
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--surface-2);
+}
+
+.op-takeaway-line span {
+  font-size: 24px;
+  color: var(--theme-grid-line);
+}

@@ -1,12 +1,12 @@
 {
   "id": "episode-17",
-  "title": "第 17 期（待制作）",
-  "status": "planned",
-  "theme": "active-identification-note",
+  "title": "第 17 期 · OID 编码：树状命名如何保证唯一性",
+  "status": "in-progress",
+  "theme": "active-identification-precision-ledger",
   "progress": {
-    "completed": 0,
-    "total": 0,
-    "current": null
+    "completed": 1,
+    "total": 12,
+    "current": "01-opening"
   },
-  "updatedAt": "2026-09-02"
+  "updatedAt": "2026-09-25"
 }
