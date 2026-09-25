@@ -19,6 +19,12 @@ import A009Chapter from "./chapters/08-flexible-growth/A009Chapter";
 import { narrations as a009Narrations } from "./chapters/08-flexible-growth/narrations";
 import A010Chapter from "./chapters/09-uniqueness-path/A010Chapter";
 import { narrations as a010Narrations } from "./chapters/09-uniqueness-path/narrations";
+import A011Chapter from "./chapters/10-no-autocorrect/A011Chapter";
+import { narrations as a011Narrations } from "./chapters/10-no-autocorrect/narrations";
+import A012Chapter from "./chapters/11-goal-and-scope/A012Chapter";
+import { narrations as a012Narrations } from "./chapters/11-goal-and-scope/narrations";
+import A013Chapter from "./chapters/12-summary/A013Chapter";
+import { narrations as a013Narrations } from "./chapters/12-summary/narrations";
 
 export const id = "episode-17";
 export const title = "OID 编码：树状命名如何保证唯一性";
@@ -85,5 +91,23 @@ export const CHAPTERS: ChapterDef[] = [
     title: "唯一性判断",
     narrations: a010Narrations,
     Component: A010Chapter,
+  },
+  {
+    id: "10-no-autocorrect",
+    title: "纠错边界",
+    narrations: a011Narrations,
+    Component: A011Chapter,
+  },
+  {
+    id: "11-goal-and-scope",
+    title: "目标与收束",
+    narrations: a012Narrations,
+    Component: A012Chapter,
+  },
+  {
+    id: "12-summary",
+    title: "本期总结",
+    narrations: a013Narrations,
+    Component: A013Chapter,
   },
 ];

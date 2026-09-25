@@ -1,0 +1,914 @@
+/* 12-summary · A013 本期总结 —— 前缀 .sm- 仅本章使用;颜色/字体全部走主题 token。
+   基础态保持终态、进入动画只挂对应状态选择器;晚拍元素基础态隐藏、由状态选择器点亮,
+   进入态 delay 只挂在进入态选择器下,基础态即时可逆。
+   动画预算:拍1链 ~15.3s(≤75字÷4≈18.7s);拍2链 ~21.5s(≤113字÷4≈28.2s);
+   拍3链 ~11.0s(≤57字÷4≈14.2s)。 */
+
+.sm-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+@keyframes sm-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sm-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sm-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sm-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes sm-draw-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes sm-draw-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes sm-dash {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* 边界框:先实线自绘,再收成虚线测量边(周长 2268 归一化,8px≈0.0035) */
+@keyframes sm-frame-dash {
+  from {
+    stroke-dasharray: 1 1;
+  }
+  to {
+    stroke-dasharray: 0.0035 0.0022;
+  }
+}
+
+@keyframes sm-hit-on {
+  from {
+    color: var(--text-2);
+  }
+  to {
+    color: var(--theme-process);
+  }
+}
+
+/* ── 头部:标题 + 立场句(槽位 headline,文本按口播填充) ────────── */
+
+.sm-header {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sm-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+[data-state="object-recalled"] .sm-headline {
+  animation: sm-drop-in 0.55s ease 0.05s both;
+}
+
+.sm-stance {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+[data-state="object-recalled"] .sm-stance {
+  animation: sm-fade-in 0.45s ease 9s both;
+}
+
+/* "名字起得花哨"被划去:警示色删除线,基础态保持划去 */
+.sm-stance-miss {
+  position: relative;
+  color: var(--text-mute);
+}
+
+.sm-stance-miss::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: 52%;
+  height: 4px;
+  background: var(--theme-warning);
+  transform: scaleX(1);
+}
+
+[data-state="object-recalled"] .sm-stance-miss::after {
+  animation: sm-draw-x 0.45s ease 9.6s both;
+}
+
+/* "一条有边界的树路径":口播报到时转过程绿,基础态保持绿色 */
+.sm-stance-hit {
+  color: var(--theme-process);
+}
+
+[data-state="object-recalled"] .sm-stance-hit {
+  animation: sm-hit-on 0.5s ease 11.8s both;
+}
+
+/* ── 主区:左=测量树图版,右=分工轨 + 支撑区 ─────────────────── */
+
+.sm-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 36px;
+}
+
+.sm-board {
+  flex: 0 0 46%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 26px 14px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="object-recalled"] .sm-board {
+  animation: sm-fade-in 0.5s ease 0.35s both;
+}
+
+.sm-board-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 6px;
+}
+
+.sm-board-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+[data-state="object-recalled"] .sm-board-title {
+  animation: sm-fade-in 0.45s ease 1.7s both;
+}
+
+.sm-board-note {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-mute);
+}
+
+[data-state="object-recalled"] .sm-board-note {
+  animation: sm-fade-in 0.45s ease 5.2s both;
+}
+
+.sm-tree {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+}
+
+/* 有边界的树路径:虚线测量框 */
+.sm-frame {
+  fill: none;
+  stroke: var(--theme-dashed-line);
+  stroke-width: 2;
+  stroke-dasharray: 0.0035 0.0022;
+  stroke-dashoffset: 0;
+}
+
+[data-state="object-recalled"] .sm-frame {
+  animation: sm-dash 0.8s ease 12.2s both, sm-frame-dash 0.3s linear 13.2s both;
+}
+
+/* 树链路:深 navy 实线 */
+.sm-link {
+  stroke: var(--theme-structural);
+  stroke-width: 3.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+[data-state="object-recalled"] .sm-lk1 {
+  animation: sm-dash 0.5s ease 13s both;
+}
+
+[data-state="object-recalled"] .sm-lk2 {
+  animation: sm-dash 0.5s ease 13.3s both;
+}
+
+[data-state="object-recalled"] .sm-lk3 {
+  animation: sm-dash 0.5s ease 14.8s both;
+}
+
+/* 完整路径:第 2 拍第 ④ 行报到时自绘,之后保持 */
+.sm-path {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+[data-state="roles-summarized"] .sm-path {
+  animation: sm-dash 1s ease 13.4s both;
+}
+
+[data-state="final-judgment-set"] .sm-path {
+  stroke-dashoffset: 0;
+}
+
+/* 第 3 拍:辉光沿全路径扫掠一遍后保留 */
+.sm-glowpath {
+  fill: none;
+  stroke: var(--accent-glow);
+  stroke-width: 16;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+[data-state="final-judgment-set"] .sm-glowpath {
+  animation: sm-dash 0.9s ease 4.8s both;
+}
+
+/* 分工点亮环:与四行同步,点亮后保持等权 */
+.sm-ring {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3;
+  opacity: 0;
+}
+
+[data-state="roles-summarized"] .sm-ring,
+[data-state="final-judgment-set"] .sm-ring {
+  opacity: 1;
+}
+
+[data-state="roles-summarized"] .sm-ring-root {
+  animation: sm-fade-in 0.4s ease 4.9s both;
+}
+
+[data-state="roles-summarized"] .sm-ring-bl,
+[data-state="roles-summarized"] .sm-ring-br {
+  animation: sm-fade-in 0.4s ease 7.2s both;
+}
+
+[data-state="roles-summarized"] .sm-ring-bat {
+  animation: sm-fade-in 0.4s ease 9.6s both;
+}
+
+/* 树节点 */
+.sm-node-root {
+  fill: var(--theme-structural);
+}
+
+.sm-node-branch {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.sm-node {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+[data-state="object-recalled"] .sm-node-root {
+  animation: sm-pop-in 0.45s ease 13s both;
+}
+
+[data-state="object-recalled"] .sm-node-branch {
+  animation: sm-pop-in 0.45s ease 13.6s both;
+}
+
+/* 叶上的具体对象:开场工业电池 */
+.sm-bat-term {
+  fill: var(--theme-process);
+}
+
+.sm-bat-body {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-process);
+  stroke-width: 3;
+}
+
+.sm-battery rect {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+[data-state="object-recalled"] .sm-bat-term {
+  animation: sm-pop-in 0.45s ease 2.1s both;
+}
+
+[data-state="object-recalled"] .sm-bat-body {
+  animation: sm-pop-in 0.45s ease 2.2s both;
+}
+
+/* 每一级的命名 */
+.sm-nodelab {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 900;
+  fill: var(--theme-structural);
+  text-anchor: middle;
+}
+
+.sm-lab-root {
+  fill: var(--surface-2);
+}
+
+[data-state="object-recalled"] .sm-lab-root {
+  animation: sm-fade-in 0.4s ease 14.3s both;
+}
+
+[data-state="object-recalled"] .sm-lab-bl {
+  animation: sm-fade-in 0.4s ease 14.45s both;
+}
+
+[data-state="object-recalled"] .sm-lab-leaf {
+  animation: sm-fade-in 0.4s ease 14.6s both;
+}
+
+/* 被反复引用:外部引用引线(虚线)+ 空心端点 */
+.sm-refline {
+  stroke: var(--theme-dashed-line);
+  stroke-width: 2.5;
+  stroke-dasharray: 6 5;
+  stroke-dashoffset: 0;
+}
+
+[data-state="object-recalled"] .sm-rl1 {
+  animation: sm-fade-in 0.5s ease 4.2s both;
+}
+
+[data-state="object-recalled"] .sm-rl2 {
+  animation: sm-fade-in 0.5s ease 4.5s both;
+}
+
+[data-state="object-recalled"] .sm-rl3 {
+  animation: sm-fade-in 0.5s ease 4.8s both;
+}
+
+.sm-refdot {
+  fill: var(--surface-2);
+  stroke: var(--theme-dashed-line);
+  stroke-width: 2;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+[data-state="object-recalled"] .sm-rd1 {
+  animation: sm-pop-in 0.45s ease 4.3s both;
+}
+
+[data-state="object-recalled"] .sm-rd2 {
+  animation: sm-pop-in 0.45s ease 4.6s both;
+}
+
+[data-state="object-recalled"] .sm-rd3 {
+  animation: sm-pop-in 0.45s ease 4.9s both;
+}
+
+.sm-refcap {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  fill: var(--text-mute);
+}
+
+[data-state="object-recalled"] .sm-refcap {
+  animation: sm-fade-in 0.45s ease 5.2s both;
+}
+
+/* 分工点亮标签:方向 / 范围 / 对象 */
+.sm-tag {
+  opacity: 0;
+}
+
+[data-state="roles-summarized"] .sm-tag,
+[data-state="final-judgment-set"] .sm-tag {
+  opacity: 1;
+}
+
+[data-state="roles-summarized"] .sm-tag-1 {
+  animation: sm-fade-in 0.4s ease 5s both;
+}
+
+[data-state="roles-summarized"] .sm-tag-2 {
+  animation: sm-fade-in 0.4s ease 7.3s both;
+}
+
+[data-state="roles-summarized"] .sm-tag-3 {
+  animation: sm-fade-in 0.4s ease 9.7s both;
+}
+
+.sm-tagtick {
+  stroke: var(--theme-process);
+  stroke-width: 2;
+}
+
+.sm-tagbox {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-process);
+  stroke-width: 2;
+}
+
+.sm-tagtext {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 700;
+  fill: var(--theme-structural);
+  text-anchor: middle;
+}
+
+/* 路径还能往深处扩展:叶下的虚线延深 */
+.sm-stub-line {
+  stroke: var(--theme-process);
+  stroke-width: 2.5;
+  stroke-dasharray: 6 5;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center top;
+}
+
+.sm-stub-node {
+  fill: var(--surface-2);
+  stroke: var(--theme-process);
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+[data-state="roles-summarized"] .sm-stub-line,
+[data-state="final-judgment-set"] .sm-stub-line,
+[data-state="roles-summarized"] .sm-stub-node,
+[data-state="final-judgment-set"] .sm-stub-node {
+  opacity: 1;
+}
+
+[data-state="roles-summarized"] .sm-stub-line {
+  animation: sm-draw-y 0.5s ease 20.8s both;
+}
+
+[data-state="roles-summarized"] .sm-stub-node {
+  animation: sm-pop-in 0.4s ease 21.1s both;
+}
+
+/* ── 右列:分工轨(账页格线首拍备好,条目第 2 拍落位)──────────── */
+
+.sm-side {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sm-rail {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sm-rail-kicker {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+[data-state="roles-summarized"] .sm-rail-kicker,
+[data-state="final-judgment-set"] .sm-rail-kicker {
+  opacity: 1;
+}
+
+[data-state="roles-summarized"] .sm-rail-kicker {
+  animation: sm-fade-in 0.45s ease 0.3s both;
+}
+
+.sm-rail-kicker::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: var(--theme-structural);
+}
+
+.sm-roles {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sm-role {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  border-bottom: 2px dashed var(--theme-grid-line);
+}
+
+.sm-role:last-child {
+  border-bottom: 0;
+}
+
+.sm-role-line {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  opacity: 0;
+}
+
+[data-state="roles-summarized"] .sm-role-line,
+[data-state="final-judgment-set"] .sm-role-line {
+  opacity: 1;
+}
+
+[data-state="roles-summarized"] .sm-role-1 .sm-role-line {
+  animation: sm-rise-in 0.5s ease 4.5s both;
+}
+
+[data-state="roles-summarized"] .sm-role-2 .sm-role-line {
+  animation: sm-rise-in 0.5s ease 6.8s both;
+}
+
+[data-state="roles-summarized"] .sm-role-3 .sm-role-line {
+  animation: sm-rise-in 0.5s ease 9.2s both;
+}
+
+[data-state="roles-summarized"] .sm-role-4 .sm-role-line {
+  animation: sm-rise-in 0.5s ease 12.8s both;
+}
+
+.sm-role-index {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-faint);
+}
+
+.sm-role-term {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.sm-role-leader {
+  flex: 1 1 auto;
+  height: 0;
+  border-bottom: 3px dotted var(--theme-grid-line);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+[data-state="roles-summarized"] .sm-role-leader,
+[data-state="final-judgment-set"] .sm-role-leader {
+  transform: scaleX(1);
+}
+
+[data-state="roles-summarized"] .sm-role-1 .sm-role-leader {
+  animation: sm-draw-x 0.4s ease 4.8s both;
+}
+
+[data-state="roles-summarized"] .sm-role-2 .sm-role-leader {
+  animation: sm-draw-x 0.4s ease 7.1s both;
+}
+
+[data-state="roles-summarized"] .sm-role-3 .sm-role-leader {
+  animation: sm-draw-x 0.4s ease 9.5s both;
+}
+
+[data-state="roles-summarized"] .sm-role-4 .sm-role-leader {
+  animation: sm-draw-x 0.4s ease 13.1s both;
+}
+
+.sm-role-fn {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--theme-process);
+}
+
+.sm-role-sub {
+  margin: 0 0 0 58px;
+  font-size: 18px;
+  color: var(--text-mute);
+  opacity: 0;
+}
+
+[data-state="roles-summarized"] .sm-role-sub,
+[data-state="final-judgment-set"] .sm-role-sub {
+  opacity: 1;
+}
+
+[data-state="roles-summarized"] .sm-role-sub {
+  animation: sm-fade-in 0.45s ease 13.3s both;
+}
+
+/* ── 支撑区:不重名 / 可扩展(第 2 拍后半落位,槽位首拍预留)────── */
+
+.sm-support {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+}
+
+[data-state="roles-summarized"] .sm-support,
+[data-state="final-judgment-set"] .sm-support {
+  opacity: 1;
+}
+
+[data-state="roles-summarized"] .sm-support {
+  animation: sm-fade-in 0.4s ease 17.3s both;
+}
+
+.sm-note {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  opacity: 0;
+}
+
+[data-state="roles-summarized"] .sm-note,
+[data-state="final-judgment-set"] .sm-note {
+  opacity: 1;
+}
+
+[data-state="roles-summarized"] .sm-note-1 {
+  animation: sm-rise-in 0.5s ease 17.5s both;
+}
+
+[data-state="roles-summarized"] .sm-note-2 {
+  animation: sm-rise-in 0.5s ease 20.5s both;
+}
+
+.sm-note-mark {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  border: 2.5px solid var(--theme-structural);
+}
+
+.sm-note-text {
+  margin: 0;
+  font-size: 23px;
+  color: var(--text);
+}
+
+.sm-note-text b {
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+/* ── 收束区:全片结论(第 3 拍落位,槽位高度首拍预留)──────────── */
+
+.sm-takeaway {
+  flex: 0 0 176px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 0 44px;
+  background: var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+}
+
+[data-state="final-judgment-set"] .sm-takeaway {
+  opacity: 1;
+  animation: sm-rise-in 0.55s ease 4.6s both;
+}
+
+.sm-take-path {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sm-take-svg {
+  flex: 0 0 auto;
+  width: 190px;
+  height: 64px;
+}
+
+.sm-take-line {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+[data-state="final-judgment-set"] .sm-take-line {
+  animation: sm-dash 0.6s ease 5s both;
+}
+
+.sm-take-node {
+  fill: var(--surface-2);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.sm-take-leaf {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-process);
+  stroke-width: 2.5;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+[data-state="final-judgment-set"] .sm-take-node {
+  animation: sm-pop-in 0.45s ease 5.1s both;
+}
+
+[data-state="final-judgment-set"] .sm-take-node:nth-of-type(2) {
+  animation-delay: 5.25s;
+}
+
+[data-state="final-judgment-set"] .sm-take-leaf {
+  animation: sm-pop-in 0.45s ease 5.4s both;
+}
+
+.sm-take-lab {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  fill: var(--theme-grid-line);
+  text-anchor: middle;
+}
+
+[data-state="final-judgment-set"] .sm-take-lab {
+  animation: sm-fade-in 0.4s ease 5.5s both;
+}
+
+.sm-take-line1 {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--surface-2);
+  white-space: nowrap;
+}
+
+[data-state="final-judgment-set"] .sm-take-line1 {
+  animation: sm-fade-in 0.5s ease 5.2s both;
+}
+
+.sm-take-div {
+  flex: 0 0 auto;
+  width: 0;
+  height: 96px;
+  border-left: 2px dashed var(--theme-grid-line);
+}
+
+.sm-take-judge {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.sm-take-line2 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--theme-grid-line);
+  white-space: nowrap;
+}
+
+.sm-take-ba {
+  opacity: 0;
+}
+
+[data-state="final-judgment-set"] .sm-take-ba {
+  opacity: 1;
+  animation: sm-fade-in 0.4s ease 8s both;
+}
+
+.sm-chips {
+  position: relative;
+  display: inline-flex;
+  gap: 14px;
+}
+
+.sm-chip {
+  padding: 8px 22px;
+  border: 2px solid var(--theme-process);
+  background: var(--theme-process-surface);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+[data-state="final-judgment-set"] .sm-chip {
+  animation: sm-pop-in 0.45s ease 8s both;
+}
+
+[data-state="final-judgment-set"] .sm-chip:nth-child(2) {
+  animation-delay: 8.5s;
+}
+
+[data-state="final-judgment-set"] .sm-chip:nth-child(3) {
+  animation-delay: 9s;
+}
+
+/* 同一套结构:合拢括线,全片最后一个动作 */
+.sm-bracket {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 8px);
+  height: 12px;
+  border-left: 2px solid var(--theme-process);
+  border-right: 2px solid var(--theme-process);
+  border-bottom: 2px solid var(--theme-process);
+  transform: scaleX(1);
+}
+
+[data-state="final-judgment-set"] .sm-bracket {
+  animation: sm-draw-x 0.55s ease 10.4s both;
+}
+
+.sm-take-tail {
+  opacity: 0;
+}
+
+[data-state="final-judgment-set"] .sm-take-tail {
+  opacity: 1;
+  animation: sm-fade-in 0.45s ease 9.6s both;
+}
