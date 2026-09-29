@@ -12,14 +12,14 @@
 
 ## 任务路由
 
-下表路径相对仓库根目录。只加载当前任务需要的阶段；根目录工作不改变脚本的工作目录约定。
+下表路径相对仓库根目录。上游 Skill 统一位于根目录 `.agents/skills/`，其命令从仓库根目录执行；下游 Skill 仍位于 `player/.agents/skills/`，命令从 `player/` 执行。只加载当前任务需要的阶段。
 
 | 任务 | 必读入口 |
 | --- | --- |
-| 连续口播、批准口播、A-page v6 | `narration-pipeline/.agents/skills/rewrite-course-narration/SKILL.md` |
-| Visual rough v4、视觉结构 | `narration-pipeline/.agents/skills/design-course-visual-rough/SKILL.md` |
-| Stage 1 口播润色 | `narration-pipeline/.agents/skills/polish-stage1-narration/SKILL.md` |
-| 中文表达自然度 | `narration-pipeline/.agents/skills/humanizer-zh/SKILL.md` |
+| 连续口播、批准口播、A-page v6 | `.agents/skills/rewrite-course-narration/SKILL.md` |
+| Visual rough v4、视觉结构 | `.agents/skills/design-course-visual-rough/SKILL.md` |
+| Stage 1 口播润色 | `.agents/skills/polish-stage1-narration/SKILL.md` |
+| 中文表达自然度 | `.agents/skills/humanizer-zh/SKILL.md` |
 | 下游章节、presentation、章节验收 | `player/CLAUDE.md` 与 `player/.agents/skills/web-video-presentation/SKILL.md` |
 | 工具、共享运行时、配置维护 | 对应子项目 CLAUDE、受影响契约、实现与测试；涉及生产行为时补读对应 Skill |
 | 文档维护 | 受影响文档及其规则来源；不因修改 Markdown 而启动完整生产流程 |

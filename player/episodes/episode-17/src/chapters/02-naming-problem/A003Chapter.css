@@ -1,0 +1,409 @@
+/* 02-naming-problem · A003 —— 前缀 .np- 仅本章使用；颜色/字体全部走主题 token。
+   首拍建立序列用 keyframe（挂载即播，delay 只挂在 problem-tagged 状态下，
+   绝对延迟对齐口播报到点）；状态切换用 transition，基础态保持即时可逆。 */
+
+.np-root {
+  gap: 20px;
+  min-height: 0;
+}
+
+@keyframes np-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes np-stamp {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes np-pop {
+  from {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes np-draw-line {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes np-tag-warn {
+  to {
+    border-color: var(--theme-warning);
+    color: var(--theme-warning);
+    background: var(--theme-warning-surface);
+  }
+}
+
+/* ── 头部：主题锚点标题 + 含混命名标签（次强调保持） ─────────── */
+
+.np-header {
+  flex: 0 0 auto;
+}
+
+.np-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="problem-tagged"] .np-headline {
+  animation: np-rise 0.55s ease 0.05s both;
+}
+
+[data-state="question-dominant"] .np-headline {
+  opacity: 1;
+}
+
+.np-name-tag {
+  display: inline-block;
+  padding: 0 20px 6px;
+  border: 3px dashed var(--theme-dashed-line);
+  background: var(--surface-2);
+  color: var(--theme-structural);
+  transition: border-color 0.4s ease, color 0.4s ease, background 0.4s ease;
+}
+
+/* 口播报到“这个名字可能和别处的重复”：含混命名转警示色 */
+[data-state="problem-tagged"] .np-name-tag {
+  animation: np-tag-warn 0.5s ease 4.4s both;
+}
+
+[data-state="question-dominant"] .np-name-tag {
+  border-color: var(--theme-warning);
+  color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+}
+
+/* ── 难题卡区：三卡并列等权，按口播报到点逐张落位 ───────────── */
+
+.np-cards {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 28px;
+}
+
+.np-card {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 30px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="problem-tagged"] .np-card {
+  opacity: 1;
+  animation: np-stamp 0.5s ease both;
+}
+
+[data-state="problem-tagged"] .np-card:nth-child(1) {
+  animation-delay: 5s;
+}
+
+[data-state="problem-tagged"] .np-card:nth-child(2) {
+  animation-delay: 8.4s;
+}
+
+[data-state="problem-tagged"] .np-card:nth-child(3) {
+  animation-delay: 10.2s;
+}
+
+/* 问句主导：卡区整体弱化让位（保持并列，不消失） */
+[data-state="question-dominant"] .np-card {
+  opacity: 0.28;
+}
+
+.np-card-kicker {
+  margin: 0;
+  padding-bottom: 12px;
+  border-bottom: 2px dashed var(--theme-grid-line);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+}
+
+.np-card-core {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.np-card-label {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+.np-card-phrase {
+  margin: 0;
+  font-size: 24px;
+  color: var(--text-2);
+}
+
+/* 卡内微型演示：重名叠影 / 层级存疑 / 分叉存疑 */
+.np-card-demo {
+  flex: 0 0 auto;
+  height: 100px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 2px dashed var(--theme-grid-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--theme-warning);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="problem-tagged"] .np-card-demo,
+[data-state="question-dominant"] .np-card-demo {
+  opacity: 1;
+}
+
+[data-state="problem-tagged"] .np-card-demo {
+  animation: np-pop 0.45s ease both;
+}
+
+[data-state="problem-tagged"] .np-card:nth-child(1) .np-card-demo {
+  animation-delay: 5.5s;
+}
+
+[data-state="problem-tagged"] .np-card:nth-child(2) .np-card-demo {
+  animation-delay: 8.9s;
+}
+
+[data-state="problem-tagged"] .np-card:nth-child(3) .np-card-demo {
+  animation-delay: 10.7s;
+}
+
+.np-dup {
+  position: relative;
+  width: 100%;
+  height: 64px;
+}
+
+.np-dup-tag {
+  position: absolute;
+  padding: 4px 14px;
+  font-size: 19px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.np-dup-back {
+  top: 0;
+  left: 30px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: var(--surface-3);
+  color: var(--text-mute);
+}
+
+.np-dup-front {
+  top: 18px;
+  left: 0;
+  border: 2px solid var(--theme-warning);
+  background: var(--theme-warning-surface);
+  color: var(--theme-warning);
+}
+
+.np-dup-mark {
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  padding: 2px 10px;
+  background: var(--theme-warning);
+  color: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.np-demo-svg {
+  height: 64px;
+  width: 120px;
+}
+
+.np-demo-shape {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+}
+
+.np-demo-unknown {
+  stroke-dasharray: 5 4;
+}
+
+.np-demo-stroke {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+}
+
+.np-demo-mark {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  font-weight: 900;
+  fill: currentColor;
+}
+
+/* ── 汇入线：三张难题卡共同汇入同一归并区（R004） ───────────── */
+
+.np-merge-lines {
+  flex: 0 0 44px;
+  width: 100%;
+}
+
+.np-merge-line {
+  fill: none;
+  stroke: var(--theme-dashed-line);
+  stroke-width: 2.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+[data-state="problem-tagged"] .np-merge-line {
+  animation: np-draw-line 0.55s ease both;
+}
+
+[data-state="problem-tagged"] .np-merge-line:nth-child(1) {
+  animation-delay: 13.3s;
+}
+
+[data-state="problem-tagged"] .np-merge-line:nth-child(2) {
+  animation-delay: 13.5s;
+}
+
+[data-state="problem-tagged"] .np-merge-line:nth-child(3) {
+  animation-delay: 13.7s;
+}
+
+[data-state="question-dominant"] .np-merge-line {
+  stroke-dashoffset: 0;
+}
+
+/* ── 归并区：收束条 + 问句槽（问句槽首拍预留，次拍升为焦点） ── */
+
+.np-merge {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.np-boundary {
+  margin: 0;
+  padding: 16px 30px;
+  background: var(--theme-structural);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  font-size: 27px;
+  color: var(--theme-grid-line);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+[data-state="problem-tagged"] .np-boundary {
+  opacity: 1;
+  transform: none;
+  animation: np-rise 0.55s ease 12.6s both;
+}
+
+[data-state="question-dominant"] .np-boundary {
+  opacity: 1;
+  transform: none;
+}
+
+.np-boundary b {
+  font-weight: 900;
+  color: var(--surface-2);
+}
+
+.np-question {
+  margin: 0;
+  min-height: 156px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text-mute);
+  opacity: 0;
+  transition: opacity 0.5s ease, font-size 0.55s ease, color 0.5s ease;
+}
+
+[data-state="question-dominant"] .np-question {
+  opacity: 1;
+  font-size: 50px;
+  font-weight: 900;
+  color: var(--text);
+  transition-delay: 0.1s;
+}
+
+.np-question-line {
+  display: block;
+}
+
+.np-question-key {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.np-question-key::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5px;
+  background: var(--theme-process);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s ease;
+}
+
+[data-state="question-dominant"] .np-question-key::after {
+  transform: scaleX(1);
+  transition-delay: 0.6s;
+}

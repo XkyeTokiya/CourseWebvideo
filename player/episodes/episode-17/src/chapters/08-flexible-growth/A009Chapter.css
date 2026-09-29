@@ -1,0 +1,548 @@
+/* 08-flexible-growth · A009 灵活扩展 —— 前缀 .fg- 仅本章使用;颜色/字体全部走主题 token。
+   基础态保持终态、进入动画只挂对应状态选择器;晚拍元素(阶段说明/收束区/再接一层)
+   基础态隐藏、由状态选择器点亮,进入态 delay 只挂在进入态选择器下,基础态即时可逆。 */
+
+.fg-root {
+  gap: 22px;
+  min-height: 0;
+}
+
+@keyframes fg-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fg-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fg-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fg-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fg-dash {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fg-draw-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* ── 头部:可见标题(outline 槽位 headline,文本按口播填充) ── */
+
+.fg-header {
+  flex: 0 0 auto;
+}
+
+.fg-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+[data-state="growth-anchored"] .fg-headline {
+  animation: fg-drop-in 0.55s ease 0.05s both;
+}
+
+/* ── 主区:左=不变锚点树,右=有序阶段轨 + 阶段说明 ── */
+
+.fg-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 36px;
+}
+
+.fg-tree-panel {
+  flex: 0 0 46%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 26px 14px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+[data-state="growth-anchored"] .fg-tree-panel {
+  animation: fg-fade-in 0.5s ease 0.35s both;
+}
+
+.fg-panel-title {
+  margin: 0 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.fg-panel-title::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: var(--theme-structural);
+}
+
+.fg-tree {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+}
+
+/* 不变锚点:已分好的路径(深navy实线+实心节点),第 1 拍自绘落位 */
+.fg-alink {
+  stroke: var(--theme-structural);
+  stroke-width: 4;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  transition: stroke-width 0.5s ease;
+}
+
+[data-state="growth-anchored"] .fg-alink {
+  animation: fg-dash 0.5s ease both;
+}
+
+[data-state="growth-anchored"] .fg-al1 {
+  animation-delay: 0.7s;
+}
+
+[data-state="growth-anchored"] .fg-al2 {
+  animation-delay: 1s;
+}
+
+[data-state="growth-anchored"] .fg-al3 {
+  animation-delay: 1.3s;
+}
+
+/* 第 2 拍"不必改动已经分好的路径"报到时,锚点加粗再确认 */
+[data-state="stages-extended"] .fg-alink {
+  stroke-width: 6;
+  transition-delay: 6.3s;
+}
+
+.fg-anode {
+  fill: var(--theme-structural);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+[data-state="growth-anchored"] .fg-anode {
+  animation: fg-pop-in 0.45s ease both;
+}
+
+[data-state="growth-anchored"] .fg-an1 .fg-anode {
+  animation-delay: 0.6s;
+}
+
+[data-state="growth-anchored"] .fg-an2 .fg-anode {
+  animation-delay: 0.9s;
+}
+
+[data-state="growth-anchored"] .fg-an3 .fg-anode {
+  animation-delay: 1.2s;
+}
+
+[data-state="growth-anchored"] .fg-an4 .fg-anode {
+  animation-delay: 1.5s;
+}
+
+.fg-alabel {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 700;
+  fill: var(--theme-structural);
+}
+
+[data-state="growth-anchored"] .fg-alabel {
+  animation: fg-fade-in 0.4s ease both;
+}
+
+[data-state="growth-anchored"] .fg-an1 .fg-alabel {
+  animation-delay: 0.75s;
+}
+
+[data-state="growth-anchored"] .fg-an2 .fg-alabel {
+  animation-delay: 1.05s;
+}
+
+[data-state="growth-anchored"] .fg-an3 .fg-alabel {
+  animation-delay: 1.35s;
+}
+
+[data-state="growth-anchored"] .fg-an4 .fg-alabel {
+  animation-delay: 1.65s;
+}
+
+/* 新枝:第 1 拍两处生长(绿=过程色),第 2 拍再接一层 */
+.fg-glink {
+  stroke: var(--theme-process);
+  stroke-width: 4;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+[data-state="growth-anchored"] .fg-glink {
+  animation: fg-dash 0.6s ease both;
+}
+
+[data-state="growth-anchored"] .fg-gl1 {
+  animation-delay: 5.6s;
+}
+
+[data-state="growth-anchored"] .fg-gl2 {
+  animation-delay: 13.2s;
+}
+
+.fg-gnode {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-process);
+  stroke-width: 3;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+[data-state="growth-anchored"] .fg-gnode {
+  animation: fg-pop-in 0.45s ease both;
+}
+
+[data-state="growth-anchored"] .fg-gn1 .fg-gnode {
+  animation-delay: 6.1s;
+}
+
+[data-state="growth-anchored"] .fg-gn2 .fg-gnode {
+  animation-delay: 13.7s;
+}
+
+.fg-glabel {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 700;
+  fill: var(--theme-process);
+}
+
+[data-state="growth-anchored"] .fg-glabel {
+  animation: fg-fade-in 0.4s ease both;
+}
+
+[data-state="growth-anchored"] .fg-gn1 .fg-glabel {
+  animation-delay: 6.4s;
+}
+
+[data-state="growth-anchored"] .fg-gn2 .fg-glabel {
+  animation-delay: 14s;
+}
+
+/* 再接一层:第 2 拍落位,第 1 拍隐藏 */
+.fg-clink {
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.fg-cnode {
+  fill: var(--theme-paper);
+  stroke: var(--theme-process);
+  stroke-width: 2.5;
+  stroke-dasharray: 5 4;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.fg-cdots {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 900;
+  fill: var(--theme-process);
+}
+
+[data-state="growth-anchored"] .fg-clink,
+[data-state="growth-anchored"] .fg-cnodegroup {
+  opacity: 0;
+}
+
+[data-state="stages-extended"] .fg-clink {
+  animation: fg-dash 0.6s ease 1.2s both;
+}
+
+[data-state="stages-extended"] .fg-cnodegroup .fg-cnode {
+  animation: fg-pop-in 0.45s ease 1.7s both;
+}
+
+[data-state="stages-extended"] .fg-cnodegroup .fg-cdots {
+  animation: fg-fade-in 0.4s ease 1.9s both;
+}
+
+/* ── 右列:有序阶段轨(真实先后,允许 upcoming ghost)+ 阶段说明 ── */
+
+.fg-side {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.fg-track {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+[data-state="growth-anchored"] .fg-track {
+  animation: fg-fade-in 0.5s ease 3.8s both;
+}
+
+.fg-track-kicker {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.fg-track-kicker::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: var(--theme-structural);
+}
+
+.fg-stage {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 24px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  transition: opacity 0.45s ease, border-color 0.45s ease;
+}
+
+[data-state="growth-anchored"] .fg-stage-1 {
+  animation: fg-rise-in 0.5s ease 4.6s both;
+}
+
+[data-state="growth-anchored"] .fg-stage-2 {
+  animation: fg-rise-in 0.5s ease 12.2s both;
+}
+
+/* 第 1 拍:阶段 ③ 为 upcoming ghost(淡显,说明不外泄) */
+[data-state="growth-anchored"] .fg-stage-3 {
+  opacity: 0.35;
+  border-color: var(--theme-dashed-line);
+}
+
+[data-state="growth-anchored"] .fg-stage-3 .fg-stage-sub {
+  opacity: 0;
+}
+
+/* 第 2 拍:阶段 ③ 落位为当前阶段 */
+[data-state="stages-extended"] .fg-stage-3 {
+  border-color: var(--theme-process);
+  transition-delay: 0.3s;
+}
+
+.fg-stage-index {
+  flex: 0 0 auto;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  transition: color 0.45s ease;
+}
+
+[data-state="stages-extended"] .fg-stage-3 .fg-stage-index {
+  color: var(--theme-process);
+  transition-delay: 0.3s;
+}
+
+.fg-stage-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.fg-stage-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.fg-stage-sub {
+  margin: 6px 0 0;
+  font-size: 20px;
+  color: var(--text-2);
+}
+
+/* 阶段 ③ 说明随口播"不必为了增加对象……"报到时补入 */
+[data-state="stages-extended"] .fg-stage-3 .fg-stage-sub {
+  animation: fg-fade-in 0.45s ease 6.5s both;
+}
+
+/* 阶段说明区:第 2 拍末句"留余地、用起来灵活"落位 */
+.fg-purpose {
+  flex: 0 0 auto;
+  padding: 16px 24px;
+  border-left: 6px solid var(--theme-process);
+  background: var(--theme-process-surface);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="stages-extended"] .fg-purpose,
+[data-state="flexibility-bounded"] .fg-purpose {
+  opacity: 1;
+}
+
+[data-state="stages-extended"] .fg-purpose {
+  animation: fg-rise-in 0.5s ease 10.2s both;
+}
+
+.fg-purpose-line {
+  margin: 0;
+  font-size: 24px;
+  color: var(--text);
+}
+
+.fg-purpose-line b {
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+/* ── 收束区:灵活的定义 + 数据采集边界(第 3 拍落位,槽位高度首拍预留) ── */
+
+.fg-close {
+  flex: 0 0 148px;
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  border-top: 2px dashed var(--theme-dashed-line);
+  padding-top: 20px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="flexibility-bounded"] .fg-close {
+  opacity: 1;
+  animation: fg-fade-in 0.5s ease 0.3s both;
+}
+
+.fg-close-def {
+  flex: 1 1 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+[data-state="flexibility-bounded"] .fg-close-def {
+  animation: fg-rise-in 0.5s ease 0.6s both;
+}
+
+.fg-close-key {
+  font-family: var(--font-display-cn);
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+.fg-close-eq {
+  font-family: var(--font-mono);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--text-2);
+}
+
+.fg-close-val {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.fg-close-divider {
+  flex: 0 0 auto;
+  width: 0;
+  height: 88px;
+  border-left: 3px dashed var(--theme-dashed-line);
+}
+
+[data-state="flexibility-bounded"] .fg-close-divider {
+  animation: fg-draw-y 0.5s ease 1.1s both;
+}
+
+.fg-close-bound {
+  flex: 1 1 0;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+[data-state="flexibility-bounded"] .fg-close-bound {
+  animation: fg-rise-in 0.5s ease 5.4s both;
+}
+
+.fg-close-key2 {
+  font-family: var(--font-display-cn);
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.fg-close-warn {
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-warning);
+}

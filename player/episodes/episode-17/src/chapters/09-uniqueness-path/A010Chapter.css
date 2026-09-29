@@ -1,0 +1,355 @@
+/* 09-uniqueness-path · A010 唯一性判断 —— 前缀 .up- 仅本章使用;颜色/字体全部走主题 token。
+   基础态保持终态、进入动画只挂对应状态选择器;右卡内容第 1 拍为空卡位 ghost,
+   第 2 拍落位;权重随口播从判据(左卡+边界)移向结果(右卡),基础态即时可逆。 */
+
+.up-root {
+  gap: 26px;
+  min-height: 0;
+}
+
+@keyframes up-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes up-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes up-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes up-pop-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes up-draw-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* ── 头部:可见标题(outline 槽位 headline,文本按口播填充) ── */
+
+.up-header {
+  flex: 0 0 auto;
+}
+
+.up-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+[data-state="criterion-stated"] .up-headline {
+  animation: up-drop-in 0.55s ease 0.05s both;
+}
+
+/* ── 对照卡区:左卡 | 边界线 | 右卡,两卡等权、一致内部骨架 ── */
+
+.up-cards {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 120px 1fr;
+  align-items: stretch;
+}
+
+[data-state="criterion-stated"] .up-cards {
+  animation: up-fade-in 0.5s ease 0.4s both;
+}
+
+.up-card {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 26px 34px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  transition: opacity 0.5s ease, border-color 0.45s ease;
+}
+
+.up-kicker {
+  margin: 0;
+  align-self: flex-start;
+  padding: 8px 22px;
+  border: 2.5px solid;
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.up-kicker-left {
+  color: var(--theme-warning);
+  border-color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+}
+
+.up-kicker-right {
+  color: var(--theme-process);
+  border-color: var(--theme-process);
+  background: var(--theme-process-surface);
+}
+
+.up-demo {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 26px;
+}
+
+.up-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+/* 左卡:前段被截掉,只剩末段(斜纹遮蔽块) */
+.up-mask {
+  width: 200px;
+  height: 60px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: var(--surface-3);
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--theme-grid-line) 0 6px,
+    transparent 6px 13px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.up-mask i {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--text-mute);
+  background: var(--surface-2);
+  padding: 0 10px;
+}
+
+.up-sep {
+  font-family: var(--font-mono);
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.up-tail {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border: 2.5px solid var(--theme-structural);
+  padding: 10px 22px;
+}
+
+/* 右卡:完整路径的前段(分支+企业),第 2 拍"不同的上级分支"报到时点亮 */
+.up-front {
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  background: var(--theme-cool-surface);
+  border: 2.5px solid var(--theme-structural);
+  padding: 10px 18px;
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+[data-state="distinction-shown"] .up-front {
+  background: var(--accent-soft);
+  border-color: var(--theme-process);
+  transition-delay: 4.8s;
+}
+
+.up-rowcap {
+  margin: 0;
+  text-align: center;
+  font-size: 21px;
+  color: var(--text-mute);
+}
+
+.up-frontcap {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  font-weight: 700;
+  color: var(--theme-process);
+}
+
+[data-state="distinction-shown"] .up-frontcap {
+  opacity: 1;
+  animation: up-fade-in 0.45s ease 4.8s both;
+}
+
+.up-question {
+  margin: 4px 0 0;
+  text-align: center;
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.up-verdict {
+  margin: 0;
+  border-top: 2px dashed var(--theme-dashed-line);
+  padding-top: 18px;
+  text-align: center;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+}
+
+.up-verdict-left {
+  color: var(--theme-warning);
+}
+
+.up-verdict-right {
+  color: var(--theme-process);
+}
+
+/* ── 第 1 拍:左卡与边界线落位,右卡仅空卡位 ghost ── */
+
+[data-state="criterion-stated"] .up-card-left {
+  animation: up-rise-in 0.5s ease 2.4s both;
+}
+
+[data-state="criterion-stated"] .up-kicker-left {
+  animation: up-fade-in 0.45s ease 2.7s both;
+}
+
+[data-state="criterion-stated"] .up-card-left .up-row:nth-of-type(1) {
+  animation: up-rise-in 0.5s ease 3.3s both;
+}
+
+[data-state="criterion-stated"] .up-card-left .up-row:nth-of-type(2) {
+  animation: up-rise-in 0.5s ease 3.8s both;
+}
+
+[data-state="criterion-stated"] .up-card-left .up-rowcap {
+  animation: up-fade-in 0.45s ease 4.5s both;
+}
+
+[data-state="criterion-stated"] .up-question {
+  animation: up-rise-in 0.5s ease 5.2s both;
+}
+
+[data-state="criterion-stated"] .up-verdict-left {
+  animation: up-rise-in 0.5s ease 7.3s both;
+}
+
+[data-state="criterion-stated"] .up-card-right {
+  opacity: 0.3;
+  border-color: var(--theme-dashed-line);
+}
+
+[data-state="criterion-stated"] .up-card-right .up-kicker,
+[data-state="criterion-stated"] .up-card-right .up-demo,
+[data-state="criterion-stated"] .up-card-right .up-verdict {
+  opacity: 0;
+}
+
+/* ── 边界线:R016"推不出"载体,线先立、判断随口播报到 ── */
+
+.up-boundary {
+  position: relative;
+}
+
+.up-boundline {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 50%;
+  margin-left: -1.5px;
+  width: 3px;
+  background: var(--theme-warning);
+}
+
+[data-state="criterion-stated"] .up-boundline {
+  animation: up-draw-y 0.7s ease 0.9s both;
+  transform-origin: center;
+}
+
+.up-boundtag {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 12px 20px;
+  border: 2.5px solid var(--theme-warning);
+  background: var(--surface-2);
+  box-shadow: 4px 4px 0 var(--theme-offset-shadow);
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--theme-warning);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+[data-state="criterion-stated"] .up-boundtag {
+  animation: up-pop-in 0.45s ease 6.5s both;
+}
+
+/* ── 第 2 拍:右卡落位完成对照,权重移向结果(左卡轻退让) ── */
+
+[data-state="distinction-shown"] .up-card-left {
+  opacity: 0.78;
+  transition-delay: 4.8s;
+}
+
+[data-state="distinction-shown"] .up-card-right .up-kicker {
+  animation: up-fade-in 0.45s ease 0.5s both;
+}
+
+[data-state="distinction-shown"] .up-card-right .up-row:nth-of-type(1) {
+  animation: up-rise-in 0.5s ease 1.2s both;
+}
+
+[data-state="distinction-shown"] .up-card-right .up-row:nth-of-type(2) {
+  animation: up-rise-in 0.5s ease 2.2s both;
+}
+
+[data-state="distinction-shown"] .up-verdict-right {
+  animation: up-rise-in 0.5s ease 8.6s both;
+}

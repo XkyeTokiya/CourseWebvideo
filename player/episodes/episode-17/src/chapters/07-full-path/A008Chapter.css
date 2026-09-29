@@ -1,0 +1,608 @@
+/* 07-full-path · A008 完整路径 —— 前缀 .fp- 仅本章使用;颜色/字体全部走主题 token。
+   锚点六段"点亮"用 keyframe(挂载即播,both 保持 from 态),保证第 0 拍挂载时
+   先呈现 ghost 底串、再按口播报到点逐段点亮;后续说明在锚点之下分层补充。
+   动画预算(口播 ÷4):拍1 22.9s/链尾 19.8s · 拍2 10.8s/链尾 8.7s · 拍3 7.8s/链尾 5.6s。 */
+
+.fp-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+@keyframes fp-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fp-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fp-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fp-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fp-draw-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* 锚点段点亮:ghost 底串 → 实格,颜色随口播报到点逐段转正 */
+@keyframes fp-cell-light {
+  from {
+    opacity: 0.55;
+    background: var(--surface-3);
+    border-color: var(--theme-grid-line);
+    box-shadow: none;
+  }
+  to {
+    opacity: 1;
+    background: var(--surface-2);
+    border-color: var(--theme-structural);
+    box-shadow: var(--card-shadow);
+  }
+}
+
+/* 点号转过程绿:口播"整条路径连起来读"时自左向右归一 */
+@keyframes fp-dot-accent {
+  from {
+    opacity: 0.5;
+    background: var(--theme-grid-line);
+  }
+  to {
+    opacity: 1;
+    background: var(--theme-process);
+  }
+}
+
+/* ── 头部:可见标题(outline 槽位 headline,按口播填充) ── */
+
+.fp-header {
+  flex: 0 0 auto;
+}
+
+.fp-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+[data-state="path-assembled"] .fp-headline {
+  animation: fp-drop-in 0.55s ease 0.05s both;
+}
+
+/* ── 共同锚点:完整路径 1.2.156.3001.0501.1001.01,根→叶逐段点亮 ── */
+
+.fp-anchor {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  padding: 16px 0 30px;
+}
+
+[data-state="path-assembled"] .fp-anchor {
+  animation: fp-fade-in 0.5s ease 0.4s both;
+}
+
+.fp-end {
+  padding: 6px 14px;
+  border: 2px dashed var(--theme-dashed-line);
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-mute);
+}
+
+.fp-strip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.fp-anchor-cell {
+  padding: 14px 28px;
+  border: 3px solid var(--theme-grid-line);
+  background: var(--surface-3);
+  opacity: 0.55;
+}
+
+[data-state="path-assembled"] .fp-anchor-cell {
+  animation: fp-cell-light 0.4s ease both;
+}
+
+[data-state="preservation-noted"] .fp-anchor-cell,
+[data-state="narrowing-confirmed"] .fp-anchor-cell {
+  opacity: 1;
+  background: var(--surface-2);
+  border-color: var(--theme-structural);
+  box-shadow: var(--card-shadow);
+}
+
+/* 点亮报到点:1≈6.3s / 2≈7.0s / 156≈7.8s / 3001≈8.5s / 0501≈9.7s / 1001.01≈11.1s */
+[data-state="path-assembled"] .fp-cell-1 {
+  animation-delay: 6.3s;
+}
+
+[data-state="path-assembled"] .fp-cell-2 {
+  animation-delay: 7s;
+}
+
+[data-state="path-assembled"] .fp-cell-3 {
+  animation-delay: 7.8s;
+}
+
+[data-state="path-assembled"] .fp-cell-4 {
+  animation-delay: 8.5s;
+}
+
+[data-state="path-assembled"] .fp-cell-5 {
+  animation-delay: 9.7s;
+}
+
+[data-state="path-assembled"] .fp-cell-6 {
+  animation-delay: 11.1s;
+}
+
+.fp-anchor-num {
+  font-size: 62px;
+  color: var(--text);
+}
+
+.fp-anchor-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--theme-grid-line);
+  opacity: 0.5;
+}
+
+[data-state="path-assembled"] .fp-anchor-dot {
+  animation: fp-dot-accent 0.45s ease both;
+}
+
+[data-state="preservation-noted"] .fp-anchor-dot,
+[data-state="narrowing-confirmed"] .fp-anchor-dot {
+  opacity: 1;
+  background: var(--theme-process);
+}
+
+[data-state="path-assembled"] .fp-anchor-dot[data-dot="1"] {
+  animation-delay: 18.9s;
+}
+
+[data-state="path-assembled"] .fp-anchor-dot[data-dot="2"] {
+  animation-delay: 19s;
+}
+
+[data-state="path-assembled"] .fp-anchor-dot[data-dot="3"] {
+  animation-delay: 19.1s;
+}
+
+[data-state="path-assembled"] .fp-anchor-dot[data-dot="4"] {
+  animation-delay: 19.2s;
+}
+
+[data-state="path-assembled"] .fp-anchor-dot[data-dot="5"] {
+  animation-delay: 19.3s;
+}
+
+/* 整条路径连读:全串下划线自左向右画成,锚点归一为一条路径 */
+.fp-anchor-underline {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  bottom: -20px;
+  height: 4px;
+  background: var(--theme-process);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+[data-state="path-assembled"] .fp-anchor-underline {
+  animation: fp-draw-x 0.7s ease 18.9s both;
+}
+
+[data-state="preservation-noted"] .fp-anchor-underline,
+[data-state="narrowing-confirmed"] .fp-anchor-underline {
+  transform: scaleX(1);
+}
+
+/* ── 关联组区:点号标尺,"每个点号 · 一次层级推进"(拍 1 内 ≈13.2s 落位) ── */
+
+.fp-dots {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+}
+
+[data-state="path-assembled"] .fp-dots,
+[data-state="preservation-noted"] .fp-dots,
+[data-state="narrowing-confirmed"] .fp-dots {
+  opacity: 1;
+}
+
+[data-state="path-assembled"] .fp-dots {
+  animation: fp-fade-in 0.5s ease 13.2s both;
+}
+
+.fp-dots-line {
+  display: flex;
+  align-items: center;
+}
+
+.fp-dots-line i {
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--theme-process);
+  border-radius: 50%;
+  background: var(--surface-2);
+}
+
+.fp-dots-line b {
+  width: 72px;
+  height: 0;
+  border-top: 3px dashed var(--theme-dashed-line);
+  transform-origin: left center;
+}
+
+[data-state="path-assembled"] .fp-dots-line i {
+  animation: fp-pop-in 0.4s ease both;
+}
+
+[data-state="path-assembled"] .fp-dots-line b {
+  animation: fp-draw-x 0.35s ease both;
+}
+
+[data-state="path-assembled"] .fp-dots-line i:nth-child(1) {
+  animation-delay: 13.3s;
+}
+
+[data-state="path-assembled"] .fp-dots-line b:nth-child(2) {
+  animation-delay: 13.45s;
+}
+
+[data-state="path-assembled"] .fp-dots-line i:nth-child(3) {
+  animation-delay: 13.6s;
+}
+
+[data-state="path-assembled"] .fp-dots-line b:nth-child(4) {
+  animation-delay: 13.75s;
+}
+
+[data-state="path-assembled"] .fp-dots-line i:nth-child(5) {
+  animation-delay: 13.9s;
+}
+
+[data-state="path-assembled"] .fp-dots-line b:nth-child(6) {
+  animation-delay: 14.05s;
+}
+
+[data-state="path-assembled"] .fp-dots-line i:nth-child(7) {
+  animation-delay: 14.2s;
+}
+
+[data-state="path-assembled"] .fp-dots-line b:nth-child(8) {
+  animation-delay: 14.35s;
+}
+
+[data-state="path-assembled"] .fp-dots-line i:nth-child(9) {
+  animation-delay: 14.5s;
+}
+
+.fp-dots-note {
+  margin: 0;
+  font-size: 26px;
+  color: var(--text-2);
+}
+
+.fp-dots-note b {
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* ── 支撑注记(分层保留区,R013):锚点之下分层补充,不重排路径 ── */
+
+.fp-preserve {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 2px dashed var(--theme-dashed-line);
+}
+
+.fp-preserve-head {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+[data-state="path-assembled"] .fp-preserve-head {
+  animation: fp-fade-in 0.45s ease 0.6s both;
+}
+
+.fp-preserve-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 8px;
+}
+
+/* 细节行:警示 kicker + 两段判断,按口播报到点分先后(拍 2) */
+.fp-claim-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.fp-claim-kicker {
+  flex: 0 0 auto;
+  padding: 6px 16px;
+  border: 2px solid var(--theme-warning);
+  background: var(--theme-warning-surface);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--theme-warning);
+  opacity: 0;
+}
+
+[data-state="preservation-noted"] .fp-claim-kicker,
+[data-state="narrowing-confirmed"] .fp-claim-kicker {
+  opacity: 1;
+}
+
+[data-state="preservation-noted"] .fp-claim-kicker {
+  animation: fp-fade-in 0.45s ease 0.4s both;
+}
+
+.fp-claim {
+  margin: 0;
+  font-size: 30px;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+[data-state="preservation-noted"] .fp-claim,
+[data-state="narrowing-confirmed"] .fp-claim {
+  opacity: 1;
+}
+
+[data-state="preservation-noted"] .fp-claim-a {
+  animation: fp-rise-in 0.5s ease 3.4s both;
+}
+
+[data-state="preservation-noted"] .fp-claim-b {
+  animation: fp-rise-in 0.5s ease 7.8s both;
+}
+
+.fp-claim b {
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* 分层保留区三行:下游节点 + 累积路径(上级保留/新段高亮)+ 范围条 */
+.fp-layers {
+  display: flex;
+  flex-direction: column;
+}
+
+.fp-layer {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 11px 0;
+  border-bottom: 2px dashed var(--theme-grid-line);
+  opacity: 0;
+}
+
+.fp-layer:last-child {
+  border-bottom: 0;
+}
+
+[data-state="preservation-noted"] .fp-layer,
+[data-state="narrowing-confirmed"] .fp-layer {
+  opacity: 1;
+}
+
+[data-state="preservation-noted"] .fp-layer {
+  animation: fp-rise-in 0.5s ease both;
+}
+
+[data-state="preservation-noted"] .fp-layer:nth-child(1) {
+  animation-delay: 5s;
+}
+
+[data-state="preservation-noted"] .fp-layer:nth-child(2) {
+  animation-delay: 6s;
+}
+
+[data-state="preservation-noted"] .fp-layer:nth-child(3) {
+  animation-delay: 7s;
+}
+
+.fp-layer-node {
+  flex: 0 0 auto;
+  min-width: 118px;
+  text-align: center;
+  padding: 6px 18px;
+  border: 2px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: 3px 4px 0 var(--theme-offset-shadow);
+  font-size: 26px;
+  color: var(--theme-structural);
+}
+
+.fp-layer-path {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  white-space: nowrap;
+}
+
+.fp-inh {
+  position: relative;
+  color: var(--text-mute);
+}
+
+/* 拍 3:上级路径保留下划线,逐行画出 */
+.fp-inh::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 3px;
+  background: var(--theme-process);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+[data-state="narrowing-confirmed"] .fp-inh::after {
+  animation: fp-draw-x 0.45s ease both;
+}
+
+[data-state="narrowing-confirmed"] .fp-layer:nth-child(1) .fp-inh::after {
+  animation-delay: 4.8s;
+}
+
+[data-state="narrowing-confirmed"] .fp-layer:nth-child(2) .fp-inh::after {
+  animation-delay: 4.95s;
+}
+
+[data-state="narrowing-confirmed"] .fp-layer:nth-child(3) .fp-inh::after {
+  animation-delay: 5.1s;
+}
+
+.fp-new {
+  color: var(--theme-process);
+  font-weight: 700;
+}
+
+/* 范围条:越深越窄;拍 2 随行落位后充填,拍 3 由对照注记点题 */
+.fp-scope {
+  flex: 1 1 auto;
+  max-width: 400px;
+  height: 16px;
+  border: 2px solid var(--theme-grid-line);
+  background: var(--surface-3);
+}
+
+.fp-scope i {
+  display: block;
+  height: 100%;
+  background: var(--theme-process);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s ease;
+}
+
+[data-state="preservation-noted"] .fp-scope i,
+[data-state="narrowing-confirmed"] .fp-scope i {
+  transform: scaleX(1);
+}
+
+[data-state="preservation-noted"] .fp-layer:nth-child(1) .fp-scope i {
+  transition-delay: 5.4s;
+}
+
+[data-state="preservation-noted"] .fp-layer:nth-child(2) .fp-scope i {
+  transition-delay: 6.4s;
+}
+
+[data-state="preservation-noted"] .fp-layer:nth-child(3) .fp-scope i {
+  transition-delay: 7.4s;
+}
+
+/* ── 对照注记(拍 3):范围更窄 ⇋ 路径保留 ── */
+
+.fp-contrast {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  font-size: 28px;
+  color: var(--text-2);
+}
+
+.fp-contrast-narrow,
+.fp-contrast-keep {
+  opacity: 0;
+}
+
+[data-state="narrowing-confirmed"] .fp-contrast-narrow,
+[data-state="narrowing-confirmed"] .fp-contrast-keep {
+  opacity: 1;
+}
+
+[data-state="narrowing-confirmed"] .fp-contrast-narrow {
+  animation: fp-rise-in 0.5s ease 1.6s both;
+}
+
+[data-state="narrowing-confirmed"] .fp-contrast-keep {
+  animation: fp-rise-in 0.5s ease 4.5s both;
+}
+
+.fp-contrast b {
+  font-weight: 900;
+}
+
+.fp-contrast-narrow b {
+  color: var(--theme-structural);
+}
+
+.fp-contrast-keep b {
+  color: var(--theme-process);
+}
+
+.fp-contrast-sep {
+  width: 0;
+  height: 34px;
+  border-left: 2px dashed var(--theme-dashed-line);
+}

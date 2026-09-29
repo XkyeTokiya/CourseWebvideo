@@ -1,0 +1,487 @@
+{
+  "episode_id": "episode-17",
+  "validation_profile": "visual-rough-v4",
+  "schema_version": "courseplay-visual-rough/v4",
+  "status": "approved",
+  "validation_summary": {
+    "pages": [
+      {
+        "a_id": "A001",
+        "source": {
+          "S": [
+            "S001",
+            "S002",
+            "S003"
+          ],
+          "G": [
+            "G001",
+            "G002"
+          ],
+          "R": [
+            "R001"
+          ]
+        },
+        "recipe": {
+          "requested": "central-question",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 2,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A002",
+        "source": {
+          "S": [
+            "S004",
+            "S005",
+            "S006"
+          ],
+          "G": [
+            "G003",
+            "G004"
+          ],
+          "R": [
+            "R002"
+          ]
+        },
+        "recipe": {
+          "requested": "issue-cards-with-image",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M001"
+        }
+      },
+      {
+        "a_id": "A003",
+        "source": {
+          "S": [
+            "S007",
+            "S008",
+            "S009",
+            "S010"
+          ],
+          "G": [
+            "G005",
+            "G006",
+            "G007"
+          ],
+          "R": [
+            "R003",
+            "R004"
+          ]
+        },
+        "recipe": {
+          "requested": "evidence-cards-with-provenance-boundary",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A004",
+        "source": {
+          "S": [
+            "S011",
+            "S012",
+            "S013",
+            "S014"
+          ],
+          "G": [
+            "G008",
+            "G009",
+            "G010"
+          ],
+          "R": [
+            "R005",
+            "R006"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-reading-notes",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 2,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M002"
+        }
+      },
+      {
+        "a_id": "A005",
+        "source": {
+          "S": [
+            "S015",
+            "S016",
+            "S017",
+            "S018",
+            "S019",
+            "S020"
+          ],
+          "G": [
+            "G011",
+            "G012",
+            "G013",
+            "G014",
+            "G015"
+          ],
+          "R": [
+            "R007",
+            "R008"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-insight-rail",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M003"
+        }
+      },
+      {
+        "a_id": "A006",
+        "source": {
+          "S": [
+            "S021",
+            "S022",
+            "S023",
+            "S024"
+          ],
+          "G": [
+            "G016",
+            "G017",
+            "G018"
+          ],
+          "R": [
+            "R009",
+            "R010"
+          ]
+        },
+        "recipe": {
+          "requested": "parallel-cards-with-takeaway",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A007",
+        "source": {
+          "S": [
+            "S025",
+            "S026",
+            "S027",
+            "S028"
+          ],
+          "G": [
+            "G019",
+            "G020",
+            "G021"
+          ],
+          "R": [
+            "R011",
+            "R012"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-summary-rail",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M004"
+        }
+      },
+      {
+        "a_id": "A008",
+        "source": {
+          "S": [
+            "S029",
+            "S030",
+            "S031"
+          ],
+          "G": [
+            "G022",
+            "G023"
+          ],
+          "R": [
+            "R013"
+          ]
+        },
+        "recipe": {
+          "requested": "common-anchor-association-groups",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A009",
+        "source": {
+          "S": [
+            "S032",
+            "S033",
+            "S034",
+            "S035"
+          ],
+          "G": [
+            "G024",
+            "G025",
+            "G026"
+          ],
+          "R": [
+            "R014",
+            "R015"
+          ]
+        },
+        "recipe": {
+          "requested": "lifecycle-identity-continuity",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A010",
+        "source": {
+          "S": [
+            "S036",
+            "S037",
+            "S038"
+          ],
+          "G": [
+            "G027",
+            "G028"
+          ],
+          "R": [
+            "R016"
+          ]
+        },
+        "recipe": {
+          "requested": "parallel-cards-self-contained",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A011",
+        "source": {
+          "S": [
+            "S039",
+            "S040",
+            "S041"
+          ],
+          "G": [
+            "G029",
+            "G030"
+          ],
+          "R": [
+            "R017"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-insight-rail",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M005"
+        }
+      },
+      {
+        "a_id": "A012",
+        "source": {
+          "S": [
+            "S042",
+            "S043",
+            "S044",
+            "S045",
+            "S046",
+            "S047"
+          ],
+          "G": [
+            "G031",
+            "G032",
+            "G033",
+            "G034",
+            "G035"
+          ],
+          "R": [
+            "R018",
+            "R019",
+            "R020"
+          ]
+        },
+        "recipe": {
+          "requested": "scope-responsibility-ledger",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A013",
+        "source": {
+          "S": [
+            "S048",
+            "S049",
+            "S050",
+            "S051"
+          ],
+          "G": [
+            "G036",
+            "G037",
+            "G038"
+          ],
+          "R": [
+            "R021",
+            "R022"
+          ]
+        },
+        "recipe": {
+          "requested": "linear-steps-with-takeaway",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      }
+    ]
+  },
+  "image_allocation": {
+    "required_page_count": 5,
+    "assigned_page_count": 5
+  },
+  "logic_diagrams": {
+    "page_limit": 0,
+    "assigned_page_count": 0
+  },
+  "errors": [],
+  "failures": [],
+  "input_integrity": {
+    "a_page_sha256": "d0d1376e04219a0161e3b36598f8a80f9289dc86f4cad9843351bd0555227924",
+    "visual_rough_sha256": "cc6c31a5e1ffaf664889f63141c695b6d02db66470607e2a58c6fa84d230cfcc",
+    "recipe_registry_sha256": "697ed613616ec9ac5325a38544fe4ac9c8fcf6b3ab5439e614e7a7293b93ef2e"
+  }
+}

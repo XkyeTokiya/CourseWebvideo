@@ -1,0 +1,857 @@
+/* 03-oid-definition · A004 —— 前缀 .od- 仅本章使用；颜色/字体全部走主题 token。
+   左侧阅读轨持续，右侧舞台双槽位 cross-fade（定义演示 ↔ 体系树锚点）。
+   首拍建立序列用 keyframe（挂载即播，delay 只挂在对应状态选择器下，
+   绝对延迟对齐口播报到点）；状态切换用 transition，基础态保持即时可逆。 */
+
+.od-root {
+  min-height: 0;
+}
+
+.od-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 48px;
+}
+
+@keyframes od-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes od-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes od-pop {
+  from {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes od-media-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes od-slide-lock {
+  from {
+    opacity: 0;
+    transform: translateX(-36px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes od-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ── 左侧阅读轨：标题区 + 定义要点序列（持续，第 4 拍起弱化） ── */
+
+.od-notes {
+  flex: 0 0 620px;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.od-headline-block {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.od-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="definition-established"] .od-headline {
+  animation: od-rise 0.55s ease 0.05s both;
+}
+
+[data-state="scope-enumerated"] .od-headline,
+[data-state="single-explanation"] .od-headline,
+[data-state="system-framed"] .od-headline,
+[data-state="tree-shaped"] .od-headline,
+[data-state="focus-set"] .od-headline {
+  opacity: 1;
+}
+
+.od-en-badge {
+  padding: 4px 16px;
+  border: 2px solid var(--theme-process);
+  background: var(--theme-process-surface);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--theme-process);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="definition-established"] .od-en-badge {
+  opacity: 1;
+  animation: od-pop 0.4s ease 0.5s both;
+}
+
+[data-state="scope-enumerated"] .od-en-badge,
+[data-state="single-explanation"] .od-en-badge,
+[data-state="system-framed"] .od-en-badge,
+[data-state="tree-shaped"] .od-en-badge,
+[data-state="focus-set"] .od-en-badge {
+  opacity: 1;
+}
+
+.od-note-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  transition: opacity 0.5s ease;
+}
+
+/* 口播进入体系部分：定义要点序列整体弱化让位 */
+[data-state="system-framed"] .od-note-list,
+[data-state="tree-shaped"] .od-note-list,
+[data-state="focus-set"] .od-note-list {
+  opacity: 0.4;
+}
+
+.od-note {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 2px dashed var(--theme-grid-line);
+}
+
+.od-note:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.od-note-index {
+  flex: 0 0 auto;
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--theme-process);
+}
+
+.od-note-body {
+  min-width: 0;
+}
+
+.od-note-lead {
+  margin: 0;
+  font-size: 26px;
+  color: var(--text-2);
+}
+
+.od-note-strong {
+  margin: 6px 0 0;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* 要点 ①：口播报到“全球无歧义、唯一的命名”时补强结论行 */
+.od-note-def {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="definition-established"] .od-note-def {
+  opacity: 1;
+  animation: od-fade 0.5s ease 0.35s both;
+}
+
+[data-state="scope-enumerated"] .od-note-def,
+[data-state="single-explanation"] .od-note-def,
+[data-state="system-framed"] .od-note-def,
+[data-state="tree-shaped"] .od-note-def,
+[data-state="focus-set"] .od-note-def {
+  opacity: 1;
+}
+
+.od-note-def-key {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="definition-established"] .od-note-def-key {
+  opacity: 1;
+  animation: od-pop 0.45s ease 9.3s both;
+}
+
+[data-state="scope-enumerated"] .od-note-def-key,
+[data-state="single-explanation"] .od-note-def-key,
+[data-state="system-framed"] .od-note-def-key,
+[data-state="tree-shaped"] .od-note-def-key,
+[data-state="focus-set"] .od-note-def-key {
+  opacity: 1;
+}
+
+/* 要点 ②：范围项逐词报到（与右侧托盘形状同步） */
+.od-note-scope {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="scope-enumerated"] .od-note-scope {
+  opacity: 1;
+  animation: od-rise 0.5s ease 0.2s both;
+}
+
+[data-state="single-explanation"] .od-note-scope,
+[data-state="system-framed"] .od-note-scope,
+[data-state="tree-shaped"] .od-note-scope,
+[data-state="focus-set"] .od-note-scope {
+  opacity: 1;
+}
+
+.od-scope-row {
+  margin: 10px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+
+.od-scope-item {
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.od-scope-item + .od-scope-item::before {
+  content: "/";
+  margin-right: 14px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--text-faint);
+}
+
+[data-state="scope-enumerated"] .od-scope-item,
+[data-state="single-explanation"] .od-scope-item,
+[data-state="system-framed"] .od-scope-item,
+[data-state="tree-shaped"] .od-scope-item,
+[data-state="focus-set"] .od-scope-item {
+  opacity: 1;
+}
+
+[data-state="scope-enumerated"] .od-scope-item {
+  animation: od-pop 0.4s ease both;
+}
+
+[data-state="scope-enumerated"] .od-scope-item:nth-child(1) {
+  animation-delay: 3.4s;
+}
+
+[data-state="scope-enumerated"] .od-scope-item:nth-child(2) {
+  animation-delay: 5.2s;
+}
+
+[data-state="scope-enumerated"] .od-scope-item:nth-child(3) {
+  animation-delay: 6.2s;
+}
+
+[data-state="scope-enumerated"] .od-scope-item:nth-child(4) {
+  animation-delay: 8s;
+}
+
+/* 要点 ③：口播报到“换到哪个组织、哪个系统”时落位 */
+.od-note-single {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="single-explanation"] .od-note-single {
+  opacity: 1;
+  animation: od-rise 0.5s ease 3s both;
+}
+
+[data-state="system-framed"] .od-note-single,
+[data-state="tree-shaped"] .od-note-single,
+[data-state="focus-set"] .od-note-single {
+  opacity: 1;
+}
+
+/* ── 右侧舞台：双槽位 cross-fade，无 display 硬切 ───────────── */
+
+.od-stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+}
+
+.od-demo,
+.od-system {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="definition-established"] .od-demo,
+[data-state="scope-enumerated"] .od-demo,
+[data-state="single-explanation"] .od-demo {
+  opacity: 1;
+}
+
+[data-state="system-framed"] .od-system,
+[data-state="tree-shaped"] .od-system,
+[data-state="focus-set"] .od-system {
+  opacity: 1;
+}
+
+/* ── 槽位 A：一份解释演示（对象托盘 → OID 铭牌 → 双语境 → 归并） ── */
+
+.od-tray {
+  flex: 0 0 auto;
+  width: 640px;
+  margin: 0 auto;
+  padding: 16px 24px 18px;
+  border: 3px dashed var(--theme-dashed-line);
+  background: var(--surface-3);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="definition-established"] .od-tray {
+  opacity: 1;
+  animation: od-rise 0.5s ease 5s both;
+}
+
+[data-state="scope-enumerated"] .od-tray,
+[data-state="single-explanation"] .od-tray {
+  opacity: 1;
+}
+
+.od-tray-head {
+  margin: 0 0 10px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+
+.od-tray-shapes {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.od-shape {
+  width: 56px;
+  height: 56px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="scope-enumerated"] .od-shape,
+[data-state="single-explanation"] .od-shape {
+  opacity: 1;
+}
+
+[data-state="scope-enumerated"] .od-shape {
+  animation: od-pop 0.4s ease both;
+}
+
+[data-state="scope-enumerated"] .od-shape:nth-child(1) {
+  animation-delay: 3.4s;
+}
+
+[data-state="scope-enumerated"] .od-shape:nth-child(2) {
+  animation-delay: 5.2s;
+}
+
+[data-state="scope-enumerated"] .od-shape:nth-child(3) {
+  animation-delay: 6.2s;
+}
+
+[data-state="scope-enumerated"] .od-shape:nth-child(4) {
+  animation-delay: 8s;
+}
+
+.od-flow {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.od-flow-in {
+  height: 48px;
+}
+
+.od-flow-out {
+  height: 40px;
+}
+
+.od-flow-merge {
+  height: 40px;
+}
+
+.od-flow path {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 2.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+/* 托盘汇入铭牌：口播报到“数字对象”后画入 */
+[data-state="scope-enumerated"] .od-flow-in path {
+  animation: od-draw 0.45s ease both;
+}
+
+[data-state="scope-enumerated"] .od-flow-in path:nth-child(1) {
+  animation-delay: 8.6s;
+}
+
+[data-state="scope-enumerated"] .od-flow-in path:nth-child(2) {
+  animation-delay: 8.75s;
+}
+
+[data-state="scope-enumerated"] .od-flow-in path:nth-child(3) {
+  animation-delay: 8.9s;
+}
+
+[data-state="scope-enumerated"] .od-flow-in path:nth-child(4) {
+  animation-delay: 9.05s;
+}
+
+[data-state="single-explanation"] .od-flow-in path {
+  stroke-dashoffset: 0;
+}
+
+/* 铭牌分出双语境：口播报到“换到哪个组织、哪个系统”时画出 */
+[data-state="single-explanation"] .od-flow-out path {
+  stroke-dashoffset: 0;
+  animation: od-draw 0.45s ease both;
+}
+
+[data-state="single-explanation"] .od-flow-out path:nth-child(1) {
+  animation-delay: 3s;
+}
+
+[data-state="single-explanation"] .od-flow-out path:nth-child(2) {
+  animation-delay: 3.15s;
+}
+
+/* 双语境归并到同一份解释 */
+[data-state="single-explanation"] .od-flow-merge path {
+  stroke-dashoffset: 0;
+  animation: od-draw 0.45s ease both;
+}
+
+[data-state="single-explanation"] .od-flow-merge path:nth-child(1) {
+  animation-delay: 5.8s;
+}
+
+[data-state="single-explanation"] .od-flow-merge path:nth-child(2) {
+  animation-delay: 5.95s;
+}
+
+.od-plate {
+  flex: 0 0 auto;
+  width: 560px;
+  margin: 0 auto;
+  padding: 24px 30px 22px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="definition-established"] .od-plate {
+  opacity: 1;
+  animation: od-rise 0.6s ease 0.6s both;
+}
+
+[data-state="scope-enumerated"] .od-plate,
+[data-state="single-explanation"] .od-plate {
+  opacity: 1;
+}
+
+.od-plate-name {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 96px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--theme-structural);
+}
+
+.od-plate-stamp {
+  display: inline-block;
+  margin: 14px 0 0;
+  padding: 6px 20px;
+  border: 2px solid var(--theme-process);
+  background: var(--theme-process-surface);
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: var(--theme-process);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="definition-established"] .od-plate-stamp {
+  opacity: 1;
+  animation: od-pop 0.45s ease 9.5s both;
+}
+
+[data-state="scope-enumerated"] .od-plate-stamp,
+[data-state="single-explanation"] .od-plate-stamp {
+  opacity: 1;
+}
+
+.od-contexts {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+}
+
+.od-context {
+  padding: 14px 36px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="single-explanation"] .od-context {
+  opacity: 1;
+  animation: od-pop 0.45s ease both;
+}
+
+[data-state="single-explanation"] .od-context:nth-child(1) {
+  animation-delay: 3.4s;
+}
+
+[data-state="single-explanation"] .od-context:nth-child(2) {
+  animation-delay: 4.4s;
+}
+
+.od-explain {
+  flex: 0 0 auto;
+  width: 380px;
+  margin: 0 auto;
+  padding: 16px 0;
+  text-align: center;
+  background: var(--theme-process);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--surface-2);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="single-explanation"] .od-explain {
+  opacity: 1;
+  animation: od-pop 0.5s ease 6.4s both;
+}
+
+/* ── 槽位 B：体系条 + 教材根分支图锚点 + 收束行 ─────────────── */
+
+.od-sysbar {
+  flex: 0 0 auto;
+}
+
+.od-sysbar-head {
+  margin: 0 0 12px;
+  font-size: 28px;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-state="system-framed"] .od-sysbar-head {
+  opacity: 1;
+  animation: od-fade 0.5s ease 2.5s both;
+}
+
+[data-state="tree-shaped"] .od-sysbar-head,
+[data-state="focus-set"] .od-sysbar-head {
+  opacity: 1;
+}
+
+.od-sysbar-head b {
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.od-sysbar-track {
+  display: flex;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+.od-syspart {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 20px 0;
+  text-align: center;
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.od-syspart + .od-syspart {
+  border-left: 2px dashed var(--theme-grid-line);
+}
+
+[data-state="system-framed"] .od-syspart {
+  opacity: 1;
+  transform: none;
+  animation: od-slide-lock 0.45s ease both;
+}
+
+[data-state="system-framed"] .od-syspart:nth-child(1) {
+  animation-delay: 7.4s;
+}
+
+[data-state="system-framed"] .od-syspart:nth-child(2) {
+  animation-delay: 8.6s;
+}
+
+[data-state="system-framed"] .od-syspart:nth-child(3) {
+  animation-delay: 9.8s;
+}
+
+[data-state="system-framed"] .od-syspart:nth-child(4) {
+  animation-delay: 11.2s;
+}
+
+[data-state="tree-shaped"] .od-syspart,
+[data-state="focus-set"] .od-syspart {
+  opacity: 1;
+  transform: none;
+}
+
+.od-syspart-index {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--theme-process);
+}
+
+.od-syspart-label {
+  display: block;
+  margin-top: 6px;
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.od-figure {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0;
+  padding: 14px 16px 12px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+[data-state="tree-shaped"] .od-figure {
+  opacity: 1;
+  transform: none;
+  animation: od-media-in 0.6s ease 3.2s both;
+}
+
+[data-state="focus-set"] .od-figure {
+  opacity: 1;
+  transform: none;
+}
+
+.od-figure-img {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  object-fit: contain;
+}
+
+.od-figure-caption {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-top: 10px;
+}
+
+.od-figure-badge {
+  flex: 0 0 auto;
+  padding: 4px 12px;
+  border: 2px solid var(--theme-warning);
+  background: var(--theme-warning-surface);
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--theme-warning);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="tree-shaped"] .od-figure-badge {
+  opacity: 1;
+  animation: od-pop 0.4s ease 3.8s both;
+}
+
+[data-state="focus-set"] .od-figure-badge {
+  opacity: 1;
+}
+
+.od-figure-note {
+  min-width: 0;
+  font-size: 22px;
+  color: var(--text-2);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.od-figure-note span {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="tree-shaped"] .od-figure-note span,
+[data-state="focus-set"] .od-figure-note span {
+  opacity: 1;
+}
+
+[data-state="tree-shaped"] .od-figure-note span:nth-child(1) {
+  animation: od-fade 0.45s ease 6.8s both;
+}
+
+[data-state="tree-shaped"] .od-figure-note span:nth-child(2) {
+  animation: od-fade 0.45s ease 8.55s both;
+}
+
+[data-state="tree-shaped"] .od-figure-note span:nth-child(3) {
+  animation: od-fade 0.45s ease 8.7s both;
+}
+
+[data-state="tree-shaped"] .od-figure-note span:nth-child(4) {
+  animation: od-fade 0.45s ease 10.85s both;
+}
+
+[data-state="tree-shaped"] .od-figure-note span:nth-child(5) {
+  animation: od-fade 0.45s ease 11s both;
+}
+
+.od-path-arrow {
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+/* 收束行：口播报到“重点是看清这棵树的形状”时升为焦点 */
+.od-focus {
+  flex: 0 0 auto;
+  margin: 0;
+  text-align: center;
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+[data-state="focus-set"] .od-focus {
+  opacity: 1;
+  transform: none;
+  animation: od-rise 0.5s ease 0.2s both;
+}
+
+.od-focus-key {
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.od-focus-key::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5px;
+  background: var(--theme-process);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s ease;
+}
+
+[data-state="focus-set"] .od-focus-key::after {
+  transform: scaleX(1);
+  transition-delay: 0.9s;
+}

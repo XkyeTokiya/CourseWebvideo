@@ -1,0 +1,445 @@
+/* 10-no-autocorrect · A011 纠错边界 —— 前缀 .na- 仅本章使用;颜色/字体全部走主题 token。
+   基础态保持终态、进入动画只挂对应状态选择器;第 2 拍能力轨为 ghost 槽位占位,
+   第 2 拍落位;场景图(M005)两拍持续不卸载;基础态即时可逆,反向导航不继承进入延迟。
+   动画预算:拍 1 链 ~9.8s ≤ 口播 ~13.5s;拍 2 链 ~5.4s ≤ 口播 ~8.3s。 */
+
+.na-root {
+  gap: 26px;
+  min-height: 0;
+}
+
+@keyframes na-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes na-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes na-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes na-pop-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes na-draw-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes na-draw-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ── 头部:可见标题(outline 槽位 headline,文本按口播填充) ── */
+
+.na-header {
+  flex: 0 0 auto;
+}
+
+.na-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+[data-state="boundary-stated"] .na-headline {
+  animation: na-drop-in 0.55s ease 0.05s both;
+}
+
+/* ── 主区:场景图(M005,持续在侧)+ insight 轨 ── */
+
+.na-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 46px;
+}
+
+.na-scene {
+  flex: 0 0 620px;
+  min-height: 0;
+  margin: 0;
+  padding: 12px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+[data-state="boundary-stated"] .na-scene {
+  animation: na-fade-in 0.5s ease 0.25s both;
+}
+
+.na-scene-img {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+.na-scene-cap {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.na-scene-badge {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.na-scene-note {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-faint);
+}
+
+/* ── insight 轨:竖轨线 + 节点,要点随口播自上而下迁移(R017 先后关系) ── */
+
+.na-rail {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding-left: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.na-rail-line {
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  background: var(--theme-structural);
+  transform-origin: top center;
+}
+
+[data-state="boundary-stated"] .na-rail-line {
+  animation: na-draw-y 0.7s ease 0.7s both;
+}
+
+.na-entry {
+  position: relative;
+}
+
+/* 轨上节点:方形铆点,骑在竖轨线上 */
+.na-entry::before {
+  content: "";
+  position: absolute;
+  left: -44px;
+  top: 5px;
+  width: 17px;
+  height: 17px;
+  box-sizing: border-box;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+}
+
+.na-entry-tag {
+  margin: 0 0 10px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--text-mute);
+}
+
+.na-tag-warn {
+  color: var(--theme-warning);
+}
+
+/* 条件区:拍 1 两个前提,按口播报到点先后落位 */
+
+[data-state="boundary-stated"] .na-conditions {
+  animation: na-rise-in 0.5s ease 1.3s both;
+}
+
+.na-cond-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.na-cond-item {
+  margin: 0;
+  padding-left: 18px;
+  border-left: 4px solid var(--rule);
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+[data-state="boundary-stated"] .na-cond-item {
+  animation: na-fade-in 0.45s ease both;
+}
+
+[data-state="boundary-stated"] .na-cond-item:nth-child(1) {
+  animation-delay: 3.4s;
+}
+
+[data-state="boundary-stated"] .na-cond-item:nth-child(2) {
+  animation-delay: 5.9s;
+}
+
+/* 边界判读:轨上主导节点,口播报到"不会替你纠错"时落位 */
+
+[data-state="boundary-stated"] .na-verdict {
+  animation: na-rise-in 0.55s ease 9.2s both;
+}
+
+.na-verdict-text {
+  margin: 0;
+  padding: 18px 26px;
+  border: 2.5px solid var(--theme-warning);
+  background: var(--theme-warning-surface);
+  box-shadow: 4px 4px 0 var(--theme-offset-shadow);
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--theme-warning);
+}
+
+.na-verdict-text em {
+  font-style: normal;
+  background: var(--surface-2);
+  padding: 2px 10px;
+}
+
+/* ── 能力轨:拍 2 落位。一条路径线承载"能做",环节刻度承载"保证不了" ── */
+
+.na-capability {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* 第 1 拍:能力轨为 ghost 槽位,占位不显示(晚现元素从首拍占据稳定槽位) */
+[data-state="boundary-stated"] .na-capability {
+  opacity: 0;
+}
+
+[data-state="capability-scoped"] .na-capability {
+  animation: na-fade-in 0.5s ease 0.3s both;
+}
+
+/* 第 2 拍权重迁移:条件区轻退让,判读保持 */
+.na-conditions {
+  transition: opacity 0.5s ease;
+}
+
+[data-state="capability-scoped"] .na-conditions {
+  opacity: 0.72;
+}
+
+.na-track {
+  position: relative;
+  flex: 0 0 120px;
+}
+
+.na-track-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 54px;
+  height: 4px;
+  background: var(--theme-process);
+  transform-origin: left center;
+}
+
+[data-state="capability-scoped"] .na-track-line {
+  animation: na-draw-x 0.6s ease 0.9s both;
+}
+
+.na-track-dot {
+  position: absolute;
+  left: 16%;
+  top: 56px;
+  width: 22px;
+  height: 22px;
+  background: var(--theme-structural);
+  transform: translate(-50%, -50%);
+}
+
+.na-track-dot i {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-style: normal;
+  font-size: 19px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+[data-state="capability-scoped"] .na-track-dot {
+  animation: na-pop-in 0.45s ease 1.9s both;
+}
+
+.na-gates-cap {
+  position: absolute;
+  left: 63%;
+  top: 0;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+[data-state="capability-scoped"] .na-gates-cap {
+  animation: na-fade-in 0.4s ease 4.2s both;
+}
+
+/* 环节刻度:虚线框 = 不保证,只示意"每一个环节",不声明数量 */
+.na-gate {
+  position: absolute;
+  top: 56px;
+  width: 26px;
+  height: 26px;
+  box-sizing: border-box;
+  border: 3px dashed var(--theme-warning);
+  background: var(--surface-2);
+  transform: translate(-50%, -50%);
+}
+
+.na-gate:nth-of-type(4) {
+  left: 46%;
+}
+
+.na-gate:nth-of-type(5) {
+  left: 63%;
+}
+
+.na-gate:nth-of-type(6) {
+  left: 80%;
+}
+
+[data-state="capability-scoped"] .na-gate {
+  animation: na-pop-in 0.4s ease both;
+}
+
+[data-state="capability-scoped"] .na-gate:nth-of-type(4) {
+  animation-delay: 4.2s;
+}
+
+[data-state="capability-scoped"] .na-gate:nth-of-type(5) {
+  animation-delay: 4.45s;
+}
+
+[data-state="capability-scoped"] .na-gate:nth-of-type(6) {
+  animation-delay: 4.7s;
+}
+
+/* 能做 / 保证不了:两槽位对照,共享同一条路径轨 */
+
+.na-cap-cells {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: 42% 1fr;
+  align-items: start;
+}
+
+.na-cell-support {
+  padding-right: 30px;
+}
+
+.na-cell-boundary {
+  border-left: 2px dashed var(--theme-dashed-line);
+  padding-left: 34px;
+}
+
+.na-cell-kicker {
+  margin: 0 0 12px;
+  display: inline-block;
+  padding: 5px 18px;
+  border: 2.5px solid var(--theme-process);
+  background: var(--theme-process-surface);
+  font-family: var(--font-display-cn);
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+.na-kicker-warn {
+  border-color: var(--theme-warning);
+  background: var(--theme-warning-surface);
+  color: var(--theme-warning);
+}
+
+.na-cell-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 900;
+  line-height: 1.4;
+}
+
+.na-cell-support .na-cell-text {
+  color: var(--theme-process);
+}
+
+.na-cell-boundary .na-cell-text {
+  color: var(--theme-warning);
+}
+
+[data-state="capability-scoped"] .na-cell-support {
+  animation: na-rise-in 0.5s ease 2.5s both;
+}
+
+[data-state="capability-scoped"] .na-cell-boundary {
+  animation: na-rise-in 0.5s ease 4.9s both;
+}

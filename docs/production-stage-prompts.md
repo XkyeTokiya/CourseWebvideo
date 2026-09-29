@@ -47,7 +47,7 @@
 
 【执行依据】
 开始前完整阅读：
-- {{repoRoot}}/narration-pipeline/.agents/skills/rewrite-course-narration/SKILL.md
+- {{repoRoot}}/.agents/skills/rewrite-course-narration/SKILL.md
 - 该 Skill 在 Brief 和 Stage 1 阶段指定的契约与短 Prompt
 
 【需要完成】
@@ -74,7 +74,7 @@
 对既有连续稿进行最小局部的朗读式润色，使其更容易被教师自然、准确地念出来。
 
 【执行依据】
-开始前完整阅读 {{repoRoot}}/narration-pipeline/.agents/skills/polish-stage1-narration/SKILL.md，本阶段使用其“连续稿模式”。
+开始前完整阅读 {{repoRoot}}/.agents/skills/polish-stage1-narration/SKILL.md，本阶段使用其“连续稿模式”。
 
 【输入】
 - {{tmpDir}}/narration-brief.json
@@ -104,7 +104,7 @@
 判断润色后的连续稿是否仍存在学习者口播红线；无红线问题时冻结放行稿。
 
 【执行依据】
-开始前完整阅读 {{repoRoot}}/narration-pipeline/.agents/skills/polish-stage1-narration/SKILL.md，使用其红线定义、二次扫描和独立口播测试。
+开始前完整阅读 {{repoRoot}}/.agents/skills/polish-stage1-narration/SKILL.md，使用其红线定义、二次扫描和独立口播测试。
 
 【输入】
 - {{tmpDir}}/narration-brief.json
@@ -133,11 +133,11 @@
 
 【执行依据】
 先完整阅读：
-- {{repoRoot}}/narration-pipeline/.agents/skills/rewrite-course-narration/SKILL.md
+- {{repoRoot}}/.agents/skills/rewrite-course-narration/SKILL.md
 - 该 Skill 指定的 A-page v6 作者契约、canonical example 和模板
 
 A-page 通过后，再完整阅读：
-- {{repoRoot}}/narration-pipeline/.agents/skills/design-course-visual-rough/SKILL.md
+- {{repoRoot}}/.agents/skills/design-course-visual-rough/SKILL.md
 - 该 Skill 指定的 visual rough v4 作者契约、canonical example 和当前 recipe
 
 【需要完成】
@@ -172,8 +172,8 @@ A-page 通过后，再完整阅读：
 
 【执行依据】
 开始前完整阅读：
-- {{repoRoot}}/narration-pipeline/.agents/skills/rewrite-course-narration/SKILL.md
-- {{repoRoot}}/narration-pipeline/.agents/skills/design-course-visual-rough/SKILL.md
+- {{repoRoot}}/.agents/skills/rewrite-course-narration/SKILL.md
+- {{repoRoot}}/.agents/skills/design-course-visual-rough/SKILL.md
 - 两个 Skill 指定的发布与停止规则
 
 【授权前】

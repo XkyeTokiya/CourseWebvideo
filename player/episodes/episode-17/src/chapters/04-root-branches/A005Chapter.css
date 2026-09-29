@@ -1,0 +1,549 @@
+/* 04-root-branches · A005 根分支 —— 前缀 .rb- 仅本章使用;颜色/字体全部走主题 token。
+   首拍建立序列用 keyframe(挂载即播);晚拍元素基础态隐藏、由状态选择器点亮,
+   进入态 delay 只挂在状态选择器下,基础态保持即时可逆。 */
+
+.rb-root {
+  gap: 26px;
+  min-height: 0;
+}
+
+@keyframes rb-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rb-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rb-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rb-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rb-draw-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rb-draw-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* 根节点一次性定位环:标记"从最上面的根节点开始看"的视觉起点,播一次即散 */
+@keyframes rb-ring {
+  from {
+    opacity: 0.85;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+}
+
+/* ── 头部:可见标题(outline 槽位 headline ← S015,按口播填充) ── */
+
+.rb-header {
+  flex: 0 0 auto;
+}
+
+.rb-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 1.15;
+  color: var(--theme-structural);
+}
+
+[data-state="root-established"] .rb-headline {
+  animation: rb-drop-in 0.55s ease 0.05s both;
+}
+
+/* ── 主区:左·根-分支要点轨 + 右·树形示意图(M003,持续媒体) ── */
+
+.rb-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 48px;
+}
+
+[data-state="root-established"] .rb-main {
+  animation: rb-fade-in 0.5s ease 0.2s both;
+}
+
+/* 要点轨:根节点在上,主干下行,三条分支空轨先画出(口播拍 1"根下面分出三个分支") */
+.rb-rail {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.rb-root-node {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 56px;
+  height: 56px;
+  background: var(--theme-structural);
+  display: grid;
+  place-items: center;
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.rb-root-glyph {
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--surface-2);
+}
+
+.rb-root-label {
+  position: absolute;
+  top: 12px;
+  left: 74px;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+.rb-root-node::after {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border: 3px solid var(--theme-process);
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-state="root-established"] .rb-root-node {
+  animation: rb-pop-in 0.45s ease 0.3s both;
+}
+
+[data-state="root-established"] .rb-root-node::after {
+  animation: rb-ring 0.9s ease 0.75s 1 both;
+}
+
+.rb-spine {
+  position: absolute;
+  left: 26px;
+  top: 56px;
+  width: 4px;
+  height: 396px;
+  background: var(--theme-structural);
+  transform-origin: top center;
+}
+
+[data-state="root-established"] .rb-spine {
+  animation: rb-draw-y 0.5s ease 0.7s both;
+}
+
+.rb-rows {
+  position: absolute;
+  top: 120px;
+  left: 28px;
+  right: 0;
+}
+
+.rb-row {
+  height: 132px;
+  display: flex;
+  align-items: center;
+}
+
+.rb-stub {
+  position: relative;
+  flex: 0 0 92px;
+  height: 4px;
+  margin-right: 26px;
+  background: var(--theme-structural);
+  transform-origin: left center;
+}
+
+[data-state="root-established"] .rb-stub {
+  animation: rb-draw-x 0.45s ease both;
+}
+
+[data-state="root-established"] .rb-row:nth-child(1) .rb-stub {
+  animation-delay: 0.95s;
+}
+
+[data-state="root-established"] .rb-row:nth-child(2) .rb-stub {
+  animation-delay: 1.2s;
+}
+
+[data-state="root-established"] .rb-row:nth-child(3) .rb-stub {
+  animation-delay: 1.45s;
+}
+
+/* 分支端点:首拍空心(空轨),第 2 拍编号报到时点亮,三行完成后等权 */
+.rb-stub-dot {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translateY(-50%);
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+
+[data-state="branches-mapped"] .rb-stub-dot,
+[data-state="branch-logic-set"] .rb-stub-dot {
+  background: var(--theme-process);
+  border-color: var(--theme-process);
+}
+
+[data-state="branches-mapped"] .rb-row:nth-child(1) .rb-stub-dot {
+  transition-delay: 0.45s;
+}
+
+[data-state="branches-mapped"] .rb-row:nth-child(2) .rb-stub-dot {
+  transition-delay: 6.55s;
+}
+
+[data-state="branches-mapped"] .rb-row:nth-child(3) .rb-stub-dot {
+  transition-delay: 12.55s;
+}
+
+/* 第 2 拍:编号与机构名按口播报到点逐行落位(ITU≈0.5s / ISO≈6.6s / 联合≈12.6s) */
+.rb-num {
+  flex: 0 0 auto;
+  margin-right: 26px;
+  font-size: 84px;
+  color: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.rb-name {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.rb-name b {
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.rb-name span {
+  font-size: 22px;
+  color: var(--text-2);
+}
+
+[data-state="branches-mapped"] .rb-num,
+[data-state="branch-logic-set"] .rb-num,
+[data-state="branches-mapped"] .rb-name,
+[data-state="branch-logic-set"] .rb-name {
+  opacity: 1;
+}
+
+[data-state="branches-mapped"] .rb-num {
+  animation: rb-pop-in 0.45s ease both;
+}
+
+[data-state="branches-mapped"] .rb-name {
+  animation: rb-rise-in 0.45s ease both;
+}
+
+[data-state="branches-mapped"] .rb-row:nth-child(1) .rb-num {
+  animation-delay: 0.5s;
+}
+
+[data-state="branches-mapped"] .rb-row:nth-child(2) .rb-num {
+  animation-delay: 6.6s;
+}
+
+[data-state="branches-mapped"] .rb-row:nth-child(3) .rb-num {
+  animation-delay: 12.6s;
+}
+
+[data-state="branches-mapped"] .rb-row:nth-child(1) .rb-name {
+  animation-delay: 0.8s;
+}
+
+[data-state="branches-mapped"] .rb-row:nth-child(2) .rb-name {
+  animation-delay: 6.9s;
+}
+
+[data-state="branches-mapped"] .rb-row:nth-child(3) .rb-name {
+  animation-delay: 12.9s;
+}
+
+/* ── 媒体区:M003 树形层级示意图(占位图,持续不卸载) ── */
+
+.rb-media {
+  flex: 0 0 600px;
+  min-height: 0;
+  margin: 0;
+  padding: 12px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.rb-media-img {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+.rb-media-caption {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.rb-media-badge {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.rb-media-note {
+  padding: 4px 14px;
+  border: 2px solid var(--theme-warning);
+  background: var(--theme-warning-surface);
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--theme-warning);
+}
+
+/* ── 底部:说明区(support)+ 收束区(boundary),第 3 拍落位,槽位高度首拍预留 ── */
+
+.rb-foot {
+  flex: 0 0 148px;
+  display: flex;
+  align-items: stretch;
+}
+
+.rb-support {
+  flex: 1.15 1 0;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="branch-logic-set"] .rb-support {
+  opacity: 1;
+}
+
+.rb-support-subject {
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.rb-support-no {
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--theme-warning);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.rb-support-yes {
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--theme-structural);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.rb-support-yes b {
+  color: var(--theme-process);
+}
+
+.rb-support-arrow {
+  position: relative;
+  flex: 0 0 34px;
+  height: 4px;
+  background: var(--theme-structural);
+  transform-origin: left center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.rb-support-arrow::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 11px solid var(--theme-structural);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+[data-state="branch-logic-set"] .rb-support-subject {
+  opacity: 1;
+  animation: rb-rise-in 0.5s ease 0.4s both;
+}
+
+[data-state="branch-logic-set"] .rb-support-no {
+  opacity: 1;
+  animation: rb-rise-in 0.5s ease 0.55s both;
+}
+
+[data-state="branch-logic-set"] .rb-support-arrow {
+  opacity: 1;
+  animation: rb-draw-x 0.4s ease 0.95s both;
+}
+
+[data-state="branch-logic-set"] .rb-support-yes {
+  opacity: 1;
+  animation: rb-rise-in 0.5s ease 2.2s both;
+}
+
+.rb-boundary {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding-left: 44px;
+  border-left: 2px dashed var(--theme-dashed-line);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="branch-logic-set"] .rb-boundary {
+  opacity: 1;
+  transition-delay: 6.4s;
+}
+
+.rb-boundary-line {
+  margin: 0;
+  font-size: 29px;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.rb-boundary-line b {
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+[data-state="branch-logic-set"] .rb-boundary-line {
+  opacity: 1;
+  animation: rb-rise-in 0.5s ease 6.5s both;
+}
+
+/* 延续链:节点-线段-节点,自绘示意"沿分支继续展开",不指向单一分支、保持三行等权 */
+.rb-continue {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+[data-state="branch-logic-set"] .rb-continue {
+  opacity: 1;
+}
+
+.rb-continue i {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--theme-process);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.rb-continue b {
+  flex: 0 0 44px;
+  height: 4px;
+  background: var(--theme-process);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.35s ease;
+}
+
+[data-state="branch-logic-set"] .rb-continue i {
+  opacity: 1;
+  animation: rb-pop-in 0.35s ease both;
+}
+
+[data-state="branch-logic-set"] .rb-continue b {
+  animation: rb-draw-x 0.35s ease both;
+}
+
+[data-state="branch-logic-set"] .rb-continue i:nth-of-type(1) {
+  animation-delay: 7.2s;
+}
+
+[data-state="branch-logic-set"] .rb-continue b:nth-of-type(1) {
+  animation-delay: 7.35s;
+}
+
+[data-state="branch-logic-set"] .rb-continue i:nth-of-type(2) {
+  animation-delay: 7.55s;
+}
+
+[data-state="branch-logic-set"] .rb-continue b:nth-of-type(2) {
+  animation-delay: 7.7s;
+}
+
+[data-state="branch-logic-set"] .rb-continue i:nth-of-type(3) {
+  animation-delay: 7.9s;
+}
