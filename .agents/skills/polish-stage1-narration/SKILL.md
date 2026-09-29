@@ -5,20 +5,22 @@ description: 仅限人类明确调用。用于局部润色连续口播稿或 cou
 
 # Polish Stage1 Narration（口播稿润色）
 
+本 Skill 位于仓库根目录 `.agents/skills/`；下列项目路径和命令均相对仓库根目录。references、templates 等 Skill 内部资源相对本 Skill 目录。
+
 仅限人类明确调用。支持两种模式；先按用户给出的文件判断模式，不要把历史 work 产物猜作当前输入。
 
 ## 模式与输入
 
 ### 连续稿模式
 
-- 口播稿：`..\.tmp\work\narration-pipeline\episode-XX\stage1-continuous-draft.md`
+- 口播稿：`.tmp/work/narration-pipeline/episode-XX/stage1-continuous-draft.md`
 - 事实约束：同目录 `narration-brief.json`
 
 适用于 A-page 尚未发布，或用户明确要求润色连续稿的情况。
 
 ### 成品 A-page 模式
 
-- 主输入：`..\player\episodes\episode-XX\inputs/episode-XX-a-page.json`，且 `schema_version` 必须为 `courseplay-a-page/v4`
+- 主输入：`player/episodes/episode-XX/inputs/episode-XX-a-page.json`，且 `schema_version` 必须为 `courseplay-a-page/v4`
 - 同步目标：同目录 `approved-spoken-text.txt`
 - 正式校验报告：同目录 `episode-XX-a-page-validation.json`
 

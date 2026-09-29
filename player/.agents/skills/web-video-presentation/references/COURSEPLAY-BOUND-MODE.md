@@ -4,7 +4,7 @@
 `courseplay-a-page/v6` + `courseplay-visual-rough/v4` → handoff v4。版本组合
 校验属于显式调用该工具时的输入契约，不是全局制作门禁。当前三源创作详细规则
 唯一存放在 [`CHAPTER-CRAFT.md`](CHAPTER-CRAFT.md#courseplay-v4三源创作唯一详细规则)；
-本文件说明内容边界、可选上下文打包与通用场景调度。A-page、visual rough 和 handoff 的作者字段规则分别见上游 [A-page v6 作者契约卡](../../../../../narration-pipeline/.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md)、[visual rough v4 作者契约卡](../../../../../narration-pipeline/.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md) 和 [handoff v4 作者契约卡](../../../../docs/courseplay-handoff-v4-author-contract.md)。
+本文件说明内容边界、可选上下文打包与通用场景调度。A-page、visual rough 和 handoff 的作者字段规则分别见上游 [A-page v6 作者契约卡](../../../../../.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md)、[visual rough v4 作者契约卡](../../../../../.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md) 和 [handoff v4 作者契约卡](../../../../docs/courseplay-handoff-v4-author-contract.md)。
 
 ## 目标与术语
 

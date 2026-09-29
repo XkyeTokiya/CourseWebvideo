@@ -1,13 +1,13 @@
 # Narration Pipeline 上游约束
 
-上游任务从仓库根目录开始，先遵守 [根 CLAUDE.md](../CLAUDE.md)。本文只补充上游独有约束。下列路径相对仓库根目录；现有 Skill 内的相对命令默认从 `narration-pipeline/` 执行，不要直接在根目录照抄。
+上游任务从仓库根目录开始，先遵守 [根 CLAUDE.md](../CLAUDE.md)。本文只补充上游独有约束。下列路径相对仓库根目录；上游 Skill 统一位于根目录 `.agents/skills/`，Skill 内的命令均从仓库根目录执行。
 
 ## 事实源与创作
 
 - `narration-pipeline/episodes/<module>/episode-XX-...-task-package.md` 是唯一原始事实源，只读；不得为通过验证而修改或替代任务包。
-- 口播与 A-page 入口为 `.agents/skills/rewrite-course-narration/SKILL.md`，视觉粗设入口为 `.agents/skills/design-course-visual-rough/SKILL.md`（两者相对本文件目录）。
+- 口播与 A-page 入口为 `.agents/skills/rewrite-course-narration/SKILL.md`，视觉粗设入口为 `.agents/skills/design-course-visual-rough/SKILL.md`（两者相对仓库根目录）。
 - 用户明确批准连续口播后，才能生成 `approved-spoken-text.txt` 并进入 A-page 编译；visual rough 通过验证并经用户审阅后才能由 `draft` 转为 `approved`。
-- 创作按 [A-page v6 作者契约](.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md)、[visual rough v4 作者契约](.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md) 及各自 Skill 指定的示例、模板和 recipe 执行。实现不作为作者规则来源；工具维护可检查实现与测试。
+- 创作按 [A-page v6 作者契约](../.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md)、[visual rough v4 作者契约](../.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md) 及各自 Skill 指定的示例、模板和 recipe 执行。实现不作为作者规则来源；工具维护可检查实现与测试。
 
 ## 产物与发布
 
@@ -36,9 +36,9 @@ python narration-pipeline/scripts/publish_handoff.py --episode episode-XX --sour
 内容修改调用对应作者契约中的黑盒验证入口。Skill 或工具修改运行对应测试；以下命令从仓库根目录执行（系统只提供 `python3` 时替换命令名）：
 
 ```sh
-python -m unittest discover -s narration-pipeline/.agents/skills/rewrite-course-narration/tests -p "test_*.py" -v
-python -m unittest discover -s narration-pipeline/.agents/skills/design-course-visual-rough/tests -p "test_*.py" -v
-python -m unittest discover -s narration-pipeline/.agents/skills/polish-stage1-narration/tests -p "test_*.py" -v
+python -m unittest discover -s .agents/skills/rewrite-course-narration/tests -p "test_*.py" -v
+python -m unittest discover -s .agents/skills/design-course-visual-rough/tests -p "test_*.py" -v
+python -m unittest discover -s .agents/skills/polish-stage1-narration/tests -p "test_*.py" -v
 ```
 
-只运行受改动影响的测试组。路径迁移时，用 `rg -n --hidden -F '实际旧路径' narration-pipeline/.agents narration-pipeline/.commandcode narration-pipeline/scripts player/.agents player/tools` 检查活跃入口，并补查本次涉及的其他配置；搜索无匹配时退出码 1 属正常结果。历史报告可保留旧路径，但必须标为历史，不能作为当前入口。
+只运行受改动影响的测试组。路径迁移时，用 `rg -n --hidden -F '实际旧路径' .agents narration-pipeline/.commandcode narration-pipeline/scripts player/.agents player/tools` 检查活跃入口，并补查本次涉及的其他配置；搜索无匹配时退出码 1 属正常结果。历史报告可保留旧路径，但必须标为历史，不能作为当前入口。

@@ -1,5 +1,7 @@
 # Baseline Observations — Why rewrite-course-narration exists
 
+> 历史验证记录：路径与命令保留记录时的工作目录，不作为当前执行入口。现行 Skill 位于根 `.agents/skills/`，命令以当前 SKILL.md 和 CLAUDE.md 为准。
+
 > 记录于 Skill 落地前（2026-08-09）。仅收录磁盘上已有的证据，不做新的 EP40 文稿质量判断，不重新审稿，不运行生成任务。
 
 ## 1. 流程失败证据（四个已发生的高代价问题）

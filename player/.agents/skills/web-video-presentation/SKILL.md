@@ -657,8 +657,8 @@ Part 8「常见反馈速查」。**关键**：先定位是哪一层（节奏 / �
 | [`references/SCRIPT-STYLE.md`](references/SCRIPT-STYLE.md) | Phase 1.2–1.5 必读 | chapter-local 文章 → 口播稿规则、平台变体、全局审查与最小回修 |
 | [`references/OUTLINE-FORMAT.md`](references/OUTLINE-FORMAT.md) | Phase 1.2–1.5 必读 | 模块化 outline sections 与 global-derived 区域的字段 spec、命名约定、章节切分、信息池 |
 | [`references/COURSEPLAY-BOUND-MODE.md`](references/COURSEPLAY-BOUND-MODE.md) | 检测到正式 v6/v4 时必读 | 当前版本路由、章节输入边界、场景绑定、semantic state / accent / custom 语义；handoff 语法转引公开作者契约卡 |
-| [`../../../../narration-pipeline/.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md`](../../../../narration-pipeline/.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md) | 需要理解 A-page 字段时 | A-page 作者契约与 canonical example 路由 |
-| [`../../../../narration-pipeline/.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md`](../../../../narration-pipeline/.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md) | 需要理解 visual rough 字段时 | visual rough 作者契约与 canonical example 路由 |
+| [`../../../../.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md`](../../../../.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md) | 需要理解 A-page 字段时 | A-page 作者契约与 canonical example 路由 |
+| [`../../../../.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md`](../../../../.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md) | 需要理解 visual rough 字段时 | visual rough 作者契约与 canonical example 路由 |
 | [`../../../docs/courseplay-handoff-v4-author-contract.md`](../../../docs/courseplay-handoff-v4-author-contract.md) | 显式调用 handoff 时 | 固定输入、script/outline 语法、presentation 和真实检查范围 |
 | [`../../../docs/examples/courseplay-handoff-v4/`](../../../docs/examples/courseplay-handoff-v4/) | 显式调用 handoff 时 | 合成成功样例 |
 | [`../../../docs/handoff-v4-error-catalog.json`](../../../docs/handoff-v4-error-catalog.json) | handoff 失败时 | 按错误码局部诊断 |

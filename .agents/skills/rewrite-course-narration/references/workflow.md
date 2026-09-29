@@ -29,4 +29,4 @@ Stage 1 只接收 Brief 和短 Prompt，输出没有 Nx/B/step 分隔的连续�
 
 ## 6. 下游路由
 
-需要视觉结构时，进入 `design-course-visual-rough`，读取其作者契约卡、canonical example、当前 recipe 和失败时的 error index。需要章节上下文压缩时，handoff v4 是可选工具，读取 [handoff v4 作者契约卡](../../../player/docs/courseplay-handoff-v4-author-contract.md)。不调用 handoff 不改变章节制作输入要求。
+需要视觉结构时，进入 `design-course-visual-rough`，读取其作者契约卡、canonical example、当前 recipe 和失败时的 error index。需要章节上下文压缩时，handoff v4 是可选工具，读取 [handoff v4 作者契约卡](../../../../player/docs/courseplay-handoff-v4-author-contract.md)。不调用 handoff 不改变章节制作输入要求。

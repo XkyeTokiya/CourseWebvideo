@@ -5,6 +5,8 @@ description: Turn an approved Courseplay A-page v6 guidance document into a huma
 
 # Design Course Visual Rough
 
+本 Skill 位于仓库根目录 `.agents/skills/`；下列命令从仓库根目录执行，Skill 内部资源相对本 Skill 目录。
+
 只接受 `courseplay-a-page/v6`，输出 `courseplay-visual-rough/v4`。A-page 的 G 只是 screen guidance 语义分组；G 的数量和边界不得由配方、卡片数或布局反推。
 
 ## Workflow

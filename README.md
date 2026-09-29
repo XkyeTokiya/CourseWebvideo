@@ -38,6 +38,7 @@ narration-pipeline/episodes/（冻结任务包）
 
 | 路径 | 用途 |
 | --- | --- |
+| `.agents/skills/` | 上游口播、润色与视觉粗设 Skill；命令从仓库根目录执行 |
 | `narration-pipeline/episodes/` | 只读任务包事实源 |
 | `player/episodes/<id>/project.json` | 实例状态与配置 |
 | `player/episodes/<id>/inputs/` | 上游正式发布入口 |
@@ -65,8 +66,8 @@ narration-pipeline/episodes/（冻结任务包）
 
 人工放行节点为：连续口播批准、visual rough 批准、Checkpoint Plan、第 1 章完整版本验收、Checkpoint Audio。阶段规则与字段释义从以下入口读取：
 
-- [A-page v6 作者契约](narration-pipeline/.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md)
-- [Visual rough v4 作者契约](narration-pipeline/.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md)
+- [A-page v6 作者契约](.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md)
+- [Visual rough v4 作者契约](.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md)
 - [下游生产 Skill](player/.agents/skills/web-video-presentation/SKILL.md)
 - [可选 handoff v4 作者契约](player/docs/courseplay-handoff-v4-author-contract.md)
 

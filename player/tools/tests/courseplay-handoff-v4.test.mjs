@@ -5,8 +5,8 @@ import test from "node:test";
 import { buildCourseplayHandoffV4Packet, HANDOFF_ERROR_CATALOG, HandoffContractError, parseVisualRoughV4 } from "../courseplay-handoff.mjs";
 
 const example = path.resolve("docs/examples/courseplay-handoff-v4");
-const aPageExample = path.resolve("../narration-pipeline/.agents/skills/rewrite-course-narration/references/examples/a-page-v6/canonical-contract-example-a-page.json");
-const visualExample = path.resolve("../narration-pipeline/.agents/skills/design-course-visual-rough/references/examples/visual-rough-v4/canonical-contract-example-visual-rough.md");
+const aPageExample = path.resolve("../.agents/skills/rewrite-course-narration/references/examples/a-page-v6/canonical-contract-example-a-page.json");
+const visualExample = path.resolve("../.agents/skills/design-course-visual-rough/references/examples/visual-rough-v4/canonical-contract-example-visual-rough.md");
 async function inputs() {
   const read = (name) => readFile(path.join(example, name), "utf8");
   return {

@@ -2,20 +2,20 @@
 
 > 适用范围：统一仓库 `D:/00-workspace/005-coursewebvideo` 下的两个工作边界；另外两个同名旧仓库属于 Agent 禁访目录。  
 > 核定日期：2026-08-25。
-> 本文负责跨仓库导航；进入具体任务后，仍以目标仓库的 `CLAUDE.md` 和仓库级 Skill 为执行权威。
+> 本文负责生产流程导航；上游任务从统一仓库根目录开始，读取根 `CLAUDE.md`、`narration-pipeline/CLAUDE.md` 与根 `.agents/skills/`。下游命令仍从 `player/` 执行。当前执行规则以根及子项目 CLAUDE 和对应 Skill 为准。除下游执行部分另有说明外，项目路径均相对统一仓库根目录；Markdown 链接相对本文位置。
 
-## 1. 先记住：只有两个活跃仓库
+## 1. 工作边界：单一仓库中的两个子项目
 
-| 仓库 | 状态 | 职责 | 主要输入 | 主要输出 |
+| 子项目 / 旧仓库 | 状态 | 职责 | 主要输入 | 主要输出 |
 |---|---|---|---|---|
-| `005-coursewebvideo/narration-pipeline` | **活跃，上游、唯一任务包权威** | 冻结任务包、整篇口播重写、A-page v6 screen guidance、visual rough v4 | 本仓库 `episodes/**/episode-XX-*-task-package.md` | `../.tmp/work/narration-pipeline/episode-XX/` 中的 Brief/草稿/trace/待审粗设；`../player/episodes/episode-XX/inputs/` 中的正式语义 handoff 与已批准视觉粗设 |
+| `005-coursewebvideo/narration-pipeline` | **活跃，上游、唯一任务包权威** | 冻结任务包、整篇口播重写、A-page v6 screen guidance、visual rough v4 | `narration-pipeline/episodes/**/episode-XX-*-task-package.md` | `.tmp/work/narration-pipeline/episode-XX/` 中的 Brief/草稿/trace/待审粗设；`player/episodes/episode-XX/inputs/` 中的正式语义 handoff 与已批准视觉粗设 |
 | `005-coursewebvideo/player` | **活跃，下游 Web Video Studio** | Outline 投影、compact handoff、章节制作、审查与录屏 | 上游批准产物的根级输入镜像；Phase 2 只读当前 A packet | 最终章节、网页视频及审查产物 |
 | `006-couseplay` | **已停用，Agent 禁访** | 不参与现行流程 | 禁止访问 | 禁止访问 |
 | `006-couseplay-ep02` | **已停用，Agent 禁访** | 不参与现行流程 | 禁止访问 | 禁止访问 |
 
 ### 禁止误路由
 
-- 口播、任务包、Brief、A 页面编译：进入 `005-coursewebvideo/narration-pipeline`。
+- 口播、任务包、Brief、A 页面编译：从 `005-coursewebvideo/` 根目录开始；事实源仍在 `narration-pipeline/episodes/`。
 - 下游生产任务进入 `005-coursewebvideo/player`，重新读取其 `CLAUDE.md` 与 `web-video-presentation` Skill；不得在上游实现页面、播放器或渲染。
 - 润色流程已停用；不得读取或调用 `polish-course-narration`，不得把历史原稿、polished 目录或润色产物作为生产输入。
 - 下游仓库中的 `episodes/` 是生产实例，不是任务包事实源；不得从中回推、修复或替代上游冻结任务包。
@@ -31,9 +31,9 @@
                                 ↓
                            隔离连续稿
                                 ↓ 人工批准门 A
-          ../.tmp/work/narration-pipeline/episode-XX/批准母版、A 页面候选与 trace
+          .tmp/work/narration-pipeline/episode-XX/批准母版、A 页面候选与 trace
                                 ↓
-           ../player/episodes/episode-XX/inputs/v6 guidance + 已批准 rough v4 及验证报告
+           player/episodes/episode-XX/inputs/v6 guidance + 已批准 rough v4 及验证报告
                                 ↓
        下游根级输入镜像 → script/现有 Outline → compact handoff v4
                                 ↓
@@ -47,7 +47,7 @@
 ### 3.1 确认仓库和分支
 
 ```powershell
-cd D:/00-workspace/005-coursewebvideo/narration-pipeline
+cd D:/00-workspace/005-coursewebvideo
 git branch --show-current
 git status --short
 
@@ -71,15 +71,15 @@ git status --short
 D:/00-workspace/005-coursewebvideo/narration-pipeline/episodes/<module>/episode-XX-...-task-package.md
 ```
 
-冻结任务包继续只从上游 `episodes/` 只读定位且不复制到 `../player/episodes/<episode-id>/inputs/`。下游 `episodes/` 只承载同步输入镜像、当前 Outline、handoff 与章节实例，不得作为任务包回退来源；正式 A JSON 自包含 E 目录，下游不得读取任务包或 work trace 补齐语义。
+冻结任务包继续只从 `narration-pipeline/episodes/` 只读定位且不复制到 `player/episodes/<episode-id>/inputs/`。下游 `episodes/` 只承载同步输入镜像、当前 Outline、handoff 与章节实例，不得作为任务包回退来源；正式 A JSON 自包含 E 目录，下游不得读取任务包或 work trace 补齐语义。
 
 ### 3.3 读取权威入口
 
 上游任务：
 
-1. `005-coursewebvideo/narration-pipeline/CLAUDE.md`
-2. 当前期任务包全文
-3. `.agents/skills/rewrite-course-narration/SKILL.md`
+1. 根 `CLAUDE.md` 与 `narration-pipeline/CLAUDE.md`
+2. 当前期 `narration-pipeline/episodes/` 任务包全文
+3. 根 `.agents/skills/rewrite-course-narration/SKILL.md`
 
 下游任务：
 
@@ -117,9 +117,9 @@ D:/00-workspace/005-coursewebvideo/narration-pipeline/episodes/<module>/episode-
 
 #### 阶段 4：A-page v6 screen guidance 编译
 
-作者字段、ID、引用、timing、trace 和 normalizer 规则统一见 [A-page v6 作者契约卡](../../.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md) 与 [canonical example](../../.agents/skills/rewrite-course-narration/references/examples/a-page-v6/)。本阶段只负责批准口播到 A-page 的编译，不把视觉决定前移。
+作者字段、ID、引用、timing、trace 和 normalizer 规则统一见 [A-page v6 作者契约卡](../../../.agents/skills/rewrite-course-narration/references/a-page-v6-author-contract.md) 与 [canonical example](../../../.agents/skills/rewrite-course-narration/references/examples/a-page-v6/)。本阶段只负责批准口播到 A-page 的编译，不把视觉决定前移。
 
-单期过程产物放入独立 `../.tmp/work/narration-pipeline/episode-XX/`，例如：
+单期过程产物放入独立 `.tmp/work/narration-pipeline/episode-XX/`，例如：
 
 ```text
   narration-brief.json
@@ -128,10 +128,10 @@ D:/00-workspace/005-coursewebvideo/narration-pipeline/episodes/<module>/episode-
   其他批准、审读与编译过程记录
 ```
 
-`../.tmp/work/narration-pipeline/` 不是跨仓库正式输入。通过人工批准与完整验收后，发布到：
+`.tmp/work/narration-pipeline/` 不是跨仓库正式输入。通过人工批准与完整验收后，发布到：
 
 ```text
-../player/episodes/episode-XX/inputs/
+player/episodes/episode-XX/inputs/
   approved-spoken-text.txt
   episode-XX-a-page.json
   episode-XX-a-page-validation.json
@@ -141,21 +141,23 @@ D:/00-workspace/005-coursewebvideo/narration-pipeline/episodes/<module>/episode-
 
 #### 阶段 5：机械验证 + 人工验收
 
+以下命令从统一仓库根目录执行。
+
 ```powershell
 python .agents/skills/rewrite-course-narration/scripts/verify_compilation.py `
   --validation-profile a-page-v6 `
-  --task-package episodes/<module>/episode-XX-...-task-package.md `
-  --compile-trace ../.tmp/work/narration-pipeline/episode-XX/episode-XX-b-to-a-compile-trace.json `
-  --approved-text ../player/episodes/episode-XX/inputs/approved-spoken-text.txt `
-  --compiled-json ../player/episodes/episode-XX/inputs/episode-XX-a-page.json `
-  --output ../player/episodes/episode-XX/inputs/episode-XX-a-page-validation.json
+  --task-package narration-pipeline/episodes/<module>/episode-XX-...-task-package.md `
+  --compile-trace .tmp/work/narration-pipeline/episode-XX/episode-XX-b-to-a-compile-trace.json `
+  --approved-text player/episodes/episode-XX/inputs/approved-spoken-text.txt `
+  --compiled-json player/episodes/episode-XX/inputs/episode-XX-a-page.json `
+  --output player/episodes/episode-XX/inputs/episode-XX-a-page-validation.json
 ```
 
-机械报告通过且 trace 无未解决项，再按 [A-page error index](../../.agents/skills/rewrite-course-narration/references/error-catalog.json) 处理失败；人工语义审阅与发布仍按作者契约卡进行。满足后发布批准稿、production A 页面 JSON 和当前验证报告。
+机械报告通过且 trace 无未解决项，再按 [A-page error index](../../../.agents/skills/rewrite-course-narration/references/error-catalog.json) 处理失败；人工语义审阅与发布仍按作者契约卡进行。满足后发布批准稿、production A 页面 JSON 和当前验证报告。
 
 #### 阶段 6：视觉粗设与人工批准门
 
-视觉作者只读取 [visual rough v4 作者契约卡](../../.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md)、[canonical example](../../.agents/skills/design-course-visual-rough/references/examples/visual-rough-v4/) 和当前 recipe。候选先保持 `draft`，通过现有黑盒验证并经用户审阅后才发布；正常创作不增加独立创作前检查。
+视觉作者只读取 [visual rough v4 作者契约卡](../../../.agents/skills/design-course-visual-rough/references/visual-rough-v4-author-contract.md)、[canonical example](../../../.agents/skills/design-course-visual-rough/references/examples/visual-rough-v4/) 和当前 recipe。候选先保持 `draft`，通过现有黑盒验证并经用户审阅后才发布；正常创作不增加独立创作前检查。
 
 ## 5. 下游使用方式（Web Video Studio）
 
@@ -166,7 +168,7 @@ python .agents/skills/rewrite-course-narration/scripts/verify_compilation.py `
 - 下游 episode 根目录中的 A-page、rough、script 和批准稿是上游批准产物的同步输入镜像；Phase 2 章节 consumer 只读当前 `.handoffs/<Axxx>.json`。
 - 版本组合固定为 v6/v4→handoff v4；其他版本组合直接拒绝。
 - v4 章节综合 `screen_guidance`、当前 A narration beats 与 presentation 创作最终上屏内容，不新增 `screenContent` IR，也不要求普通 S/G 逐项落屏。
-- 当前 Outline 与 handoff 输入格式见 [handoff v4 作者契约卡](../../player/docs/courseplay-handoff-v4-author-contract.md)。
+- 当前 Outline 与 handoff 输入格式见 [handoff v4 作者契约卡](../../../player/docs/courseplay-handoff-v4-author-contract.md)。
 
 ### 5.2 页面生产
 
@@ -180,7 +182,7 @@ handoff 是可选的上下文打包工具；需要时生成当前 A 的 compact 
 - [ ] 下游只同步上游正式批准产物，不读取任务包或 work trace；
 - [ ] 未把下游 `episodes/` 当作任务包事实源；根级 episode 文件只作为同步输入镜像与当前生产实例；
 - [ ] 上游任务包保持只读；
-- [ ] 如调用 handoff，来源固定为上游 `../player/episodes/episode-XX/inputs/`，不消费 `../.tmp/work/narration-pipeline/episode-XX/...`；
+- [ ] 如调用 handoff，来源固定为上游 `player/episodes/episode-XX/inputs/`，不消费 `.tmp/work/narration-pipeline/episode-XX/...`；
 - [ ] A-page 为 `courseplay-a-page/v6`，visual rough 为 v4，源 SHA-256 匹配；
 - [ ] `approved-spoken-text.txt` 已获明确批准；
 - [ ] A 页面验证报告由当前 inputs 批准稿/A JSON、权威任务包与 `.tmp` compile trace 重新生成，且 `coverage_passed=true`、`failures=[]`；

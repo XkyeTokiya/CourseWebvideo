@@ -28,6 +28,8 @@ episode-XX-a-page.json / pages[*].nx
 
 位置使用 `A001` 这类稳定页 ID，必要时附页内短引文。每条建议必须能独立确认。不要把跨页重排、增删事实、改变结论或页面职责包装成语言润色。
 
+以下命令从仓库根目录执行。
+
 ## 三、确认后的唯一写入顺序
 
 1. 只改用户确认的 `pages[*].nx`；保留原页面顺序和页间空白归属。
@@ -36,8 +38,8 @@ episode-XX-a-page.json / pages[*].nx
 
    ```powershell
    python .agents/skills/polish-stage1-narration/scripts/sync_finished_narration.py `
-     --a-page ..\player\episodes\episode-XX\inputs/episode-XX-a-page.json `
-     --approved-text ..\player\episodes\episode-XX\inputs/approved-spoken-text.txt `
+     --a-page player/episodes/episode-XX/inputs/episode-XX-a-page.json `
+     --approved-text player/episodes/episode-XX/inputs/approved-spoken-text.txt `
      --write
    ```
 
@@ -45,8 +47,8 @@ episode-XX-a-page.json / pages[*].nx
 
    ```powershell
    python .agents/skills/polish-stage1-narration/scripts/sync_finished_narration.py `
-     --a-page ..\player\episodes\episode-XX\inputs/episode-XX-a-page.json `
-     --approved-text ..\player\episodes\episode-XX\inputs/approved-spoken-text.txt `
+     --a-page player/episodes/episode-XX/inputs/episode-XX-a-page.json `
+     --approved-text player/episodes/episode-XX/inputs/approved-spoken-text.txt `
      --check
    ```
 
@@ -56,11 +58,11 @@ episode-XX-a-page.json / pages[*].nx
    ```powershell
    python .agents/skills/rewrite-course-narration/scripts/verify_compilation.py `
      --validation-profile a-page-v4 `
-     --task-package episodes/<module>/episode-XX-...-task-package.md `
-     --compile-trace ..\.tmp\work\narration-pipeline\episode-XX\episode-XX-b-to-a-compile-trace.json `
-     --approved-text ..\player\episodes\episode-XX\inputs/approved-spoken-text.txt `
-     --compiled-json ..\player\episodes\episode-XX\inputs/episode-XX-a-page.json `
-     --output ..\player\episodes\episode-XX\inputs/episode-XX-a-page-validation.json
+     --task-package narration-pipeline/episodes/<module>/episode-XX-...-task-package.md `
+     --compile-trace .tmp/work/narration-pipeline/episode-XX/episode-XX-b-to-a-compile-trace.json `
+     --approved-text player/episodes/episode-XX/inputs/approved-spoken-text.txt `
+     --compiled-json player/episodes/episode-XX/inputs/episode-XX-a-page.json `
+     --output player/episodes/episode-XX/inputs/episode-XX-a-page-validation.json
    ```
 
 7. 完成条件：同步脚本 `--check` 通过；正式报告 `failures=[]`、`compile_coverage.coverage_passed=true`，且报告中的批准稿与 A-page SHA-256 对应当前磁盘文件；人工复核全部确认项。

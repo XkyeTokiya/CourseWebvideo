@@ -8,10 +8,10 @@ import sys
 import unittest
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[5]
+ROOT = Path(__file__).resolve().parents[4]
 SKILL = Path(__file__).resolve().parents[1]
 EXAMPLE = SKILL / "references/examples/visual-rough-v4"
-A_PAGE_EXAMPLE = ROOT / "narration-pipeline/.agents/skills/rewrite-course-narration/references/examples/a-page-v6/canonical-contract-example-a-page.json"
+A_PAGE_EXAMPLE = ROOT / ".agents/skills/rewrite-course-narration/references/examples/a-page-v6/canonical-contract-example-a-page.json"
 spec = importlib.util.spec_from_file_location("visual_rough_v4", SKILL / "scripts/visual_rough_contract.py")
 assert spec and spec.loader
 contract = importlib.util.module_from_spec(spec)

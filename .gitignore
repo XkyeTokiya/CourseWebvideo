@@ -2,6 +2,7 @@
 .playwright-cli/
 archives/
 output/
+.mcp.json
 player/node_modules/
 player/.pnpm-store/
 player/dist/
@@ -10,6 +11,11 @@ player/.hermes/
 player/.playwright-cli/
 player/.hanako/
 player/.commandcode/settings.local.json
+# 本地 taste 工具（含指向本机 .dsh 的依赖符号链接与 lib/ 构建产物），整目录不入库
+player/tools/dsh-courseplay-taste/
+# Python caches for root-level upstream skills
+.agents/**/__pycache__/
+.agents/**/*.py[cod]
 narration-pipeline/.hermes/
 narration-pipeline/.workbuddy/
 narration-pipeline/.commandcode/settings.local.json
