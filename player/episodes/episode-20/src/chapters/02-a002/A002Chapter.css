@@ -1,0 +1,443 @@
+/* 02-a002 · 界定对象与主问题页 —— 前缀 .ckg- 仅本章使用；颜色/字体全部走主题 token。
+   首拍建立用 keyframe（进入态挂载即播，delay 全部挂在状态选择器下）；
+   第二拍的升格与目标卡点亮用 transition，基础态保持即时可逆。 */
+
+.ckg-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+@keyframes ckg-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ckg-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ckg-cond-dim {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.58;
+  }
+}
+
+@keyframes ckg-cv-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ckg-cv-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.62);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 标题区：S007「第一步：界定对象」（可见标题：保留） ─────────── */
+
+.ckg-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.ckg-head-tick {
+  width: 16px;
+  height: 16px;
+  border: 4px solid var(--theme-structural);
+  background: var(--theme-process-surface);
+}
+
+.ckg-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--theme-structural);
+}
+
+.ckg-head-rule {
+  flex: 1 1 auto;
+  min-width: 0;
+  border-top: 2px dashed var(--theme-dashed-line);
+}
+
+/* ── 主体：左窄轨 + 右三槽竖排 ─────────────────────────────────── */
+
+.ckg-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 34px;
+}
+
+/* 左窄轨：01 序号 + 第一步标签 + 对象/业务边界两短语 */
+.ckg-rail {
+  flex: 0 0 112px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 6px 0;
+}
+
+.ckg-rail-num {
+  font-family: var(--font-mono);
+  font-size: 84px;
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--theme-structural);
+  opacity: 0.22;
+}
+
+.ckg-rail-tag {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 0.28em;
+  color: var(--theme-structural);
+  padding: 14px 8px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+.ckg-slab {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--text-2);
+  padding: 12px 7px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: var(--surface-3);
+}
+
+/* 右列：条件带 → 主问题卡 → 目标卡组 */
+.ckg-flow {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── 条件带：R003 先后对照（A 弱 → B 强调），第二拍保持 ─────────── */
+
+.ckg-cond {
+  flex: 0 0 auto;
+  padding: 20px 30px 22px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+.ckg-cond-rowA {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 4px 0 12px;
+}
+
+.ckg-cond-mark {
+  flex: 0 0 76px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+}
+
+.ckg-cond-textA {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.ckg-cond-sep {
+  margin: 0;
+}
+
+.ckg-cond-rowB {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 14px 0 2px;
+}
+
+.ckg-cond-markHard {
+  color: var(--theme-warning);
+}
+
+.ckg-cond-textB {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--font-display-cn);
+  font-size: 35px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.ckg-cond-textB b {
+  color: var(--theme-warning);
+}
+
+/* 记录汇聚演示：三条记录线自绘汇入「同一个对象」节点（U004 · R003 前提演示） */
+.ckg-cv {
+  flex: 0 0 250px;
+  height: 84px;
+}
+
+.ckg-cv-src {
+  fill: var(--surface-2);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+}
+
+.ckg-cv-path {
+  fill: none;
+  stroke: var(--theme-warning);
+  stroke-width: 2.5;
+  opacity: 0.7;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.ckg-cv-target {
+  fill: var(--theme-warning-surface);
+  stroke: var(--theme-warning);
+  stroke-width: 2.5;
+}
+
+.ckg-cv-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--theme-structural);
+}
+
+/* ── 主问题卡：第一拍虚位留槽，第二拍升为中心焦点 ───────────────── */
+
+.ckg-question {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 26px 40px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  opacity: 0.26;
+  transform: translateY(8px) scale(0.985);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease,
+    border-color 0.55s ease,
+    background 0.55s ease,
+    box-shadow 0.55s ease;
+}
+
+.ckg-question-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--theme-process);
+  opacity: 0;
+  transition: opacity 0.45s ease 0.35s;
+}
+
+.ckg-question-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  line-height: 1.28;
+  text-align: center;
+  color: var(--theme-structural);
+}
+
+.ckg-question-line em {
+  font-style: normal;
+  color: var(--theme-process);
+  border-bottom: 5px solid var(--theme-process);
+  padding-bottom: 2px;
+}
+
+/* ── 目标卡组：问题卡下方两侧，R004 由相邻次序承载 ──────────────── */
+
+.ckg-goals {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 24px;
+}
+
+.ckg-goal {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 30px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  opacity: 0.16;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    border-color 0.5s ease,
+    background 0.5s ease;
+}
+
+.ckg-goal-kicker {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+}
+
+.ckg-goal-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+/* ── 状态 1 · scope-defined：条件带先后对照 + 第一步短语点亮 ───────
+   进入态动画与 delay 只挂在本状态选择器下；离开即回到基础可逆态。 */
+
+[data-state="scope-defined"] .ckg-head {
+  animation: ckg-rise-in 0.5s ease 0.12s both;
+}
+
+[data-state="scope-defined"] .ckg-rail {
+  animation: ckg-fade-in 0.5s ease 0.22s both;
+}
+
+[data-state="scope-defined"] .ckg-rail-tag {
+  animation: ckg-fade-in 0.55s ease 0.4s both;
+}
+
+[data-state="scope-defined"] .ckg-slab-object {
+  animation: ckg-fade-in 0.45s ease 1.8s both;
+}
+
+[data-state="scope-defined"] .ckg-slab-boundary {
+  animation: ckg-fade-in 0.45s ease 2.05s both;
+}
+
+[data-state="scope-defined"] .ckg-cond {
+  animation: ckg-rise-in 0.5s ease 0.3s both;
+}
+
+/* A 行先落，随后降为弱前提，给 B 行让位（R003 先后对照） */
+[data-state="scope-defined"] .ckg-cond-rowA {
+  animation: ckg-cond-dim 0.5s ease 1.2s both;
+}
+
+[data-state="scope-defined"] .ckg-cond-rowB {
+  animation: ckg-rise-in 0.55s ease 0.95s both;
+}
+
+[data-state="scope-defined"] .ckg-cv-sources {
+  animation: ckg-fade-in 0.4s ease 0.9s both;
+}
+
+[data-state="scope-defined"] .ckg-cv-path:nth-of-type(1) {
+  animation: ckg-cv-draw 0.7s ease 1.05s both;
+}
+
+[data-state="scope-defined"] .ckg-cv-path:nth-of-type(2) {
+  animation: ckg-cv-draw 0.7s ease 1.3s both;
+}
+
+[data-state="scope-defined"] .ckg-cv-path:nth-of-type(3) {
+  animation: ckg-cv-draw 0.7s ease 1.55s both;
+}
+
+[data-state="scope-defined"] .ckg-cv-target,
+[data-state="scope-defined"] .ckg-cv-label {
+  animation: ckg-cv-pop 0.45s ease 1.75s both;
+}
+
+/* ── 状态 2 · question-formed：主问题卡升为中心，目标卡点亮 ─────── */
+
+[data-state="question-formed"] .ckg-cond {
+  opacity: 0.82;
+  transition: opacity 0.5s ease 0.1s;
+}
+
+[data-state="question-formed"] .ckg-cond-rowA {
+  opacity: 0.58;
+}
+
+[data-state="question-formed"] .ckg-question {
+  opacity: 1;
+  transform: none;
+  border-color: var(--theme-process);
+  background: var(--theme-process-surface);
+  box-shadow:
+    var(--card-shadow),
+    0 0 0 5px var(--accent-glow);
+  transition-delay: 0.1s;
+}
+
+[data-state="question-formed"] .ckg-question-kicker {
+  opacity: 1;
+}
+
+[data-state="question-formed"] .ckg-goal {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="question-formed"] .ckg-goal-powers {
+  transition-delay: 0.5s;
+  border-color: var(--theme-process);
+  background: var(--theme-process-surface);
+}
+
+[data-state="question-formed"] .ckg-goal-audit {
+  transition-delay: 0.68s;
+}
