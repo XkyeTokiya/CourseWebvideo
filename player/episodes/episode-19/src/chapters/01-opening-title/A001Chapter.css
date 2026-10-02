@@ -1,0 +1,212 @@
+/* 01-opening-title · A001 —— 前缀 .ot- 仅本章使用；颜色/字体全部走主题 token。
+   单一语义拍（title-established，~4s）：标题落位 → “怎么选”强调章 →
+   候选格带依次点亮 → 问句条淡入。全部为 keyframe 入场，收在 ~2.4s，末态稳定。 */
+
+.ot-root {
+  min-height: 0;
+}
+
+.ot-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+  text-align: center;
+}
+
+/* ── 主标题：视觉中心 ── */
+
+.ot-headline {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.ot-headline-main {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 96px;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  line-height: 1.08;
+}
+
+/* “怎么选”：批注式强调块 —— 工业绿墨底白字 + 低位硬投影，随口播报到晚落 */
+.ot-headline-ask {
+  position: relative;
+  margin-top: 10px;
+  padding: 10px 34px 14px;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 132px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--theme-paper);
+  background: var(--accent);
+  box-shadow: var(--card-shadow);
+}
+
+.ot-ask-tick {
+  position: absolute;
+  right: -34px;
+  bottom: 0;
+  width: 22px;
+  height: 56px;
+  border: 3px dashed var(--accent);
+  border-left: 0;
+}
+
+/* ── 候选注册格带：弱化预览层 ── */
+
+.ot-candidates {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+  width: min(1180px, 100%);
+  opacity: 0.66;
+}
+
+.ot-candidate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 18px 8px 14px;
+  border: var(--rule-w) dashed var(--rule);
+  background: var(--surface);
+}
+
+.ot-candidate-no {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+}
+
+.ot-candidate-name {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: 0.02em;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.ot-candidate-role {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--text-mute);
+}
+
+/* ── 问句条：弱化预置 ── */
+
+.ot-question {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 30px;
+  border: var(--rule-w) dashed var(--rule);
+  background: var(--surface-3);
+}
+
+.ot-question-mark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--text-2);
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 24px;
+  color: var(--text-2);
+}
+
+.ot-question-text {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 34px;
+  letter-spacing: 0.03em;
+  color: var(--text-2);
+}
+
+/* ── 入场动画：只在状态选择器下挂载，末态 opacity 1 稳定 ── */
+
+@keyframes ot-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ot-stamp-in {
+  from {
+    opacity: 0;
+    transform: scale(1.12) rotate(-2deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.98) rotate(0.6deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ot-cell-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ot-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 0.66;
+  }
+}
+
+[data-state="title-established"] .ot-headline-main {
+  animation: ot-rise-in 640ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+[data-state="title-established"] .ot-headline-ask {
+  animation: ot-stamp-in 520ms cubic-bezier(0.2, 0.8, 0.3, 1) 780ms both;
+}
+
+[data-state="title-established"] .ot-ask-tick {
+  animation: ot-fade-in 400ms ease-out 1180ms both;
+}
+
+[data-state="title-established"] .ot-candidate {
+  animation: ot-cell-in 460ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* 五个候选格紧凑级联（130ms 间隔），从 ~1.25s 到 ~1.9s 收完 */
+[data-state="title-established"] .ot-candidate:nth-child(1) { animation-delay: 1250ms; }
+[data-state="title-established"] .ot-candidate:nth-child(2) { animation-delay: 1380ms; }
+[data-state="title-established"] .ot-candidate:nth-child(3) { animation-delay: 1510ms; }
+[data-state="title-established"] .ot-candidate:nth-child(4) { animation-delay: 1640ms; }
+[data-state="title-established"] .ot-candidate:nth-child(5) { animation-delay: 1770ms; }
+
+/* 问句条最后落位；复用弱化透明度作终态（与格带预览一致） */
+[data-state="title-established"] .ot-question {
+  animation: ot-fade-in 480ms ease-out 2000ms both;
+}
