@@ -11,6 +11,8 @@ import A004Chapter from "./chapters/04-a004/A004Chapter";
 import { narrations as a004Narrations } from "./chapters/04-a004/narrations";
 import A005Chapter from "./chapters/05-a005/A005Chapter";
 import { narrations as a005Narrations } from "./chapters/05-a005/narrations";
+import A006Chapter from "./chapters/06-a006/A006Chapter";
+import { narrations as a006Narrations } from "./chapters/06-a006/narrations";
 
 export const id = "episode-20";
 export const title = "从前缀到后缀：设计一套可落地的编码规则";
@@ -52,5 +54,11 @@ export const CHAPTERS: ChapterDef[] = [
     title: "前缀职责",
     narrations: a005Narrations,
     Component: A005Chapter,
+  },
+  {
+    id: "06-a006",
+    title: "后缀分层与责任",
+    narrations: a006Narrations,
+    Component: A006Chapter,
   },
 ];
