@@ -1,0 +1,269 @@
+/* 07-gs1-selection-start · A007 —— 前缀 .ss- 仅本章使用；颜色/字体全部走主题 token。
+   拍 1：标题与现场图落位，三张情境卡级联，卡内对号箭头自绘（R019/R020 parallel）；
+   拍 2：三卡保持等权，起点判断行落位（R021 conclusion）。
+   基础态保持即时可逆，反向导航不继承进入延迟。 */
+
+.ss-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+/* ── 标题区 ── */
+
+.ss-header {
+  display: flex;
+  align-items: baseline;
+  gap: 26px;
+}
+
+.ss-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 52px;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.ss-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--text-mute);
+  letter-spacing: 0.02em;
+}
+
+/* ── 主区：现场图（左，持续） + 三情境轨道（右） ── */
+
+.ss-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 40px;
+}
+
+.ss-scene {
+  margin: 0;
+  flex: 0 0 38%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.ss-scene-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: var(--card-shadow);
+}
+
+.ss-scene-caption {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ss-scene-badge {
+  padding: 6px 16px;
+  border: var(--rule-w) solid var(--text-2);
+  background: var(--surface);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--text);
+}
+
+.ss-scene-note {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+}
+
+/* ── 三情境轨道：对象 → 对号箭头 → 编码名牌（等权并列） ── */
+
+.ss-lanes {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 16px;
+}
+
+.ss-lane {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 120px minmax(0, 0.62fr);
+  align-items: center;
+  gap: 16px;
+  border: var(--rule-w) solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: 3px 4px 0 var(--theme-offset-shadow);
+  padding: 18px 30px;
+  opacity: 0;
+}
+
+.ss-lane-object {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ss-lane-object-lead {
+  font-family: var(--font-body);
+  font-size: 22px;
+  color: var(--text-faint);
+}
+
+.ss-lane-object-name {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 34px;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.ss-lane-arrow {
+  width: 100%;
+  height: 24px;
+}
+
+.ss-lane-arrow-line,
+.ss-lane-arrow-head {
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.ss-lane-code {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ss-lane-code-chip {
+  align-self: flex-start;
+  padding: 8px 22px;
+  border: var(--rule-w) solid var(--theme-structural);
+  background: var(--theme-process-surface);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 34px;
+  letter-spacing: 0.05em;
+  color: var(--theme-process);
+  line-height: 1.1;
+}
+
+.ss-lane-action {
+  font-family: var(--font-body);
+  font-size: 21px;
+  color: var(--text-mute);
+}
+
+/* ── 起点判断行：从首拍占稳定槽位，拍 2 整区落位（基础态隐藏分隔线） ── */
+
+.ss-start {
+  border-top: var(--rule-w) dashed var(--rule);
+  padding: 18px 6px 0;
+  opacity: 0;
+}
+
+[data-state="start-not-verdict"] .ss-start {
+  opacity: 1;
+}
+
+.ss-start-text {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  opacity: 0;
+}
+
+.ss-start-key {
+  padding: 8px 20px;
+  border: var(--rule-w) solid var(--theme-structural);
+  background: var(--surface-3);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 27px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.ss-start-note {
+  font-family: var(--font-body);
+  font-size: 30px;
+  color: var(--text-2);
+  line-height: 1.3;
+}
+
+/* ── 入场 keyframe ── */
+
+@keyframes ss-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ss-arrow-draw {
+  from { stroke-dashoffset: 130; }
+  to { stroke-dashoffset: 0; }
+}
+
+.ss-header {
+  animation: ss-rise-in 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+[data-state="three-contexts-mapped"] .ss-scene,
+[data-state="start-not-verdict"] .ss-scene {
+  animation: ss-rise-in 620ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* 拍 1：三情境卡级联（收在 ~1.9s ≤ ~15s） */
+[data-state="three-contexts-mapped"] .ss-lane,
+[data-state="start-not-verdict"] .ss-lane {
+  animation: ss-rise-in 500ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+[data-state="three-contexts-mapped"] .ss-lane:nth-child(1),
+[data-state="start-not-verdict"] .ss-lane:nth-child(1) { animation-delay: 380ms; }
+[data-state="three-contexts-mapped"] .ss-lane:nth-child(2),
+[data-state="start-not-verdict"] .ss-lane:nth-child(2) { animation-delay: 540ms; }
+[data-state="three-contexts-mapped"] .ss-lane:nth-child(3),
+[data-state="start-not-verdict"] .ss-lane:nth-child(3) { animation-delay: 700ms; }
+
+/* 对号箭头在所属卡落位后自绘 */
+[data-state="three-contexts-mapped"] .ss-lane:nth-child(1) .ss-lane-arrow-line,
+[data-state="start-not-verdict"] .ss-lane:nth-child(1) .ss-lane-arrow-line {
+  stroke-dasharray: 130;
+  stroke-dashoffset: 130;
+  animation: ss-arrow-draw 460ms ease-out 760ms forwards;
+}
+[data-state="three-contexts-mapped"] .ss-lane:nth-child(2) .ss-lane-arrow-line,
+[data-state="start-not-verdict"] .ss-lane:nth-child(2) .ss-lane-arrow-line {
+  stroke-dasharray: 130;
+  stroke-dashoffset: 130;
+  animation: ss-arrow-draw 460ms ease-out 920ms forwards;
+}
+[data-state="three-contexts-mapped"] .ss-lane:nth-child(3) .ss-lane-arrow-line,
+[data-state="start-not-verdict"] .ss-lane:nth-child(3) .ss-lane-arrow-line {
+  stroke-dasharray: 130;
+  stroke-dashoffset: 130;
+  animation: ss-arrow-draw 460ms ease-out 1080ms forwards;
+}
+
+/* 拍 2：起点判断行 */
+[data-state="start-not-verdict"] .ss-start-text {
+  animation: ss-rise-in 560ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: 240ms;
+}

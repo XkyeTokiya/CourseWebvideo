@@ -1,0 +1,264 @@
+/* 11-four-step-verdict · A011 —— 前缀 .fv- 仅本章使用；颜色/字体全部走主题 token。
+   拍 1：轨道线自绘 + 四步按真实先后落位，末步 active、前步 past（ordered-progression）；
+   拍 2：四步轨道保持，收束判断区落位。基础态保持即时可逆。
+   轨道为行式结构：次序行 / 轨道行 / 名称行 / 序号行各占一行网格，
+   同一步的四个 cell 同延迟级联，节点严格落在轨道线上。 */
+
+.fv-root {
+  gap: 34px;
+  min-height: 0;
+}
+
+/* ── 标题区 ── */
+
+.fv-header {
+  display: flex;
+  align-items: baseline;
+}
+
+.fv-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+/* ── 四步轨道 ── */
+
+.fv-track {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+
+.fv-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.fv-cell {
+  display: flex;
+  align-items: center;
+}
+
+.fv-order {
+  justify-content: center;
+  align-self: start;
+  justify-self: center;
+  padding: 6px 18px;
+  border: var(--rule-w) dashed var(--text-faint);
+  background: var(--surface-3);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+  white-space: nowrap;
+  transition: border-color 420ms ease, color 420ms ease, background 420ms ease;
+  opacity: 0;
+}
+
+/* 轨道行：线在底，四点落线上 */
+
+.fv-track-rail {
+  position: relative;
+  align-items: center;
+  height: 34px;
+}
+
+.fv-rail-svg {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  transform: translateY(-50%);
+}
+
+.fv-rail-line {
+  stroke: var(--rule);
+  stroke-width: 4;
+  vector-effect: non-scaling-stroke;
+}
+
+.fv-track-rail .fv-cell {
+  justify-content: center;
+  opacity: 0;
+}
+
+.fv-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 5px solid var(--text-faint);
+  box-shadow: 3px 3px 0 var(--theme-offset-shadow);
+  transition: border-color 420ms ease, background 420ms ease;
+}
+
+.fv-name {
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 34px;
+  color: var(--text);
+  line-height: 1.25;
+  transition: color 420ms ease;
+  opacity: 0;
+}
+
+.fv-index {
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  opacity: 0;
+}
+
+/* 轨道态：全部走过 → 工业绿点亮（拍 1 末态第 4 步 active，前 3 步 past 弱化） */
+
+[data-state="four-steps-mapped"] .fv-track-orders .fv-cell:not(:first-child) .fv-order,
+[data-state="verdict-stated"] .fv-order {
+  border-color: var(--accent);
+  background: var(--theme-process-surface);
+  color: var(--theme-process);
+}
+
+[data-state="four-steps-mapped"] .fv-track-rail .fv-cell:not(:first-child) .fv-dot,
+[data-state="verdict-stated"] .fv-dot {
+  border-color: var(--theme-process);
+  background: var(--theme-process-surface);
+}
+
+/* past 步弱化：拍 1 中前 3 步名称降为次级色 */
+[data-state="four-steps-mapped"] .fv-track-names .fv-cell:not(:last-child) .fv-name {
+  color: var(--text-2);
+}
+
+/* ── 收束判断区：从首拍占稳定槽位，拍 2 整区落位（基础态隐藏分隔线） ── */
+
+.fv-verdict {
+  border-top: var(--rule-w) dashed var(--rule);
+  padding: 26px 10px 0;
+  opacity: 0;
+}
+
+[data-state="verdict-stated"] .fv-verdict {
+  opacity: 1;
+}
+
+.fv-verdict-text {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+}
+
+.fv-verdict-lead {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  color: var(--text-mute);
+}
+
+.fv-verdict-key {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 37px;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+/* ── 入场 keyframe ── */
+
+@keyframes fv-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fv-rail-draw {
+  from { stroke-dashoffset: 1660; }
+  to { stroke-dashoffset: 0; }
+}
+
+.fv-header {
+  animation: fv-rise-in 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+[data-state="four-steps-mapped"] .fv-rail-line {
+  stroke-dasharray: 1660;
+  stroke-dashoffset: 1660;
+  animation: fv-rail-draw 1000ms ease-out 220ms forwards;
+}
+
+/* 拍 1：四步先后落位（每步 4 个 cell 同延迟，收在 ~2.3s ≤ ~14s） */
+[data-state="four-steps-mapped"] .fv-order,
+[data-state="four-steps-mapped"] .fv-track-rail .fv-cell,
+[data-state="four-steps-mapped"] .fv-name,
+[data-state="four-steps-mapped"] .fv-index,
+[data-state="verdict-stated"] .fv-order,
+[data-state="verdict-stated"] .fv-track-rail .fv-cell,
+[data-state="verdict-stated"] .fv-name,
+[data-state="verdict-stated"] .fv-index {
+  animation: fv-rise-in 440ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* 步 1–4：次序/名称/序号行取第 k 格，轨道行的点在 span 第 k+1 格（svg 占第 1 格） */
+[data-state="four-steps-mapped"] .fv-track-orders > :nth-child(1),
+[data-state="four-steps-mapped"] .fv-track-names > :nth-child(1),
+[data-state="four-steps-mapped"] .fv-track-indexes > :nth-child(1),
+[data-state="four-steps-mapped"] .fv-track-rail > span:nth-child(2),
+[data-state="verdict-stated"] .fv-track-orders > :nth-child(1),
+[data-state="verdict-stated"] .fv-track-names > :nth-child(1),
+[data-state="verdict-stated"] .fv-track-indexes > :nth-child(1),
+[data-state="verdict-stated"] .fv-track-rail > span:nth-child(2) { animation-delay: 460ms; }
+
+[data-state="four-steps-mapped"] .fv-track-orders > :nth-child(2),
+[data-state="four-steps-mapped"] .fv-track-names > :nth-child(2),
+[data-state="four-steps-mapped"] .fv-track-indexes > :nth-child(2),
+[data-state="four-steps-mapped"] .fv-track-rail > span:nth-child(3),
+[data-state="verdict-stated"] .fv-track-orders > :nth-child(2),
+[data-state="verdict-stated"] .fv-track-names > :nth-child(2),
+[data-state="verdict-stated"] .fv-track-indexes > :nth-child(2),
+[data-state="verdict-stated"] .fv-track-rail > span:nth-child(3) { animation-delay: 900ms; }
+
+[data-state="four-steps-mapped"] .fv-track-orders > :nth-child(3),
+[data-state="four-steps-mapped"] .fv-track-names > :nth-child(3),
+[data-state="four-steps-mapped"] .fv-track-indexes > :nth-child(3),
+[data-state="four-steps-mapped"] .fv-track-rail > span:nth-child(4),
+[data-state="verdict-stated"] .fv-track-orders > :nth-child(3),
+[data-state="verdict-stated"] .fv-track-names > :nth-child(3),
+[data-state="verdict-stated"] .fv-track-indexes > :nth-child(3),
+[data-state="verdict-stated"] .fv-track-rail > span:nth-child(4) { animation-delay: 1340ms; }
+
+[data-state="four-steps-mapped"] .fv-track-orders > :nth-child(4),
+[data-state="four-steps-mapped"] .fv-track-names > :nth-child(4),
+[data-state="four-steps-mapped"] .fv-track-indexes > :nth-child(4),
+[data-state="four-steps-mapped"] .fv-track-rail > span:nth-child(5),
+[data-state="verdict-stated"] .fv-track-orders > :nth-child(4),
+[data-state="verdict-stated"] .fv-track-names > :nth-child(4),
+[data-state="verdict-stated"] .fv-track-indexes > :nth-child(4),
+[data-state="verdict-stated"] .fv-track-rail > span:nth-child(5) { animation-delay: 1780ms; }
+
+/* 拍 2：收束判断区 */
+[data-state="verdict-stated"] .fv-verdict-text {
+  animation: fv-rise-in 620ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: 240ms;
+}

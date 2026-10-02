@@ -68,7 +68,6 @@
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 18px;
   width: min(1180px, 100%);
-  opacity: 0.66;
 }
 
 .ot-candidate {

@@ -1,0 +1,212 @@
+/* 10-five-systems-division · A010 —— 前缀 .dv- 仅本章使用；颜色/字体全部走主题 token。
+   拍 1：锚点卡落位并保持，五个环境标签依次点亮（anchor-and-context，锚点不卸载）；
+   拍 2：分工区两行依次落位，五分工并列。基础态保持即时可逆。 */
+
+.dv-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+/* ── 标题区 ── */
+
+.dv-header {
+  display: flex;
+  align-items: baseline;
+  gap: 26px;
+}
+
+.dv-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 52px;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.dv-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--text-mute);
+  letter-spacing: 0.02em;
+}
+
+/* ── 主区：锚点（左，持续） + 分工区（右） ── */
+
+.dv-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 44px;
+}
+
+.dv-anchor {
+  flex: 0 0 37%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+
+.dv-anchor-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dv-anchor-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: var(--card-shadow);
+}
+
+.dv-anchor-caption {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dv-anchor-badge {
+  padding: 6px 16px;
+  border: var(--rule-w) solid var(--theme-structural);
+  background: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 23px;
+  color: var(--text);
+}
+
+.dv-anchor-note {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+}
+
+.dv-env-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.dv-env-tag {
+  padding: 8px 18px;
+  border: var(--rule-w) dashed var(--accent);
+  background: var(--theme-process-surface);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.05em;
+  color: var(--theme-process);
+  opacity: 0;
+}
+
+/* ── 分工区：两行并列，行内多格 ── */
+
+.dv-division {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 18px;
+}
+
+.dv-division-row {
+  display: grid;
+  gap: 18px;
+}
+
+.dv-division-a {
+  grid-template-columns: minmax(0, 0.66fr) minmax(0, 1fr);
+}
+
+.dv-division-b {
+  grid-template-columns: minmax(0, 0.62fr) minmax(0, 0.62fr) minmax(0, 1fr);
+}
+
+.dv-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 26px;
+  border: var(--rule-w) solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  min-height: 150px;
+  opacity: 0;
+}
+
+.dv-cell-system {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 36px;
+  letter-spacing: 0.05em;
+  color: var(--theme-process);
+  line-height: 1.1;
+}
+
+.dv-cell-role {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 27px;
+  color: var(--text);
+  line-height: 1.28;
+}
+
+/* ── 入场 keyframe ── */
+
+@keyframes dv-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.dv-header {
+  animation: dv-rise-in 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+[data-state="anchor-recalled"] .dv-anchor-figure,
+[data-state="five-roles-mapped"] .dv-anchor-figure {
+  animation: dv-rise-in 620ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* 拍 1：五个环境标签紧凑级联（收在 ~1.7s ≤ ~13s） */
+[data-state="anchor-recalled"] .dv-env-tag,
+[data-state="five-roles-mapped"] .dv-env-tag {
+  animation: dv-rise-in 440ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+[data-state="anchor-recalled"] .dv-env-tag:nth-child(1),
+[data-state="five-roles-mapped"] .dv-env-tag:nth-child(1) { animation-delay: 520ms; }
+[data-state="anchor-recalled"] .dv-env-tag:nth-child(2),
+[data-state="five-roles-mapped"] .dv-env-tag:nth-child(2) { animation-delay: 700ms; }
+[data-state="anchor-recalled"] .dv-env-tag:nth-child(3),
+[data-state="five-roles-mapped"] .dv-env-tag:nth-child(3) { animation-delay: 880ms; }
+[data-state="anchor-recalled"] .dv-env-tag:nth-child(4),
+[data-state="five-roles-mapped"] .dv-env-tag:nth-child(4) { animation-delay: 1060ms; }
+[data-state="anchor-recalled"] .dv-env-tag:nth-child(5),
+[data-state="five-roles-mapped"] .dv-env-tag:nth-child(5) { animation-delay: 1240ms; }
+
+/* 拍 2：分工两行先后落位，行内格再级联 */
+[data-state="five-roles-mapped"] .dv-division-a .dv-cell,
+[data-state="five-roles-mapped"] .dv-division-b .dv-cell {
+  animation: dv-rise-in 480ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+[data-state="five-roles-mapped"] .dv-division-a .dv-cell:nth-child(1) { animation-delay: 340ms; }
+[data-state="five-roles-mapped"] .dv-division-a .dv-cell:nth-child(2) { animation-delay: 480ms; }
+[data-state="five-roles-mapped"] .dv-division-b .dv-cell:nth-child(1) { animation-delay: 1040ms; }
+[data-state="five-roles-mapped"] .dv-division-b .dv-cell:nth-child(2) { animation-delay: 1180ms; }
+[data-state="five-roles-mapped"] .dv-division-b .dv-cell:nth-child(3) { animation-delay: 1320ms; }

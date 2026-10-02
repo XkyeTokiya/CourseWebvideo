@@ -1,0 +1,216 @@
+/* 03-four-questions · A003 —— 前缀 .fq- 仅本章使用；颜色/字体全部走主题 token。
+   拍 1：标题与"改写"引导行落位，四张问题卡等权级联（keyframe，挂载即播）；
+   拍 2：四卡保持等权，判断行落位并自绘汇聚线（keyframe，挂状态选择器）。
+   基础态保持即时可逆，反向导航不继承进入延迟。 */
+
+.fq-root {
+  gap: 26px;
+  min-height: 0;
+}
+
+/* ── 标题区 ── */
+
+.fq-header {
+  display: flex;
+  align-items: baseline;
+  gap: 26px;
+}
+
+.fq-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 54px;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.fq-lead {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--text-mute);
+  letter-spacing: 0.02em;
+}
+
+.fq-lead-mark {
+  padding: 2px 12px;
+  border: var(--rule-w) dashed var(--text-faint);
+  background: var(--surface-3);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+/* ── 四问卡区：等权 4 列，检查单骨架 ── */
+
+.fq-cards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.fq-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: var(--rule-w) solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+}
+
+.fq-card-id {
+  padding: 18px 22px 0;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+}
+
+.fq-card-body {
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 26px;
+}
+
+.fq-card-lead {
+  font-family: var(--font-body);
+  font-size: 27px;
+  color: var(--text-mute);
+  line-height: 1.25;
+}
+
+.fq-card-text {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 37px;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  line-height: 1.28;
+}
+
+.fq-card-tick {
+  height: 8px;
+  background: var(--accent);
+  opacity: 0.16;
+  margin: 0 0 0 auto;
+  width: 96px;
+}
+
+/* ── 判断区：从首拍占稳定槽位，拍 2 整区落位（基础态隐藏，防提前预显示） ── */
+
+.fq-verdict {
+  position: relative;
+  padding: 20px 40px 8px;
+  border-top: var(--rule-w) dashed var(--rule);
+  opacity: 0;
+}
+
+[data-state="constraints-over-name"] .fq-verdict {
+  opacity: 1;
+}
+
+.fq-verdict-svg {
+  position: absolute;
+  top: -2px;
+  left: 40px;
+  width: calc(100% - 80px);
+  height: 46px;
+  pointer-events: none;
+}
+
+.fq-verdict-line {
+  stroke: var(--accent);
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.fq-verdict-text {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  opacity: 0;
+}
+
+.fq-verdict-name {
+  font-family: var(--font-body);
+  font-size: 27px;
+  color: var(--text-2);
+}
+
+.fq-verdict-key {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 40px;
+  letter-spacing: 0.02em;
+  color: var(--theme-process);
+  line-height: 1.2;
+}
+
+/* ── 拍 1 入场（新挂载即播，四卡紧凑级联，收在 ~2.0s ≤ ~16s） ── */
+
+@keyframes fq-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-state="four-questions-set"] .fq-card,
+[data-state="constraints-over-name"] .fq-card {
+  animation: fq-rise-in 480ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+[data-state="four-questions-set"] .fq-card:nth-child(1),
+[data-state="constraints-over-name"] .fq-card:nth-child(1) { animation-delay: 360ms; }
+[data-state="four-questions-set"] .fq-card:nth-child(2),
+[data-state="constraints-over-name"] .fq-card:nth-child(2) { animation-delay: 500ms; }
+[data-state="four-questions-set"] .fq-card:nth-child(3),
+[data-state="constraints-over-name"] .fq-card:nth-child(3) { animation-delay: 640ms; }
+[data-state="four-questions-set"] .fq-card:nth-child(4),
+[data-state="constraints-over-name"] .fq-card:nth-child(4) { animation-delay: 780ms; }
+
+.fq-header {
+  animation: fq-rise-in 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* ── 拍 2：判断行落位 + 汇聚线自绘（进入态专属，基础态即时可逆） ── */
+
+[data-state="constraints-over-name"] .fq-verdict-text {
+  animation: fq-rise-in 560ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: 260ms;
+}
+
+[data-state="constraints-over-name"] .fq-vl-1 {
+  stroke-dasharray: 430;
+  stroke-dashoffset: 430;
+  animation: fq-draw 620ms ease-out 160ms forwards;
+}
+
+[data-state="constraints-over-name"] .fq-vl-2 {
+  stroke-dasharray: 450;
+  stroke-dashoffset: 450;
+  animation: fq-draw 640ms ease-out 520ms forwards;
+}
+
+@keyframes fq-draw {
+  from { stroke-dashoffset: 430; }
+  to { stroke-dashoffset: 0; }
+}

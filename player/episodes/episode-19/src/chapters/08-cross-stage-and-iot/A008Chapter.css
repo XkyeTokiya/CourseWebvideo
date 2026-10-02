@@ -1,0 +1,348 @@
+/* 08-cross-stage-and-iot · A008 —— 前缀 .ci- 仅本章使用；颜色/字体全部走主题 token。
+   拍 1：标题 + 现场图落位，VAA 情境行落位（信息最重的对照行）；
+   拍 2：Handle / OID 两行补落，三行并列；拍 3：筛选说明落位 + 多映射边界；
+   拍 4：承接线自绘 + 条件行落位，Ecode 名牌落进候选托盘（R025 sequence）。
+   基础态保持即时可逆，反向导航不继承进入延迟。 */
+
+.ci-root {
+  gap: 22px;
+  min-height: 0;
+}
+
+/* ── 标题区 ── */
+
+.ci-header {
+  display: flex;
+  align-items: baseline;
+  gap: 26px;
+}
+
+.ci-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 50px;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.ci-lead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--text-mute);
+  letter-spacing: 0.02em;
+}
+
+/* ── 主区：对照区（左） + 现场图（右，持续） ── */
+
+.ci-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 36px;
+}
+
+.ci-compare {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ci-row {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 16px 30px;
+  border: var(--rule-w) solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: 3px 4px 0 var(--theme-offset-shadow);
+  opacity: 0;
+}
+
+.ci-row-system {
+  flex: 0 0 150px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 34px;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.ci-row-body {
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ci-row-key {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 29px;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+.ci-row-note {
+  font-family: var(--font-body);
+  font-size: 22px;
+  color: var(--text-mute);
+  line-height: 1.3;
+}
+
+/* VAA 行信息最重：加工业绿侧标提示它承载"同一身份"主线 */
+.ci-row-vaa {
+  border-left: 10px solid var(--theme-process);
+}
+
+/* ── 筛选说明 + 多映射边界 ── */
+
+.ci-screen {
+  padding: 14px 30px;
+  border: var(--rule-w) dashed var(--rule);
+  background: var(--surface-3);
+  opacity: 0;
+}
+
+.ci-screen-text {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+}
+
+.ci-screen-key {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 27px;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+.ci-screen-note {
+  font-family: var(--font-body);
+  font-size: 21px;
+  color: var(--text-mute);
+  line-height: 1.3;
+}
+
+/* ── 物联网：条件行 → 承接线 → 候选行 ── */
+
+.ci-iot {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 8px;
+  padding-left: 66px;
+}
+
+.ci-iot-svg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 30px;
+  width: 60px;
+  height: 100%;
+}
+
+.ci-iot-link {
+  stroke: var(--accent);
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.ci-condition,
+.ci-candidate {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+}
+
+.ci-condition-tag {
+  flex: 0 0 auto;
+  padding: 8px 18px;
+  border: var(--rule-w) solid var(--theme-structural);
+  background: var(--surface-3);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 23px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.ci-condition-text {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-2);
+  line-height: 1.3;
+}
+
+.ci-candidate-chip {
+  padding: 10px 24px;
+  border: var(--rule-w) solid var(--theme-process);
+  background: var(--theme-process-surface);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: 0.05em;
+  color: var(--theme-process);
+  line-height: 1.1;
+}
+
+.ci-candidate-tray {
+  padding: 8px 18px;
+  border: var(--rule-w) dashed var(--accent);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--theme-process);
+  white-space: nowrap;
+}
+
+.ci-candidate-note {
+  font-family: var(--font-body);
+  font-size: 22px;
+  color: var(--text-mute);
+  line-height: 1.3;
+}
+
+/* ── 现场图：右侧持续槽位 ── */
+
+.ci-scene {
+  margin: 0;
+  flex: 0 0 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.ci-scene-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: var(--card-shadow);
+}
+
+.ci-scene-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ci-scene-badge {
+  align-self: flex-start;
+  padding: 6px 16px;
+  border: var(--rule-w) solid var(--text-2);
+  background: var(--surface);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 21px;
+  color: var(--text);
+}
+
+.ci-scene-note {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+}
+
+/* ── 入场 keyframe ── */
+
+@keyframes ci-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ci-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ci-link-draw {
+  from { stroke-dashoffset: 90; }
+  to { stroke-dashoffset: 0; }
+}
+
+.ci-header {
+  animation: ci-rise-in 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+[data-state="identity-context-mapped"] .ci-scene,
+[data-state="two-alternatives-mapped"] .ci-scene,
+[data-state="screening-boundary-stated"] .ci-scene,
+[data-state="iot-candidate-entered"] .ci-scene {
+  animation: ci-rise-in 620ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: 120ms;
+}
+
+/* 拍 1：VAA 行 */
+[data-state="identity-context-mapped"] .ci-row-vaa,
+[data-state="two-alternatives-mapped"] .ci-row-vaa,
+[data-state="screening-boundary-stated"] .ci-row-vaa,
+[data-state="iot-candidate-entered"] .ci-row-vaa {
+  animation: ci-rise-in 540ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: 340ms;
+}
+
+/* 拍 2：Handle / OID 补落 */
+[data-state="two-alternatives-mapped"] .ci-row-handle,
+[data-state="screening-boundary-stated"] .ci-row-handle,
+[data-state="iot-candidate-entered"] .ci-row-handle {
+  animation: ci-rise-in 500ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+[data-state="two-alternatives-mapped"] .ci-row-oid,
+[data-state="screening-boundary-stated"] .ci-row-oid,
+[data-state="iot-candidate-entered"] .ci-row-oid {
+  animation: ci-rise-in 500ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: 160ms;
+}
+
+/* 拍 3：筛选说明落位 */
+[data-state="screening-boundary-stated"] .ci-screen,
+[data-state="iot-candidate-entered"] .ci-screen {
+  animation: ci-rise-in 540ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: 220ms;
+}
+
+/* 拍 4：承接线自绘 → 条件行落位 → Ecode 名牌入托盘 */
+[data-state="iot-candidate-entered"] .ci-iot-link {
+  stroke-dasharray: 90;
+  stroke-dashoffset: 90;
+  animation: ci-link-draw 520ms ease-out 200ms forwards;
+}
+
+[data-state="iot-candidate-entered"] .ci-condition {
+  animation: ci-rise-in 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: 560ms;
+}
+
+[data-state="iot-candidate-entered"] .ci-candidate {
+  animation: ci-drop-in 620ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: 980ms;
+}
