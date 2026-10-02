@@ -1,0 +1,374 @@
+/* 03-a003 · 编码作用页 —— 前缀 .ir- 仅本章使用；颜色/字体全部走主题 token。
+   首拍建立用 keyframe（进入态挂载即播，delay 全部挂在状态选择器下）；
+   第二拍的洞察条 3 升格用 transition，基础态保持即时可逆。 */
+
+.ir-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+@keyframes ir-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ir-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ir-pop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.55);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes ir-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ── 标题区：S013「编码要干什么」（可见标题：保留） ─────────────── */
+
+.ir-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.ir-head-tick {
+  width: 16px;
+  height: 16px;
+  border: 4px solid var(--theme-structural);
+  background: var(--theme-process-surface);
+}
+
+.ir-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--theme-structural);
+}
+
+.ir-head-rule {
+  flex: 1 1 auto;
+  min-width: 0;
+  border-top: 2px dashed var(--theme-dashed-line);
+}
+
+/* ── 主区：左图（~55%）+ 右洞察轨 ───────────────────────────────── */
+
+.ir-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 34px;
+}
+
+.ir-media {
+  flex: 0 0 54%;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 12px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.ir-view {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.ir-media-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 图内标注层：与图片可视区同尺寸，三环节标记 + 连线（R005 前提演示） */
+.ir-marks {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ir-marks-line {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  opacity: 0.9;
+}
+
+.ir-mark {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.ir-mark-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--theme-process);
+  border: 4px solid var(--surface-2);
+  box-shadow: 0 0 0 2.5px var(--theme-process);
+}
+
+.ir-mark-label {
+  padding: 4px 12px;
+  border: 2.5px solid var(--theme-structural);
+  background: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--theme-structural);
+}
+
+.ir-media-note {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.ir-media-badge {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.ir-media-tag {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-faint);
+}
+
+/* ── 右洞察轨：三条自上而下逐层组装（R005/R006） ────────────────── */
+
+.ir-rail {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.ir-bar {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 22px 28px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: var(--surface-2);
+}
+
+.ir-bar-kicker {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+}
+
+.ir-bar-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.ir-bar-sub {
+  margin: 0;
+  font-size: 21px;
+  color: var(--text-2);
+}
+
+.ir-bar-sub b {
+  color: var(--theme-process);
+}
+
+/* 洞察条 3：首拍虚位留槽，第二拍进入焦点（R006 三点约束标签承载） */
+.ir-bar-cstraints {
+  justify-content: center;
+  align-items: flex-start;
+  border: 3px solid var(--theme-structural);
+  box-shadow: var(--card-shadow);
+  opacity: 0.18;
+  transition:
+    opacity 0.5s ease,
+    border-color 0.5s ease,
+    background 0.5s ease;
+}
+
+.ir-bar-cstraints-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 33px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--theme-structural);
+}
+
+.ir-bar-badge {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  padding: 5px 12px;
+  border: 2.5px solid var(--theme-warning);
+  background: var(--theme-warning-surface);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--theme-warning);
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* ── 状态 1 · records-linked：左图标记连线 + 洞察条 1/2 依次落位 ──── */
+
+[data-state="records-linked"] .ir-head {
+  animation: ir-rise-in 0.5s ease 0.12s both;
+}
+
+[data-state="records-linked"] .ir-media {
+  animation: ir-rise-in 0.55s ease 0.25s both;
+}
+
+[data-state="records-linked"] .ir-mark-1 {
+  animation: ir-pop 0.45s ease 0.7s both;
+}
+
+[data-state="records-linked"] .ir-mark-2 {
+  animation: ir-pop 0.45s ease 1.15s both;
+}
+
+[data-state="records-linked"] .ir-mark-3 {
+  animation: ir-pop 0.45s ease 1.6s both;
+}
+
+[data-state="records-linked"] .ir-marks-line {
+  animation: ir-draw 0.8s ease 2.05s both;
+}
+
+[data-state="records-linked"] .ir-rail .ir-bar:nth-child(1) {
+  animation: ir-rise-in 0.5s ease 0.45s both;
+}
+
+[data-state="records-linked"] .ir-rail .ir-bar:nth-child(2) {
+  animation: ir-rise-in 0.5s ease 1.5s both;
+}
+
+/* ── 状态 2 · constraints-settled：洞察条 3 升格，前两条让位 ─────── */
+
+[data-state="constraints-settled"] .ir-rail .ir-bar:nth-child(1),
+[data-state="constraints-settled"] .ir-rail .ir-bar:nth-child(2) {
+  opacity: 0.72;
+  transition: opacity 0.5s ease 0.1s;
+}
+
+[data-state="constraints-settled"] .ir-bar-cstraints {
+  opacity: 1;
+  border-color: var(--theme-process);
+  background: var(--theme-process-surface);
+  transition-delay: 0.15s;
+}
+
+[data-state="constraints-settled"] .ir-bar-badge {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.5s;
+}
+
+/* ── K-A003-01 · accent：低成本全屏强调，不重复 base-scene 结论 ──── */
+
+.ir-statement {
+  justify-content: center;
+  gap: 30px;
+}
+
+.ir-statement-rule {
+  width: 92px;
+  height: 8px;
+  background: var(--theme-warning);
+}
+
+.ir-statement-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--theme-warning);
+}
+
+.ir-statement-line {
+  margin: 0;
+  max-width: 78%;
+  font-family: var(--font-display-cn);
+  font-size: 60px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--theme-structural);
+}
+
+.ir-statement-line em {
+  font-style: normal;
+  color: var(--theme-warning);
+  border-bottom: 6px solid var(--theme-warning);
+  padding-bottom: 3px;
+}
+
+/* accent 挂载即播（step 3 才挂载，离开即卸载，天然可逆） */
+.ir-statement-rule,
+.ir-statement-kicker {
+  animation: ir-fade-in 0.45s ease 0.15s both;
+}
+
+.ir-statement-line {
+  animation: ir-rise-in 0.55s ease 0.3s both;
+}
