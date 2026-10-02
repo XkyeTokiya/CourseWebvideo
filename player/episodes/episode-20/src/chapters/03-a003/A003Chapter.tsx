@@ -4,10 +4,10 @@ import M002 from "./assets/M002.png";
 
 /**
  * 03-a003 · 编码作用页（outline §3 · S-A003 · image-with-insight-rail）
- * 左图右轨双区读图：左侧 M002 产线场景图持续在场，图内同一对象在三个环节
- * 位置逐一标记并连成一条线；右侧洞察轨三条自上而下逐层组装。
+ * 左图右轨双区读图：左侧 M002 产线场景图持续在场（保持纯净，不加图内标注）；
+ * 右侧洞察轨三条自上而下逐层组装。
  * step → semantic state / accent 显式映射（0 基，末态兜底）：
- * - records-linked：M002 铺出 + 图内三环节标记连线，洞察条 1、2 依次落位
+ * - records-linked：M002 铺出，洞察条 1、2 依次落位
  *   （A003 · step 1，R005 由条 1/条 2 相邻次序承载）
  * - constraints-settled：洞察条 3 进入焦点，「唯一、稳定、可扩展」三点聚合，
  *   挂「设计约束」限定角标（A003 · step 2，R006 由三点约束标签承载）
@@ -24,13 +24,6 @@ const stateByStep = [
 type A003State = (typeof stateByStep)[number];
 
 const ACCENT_STEP = 2;
-
-/** 图内三环节标记（beat 1：生产线上 / 仓库里 / 运输途中）；x/y 为可视区百分比 */
-const STAGE_MARKS = [
-  { key: "prod", label: "生产", x: 17, y: 63 },
-  { key: "store", label: "仓库", x: 47, y: 41 },
-  { key: "ship", label: "运输", x: 77, y: 20 },
-] as const;
 
 function A003StatementFrame() {
   return (
@@ -61,29 +54,6 @@ function A003Scene({ state }: { state: A003State }) {
               src={M002}
               alt="匿名产线场景：跨环节信息连成一条线（占位图，无编码与企业标识）"
             />
-            <svg
-              className="ir-marks"
-              viewBox="0 0 100 62"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <polyline
-                className="ir-marks-line"
-                points="17,39.1 47,25.4 77,12.4"
-                pathLength="1"
-                vectorEffect="non-scaling-stroke"
-              />
-            </svg>
-            {STAGE_MARKS.map((mark, index) => (
-              <span
-                key={mark.key}
-                className={`ir-mark ir-mark-${index + 1}`}
-                style={{ left: `${mark.x}%`, top: `${mark.y}%` }}
-              >
-                <i className="ir-mark-dot" aria-hidden="true" />
-                <span className="ir-mark-label">{mark.label}</span>
-              </span>
-            ))}
           </div>
           <figcaption className="ir-media-note">
             <span className="ir-media-badge">跨环节记录场景</span>
