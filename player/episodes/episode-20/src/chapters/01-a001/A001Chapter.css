@@ -1,0 +1,318 @@
+/* 01-a001 · 标题与问题页 —— 前缀 .oa- 仅本章使用；颜色/字体全部走主题 token。
+   首拍建立用 keyframe（进入态挂载即播）；状态切换用 transition，
+   delay 只挂在进入态选择器下，基础态保持即时可逆。 */
+
+.oa-root {
+  gap: 26px;
+  min-height: 0;
+}
+
+@keyframes oa-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes oa-slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(-26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes oa-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes oa-grow-down {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* ── 顶部窄条：本集标题 + 前缀/后缀双标签（S001/U001/R001） ────────
+   全屏标题由封面承担，这里只保留弱权重的持续窄条。 */
+
+.oa-strip {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  opacity: 0.82;
+}
+
+.oa-strip-label {
+  margin: 0;
+  flex: 0 0 auto;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+}
+
+.oa-strip-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 34px;
+  line-height: 1.1;
+  color: var(--text-2);
+  transition: color 0.5s ease;
+}
+
+[data-state="question-dominant"] .oa-strip-title {
+  color: var(--text-faint);
+}
+
+.oa-axis {
+  flex: 0 0 auto;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.oa-axis-tag {
+  padding: 7px 18px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: var(--surface-2);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-mute);
+  transition: opacity 0.5s ease, color 0.5s ease;
+}
+
+[data-state="question-dominant"] .oa-axis-tag {
+  opacity: 0.45;
+  color: var(--text-mute);
+}
+
+.oa-axis-slash {
+  font-family: var(--font-mono);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+/* ── 主区：四环节记录卡组 + 匿名车间场景图 ─────────────────────── */
+
+.oa-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 36px;
+}
+
+[data-state="records-multiplied"] .oa-main {
+  animation: oa-fade-in 0.5s ease 0.2s both;
+}
+
+.oa-cards {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 10px 0;
+}
+
+.oa-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 13px 6px;
+  border-bottom: 2px dashed var(--theme-grid-line);
+}
+
+.oa-card:last-child {
+  border-bottom: 0;
+}
+
+.oa-card-no {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-faint);
+}
+
+.oa-card-stage {
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.oa-card-line {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 23px;
+  color: var(--text-2);
+  transition: opacity 0.5s ease;
+}
+
+/* 记录线的“落笔”小点：状态 2 时作为汇入点强调 */
+.oa-card-line::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--theme-grid-line);
+  transition: background 0.45s ease, box-shadow 0.45s ease;
+}
+
+[data-state="question-dominant"] .oa-card-line {
+  opacity: 0.38;
+}
+
+[data-state="question-dominant"] .oa-card-line::after {
+  background: var(--theme-warning);
+  box-shadow: 0 0 0 5px var(--theme-warning-surface);
+}
+
+/* 逐条记录随口播点名落位（进入态延迟，反向导航即时） */
+[data-state="records-multiplied"] .oa-card {
+  animation: oa-rise-in 0.55s ease both;
+}
+
+[data-state="records-multiplied"] .oa-card:nth-child(1) {
+  animation-delay: 0.15s;
+}
+
+[data-state="records-multiplied"] .oa-card:nth-child(2) {
+  animation-delay: 0.34s;
+}
+
+[data-state="records-multiplied"] .oa-card:nth-child(3) {
+  animation-delay: 0.53s;
+}
+
+[data-state="records-multiplied"] .oa-card:nth-child(4) {
+  animation-delay: 0.72s;
+}
+
+.oa-media {
+  position: relative;
+  flex: 0 0 46%;
+  min-height: 0;
+  margin: 0;
+  padding: 12px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.oa-media-img {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+.oa-media-note {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.oa-media-badge {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.oa-media-tag {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-faint);
+}
+
+/* ── 问题条：底部预留槽从首拍起存在，第二拍升为中心焦点 ─────────── */
+
+.oa-question {
+  position: relative;
+  flex: 0 0 auto;
+  margin: 0 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 汇聚引线：从卡片组指向问题条，第二拍画出（U003 · R002 收敛载体） */
+.oa-question::before {
+  content: "";
+  width: 3px;
+  height: 30px;
+  margin-bottom: 10px;
+  background: var(--theme-warning);
+  transform-origin: top center;
+  transform: scaleY(0);
+}
+
+[data-state="question-dominant"] .oa-question::before {
+  animation: oa-grow-down 0.45s ease 0.15s both;
+}
+
+.oa-question-kicker {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--theme-warning);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.oa-question-line {
+  margin: 8px 0 0;
+  padding: 18px 46px;
+  border: 3px solid var(--theme-warning);
+  background: var(--theme-warning-surface);
+  box-shadow: 6px 7px 0 var(--theme-offset-shadow);
+  font-family: var(--font-display-cn);
+  font-size: 46px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--theme-structural);
+  opacity: 0.28;
+  transform: translateY(10px) scale(0.985);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.oa-question-line b {
+  color: var(--theme-warning);
+}
+
+[data-state="question-dominant"] .oa-question-kicker {
+  opacity: 1;
+  transition-delay: 0.3s;
+}
+
+[data-state="question-dominant"] .oa-question-line {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.35s;
+}
