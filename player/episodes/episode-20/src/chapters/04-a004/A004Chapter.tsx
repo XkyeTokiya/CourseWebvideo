@@ -51,9 +51,12 @@ export default function A004Chapter({ step }: ChapterStepProps) {
               <span className="sk-half-sub">回答 · 管理范围</span>
             </div>
             <div className="sk-cells">
-              {PREFIX_CELLS.map((cell) => (
+              {PREFIX_CELLS.map((cell, index) => (
                 <span className="sk-cell" key={cell}>
-                  {cell}
+                  <i className="sk-cell-no" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </i>
+                  <b className="sk-cell-term">{cell}</b>
                 </span>
               ))}
             </div>
@@ -67,9 +70,12 @@ export default function A004Chapter({ step }: ChapterStepProps) {
               <span className="sk-half-sub">指向 · 对象差异</span>
             </div>
             <div className="sk-cells">
-              {SUFFIX_CELLS.map((cell) => (
+              {SUFFIX_CELLS.map((cell, index) => (
                 <span className="sk-cell" key={cell}>
-                  {cell}
+                  <i className="sk-cell-no" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </i>
+                  <b className="sk-cell-term">{cell}</b>
                 </span>
               ))}
             </div>

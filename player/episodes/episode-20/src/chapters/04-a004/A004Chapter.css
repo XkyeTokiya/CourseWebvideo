@@ -123,9 +123,11 @@
   color: var(--text-faint);
 }
 
-/* 台账分格：格与格之间用虚线分隔，压在半区底部 */
+/* 台账分格：纵向贯通半区中部的列，格间虚线分隔，空白均匀落进列内 */
 .sk-cells {
-  margin-top: auto;
+  margin-top: 30px;
+  flex: 1 1 auto;
+  min-height: 0;
   display: flex;
   align-items: stretch;
 }
@@ -133,17 +135,33 @@
 .sk-cell {
   flex: 1 1 0;
   min-width: 0;
-  padding: 26px 10px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px 10px;
   border-left: 2px dashed var(--theme-grid-line);
-  font-family: var(--font-display-cn);
-  font-size: 30px;
-  font-weight: 900;
-  color: var(--theme-structural);
 }
 
 .sk-cell:first-child {
   border-left: 0;
+}
+
+.sk-cell-no {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+}
+
+.sk-cell-term {
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--theme-structural);
 }
 
 /* 中缝斜线元件：上下出头，越出结构板但留在舞台安全区内 */
@@ -165,16 +183,16 @@
   transition: background 0.5s ease, box-shadow 0.5s ease;
 }
 
-/* 判据组件：挂在中缝上，第三拍才出现 */
+/* 判据组件：挂在中缝上，位于表头带与分格内容带之间，第三拍才出现 */
 .sk-pivot {
   position: absolute;
   left: 0;
   right: 0;
-  top: 40%;
+  top: 32%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   pointer-events: none;
 }
 
