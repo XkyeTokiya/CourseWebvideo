@@ -1,0 +1,1466 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-19",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 19 集标题、前置关系、相邻边界、动态风险与 6–8 分钟容量",
+   "source_locator": "已确认课程架构，Episode Architecture 第 14–20 集及全局去重规则",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围和比较任务"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "GS1 由国际物品编码组织开发和维护，教材称其为全球统一标识系统，广泛应用于全球商贸领域",
+   "source_locator": "主教材，2.1.2“5. GS1”第 1 段",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "说明 GS1 的教材定位和贸易语境"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "教材称中国物品编码中心为 GS1 在中国大陆的授权管理机构，负责厂商识别代码分配并指导规范应用",
+   "source_locator": "主教材，2.1.2“5. GS1”第 1 段",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "仅按教材归属说明治理角色"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "GS1 典型编码包括 GTIN、SSCC、GIAI，分别对应零售结算、物流、资产管理等应用语境",
+   "source_locator": "主教材，2.1.2“5. GS1”第 2 段",
+   "verification_status": "not applicable",
+   "allowed_use": "组织“对象/业务场景”选型维度"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "教材 GTIN 示例 6901234567892 由厂商识别代码、商品项目代码和校验码组成；图 2-7 标注 690、1234、56789、2",
+   "source_locator": "主教材，2.1.2“5. GS1”第 2 段；GS1/GTIN 示例图 图 2-7",
+   "verification_status": "not applicable",
+   "allowed_use": "解释 GS1 结构的最小必要细节"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "表 2-1 列出 VAA、Handle、OID、Ecode、GS1 的示例、特点和应用：供应链/生命周期、数字资产、网络资源、物联网物流仓储生产制造、产品与服务贸易流通",
+   "source_locator": "主教材，表 2-1“主要标识编码标准对比”",
+   "verification_status": "not applicable",
+   "allowed_use": "构成五体系横向比较矩阵"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "教材称多标识编码体系之间兼容性不足，难以实现信息互联共享，且尚不能覆盖制造业各领域，需要兼容多体系的工业制造编码方案",
+   "source_locator": "主教材，2.1.2“5. GS1”末段及表 2-1 后文字",
+   "verification_status": "not applicable",
+   "allowed_use": "收束“选型不是单选替代”的系统结论"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "OID 采用从根到叶的点分树状路径；教材图示中国前缀 1.2.156、制造业分支和企业/对象层级",
+   "source_locator": "主教材，2.1.2“3. OID”；OID 示例图 图 2-4/图 2-5",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "仅在比较矩阵中标出层级命名/网络资源语境"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "Ecode 一般结构为版本 V、编码体系标识 NSI、主码 MD；教材给出物联网物流、仓储、生产制造语境",
+   "source_locator": "主教材，2.1.2“4. Ecode”；Ecode 示例图 图 2-6；表 2-1",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "仅在比较矩阵中标出体系可解释性/物联网语境"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "VAA 基本结构由发码机构代码、服务机构代码和企业内部编码组成；教材列其用于供应链管理、生命周期管理",
+   "source_locator": "主教材，2.1.2“1. VAA”；表 2-1",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "仅在比较矩阵中标出跨企业定位/内部细分语境"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "Handle 由前缀和后缀构成，教材列其用于数字资产管理",
+   "source_locator": "主教材，2.1.2“2. Handle”；表 2-1",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "仅在比较矩阵中标出数字对象/资产语境"
+  },
+  {
+   "evidence_id": "E012",
+   "claim_or_asset": "选型路径：先识别对象与业务边界，再对照典型场景和内部细分需求，最后检查跨体系映射与兼容责任",
+   "source_locator": "本任务包基于 E004、E006、E007 的教学组织",
+   "verification_status": "not applicable",
+   "allowed_use": "组织讲稿、比较图和决策树"
+  },
+  {
+   "evidence_id": "E013",
+   "claim_or_asset": "通用零部件进入贸易、仓储、生产和网络资产记录时的匿名决策情境",
+   "source_locator": "本任务包教学设计 讲稿 N001、N002、N012",
+   "verification_status": "not applicable",
+   "allowed_use": "把选型问题具体化"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "【视频标题】GS1 与五类编码体系怎么选\n\n",
+   "teaching_purpose": "呈现本期标题与选型主题",
+   "single_message": "本集回答 GS1 与五类编码体系怎么选的问题。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "本期主题：GS1 与五类编码体系怎么选",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "候选：VAA、Handle、OID、Ecode、GS1",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "选型先看对象与业务边界",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001",
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "提出问题",
+     "to": "G002",
+     "direction": "to-question"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "标题页不展开任何体系结构、矩阵或示例数字",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众进入本期视频",
+   "exit_condition": "观众知道本期要回答五类编码体系怎么选",
+   "timing": {
+    "char_equivalent": 15.5,
+    "min_seconds": 4,
+    "target_seconds": 4,
+    "max_seconds": 5,
+    "short_page_reason": "标题页只承载本期主题与选型问题，需要独立建立后再进入开场对象。"
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "【开场导入】\n一件普通的工业零部件，可能先走贸易流通，再进仓储，再上生产线，还要在企业内部系统和工业网络里被记录。每到一个环节，都可能已经有一套编号。问题也就在这里：面对 VAA、Handle、OID、Ecode、GS1 这么多体系，该先看什么，再决定用哪一套？为什么不能只用一套编码，把所有环节都管住？\n\n",
+   "teaching_purpose": "用零部件多环节场景提出选型问题",
+   "single_message": "同一件零部件在多个环节各有编号，选型先要回答“先看什么”。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S004",
+     "guidance_text": "一个对象，多套编号",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E013"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "零部件先走贸易流通、仓储、生产，还会进入企业内部系统和工业网络",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "每到一个环节都可能已有一套编号",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "该先看什么，再决定用哪一套",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013",
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R002",
+     "from": "G003",
+     "relation": "并行记录",
+     "to": "G004",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R003",
+     "from": "G004",
+     "relation": "引出问题",
+     "to": "G005",
+     "direction": "to-question"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "零部件与多环节情境是匿名教学场景，不得辩护真实性，也不得对应真实企业或商品",
+     "evidence_refs": [
+      "E013"
+     ]
+    },
+    {
+     "constraint_id": "C003",
+     "instruction": "本页不提前给出五体系矩阵、结构或示例数字",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众看到本期标题",
+   "exit_condition": "观众能说出选型要回答的问题",
+   "timing": {
+    "char_equivalent": 120.0,
+    "min_seconds": 30,
+    "target_seconds": 31,
+    "max_seconds": 33,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "【正文讲解】\n先把“选哪一种编码”改写成四个业务问题：要识别的对象是什么；它主要在哪个环节使用；需不需要跨企业、跨地域关联；企业还要不要保留自己的内部细分。这么一问就会发现，编码叫什么名字只是候选入口，真正决定取舍的，是这四个约束能不能对得上。\n\n",
+   "teaching_purpose": "把选型改写成四个业务问题",
+   "single_message": "编码名称只是候选入口，四个业务约束决定取舍。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S008",
+     "guidance_text": "选型的四个业务问题",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E012"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "对象是什么、主要在哪个环节使用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "是否跨企业或跨地域关联、是否保留内部细分",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "编码名称只是候选入口，四个约束决定取舍",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G006",
+     "relation": "并列约束",
+     "to": "G007",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R005",
+     "from": "G007",
+     "relation": "决定取舍",
+     "to": "G008",
+     "direction": "pivot"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "四个问题只用于选型判断，不展开为申请流程或编码方案设计",
+     "evidence_refs": [
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众知道选型要回答什么问题",
+   "exit_condition": "观众能说出四个业务问题",
+   "timing": {
+    "char_equivalent": 107.0,
+    "min_seconds": 27,
+    "target_seconds": 28,
+    "max_seconds": 30,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "先从最贴近贸易流通的 GS1 看起。GS1 是一套统一的标识系统，由国际物品编码组织开发和维护，主要用在全球商贸领域。在中国大陆，这套体系的授权管理由中国物品编码中心负责，厂商识别代码的分配和规范应用的指导，都归它管。\n\nGS1 里面也分好几种编码，典型代表有三个。GTIN 用在零售结算，对应零售交易中的商品；SSCC 用在物流，对应运输、周转中的物流单元；GIAI 用在资产管理，对应企业长期跟踪的资产。这三个类型说明一个原则：哪怕同属 GS1，也要先看对象和业务动作再选类型，没有哪个类型能当所有场景的通用答案。\n\n",
+   "teaching_purpose": "说明 GS1 的定位、治理角色与典型类型",
+   "single_message": "GS1 由国际物品编码组织开发维护、面向全球商贸，中国物品编码中心负责大陆授权；GTIN、SSCC、GIAI 分别对应零售结算、物流、资产管理。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S012",
+     "guidance_text": "GS1 的定位与典型类型",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002",
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "GS1：由国际物品编码组织开发和维护的统一标识系统，用于全球商贸领域",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "中国大陆授权管理：中国物品编码中心，负责厂商识别代码分配与规范应用指导",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "先从最贴近贸易流通的 GS1 看起",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "GTIN：零售结算",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "SSCC：物流",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "GIAI：资产管理",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "同属 GS1 也要先看对象和业务动作，类型不是通用答案",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G009",
+     "relation": "治理分工",
+     "to": "G010",
+     "direction": "structure"
+    },
+    {
+     "relation_id": "R007",
+     "from": "G010",
+     "relation": "定位入口",
+     "to": "G011",
+     "direction": "context"
+    },
+    {
+     "relation_id": "R008",
+     "from": "G012",
+     "relation": "并列场景",
+     "to": "G013",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R009",
+     "from": "G013",
+     "relation": "并列场景",
+     "to": "G014",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R010",
+     "from": "G014",
+     "relation": "原则收束",
+     "to": "G015",
+     "direction": "conclusion"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不得作 GS1 现行规则、授权状态、编码长度、版本或前缀分配断言",
+     "evidence_refs": [
+      "E002",
+      "E003"
+     ]
+    },
+    {
+     "constraint_id": "C006",
+     "instruction": "不补充注册入口、企业申请、解析接口、条码打印或载体选型",
+     "evidence_refs": [
+      "E002",
+      "E003"
+     ]
+    },
+    {
+     "constraint_id": "C007",
+     "instruction": "类型只讲 GTIN、SSCC、GIAI 与对应场景，不补充其他 GS1 类型与规则",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已提出四个业务问题",
+   "exit_condition": "观众能说出 GS1 的定位、授权角色与三种典型类型",
+   "timing": {
+    "char_equivalent": 216.0,
+    "min_seconds": 54,
+    "target_seconds": 56,
+    "max_seconds": 59,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "用一个示例，把 GTIN 的结构读出来。这串数字是 6901234567892，分成三段：前面的 6901234 是厂商识别代码，说明这个商品项目归属于哪家厂商；中间的 56789 是商品项目代码，用来区分具体商品项目；末尾的 2 是校验码，用来校验这串编号对不对。看懂这三段，再看类似的商品编号，就知道每一截在说什么。\n\n",
+   "teaching_purpose": "用示例读出 GTIN 的三段结构",
+   "single_message": "6901234567892 由厂商识别代码、商品项目代码、校验码三段组成。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S020",
+     "guidance_text": "GTIN 的三段结构",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "示例：6901234567892",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "厂商识别代码：6901234",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "商品项目代码：56789",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "校验码：2",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G016",
+     "relation": "拆分为",
+     "to": "G017",
+     "direction": "sequence"
+    },
+    {
+     "relation_id": "R012",
+     "from": "G017",
+     "relation": "拆分为",
+     "to": "G018",
+     "direction": "sequence"
+    },
+    {
+     "relation_id": "R013",
+     "from": "G018",
+     "relation": "拆分为",
+     "to": "G019",
+     "direction": "sequence"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "示例字符串与分段只作教学解读，不得制作成可扫描码、注册结果或企业编号",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    {
+     "constraint_id": "C009",
+     "instruction": "不扩展长度、分配或校验规则",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众知道 GS1 的典型类型",
+   "exit_condition": "观众能说出示例的三段结构",
+   "timing": {
+    "char_equivalent": 123.0,
+    "min_seconds": 31,
+    "target_seconds": 32,
+    "max_seconds": 34,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "看完了 GS1，再把五类体系的典型场景放在一起对照。VAA 对应供应链管理和生命周期管理；Handle 对应数字资产管理；OID 对应网络资源管理；Ecode 对应物联网领域，包括物流、仓储和生产制造；GS1 对应产品与服务的贸易流通。这些对应关系说的是各体系的主要语境，不是说一套体系只能待在一个行业里。\n\n",
+   "teaching_purpose": "用场景矩阵对照五类体系",
+   "single_message": "五类体系各有主要语境：VAA 供应链/生命周期、Handle 数字资产、OID 网络资源、Ecode 物联网、GS1 贸易流通。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S025",
+     "guidance_text": "五类体系的典型场景",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "VAA：供应链管理、生命周期管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "Handle：数字资产管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "OID：网络资源管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "Ecode：物联网，含物流、仓储、生产制造",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "GS1：产品与服务的贸易流通",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "主要语境，不是说一套体系只能待在一个行业",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R014",
+     "from": "G020",
+     "relation": "并列语境",
+     "to": "G021",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R015",
+     "from": "G021",
+     "relation": "并列语境",
+     "to": "G022",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R016",
+     "from": "G022",
+     "relation": "并列语境",
+     "to": "G023",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R017",
+     "from": "G023",
+     "relation": "并列语境",
+     "to": "G024",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R018",
+     "from": "G024",
+     "relation": "边界",
+     "to": "G025",
+     "direction": "context"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "矩阵只使用表 2-1 的特点与场景，不添加成本、性能、码长、合规或成熟度排名",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    {
+     "constraint_id": "C011",
+     "instruction": "不重讲各单体系结构细节（树状路径、V/NSI/MD、前缀后缀、发码管理）",
+     "evidence_refs": [
+      "E008",
+      "E009",
+      "E010",
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众知道 GS1 的典型类型",
+   "exit_condition": "观众能说出五类体系各自的主要场景",
+   "timing": {
+    "char_equivalent": 124.5,
+    "min_seconds": 32,
+    "target_seconds": 32,
+    "max_seconds": 34,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A005",
+    "A006"
+   ],
+   "nx": "有了这份对应，选型就好走了。对象是进入零售交易的商品，先从 GTIN 看起；是物流单元，对照 SSCC；企业要管理自己的资产，对应 GIAI。这一步只说明从哪类典型场景开始检查，并不替企业决定具体编码。\n\n",
+   "teaching_purpose": "用商品、物流、资产情境走 GS1 选型",
+   "single_message": "零售商品先看 GTIN，物流单元对照 SSCC，企业资产对应 GIAI；从典型场景开始检查。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S032",
+     "guidance_text": "从典型场景开始检查",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E012"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "零售商品：先看 GTIN",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "物流单元：对照 SSCC",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "企业资产：对应 GIAI",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G029",
+      "items": [
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "只是选型起点，不替企业决定具体编码",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R019",
+     "from": "G026",
+     "relation": "并列情境",
+     "to": "G027",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R020",
+     "from": "G027",
+     "relation": "并列情境",
+     "to": "G028",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R021",
+     "from": "G028",
+     "relation": "起始判断",
+     "to": "G029",
+     "direction": "conclusion"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C012",
+     "instruction": "不补注册入口、申请流程、条码打印或载体选型",
+     "evidence_refs": [
+      "E004",
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众知道五类体系的主要场景",
+   "exit_condition": "观众能说出商品、物流、资产三类对象的检查起点",
+   "timing": {
+    "char_equivalent": 81.0,
+    "min_seconds": 21,
+    "target_seconds": 21,
+    "max_seconds": 23,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "再换一种对象。如果一件东西要在供应商、制造企业和维护环节之间保持同一个身份，VAA 的供应链和生命周期语境更有参考价值，它提示我们留意跨环节的关联，也留意企业内部怎么细分。主要对象是数字资产，看 Handle；主要对象是网络资源，看 OID。这两类语境能帮我们先排除明显不匹配的候选。当然，一个对象完全可以同时挂在不同的系统里，各有各的映射。\n\n还有物联网这一路。物流、仓储、生产制造这些环境，要求物联网对象有标准化的表达，这时候就可以把 Ecode 放进候选集合，再核对企业已有的编码和跨系统的关系。\n\n",
+   "teaching_purpose": "对照跨环节、数字资产、网络资源与物联网候选",
+   "single_message": "跨环节同一身份看 VAA，数字资产看 Handle，网络资源看 OID；物联网对象把 Ecode 放进候选，再核对已有编码。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S037",
+     "guidance_text": "跨环节、数字资产与物联网情境",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E012"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G030",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "供应商、制造、维护之间保持同一身份：VAA 的供应链与生命周期语境",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G031",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "数字资产：Handle 语境",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G032",
+      "items": [
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "网络资源：OID 语境",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G033",
+      "items": [
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "先排除明显不匹配的候选；一个对象可同时在不同系统拥有映射",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G034",
+      "items": [
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "物流、仓储、生产制造环境要求物联网对象有标准化的表达",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G035",
+      "items": [
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "把 Ecode 放进候选集合，再核对已有编码与跨系统关系",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R022",
+     "from": "G030",
+     "relation": "并列对照",
+     "to": "G031",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R023",
+     "from": "G031",
+     "relation": "并列对照",
+     "to": "G032",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R024",
+     "from": "G032",
+     "relation": "筛选",
+     "to": "G033",
+     "direction": "pivot"
+    },
+    {
+     "relation_id": "R025",
+     "from": "G034",
+     "relation": "纳入候选",
+     "to": "G035",
+     "direction": "sequence"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C013",
+     "instruction": "不重讲 VAA/Handle/OID 结构、发码或解析管理",
+     "evidence_refs": [
+      "E008",
+      "E010",
+      "E011"
+     ]
+    },
+    {
+     "constraint_id": "C014",
+     "instruction": "不补 Ecode 的 V/NSI/MD 结构、版本或 NSI 分配",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众知道五类体系的主要场景",
+   "exit_condition": "观众能说出跨环节、数字资产、网络资源与物联网对象分别对照哪个体系",
+   "timing": {
+    "char_equivalent": 214.5,
+    "min_seconds": 54,
+    "target_seconds": 56,
+    "max_seconds": 59,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "走到这里，可以给横向比较定个规矩：比的不是哪一套体系更先进，而是四项约束：对象、主要业务、跨组织复用、内部系统延续。四项都对得上，这个候选才值得继续评估。\n\n现实中，一件零部件很可能同时参与贸易、物流、制造和售后。更稳妥的做法，不是让某一套编码把全部语义都背下来，而是把主身份、业务编码和映射关系分清楚，把映射和数据关联的责任安排好。多套体系之间兼容性不足，信息互联共享不容易实现，单靠任何一套，也还覆盖不了制造业的各个领域。所以工业制造需要能兼容多套体系的编码方案，这是一个方向性的判断，不是已经有了一套现成的新编码。各家的示例不能拼成一种统一格式，GTIN 的结构也不能直接套到别的体系上。\n\n",
+   "teaching_purpose": "收束四项核对与兼容映射结论",
+   "single_message": "四项都对得上才继续评估；多体系并存要分清主身份、业务编码与映射，工业制造需要兼容方案的方向。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S044",
+     "guidance_text": "四项核对与兼容映射",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E012"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G036",
+      "items": [
+       {
+        "screen_item_id": "S045",
+        "guidance_text": "对象、主要业务、跨组织复用、内部系统延续",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G037",
+      "items": [
+       {
+        "screen_item_id": "S046",
+        "guidance_text": "四项都对得上，候选才值得继续评估",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G038",
+      "items": [
+       {
+        "screen_item_id": "S047",
+        "guidance_text": "一个对象可同时参与贸易、物流、制造和售后",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G039",
+      "items": [
+       {
+        "screen_item_id": "S048",
+        "guidance_text": "明确主身份、业务编码和映射关系，安排映射与数据关联责任",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G040",
+      "items": [
+       {
+        "screen_item_id": "S049",
+        "guidance_text": "多体系兼容性不足，信息互联共享难，覆盖不了制造业各领域",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G041",
+      "items": [
+       {
+        "screen_item_id": "S050",
+        "guidance_text": "工业制造需要兼容多体系的方案：方向判断，不是现成新编码；示例不拼统一格式，GTIN 结构不套用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007",
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R026",
+     "from": "G036",
+     "relation": "评判",
+     "to": "G037",
+     "direction": "pivot"
+    },
+    {
+     "relation_id": "R027",
+     "from": "G038",
+     "relation": "做法",
+     "to": "G039",
+     "direction": "sequence"
+    },
+    {
+     "relation_id": "R028",
+     "from": "G039",
+     "relation": "背景",
+     "to": "G040",
+     "direction": "context"
+    },
+    {
+     "relation_id": "R029",
+     "from": "G040",
+     "relation": "方向",
+     "to": "G041",
+     "direction": "conclusion"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C015",
+     "instruction": "不引入性能、成本、成熟度或覆盖率排名",
+     "evidence_refs": [
+      "E006",
+      "E012"
+     ]
+    },
+    {
+     "constraint_id": "C016",
+     "instruction": "兼容方案是问题判断，不虚构统一格式、转换算法、接口字段或平台架构",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    {
+     "constraint_id": "C017",
+     "instruction": "不把 GS1 结构扩展为工业制造统一标准",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已做过多种情境对照",
+   "exit_condition": "观众能说出四项核对与兼容映射的处理原则",
+   "timing": {
+    "char_equivalent": 264.0,
+    "min_seconds": 66,
+    "target_seconds": 69,
+    "max_seconds": 72,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "【本期总结】\n回到开头那件零部件。它在贸易、仓储、生产、内部系统和工业网络里都可能被记录，而每一套体系都有自己的位置：GS1 管贸易流通，VAA 管供应链和生命周期的跨环节关联，Handle 管数字资产，OID 管网络资源，Ecode 接物联网的物流、仓储和生产制造。\n\n",
+   "teaching_purpose": "总结五类体系的分工",
+   "single_message": "GS1 管贸易流通，VAA 管跨环节关联，Handle 管数字资产，OID 管网络资源，Ecode 接物联网。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S051",
+     "guidance_text": "五类体系的分工",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G042",
+      "items": [
+       {
+        "screen_item_id": "S052",
+        "guidance_text": "回到零部件：它在多个环节都可能被记录",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G043",
+      "items": [
+       {
+        "screen_item_id": "S053",
+        "guidance_text": "GS1：贸易流通；VAA：供应链与生命周期跨环节关联",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G044",
+      "items": [
+       {
+        "screen_item_id": "S054",
+        "guidance_text": "Handle：数字资产；OID：网络资源；Ecode：物联网物流仓储生产制造",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R030",
+     "from": "G042",
+     "relation": "分工",
+     "to": "G043",
+     "direction": "structure"
+    },
+    {
+     "relation_id": "R031",
+     "from": "G043",
+     "relation": "并列",
+     "to": "G044",
+     "direction": "parallel"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C018",
+     "instruction": "总结不预告其他主题，不引入新体系或新规则",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解兼容与映射结论",
+   "exit_condition": "观众能概括五类体系各自的典型语境",
+   "timing": {
+    "char_equivalent": 104.0,
+    "min_seconds": 26,
+    "target_seconds": 27,
+    "max_seconds": 29,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A011",
+   "callback_a_ids": [
+    "A009",
+    "A010"
+   ],
+   "nx": "五类体系怎么选，收成四步：先确认对象，再确认主要业务场景；然后检查跨企业边界和内部细分；再确认已有体系之间怎么映射。这四步走完，答案就清楚了：我们选的从来不是一套万能编码，而是在明确的对象和业务边界里选出合适的体系，再把它们之间的关系安排好。",
+   "teaching_purpose": "收束选型四步与核心判断",
+   "single_message": "对象、业务场景、跨企业边界与内部细分、映射四步；选的是边界与责任，不是万能编码。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S055",
+     "guidance_text": "选型四步与核心判断",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E012"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G045",
+      "items": [
+       {
+        "screen_item_id": "S056",
+        "guidance_text": "对象 → 业务场景 → 跨企业边界与内部细分 → 体系间映射",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G046",
+      "items": [
+       {
+        "screen_item_id": "S057",
+        "guidance_text": "选的是边界与责任，不是万能编码",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R032",
+     "from": "G045",
+     "relation": "结论",
+     "to": "G046",
+     "direction": "conclusion"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C019",
+     "instruction": "收束不预告、不暗示相邻主题（含后续规则设计）",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看到五类体系的分工",
+   "exit_condition": "观众能用四步概括选型判断并说出核心结论",
+   "timing": {
+    "char_equivalent": 110.0,
+    "min_seconds": 28,
+    "target_seconds": 29,
+    "max_seconds": 30,
+    "short_page_reason": null
+   }
+  }
+ ]
+}
