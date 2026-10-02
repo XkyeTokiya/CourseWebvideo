@@ -1,0 +1,267 @@
+/* 02-one-object-many-codes · A002 —— 前缀 .om- 仅本章使用；颜色/字体全部走主题 token。
+   拍 1：图像持续 + 环节轨道节点级联点亮、轨道线自绘（keyframe，挂载即播）；
+   拍 2：编号标注从节点浮出（transition，delay 挂状态选择器）；
+   拍 3/4：旅程与编号弱化退让，问题区依次落位（opacity 槽位从首拍占位）。
+   基础态保持即时可逆，反向导航不继承进入延迟。 */
+
+.om-root {
+  gap: 20px;
+  min-height: 0;
+}
+
+/* ── 标题区 ── */
+
+.om-header {
+  display: flex;
+  align-items: baseline;
+  gap: 22px;
+}
+
+.om-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 52px;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.om-sub {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 25px;
+  color: var(--text-mute);
+}
+
+/* ── 主区：图像 + 环节轨道 ── */
+
+.om-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 34px;
+  transition: opacity 520ms ease;
+}
+
+.om-object {
+  margin: 0;
+  flex: 0 0 46%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.om-object-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: var(--card-shadow);
+}
+
+.om-object-caption {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.om-object-badge {
+  padding: 6px 16px;
+  border: var(--rule-w) solid var(--text-2);
+  background: var(--surface);
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--text);
+}
+
+.om-object-note {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-faint);
+  letter-spacing: 0.06em;
+}
+
+.om-track {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 6px 0;
+}
+
+.om-track-svg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 11px;
+  width: 24px;
+  height: 100%;
+}
+
+.om-track-line {
+  stroke: var(--text-faint);
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.om-node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.om-node-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 4px solid var(--theme-structural);
+  box-shadow: 3px 3px 0 var(--theme-offset-shadow);
+}
+
+.om-node-index {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+}
+
+.om-node-name {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 38px;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  line-height: 1.15;
+}
+
+.om-node-code {
+  margin-left: auto;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 380ms ease, transform 380ms ease;
+}
+
+.om-code-label {
+  display: inline-block;
+  padding: 6px 14px;
+  border: var(--rule-w) dashed var(--accent);
+  background: var(--theme-process-surface);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: var(--theme-process);
+}
+
+/* ── 问题区：从首拍占稳定槽位，拍 3/4 依次落位 ── */
+
+.om-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.om-question {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 26px;
+  border: var(--rule-w) dashed var(--rule);
+  background: var(--surface-3);
+  opacity: 0;
+}
+
+.om-q-lead {
+  font-family: var(--font-mono);
+  font-size: 21px;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+}
+
+.om-q-text {
+  font-family: var(--font-display-cn);
+  font-weight: 900;
+  font-size: 40px;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+/* ── 拍 1 入场（新挂载即播，收在 ~2.3s ≤ ~12s） ── */
+
+@keyframes om-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes om-draw {
+  from {
+    stroke-dashoffset: 640;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+[data-state="journey-established"] .om-object {
+  animation: om-rise-in 620ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+[data-state="journey-established"] .om-node {
+  animation: om-rise-in 460ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* 环节节点紧凑级联（140ms 间隔） */
+[data-state="journey-established"] .om-node:nth-child(2) { animation-delay: 420ms; }
+[data-state="journey-established"] .om-node:nth-child(3) { animation-delay: 560ms; }
+[data-state="journey-established"] .om-node:nth-child(4) { animation-delay: 700ms; }
+[data-state="journey-established"] .om-node:nth-child(5) { animation-delay: 840ms; }
+[data-state="journey-established"] .om-node:nth-child(6) { animation-delay: 980ms; }
+
+[data-state="journey-established"] .om-track-line {
+  stroke-dasharray: 640;
+  stroke-dashoffset: 640;
+  animation: om-draw 1500ms ease-out 300ms forwards;
+}
+
+/* ── 拍 2：编号标注浮出（transition，进入 delay 挂状态选择器） ── */
+
+[data-state="codes-everywhere"] .om-node-code {
+  opacity: 1;
+  transform: none;
+}
+
+[data-state="codes-everywhere"] .om-node:nth-child(1) .om-node-code { transition-delay: 0ms; }
+[data-state="codes-everywhere"] .om-node:nth-child(2) .om-node-code { transition-delay: 90ms; }
+[data-state="codes-everywhere"] .om-node:nth-child(3) .om-node-code { transition-delay: 180ms; }
+[data-state="codes-everywhere"] .om-node:nth-child(4) .om-node-code { transition-delay: 270ms; }
+[data-state="codes-everywhere"] .om-node:nth-child(5) .om-node-code { transition-delay: 360ms; }
+
+/* ── 拍 3/4：旅程与编号退让，问题区依次成为焦点 ── */
+
+[data-state="first-question-anchored"] .om-main,
+[data-state="two-questions-anchored"] .om-main {
+  opacity: 0.38;
+}
+
+[data-state="first-question-anchored"] .om-question:nth-child(1),
+[data-state="two-questions-anchored"] .om-question:nth-child(1) {
+  animation: om-rise-in 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+[data-state="two-questions-anchored"] .om-question:nth-child(2) {
+  animation: om-rise-in 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
