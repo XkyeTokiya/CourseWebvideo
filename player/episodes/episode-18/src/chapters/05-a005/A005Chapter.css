@@ -1,0 +1,233 @@
+/* 05-three-segments · 三段总览页 —— dg- 前缀，本章节专用 */
+.dg-root {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 78px 96px 68px;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  color: var(--text);
+}
+
+.dg-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap: 40px;
+}
+
+.dg-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.dg-root .dg-headline {
+  animation: dg-rise 540ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes dg-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.dg-head-note {
+  margin: 0;
+  font-size: 28px;
+  color: var(--text-faint);
+  opacity: 0;
+}
+
+.dg-root .dg-head-note {
+  animation: dg-rise 480ms 320ms forwards;
+}
+
+/* ── 段名带 + 问题带：同一列栅格逐项对齐 ── */
+.dg-bands {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  row-gap: 34px;
+  margin-top: 26px;
+}
+
+.dg-band {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 44px;
+}
+
+.dg-seg {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 22px 30px;
+  background: var(--theme-cool-surface);
+  border: 2px solid var(--theme-grid-line);
+  border-bottom: 8px solid var(--theme-structural);
+  border-radius: 6px;
+  opacity: 0;
+}
+
+.dg-root .dg-seg {
+  animation: dg-stamp 400ms both;
+  animation-delay: calc(260ms + var(--dg-i) * 230ms);
+}
+
+@keyframes dg-stamp {
+  0% {
+    opacity: 0;
+    transform: translateY(-14px) rotate(-1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.dg-seg-no {
+  font-size: 27px;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+.dg-seg-name {
+  font-family: var(--font-display-en);
+  font-style: italic;
+  font-size: 66px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+/* 问题带：与段名带同一栅格，逐项对齐 */
+.dg-q {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 32px;
+  background: var(--theme-process-surface);
+  border: 2px dashed var(--theme-process);
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.dg-q.is-on {
+  animation: dg-q-rise 420ms both;
+  animation-delay: calc(200ms + var(--dg-i) * 260ms);
+}
+
+@keyframes dg-q-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.dg-q-mark {
+  flex: 0 0 auto;
+  font-family: var(--font-display-en);
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--theme-process);
+}
+
+.dg-q-text {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  line-height: 1.45;
+}
+
+/* 对应关系线：三条竖向连接为一条共线绘制 */
+.dg-mapping {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.dg-mapping.is-on {
+  opacity: 1;
+}
+
+.dg-mapping::before {
+  content: "";
+  position: absolute;
+  left: 96px;
+  right: 96px;
+  top: 50%;
+  height: 5px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: var(--theme-process);
+}
+
+.dg-mapping.is-on::before {
+  animation: dg-line 420ms 780ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes dg-line {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ── 分派收束：step 3 ── */
+.dg-takeaway {
+  flex: 0 0 auto;
+  margin-top: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.dg-takeaway.is-on {
+  animation: dg-rise 460ms both;
+}
+
+.dg-takeaway-line {
+  width: 76px;
+  height: 8px;
+  background: var(--theme-warning);
+}
+
+.dg-takeaway-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 800;
+  color: var(--theme-structural);
+}
+
+.dg-takeaway-text b {
+  color: var(--theme-process);
+}
+
+.dg-takeaway-text i {
+  font-style: normal;
+  text-decoration: underline var(--theme-warning) 6px;
+  text-underline-offset: 10px;
+}

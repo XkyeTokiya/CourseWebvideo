@@ -7,6 +7,12 @@ import A002Chapter from "./chapters/02-a002/A002Chapter";
 import { narrations as a002Narrations } from "./chapters/02-a002/narrations";
 import A003Chapter from "./chapters/03-a003/A003Chapter";
 import { narrations as a003Narrations } from "./chapters/03-a003/narrations";
+import A004Chapter from "./chapters/04-a004/A004Chapter";
+import { narrations as a004Narrations } from "./chapters/04-a004/narrations";
+import A005Chapter from "./chapters/05-a005/A005Chapter";
+import { narrations as a005Narrations } from "./chapters/05-a005/narrations";
+import A006Chapter from "./chapters/06-a006/A006Chapter";
+import { narrations as a006Narrations } from "./chapters/06-a006/narrations";
 
 export const id = "episode-18";
 export const title = "Ecode 编码：版本、体系标识与主码";
@@ -36,5 +42,23 @@ export const CHAPTERS: ChapterDef[] = [
     title: "Ecode 定义与物联网语境",
     narrations: a003Narrations,
     Component: A003Chapter,
+  },
+  {
+    id: "04-a004",
+    title: "编码体系的边界",
+    narrations: a004Narrations,
+    Component: A004Chapter,
+  },
+  {
+    id: "05-a005",
+    title: "三段总览",
+    narrations: a005Narrations,
+    Component: A005Chapter,
+  },
+  {
+    id: "06-a006",
+    title: "V 版本段",
+    narrations: a006Narrations,
+    Component: A006Chapter,
   },
 ];
