@@ -1,12 +1,12 @@
 {
   "id": "episode-18",
-  "title": "第 18 期（待制作）",
-  "status": "planned",
+  "title": "第 18 期 · Ecode 编码：版本、体系标识与主码",
+  "status": "in-progress",
   "theme": "active-identification-note",
   "progress": {
-    "completed": 0,
-    "total": 0,
-    "current": null
+    "completed": 1,
+    "total": 11,
+    "current": "01-a001"
   },
-  "updatedAt": "2026-09-02"
+  "updatedAt": "2026-10-24"
 }

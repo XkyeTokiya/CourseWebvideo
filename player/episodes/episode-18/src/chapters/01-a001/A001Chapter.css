@@ -1,0 +1,389 @@
+/* 01-opening-records · 开场与跨环节记录页 —— aw- 前缀，本章节专用
+   持续开场场景：左媒体 + 右洞察轨；四个 narration step 只做局部推进，
+   不整体重排。颜色与字体家族全部走主题 token。 */
+
+.aw-root {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 72px 96px 64px;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  color: var(--text);
+}
+
+/* ── 标题区：step 1 建立，随后保持 ── */
+.aw-head {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  align-items: baseline;
+  column-gap: 36px;
+  row-gap: 14px;
+}
+
+.aw-headline {
+  grid-column: 1 / span 2;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 88px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.aw-headline em {
+  font-family: var(--font-display-en);
+  font-style: italic;
+  color: var(--accent);
+}
+
+.aw-root .aw-headline {
+  animation: rise-reveal 640ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes rise-reveal {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.aw-head-rule {
+  grid-row: 2;
+  height: 6px;
+  width: 180px;
+  background: var(--theme-structural);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.aw-root .aw-head-rule {
+  animation: rule-grow 520ms 200ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes rule-grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* 身份框架句：step 1 弱化预置，全程保持在标题下方 */
+.aw-frame-note {
+  grid-row: 2;
+  margin: 0;
+  font-size: 27px;
+  color: var(--text-faint);
+  font-weight: 300;
+  opacity: 0;
+}
+
+.aw-root .aw-frame-note {
+  animation: frame-fade-weak 520ms 480ms forwards;
+}
+
+@keyframes frame-fade-weak {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 0.85;
+    transform: none;
+  }
+}
+
+/* ── 主区域：固定 media + rail 两列，永不重排 ── */
+.aw-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 46fr) minmax(0, 54fr);
+  column-gap: 56px;
+  align-items: stretch;
+  margin-top: 42px;
+  transition: opacity 420ms ease, filter 420ms ease;
+}
+
+/* 媒体区：真实比例留位，placeholder 也承认缺并在注记里说明 */
+.aw-media {
+  margin: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+}
+
+.aw-media.is-on {
+  animation: media-rise 620ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes media-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.aw-media img {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  height: calc(100% - 34px);
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 10px 12px 0 var(--theme-offset-shadow);
+  border: 2px solid var(--theme-grid-line);
+}
+
+.aw-media-note {
+  font-size: 23px;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+}
+
+/* ── 右侧洞察轨 ── */
+.aw-rail {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 34px;
+  padding-top: 6px;
+}
+
+/* 前提轨：真实先后顺序（生产线→仓库→装车→使用现场） */
+.aw-journey {
+  position: relative;
+  opacity: 0;
+}
+
+.aw-journey.is-on {
+  animation: media-rise 560ms both;
+}
+
+.aw-journey-title {
+  margin: 0 0 22px;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  letter-spacing: 0.08em;
+}
+
+.aw-stages {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+}
+
+.aw-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+}
+
+.aw-journey.is-on .aw-stage {
+  animation: stage-step 380ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(300ms + var(--aw-i) * 340ms);
+}
+
+@keyframes stage-step {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.aw-stage-dot {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--theme-process);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.aw-stage-name {
+  font-size: 31px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+/* 顺序连线：每段随下一个环节自绘生长 */
+.aw-link {
+  flex: 0 0 58px;
+  height: 4px;
+  margin-top: 30px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--theme-dashed-line) 0 12px,
+    transparent 12px 20px
+  );
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.aw-journey.is-on .aw-link {
+  animation: line-grow 300ms both;
+  animation-delay: calc(440ms + var(--aw-i) * 340ms);
+}
+
+@keyframes line-grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* 记录条带区：step 3 逐环节盖入 */
+.aw-records {
+  opacity: 0;
+}
+
+.aw-records.is-on {
+  animation: media-rise 480ms both;
+}
+
+.aw-records-title {
+  margin: 0 0 20px;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--theme-process);
+  letter-spacing: 0.06em;
+}
+
+.aw-record-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 14px;
+}
+
+.aw-record {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 26px;
+  background: var(--theme-paper);
+  border: 2px solid var(--theme-grid-line);
+  border-left: 8px solid var(--theme-dashed-line);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  font-size: 29px;
+  opacity: 0;
+}
+
+.aw-records.is-on .aw-record {
+  animation: record-stamp 340ms cubic-bezier(0.2, 0.9, 0.3, 1.4) both;
+  animation-delay: calc(360ms + var(--aw-i) * 210ms);
+}
+
+@keyframes record-stamp {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) rotate(-1.4deg) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.aw-record b {
+  font-weight: 800;
+  color: var(--theme-structural);
+}
+
+.aw-record-mark {
+  color: var(--theme-warning);
+  font-style: normal;
+  font-weight: 700;
+  transform: rotate(-6deg);
+}
+
+.aw-record span {
+  color: var(--text-2);
+}
+
+/* ── 疑问区：step 4 升起为视觉中心，前置内容弱化 ── */
+.aw-ambiguity {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 44px;
+  padding: 26px 44px;
+  background: var(--theme-warning-surface);
+  border: 3px dashed var(--theme-warning);
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+.aw-ambiguity.is-on {
+  animation: ambiguity-rise 520ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes ambiguity-rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.aw-ambiguity-mark {
+  font-family: var(--font-display-en);
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--theme-warning);
+}
+
+.aw-ambiguity.is-on .aw-ambiguity-mark {
+  animation: mark-pop 480ms 140ms cubic-bezier(0.2, 0.9, 0.3, 1.35) both;
+}
+
+@keyframes mark-pop {
+  0% {
+    transform: scale(0.55) rotate(-12deg);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+.aw-ambiguity-line {
+  margin: 0;
+  font-size: 40px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+.aw-ambiguity-line strong {
+  color: var(--theme-structural);
+  font-weight: 800;
+  font-size: 46px;
+}
+
+/* step 4：前置内容弱化让位 */
+.aw-root[data-state="ambiguity-raised"] .aw-main {
+  opacity: 0.42;
+  filter: saturate(0.65);
+}

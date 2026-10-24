@@ -2,7 +2,7 @@
 
 <!-- GLOBAL:metadata:BEGIN -->
 > **编译状态**：awaiting-checkpoint-plan
-> **主题**：pending（Checkpoint Plan 待选）
+> **主题**：active-identification-note（Checkpoint Plan 已确认，默认选项）
 > **正文时长**：约 5 分 5 秒
 > **章节**：11
 > **Base scenes**：11
