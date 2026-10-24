@@ -13,6 +13,12 @@ import A005Chapter from "./chapters/05-a005/A005Chapter";
 import { narrations as a005Narrations } from "./chapters/05-a005/narrations";
 import A006Chapter from "./chapters/06-a006/A006Chapter";
 import { narrations as a006Narrations } from "./chapters/06-a006/narrations";
+import A007Chapter from "./chapters/07-a007/A007Chapter";
+import { narrations as a007Narrations } from "./chapters/07-a007/narrations";
+import A008Chapter from "./chapters/08-a008/A008Chapter";
+import { narrations as a008Narrations } from "./chapters/08-a008/narrations";
+import A009Chapter from "./chapters/09-a009/A009Chapter";
+import { narrations as a009Narrations } from "./chapters/09-a009/narrations";
 
 export const id = "episode-18";
 export const title = "Ecode 编码：版本、体系标识与主码";
@@ -60,5 +66,23 @@ export const CHAPTERS: ChapterDef[] = [
     title: "V 版本段",
     narrations: a006Narrations,
     Component: A006Chapter,
+  },
+  {
+    id: "07-a007",
+    title: "NSI 体系标识段",
+    narrations: a007Narrations,
+    Component: A007Chapter,
+  },
+  {
+    id: "08-a008",
+    title: "MD 主码与身份链",
+    narrations: a008Narrations,
+    Component: A008Chapter,
+  },
+  {
+    id: "09-a009",
+    title: "示例阅读",
+    narrations: a009Narrations,
+    Component: A009Chapter,
   },
 ];

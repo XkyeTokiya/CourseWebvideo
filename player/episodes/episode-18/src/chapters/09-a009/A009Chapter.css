@@ -1,0 +1,275 @@
+/* continuous-form · 09-a009 示例阅读页 —— ku- 前缀，本章节专用 */
+.ku-root {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 64px 92px 56px;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  color: var(--text);
+}
+
+.ku-head {
+  flex: 0 0 auto;
+}
+
+.ku-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 60px;
+  font-weight: 800;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.ku-headline em {
+  font-family: var(--font-display-en);
+  font-style: italic;
+  color: var(--theme-structural);
+}
+
+.ku-root .ku-headline {
+  animation: ku-in 460ms both;
+}
+
+@keyframes ku-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 主区：原图锚点 + 阅读注记轨 ── */
+.ku-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 52fr) minmax(0, 48fr);
+  column-gap: 52px;
+  margin-top: 26px;
+}
+
+.ku-image {
+  margin: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+}
+
+.ku-root .ku-image {
+  animation: ku-in 520ms 180ms both;
+}
+
+.ku-image img {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  height: calc(100% - 30px);
+  object-fit: cover;
+  border: 2px solid var(--theme-grid-line);
+  border-radius: 6px;
+  box-shadow: 10px 12px 0 var(--theme-offset-shadow);
+}
+
+.ku-image-note {
+  font-size: 22px;
+  color: var(--text-faint);
+}
+
+.ku-rail {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.ku-notes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ku-note {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 30px;
+  background: var(--theme-paper);
+  border: 2px solid var(--theme-grid-line);
+  border-left: 8px solid var(--theme-structural);
+  border-radius: 6px;
+  box-shadow: 6px 8px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateX(22px);
+}
+
+.ku-root .ku-note {
+  animation: ku-slide 380ms both;
+  animation-delay: calc(500ms + var(--ku-i) * 300ms);
+}
+
+@keyframes ku-slide {
+  0% {
+    opacity: 0;
+    transform: translateX(22px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ku-note-label {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--theme-warning);
+  white-space: nowrap;
+}
+
+.ku-note-value {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--theme-structural);
+}
+
+.ku-note-duty {
+  font-size: 26px;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+
+.ku-order {
+  margin: 0;
+  padding: 20px 30px;
+  font-size: 30px;
+  line-height: 1.5;
+  color: var(--text-2);
+  border: 3px dashed var(--theme-process);
+  background: var(--theme-process-surface);
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.ku-order.is-on {
+  animation: ku-in 440ms both;
+}
+
+.ku-order b {
+  color: var(--theme-process);
+  font-weight: 800;
+}
+
+/* ── 连续写法栏：step 3，与原图并列 ── */
+.ku-continuous {
+  flex: 0 0 auto;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  opacity: 0;
+}
+
+.ku-continuous.is-on {
+  animation: ku-in 440ms both;
+}
+
+.ku-continuous-kicker {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+.ku-continuous-code {
+  margin: 0;
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: 46px;
+  font-weight: 700;
+  padding: 14px 34px;
+  background: var(--theme-paper);
+  border: 2px solid var(--theme-grid-line);
+  border-radius: 6px;
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+}
+
+.ku-continuous-code span {
+  animation: ku-in 320ms both;
+}
+
+.ku-continuous.is-on .ku-continuous-code .ku-cv {
+  animation-delay: 200ms;
+}
+
+.ku-continuous.is-on .ku-continuous-code .ku-ns {
+  animation-delay: 380ms;
+}
+
+.ku-continuous.is-on .ku-continuous-code .ku-md {
+  animation-delay: 560ms;
+}
+
+.ku-cv {
+  color: var(--theme-warning);
+  margin-right: 2px;
+}
+
+.ku-ns {
+  color: var(--theme-process);
+  margin-right: 2px;
+}
+
+.ku-md {
+  color: var(--theme-structural);
+}
+
+/* ── 读法收束：step 4 ── */
+.ku-converge {
+  flex: 0 0 auto;
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.ku-converge.is-on {
+  animation: ku-in 460ms both;
+}
+
+.ku-converge-line {
+  width: 64px;
+  height: 8px;
+  background: var(--theme-warning);
+  flex: 0 0 auto;
+}
+
+.ku-converge-text {
+  margin: 0;
+  font-size: 37px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.ku-converge-text b {
+  color: var(--theme-structural);
+  font-weight: 800;
+}

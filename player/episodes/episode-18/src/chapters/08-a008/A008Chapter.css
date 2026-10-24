@@ -1,0 +1,323 @@
+/* 08-md-chain · MD 主码与身份链页 —— ww- 前缀，本章节专用 */
+.ww-root {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 70px 92px 60px;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  color: var(--text);
+}
+
+.ww-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.ww-head-tag {
+  padding: 9px 22px;
+  border: 2px solid var(--theme-structural);
+  border-radius: 4px;
+  background: var(--theme-cool-surface);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  opacity: 0;
+}
+
+.ww-root .ww-head-tag {
+  animation: ww-in 400ms both;
+}
+
+@keyframes ww-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ww-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 800;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.ww-headline em {
+  font-family: var(--font-display-en);
+  font-style: italic;
+  color: var(--theme-structural);
+  font-size: 84px;
+}
+
+.ww-root .ww-headline {
+  animation: ww-in 460ms 140ms both;
+}
+
+/* ── 主体双列 ── */
+.ww-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 46fr) minmax(0, 54fr);
+  column-gap: 56px;
+  margin-top: 30px;
+}
+
+.ww-defcol {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 26px;
+}
+
+.ww-def {
+  padding: 28px 40px;
+  background: var(--theme-cool-surface);
+  border: 2px solid var(--theme-grid-line);
+  border-left: 10px solid var(--theme-structural);
+  border-radius: 6px;
+  box-shadow: 10px 12px 0 var(--theme-offset-shadow);
+  opacity: 0;
+}
+
+.ww-root .ww-def {
+  animation: ww-in 460ms 300ms both;
+}
+
+.ww-def-kicker {
+  margin: 0;
+  font-size: 25px;
+  color: var(--text-mute);
+}
+
+.ww-def-text {
+  margin: 10px 0 0;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.ww-def-text b {
+  color: var(--theme-structural);
+  font-weight: 800;
+}
+
+.ww-payload {
+  padding: 24px 36px;
+  border: 3px dashed var(--theme-process);
+  background: var(--theme-process-surface);
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.ww-payload.is-on {
+  animation: ww-in 440ms both;
+}
+
+.ww-payload-line {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.ww-payload-line b {
+  color: var(--theme-process);
+  font-weight: 800;
+}
+
+.ww-depth {
+  margin: 0 4px;
+  font-size: 29px;
+  color: var(--text-faint);
+  opacity: 0;
+}
+
+.ww-depth.is-on {
+  animation: ww-fade 500ms 380ms forwards;
+}
+
+@keyframes ww-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+
+.ww-depth b {
+  color: var(--theme-structural);
+  font-weight: 800;
+}
+
+/* ── 右列：身份链 + 缺失后果 ── */
+.ww-chaincol {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+
+.ww-chain {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.ww-chain-item {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 26px 18px 22px;
+  background: var(--theme-paper);
+  border: 2px solid var(--theme-grid-line);
+  border-radius: 6px;
+  opacity: 0.28;
+}
+
+.ww-chain-item + .ww-chain-item {
+  margin-left: 54px;
+  position: relative;
+}
+
+/* 链段间箭头连接 */
+.ww-chain-item + .ww-chain-item::before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  top: 44px;
+  width: 30px;
+  height: 6px;
+  background: var(--theme-process);
+}
+
+.ww-root .ww-chain-item:not(:first-child)::before {
+  opacity: calc(var(--ww-i) * var(--ww-chain));
+  transition: opacity 240ms ease;
+}
+
+.ww-root .ww-chain-item.is-lit,
+.ww-root[data-state="chain-ordered"] .ww-chain-item,
+.ww-root[data-state="breakage-shown"] .ww-chain-item {
+  opacity: 1;
+}
+
+.ww-root[data-state="chain-ordered"] .ww-chain-item {
+  animation: ww-lit 360ms both;
+  animation-delay: calc(300ms + var(--ww-i) * 420ms);
+}
+
+@keyframes ww-lit {
+  0% {
+    opacity: 0.28;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ww-root[data-state="md-defined"] .ww-chain-item,
+.ww-root[data-state="payload-located"] .ww-chain-item {
+  transition: none;
+}
+
+.ww-chain-seg {
+  font-family: var(--font-display-en);
+  font-style: italic;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--theme-structural);
+}
+
+.ww-chain-duty {
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--theme-process);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* 缺失后果行 */
+.ww-breaks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px 38px;
+  background: var(--theme-danger-surface);
+  border: 2px solid var(--theme-danger);
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.ww-breaks.is-on {
+  animation: ww-in 380ms both;
+}
+
+.ww-breaks.is-on .ww-break-row {
+  animation: ww-row 360ms both;
+  animation-delay: calc(480ms + var(--ww-j) * 260ms);
+}
+
+@keyframes ww-row {
+  0% {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ww-breaks-title {
+  margin: 0 0 4px;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--theme-danger);
+}
+
+.ww-break-row {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 33px;
+  font-weight: 700;
+  color: var(--theme-structural);
+}
+
+.ww-break-lost {
+  color: var(--theme-danger);
+  white-space: nowrap;
+}
+
+.ww-break-arrow {
+  color: var(--theme-danger);
+  font-family: var(--font-display-en);
+}
+
+.ww-break-result {
+  color: var(--text);
+}
