@@ -1,0 +1,268 @@
+/* 03-ecode-definition · 定义语境页 —— ve- 前缀，本章节专用 */
+.ve-root {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 72px 96px 60px;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  color: var(--text);
+}
+
+.ve-head {
+  flex: 0 0 auto;
+}
+
+.ve-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.ve-headline em {
+  font-family: var(--font-display-en);
+  font-style: italic;
+  color: var(--accent);
+}
+
+.ve-root .ve-headline {
+  animation: ve-rise 560ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes ve-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ve-head-rule {
+  display: block;
+  width: 240px;
+  height: 6px;
+  margin-top: 18px;
+  background: var(--theme-structural);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.ve-root .ve-head-rule {
+  animation: ve-rule 480ms 200ms forwards;
+}
+
+@keyframes ve-rule {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ── 主区：左定义聚合 + 右语境图，固定两列 ── */
+.ve-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 58fr) minmax(0, 42fr);
+  column-gap: 60px;
+  margin-top: 40px;
+}
+
+.ve-defcol {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+
+.ve-def {
+  padding: 34px 44px;
+  background: var(--theme-paper);
+  border: 2px solid var(--theme-grid-line);
+  border-left: 10px solid var(--theme-structural);
+  box-shadow: 10px 12px 0 var(--theme-offset-shadow);
+  border-radius: 6px;
+  opacity: 0;
+}
+
+.ve-root .ve-def {
+  animation: ve-rise 560ms 140ms both;
+}
+
+.ve-def-label {
+  margin: 0;
+  font-size: 30px;
+  color: var(--text-mute);
+}
+
+.ve-def-word {
+  margin: 10px 0 0;
+  font-size: 54px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.ve-def-word-strong {
+  color: var(--theme-structural);
+  font-weight: 800;
+  font-size: 62px;
+}
+
+.ve-target {
+  padding: 28px 44px;
+  border: 3px dashed var(--theme-process);
+  border-radius: 6px;
+  background: var(--theme-process-surface);
+  opacity: 0;
+}
+
+.ve-root .ve-target {
+  animation: ve-target-stamp 440ms 560ms cubic-bezier(0.2, 0.9, 0.3, 1.3) both;
+}
+
+@keyframes ve-target-stamp {
+  0% {
+    opacity: 0;
+    transform: rotate(-1.6deg) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ve-target-label {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--theme-process);
+}
+
+.ve-target-line {
+  margin: 8px 0 0;
+  font-size: 44px;
+  font-weight: 700;
+}
+
+.ve-target-line b {
+  color: var(--theme-process);
+  font-weight: 800;
+}
+
+/* 语境图：自首拍占位（低权重），收束拍恢复权重，不卸载媒体 */
+.ve-image {
+  margin: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+}
+
+.ve-root .ve-image {
+  animation: ve-rise 560ms 320ms both;
+}
+
+.ve-image img {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  height: calc(100% - 32px);
+  object-fit: cover;
+  border: 2px solid var(--theme-grid-line);
+  border-radius: 6px;
+  box-shadow: 10px 12px 0 var(--theme-offset-shadow);
+  transition: box-shadow 320ms ease, transform 320ms ease;
+}
+
+.ve-image-note {
+  font-size: 23px;
+  color: var(--text-faint);
+}
+
+.ve-image.is-focus img {
+  transform: translateY(-6px);
+  box-shadow: 14px 16px 0 var(--theme-offset-shadow),
+    0 0 0 3px var(--theme-grid-line);
+}
+
+/* ── summary 轨：物联网语境注记 ── */
+.ve-rail {
+  flex: 0 0 auto;
+  margin-top: 44px;
+  padding: 30px 46px;
+  background: var(--theme-cool-surface);
+  border: 2px solid var(--theme-grid-line);
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.ve-rail.is-on {
+  animation: ve-rise 480ms both;
+}
+
+.ve-rail-title {
+  margin: 0 0 10px;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--theme-structural);
+}
+
+.ve-rail-text {
+  margin: 0;
+  font-size: 38px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.ve-rail-text b {
+  color: var(--theme-structural);
+  font-weight: 800;
+}
+
+/* ── 收束行：step 3 ── */
+.ve-than {
+  flex: 0 0 auto;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  opacity: 0;
+}
+
+.ve-than.is-on {
+  animation: ve-rise 460ms both;
+}
+
+.ve-than-line {
+  width: 64px;
+  height: 10px;
+  background: var(--theme-process);
+  flex: 0 0 auto;
+}
+
+.ve-than-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--theme-structural);
+}
+
+.ve-than-text i {
+  font-style: normal;
+  text-decoration: underline var(--theme-process) 6px;
+  text-underline-offset: 10px;
+}

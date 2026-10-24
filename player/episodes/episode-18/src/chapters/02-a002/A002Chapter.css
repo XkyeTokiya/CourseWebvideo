@@ -1,0 +1,298 @@
+/* 02-identity-gap · 身份问题页 —— xq- 前缀，本章节专用 */
+.xq-root {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 84px 110px 72px;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  color: var(--text);
+}
+
+.xq-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap: 34px;
+}
+
+.xq-headline {
+  margin: 0;
+  font-size: 92px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  opacity: 0;
+}
+
+.xq-root .xq-headline {
+  animation: xq-drop 520ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes xq-drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.xq-head-rule {
+  width: 220px;
+  height: 6px;
+  background: var(--theme-structural);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.xq-root .xq-head-rule {
+  animation: xq-rule 460ms 180ms forwards;
+}
+
+@keyframes xq-rule {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ── 两栏对照：完成对照排列后权重变化，不整体重排 ── */
+.xq-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 72px;
+  align-items: center;
+  margin-top: 36px;
+  transition: opacity 380ms ease;
+}
+
+.xq-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 40px 48px;
+  border: 2px solid var(--theme-grid-line);
+  border-radius: 6px;
+  background: var(--theme-paper);
+  box-shadow: 10px 12px 0 var(--theme-offset-shadow);
+}
+
+.xq-premise {
+  opacity: 0;
+}
+
+.xq-gap {
+  opacity: 0;
+  background: var(--theme-warning-surface);
+  border-color: var(--theme-warning);
+}
+
+.xq-premise {
+  animation: xq-in-left 520ms 140ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+.xq-gap {
+  animation: xq-in-right 520ms 340ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes xq-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes xq-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.xq-col-kicker {
+  margin: 0;
+  font-size: 30px;
+  color: var(--text-2);
+}
+
+.xq-col-word {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.xq-premise .xq-col-word {
+  color: var(--theme-structural);
+}
+
+.xq-gap .xq-col-word {
+  color: var(--theme-warning);
+}
+
+.xq-stamps {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.xq-stamp {
+  padding: 10px 22px;
+  border: 2px solid var(--theme-grid-line);
+  border-radius: 4px;
+  background: var(--theme-cool-surface);
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: xq-stamp 300ms both;
+  animation-delay: calc(560ms + var(--xq-i) * 170ms);
+}
+
+@keyframes xq-stamp {
+  0% {
+    opacity: 0;
+    transform: rotate(-2deg) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.xq-stamp i {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.xq-gap-ring {
+  width: 190px;
+  height: 190px;
+  margin-top: 24px;
+  align-self: center;
+}
+
+.xq-root .xq-gap-ring {
+  animation: xq-ring 620ms 620ms both;
+}
+
+@keyframes xq-ring {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) rotate(-40deg);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.xq-ring-q {
+  font-family: var(--font-display-en);
+  font-size: 44px;
+  font-weight: 700;
+  fill: var(--theme-warning);
+}
+
+/* ── 承接箭头与问句区：step 2 升为视觉中心 ── */
+.xq-lead-row {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 72px;
+  height: 64px;
+  margin-top: 10px;
+}
+
+.xq-lead-row .xq-lead-line {
+  grid-column: 2;
+  justify-self: center;
+}
+
+.xq-lead-line {
+  width: 8px;
+  height: 100%;
+  position: relative;
+  background: var(--theme-structural);
+  clip-path: polygon(0 0, 100% 0, 100% 62%, calc(100% + 14px) 62%, 50% 100%, -14px 62%, 0 62%);
+  transform: scaleX(0);
+  transform-origin: center top;
+}
+
+.xq-lead-line.is-on {
+  animation: xq-lead 380ms 120ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes xq-lead {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.xq-question {
+  flex: 0 0 auto;
+  text-align: center;
+  opacity: 0;
+}
+
+.xq-question.is-on {
+  animation: xq-question-rise 460ms 240ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes xq-question-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.xq-question-text {
+  margin: 0;
+  font-size: 36px;
+  color: var(--text-2);
+}
+
+.xq-question-text strong {
+  color: var(--theme-process);
+  font-weight: 800;
+}
+
+.xq-question-main {
+  margin: 10px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 74px;
+  font-weight: 800;
+  color: var(--theme-structural);
+}
+
+/* 两栏权重变化：问题成为中心后，两栏轻微退让 */
+.xq-root[data-state="question-dominant"] .xq-main {
+  opacity: 0.55;
+}
