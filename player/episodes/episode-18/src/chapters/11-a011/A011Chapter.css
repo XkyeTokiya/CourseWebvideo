@@ -1,0 +1,291 @@
+/* 11-three-layer-summary · 三层收束页 —— zj- 前缀，本章节专用 */
+.zj-root {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 66px 96px 56px;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  color: var(--text);
+}
+
+.zj-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.zj-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 64px;
+  font-weight: 800;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.zj-root .zj-headline {
+  animation: zj-in 460ms both;
+}
+
+@keyframes zj-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.zj-head-rule {
+  width: 190px;
+  height: 6px;
+  background: var(--theme-structural);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.zj-root .zj-head-rule {
+  animation: zj-rule 440ms 200ms forwards;
+}
+
+@keyframes zj-rule {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ── 开场锚点：mini 流转图 + 回收句 ── */
+.zj-anchor {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 48px;
+  margin-top: 26px;
+  padding: 24px 38px;
+  background: var(--theme-cool-surface);
+  border: 2px solid var(--theme-grid-line);
+  border-radius: 6px;
+  box-shadow: 10px 12px 0 var(--theme-offset-shadow);
+}
+
+.zj-anchor-journey {
+  display: flex;
+  gap: 26px;
+}
+
+.zj-dot-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+}
+
+.zj-root .zj-dot-col {
+  animation: zj-in 340ms both;
+  animation-delay: calc(260ms + var(--zj-i) * 190ms);
+}
+
+.zj-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--theme-process);
+}
+
+.zj-dot-col em {
+  font-style: normal;
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--theme-structural);
+  white-space: nowrap;
+}
+
+.zj-anchor-line {
+  margin: 0;
+  font-size: 30px;
+  color: var(--text-mute);
+}
+
+.zj-anchor-main {
+  margin: 6px 0 0;
+  font-size: 38px;
+  color: var(--text);
+}
+
+.zj-anchor-main b {
+  color: var(--theme-structural);
+  font-weight: 800;
+}
+
+/* ── 三层分工组：等权并列 ── */
+.zj-layers {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 40px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.zj-layer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 30px 24px;
+  background: var(--theme-paper);
+  border: 2px solid var(--theme-grid-line);
+  border-bottom: 8px solid var(--theme-structural);
+  border-radius: 6px;
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.zj-layers.is-on .zj-layer {
+  animation: zj-in 420ms both;
+  animation-delay: calc(280ms + var(--zj-i) * 280ms);
+}
+
+.zj-layer-seg {
+  font-family: var(--font-display-en);
+  font-style: italic;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--theme-structural);
+}
+
+.zj-layer-duty {
+  font-size: 31px;
+  font-weight: 700;
+  color: var(--theme-process);
+  text-align: center;
+}
+
+/* ── 组合线与构成判断 ── */
+.zj-compose {
+  flex: 0 0 auto;
+  position: relative;
+  margin-top: 30px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.zj-compose.is-on {
+  animation: zj-in 440ms both;
+}
+
+.zj-compose-links {
+  position: absolute;
+  inset: -46px 0 auto 0;
+  height: 40px;
+  pointer-events: none;
+}
+
+.zj-compose-links::before {
+  content: "";
+  position: absolute;
+  inset: auto 15% 0 15%;
+  /* 三条汇聚的斜线收进中间 */
+  background: linear-gradient(
+      115deg,
+      transparent calc(50% - 2px),
+      var(--theme-process) calc(50% - 2px),
+      var(--theme-process) calc(50% + 2px),
+      transparent calc(50% + 2px)
+    ),
+    linear-gradient(
+      245deg,
+      transparent calc(50% - 2px),
+      var(--theme-process) calc(50% - 2px),
+      var(--theme-process) calc(50% + 2px),
+      transparent calc(50% + 2px)
+    );
+  transform: scaleX(0);
+  transform-origin: center bottom;
+}
+
+.zj-compose.is-on .zj-compose-links::before {
+  animation: zj-rule 420ms 200ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+.zj-compose-chip {
+  display: inline-block;
+  margin: 0;
+  padding: 10px 34px;
+  background: var(--theme-structural);
+  color: var(--theme-paper);
+  font-family: var(--font-display-cn);
+  font-size: 33px;
+  font-weight: 800;
+  border-radius: 6px;
+  box-shadow: 6px 8px 0 var(--theme-offset-shadow);
+}
+
+.zj-compose-chip i {
+  font-family: var(--font-display-en);
+  font-style: italic;
+  color: var(--industrial-green-line);
+}
+
+.zj-compose-note {
+  margin: 14px 0 0;
+  font-size: 33px;
+  color: var(--text-2);
+}
+
+.zj-compose-note b {
+  color: var(--theme-structural);
+  font-weight: 800;
+}
+
+.zj-compose-note i {
+  font-style: normal;
+  color: var(--theme-process);
+  font-weight: 800;
+}
+
+/* ── 范围边界栏：最终收束 ── */
+.zj-boundary {
+  flex: 0 0 auto;
+  margin-top: 26px;
+  padding: 22px 38px;
+  background: var(--theme-warning-surface);
+  border: 3px dashed var(--theme-warning);
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.zj-boundary.is-on {
+  animation: zj-in 460ms both;
+}
+
+.zj-boundary-text {
+  margin: 0;
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--text-2);
+  text-align: center;
+}
+
+.zj-boundary-text b {
+  color: var(--theme-structural);
+  font-weight: 800;
+}
+
+.zj-boundary-text i {
+  font-style: normal;
+  color: var(--theme-warning);
+  font-weight: 800;
+}
