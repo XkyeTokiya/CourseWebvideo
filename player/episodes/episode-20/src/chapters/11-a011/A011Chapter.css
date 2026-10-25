@@ -1,0 +1,301 @@
+/* 11-a011 · 总结收束页 —— 前缀 .an- 仅本章使用；颜色/字体全部走主题 token。
+   首拍建立用 keyframe（进入态挂载即播，delay 挂在状态选择器下）；
+   第二拍的支撑注脚与收束卡点亮用 transition，基础态保持即时可逆。 */
+
+.an-root {
+  gap: 24px;
+  min-height: 0;
+}
+
+@keyframes an-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes an-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes an-grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ── 标题区：S063「回到开场的问题」（可见标题：保留） ───────────── */
+
+.an-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.an-head-tick {
+  width: 16px;
+  height: 16px;
+  border: 4px solid var(--theme-structural);
+  background: var(--theme-process-surface);
+}
+
+.an-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--theme-structural);
+}
+
+.an-head-rule {
+  flex: 1 1 auto;
+  min-width: 0;
+  border-top: 2px dashed var(--theme-dashed-line);
+}
+
+/* ── 主区：左中锚区 + 右缘收束竖卡 ─────────────────────────────── */
+
+.an-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 30px;
+}
+
+.an-center {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+/* 共享锚卡：整章持续在场，不被卸载 */
+.an-anchor {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 30px 40px 32px;
+  border: 3px solid var(--theme-structural);
+  background: var(--theme-cool-surface);
+  box-shadow: var(--card-shadow);
+}
+
+.an-anchor-loop {
+  position: absolute;
+  top: -16px;
+  left: 26px;
+  padding: 3px 12px;
+  border: 2.5px solid var(--theme-process);
+  background: var(--theme-process-surface);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--theme-process);
+}
+
+.an-anchor-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+}
+
+.an-anchor-line {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.an-anchor-arrow {
+  width: 64px;
+  height: 5px;
+  background: var(--theme-process);
+  position: relative;
+}
+
+.an-anchor-arrow::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 9px solid transparent;
+  border-left: 13px solid var(--theme-process);
+}
+
+/* 锚下分工关联卡（R031 上下排布支撑） */
+.an-assoc {
+  display: flex;
+  gap: 24px;
+}
+
+.an-assoc-card {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 20px 28px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+.an-assoc-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--theme-structural);
+}
+
+.an-assoc-duty {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+/* 支撑注脚条（S066/S067，第二拍滑入） */
+.an-support {
+  padding: 14px 28px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: var(--surface);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.an-support-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 23px;
+  font-weight: 800;
+  text-align: center;
+  color: var(--text-2);
+}
+
+.an-support-line b {
+  color: var(--theme-process);
+}
+
+/* 右缘收束竖卡（R032 末条承载最终判断），第二拍点亮 */
+.an-close {
+  flex: 0 0 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  padding: 26px 30px;
+  border: 3px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+  opacity: 0.16;
+  transition: opacity 0.5s ease, background 0.5s ease, border-color 0.5s ease;
+}
+
+.an-close-kicker {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+}
+
+.an-close-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: var(--theme-structural);
+}
+
+.an-close-def {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.6;
+  color: var(--theme-structural);
+}
+
+.an-close-def b {
+  color: var(--theme-process);
+}
+
+.an-close-not {
+  margin: 4px 0 0;
+  padding-top: 12px;
+  border-top: 2px dashed var(--theme-grid-line);
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+/* ── 状态 1 · anchor-restated：锚卡点亮 + 分工关联卡落位 ────────── */
+
+[data-state="anchor-restated"] .an-head {
+  animation: an-rise-in 0.5s ease 0.12s both;
+}
+
+[data-state="anchor-restated"] .an-anchor {
+  animation: an-rise-in 0.55s ease 0.3s both;
+}
+
+[data-state="anchor-restated"] .an-anchor-line .an-anchor-arrow {
+  animation: an-grow-x 0.55s ease 0.85s both;
+  transform-origin: left center;
+}
+
+[data-state="anchor-restated"] .an-assoc-card:nth-child(1) {
+  animation: an-rise-in 0.45s ease 1.35s both;
+}
+
+[data-state="anchor-restated"] .an-assoc-card:nth-child(2) {
+  animation: an-rise-in 0.45s ease 1.85s both;
+}
+
+/* ── 状态 2 · close-settled：支撑注脚滑入 + 收束卡点亮 ──────────── */
+
+[data-state="close-settled"] .an-support {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.2s;
+}
+
+[data-state="close-settled"] .an-close {
+  opacity: 1;
+  background: var(--theme-process-surface);
+  border-color: var(--theme-process);
+  transition-delay: 0.75s;
+}

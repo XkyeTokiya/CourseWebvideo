@@ -21,6 +21,8 @@ import A009Chapter from "./chapters/09-a009/A009Chapter";
 import { narrations as a009Narrations } from "./chapters/09-a009/narrations";
 import A010Chapter from "./chapters/10-a010/A010Chapter";
 import { narrations as a010Narrations } from "./chapters/10-a010/narrations";
+import A011Chapter from "./chapters/11-a011/A011Chapter";
+import { narrations as a011Narrations } from "./chapters/11-a011/narrations";
 
 export const id = "episode-20";
 export const title = "从前缀到后缀：设计一套可落地的编码规则";
@@ -92,5 +94,11 @@ export const CHAPTERS: ChapterDef[] = [
     title: "六步与落地判定",
     narrations: a010Narrations,
     Component: A010Chapter,
+  },
+  {
+    id: "11-a011",
+    title: "总结收束",
+    narrations: a011Narrations,
+    Component: A011Chapter,
   },
 ];
