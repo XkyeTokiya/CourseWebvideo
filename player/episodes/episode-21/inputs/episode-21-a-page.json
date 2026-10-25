@@ -1,0 +1,1162 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-21",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "本集标题、前置、第 22–25 集边界与拆分依据",
+   "source_locator": "已确认课程架构，Episode Architecture 第 21–25 集",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围和去重"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "工业大数据是工业活动中产生的海量、多源、异构数据集合，涵盖设备传感器、生产流程、供应链等",
+   "source_locator": "主教材，3.1.1“1. 工业大数据”首段",
+   "verification_status": "not applicable",
+   "allowed_use": "定义与对象范围"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "数据包含结构化、半结构化、非结构化形态，例为传感器数据、日志文件",
+   "source_locator": "主教材，3.1.1“1. 工业大数据”首段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释形态差异"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "覆盖设计、工艺、生产、管理、服务环节；具高维度、实时性、价值密度低等特点",
+   "source_locator": "主教材，3.1.1“1. 工业大数据”首段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释工业范围与特征"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "工业大数据具有价值属性和产权属性；数据治理、数据交易、数据分析可提升智能化、生产效率、降低成本并创造量化价值",
+   "source_locator": "主教材，3.1.1“1. 工业大数据”首段",
+   "verification_status": "not applicable",
+   "allowed_use": "说明价值形成环节"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "三类来源：生产经营业务数据（ERP、PLM、SCM 等）、设备作业数据（设备/监测设备实时产生）、外部数据（客户名单、供应商名单等）",
+   "source_locator": "主教材，3.1.1“工业大数据的主要来源可以分为三类”",
+   "verification_status": "not applicable",
+   "allowed_use": "建立来源分层"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "一般特征为数据量大、多样、快速、价值密度低；工业数据还具有时序性、强关联性、准确性、闭环性",
+   "source_locator": "主教材，3.1.1“工业大数据具有一般大数据的特征”",
+   "verification_status": "not applicable",
+   "allowed_use": "建立判断维度"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "目标是从复杂数据集中发现新的模式与知识，促进产品创新、经营水平、生产运作效率和新型商业模式",
+   "source_locator": "主教材，3.1.1末段",
+   "verification_status": "not applicable",
+   "allowed_use": "收束价值链"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "“采集→存储→治理→分析→决策/优化”的教学处理链",
+   "source_locator": "本任务包教学组织，依据 E002、E005",
+   "verification_status": "not applicable",
+   "allowed_use": "组织系统机制与分镜"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "三类来源在同一对象生命周期内汇合，再由时序和关联关系支撑闭环分析",
+   "source_locator": "本任务包教学组织，依据 E004、E006、E007",
+   "verification_status": "not applicable",
+   "allowed_use": "形成跨来源关系图"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "匿名“设备运行记录”情境，用于说明同一设备的传感器、生产流程和供应信息可被关联",
+   "source_locator": "教学情境 N001–N003",
+   "verification_status": "not applicable",
+   "allowed_use": "引出问题与处理链"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "【视频标题】\n工业大数据从哪里来、怎样产生价值\n\n【开场导入】\n一台设备正常开着，车间里会发生什么？温度在变化，负载在波动，工艺参数被一次次记录下来。同时，生产系统里订单在流转，物料在移动；来自外部的供应商名单和客户信息，也在更新。也就是说，同一个工业对象，一个环节在出数据，另一个环节也在出数据，而且一直没停过。数据是越来越多了。可数据多了，就代表价值来了吗？不一定。今天我们就来说清楚，这些来自不同环节的数据集合起来叫什么，又要经过怎样的过程，才可能变成能用的价值。\n\n",
+   "teaching_purpose": "呈现本集标题；用同一台设备的持续记录引出“数据多但价值未形成”的问题",
+   "single_message": "同一工业对象在多个环节持续产生数据；数据多不等于价值已经到来。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "标题：工业大数据从哪里来、怎样产生价值",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "车间里一台设备正常运行，温度、负载、工艺参数被持续记录",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "生产系统里订单流转、物料移动，外部供应商与客户信息也在更新",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "同一工业对象，一个环节在出数据，另一个环节也在出数据，而且一直没停过",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "数据越来越多，但数据多不等于价值已经到来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "本集问题：这些数据集合起来叫什么，怎样变成能用的价值",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "场景引出价值问题",
+     "to": "G002",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "画面不出现企业名称、真实编码、统计数字或软件界面",
+     "evidence_refs": [
+      "E011"
+     ]
+    },
+    {
+     "constraint_id": "C002",
+     "instruction": "开场场景只承担语境与问题引出，不承担教材证据",
+     "evidence_refs": [
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，尚未接触工业大数据概念",
+   "exit_condition": "观众能说出本集要回答的问题：数据集合是什么、价值怎样形成",
+   "timing": {
+    "char_equivalent": 203.0,
+    "min_seconds": 51,
+    "target_seconds": 53,
+    "max_seconds": 56,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "【正文讲解】\n先给工业大数据定个范围。它不是某一个软件里存的那份数据，而是在工业活动中产生的海量、多源、异构的数据集合。三个词都很关键。海量，指数据量非常大；多源，指数据来自不同的环节、不同的系统；异构，指这些数据的结构和表达方式各不相同。这个集合至少覆盖设备传感器、生产流程和供应链这些对象，再往宽了看，还能延展到设计、工艺、生产、管理、服务这些环节。所以，它不能缩减成一张生产报表，也不能只看成某类设备的实时曲线。\n\n",
+   "teaching_purpose": "建立工业大数据的定义，解释海量、多源、异构三个限定词与覆盖延展范围",
+   "single_message": "工业大数据是工业活动中海量、多源、异构的数据集合，不能缩减成报表或曲线。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S007",
+     "guidance_text": "工业大数据：海量、多源、异构的数据集合",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "不是某一个软件里存的那份数据，而是工业活动中产生的数据集合",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "海量：数据量非常大",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "多源：数据来自不同的环节、不同的系统",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "异构：数据的结构和表达方式各不相同",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "至少覆盖设备传感器、生产流程和供应链这些对象",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "延展到设计、工艺、生产、管理、服务环节",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "不能缩减成一张生产报表，也不能只看成某类设备的实时曲线",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R002",
+     "from": "G004",
+     "relation": "限定词刻画集合属性",
+     "to": "G005",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R003",
+     "from": "G005",
+     "relation": "覆盖范围之外排除缩减口径",
+     "to": "G006",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不把数据集合画成数据库产品、生产报表或任何软件存储界面",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众带着“数据多但价值未形成”的问题进入定义",
+   "exit_condition": "观众能说出海量、多源、异构的含义，以及集合覆盖与延展的环节",
+   "timing": {
+    "char_equivalent": 182.0,
+    "min_seconds": 46,
+    "target_seconds": 47,
+    "max_seconds": 50,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A001",
+    "A002"
+   ],
+   "nx": "这么多数据，具体从哪儿来？大致可以分成三类。\n\n第一类，生产经营业务数据。它来自企业里的业务系统，比如企业资源计划系统 ERP、产品生命周期管理系统 PLM、供应链管理系统 SCM。这些系统记录企业在研发、生产经营和供应协同里的业务活动。\n\n第二类，设备作业数据。它由生产设备和监测设备在运行中持续产生，像加工负载、焊接、拧紧，还有车间里的环境温湿度，都属于这类运行记录。\n\n第三类，外部数据。比如客户名单、供应商名单，它们来自企业外部。\n\n三类来源汇合到一起，工业大数据才有机会覆盖对象、过程，也覆盖外部关系；如果只剩单一环节的孤立记录，那还谈不上工业大数据。\n\n",
+   "teaching_purpose": "提出来源问题，并列拆解三类来源，说明三类汇合才形成工业大数据",
+   "single_message": "生产经营业务、设备作业、外部数据三类来源汇合，才覆盖对象、过程与外部关系。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S015",
+     "guidance_text": "来源分成三类",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "问题：这么多数据具体从哪儿来？来源大致分成三类",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "第一类是生产经营业务数据，来自企业里的业务系统",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "企业资源计划系统 ERP",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "产品生命周期管理系统 PLM",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "供应链管理系统 SCM",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "记录企业在研发、生产经营和供应协同里的业务活动",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "第二类是设备作业数据，由生产设备和监测设备在运行中持续产生",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "加工负载、焊接、拧紧，以及车间环境温湿度，都属于运行记录",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "第三类是外部数据，比如客户名单、供应商名单，来自企业外部",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "三类来源汇合到一起，才有机会覆盖对象、过程，也覆盖外部关系",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "只剩单一环节的孤立记录，谈不上工业大数据",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G007",
+     "relation": "转向问题引出来源分层",
+     "to": "G008",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R005",
+     "from": "G009",
+     "relation": "两类来源并列",
+     "to": "G010",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R006",
+     "from": "G010",
+     "relation": "来源汇合支撑覆盖",
+     "to": "G011",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "ERP、PLM、SCM 只作教材列举的来源名称，不画软件界面或操作演示",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    {
+     "constraint_id": "C005",
+     "instruction": "设备示例只表现运行记录，不虚构加工参数数值或设备品牌",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握工业大数据的定义与范围",
+   "exit_condition": "观众能列出三类来源，并说出三类汇合才覆盖对象、过程与外部关系",
+   "timing": {
+    "char_equivalent": 235.5,
+    "min_seconds": 59,
+    "target_seconds": 61,
+    "max_seconds": 65,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "再说数据的形态。工业大数据既包含传统的结构化数据，也包含半结构化和非结构化数据，表格记录、设备传感器数据、日志文件，都可能成为它的组成部分。\n\n",
+   "teaching_purpose": "说明工业大数据的三种数据形态与典型示例",
+   "single_message": "结构化、半结构化、非结构化数据都可能是工业大数据的组成部分。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S027",
+     "guidance_text": "形态：结构化、半结构化与非结构化",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "既包含传统的结构化数据，也包含半结构化和非结构化数据",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "表格记录、设备传感器数据、日志文件，都可能成为组成部分",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不把三种形态画成数据库产品或文件格式图标墙",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道工业大数据的三类来源",
+   "exit_condition": "观众能说出三种数据形态与典型示例",
+   "timing": {
+    "char_equivalent": 63.0,
+    "min_seconds": 16,
+    "target_seconds": 16,
+    "max_seconds": 18,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "从一般大数据来看，它有四个特征：数据量大、多样、快速、价值密度低。价值密度低怎么理解？有价值的线索往往分散在大量记录里，数据多，不等于能直接得到答案，得从里面去发现。\n\n",
+   "teaching_purpose": "建立一般大数据的四个特征，并解释价值密度低",
+   "single_message": "量大、多样、快速、价值密度低；数据多不等于能直接得到答案。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S030",
+     "guidance_text": "一般大数据的四个特征",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "数据量大、多样、快速、价值密度低",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "价值密度低：有价值的线索分散在大量记录里，得从里面去发现",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "特征不绘制成分数、雷达图或统计图",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握来源与形态",
+   "exit_condition": "观众能复述四个一般特征并理解价值密度低的含义",
+   "timing": {
+    "char_equivalent": 72.0,
+    "min_seconds": 18,
+    "target_seconds": 19,
+    "max_seconds": 20,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "工业数据本身还强调四个特征。时序性，说的是记录有发生的先后顺序；强关联性，说的是设备、工艺、物料和结果之间彼此关联；准确性，要求采集到的记录尽量可靠；闭环性，是指分析结果能够回到产品、经营或者生产运作里继续发挥作用。正因为这样，工业数据不能套用一次性统计的处理方式。\n\n",
+   "teaching_purpose": "建立工业数据特有的四个特征，并给出“不能套用一次性统计”的结论",
+   "single_message": "时序性、强关联性、准确性、闭环性，决定工业数据不能套用一次性统计的处理方式。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S033",
+     "guidance_text": "工业数据的四个特征",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "时序性：记录有发生的先后顺序",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "强关联性：设备、工艺、物料和结果之间彼此关联",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "准确性：采集到的记录尽量可靠",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "闭环性：分析结果回到产品、经营或生产运作里继续发挥作用",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "工业数据不能套用一次性统计的处理方式",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G016",
+     "relation": "四特征解释处理方式差异",
+     "to": "G017",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "特征不等于实时平台保证、零错误或自动闭环，不出现通过率或告警率",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已了解一般大数据特征",
+   "exit_condition": "观众能说出四个工业特征及“不能套用一次性统计”的结论",
+   "timing": {
+    "char_equivalent": 119.0,
+    "min_seconds": 30,
+    "target_seconds": 31,
+    "max_seconds": 33,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "把来源和特征放在一起，就能看出一条基本的处理链。数据先要被采集，可以通过物联网这类技术，也可以由业务系统和外部渠道汇入。采集之后要存储，把必要的时间和对象上下文保留住。再往后，是数据治理、数据交易、数据分析这些价值环节。\n\n",
+   "teaching_purpose": "建立采集、存储到价值环节的基本处理链",
+   "single_message": "数据经采集、存储，再进入治理、交易、分析等价值环节。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S039",
+     "guidance_text": "基本处理链：采集、存储与价值环节",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "数据先要被采集：通过物联网这类技术，或由业务系统和外部渠道汇入",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "采集之后要存储，把必要的时间和对象上下文保留住",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "再往后是数据治理、数据交易、数据分析这些价值环节",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G018",
+     "relation": "采集之后进入存储",
+     "to": "G019",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R009",
+     "from": "G019",
+     "relation": "存储之后通向价值环节",
+     "to": "G020",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "处理链只使用正文支持的阶段，不补充数据库、算法或接口",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握来源与两组特征",
+   "exit_condition": "观众能按顺序说出采集、存储与治理/交易/分析",
+   "timing": {
+    "char_equivalent": 99.0,
+    "min_seconds": 25,
+    "target_seconds": 26,
+    "max_seconds": 27,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "这条链的重点，不是把所有数据堆在一起，而是让不同来源的记录能被整理、比较和分析。设备作业、生产流程和供应链的信息，在相应的语境里保持关联，分析才有可能在复杂的数据集合里识别出变化、关系和异常线索。它的目标，是从复杂数据集中发现新的模式与知识，挖掘有价值的新信息，让一条条记录变成可以解释的业务依据。\n\n",
+   "teaching_purpose": "说明处理链的重点是关联整理，目标是发现模式与知识、形成可解释依据",
+   "single_message": "让不同来源的记录在语境里保持关联，才能识别线索并形成可解释的业务依据。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S043",
+     "guidance_text": "从记录到可解释的依据",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "重点不是把所有数据堆在一起，而是让不同来源的记录能被整理、比较和分析",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S045",
+        "guidance_text": "设备作业、生产流程和供应链的信息，在相应的语境里保持关联",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S046",
+        "guidance_text": "分析才有可能识别出变化、关系和异常线索",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S047",
+        "guidance_text": "目标：从复杂数据集中发现新的模式与知识，挖掘有价值的新信息",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S048",
+        "guidance_text": "让一条条记录变成可以解释的业务依据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R010",
+     "from": "G021",
+     "relation": "语境关联支撑线索识别",
+     "to": "G022",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R011",
+     "from": "G022",
+     "relation": "线索发现走向模式与知识",
+     "to": "G023",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不承诺具体算法、模型输出或分析结果",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道处理链的阶段顺序",
+   "exit_condition": "观众能说出关联整理如何通向模式发现与可解释依据",
+   "timing": {
+    "char_equivalent": 136.0,
+    "min_seconds": 34,
+    "target_seconds": 35,
+    "max_seconds": 38,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "那么价值最终落在哪些方向？主要有四个：促进产品创新，提升经营水平，提高生产运作效率，拓展新型商业模式。数据治理、数据交易、数据分析这些环节，正是推动数据一步步走向价值的过程。要记住，数据在手，不等于结论自动出现，价值要靠这些环节走出来。\n\n",
+   "teaching_purpose": "给出四个价值方向，并强调价值由治理、交易、分析环节推动形成",
+   "single_message": "价值落在产品创新、经营水平、生产运作效率、新型商业模式四个方向；价值靠环节走出来。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S049",
+     "guidance_text": "价值的四个方向",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S050",
+        "guidance_text": "促进产品创新",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S051",
+        "guidance_text": "提升经营水平",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S052",
+        "guidance_text": "提高生产运作效率",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S053",
+        "guidance_text": "拓展新型商业模式",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S054",
+        "guidance_text": "数据治理、数据交易、数据分析这些环节，推动数据一步步走向价值",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S055",
+        "guidance_text": "数据在手，不等于结论自动出现；价值要靠环节走出来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G024",
+     "relation": "价值方向与形成环节相互支撑",
+     "to": "G025",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "价值方向不换算成金额、比例、企业名称或行业排名",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解从记录到模式发现",
+   "exit_condition": "观众能列出四个价值方向并理解价值要靠环节形成",
+   "timing": {
+    "char_equivalent": 104.0,
+    "min_seconds": 26,
+    "target_seconds": 27,
+    "max_seconds": 29,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A001",
+    "A008"
+   ],
+   "nx": "本期总结。回到开头车间里的那台设备。它每时每刻都在出数据，但单独看任何一条，都只是现场的一个局部：设备给出状态，业务系统给出流程，外部给出关系。把这些多源、异构的记录汇集起来，经过采集、存储、治理和分析，保持在相应语境里的关联，才有可能从一堆记录变成可解释的依据。今天我们界定的，是工业大数据这个数据集合本身。",
+   "teaching_purpose": "回收开场设备情境，收束“来源—处理—价值”主线并界定本集概念边界",
+   "single_message": "把多源异构记录汇集起来，经采集、存储、治理和分析保持关联，才可能变成可解释的依据。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S056",
+     "guidance_text": "本期总结：从记录到可解释依据",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S057",
+        "guidance_text": "单独看任何一条记录，都只是现场的局部：设备给出状态，业务系统给出流程，外部给出关系",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S058",
+        "guidance_text": "把多源、异构的记录汇集起来，经过采集、存储、治理和分析，保持在相应语境里的关联",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S059",
+        "guidance_text": "才有可能从一堆记录变成可解释的依据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G029",
+      "items": [
+       {
+        "screen_item_id": "S060",
+        "guidance_text": "今天界定的，是工业大数据这个数据集合本身",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R013",
+     "from": "G027",
+     "relation": "局部记录汇合成依据",
+     "to": "G028",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R014",
+     "from": "G028",
+     "relation": "处理链收束到集合定义",
+     "to": "G029",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C012",
+     "instruction": "总结不展开数据类型区分、共享、数据要素或标识数据模型",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已走过定义、来源、特征、处理链与价值",
+   "exit_condition": "观众能复述本集结论，并知道本集界定的是数据集合本身",
+   "timing": {
+    "char_equivalent": 138.0,
+    "min_seconds": 35,
+    "target_seconds": 36,
+    "max_seconds": 38,
+    "short_page_reason": null
+   }
+  }
+ ]
+}

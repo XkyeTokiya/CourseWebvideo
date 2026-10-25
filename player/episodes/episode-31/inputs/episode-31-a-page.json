@@ -1,0 +1,985 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-31",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 31 集标题、来源范围、前置关系、相邻边界和动态风险",
+   "source_locator": "已确认课程架构，Episode Architecture 第 28–32 集及全局去重规则",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围与去重"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "递归解析通过递归节点实现标识查询与解析，将标识编码解析为网络地址或相关信息，用于物理实体与数字对象的定位和信息查询",
+   "source_locator": "主教材，3.2.5 第 1 段",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "定义递归解析"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "递归节点是关键性入口设施，先查本地缓存；没有查询结果时沿解析服务器应答路径继续查询，最终返回结果并缓存",
+   "source_locator": "主教材，3.2.5 第 2 段",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释入口与缓存分叉"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "八步中的 ①应用系统经解析客户端向递归解析服务系统发起请求；②递归系统分析请求后请求国家顶级；③国家顶级返回二级解析节点地址",
+   "source_locator": "主教材，3.2.5 八步流程 ①–③",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释前三步"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "八步中的 ④递归系统据返回结果查询二级节点；⑤二级节点返回结果，使递归系统获得企业解析系统地址",
+   "source_locator": "主教材，3.2.5 八步流程 ④–⑤",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释中间两步"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "八步中的 ⑥递归系统向企业解析系统地址发起查询；⑦企业解析系统返回企业应用数据；⑧递归系统把数据返回解析客户端",
+   "source_locator": "主教材，3.2.5 八步流程 ⑥–⑧",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释末三步"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "递归机制使客户端不必自行完成复杂查询，可提高解析效率和响应速度；查询可由企业信息系统、工业互联网平台、工业互联网 APP 等形式触发",
+   "source_locator": "主教材，3.2.5 八步后总结段",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释机制价值与入口"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "图 3-25 显示客户端、递归节点、国家顶级节点解析服务器、二级节点解析服务器、企业服务器及编号 ①–⑧ 的查询/返回关系",
+   "source_locator": "教材图 3-25“标识递归解析流程”",
+   "verification_status": "not applicable",
+   "allowed_use": "原图展示与忠实重绘"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "图 3-26 表达标识解析接口经展示工具面向多种应用入口",
+   "source_locator": "教材图 3-26“标识查询触发递归解析服务形式”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "多入口关系的核对锚点"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "设备维护人员通过应用查询一件工业设备标识的开场与收束情境",
+   "source_locator": "教学情境，N001、N014；媒体 M001–M002",
+   "verification_status": "not applicable",
+   "allowed_use": "让抽象请求落到对象"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "“缓存先查→顶级返回二级地址→二级返回企业地址→企业返回应用数据→递归节点回传并缓存”的教学主链",
+   "source_locator": "本任务包基于 E003–E008 的教学组织",
+   "verification_status": "not applicable",
+   "allowed_use": "组织主链"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "【视频标题】\n递归解析：一次查询怎样逐级找到企业数据\n\n【开场导入】\n要查一家企业的设备信息，操作很简单：在应用系统里输入一个标识编码，点一下查询。但关键的疑问在后面：这一次的请求，究竟是谁在一层一层地替它跑？回答这个问题的核心角色，叫递归解析。今天我们就跟着一次查询请求，看它怎样逐级找到企业解析系统，又把数据带回来。\n\n",
+   "teaching_purpose": "呈现本集标题；用一次简单查询提出“谁替它跑完全程”的主问题",
+   "single_message": "输入编码点查询很简单；真正的问题是哪一层角色在逐级跑。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "标题：递归解析：一次查询怎样逐级找到企业数据",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "在应用系统里输入一个标识编码，点一下查询",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "这一次的请求，究竟是谁在一层一层地替它跑？",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "回答这个问题的核心角色叫递归解析；跟着一次查询看它怎样逐级找到企业解析系统，又把数据带回来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "查询动作引出主问题",
+     "to": "G002",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "画面不虚构查询界面与数据值",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，未接触递归概念",
+   "exit_condition": "观众能说出主问题",
+   "timing": {
+    "char_equivalent": 139.0,
+    "min_seconds": 35,
+    "target_seconds": 36,
+    "max_seconds": 38,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "【正文讲解】\n先说清楚什么是递归解析。工业互联网标识递归解析，是标识解析体系里的一类解析方式：通过递归节点完成标识的查询与解析，把标识编码解析成具体的网络地址或相关信息，用来给物理实体和数字对象定位、查信息。说通俗点，输入一个编码，它能还给你一个可用的地址或数据。\n\n这中间的关键设施是递归节点。它是标识解析体系的统一入口，代表发起查询的一方完成逐级查找。发起查询的一方不需要知道国家顶级节点、二级节点、企业解析系统各自在哪，把请求交给递归入口，等着拿结果就行。\n\n",
+   "teaching_purpose": "定义递归解析并建立递归节点的统一入口角色",
+   "single_message": "递归解析把编码变成可用地址或数据；递归节点是统一入口，替发起方逐级跑。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S005",
+     "guidance_text": "什么是递归解析",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "标识解析体系里的一类解析方式：通过递归节点完成标识的查询与解析，把编码解析成具体的网络地址或相关信息",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "用来给物理实体和数字对象定位、查信息：输入一个编码，它能还给你一个可用的地址或数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "递归节点是统一入口，代表发起查询的一方完成逐级查找",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "发起方不需要知道国家顶级节点、二级节点、企业解析系统各自在哪：把请求交给递归入口，等着拿结果就行",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R002",
+     "from": "G003",
+     "relation": "定义支撑定位与查信息",
+     "to": "G004",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R003",
+     "from": "G005",
+     "relation": "统一入口承载定位查信息",
+     "to": "G004",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "不展开具体协议或服务器地址",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受主问题",
+   "exit_condition": "观众能说出定义与入口角色",
+   "timing": {
+    "char_equivalent": 208.0,
+    "min_seconds": 52,
+    "target_seconds": 54,
+    "max_seconds": 57,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "一次查询里出现的角色，包括发起查询的解析客户端、跑完全程的递归解析服务系统，以及沿途的几级节点：国家顶级解析服务节点系统、标识二级解析服务节点，再往后是保存着真正数据的企业解析系统。\n\n不过在正式出发前，递归节点会先看一眼自己的本地缓存。缓存里要是有可用的结果，这趟路就不用走了，直接把结果交给客户端。只有缓存没有结果时，它才沿应答路径逐级走下去。这里说清楚一点：缓存只是把查过的结果保存了一份，它本身不是独立的数据来源。\n\n",
+   "teaching_purpose": "列出一趟查询的角色，并建立缓存命中/未命中分叉",
+   "single_message": "五个角色等在沿途；出发前先查缓存，命中直接返回，未命中才逐级走。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S010",
+     "guidance_text": "角色与缓存分叉",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "角色：解析客户端、递归解析服务系统、国家顶级解析服务节点系统、标识二级解析服务节点、企业解析系统",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "出发前先看本地缓存：缓存里有可用结果，这趟路就不用走了，直接把结果交给客户端",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "只有缓存没有结果时，才沿应答路径逐级走下去",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "缓存只是把查过的结果保存了一份，它本身不是独立的数据来源",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G006",
+     "relation": "角色出发前先查缓存",
+     "to": "G007",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R005",
+     "from": "G007",
+     "relation": "命中收束、未命中继续",
+     "to": "G008",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "缓存不画成权威数据源",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解入口角色",
+   "exit_condition": "观众能说出角色与缓存分叉",
+   "timing": {
+    "char_equivalent": 192.0,
+    "min_seconds": 48,
+    "target_seconds": 50,
+    "max_seconds": 53,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "我们就跟着一次没命中缓存的查询出发。\n\n请求先由应用系统通过解析客户端，交到递归解析服务系统手上。递归系统分析请求后，向国家顶级解析服务节点系统发起解析查询。顶级节点给出的答复，是一串地址信息，指向二级解析服务节点。请注意，这里返回的只是下一站的地址，不是企业应用数据。\n\n",
+   "teaching_purpose": "以教材图 3-25 原图为锚，读出未命中查询的前三步",
+   "single_message": "跟着一次未命中缓存的查询出发：客户端请求、递归请求顶级、顶级返回二级地址。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S015",
+     "guidance_text": "教材流程图：前三步",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "跟着一次没命中缓存的查询出发",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "请求先由应用系统通过解析客户端，交到递归解析服务系统手上",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "递归系统分析请求后，向国家顶级解析服务节点系统发起解析查询",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "顶级节点给出的答复是一串地址信息，指向二级解析服务节点；返回的只是下一站的地址，不是企业应用数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G009",
+     "relation": "未命中前提引出前三步",
+     "to": "G010",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "原图保持完整，不重绘成当前拓扑",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握缓存分叉",
+   "exit_condition": "观众能按原图读出前三步",
+   "timing": {
+    "char_equivalent": 122.0,
+    "min_seconds": 31,
+    "target_seconds": 32,
+    "max_seconds": 34,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "递归系统照着地址找到二级节点，再发起一次查询。二级节点同样返回地址信息，这次指向的是企业解析系统。地址还是地址，数据还没出现。递归系统拿着这个地址找到企业解析系统，发出标识查询请求。这一次，企业解析系统返回了企业应用数据，真正要的东西到位了。递归系统把数据带回解析客户端，解析客户端再把它交给发起查询的应用。\n\n",
+   "teaching_purpose": "解释步骤④–⑤的第二次地址指引",
+   "single_message": "递归照地址找到二级节点；二级同样返回地址，这次指向企业解析系统。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S020",
+     "guidance_text": "第二次地址指引",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "递归系统照着地址找到二级节点，再发起一次查询",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "二级节点同样返回地址信息，这次指向的是企业解析系统；地址还是地址，数据还没出现",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G011",
+     "relation": "二级查询引出企业地址",
+     "to": "G012",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不画成直接返回数据",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已读完前三步",
+   "exit_condition": "观众能说出第二次地址指引",
+   "timing": {
+    "char_equivalent": 141.0,
+    "min_seconds": 36,
+    "target_seconds": 37,
+    "max_seconds": 39,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "整条路走完，回程也清楚：地址信息沿顶级到递归、二级到递归逐段带回；最终的企业应用数据沿企业解析系统、递归系统、解析客户端，回到发起应用。请求结果在返回后被放进缓存，下一次同样的查询就有现成答案了。\n\n",
+   "teaching_purpose": "解释步骤⑥–⑧的数据返回、回程与缓存写入",
+   "single_message": "企业解析系统交出应用数据，数据沿递归、客户端回到发起应用，结果进缓存。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S023",
+     "guidance_text": "数据到位与回程",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "递归系统拿着这个地址找到企业解析系统，发出标识查询请求",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "这一次，企业解析系统返回了企业应用数据；递归系统把数据带回解析客户端，解析客户端再把它交给发起查询的应用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "请求结果在返回后被放进缓存，下一次同样的查询就有现成答案了",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G013",
+     "relation": "企业查询引出数据返回",
+     "to": "G014",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R009",
+     "from": "G014",
+     "relation": "回程收束到缓存写入",
+     "to": "G015",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不添加字段或响应格式",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已获得企业地址",
+   "exit_condition": "观众能说出数据回程与缓存写入",
+   "timing": {
+    "char_equivalent": 88.0,
+    "min_seconds": 22,
+    "target_seconds": 23,
+    "max_seconds": 24,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "这一套设计的价值在于，它把客户端从复杂的逐级查询里解放出来。没有递归节点，客户端就得自己记住每一级地址、自己组织一整条查询链；有了递归节点，客户端只交一次请求，剩下的事都由递归系统替它完成，缓存再帮忙省掉重复的逐级查询。\n\n",
+   "teaching_purpose": "对照有无递归节点，说明机制价值",
+   "single_message": "有递归节点，客户端只交一次请求；没有它，客户端要自己组织整条查询链。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S027",
+     "guidance_text": "递归把客户端解放出来",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "没有递归节点，客户端就得自己记住每一级地址、自己组织一整条查询链",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "有了递归节点，客户端只交一次请求，剩下的事都由递归系统替它完成",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "缓存再帮忙省掉重复的逐级查询",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R010",
+     "from": "G016",
+     "relation": "对照凸显机制价值",
+     "to": "G017",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不承诺具体性能数字",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已走完数据回程",
+   "exit_condition": "观众能对照说明递归价值",
+   "timing": {
+    "char_equivalent": 101.0,
+    "min_seconds": 26,
+    "target_seconds": 26,
+    "max_seconds": 28,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "还要提一句入口的事。发起这类查询的可以是企业信息系统、工业互联网平台，也可以是工业互联网 APP。入口形式各不相同，但主线不变：都是递归节点代表客户端，把查询做完。\n\n",
+   "teaching_purpose": "说明多入口触发与同一主线",
+   "single_message": "入口可以是企业信息系统、平台或 APP；主线不变，递归节点代表客户端把查询做完。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S031",
+     "guidance_text": "入口各不相同，主线不变",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "发起这类查询的可以是企业信息系统、工业互联网平台，也可以是工业互联网 APP",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "入口形式各不相同，但主线不变：都是递归节点代表客户端，把查询做完",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G018",
+     "relation": "多入口汇入同一主线",
+     "to": "G019",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不复刻品牌或软件界面",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解递归价值",
+   "exit_condition": "观众能说出多入口同一主线",
+   "timing": {
+    "char_equivalent": 71.5,
+    "min_seconds": 18,
+    "target_seconds": 19,
+    "max_seconds": 20,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "把三类返回对照着收个尾。国家顶级解析服务节点系统返回的，是二级节点地址；标识二级解析服务节点返回的，是企业解析系统地址；只有企业解析系统，才返回真正的企业应用数据。地址信息和企业应用数据是两类不同的对象，前两级只给地址，企业应用数据只在企业解析系统这一层返回。解析出来的地址或信息，用来支撑定位和查询；一次查询能拿到的是与之对应的信息，并不是把企业的全部业务数据都放开。\n\n",
+   "teaching_purpose": "对照三类返回并守住数据范围边界",
+   "single_message": "前两级只给地址；只有企业解析系统返回企业应用数据，且不等于全部业务数据放开。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S034",
+     "guidance_text": "三类返回，对照收尾",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "国家顶级解析服务节点系统返回的，是二级节点地址；标识二级解析服务节点返回的，是企业解析系统地址",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "只有企业解析系统，才返回真正的企业应用数据；地址信息和企业应用数据是两类不同的对象",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "解析出来的地址或信息，用来支撑定位和查询；一次查询能拿到的是与之对应的信息，并不是把企业的全部业务数据都放开",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G020",
+     "relation": "地址返回与数据返回划界",
+     "to": "G021",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不声称查询放开全部业务数据",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解多入口",
+   "exit_condition": "观众能区分三类返回并守住边界",
+   "timing": {
+    "char_equivalent": 171.0,
+    "min_seconds": 43,
+    "target_seconds": 45,
+    "max_seconds": 47,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A001",
+    "A006"
+   ],
+   "nx": "【本期总结】\n回到开场的问题：应用系统只提交一次查询，是谁替它跑完全程？分工是这样的：客户端只管把请求交给递归入口；递归节点先查缓存，没有结果就沿国家顶级、二级、企业解析系统逐级前进，再带着企业应用数据原路返回，并把结果存进缓存；沿途各级节点各出各的力。把这条链合起来看，共同规律只有一条：每一级解析节点，要么告诉递归系统下一站在哪里，要么给出本层级的数据，企业应用数据不会跨级直接返回。抓住这条线索，一次查询怎样逐级找到企业数据，就串成一个完整的过程了。",
+   "teaching_purpose": "收束分工、逐级规律与完整过程",
+   "single_message": "客户端交一次请求，递归节点逐级跑完并缓存；每级要么给地址、要么给数据。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S038",
+     "guidance_text": "本期总结：谁替它跑完全程",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "客户端只管把请求交给递归入口",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "递归节点先查缓存，没有结果就沿国家顶级、二级、企业解析系统逐级前进，再带着企业应用数据原路返回，并把结果存进缓存",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "共同规律：每一级解析节点，要么告诉递归系统下一站在哪里，要么给出本层级的数据；企业应用数据不会跨级直接返回",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "抓住这条线索，一次查询怎样逐级找到企业数据，就串成一个完整的过程了",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R013",
+     "from": "G023",
+     "relation": "分工回收导出逐级规律",
+     "to": "G024",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R014",
+     "from": "G024",
+     "relation": "规律收束完整过程",
+     "to": "G025",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "总结不展开下一集业务闭环",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已走完查询全程",
+   "exit_condition": "观众能复述分工、规律与完整过程",
+   "timing": {
+    "char_equivalent": 204.0,
+    "min_seconds": 51,
+    "target_seconds": 53,
+    "max_seconds": 56,
+    "short_page_reason": null
+   }
+  }
+ ]
+}

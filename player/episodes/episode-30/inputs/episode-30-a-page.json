@@ -1,0 +1,867 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-30",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 30 集标题、位置、前置关系和相邻边界",
+   "source_locator": "已确认课程架构，第 28–32、47–51 集责任表",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围与去重"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "SNMS 向 BMS 提交二级节点申请，并处理与国家顶级节点的前缀解析配置、企业标识前缀申请分配和数据备案事项",
+   "source_locator": "主教材，3.2.4 编号 ①",
+   "verification_status": "not applicable",
+   "allowed_use": "解释 SNMS 上行动作"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "BMS 进行申请审核，并向二级节点分配二级节点标识前缀",
+   "source_locator": "主教材，3.2.4 编号 ②",
+   "verification_status": "not applicable",
+   "allowed_use": "解释 BMS 审核/分配职责"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "ENMS 向 SNMS 申请标识前缀；SNMS 审核企业标识前缀后，向企业申请赋予标识三级前缀",
+   "source_locator": "主教材，3.2.4 编号 ③–④",
+   "verification_status": "not applicable",
+   "allowed_use": "解释下行企业申请链"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "图 3-23 展示国家顶级节点业务管理系统、二级节点业务管理系统、企业节点业务管理系统的两两交互关系",
+   "source_locator": "教材图 3-23",
+   "verification_status": "not applicable",
+   "allowed_use": "构造角色关系图"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "企业注册有二级节点托管和自建企业节点两种途径；自建时 SNMS 不能做企业标识数据管理，只能进行标识前缀分配和指向配置",
+   "source_locator": "主教材，3.2.4 图 3-24 后说明",
+   "verification_status": "not applicable",
+   "allowed_use": "解释注册途径与责任边界"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "图 3-24 展示基于三级业务管理系统的企业标识注册流程",
+   "source_locator": "教材图 3-24",
+   "verification_status": "not applicable",
+   "allowed_use": "作为流程关系的视觉证据"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "“上行申请→BMS 审核分配→SNMS 向下审核分配→ENMS 发起企业申请→托管或自建责任分支”的教学主链",
+   "source_locator": "本任务包基于 E002–E007 的教学组织",
+   "verification_status": "not applicable",
+   "allowed_use": "构造主链关系"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "企业准备把一批新对象接入标识体系的通用开场情境",
+   "source_locator": "教学情境，N001–N002",
+   "verification_status": "not applicable",
+   "allowed_use": "引出问题"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "本集不引入外部政策、标准或平台现状",
+   "source_locator": "无",
+   "verification_status": "not applicable",
+   "allowed_use": "本集不引入外部政策、标准或平台现状"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "【视频标题】\n三级业务管理系统如何完成前缀申请与注册\n\n【开场导入】\n一家企业准备把一批新产品接入工业互联网标识体系。新产品要接入，先得有自己的身份标识。那这个标识的前缀从哪里来、该向谁申请、谁负责审核、拿到前缀之后标识数据又由谁来管理？这几个问题不弄清楚，接入就没有方向。我们顺着这家企业的申请过程，把三级业务管理系统之间的分工看明白。\n\n",
+   "teaching_purpose": "呈现本集标题；用企业接入情境提出四个归属问题",
+   "single_message": "前缀从哪里来、向谁申请、谁审核、数据谁管理：顺着申请过程看三级分工。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "标题：三级业务管理系统如何完成前缀申请与注册",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "一家企业准备把一批新产品接入标识体系：新产品要先有自己的身份标识",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "四个问题：标识的前缀从哪里来？该向谁申请？谁负责审核？拿到前缀之后标识数据又由谁来管理？",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "这几个问题不弄清楚，接入就没有方向；顺着申请过程看三级分工",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "接入需求引出归属四问",
+     "to": "G002",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "不显示真实入口、企业标识或申请表单",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，未接触三级系统",
+   "exit_condition": "观众能说出四问",
+   "timing": {
+    "char_equivalent": 150.0,
+    "min_seconds": 38,
+    "target_seconds": 39,
+    "max_seconds": 41,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "【正文讲解】\n工业互联网标识体系的管理侧，由三级业务管理系统构成。最上层是国家顶级节点业务管理系统，叫 BMS；中间是二级节点业务管理系统，叫 SNMS；最下面是企业节点业务管理系统，叫 ENMS。这三个系统不是并列的几个网页，也不是彼此独立的系统，而是三层管理边界，一层一层承接申请、审核和分配。上下两级之间都存在交互，共同的规律是：上级负责审核分配，下级负责提交申请。\n\n",
+   "teaching_purpose": "建立三级业务管理系统构成与“上级审核分配、下级提交申请”规律",
+   "single_message": "BMS、SNMS、ENMS 是三层管理边界；上级审核分配，下级提交申请。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S005",
+     "guidance_text": "三层管理边界",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "管理侧由三级构成：国家顶级节点业务管理系统 BMS、二级节点业务管理系统 SNMS、企业节点业务管理系统 ENMS",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "不是并列的几个网页，也不是彼此独立的系统，而是三层管理边界：一层一层承接申请、审核和分配",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "上下两级之间都存在交互，共同规律：上级负责审核分配，下级负责提交申请",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R002",
+     "from": "G003",
+     "relation": "三层边界承载共同规律",
+     "to": "G004",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "不画成并列网页或独立软件",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受四问",
+   "exit_condition": "观众能说出三系统与共同规律",
+   "timing": {
+    "char_equivalent": 157.5,
+    "min_seconds": 40,
+    "target_seconds": 41,
+    "max_seconds": 43,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "先看这条申请链是怎么走的。企业要接入体系，不能跳过二级节点直接往上申请。二级节点要把自身的服务接入体系，得先通过自己的 SNMS，向国家顶级节点的 BMS 提交二级节点申请。同时，SNMS 还要处理好几件事：和国家顶级节点之间的前缀解析配置、企业标识前缀的申请与分配，以及数据备案。这些动作合起来，就是把二级节点的服务范围接入到上层体系。BMS 收到申请以后进行审核，再向二级节点分配二级节点标识前缀。注意，审核和分配是两个分开的责任动作，审核归审核，分配归分配。\n\n",
+   "teaching_purpose": "解释 SNMS 上行申请与对接事项、BMS 审核分配两步",
+   "single_message": "SNMS 向 BMS 提交申请并处理对接事项；BMS 先审核、再分配二级前缀。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S009",
+     "guidance_text": "上行：SNMS 找 BMS",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "企业接入不能跳过二级节点直接往上申请",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "SNMS 向国家顶级节点的 BMS 提交二级节点申请；同时处理前缀解析配置、企业标识前缀的申请与分配、数据备案",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "BMS 收到申请以后进行审核，再向二级节点分配二级节点标识前缀",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "审核和分配是两个分开的责任动作：审核归审核，分配归分配",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G005",
+     "relation": "上行动作引出审核分配",
+     "to": "G006",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不声称现行审批时限或机构名称",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握三系统规律",
+   "exit_condition": "观众能复述上行链与两步动作",
+   "timing": {
+    "char_equivalent": 201.0,
+    "min_seconds": 51,
+    "target_seconds": 52,
+    "max_seconds": 55,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "再看企业这一侧。企业通过自己的 ENMS，向所在二级节点的 SNMS 申请企业标识前缀。SNMS 完成审核，然后向企业赋予标识三级前缀。这段申请，和二级节点向上申请那段，是两段不同的关系，不要混在一起。\n\n",
+   "teaching_purpose": "建立企业下行申请链与前缀资源的层级归属",
+   "single_message": "ENMS 向 SNMS 申请企业前缀，SNMS 审核后赋予三级前缀；每层保留审核管理责任。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S014",
+     "guidance_text": "下行：企业前缀申请",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "企业通过自己的 ENMS，向所在二级节点的 SNMS 申请企业标识前缀",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "SNMS 完成审核，然后向企业赋予标识三级前缀",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "这段申请和二级节点向上申请是两段不同的关系，不要混在一起",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "前缀规定谁能在什么范围内继续往下组织标识：BMS 把二级范围交给 SNMS，SNMS 再把企业范围交给企业节点；每一层都保留自己的审核与管理责任",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G007",
+     "relation": "下行申请接在下行审核之后",
+     "to": "G008",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R005",
+     "from": "G008",
+     "relation": "前缀串起层级资源归属",
+     "to": "G009",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不区分两段关系为同一链",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解上行链",
+   "exit_condition": "观众能区分下行链与上行链并说出前缀归属",
+   "timing": {
+    "char_equivalent": 82.0,
+    "min_seconds": 21,
+    "target_seconds": 21,
+    "max_seconds": 23,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "前缀本身是一串标识字符串，它规定的是：谁能在什么范围内，继续往下组织标识。BMS 把二级范围交给 SNMS，SNMS 再把企业范围交给对应的企业节点。每一层都保留自己的审核与管理责任。资源从哪里获得，下一级前缀由谁来分配，在每一层都有明确的归属。\n\n",
+   "teaching_purpose": "以教材图 3-23 原图呈现三级系统两两交互",
+   "single_message": "三系统两两交互经教材图核对：上下级、同级、企业对二级的关系一一对应。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S019",
+     "guidance_text": "三级系统的两两交互",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "图 3-23 关系核对：BMS—SNMS、SNMS—ENMS、BMS—ENMS",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "把三级两两交互关系在原图上逐对指认，与正文申请链对照读图",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G010",
+     "relation": "原图两两交互被逐对指认",
+     "to": "G011",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "原图保持完整，不加字段地址箭头标注",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已走上下行链",
+   "exit_condition": "观众能对照原图认出两两交互",
+   "timing": {
+    "char_equivalent": 104.5,
+    "min_seconds": 27,
+    "target_seconds": 27,
+    "max_seconds": 29,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "企业拿到前缀以后，有两条注册途径可选。一条是选择二级节点的托管能力，另一条是自己建设企业节点。两条路径的共同起点，都是企业先申请并获得前缀，差别在于：企业标识数据由谁来管理。这里要注意，这不是说托管更简单、自建更高级，不是产品之间的高下之分，而是数据管理责任落在哪里的差别。\n\n",
+   "teaching_purpose": "建立两条注册途径与责任落点的分叉问题",
+   "single_message": "两条路径共同起点是先拿到前缀；差别是标识数据由谁管理，不是高下之分。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S022",
+     "guidance_text": "拿到前缀之后的分叉",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "两条注册途径：选择二级节点的托管能力，或自己建设企业节点",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "共同起点：企业先申请并获得前缀；差别在于企业标识数据由谁来管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "不是托管更简单、自建更高级；而是数据管理责任落在哪里的差别",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G012",
+     "relation": "共同起点之后分叉",
+     "to": "G013",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不画产品优劣比较",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已读完原图",
+   "exit_condition": "观众能说出两路径的分叉依据",
+   "timing": {
+    "char_equivalent": 124.0,
+    "min_seconds": 31,
+    "target_seconds": 32,
+    "max_seconds": 34,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "先看托管路径。企业选择托管，二级节点就用自己的托管能力，承接企业的标识注册和相关数据管理。这时候要分清：数据管理的工作由二级节点的托管能力来做，但企业仍然是标识对象和业务数据的责任主体。也就是说，数据有人接手管理，责任人还是企业自己。\n\n再看自建路径。企业自己建设节点，情况正好相反。上级的 SNMS 不能做企业标识的数据管理，它只能做前缀分配和指向配置。企业标识数据由企业自己的节点来管理。那指向配置是干什么用的？它只是告诉上级体系，下次要查找这家企业的数据，该到哪里接着找。这不等于上级系统接管了企业的数据，它只是指了一个方向。\n\n",
+   "teaching_purpose": "对照托管与自建的数据管理责任与指向配置语义",
+   "single_message": "托管时数据由二级节点管理、责任主体还是企业；自建时 SNMS 只做分配和指向。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S026",
+     "guidance_text": "托管与自建的责任落点",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "托管：二级节点用自己的托管能力承接企业的标识注册和相关数据管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "数据管理人变了，企业仍然是标识对象和业务数据的责任主体",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "自建：上级 SNMS 不能做企业标识的数据管理，只能做前缀分配和指向配置；企业标识数据由企业自己的节点来管理",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "指向配置只是告诉上级体系，查找该企业的数据该到哪里接着找；不等于上级系统接管企业数据，它只是指了一个方向",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G014",
+     "relation": "托管路径保责任主体",
+     "to": "G016",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R009",
+     "from": "G015",
+     "relation": "自建路径以指向配置为限",
+     "to": "G016",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不画上级系统接管数据的画面",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道分叉依据",
+   "exit_condition": "观众能说出两条路径的责任落点与指向配置语义",
+   "timing": {
+    "char_equivalent": 238.0,
+    "min_seconds": 60,
+    "target_seconds": 62,
+    "max_seconds": 65,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "到这里，整个机制可以捋一遍：SNMS 向 BMS 申请二级前缀，ENMS 向 SNMS 申请企业三级前缀，拿到前缀以后，按托管还是自建，确定数据管理责任落在哪里。前缀分配和指向配置，属于上级系统的边界；企业标识数据由谁承担，取决于企业选择的路径。\n\n",
+   "teaching_purpose": "把整条机制链与边界收拢为一句归属判断",
+   "single_message": "申请链定资源与责任归属；前缀分配和指向配置在上级边界内，数据管理看路径。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S031",
+     "guidance_text": "机制捋一遍",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "SNMS 向 BMS 申请二级前缀；ENMS 向 SNMS 申请企业三级前缀；拿到前缀后按托管还是自建，确定数据管理责任落在哪里",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "前缀分配和指向配置属于上级系统的边界；企业标识数据由谁承担，取决于企业选择的路径",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R010",
+     "from": "G017",
+     "relation": "机制链导出归属判断",
+     "to": "G018",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不把机制链画成办理指南",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已对照两条路径",
+   "exit_condition": "观众能复述机制链与归属判断",
+   "timing": {
+    "char_equivalent": 98.5,
+    "min_seconds": 25,
+    "target_seconds": 26,
+    "max_seconds": 27,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A001",
+    "A003"
+   ],
+   "nx": "【本期总结】\n回到开场的这家企业。它要接入标识体系，先由二级节点向上申请、BMS 审核分配，再由企业申请、SNMS 审核授予，随后按自己选的路径，确定数据管理责任。三级系统各管一段：上级审核分配，下级提交申请，谁拿前缀、谁管数据，各归各位。把这套分工放大了看，核心判断很清晰：获得前缀和标识数据管理，不是同一件事。前缀分配和指向配置在上级系统的边界之内，数据由谁管理看路径选择。申请链解决的是资源和责任的归属，至于查询怎么到达数据，那是后续解析阶段的事，两者前后相接，但不是同一个流程。",
+   "teaching_purpose": "收束申请链、三级分工与核心判断",
+   "single_message": "获得前缀和标识数据管理不是同一件事；申请链解决资源与责任归属。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S034",
+     "guidance_text": "本期总结：资源与责任的归属",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "回到那家企业：二级节点向上申请、BMS 审核分配，企业申请、SNMS 审核授予，随后按路径确定数据管理责任",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "三级系统各管一段：上级审核分配，下级提交申请；谁拿前缀、谁管数据，各归各位",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "核心判断：获得前缀和标识数据管理，不是同一件事；前缀分配和指向配置在上级系统的边界之内，数据由谁管理看路径选择",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001"
+        ]
+       },
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "申请链解决资源和责任的归属；查询怎么到达数据是后续解析阶段的事，两者前后相接但不是同一个流程",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G019",
+     "relation": "分工回收导出核心判断",
+     "to": "G020",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "总结不展开解析阶段流程",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已走完机制链",
+   "exit_condition": "观众能复述核心判断与边界",
+   "timing": {
+    "char_equivalent": 209.5,
+    "min_seconds": 53,
+    "target_seconds": 55,
+    "max_seconds": 58,
+    "short_page_reason": null
+   }
+  }
+ ]
+}

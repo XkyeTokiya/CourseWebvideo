@@ -1,0 +1,934 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-32",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 32 集标题、来源范围、前置关系、相邻边界和低动态风险",
+   "source_locator": "已确认课程架构，Episode Architecture 第 20、25、30–33 集及全局职责规则",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围与去重"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "构建标识创新应用的主要流程包含标识编码、标识注册、标识解析请求、解析服务、数据返回五步",
+   "source_locator": "主教材，3.2.6“标识业务流程”五项编号正文",
+   "verification_status": "not applicable",
+   "allowed_use": "构成主链"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "标识编码为物理实体和数字对象分配全球唯一编码，用于唯一识别机器、产品、数据、算法等资源身份",
+   "source_locator": "主教材，3.2.6 第 ① 项",
+   "verification_status": "not applicable",
+   "allowed_use": "解释编码职责"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "企业或用户通过标识注册管理机构或标识注册服务机构进行标识注册",
+   "source_locator": "主教材，3.2.6 第 ② 项",
+   "verification_status": "not applicable",
+   "allowed_use": "解释注册位置"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "需要获取标识关联信息时，业务系统发起解析请求；解析系统找到相关信息和网络地址；结果返回请求方，使其能够访问相关数据和服务",
+   "source_locator": "主教材，3.2.6 第 ③–⑤ 项",
+   "verification_status": "not applicable",
+   "allowed_use": "解释请求解析返回"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "基于标识的创新应用通常包含标识编码、解析系统、标识数据三个基础要素",
+   "source_locator": "主教材，3.2.6 五步之后总结段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释三要素支撑"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "图 3-27 以概括图示连接标识编码、解析系统、标识数据、物理/虚拟对象和标识载体",
+   "source_locator": "教材图 3-27 原始资产",
+   "verification_status": "not applicable",
+   "allowed_use": "建立教材证据锚点"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "递归解析由业务系统/客户端触发查询，解析结果最终返回解析客户端",
+   "source_locator": "主教材，3.2.5 相邻小节",
+   "verification_status": "not applicable",
+   "allowed_use": "递归路径边界提示"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "“确定对象身份→进入注册链条→业务需要触发请求→解析找到关联信息或地址→结果回到请求方”的教学闭环",
+   "source_locator": "本任务包基于 E002–E006、E008 的教学组织",
+   "verification_status": "not applicable",
+   "allowed_use": "组织闭环"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "工厂检修人员扫描通用设备部件标识，希望业务系统调取相关维护信息的开场情境",
+   "source_locator": "教学情境，N001",
+   "verification_status": "not applicable",
+   "allowed_use": "让问题落到对象"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "通用工业检修现场纪实图片媒体提案",
+   "source_locator": "本任务包媒体规划，M001",
+   "verification_status": "not applicable",
+   "allowed_use": "只承载人物、对象和业务需求"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "【视频标题】\n标识创新应用的端到端业务闭环\n\n【开场导入】\n一位检修人员站在设备面前，部件上带着标识。他想让业务系统帮他把这个部件的维护信息调出来。听起来很简单，对吧？但这里藏着一个关键的区别：认出这个对象，和拿到可以用的结果，是两回事。\n\n标识能回答\"它是谁\"，却回答不了\"它的信息在哪、能不能拿到\"。要让后一个问题有着落，光靠一个编码不够。编码、注册、请求、解析、返回，得一步一步接上，让整条链首尾相接，结果才能真的回到请求方手里。\n\n",
+   "teaching_purpose": "呈现本集标题；用检修情境提出“认出对象”与“拿到结果”的区别",
+   "single_message": "编码回答它是谁；信息在哪、能不能拿到，要靠整条链首尾相接。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "标题：标识创新应用的端到端业务闭环",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "检修人员站在设备面前，部件上带着标识；想让业务系统把维护信息调出来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "认出这个对象，和拿到可以用的结果，是两回事",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "标识能回答“它是谁”，却回答不了“它的信息在哪、能不能拿到”",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "编码、注册、请求、解析、返回，一步一步接上，让整条链首尾相接，结果才能真的回到请求方手里",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "检修情境引出区别",
+     "to": "G002",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R002",
+     "from": "G002",
+     "relation": "区别落到主链",
+     "to": "G003",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "不出现可读标识码值或业务系统界面",
+     "evidence_refs": [
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，未接触业务链",
+   "exit_condition": "观众能说出编码与可用结果的区别",
+   "timing": {
+    "char_equivalent": 184.0,
+    "min_seconds": 46,
+    "target_seconds": 48,
+    "max_seconds": 51,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "【正文讲解】\n先看最前面的一步，编码。我们身边的对象大体分两类。一类是物理实体，比如机器、产品，看得见摸得着；另一类是数字对象，比如数据、算法，没有实体，但同样是我们谈论的对象。编码要做的事，就是给每个对象分配一个全球唯一的标识编码，先把\"现在说的是哪一个对象\"定下来。\n\n这个编码在整条链路上承担的是身份锚点的作用。它不是装业务数据的容器，也不是哪个接口的地址。它只负责给对象确定一个身份。后面的注册、请求、解析、返回，全都围绕同一个身份展开。\n\n",
+   "teaching_purpose": "建立两类对象与全球唯一编码的身份锚点边界",
+   "single_message": "给物理实体和数字对象分配全球唯一编码；编码只是身份锚点，不是容器。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S006",
+     "guidance_text": "编码：先把对象认准",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "物理实体：机器、产品，看得见摸得着；数字对象：数据、算法，没有实体但同样是谈论的对象",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "给每个对象分配一个全球唯一的标识编码，先把“现在说的是哪一个对象”定下来",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "编码承担身份锚点：不是装业务数据的容器，也不是哪个接口的地址，只负责给对象确定一个身份；后面的注册、请求、解析、返回，全都围绕同一个身份展开",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G004",
+     "relation": "两类对象连接唯一身份",
+     "to": "G005",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R004",
+     "from": "G005",
+     "relation": "身份锚点划出编码边界",
+     "to": "G006",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "不显示具体码值或编码结构",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受区别",
+   "exit_condition": "观众能说出两类对象与身份锚点",
+   "timing": {
+    "char_equivalent": 193.0,
+    "min_seconds": 49,
+    "target_seconds": 50,
+    "max_seconds": 53,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "身份有了，接着是注册。企业或者用户，通过标识注册管理机构、标识注册服务机构来办理，也就是由负责登记和维护标识的管理方来受理。注册的作用，是把已经生成的编码，带进一条可供后续解析使用的管理链条，为按身份去解析建立前提。\n\n可以这样理解：只生成了编码，这个编码还是悬着的，别人没法顺着它去查任何东西。只有进了注册，它才算走到\"可解析\"这一步。所以注册排在编码之后、请求之前。光有编码没有注册，流程并没有走完。\n\n",
+   "teaching_purpose": "说明注册的办理方、作用与在链中的位置",
+   "single_message": "注册把已生成的编码带进可解析的管理链条；排在编码之后、请求之前。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S010",
+     "guidance_text": "注册：把编码带进管理链条",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "企业或者用户，通过标识注册管理机构、标识注册服务机构来办理",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "把已经生成的编码，带进一条可供后续解析使用的管理链条，为按身份去解析建立前提",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "只生成了编码，这个编码还是悬着的，别人没法顺着它查任何东西；进了注册才算走到“可解析”这一步；注册排在编码之后、请求之前；光有编码没有注册，流程并没有走完",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R005",
+     "from": "G007",
+     "relation": "办理方受理注册动作",
+     "to": "G008",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R006",
+     "from": "G008",
+     "relation": "注册作用支撑链上位置",
+     "to": "G009",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不含字段、审核、托管自建细节",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解身份锚点",
+   "exit_condition": "观众能说出注册的作用与位置",
+   "timing": {
+    "char_equivalent": 179.0,
+    "min_seconds": 45,
+    "target_seconds": 47,
+    "max_seconds": 49,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "再往下，轮到请求。这一步有个特点：它不会自己发生。只有当业务系统确实需要某个标识的相关信息时，才会发起解析请求。说得通俗一点，就是拿着这个标识，去查和它相关的信息在哪、怎么接上。需求的来源多种多样，检修时要查设备资料，生产中要核对数据，这些都可能触发解析请求。请求方把目标标识当作查询线索，把\"我需要这个对象的相关信息\"交给解析系统。到这里，整条链才真正动起来。\n\n",
+   "teaching_purpose": "建立解析请求的触发条件与业务语义",
+   "single_message": "请求不会自己发生：业务系统需要相关信息时，才把目标标识交给解析系统。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S014",
+     "guidance_text": "请求：业务需要才会发生",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "这一步有个特点：它不会自己发生；只有当业务系统确实需要某个标识的相关信息时，才会发起解析请求",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "检修时要查设备资料，生产中要核对数据，这些都可能触发解析请求；请求方把目标标识当作查询线索，把“我需要这个对象的相关信息”交给解析系统",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "到这里，整条链才真正动起来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G010",
+     "relation": "业务需要触发请求",
+     "to": "G011",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R008",
+     "from": "G011",
+     "relation": "请求语义让链条动起来",
+     "to": "G012",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不出现协议、路径、参数",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解注册前提",
+   "exit_condition": "观众能说出请求的触发条件",
+   "timing": {
+    "char_equivalent": 162.0,
+    "min_seconds": 41,
+    "target_seconds": 42,
+    "max_seconds": 45,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "请求到了，解析系统就要干活。它通过解析服务，去寻找与标识编码相关联的信息和网络地址。注意它的定位：解析系统不是去猜这个对象是什么，而是沿着已经建立好的标识关系，做定位和查询。前面注册建好的关系，是它工作的依据。\n\n找到之后，结果还得送回去。这一步是数据返回。解析系统把解析结果交还给请求方，请求方顺着这个结果，才能去访问相关的数据和服务。这里要分清一件事：返回的是解析结果，不是把全部业务数据一次交付完。一次解析解决的是\"怎么找到、怎么接上\"的问题。具体能访问哪些数据、哪些服务，由实际业务系统自己的规则决定。\n\n",
+   "teaching_purpose": "区分解析定位与结果返回及交付边界",
+   "single_message": "解析沿已建立的关系做定位查询；返回的是解析结果，不是全部业务数据交付。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S018",
+     "guidance_text": "解析与返回：定位而不猜",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "解析系统通过解析服务，去寻找与标识编码相关联的信息和网络地址；不是去猜这个对象是什么，而是沿着已经建立好的标识关系，做定位和查询；前面注册建好的关系，是它工作的依据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "解析系统把解析结果交还给请求方，请求方顺着这个结果，才能去访问相关的数据和服务",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "返回的是解析结果，不是把全部业务数据一次交付完；一次解析解决的是“怎么找到、怎么接上”；具体能访问哪些数据、哪些服务，由实际业务系统自己的规则决定",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R009",
+     "from": "G013",
+     "relation": "定位依据引出结果返回",
+     "to": "G014",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R010",
+     "from": "G014",
+     "relation": "返回范围守住交付边界",
+     "to": "G015",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不写字段或响应格式",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解请求触发",
+   "exit_condition": "观众能区分解析与返回及边界",
+   "timing": {
+    "char_equivalent": 228.0,
+    "min_seconds": 57,
+    "target_seconds": 59,
+    "max_seconds": 63,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "五个环节走完，我们换个角度再看这条链。支撑它的，通常是三样东西：标识编码、解析系统，还有标识数据。标识编码负责唯一识别对象；解析系统负责根据编码，去查询目标对象的网络位置或相关信息；标识数据呢，为数据管理、产业链价值链的数据流通，以及数据增值服务，提供内容基础。注意，这里说的是\"通常\"。这是常见的组织方式，不是所有标识创新应用都必须采用同一套产品架构。\n\n",
+   "teaching_purpose": "以教材图 3-27 为锚点建立三样基础要素与组织方式边界",
+   "single_message": "标识编码、解析系统、标识数据三样要素支撑链条；“通常”不是统一产品架构。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S022",
+     "guidance_text": "支撑链条的三样要素",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "三样东西：标识编码、解析系统，还有标识数据",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "标识编码负责唯一识别对象；解析系统负责根据编码，去查询目标对象的网络位置或相关信息；标识数据为数据管理、产业链价值链的数据流通，以及数据增值服务，提供内容基础",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "这里说的是“通常”：常见的组织方式，不是所有标识创新应用都必须采用同一套产品架构",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G016",
+     "relation": "三要素支撑常见组织方式",
+     "to": "G017",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "图 3-27 不承担完整五步时序",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解解析返回",
+   "exit_condition": "观众能说出三要素与边界",
+   "timing": {
+    "char_equivalent": 157.0,
+    "min_seconds": 40,
+    "target_seconds": 41,
+    "max_seconds": 43,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "五步和三样要素，不是两套分开的东西，而是同一套机制的两个面。五步，刻画的是业务一步步向前推进的路径；三样要素，刻画的是支撑这条路径的组成。编码和注册，先把可识别、可解析的对象入口建起来；业务系统发起请求，解析系统完成寻找；返回结果再把请求方带到相关的标识数据和服务。一环扣一环，结果才落到真正需要它的人手里。\n\n为什么每一环都缺不得？反过来想就清楚了。对象身份不唯一，查询一开始就乱了，不知道在查谁。只有编码、没有进注册这条管理链条，解析就没有前提。没有业务请求，解析不会被触发。解析或者返回没完成，请求方什么可用结果都拿不到。缺了任何一环，结果都送不到请求方手里。\n\n",
+   "teaching_purpose": "对齐五步与三要素，并以缺环判断验证闭环",
+   "single_message": "五步讲流向、三要素讲支撑；缺了任何一环，结果都送不到请求方手里。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S026",
+     "guidance_text": "同一个机制的两个面",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "五步和三样要素不是两套分开的东西，而是同一套机制的两个面：五步刻画业务一步步向前推进的路径，三样要素刻画支撑这条路径的组成",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "编码和注册，先把可识别、可解析的对象入口建起来；业务系统发起请求，解析系统完成寻找；返回结果再把请求方带到相关的标识数据和服务；一环扣一环，结果才落到真正需要它的人手里",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "反过来想：身份不唯一，查询一开始就乱了；只有编码没进注册，解析就没有前提；没有业务请求，解析不会被触发；解析或返回没完成，请求方什么可用结果都拿不到；缺了任何一环，结果都送不到请求方手里",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G018",
+     "relation": "两面刻画撑起对齐关系",
+     "to": "G019",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R013",
+     "from": "G019",
+     "relation": "对齐关系支撑缺环判断",
+     "to": "G020",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不画告警码或软件界面",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握三要素",
+   "exit_condition": "观众能对齐五步与三要素并说出缺环影响",
+   "timing": {
+    "char_equivalent": 252.0,
+    "min_seconds": 63,
+    "target_seconds": 66,
+    "max_seconds": 69,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "还要把这条链的边界说清楚。我们讲的端到端业务机制，是语义层面的事：谁定身份、谁让标识可解析、谁发起请求、谁负责寻找、结果回到谁手上。它不等于某套具体的接口、报文，也不是哪一次系统部署，或者数据存储的先后顺序。前面说的缺一环，同样是语义层面的判断，它不对应某个统一的异常码或处理协议。解析的方向，就是从请求方发起，到解析系统处理，再到结果返回请求方，这样一个首尾走向。\n\n",
+   "teaching_purpose": "约束端到端机制的语义层面与首尾走向",
+   "single_message": "端到端讲的是语义分工，不对应接口报文、部署或统一异常码。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S030",
+     "guidance_text": "讲语义，不讲协议",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "端到端业务机制是语义层面的事：谁定身份、谁让标识可解析、谁发起请求、谁负责寻找、结果回到谁手上；不等于某套具体的接口、报文，也不是哪一次系统部署，或者数据存储的先后顺序",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "缺一环同样是语义层面的判断，不对应某个统一的异常码或处理协议；解析的方向，就是从请求方发起，到解析系统处理，再到结果返回请求方，这样一个首尾走向",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R014",
+     "from": "G021",
+     "relation": "语义定性划定边界走向",
+     "to": "G022",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不画协议图或异常码表",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已通过缺环检查",
+   "exit_condition": "观众能守住语义边界",
+   "timing": {
+    "char_equivalent": 163.0,
+    "min_seconds": 41,
+    "target_seconds": 43,
+    "max_seconds": 45,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A001",
+    "A006"
+   ],
+   "nx": "【本期总结】\n回到开头那位检修人员。他面对部件上的标识，想拿到相关的维护信息。要满足这个需求，靠的不是一张标签，而是一条首尾相接的链：编码先确定对象身份，注册让身份进入可解析的管理链条，业务系统按需发起请求，解析系统负责寻找，结果再回到请求方。五环相接，标识编码、解析系统、标识数据这三样基础要素，共同把这条链撑起来。\n\n认识一个对象，和拿到可用的数据和服务，是两件不同的事。想让后一件事落地，就得让这条链一环不落地走完。这就是端到端结果靠什么成立：不是某一处发力，而是每一环都接得上。",
+   "teaching_purpose": "回收检修情境，收束五环相接与端到端结论",
+   "single_message": "满足需求靠一条首尾相接的链；端到端结果靠每一环都接得上。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S033",
+     "guidance_text": "本期总结：五环相接",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "回到检修人员：满足需求靠的不是一张标签，而是一条首尾相接的链",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "编码先确定对象身份，注册让身份进入可解析的管理链条，业务系统按需发起请求，解析系统负责寻找，结果再回到请求方",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "五环相接，标识编码、解析系统、标识数据这三样基础要素，共同把这条链撑起来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "认识一个对象，和拿到可用的数据和服务，是两件不同的事；想让后一件事落地，就得让这条链一环不落地走完",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       },
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "端到端结果靠什么成立：不是某一处发力，而是每一环都接得上",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R015",
+     "from": "G023",
+     "relation": "情境回收导出五环相接",
+     "to": "G024",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R016",
+     "from": "G024",
+     "relation": "五环相接支撑成立判断",
+     "to": "G025",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "总结不预告其他模块内容",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已守好语义边界",
+   "exit_condition": "观众能复述五环相接与端到端结论",
+   "timing": {
+    "char_equivalent": 214.0,
+    "min_seconds": 54,
+    "target_seconds": 56,
+    "max_seconds": 59,
+    "short_page_reason": null
+   }
+  }
+ ]
+}

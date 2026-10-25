@@ -1,0 +1,881 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-26",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 26 集标题、前置/后置关系和边界",
+   "source_locator": "已确认课程架构，Episode Architecture 第 25–27 集",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围与去重"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "二级节点对外提供应用程序接口，服务企业节点用户并支持系统/平台集成",
+   "source_locator": "主教材，3.1.4“1. 二级节点 OpenAPI”第 1–2 段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释接口角色和服务对象"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "接口设计遵循 HTTP REST 风格，使用 GET、POST、PUT、DELETE 等方法访问和操作资源",
+   "source_locator": "主教材，3.1.4“1. 二级节点 OpenAPI”第 2 段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释方法集合"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "数据在传输和存储时采用 UTF-8 编码",
+   "source_locator": "主教材，3.1.4“1. 二级节点 OpenAPI”第 2 段",
+   "verification_status": "not applicable",
+   "allowed_use": "说明字符编码边界"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "完整接口清单及请求参数、响应参数等细节参阅实际文档",
+   "source_locator": "主教材，3.1.4“1. 二级节点 OpenAPI”第 2 段",
+   "verification_status": "not applicable",
+   "allowed_use": "约束请求/响应的抽象程度"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "通用说明列出 Authorization（Bearer 加空格加 token）与 Content-Type（示例 application/json）",
+   "source_locator": "主教材，3.1.4“1. 二级节点 OpenAPI”表 3-9 前后",
+   "verification_status": "not applicable",
+   "allowed_use": "解释两条头部职责"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "以接口方式创建模板前需获取 Token；教材称 Token 通常有效期为两小时，过期需重新请求（版本未核验）",
+   "source_locator": "主教材，任务实施“方法二：接口方式”中“获取 Token”段落",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "只作为版本敏感边界"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "一次调用抽象为“方法+目标+请求头+（文档要求时的请求数据）→ 服务处理 → 文档规定的响应参数/结果”",
+   "source_locator": "本任务包基于 E002–E006 的教学组织",
+   "verification_status": "not applicable",
+   "allowed_use": "构造请求/响应结构"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "认证头、内容类型和请求数据各自承担不同职责：身份校验、内容解释和业务数据承载",
+   "source_locator": "本任务包基于 E006、E008 的教学组织",
+   "verification_status": "not applicable",
+   "allowed_use": "解释头部与主体的关系"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "本集不引入教材外动态事实",
+   "source_locator": "无",
+   "verification_status": "not applicable",
+   "allowed_use": "本集不引入教材外动态事实"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "【视频标题】\n二级节点 OpenAPI：一次请求包含什么\n\n【开场导入】\n\n想象一个场景。你企业的应用要调用二级节点的一项服务。这个应用该怎么开口？它得先告诉对方，要访问什么、想干什么、自己是谁、数据长什么样。一次请求要把这些都带上，对方才能明白你要什么，再把结果还给你。\n\n那么，一次请求到底是怎么组织的？\n\n",
+   "teaching_purpose": "呈现本集标题；用应用调用二级节点的场景引出“一次请求怎么组织”的主问题",
+   "single_message": "应用的请求要带上访问什么、想干什么、自己是谁、数据长什么样，才能被理解。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "标题：二级节点 OpenAPI：一次请求包含什么",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "场景：企业的应用要调用二级节点的一项服务",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "开口要带上：访问什么、想干什么、自己是谁、数据长什么样",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "一次请求把这些都带上，对方才能明白，再把结果还给你",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "一次请求到底是怎么组织的？",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "调用场景引出组织问题",
+     "to": "G002",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "画面不出现具体接口清单、请求参数值或软件界面",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，尚未接触调用结构",
+   "exit_condition": "观众能说出主问题：一次请求由哪几部分组成",
+   "timing": {
+    "char_equivalent": 124.5,
+    "min_seconds": 32,
+    "target_seconds": 32,
+    "max_seconds": 34,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "【正文讲解】\n\n先认识一下接口本身。二级节点对外提供应用程序接口，英文全称叫 Application Programming Interface，缩写就是大家常说的 API。这个接口是一个可以被系统调用的共同入口，不是一个软件页面。你的应用、不同的系统和平台，都能通过这个标准化的入口，来访问二级节点的功能和服务。\n\n",
+   "teaching_purpose": "定义二级节点 OpenAPI 及其标准化入口角色",
+   "single_message": "API 是系统可以调用的共同入口：应用、系统和平台都从这里访问功能与服务。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S006",
+     "guidance_text": "接口：一个共同入口",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "应用程序接口 API：Application Programming Interface",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "它是可以被系统调用的共同入口，不是一个软件页面",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "你的应用、不同的系统和平台，通过这个标准化入口访问二级节点的功能和服务",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R002",
+     "from": "G003",
+     "relation": "接口定义引出服务对象",
+     "to": "G004",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "不把入口说成软件页面或固定界面",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受主问题",
+   "exit_condition": "观众能说出 API 的角色与服务对象",
+   "timing": {
+    "char_equivalent": 122.0,
+    "min_seconds": 31,
+    "target_seconds": 32,
+    "max_seconds": 34,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "这些接口遵循 HTTP REST 风格。HTTP 是一种网络传输协议，REST 是一套设计接口的约定。在这个约定下，GET、POST、PUT、DELETE 是一组常见的方法。方法表达的是请求的意图，读取资源、提交数据、更新、删除，都可以用不同的方法来表示。不过，某个具体接口到底允许哪些方法，要以这个接口的实际文档为准。看到方法名，不能推断接口里有什么字段，也不能推断业务规则。\n\n",
+   "teaching_purpose": "说明 HTTP 传输、REST 约定与方法集合及其推断边界",
+   "single_message": "方法表达请求意图：读取、提交、更新、删除；允许哪些方法以实际文档为准。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S010",
+     "guidance_text": "HTTP 传输与 REST 约定",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "HTTP 是一种网络传输协议；REST 是一套设计接口的约定",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "GET、POST、PUT、DELETE 是一组常见方法：读取资源、提交数据、更新、删除",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "某个接口允许哪些方法以实际文档为准；方法名推断不了字段，也推断不了业务规则",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G005",
+     "relation": "约定承载方法集合",
+     "to": "G006",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不凭方法名推断接口字段或业务规则",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道 API 是共同入口",
+   "exit_condition": "观众能说出 REST 约定与方法集合及其文档边界",
+   "timing": {
+    "char_equivalent": 147.0,
+    "min_seconds": 37,
+    "target_seconds": 38,
+    "max_seconds": 41,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "那么一次调用里，客户端要明确几件事？一共四件。访问什么资源，也就是请求目标；用什么方法；怎样证明调用者身份，也就是认证；请求数据按什么格式表达。这四件事，分别落在请求的不同位置上。\n\n第一层是 HTTP 方法，它说明这次请求想干什么。第二层是请求目标，它指向要访问的接口位置。第三层是请求头，认证信息和内容解释都放在这一层。第四层是请求数据，是这次调用要携带的业务输入。这里要留意，请求目标、请求数据都是抽象的说法，一次请求真正的完整参数，要以实际接口文档为准。\n\n",
+   "teaching_purpose": "列出客户端要明确的两对要素与四层落位，并守住抽象边界",
+   "single_message": "目标、方法、认证、数据格式四件事分别落在方法、目标、请求头、请求数据四层。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S014",
+     "guidance_text": "一次请求的四件事",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "访问什么资源（请求目标）、用什么方法、怎样证明调用者身份（认证）、请求数据按什么格式表达",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "HTTP 方法：说明这次请求想干什么",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "请求目标：指向要访问的接口位置",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "请求头：认证信息和内容解释都放在这一层",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "请求数据：这次调用要携带的业务输入",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "请求目标、请求数据都是抽象的说法，完整参数以实际接口文档为准",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G007",
+     "relation": "四件事落到四层",
+     "to": "G008",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不编造字段、接口路径或状态码",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解方法意图",
+   "exit_condition": "观众能说出四件事与四层落位及文档边界",
+   "timing": {
+    "char_equivalent": 201.0,
+    "min_seconds": 51,
+    "target_seconds": 52,
+    "max_seconds": 55,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "请求发出去以后，二级节点会按照实际接口的定义，接收这个方法、目标、请求头和请求数据，执行相应的服务，再把文档规定的响应参数或结果送回来。请求和响应就这样共同完成一次交互。目标和方法决定访问哪类资源，请求头提供认证与内容解释，数据主体承载业务输入，响应把服务处理的结果带回调用方。而响应里包含哪些参数，也是由同一份接口文档定义的，不能靠通用想象去补齐。\n\n",
+   "teaching_purpose": "建立请求—服务处理—响应的往返与文档定义边界",
+   "single_message": "二级节点接收四层并执行服务，按同一份文档送回响应参数或结果。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S021",
+     "guidance_text": "一次交互：请求与响应",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "二级节点按实际接口定义接收方法、目标、请求头和请求数据，执行相应服务，再送回文档规定的响应参数或结果",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "目标和方法决定访问哪类资源；请求头提供认证与内容解释；数据主体承载业务输入；响应把服务处理的结果带回调用方",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "响应里包含哪些参数，也由同一份接口文档定义，不能靠通用想象补齐",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R005",
+     "from": "G010",
+     "relation": "接收执行走向文档化响应",
+     "to": "G011",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不靠通用想象补齐响应参数",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握四层落位",
+   "exit_condition": "观众能描述请求与响应的往返及文档边界",
+   "timing": {
+    "char_equivalent": 160.0,
+    "min_seconds": 40,
+    "target_seconds": 42,
+    "max_seconds": 44,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "再说请求头里的两条线。Authorization 这一项携带的是身份认证信息，通用写法是 Bearer，加一个空格，再加 token，这个 token 要从身份接口获取。它回答的问题是，调用者是谁。另一条线是 Content-Type，它说明请求数据的内容类型，一个常见的示例值是 application/json，表示数据按 JSON 这种格式来组织。它回答的问题是，请求主体按什么格式来解释。身份认证和内容解释，是两条不同的职责线，不能混在一起。\n\n还要留意一点，数据在传输和存储的时候，采用 UTF-8 编码。UTF-8 是一种字符编码方式，它能处理更广泛的文字和符号，保证字符能被正确表达。但编码解决的只是字符对不对的问题，它不决定数据模型的属性怎么设计。\n\n",
+   "teaching_purpose": "分辨认证与内容解释两条职责线，并说明 UTF-8 编码边界",
+   "single_message": "认证回答谁在调用，内容类型回答格式怎么解释；UTF-8 只管字符对不对。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S025",
+     "guidance_text": "请求头两条线与编码",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "Authorization 携带身份认证信息：通用写法 Bearer 加空格加 token，token 从身份接口获取；回答调用者是谁",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "Content-Type 说明请求数据的内容类型，示例值 application/json 表示按 JSON 组织；回答请求主体按什么格式解释",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "身份认证和内容解释是两条不同的职责线，不能混在一起",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "传输和存储采用 UTF-8 编码：字符能被正确表达；但编码只解决字符对不对，不决定数据模型的属性怎么设计",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G012",
+     "relation": "认证线与内容线并立",
+     "to": "G013",
+     "direction": "parallel"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不采用教材示例值或声称两小时时效为现行规则",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解请求响应往返",
+   "exit_condition": "观众能区分两条头部职责线与 UTF-8 边界",
+   "timing": {
+    "char_equivalent": 257.5,
+    "min_seconds": 65,
+    "target_seconds": 67,
+    "max_seconds": 71,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "有一个关系要特别说清楚。请求头里带着 Token，不等于请求一定成功。Token 需要先获取，它有有效期，过期以后要重新获取。具体有效期多长、认证有什么要求，都以当期接口文档为准。同样的道理，看到 POST，不能推断具体有哪些字段；看到 application/json，不能推断数据模型的全部属性。方法、认证头、内容类型，都不能替代字段和业务结果。\n\n",
+   "teaching_purpose": "明确 Token 有效期规则与不能越界推断的边界",
+   "single_message": "带 Token 不等于成功：先获取、有有效期、过期重取；一切以当期接口文档为准。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S030",
+     "guidance_text": "带上 Token 不等于成功",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "Token 需要先获取，有有效期，过期以后要重新获取；有效期与认证要求以当期接口文档为准",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "看到 POST 不能推断具体字段；看到 application/json 不能推断全部属性；方法、认证头、内容类型不能替代字段和业务结果",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G015",
+     "relation": "有效期规则划出推断边界",
+     "to": "G016",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不以两小时数值作当前服务承诺",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已区分两条职责线",
+   "exit_condition": "观众能复述 Token 规则与推断边界",
+   "timing": {
+    "char_equivalent": 138.0,
+    "min_seconds": 35,
+    "target_seconds": 36,
+    "max_seconds": 38,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "完整讲下来，可以记住一个核对顺序。先确认方法和目标，再核对认证头和内容类型，接着按文档填写请求数据，随后只按文档解释响应。背后还有一个衔接关系：OpenAPI 这套机制，规定的是调用的表达方式；标识数据模型，定义的是业务对象的结构。两者靠实际接口文档衔接起来。OpenAPI 是标准化的调用入口，它不是某一份具体的接口清单，也不是一个固定不变的软件界面。\n\n",
+   "teaching_purpose": "给出按文档核对一轮请求的顺序与 OpenAPI/数据模型的衔接",
+   "single_message": "先方法和目标，再认证头与内容类型，接着填数据，最后按文档解释响应。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S033",
+     "guidance_text": "一个核对顺序",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "先确认方法和目标，再核对认证头和内容类型，接着按文档填写请求数据，随后只按文档解释响应",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "OpenAPI 规定调用的表达方式，标识数据模型定义业务对象的结构，两者靠实际接口文档衔接",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "OpenAPI 是标准化的调用入口，不是某一份具体的接口清单，也不是固定不变的软件界面",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G017",
+     "relation": "核对顺序通向机制衔接",
+     "to": "G018",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不展开下一集接口请求内容",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已守住推断边界",
+   "exit_condition": "观众能复述核对顺序与机制衔接",
+   "timing": {
+    "char_equivalent": 153.0,
+    "min_seconds": 39,
+    "target_seconds": 40,
+    "max_seconds": 42,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A001",
+    "A004"
+   ],
+   "nx": "【本期总结】\n\n回到开头的场景。企业节点的应用要调用二级节点，一次请求就是它开口说话的全部准备。这个准备分成几块，各管各的事：方法和目标决定访问哪里、想干什么，请求头回答调用者是谁、数据怎么解释，数据主体带着业务输入，响应再把结果带回来。共同规律是，这四层各司其职，少了一层，这次对话就说不清楚。核心判断只有一个：不要用方法名、认证头或内容类型去猜接口的字段和业务结果，一层一层核对，比任何直觉都可靠。",
+   "teaching_purpose": "回收四层分工并收束为核心判断",
+   "single_message": "四层各司其职；不要用方法名、认证头或内容类型去猜字段和业务结果。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S037",
+     "guidance_text": "本期总结：四层各司其职",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "方法和目标决定访问哪里、想干什么；请求头回答调用者是谁、数据怎么解释；数据主体带业务输入；响应把结果带回来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "这四层各司其职，少了一层，这次对话就说不清楚",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "不要用方法名、认证头或内容类型去猜接口的字段和业务结果；一层一层核对，比任何直觉都可靠",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R009",
+     "from": "G019",
+     "relation": "四层回收导出共同规律",
+     "to": "G020",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R010",
+     "from": "G020",
+     "relation": "规律通向核对判断",
+     "to": "G021",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "总结不展开下一集请求演示",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已走过接口、方法、四层、往返、头部与边界",
+   "exit_condition": "观众能复述四层各司其职与逐层核对的结论",
+   "timing": {
+    "char_equivalent": 177.0,
+    "min_seconds": 45,
+    "target_seconds": 46,
+    "max_seconds": 49,
+    "short_page_reason": null
+   }
+  }
+ ]
+}

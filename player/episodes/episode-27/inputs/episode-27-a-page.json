@@ -1,0 +1,1142 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-27",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 27 集负责 Apifox 操作，第 26 集负责机制；本集只调试新增数据模板接口",
+   "source_locator": "已确认课程架构，Episode Architecture 第 25–28 集",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围与去重"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "Apifox 集 API 文档、调试、模拟、自动化测试于一体，定位为接口一站式协作平台",
+   "source_locator": "主教材，3.1.4“2. Apifox”段落",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "给出工具定位但不复现界面"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "接口文档提供互联互通方法；可用 ApiFox 调用“新增数据模板”接口创建数据模板",
+   "source_locator": "主教材，任务实施“方法二：接口方式”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "建立调试目标与对象"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "接口方式创建模板前需先申请 Token 以进行身份校验",
+   "source_locator": "主教材，“注意，以接口方式创建标识元数据模板之前”段落",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "确定前置授权检查"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "教材说明 Token 通常有效期为两小时，过期需重新请求",
+   "source_locator": "主教材，“Token 的有效期通常为两小时”段落",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "保留版本敏感边界"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "新建接口有文档模式和调试模式，任务选择调试模式直接发送请求",
+   "source_locator": "主教材，图 3-14 前后“新建接口页面”段落",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "表达模式选择"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "请求头需维护 Authorization（Bearer、空格、Token）与 Content-Type（application/json）",
+   "source_locator": "主教材，图 3-17“维护 Headers”段落及表 3-6",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "说明两个请求头的职责"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "请求数据与对象元数据表关联；本集保留“按当期 schema 填写、唯一性由文档/环境定义”的原则",
+   "source_locator": "主教材，表 3-8、图 3-16 后“请求参数”段落",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释请求数据来源"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "可靠调试链：授权与环境确认→打开项目/接口→调试模式→脱敏 Token→配置头部→按文档填数据→发送→按文档核对响应",
+   "source_locator": "教学综合，E003–E008",
+   "verification_status": "not applicable",
+   "allowed_use": "构造语义分镜与检查链"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "界面证据只能来自授权测试环境当期捕获；无可复现捕获时用流程图和脱敏占位，不得虚构软件界面",
+   "source_locator": "本任务包证据政策",
+   "verification_status": "not applicable",
+   "allowed_use": "约束画面与证明方式"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "本集不引入教材外产品或接口事实",
+   "source_locator": "无",
+   "verification_status": "not applicable",
+   "allowed_use": "本集不引入教材外产品或接口事实"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "【视频标题】\n\n用 Apifox 调试标识数据模板接口\n\n【开场导入】\n\n上一集我们搭好了接口请求的整体结构：方法、目标、请求头、请求数据和响应，就像一张图纸。这一集，图纸要落地。我们手里的任务是，往标识系统里加一条数据模板。这个动作没有现成的按钮，它是一次接口调用。问题就来了：怎么在测试环境里把这条接口调通，而且让这次调试经得起核对？\n\n",
+   "teaching_purpose": "呈现本集标题；把请求结构图纸落成一次真实接口调用任务并提出核得住的问题",
+   "single_message": "加一条数据模板没有现成按钮，是一次接口调用；要在测试环境调通并经得起核对。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "标题：用 Apifox 调试标识数据模板接口",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "上一集的请求结构是图纸；这一集落地：往标识系统里加一条数据模板",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "这个动作没有现成按钮，是一次接口调用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "怎么在测试环境里把这条接口调通，而且让这次调试经得起核对？",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "任务落地引出核对问题",
+     "to": "G002",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "画面不出现真实 Apifox 界面、公网地址或示例参数",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众带着第 26 集的请求结构认知进入",
+   "exit_condition": "观众能说出本集任务与核得住的问题",
+   "timing": {
+    "char_equivalent": 139.0,
+    "min_seconds": 35,
+    "target_seconds": 36,
+    "max_seconds": 38,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "接口调试，听起来是在软件里点几个按钮。但一次调试算不算完成，判断标准不是有没有点到发送。关键在于，你能不能把四件事说清楚：环境是哪来的，身份是哪来的，请求数据是哪来的，响应又是凭什么核对的。这四样都说得清，这次调试才算完整。\n\n",
+   "teaching_purpose": "建立“调试算不算完成”的四件事标准",
+   "single_message": "完成了不等于点到发送：环境、身份、数据、响应核对都要能说清来源。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S005",
+     "guidance_text": "一次调试算完成的四件事",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "环境是哪来的",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "身份是哪来的",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "请求数据是哪来的",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "响应又是凭什么核对的",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "这四样都说得清，这次调试才算完整；判断标准不是有没有点到发送",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R002",
+     "from": "G003",
+     "relation": "四件事支撑完成判断",
+     "to": "G004",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "不把点击发送当作完成证明",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受任务",
+   "exit_condition": "观众能说出四件事标准",
+   "timing": {
+    "char_equivalent": 100.0,
+    "min_seconds": 25,
+    "target_seconds": 26,
+    "max_seconds": 28,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "【正文讲解】\n\n先看这次调试用到的工具。这次调试用 Apifox。它是一种接口协作平台，把接口文档、接口调试、接口模拟、自动化测试都放在一起。在我们这里，它的角色是工具，负责承载文档、组织请求。它不是标识系统的节点服务，也不会替我们判断接口版本对不对、字段有没有、业务结果成没成。这个定位放在前面，后面每一步都好解释。\n\n",
+   "teaching_purpose": "给出 Apifox 的工具定位与不越权的边界",
+   "single_message": "Apifox 是接口协作平台，承担承载与组织；它不替我们判断版本、字段和业务结果。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S011",
+     "guidance_text": "工具的定位",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "Apifox 是接口协作平台：文档、调试、模拟、自动化测试集为一体",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "它的角色是工具：承载文档、组织请求；不是标识系统的节点服务",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "它不会替我们判断接口版本、字段有没有、业务结果成没成",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G005",
+     "relation": "工具定位划清角色边界",
+     "to": "G006",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不虚构软件界面或产品能力",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握四件事标准",
+   "exit_condition": "观众能说出工具定位与不替判断的边界",
+   "timing": {
+    "char_equivalent": 134.0,
+    "min_seconds": 34,
+    "target_seconds": 35,
+    "max_seconds": 37,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "动手之前，先把边界划清楚。我们只能使用获得授权的测试环境、当期接口文档和测试账号。无论在哪里见过的公网地址、项目名称、示例参数，还是别人分享的 Token 和截图，都不能直接拿来当输入。这些东西有没有用，只能在授权环境里重新核验。没经过核验的地址和参数，一律不采用。\n\n",
+   "teaching_purpose": "划定授权输入边界，排除未核验输入",
+   "single_message": "只用授权环境、当期文档和测试账号；见过的地址与参数必须重新核验后才可采用。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S015",
+     "guidance_text": "先把边界划清楚",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "只能使用获得授权的测试环境、当期接口文档和测试账号",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "公网地址、项目名称、示例参数、别人的 Token 和截图不能直接当输入；没经过核验的地址和参数一律不采用",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G007",
+     "relation": "授权来源排除未核验输入",
+     "to": "G008",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不复现地址、参数值或 Token 样例",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解工具定位",
+   "exit_condition": "观众能说出授权输入边界",
+   "timing": {
+    "char_equivalent": 115.5,
+    "min_seconds": 29,
+    "target_seconds": 30,
+    "max_seconds": 32,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "接下来定位接口。接口不是散落的，它由项目承载。打开项目，找到对应的接口条目，条目上标着要调用的方法和目标地址。调试就落在这个条目下。接口页面通常分两种模式，一种看文档，一种发请求。文档模式负责解释接口长什么样；调试模式才允许在受控环境里装配请求、把请求发出去。所以我们选调试模式。模式叫什么、入口在哪个位置、按钮长什么样，以当期页面为准，不按印象猜。要是找不到目标接口，就回到当期文档确认，不能凭方法名或名称瞎猜。\n\n",
+   "teaching_purpose": "按项目定位接口条目并选择调试模式，守住以当期页面为准的边界",
+   "single_message": "接口条目承载方法与目标地址；文档模式看定义，调试模式才装配发送。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S018",
+     "guidance_text": "定位接口与选择模式",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "接口由项目承载：打开项目找到接口条目，条目标着方法和目标地址；调试落在这个条目下",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "文档模式负责解释接口长什么样；调试模式才允许在受控环境里装配并发送请求",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "模式、入口、按钮以当期页面为准；找不到目标接口回到当期文档确认，不凭方法名瞎猜",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R005",
+     "from": "G009",
+     "relation": "条目定位约束模式选择",
+     "to": "G010",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "界面元素以当期页面为准，不画虚构按钮",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已划清授权边界",
+   "exit_condition": "观众能说出定位路径与模式选择",
+   "timing": {
+    "char_equivalent": 185.0,
+    "min_seconds": 47,
+    "target_seconds": 48,
+    "max_seconds": 51,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "进入调试模式后，先处理身份。请求先去授权身份接口取一个 Token。取回来第一件事，确认它属于当前这个环境。Token 只在脱敏状态下使用，就是说记录和展示的时候要打码。它还有有效期，过期了就得重新取。具体能撑多长时间，看当期文档怎么标，不假定固定时长。\n\n",
+   "teaching_purpose": "建立 Token 获取与环境确认、脱敏与有效期规则",
+   "single_message": "先取当前环境的 Token：脱敏记录展示，有有效期，过期重取，不看固定时长。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S022",
+     "guidance_text": "先处理身份：Token",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "请求先去授权身份接口取 Token；取回来先确认它属于当前环境",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "Token 只在脱敏状态下使用：记录和展示要打码",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "有有效期，过期重新取；能撑多久看当期文档，不假定固定时长",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G011",
+     "relation": "获取之后守使用规则",
+     "to": "G012",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "Token 的记录展示一律跳码",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已定位目标接口",
+   "exit_condition": "观众能说出 Token 的获取与环境确认、脱敏与 validity 边界",
+   "timing": {
+    "char_equivalent": 108.0,
+    "min_seconds": 27,
+    "target_seconds": 28,
+    "max_seconds": 30,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "身份有了，剩两个请求头，职责不一样。第一个叫 Authorization，按文档采用 Bearer 的写法，后面跟一个空格，再跟 Token。这一项，表明调用者是谁。第二个叫 Content-Type，填内容类型。举个例子，Content-Type 是 application/json，意思就是请求主体按 JSON 来解析。两个头，一个管身份，一个管格式，各管各的。\n\n",
+   "teaching_purpose": "区分认证与内容类型两个请求头的职责",
+   "single_message": "Authorization 表明调用者是谁，Content-Type 说明主体按什么格式解析。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S026",
+     "guidance_text": "两个请求头，各管各的",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "Authorization：按文档采用 Bearer 写法，后面空格再跟 Token；表明调用者是谁",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "Content-Type 填内容类型：application/json 表示请求主体按 JSON 来解析",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "两个头，一个管身份，一个管格式，各管各的",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G013",
+     "relation": "认证与格式两线并立",
+     "to": "G014",
+     "direction": "parallel"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "复现填写时不带示例凭据值",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已备好当前环境 Token",
+   "exit_condition": "观众能区分两个请求头的职责",
+   "timing": {
+    "char_equivalent": 123.0,
+    "min_seconds": 31,
+    "target_seconds": 32,
+    "max_seconds": 34,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "然后填请求数据。请求数据只有一个合法来源，就是当期接口文档里的请求 schema。逐项看：字段有哪些、数据类型是什么、哪些必填、有没有唯一性约束。看完再往里面填授权的测试数据。这里要特别说一句，建模时用到的数据表，说的是设计上的组织方式，不等于当前环境可以直接提交的样例。数据该长成什么样，以当前这份文档为准。\n\n",
+   "teaching_purpose": "确立请求数据的唯一合法来源与填写顺序",
+   "single_message": "请求数据只有当期文档 schema 一个合法来源；设计上的数据表不等于可提交样例。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S030",
+     "guidance_text": "请求数据：唯一来源是 schema",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "请求数据只有一个合法来源：当期接口文档里的请求 schema，逐项看字段、类型、必填、唯一性约束",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "看完再填授权的测试数据；数据该长成什么样，以当前这份文档为准",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "建模用到的数据表是设计上的组织方式，不等于当前环境可以直接提交的样例",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G016",
+     "relation": "schema 优先于历史表格",
+     "to": "G017",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不填示例值或真实表样例",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已配好两个请求头",
+   "exit_condition": "观众能说出 schema 唯一来源与填写原则",
+   "timing": {
+    "char_equivalent": 136.0,
+    "min_seconds": 34,
+    "target_seconds": 35,
+    "max_seconds": 38,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "发送之前，先做一次静态检查。方法与目标，来自同一个接口条目，不从别处凑。Authorization 指向当前环境的脱敏 Token。Content-Type 和文档一致。请求体过了 schema 这一关。这四项里，任何一项没法确认，就先回到文档，把请求留在原地，不点发送。宁可慢一点，也不能糊弄过去。\n\n",
+   "teaching_purpose": "建立发送前的四项静态检查与停发规则",
+   "single_message": "方法目标同源、认证指向当前环境、类型与文档一致、数据过 schema；查不清就不发。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S034",
+     "guidance_text": "发送前的静态检查",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "方法与目标来自同一个接口条目，不从别处凑",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "Authorization 指向当前环境的脱敏 Token",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "Content-Type 和文档一致",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "请求体过了 schema 这一关",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "任何一项没法确认，就先回到文档，把请求留在原地，不点发送",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R009",
+     "from": "G018",
+     "relation": "检查不全则停止发送",
+     "to": "G019",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不虚构检查清单来源",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已按 schema 填好数据",
+   "exit_condition": "观众能四项检查并执行停发规则",
+   "timing": {
+    "char_equivalent": 112.0,
+    "min_seconds": 28,
+    "target_seconds": 29,
+    "max_seconds": 31,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A009"
+   ],
+   "nx": "发送之后，先记下非敏感上下文：请求时间、环境标识、文档版本。这些是复查时的线索。然后看响应。响应怎么算对，只看当期文档定义的结果、响应参数和错误信息。界面上的绿色提示、耗时数字、状态码，都不构成模板创建成功的证明。它们是信号，不是结论，真相在文档里。\n\n如果响应不对，就按证据分层找原因：是网络或环境的问题，还是认证失效了，还是请求体不符合 schema，还是接口文档和环境里的版本对不上。每一步判断，都要回到授权环境的日志和当期文档。不存在一张通用的错误码对照表，照着查就能定位。\n\n",
+   "teaching_purpose": "建立响应核对标准与证据分层排查",
+   "single_message": "响应对不对只看文档定义；界面信号是信号不是结论，排查靠授权日志与文档。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S040",
+     "guidance_text": "发送之后：按文档解释响应",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "先记下非敏感上下文：请求时间、环境标识、文档版本",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "响应怎么算对，只看当期文档定义的结果、响应参数和错误信息",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "界面上的绿色提示、耗时数字、状态码是信号，不是结论，真相在文档里",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "响应不对就按证据分层找原因：网络环境、认证失效、请求体不合 schema、版本对不上；每一步回到授权环境日志和当期文档",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S045",
+        "guidance_text": "不存在一张通用的错误码对照表，照着查就能定位",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R010",
+     "from": "G021",
+     "relation": "核对不通走证据分层",
+     "to": "G022",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不虚构错误码对照表",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已完成静态检查",
+   "exit_condition": "观众能按文档核对并分层排查",
+   "timing": {
+    "char_equivalent": 208.0,
+    "min_seconds": 52,
+    "target_seconds": 54,
+    "max_seconds": 57,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A011",
+   "callback_a_ids": [
+    "A010"
+   ],
+   "nx": "响应确认符合文档定义后，把证据留下来。存的是脱敏的请求和响应：Token、账号、地址、内部标识、业务敏感值，全部去掉。同时记下用的文档版本、测试环境、请求标识。这样别人复核的时候，核对的是操作依据，是一串可追溯的上下文，而不是一张看不出来源的成功截图。\n\n",
+   "teaching_purpose": "建立脱敏存证与可复审依据",
+   "single_message": "存脱敏请求与响应，连同文档版本与请求标识；复核的是依据，不是成功截图。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S046",
+     "guidance_text": "把证据留下来",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S047",
+        "guidance_text": "存脱敏的请求和响应：Token、账号、地址、内部标识、业务敏感值全部去掉",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S048",
+        "guidance_text": "同时记下文档版本、测试环境、请求标识；复核的是操作依据与可追溯上下文，不是看不出来源的成功截图",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G023",
+     "relation": "脱敏存证支撑复核",
+     "to": "G024",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "存证一律脱敏",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已按文档核对通过",
+   "exit_condition": "观众能说出留证内容与复核意义",
+   "timing": {
+    "char_equivalent": 107.5,
+    "min_seconds": 27,
+    "target_seconds": 28,
+    "max_seconds": 30,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A012",
+   "callback_a_ids": [
+    "A001",
+    "A009"
+   ],
+   "nx": "【本期总结】\n\n回到开头那个任务。往标识系统加一条数据模板，我们把它完整走了一遍：先划环境边界，定位目标接口，取脱敏 Token，配好认证和内容类型两个请求头，按 schema 填数据，发送前做静态检查，发送后按文档解释响应，再留一份可复核的证据。这就是准备、装配、发送、核对这条检查链。\n\n拆开看，分工很清楚：授权环境提供场地，当期文档提供规则，Apifox 把动作集中在一起，认证头管身份，内容类型管格式，schema 管数据，文档定对错。每个角色各管一段，谁也不替谁作判断。\n\n再把步骤合起来看，有一条共同的规律：每一步都以当期文档和授权环境为唯一依据，而不是以界面上看到的信号为依据。信号用来触发核对，不直接当结论。所以核心判断落在一点上：一次接口调试的完成，不是按钮点下去的那一刻，而是所有依据都能说清来源的那一刻。",
+   "teaching_purpose": "收束检查链、角色分工与唯一依据规律",
+   "single_message": "每一步以当期文档和授权环境为唯一依据；完成的标志是依据都能说清来源。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S049",
+     "guidance_text": "本期总结：检查链与依据",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S050",
+        "guidance_text": "检查链：划环境边界、定位接口、取脱敏 Token、配两个头、按 schema 填数据、发送前静态检查、按文档解释响应、留可复核证据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S051",
+        "guidance_text": "授权环境提供场地，当期文档提供规则，Apifox 集中动作，认证头管身份、内容类型管格式、schema 管数据、文档定对错",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S052",
+        "guidance_text": "每一步都以当期文档和授权环境为唯一依据，信号用来触发核对，不直接当结论",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S053",
+        "guidance_text": "调试的完成不是按钮点下去那一刻，而是所有依据都能说清来源的那一刻",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G025",
+     "relation": "检查链收束出角色分工",
+     "to": "G026",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R013",
+     "from": "G026",
+     "relation": "分工导出唯一依据规律",
+     "to": "G027",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C012",
+     "instruction": "总结不展开下一集节点内容",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已走完检查链",
+   "exit_condition": "观众能复述检查链、分工与唯一依据规律",
+   "timing": {
+    "char_equivalent": 302.5,
+    "min_seconds": 76,
+    "target_seconds": 79,
+    "max_seconds": 83,
+    "short_page_reason": null
+   }
+  }
+ ]
+}

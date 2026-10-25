@@ -1,0 +1,1215 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-23",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "本集标题、前置、第 21–27 集边界与拆分依据",
+   "source_locator": "已确认课程架构，Episode Architecture 第 21–27 集",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围、先后和去重"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "数据共享是不同主体基于一定规则或协议实现数据资源互通有无和共同利用",
+   "source_locator": "主教材，3.1.2“1. 数据共享”首段",
+   "verification_status": "not applicable",
+   "allowed_use": "定义共享"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "共享可减少资料收集、数据采集的重复劳动和费用，把精力转向新应用开发与系统集成",
+   "source_locator": "主教材，正文行 213",
+   "verification_status": "not applicable",
+   "allowed_use": "说明共享作用方向"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "制造业数据共享分为产线内、工厂内部、企业层级、产业链、跨行业五个阶段",
+   "source_locator": "主教材，正文行 215",
+   "verification_status": "not applicable",
+   "allowed_use": "建立范围阶梯"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "全面工业数据制度体系包括数据产权、流通交易、收益分配、安全治理等方面的规则",
+   "source_locator": "主教材，正文行 215",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "说明共享扩大时需要制度条件"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "数字化转型加速数据自动流动，连接制造业全要素、全产业链、全价值链，并需要企业高层参与和领导",
+   "source_locator": "主教材，正文行 217",
+   "verification_status": "not applicable",
+   "allowed_use": "解释共享与组织转型关系"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "数据共享可打破信息孤岛、优化数据资源利用、拓宽分析，并作为发挥工业数据价值和工业互联网创新发展的关键技术基础",
+   "source_locator": "主教材，正文行 219–223",
+   "verification_status": "not applicable",
+   "allowed_use": "说明机制意义"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "实现共享需从标准和管理展开：统一数据交换标准与格式、数据使用管理、版权和产权保护、部门间数据使用协议",
+   "source_locator": "主教材，正文行 225",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "建立“标准条件—管理条件”双支柱"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "图 3-3 包含数据使用方、数据提供方、数据授权过程、数据交换通道及访问申请、审批、交换请求、授权条件查询、提供和获取数据六步关系",
+   "source_locator": "教材图 3-3“一种可信的数据共享方案”",
+   "verification_status": "not applicable",
+   "allowed_use": "原图展示和忠实重绘"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "标识解析有助于共享；制造企业需对目标对象进行统一表达和标识寻址，建设数据理解体系，数据模型用于制定数字化描述规则",
+   "source_locator": "主教材，正文行 231",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "说明共享为何需要共同理解与寻址"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "共享范围扩大意味着参与主体、语义差异和管理边界增加，因此技术连通与使用治理必须同时扩展",
+   "source_locator": "本任务包教学组织，依据 E002、E004、E005、E008、E010",
+   "verification_status": "not applicable",
+   "allowed_use": "组织本集系统机制"
+  },
+  {
+   "evidence_id": "E012",
+   "claim_or_asset": "匿名质量异常从产线记录逐步追查到工厂、企业与产业链的情境",
+   "source_locator": "教学情境，N001、N005–N008",
+   "verification_status": "not applicable",
+   "allowed_use": "让共享层级具体可见"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "【视频标题】\n工业数据共享如何跨越产线、工厂与产业链\n\n【开场导入】\n\n一批产品出现了质量问题。想把它查清楚，产线边上的设备记录里有数据，检验室的检验记录里有数据，订单系统里有它的信息，上游供应商那里，也可能留着跟它有关的记录。看上去，数据都在。可它们分属不同主体。一份在车间，一份在质检，一份在企业管理部门，还有一份，在企业围墙外面。\n\n那问题就来了。数据都在，为什么不能直接拿来用？制造数据从产线内部走到工厂、企业、产业链，甚至跨行业，为什么不能只靠一句\"把数据传出去\"？是不是范围每扩大一层，还得同时扩大共同规则、统一表达和使用管理？我们就顺着这条质量线索，一层一层往外看。\n\n",
+   "teaching_purpose": "呈现本集标题；用一起质量追查情境建立“数据都在但分属不同主体、不能直接共同利用”的主问题",
+   "single_message": "数据分散在不同主体：范围每扩大一层，共同规则、统一表达和使用管理也要一起扩大。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "标题：工业数据共享如何跨越产线、工厂与产业链",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "一批产品出现质量问题：设备记录、检验记录、订单信息、供应商记录里都有数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "数据分属不同主体：车间、质检、企业管理部门，还有企业围墙之外",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "问题：数据都在，为什么不能直接拿来用？",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "范围每扩大一层，是不是还得同时扩大共同规则、统一表达和使用管理？",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "情境引出主问题",
+     "to": "G002",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "情境不显示真实企业系统、事故细节或数据值",
+     "evidence_refs": [
+      "E012"
+     ]
+    },
+    {
+     "constraint_id": "C002",
+     "instruction": "配图只承载匿名产线追查语境，不承担事实证据",
+     "evidence_refs": [
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，尚未接触共享概念",
+   "exit_condition": "观众能说出主问题：数据在但不能直接共同利用，共享随范围扩大需要同步扩大的条件",
+   "timing": {
+    "char_equivalent": 249.0,
+    "min_seconds": 63,
+    "target_seconds": 65,
+    "max_seconds": 68,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "【正文讲解】\n\n先说清楚，什么叫数据共享。共享是不同主体基于一定规则或协议，让数据互通有无，并得到共同利用的过程。这里有三样东西缺一不可：主体是多个，不是一家；主体之间有规则或协议；数据能被共同利用。\n\n拿刚才的质量线索套一下就明白了。设备记录从产线传到质检部门，只说明文件发出去了，传输发生了。但对方能不能看懂这份记录，能不能按约定去用它，才决定共享成不成立。所以，能传输不等于能共享。共享也不是无条件开放，不是集中存储，更不是谁来了都能随手取用。它始终建立在不同主体之间的规则或协议之上。\n\n",
+   "teaching_purpose": "定义数据共享的三要素，并用质量线索说明能传输不等于能共享、共享不是无条件开放",
+   "single_message": "共享是不同主体基于规则或协议的共同利用；传输发生了，共享不一定成立。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S006",
+     "guidance_text": "什么是数据共享",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "共享是不同主体基于一定规则或协议，让数据互通有无、共同利用的过程",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "主体是多个，不是一家",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "主体之间有规则或协议",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "数据能被共同利用",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "文件发出去只说明传输发生了；对方能不能看懂、能不能按约定去用，才决定共享成不成立",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "共享不是无条件开放，不是集中存储，更不是谁来了都能随手取用",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R002",
+     "from": "G004",
+     "relation": "三要素支撑共享边界判断",
+     "to": "G005",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "共享不得改写为无条件开放、集中存储或自动价值实现",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受主问题",
+   "exit_condition": "观众能复述共享定义的三要素与“能传输不等于能共享”的边界",
+   "timing": {
+    "char_equivalent": 217.0,
+    "min_seconds": 55,
+    "target_seconds": 57,
+    "max_seconds": 60,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "那共享图什么呢？它不是为了造一批新数据，而是让已有的数据被更充分地使用。同一份记录，多个环节一起用，就不用各存一份、各采一遍。重复收集和重复采集减少了，精力可以放到新应用开发和系统集成上。这是打破信息孤岛、优化数据资源利用、拓宽分析范围的基础，也是发挥工业数据价值的关键技术基础。但要说清楚，这是共享的作用方向，不等于接一条通道，效率、质量、创新就自动发生了。通道只负责把路接通，结果还得看规则，看用的人。\n\n",
+   "teaching_purpose": "说明共享的作用方向：让已有数据被更充分使用，并压住自动收益的误读",
+   "single_message": "共享减少重复、拓宽利用，是发挥工业数据价值的技术基础；但通道接通不等于结果自动发生。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S013",
+     "guidance_text": "共享图什么",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "不是造一批新数据，而是让已有的数据被更充分地使用：同一份记录多个环节一起用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "重复收集和重复采集减少，精力放到新应用开发和系统集成",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "打破信息孤岛、优化数据资源利用、拓宽分析范围；发挥工业数据价值的关键技术基础",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "这是作用方向：通道只负责把路接通，结果还得看规则、看用的人",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G007",
+     "relation": "机制意义受方向边界约束",
+     "to": "G008",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不补充金额、比例或效率承诺",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握共享定义",
+   "exit_condition": "观众能说出共享的作用方向与“不自动发生”的边界",
+   "timing": {
+    "char_equivalent": 181.0,
+    "min_seconds": 46,
+    "target_seconds": 47,
+    "max_seconds": 50,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "顺着这条线索往外走。共享的范围从小到大，可以分成五层：产线内、工厂内部、企业层级、产业链、跨行业。它一层一层向外扩大，是一条观察范围的阶梯。它不是成熟度评分，每一层也没有固定的系统清单，更没有固定的建设步骤。\n\n先看产线内。同一生产过程的相关记录，围绕同一个问题合起来用。范围最集中，几份记录来自同一段生产，说法也接近。刚才那批产品，要是相关记录都在产线这一层，问题涉及的范围，也就还停留在产线内。\n\n",
+   "teaching_purpose": "建立共享范围的五层阶梯，并解释第一层产线内共享",
+   "single_message": "共享范围分五层：产线内、工厂内部、企业层级、产业链、跨行业；产线内是范围最集中的一层。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S018",
+     "guidance_text": "共享范围：五层阶梯",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "五层：产线内、工厂内部、企业层级、产业链、跨行业",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "一层层向外扩大的观察范围阶梯，不是成熟度评分，没有固定系统清单或建设步骤",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "产线内：同一生产过程的相关记录，围绕同一个问题合起来用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "范围最集中：几份记录来自同一段生产，说法也接近",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G009",
+     "relation": "阶梯锚定第一层",
+     "to": "G010",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "五个层级按教材原名与顺序呈现，不加层级定义或实施步骤",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握共享的作用方向",
+   "exit_condition": "观众能列出五层范围并说出产线内共享的形态",
+   "timing": {
+    "char_equivalent": 174.0,
+    "min_seconds": 44,
+    "target_seconds": 45,
+    "max_seconds": 48,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "再往外，是工厂内部。同一批次的检验记录，要在车间和环节之间对齐。数据跨出单一产线，进入更多环节协同。质检要拿着检验记录，去跟车间的参数核对，两边必须对齐。\n\n到了企业层级，面对的就是企业层面的业务关系。订单这类业务信息，要跨部门核对。生产记一份，销售记一份，财务又记一份，几个部门的记法不一样，得放到一个口径下说清楚。\n\n",
+   "teaching_purpose": "解释工厂内部与企业层级共享的差异，落到统一口径",
+   "single_message": "工厂内部跨环节对齐检验记录；企业层级跨部门核对订单信息，最终要放到一个口径下说清楚。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S023",
+     "guidance_text": "第二、三层：工厂内部与企业层级",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "工厂内部：同一批次的检验记录要在车间和环节之间对齐，数据跨出单一产线进入更多环节协同",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "企业层级：面对企业层面的业务关系，订单这类业务信息要跨部门核对",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "生产、销售、财务各记一份、记法不一样，得放到一个口径下说清楚",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R005",
+     "from": "G012",
+     "relation": "跨部门业务落到统一口径",
+     "to": "G013",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不显示固定系统清单或部门架构",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    {
+     "constraint_id": "C007",
+     "instruction": "配图只承载工厂内跨环节协同语境，不承担共享实施证据",
+     "evidence_refs": [
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握五层阶梯与产线内",
+   "exit_condition": "观众能说出工厂内部与企业层级共享各自对齐什么",
+   "timing": {
+    "char_equivalent": 139.0,
+    "min_seconds": 35,
+    "target_seconds": 36,
+    "max_seconds": 38,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "再往外，就是产业链。质量线索要跨过企业边界去追查。这时候，不同主体各有各的业务职责和管理边界。共享什么对象、用什么方式表达、按什么约定使用，都得先讲清楚。刚才那批产品的记录，要追到上游供应商那里去找，就是这一层的事。\n\n最外面是跨行业。同一份数据，换一个行业语境，连\"合格\"的定义都可能不一样。行业之间，对数据的表达要求和管理要求，差异更大。这一层，也正好反映出数字化转型要连接制造业全要素、全产业链、全价值链的推动方向。\n\n",
+   "teaching_purpose": "解释产业链与跨行业两层的主体差异与表达管理要求差异",
+   "single_message": "产业链跨企业边界追线索，跨行业连“合格”的定义都可能不同；层越高，差异越大。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S027",
+     "guidance_text": "第四、五层：产业链与跨行业",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "产业链：质量线索跨过企业边界，不同主体各有业务职责和管理边界",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "共享什么对象、用什么方式表达、按什么约定使用，都得先讲清楚",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "跨行业：同一份数据换行业语境，连“合格”的定义都可能不一样；表达与管理要求差异更大",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "呼应数字化转型连接制造业全要素、全产业链、全价值链的推动方向",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G014",
+     "relation": "边界之外继续外扩",
+     "to": "G015",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不生成现行行业规则或管理结论",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    {
+     "constraint_id": "C009",
+     "instruction": "配图只承载跨企业交接核验语境，不代表协议或平台",
+     "evidence_refs": [
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握前两层扩展",
+   "exit_condition": "观众能说出产业链与跨行业各自新增的差异",
+   "timing": {
+    "char_equivalent": 185.0,
+    "min_seconds": 47,
+    "target_seconds": 48,
+    "max_seconds": 51,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "但要注意，数据不会因为方向对了，就自动跨界流动。从产线到工厂，到企业，到产业链，再到跨行业，每跨一层，都得先把差异对齐，数据才谈得上流过去。\n\n为什么每跨一层都要重新对齐？因为范围每扩大一层，参与的主体变多，语义差异变大，管理边界也变多。所以每一层，都要重新回答三组问题。双方说的，还是同一个对象吗？数据的格式和含义，能不能被共同理解？谁能用、在什么条件下用、怎样使用？\n\n这三组问题，缺一组都不行。只解决了对象一致，数据可能找得到，却读不懂；只解决了对象和语义，又会把权属、安全和使用的边界漏掉。所以，网络连通只是前提，不等于共享成立。\n\n",
+   "teaching_purpose": "抽象出每跨一层必须重新回答的三组问题与缺一不可的判断",
+   "single_message": "每跨一层重新回答：对象是否一致、语义能否共同理解、谁能按什么条件怎样使用。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S032",
+     "guidance_text": "每跨一层，重新对齐三组问题",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E011"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "范围每扩大一层：参与主体变多、语义差异变大、管理边界变多",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "数据不会因为方向对就自动跨界流动，先对齐差异才谈得上流过去",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "双方说的，还是同一个对象吗？",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "数据的格式和含义，能不能被共同理解？",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "谁能用、在什么条件下用、怎样使用？",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "只解决对象一致：找得到却读不懂；只解决对象和语义：漏掉权属、安全与使用边界",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "网络连通只是前提，不等于共享成立",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G017",
+     "relation": "三问并立支撑缺一不可判断",
+     "to": "G018",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不虚构权限矩阵、审批层级或接口字段",
+     "evidence_refs": [
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众已走完五层范围",
+   "exit_condition": "观众能并列说出三组问题并理解缺一不可",
+   "timing": {
+    "char_equivalent": 230.0,
+    "min_seconds": 58,
+    "target_seconds": 60,
+    "max_seconds": 63,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "那这三组问题，靠什么来回答？靠两类条件，一类是标准，一类是管理。\n\n标准这边，要有统一的数据交换要求，要有规范的数据格式，让参与方都按同一套约定来组织数据。交换什么、数据长成什么样、怎么读写，都由这套约定兜底。标准不统一，同一份数据在两边就是两种说法，共同利用就谈不上了。\n\n管理这边，要有数据使用办法，处理版权和产权保护，处理部门之间的数据使用协议。再往下，还包括数据产权、流通交易、收益分配、安全治理这些制度类别。管理规则不一致的时候，双方得先把一份数据能怎么用、不能怎么用讲清楚，再谈共享。\n\n",
+   "teaching_purpose": "建立标准与管理两类实现条件，分别回答共同表达与按约使用",
+   "single_message": "三组问题靠两类条件回答：标准侧统一表达与格式，管理侧守住能用不能用的边界。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S040",
+     "guidance_text": "条件一：标准与条件二：管理",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "三组问题靠两类条件回答：一类是标准，一类是管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "标准侧：统一的数据交换要求、规范的数据格式，参与方按同一套约定组织数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "交换什么、长成什么样、怎么读写，都由这套约定兜底；标准不统一，同一份数据在两边就是两种说法",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "管理侧：数据使用办法，处理版权和产权保护、部门之间的数据使用协议",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S045",
+        "guidance_text": "还包括数据产权、流通交易、收益分配、安全治理这些制度类别",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S046",
+        "guidance_text": "管理规则不一致时，先把一份数据能怎么用、不能怎么用讲清楚，再谈共享",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G020",
+     "relation": "标准侧与管理侧并列托住共同利用",
+     "to": "G021",
+     "direction": "parallel"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "不发明标准编号、协议名称，也不生成现行法律或制度结论",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解三组问题缺一不可",
+   "exit_condition": "观众能区分标准侧与管理侧各自兜住什么",
+   "timing": {
+    "char_equivalent": 215.0,
+    "min_seconds": 54,
+    "target_seconds": 56,
+    "max_seconds": 59,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "标准和管理，怎么落到一次具体的交换上？可以看一种可信的数据共享方案。这套方案由四个部分构成：数据使用方、数据提供方、授权过程和交换通道。先后顺序是这样的。数据使用方先向授权过程提出访问申请，数据提供方参与审批。审批完成之后，数据使用方向交换通道提出交换请求，交换通道查询并核验授权条件。随后，数据提供方提供数据，数据使用方获取数据。\n\n",
+   "teaching_purpose": "用教材图 3-3 的可信共享方案展示授权与交换的六步关系",
+   "single_message": "使用方申请、提供方参与审批、交换通道核验授权条件，随后提供与获取数据。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S047",
+     "guidance_text": "一种可信的数据共享方案",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S048",
+        "guidance_text": "四个部分：数据使用方、数据提供方、授权过程、交换通道",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S049",
+        "guidance_text": "使用方先向授权过程提出访问申请，数据提供方参与审批",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S050",
+        "guidance_text": "审批后使用方向交换通道提出交换请求，通道查询并核验授权条件",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S051",
+        "guidance_text": "随后数据提供方提供数据，数据使用方获取数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R009",
+     "from": "G022",
+     "relation": "四角色承载六步关系",
+     "to": "G023",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C012",
+     "instruction": "六个编号只对应教材图示关系，不代表所有平台的接口时序或企业制度",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解标准与管理两类条件",
+   "exit_condition": "观众能按顺序说出方案的角色与六步关系",
+   "timing": {
+    "char_equivalent": 150.0,
+    "min_seconds": 38,
+    "target_seconds": 39,
+    "max_seconds": 41,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A009"
+   ],
+   "nx": "再收回来，看那条质量线索。同一件对象，在企业内部、行业内部、跨企业、跨行业，不同系统各有各的说法。要共享，就得先对目标对象做统一表达，再通过标识去寻址，慢慢形成一套数据理解体系。标识能帮我们定位对象，也能帮我们弄清楚信息去了哪里，但标识不等于自动授权。找到一份数据，不等于可以用它。能不能用，还得按约定来。\n\n",
+   "teaching_purpose": "说明共享需要统一表达与标识寻址，并守住“标识不等于授权”的边界",
+   "single_message": "统一表达、标识寻址帮我们找得到、读得懂；找到不等于能用，能不能用按约定来。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S052",
+     "guidance_text": "找得到、读得懂的前提",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S053",
+        "guidance_text": "同一件对象在企业内部、行业内部、跨企业、跨行业各有各的说法",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S054",
+        "guidance_text": "共享要先对目标对象做统一表达，再通过标识去寻址",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S055",
+        "guidance_text": "慢慢形成一套数据理解体系",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S056",
+        "guidance_text": "标识能帮我们定位对象、弄清信息去向；但标识不等于自动授权",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S057",
+        "guidance_text": "找到一份数据，不等于可以用它；能不能用，还得按约定来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R010",
+     "from": "G024",
+     "relation": "说法差异引出统一表达",
+     "to": "G025",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R011",
+     "from": "G025",
+     "relation": "寻址能力受使用约定约束",
+     "to": "G026",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C013",
+     "instruction": "数据模型的描述规则留待第 25 集，本页不展开字段",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解共享方案的授权关系",
+   "exit_condition": "观众能说出统一表达、标识寻址的作用与“找到不等于能用”的边界",
+   "timing": {
+    "char_equivalent": 134.0,
+    "min_seconds": 34,
+    "target_seconds": 35,
+    "max_seconds": 37,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A011",
+   "callback_a_ids": [
+    "A001",
+    "A008"
+   ],
+   "nx": "【本期总结】\n\n回到开头那批产品。它的质量数据，在产线里是设备记录，在工厂里是检验记录，到了企业，变成要跨部门核对的订单信息，再往外，还有产业链上供应商那里的来源记录。同一份数据，在不同层级不断变换形态，也一直分属不同主体。这就是共享每一层都要面对的分工：先解决能不能被理解和流通，再解决能不能按约使用。前者靠共同表达和交换标准，后者靠授权、协议、权属和安全治理。\n\n把这条线索收起来，就是一个核心判断。工业数据共享，不是把所有数据搬到一起，而是让合适的主体，在约定条件下，理解并使用合适的数据。传输只是起点，规则是门槛，统一表达和标识寻址让我们找得到、读得懂，使用管理守住数据能怎么用的边界。",
+   "teaching_purpose": "回收质量线索与五层形态，收束为“理解流通在前、按约使用在后”的核心判断",
+   "single_message": "让合适的主体在约定条件下理解并使用合适的数据；传输是起点，规则是门槛。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S058",
+     "guidance_text": "本期总结：理解流通与按约使用",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S059",
+        "guidance_text": "同一份数据在产线、工厂、企业、产业链不断变换形态，一直分属不同主体",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S060",
+        "guidance_text": "每层的分工：先解决能不能被理解和流通，再解决能不能按约使用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S061",
+        "guidance_text": "共同表达与交换标准解决理解和流通；授权、协议、权属、安全治理解决按约使用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S062",
+        "guidance_text": "共享不是把所有数据搬到一起，而是让合适的主体在约定条件下理解并使用合适的数据",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S063",
+        "guidance_text": "传输是起点，规则是门槛；统一表达和标识寻址找得到读得懂，使用管理守住边界",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G027",
+     "relation": "形态分工导出核心判断",
+     "to": "G028",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C014",
+     "instruction": "总结不展开数据要素机制或标识数据模型",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已走过定义、五层、三问、双支柱与寻址前提",
+   "exit_condition": "观众能复述“合适主体、约定条件、合适数据”的核心判断",
+   "timing": {
+    "char_equivalent": 261.0,
+    "min_seconds": 66,
+    "target_seconds": 68,
+    "max_seconds": 72,
+    "short_page_reason": null
+   }
+  }
+ ]
+}

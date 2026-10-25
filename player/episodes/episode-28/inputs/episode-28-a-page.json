@@ -1,0 +1,918 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-28",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 28 集标题、分集边界、与第 29/31/47 集分工",
+   "source_locator": "已确认课程架构，第 28–32、47–51 集责任表",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围与去重"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "国家顶级节点是体系核心枢纽，对接根节点运行机构和标识注册管理机构，提供全球解析并为统一解析、注册信息真实校验提供基础",
+   "source_locator": "主教材，3.2.1 第 1 段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释顶级节点定位与责任"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "国家顶级节点位于中国范围最上层，提供全国性融合性顶级标识服务以及备案、核验等管理能力",
+   "source_locator": "主教材，3.2.1 第 2 段",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释体系层管理能力，不作当前部署结论"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "图 3-18 将顶级节点系统构成为顶级节点智能分布式标识解析系统、工业互联网融合标识递归解析系统、工业互联网运行监测平台",
+   "source_locator": "教材图 3-18 及 3.2.1 图注/列表",
+   "verification_status": "not applicable",
+   "allowed_use": "作为三类能力的教材证据锚点"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "企业节点属于企业信息系统，需要与二级节点及企业内部系统对接，并遵从企业规定以及上级编码、技术、管理、运营规范",
+   "source_locator": "主教材，3.2.3 第 1 段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释企业节点的双向接入和合规边界"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "企业可因规模和需求，在标识注册、解析等基础功能上建立自身管理方式和应用服务",
+   "source_locator": "主教材，3.2.3 第 1 段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释企业侧可配置空间"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "图 3-22 展示根节点—国家顶级节点—二级节点与企业节点的层级关系，企业节点还与递归节点、企业信息系统和现场设备/采集终端交互",
+   "source_locator": "教材图 3-22",
+   "verification_status": "not applicable",
+   "allowed_use": "作为层级关系的核对锚点"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "顶级节点体系级责任与企业节点企业内接入责任可用“统一枢纽—规范约束—企业系统—现场对象”对照解释",
+   "source_locator": "本任务包基于 E002–E007 的教学组织",
+   "verification_status": "not applicable",
+   "allowed_use": "构造对照"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "本集不引入外部现行节点统计、政策或标准",
+   "source_locator": "无",
+   "verification_status": "not applicable",
+   "allowed_use": "本集不引入外部现行节点统计、政策或标准"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "【视频标题】\n顶级节点与企业节点：标识体系的两端分工\n\n【开场导入】\n设想一家工厂里有一台设备。在企业自己这一边，工程师要在这台设备的产品档案里找到它、查看它的状态，这是内部的事。可一旦这台设备流转到另一家企业，对方想验证它是不是我生产的、它的维修记录在哪里，就不能只看我这边的系统了。他们会拿着设备上的标识，在一个更大范围的服务体系里找答案。\n\n这时就出现了一个问题：哪些能力和责任，属于整个体系的顶层枢纽？哪些又属于企业自己这一端的节点？把这两端分清楚，标识解析的分层体系也就看明白了。\n\n",
+   "teaching_purpose": "呈现本集标题；用设备流转情境引出两端分工问题",
+   "single_message": "企业内部看档案是一回事；对象出企业后被验证，需要体系级答案。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "标题：顶级节点与企业节点：标识体系的两端分工",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "企业内部：工程师在自己企业的产品档案里找到设备、查看状态",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "流转到另一家企业：对方拿着设备上的标识，验证是不是我生产的、维修记录在哪里",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "哪些能力和责任属于体系顶层枢纽？哪些属于企业自己这一端的节点？",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001"
+        ]
+       },
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "把这两端分清楚，标识解析的分层体系也就看明白了",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "两端情境引出分工问题",
+     "to": "G002",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "情境不显示节点数量、城市布局或企业标识",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    {
+     "constraint_id": "C002",
+     "instruction": "配图只承载企业对象与系统协同语境",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，尚未接触节点分工",
+   "exit_condition": "观众能说出两端分工问题",
+   "timing": {
+    "char_equivalent": 217.0,
+    "min_seconds": 55,
+    "target_seconds": 57,
+    "max_seconds": 60,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "【正文讲解】\n先看整个体系为什么需要分工。标识解析体系由不同层级的节点协作运行，一件工业设备、一个零部件，正是靠着这些节点，才能完成注册和查询的完整链条。不同节点承担不同层次的责任。这一集，我们只看两端：最上层的国家顶级节点，和最靠近企业的企业节点。\n\n",
+   "teaching_purpose": "建立节点协作与分工总起，收窄到两端",
+   "single_message": "分层节点协作完成注册和查询的完整链条；本集只看国家级顶级节点与企业节点两端。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S006",
+     "guidance_text": "体系为什么分工",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "标识解析体系由不同层级的节点协作运行：工业对象靠着这些节点完成注册和查询的完整链条",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "不同节点承担不同层次的责任",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "本集只看两端：最上层的国家顶级节点，和最靠近企业的企业节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R002",
+     "from": "G003",
+     "relation": "协作运行收窄到两端",
+     "to": "G004",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不展开二级节点与递归节点等其他层级",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受分工问题",
+   "exit_condition": "观众知道本集只看两端",
+   "timing": {
+    "char_equivalent": 111.0,
+    "min_seconds": 28,
+    "target_seconds": 29,
+    "max_seconds": 31,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "国家顶级节点，处在标识解析体系的核心枢纽位置，是中国范围内最上层的标识服务节点。它做什么？向上，它和根节点运行机构对接，面向整个体系提供全球标识解析服务。也就是说，当标识查询沿着链条上升到最顶层时，由它支撑起跨区域、跨异构体系的统一答案。同时，它还要和标识注册管理机构对接，让不同体系的异构标识能在同一个层面上统一解析，让注册信息的真实性得到校验。此外，它还提供全国性的融合性顶级标识服务，并具备标识备案、核验这一类体系层面的管理能力。\n\n这里有一个关键区分。顶级节点的备案、核验、统一解析，属于体系层面的可信和统一管理能力。它不等于企业自己在一套内部系统里保存了一条设备记录，也不等于某个具体网站或者软件界面。理解顶级节点，要在体系层的那个位置上理解，而不是在某个具体产品上去找它。\n\n",
+   "teaching_purpose": "阐明顶级节点的枢纽定位、对接职责、体系管理能力与理解边界",
+   "single_message": "顶级节点在体系层提供全球解析、统一解析校验与备案核验；不等于企业内部系统。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S010",
+     "guidance_text": "国家顶级节点：体系核心枢纽",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "处在标识解析体系的核心枢纽位置，是中国范围内最上层的标识服务节点",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "向上：与根节点运行机构对接，面向整个体系提供全球标识解析服务，支撑跨区域、跨异构体系的统一答案",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "同时对接标识注册管理机构：让不同体系的异构标识在同一层面统一解析，注册信息真实性得到校验",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "提供全国性的融合性顶级标识服务，并具备标识备案、核验这一类体系层面的管理能力",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "备案、核验、统一解析是体系层面的可信与统一管理能力；不等于企业内部系统存了一条记录，也不等于某个网站或软件界面",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G005",
+     "relation": "枢纽定位承载对接职责",
+     "to": "G006",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R004",
+     "from": "G007",
+     "relation": "体系能力划出理解边界",
+     "to": "G008",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不作当前部署数量结论",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众知道只看两端",
+   "exit_condition": "观众能说出顶级节点职责与体系层理解边界",
+   "timing": {
+    "char_equivalent": 311.0,
+    "min_seconds": 78,
+    "target_seconds": 81,
+    "max_seconds": 85,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "在能力构成上，顶级节点可以归纳出三类系统：顶级节点智能分布式标识解析系统、工业互联网融合标识递归解析系统、工业互联网运行监测平台。它们分别对应三条能力线：解析与统一管理、递归查询的支撑、对整个体系运行状态的总体感知。简单讲就是三件事：解析得统一，查询能递归，运行看得见。\n\n",
+   "teaching_purpose": "以教材图 3-18 为锚点读出三类系统与三条能力线",
+   "single_message": "解析得统一，查询能递归，运行看得见：三类系统对应三条能力线。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S016",
+     "guidance_text": "三类系统构成",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "顶级节点智能分布式标识解析系统",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "工业互联网融合标识递归解析系统",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "工业互联网运行监测平台",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "三条能力线：解析与统一管理、递归查询的支撑、体系运行状态的总体感知；解析得统一，查询能递归，运行看得见",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R005",
+     "from": "G009",
+     "relation": "三类系统对应三条能力线",
+     "to": "G010",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "重绘不作 2026 产品架构结论",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解顶级节点职责",
+   "exit_condition": "观众能对应三类系统与三条能力线",
+   "timing": {
+    "char_equivalent": 122.0,
+    "min_seconds": 31,
+    "target_seconds": 32,
+    "max_seconds": 34,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "讲完顶层，再看企业这一端。企业节点属于企业信息系统。它向上和二级节点对接，向内和企业自己的业务系统、现场系统对接。你可以把它想成一道边界：一边是企业现场的真实对象，一边是整个标识服务体系。要注意，企业节点是把企业接进体系，而不是一座把企业从体系里隔离出去的孤岛。\n\n成了体系的一员，就要守体系的规矩。企业节点既要遵从企业自身的规定，也要遵从上级二级节点定下的编码规范、技术标准、管理规范和运营规范。企业在自己系统里怎么组织业务可以自己安排，但内部系统再完善，也不能跳过上级节点定义的编码和接入规则。\n\n",
+   "teaching_purpose": "说明企业节点的信息系统属性、双向对接、边界角色与合规要求",
+   "single_message": "企业节点属于企业信息系统：向上接二级节点，向内接业务现场；是接入，不是孤岛。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S021",
+     "guidance_text": "企业节点：体系的边界",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "企业节点属于企业信息系统",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "向上和二级节点对接；向内和企业自己的业务系统、现场系统对接",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "一道边界：一边是企业现场的真实对象，一边是标识服务体系；是把企业接进体系，而不是孤岛",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "遵从企业自身规定，也遵从上级二级节点定下的编码规范、技术标准、管理规范和运营规范；内部系统再完善，也不能跳过编码和接入规则",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G011",
+     "relation": "企业信息系统承载双向对接",
+     "to": "G012",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R007",
+     "from": "G013",
+     "relation": "边界角色带来合规要求",
+     "to": "G014",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不扩展为具体标准编号或企业名单",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解顶级节点",
+   "exit_condition": "观众能说出企业节点的双向接入与合规边界",
+   "timing": {
+    "char_equivalent": 226.0,
+    "min_seconds": 57,
+    "target_seconds": 59,
+    "max_seconds": 62,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "在能力上，标识注册、标识解析是基础功能。在这个基础上，企业按自己的规模与需求，可以建立自己的管理方式和应用服务。比如有的企业会在标识之上对接 ERP、MES、WMS 这些业务系统，但这只是通用举例，不是所有企业的必选清单，规模小的企业完全可以只从基础功能起步。\n\n",
+   "teaching_purpose": "区分基础功能与企业按规模需求建立的可配置能力",
+   "single_message": "注册、解析是基础功能；ERP/MES/WMS 只是通用举例，不是必选清单。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S026",
+     "guidance_text": "基础功能与可配置空间",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "标识注册、标识解析是基础功能",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "在此基础上，企业按规模与需求建立自己的管理方式和应用服务；对接 ERP、MES、WMS 只是通用举例，不是所有企业的必选清单，规模小的企业完全可以从基础功能起步",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G015",
+     "relation": "基础功能支撑弹性组合",
+     "to": "G016",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不把系统举例画成必备清单",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解企业节点边界",
+   "exit_condition": "观众能区分基础功能与按需配置",
+   "timing": {
+    "char_equivalent": 111.5,
+    "min_seconds": 28,
+    "target_seconds": 29,
+    "max_seconds": 31,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "把两端放回完整链条，位置关系是这样的：根节点在最上方，下面是国家顶级节点，再往下是二级节点。企业节点在企业系统这一侧，和二级节点对接。企业节点内部连接着业务系统，也连接着现场设备和采集终端。一件企业对象，从业务系统和现场采集出发，经过企业节点，进入标识服务体系。二级节点在这里承上启下：它连接国家顶级节点和企业节点，是规范的边界，也为企业一侧提供注册、解析，以及数据相关的衔接服务。\n\n",
+   "teaching_purpose": "把两端放回完整链条，说明层级、内部连接、对象通路与二级节点承上启下",
+   "single_message": "企业对象从业务系统和现场采集出发，经企业节点进入体系；二级节点承上启下。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S029",
+     "guidance_text": "两端在完整链条上的位置",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "根节点在最上方，下面是国家顶级节点，再往下是二级节点；企业节点在企业系统这一侧，和二级节点对接",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "企业节点内部连接着业务系统，也连接着现场设备和采集终端",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "一件企业对象，从业务系统和现场采集出发，经过企业节点，进入标识服务体系",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "二级节点承上启下：它连接国家顶级节点和企业节点，是规范的边界，也为企业一侧提供注册、解析以及数据相关的衔接服务",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R009",
+     "from": "G017",
+     "relation": "层级链承载双向接续",
+     "to": "G018",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R010",
+     "from": "G019",
+     "relation": "对象通路经由二级服务",
+     "to": "G020",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不画接口数据实时同步画面",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解两端职责",
+   "exit_condition": "观众能说出链条位置与二级节点的承上启下",
+   "timing": {
+    "char_equivalent": 172.0,
+    "min_seconds": 43,
+    "target_seconds": 45,
+    "max_seconds": 47,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "有一点要提醒：这些连接表达的是角色上的对接关系，不是某个时刻的接口数据在实时同步，也不代表系统会自动做决策，更不能据此推断某家企业已经部署了同样的一套系统。它讲的是角色分工，不是一份要逐项核对的清单。\n\n",
+   "teaching_purpose": "约束连接语义：讲角色分工，不讲实时与部署",
+   "single_message": "连接表达角色对接，不是数据实时同步或自动决策，更不是部署清单。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S034",
+     "guidance_text": "提醒：讲分工，不讲实时",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "这些连接表达的是角色上的对接关系：不是某时刻接口数据实时同步，不代表自动决策，更不能推断某家企业已部署同样的一套系统",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "它讲的是角色分工，不是一份要逐项核对的清单",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G021",
+     "relation": "对接语义划定角色定性",
+     "to": "G022",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不画数据流动画或部署拓扑",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看完整链条",
+   "exit_condition": "观众能守住连接语义边界",
+   "timing": {
+    "char_equivalent": 93.0,
+    "min_seconds": 24,
+    "target_seconds": 24,
+    "max_seconds": 26,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A001",
+    "A005"
+   ],
+   "nx": "【本期总结】\n回到最初那台设备。它在自己企业的系统里有档案，这是企业节点在做的事；一旦它流到别的企业，还能沿着标识在整个体系里被查到答案，这是国家顶级节点在背后撑起的能力。分工很清楚：顶级节点负责体系级的统一解析、跨层连接、备案核验和运行感知，是企业对象共同依托的上层锚点；企业节点负责把真实的生产对象接进标识体系，让它们完成注册、解析，并和内部业务、现场采集关联起来。两端责任不同，但缺一不可。上层锚点提供统一的规则，企业节点把一个个真实对象带进这套规则，合在一起，才是完整的分层协作。",
+   "teaching_purpose": "回收设备情境，收束两端分工与分层协作",
+   "single_message": "顶级节点撑体系级锚点，企业节点把对象接进规则；两端缺一不可。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S037",
+     "guidance_text": "本期总结：两端分工",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "回到那台设备：自己企业系统里有档案，是企业节点在做的事；流转到别家还能沿标识被查到，是国家级顶级节点撑起的能力",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "顶级节点负责体系级统一解析、跨层连接、备案核验和运行感知，是企业对象共同依托的上层锚点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "企业节点把真实生产对象接进标识体系，完成注册、解析，并和内部业务、现场采集关联起来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "两端责任不同，但缺一不可：上层锚点提供统一规则，企业节点把一个个真实对象带进这套规则，合在一起才是完整的分层协作",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G023",
+     "relation": "两端情境回收导出分工收束",
+     "to": "G024",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "总结不展开第 29 集二级节点运营内容",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看完整链条并守住边界",
+   "exit_condition": "观众能复述两端分工与缺一不可",
+   "timing": {
+    "char_equivalent": 219.0,
+    "min_seconds": 55,
+    "target_seconds": 57,
+    "max_seconds": 60,
+    "short_page_reason": null
+   }
+  }
+ ]
+}

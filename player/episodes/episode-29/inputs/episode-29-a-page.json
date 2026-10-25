@@ -1,0 +1,964 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-29",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "二级节点在顶级节点与企业节点之间，承担承上启下平台角色",
+   "source_locator": "已确认课程架构，第 29 集责任表",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围、分镜和去重"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "二级节点向上对接国家顶级节点，向下为企业分配标识编码并提供注册、解析、标识数据服务",
+   "source_locator": "主教材，3.2.2 开头段落",
+   "verification_status": "not applicable",
+   "allowed_use": "解释承上启下定位"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "教材称二级节点是推动规模化应用、打造行业级应用和探索可持续业务模式的关键抓手",
+   "source_locator": "主教材，3.2.2 开头段落",
+   "verification_status": "not applicable",
+   "allowed_use": "解释平台价值"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "教材引用 2019 年试行版、2021 年正式《建设导则》，覆盖建设与运营要求及四体系",
+   "source_locator": "主教材，3.2.2 导则段落",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "保留版本边界"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "二级节点是信息基础设施，对接国家顶级节点、企业节点和递归节点，提供注册、解析服务",
+   "source_locator": "主教材，3.2.2“定位和作用”",
+   "verification_status": "not applicable",
+   "allowed_use": "解释基础设施定位"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "二级节点是公共服务平台，提供应用支撑、微服务、工具模型、开发环境、规范接口并支持标识创新应用",
+   "source_locator": "主教材，3.2.2“定位和作用”",
+   "verification_status": "not applicable",
+   "allowed_use": "解释公共服务能力"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "二级节点承担标识规范管理，申请标识前缀、向企业节点分配下一级前缀，并制定编码、对接、接口、元数据规范",
+   "source_locator": "主教材，3.2.2“定位和作用”",
+   "verification_status": "not applicable",
+   "allowed_use": "解释规范边界"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "按服务范围分为行业型和综合型二级节点",
+   "source_locator": "主教材，3.2.2“节点分类”",
+   "verification_status": "not applicable",
+   "allowed_use": "解释分类维度"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "总体架构包含管理体系、功能体系、应用体系、安全保障；功能清单含注册、解析、查询、业务管理、数据管理、运行监测、系统管理",
+   "source_locator": "主教材，3.2.2“总体架构”、表 3-10、图 3-19",
+   "verification_status": "not applicable",
+   "allowed_use": "建立架构与功能清单"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "图 3-20 将功能架构分为 SNMS 与 IDIS；SNMS 面向用户交互和业务管理，IDIS 以接口提供注册、数据同步、解析、代理等支撑",
+   "source_locator": "教材图 3-20 及正文",
+   "verification_status": "not applicable",
+   "allowed_use": "解释双系统分工"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "图 3-21 描述注册子系统接收数据，经标识数据中心处理后由数据同步子系统下发到解析子系统，对外响应终端查询",
+   "source_locator": "教材图 3-21 说明",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释语义级数据流转"
+  },
+  {
+   "evidence_id": "E012",
+   "claim_or_asset": "应用体系需要基础资源、数据、应用能力支撑；推进路径与工业互联网平台协同等；应用按载体分被动/主动，按领域分公共/垂直行业",
+   "source_locator": "主教材，3.2.2“应用体系”",
+   "verification_status": "not applicable",
+   "allowed_use": "解释应用支撑与分类"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "【视频标题】\n为什么说二级节点是承上启下的公共服务平台\n\n【开场导入】\n讲到标识，就会碰到一个关键角色：二级节点。整个节点体系分几层，上头是国家顶级节点，底下一层是企业节点，二级节点在中间。今天要回答两个问题：它凭什么既承接上面、又服务下面？它被称为公共服务平台，靠的是什么？\n\n先从具体的问题说起。一家企业想在行业里有自己的标识，就要注册、解析、查数据。这些事找谁办？如果每家企业都自己搭一套系统，你注册你的、我解析我的，谁也连不上谁。如果所有请求都直接交给国家级那一层，行业里千差万别的需求又没人细化。中间，必须有一个既能承接上级、又能服务企业的公共平台。这个位置，就是二级节点。\n\n",
+   "teaching_purpose": "呈现本集标题；提出二级节点凭什么承上启下、平台靠什么的问题",
+   "single_message": "注册解析查数据找谁办？中间必须有一个承上启下的公共平台，这个位置就是二级节点。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "标题：为什么说二级节点是承上启下的公共服务平台",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "节点体系分层：上头是国家顶级节点，底下一层是企业节点，二级节点在中间",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001"
+        ]
+       },
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "两个问题：它凭什么既承接上面、又服务下面？被称为公共服务平台，靠的是什么？",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "企业想在行业里有标识：注册、解析、查数据，找谁办？",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "自己各搭一套系统连不上谁；全交给国家级层，行业里千差万别的需求没人细化",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "中间必须有既能承接上级、又能服务企业的公共平台：这个位置就是二级节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "位置与问题引出平台必要性",
+     "to": "G002",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "画面不出现真实节点平台或运营商信息",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，已知道节点分层的存在",
+   "exit_condition": "观众能说出二级节点的中间位置与平台问题",
+   "timing": {
+    "char_equivalent": 253.0,
+    "min_seconds": 64,
+    "target_seconds": 66,
+    "max_seconds": 69,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "【正文讲解】\n二级节点本身是一种重要的信息基础设施。它向上对接国家顶级节点，向下连接企业节点，还能和递归节点协同。国家顶级节点的体系级能力，要沿着行业服务范围落到底下的具体企业；反过来，企业产生的标识服务请求，也需要一个明确的行业入口。这一上一下，在二级节点汇合。它面向自己服务的行业，提供三类基础服务：标识注册、标识解析、标识数据服务。\n\n所以二级节点不只是一个中间节点，同时还是一个公共服务平台。除了注册和解析，它还提供应用支撑、微服务、工具模型、开发环境和规范接口这些公共支撑能力，也承载标识创新应用。这里要分清\"平台\"两个字的分量。平台是一组可以被企业和应用调用的公共支撑，不是一个把企业数据都集中收进来的数据库。企业各自的业务数据，还是企业自己的；二级节点提供的是大家都能用的公共服务。\n\n",
+   "teaching_purpose": "建立信息基础设施定位、三类基础服务与公共服务平台的边界",
+   "single_message": "一上一下在二级节点汇合：三类基础服务之上，平台的分量是公共支撑，不是集中数据库。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S007",
+     "guidance_text": "信息基础设施与公共服务平台",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "二级节点是重要的信息基础设施：向上对接国家顶级节点，向下连接企业节点，还能和递归节点协同",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "体系级能力沿行业服务范围落到底下企业；企业请求需要明确的行业入口：一上一下，在二级节点汇合",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "面向服务的行业提供三类基础服务：标识注册、标识解析、标识数据服务",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "还是公共服务平台：提供应用支撑、微服务、工具模型、开发环境、规范接口，承载标识创新应用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "平台是一组可以被企业和应用调用的公共支撑，不是把企业数据集中收进来的数据库；业务数据还是企业自己的",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R002",
+     "from": "G003",
+     "relation": "基础设施承载上下汇合",
+     "to": "G004",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R003",
+     "from": "G004",
+     "relation": "基础服务之外守住平台分量",
+     "to": "G005",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "不把平台画成集中数据库",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受平台问题",
+   "exit_condition": "观众能说出三类基础服务与平台分量",
+   "timing": {
+    "char_equivalent": 312.0,
+    "min_seconds": 78,
+    "target_seconds": 81,
+    "max_seconds": 86,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "平台要立得住，规矩先得定好。二级节点承担标识规范管理的职责。它要申请标识前缀，再把下一级前缀分配给企业节点；同时结合自己服务的行业，制定编码规范、企业节点对接规范、接口规范、元数据规范。定规范是为了让不同企业接得进来、换得动数据。规范定的是接入和交换的规则，不替企业决定业务数据里具体放什么内容。\n\n",
+   "teaching_purpose": "说明前缀申请分配与四类规范制定及其边界",
+   "single_message": "申请前缀、分配下一级前缀，制定编码、对接、接口、元数据规范；不替企业定业务内容。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S013",
+     "guidance_text": "规矩先定好",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "承担标识规范管理：申请标识前缀，再把下一级前缀分配给企业节点",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "结合服务行业制定编码规范、企业节点对接规范、接口规范、元数据规范",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "定规范是为了让企业接得进来、换得动数据；规范定的是接入和交换的规则，不替企业决定业务数据里放什么",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G006",
+     "relation": "前缀职责支撑规范制定",
+     "to": "G007",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R005",
+     "from": "G007",
+     "relation": "规范范围划定职责边界",
+     "to": "G008",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不写具体规范编号或条款",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解平台分量",
+   "exit_condition": "观众能说出前缀与规范职责及边界",
+   "timing": {
+    "char_equivalent": 134.0,
+    "min_seconds": 34,
+    "target_seconds": 35,
+    "max_seconds": 37,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "按服务范围，二级节点分两类。一类叫行业型，服务特定的行业；一类叫综合型，覆盖两个及以上行业大类。两种类型都提供注册、解析、标识数据这些基础服务，差别只在服务的行业面有多宽。要澄清一点：这个分类讲的是服务覆盖范围，不代表某个行业现在有多少节点。\n\n",
+   "teaching_purpose": "解释行业型与综合型的分类维度和共性",
+   "single_message": "行业型服务特定行业，综合型覆盖两个及以上行业大类；分类讲覆盖范围，不是数量。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S017",
+     "guidance_text": "按服务范围分两类",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "行业型：服务特定的行业",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "综合型：覆盖两个及以上行业大类",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "两种类型都提供注册、解析、标识数据这些基础服务，差别只在服务的行业面有多宽；分类讲服务覆盖范围，不代表某个行业现在有多少节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G009",
+     "relation": "两类并列同享基础服务",
+     "to": "G010",
+     "direction": "parallel"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不补行业名单或节点数量",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解规范职责",
+   "exit_condition": "观众能区分两类并守住分类边界",
+   "timing": {
+    "char_equivalent": 108.0,
+    "min_seconds": 27,
+    "target_seconds": 28,
+    "max_seconds": 30,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "再看内部怎么组织。二级节点总体架构有四个并列的部分：管理体系、功能体系、应用体系、安全保障。管理体系管规则，功能体系管基础服务，应用体系管应用支撑，安全保障管安全运行。四者并列，是责任上的分层，不是四个独立的产品，也不是四台固定的设备。\n\n",
+   "teaching_purpose": "以教材图 3-19 为锚点建立四个并列体系与责任分层",
+   "single_message": "管理、功能、应用、安全四个体系并列：责任上的分层，不是四个产品。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S021",
+     "guidance_text": "总体架构：四个并列体系",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "二级节点总体架构四个并列部分：管理体系、功能体系、应用体系、安全保障",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "管理体系管规则，功能体系管基础服务，应用体系管应用支撑，安全保障管安全运行；四者并列是责任上的分层，不是四个独立的产品，也不是四台固定的设备",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G012",
+     "relation": "四体系承载责任分层",
+     "to": "G013",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "图示保留教材示意语义，不作当前部署图",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解两类分类",
+   "exit_condition": "观众能说出四体系并列与责任分层",
+   "timing": {
+    "char_equivalent": 104.0,
+    "min_seconds": 26,
+    "target_seconds": 27,
+    "max_seconds": 29,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "落到基本功上，是功能体系。功能清单一共七项：标识注册、标识解析、标识查询、业务管理、数据管理、运行监测、系统管理。七项可以归纳成四组：先让标识能够注册，再提供解析和查询，接着管理业务与数据，随后管理运行和系统本身。算起来，就是从标识立起来，到把它用好、管好。\n\n",
+   "teaching_purpose": "列出七项功能并归纳四组递进",
+   "single_message": "七项功能归纳成四组：从标识立起来，到用好、管好。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S024",
+     "guidance_text": "功能清单：七项",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "七项：标识注册、标识解析、标识查询、业务管理、数据管理、运行监测、系统管理",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "归纳成四组：先让标识能够注册，再提供解析和查询，接着管理业务与数据，随后管理运行和系统本身；从标识立起来，到把它用好、管好",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G014",
+     "relation": "功能清单归纳为递进分组",
+     "to": "G015",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不补功能数量或模块名",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道四体系",
+   "exit_condition": "观众能列出七项并说出四组递进",
+   "timing": {
+    "char_equivalent": 110.0,
+    "min_seconds": 28,
+    "target_seconds": 29,
+    "max_seconds": 30,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "这些功能由谁来执行？功能架构里有两个部分。一个叫二级节点业务管理系统，缩写叫SNMS，面向用户交互和业务管理；另一个叫二级节点智能分布式标识系统，缩写叫IDIS，以接口形式为SNMS和上层应用提供标识注册、数据同步、解析、代理这些核心支撑。业务一侧和解析服务之间，还有一条清晰的数据流转：业务数据由标识注册子系统接收，在标识数据中心完成处理，再经数据同步子系统交给标识解析子系统，由它对外响应终端的查询。到这一层，我们把平台提供什么能力、能力怎么分层看清楚就够了；能力内部的运转细节，是更靠内的一层。\n\n",
+   "teaching_purpose": "建立 SNMS 与 IDIS 分工及语义级数据流转，并守住层次边界",
+   "single_message": "业务一侧与解析一侧分工；业务数据接收、处理、同步、解析，对外响应终端查询。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S027",
+     "guidance_text": "两套系统与数据流转",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "二级节点业务管理系统 SNMS：面向用户交互和业务管理",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "二级节点智能分布式标识系统 IDIS：以接口形式为 SNMS 和上层应用提供标识注册、数据同步、解析、代理这些核心支撑",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "业务数据由标识注册子系统接收，在标识数据中心完成处理，再经数据同步子系统交给标识解析子系统，由它对外响应终端的查询",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "把平台提供什么能力、能力怎么分层看清楚就够了；能力内部的运转细节，是更靠内的一层",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R009",
+     "from": "G016",
+     "relation": "双系统分担业务与解析",
+     "to": "G017",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R010",
+     "from": "G018",
+     "relation": "流转说清即止于层次边界",
+     "to": "G019",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不补组件数量、协议、性能或版本",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握功能清单",
+   "exit_condition": "观众能说出双系统分工与数据流转及边界",
+   "timing": {
+    "char_equivalent": 222.0,
+    "min_seconds": 56,
+    "target_seconds": 58,
+    "max_seconds": 61,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "功能备齐了，应用才能长起来。应用体系要靠基础资源、数据和应用能力作为支撑。推进的路子有几种：跟工业互联网平台协同，在已有应用的基础上拓展，再探索信息共享、数据安全这类数据要素应用。应用怎么区分？按载体分，有被动标识载体和主动标识载体；按领域分，有公共标识应用和垂直行业标识应用。顺着这条线也能想明白：规模化应用能不能推起来，行业级应用能不能做出来，可持续的业务模式能不能走通，二级节点都在关键的位置上。\n\n",
+   "teaching_purpose": "说明应用体系的支撑、推进路径、分类与位置感",
+   "single_message": "应用靠基础资源、数据和应用能力长出来；规模化、行业化、可持续，二级节点都在关键位置。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S032",
+     "guidance_text": "应用体系：从支撑到分类",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E012"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "应用体系要靠基础资源、数据和应用能力作为支撑",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "推进路径：跟工业互联网平台协同，在已有应用的基础上拓展，再探索信息共享、数据安全这类数据要素应用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "按载体分，有被动标识载体和主动标识载体；按领域分，有公共标识应用和垂直行业标识应用",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "规模化应用能不能推起来，行业级应用能不能做出来，可持续的业务模式能不能走通，二级节点都在关键的位置上",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G020",
+     "relation": "支撑承载推进路径",
+     "to": "G021",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R012",
+     "from": "G022",
+     "relation": "分类落位显示关键位置",
+     "to": "G023",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不下产业规模或成效结论",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解双系统",
+   "exit_condition": "观众能说出应用支撑、路径与分类",
+   "timing": {
+    "char_equivalent": 182.0,
+    "min_seconds": 46,
+    "target_seconds": 47,
+    "max_seconds": 50,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A001",
+    "A005"
+   ],
+   "nx": "本期总结\n\n回到开场的问题。企业做标识的事，不能各自孤立搭系统，也不该事事都找国家级那一层。中间的桥谁来搭？就靠二级节点。向上，它对接国家顶级节点，把上级的能力接下来；向下，它为企业节点分配标识前缀，提供注册、解析和数据服务；中间，它用管理体系、功能体系、应用体系、安全保障四个体系，把公共能力组织起来。四个体系的分工很清晰：规则、基础服务、应用、安全，各管一块。\n\n把分工放到一起看，共同的规律就一条：二级节点提供的是一层公共支撑，衔接的是责任和规范边界，它不接管企业的业务系统。所以核心判断也清楚：它是承上启下的平台，这个平台的含义，是一组可以调用的公共服务，不是把所有企业数据集中收管的数据库，也不是一份当前产品或部署的清单。这就是二级节点最要紧的位置。",
+   "teaching_purpose": "回收中间桥定位，收束四体系分工与核心判断",
+   "single_message": "二级节点提供公共支撑、衔接责任边界；平台是可调用的公共服务，不是集管数据库。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S037",
+     "guidance_text": "本期总结：承上启下的平台",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "企业做标识的事不能各自孤立搭系统，也不该事事找国家级层；中间的桥由二级节点来搭",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "向上对接国家顶级节点，把上级能力接下来；向下为企业节点分配标识前缀，提供注册、解析和数据服务",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "中间用管理体系、功能体系、应用体系、安全保障四个体系把公共能力组织起来：规则、基础服务、应用、安全各管一块",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "它提供的是一层公共支撑，衔接的是责任和规范边界，不接管企业的业务系统",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       },
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "承上启下的平台，含义是一组可以调用的公共服务，不是把所有企业数据集中收管的数据库，也不是一份当前产品或部署的清单",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R013",
+     "from": "G024",
+     "relation": "中间桥定位导出上下服务",
+     "to": "G025",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R014",
+     "from": "G025",
+     "relation": "四体系组织撑起核心判断",
+     "to": "G026",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "总结不展开第 30 集前缀注册流程",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已走完定位、规范、分类、四体系、功能与应用",
+   "exit_condition": "观众能复述承上启下与公共服务的核心判断",
+   "timing": {
+    "char_equivalent": 289.0,
+    "min_seconds": 73,
+    "target_seconds": 75,
+    "max_seconds": 79,
+    "short_page_reason": null
+   }
+  }
+ ]
+}

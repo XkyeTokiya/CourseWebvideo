@@ -1,0 +1,1249 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-25",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 25 集标题、来源范围、前置关系、相邻边界和隔离理由",
+   "source_locator": "已确认课程架构，Episode Architecture 第 21–27 集",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围、去重和时长"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "数字对象（DO）是在数字世界中可以被唯一标识和处理的数据实体；可识别数字对象（IDO）是在网络空间以参数、属性等数字化描述形成的可访问对象",
+   "source_locator": "主教材，3.1.3“标识数据模型”第 1–3 段",
+   "verification_status": "not applicable",
+   "allowed_use": "定义 DO 与 IDO"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "IDO 由企业创建和管理，包含标识编码、解析记录和对象数据三大要素",
+   "source_locator": "主教材，3.1.3“按照……标识数据模型白皮书”段",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释模型三要素"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "标识编码是识别机器、算法等物理/虚拟资源的身份符号；解析记录提供主机名与 IP 地址映射及解析服务器关联；对象数据通过数据模型表示对象的生产、制造和使用信息",
+   "source_locator": "主教材，3.1.3“三大要素”后的三条定义",
+   "verification_status": "not applicable",
+   "allowed_use": "解释三要素分别回答“是谁、在哪里、是什么”"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "标识数据模型（IDM）模拟和抽象可识别数字对象的现实世界特征，梳理数据、关联关系和组织形式，建立标识对象全生命周期的数字画像",
+   "source_locator": "主教材，3.1.3“标识数据模型”段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释模型设计目的"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "工业对象数据由属性数据和事件数据组成；属性数据描述固有且可区别于其他实体的特征，包括对象/基本、主体和位置数据",
+   "source_locator": "主教材，3.1.3“工业视角的对象”段；图 3-6",
+   "verification_status": "not applicable",
+   "allowed_use": "解释属性数据分类"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "事件数据描述对象行为、操作以及生产、流通、使用过程中的变化，包括对象事件、聚合事件、交易事件和转化事件",
+   "source_locator": "主教材，3.1.3“事件数据”句群",
+   "verification_status": "not applicable",
+   "allowed_use": "解释事件数据分类与分工"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "图 3-5 将 IDO 分为标识编码、解析记录、对象数据",
+   "source_locator": "教材图 3-5“标识解析体系的数据要素”",
+   "verification_status": "not applicable",
+   "allowed_use": "作为三要素的视觉核对锚点"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "图 3-6 将标识数据模型分为三要素，对象数据下分属性数据和事件数据",
+   "source_locator": "教材图 3-6“标识解析数据模型构成”",
+   "verification_status": "not applicable",
+   "allowed_use": "作为属性/事件层级的视觉核对锚点"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "任务实施先分析发动机对象的关键属性，属性名包括产品编号、产品名称、排量、气缸数量、燃油类型、适用车型、特殊功能、生产日期",
+   "source_locator": "主教材，任务实施“1. 标识对象属性分析”、表 3-7",
+   "verification_status": "not applicable",
+   "allowed_use": "说明从对象需求识别属性"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "任务实施要求为关键属性定义元数据：中文名称、英文名称、数据类型、最小长度、最大长度、是否必填及相应约定",
+   "source_locator": "主教材，任务实施“2. 标识对象元数据定义”及表 3-8 前后段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释属性从语义到可管理定义的设计约束"
+  },
+  {
+   "evidence_id": "E012",
+   "claim_or_asset": "“身份锚点—网络寻址—对象描述—属性/事件画像”的教学路径",
+   "source_locator": "本任务包基于 E002–E011 的教学组织",
+   "verification_status": "not applicable",
+   "allowed_use": "组织讲稿与确定性关系图"
+  },
+  {
+   "evidence_id": "E013",
+   "claim_or_asset": "教材发动机对象作为匿名教学语境，只借用属性类别，不展示具体编号、样例值、企业或工具界面",
+   "source_locator": "本任务包教学设计，N009–N011",
+   "verification_status": "not applicable",
+   "allowed_use": "让属性与元数据设计落到一个对象"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "【视频标题】\n标识数据模型：从数字对象到属性与事件\n\n【开场导入】\n想象一台发动机。在车间里，它是实实在在的一台机器，能摸到、能看到。可到了信息系统里，事情就变了：系统里那个\"它\"是谁？在哪台设备上？经历过什么变化？如果只给一连串编码，这些问题一个都答不上来。要把一个对象讲清楚，得有一整套组织数据的方式。这套方式，就叫标识数据模型。\n\n",
+   "teaching_purpose": "呈现本集标题；用发动机情境提出“系统里的对象是谁、在哪、经历了什么”的缺口问题",
+   "single_message": "只有编码回答不了对象是谁、在哪里、经历了什么；需要一套组织数据的方式。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "标题：标识数据模型：从数字对象到属性与事件",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "车间里它是实实在在的一台发动机，能摸到、能看到",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       },
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "到了信息系统里：系统里那个“它”是谁？在哪台设备上？经历过什么变化？",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "只给一连串编码，这些问题一个都答不上来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "要把一个对象讲清楚，得有一整套组织数据的方式：标识数据模型",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "对象疑问引出模型需要",
+     "to": "G002",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "情境不填编号、样例值、企业名称或工具界面",
+     "evidence_refs": [
+      "E013"
+     ]
+    },
+    {
+     "constraint_id": "C002",
+     "instruction": "配图只承载对象观察与资料核对语境",
+     "evidence_refs": [
+      "E013"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，尚未接触模型概念",
+   "exit_condition": "观众能说出问题：只有一个编码说不清对象，需要标识数据模型",
+   "timing": {
+    "char_equivalent": 141.0,
+    "min_seconds": 36,
+    "target_seconds": 37,
+    "max_seconds": 39,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "【正文讲解】\n先理解一个基本事实。任何一个物理或虚拟对象，同时有两种存在。一种是现场那个实实在在的对象，另一种是系统里可以被查询、可以被共享的数字对象。这两者不能划等号，因为只有一个编码，说明不了这个对象是什么、在哪里、经历了哪些变化。\n\n",
+   "teaching_purpose": "建立物理/虚拟对象与数字对象的两种存在及其不等关系",
+   "single_message": "现场对象和系统数字对象不能划等号：一个编码说明不了内容、位置与变化。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S006",
+     "guidance_text": "一个对象，两种存在",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "现场那个实实在在的对象",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "系统里可以被查询、可以被共享的数字对象",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "两者不能划等号：只有一个编码，说明不了对象是什么、在哪里、经历了哪些变化",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R002",
+     "from": "G003",
+     "relation": "两种存在之间不能画等号",
+     "to": "G004",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不出现字段值、软件界面或接口示例",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受模型缺口问题",
+   "exit_condition": "观众能区分现场对象与系统中的数字对象",
+   "timing": {
+    "char_equivalent": 104.0,
+    "min_seconds": 26,
+    "target_seconds": 27,
+    "max_seconds": 29,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "系统里的这个存在，有个专门说法，叫数字对象。它是数字世界里可以被唯一标识、可以被处理的数据实体。再往前走一步，当这个数字对象通过网络空间的数字化描述，比如参数、属性，变成了可以被访问的对象，它就升级为可识别数字对象。\n\n这两个说法差在哪？数字对象强调的是\"能处理\"。可识别数字对象进一步回答的是，怎么找到它、怎么理解它。还要记住一点，可识别数字对象不等于某个具体的软件对象，也不等于接口资源。\n\n",
+   "teaching_purpose": "定义数字对象与可识别数字对象，说明两者差异与概念边界",
+   "single_message": "数字对象强调可处理；可识别数字对象进一步回答怎么找到、怎么理解，且不是软件对象。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S010",
+     "guidance_text": "从数字对象到可识别数字对象",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "数字对象：数字世界里可以被唯一标识、可以被处理的数据实体",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "当数字对象通过网络空间的数字化描述——比如参数、属性——变成可以被访问的对象，它就升级为可识别数字对象",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "数字对象强调“能处理”；可识别数字对象进一步回答怎么找到它、怎么理解它",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "可识别数字对象不等于某个具体的软件对象，也不等于接口资源",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G005",
+     "relation": "数字对象升级为可访问对象",
+     "to": "G006",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R004",
+     "from": "G006",
+     "relation": "IDO 概念守住概念边界",
+     "to": "G007",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不把 IDO 说成软件对象或接口资源",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解两种存在",
+   "exit_condition": "观众能说出 DO 与 IDO 的差异及其边界",
+   "timing": {
+    "char_equivalent": 174.0,
+    "min_seconds": 44,
+    "target_seconds": 45,
+    "max_seconds": 48,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "那么，一个可识别数字对象，是怎么组织起来的？它不是随便把一堆字段堆在一起，而是由三个相互配合的要素构成：标识编码、解析记录、对象数据。\n\n这三者之间是有先后的。先有身份，才谈得上寻址；有了寻址，才可能取得描述对象的信息。这个顺序，不能乱。\n\n",
+   "teaching_purpose": "建立 IDO 三要素结构与职责先后顺序",
+   "single_message": "IDO 由标识编码、解析记录、对象数据构成；身份在前，寻址其次，内容最后。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S015",
+     "guidance_text": "可识别数字对象的三个要素",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "不是把字段堆在一起：由三个相互配合的要素构成——标识编码、解析记录、对象数据",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "先有身份，才谈得上寻址；有了寻址，才可能取得描述对象的信息。这个顺序不能乱",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R005",
+     "from": "G008",
+     "relation": "要素结构承载先后顺序",
+     "to": "G009",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "白皮书援引只按教材表述，不作版本断言",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握 DO 与 IDO",
+   "exit_condition": "观众能说出三要素名称与先后顺序",
+   "timing": {
+    "char_equivalent": 102.0,
+    "min_seconds": 26,
+    "target_seconds": 27,
+    "max_seconds": 28,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "先说标识编码，它回答\"是谁\"。它是机器、算法以及物理或虚拟资源的身份符号。一台设备也好，一段软件也好，先有个身份符号，别人才知道说的是谁。\n\n再说解析记录，它回答\"到哪里找\"。它提供主机名和 IP 地址之间的映射关系，也登记解析服务器之间的关联。有了身份，就能通过解析记录找到对象在网络里的位置。\n\n剩下的对象数据，回答“它是什么”。它用数据模型来表示对象在生产、制造、使用过程中留下的信息。注意了，真正承载对象描述的，是对象数据以及它的模型。编码和解析记录，都不负责这件事。\n\n所以要点在于，身份、位置、内容，三件事职责不同。编码不是全部数据，解析记录也不是一张属性表。\n\n",
+   "teaching_purpose": "分述三要素的职责，并收束身份、位置、内容的分工",
+   "single_message": "编码回答是谁、解析记录回答到哪里找、对象数据回答它是什么；三者职责不同。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S018",
+     "guidance_text": "三件事，三种职责",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "标识编码回答“是谁”：机器、算法以及物理或虚拟资源的身份符号",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "解析记录回答“到哪里找”：提供主机名和 IP 地址之间的映射关系，也登记解析服务器之间的关联",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "对象数据回答“它是什么”：用数据模型表示对象在生产、制造、使用过程中留下的信息",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "真正承载对象描述的是对象数据以及它的模型；编码和解析记录都不负责这件事",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "身份、位置、内容三件事职责不同：编码不是全部数据，解析记录也不是一张属性表",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G012",
+     "relation": "内容职责由对象数据承载",
+     "to": "G013",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不延伸为具体节点协议、接口字段或地址示例",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握三要素结构",
+   "exit_condition": "观众能分述三要素职责并守住分工边界",
+   "timing": {
+    "char_equivalent": 242.0,
+    "min_seconds": 61,
+    "target_seconds": 63,
+    "max_seconds": 66,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "把这三件事合起来看，就是标识数据模型。它是对可识别数字对象现实世界特征的模拟和抽象，负责梳理数据、理清关联关系、确定组织形式，为这个对象建立一份贯穿生命周期的数字画像。这里说的\"贯穿生命周期\"，是个概念上的说法，意思是画像能跟着对象的一生走，而不是某个时刻的快照。\n\n还有个判断标准值得记住：一个模型好不好，不取决于字段的数量，而取决于不同系统看到的是不是同一个对象、同一套关系。字段堆得再多，系统之间各说各话，这个模型也没有意义。\n\n",
+   "teaching_purpose": "定义标识数据模型的目的与评价标准",
+   "single_message": "IDM 模拟和抽象对象现实特征，建立贯穿生命周期的数字画像；好模型看同一对象是否一致。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S024",
+     "guidance_text": "标识数据模型 IDM",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "对可识别数字对象现实世界特征的模拟和抽象：梳理数据、理清关联关系、确定组织形式",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "为对象建立贯穿生命周期的数字画像：画像能跟着对象的一生走，不是某个时刻的快照",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "一个模型好不好，不取决于字段数量，而取决于不同系统看到的是不是同一个对象、同一套关系",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G015",
+     "relation": "画像目的支撑评价标准",
+     "to": "G016",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不画成数据库结构或系统界面",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已分述三要素",
+   "exit_condition": "观众能说出 IDM 的目的与评价标准",
+   "timing": {
+    "char_equivalent": 194.0,
+    "min_seconds": 49,
+    "target_seconds": 51,
+    "max_seconds": 53,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "接下来走进对象数据内部，看它分成什么。对象数据分成两种：属性数据和事件数据。\n\n属性数据，描述的是对象固有、并且能和其他实体区分开来的特征。它分成三类。第一类叫对象基本数据，描述产品、设备或者软件本身；第二类叫主体数据，说明这个对象属于哪个企业、哪个机构或者哪个自然人；第三类叫位置数据，描述对象的物理位置或者逻辑位置。这里要澄清一个误解：属性是\"固有\"的，但不意味着它是永不变化的静态字段。\n\n",
+   "teaching_purpose": "划分对象数据的属性数据，并展开三类与固有呈现边界",
+   "single_message": "属性数据描述固有且可区分的特征：对象基本、主体、位置三类；固有不等于静态。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S028",
+     "guidance_text": "对象数据之一：属性数据",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "对象数据分成两种：属性数据和事件数据",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "属性数据描述对象固有、并且能和其他实体区分开来的特征",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "对象基本数据：描述产品、设备或者软件本身",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "主体数据：说明对象属于哪个企业、哪个机构或哪个自然人",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "位置数据：描述对象的物理位置或逻辑位置",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "属性是“固有”的，但不意味着它是永不变化的静态字段",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G018",
+     "relation": "属性定义展开三类视角",
+     "to": "G019",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不填具体属性值或表 3-7 示例",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握 IDM 目的",
+   "exit_condition": "观众能说出属性数据的定义、三类与静态误解澄清",
+   "timing": {
+    "char_equivalent": 174.0,
+    "min_seconds": 44,
+    "target_seconds": 45,
+    "max_seconds": 48,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "另一种，叫事件数据。它描述对象的行为、操作，以及它在生产、流通、使用过程中发生的变化。事件数据分成四类。对象事件，描述单个对象自身的状态变化；聚合事件和转化事件，描述两个或以上对象之间的状态变化，比如打包、装配或者一次操作；交易事件，关联流通环节和商业表单的信息。\n\n属性数据和事件数据分工很明确。属性回答的是，对象具有什么特征、属于谁、在哪里；事件回答的是，对象本身或者对象之间发生了什么变化。这两类数据合在一起，才能构成一个可以理解的对象画像。这也正好解释了，为什么模型不可能只是一张静态的属性表，因为对象既有需要描述的特征，也有需要记录的变化。\n\n",
+   "teaching_purpose": "定义事件数据四类，并与属性数据形成画像分工",
+   "single_message": "事件数据记录行为与变化：对象、聚合与转化、交易；两态与事件合起来才是完整画像。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S035",
+     "guidance_text": "对象数据之二：事件数据",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "事件数据描述对象的行为、操作，以及它在生产、流通、使用过程中发生的变化",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "对象事件：单个对象自身的状态变化",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "聚合事件和转化事件：两个或以上对象之间的状态变化，比如打包、装配或一次操作",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "交易事件：关联流通环节和商业表单的信息",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "属性回答对象具有什么特征、属于谁、在哪里；事件回答对象本身或对象之间发生了什么变化",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "这两类数据合在一起，才能构成一个可以理解的对象画像",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R009",
+     "from": "G021",
+     "relation": "事件分类合成分工判断",
+     "to": "G022",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "事件类型以正文列举为准，不声称图示穷尽",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握属性数据",
+   "exit_condition": "观众能说出事件四类与属性/事件分工",
+   "timing": {
+    "char_equivalent": 244.0,
+    "min_seconds": 61,
+    "target_seconds": 64,
+    "max_seconds": 67,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "那一个模型具体是怎么建出来的？建模要从对象需求出发。先确认对象，找出那些能稳定描述对象本身的属性，再为这些属性补足可管理的定义维度。\n\n拿发动机对象来说。产品名称、排量、气缸数量、适用车型、产品编号、燃油类型、特殊功能、生产日期，这些都可以作为对象属性。而生产、装配、流通或使用过程里的状态变化，比如从装配完成到投入运行，这类变化就得用事件来表达。\n\n",
+   "teaching_purpose": "建立从对象需求出发的建模路径，用发动机例展示属性与事件分工",
+   "single_message": "建模从对象需求出发，属性来自能稳定描述对象的信息，状态变化用事件表达。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S042",
+     "guidance_text": "从对象需求出发建模",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "建模要从对象需求出发：先确认对象，找出能稳定描述对象本身的属性",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "发动机属性例：产品名称、排量、气缸数量、适用车型、产品编号、燃油类型、特殊功能、生产日期",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S045",
+        "guidance_text": "生产、装配、流通或使用过程里的状态变化——比如从装配完成到投入运行——这类变化用事件来表达",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R010",
+     "from": "G024",
+     "relation": "属性确定之外补事件表达",
+     "to": "G025",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "只借用属性类别，不展示编号、样例值或工具界面",
+     "evidence_refs": [
+      "E013"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握属性与事件分工",
+   "exit_condition": "观众能说出建模路径与发动机属性/事件例的分工",
+   "timing": {
+    "char_equivalent": 152.0,
+    "min_seconds": 38,
+    "target_seconds": 40,
+    "max_seconds": 42,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A009"
+   ],
+   "nx": "属性选出来之后还没完，还要为每个属性定义元数据。这里有六个维度：中文名称、英文名称、数据类型、最小长度、最大长度、是否必填。英文名称要从小写字母开头，采用组合词的写法；数据类型要和实际取值匹配；长度和必填性，按这个属性的实际情况来定。\n\n做完这一步，属性才算从一句自然语言描述，变成了一致、可管理的数据定义，后面才能被不同的系统共同使用。\n\n",
+   "teaching_purpose": "建立属性元数据的六个定义维度及其意义",
+   "single_message": "六个维度把属性从自然语言描述变成一致、可管理的数据定义。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S046",
+     "guidance_text": "为属性定义元数据",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E011"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S047",
+        "guidance_text": "六个维度：中文名称、英文名称、数据类型、最小长度、最大长度、是否必填",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S048",
+        "guidance_text": "英文名称要从小写字母开头、采用组合词；数据类型要和实际取值匹配；长度和必填性按属性实际情况来定",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S049",
+        "guidance_text": "属性才算从一句自然语言描述，变成一致、可管理的数据定义，后面才能被不同系统共同使用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G026",
+     "relation": "定义维度产出可管理属性",
+     "to": "G027",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "定义维度不得变成某个接口的请求 schema",
+     "evidence_refs": [
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握建模路径与发动机例",
+   "exit_condition": "观众能列出六个定义维度并说出其意义",
+   "timing": {
+    "char_equivalent": 148.0,
+    "min_seconds": 37,
+    "target_seconds": 39,
+    "max_seconds": 41,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A011",
+   "callback_a_ids": [
+    "A005",
+    "A007"
+   ],
+   "nx": "把整条线索串起来看。一个可识别数字对象，要同时回答三件事：由什么身份指向它、在哪里找到它、用哪些属性和事件去理解它。身份负责\"是谁\"，寻址负责\"在哪里\"，对象描述负责\"是什么样、发生过什么\"，而对象描述内部，又被属性和事件一分为二。当这三件事被放在同一条链上，模型就不再是孤立的字段，而是对象在数字空间里可以被共享的一份完整描述。\n\n",
+   "teaching_purpose": "把身份、寻址、对象描述与属性/事件画像串成一条链",
+   "single_message": "身份是谁、寻址在哪里、描述什么样；属性与事件一分为二，模型是可共享的完整描述。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S050",
+     "guidance_text": "一条链上的完整描述",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E012"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S051",
+        "guidance_text": "一个可识别数字对象，要同时回答三件事",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G029",
+      "items": [
+       {
+        "screen_item_id": "S052",
+        "guidance_text": "身份负责“是谁”，寻址负责“在哪里”，对象描述负责“是什么样、发生过什么”",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G030",
+      "items": [
+       {
+        "screen_item_id": "S053",
+        "guidance_text": "对象描述内部，又被属性和事件一分为二",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G031",
+      "items": [
+       {
+        "screen_item_id": "S054",
+        "guidance_text": "当这三件事被放在同一条链上，模型就不再是孤立的字段，而是对象在数字空间里可以被共享的一份完整描述",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G028",
+     "relation": "对象锚点引出三件事",
+     "to": "G029",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R013",
+     "from": "G029",
+     "relation": "三件事内部一分为二",
+     "to": "G030",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C012",
+     "instruction": "不画接口地址或请求调用",
+     "evidence_refs": [
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握三要素、属性与事件、元数据定义",
+   "exit_condition": "观众能把模型各层串成一条链",
+   "timing": {
+    "char_equivalent": 147.0,
+    "min_seconds": 37,
+    "target_seconds": 38,
+    "max_seconds": 41,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A012",
+   "callback_a_ids": [
+    "A001",
+    "A011"
+   ],
+   "nx": "【本期总结】\n回到开头的发动机。今天我们只做了一件事：把\"一个对象怎么变成可识别、可寻址、可描述的数字对象\"讲清楚了。分工是这样的，标识编码确认身份，解析记录找到位置，对象数据描述内容；在对象数据内部，属性刻画对象有什么特征、属于谁、在哪里，事件记录它经历了什么变化。把这几层放在一起看，共同规律就出来了：身份、位置、内容一条链走到底，属性和事件两面凑成画像，这样一个模型，才是不同系统眼里同一个对象的共享描述，而不是一堆字段的简单堆叠。",
+   "teaching_purpose": "回收分工与规律，收束为“一条链、两面画像”的模型结论",
+   "single_message": "身份、位置、内容一条链走到底；属性和事件两面凑成画像，是可共享描述而非字段堆叠。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S055",
+     "guidance_text": "本期总结：一条链，两面画像",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E012"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G032",
+      "items": [
+       {
+        "screen_item_id": "S056",
+        "guidance_text": "标识编码确认身份，解析记录找到位置，对象数据描述内容",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S057",
+        "guidance_text": "属性刻画对象有什么特征、属于谁、在哪里；事件记录它经历了什么变化",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G033",
+      "items": [
+       {
+        "screen_item_id": "S058",
+        "guidance_text": "身份、位置、内容一条链走到底，属性和事件两面凑成画像",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S059",
+        "guidance_text": "这样一个模型，是不同系统眼里同一个对象的共享描述，而不是一堆字段的简单堆叠",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R014",
+     "from": "G032",
+     "relation": "分工回收导出共同规律",
+     "to": "G033",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C013",
+     "instruction": "不预告 OpenAPI 方法、Token 或界面内容",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已走完模型全链",
+   "exit_condition": "观众能复述一条链与两面画像的结论",
+   "timing": {
+    "char_equivalent": 192.0,
+    "min_seconds": 48,
+    "target_seconds": 50,
+    "max_seconds": 53,
+    "short_page_reason": null
+   }
+  }
+ ]
+}

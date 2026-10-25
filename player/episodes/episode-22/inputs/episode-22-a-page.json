@@ -1,0 +1,1333 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-22",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 22 集标题、来源范围、前置关系、相邻边界和合并理由",
+   "source_locator": "已确认课程架构，Episode Architecture 第 21–25 集",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围、去重和时长"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "工业业务数据支撑核心业务运营，产生于研发、生产、供应链等环节，例如订单、BOM、质检记录；通常存储于 ERP/MES，具有强流程关联性",
+   "source_locator": "主教材，3.1.1“2. 工业主数据与主数据管理”首段",
+   "verification_status": "not applicable",
+   "allowed_use": "定义业务数据及其用途"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "工业主数据描述核心业务实体的高价值基准数据，例如物料编码、设备 ID、供应商信息；具有唯一性、稳定性、跨系统共享特性",
+   "source_locator": "主教材，3.1.1“2. 工业主数据与主数据管理”第二段",
+   "verification_status": "not applicable",
+   "allowed_use": "定义主数据和判断维度"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "教材以设备举例：唯一编码与基础属性属于主数据，振动信号属于工业大数据，基于振动分析生成的维修工单属于业务数据",
+   "source_locator": "主教材，3.1.1“如果说工业主数据是‘骨架’”段",
+   "verification_status": "not applicable",
+   "allowed_use": "建立同一对象上的概念对照"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "制造企业的核心主数据可包括物料、BOM、设备、客户、供应商、人员，并在生产、销售、采购等环节共享使用",
+   "source_locator": "主教材，3.1.1“以一家制造企业为例”段",
+   "verification_status": "not applicable",
+   "allowed_use": "说明核心实体与共享范围"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "主数据管理重在一致性、准确性和可靠性，支持业务系统之间同步一致与数据共享利用",
+   "source_locator": "主教材，3.1.1“主数据的管理是确保企业数据可用性的重要手段”段",
+   "verification_status": "not applicable",
+   "allowed_use": "说明区分主数据的业务意义"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "元数据是关于数据或描述数据的数据，描述数据的组织、数据域、关系与上下文，可涉及类型、名称、所属业务域、取值范围、业务规则和来源，而非某条特定实例记录",
+   "source_locator": "主教材，3.1.1“3. 元数据与元数据管理”定义段",
+   "verification_status": "not applicable",
+   "allowed_use": "定义元数据与描述范围"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "元数据具有描述性、共享性、结构化、动态性和多样性；元数据管理包括创建、存储、整合、控制，可帮助明确上下游关系、数据含义和定位",
+   "source_locator": "主教材，3.1.1“综上，元数据的基本特点”及“元数据管理”段",
+   "verification_status": "not applicable",
+   "allowed_use": "说明元数据的作用与管理边界"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "数据字典是数据库中表、字段、数据类型等数据元素的集合，为数据元素提供定义和描述，服务数据库一致性、完整性、设计与维护",
+   "source_locator": "主教材，3.1.1“概念区分：元数据、数据字典”首段",
+   "verification_status": "not applicable",
+   "allowed_use": "定义数据字典"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "元数据关注更广泛的数据领域，数据字典聚焦数据库结构和数据元素；业务数据随业务运转产生和变化，主数据相对稳定并具有唯一识别性",
+   "source_locator": "主教材，3.1.1 两个“概念区分”段",
+   "verification_status": "not applicable",
+   "allowed_use": "建立四概念边界"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "“对象基准—业务事件—数据说明—字段规范”四问判断框架",
+   "source_locator": "本任务包基于 E002–E010 的教学组织",
+   "verification_status": "not applicable",
+   "allowed_use": "组织讲稿、比较图和结论"
+  },
+  {
+   "evidence_id": "E012",
+   "claim_or_asset": "匿名设备维护情境：设备身份、维修工单、字段含义说明和数据库字段规则用于四概念对照",
+   "source_locator": "本任务包教学设计，N001、N005、N011",
+   "verification_status": "not applicable",
+   "allowed_use": "让抽象概念落到同一对象"
+  },
+  {
+   "evidence_id": "E013",
+   "claim_or_asset": "通用工厂设备巡检、业务人员查看维修记录、数据管理人员梳理字段的纪实图片提案",
+   "source_locator": "本任务包媒体规划，M001–M003",
+   "verification_status": "not applicable",
+   "allowed_use": "只承载工作语境，不承担定义或业务结果证据"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "【视频标题】\n主数据、业务数据、元数据与数据字典的边界\n\n【开场导入】\n一台设备出了故障，留下一张维修记录。就这么一张记录，同时牵出四个名词：主数据、业务数据、元数据，还有数据字典。它们说的是同一个东西吗？当然不是。那这张记录到底算哪一种？先别急着下结论。记住一个判断的入口：别管数据躺在哪个系统里，也别管它是不是一张看起来很简单的基础表，先问自己一句，这条数据到底在回答什么问题。\n\n",
+   "teaching_purpose": "呈现本集标题；用一张维修记录牵出四个名词的歧义，给出“先问数据在回答什么”的判断入口",
+   "single_message": "同一张记录牵出四个概念；分类入口不是看存放位置，而是看它在回答什么问题。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "标题：主数据、业务数据、元数据与数据字典的边界",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "一台设备出了故障，留下一张维修记录",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "同一张记录牵出四个名词：主数据、业务数据、元数据、数据字典",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "四个名词说的不是同一个东西；这张记录算哪一种，先不急着下结论",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "判断入口：别看数据躺在哪个系统、是不是基础表，先问它到底在回答什么问题",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "情境引出判断入口",
+     "to": "G002",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "情境不填设备编号、人员、时间、金额或任何真实企业数据",
+     "evidence_refs": [
+      "E012"
+     ]
+    },
+    {
+     "constraint_id": "C002",
+     "instruction": "配图只承载工作语境，不承担定义或业务结果证据",
+     "evidence_refs": [
+      "E013"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，尚未接触四个数据概念",
+   "exit_condition": "观众能说出判断入口：先问数据在回答什么问题",
+   "timing": {
+    "char_equivalent": 164.0,
+    "min_seconds": 41,
+    "target_seconds": 43,
+    "max_seconds": 45,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "【正文讲解】\n我们可以把四个概念想成四个角色，各有一句自己的台词。它是在确认核心业务对象是谁，还是在记录围绕这个对象发生了什么，是在说明这些数据本身是什么意思、从哪里来、怎么关联，还是在规定数据库里的字段应该怎么定义。哪句话对得上，就该从哪个概念去理解这条数据。\n\n",
+   "teaching_purpose": "把四个概念建立为四个角色台词，形成四问判断框架",
+   "single_message": "四个概念各有要回答的问题；哪句台词对得上，就从哪个概念去理解。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S006",
+     "guidance_text": "四个概念，四个角色台词",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E011"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "确认核心业务对象是谁",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "记录围绕这个对象发生了什么",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "说明这些数据本身的意思、来源与关联",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "规定数据库里的字段应该怎么定义",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "哪句台词对得上，就从哪个概念去理解这条数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R002",
+     "from": "G003",
+     "relation": "四问台词对位概念",
+     "to": "G004",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "四问框架是教学组织，不画成行业标准分类体系",
+     "evidence_refs": [
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受“先问数据在回答什么”的判断入口",
+   "exit_condition": "观众能说出四个角色各自回答的问题",
+   "timing": {
+    "char_equivalent": 118.0,
+    "min_seconds": 30,
+    "target_seconds": 31,
+    "max_seconds": 33,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "先看业务数据，更准确地说，是工业业务数据。它是工业业务运转的直接产物。研发、生产、供应链这些环节一路跑下来，自然会留下订单、物料清单、质检记录这类东西。物料清单简单讲，就是一件产品需要哪些原料和零部件、各用多少的一份清单。这类数据和业务流程的关联性很强，业务一动它就有变化，业务不停它就不断产生。它直接支撑业务执行，也给管理决策提供依据。换句话说，业务数据回答的是：事情发生了没有，过程怎么样，结果如何。\n\n",
+   "teaching_purpose": "定义工业业务数据，给出例项、流程关联与用途",
+   "single_message": "业务数据是业务运转的直接产物，随流程产生和变化，回答“发生了什么”。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S012",
+     "guidance_text": "业务数据：流程的直接产物",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "更准确地说，是工业业务数据：工业业务运转的直接产物",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "研发、生产、供应链环节一路跑下来，留下订单、物料清单、质检记录",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "物料清单：一件产品需要哪些原料和零部件、各用多少的清单",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "与业务流程关联性强：业务一动它就有变化，业务不停它就不断产生",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "直接支撑业务执行，给管理决策提供依据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "回答：事情发生了没有，过程怎么样，结果如何",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G006",
+     "relation": "例项支撑特性与用途",
+     "to": "G007",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "订单、BOM 等例项只按教材列举，不展示真实订单或数据值",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握四问框架",
+   "exit_condition": "观众能说出业务数据的定义、例项与其回答的问题",
+   "timing": {
+    "char_equivalent": 179.0,
+    "min_seconds": 45,
+    "target_seconds": 47,
+    "max_seconds": 49,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "再看主数据，工业主数据是这样一类数据：它围绕核心业务实体转。什么叫核心业务实体？就是企业需要反复打交道、反复确认身份的那些对象，物料、设备、客户、供应商、产品、员工，都算。主数据是这些对象的高价值基准数据，相当于关于一个对象的公认基本事实。它有三个关键特性：要能唯一识别，要相对稳定，还要能跨部门、跨系统共享。注意，这个稳定是相对的，不等于说它永远不变。设备参数变了，设备的基准信息照样要跟着改。\n\n",
+   "teaching_purpose": "定义工业主数据，列出核心业务实体并建立三个关键特性",
+   "single_message": "主数据是核心业务实体的高价值基准数据：唯一识别、相对稳定、跨系统共享。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S019",
+     "guidance_text": "主数据：核心业务实体的基准",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "围绕核心业务实体转，是高价值基准数据，相当于关于一个对象的公认基本事实",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "物料、设备、客户、供应商、产品、员工",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "唯一识别",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "相对稳定",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "跨部门、跨系统共享",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "稳定是相对的：设备参数变了，基准信息照样要跟着改",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G009",
+     "relation": "核心实体承载特性判断",
+     "to": "G010",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不使用温湿度作为主数据例项",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    {
+     "constraint_id": "C006",
+     "instruction": "配图只承载同一对象被不同岗位查看的语境，不指向系统或流程结论",
+     "evidence_refs": [
+      "E013"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握业务数据",
+   "exit_condition": "观众能说出主数据的三个特性与“相对稳定”的边界",
+   "timing": {
+    "char_equivalent": 173.0,
+    "min_seconds": 44,
+    "target_seconds": 45,
+    "max_seconds": 48,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "现在把这两类放回那台出了故障的设备上对照。设备自己的唯一编码和基础属性，用来确认它到底是谁，这是主数据。围绕这台设备产生的维修工单，用来记录发生了什么，这是业务数据。设备上的振动信号，属于工业大数据，那又是另一回事了。你看，三类数据可能都跑在设备相关的同一个系统里，但分类的依据不是它们存在哪里，而是各自扮演的角色。同处一个系统，并不等于同一类数据。\n\n",
+   "teaching_purpose": "把两类数据放回同一台故障设备对照，建立“按角色分类”的依据",
+   "single_message": "同一系统里可以同时有主数据、业务数据和工业大数据；分类看角色，不看存放位置。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S026",
+     "guidance_text": "同一台设备上的数据角色",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "设备唯一编码和基础属性——确认它到底是谁：主数据",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "围绕设备产生的维修工单——记录发生了什么：业务数据",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "设备上的振动信号——属于工业大数据，另一回事",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "三类数据可能都跑在设备相关的同一个系统里，但分类依据是各自扮演的角色，不是存在哪里",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "同处一个系统，并不等于同一类数据",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R005",
+     "from": "G011",
+     "relation": "角色对照引出分类依据",
+     "to": "G012",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "对照只提及振动信号的归属，不复述工业大数据的来源与机制",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已分别掌握业务数据与主数据",
+   "exit_condition": "观众能按角色区分同一系统里的三类数据",
+   "timing": {
+    "char_equivalent": 159.0,
+    "min_seconds": 40,
+    "target_seconds": 41,
+    "max_seconds": 44,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "接下来是元数据。元数据有个经典说法，叫关于数据的数据。它不围着某一条具体记录打转，而是说明这些数据本身的意思和上下文。它描述的范围很宽：数据叫什么名字，是什么类型，属于哪个业务域，允许取哪些值，跟其他数据是什么关系，要符合哪些业务规则，数据又从哪儿来。它有五个特点：描述性、共享性、结构化、动态性、多样性。意思是说，它天生就是用来讲别的数据的，可以在不同部门通用，组织方式比较固定，会随数据一起变化，形式也多种多样。围绕元数据做管理，也就是元数据管理，核心动作是创建、存储、整合、控制。它帮我们弄清数据的含义，看清数据从哪来、又要去哪里的上下游关系，也能更准确地定位到要找的数据。\n\n",
+   "teaching_purpose": "定义元数据，展开描述范围、五个特点与管理作用",
+   "single_message": "元数据说明数据本身的意思和上下文；元数据管理帮我们理解、定位并看清上下游。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S032",
+     "guidance_text": "元数据：关于数据的数据",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "不围着某一条具体记录打转，说明这些数据本身的意思和上下文",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "描述范围：数据叫什么名字、是什么类型、属于哪个业务域、允许取哪些值、跟其他数据的关系、要符合的业务规则、数据从哪儿来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "描述性、共享性、结构化、动态性、多样性",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "天生用来讲别的数据；可在不同部门通用；组织方式比较固定；会随数据变化；形式多种多样",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "元数据管理：创建、存储、整合、控制",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "帮我们弄清数据含义，看清上下游关系，更准确地定位要找的数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G014",
+     "relation": "描述范围支撑特点归纳",
+     "to": "G015",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不承诺元数据平台自动完成全部分析",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    {
+     "constraint_id": "C009",
+     "instruction": "配图只承载数据梳理工作语境，不承载字段值或血缘证据",
+     "evidence_refs": [
+      "E013"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握前两个概念",
+   "exit_condition": "观众能说出元数据的描述范围、五个特点与管理作用",
+   "timing": {
+    "char_equivalent": 255.0,
+    "min_seconds": 64,
+    "target_seconds": 67,
+    "max_seconds": 70,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "再看数据字典。数据字典的适用范围在数据库之内。它是关于表、字段、数据类型这些数据元素的集合，为这些元素做定义、给描述。它服务的对象是数据库的一致性和完整性，说白了就是让数据库里的口径保持一致、内容完整不出差错，同时它也为数据库的设计和维护提供依据。你可以把它看作一本可以随时翻查的字段规范手册。它回答的问题很具体：数据库里的表和字段，应该怎么定义。\n\n",
+   "teaching_purpose": "定义数据字典，限定数据库范围并说明其服务对象",
+   "single_message": "数据字典只在数据库范围内，为表、字段、类型等数据元素做定义和描述。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S039",
+     "guidance_text": "数据字典：数据库内的字段规范",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "适用范围在数据库之内",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "关于表、字段、数据类型这些数据元素的集合，为元素做定义、给描述",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "服务数据库的一致性和完整性，为设计和维护提供依据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "一本可以随时翻查的字段规范手册",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "回答：数据库里的表和字段应该怎么定义",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G017",
+     "relation": "范围界定服务对象",
+     "to": "G018",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不显示 SQL、字段值、个人信息或虚构数据库界面",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握元数据",
+   "exit_condition": "观众能说出数据字典的数据库范围与用途",
+   "timing": {
+    "char_equivalent": 159.0,
+    "min_seconds": 40,
+    "target_seconds": 41,
+    "max_seconds": 44,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "元数据和数据字典最容易混在一起，因为两边都常常出现字段名称、字段类型、字段说明。它们的区别在范围。元数据面向更广的数据领域，业务域、来源、关系、规则都归它管；数据字典只看数据库这一块，看数据库的结构和数据元素。数据字典可以承载一部分具体的描述信息，但一张字段表装不下全部的元数据。\n\n",
+   "teaching_purpose": "完成元数据与数据字典的边界比较，建立范围判据",
+   "single_message": "两边都出现字段名称、类型、说明；区别在范围：元数据面向数据领域，数据字典聚焦数据库。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S045",
+     "guidance_text": "元数据与数据字典：范围不同",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S046",
+        "guidance_text": "两边都常出现字段名称、字段类型、字段说明，所以容易混在一起",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S047",
+        "guidance_text": "元数据面向更广的数据领域：业务域、来源、关系、规则都归它管",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S048",
+        "guidance_text": "数据字典只看数据库这一块：数据库的结构和数据元素",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S049",
+        "guidance_text": "数据字典可以承载一部分具体描述信息，但一张字段表装不下全部的元数据",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G019",
+     "relation": "共有描述项引出范围判据",
+     "to": "G020",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R009",
+     "from": "G020",
+     "relation": "范围差异约束承载边界",
+     "to": "G021",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "不宣称元数据与数据字典存在形式化集合关系",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已分别掌握元数据与数据字典",
+   "exit_condition": "观众能说出两者的范围区别与承载边界",
+   "timing": {
+    "char_equivalent": 126.0,
+    "min_seconds": 32,
+    "target_seconds": 33,
+    "max_seconds": 35,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "把四个概念并排摆开。主数据回答对象是谁；业务数据回答对象经历了什么；元数据回答相关数据是什么意思、从哪里来、怎样关联；数据字典回答数据库里的表和字段怎样定义。它们是观察工业数据的四种职责，不是互相替代的几个仓库。\n\n",
+   "teaching_purpose": "把四个概念的判断问题并排摆开，归为四种职责",
+   "single_message": "四问并排：对象是谁、经历了什么、什么意思怎样关联、字段怎样定义。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S050",
+     "guidance_text": "四种职责并排",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E011"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S051",
+        "guidance_text": "主数据回答：对象是谁",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S052",
+        "guidance_text": "业务数据回答：对象经历了什么",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S053",
+        "guidance_text": "元数据回答：相关数据是什么意思、从哪里来、怎样关联",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S054",
+        "guidance_text": "数据字典回答：数据库里的表和字段怎样定义",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S055",
+        "guidance_text": "观察工业数据的四种职责，不是互相替代的几个仓库",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R010",
+     "from": "G022",
+     "relation": "四问并排归为职责",
+     "to": "G023",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C012",
+     "instruction": "不把四个概念画成四个孤立仓库或系统",
+     "evidence_refs": [
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握四个概念及其两两边界",
+   "exit_condition": "观众能并列说出四个概念各自回答的问题",
+   "timing": {
+    "char_equivalent": 97.0,
+    "min_seconds": 25,
+    "target_seconds": 25,
+    "max_seconds": 27,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A009"
+   ],
+   "nx": "再用那台设备的维护情境归位一遍。设备的身份，归主数据；维修工单，归业务数据；对工单里字段含义、来源和业务关系的说明，归元数据；数据库里字段的名称、类型和约束，由数据字典来规定。\n\n这个区分里有三处容易踩偏。存在基础表里的数据不一定是主数据，关键看它是不是在描述核心业务实体、会不会被共享；主数据相对稳定，不等于静止不动；数据字典也不是元数据的全部，它只管数据库这一块，字段长得再像，职责和范围也可能完全不同。\n\n",
+   "teaching_purpose": "把四个概念放回设备维护情境归位，并排除三处常见误判",
+   "single_message": "身份归主数据、事件归业务数据、说明归元数据、规范归数据字典；三处踩偏各有边界。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S056",
+     "guidance_text": "设备情境归位与三处踩偏",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E012"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S057",
+        "guidance_text": "设备的身份归主数据；维修工单归业务数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S058",
+        "guidance_text": "工单里字段含义、来源和业务关系的说明归元数据；数据库字段的名称、类型和约束由数据字典规定",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S059",
+        "guidance_text": "存在基础表里的数据不一定是主数据：关键看它是否描述核心业务实体、会不会被共享",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S060",
+        "guidance_text": "主数据相对稳定，不等于静止不动",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S061",
+        "guidance_text": "数据字典不是元数据的全部：它只管数据库这一块；字段长得再像，职责和范围也可能完全不同",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G024",
+     "relation": "情境归位引出误判边界",
+     "to": "G025",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C013",
+     "instruction": "情境不填设备号、工单号、人员、时间、金额或任何企业值",
+     "evidence_refs": [
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众已并列掌握四问",
+   "exit_condition": "观众能把情境数据归位，并说出三处误判边界",
+   "timing": {
+    "char_equivalent": 181.0,
+    "min_seconds": 46,
+    "target_seconds": 47,
+    "max_seconds": 50,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A011",
+   "callback_a_ids": [
+    "A010"
+   ],
+   "nx": "把这些边界理清楚，管理价值就出来了。主数据管理保障一致性、准确性和可靠性，让不同业务系统能围绕同一个核心对象协同工作。元数据管理帮我们理解含义、定位数据、看清上下游。数据字典给数据库的设计和维护提供具体依据。边界清楚了，后续工作才不会从一口含混的口径出发。\n\n",
+   "teaching_purpose": "说明边界清楚之后的三个管理价值与整体意义",
+   "single_message": "主数据管理保一致可靠，元数据管理帮理解定位，数据字典支撑数据库设计维护。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S062",
+     "guidance_text": "边界清楚之后的管理价值",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S063",
+        "guidance_text": "主数据管理：保障一致性、准确性和可靠性，让不同业务系统围绕同一个核心对象协同工作",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S064",
+        "guidance_text": "元数据管理：理解含义、定位数据、看清上下游",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S065",
+        "guidance_text": "数据字典：给数据库的设计和维护提供具体依据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G029",
+      "items": [
+       {
+        "screen_item_id": "S066",
+        "guidance_text": "边界清楚了，后续工作才不会从一口含混的口径出发",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G028",
+     "relation": "管理作用支撑边界意义",
+     "to": "G029",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C014",
+     "instruction": "不扩展为治理流程、组织或软件产品方案",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握归位与三处误判",
+   "exit_condition": "观众能说出三类管理价值与边界清楚的意义",
+   "timing": {
+    "char_equivalent": 117.0,
+    "min_seconds": 30,
+    "target_seconds": 31,
+    "max_seconds": 32,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A012",
+   "callback_a_ids": [
+    "A001",
+    "A009"
+   ],
+   "nx": "【本期总结】\n回到开头那张维修记录。四个概念在这个小场景里各归其位：身份这件事，交给主数据；发生的事，交给业务数据；数据的意思和来路，交给元数据；数据库里的字段定义，交给数据字典。四者分工各有各要回答的问题，落点却是同一个规律：判断一项工业数据，先别盯它在哪张表，先问它在回答什么。确认对象、记录事件、描述数据、规范字段，四问归位，这四个概念就各得其所。",
+   "teaching_purpose": "回收开场维修记录情境，收束为“先问在回答什么”的四问归位规律",
+   "single_message": "四问归位：确认对象、记录事件、描述数据、规范字段，四个概念各得其所。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S067",
+     "guidance_text": "本期总结：四问归位",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E011"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G030",
+      "items": [
+       {
+        "screen_item_id": "S068",
+        "guidance_text": "回到开头那张维修记录：身份交给主数据、发生的事交给业务数据、意思和来路交给元数据、字段定义交给数据字典",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G031",
+      "items": [
+       {
+        "screen_item_id": "S069",
+        "guidance_text": "判断一项工业数据：先别盯它在哪张表，先问它在回答什么",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S070",
+        "guidance_text": "确认对象、记录事件、描述数据、规范字段，四问归位",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R013",
+     "from": "G030",
+     "relation": "情境回收导出归位规律",
+     "to": "G031",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C015",
+     "instruction": "总结不展开共享制度、数据要素或标识数据模型",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已走过四个概念、两组对照与误判边界",
+   "exit_condition": "观众能复述“先问在回答什么”的归位规律",
+   "timing": {
+    "char_equivalent": 153.0,
+    "min_seconds": 39,
+    "target_seconds": 40,
+    "max_seconds": 42,
+    "short_page_reason": null
+   }
+  }
+ ]
+}

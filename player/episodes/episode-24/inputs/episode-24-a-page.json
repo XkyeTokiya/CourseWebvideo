@@ -1,0 +1,1020 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-24",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 24 集标题、来源范围、前置关系、相邻边界和动态风险",
+   "source_locator": "已确认课程架构，Episode Architecture 第 21–27 集与全局职责规则",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围、去重与时长"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "数据共享是在一定规则或协议下实现不同主体间数据资源互通和共同利用；制造业共享可跨越产线、工厂、企业、产业链与行业",
+   "source_locator": "主教材，3.1.2“1. 数据共享”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "只作第 23 集前提的一句式回顾"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "数据要素是参与社会生产经营并为所有者或使用者带来经济效益的数据资源，涵盖结构化、半结构化和非结构化数据",
+   "source_locator": "主教材，3.1.2“2. 数据要素”第 1 段",
+   "verification_status": "not applicable",
+   "allowed_use": "定义本集对象并说明数据形态不是价值保证"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "教材概括数据要素具有稀缺性、价值性、流动性，并列出基础性、通用性、乘数效应、价值释放等特性",
+   "source_locator": "主教材，3.1.2“2. 数据要素”特性段及四项列表",
+   "verification_status": "not applicable",
+   "allowed_use": "解释为什么“能流动、能组合、能持续利用”重要"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "标识体系通过注册与解析服务支撑对象准确定位、信息获取与交换、互通共享与规范化理解，并有能力边界",
+   "source_locator": "主教材，3.1.2“3. 标识体系与数据要素”与 3.1.3 开头",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "使用稳定机制层：准确定位、信息获取交换、规范化理解"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "标识体系为物理对象和虚拟对象赋予唯一标识，借助解析查询对象网络位置或相关信息，为数据共享与后续模型建立对象基础",
+   "source_locator": "主教材，3.1.3 开头第 1 段",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "辅助解释身份锚点与寻址入口，并限定第 25 集边界"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "一台设备在生产、质量和供应链系统中形成多条记录，需要围绕同一对象关联的通用情境与质量异常回查例",
+   "source_locator": "教学情境，讲稿 N001、N009–N011",
+   "verification_status": "not applicable",
+   "allowed_use": "将抽象机制落到可观察的数据关系"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "“数据资源形态→对象身份→解析寻址→跨环节关联→可流动利用→治理边界”的教学机制链",
+   "source_locator": "本任务包基于 E003–E006 的教学组织",
+   "verification_status": "not applicable",
+   "allowed_use": "组织讲稿与确定性关系图"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "通用工业现场与跨部门数据核对的图片媒体提案",
+   "source_locator": "本任务包媒体规划，M001–M002",
+   "verification_status": "not applicable",
+   "allowed_use": "只承载工业对象、记录分散与协作场景"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "【视频标题】\n数据要素为什么需要标识体系\n\n【开场导入】\n\n数据要被持续利用、持续发挥作用，有一个前提，就是它能共享。共享说的是，在规则和协议之下，数据资源在不同主体之间实现互通和共同利用，范围可以小到一条产线，大到工厂之间、企业之间、产业链上下游。\n\n可共享真正要落地的时候，一件别扭的事就出来了。一台设备，从投入使用起，就会在好几套系统里留下记录。生产系统记着它每天加工多久，质量系统记着它的检测结果，供应链系统记着它用的是什么批次的零部件。数据都采集下来了，各存各的，看起来什么都不缺。可是这几套系统对同一台设备的叫法，不一定对得上。生产系统叫它一号线三号加工中心，质量系统那边用的又是一套编号，供应链还背着另一套批次号。名字对不上，记录就连不起来。\n\n数据是采了不少，可它还不能自然地变成可以跨系统、跨企业利用的数据要素。中间缺的，到底是哪一层？\n\n",
+   "teaching_purpose": "呈现本集标题；用共享前提回顾与设备多系统记录错位暴露对象身份缺口",
+   "single_message": "数据都采集下来了，但同一对象在三套系统里叫法对不上，缺的是身份这一层。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "标题：数据要素为什么需要标识体系",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "共享的前提：在规则和协议下，数据资源在不同主体之间互通和共同利用，范围从产线到产业链上下游",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "一台设备在生产、质量、供应链系统各留记录：加工时长、检测结果、零部件批次",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "三套系统对同一台设备的叫法对不上：生产系统叫一号线三号加工中心，质量系统、供应链又各有编号批次",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "数据采集了不少，还不能自然变成可跨系统、跨企业利用的数据要素",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "中间缺的，到底是哪一层？",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G002",
+     "relation": "记录错位暴露身份缺口",
+     "to": "G003",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "情境不填真实字段、编号数值或企业数据",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    {
+     "constraint_id": "C002",
+     "instruction": "配图只承载对象与记录核对语境，不承担事实证据",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，带着第 23 集的共享条件认知",
+   "exit_condition": "观众能说出主问题：缺的是让记录归属同一对象的那一层",
+   "timing": {
+    "char_equivalent": 330.0,
+    "min_seconds": 83,
+    "target_seconds": 86,
+    "max_seconds": 90,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "【正文讲解】\n\n先把数据要素是什么说清楚。数据要素，是参与社会生产经营活动、能给所有者或使用者带来经济效益的数据资源。它的形态很多样。有结构化数据，比如表格，字段整整齐齐；也有半结构化和非结构化数据，比如日志、文档，没那么规整。\n\n但要记住一点：数据用什么形态放着，只说明它怎么被组织，并不能保证它被人准确理解、关联和使用。数据被采集下来，和它已经成为一个能持续利用的要素，中间还隔着一段距离。\n\n",
+   "teaching_purpose": "定义数据要素与三种形态，并说明形态本身不保证被理解和利用",
+   "single_message": "形态只说明数据怎么被组织；被采集下来，不等于已经成为能持续利用的要素。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S007",
+     "guidance_text": "数据要素是什么",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "参与社会生产经营活动、能给所有者或使用者带来经济效益的数据资源",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "结构化数据：表格，字段整整齐齐",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "半结构化与非结构化数据：日志、文档，没那么规整",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "数据用什么形态放着，只说明它怎么被组织，并不能保证被人准确理解、关联和使用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "数据被采集下来，和它已经成为能持续利用的要素，中间还隔着一段距离",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R002",
+     "from": "G005",
+     "relation": "形态说明不构成价值保证",
+     "to": "G006",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不把所有已采集数据自动称为数据要素",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受主问题",
+   "exit_condition": "观众能说出数据要素定义、三种形态与形态边界",
+   "timing": {
+    "char_equivalent": 171.0,
+    "min_seconds": 43,
+    "target_seconds": 45,
+    "max_seconds": 47,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "数据要素的价值，是在收集、处理、分析和应用的过程中一点点释放出来的。要让价值出得来，数据就不能一直躺在原来那个孤立的记录里，而是要在合适的业务关系中被找到、被组合、被复用。数据要素有几个代表性的特性：稀缺性、价值性、流动性，还有基础性、通用性、乘数效应。乘数效应简单说，就是一份数据能在不同用途里被反复组合使用，每次组合都可能带出新价值。这些特性放在一起，想说明的是同一件事：数据站在能流动、能组合、能持续利用的位置上，价值才释放得出来。这几条特性概括的是价值释放的机制方向，不是估值或者交易收益的计算公式。\n\n",
+   "teaching_purpose": "说明价值释放的过程条件与教材概括的特性",
+   "single_message": "价值在收集、处理、分析和应用中释放；特性概括机制方向，不是收益公式。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S013",
+     "guidance_text": "价值在过程中释放",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "价值在收集、处理、分析和应用的过程中一点点释放",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "数据不能躺在孤立记录里：要在合适的业务关系中被找到、被组合、被复用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "稀缺性、价值性、流动性",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "基础性、通用性、乘数效应",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "乘数效应：一份数据能在不同用途里被反复组合使用，每次组合都可能带出新价值",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "这些特性概括的是价值释放的机制方向，不是估值或交易收益的计算公式",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G008",
+     "relation": "特性支撑释放方向判断",
+     "to": "G009",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不外推为估值、交易或收益数据",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握数据要素定义",
+   "exit_condition": "观众能说出价值释放条件与三个层面的特性",
+   "timing": {
+    "char_equivalent": 227.0,
+    "min_seconds": 57,
+    "target_seconds": 59,
+    "max_seconds": 62,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "那问题来了。数据要跨产线、跨工厂、跨企业地流动，接收的一方得先确认两件事：一条记录说的，是哪台设备、哪件产品？不同系统里的记录，是不是属于同一个对象？\n\n回答数据在说谁，靠的是标识。标识编码，是给一个物理对象或者虚拟对象一个能区分的身份符号，先把数据的对象身份固定下来。要注意，标识不是个容器，它不是把生产、质量、物流这些业务数据全都塞进一串代码里，一串代码承载的只是对象身份。\n\n",
+   "teaching_purpose": "把流动问题收束为对象身份两问，由标识编码回答",
+   "single_message": "跨系统流动先要确认记录说的是谁：标识编码把对象身份固定下来，但它不是数据容器。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S020",
+     "guidance_text": "先确认：记录在说谁",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "一条记录说的，是哪台设备、哪件产品？",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001"
+        ]
+       },
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "不同系统里的记录，是不是属于同一个对象？",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "标识编码：给物理对象或虚拟对象一个能区分的身份符号，先把对象身份固定下来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "标识不是容器：一串代码承载的是对象身份，不是生产、质量、物流的业务数据",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G010",
+     "relation": "身份问题由标识回答",
+     "to": "G011",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "标识不得画成装载业务数据的容器",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解价值释放条件",
+   "exit_condition": "观众能说出标识编码的职责与非容器边界",
+   "timing": {
+    "char_equivalent": 166.0,
+    "min_seconds": 42,
+    "target_seconds": 43,
+    "max_seconds": 46,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "光有身份还不够，还得能顺着身份找到相关信息，这一步交给解析。标识和解析是一组分工：标识回答对象是谁，解析提供查询对象网络位置或者相关信息的入口，回答到哪里去找和它相关的信息。标识注册和解析服务，在机制层面做的是：把对象定位准确，把相关信息取出来，让它在各系统之间交换。跨系统的互通共享、对数据的规范化理解，都建立在这一层能力上。\n\n",
+   "teaching_purpose": "建立解析的寻址入口与注册解析服务的能力链，落到互通共享基础",
+   "single_message": "标识回答对象是谁，解析回答到哪里找：定位、取出、交换，支撑跨系统互通共享。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S025",
+     "guidance_text": "标识与解析的分工",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "解析提供查询对象网络位置或相关信息的入口，回答到哪里去找",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "标识注册和解析服务把对象定位准确，把相关信息取出来，让它在各系统之间交换",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "跨系统的互通共享、对数据的规范化理解，都建立在这一层能力上",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R005",
+     "from": "G013",
+     "relation": "能力链通向互通共享基础",
+     "to": "G014",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不画成具体接口、认证或系统时序",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握标识编码的职责",
+   "exit_condition": "观众能说出解析入口与定位—取出—交换的能力链",
+   "timing": {
+    "char_equivalent": 149.0,
+    "min_seconds": 38,
+    "target_seconds": 39,
+    "max_seconds": 41,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "有了同一个对象身份打底，不同环节的记录就能关联起来了。生产记录、检测结果、零部件批次，这些散在各系统里的数据，不用再靠名称相似、靠人工经验去拼接，只要挂在同一个对象身份上就可以。对象身份成了跨环节关联的锚点，业务的上下文也能保持连续。\n\n这一步一步是有层次的。第一层是能查到，从某个对象出发，能找到跟它相关的记录。再往上，是能连上，不同系统不需要把名称写得一模一样，也能围绕同一个身份建立关系。有了这两层，跨环节的数据交换和复用才有了基础。\n\n",
+   "teaching_purpose": "说明对象身份作为关联锚点，建立能查到、能连上与交换复用基础的能力层次",
+   "single_message": "记录挂在同一个对象身份上就能关联；能查到、能连上，才有交换与复用的基础。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S029",
+     "guidance_text": "围绕同一身份关联记录",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "生产记录、检测结果、零部件批次不用靠名称相似或人工经验拼接：挂在同一个对象身份上",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "对象身份成了跨环节关联的锚点，业务的上下文也能保持连续",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "能查到：从某个对象出发，能找到跟它相关的记录",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "能连上：不同系统不必把名称写得一模一样，也能围绕同一个身份建立关系",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "有了这两层，跨环节的数据交换和复用才有了基础",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G016",
+     "relation": "两层能力通向交换复用目标",
+     "to": "G017",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不把记录关系画成中心数据库吞并业务系统",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解解析能力链",
+   "exit_condition": "观众能说出关联锚点与能查到、能连上的层次",
+   "timing": {
+    "char_equivalent": 197.0,
+    "min_seconds": 50,
+    "target_seconds": 51,
+    "max_seconds": 54,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "举个例子。生产过程中发现一处质量异常，先定位到具体是哪台设备、哪件产品，再顺着这个对象身份，去关联对应的生产记录和批次信息，整个业务上下文就接起来了。这个例子只说明对象之间的关系怎么被保留下来，不是说系统已经自动完成了原因分析、责任判断或者处置决策。\n\n",
+   "teaching_purpose": "用质量异常回查例演示对象级关联，并守住非自动决策的边界",
+   "single_message": "先定位对象，再关联生产记录与批次信息，业务上下文接起来；不等于自动分析判责。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S035",
+     "guidance_text": "一次质量异常的关联回查",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "发现一处质量异常，先定位到具体是哪台设备、哪件产品",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "顺着对象身份关联对应的生产记录和批次信息，整个业务上下文接起来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "例子只说明对象之间的关系怎么被保留下来，不是说系统已经自动完成了原因分析、责任判断或者处置决策",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G018",
+     "relation": "关联基础不等于自动结论",
+     "to": "G019",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不出现检测数值、合格结论或责任归属",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    {
+     "constraint_id": "C009",
+     "instruction": "配图只承载质量与生产协同核对语境，不暗示异常原因或责任归属",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握能力层次",
+   "exit_condition": "观众能复述回查步骤并守住非自动决策边界",
+   "timing": {
+    "char_equivalent": 115.0,
+    "min_seconds": 29,
+    "target_seconds": 30,
+    "max_seconds": 32,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "标识体系也有自己的边界。它没办法把低质量的数据变成高质量的数据。如果记录本身错了、缺了、没有及时更新，身份再清楚也补不回事实。数据格式、语义标准、采集质量、系统互操作，这些各自都需要治理机制。标识体系也不替代授权、安全、权属和流通规则。能定位到数据，不等于任何主体都有权限访问；能关联记录，不等于确权和交易都完成了。标识体系是必要的基础，但不是价值释放的全部条件。\n\n",
+   "teaching_purpose": "明确标识体系在数据质量与制度治理两方面的能力边界",
+   "single_message": "身份清楚补不回事实，也替代不了治理：质量、标准、授权、权属各有各的机制。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S039",
+     "guidance_text": "必要基础，不是全部条件",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "把低质量数据变成高质量数据：记录错、缺、没及时更新，身份再清楚也补不回事实",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "数据格式、语义标准、采集质量、系统互操作，各自需要治理机制",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "不替代授权、安全、权属和流通规则",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "能定位到数据，不等于任何主体都有权限访问",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "能关联记录，不等于确权和交易都完成了",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S045",
+        "guidance_text": "标识体系是必要的基础，但不是价值释放的全部条件",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G020",
+     "relation": "质量边界与制度边界并列",
+     "to": "G021",
+     "direction": "parallel"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不承诺标识体系自动保证质量、互操作、确权或交易",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握关联锚点能力",
+   "exit_condition": "观众能区分标识体系提供的与它不替代的条件",
+   "timing": {
+    "char_equivalent": 162.0,
+    "min_seconds": 41,
+    "target_seconds": 42,
+    "max_seconds": 45,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A001",
+    "A005"
+   ],
+   "nx": "本期总结，我们回到开头那台设备。数据要素为什么需要标识体系，不是因为数据缺一个更醒目的编号，而是因为跨系统、跨环节的利用，必须稳定回答三个问题：数据属于哪个对象？对象的相关信息在哪里？不同环节的记录，怎么围绕同一个对象关联起来？\n\n这组问题，正好对应标识和解析的分工。标识管身份，回答数据在说谁；解析管入口，回答到哪里找相关信息。两者合在一起，让散落在各处的记录围绕同一个对象被找到、被关联，降低的是对象认不准、记录连不上的障碍。这是标识体系补上的那一层基础关系。\n\n但这个基础不是全部。数据质量、语义标准、授权与安全、权属与流通规则，每一项都有自己的治理要求，缺一样，要素的价值都很难落下来。",
+   "teaching_purpose": "以三个问题收束主线，落到标识与解析分工及治理边界",
+   "single_message": "标识管身份、解析管入口，让记录围绕同一对象被找到、被关联；治理条件各有归属。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S046",
+     "guidance_text": "本期总结：三个问题与一层基础",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S047",
+        "guidance_text": "数据属于哪个对象？",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001"
+        ]
+       },
+       {
+        "screen_item_id": "S048",
+        "guidance_text": "对象的相关信息在哪里？",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001"
+        ]
+       },
+       {
+        "screen_item_id": "S049",
+        "guidance_text": "不同环节的记录，怎么围绕同一个对象关联起来？",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S050",
+        "guidance_text": "标识管身份，回答数据在说谁",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S051",
+        "guidance_text": "解析管入口，回答到哪里找相关信息",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S052",
+        "guidance_text": "散落各处的记录围绕同一个对象被找到、被关联，降低对象认不准、记录连不上的障碍",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S053",
+        "guidance_text": "数据质量、语义标准、授权与安全、权属与流通规则，各有自己的治理要求",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S054",
+        "guidance_text": "身份锚点建立之后，才能进一步讨论用数据模型描述对象的属性和事件",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R009",
+     "from": "G023",
+     "relation": "三问由分工回答",
+     "to": "G024",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R010",
+     "from": "G024",
+     "relation": "分工之外留治理边界与去向",
+     "to": "G025",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "不展开第 25 集数据模型的属性与事件设计",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已走过定义、身份、寻址、关联与边界",
+   "exit_condition": "观众能复述三个问题、标识解析分工与治理边界",
+   "timing": {
+    "char_equivalent": 262.0,
+    "min_seconds": 66,
+    "target_seconds": 68,
+    "max_seconds": 72,
+    "short_page_reason": null
+   }
+  }
+ ]
+}
