@@ -243,9 +243,20 @@ player/episodes/episode-42/inputs/ 中：
 【目标】
 由同一 Agent 在当前任务中完成 Player Phase 1、Checkpoint Plan、第 1 章完整实现，并持续根据用户反馈修改至首章验收通过。
 
-【执行依据】
-开始前完整阅读 ${repoRoot}/player/.agents/skills/web-video-presentation/SKILL.md。
-进入 Skill 中的 Phase 1、Checkpoint Plan、handoff 或单章实现时，继续阅读该部分明确指定的必读文件。每次实现或修改首章前，重读 CHAPTER-CRAFT.md、COURSEPLAY-BOUND-MODE.md 和 COURSEPLAY-STATE-MECHANISMS.md。
+【执行依据与上下文】
+首次进入本任务时完整阅读 ${repoRoot}/player/.agents/skills/web-video-presentation/SKILL.md，再按当前阶段读取明确要求的材料。同一上下文内已完整读取且未变化的规则、参考文档和主题不重复读取；新上下文、文件变化或无法确认已读取时才补读。本阶段以此替代引用材料中的“每章/每次修改前全文重读”要求，其余创作与验收约束继续有效。
+单章实现和修改只加载当前 A-page 的 guidance、beats、presentation、当前 outline 章节块、目标代码及必要的首章风格参考。使用现有 compact handoff 或从已验证正式输入提取的等价章节切片，不再次加载整集输入和无关章节。handoff 不替代正式输入 preflight，也不会清除已有会话历史。
+已有且仍适用的用户批准直接沿用。恢复或压缩上下文时仅保留正式产物路径、当前章节、批准依据、有效验证结论和未解决问题，不复制完整工具历史。不要为节省上下文擅自创建新聊天或中断已授权制作。
+
+【工具调用与问题定位】
+同一目标下可安全合并的只读检查合并执行，只返回必要结果；有依赖或需要观察结果才能决定下一步的操作保持顺序。
+浏览器检查以“章节—step—验收项”为单位，工具支持时一次完成导航、等待稳定和截图。截图已提供可视图像时不重复读取同一图片；只返回路径时再读图。按章节集中检查关键状态、受保护文字与关系、显隐时机和终态；发现异常后再扩展覆盖，不机械逐拍截图，也不以抽样替代契约要求的覆盖。
+定位、尺寸、遮挡或布局异常先测量 bounding box、computed style、包含块及当前 step/state，再修改并复验。同一问题连续两次修改未解决时，先补充诊断证据，不继续试探性改样式。
+代码、运行状态及检查依赖未变化且证据仍有效时不重复检查；有变化时按适用契约运行必要验证，只返回失败项和必要摘要。
+
+【审查与范围】
+默认作者自检；独立 reviewer 仅在用户明确要求或具体高风险问题需要独立判断时启用，并说明风险和有界审查范围。此项替代引用材料中默认逐章启动 reviewer 的要求，不取消必要的代码和视觉验证，也不改变已选开发模式。
+修复契约违例、内容错误、布局缺陷和用户反馈；没有明确缺陷或反馈时，不自行增加构图重设计或审美润色轮次。
 
 【第一段：Player 计划】
 1. 在 ${repoRoot}/player 对正式 inputs 执行 Courseplay preflight。
@@ -255,13 +266,13 @@ player/episodes/episode-42/inputs/ 中：
 【第二段：首章制作】
 获得 Checkpoint Plan 确认后：
 1. 写入已确认的主题和开发模式。
-2. 默认不生成 handoff；只有当前任务明确需要压缩或隔离上下文时，才调用现有命令为第 1 个 A-page 生成 compact handoff。
+2. 首章制作使用第 1 个 A-page 的 compact handoff 或从已验证正式输入提取的等价章节切片；按需调用现有 handoff 命令，不重新读取已加载的整集材料。
 3. 综合 guidance、beats 和 presentation 完整实现第 1 章的 TSX、CSS、narrations.ts 和必需素材。
 4. 运行 `pnpm episode:check && pnpm typecheck && pnpm lint`。
 5. 提供预览方式和验收要点，等待用户验收。
 
 【第三段：反馈修改】
-用户提出问题时，由当前同一 Agent 修改最小范围、重跑验证并再次请用户验收。重复该循环，直到用户明确表示首章通过。
+用户提出问题时，先明确修改项和复验项，由当前同一 Agent 修改最小范围。只检查本次修改及依赖影响，保留仍有效的既有验证结果，按适用契约运行必要检查；未涉及的已通过部分不主动重新设计。报告本轮修改、复验证据和待用户判断项，等待验收；直到用户明确通过，随后结束首章修改，不自行开启下一轮优化。
 
 【必须产物】
 - player/episodes/episode-42/script.md
@@ -278,7 +289,7 @@ player/episodes/episode-42/inputs/ 中：
 - 验证命令通过，改动已 push 到 ${episodeBranch}。
 
 【本阶段不做】
-不执行 audio:extract、TTS、录屏或后期。
+不执行 audio:extract、TTS、录屏或后期。不得以文本对账或验收为理由进入这些流程；需要核对口播时直接比较批准文本、script Beat 与 narrations.ts。本阶段音频排除项优先于引用材料中 narrations.ts 修改后运行 audio:extract 的通用要求。
 ```
 
 ---
@@ -294,13 +305,24 @@ player/episodes/episode-42/inputs/ 中：
 【目标】
 以已验收首章为当期代码模式参考，按 Checkpoint Plan 确认的开发模式完成剩余章节并结清验收。
 
-【执行依据】
-开始前完整阅读 ${repoRoot}/player/.agents/skills/web-video-presentation/SKILL.md。
-每次实现或修改一章前，按 Skill 阅读 CHAPTER-CRAFT.md、COURSEPLAY-BOUND-MODE.md、COURSEPLAY-STATE-MECHANISMS.md、当前主题和当前章输入。
+【执行依据与上下文】
+首次进入本任务时完整阅读 ${repoRoot}/player/.agents/skills/web-video-presentation/SKILL.md，再按当前阶段读取明确要求的材料。同一上下文内已完整读取且未变化的规则、参考文档和主题不重复读取；新上下文、文件变化或无法确认已读取时才补读。本阶段以此替代引用材料中的“每章/每次修改前全文重读”要求，其余创作与验收约束继续有效。
+单章实现和修改只加载当前 A-page 的 guidance、beats、presentation、当前 outline 章节块、目标代码及必要的首章风格参考。使用现有 compact handoff 或从已验证正式输入提取的等价章节切片，不再次加载整集输入和无关章节。handoff 不替代正式输入 preflight，也不会清除已有会话历史。
+已有且仍适用的用户批准直接沿用。恢复或压缩上下文时仅保留正式产物路径、当前章节、批准依据、有效验证结论和未解决问题，不复制完整工具历史。不要为节省上下文擅自创建新聊天或中断已授权制作。
+
+【工具调用与问题定位】
+同一目标下可安全合并的只读检查合并执行，只返回必要结果；有依赖或需要观察结果才能决定下一步的操作保持顺序。
+浏览器检查以“章节—step—验收项”为单位，工具支持时一次完成导航、等待稳定和截图。截图已提供可视图像时不重复读取同一图片；只返回路径时再读图。按章节集中检查关键状态、受保护文字与关系、显隐时机和终态；发现异常后再扩展覆盖，不机械逐拍截图，也不以抽样替代契约要求的覆盖。
+定位、尺寸、遮挡或布局异常先测量 bounding box、computed style、包含块及当前 step/state，再修改并复验。同一问题连续两次修改未解决时，先补充诊断证据，不继续试探性改样式。
+代码、运行状态及检查依赖未变化且证据仍有效时不重复检查；有变化时按适用契约运行必要验证，只返回失败项和必要摘要。
+
+【审查与范围】
+默认作者自检；独立 reviewer 仅在用户明确要求或具体高风险问题需要独立判断时启用，并说明风险和有界审查范围。此项替代引用材料中默认逐章启动 reviewer 的要求，不取消必要的代码和视觉验证，也不改变已选开发模式。
+修复契约违例、内容错误、布局缺陷和用户反馈；没有明确缺陷或反馈时，不自行增加构图重设计或审美润色轮次。
 
 【需要完成】
 1. 确认首章已通过用户验收，读取 Checkpoint Plan 选定的 A/B/C 模式。
-2. 按该模式逐章获取当前章输入，实现 TSX、CSS、narrations.ts 和必需素材。
+2. 按该模式逐章获取当前章输入，实现 TSX、CSS、narrations.ts 和必需素材。每章实现与必要自检完成后记录简短结论，再进入下一章；浏览器按章节集中检查并修复，修复后只复验受影响状态和必要的相邻状态，避免跨章反复跳转截图。
 3. 每章完成后运行 `pnpm episode:check && pnpm typecheck && pnpm lint`，先修复失败再继续。
 4. 按 A/B/C 模式完成逐章或整体验收，并对用户反馈做最小范围修改。
 5. 完成后确认 entry.tsx 章节注册、project.json 状态和全集代码验证。
@@ -318,5 +340,5 @@ player/episodes/episode-42/inputs/ 中：
 - ${episodeBranch} 到 main 的 PR 已创建或更新。
 
 【本阶段不做】
-不执行 audio:extract、TTS、录屏或后期。
+不执行 audio:extract、TTS、录屏或后期。不得以文本对账或验收为理由进入这些流程；需要核对口播时直接比较批准文本、script Beat 与 narrations.ts。本阶段音频排除项优先于引用材料中 narrations.ts 修改后运行 audio:extract 的通用要求。
 ```

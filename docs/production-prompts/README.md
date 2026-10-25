@@ -1,6 +1,8 @@
 # 待制作 EP 生产提示词索引
 
-基准：[production-stage-prompts.md](../production-stage-prompts.md)。生成日期：2026-09-30。
+基准：[production-stage-prompts.md](../production-stage-prompts.md)。生成日期：2026-09-30。阶段 12/17 执行约束同步更新：2026-10-13。
+
+阶段 12/17 已加入规则复用、单章上下文、浏览器批量检查、先测量后修改、按影响复验和音频排除要求。建议由用户分别在独立会话执行这两个阶段，通过正式产物和批准依据衔接；handoff 不会清除旧会话历史。当前目录是静态副本，修改总模板后须同步全部单集对应阶段。
 
 本批共 32 集：EP18–34、EP37–51。筛选依据为 `player/episodes/<episode-id>/project.json` 的 `status=planned`，并核对正式 inputs、script.md、outline.md 和 src/ 尚不存在；EP01–17、EP35–36 已有制作产物，不纳入本批。上游进度台账跟踪任务包验证，不用于判断 Player 是否已经制作。
 
