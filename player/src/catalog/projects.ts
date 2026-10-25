@@ -10,6 +10,26 @@ const entryModules = import.meta.glob<EpisodeModule>(
   "../../episodes/episode-*/src/entry.tsx",
 );
 
+const loadedEpisodes = new Map<string, EpisodeModule>();
+const pendingEpisodes = new Map<string, Promise<EpisodeModule>>();
+
+export function getLoadedEpisode(id: string): EpisodeModule | null {
+  return loadedEpisodes.get(id) ?? null;
+}
+
+function loadEpisode(id: string, loader: () => Promise<EpisodeModule>): Promise<EpisodeModule> {
+  const loaded = loadedEpisodes.get(id);
+  if (loaded) return Promise.resolve(loaded);
+  const pending = pendingEpisodes.get(id);
+  if (pending) return pending;
+  const request = loader().then((module) => {
+    loadedEpisodes.set(id, module);
+    return module;
+  }).finally(() => pendingEpisodes.delete(id));
+  pendingEpisodes.set(id, request);
+  return request;
+}
+
 function parseProject(raw: unknown, source: string): EpisodeProject {
   let project: unknown = raw;
   if (typeof raw === "string") {
@@ -51,7 +71,7 @@ export const EPISODES: EpisodeCatalogEntry[] = Object.entries(projectModules)
     return {
       project,
       load: loader
-        ? async () => await loader()
+        ? () => loadEpisode(project.id, loader)
         : async () => {
             throw new Error(`实例 ${project.id} 尚未提供 src/entry.tsx`);
           },
@@ -61,4 +81,12 @@ export const EPISODES: EpisodeCatalogEntry[] = Object.entries(projectModules)
 
 export function findEpisode(id: string): EpisodeCatalogEntry | undefined {
   return EPISODES.find((entry) => entry.project.id === id);
+}
+
+export function preloadEpisode(id: string): void {
+  const entry = findEpisode(id);
+  if (entry && entry.project.status !== "planned") {
+    // Preloading is opportunistic; a failed request can retry when opened.
+    void entry.load().catch(() => {});
+  }
 }
