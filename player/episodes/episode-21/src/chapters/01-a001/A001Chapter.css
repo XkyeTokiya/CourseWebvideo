@@ -1,0 +1,437 @@
+/* 01-opening-question · 标题与开场问题页 —— bq- 前缀，本章节专用
+   mechanism: anchor-and-context · S-A001 · time-anchor-opening
+   左 SVG 演示 + 右文侧轨；四个 narration step 只做局部推进，不整体重排。
+   颜色与字体家族全部走主题 token；性格由 primitive class（.card）接入。 */
+
+.bq-scene {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── 标题区：step 1 建立，随后保持 ── */
+.bq-head {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  column-gap: 36px;
+}
+
+.bq-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 86px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  color: var(--theme-structural);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.bq-headline em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.bq-scene .bq-headline {
+  animation: bq-rise 620ms var(--ease-soft) 120ms both;
+}
+
+@keyframes bq-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.bq-head-rule {
+  height: 6px;
+  width: 200px;
+  background: var(--theme-structural);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.bq-scene .bq-head-rule {
+  animation: bq-rule-grow 520ms var(--ease-soft) 260ms both;
+}
+
+@keyframes bq-rule-grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ── 主区：左演示 56% + 右文侧 ── */
+.bq-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 56% 1fr;
+  gap: 52px;
+  margin-top: 40px;
+}
+
+/* 左卡：SVG 演示 + 占位条 */
+.bq-scene-card {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 26px 18px;
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.bq-scene-card.is-on {
+  animation: bq-in 640ms var(--ease-overshoot) 200ms both;
+}
+
+@keyframes bq-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.bq-svg {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+}
+
+/* 汇合节点：同一工业对象 */
+.bq-node rect {
+  fill: var(--theme-cool-surface);
+  stroke: var(--theme-structural);
+  stroke-width: 3;
+}
+
+.bq-node text {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 800;
+  fill: var(--theme-structural);
+}
+
+/* 源框：设备侧工业绿，系统侧陶土橙 */
+.bq-source rect {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-process);
+  stroke-width: 3;
+}
+
+.bq-source--system rect {
+  fill: var(--theme-warning-surface);
+  stroke: var(--theme-warning);
+}
+
+.bq-source text {
+  font-family: var(--font-body);
+  font-size: 26px;
+  font-weight: 700;
+  fill: var(--theme-structural);
+}
+
+.bq-source {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.bq-source.is-on {
+  animation: bq-in 560ms var(--ease-overshoot) both;
+}
+
+/* 流线：自下而上生长，脉冲光点沿线循环 */
+.bq-line path {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 3;
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+}
+
+.bq-source--system .bq-line path {
+  stroke: var(--theme-warning);
+}
+
+.bq-source.is-on .bq-line path {
+  animation: bq-draw 700ms var(--ease-soft) both,
+    bq-flow 2.6s linear 900ms infinite;
+}
+
+.bq-source--device.is-on .bq-line:nth-of-type(1) path { animation-delay: 320ms, 1020ms; }
+.bq-source--device.is-on .bq-line:nth-of-type(2) path { animation-delay: 460ms, 1160ms; }
+.bq-source--device.is-on .bq-line:nth-of-type(3) path { animation-delay: 600ms, 1300ms; }
+.bq-source--system.is-on .bq-line:nth-of-type(1) path { animation-delay: 320ms, 1020ms; }
+.bq-source--system.is-on .bq-line:nth-of-type(2) path { animation-delay: 460ms, 1160ms; }
+.bq-source--system.is-on .bq-line:nth-of-type(3) path { animation-delay: 600ms, 1300ms; }
+
+@keyframes bq-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* 行进虚线：dashoffset 周期推进，示意"一直在出数据" */
+@keyframes bq-flow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -36;
+  }
+}
+
+.bq-line text {
+  font-family: var(--font-body);
+  font-size: 21px;
+  fill: var(--text-2);
+  opacity: 0;
+}
+
+.bq-source.is-on .bq-line text {
+  animation: bq-fade 420ms var(--ease-soft) 720ms both;
+}
+
+@keyframes bq-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 记录堆积：step 3 逐层堆上 */
+.bq-pile {
+  opacity: 0;
+}
+
+.bq-pile.is-on {
+  opacity: 1;
+}
+
+.bq-pile-layer {
+  fill: var(--theme-cool-surface);
+  stroke: var(--theme-structural);
+  stroke-width: 2.5;
+  opacity: 0;
+}
+
+.bq-pile.is-on .bq-pile-layer {
+  animation: bq-stack 460ms var(--ease-overshoot) both;
+  animation-delay: calc(var(--bq-i) * 200ms);
+}
+
+@keyframes bq-stack {
+  from {
+    opacity: 0;
+    transform: translateY(-26px) scale(0.9);
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.bq-pile-plus {
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 700;
+  fill: var(--theme-warning);
+  opacity: 0;
+}
+
+.bq-pile.is-on .bq-pile-plus {
+  animation: bq-fade 480ms var(--ease-soft) 1.3s both;
+}
+
+/* M001 占位条：按 16:9 比例留位，承认缺不伪造 */
+.bq-media-slot {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 18px;
+  margin-top: 16px;
+  padding: 14px 20px;
+  border: 2px dashed var(--theme-dashed-line);
+  background: var(--theme-paper);
+}
+
+.bq-media-tag {
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.bq-media-desc {
+  font-size: 24px;
+  color: var(--text-faint);
+}
+
+/* ── 右轨：两条流带卡 + 汇流句 + 累积判断 ── */
+.bq-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 0;
+}
+
+.bq-streamcard {
+  padding: 24px 28px 20px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.bq-streamcard.is-on {
+  animation: bq-in 560ms var(--ease-overshoot) both;
+}
+
+.bq-streamcard[data-tone="device"] {
+  border-left: 10px solid var(--theme-process);
+}
+
+.bq-streamcard[data-tone="system"] {
+  border-left: 10px solid var(--theme-warning);
+}
+
+.bq-stream-title {
+  margin: 0 0 10px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-mute);
+}
+
+.bq-stream-line {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--theme-structural);
+}
+
+/* 汇流句：step 2 落位 */
+.bq-flow {
+  margin-top: auto;
+  position: relative;
+  padding: 22px 0 0;
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.bq-flow.is-on {
+  animation: bq-rise 560ms var(--ease-soft) both;
+}
+
+.bq-flow-mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 6px;
+  background: var(--theme-structural);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.bq-flow.is-on .bq-flow-mark {
+  animation: bq-rule-grow 480ms var(--ease-soft) 160ms both;
+}
+
+.bq-flow-line {
+  margin: 0;
+  font-size: 29px;
+  line-height: 1.5;
+  color: var(--text-2);
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.bq-flow-line strong {
+  color: var(--theme-structural);
+}
+
+/* 累积判断：step 3 落位成为焦点 */
+.bq-accum {
+  margin: 0;
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--theme-process);
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.bq-accum.is-on {
+  animation: bq-rise 520ms var(--ease-overshoot) both;
+}
+
+/* step 3/4：汇流句让位于累积判断 */
+.bq-scene[data-state="data-accumulating"] .bq-flow-line,
+.bq-scene[data-state="value-question-open"] .bq-flow-line {
+  opacity: 0.4;
+}
+
+/* ── 问题收束 plate：step 4 升起，前区整体退后 ── */
+.bq-plate {
+  flex: 0 0 auto;
+  margin-top: 34px;
+  padding: 30px 40px;
+  border: 2px solid var(--theme-structural);
+  background: var(--surface-2);
+  box-shadow: 0 0 0 3px var(--theme-structural), 7px 8px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+.bq-plate.is-on {
+  animation: bq-in 620ms var(--ease-overshoot) both;
+}
+
+.bq-plate-challenge {
+  margin: 0 0 10px;
+  font-size: 33px;
+  font-weight: 700;
+  color: var(--theme-warning);
+}
+
+.bq-plate-challenge strong {
+  font-weight: 900;
+  color: var(--theme-danger);
+}
+
+.bq-plate-line {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.42;
+  color: var(--theme-structural);
+}
+
+.bq-plate-line strong {
+  color: var(--theme-process);
+}
+
+/* step 4：文侧轨道与汇流退后，问题 plate 独占判断 */
+.bq-scene[data-state="value-question-open"] .bq-rail {
+  opacity: 0.38;
+  filter: grayscale(0.5);
+  transition: opacity 520ms var(--ease-soft), filter 520ms var(--ease-soft);
+}
+
+.bq-scene[data-state="value-question-open"] .bq-scene-card {
+  opacity: 0.62;
+  filter: saturate(0.7);
+  transition: opacity 520ms var(--ease-soft), filter 520ms var(--ease-soft);
+}
