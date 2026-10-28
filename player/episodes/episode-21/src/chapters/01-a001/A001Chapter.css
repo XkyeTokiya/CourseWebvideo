@@ -1,44 +1,511 @@
-/* 01-opening-question · 标题与开场问题页 —— bq- 前缀，本章节专用
-   mechanism: anchor-and-context · S-A001 · time-anchor-opening
-   左 SVG 演示 + 右文侧轨；四个 narration step 只做局部推进，不整体重排。
-   颜色与字体家族全部走主题 token；性格由 primitive class（.card）接入。 */
+/* opening-question · A001 time-anchor-opening（outline §1）
+   mechanism: anchor-and-context — M001 现场图持续作锚点，SVG 双源流线
+   汇入"同一工业对象"，记录层随累积判断堆上，问题 plate 收束。
+   prefix: op- */
 
-.bq-scene {
+.op-scene {
+  gap: 22px;
+}
+
+/* ── 标题区：本集标题（S001），进章即落位 ─────────────────── */
+
+.op-head {
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
-/* ── 标题区：step 1 建立，随后保持 ── */
-.bq-head {
-  flex: 0 0 auto;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: baseline;
-  column-gap: 36px;
-}
-
-.bq-headline {
+.op-headline {
   margin: 0;
   font-family: var(--font-display-cn);
-  font-size: 86px;
+  font-size: 54px;
   font-weight: 900;
-  letter-spacing: 0.02em;
-  line-height: 1.15;
-  color: var(--theme-structural);
-  opacity: 0;
-  transform: translateY(20px);
+  color: var(--text);
+  animation: op-rise 560ms var(--ease-soft) backwards;
 }
 
-.bq-headline em {
+.op-headline em {
   font-style: normal;
+  color: var(--accent);
+}
+
+.op-head-rule {
+  transform-origin: left center;
+  animation: op-grow 720ms var(--ease-soft) 220ms backwards;
+}
+
+/* ── 主区：左 = 现场图锚点 + 现场状态；右 = 双源汇流演示 ── */
+
+.op-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 620px 1fr;
+  gap: 48px;
+  align-items: stretch;
+  transition: opacity 560ms var(--ease-soft), filter 560ms var(--ease-soft);
+}
+
+.is-question .op-main {
+  opacity: 0.45;
+  filter: grayscale(0.4);
+}
+
+.op-side {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* 现场图（M001 占位，持续锚点） */
+
+.op-media {
+  flex: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 3px solid var(--text);
+  animation: op-rise 620ms var(--ease-soft) 140ms backwards;
+}
+
+.op-media-shot {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.op-media-cap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  border-top: 2px dashed var(--rule);
+}
+
+.op-media-cap > span:first-child {
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.op-media-missing {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+/* 现场状态：提问句保留不展开，持续记录标签慢脉冲 */
+
+.op-live {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 30px;
+  animation: op-rise 620ms var(--ease-soft) 260ms backwards;
+}
+
+.op-live-line {
+  margin: 0;
+  font-size: 31px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.op-live-q {
+  margin: 8px 0 0;
+  font-size: 25px;
+  color: var(--text-2);
+}
+
+.op-live-tag {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border: 2px solid var(--theme-process);
+  border-radius: 10px;
+  background: var(--theme-process-surface);
+  font-family: var(--font-mono);
+  font-size: 21px;
+  font-weight: 700;
   color: var(--theme-process);
 }
 
-.bq-scene .bq-headline {
-  animation: bq-rise 620ms var(--ease-soft) 120ms both;
+.op-pulse {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--theme-process);
+  animation: op-pulse 2.4s ease-in-out infinite;
 }
 
-@keyframes bq-rise {
+/* ── SVG 演示：双源 → 同一工业对象 → 记录堆积 ────────────── */
+
+.op-stage {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.op-svg {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+.op-svg text {
+  font-family: var(--font-body);
+  fill: var(--text);
+}
+
+/* 源板块 */
+
+.op-plate {
+  fill: var(--surface-2);
+  stroke: var(--text);
+  stroke-width: 2.5;
+}
+
+.op-plate-shadow {
+  fill: var(--theme-offset-shadow);
+}
+
+.op-src-title {
+  font-size: 38px;
+  font-weight: 900;
+}
+
+.op-src-b .op-src-title {
+  font-size: 34px;
+}
+
+.op-src-a {
+  animation: op-fade 520ms var(--ease-soft) 240ms both;
+}
+
+.op-src-b {
+  opacity: 0;
+}
+
+.is-system .op-src-b {
+  animation: op-fade 480ms var(--ease-soft) 300ms both;
+}
+
+.op-src-b-ghost rect {
+  fill: none;
+  stroke: var(--rule);
+  stroke-width: 2;
+  stroke-dasharray: 8 7;
+}
+
+.op-src-b-ghost text {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.22em;
+  fill: var(--text-faint);
+}
+
+.op-src-b-ghost {
+  transition: opacity 320ms var(--ease-soft);
+}
+
+.is-system .op-src-b-ghost {
+  opacity: 0;
+}
+
+/* 信号小片：设备侧（process 绿）/ 系统与外部侧（warning 陶土） */
+
+.op-chip rect {
+  stroke-width: 2;
+}
+
+.op-chip--a rect {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-process);
+}
+
+.op-chip--a text {
+  font-size: 23px;
+  font-weight: 700;
+  fill: var(--theme-process);
+}
+
+.op-chip--b rect {
+  fill: var(--theme-warning-surface);
+  stroke: var(--theme-warning);
+}
+
+.op-chip--b text {
+  font-size: 23px;
+  font-weight: 700;
+  fill: var(--theme-warning);
+}
+
+.op-chip {
+  opacity: 0;
+}
+
+.is-signals .op-chip--a {
+  animation: op-fade 380ms var(--ease-soft) both;
+  animation-delay: calc(320ms + var(--op-i) * 220ms);
+}
+
+.is-system .op-chip--b {
+  animation: op-fade 380ms var(--ease-soft) both;
+  animation-delay: calc(620ms + var(--op-i) * 200ms);
+}
+
+/* 流线：底线画线生长，流色虚线持续流动 */
+
+.op-stream-base {
+  fill: none;
+  stroke: var(--rule);
+  stroke-width: 3;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.op-stream-a-base {
+  animation: op-draw 760ms var(--ease-soft) 820ms forwards;
+}
+
+.op-stream-b-base {
+  opacity: 0;
+}
+
+.is-system .op-stream-b-base {
+  opacity: 1;
+  animation: op-draw 780ms var(--ease-soft) 900ms forwards;
+}
+
+.op-stream-flow {
+  fill: none;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-dasharray: 13 11;
+  opacity: 0;
+}
+
+.op-stream-a-flow {
+  stroke: var(--theme-process);
+  animation: op-fade 400ms var(--ease-soft) 1500ms forwards,
+    op-flow 1.15s linear 1500ms infinite;
+}
+
+.op-stream-b-flow {
+  stroke: var(--theme-warning);
+}
+
+.is-system .op-stream-b-flow {
+  animation: op-fade 400ms var(--ease-soft) 1750ms forwards,
+    op-flow 1.15s linear 1750ms infinite;
+}
+
+/* 汇流节点：同一工业对象 */
+
+.op-node {
+  animation: op-fade 500ms var(--ease-soft) 600ms both;
+}
+
+.op-node-plate {
+  fill: var(--text);
+}
+
+.op-node-shadow {
+  fill: var(--theme-offset-shadow);
+}
+
+.op-node-label {
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+
+.op-svg .op-node-label {
+  fill: var(--surface-2);
+}
+
+/* 记录堆积层：累积判断聚焦时逐层堆上 */
+
+.op-pile rect {
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+
+.op-pile rect:nth-of-type(odd) {
+  fill: var(--theme-process-surface);
+}
+
+.op-pile rect:nth-of-type(even) {
+  fill: var(--theme-cool-surface);
+}
+
+.op-pile-cap {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  fill: var(--text-mute);
+}
+
+.op-pile-cap,
+.op-pile-layer {
+  opacity: 0;
+}
+
+.is-system .op-pile-cap {
+  animation: op-fade 400ms var(--ease-soft) 4600ms both;
+}
+
+.is-system .op-pile-layer {
+  animation: op-fade 420ms var(--ease-soft) both;
+  animation-delay: calc(4900ms + var(--op-i) * 400ms);
+}
+
+/* ── 汇流说明区：说明行先落，"越来越多了"聚焦为累积标记 ── */
+
+.op-confluence {
+  flex: none;
+  min-height: 118px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.op-confluence-line {
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.5;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.is-system .op-confluence-line {
+  animation: op-fade 460ms var(--ease-soft) 3000ms both;
+}
+
+.op-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--accent);
+  opacity: 0;
+}
+
+.is-system .op-hero {
+  animation: op-stamp 560ms var(--ease-overshoot) 7800ms both;
+}
+
+/* ── 问题收束区：ghost 槽位常驻，末拍 plate 落位 ─────────── */
+
+.op-question {
+  flex: none;
+  position: relative;
+  height: 148px;
+}
+
+.op-question-ghost {
+  margin: 0;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.24em;
+  color: var(--text-faint);
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-question .op-question-ghost {
+  opacity: 0;
+}
+
+.op-question-plate {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 660px;
+  gap: 40px;
+  align-items: center;
+  padding: 0 44px;
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.is-question .op-question-plate {
+  animation: op-plate-in 560ms var(--ease-soft) 180ms both;
+}
+
+.op-question-kicker {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+}
+
+.op-question-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.op-neq {
+  font-size: 46px;
+  padding: 0 8px;
+  color: var(--theme-danger);
+}
+
+.op-question-asks {
+  border-left: 3px dashed var(--rule);
+  padding-left: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.op-ask {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text);
+  opacity: 0;
+}
+
+.is-question .op-ask {
+  animation: op-rise 480ms var(--ease-soft) both;
+}
+
+.is-question .op-ask:nth-child(1) {
+  animation-delay: 620ms;
+}
+
+.is-question .op-ask:nth-child(2) {
+  animation-delay: 1000ms;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes op-rise {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -49,51 +516,40 @@
   }
 }
 
-.bq-head-rule {
-  height: 6px;
-  width: 200px;
-  background: var(--theme-structural);
-  transform: scaleX(0);
-  transform-origin: left center;
+@keyframes op-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.bq-scene .bq-head-rule {
-  animation: bq-rule-grow 520ms var(--ease-soft) 260ms both;
-}
-
-@keyframes bq-rule-grow {
+@keyframes op-grow {
+  from {
+    transform: scaleX(0);
+  }
   to {
     transform: scaleX(1);
   }
 }
 
-/* ── 主区：左演示 56% + 右文侧 ── */
-.bq-main {
-  flex: 1 1 auto;
-  min-height: 0;
-  display: grid;
-  grid-template-columns: 56% 1fr;
-  gap: 52px;
-  margin-top: 40px;
+@keyframes op-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
-/* 左卡：SVG 演示 + 占位条 */
-.bq-scene-card {
-  display: flex;
-  flex-direction: column;
-  padding: 22px 26px 18px;
-  opacity: 0;
-  transform: translateY(24px);
+@keyframes op-flow {
+  to {
+    stroke-dashoffset: -24;
+  }
 }
 
-.bq-scene-card.is-on {
-  animation: bq-in 640ms var(--ease-overshoot) 200ms both;
-}
-
-@keyframes bq-in {
+@keyframes op-stamp {
   from {
     opacity: 0;
-    transform: translateY(24px) scale(0.94);
+    transform: scale(1.28);
   }
   to {
     opacity: 1;
@@ -101,142 +557,10 @@
   }
 }
 
-.bq-svg {
-  flex: 1 1 auto;
-  width: 100%;
-  min-height: 0;
-}
-
-/* 汇合节点：同一工业对象 */
-.bq-node rect {
-  fill: var(--theme-cool-surface);
-  stroke: var(--theme-structural);
-  stroke-width: 3;
-}
-
-.bq-node text {
-  font-family: var(--font-display-cn);
-  font-size: 30px;
-  font-weight: 800;
-  fill: var(--theme-structural);
-}
-
-/* 源框：设备侧工业绿，系统侧陶土橙 */
-.bq-source rect {
-  fill: var(--theme-process-surface);
-  stroke: var(--theme-process);
-  stroke-width: 3;
-}
-
-.bq-source--system rect {
-  fill: var(--theme-warning-surface);
-  stroke: var(--theme-warning);
-}
-
-.bq-source text {
-  font-family: var(--font-body);
-  font-size: 26px;
-  font-weight: 700;
-  fill: var(--theme-structural);
-}
-
-.bq-source {
-  opacity: 0;
-  transform: translateY(18px);
-}
-
-.bq-source.is-on {
-  animation: bq-in 560ms var(--ease-overshoot) both;
-}
-
-/* 流线：自下而上生长，脉冲光点沿线循环 */
-.bq-line path {
-  fill: none;
-  stroke: var(--theme-process);
-  stroke-width: 3;
-  stroke-dasharray: 900;
-  stroke-dashoffset: 900;
-}
-
-.bq-source--system .bq-line path {
-  stroke: var(--theme-warning);
-}
-
-.bq-source.is-on .bq-line path {
-  animation: bq-draw 700ms var(--ease-soft) both,
-    bq-flow 2.6s linear 900ms infinite;
-}
-
-.bq-source--device.is-on .bq-line:nth-of-type(1) path { animation-delay: 320ms, 1020ms; }
-.bq-source--device.is-on .bq-line:nth-of-type(2) path { animation-delay: 460ms, 1160ms; }
-.bq-source--device.is-on .bq-line:nth-of-type(3) path { animation-delay: 600ms, 1300ms; }
-.bq-source--system.is-on .bq-line:nth-of-type(1) path { animation-delay: 320ms, 1020ms; }
-.bq-source--system.is-on .bq-line:nth-of-type(2) path { animation-delay: 460ms, 1160ms; }
-.bq-source--system.is-on .bq-line:nth-of-type(3) path { animation-delay: 600ms, 1300ms; }
-
-@keyframes bq-draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-/* 行进虚线：dashoffset 周期推进，示意"一直在出数据" */
-@keyframes bq-flow {
-  from {
-    stroke-dashoffset: 0;
-  }
-  to {
-    stroke-dashoffset: -36;
-  }
-}
-
-.bq-line text {
-  font-family: var(--font-body);
-  font-size: 21px;
-  fill: var(--text-2);
-  opacity: 0;
-}
-
-.bq-source.is-on .bq-line text {
-  animation: bq-fade 420ms var(--ease-soft) 720ms both;
-}
-
-@keyframes bq-fade {
+@keyframes op-plate-in {
   from {
     opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* 记录堆积：step 3 逐层堆上 */
-.bq-pile {
-  opacity: 0;
-}
-
-.bq-pile.is-on {
-  opacity: 1;
-}
-
-.bq-pile-layer {
-  fill: var(--theme-cool-surface);
-  stroke: var(--theme-structural);
-  stroke-width: 2.5;
-  opacity: 0;
-}
-
-.bq-pile.is-on .bq-pile-layer {
-  animation: bq-stack 460ms var(--ease-overshoot) both;
-  animation-delay: calc(var(--bq-i) * 200ms);
-}
-
-@keyframes bq-stack {
-  from {
-    opacity: 0;
-    transform: translateY(-26px) scale(0.9);
-    transform-box: fill-box;
-    transform-origin: center;
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -244,194 +568,14 @@
   }
 }
 
-.bq-pile-plus {
-  font-family: var(--font-body);
-  font-size: 24px;
-  font-weight: 700;
-  fill: var(--theme-warning);
-  opacity: 0;
-}
-
-.bq-pile.is-on .bq-pile-plus {
-  animation: bq-fade 480ms var(--ease-soft) 1.3s both;
-}
-
-/* M001 占位条：按 16:9 比例留位，承认缺不伪造 */
-.bq-media-slot {
-  flex: 0 0 auto;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  gap: 18px;
-  margin-top: 16px;
-  padding: 14px 20px;
-  border: 2px dashed var(--theme-dashed-line);
-  background: var(--theme-paper);
-}
-
-.bq-media-tag {
-  font-family: var(--font-mono);
-  font-size: 21px;
-  letter-spacing: 0.1em;
-  color: var(--text-mute);
-}
-
-.bq-media-desc {
-  font-size: 24px;
-  color: var(--text-faint);
-}
-
-/* ── 右轨：两条流带卡 + 汇流句 + 累积判断 ── */
-.bq-rail {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  min-height: 0;
-}
-
-.bq-streamcard {
-  padding: 24px 28px 20px;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.bq-streamcard.is-on {
-  animation: bq-in 560ms var(--ease-overshoot) both;
-}
-
-.bq-streamcard[data-tone="device"] {
-  border-left: 10px solid var(--theme-process);
-}
-
-.bq-streamcard[data-tone="system"] {
-  border-left: 10px solid var(--theme-warning);
-}
-
-.bq-stream-title {
-  margin: 0 0 10px;
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--text-mute);
-}
-
-.bq-stream-line {
-  margin: 0;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.45;
-  color: var(--theme-structural);
-}
-
-/* 汇流句：step 2 落位 */
-.bq-flow {
-  margin-top: auto;
-  position: relative;
-  padding: 22px 0 0;
-  opacity: 0;
-  transform: translateY(18px);
-}
-
-.bq-flow.is-on {
-  animation: bq-rise 560ms var(--ease-soft) both;
-}
-
-.bq-flow-mark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 120px;
-  height: 6px;
-  background: var(--theme-structural);
-  transform: scaleX(0);
-  transform-origin: left center;
-}
-
-.bq-flow.is-on .bq-flow-mark {
-  animation: bq-rule-grow 480ms var(--ease-soft) 160ms both;
-}
-
-.bq-flow-line {
-  margin: 0;
-  font-size: 29px;
-  line-height: 1.5;
-  color: var(--text-2);
-  transition: opacity 480ms var(--ease-soft);
-}
-
-.bq-flow-line strong {
-  color: var(--theme-structural);
-}
-
-/* 累积判断：step 3 落位成为焦点 */
-.bq-accum {
-  margin: 0;
-  font-size: 44px;
-  font-weight: 900;
-  color: var(--theme-process);
-  opacity: 0;
-  transform: translateY(14px);
-}
-
-.bq-accum.is-on {
-  animation: bq-rise 520ms var(--ease-overshoot) both;
-}
-
-/* step 3/4：汇流句让位于累积判断 */
-.bq-scene[data-state="data-accumulating"] .bq-flow-line,
-.bq-scene[data-state="value-question-open"] .bq-flow-line {
-  opacity: 0.4;
-}
-
-/* ── 问题收束 plate：step 4 升起，前区整体退后 ── */
-.bq-plate {
-  flex: 0 0 auto;
-  margin-top: 34px;
-  padding: 30px 40px;
-  border: 2px solid var(--theme-structural);
-  background: var(--surface-2);
-  box-shadow: 0 0 0 3px var(--theme-structural), 7px 8px 0 var(--theme-offset-shadow);
-  opacity: 0;
-  transform: translateY(26px);
-}
-
-.bq-plate.is-on {
-  animation: bq-in 620ms var(--ease-overshoot) both;
-}
-
-.bq-plate-challenge {
-  margin: 0 0 10px;
-  font-size: 33px;
-  font-weight: 700;
-  color: var(--theme-warning);
-}
-
-.bq-plate-challenge strong {
-  font-weight: 900;
-  color: var(--theme-danger);
-}
-
-.bq-plate-line {
-  margin: 0;
-  font-size: 40px;
-  font-weight: 900;
-  line-height: 1.42;
-  color: var(--theme-structural);
-}
-
-.bq-plate-line strong {
-  color: var(--theme-process);
-}
-
-/* step 4：文侧轨道与汇流退后，问题 plate 独占判断 */
-.bq-scene[data-state="value-question-open"] .bq-rail {
-  opacity: 0.38;
-  filter: grayscale(0.5);
-  transition: opacity 520ms var(--ease-soft), filter 520ms var(--ease-soft);
-}
-
-.bq-scene[data-state="value-question-open"] .bq-scene-card {
-  opacity: 0.62;
-  filter: saturate(0.7);
-  transition: opacity 520ms var(--ease-soft), filter 520ms var(--ease-soft);
+@keyframes op-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.82);
+  }
 }

@@ -4,9 +4,9 @@
   "status": "in-progress",
   "theme": "active-identification-note",
   "progress": {
-    "completed": 0,
-    "total": 1,
-    "current": null
+    "completed": 1,
+    "total": 11,
+    "current": "01-a001"
   },
-  "updatedAt": "2026-10-26"
+  "updatedAt": "2026-10-29"
 }
