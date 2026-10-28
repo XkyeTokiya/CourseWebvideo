@@ -1,0 +1,442 @@
+/* definition-scope · A002 split-compare-with-thesis（outline §2）
+   mechanism: cumulative-assembly — 左区定义+三限定词带逐条补齐，右区
+   数据集合边界与覆盖/延展两行先后点亮，底部判断条双排除收束。
+   prefix: df- */
+
+.df-scene {
+  gap: 22px;
+}
+
+/* ── 标题区：判断方向（S007），持续元素 ───────────────────── */
+
+.df-head {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.df-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--text);
+  animation: df-rise 560ms var(--ease-soft) backwards;
+}
+
+.df-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.df-head-rule {
+  transform-origin: left center;
+  animation: df-grow 720ms var(--ease-soft) 220ms backwards;
+}
+
+/* ── 主区：左 = 定义 + 限定词带；右 = 数据集合覆盖边界 ────── */
+
+.df-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 760px;
+  gap: 48px;
+  align-items: stretch;
+  transition: opacity 560ms var(--ease-soft), filter 560ms var(--ease-soft);
+}
+
+.is-thesis .df-main {
+  opacity: 0.45;
+  filter: grayscale(0.4);
+}
+
+.df-left {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 定义卡：不是 / 而是 对照（S008），进章即落位 */
+
+.df-definition {
+  flex: none;
+  padding: 30px 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: df-rise 620ms var(--ease-soft) 140ms backwards;
+}
+
+.df-def-no,
+.df-def-yes {
+  margin: 0;
+  font-size: 33px;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+.df-def-no strong {
+  font-weight: 900;
+  color: var(--theme-danger);
+  padding-right: 10px;
+}
+
+.df-def-yes {
+  color: var(--text);
+}
+
+.df-def-yes strong {
+  font-weight: 900;
+  color: var(--accent);
+  padding-right: 10px;
+}
+
+.df-def-term {
+  font-size: 50px;
+  font-weight: 900;
+  color: var(--accent);
+  padding-left: 16px;
+  animation: df-stamp 520ms var(--ease-overshoot) 820ms backwards;
+}
+
+/* 三条限定词带：等权并列，exact 整句逐字可见（S009/S010/S011） */
+
+.df-bands {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.df-band {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 10px;
+  opacity: 0;
+}
+
+.df-band:not(:last-child) {
+  border-bottom: 2px dashed var(--rule);
+}
+
+.is-quals .df-band {
+  animation: df-rise 560ms var(--ease-soft) both;
+  animation-delay: calc(300ms + var(--df-i) * 420ms);
+}
+
+.df-glyph {
+  width: 48px;
+  height: 48px;
+  flex: none;
+  overflow: visible;
+}
+
+.df-glyph-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.df-glyph-fill {
+  fill: var(--accent);
+  opacity: 0.82;
+}
+
+.df-glyph-dot {
+  fill: var(--accent);
+}
+
+.df-band-line {
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+.df-band-word {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+/* ── 右区：数据集合虚线边界（抽象集合，非软件界面）+ 两行覆盖 ── */
+
+.df-right {
+  min-width: 0;
+  position: relative;
+}
+
+.df-set-ghost {
+  margin: 0;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.24em;
+  color: var(--text-faint);
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-cover .df-set-ghost {
+  opacity: 0;
+}
+
+.df-set {
+  position: absolute;
+  inset: 0;
+  padding: 26px 34px;
+  display: flex;
+  flex-direction: column;
+  border: 3px dashed var(--accent);
+  border-radius: var(--r-card);
+  opacity: 0;
+}
+
+.is-cover .df-set {
+  animation: df-fade 520ms var(--ease-soft) 200ms both;
+}
+
+.df-set-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+}
+
+.df-set-row {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+
+.df-set-row + .df-set-row {
+  border-top: 2px dashed var(--rule);
+  padding-top: 10px;
+}
+
+.df-set-label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.df-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.df-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 26px;
+  border: 2.5px solid var(--text);
+  border-radius: 10px;
+  background: var(--surface-2);
+  font-weight: 700;
+  color: var(--text);
+  opacity: 0;
+}
+
+.df-chip--object {
+  font-size: 30px;
+}
+
+.df-chip--stage {
+  font-size: 27px;
+  border-style: dashed;
+  border-color: var(--text-mute);
+  background: transparent;
+}
+
+.is-cover .df-set-row:first-of-type .df-chip {
+  animation: df-chip-in 440ms var(--ease-overshoot) both;
+  animation-delay: calc(520ms + var(--df-j) * 180ms);
+}
+
+.is-cover .df-set-row:last-of-type .df-chip {
+  animation: df-chip-in 440ms var(--ease-overshoot) both;
+  animation-delay: calc(1550ms + var(--df-j) * 170ms);
+}
+
+/* ── 底部判断条：双排除标记（S014 exact），对照收束 ───────── */
+
+.df-thesis {
+  flex: none;
+  position: relative;
+  height: 140px;
+}
+
+.df-thesis-ghost {
+  margin: 0;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.24em;
+  color: var(--text-faint);
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-thesis .df-thesis-ghost {
+  opacity: 0;
+}
+
+.df-thesis-plate {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 0 44px;
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.is-thesis .df-thesis-plate {
+  animation: df-plate-in 560ms var(--ease-soft) 180ms both;
+}
+
+.df-thesis-kicker {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.df-thesis-line {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.df-exclude {
+  position: relative;
+  display: inline-block;
+  margin: 0 10px;
+  padding: 2px 18px;
+  border: 2.5px solid var(--theme-danger);
+  border-radius: 8px;
+  background: var(--theme-danger-surface);
+  color: var(--theme-danger);
+  font-weight: 900;
+  opacity: 0;
+}
+
+.is-thesis .df-exclude {
+  animation: df-chip-in 440ms var(--ease-overshoot) both;
+  animation-delay: calc(560ms + var(--df-k) * 340ms);
+}
+
+.df-exclude::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  top: 50%;
+  width: 104%;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--theme-danger);
+  transform: rotate(-1.4deg) scaleX(0);
+  transform-origin: left center;
+}
+
+.is-thesis .df-exclude::after {
+  animation: df-strike 400ms var(--ease-soft) forwards;
+  animation-delay: calc(1050ms + var(--df-k) * 340ms);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes df-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes df-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes df-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes df-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.24);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes df-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes df-plate-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes df-strike {
+  to {
+    transform: rotate(-1.4deg) scaleX(1);
+  }
+}
