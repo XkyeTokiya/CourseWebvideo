@@ -1,0 +1,485 @@
+/* three-sources · A003 condition-key-goal（outline §3）
+   mechanism: equal-weight-accumulation — 问题卡先行，三张来源卡固定三栏
+   按序补齐保持等权，末拍三股汇流线画出、汇合判断条收束。
+   prefix: ts- */
+
+.ts-scene {
+  gap: 20px;
+}
+
+/* ── 标题区：判断方向（S015），持续元素 ───────────────────── */
+
+.ts-head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ts-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--text);
+  animation: ts-rise 560ms var(--ease-soft) backwards;
+}
+
+.ts-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.ts-head-rule {
+  transform-origin: left center;
+  animation: ts-grow 720ms var(--ease-soft) 220ms backwards;
+}
+
+/* ── 条件卡：来源问题（S016），进章即落位 ─────────────────── */
+
+.ts-question {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 20px 36px;
+  animation: ts-rise 560ms var(--ease-soft) 160ms backwards;
+  transition: opacity 560ms var(--ease-soft), filter 560ms var(--ease-soft);
+}
+
+.ts-question-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.ts-question-text em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.ts-question-arrow {
+  flex: none;
+  display: flex;
+  margin-left: auto;
+}
+
+.ts-arrow-line {
+  fill: none;
+  stroke: var(--text-mute);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ts-question-tag {
+  flex: none;
+  padding: 10px 24px;
+  border: 2.5px solid var(--accent);
+  border-radius: 10px;
+  background: var(--theme-process-surface);
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+/* ── 三栏来源卡：等权并列，逐卡补齐 ──────────────────────── */
+
+.ts-cards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  align-items: stretch;
+}
+
+.ts-card {
+  min-height: 0;
+  padding: 24px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  opacity: 0;
+}
+
+.ts-card.is-on {
+  animation: ts-card-in 560ms var(--ease-overshoot) both;
+}
+
+.ts-card--business.is-on {
+  animation-delay: 160ms;
+}
+
+.ts-card--device.is-on {
+  animation-delay: 140ms;
+}
+
+.ts-card--external.is-on {
+  animation-delay: 140ms;
+}
+
+.ts-card-no {
+  margin: 0;
+  font-size: 40px;
+  color: var(--text-faint);
+}
+
+.ts-card[data-tone="structural"] .ts-card-no {
+  color: var(--theme-structural);
+}
+
+.ts-card[data-tone="process"] .ts-card-no {
+  color: var(--theme-process);
+}
+
+.ts-card[data-tone="warning"] .ts-card-no {
+  color: var(--theme-warning);
+}
+
+.ts-card-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.ts-card-ord {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-mute);
+  padding-right: 6px;
+}
+
+.ts-card[data-tone="process"] .ts-card-title {
+  color: var(--theme-process);
+}
+
+.ts-card[data-tone="warning"] .ts-card-title {
+  color: var(--theme-warning);
+}
+
+.ts-card-lead {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.ts-card-lead--foot {
+  margin-top: auto;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* 第一类：系统名全称标签（exact，只作名称不画界面） */
+
+.ts-sys-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ts-sys-tag {
+  align-self: flex-start;
+  padding: 7px 16px;
+  border: 2px solid var(--text);
+  border-radius: 8px;
+  background: var(--surface-3);
+  font-family: var(--font-mono);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--text);
+  opacity: 0;
+}
+
+.is-business .ts-sys-tag {
+  animation: ts-chip-in 420ms var(--ease-overshoot) both;
+  animation-delay: calc(620ms + var(--ts-j) * 240ms);
+}
+
+/* 第二类：运行记录行（不虚构数值） */
+
+.ts-record-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ts-record-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border: 2px solid var(--rule);
+  border-radius: 8px;
+  background: var(--surface-3);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  opacity: 0;
+}
+
+.is-device .ts-card--device .ts-record-chip {
+  animation: ts-chip-in 420ms var(--ease-overshoot) both;
+  animation-delay: calc(560ms + var(--ts-j) * 170ms);
+}
+
+.is-external .ts-card--external .ts-record-chip {
+  animation: ts-chip-in 420ms var(--ease-overshoot) both;
+  animation-delay: calc(520ms + var(--ts-j) * 200ms);
+}
+
+.ts-card-foot {
+  margin: 0;
+  margin-top: auto;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--text-mute);
+}
+
+/* 卡内行进章后随卡片就位（仅在新落位一拍播一次） */
+
+.ts-card.is-on .ts-card-no,
+.ts-card.is-on .ts-card-title,
+.ts-card.is-on .ts-card-lead {
+  animation: ts-part-in 480ms var(--ease-soft) both;
+}
+
+.ts-card.is-on .ts-card-no {
+  animation-delay: 60ms;
+}
+
+.ts-card.is-on .ts-card-title {
+  animation-delay: 160ms;
+}
+
+.ts-card.is-on .ts-card-lead {
+  animation-delay: 300ms;
+}
+
+.ts-card.is-on .ts-card-foot {
+  animation: ts-part-in 480ms var(--ease-soft) 1150ms both;
+}
+
+.ts-card--external.is-on .ts-card-lead--foot {
+  animation-delay: 980ms;
+}
+
+/* ── 汇合判断条：三股汇流线 + 判断（末拍收束） ─────────────── */
+
+.ts-judge {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.ts-merge-svg {
+  display: block;
+  width: 100%;
+  height: 56px;
+  overflow: visible;
+}
+
+.ts-merge-line {
+  fill: none;
+  stroke: var(--rule);
+  stroke-width: 3;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.ts-judge.is-on .ts-merge-line {
+  animation: ts-draw 620ms var(--ease-soft) 100ms forwards;
+}
+
+.ts-merge-dot {
+  fill: var(--accent);
+  opacity: 0;
+}
+
+.ts-judge.is-on .ts-merge-dot {
+  animation: ts-fade 320ms var(--ease-soft) 620ms forwards;
+}
+
+.ts-judge-plate {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  padding: 18px 40px;
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+.ts-judge.is-on .ts-judge-plate {
+  animation: ts-plate-in 560ms var(--ease-soft) 420ms both;
+}
+
+.ts-judge-kicker {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.ts-judge-lines {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ts-judge-positive {
+  margin: 0;
+  font-size: 33px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ts-cover-chip {
+  padding: 3px 18px;
+  border: 2.5px solid var(--accent);
+  border-radius: 8px;
+  background: var(--theme-process-surface);
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--accent);
+  opacity: 0;
+}
+
+.ts-judge.is-on .ts-cover-chip {
+  animation: ts-chip-in 420ms var(--ease-overshoot) both;
+}
+
+.ts-judge.is-on .ts-cover-chip:nth-of-type(1) {
+  animation-delay: 950ms;
+}
+
+.ts-judge.is-on .ts-cover-chip:nth-of-type(2) {
+  animation-delay: 1120ms;
+}
+
+.ts-judge.is-on .ts-cover-chip:nth-of-type(3) {
+  animation-delay: 1290ms;
+}
+
+.ts-judge-negative {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.4;
+  color: var(--theme-danger);
+}
+
+.ts-judge-negative strong {
+  font-weight: 900;
+}
+
+.ts-judge.is-on .ts-judge-negative {
+  animation: ts-part-in 460ms var(--ease-soft) 1500ms both;
+}
+
+/* 末拍：三卡弱化退后 */
+
+.ts-cards {
+  transition: opacity 560ms var(--ease-soft), filter 560ms var(--ease-soft);
+}
+
+.is-judged .ts-cards {
+  opacity: 0.42;
+  filter: grayscale(0.4);
+}
+
+.is-judged .ts-question {
+  opacity: 0.55;
+  filter: grayscale(0.35);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes ts-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ts-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ts-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ts-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ts-part-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ts-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ts-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ts-plate-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

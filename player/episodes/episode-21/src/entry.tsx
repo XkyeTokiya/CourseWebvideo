@@ -5,6 +5,8 @@ import A001Chapter from "./chapters/01-a001/A001Chapter";
 import { narrations as a001Narrations } from "./chapters/01-a001/narrations";
 import A002Chapter from "./chapters/02-a002/A002Chapter";
 import { narrations as a002Narrations } from "./chapters/02-a002/narrations";
+import A003Chapter from "./chapters/03-a003/A003Chapter";
+import { narrations as a003Narrations } from "./chapters/03-a003/narrations";
 
 export const id = "episode-21";
 export const title = "工业大数据：从哪里来、怎样产生价值";
@@ -28,5 +30,11 @@ export const CHAPTERS: ChapterDef[] = [
     title: "定义与范围",
     narrations: a002Narrations,
     Component: A002Chapter,
+  },
+  {
+    id: "03-a003",
+    title: "三类来源与汇合",
+    narrations: a003Narrations,
+    Component: A003Chapter,
   },
 ];
