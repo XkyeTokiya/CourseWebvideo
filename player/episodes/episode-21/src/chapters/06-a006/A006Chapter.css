@@ -1,0 +1,284 @@
+/* industrial-features · A006 parallel-cards-with-takeaway（outline §6）
+   mechanism: equal-weight-accumulation — 四张特征卡固定两行依次落位保持
+   并列，底部结论条由四卡共同支撑收束（R007）。
+   prefix: it- */
+
+.it-scene {
+  gap: 20px;
+}
+
+/* ── 标题区：判断方向（S033），持续元素 ───────────────────── */
+
+.it-head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.it-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--text);
+  animation: it-rise 560ms var(--ease-soft) backwards;
+}
+
+.it-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.it-head-rule {
+  transform-origin: left center;
+  animation: it-grow 720ms var(--ease-soft) 220ms backwards;
+}
+
+/* ── 四张特征卡：固定两行两列，依次落位保持并列 ───────────── */
+
+.it-cards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px 30px;
+}
+
+.it-card {
+  min-height: 0;
+  padding: 22px 34px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  opacity: 0;
+  animation: it-card-in 560ms var(--ease-overshoot) both;
+  animation-delay: calc(260ms + var(--it-i) * 1650ms);
+}
+
+/* 卡内解释行：随卡稍后落位 */
+
+.it-card-no {
+  flex: none;
+  font-size: 42px;
+  color: var(--text-faint);
+  transition: color 420ms var(--ease-soft);
+}
+
+.it-card-word {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.it-glyph {
+  flex: none;
+  width: 64px;
+  height: 36px;
+  overflow: visible;
+}
+
+.it-card-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.it-g-line {
+  fill: none;
+  stroke: var(--theme-process);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.it-g-line--dim {
+  stroke: var(--rule);
+  stroke-dasharray: 5 5;
+}
+
+.it-g-dot {
+  fill: var(--theme-process);
+}
+
+.it-card-line {
+  margin: 10px 0 0;
+  font-size: 25px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.it-card-line em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+/* 拍 2：四卡并列权重弱化 */
+
+.it-cards {
+  transition: opacity 560ms var(--ease-soft), filter 560ms var(--ease-soft);
+}
+
+.is-takeaway .it-cards {
+  opacity: 0.42;
+  filter: grayscale(0.4);
+}
+
+/* ── 底部结论条（拍 2 收束，R007） ────────────────────────── */
+
+.it-takeaway {
+  flex: none;
+  position: relative;
+  height: 122px;
+}
+
+.it-takeaway-ghost {
+  margin: 0;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.24em;
+  color: var(--text-faint);
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-takeaway .it-takeaway-ghost {
+  opacity: 0;
+}
+
+.it-takeaway-plate {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 0 44px;
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+.is-takeaway .it-takeaway-plate {
+  animation: it-plate-in 560ms var(--ease-soft) 200ms both;
+}
+
+.it-takeaway-kicker {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.it-takeaway-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.it-ruled-out {
+  position: relative;
+  display: inline-block;
+  margin: 0 6px;
+  padding: 2px 16px;
+  border: 2.5px solid var(--theme-danger);
+  border-radius: 8px;
+  background: var(--theme-danger-surface);
+  color: var(--theme-danger);
+  opacity: 0;
+}
+
+.is-takeaway .it-ruled-out {
+  animation: it-chip-in 440ms var(--ease-overshoot) both;
+  animation-delay: 700ms;
+}
+
+.it-ruled-out::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  top: 50%;
+  width: 104%;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--theme-danger);
+  transform: rotate(-1.4deg) scaleX(0);
+  transform-origin: left center;
+}
+
+.is-takeaway .it-ruled-out::after {
+  animation: it-strike 400ms var(--ease-soft) forwards;
+  animation-delay: 1180ms;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes it-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes it-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes it-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes it-plate-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes it-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes it-strike {
+  to {
+    transform: rotate(-1.4deg) scaleX(1);
+  }
+}
