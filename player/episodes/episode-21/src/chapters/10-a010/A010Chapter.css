@@ -1,0 +1,395 @@
+/* summary-anchor · A010 image-with-summary-rail（outline §10）
+   mechanism: cumulative-assembly — M004 图常驻作开场回扣锚点，汇总导轨
+   自上而下收束：局部记录卡 → 汇集处理带 → 末行判断；上方内容随推进按
+   真实先后弱化。prefix: sm- */
+
+.sm-scene {
+  gap: 20px;
+}
+
+/* ── 标题区：总结 + 从记录到依据提示 ─────────────────────── */
+
+.sm-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.sm-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--text);
+  animation: sm-rise 560ms var(--ease-soft) backwards;
+}
+
+.sm-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.sm-head-side {
+  margin: 0 0 4px;
+  padding: 10px 22px;
+  border: 2px solid var(--rule);
+  border-radius: 10px;
+  background: var(--surface-3);
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.1em;
+  color: var(--text-2);
+  animation: sm-rise 560ms var(--ease-soft) 240ms backwards;
+}
+
+/* ── 主区：左 = M004 图锚点；右 = 汇总导轨 ────────────────── */
+
+.sm-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 780px 1fr;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.sm-media {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 3px solid var(--text);
+  animation: sm-rise 620ms var(--ease-soft) 140ms backwards;
+  transition: opacity 460ms var(--ease-soft), filter 460ms var(--ease-soft);
+}
+
+.sm-media-shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  flex: 1;
+  object-fit: cover;
+}
+
+.sm-media-cap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  border-top: 2px dashed var(--rule);
+}
+
+.sm-media-cap > span:first-child {
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.sm-media-missing {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+/* ── 汇总导轨：三段自上而下收束 ──────────────────────────── */
+
+.sm-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 导轨 1：局部记录卡（拍 1 落位；拍 2 起弱化为已汇集） */
+
+.sm-locals {
+  flex: 1;
+  min-height: 0;
+  padding: 18px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  transition: opacity 460ms var(--ease-soft), filter 460ms var(--ease-soft);
+}
+
+.sm-locals-lead {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+.sm-locals-lead em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+.sm-local-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sm-local-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+}
+
+.sm-local-no {
+  flex: none;
+  width: 34px;
+  font-size: 26px;
+}
+
+.sm-local-row .sm-local-no {
+  color: var(--text-mute);
+}
+
+.sm-local-src {
+  flex: none;
+  min-width: 128px;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+.sm-local-give {
+  font-size: 25px;
+  color: var(--text-2);
+}
+
+.sm-scene .sm-local-row {
+  animation: sm-row-in 420ms var(--ease-soft) both;
+  animation-delay: calc(400ms + var(--sm-i) * 300ms);
+}
+
+/* 导轨 2/3：未落位 = 虚线 ghost 槽位（只留编号提示，正文不出 DOM） */
+
+.sm-assembly,
+.sm-final {
+  border-style: dashed;
+  border-color: var(--rule);
+  transition: opacity 460ms var(--ease-soft), border-color 460ms var(--ease-soft);
+}
+
+.sm-assembly {
+  min-height: 112px;
+  padding: 18px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0.35;
+}
+
+.sm-assembly.is-on {
+  opacity: 1;
+  border-style: solid;
+  border-color: var(--text);
+  animation: sm-band-in 520ms var(--ease-overshoot) both;
+}
+
+.sm-assembly-ghost-text,
+.sm-final-ghost-text {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+}
+
+/* 汇集处理带条目：落位时错峰进入 */
+
+.sm-assembly-line {
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.5;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.sm-assembly-line strong {
+  font-weight: 900;
+  color: var(--text);
+}
+
+.sm-assembly.is-on .sm-assembly-line {
+  animation: sm-line-in 460ms var(--ease-soft) both;
+}
+
+.sm-assembly.is-on .sm-assembly-line:nth-of-type(1) {
+  animation-delay: 320ms;
+}
+
+.sm-assembly.is-on .sm-assembly-line:nth-of-type(2) {
+  animation-delay: 1150ms;
+}
+
+.sm-stages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.sm-stage-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 22px;
+  border: 2px solid var(--theme-process);
+  border-radius: 8px;
+  background: var(--theme-process-surface);
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--theme-process);
+  opacity: 0;
+}
+
+.sm-assembly.is-on .sm-stage-chip {
+  animation: sm-chip-in 420ms var(--ease-overshoot) both;
+  animation-delay: calc(700ms + var(--sm-j) * 220ms);
+}
+
+.sm-assembly-result {
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.5;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.sm-assembly-result strong {
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.sm-assembly.is-on .sm-assembly-result {
+  animation: sm-line-in 480ms var(--ease-soft) 1650ms both;
+}
+
+/* 末行判断：拍 3 收束（exact S060） */
+
+.sm-final {
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+  opacity: 0.35;
+}
+
+.sm-final.is-on {
+  opacity: 1;
+  border-style: solid;
+  border-color: var(--accent);
+  animation: sm-band-in 560ms var(--ease-overshoot) 120ms both;
+}
+
+.sm-final-plate {
+  width: 100%;
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sm-final-kicker {
+  flex: none;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-mute);
+}
+
+.sm-final-hero {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.sm-final-hero strong {
+  font-weight: 900;
+  color: var(--accent);
+}
+
+/* ── 拍 3：上方内容弱化，判断成为焦点 ───────────────────── */
+
+.sm-scene.is-boundary .sm-media,
+.sm-scene.is-boundary .sm-locals {
+  opacity: 0.55;
+  filter: grayscale(0.4);
+}
+
+.sm-scene.is-boundary .sm-assembly {
+  opacity: 0.85;
+}
+
+.sm-scene.is-boundary .sm-assembly .sm-assembly-line,
+.sm-scene.is-boundary .sm-assembly .sm-assembly-result {
+  opacity: 0.85;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes sm-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sm-band-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sm-row-in {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sm-line-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sm-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
