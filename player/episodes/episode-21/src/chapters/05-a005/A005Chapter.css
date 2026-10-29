@@ -1,0 +1,303 @@
+/* general-features · A005 layered-bands-with-side-notes（outline §5）
+   mechanism: equal-weight-accumulation — 四枚特征带等权依次落位，侧栏
+   解释注记只说明"价值密度低"，不产生当前选中项。
+   prefix: gp- */
+
+.gp-scene {
+  gap: 22px;
+}
+
+/* ── 标题区：判断方向（S030），持续元素 ───────────────────── */
+
+.gp-head {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gp-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--text);
+  animation: gp-rise 560ms var(--ease-soft) backwards;
+}
+
+.gp-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.gp-head-rule {
+  transform-origin: left center;
+  animation: gp-grow 720ms var(--ease-soft) 220ms backwards;
+}
+
+/* ── 主区：左 = 四枚特征带；右 = 解释注记 ─────────────────── */
+
+.gp-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 760px 1fr;
+  gap: 48px;
+  align-items: stretch;
+}
+
+/* 四枚特征带：S031 exact 词组逐字可见，等横向排列 */
+
+.gp-bands {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 18px;
+}
+
+.gp-band {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 0 34px;
+  border: 2.5px solid var(--text);
+  border-radius: var(--r-card);
+  background: var(--surface-2);
+  opacity: 0;
+}
+
+.gp-band:nth-child(4) {
+  border-style: dashed;
+  border-color: var(--accent);
+  background: var(--theme-process-surface);
+}
+
+.gp-band-no {
+  flex: none;
+  font-size: 38px;
+  color: var(--text-faint);
+}
+
+.gp-band-word {
+  flex: 1;
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.gp-band-note {
+  flex: none;
+  font-size: 23px;
+  color: var(--text-mute);
+}
+
+.is-note .gp-band:nth-child(4) .gp-band-note {
+  color: var(--theme-process);
+}
+
+/* 拍 1：四带依次落位，完成后全部等权 */
+
+.gp-band {
+  animation: gp-band-in 520ms var(--ease-overshoot) both;
+  animation-delay: calc(280ms + var(--gp-i) * 460ms);
+}
+
+/* ── 侧栏解释注记：拍 2 落位，不点亮任一特征带 ────────────── */
+
+.gp-side {
+  min-width: 0;
+  position: relative;
+}
+
+.gp-side-ghost {
+  margin: 0;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.24em;
+  color: var(--text-faint);
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-note .gp-side-ghost {
+  opacity: 0;
+}
+
+.gp-side-card {
+  position: absolute;
+  inset: 0;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+  opacity: 0;
+}
+
+.is-note .gp-side-card {
+  animation: gp-side-in 560ms var(--ease-soft) 160ms both;
+}
+
+.gp-side-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+}
+
+/* 对比示意：大量记录（表面）vs 拣出的少量线索（底层） */
+
+.gp-contrast {
+  margin: 0;
+  border: 2px dashed var(--rule);
+  border-radius: 12px;
+  padding: 10px 8px 6px;
+  background: var(--surface-3);
+  opacity: 0;
+}
+
+.is-note .gp-contrast {
+  animation: gp-fade 480ms var(--ease-soft) 620ms both;
+}
+
+.gp-contrast-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.gp-record {
+  fill: var(--theme-cool-surface);
+  stroke: var(--text-mute);
+  stroke-width: 2;
+  opacity: 0;
+}
+
+.is-note .gp-record {
+  animation: gp-fade 340ms var(--ease-soft) both;
+  animation-delay: calc(950ms + var(--gp-r) * 90ms);
+}
+
+.gp-signal {
+  fill: var(--theme-process-surface);
+  stroke: var(--theme-process);
+  stroke-width: 2.5;
+  transform-origin: left center;
+  opacity: 0;
+}
+
+.is-note .gp-signal {
+  animation: gp-signal-in 440ms var(--ease-overshoot) both;
+  animation-delay: calc(2900ms + var(--gp-j) * 260ms);
+}
+
+.gp-contrast-cap {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.1em;
+  fill: var(--text-mute);
+  opacity: 0;
+}
+
+.is-note .gp-contrast-cap {
+  animation: gp-fade 380ms var(--ease-soft) 900ms both;
+}
+
+.gp-contrast-cap--signal {
+  fill: var(--theme-process);
+}
+
+.gp-contrast-cap--signal {
+  animation-delay: 2850ms;
+}
+
+.gp-side-line {
+  margin: 0;
+  font-size: 31px;
+  line-height: 1.55;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.is-note .gp-side-line {
+  animation: gp-fade 520ms var(--ease-soft) 3700ms both;
+}
+
+.gp-side-line strong {
+  font-weight: 900;
+  color: var(--text);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes gp-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes gp-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gp-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes gp-band-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes gp-side-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes gp-signal-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
