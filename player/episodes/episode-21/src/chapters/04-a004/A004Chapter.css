@@ -1,0 +1,245 @@
+/* data-forms · A004 image-with-insight-rail（outline §4，单拍 ~16s）
+   mechanism: persistent-media-reading — M002 图常驻作阅读锚点，图侧
+   导轨单 step 内先分类条后示例条先后落位，阅读焦点从分类移到示例。
+   prefix: fm- */
+
+.fm-scene {
+  gap: 22px;
+}
+
+/* ── 标题区：判断方向（S027），持续元素 ───────────────────── */
+
+.fm-head {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fm-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--text);
+  animation: fm-rise 560ms var(--ease-soft) backwards;
+}
+
+.fm-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.fm-head-rule {
+  transform-origin: left center;
+  animation: fm-grow 720ms var(--ease-soft) 220ms backwards;
+}
+
+/* ── 主区：左 = M002 图锚点；右 = 图侧双轨 ────────────────── */
+
+.fm-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 860px 1fr;
+  gap: 52px;
+  align-items: stretch;
+}
+
+.fm-media {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 3px solid var(--text);
+  animation: fm-rise 620ms var(--ease-soft) 140ms backwards;
+}
+
+.fm-media-shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  flex: 1;
+  object-fit: cover;
+}
+
+.fm-media-cap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  border-top: 2px dashed var(--rule);
+}
+
+.fm-media-cap > span:first-child {
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.fm-media-missing {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+/* ── 图侧导轨：分类条（exact S028）→ 示例条 ───────────────── */
+
+.fm-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.fm-rail-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+/* 分类条：S028 整句逐字排布（结构化/半结构化和/非结构化） */
+
+.fm-forms {
+  flex: 1;
+  min-height: 0;
+  padding: 30px 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  border: 3px solid var(--accent);
+  border-radius: var(--r-card);
+  background: var(--theme-process-surface);
+  animation: fm-rise 620ms var(--ease-soft) 260ms backwards;
+}
+
+.fm-forms-line {
+  margin: 0;
+  font-size: 37px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+
+.fm-seg {
+  display: inline;
+}
+
+.fm-seg-lead,
+.fm-seg-tail {
+  color: var(--text-2);
+}
+
+.fm-seg-term {
+  font-weight: 900;
+  color: var(--text);
+}
+
+.fm-forms .fm-seg:nth-child(2) .fm-seg-term {
+  color: var(--theme-process);
+}
+
+.fm-forms .fm-seg:nth-child(3) .fm-seg-term {
+  color: var(--theme-process);
+}
+
+/* 逐词错峰出现：先分类（300ms 起），阅读焦点随后移到示例 */
+
+.fm-forms-line .fm-seg {
+  opacity: 0;
+  animation: fm-fade 460ms var(--ease-soft) both;
+  animation-delay: calc(420ms + var(--fm-i) * 520ms);
+}
+
+.fm-forms-foot {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--text-mute);
+  opacity: 0;
+  animation: fm-fade 460ms var(--ease-soft) 2150ms both;
+}
+
+/* 示例条：表格记录/传感器数据/日志文件（小圆点行，非格式图标墙） */
+
+.fm-examples {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 38px 28px;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+}
+
+.fm-example {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text);
+  opacity: 0;
+}
+
+.fm-example-dot {
+  flex: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.fm-examples .fm-example {
+  animation: fm-example-in 460ms var(--ease-overshoot) both;
+  animation-delay: calc(2450ms + var(--fm-j) * 330ms);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes fm-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fm-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fm-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes fm-example-in {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
