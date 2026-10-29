@@ -1,0 +1,433 @@
+/* correlation-patterns · A008 linear-steps-to-result（outline §8）
+   mechanism: ordered-progression — 否定带/关联带/线索带/结果区自上而下
+   按口播先后落位，已过各带弱化，末态结果区收底。
+   prefix: rr- */
+
+.rr-scene {
+  gap: 20px;
+}
+
+/* ── 标题区：判断方向（S043），持续元素 ───────────────────── */
+
+.rr-head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rr-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  color: var(--text);
+  animation: rr-rise 560ms var(--ease-soft) backwards;
+}
+
+.rr-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.rr-head-rule {
+  transform-origin: left center;
+  animation: rr-grow 720ms var(--ease-soft) 220ms backwards;
+}
+
+/* ── 流程列：四段自上而下 ────────────────────────────────── */
+
+.rr-flow {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rr-band {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 32px;
+  background: var(--surface-2);
+  border-style: dashed;
+  border-color: var(--rule);
+  opacity: 0.3;
+  transition: opacity 460ms var(--ease-soft), filter 460ms var(--ease-soft),
+    border-color 460ms var(--ease-soft);
+}
+
+.rr-band.is-current {
+  opacity: 1;
+  border-style: solid;
+  border-color: var(--text);
+  animation: rr-band-in 520ms var(--ease-overshoot) both;
+}
+
+.rr-band.is-past {
+  opacity: 0.5;
+  border-color: var(--rule);
+  filter: grayscale(0.45);
+}
+
+.rr-band-no {
+  flex: none;
+  font-size: 38px;
+  color: var(--theme-process);
+}
+
+.rr-band-ghost-text {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+}
+
+/* ── 段 1：否定带——不是堆叠 vs 而是整理比较分析 ──────────── */
+
+.rr-reframe {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.rr-reframe-no,
+.rr-reframe-yes {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.rr-reframe-tag {
+  flex: none;
+  margin: 0;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.rr-reframe-tag--no {
+  border: 2.5px solid var(--theme-danger);
+  background: var(--theme-danger-surface);
+  color: var(--theme-danger);
+}
+
+.rr-reframe-tag--yes {
+  border: 2.5px solid var(--accent);
+  background: var(--theme-process-surface);
+  color: var(--accent);
+}
+
+.rr-reframe-text {
+  min-width: 0;
+  font-size: 27px;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.rr-reframe-text strong {
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+/* 堆叠示意：六块乱堆（danger 色调，非统计图） */
+
+.rr-pile {
+  flex: none;
+  position: relative;
+  width: 92px;
+  height: 44px;
+}
+
+.rr-pile-block {
+  position: absolute;
+  width: 38px;
+  height: 20px;
+  border: 2px solid var(--theme-danger);
+  border-radius: 4px;
+  background: var(--theme-danger-surface);
+}
+
+.rr-pile-block:nth-child(3n + 1) {
+  transform: rotate(-7deg);
+}
+
+.rr-pile-block:nth-child(3n + 2) {
+  transform: rotate(5deg);
+}
+
+.rr-pile-block:nth-child(3n) {
+  transform: rotate(-2deg);
+}
+
+.is-current .rr-pile-block,
+.is-past .rr-pile-block {
+  animation: rr-pile-in 320ms var(--ease-soft) both;
+  animation-delay: calc(360ms + var(--rr-b) * 110ms);
+}
+
+/* 而是侧的小流向示意：三条平行短线（整理中） */
+
+.rr-reframe-arrow {
+  flex: none;
+  display: flex;
+}
+
+.rr-arrow-line {
+  fill: none;
+  stroke: var(--text-mute);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── 段 2：语境关联带（exact S045） ─────────────────────── */
+
+.rr-context {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.rr-context-chips {
+  display: flex;
+  gap: 14px;
+}
+
+.rr-context-chip {
+  display: inline-flex;
+  padding: 9px 22px;
+  border: 2px solid var(--theme-process);
+  border-radius: 8px;
+  background: var(--theme-process-surface);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--theme-process);
+  opacity: 0;
+}
+
+.is-current .rr-context-chip {
+  animation: rr-chip-in 420ms var(--ease-overshoot) both;
+  animation-delay: calc(420ms + var(--rr-i) * 240ms);
+}
+
+.is-past .rr-context-chip {
+  opacity: 1;
+}
+
+.rr-context-line {
+  margin: 0;
+  font-size: 27px;
+  color: var(--text-2);
+}
+
+.rr-context-line strong {
+  font-weight: 900;
+  color: var(--text);
+}
+
+/* ── 段 3：线索识别带（S046 reference） ─────────────────── */
+
+.rr-clues {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.rr-clues-lead {
+  margin: 0;
+  font-size: 27px;
+  color: var(--text);
+}
+
+.rr-clue-chip {
+  display: inline-flex;
+  padding: 8px 22px;
+  border: 2.5px solid var(--text);
+  border-radius: 999px;
+  background: var(--surface-3);
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--text);
+  opacity: 0;
+}
+
+.is-current .rr-clue-chip {
+  animation: rr-chip-in 420ms var(--ease-overshoot) both;
+  animation-delay: calc(1300ms + var(--rr-j) * 260ms);
+}
+
+.is-past .rr-clue-chip {
+  opacity: 1;
+}
+
+/* ── 段 4：末态结果区（拍 3 收底） ───────────────────────── */
+
+.rr-goal {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  border: 3px dashed var(--rule);
+  border-radius: var(--r-card);
+  animation: rr-band-in 520ms var(--ease-overshoot) 160ms both;
+}
+
+.rr-goal-ghost {
+  margin: 0;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.24em;
+  color: var(--text-faint);
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-goal .rr-goal {
+  border-style: solid;
+  border-color: var(--accent);
+  animation: none;
+}
+
+.is-goal .rr-goal-ghost {
+  opacity: 0;
+}
+
+.rr-goal-plate {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 0 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 560ms var(--ease-soft) 140ms,
+    transform 560ms var(--ease-soft) 140ms;
+}
+
+.is-goal .rr-goal-plate {
+  opacity: 1;
+  transform: none;
+}
+
+.rr-goal-kicker {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.rr-goal-lines {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rr-goal-line {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.is-goal .rr-goal-line {
+  animation: rr-fade 480ms var(--ease-soft) both;
+  animation-delay: 620ms;
+}
+
+.is-goal .rr-goal-line--sub {
+  animation-delay: 1150ms;
+}
+
+.rr-goal-line strong {
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+.rr-goal-line em {
+  font-style: normal;
+  font-weight: 900;
+  color: var(--text);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes rr-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rr-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rr-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rr-band-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rr-pile-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) rotate(0deg);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rr-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

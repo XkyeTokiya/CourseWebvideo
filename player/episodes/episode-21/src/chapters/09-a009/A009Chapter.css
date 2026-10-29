@@ -1,0 +1,319 @@
+/* value-directions · A009 parallel-cards-with-takeaway（outline §9）
+   mechanism: equal-weight-accumulation — 四方向卡等权落位，环节条上下
+   支撑（R012），末行判断收束，上方弱化。
+   prefix: vd- */
+
+.vd-scene {
+  gap: 18px;
+}
+
+/* ── 标题区：判断方向（S049），持续元素 ───────────────────── */
+
+.vd-head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.vd-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  color: var(--text);
+  animation: vd-rise 560ms var(--ease-soft) backwards;
+}
+
+.vd-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.vd-head-rule {
+  transform-origin: left center;
+  animation: vd-grow 720ms var(--ease-soft) 220ms backwards;
+}
+
+/* ── 四张方向卡：等权横向排列（exact S050-S053） ──────────── */
+
+.vd-cards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.vd-card {
+  min-height: 0;
+  padding: 20px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  opacity: 0;
+  animation: vd-card-in 520ms var(--ease-overshoot) both;
+  animation-delay: calc(300ms + var(--vd-i) * 420ms);
+}
+
+.vd-card-no {
+  font-size: 36px;
+  color: var(--theme-process);
+}
+
+.vd-card-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+/* 拍 3：四卡与环节条整体弱化 */
+
+.vd-cards,
+.vd-enabler {
+  transition: opacity 560ms var(--ease-soft), filter 560ms var(--ease-soft);
+}
+
+.is-effort .vd-cards {
+  opacity: 0.42;
+  filter: grayscale(0.4);
+}
+
+.is-effort .vd-enabler {
+  opacity: 0.55;
+  filter: grayscale(0.35);
+}
+
+/* ── 环节推进条（拍 2，exact S054） ──────────────────────── */
+
+.vd-enabler {
+  flex: none;
+  position: relative;
+  height: 110px;
+}
+
+.vd-enabler-ghost {
+  margin: 0;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.24em;
+  color: var(--text-faint);
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-enablers .vd-enabler-ghost {
+  opacity: 0;
+}
+
+.vd-enabler-plate {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 0 36px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.is-enablers .vd-enabler-plate {
+  animation: vd-plate-in 560ms var(--ease-soft) 180ms both;
+}
+
+.vd-enabler-chips {
+  display: flex;
+  gap: 12px;
+}
+
+.vd-enabler-chip {
+  display: inline-flex;
+  padding: 10px 22px;
+  border: 2px solid var(--theme-process);
+  border-radius: 8px;
+  background: var(--theme-process-surface);
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--theme-process);
+  opacity: 0;
+}
+
+.is-enablers .vd-enabler-chip {
+  animation: vd-chip-in 420ms var(--ease-overshoot) both;
+  animation-delay: calc(520ms + var(--vd-j) * 230ms);
+}
+
+.vd-enabler-arrow {
+  flex: none;
+  display: flex;
+}
+
+.vd-arrow-line {
+  fill: none;
+  stroke: var(--text-mute);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vd-enabler-line {
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.45;
+  color: var(--text);
+  opacity: 0;
+}
+
+.is-enablers .vd-enabler-line {
+  animation: vd-fade 480ms var(--ease-soft) 1350ms both;
+}
+
+.vd-enabler-line strong {
+  font-weight: 900;
+  color: var(--theme-process);
+}
+
+/* ── 末行判断（拍 3，S055 reference） ────────────────────── */
+
+.vd-effort {
+  flex: none;
+  position: relative;
+  height: 118px;
+}
+
+.vd-effort-ghost {
+  margin: 0;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.24em;
+  color: var(--text-faint);
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-effort .vd-effort-ghost {
+  opacity: 0;
+}
+
+.vd-effort-plate {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 0 40px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.is-effort .vd-effort-plate {
+  animation: vd-plate-in 560ms var(--ease-soft) 160ms both;
+}
+
+.vd-effort-kicker {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.vd-effort-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 35px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.vd-neq {
+  font-size: 40px;
+  padding: 0 6px;
+  color: var(--theme-danger);
+}
+
+.vd-effort-hero strong {
+  font-weight: 900;
+  color: var(--accent);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes vd-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes vd-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes vd-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes vd-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes vd-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes vd-plate-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
