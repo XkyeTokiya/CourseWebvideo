@@ -1,0 +1,319 @@
+/* processing-chain · A007 image-with-insight-rail（outline §7）
+   mechanism: ordered-progression — M003 图常驻，采集/存储/价值环节三条
+   链节条按真实先后落位：前一阶段弱化为已完成（对勾），后一阶段成为焦点。
+   prefix: pc- */
+
+.pc-scene {
+  gap: 20px;
+}
+
+/* ── 标题区：判断方向（S039）+ 链条提示 ───────────────────── */
+
+.pc-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.pc-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--text);
+  animation: pc-rise 560ms var(--ease-soft) backwards;
+}
+
+.pc-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.pc-head-side {
+  margin: 0 0 4px;
+  padding: 10px 22px;
+  border: 2px solid var(--rule);
+  border-radius: 10px;
+  background: var(--surface-3);
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.1em;
+  color: var(--text-2);
+  animation: pc-rise 560ms var(--ease-soft) 240ms backwards;
+}
+
+/* ── 主区：左 = M003 图锚点；右 = 链节条导轨 ──────────────── */
+
+.pc-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 820px 1fr;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.pc-media {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 3px solid var(--text);
+  animation: pc-rise 620ms var(--ease-soft) 140ms backwards;
+}
+
+.pc-media-shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  flex: 1;
+  object-fit: cover;
+}
+
+.pc-media-cap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  border-top: 2px dashed var(--rule);
+}
+
+.pc-media-cap > span:first-child {
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.pc-media-missing {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+/* ── 链节条导轨：三条按序推进 ─────────────────────────────── */
+
+.pc-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pc-chain {
+  flex: 1;
+  min-height: 0;
+  padding: 18px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0.3;
+  border-style: dashed;
+  border-color: var(--rule);
+  transition: opacity 460ms var(--ease-soft), filter 460ms var(--ease-soft),
+    border-color 460ms var(--ease-soft);
+}
+
+/* 未落位：虚线 ghost 槽位（只留条头与待落位提示） */
+
+.pc-chain.is-current {
+  opacity: 1;
+  border-style: solid;
+  border-color: var(--text);
+  animation: pc-chain-in 520ms var(--ease-overshoot) both;
+}
+
+.pc-chain.is-past {
+  opacity: 0.55;
+  border-style: solid;
+  border-color: var(--rule);
+  filter: grayscale(0.45);
+}
+
+.pc-chain-ghost-text {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+}
+
+/* 条头：序号 + 名称 + 已完成对勾 */
+
+.pc-chain-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pc-chain-mark {
+  flex: none;
+  font-size: 40px;
+  color: var(--theme-process);
+}
+
+.pc-chain-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.pc-chain-check {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: var(--theme-process-surface);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity 400ms var(--ease-soft);
+}
+
+.pc-chain-check svg {
+  width: 22px;
+  height: 22px;
+}
+
+.pc-chain-check path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.pc-chain.is-past .pc-chain-check {
+  opacity: 1;
+}
+
+.pc-chain.is-past .pc-chain-check path {
+  animation: pc-draw 460ms var(--ease-soft) forwards;
+}
+
+/* 采集条渠道注记（拍 1 错峰落位） */
+
+.pc-channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pc-channel-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border: 2px solid var(--theme-process);
+  border-radius: 8px;
+  background: var(--theme-process-surface);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--theme-process);
+  opacity: 0;
+}
+
+.pc-chain.is-current .pc-channel-chip {
+  animation: pc-chip-in 420ms var(--ease-overshoot) both;
+  animation-delay: calc(400ms + var(--pc-i) * 220ms);
+}
+
+/* 存储条说明行（拍 2，exact S041） */
+
+.pc-chain-line {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.pc-chain-line strong {
+  font-weight: 900;
+  color: var(--text);
+}
+
+/* 价值环节三项（拍 3，exact S042） */
+
+.pc-value-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.pc-value-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 24px;
+  border: 2.5px solid var(--accent);
+  border-radius: 10px;
+  background: var(--theme-process-surface);
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--accent);
+  opacity: 0;
+}
+
+.pc-chain.is-current .pc-value-chip {
+  animation: pc-chip-in 440ms var(--ease-overshoot) both;
+  animation-delay: calc(420ms + var(--pc-j) * 260ms);
+}
+
+/* 条脚注 */
+
+.pc-chain-foot {
+  margin: 0;
+  font-size: 23px;
+  line-height: 1.45;
+  color: var(--text-mute);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes pc-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pc-chain-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pc-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pc-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
