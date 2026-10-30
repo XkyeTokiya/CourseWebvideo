@@ -1,0 +1,350 @@
+{
+  "episode_id": "episode-29",
+  "validation_profile": "visual-rough-v4",
+  "schema_version": "courseplay-visual-rough/v4",
+  "status": "draft",
+  "validation_summary": {
+    "pages": [
+      {
+        "a_id": "A001",
+        "source": {
+          "S": [
+            "S001",
+            "S002",
+            "S003",
+            "S004",
+            "S005",
+            "S006"
+          ],
+          "G": [
+            "G001",
+            "G002"
+          ],
+          "R": [
+            "R001"
+          ]
+        },
+        "recipe": {
+          "requested": "time-anchor-opening",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 2,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M001"
+        }
+      },
+      {
+        "a_id": "A002",
+        "source": {
+          "S": [
+            "S007",
+            "S008",
+            "S009",
+            "S010",
+            "S011",
+            "S012"
+          ],
+          "G": [
+            "G003",
+            "G004",
+            "G005"
+          ],
+          "R": [
+            "R002",
+            "R003"
+          ]
+        },
+        "recipe": {
+          "requested": "parallel-cards-self-contained",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A003",
+        "source": {
+          "S": [
+            "S013",
+            "S014",
+            "S015",
+            "S016"
+          ],
+          "G": [
+            "G006",
+            "G007",
+            "G008"
+          ],
+          "R": [
+            "R004",
+            "R005"
+          ]
+        },
+        "recipe": {
+          "requested": "condition-key-goal",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A004",
+        "source": {
+          "S": [
+            "S017",
+            "S018",
+            "S019",
+            "S020"
+          ],
+          "G": [
+            "G009",
+            "G010",
+            "G011"
+          ],
+          "R": [
+            "R006"
+          ]
+        },
+        "recipe": {
+          "requested": "split-compare-with-pivot",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A005",
+        "source": {
+          "S": [
+            "S021",
+            "S022",
+            "S023"
+          ],
+          "G": [
+            "G012",
+            "G013"
+          ],
+          "R": [
+            "R007"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-reading-notes",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 2,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M002"
+        }
+      },
+      {
+        "a_id": "A006",
+        "source": {
+          "S": [
+            "S024",
+            "S025",
+            "S026"
+          ],
+          "G": [
+            "G014",
+            "G015"
+          ],
+          "R": [
+            "R008"
+          ]
+        },
+        "recipe": {
+          "requested": "layered-bands-with-side-notes",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 2,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A007",
+        "source": {
+          "S": [
+            "S027",
+            "S028",
+            "S029",
+            "S030",
+            "S031"
+          ],
+          "G": [
+            "G016",
+            "G017",
+            "G018",
+            "G019"
+          ],
+          "R": [
+            "R009",
+            "R010"
+          ]
+        },
+        "recipe": {
+          "requested": "parallel-cards-with-takeaway",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 4,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A008",
+        "source": {
+          "S": [
+            "S032",
+            "S033",
+            "S034",
+            "S035",
+            "S036"
+          ],
+          "G": [
+            "G020",
+            "G021",
+            "G022",
+            "G023"
+          ],
+          "R": [
+            "R011",
+            "R012"
+          ]
+        },
+        "recipe": {
+          "requested": "parallel-cards-self-contained",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 4,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A009",
+        "source": {
+          "S": [
+            "S037",
+            "S038",
+            "S039",
+            "S040",
+            "S041",
+            "S042"
+          ],
+          "G": [
+            "G024",
+            "G025",
+            "G026"
+          ],
+          "R": [
+            "R013",
+            "R014"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-summary-rail",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M003"
+        }
+      }
+    ]
+  },
+  "image_allocation": {
+    "required_page_count": 3,
+    "assigned_page_count": 3
+  },
+  "logic_diagrams": {
+    "page_limit": 0,
+    "assigned_page_count": 0
+  },
+  "errors": [],
+  "failures": [],
+  "input_integrity": {
+    "a_page_sha256": "90e21c71af7f80bd244e47fd80406ae4bb7dea7cf840b3fab19c21a9a95a743c",
+    "visual_rough_sha256": "7c5b95f7a1f0d749c6f0bf7b1f820aec43a0b37df3dfeb1ef6da48c98be0f9f1",
+    "recipe_registry_sha256": "697ed613616ec9ac5325a38544fe4ac9c8fcf6b3ab5439e614e7a7293b93ef2e"
+  }
+}

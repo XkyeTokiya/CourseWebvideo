@@ -1,0 +1,463 @@
+{
+  "episode_id": "episode-22",
+  "validation_profile": "visual-rough-v4",
+  "schema_version": "courseplay-visual-rough/v4",
+  "status": "draft",
+  "validation_summary": {
+    "pages": [
+      {
+        "a_id": "A001",
+        "source": {
+          "S": [
+            "S001",
+            "S002",
+            "S003",
+            "S004",
+            "S005"
+          ],
+          "G": [
+            "G001",
+            "G002"
+          ],
+          "R": [
+            "R001"
+          ]
+        },
+        "recipe": {
+          "requested": "time-anchor-opening",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 2,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M001"
+        }
+      },
+      {
+        "a_id": "A002",
+        "source": {
+          "S": [
+            "S006",
+            "S007",
+            "S008",
+            "S009",
+            "S010",
+            "S011"
+          ],
+          "G": [
+            "G003",
+            "G004"
+          ],
+          "R": [
+            "R002"
+          ]
+        },
+        "recipe": {
+          "requested": "layered-bands-with-side-notes",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 2,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A003",
+        "source": {
+          "S": [
+            "S012",
+            "S013",
+            "S014",
+            "S015",
+            "S016",
+            "S017",
+            "S018"
+          ],
+          "G": [
+            "G005",
+            "G006",
+            "G007"
+          ],
+          "R": [
+            "R003"
+          ]
+        },
+        "recipe": {
+          "requested": "parallel-cards-self-contained",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A004",
+        "source": {
+          "S": [
+            "S019",
+            "S020",
+            "S021",
+            "S022",
+            "S023",
+            "S024",
+            "S025"
+          ],
+          "G": [
+            "G008",
+            "G009",
+            "G010"
+          ],
+          "R": [
+            "R004"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-insight-rail",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M002"
+        }
+      },
+      {
+        "a_id": "A005",
+        "source": {
+          "S": [
+            "S026",
+            "S027",
+            "S028",
+            "S029",
+            "S030",
+            "S031"
+          ],
+          "G": [
+            "G011",
+            "G012"
+          ],
+          "R": [
+            "R005"
+          ]
+        },
+        "recipe": {
+          "requested": "parallel-cards-with-takeaway",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A006",
+        "source": {
+          "S": [
+            "S032",
+            "S033",
+            "S034",
+            "S035",
+            "S036",
+            "S037",
+            "S038"
+          ],
+          "G": [
+            "G013",
+            "G014",
+            "G015",
+            "G016"
+          ],
+          "R": [
+            "R006"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-summary-rail",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 4,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M003"
+        }
+      },
+      {
+        "a_id": "A007",
+        "source": {
+          "S": [
+            "S039",
+            "S040",
+            "S041",
+            "S042",
+            "S043",
+            "S044"
+          ],
+          "G": [
+            "G017",
+            "G018"
+          ],
+          "R": [
+            "R007"
+          ]
+        },
+        "recipe": {
+          "requested": "layered-bands-with-side-notes",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 2,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A008",
+        "source": {
+          "S": [
+            "S045",
+            "S046",
+            "S047",
+            "S048",
+            "S049"
+          ],
+          "G": [
+            "G019",
+            "G020",
+            "G021"
+          ],
+          "R": [
+            "R008",
+            "R009"
+          ]
+        },
+        "recipe": {
+          "requested": "split-compare-with-pivot",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A009",
+        "source": {
+          "S": [
+            "S050",
+            "S051",
+            "S052",
+            "S053",
+            "S054",
+            "S055"
+          ],
+          "G": [
+            "G022",
+            "G023"
+          ],
+          "R": [
+            "R010"
+          ]
+        },
+        "recipe": {
+          "requested": "layered-bands-with-side-notes",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 2,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A010",
+        "source": {
+          "S": [
+            "S056",
+            "S057",
+            "S058",
+            "S059",
+            "S060",
+            "S061"
+          ],
+          "G": [
+            "G024",
+            "G025",
+            "G026",
+            "G027"
+          ],
+          "R": [
+            "R011"
+          ]
+        },
+        "recipe": {
+          "requested": "parallel-cards-self-contained",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 4,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A011",
+        "source": {
+          "S": [
+            "S062",
+            "S063",
+            "S064",
+            "S065",
+            "S066"
+          ],
+          "G": [
+            "G028",
+            "G029"
+          ],
+          "R": [
+            "R012"
+          ]
+        },
+        "recipe": {
+          "requested": "layered-bands-with-side-notes",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 2,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A012",
+        "source": {
+          "S": [
+            "S067",
+            "S068",
+            "S069",
+            "S070"
+          ],
+          "G": [
+            "G030",
+            "G031"
+          ],
+          "R": [
+            "R013"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-insight-rail",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 2,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M004"
+        }
+      }
+    ]
+  },
+  "image_allocation": {
+    "required_page_count": 4,
+    "assigned_page_count": 4
+  },
+  "logic_diagrams": {
+    "page_limit": 0,
+    "assigned_page_count": 0
+  },
+  "errors": [],
+  "failures": [],
+  "input_integrity": {
+    "a_page_sha256": "38a52599e1681c6369a428ac0f24ab64ef8a3cae3d287f0da7b7d5b6199aa6e3",
+    "visual_rough_sha256": "b2fb81033d1d7f0d693fbcec11590a80e7c80c5658c091d9718c3924a05ac7df",
+    "recipe_registry_sha256": "697ed613616ec9ac5325a38544fe4ac9c8fcf6b3ab5439e614e7a7293b93ef2e"
+  }
+}
