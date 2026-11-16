@@ -1,5 +1,7 @@
 # Courseplay Phase 1 runner
 
+各制作文件的验收边界、Phase 1 候选格式和常见错误定位见[文件验收与资源入口](production-file-acceptance.md)。
+
 `courseplay-phase1.mjs` 只负责防止内容缺失，不判断文案是否精彩或画面是否足够好。
 正式 `script.md` 与 `outline.md` 是唯一持久状态；不存在旁路 `state.json`、review
 receipt、临时 script blocks 或人工维护的全局状态。
@@ -94,7 +96,7 @@ B 站改写或 `script/article ≥ 60%` 门禁。
 
 Outline 候选必须是一个完整章节 section，并满足：
 
-- 标题序号和 `A-page / Chapter` 与当前页一致；
+- 标题使用 `## 1. a001 — 标题（2 steps · ~24s）` 形式，包含当前页序号、step 数和秒数；`A-page / Chapter` 与当前页一致；
 - step 行从 1 连续编号，数量等于 script Beat 数；
 - 所有受保护关系 ID 均出现；S/U/R/M 引用属于当前 A-page / rough；
 - `额外复杂场景` 为 `none` 或 `proposed`，最终取舍留给 Checkpoint Plan。

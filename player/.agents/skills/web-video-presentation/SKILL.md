@@ -20,6 +20,11 @@ description: 把文章或口播稿制作成player/ 子项目内的 Web Video Stu
 token 和原语；每个实例只维护内容、章节、主题选择与音频。不要复制共享
 运行时，也不要从旧模板创建第二套播放器。
 
+制作时按当前阶段查阅[文件验收与资源入口](../../../docs/production-file-acceptance.md)：
+其中集中列出各文件的完成条件、命令覆盖范围、Phase 1 候选格式、主题和素材入口。
+主题可从 `player/` 运行 `pnpm themes:list` 动态查看；机器可读输出用
+`pnpm --silent themes:list -- --json`。已读且未变化的材料无需重复加载。
+
 ---
 
 ## 工作流总览
@@ -58,9 +63,10 @@ episodes/<episode-id>/
 ├── article.md            # 用户原稿，如有；开发阶段画面信息源
 ├── script.md             # 必有：保持原文语言的平台化口播稿
 ├── outline.md            # 必有：章节、视觉页面与 step 映射
-├── approved-spoken-text.txt        # Courseplay 声明 approved_text 时必有
-├── <episode-id>-a-page.json        # Courseplay 正式输入
-├── <episode-id>-visual-rough.md    # Courseplay 正式输入
+├── inputs/                         # Courseplay 正式输入，只读消费
+│   ├── approved-spoken-text.txt    # 声明 approved_text 时必有
+│   ├── <episode-id>-a-page.json
+│   └── <episode-id>-visual-rough.md
 ├── .handoffs/<Axxx>.json           # Courseplay 按需生成，Git 忽略
 ├── audio-segments.json   # 根级 audio:extract 生成
 ├── media/audio/          # 可选音频，按 chapter/step 组织
@@ -117,7 +123,7 @@ Phase 2.4 的"实现单章"会重复 N 次 —— 每次都要回看核心约束
 | 阶段 | 必读（每次都看） | 一次性看完 / 按需查 |
 |---|---|---|
 | Phase 1.1-1.5 内容编译 | `references/SCRIPT-STYLE.md` + `references/OUTLINE-FORMAT.md` + `article.md`（用户原文，如有）；检测到正式 Courseplay 输入时另读 `references/COURSEPLAY-BOUND-MODE.md` 与 `references/COURSEPLAY-STATE-MECHANISMS.md` | 独立审查只在用户明确要求时按当前章输入执行 |
-| **Checkpoint Plan 选主题** | —— | `themes/*/theme.json`（动态读取并跳过 `selectable: false`，列清单 + `bestFor` 推荐 + `descriptionZh`）；`references/THEMES.md`（用户想了解主题系统时） |
+| **Checkpoint Plan 选主题** | `pnpm themes:list`（动态列出可选主题、简介、适用场景、气质和预览色） | `themes/*/theme.json`（命令不可用时直接读取并跳过 `selectable: false`）；`references/THEMES.md`（主题系统详情） |
 | Phase 2.1 脚手架 | —— | SKILL.md 本节看一次 |
 | **Phase 2.4 实现单章（×N 次，被 2.2 / 2.3 调用）** | **`references/CHAPTER-CRAFT.md`** 单一创作入口 + 当前主题 + 当前 outline 章节块 + article 对应段落（如有）+ 素材清单；Courseplay 可使用当前 `.handoffs/<Axxx>.json` + `references/COURSEPLAY-BOUND-MODE.md` + `references/COURSEPLAY-STATE-MECHANISMS.md`，或直接提供等价的当前章节输入 | `references/EXAMPLES/`（结构示意，不是抄袭模板）；`references/THEMES.md` 完整 token 契约 |
 | Phase 3 音频合成 | `references/AUDIO.md`（含 narrations.ts → segments.json → 任意 provider 流程，内置 minimax / edge / cosyvoice / openai） | `docs/tts-providers.md`（换 provider / 自带 TTS 时） |
@@ -321,8 +327,9 @@ JSON 的 `style` 字段。JSON 只提供内容，不决定视觉；视觉由实�
 
 ### agent 此时要做的预备工作
 
-1. 读所有 `themes/*/theme.json`，跳过 `selectable: false`，再取
-   `nameZh` / `descriptionZh` / `bestFor` / `mood` —— **不要硬编码清单**
+1. 运行 `pnpm themes:list`（或使用 `--json`）动态读取可选主题的
+   `nameZh` / `descriptionZh` / `bestFor` / `mood`；命令不可用时读取
+   `themes/*/theme.json` 并跳过 `selectable: false` —— **不要硬编码清单**
 2. 根据 `script.md` 的内容类型 / 关键词 / 语气，**主动**从主题里挑 2~3
    套**最匹配的推荐**（匹配 `bestFor` 字段）
 3. 扫一遍 `outline.md` 末尾"素材清单"部分

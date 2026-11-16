@@ -6,6 +6,7 @@ CourseWebvideo 将课程内容编译、视觉设计、网页章节、音频和�
 
 - **上游内容与开发**：从仓库根目录开始，阅读 [根 CLAUDE.md](CLAUDE.md) 与 [上游约束](narration-pipeline/CLAUDE.md)。
 - **下游制作与开发**：进入 `player/`，阅读 [Player 执行契约](player/CLAUDE.md)。主 Agent 再完整读取根规则；明确受委派的下游 subagent 以 Player 文件为 CLAUDE 主动阅读入口。
+- **文件验收与制作资源**：查看 [Player 文件验收与资源入口](player/docs/production-file-acceptance.md)，按阶段查各文件标准、主题、素材、音频与录屏资料。
 - **了解流程**：在浏览器打开 [生产主线说明](production-pipeline.html)；具体生产规则以当前 CLAUDE、Skill 和作者契约为准。
 
 ## 环境与本地启动
@@ -85,6 +86,7 @@ narration-pipeline/episodes/（冻结任务包）
 | `pnpm build:inspect` | 单独检查已有构建的归属、大小与 SHA-256 |
 | `pnpm courseplay:phase1 -- --help` | runner 参数帮助 |
 | `pnpm courseplay:handoff -- --help` | 可选交接包参数帮助 |
+| `pnpm themes:list` | 动态列出可选主题、适用场景和预览色；`pnpm --silent themes:list -- --json` 输出元数据 |
 | `pnpm audio:providers` | 列出音频提供方 |
 
 Phase 1 示例：将 `episode-XX` 替换为目标实例，按作者契约先在该期 work 目录准备候选内容；每个 A-page 都需要提交，之后才 finalize。

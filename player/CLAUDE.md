@@ -13,6 +13,8 @@
 
 章节创作、presentation 和章节验收必须完整阅读 `.agents/skills/web-video-presentation/SKILL.md`，按当前阶段加载其指定材料。工具、共享运行时或配置维护读取相关契约、实现与测试，涉及生产行为时补读对应 Skill；纯文档调整读取受影响规则来源。已读且未变化的材料不必逐轮重读。
 
+单期制作按当前阶段查阅[文件验收与资源入口](docs/production-file-acceptance.md)：集中提供文件完成条件、检查覆盖范围、Phase 1 候选格式及主题、素材、音频、录屏入口。`pnpm themes:list` 动态列出当前可选主题与推荐场景，`pnpm --silent themes:list -- --json` 提供机器可读元数据。
+
 批准 visual rough、Checkpoint Plan、第 1 章完整版本验收、Checkpoint Audio 不能用机器验证替代；遵守用户已作出的有效批准，不重复索取。音频合成前确认分段文本与是否合成；subagent 需要用户决策时交由主 Agent 协调。
 
 ## 目录契约
@@ -59,6 +61,7 @@ dist/manifests/assets.json        # 构建产物完整性与归属清单
 pnpm dev
 pnpm courseplay:phase1 -- --help
 pnpm courseplay:handoff -- --help
+pnpm themes:list
 pnpm audio:providers
 ```
 
@@ -71,6 +74,8 @@ Phase 1 命令与候选内容示例见 [runner 使用说明](docs/courseplay-pha
 Phase 1 按 `init` → 逐 A `commit-chapter` → `finalize` 执行；不创建旁路 `state.json`、review receipt、临时 script blocks 或 narration unit/binding sidecar。候选在本期 work 目录创作，不得带有 runner marker；提交时 runner 会校验 Nx 无损还原、Beat/step 数量、A-page 顺序和稳定关系引用。`status` 发现 `incomplete` 时只重提受影响章节，不能手工修补另一份正式文件。`status`、`resume`、`preflight` 用于诊断和恢复；A-page 集合或顺序变化时显式处理迁移，不能静默覆盖。
 
 临时验证结果写入 `../.tmp/validation/<episode-id>/`，临时测试夹具和备份写入 `../.tmp/tests/<task>/`，运行日志写入 `../.tmp/runtime/<service>/`；禁止在根 `.tmp/` 顶层直接放文件。任务完成并确认无需恢复后，只清理本任务自己的 player work 子树。
+
+视觉检查需要截图时，先确定本轮要核验的章节、step 与状态，用一次脚本或支持批量的工具连续采集多张截图，再拼成标注章节和 step、细节可读的总览图集中查看。画面过多时可将同一批次拆成多张拼图；原图和拼图等临时文件放在本期 validation 目录。禁止逐张截图、查看后再截下一张；发现问题后的复验按同样方式批量检查受影响状态及必要的相邻状态，不减少契约要求的覆盖。无法批量采集或拼合时应说明截图验证未完成，不能以单张截图替代或声称通过。
 
 | 改动 | 必需验证（从 player 执行） |
 | --- | --- |

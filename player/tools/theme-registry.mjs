@@ -18,17 +18,21 @@ export async function listInstalledThemeIds(root = path.resolve(process.env.PLAY
 
 export const listThemeIds = listInstalledThemeIds;
 
-export async function listSelectableThemeIds(root = path.resolve(process.env.PLAYER_ROOT ?? process.cwd())) {
+export async function listSelectableThemes(root = path.resolve(process.env.PLAYER_ROOT ?? process.cwd())) {
   const ids = await listInstalledThemeIds(root);
   const selectable = [];
   for (const id of ids) {
     try {
       const metadataPath = path.join(root, ".agents", "skills", "web-video-presentation", "themes", id, "theme.json");
       const metadata = JSON.parse(await readFile(metadataPath, "utf8"));
-      if (metadata.selectable !== false) selectable.push(id);
+      if (metadata.selectable !== false) selectable.push({ ...metadata, id });
     } catch { /* invalid metadata is not selectable */ }
   }
   return selectable;
+}
+
+export async function listSelectableThemeIds(root = path.resolve(process.env.PLAYER_ROOT ?? process.cwd())) {
+  return (await listSelectableThemes(root)).map((theme) => theme.id);
 }
 
 export async function assertThemeExists(themeId, root = path.resolve(process.env.PLAYER_ROOT ?? process.cwd())) {

@@ -1,5 +1,7 @@
 # New Episode Contract
 
+按文件查看完成条件、验证覆盖范围及主题、素材等入口，见[文件验收与资源入口](production-file-acceptance.md)。
+
 Studio 只扫描 `episodes/`；旧 `output/` 与 `.archive/` 不导入。共享封面内容库位于
 `episodes/_shared/covers/`，不是 episode 实例。
 
