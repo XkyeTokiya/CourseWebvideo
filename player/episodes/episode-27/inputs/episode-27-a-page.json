@@ -96,9 +96,9 @@
   {
    "a_id": "A001",
    "callback_a_ids": [],
-   "nx": "【视频标题】\n\n用 Apifox 调试标识数据模板接口\n\n【开场导入】\n\n上一集我们搭好了接口请求的整体结构：方法、目标、请求头、请求数据和响应，就像一张图纸。这一集，图纸要落地。我们手里的任务是，往标识系统里加一条数据模板。这个动作没有现成的按钮，它是一次接口调用。问题就来了：怎么在测试环境里把这条接口调通，而且让这次调试经得起核对？\n\n",
+   "nx": "上一集我们搭好了接口请求的整体结构：方法、目标、请求头、请求数据和响应，就像一张图纸。这一集，图纸要落地。我们手里的任务是，往标识系统里加一条数据模板。这次我们用接口调用来完成这个动作。问题就来了：怎么在测试环境里把这条接口调通，而且让这次调试经得起核对？\n\n",
    "teaching_purpose": "呈现本集标题；把请求结构图纸落成一次真实接口调用任务并提出核得住的问题",
-   "single_message": "加一条数据模板没有现成按钮，是一次接口调用；要在测试环境调通并经得起核对。",
+   "single_message": "通过接口调用新增数据模板，并在授权测试环境中核对调试结果。",
    "screen": {
     "title": {
      "screen_item_id": "S001",
@@ -122,7 +122,7 @@
        },
        {
         "screen_item_id": "S003",
-        "guidance_text": "这个动作没有现成按钮，是一次接口调用",
+        "guidance_text": "本次通过接口调用新增数据模板",
         "usage_policy": "reference",
         "evidence_refs": [
          "E003"
@@ -166,10 +166,10 @@
    "entry_condition": "观众带着第 26 集的请求结构认知进入",
    "exit_condition": "观众能说出本集任务与核得住的问题",
    "timing": {
-    "char_equivalent": 139.0,
-    "min_seconds": 35,
-    "target_seconds": 36,
-    "max_seconds": 38,
+    "char_equivalent": 114,
+    "min_seconds": 29,
+    "target_seconds": 30,
+    "max_seconds": 32,
     "short_page_reason": null
    }
   },
@@ -264,7 +264,7 @@
    "entry_condition": "观众已接受任务",
    "exit_condition": "观众能说出四件事标准",
    "timing": {
-    "char_equivalent": 100.0,
+    "char_equivalent": 100,
     "min_seconds": 25,
     "target_seconds": 26,
     "max_seconds": 28,
@@ -276,7 +276,7 @@
    "callback_a_ids": [
     "A002"
    ],
-   "nx": "【正文讲解】\n\n先看这次调试用到的工具。这次调试用 Apifox。它是一种接口协作平台，把接口文档、接口调试、接口模拟、自动化测试都放在一起。在我们这里，它的角色是工具，负责承载文档、组织请求。它不是标识系统的节点服务，也不会替我们判断接口版本对不对、字段有没有、业务结果成没成。这个定位放在前面，后面每一步都好解释。\n\n",
+   "nx": "先看这次调试用到的工具。这次调试用 Apifox。它是一种接口协作平台，把接口文档、接口调试、接口模拟、自动化测试都放在一起。在我们这里，它的角色是工具，负责承载文档、组织请求。它不是标识系统的节点服务，也不会替我们判断接口版本对不对、字段有没有、业务结果成没成。这个定位放在前面，后面每一步都好解释。\n\n",
    "teaching_purpose": "给出 Apifox 的工具定位与不越权的边界",
    "single_message": "Apifox 是接口协作平台，承担承载与组织；它不替我们判断版本、字段和业务结果。",
    "screen": {
@@ -346,10 +346,10 @@
    "entry_condition": "观众已掌握四件事标准",
    "exit_condition": "观众能说出工具定位与不替判断的边界",
    "timing": {
-    "char_equivalent": 134.0,
-    "min_seconds": 34,
-    "target_seconds": 35,
-    "max_seconds": 37,
+    "char_equivalent": 130.0,
+    "min_seconds": 33,
+    "target_seconds": 34,
+    "max_seconds": 36,
     "short_page_reason": null
    }
   },
@@ -502,7 +502,7 @@
    "entry_condition": "观众已划清授权边界",
    "exit_condition": "观众能说出定位路径与模式选择",
    "timing": {
-    "char_equivalent": 185.0,
+    "char_equivalent": 185,
     "min_seconds": 47,
     "target_seconds": 48,
     "max_seconds": 51,
@@ -514,9 +514,9 @@
    "callback_a_ids": [
     "A005"
    ],
-   "nx": "进入调试模式后，先处理身份。请求先去授权身份接口取一个 Token。取回来第一件事，确认它属于当前这个环境。Token 只在脱敏状态下使用，就是说记录和展示的时候要打码。它还有有效期，过期了就得重新取。具体能撑多长时间，看当期文档怎么标，不假定固定时长。\n\n",
+   "nx": "进入调试模式后，先处理身份。请求先去授权身份接口取一个 Token。取回来第一件事，确认它属于当前这个环境。在授权环境里使用有效的 Token；展示、记录或分享时，要隐藏或移除凭据，不能把实际值放进截图和资料。它还有有效期，过期了就得重新取。具体能撑多长时间，看当期文档怎么标，不假定固定时长。\n\n",
    "teaching_purpose": "建立 Token 获取与环境确认、脱敏与有效期规则",
-   "single_message": "先取当前环境的 Token：脱敏记录展示，有有效期，过期重取，不看固定时长。",
+   "single_message": "在当前授权环境使用有效 Token，记录与展示时脱敏；有效期以实际文档为准。",
    "screen": {
     "title": {
      "screen_item_id": "S022",
@@ -545,8 +545,8 @@
       "items": [
        {
         "screen_item_id": "S024",
-        "guidance_text": "Token 只在脱敏状态下使用：记录和展示要打码",
-        "usage_policy": "exact",
+        "guidance_text": "请求在授权环境中使用有效 Token；展示、记录和分享时隐藏或移除凭据",
+        "usage_policy": "reference",
         "evidence_refs": [
          "E007"
         ]
@@ -575,7 +575,7 @@
    "silent_constraints": [
     {
      "constraint_id": "C006",
-     "instruction": "Token 的记录展示一律跳码",
+     "instruction": "展示、记录及分享均须隐藏或移除 Token；不得泄露实际凭据",
      "evidence_refs": [
       "E007"
      ]
@@ -584,10 +584,10 @@
    "entry_condition": "观众已定位目标接口",
    "exit_condition": "观众能说出 Token 的获取与环境确认、脱敏与 validity 边界",
    "timing": {
-    "char_equivalent": 108.0,
-    "min_seconds": 27,
-    "target_seconds": 28,
-    "max_seconds": 30,
+    "char_equivalent": 125.0,
+    "min_seconds": 32,
+    "target_seconds": 33,
+    "max_seconds": 35,
     "short_page_reason": null
    }
   },
@@ -596,7 +596,7 @@
    "callback_a_ids": [
     "A006"
    ],
-   "nx": "身份有了，剩两个请求头，职责不一样。第一个叫 Authorization，按文档采用 Bearer 的写法，后面跟一个空格，再跟 Token。这一项，表明调用者是谁。第二个叫 Content-Type，填内容类型。举个例子，Content-Type 是 application/json，意思就是请求主体按 JSON 来解析。两个头，一个管身份，一个管格式，各管各的。\n\n",
+   "nx": "身份准备好后，再区分两个请求头的职责。第一个叫 Authorization，按文档采用 Bearer 的写法，后面跟一个空格，再跟 Token。这一项，表明调用者是谁。第二个叫 Content-Type，填内容类型。举个例子，Content-Type 是 application/json，意思就是请求主体按 JSON 来解析。两个头，一个管身份，一个管格式，各管各的。\n\n",
    "teaching_purpose": "区分认证与内容类型两个请求头的职责",
    "single_message": "Authorization 表明调用者是谁，Content-Type 说明主体按什么格式解析。",
    "screen": {
@@ -671,10 +671,10 @@
    "entry_condition": "观众已备好当前环境 Token",
    "exit_condition": "观众能区分两个请求头的职责",
    "timing": {
-    "char_equivalent": 123.0,
-    "min_seconds": 31,
-    "target_seconds": 32,
-    "max_seconds": 34,
+    "char_equivalent": 125.0,
+    "min_seconds": 32,
+    "target_seconds": 33,
+    "max_seconds": 35,
     "short_page_reason": null
    }
   },
@@ -765,7 +765,7 @@
    "callback_a_ids": [
     "A008"
    ],
-   "nx": "发送之前，先做一次静态检查。方法与目标，来自同一个接口条目，不从别处凑。Authorization 指向当前环境的脱敏 Token。Content-Type 和文档一致。请求体过了 schema 这一关。这四项里，任何一项没法确认，就先回到文档，把请求留在原地，不点发送。宁可慢一点，也不能糊弄过去。\n\n",
+   "nx": "发送之前，先做一次静态检查。方法与目标，来自同一个接口条目，不从别处凑。Authorization 使用当前环境的有效 Token，展示和留档时隐藏凭据。Content-Type 和文档一致。请求体过了 schema 这一关。这四项里，任何一项没法确认，就先回到文档，把请求留在原地，不点发送。宁可慢一点，也不能糊弄过去。\n\n",
    "teaching_purpose": "建立发送前的四项静态检查与停发规则",
    "single_message": "方法目标同源、认证指向当前环境、类型与文档一致、数据过 schema；查不清就不发。",
    "screen": {
@@ -791,7 +791,7 @@
        },
        {
         "screen_item_id": "S036",
-        "guidance_text": "Authorization 指向当前环境的脱敏 Token",
+        "guidance_text": "Authorization 使用当前环境的有效 Token；展示和留档时隐藏凭据",
         "usage_policy": "reference",
         "evidence_refs": [
          "E009"
@@ -851,10 +851,10 @@
    "entry_condition": "观众已按 schema 填好数据",
    "exit_condition": "观众能四项检查并执行停发规则",
    "timing": {
-    "char_equivalent": 112.0,
-    "min_seconds": 28,
-    "target_seconds": 29,
-    "max_seconds": 31,
+    "char_equivalent": 122.0,
+    "min_seconds": 31,
+    "target_seconds": 32,
+    "max_seconds": 34,
     "short_page_reason": null
    }
   },
@@ -863,7 +863,7 @@
    "callback_a_ids": [
     "A009"
    ],
-   "nx": "发送之后，先记下非敏感上下文：请求时间、环境标识、文档版本。这些是复查时的线索。然后看响应。响应怎么算对，只看当期文档定义的结果、响应参数和错误信息。界面上的绿色提示、耗时数字、状态码，都不构成模板创建成功的证明。它们是信号，不是结论，真相在文档里。\n\n如果响应不对，就按证据分层找原因：是网络或环境的问题，还是认证失效了，还是请求体不符合 schema，还是接口文档和环境里的版本对不上。每一步判断，都要回到授权环境的日志和当期文档。不存在一张通用的错误码对照表，照着查就能定位。\n\n",
+   "nx": "发送之后，先记下非敏感上下文：请求时间、环境标识、文档版本。这些是复查时的线索。然后看响应。响应怎么算对，只看当期文档定义的结果、响应参数和错误信息。界面上的绿色提示、耗时数字或状态码本身只是线索；是否创建成功，要按接口文档定义的状态和响应结果核对。\n\n如果响应不对，就按证据分层找原因：是网络或环境的问题，还是认证失效了，还是请求体不符合 schema，还是接口文档和环境里的版本对不上。每一步判断，都要回到授权环境的日志和当期文档。不存在一张通用的错误码对照表，照着查就能定位。\n\n",
    "teaching_purpose": "建立响应核对标准与证据分层排查",
    "single_message": "响应对不对只看文档定义；界面信号是信号不是结论，排查靠授权日志与文档。",
    "screen": {
@@ -902,7 +902,7 @@
        },
        {
         "screen_item_id": "S043",
-        "guidance_text": "界面上的绿色提示、耗时数字、状态码是信号，不是结论，真相在文档里",
+        "guidance_text": "绿色提示、耗时或状态码本身只是线索；按文档定义核对状态与响应结果",
         "usage_policy": "reference",
         "evidence_refs": [
          "E009"
@@ -954,10 +954,10 @@
    "entry_condition": "观众已完成静态检查",
    "exit_condition": "观众能按文档核对并分层排查",
    "timing": {
-    "char_equivalent": 208.0,
-    "min_seconds": 52,
-    "target_seconds": 54,
-    "max_seconds": 57,
+    "char_equivalent": 211.0,
+    "min_seconds": 53,
+    "target_seconds": 55,
+    "max_seconds": 58,
     "short_page_reason": null
    }
   },
@@ -1041,9 +1041,9 @@
     "A001",
     "A009"
    ],
-   "nx": "【本期总结】\n\n回到开头那个任务。往标识系统加一条数据模板，我们把它完整走了一遍：先划环境边界，定位目标接口，取脱敏 Token，配好认证和内容类型两个请求头，按 schema 填数据，发送前做静态检查，发送后按文档解释响应，再留一份可复核的证据。这就是准备、装配、发送、核对这条检查链。\n\n拆开看，分工很清楚：授权环境提供场地，当期文档提供规则，Apifox 把动作集中在一起，认证头管身份，内容类型管格式，schema 管数据，文档定对错。每个角色各管一段，谁也不替谁作判断。\n\n再把步骤合起来看，有一条共同的规律：每一步都以当期文档和授权环境为唯一依据，而不是以界面上看到的信号为依据。信号用来触发核对，不直接当结论。所以核心判断落在一点上：一次接口调试的完成，不是按钮点下去的那一刻，而是所有依据都能说清来源的那一刻。",
+   "nx": "本期总结，回到新增模板的任务：先确认授权环境和文档，定位接口并取得当前环境的有效 Token；按文档配置认证、内容类型和请求数据，检查无误后发送，再依据响应和日志核对并保存脱敏证据。\n\n授权环境界定操作范围，文档规定方法、数据和响应；Apifox 承载请求，认证头与内容类型各管身份与格式。能否完成调试，要看依据和结果是否可核对，不能只看发送按钮或界面提示。",
    "teaching_purpose": "收束检查链、角色分工与唯一依据规律",
-   "single_message": "每一步以当期文档和授权环境为唯一依据；完成的标志是依据都能说清来源。",
+   "single_message": "授权环境与文档先行，凭据安全使用并脱敏留证；调试完成取决于可核对的依据与结果。",
    "screen": {
     "title": {
      "screen_item_id": "S049",
@@ -1059,7 +1059,7 @@
       "items": [
        {
         "screen_item_id": "S050",
-        "guidance_text": "检查链：划环境边界、定位接口、取脱敏 Token、配两个头、按 schema 填数据、发送前静态检查、按文档解释响应、留可复核证据",
+        "guidance_text": "确认环境与文档、定位接口、取得有效 Token、配置请求、发送并核对，保存脱敏证据",
         "usage_policy": "reference",
         "evidence_refs": [
          "E009"
@@ -1131,10 +1131,10 @@
    "entry_condition": "观众已走完检查链",
    "exit_condition": "观众能复述检查链、分工与唯一依据规律",
    "timing": {
-    "char_equivalent": 302.5,
-    "min_seconds": 76,
-    "target_seconds": 79,
-    "max_seconds": 83,
+    "char_equivalent": 153.5,
+    "min_seconds": 39,
+    "target_seconds": 40,
+    "max_seconds": 42,
     "short_page_reason": null
    }
   }
