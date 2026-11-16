@@ -1,0 +1,219 @@
+/* a005 · plant & enterprise — 左图锚点 + 右层级轨 + 口径收束
+   mechanism: persistent-media-reading — 图像语境持续，两条轨依次补齐
+   各自的层级形态；判断条最后把三处记录收束到共同口径
+   prefix: fp- */
+
+.fp-scene {
+  gap: 30px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.fp-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fp-fade 520ms var(--ease-soft) backwards;
+}
+
+.fp-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.fp-head-rule {
+  width: 236px;
+  height: 0;
+  border-top: 4px solid var(--accent);
+  transform-origin: left center;
+  animation: fp-rule 640ms var(--ease-expo) 220ms backwards;
+}
+
+/* ── 主区：左侧图像 + 右侧层级轨 ─────────────────────────── */
+
+.fp-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 780px minmax(0, 1fr);
+  gap: 56px;
+  align-items: stretch;
+}
+
+.fp-media {
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  animation: fp-rise 620ms var(--ease-soft) 140ms backwards;
+}
+
+.fp-media-img {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--rule);
+  border-radius: 10px;
+}
+
+.fp-media-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+/* 层级轨：拍 1 第一条常驻；拍 2 第二条进入 */
+.fp-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+.fp-note {
+  margin: 0;
+  padding: 30px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fp-note.is-pending {
+  opacity: 0.3;
+  transition: opacity 560ms var(--ease-soft);
+}
+
+/* 未展开时只保留卡壳与标签，正文随激活淡入 */
+.fp-note.is-pending .fp-note-main,
+.fp-note.is-pending .fp-note-sub {
+  opacity: 0;
+}
+
+.fp-note:nth-child(2).is-on .fp-note-main {
+  animation: fp-fade 460ms var(--ease-soft) 360ms backwards;
+}
+
+.fp-note:nth-child(2).is-on .fp-note-sub {
+  animation: fp-fade 460ms var(--ease-soft) 520ms backwards;
+}
+
+.fp-note.is-on {
+  animation: fp-rise 600ms var(--ease-soft) forwards;
+}
+
+.fp-note:nth-child(2).is-on {
+  animation-delay: 200ms;
+}
+
+.fp-note-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.fp-note-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.fp-note-sub {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* ── 底部判断条：三份记录汇向一个口径（拍 2 门控） ─────────── */
+
+.fp-judgment {
+  flex: none;
+  padding: 26px 44px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  opacity: 0;
+}
+
+.fp-judgment.is-on {
+  animation: fp-rise 560ms var(--ease-soft) 900ms forwards;
+}
+
+.fp-j-mark {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.fp-j-mark i {
+  display: block;
+  width: 30px;
+  height: 8px;
+  border-radius: 3px;
+  background: var(--text-2);
+}
+
+.fp-j-mark i:last-child {
+  background: var(--accent);
+}
+
+.fp-judgment-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.fp-judgment-text em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* ── keyframes ──────────────────────────────────────────── */
+
+@keyframes fp-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fp-rule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes fp-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

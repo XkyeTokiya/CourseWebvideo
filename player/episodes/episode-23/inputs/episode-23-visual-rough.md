@@ -3,7 +3,7 @@ schema_version: courseplay-visual-rough/v4
 document_kind: production
 episode_id: episode-23
 source_a_page: episode-23-a-page.json
-source_a_page_sha256: 226aa08ecc63f770c006e1e331e623540158b285693c44d0f1665aa0442c6c0a
+source_a_page_sha256: a75cf073de2bd4bcf47f11bac5bc3459363d65330a166418aaae21c06a53c597
 status: approved
 image_required_page_fraction: 1/3
 logic_diagram_page_limit: 0
@@ -328,4 +328,4 @@ logic_diagram_page_limit: 0
 
 ### 关系保真
 
-- `[R012]`：由形态回放带到结论条的上下关系承载
+- `[R012]`：由质量线索回放带到结论条的上下关系承载

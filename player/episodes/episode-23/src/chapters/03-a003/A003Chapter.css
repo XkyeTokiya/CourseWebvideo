@@ -1,0 +1,459 @@
+/* a003 · shared value — 三列等权卡：复用方向 / 机制意义 / 方向边界
+   mechanism: equal-weight-accumulation — 三卡依次建立后保持等权；
+   右卡以暖色承担方向边界语义，不产生当前选中项
+   prefix: gf- */
+
+.gf-scene {
+  gap: 30px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.gf-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: gf-fade 520ms var(--ease-soft) backwards;
+}
+
+.gf-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.gf-head-rule {
+  width: 236px;
+  height: 0;
+  border-top: 4px solid var(--accent);
+  transform-origin: left center;
+  animation: gf-rule 640ms var(--ease-expo) 220ms backwards;
+}
+
+/* ── 三列等权卡 ─────────────────────────────────────────── */
+
+.gf-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 48px;
+  align-items: stretch;
+}
+
+.gf-card {
+  margin: 0;
+  padding: 34px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+  border-radius: 14px;
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  transition: opacity 560ms var(--ease-soft);
+}
+
+/* 未展开卡：ghost 待展开态（进入对应 step 后恢复全强度） */
+.gf-card.is-pending {
+  opacity: 0.3;
+}
+
+.gf-card-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+/* 左卡：一份记录 → 多个环节 */
+
+.gf-reuse {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gf-doc {
+  flex: none;
+  width: 118px;
+  height: 158px;
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--surface-3);
+  border: 3px solid var(--text-2);
+  border-radius: 10px;
+}
+
+.gf-doc i {
+  display: block;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--text-2);
+}
+
+.gf-doc i:nth-child(1) {
+  width: 76px;
+}
+
+.gf-doc i:nth-child(2) {
+  width: 56px;
+}
+
+.gf-doc i:nth-child(3) {
+  width: 66px;
+}
+
+.gf-links {
+  flex: none;
+  width: 150px;
+  height: 220px;
+}
+
+.gf-links path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  animation: gf-draw 620ms var(--ease-soft) forwards;
+}
+
+.gf-links path:nth-child(1) {
+  animation-delay: 560ms;
+}
+
+.gf-links path:nth-child(2) {
+  stroke-dasharray: 140;
+  stroke-dashoffset: 140;
+  animation-delay: 760ms;
+}
+
+.gf-links path:nth-child(3) {
+  animation-delay: 960ms;
+}
+
+.gf-sinks {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 220px;
+}
+
+.gf-sinks i {
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 4px solid var(--accent);
+  background: var(--surface-2);
+  animation: gf-pop 420ms var(--ease-overshoot) backwards;
+}
+
+.gf-sinks i:nth-child(1) {
+  animation-delay: 1000ms;
+}
+
+.gf-sinks i:nth-child(2) {
+  animation-delay: 1140ms;
+}
+
+.gf-sinks i:nth-child(3) {
+  animation-delay: 1280ms;
+}
+
+.gf-lead {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: var(--text);
+  animation: gf-fade 480ms var(--ease-soft) 980ms backwards;
+}
+
+.gf-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.gf-points li {
+  position: relative;
+  padding-left: 34px;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text-2);
+  animation: gf-fade 480ms var(--ease-soft) backwards;
+}
+
+.gf-points li:nth-child(1) {
+  animation-delay: 1160ms;
+}
+
+.gf-points li:nth-child(2) {
+  animation-delay: 1320ms;
+}
+
+.gf-points li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 15px;
+  width: 18px;
+  height: 3px;
+  background: var(--accent);
+}
+
+/* 中卡：机制意义（拍 2 状态门控） */
+
+.gf-benefits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.gf-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 21px 4px;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text);
+  border-top: var(--rule-w) var(--rule-style) var(--rule);
+  opacity: 0;
+}
+
+.gf-benefits li:first-child {
+  border-top: 0;
+}
+
+.gf-benefits svg {
+  flex: none;
+  width: 34px;
+  height: 34px;
+}
+
+.gf-benefits svg path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+}
+
+.gf-card.is-on .gf-benefits li {
+  animation: gf-in 460ms var(--ease-soft) forwards;
+  animation-delay: calc(420ms + var(--gf-i) * 240ms);
+}
+
+.gf-card.is-on .gf-benefits svg path {
+  animation: gf-draw 420ms var(--ease-soft) forwards;
+  animation-delay: calc(560ms + var(--gf-i) * 240ms);
+}
+
+.gf-found {
+  margin: auto 0 0;
+  padding: 14px 22px;
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 800;
+  text-align: center;
+  color: var(--surface-2);
+  background: var(--accent);
+  border-radius: 10px;
+  opacity: 0;
+}
+
+.gf-card.is-on .gf-found {
+  animation: gf-in 480ms var(--ease-soft) 1280ms forwards;
+}
+
+/* 右卡：方向边界（拍 3 状态门控） */
+
+.gf-card-line .gf-card-cap {
+  color: var(--theme-warning);
+}
+
+.gf-channel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 4px;
+  opacity: 0;
+}
+
+.gf-card-line.is-on .gf-channel {
+  animation: gf-fade 400ms var(--ease-soft) 380ms forwards;
+}
+
+.gf-ch-node {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 4px solid var(--text-2);
+  background: var(--surface-2);
+}
+
+.gf-ch-wire {
+  flex: 1;
+  height: 0;
+  border-top: 4px solid var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.gf-card-line.is-on .gf-ch-wire {
+  animation: gf-link 520ms var(--ease-expo) 460ms forwards;
+}
+
+.gf-channel-cap {
+  margin: 12px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--text-mute);
+  opacity: 0;
+}
+
+.gf-card-line.is-on .gf-channel-cap {
+  animation: gf-fade 420ms var(--ease-soft) 940ms forwards;
+}
+
+.gf-auto {
+  margin: 20px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.5;
+  color: var(--text);
+  opacity: 0;
+}
+
+.gf-card-line.is-on .gf-auto {
+  animation: gf-in 480ms var(--ease-soft) 1080ms forwards;
+}
+
+.gf-neq {
+  margin-right: 10px;
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-warning);
+}
+
+.gf-auto em {
+  font-style: normal;
+  color: var(--theme-warning);
+}
+
+.gf-depends {
+  margin: auto 0 0;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-top: var(--rule-w) var(--rule-style) var(--rule);
+  opacity: 0;
+}
+
+.gf-card-line.is-on .gf-depends {
+  animation: gf-in 480ms var(--ease-soft) 1420ms forwards;
+}
+
+.gf-dep-cap {
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 800;
+  color: var(--text-2);
+}
+
+.gf-dep-chip {
+  padding: 7px 20px;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--accent);
+  background: var(--theme-process-surface);
+  border: 3px solid var(--accent);
+  border-radius: 10px;
+}
+
+/* ── keyframes ──────────────────────────────────────────── */
+
+@keyframes gf-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gf-rule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes gf-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes gf-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes gf-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes gf-link {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

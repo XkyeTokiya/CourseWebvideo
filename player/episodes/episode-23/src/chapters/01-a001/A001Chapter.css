@@ -1,0 +1,416 @@
+/* a001 · opening — 情境分散 → 主问题
+   mechanism: premise-to-question — 四条记录线索作为持续前提分散落位，
+   焦点随后转向主问题带；场景不重排，只改变焦点与权重
+   prefix: op- */
+
+.op-scene {
+  gap: 30px;
+}
+
+/* ── 标题区（S001）；持续元素 ─────────────────────────────── */
+
+.op-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: op-fade 520ms var(--ease-soft) backwards;
+}
+
+.op-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1.22;
+  color: var(--text);
+}
+
+.op-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.op-head-rule {
+  width: 236px;
+  height: 0;
+  border-top: 4px solid var(--accent);
+  transform-origin: left center;
+  animation: op-rule 640ms var(--ease-expo) 220ms backwards;
+}
+
+/* ── 主区：场景锚（M001）+ 四条记录线索 ───────────────────── */
+
+.op-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 640px minmax(0, 1fr);
+  gap: 52px;
+  align-items: stretch;
+}
+
+.op-anchor {
+  margin: 0;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  animation: op-rise 620ms var(--ease-soft) 140ms backwards;
+}
+
+.op-anchor-img {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--rule);
+  border-radius: 10px;
+}
+
+.op-anchor-cap {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.op-anchor-cap-main {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  line-height: 1.25;
+  letter-spacing: 0.08em;
+  color: var(--text-2);
+}
+
+.op-anchor-cap-state {
+  font-family: var(--font-mono);
+  font-size: 21px;
+  line-height: 1.25;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+/* 线索区：拍 1 进章落位；拍 2 弱化（正向延迟、反向即时） */
+
+.op-clues {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  transition: opacity 560ms var(--ease-soft);
+}
+
+.op-clues.is-weak {
+  opacity: 0.34;
+  transition-delay: 200ms;
+}
+
+.op-clue-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.op-clue {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 13px 28px;
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+  border-radius: 12px;
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.op-clue-dot {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: var(--surface-2);
+  animation: op-dot 420ms var(--ease-overshoot) backwards;
+  animation-delay: calc(260ms + var(--op-i) * 360ms);
+}
+
+.op-clue-record {
+  flex: none;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.28;
+  color: var(--text);
+  animation: op-fade 380ms var(--ease-soft) backwards;
+  animation-delay: calc(320ms + var(--op-i) * 360ms);
+}
+
+/* 记录与主体之间的归属虚线：自绘，不画斜向箭头 */
+.op-clue-link {
+  flex: 1;
+  height: 0;
+  border-top: 3px dashed var(--theme-dashed-line);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: op-link 460ms var(--ease-expo) calc(500ms + var(--op-i) * 360ms)
+    forwards;
+}
+
+.op-clue-owner {
+  flex: none;
+  padding: 7px 22px;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--accent);
+  background: var(--theme-process-surface);
+  border: 3px solid var(--accent);
+  border-radius: 10px;
+  animation: op-stamp 440ms var(--ease-overshoot) backwards;
+  animation-delay: calc(720ms + var(--op-i) * 360ms);
+}
+
+.op-note {
+  margin: 2px 0 0;
+  padding-top: 12px;
+  border-top: var(--rule-w) var(--rule-style) var(--rule);
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-2);
+  animation: op-fade 520ms var(--ease-soft) 2300ms backwards;
+}
+
+.op-note em {
+  font-style: normal;
+  color: var(--text);
+}
+
+/* ── 主问题带：拍 2 状态门控落位 ──────────────────────────── */
+
+.op-question {
+  flex: none;
+  padding: 24px 42px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+}
+
+.op-question.is-on {
+  animation: op-q-rise 560ms var(--ease-soft) forwards;
+}
+
+.op-q-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 46px;
+  font-weight: 900;
+  line-height: 1.24;
+  color: var(--text);
+  opacity: 0;
+}
+
+.op-question.is-on .op-q-main {
+  animation: op-q-in 520ms var(--ease-soft) 220ms forwards;
+}
+
+.op-q-em {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 6px;
+  text-underline-offset: 12px;
+}
+
+.op-q-chain {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: baseline;
+}
+
+.op-q-range {
+  font-family: var(--font-display-cn);
+  font-weight: 800;
+  line-height: 1.24;
+  color: var(--text);
+  font-size: calc(27px + var(--op-r) * 5px);
+  opacity: 0;
+}
+
+.op-q-range + .op-q-range::before {
+  content: "→";
+  margin-right: 16px;
+  font-size: 0.62em;
+  font-weight: 700;
+  color: var(--text-mute);
+}
+
+.op-question.is-on .op-q-range {
+  animation: op-q-in 440ms var(--ease-soft) forwards;
+  animation-delay: calc(480ms + var(--op-r) * 170ms);
+}
+
+.op-q-cond {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.op-q-cond-cap {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.op-question.is-on .op-q-cond-cap {
+  animation: op-q-in 420ms var(--ease-soft) 1320ms forwards;
+}
+
+.op-q-chip {
+  padding: 7px 24px;
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--accent);
+  background: var(--theme-process-surface);
+  border: 3px solid var(--accent);
+  border-radius: 10px;
+  opacity: 0;
+}
+
+.op-question.is-on .op-q-chip {
+  animation: op-q-in 420ms var(--ease-soft) forwards;
+  animation-delay: calc(1400ms + var(--op-c) * 150ms);
+}
+
+.op-q-tail {
+  margin-left: 10px;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text);
+  opacity: 0;
+}
+
+.op-question.is-on .op-q-tail {
+  animation: op-q-in 420ms var(--ease-soft) 1900ms forwards;
+}
+
+.op-q-cta {
+  margin: 2px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--text-mute);
+  opacity: 0;
+}
+
+.op-question.is-on .op-q-cta {
+  animation: op-q-in 480ms var(--ease-soft) 2340ms forwards;
+}
+
+.op-q-arrow {
+  color: var(--accent);
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* ── keyframes（状态门控段） ─────────────────────────────── */
+
+@keyframes op-q-rise {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes op-q-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── keyframes（进章即播段） ─────────────────────────────── */
+
+@keyframes op-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes op-rule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes op-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes op-dot {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes op-link {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes op-stamp {
+  from {
+    opacity: 0;
+    transform: scale(0.84);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

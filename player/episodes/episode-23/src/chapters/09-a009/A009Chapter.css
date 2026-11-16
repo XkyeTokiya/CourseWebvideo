@@ -1,0 +1,233 @@
+/* a009 · reading the scheme — 教材原图持续 + 角色/流程两段标注
+   mechanism: persistent-media-reading — 原图不卸载，阅读标注分两轮
+   迁移：先四个部分、后六步关系
+   prefix: rd- */
+
+.rd-scene {
+  gap: 30px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.rd-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: rd-fade 520ms var(--ease-soft) backwards;
+}
+
+.rd-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.rd-head-rule {
+  width: 236px;
+  height: 0;
+  border-top: 4px solid var(--accent);
+  transform-origin: left center;
+  animation: rd-rule 640ms var(--ease-expo) 220ms backwards;
+}
+
+/* ── 主区：左侧原图 + 右侧标注 ────────────────────────────── */
+
+.rd-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 950px minmax(0, 1fr);
+  gap: 56px;
+  align-items: stretch;
+}
+
+.rd-media {
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  animation: rd-rise 620ms var(--ease-soft) 140ms backwards;
+}
+
+.rd-media-img {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--rule);
+  border-radius: 10px;
+}
+
+.rd-media-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  letter-spacing: 0.06em;
+  color: var(--text-mute);
+}
+
+/* 标注轨：上段四部分常驻；下段六步拍 2 进入 */
+.rd-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+.rd-roles,
+.rd-flow {
+  margin: 0;
+  padding: 28px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rd-flow.is-pending {
+  opacity: 0.3;
+  transition: opacity 560ms var(--ease-soft);
+}
+
+.rd-flow.is-on {
+  animation: rd-rise 600ms var(--ease-soft) 200ms forwards;
+}
+
+.rd-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.rd-roles .rd-tag {
+  letter-spacing: 0.02em;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.rd-role-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.rd-role {
+  padding: 12px 20px;
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 800;
+  text-align: center;
+  color: var(--text);
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+  border-radius: 10px;
+  animation: rd-in 460ms var(--ease-soft) backwards;
+  animation-delay: calc(560ms + var(--rd-i) * 150ms);
+}
+
+.rd-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rd-step {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 4px;
+  border-top: var(--rule-w) var(--rule-style) var(--rule);
+  opacity: 0;
+}
+
+.rd-step:first-child {
+  border-top: 0;
+}
+
+.rd-flow.is-on .rd-step {
+  animation: rd-in 440ms var(--ease-soft) forwards;
+  animation-delay: calc(520ms + var(--rd-i) * 170ms);
+}
+
+.rd-step-no {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.rd-step-actor {
+  flex: none;
+  padding: 3px 14px;
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-2);
+  border: 2px solid var(--rule);
+  border-radius: 8px;
+  background: var(--surface-2);
+}
+
+.rd-step-move {
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+/* ── keyframes ──────────────────────────────────────────── */
+
+@keyframes rd-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rd-rule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rd-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rd-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

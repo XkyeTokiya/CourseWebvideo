@@ -1,0 +1,243 @@
+/* a004 · tiers — 五层范围阶梯 + 右侧注记轨
+   mechanism: anchor-and-context — 五层带作为持续结构整体保留，
+   侧注区在第一层旁补充形态说明；带序不变
+   prefix: tf- */
+
+.tf-scene {
+  gap: 30px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.tf-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: tf-fade 520ms var(--ease-soft) backwards;
+}
+
+.tf-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.tf-head-rule {
+  width: 236px;
+  height: 0;
+  border-top: 4px solid var(--accent);
+  transform-origin: left center;
+  animation: tf-rule 640ms var(--ease-expo) 220ms backwards;
+}
+
+/* ── 主区：五层带 + 右侧注记 ─────────────────────────────── */
+
+.tf-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 620px;
+  gap: 56px;
+  align-items: stretch;
+}
+
+.tf-bands {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.tf-index {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  color: var(--text-mute);
+  animation: tf-fade 520ms var(--ease-soft) 180ms backwards;
+}
+
+.tf-tiers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.tf-tier {
+  display: flex;
+  align-items: center;
+  height: 84px;
+  padding: 0 34px;
+  width: calc(58% + var(--tf-i) * 10.5%);
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+  border-radius: 12px;
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  animation: tf-in 520ms var(--ease-soft) backwards;
+  animation-delay: calc(260ms + var(--tf-i) * 170ms);
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.tf-tier-name {
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.tf-tier-name::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 20px;
+  border: 3px solid var(--accent);
+  border-radius: 4px;
+  vertical-align: middle;
+  transform: translateY(-3px);
+}
+
+/* 拍 2：首层聚焦，其余层微降权 */
+.tf-tier.is-focus {
+  outline: 3px solid var(--accent);
+  outline-offset: 0;
+  background: var(--theme-process-surface);
+}
+
+.tf-tier.is-dim {
+  opacity: 0.5;
+  transition-delay: 260ms;
+}
+
+/* 右侧注记轨：性质卡常驻，首层卡拍 2 进入 */
+.tf-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+.tf-note {
+  margin: 0;
+  padding: 30px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tf-note.is-pending {
+  opacity: 0.3;
+  transition: opacity 560ms var(--ease-soft);
+}
+
+/* 未展开时只保留卡壳与标签，正文随激活淡入 */
+.tf-note-focus.is-pending .tf-note-main,
+.tf-note-focus.is-pending .tf-note-sub {
+  opacity: 0;
+}
+
+.tf-note-focus.is-on .tf-note-main {
+  animation: tf-fade 460ms var(--ease-soft) 360ms backwards;
+}
+
+.tf-note-focus.is-on .tf-note-sub {
+  animation: tf-fade 460ms var(--ease-soft) 520ms backwards;
+}
+
+.tf-note.is-on {
+  animation: tf-rise 600ms var(--ease-soft) forwards;
+}
+
+.tf-note:nth-child(1).is-on {
+  animation-delay: 1350ms;
+}
+
+.tf-note:nth-child(2).is-on {
+  animation-delay: 200ms;
+}
+
+.tf-note-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.tf-note-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.tf-note-main em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.tf-note-sub {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* ── keyframes ──────────────────────────────────────────── */
+
+@keyframes tf-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes tf-rule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes tf-in {
+  from {
+    opacity: 0;
+    transform: translateX(-26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tf-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,263 @@
+/* a010 · unified expression — 差异卡 → 方法卡 → 找到≠能用
+   mechanism: cumulative-assembly — 差异卡与方法卡在同一构图中先后
+   落位并保留，判断条最后收束定位能力与授权的分界
+   prefix: ue- */
+
+.ue-scene {
+  gap: 30px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.ue-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: ue-fade 520ms var(--ease-soft) backwards;
+}
+
+.ue-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.ue-head-rule {
+  width: 236px;
+  height: 0;
+  border-top: 4px solid var(--accent);
+  transform-origin: left center;
+  animation: ue-rule 640ms var(--ease-expo) 220ms backwards;
+}
+
+/* ── 两卡区 ─────────────────────────────────────────────── */
+
+.ue-cards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  align-items: stretch;
+}
+
+.ue-card {
+  margin: 0;
+  padding: 34px 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ue-card.is-pending {
+  opacity: 0.3;
+  transition: opacity 560ms var(--ease-soft);
+}
+
+/* 未展开时只保留卡壳与标签，正文随激活淡入 */
+.ue-card.is-pending .ue-claim,
+.ue-card.is-pending .ue-flow,
+.ue-card.is-pending .ue-sub {
+  opacity: 0;
+}
+
+.ue-card.is-on .ue-claim {
+  animation: ue-fade 460ms var(--ease-soft) 360ms backwards;
+}
+
+.ue-card.is-on .ue-flow {
+  animation: ue-fade 460ms var(--ease-soft) 500ms backwards;
+}
+
+.ue-card.is-on .ue-sub {
+  animation: ue-fade 460ms var(--ease-soft) 640ms backwards;
+}
+
+.ue-card.is-on {
+  animation: ue-rise 600ms var(--ease-soft) forwards;
+}
+
+.ue-cards:nth-child(1) .ue-card:first-child.is-on {
+  animation-delay: 140ms;
+}
+
+.ue-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.ue-claim {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+/* 差异卡：错落的“说法”线 */
+.ue-voices {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ue-voices i {
+  display: block;
+  height: 9px;
+  border-radius: 4px;
+  background: var(--rule);
+}
+
+.ue-voices i:nth-child(1) {
+  width: 68%;
+}
+
+.ue-voices i:nth-child(2) {
+  width: 48%;
+  margin-left: 14%;
+}
+
+.ue-voices i:nth-child(3) {
+  width: 60%;
+  margin-left: 4%;
+}
+
+.ue-voices i:nth-child(4) {
+  width: 42%;
+  margin-left: 24%;
+}
+
+/* 方法卡：统一表达 → 标识寻址 */
+.ue-flow {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.ue-flow-node {
+  flex: none;
+  padding: 10px 24px;
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--accent);
+  background: var(--theme-process-surface);
+  border: 3px solid var(--accent);
+  border-radius: 10px;
+}
+
+.ue-flow-arrow {
+  flex: 1;
+  height: 16px;
+}
+
+.ue-flow-arrow line {
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-dasharray: 72;
+  stroke-dashoffset: 72;
+}
+
+.ue-flow-arrow path {
+  fill: var(--accent);
+  opacity: 0;
+}
+
+.ue-card.is-on .ue-flow-arrow line {
+  animation: ue-draw 480ms var(--ease-soft) 560ms forwards;
+}
+
+.ue-card.is-on .ue-flow-arrow path {
+  animation: ue-fade 240ms var(--ease-soft) 980ms forwards;
+}
+
+.ue-sub {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* ── 底部判断条（拍 3 门控） ─────────────────────────────── */
+
+.ue-takeaway {
+  flex: none;
+  margin: 0;
+  padding: 28px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  opacity: 0;
+}
+
+.ue-takeaway.is-on {
+  animation: ue-rise 560ms var(--ease-soft) 200ms forwards;
+}
+
+.ue-t1 {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.ue-t2 {
+  margin: 0;
+  padding-top: 14px;
+  border-top: var(--rule-w) var(--rule-style) var(--rule);
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* ── keyframes ──────────────────────────────────────────── */
+
+@keyframes ue-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ue-rule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ue-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ue-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

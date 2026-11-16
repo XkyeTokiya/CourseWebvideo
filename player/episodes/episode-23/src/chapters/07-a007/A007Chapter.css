@@ -1,0 +1,239 @@
+/* a007 · three questions — 起因卡 → 三问并立 → 缺一不可判断
+   mechanism: equal-weight-accumulation — 三张问句卡等权并立，
+   判断条在拍 2 收束两种“只对齐一部分”的缺口
+   prefix: tq- */
+
+.tq-scene {
+  gap: 30px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.tq-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: tq-fade 520ms var(--ease-soft) backwards;
+}
+
+.tq-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.tq-head-rule {
+  width: 236px;
+  height: 0;
+  border-top: 4px solid var(--accent);
+  transform-origin: left center;
+  animation: tq-rule 640ms var(--ease-expo) 220ms backwards;
+}
+
+/* ── 主区 ───────────────────────────────────────────────── */
+
+.tq-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* 起因卡：进章即播 */
+.tq-cause {
+  flex: none;
+  margin: 0;
+  padding: 26px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: tq-rise 600ms var(--ease-soft) 240ms backwards;
+}
+
+.tq-cause-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.tq-cause-sub {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* 三问卡：依次点亮，等权并立 */
+.tq-questions {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  align-items: stretch;
+}
+
+.tq-q {
+  margin: 0;
+  padding: 30px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  animation: tq-in 560ms var(--ease-soft) backwards;
+  animation-delay: calc(760ms + var(--tq-i) * 280ms);
+}
+
+.tq-q-mark {
+  flex: none;
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  font-family: var(--font-mono);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--accent);
+  background: var(--theme-process-surface);
+}
+
+.tq-q-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* 判断条：拍 2 门控 */
+.tq-takeaway {
+  flex: none;
+  margin: 0;
+  padding: 28px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  opacity: 0;
+}
+
+.tq-takeaway.is-on {
+  animation: tq-rise 560ms var(--ease-soft) 200ms forwards;
+}
+
+.tq-gaps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tq-gap {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.tq-takeaway.is-on .tq-gap:nth-child(1) {
+  animation: tq-in 460ms var(--ease-soft) 520ms forwards;
+}
+
+.tq-takeaway.is-on .tq-gap:nth-child(2) {
+  animation: tq-in 460ms var(--ease-soft) 700ms forwards;
+}
+
+.tq-half {
+  flex: none;
+  display: flex;
+  gap: 5px;
+}
+
+.tq-half i {
+  display: block;
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+}
+
+.tq-half i:nth-child(1) {
+  background: var(--accent);
+}
+
+.tq-half i:nth-child(2) {
+  border: 2px dashed var(--rule);
+  background: transparent;
+}
+
+.tq-verdict {
+  margin: 0;
+  padding-top: 18px;
+  border-top: var(--rule-w) var(--rule-style) var(--rule);
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--text);
+  opacity: 0;
+}
+
+.tq-takeaway.is-on .tq-verdict {
+  animation: tq-in 480ms var(--ease-soft) 1000ms forwards;
+}
+
+/* ── keyframes ──────────────────────────────────────────── */
+
+@keyframes tq-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes tq-rule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes tq-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tq-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

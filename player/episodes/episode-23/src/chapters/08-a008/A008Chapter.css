@@ -1,0 +1,249 @@
+/* a008 · two pillars — 中枢 + 标准侧 / 管理侧对照
+   mechanism: compare-and-reweight — 中枢给出两类条件的分工，
+   左右两区先后展开并各自充实；两侧空间持续，不轮换、不合并
+   prefix: pl- */
+
+.pl-scene {
+  gap: 30px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.pl-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: pl-fade 520ms var(--ease-soft) backwards;
+}
+
+.pl-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.pl-head-rule {
+  width: 236px;
+  height: 0;
+  border-top: 4px solid var(--accent);
+  transform-origin: left center;
+  animation: pl-rule 640ms var(--ease-expo) 220ms backwards;
+}
+
+/* ── 主区：标准侧 + 中枢 + 管理侧 ────────────────────────── */
+
+.pl-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px minmax(0, 1fr);
+  gap: 40px;
+  align-items: stretch;
+}
+
+.pl-side {
+  margin: 0;
+  padding: 32px 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pl-side.is-pending {
+  opacity: 0.3;
+  transition: opacity 560ms var(--ease-soft);
+}
+
+.pl-side.is-on {
+  animation: pl-rise 600ms var(--ease-soft) forwards;
+}
+
+.pl-side-manage.is-on {
+  animation-delay: 200ms;
+}
+
+.pl-side-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.pl-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pl-item {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--text);
+  opacity: 0;
+}
+
+.pl-side:nth-child(1).is-on .pl-item {
+  animation: pl-in 440ms var(--ease-soft) forwards;
+  animation-delay: calc(560ms + var(--pl-i) * 150ms);
+}
+
+.pl-side-manage.is-on .pl-item {
+  animation: pl-in 440ms var(--ease-soft) forwards;
+  animation-delay: calc(560ms + var(--pl-i) * 150ms);
+}
+
+.pl-item::before {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--accent);
+  transform: translateY(-2px);
+}
+
+.pl-exact {
+  margin: 4px 0 0;
+  padding: 16px 20px;
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--accent-soft);
+  border-left: 5px solid var(--accent);
+  border-radius: 8px;
+  opacity: 0;
+}
+
+.pl-side-manage.is-on .pl-exact {
+  animation: pl-in 460ms var(--ease-soft) 1080ms forwards;
+}
+
+.pl-side-note {
+  margin: auto 0 0;
+  padding-top: 16px;
+  border-top: var(--rule-w) var(--rule-style) var(--rule);
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.pl-side:nth-child(1).is-on .pl-side-note {
+  animation: pl-in 440ms var(--ease-soft) 1080ms forwards;
+}
+
+.pl-side-manage.is-on .pl-side-note {
+  animation: pl-in 440ms var(--ease-soft) 1240ms forwards;
+}
+
+/* 中枢：无卡面，作为轴连接两侧 */
+.pl-pivot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+  animation: pl-fade 560ms var(--ease-soft) 300ms backwards;
+}
+
+.pl-pivot-cap {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 800;
+  color: var(--text-2);
+}
+
+.pl-pivot-main {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.pl-pivot-main span {
+  padding: 8px 22px;
+  color: var(--accent);
+  background: var(--theme-process-surface);
+  border: 3px solid var(--accent);
+  border-radius: 10px;
+}
+
+.pl-pivot-main b {
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--text-mute);
+}
+
+.pl-pivot-foot {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 800;
+  color: var(--text-2);
+}
+
+/* ── keyframes ──────────────────────────────────────────── */
+
+@keyframes pl-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pl-rule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pl-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pl-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

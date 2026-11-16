@@ -1,0 +1,363 @@
+/* a002 · definition & boundary — 定义支架 → 传输对照 → 三否定边界
+   mechanism: cumulative-assembly — 左区先组装定义与三要素并持续保留，
+   右区对照带与底部 thesis 在同一主构图内依次补充
+   prefix: sh- */
+
+.sh-scene {
+  gap: 30px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.sh-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: sh-fade 520ms var(--ease-soft) backwards;
+}
+
+.sh-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.sh-head-rule {
+  width: 236px;
+  height: 0;
+  border-top: 4px solid var(--accent);
+  transform-origin: left center;
+  animation: sh-rule 640ms var(--ease-expo) 220ms backwards;
+}
+
+/* ── 主区：左定义支架 + 右传输对照 ────────────────────────── */
+
+.sh-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 850px minmax(0, 1fr);
+  gap: 56px;
+  align-items: stretch;
+}
+
+.sh-def {
+  margin: 0;
+  padding: 38px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: sh-rise 620ms var(--ease-soft) 140ms backwards;
+}
+
+.sh-def-quote {
+  margin: 0;
+  padding-left: 30px;
+  border-left: 6px solid var(--accent);
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.5;
+  color: var(--text);
+  animation: sh-fade 520ms var(--ease-soft) 260ms backwards;
+}
+
+.sh-def-split {
+  margin: 28px 0 4px;
+  height: 0;
+  border-top: var(--rule-w) var(--rule-style) var(--rule);
+}
+
+.sh-els {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sh-el {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 19px 4px;
+  animation: sh-fade 480ms var(--ease-soft) backwards;
+  animation-delay: calc(560ms + var(--sh-i) * 170ms);
+}
+
+.sh-el + .sh-el {
+  border-top: var(--rule-w) var(--rule-style) var(--rule);
+}
+
+.sh-el-no {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.sh-el-text {
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.sh-def-tail {
+  margin: 22px 0 0;
+  padding-left: 4px;
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 800;
+  color: var(--accent);
+  animation: sh-fade 480ms var(--ease-soft) 1240ms backwards;
+}
+
+/* 右区：传输对照（拍 2 状态门控） */
+
+.sh-side {
+  margin: 0;
+  padding: 38px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+}
+
+.sh-side.is-on {
+  animation: sh-rise 600ms var(--ease-soft) forwards;
+}
+
+.sh-xfer {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 24px 30px;
+  background: var(--surface-3);
+  border-radius: 12px;
+}
+
+.sh-node {
+  flex: none;
+  padding: 8px 24px;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 2px solid var(--text-2);
+  border-radius: 8px;
+}
+
+.sh-arrow {
+  flex: none;
+  width: 140px;
+  height: 18px;
+}
+
+.sh-arrow line {
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-dasharray: 104;
+  stroke-dashoffset: 104;
+}
+
+.sh-arrow path {
+  fill: var(--accent);
+  opacity: 0;
+}
+
+.sh-side.is-on .sh-arrow line {
+  animation: sh-draw 520ms var(--ease-soft) 480ms forwards;
+}
+
+.sh-side.is-on .sh-arrow path {
+  animation: sh-fade 240ms var(--ease-soft) 940ms forwards;
+}
+
+.sh-xfer-cap {
+  margin: 16px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-mute);
+  opacity: 0;
+}
+
+.sh-side.is-on .sh-xfer-cap {
+  animation: sh-fade 420ms var(--ease-soft) 1020ms forwards;
+}
+
+.sh-judge {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sh-judge-item {
+  margin: 0;
+  padding: 16px 26px;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  opacity: 0;
+}
+
+.sh-side.is-on .sh-judge-item:nth-child(1) {
+  animation: sh-in 460ms var(--ease-soft) 1240ms forwards;
+}
+
+.sh-side.is-on .sh-judge-item:nth-child(2) {
+  animation: sh-in 460ms var(--ease-soft) 1400ms forwards;
+}
+
+.sh-verdict {
+  margin: 30px 0 0;
+  padding-top: 22px;
+  border-top: var(--rule-w) var(--rule-style) var(--rule);
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--accent);
+  opacity: 0;
+}
+
+.sh-side.is-on .sh-verdict {
+  animation: sh-in 480ms var(--ease-soft) 1620ms forwards;
+}
+
+/* ── 底部 thesis：三否定边界（拍 3 状态门控） ─────────────── */
+
+.sh-thesis {
+  flex: none;
+  padding: 30px 44px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  opacity: 0;
+}
+
+.sh-thesis.is-on {
+  animation: sh-rise 560ms var(--ease-soft) forwards;
+}
+
+.sh-ban {
+  flex: none;
+  width: 44px;
+  height: 44px;
+}
+
+.sh-ban circle,
+.sh-ban line {
+  fill: none;
+  stroke: var(--theme-danger);
+  stroke-width: 3;
+}
+
+.sh-ban circle {
+  stroke-dasharray: 95;
+  stroke-dashoffset: 95;
+}
+
+.sh-ban line {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+}
+
+.sh-thesis.is-on .sh-ban circle {
+  animation: sh-draw 560ms var(--ease-soft) 400ms forwards;
+}
+
+.sh-thesis.is-on .sh-ban line {
+  animation: sh-draw 420ms var(--ease-soft) 700ms forwards;
+}
+
+.sh-thesis-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--text);
+  opacity: 0;
+}
+
+.sh-thesis.is-on .sh-thesis-text {
+  animation: sh-fade 420ms var(--ease-soft) 300ms forwards;
+}
+
+.sh-deny {
+  color: var(--text);
+}
+
+.sh-thesis.is-on .sh-deny {
+  animation: sh-deny 400ms var(--ease-soft) forwards;
+  animation-delay: calc(760ms + var(--sh-j) * 280ms);
+}
+
+/* ── keyframes ──────────────────────────────────────────── */
+
+@keyframes sh-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sh-rule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes sh-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sh-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sh-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes sh-deny {
+  from {
+    color: var(--text);
+  }
+  to {
+    color: var(--theme-danger);
+  }
+}

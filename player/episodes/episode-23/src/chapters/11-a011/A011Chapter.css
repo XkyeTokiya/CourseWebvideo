@@ -1,0 +1,260 @@
+/* a011 · summary — 记录回扣 → 两条件 → 核心判断
+   mechanism: ordered-progression — 回扣带把四条记录线索引回同一批
+   产品，条件带随后补齐，判断条最后收束；各层依次叠加并全部保留
+   prefix: sm- */
+
+.sm-scene {
+  gap: 30px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.sm-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: sm-fade 520ms var(--ease-soft) backwards;
+}
+
+.sm-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.sm-head-rule {
+  width: 236px;
+  height: 0;
+  border-top: 4px solid var(--accent);
+  transform-origin: left center;
+  animation: sm-rule 640ms var(--ease-expo) 220ms backwards;
+}
+
+/* ── 主区 ───────────────────────────────────────────────── */
+
+.sm-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* 回扣带：四条记录 + 汇聚 */
+.sm-recall {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.sm-records {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.sm-record {
+  margin: 0;
+  padding: 20px 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: sm-in 520ms var(--ease-soft) backwards;
+  animation-delay: calc(260ms + var(--sm-i) * 170ms);
+}
+
+.sm-record-name {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.sm-record-owner {
+  padding: 5px 18px;
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--accent);
+  background: var(--theme-process-surface);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+}
+
+.sm-merge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: sm-fade 560ms var(--ease-soft) 1150ms backwards;
+}
+
+.sm-merge-lines {
+  width: 100%;
+  height: 84px;
+}
+
+.sm-merge-lines path {
+  fill: none;
+  stroke: var(--theme-dashed-line);
+  stroke-width: 3;
+  stroke-dasharray: 10 9;
+}
+
+.sm-merge-label {
+  margin: 6px 0 0;
+  font-family: var(--font-mono);
+  font-size: 25px;
+  letter-spacing: 0.1em;
+  color: var(--text-2);
+}
+
+/* 两条件带（拍 2 门控） */
+.sm-cond {
+  flex: none;
+  margin: 0;
+  padding: 26px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+}
+
+.sm-cond.is-pending {
+  opacity: 0.3;
+  transition: opacity 560ms var(--ease-soft);
+}
+
+/* 未展开时只保留卡壳，正文随激活淡入 */
+.sm-cond.is-pending .sm-cond-line {
+  opacity: 0;
+}
+
+.sm-cond.is-on .sm-cond-line:nth-child(1) {
+  animation: sm-fade 460ms var(--ease-soft) 360ms backwards;
+}
+
+.sm-cond.is-on .sm-cond-line:nth-child(2) {
+  animation: sm-fade 460ms var(--ease-soft) 520ms backwards;
+}
+
+.sm-cond.is-on {
+  animation: sm-rise 560ms var(--ease-soft) forwards;
+}
+
+.sm-cond-line {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sm-cond-chip {
+  flex: none;
+  padding: 8px 22px;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--accent);
+  background: var(--theme-process-surface);
+  border: 3px solid var(--accent);
+  border-radius: 10px;
+}
+
+.sm-cond-chip-navy {
+  color: var(--theme-structural);
+  background: var(--surface-3);
+  border-color: var(--theme-structural);
+}
+
+.sm-cond-text {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--text-2);
+}
+
+/* 判断条（拍 3 门控） */
+.sm-judgment {
+  flex: none;
+  margin: 0;
+  padding: 30px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+}
+
+.sm-judgment.is-on {
+  animation: sm-rise 560ms var(--ease-soft) 200ms forwards;
+}
+
+.sm-j-main {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 33px;
+  font-weight: 900;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.sm-j-close {
+  margin: 0;
+  padding-top: 14px;
+  border-top: var(--rule-w) var(--rule-style) var(--rule);
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* ── keyframes ──────────────────────────────────────────── */
+
+@keyframes sm-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sm-rule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes sm-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sm-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
