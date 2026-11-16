@@ -1,5 +1,5 @@
 import type { ChapterDef } from "../../../src/runtime/types";
-import { Cover } from "./chapters/00-cover/Cover";
+import Cover from "./chapters/00-cover/Cover";
 import { narrations as coverNarrations } from "./chapters/00-cover/narrations";
 import { SiteQuestion } from "./chapters/01-site-question/SiteQuestion";
 import { narrations as siteQuestionNarrations } from "./chapters/01-site-question/narrations";
