@@ -96,9 +96,9 @@
   {
    "a_id": "A001",
    "callback_a_ids": [],
-   "nx": "【视频标题】\n工业大数据从哪里来、怎样产生价值\n\n【开场导入】\n一台设备正常开着，车间里会发生什么？温度在变化，负载在波动，工艺参数被一次次记录下来。同时，生产系统里订单在流转，物料在移动；来自外部的供应商名单和客户信息，也在更新。也就是说，同一个工业对象，一个环节在出数据，另一个环节也在出数据，而且一直没停过。数据是越来越多了。可数据多了，就代表价值来了吗？不一定。今天我们就来说清楚，这些来自不同环节的数据集合起来叫什么，又要经过怎样的过程，才可能变成能用的价值。\n\n",
+   "nx": "工业大数据从哪里来、怎样产生价值\n\n一台设备正常开着，车间里会发生什么？温度在变化，负载在波动，工艺参数被一次次记录下来。同时，生产系统里订单在流转，物料在移动；来自外部的供应商名单和客户信息，也在更新。也就是说，同一个工业对象，一个环节在出数据，另一个环节也在出数据，而且一直没停过。记录的时间粒度也可能不同：有的逐次记录变化，有的按一段时间汇总。数据是越来越多了。可数据多了，就代表价值来了吗？不一定。今天我们就来说清楚，这些来自不同环节的数据集合起来叫什么，又要经过怎样的过程，才可能变成能用的价值。\n\n",
    "teaching_purpose": "呈现本集标题；用同一台设备的持续记录引出“数据多但价值未形成”的问题",
-   "single_message": "同一工业对象在多个环节持续产生数据；数据多不等于价值已经到来。",
+   "single_message": "工业对象在不同环节持续产生数据，记录时间粒度可能不同；数据多不等于已有价值。",
    "screen": {
     "title": {
      "screen_item_id": "S001",
@@ -130,7 +130,7 @@
        },
        {
         "screen_item_id": "S004",
-        "guidance_text": "同一工业对象，一个环节在出数据，另一个环节也在出数据，而且一直没停过",
+        "guidance_text": "同一工业对象在不同环节持续产生数据，记录的时间粒度可能不同",
         "usage_policy": "reference",
         "evidence_refs": [
          "E011"
@@ -189,10 +189,10 @@
    "entry_condition": "观众开始观看本集，尚未接触工业大数据概念",
    "exit_condition": "观众能说出本集要回答的问题：数据集合是什么、价值怎样形成",
    "timing": {
-    "char_equivalent": 203.0,
-    "min_seconds": 51,
-    "target_seconds": 53,
-    "max_seconds": 56,
+    "char_equivalent": 224,
+    "min_seconds": 56,
+    "target_seconds": 58,
+    "max_seconds": 62,
     "short_page_reason": null
    }
   },
@@ -201,7 +201,7 @@
    "callback_a_ids": [
     "A001"
    ],
-   "nx": "【正文讲解】\n先给工业大数据定个范围。它不是某一个软件里存的那份数据，而是在工业活动中产生的海量、多源、异构的数据集合。三个词都很关键。海量，指数据量非常大；多源，指数据来自不同的环节、不同的系统；异构，指这些数据的结构和表达方式各不相同。这个集合至少覆盖设备传感器、生产流程和供应链这些对象，再往宽了看，还能延展到设计、工艺、生产、管理、服务这些环节。所以，它不能缩减成一张生产报表，也不能只看成某类设备的实时曲线。\n\n",
+   "nx": "先给工业大数据定个范围。它不是某一个软件里存的那份数据，而是在工业活动中产生的海量、多源、异构的数据集合。三个词都很关键。海量，指数据量非常大；多源，指数据来自不同的环节、不同的系统；异构，指这些数据的结构和表达方式各不相同。这个集合至少覆盖设备传感器、生产流程和供应链这些对象，再往宽了看，还能延展到设计、工艺、生产、管理、服务这些环节。所以，它不能缩减成一张生产报表，也不能只看成某类设备的实时曲线。\n\n",
    "teaching_purpose": "建立工业大数据的定义，解释海量、多源、异构三个限定词与覆盖延展范围",
    "single_message": "工业大数据是工业活动中海量、多源、异构的数据集合，不能缩减成报表或曲线。",
    "screen": {
@@ -320,10 +320,10 @@
    "entry_condition": "观众带着“数据多但价值未形成”的问题进入定义",
    "exit_condition": "观众能说出海量、多源、异构的含义，以及集合覆盖与延展的环节",
    "timing": {
-    "char_equivalent": 182.0,
-    "min_seconds": 46,
-    "target_seconds": 47,
-    "max_seconds": 50,
+    "char_equivalent": 178,
+    "min_seconds": 45,
+    "target_seconds": 46,
+    "max_seconds": 49,
     "short_page_reason": null
    }
   },
@@ -333,9 +333,9 @@
     "A001",
     "A002"
    ],
-   "nx": "这么多数据，具体从哪儿来？大致可以分成三类。\n\n第一类，生产经营业务数据。它来自企业里的业务系统，比如企业资源计划系统 ERP、产品生命周期管理系统 PLM、供应链管理系统 SCM。这些系统记录企业在研发、生产经营和供应协同里的业务活动。\n\n第二类，设备作业数据。它由生产设备和监测设备在运行中持续产生，像加工负载、焊接、拧紧，还有车间里的环境温湿度，都属于这类运行记录。\n\n第三类，外部数据。比如客户名单、供应商名单，它们来自企业外部。\n\n三类来源汇合到一起，工业大数据才有机会覆盖对象、过程，也覆盖外部关系；如果只剩单一环节的孤立记录，那还谈不上工业大数据。\n\n",
-   "teaching_purpose": "提出来源问题，并列拆解三类来源，说明三类汇合才形成工业大数据",
-   "single_message": "生产经营业务、设备作业、外部数据三类来源汇合，才覆盖对象、过程与外部关系。",
+   "nx": "这么多数据，具体从哪儿来？大致可以分成三类。\n\n第一类，生产经营业务数据。它来自企业里的业务系统，比如企业资源计划系统 ERP、产品生命周期管理系统 PLM、供应链管理系统 SCM。这些系统记录企业在研发、生产经营和供应协同里的业务活动。\n\n第二类，设备作业数据。它由生产设备和监测设备在运行中持续产生，像加工负载、焊接、拧紧，还有车间里的环境温湿度，都属于这类运行记录。\n\n第三类，外部数据，涉及客户、供应商等企业外部主体的信息，例如客户名单和供应商名单。\n\n把这些来源结合起来，有助于同时理解对象、过程和外部关系；只看单一环节的孤立记录，就难以覆盖这些方面。\n\n",
+   "teaching_purpose": "并列介绍三类来源，说明结合多类信息有助于理解对象、过程与外部关系",
+   "single_message": "结合业务、设备和外部来源，有助于理解对象、过程与外部关系。",
    "screen": {
     "title": {
      "screen_item_id": "S015",
@@ -430,7 +430,7 @@
       "items": [
        {
         "screen_item_id": "S024",
-        "guidance_text": "第三类是外部数据，比如客户名单、供应商名单，来自企业外部",
+        "guidance_text": "外部数据涉及客户、供应商等外部主体的信息，例如相关名单",
         "usage_policy": "reference",
         "evidence_refs": [
          "E006"
@@ -443,7 +443,7 @@
       "items": [
        {
         "screen_item_id": "S025",
-        "guidance_text": "三类来源汇合到一起，才有机会覆盖对象、过程，也覆盖外部关系",
+        "guidance_text": "结合多类来源，有助于理解对象、过程和外部关系",
         "usage_policy": "reference",
         "evidence_refs": [
          "E010"
@@ -451,7 +451,7 @@
        },
        {
         "screen_item_id": "S026",
-        "guidance_text": "只剩单一环节的孤立记录，谈不上工业大数据",
+        "guidance_text": "单一环节的孤立记录，难以覆盖这些方面",
         "usage_policy": "exact",
         "evidence_refs": [
          "E010"
@@ -501,11 +501,11 @@
     }
    ],
    "entry_condition": "观众已掌握工业大数据的定义与范围",
-   "exit_condition": "观众能列出三类来源，并说出三类汇合才覆盖对象、过程与外部关系",
+   "exit_condition": "观众能列出三类来源，并理解单一环节记录的覆盖局限",
    "timing": {
-    "char_equivalent": 235.5,
-    "min_seconds": 59,
-    "target_seconds": 61,
+    "char_equivalent": 236.5,
+    "min_seconds": 60,
+    "target_seconds": 62,
     "max_seconds": 65,
     "short_page_reason": null
    }
@@ -569,7 +569,7 @@
    "entry_condition": "观众已知道工业大数据的三类来源",
    "exit_condition": "观众能说出三种数据形态与典型示例",
    "timing": {
-    "char_equivalent": 63.0,
+    "char_equivalent": 63,
     "min_seconds": 16,
     "target_seconds": 16,
     "max_seconds": 18,
@@ -635,7 +635,7 @@
    "entry_condition": "观众已掌握来源与形态",
    "exit_condition": "观众能复述四个一般特征并理解价值密度低的含义",
    "timing": {
-    "char_equivalent": 72.0,
+    "char_equivalent": 72,
     "min_seconds": 18,
     "target_seconds": 19,
     "max_seconds": 20,
@@ -647,9 +647,9 @@
    "callback_a_ids": [
     "A005"
    ],
-   "nx": "工业数据本身还强调四个特征。时序性，说的是记录有发生的先后顺序；强关联性，说的是设备、工艺、物料和结果之间彼此关联；准确性，要求采集到的记录尽量可靠；闭环性，是指分析结果能够回到产品、经营或者生产运作里继续发挥作用。正因为这样，工业数据不能套用一次性统计的处理方式。\n\n",
-   "teaching_purpose": "建立工业数据特有的四个特征，并给出“不能套用一次性统计”的结论",
-   "single_message": "时序性、强关联性、准确性、闭环性，决定工业数据不能套用一次性统计的处理方式。",
+   "nx": "工业数据本身还强调四个特征。时序性，说的是记录有发生的先后顺序；强关联性，说的是设备、工艺、物料和结果之间彼此关联；准确性，要求采集到的记录尽量可靠；闭环性，是指分析结果能够回到产品、经营或者生产运作里继续发挥作用。正因为这样，工业数据不能只依靠一次性统计，还要关注记录的先后与关联。\n\n",
+   "teaching_purpose": "建立四个工业数据特征，并说明不能只依靠一次性统计",
+   "single_message": "关注时序、关联、准确性与闭环，工业数据不能只依靠一次性统计。",
    "screen": {
     "title": {
      "screen_item_id": "S033",
@@ -702,7 +702,7 @@
       "items": [
        {
         "screen_item_id": "S038",
-        "guidance_text": "工业数据不能套用一次性统计的处理方式",
+        "guidance_text": "工业数据不能只依靠一次性统计，还要关注记录的先后与关联",
         "usage_policy": "reference",
         "evidence_refs": [
          "E007"
@@ -731,12 +731,12 @@
     }
    ],
    "entry_condition": "观众已了解一般大数据特征",
-   "exit_condition": "观众能说出四个工业特征及“不能套用一次性统计”的结论",
+   "exit_condition": "观众能说出四个工业特征，理解一次性统计无法覆盖全部时序与关联需求",
    "timing": {
-    "char_equivalent": 119.0,
-    "min_seconds": 30,
-    "target_seconds": 31,
-    "max_seconds": 33,
+    "char_equivalent": 127,
+    "min_seconds": 32,
+    "target_seconds": 33,
+    "max_seconds": 35,
     "short_page_reason": null
    }
   },
@@ -827,7 +827,7 @@
    "entry_condition": "观众已掌握来源与两组特征",
    "exit_condition": "观众能按顺序说出采集、存储与治理/交易/分析",
    "timing": {
-    "char_equivalent": 99.0,
+    "char_equivalent": 99,
     "min_seconds": 25,
     "target_seconds": 26,
     "max_seconds": 27,
@@ -937,7 +937,7 @@
    "entry_condition": "观众已知道处理链的阶段顺序",
    "exit_condition": "观众能说出关联整理如何通向模式发现与可解释依据",
    "timing": {
-    "char_equivalent": 136.0,
+    "char_equivalent": 136,
     "min_seconds": 34,
     "target_seconds": 35,
     "max_seconds": 38,
@@ -1048,7 +1048,7 @@
    "entry_condition": "观众已理解从记录到模式发现",
    "exit_condition": "观众能列出四个价值方向并理解价值要靠环节形成",
    "timing": {
-    "char_equivalent": 104.0,
+    "char_equivalent": 104,
     "min_seconds": 26,
     "target_seconds": 27,
     "max_seconds": 29,
@@ -1151,7 +1151,7 @@
    "entry_condition": "观众已走过定义、来源、特征、处理链与价值",
    "exit_condition": "观众能复述本集结论，并知道本集界定的是数据集合本身",
    "timing": {
-    "char_equivalent": 138.0,
+    "char_equivalent": 138,
     "min_seconds": 35,
     "target_seconds": 36,
     "max_seconds": 38,

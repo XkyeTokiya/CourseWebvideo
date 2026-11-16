@@ -14,7 +14,7 @@ import m001 from "./assets/m001.png";
  * - 拍 1【视频标题】：建立标题区、现场图与设备流带（device-recording）；
  * - 拍 2【开场导入】：设备流带信号补齐，仍是 device-recording（state 重复）；
  * - 拍 3：同一 step 内依次完成"生产系统·外部流带落位 → 汇流说明 →
- *   '数据是越来越多了'累积聚焦"，dual-streams-running 为过程中画面，
+ *   记录时间粒度不同 → '数据是越来越多了'累积聚焦"，dual-streams-running 为过程中画面，
  *   终态为 data-accumulating；
  * - 拍 4：问题收束区出现两行问句，前区弱化（value-question-open）。
  *
@@ -204,7 +204,7 @@ export default function A001Chapter({ step }: ChapterStepProps) {
           {/* 汇流说明区：拍 3 内先落说明行，再聚焦为累积标记 */}
           <div className="op-confluence">
             <p className="op-confluence-line">
-              同一个工业对象，一个环节在出数据，另一个环节也在出数据——而且一直没停过。
+              同一对象在不同环节持续出数，记录的时间粒度可能不同。
             </p>
             <p className="op-hero">数据是越来越多了</p>
           </div>

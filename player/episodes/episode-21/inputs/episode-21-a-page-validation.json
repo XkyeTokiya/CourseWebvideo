@@ -11,7 +11,7 @@
   },
   "a_pages": {
     "count": 10,
-    "total_target_seconds": 351,
+    "total_target_seconds": 358,
     "short_page_exceptions": []
   },
   "failures": [],
@@ -22,7 +22,7 @@
   },
   "input_integrity": {
     "task_package_sha256": "29caadaa32afb74aea54065b2c348f7e3245aa7fcbd9fdce4ff5e9943d34151a",
-    "approved_text_sha256": "9f6f209f5cda234cf3d5cded5412d1105b7afe1f986bc045f1f711d9afc7ba4a",
-    "a_page_sha256": "84bff462e695fd17d1c8c67d171729ff830acd470bce75239ce51d675ffea49a"
+    "approved_text_sha256": "d3f08b94a04f9dc2bde39b772b199da4b2f926ac02cc1d22bc5ff69bca1e130b",
+    "a_page_sha256": "0f7c87e65abbd87e2ff0e24b1cf628baf064e786283e4f080e0725aa816c3dd5"
   }
 }

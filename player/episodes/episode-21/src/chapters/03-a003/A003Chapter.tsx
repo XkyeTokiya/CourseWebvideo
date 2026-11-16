@@ -14,7 +14,7 @@ import "./A003Chapter.css";
  * question-framed → business-sourced → device-sourced → external-sourced →
  * confluence-judged。
  *
- * exact 义务：S018/S019/S020（ERP/PLM/SCM 全称标签）、S026（孤立记录否定
+ * exact 义务：S018/S019/S020（ERP/PLM/SCM 全称标签）、S026（单一环节覆盖局限
  * 句）整句逐字渲染；S022 以"第二类是设备作业数据"标题行 + "由生产设备和
  * 监测设备在运行中持续产生"导语行连续逐字承载。护栏 C004：系统名只作来源
  * 名称，不画软件界面；C005：设备侧只表现运行记录，不虚构参数数值或品牌。
@@ -153,7 +153,7 @@ export default function A003Chapter({ step }: ChapterStepProps) {
               </span>
             ))}
           </div>
-          <p className="ts-card-lead ts-card-lead--foot">它们来自企业外部</p>
+          <p className="ts-card-lead ts-card-lead--foot">反映企业外部关系</p>
         </section>
       </div>
 
@@ -169,13 +169,13 @@ export default function A003Chapter({ step }: ChapterStepProps) {
           <span className="ts-judge-kicker">汇合判断</span>
           <div className="ts-judge-lines">
             <p className="ts-judge-positive">
-              三类来源汇合到一起，才有机会覆盖
+              结合多类来源，有助于理解
               <span className="ts-cover-chip">对象</span>
               <span className="ts-cover-chip">过程</span>
               <span className="ts-cover-chip">外部关系</span>
             </p>
             <p className="ts-judge-negative">
-              只剩单一环节的孤立记录，<strong>谈不上工业大数据</strong>
+              单一环节的孤立记录，<strong>难以覆盖这些方面</strong>
             </p>
           </div>
         </div>

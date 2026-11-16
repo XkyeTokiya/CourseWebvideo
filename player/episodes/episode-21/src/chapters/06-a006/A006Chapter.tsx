@@ -8,13 +8,13 @@ import "./A006Chapter.css";
  * 保持并列，每卡带解释行；底部结论条最后出现，由四卡共同支撑。R007（四
  * 特征解释处理方式差异）由特征卡两两并列与底部结论条的上下关系承载。
  *
- * step → semantic state：four-cards-explained → statistics-ruled-out。
+ * step → semantic state：four-cards-explained → statistics-insufficient。
  *
  * exact 义务：S034–S037 四条整句逐字渲染在四卡（卡名 + 解释行连续排布）。
  * 护栏 C008：特征不等于实时平台保证、零错误或自动闭环，不出现通过率或
  * 告警率——闭环卡用"回到…发挥作用"的回环示意，不画自动完成。
  */
-const stateByStep = ["four-cards-explained", "statistics-ruled-out"] as const;
+const stateByStep = ["four-cards-explained", "statistics-insufficient"] as const;
 
 const FEATURES = [
   {
@@ -132,15 +132,14 @@ export default function A006Chapter({ step }: ChapterStepProps) {
         ))}
       </div>
 
-      {/* 底部结论条：不能套用一次性统计（R007 收束） */}
+      {/* 底部结论条：不能只依靠一次性统计（R007 收束） */}
       <div className="it-takeaway" aria-hidden={!takeawayOn}>
         <p className="it-takeaway-ghost">结论 · 待收束</p>
         <div className="it-takeaway-plate card-glass">
           <span className="it-takeaway-kicker">正因为这样</span>
           <p className="it-takeaway-hero">
-            工业数据不能套用
-            <span className="it-ruled-out">一次性统计</span>
-            的处理方式
+            工业数据不能只依靠
+            <span className="it-emphasis">一次性统计</span>
           </p>
         </div>
       </div>
