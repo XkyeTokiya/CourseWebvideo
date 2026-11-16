@@ -63,3 +63,27 @@ test("runner reports provider failures without stopping later segments", async (
     await rm(dir, { recursive: true, force: true });
   }
 });
+
+test("runner processes headings as narration and validates segments in order", async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), "webvideo-runner-heading-"));
+  const calls = [];
+  const provider = { async synthesize({ text }) { calls.push(text); } };
+  try {
+    await assert.rejects(
+      synthesizeSegments({
+        segments: [
+          { chapter: "a", step: 1, text: "【正文讲解】这就是口播。" },
+          { chapter: "a", step: 0, text: "无效的步骤" },
+        ],
+        episodeDir: dir,
+        provider,
+        log() {},
+        error() {},
+      }),
+      /invalid segment at index 1/u,
+    );
+    assert.deepEqual(calls, ["【正文讲解】这就是口播。"]);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
