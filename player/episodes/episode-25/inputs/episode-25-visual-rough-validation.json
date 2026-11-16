@@ -2,7 +2,7 @@
   "episode_id": "episode-25",
   "validation_profile": "visual-rough-v4",
   "schema_version": "courseplay-visual-rough/v4",
-  "status": "draft",
+  "status": "approved",
   "validation_summary": {
     "pages": [
       {
@@ -448,8 +448,8 @@
   "errors": [],
   "failures": [],
   "input_integrity": {
-    "a_page_sha256": "2a3196f7394db1cd93a09381c886fe1bec5914513246c1be8da02397833afffc",
-    "visual_rough_sha256": "f266867db3a2889d9100d25fc79e6eed1e31bf727cff9dd1a199eaa424cca9a3",
+    "a_page_sha256": "8c67de0ecf9a9562b8270327250322de8da13012f1b1bcc682b901e93367cec2",
+    "visual_rough_sha256": "7dbdee8f2269f7eb6da99831258c191ae9186995629d03b2b91b2119ba41ad49",
     "recipe_registry_sha256": "697ed613616ec9ac5325a38544fe4ac9c8fcf6b3ab5439e614e7a7293b93ef2e"
   }
 }

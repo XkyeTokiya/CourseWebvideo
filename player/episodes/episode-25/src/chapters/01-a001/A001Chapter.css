@@ -1,0 +1,405 @@
+/* a001 · time-anchor-opening — premise-to-question
+   标题与场景图落位 → 三问依次点亮 → 语境线先立编码边界、再收束到模型命名
+   prefix: a1- */
+
+.a1-scene {
+  gap: 26px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.a1-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.a1-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 46px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.a1-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.a1-head-rule {
+  transform-origin: left center;
+}
+
+.a1-scene[data-state="scene-and-questions"] .a1-title {
+  animation: a1-rise 560ms var(--ease-soft) 60ms backwards;
+}
+
+.a1-scene[data-state="scene-and-questions"] .a1-head-rule {
+  animation: a1-grow-x 720ms var(--ease-soft) 300ms backwards;
+}
+
+/* ── 主区：场景图 + 三问锚点 ─────────────────────────────── */
+
+.a1-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 860px minmax(0, 1fr);
+  gap: 60px;
+  align-items: stretch;
+  transition: opacity 520ms var(--ease-soft);
+}
+
+.a1-main.is-dim {
+  opacity: 0.5;
+  transition-delay: 140ms;
+}
+
+.a1-media {
+  margin: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.a1-shot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 3px solid var(--text);
+}
+
+.a1-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.a1-photo-tag {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  padding: 8px 16px;
+  background: var(--text);
+  color: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.08em;
+}
+
+.a1-media-cap {
+  margin: 0;
+  font-size: 27px;
+  color: var(--text-2);
+}
+
+.a1-media-cap strong {
+  font-weight: 800;
+  color: var(--text);
+}
+
+.a1-ask {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 34px;
+}
+
+.a1-ask-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.a1-track {
+  position: relative;
+  padding-left: 58px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.a1-track-line {
+  position: absolute;
+  left: 74px;
+  top: 12px;
+  bottom: 12px;
+  border-left: 4px dashed var(--rule);
+  transform-origin: top center;
+}
+
+.a1-q {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.a1-q-node {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+}
+
+.a1-q-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.a1-q-text {
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.a1-scene[data-state="scene-and-questions"] .a1-shot {
+  animation: a1-rise 620ms var(--ease-soft) 160ms backwards;
+}
+
+.a1-scene[data-state="scene-and-questions"] .a1-media-cap {
+  animation: a1-rise 480ms var(--ease-soft) 560ms backwards;
+}
+
+.a1-scene[data-state="scene-and-questions"] .a1-ask-kicker {
+  animation: a1-rise 480ms var(--ease-soft) 640ms backwards;
+}
+
+.a1-scene[data-state="scene-and-questions"] .a1-track-line {
+  animation: a1-grow-y 720ms var(--ease-soft) 700ms backwards;
+}
+
+.a1-scene[data-state="scene-and-questions"] .a1-q {
+  animation: a1-rise 520ms var(--ease-soft) backwards;
+  animation-delay: calc(900ms + var(--a1-i) * 380ms);
+}
+
+.a1-scene[data-state="scene-and-questions"] .a1-q-node {
+  animation: a1-node 520ms var(--ease-overshoot) backwards;
+  animation-delay: calc(900ms + var(--a1-i) * 380ms);
+}
+
+/* ── 语境线：编码边界（拍 2 落位）─────────────────────────── */
+
+.a1-close {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.a1-limit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
+
+.a1-panel {
+  padding: 20px 34px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 460ms var(--ease-soft), transform 460ms var(--ease-soft);
+}
+
+.a1-limit.is-on .a1-panel {
+  opacity: 1;
+  transform: none;
+}
+
+.a1-limit.is-on .a1-panel:nth-child(1) {
+  transition-delay: 120ms;
+}
+
+.a1-limit.is-on .a1-panel:nth-child(2) {
+  transition-delay: 300ms;
+}
+
+.a1-scene[data-state="model-named"] .a1-limit .a1-panel {
+  opacity: 0.4;
+  transition-delay: 180ms;
+}
+
+.a1-panel-can {
+  background: var(--theme-process-surface);
+  border-color: var(--accent);
+}
+
+.a1-panel-cannot {
+  background: var(--theme-danger-surface);
+  border-color: var(--theme-danger);
+}
+
+.a1-panel-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.14em;
+}
+
+.a1-panel-can .a1-panel-tag {
+  color: var(--accent);
+}
+
+.a1-panel-cannot .a1-panel-tag {
+  color: var(--theme-danger);
+}
+
+.a1-panel-line {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.a1-glyph-box {
+  flex: none;
+  width: 30px;
+  height: 26px;
+}
+
+.a1-glyph-check {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 36;
+  stroke-dashoffset: 36;
+}
+
+.a1-glyph-cross {
+  stroke: var(--theme-danger);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  stroke-dasharray: 21;
+  stroke-dashoffset: 21;
+}
+
+.a1-limit.is-on .a1-glyph-check {
+  animation: a1-draw 520ms var(--ease-soft) 760ms forwards;
+}
+
+.a1-limit.is-on .a1-glyph-cross {
+  animation: a1-draw 460ms var(--ease-soft) 960ms forwards;
+}
+
+/* ── 收束：模型命名（拍 3 落位）──────────────────────────── */
+
+.a1-name {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.a1-name-rule {
+  height: 0;
+  width: 100%;
+  border-top: 4px solid var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 620ms var(--ease-soft);
+}
+
+.a1-name-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 44px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 500ms var(--ease-soft), transform 500ms var(--ease-soft);
+}
+
+.a1-name-pre {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.a1-name-stamp {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.a1-name.is-on .a1-name-rule {
+  transform: none;
+  transition-delay: 120ms;
+}
+
+.a1-name.is-on .a1-name-row {
+  opacity: 1;
+  transform: none;
+  transition-delay: 340ms;
+}
+
+/* ── keyframes ─────────────────────────────────────────── */
+
+@keyframes a1-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a1-node {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a1-grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes a1-grow-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes a1-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

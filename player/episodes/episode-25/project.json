@@ -1,12 +1,12 @@
 {
   "id": "episode-25",
-  "title": "第 25 期（待制作）",
-  "status": "planned",
+  "title": "标识数据模型：从数字对象到属性与事件",
+  "status": "in-progress",
   "theme": "active-identification-note",
   "progress": {
-    "completed": 0,
-    "total": 0,
-    "current": null
+    "completed": 3,
+    "total": 3,
+    "current": "02-a002"
   },
-  "updatedAt": "2026-09-02"
+  "updatedAt": "2026-11-16"
 }

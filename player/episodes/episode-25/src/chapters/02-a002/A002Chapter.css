@@ -1,0 +1,539 @@
+/* a002 · image-with-insight-rail — compare-and-reweight
+   语境图与阅读导轨持续；先建立数字描述，再立不等对照与虚拟对象，末拍收束编码边界
+   prefix: a2- */
+
+.a2-scene {
+  gap: 24px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.a2-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.a2-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 46px;
+  font-weight: 900;
+  color: var(--text);
+  animation: a2-rise 500ms var(--ease-soft) 40ms backwards;
+}
+
+.a2-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.a2-head-rule {
+  transform-origin: left center;
+  animation: a2-grow-x 640ms var(--ease-soft) 220ms backwards;
+}
+
+/* ── 主区：语境图 + 两种存在 | 阅读导轨 ──────────────────── */
+
+.a2-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 740px minmax(0, 1fr);
+  gap: 54px;
+  align-items: stretch;
+}
+
+.a2-media-col {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.a2-media {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.a2-shot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 3px solid var(--text);
+  animation: a2-rise 560ms var(--ease-soft) 140ms backwards;
+}
+
+.a2-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.a2-photo-tag {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  padding: 7px 14px;
+  background: var(--text);
+  color: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+}
+
+.a2-media-cap {
+  margin: 0;
+  font-size: 24px;
+  color: var(--text-2);
+  animation: a2-rise 440ms var(--ease-soft) 420ms backwards;
+}
+
+/* ── 两种存在：实体 / 数字描述 + 等号位 ──────────────────── */
+
+.a2-anchor {
+  padding: 20px 26px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: a2-rise 520ms var(--ease-soft) 320ms backwards;
+}
+
+.a2-anchor-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.a2-plates {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.a2-plate {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  border: 2px solid var(--rule);
+  border-radius: 10px;
+  background: var(--surface-3);
+}
+
+.a2-plate-real {
+  background: var(--surface-3);
+}
+
+.a2-plate-digital {
+  background: var(--theme-process-surface);
+  border-color: var(--accent);
+}
+
+.a2-plate-glyph {
+  width: 30px;
+  height: 30px;
+  flex: none;
+}
+
+.a2-glyph-solid {
+  fill: var(--text);
+}
+
+.a2-glyph-split {
+  stroke: var(--surface-3);
+  stroke-width: 2;
+}
+
+.a2-glyph-outline {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.4;
+}
+
+.a2-glyph-line {
+  stroke: var(--accent);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.a2-plate-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.a2-plate-tag {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.a2-plate-digital .a2-plate-tag {
+  color: var(--accent);
+}
+
+.a2-plate-name {
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+/* 等号位：拍 1 空置（结构已预留），拍 2 划出不等号 */
+
+.a2-neq {
+  flex: none;
+  width: 108px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.a2-neq-glyph {
+  width: 44px;
+  height: 44px;
+  overflow: visible;
+}
+
+.a2-neq-bar {
+  stroke: var(--theme-danger);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 28;
+  stroke-dashoffset: 28;
+}
+
+.a2-neq-slash {
+  stroke: var(--theme-danger);
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  stroke-dasharray: 42;
+  stroke-dashoffset: 42;
+}
+
+.a2-neq-note {
+  font-size: 19px;
+  font-weight: 800;
+  text-align: center;
+  color: var(--theme-danger);
+  opacity: 0;
+  transition: opacity 320ms var(--ease-soft);
+}
+
+.a2-neq.is-on .a2-neq-bar {
+  animation: a2-draw 380ms var(--ease-soft) forwards;
+}
+
+.a2-neq.is-on .a2-neq-bar:nth-of-type(2) {
+  animation-delay: 200ms;
+}
+
+.a2-neq.is-on .a2-neq-slash {
+  animation: a2-draw 380ms var(--ease-soft) 420ms forwards;
+}
+
+.a2-neq.is-on .a2-neq-note {
+  opacity: 1;
+  transition-delay: 700ms;
+}
+
+/* ── 阅读导轨：连续竖轨 + 逐拍落位的条目 ─────────────────── */
+
+.a2-rails {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.a2-rails::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 18px;
+  bottom: 18px;
+  border-left: 3px dashed var(--rule);
+  transform-origin: top center;
+  animation: a2-grow-y 720ms var(--ease-soft) 260ms backwards;
+}
+
+.a2-step {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+}
+
+.a2-rail {
+  position: relative;
+  width: 100%;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.a2-step::before {
+  content: "";
+  position: absolute;
+  left: -36px;
+  top: 50%;
+  width: 17px;
+  height: 17px;
+  margin-top: -9px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: var(--surface);
+  opacity: 0;
+  transition: opacity 300ms var(--ease-soft);
+}
+
+.a2-step.is-on::before {
+  opacity: 1;
+  transition-delay: 260ms;
+}
+
+.a2-step--1 {
+  animation: a2-rise 520ms var(--ease-soft) 700ms backwards;
+}
+
+.a2-step--1::before {
+  opacity: 1;
+  animation: a2-dot 420ms var(--ease-overshoot) 780ms backwards;
+}
+
+.a2-step--2 .a2-rail {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 400ms var(--ease-soft), transform 400ms var(--ease-soft);
+}
+
+.a2-step.is-on .a2-rail {
+  opacity: 1;
+  transform: none;
+}
+
+.a2-step--2.is-on .a2-rail {
+  transition-delay: 100ms;
+}
+
+.a2-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.a2-tag-warning {
+  color: var(--theme-warning);
+}
+
+.a2-main-line {
+  margin: 0;
+  font-size: 33px;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.a2-main-line strong {
+  font-weight: 900;
+  color: var(--accent);
+}
+
+/* 拍 2：判断行与虚拟对象补充，位置在拍 1 已预留 */
+
+.a2-judge {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.a2-judge-rule {
+  height: 0;
+  width: 100%;
+  border-top: 2px dashed var(--rule);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 520ms var(--ease-soft);
+}
+
+.a2-judge-line {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.45;
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 380ms var(--ease-soft), transform 380ms var(--ease-soft);
+}
+
+.a2-judge-line strong {
+  font-weight: 900;
+  color: var(--theme-danger);
+}
+
+.a2-judge.is-on .a2-judge-rule {
+  transform: none;
+  transition-delay: 60ms;
+}
+
+.a2-judge.is-on .a2-judge-line {
+  opacity: 1;
+  transform: none;
+  transition-delay: 340ms;
+}
+
+.a2-virtual {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 380ms var(--ease-soft);
+}
+
+.a2-virtual.is-on {
+  opacity: 1;
+  transition-delay: 900ms;
+}
+
+.a2-virtual-mark {
+  width: 10px;
+  height: 10px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* 拍 3：编码边界条目 —— 编码之后缺失的两件事 */
+
+.a2-rail-boundary {
+  background: var(--theme-warning-surface);
+  border-color: var(--theme-warning);
+}
+
+.a2-boundary-line {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.a2-cover {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.a2-cover-code {
+  flex: none;
+  padding: 8px 20px;
+  border: 2px solid var(--text);
+  border-radius: 8px;
+  background: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.a2-cover-bridge {
+  flex: none;
+  width: 46px;
+  border-top: 3px dashed var(--theme-warning);
+}
+
+.a2-gaps {
+  display: flex;
+  gap: 12px;
+}
+
+.a2-gap {
+  padding: 8px 18px;
+  border: 2px dashed var(--theme-warning);
+  border-radius: 8px;
+  background: var(--surface-2);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 340ms var(--ease-soft), transform 340ms var(--ease-soft);
+}
+
+.a2-step--2.is-on .a2-gap {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(420ms + var(--a2-i) * 180ms);
+}
+
+/* ── keyframes ─────────────────────────────────────────── */
+
+@keyframes a2-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a2-dot {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a2-grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes a2-grow-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes a2-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

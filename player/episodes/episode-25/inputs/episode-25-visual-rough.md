@@ -3,7 +3,7 @@ schema_version: courseplay-visual-rough/v4
 document_kind: production
 episode_id: episode-25
 source_a_page: episode-25-a-page.json
-source_a_page_sha256: 2a3196f7394db1cd93a09381c886fe1bec5914513246c1be8da02397833afffc
+source_a_page_sha256: 8c67de0ecf9a9562b8270327250322de8da13012f1b1bcc682b901e93367cec2
 status: approved
 image_required_page_fraction: 1/3
 logic_diagram_page_limit: 0
@@ -94,7 +94,7 @@ logic_diagram_page_limit: 0
 
 ### 关系保真
 
-- `[R003]`：由两步推进卡的先后位置承载
+- `[R003]`：先给出数字对象定义，再介绍可识别数字对象的描述与访问；不表现自动升级
 - `[R004]`：由末态卡内定位与边界的并排承载
 
 ## A004｜三要素总起页
@@ -243,7 +243,7 @@ logic_diagram_page_limit: 0
 
 ### 关系保真
 
-- `[R009]`：由事件四类卡与分工收束卡的排布承载
+- `[R009]`：由事件四类卡与分工收束卡承载；转化事件依据正文补齐，制作说明标明图 3-6 未画出该项
 
 ## A009｜建模出发点页
 
