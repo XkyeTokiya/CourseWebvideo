@@ -480,8 +480,8 @@
   "errors": [],
   "failures": [],
   "input_integrity": {
-    "a_page_sha256": "d0d1376e04219a0161e3b36598f8a80f9289dc86f4cad9843351bd0555227924",
-    "visual_rough_sha256": "cc6c31a5e1ffaf664889f63141c695b6d02db66470607e2a58c6fa84d230cfcc",
+    "a_page_sha256": "7abb6210b662a762599419c0a748f4d6f72ce4ed710a710c2c248650e2bc1eea",
+    "visual_rough_sha256": "6b6f12009821a27ed9d6e21e7eed240e8a9450295b5912420259ee4f1c454db7",
     "recipe_registry_sha256": "697ed613616ec9ac5325a38544fe4ac9c8fcf6b3ab5439e614e7a7293b93ef2e"
   }
 }

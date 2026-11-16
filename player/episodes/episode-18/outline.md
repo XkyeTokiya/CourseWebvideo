@@ -31,7 +31,7 @@
 
 ## 0. cover — 封面（1 silent step · fixed 15s）
 
-<!-- CHAPTER:A001:BEGIN tx=e51d221f36fca2cf -->
+<!-- CHAPTER:A001:BEGIN tx=93511d8590fb3791 -->
 ## 1. 01-opening-records — 开场与跨环节记录（4 steps · ~27s）
 
 **A-page / Chapter**：`A001`
@@ -105,7 +105,7 @@
 - 无新增媒体需求
 <!-- CHAPTER:A002:END -->
 
-<!-- CHAPTER:A003:BEGIN tx=131e870860a05ce3 -->
+<!-- CHAPTER:A003:BEGIN tx=3ea01cf584e000c6 -->
 ## 3. 03-ecode-definition — Ecode 定义与物联网语境（3 steps · ~23s）
 
 **A-page / Chapter**：`A003`
@@ -402,7 +402,7 @@
 - `M004`：物流、仓储、生产制造的中性工业语境图（photorealistic_ai，待提供）
 <!-- CHAPTER:A010:END -->
 
-<!-- CHAPTER:A011:BEGIN tx=49b4b81a23cdafe7 -->
+<!-- CHAPTER:A011:BEGIN tx=7852c3e6d3c9399c -->
 ## 11. 11-three-layer-summary — 三层收束（4 steps · ~39s）
 
 **A-page / Chapter**：`A011`

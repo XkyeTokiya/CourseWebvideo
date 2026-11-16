@@ -31,7 +31,7 @@
 
 ## 0. cover — 封面（1 silent step · fixed 15s）
 
-<!-- CHAPTER:A001:BEGIN tx=ad51755c8b0d1f3b -->
+<!-- CHAPTER:A001:BEGIN tx=5be99b3244450fd7 -->
 ## 1. opening-title — 开场标题（1 step · ~4s）
 
 **A-page / Chapter**：`A001`
@@ -65,7 +65,7 @@
 - 无新增媒体需求
 <!-- CHAPTER:A001:END -->
 
-<!-- CHAPTER:A002:BEGIN tx=06a6a3fb7eab0f94 -->
+<!-- CHAPTER:A002:BEGIN tx=07344273c0737b86 -->
 ## 2. one-object-many-codes — 一个对象，多套编号（4 steps · ~30s）
 
 **A-page / Chapter**：`A002`
@@ -104,7 +104,7 @@
 - `M001`：零部件多环节工业现场语境图（photorealistic_ai，待提供）
 <!-- CHAPTER:A002:END -->
 
-<!-- CHAPTER:A003:BEGIN tx=f8e5b0d987a828d3 -->
+<!-- CHAPTER:A003:BEGIN tx=731c2f2b47ddfc58 -->
 ## 3. four-questions — 四个业务问题（2 steps · ~26s）
 
 **A-page / Chapter**：`A003`
@@ -388,7 +388,7 @@
 - 无新增媒体需求
 <!-- CHAPTER:A009:END -->
 
-<!-- CHAPTER:A010:BEGIN tx=3b2ff2be7aab1c34 -->
+<!-- CHAPTER:A010:BEGIN tx=4cdb9d7805412fe5 -->
 ## 10. five-systems-division — 五体系分工（2 steps · ~27s）
 
 **A-page / Chapter**：`A010`

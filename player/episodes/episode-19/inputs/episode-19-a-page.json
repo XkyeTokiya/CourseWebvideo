@@ -110,7 +110,7 @@
   {
    "a_id": "A001",
    "callback_a_ids": [],
-   "nx": "【视频标题】GS1 与五类编码体系怎么选\n\n",
+   "nx": "GS1 与五类编码体系怎么选\n\n",
    "teaching_purpose": "呈现本期标题与选型主题",
    "single_message": "本集回答 GS1 与五类编码体系怎么选的问题。",
    "screen": {
@@ -173,10 +173,10 @@
    "entry_condition": "观众进入本期视频",
    "exit_condition": "观众知道本期要回答五类编码体系怎么选",
    "timing": {
-    "char_equivalent": 15.5,
-    "min_seconds": 4,
-    "target_seconds": 4,
-    "max_seconds": 5,
+    "char_equivalent": 11.5,
+    "min_seconds": 3,
+    "target_seconds": 3,
+    "max_seconds": 4,
     "short_page_reason": "标题页只承载本期主题与选型问题，需要独立建立后再进入开场对象。"
    }
   },
@@ -185,7 +185,7 @@
    "callback_a_ids": [
     "A001"
    ],
-   "nx": "【开场导入】\n一件普通的工业零部件，可能先走贸易流通，再进仓储，再上生产线，还要在企业内部系统和工业网络里被记录。每到一个环节，都可能已经有一套编号。问题也就在这里：面对 VAA、Handle、OID、Ecode、GS1 这么多体系，该先看什么，再决定用哪一套？为什么不能只用一套编码，把所有环节都管住？\n\n",
+   "nx": "一件普通的工业零部件，可能先走贸易流通，再进仓储，再上生产线，还要在企业内部系统和工业网络里被记录。每到一个环节，都可能已经有一套编号。问题也就在这里：面对 VAA、Handle、OID、Ecode、GS1 这么多体系，该先看什么，再决定用哪一套？为什么不能只用一套编码，把所有环节都管住？\n\n",
    "teaching_purpose": "用零部件多环节场景提出选型问题",
    "single_message": "同一件零部件在多个环节各有编号，选型先要回答“先看什么”。",
    "screen": {
@@ -275,10 +275,10 @@
    "entry_condition": "观众看到本期标题",
    "exit_condition": "观众能说出选型要回答的问题",
    "timing": {
-    "char_equivalent": 120.0,
-    "min_seconds": 30,
-    "target_seconds": 31,
-    "max_seconds": 33,
+    "char_equivalent": 116.0,
+    "min_seconds": 29,
+    "target_seconds": 30,
+    "max_seconds": 32,
     "short_page_reason": null
    }
   },
@@ -287,7 +287,7 @@
    "callback_a_ids": [
     "A002"
    ],
-   "nx": "【正文讲解】\n先把“选哪一种编码”改写成四个业务问题：要识别的对象是什么；它主要在哪个环节使用；需不需要跨企业、跨地域关联；企业还要不要保留自己的内部细分。这么一问就会发现，编码叫什么名字只是候选入口，真正决定取舍的，是这四个约束能不能对得上。\n\n",
+   "nx": "先把“选哪一种编码”改写成四个业务问题：要识别的对象是什么；它主要在哪个环节使用；需不需要跨企业、跨地域关联；企业还要不要保留自己的内部细分。这么一问就会发现，编码叫什么名字只是候选入口，真正决定取舍的，是这四个约束能不能对得上。\n\n",
    "teaching_purpose": "把选型改写成四个业务问题",
    "single_message": "编码名称只是候选入口，四个业务约束决定取舍。",
    "screen": {
@@ -369,10 +369,10 @@
    "entry_condition": "观众知道选型要回答什么问题",
    "exit_condition": "观众能说出四个业务问题",
    "timing": {
-    "char_equivalent": 107.0,
-    "min_seconds": 27,
-    "target_seconds": 28,
-    "max_seconds": 30,
+    "char_equivalent": 103,
+    "min_seconds": 26,
+    "target_seconds": 27,
+    "max_seconds": 29,
     "short_page_reason": null
    }
   },
@@ -1298,7 +1298,7 @@
    "callback_a_ids": [
     "A001"
    ],
-   "nx": "【本期总结】\n回到开头那件零部件。它在贸易、仓储、生产、内部系统和工业网络里都可能被记录，而每一套体系都有自己的位置：GS1 管贸易流通，VAA 管供应链和生命周期的跨环节关联，Handle 管数字资产，OID 管网络资源，Ecode 接物联网的物流、仓储和生产制造。\n\n",
+   "nx": "回到开头那件零部件。它在贸易、仓储、生产、内部系统和工业网络里都可能被记录，而每一套体系都有自己的位置：GS1 管贸易流通，VAA 管供应链和生命周期的跨环节关联，Handle 管数字资产，OID 管网络资源，Ecode 接物联网的物流、仓储和生产制造。\n\n",
    "teaching_purpose": "总结五类体系的分工",
    "single_message": "GS1 管贸易流通，VAA 管跨环节关联，Handle 管数字资产，OID 管网络资源，Ecode 接物联网。",
    "screen": {
@@ -1380,10 +1380,10 @@
    "entry_condition": "观众已理解兼容与映射结论",
    "exit_condition": "观众能概括五类体系各自的典型语境",
    "timing": {
-    "char_equivalent": 104.0,
-    "min_seconds": 26,
-    "target_seconds": 27,
-    "max_seconds": 29,
+    "char_equivalent": 100.0,
+    "min_seconds": 25,
+    "target_seconds": 26,
+    "max_seconds": 28,
     "short_page_reason": null
    }
   },
@@ -1455,7 +1455,7 @@
    "entry_condition": "观众已看到五类体系的分工",
    "exit_condition": "观众能用四步概括选型判断并说出核心结论",
    "timing": {
-    "char_equivalent": 110.0,
+    "char_equivalent": 110,
     "min_seconds": 28,
     "target_seconds": 29,
     "max_seconds": 30,

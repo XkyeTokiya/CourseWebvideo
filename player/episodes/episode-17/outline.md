@@ -33,7 +33,7 @@
 
 ## 0. cover — 封面（1 silent step · fixed 15s）
 
-<!-- CHAPTER:A001:BEGIN tx=799a2d1eeee46003 -->
+<!-- CHAPTER:A001:BEGIN tx=93d062b43eadcb2f -->
 ## 1. 01-opening-question — 开场问题（1 step · ~5s）
 
 **A-page / Chapter**：`A001`
@@ -68,7 +68,7 @@
 - 无新增媒体需求
 <!-- CHAPTER:A001:END -->
 
-<!-- CHAPTER:A002:BEGIN tx=013857f597a36683 -->
+<!-- CHAPTER:A002:BEGIN tx=ca89958a6f7a9dfa -->
 ## 2. 02-object-in-records — 对象与记录（2 steps · ~11s）
 
 **A-page / Chapter**：`A002`
@@ -139,7 +139,7 @@
 - 无新增媒体需求
 <!-- CHAPTER:A003:END -->
 
-<!-- CHAPTER:A004:BEGIN tx=aa4a453a82859b6f -->
+<!-- CHAPTER:A004:BEGIN tx=1ee2eab9eb25e666 -->
 ## 4. 04-oid-definition — 定义与体系（6 steps · ~63s）
 
 **A-page / Chapter**：`A004`
@@ -480,7 +480,7 @@
 - 无新增媒体需求
 <!-- CHAPTER:A012:END -->
 
-<!-- CHAPTER:A013:BEGIN tx=50c3665963643c35 -->
+<!-- CHAPTER:A013:BEGIN tx=9d75f0920bc41d62 -->
 ## 13. 13-summary — 本期总结（3 steps · ~55s）
 
 **A-page / Chapter**：`A013`

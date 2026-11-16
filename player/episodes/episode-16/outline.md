@@ -33,7 +33,7 @@
 
 ## 0. cover — 封面（1 silent step · fixed 15s）
 
-<!-- CHAPTER:A001:BEGIN tx=310e34796164c8b3 -->
+<!-- CHAPTER:A001:BEGIN tx=e67ba91834ea2fb1 -->
 ## 1. 01-opening-question — 开场提问（6 steps · ~42s）
 
 **A-page / Chapter**：`A001`
@@ -76,7 +76,7 @@
 - ⚠️ `M001`：跨环节流转的现场语境图（photorealistic_ai，待提供 / placeholder）
 <!-- CHAPTER:A001:END -->
 
-<!-- CHAPTER:A002:BEGIN tx=67f3200c67703deb -->
+<!-- CHAPTER:A002:BEGIN tx=0d90eea5f84bad3f -->
 ## 2. 02-system-framework — 体系框架（5 steps · ~52s）
 
 **A-page / Chapter**：`A002`
@@ -496,7 +496,7 @@
 - 无新增媒体需求
 <!-- CHAPTER:A012:END -->
 
-<!-- CHAPTER:A013:BEGIN tx=583e2476514a2a21 -->
+<!-- CHAPTER:A013:BEGIN tx=26c6d60d9727e6ef -->
 ## 13. 13-closing-recap — 收束回扣（5 steps · ~58s）
 
 **A-page / Chapter**：`A013`

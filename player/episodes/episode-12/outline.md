@@ -30,7 +30,7 @@
 
 ## 0. cover — 封面（1 silent step · fixed 15s）
 
-<!-- CHAPTER:A001:BEGIN tx=6d8d08ec97bc355d -->
+<!-- CHAPTER:A001:BEGIN tx=60468736a739df9e -->
 ## 1. opening-check — 开场情境页（5 steps · ~54s）
 
 **A-page / Chapter**：`A001`
@@ -62,7 +62,7 @@
 | 5 | 跨环节主问题 | `S-A001 · question-dominant` (~15s) | 核对与风险保持，视觉重心转移到主问题句，收束到“身份始终不断线” |
 <!-- CHAPTER:A001:END -->
 
-<!-- CHAPTER:A002:BEGIN tx=7bef6fed8d2e7beb -->
+<!-- CHAPTER:A002:BEGIN tx=156049f4f7fb6e8f -->
 ## 2. existing-systems — 既有系统页（5 steps · ~52s）
 
 **A-page / Chapter**：`A002`

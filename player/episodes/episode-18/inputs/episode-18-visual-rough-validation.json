@@ -427,8 +427,8 @@
   "errors": [],
   "failures": [],
   "input_integrity": {
-    "a_page_sha256": "989ad4feab6f801752664fe55320c758e8379bdba9ec620401b0f0adb1bb4400",
-    "visual_rough_sha256": "6a3f534ca92879a01d4ccfda19ac1cfa284fb7b5edae1b39515fee4ca9c74cb8",
+    "a_page_sha256": "a3b96148f92a7f17c47311febcbbab669ab7b2b33006d1eb188e7c66725977d6",
+    "visual_rough_sha256": "c3471af1b4cde561f1c3950e6366245e929b28558a99cd00435b8b6d49aba39c",
     "recipe_registry_sha256": "697ed613616ec9ac5325a38544fe4ac9c8fcf6b3ab5439e614e7a7293b93ef2e"
   }
 }

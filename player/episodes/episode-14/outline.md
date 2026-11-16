@@ -30,7 +30,7 @@
 
 ## 0. cover — 封面（1 silent step · fixed 15s）
 
-<!-- CHAPTER:A001:BEGIN tx=7bee9f7e4fd02548 -->
+<!-- CHAPTER:A001:BEGIN tx=e35ad11d6b5c0d0f -->
 ## 1. 01-opening-question — 情境提问(4 steps · ~40s)
 
 **A-page / Chapter**：`A001`
@@ -69,7 +69,7 @@
 - 无新增媒体需求
 <!-- CHAPTER:A001:END -->
 
-<!-- CHAPTER:A002:BEGIN tx=50ddf05854c28795 -->
+<!-- CHAPTER:A002:BEGIN tx=1aeab216258681e2 -->
 ## 2. 02-definition-resources — 定义与作用(5 steps · ~53s)
 
 **A-page / Chapter**：`A002`
@@ -388,7 +388,7 @@
 - ⚠️ `M003`：评审现场图（photorealistic_ai；待提供——生成沿同一对象连续追问的评审现场语境，Phase 2 以 placeholder 起步）
 <!-- CHAPTER:A009:END -->
 
-<!-- CHAPTER:A010:BEGIN tx=ad75376edfb44ef3 -->
+<!-- CHAPTER:A010:BEGIN tx=af79c9753cae53e9 -->
 ## 10. 10-boundary-closing — 边界与收束(8 steps · ~102s)
 
 **A-page / Chapter**：`A010`

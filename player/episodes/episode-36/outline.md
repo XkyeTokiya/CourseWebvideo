@@ -33,7 +33,7 @@
 
 ## 0. cover — 封面（1 silent step · fixed 15s）
 
-<!-- CHAPTER:A001:BEGIN tx=c602c5770d9d4b5c -->
+<!-- CHAPTER:A001:BEGIN tx=3aafa8b661fa2e95 -->
 ## 1. a001-opening-limited-space — 片头与开场问题（5 steps · ~39s）
 
 **A-page / Chapter**：`A001`
@@ -75,7 +75,7 @@
 - ⚠️ `M001`：工业设计台与有限附着区域的现场语境图（photorealistic_ai，待提供；不显示数据、界面或企业标识）
 <!-- CHAPTER:A001:END -->
 
-<!-- CHAPTER:A002:BEGIN tx=54fe590fcfb32759 -->
+<!-- CHAPTER:A002:BEGIN tx=0aad718ac142c204 -->
 ## 2. a002-integrated-definition — 一体化定义与四类维度（2 steps · ~16s）
 
 **A-page / Chapter**：`A002`

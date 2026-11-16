@@ -450,8 +450,8 @@
   "errors": [],
   "failures": [],
   "input_integrity": {
-    "a_page_sha256": "b7264e4a3cb9cf728d533d7a32d9c238e3e64b7b9357289d9906f3cf8df3cb4b",
-    "visual_rough_sha256": "5f93646195e2f464438fff3f95372f0ab1a2f00e2d22c8e4e467203bc9dcbefe",
+    "a_page_sha256": "289d5d147b7b07f1900cfba4154e9efec927ff76e0ded294f7e469f61d9515a6",
+    "visual_rough_sha256": "8007e767d7679ef3323e8a2f8a78b83f20300cd55d023efb116b857e9035443f",
     "recipe_registry_sha256": "697ed613616ec9ac5325a38544fe4ac9c8fcf6b3ab5439e614e7a7293b93ef2e"
   }
 }

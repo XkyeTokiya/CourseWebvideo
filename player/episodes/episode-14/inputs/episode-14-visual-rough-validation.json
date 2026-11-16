@@ -373,8 +373,8 @@
   "errors": [],
   "failures": [],
   "input_integrity": {
-    "a_page_sha256": "afa9474ab9b95313ffa2161bc444dccb59b3c7ec032bd7fc9b61781c8deed054",
-    "visual_rough_sha256": "5cf2ea39e23cddba7c081dc585eb502db08a21a5014f8ebb4b996b1df56f09ec",
+    "a_page_sha256": "43f0345a5a8094b3a9d96270ef3f950c8a1aa32a62b3d7fa3fafa31917bae86e",
+    "visual_rough_sha256": "561b93ad561ba647ad8c5119779c8a81e11ad4fc7e7c48e66b8294d0f26c0a80",
     "recipe_registry_sha256": "697ed613616ec9ac5325a38544fe4ac9c8fcf6b3ab5439e614e7a7293b93ef2e"
   }
 }

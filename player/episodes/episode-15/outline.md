@@ -31,7 +31,7 @@
 
 ## 0. cover — 封面（1 silent step · fixed 15s）
 
-<!-- CHAPTER:A001:BEGIN tx=f7286c68a560284b -->
+<!-- CHAPTER:A001:BEGIN tx=b233931a49ec7381 -->
 ## 1. 01-identity-question — 片头与开场情境（6 steps · ~51s）
 
 **A-page / Chapter**：`A001`
@@ -75,7 +75,7 @@
 - 无新增媒体需求（护栏 C001：情境为写实示意，不冒充真实现场）
 <!-- CHAPTER:A001:END -->
 
-<!-- CHAPTER:A002:BEGIN tx=c206a2c9572872e7 -->
+<!-- CHAPTER:A002:BEGIN tx=32f4ce3f2f1ef323 -->
 ## 2. 02-three-segments — 三段结构总览（3 steps · ~32s）
 
 **A-page / Chapter**：`A002`
@@ -432,7 +432,7 @@
 - ⚠️ `M004`：工业编码核对场景图（photorealistic_ai；作为读法回扣语境落点，待提供）
 <!-- CHAPTER:A010:END -->
 
-<!-- CHAPTER:A011:BEGIN tx=5d31d52b36fb0b63 -->
+<!-- CHAPTER:A011:BEGIN tx=ea5c55bdfb189e16 -->
 ## 11. 11-three-duties-recap — 三层职责收束（6 steps · ~68s）
 
 **A-page / Chapter**：`A011`

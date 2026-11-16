@@ -31,7 +31,7 @@
 
 ## 0. cover — 封面（1 silent step · fixed 15s）
 
-<!-- CHAPTER:A001:BEGIN tx=aaabd8dab6b610d0 -->
+<!-- CHAPTER:A001:BEGIN tx=0a05b25aca2414ac -->
 ## 1. a001 — 标题与问题页（2 steps · ~28s）
 
 **A-page / Chapter**：`A001`
@@ -105,7 +105,7 @@
 **口播节选**：难的不是再编一串字符，是让不同环节的记录始终指向同一个对象。
 <!-- CHAPTER:A002:END -->
 
-<!-- CHAPTER:A003:BEGIN tx=0a740dffdb3ca916 -->
+<!-- CHAPTER:A003:BEGIN tx=e35f87ee14b4e7a3 -->
 ## 3. a003 — 编码作用页（3 steps · ~42s）
 
 **A-page / Chapter**：`A003`
@@ -406,7 +406,7 @@
 **口播节选**：对象责任、授权来源、字段语义、规范边界，这四样必须对得上。
 <!-- CHAPTER:A010:END -->
 
-<!-- CHAPTER:A011:BEGIN tx=78f42df921f96454 -->
+<!-- CHAPTER:A011:BEGIN tx=399509ff62cbf550 -->
 ## 11. a011 — 总结收束页（2 steps · ~54s）
 
 **A-page / Chapter**：`A011`
