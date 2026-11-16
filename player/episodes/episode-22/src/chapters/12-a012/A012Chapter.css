@@ -1,0 +1,331 @@
+/* 12-a012 · 总结：四问归位（outline §12 · S-A012 · image-with-insight-rail）
+   mechanism: anchor-and-context — 开场的维修记录单重新出现并持续作锚点，第一条
+   轨道把四项归位逐条对上，第二条轨道再抽出规律与四问短句。R013 由回收条与规律
+   条的先后次序承载。prefix: sum- */
+
+.sum-scene {
+  gap: 16px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.sum-head {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+}
+
+.sum-headline {
+  flex: none;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+  animation: sum-rise 520ms var(--ease-soft) backwards;
+}
+
+.sum-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.sum-head-rule {
+  flex: 1;
+  transform-origin: left center;
+  animation: sum-grow 700ms var(--ease-soft) 160ms backwards;
+}
+
+/* ── 主体：左记录单 + 两条轨道 ──────────────────────────── */
+
+.sum-body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 520px minmax(0, 1fr);
+  gap: 36px;
+}
+
+.sum-media {
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--surface-2);
+  border: 3px solid var(--text);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  animation: sum-rise 540ms var(--ease-soft) 100ms backwards;
+}
+
+.sum-media-strip {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 18px;
+  border-bottom: 2px solid var(--text);
+  background: var(--theme-cool-surface);
+}
+
+.sum-media-name {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  color: var(--text-2);
+}
+
+.sum-media-missing {
+  flex: none;
+  padding: 3px 9px;
+  border: 2px dashed var(--rule);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  white-space: nowrap;
+  color: var(--text-mute);
+}
+
+.sum-media-plate {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--theme-paper);
+}
+
+.sum-media-shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 两条轨道 */
+
+.sum-rails {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sum-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px 24px 22px;
+  background: var(--surface-2);
+  border: 2px solid var(--text);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.sum-rail--place {
+  flex: 1;
+  min-height: 0;
+  animation: sum-rail-in 460ms var(--ease-soft) 300ms backwards;
+}
+
+.sum-rail--rule {
+  flex: 0 0 auto;
+  border-color: var(--theme-process);
+  background: var(--theme-process-surface);
+}
+
+.is-rule .sum-rail--place {
+  opacity: 0.66;
+}
+
+.sum-rail-head {
+  flex: none;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.sum-rail-idx {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--theme-warning);
+}
+
+.sum-rail--rule .sum-rail-idx {
+  color: var(--theme-process);
+}
+
+.sum-rail-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+/* 四项归位行 */
+
+.sum-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sum-row {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 0 16px;
+  background: var(--theme-cool-surface);
+  border: 2px solid var(--rule);
+  opacity: 0;
+  animation: sum-row-in 420ms var(--ease-soft) both;
+  animation-delay: calc(460ms + var(--sum-i) * 150ms);
+}
+
+.sum-row-part {
+  font-size: 23px;
+  line-height: 1.3;
+  color: var(--text-2);
+}
+
+.sum-row-lead {
+  position: relative;
+  height: 2px;
+  background: var(--rule);
+}
+
+.sum-row-lead::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: -4px;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid var(--rule);
+}
+
+.sum-row-home {
+  padding: 6px 15px;
+  background: var(--text);
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 900;
+  white-space: nowrap;
+  color: var(--surface);
+}
+
+/* 规律带 */
+
+.sum-rail-core {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sum-rule-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.34;
+  color: var(--text-faint);
+  transition: color 440ms var(--ease-soft);
+}
+
+.is-rule .sum-rule-hero {
+  color: var(--text);
+}
+
+.sum-rule-hero em {
+  font-style: normal;
+  color: var(--theme-process);
+}
+
+.sum-four {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.sum-four-item {
+  padding: 13px 0;
+  text-align: center;
+  background: transparent;
+  border: 2px dashed var(--rule);
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--text-faint);
+  transition: background 380ms var(--ease-soft), border-color 380ms var(--ease-soft),
+    color 380ms var(--ease-soft);
+}
+
+.is-sealed .sum-four-item {
+  background: var(--surface-2);
+  border-style: solid;
+  border-color: var(--theme-process);
+  color: var(--text);
+  transition-delay: calc(var(--sum-f) * 100ms);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes sum-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sum-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes sum-rail-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sum-row-in {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

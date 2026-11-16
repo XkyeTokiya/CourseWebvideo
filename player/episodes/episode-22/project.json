@@ -1,12 +1,12 @@
 {
   "id": "episode-22",
-  "title": "第 22 期（待制作）",
-  "status": "planned",
+  "title": "主数据、业务数据、元数据与数据字典的边界",
+  "status": "in-progress",
   "theme": "active-identification-note",
   "progress": {
-    "completed": 0,
-    "total": 0,
-    "current": null
+    "completed": 3,
+    "total": 13,
+    "current": "03-a003"
   },
-  "updatedAt": "2026-09-02"
+  "updatedAt": "2026-11-04"
 }

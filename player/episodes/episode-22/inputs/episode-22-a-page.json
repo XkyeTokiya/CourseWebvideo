@@ -110,7 +110,7 @@
   {
    "a_id": "A001",
    "callback_a_ids": [],
-   "nx": "【视频标题】\n主数据、业务数据、元数据与数据字典的边界\n\n【开场导入】\n一台设备出了故障，留下一张维修记录。就这么一张记录，同时牵出四个名词：主数据、业务数据、元数据，还有数据字典。它们说的是同一个东西吗？当然不是。那这张记录到底算哪一种？先别急着下结论。记住一个判断的入口：别管数据躺在哪个系统里，也别管它是不是一张看起来很简单的基础表，先问自己一句，这条数据到底在回答什么问题。\n\n",
+   "nx": "主数据、业务数据、元数据与数据字典的边界\n\n一台设备出了故障，留下一张维修记录。就这么一张记录，同时牵出四个名词：主数据、业务数据、元数据，还有数据字典。它们说的是同一个东西吗？当然不是。那这张记录到底算哪一种？先别急着下结论。记住一个判断的入口：别管数据躺在哪个系统里，也别管它是不是一张看起来很简单的基础表，先问自己一句，这条数据到底在回答什么问题。\n\n",
    "teaching_purpose": "呈现本集标题；用一张维修记录牵出四个名词的歧义，给出“先问数据在回答什么”的判断入口",
    "single_message": "同一张记录牵出四个概念；分类入口不是看存放位置，而是看它在回答什么问题。",
    "screen": {
@@ -195,10 +195,10 @@
    "entry_condition": "观众开始观看本集，尚未接触四个数据概念",
    "exit_condition": "观众能说出判断入口：先问数据在回答什么问题",
    "timing": {
-    "char_equivalent": 164.0,
-    "min_seconds": 41,
-    "target_seconds": 43,
-    "max_seconds": 45,
+    "char_equivalent": 156,
+    "min_seconds": 39,
+    "target_seconds": 41,
+    "max_seconds": 43,
     "short_page_reason": null
    }
   },
@@ -207,7 +207,7 @@
    "callback_a_ids": [
     "A001"
    ],
-   "nx": "【正文讲解】\n我们可以把四个概念想成四个角色，各有一句自己的台词。它是在确认核心业务对象是谁，还是在记录围绕这个对象发生了什么，是在说明这些数据本身是什么意思、从哪里来、怎么关联，还是在规定数据库里的字段应该怎么定义。哪句话对得上，就该从哪个概念去理解这条数据。\n\n",
+   "nx": "我们可以把四个概念想成四个角色，各有一句自己的台词。它是在确认核心业务对象是谁，还是在记录围绕这个对象发生了什么，是在说明这些数据本身是什么意思、从哪里来、怎么关联，还是在规定数据库里的字段应该怎么定义。哪句话对得上，就该从哪个概念去理解这条数据。\n\n",
    "teaching_purpose": "把四个概念建立为四个角色台词，形成四问判断框架",
    "single_message": "四个概念各有要回答的问题；哪句台词对得上，就从哪个概念去理解。",
    "screen": {
@@ -293,10 +293,10 @@
    "entry_condition": "观众已接受“先问数据在回答什么”的判断入口",
    "exit_condition": "观众能说出四个角色各自回答的问题",
    "timing": {
-    "char_equivalent": 118.0,
-    "min_seconds": 30,
-    "target_seconds": 31,
-    "max_seconds": 33,
+    "char_equivalent": 114,
+    "min_seconds": 29,
+    "target_seconds": 30,
+    "max_seconds": 32,
     "short_page_reason": null
    }
   },
@@ -404,7 +404,7 @@
    "entry_condition": "观众已掌握四问框架",
    "exit_condition": "观众能说出业务数据的定义、例项与其回答的问题",
    "timing": {
-    "char_equivalent": 179.0,
+    "char_equivalent": 179,
     "min_seconds": 45,
     "target_seconds": 47,
     "max_seconds": 49,
@@ -522,7 +522,7 @@
    "entry_condition": "观众已掌握业务数据",
    "exit_condition": "观众能说出主数据的三个特性与“相对稳定”的边界",
    "timing": {
-    "char_equivalent": 173.0,
+    "char_equivalent": 173,
     "min_seconds": 44,
     "target_seconds": 45,
     "max_seconds": 48,
@@ -620,7 +620,7 @@
    "entry_condition": "观众已分别掌握业务数据与主数据",
    "exit_condition": "观众能按角色区分同一系统里的三类数据",
    "timing": {
-    "char_equivalent": 159.0,
+    "char_equivalent": 159,
     "min_seconds": 40,
     "target_seconds": 41,
     "max_seconds": 44,
@@ -743,7 +743,7 @@
    "entry_condition": "观众已掌握前两个概念",
    "exit_condition": "观众能说出元数据的描述范围、五个特点与管理作用",
    "timing": {
-    "char_equivalent": 255.0,
+    "char_equivalent": 255,
     "min_seconds": 64,
     "target_seconds": 67,
     "max_seconds": 70,
@@ -841,7 +841,7 @@
    "entry_condition": "观众已掌握元数据",
    "exit_condition": "观众能说出数据字典的数据库范围与用途",
    "timing": {
-    "char_equivalent": 159.0,
+    "char_equivalent": 159,
     "min_seconds": 40,
     "target_seconds": 41,
     "max_seconds": 44,
@@ -943,7 +943,7 @@
    "entry_condition": "观众已分别掌握元数据与数据字典",
    "exit_condition": "观众能说出两者的范围区别与承载边界",
    "timing": {
-    "char_equivalent": 126.0,
+    "char_equivalent": 126,
     "min_seconds": 32,
     "target_seconds": 33,
     "max_seconds": 35,
@@ -1041,7 +1041,7 @@
    "entry_condition": "观众已掌握四个概念及其两两边界",
    "exit_condition": "观众能并列说出四个概念各自回答的问题",
    "timing": {
-    "char_equivalent": 97.0,
+    "char_equivalent": 97,
     "min_seconds": 25,
     "target_seconds": 25,
     "max_seconds": 27,
@@ -1149,7 +1149,7 @@
    "entry_condition": "观众已并列掌握四问",
    "exit_condition": "观众能把情境数据归位，并说出三处误判边界",
    "timing": {
-    "char_equivalent": 181.0,
+    "char_equivalent": 181,
     "min_seconds": 46,
     "target_seconds": 47,
     "max_seconds": 50,
@@ -1239,7 +1239,7 @@
    "entry_condition": "观众已掌握归位与三处误判",
    "exit_condition": "观众能说出三类管理价值与边界清楚的意义",
    "timing": {
-    "char_equivalent": 117.0,
+    "char_equivalent": 117,
     "min_seconds": 30,
     "target_seconds": 31,
     "max_seconds": 32,
@@ -1252,7 +1252,7 @@
     "A001",
     "A009"
    ],
-   "nx": "【本期总结】\n回到开头那张维修记录。四个概念在这个小场景里各归其位：身份这件事，交给主数据；发生的事，交给业务数据；数据的意思和来路，交给元数据；数据库里的字段定义，交给数据字典。四者分工各有各要回答的问题，落点却是同一个规律：判断一项工业数据，先别盯它在哪张表，先问它在回答什么。确认对象、记录事件、描述数据、规范字段，四问归位，这四个概念就各得其所。",
+   "nx": "回到开头那张维修记录。四个概念在这个小场景里各归其位：身份这件事，交给主数据；发生的事，交给业务数据；数据的意思和来路，交给元数据；数据库里的字段定义，交给数据字典。四者分工各有各要回答的问题，落点却是同一个规律：判断一项工业数据，先别盯它在哪张表，先问它在回答什么。确认对象、记录事件、描述数据、规范字段，四问归位，这四个概念就各得其所。",
    "teaching_purpose": "回收开场维修记录情境，收束为“先问在回答什么”的四问归位规律",
    "single_message": "四问归位：确认对象、记录事件、描述数据、规范字段，四个概念各得其所。",
    "screen": {
@@ -1322,10 +1322,10 @@
    "entry_condition": "观众已走过四个概念、两组对照与误判边界",
    "exit_condition": "观众能复述“先问在回答什么”的归位规律",
    "timing": {
-    "char_equivalent": 153.0,
-    "min_seconds": 39,
-    "target_seconds": 40,
-    "max_seconds": 42,
+    "char_equivalent": 149,
+    "min_seconds": 38,
+    "target_seconds": 39,
+    "max_seconds": 41,
     "short_page_reason": null
    }
   }

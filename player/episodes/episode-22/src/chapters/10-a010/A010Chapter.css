@@ -1,0 +1,283 @@
+/* 10-a010 · 情境归位与三处踩偏（outline §10 · S-A010 ·
+   parallel-cards-self-contained）
+   mechanism: equal-weight-accumulation — 归位卡先把四项对位一次落定，三张踩偏
+   卡随后在其下方等权并列；每张卡只承担一处边界。R011 由归位卡与三张踩偏卡的
+   先后排布承载。prefix: tr- */
+
+.tr-scene {
+  gap: 16px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.tr-head {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+}
+
+.tr-headline {
+  flex: none;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+  animation: tr-rise 520ms var(--ease-soft) backwards;
+}
+
+.tr-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.tr-head-rule {
+  flex: 1;
+  transform-origin: left center;
+  animation: tr-grow 700ms var(--ease-soft) 160ms backwards;
+}
+
+/* ── 顶部归位卡 ─────────────────────────────────────────── */
+
+.tr-placement {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 26px 24px;
+  background: var(--theme-cool-surface);
+  border: 3px solid var(--text);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.is-trap-rest .tr-placement {
+  opacity: 0.58;
+}
+
+.tr-placement-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.tr-placement-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+/* 四行对位：物件 → 归属 */
+
+.tr-rows {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 12px;
+}
+
+.tr-row {
+  display: grid;
+  grid-template-columns: 400px minmax(0, 1fr) 190px;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 20px;
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+  opacity: 0;
+  animation: tr-row-in 420ms var(--ease-soft) both;
+  animation-delay: calc(280ms + var(--tr-i) * 170ms);
+}
+
+.tr-row-thing {
+  font-size: 22px;
+  line-height: 1.35;
+  color: var(--text-2);
+}
+
+.tr-row-lead {
+  position: relative;
+  height: 2px;
+  background: var(--rule);
+}
+
+.tr-row-lead::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: -4px;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid var(--rule);
+}
+
+.tr-row-home {
+  padding: 7px 14px;
+  text-align: center;
+  background: var(--text);
+  font-family: var(--font-display-cn);
+  font-size: 23px;
+  font-weight: 900;
+  white-space: nowrap;
+  color: var(--surface);
+}
+
+/* ── 三张踩偏卡 ─────────────────────────────────────────── */
+
+.tr-traps {
+  flex: 0 0 auto;
+  min-height: 236px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.tr-trap {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 22px 20px;
+  background: var(--surface-2);
+  border: 3px solid var(--theme-danger);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  transition: border-color 420ms var(--ease-soft),
+    background 420ms var(--ease-soft), box-shadow 420ms var(--ease-soft);
+}
+
+/* 未落位的卡：结构槽，只留位置与标签 */
+
+.tr-trap.is-pending {
+  border-style: dashed;
+  border-color: var(--rule);
+  background: transparent;
+  box-shadow: none;
+}
+
+.tr-trap.is-pending .tr-trap-top {
+  opacity: 0.4;
+}
+
+.tr-trap.is-pending .tr-trap-title,
+.tr-trap.is-pending .tr-trap-body {
+  opacity: 0;
+}
+
+.tr-trap-top {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: opacity 380ms var(--ease-soft);
+}
+
+.tr-trap-no {
+  padding: 3px 10px;
+  border: 2px solid var(--theme-danger);
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.08em;
+  color: var(--theme-danger);
+}
+
+.tr-trap.is-pending .tr-trap-no {
+  border-color: var(--rule);
+  color: var(--text-mute);
+}
+
+.tr-trap-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 31px;
+  font-weight: 900;
+  line-height: 1.34;
+  color: var(--text);
+  opacity: 0;
+  transition: opacity 380ms var(--ease-soft) 100ms;
+}
+
+.tr-trap-title em {
+  font-style: normal;
+  color: var(--theme-danger);
+}
+
+.tr-trap-body {
+  margin: 0;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 2px dashed var(--rule);
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 380ms var(--ease-soft) 180ms;
+}
+
+.is-trap-1 .tr-trap:nth-child(1) .tr-trap-title,
+.is-trap-1 .tr-trap:nth-child(1) .tr-trap-body {
+  opacity: 1;
+}
+
+.is-trap-rest .tr-trap .tr-trap-title,
+.is-trap-rest .tr-trap .tr-trap-body {
+  opacity: 1;
+}
+
+.is-trap-rest .tr-trap {
+  border-style: solid;
+  background: var(--surface-2);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+}
+
+.is-trap-rest .tr-trap .tr-trap-top {
+  opacity: 1;
+}
+
+.is-trap-rest .tr-trap .tr-trap-no {
+  border-color: var(--theme-danger);
+  color: var(--theme-danger);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes tr-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tr-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes tr-row-in {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

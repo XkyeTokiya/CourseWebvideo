@@ -1,0 +1,361 @@
+/* 05-a005 · 同一台设备上的数据角色（outline §5 · S-A005 ·
+   parallel-cards-with-takeaway）
+   mechanism: compare-and-reweight — 三张角色卡在同一行保持空间不变，各自补出
+   "回答什么＋归哪一类"；结论条把对照收束为分类依据，不轮换选中态。
+   R005 由角色对照卡与底部结论条的上下关系承载。prefix: rl- */
+
+.rl-scene {
+  gap: 18px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.rl-head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rl-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+  animation: rl-rise 540ms var(--ease-soft) backwards;
+}
+
+.rl-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.rl-head-rule {
+  transform-origin: left center;
+  animation: rl-grow 700ms var(--ease-soft) 180ms backwards;
+}
+
+/* ── 三张角色卡：同一行、等宽、空间不变 ─────────────────── */
+
+.rl-cards {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+  transition: opacity 520ms var(--ease-soft);
+}
+
+.is-basis .rl-cards {
+  opacity: 0.72;
+}
+
+.rl-card {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 26px 26px;
+  background: var(--surface-2);
+  border: 3px solid var(--text);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  animation: rl-card-in 520ms var(--ease-soft) both;
+  animation-delay: calc(260ms + var(--rl-i) * 200ms);
+}
+
+/* 第三卡在拍 1 保持空槽 */
+
+.rl-card.is-pending {
+  background: transparent;
+  border-style: dashed;
+  border-color: var(--rule);
+  border-width: 2px;
+  box-shadow: none;
+  animation: rl-card-in 320ms var(--ease-soft) both;
+  animation-delay: 340ms;
+}
+
+.rl-card.is-pending > .rl-card-top {
+  opacity: 0.35;
+}
+
+/* 编号只保留一处：卡内大号数字已标识槽位，顶部不再重复 */
+
+.rl-card.is-pending .rl-card-id {
+  visibility: hidden;
+}
+
+.rl-card.is-pending > .rl-card-core {
+  opacity: 0;
+}
+
+/* 未落位卡：用卡片自身编号标出这是一个待填的结构槽 */
+
+.rl-card-hold {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 104px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--rule);
+  animation: rl-card-in 320ms var(--ease-soft) 420ms both;
+}
+
+.rl-card--main {
+  border-top: 8px solid var(--theme-structural);
+}
+
+.rl-card--biz {
+  border-top: 8px solid var(--theme-warning);
+}
+
+.rl-card--big {
+  border-top: 8px solid var(--theme-process);
+}
+
+.rl-card.is-pending {
+  border-top-width: 2px;
+  border-top-style: dashed;
+  border-top-color: var(--rule);
+}
+
+.is-third .rl-card--big {
+  animation: rl-card-in 560ms var(--ease-soft) 120ms both;
+}
+
+/* 卡顶：编号 + 归类判词 */
+
+.rl-card-top {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.rl-card-id {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+.rl-card-verdict {
+  padding: 5px 14px;
+  border: 2px solid var(--text);
+  font-family: var(--font-display-cn);
+  font-size: 21px;
+  font-weight: 900;
+  line-height: 1.3;
+  white-space: nowrap;
+  color: var(--text);
+}
+
+.rl-card--main .rl-card-verdict {
+  background: var(--theme-structural);
+  color: var(--surface);
+}
+
+.rl-card--biz .rl-card-verdict {
+  background: var(--theme-warning);
+  color: var(--surface);
+}
+
+.rl-card--big .rl-card-verdict {
+  background: var(--theme-process);
+  color: var(--surface);
+}
+
+/* 卡身：角色名 → 回答什么 → 由什么构成 */
+
+.rl-card-core {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.rl-card-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.22;
+  color: var(--text);
+}
+
+.rl-card-sep {
+  width: 56px;
+  height: 3px;
+  background: var(--text);
+}
+
+.rl-card-q {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.rl-card-detail {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* 第三卡：明显区隔，标出"那又是另一回事" */
+
+.rl-card-q.rl-card-apart {
+  padding: 12px 16px;
+  border: 2px dashed var(--theme-process);
+  font-size: 26px;
+  color: var(--theme-process);
+}
+
+/* ── 分类依据条（拍 3） ─────────────────────────────────── */
+
+.rl-basis {
+  flex: none;
+  position: relative;
+  height: 104px;
+}
+
+.rl-basis-reserve {
+  position: absolute;
+  inset: 0;
+  border-top: 2px dashed var(--rule);
+  border-bottom: 2px dashed var(--rule);
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-basis .rl-basis-reserve {
+  opacity: 0;
+}
+
+.rl-basis-plate {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 0 34px;
+  background: var(--theme-cool-surface);
+  border: 3px solid var(--text);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.is-basis .rl-basis-plate {
+  animation: rl-plate-in 520ms var(--ease-soft) 160ms both;
+}
+
+.rl-basis-kicker {
+  flex: none;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+}
+
+.rl-basis-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.42;
+  color: var(--text);
+}
+
+.rl-basis-hero em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* ── 底部结论条（拍 3） ─────────────────────────────────── */
+
+.rl-takeaway {
+  flex: none;
+  margin: 0;
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--text);
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--surface);
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.is-basis .rl-takeaway {
+  animation: rl-plate-in 520ms var(--ease-soft) 380ms both;
+}
+
+.rl-takeaway em {
+  font-style: normal;
+  padding: 0 6px;
+  background: var(--theme-warning);
+  color: var(--text);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes rl-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rl-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rl-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rl-plate-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

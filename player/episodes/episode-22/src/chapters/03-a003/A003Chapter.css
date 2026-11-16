@@ -1,0 +1,460 @@
+/* 03-a003 · 业务数据（outline §3 · S-A003 · parallel-cards-self-contained）
+   mechanism: equal-weight-accumulation — 三列卡自建立后保持等距等权，例项
+   不获得选中态；定义卡补出"工业业务数据"限定，底部回答条把三列收束成
+   一个判断问题。R003 由三列等距排布承载。prefix: bd- */
+
+.bd-scene {
+  gap: 20px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.bd-head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bd-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 54px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+  animation: bd-rise 540ms var(--ease-soft) backwards;
+}
+
+.bd-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.bd-head-rule {
+  transform-origin: left center;
+  animation: bd-grow 700ms var(--ease-soft) 180ms backwards;
+}
+
+/* ── 三列 ───────────────────────────────────────────────── */
+
+.bd-cols {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr) minmax(0, 0.94fr);
+  gap: 30px;
+  align-items: stretch;
+  transition: opacity 520ms var(--ease-soft);
+}
+
+.is-answer .bd-cols {
+  opacity: 0.78;
+}
+
+/* 左列：定义卡 */
+
+.bd-def {
+  min-width: 0;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 30px 32px;
+  background: var(--surface-2);
+  border: 3px solid var(--text);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  animation: bd-rise 560ms var(--ease-soft) 120ms backwards;
+}
+
+.bd-def-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.22em;
+  color: var(--text-mute);
+}
+
+.bd-def-eq {
+  margin: 6px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bd-def-term {
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.bd-def-arrow {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--theme-warning);
+}
+
+.bd-def-value {
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.36;
+  color: var(--text);
+}
+
+.bd-def-value em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.bd-def-rule {
+  animation: bd-grow 560ms var(--ease-soft) 620ms backwards;
+}
+
+.bd-def-where {
+  margin: 0;
+  padding-top: 18px;
+  border-top: 2px dashed var(--rule);
+  font-size: 24px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+/* 中列：三张例项卡 */
+
+.bd-cases {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bd-case {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  grid-template-areas:
+    "idx name"
+    "idx note";
+  align-content: center;
+  gap: 6px 16px;
+  padding: 18px 24px;
+  background: var(--surface-2);
+  border: 2px solid var(--text);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  animation: bd-case-in 460ms var(--ease-soft) both;
+  animation-delay: calc(620ms + var(--bd-i) * 190ms);
+}
+
+.bd-cases {
+  align-self: stretch;
+}
+
+.bd-case-idx {
+  grid-area: idx;
+  align-self: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--theme-warning);
+}
+
+.bd-case-name {
+  grid-area: name;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 33px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.bd-case-note {
+  grid-area: note;
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+/* 右列：流程关联与用途，拍 2 落位 */
+
+.bd-live {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 26px;
+}
+
+.bd-live-track {
+  position: absolute;
+  left: 4px;
+  top: 24px;
+  bottom: 24px;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--rule) 0 10px,
+    transparent 10px 20px
+  );
+}
+
+.is-flow .bd-live-track {
+  animation: bd-track-solid 620ms var(--ease-soft) 120ms both;
+}
+
+/* 拍 1 的右列：虚线预留槽，明确这里还将落位 */
+
+.bd-live-reserve {
+  position: absolute;
+  inset: 0 0 0 26px;
+  border: 2px dashed var(--rule);
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-flow .bd-live-reserve {
+  opacity: 0;
+}
+
+.bd-live-block {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 26px 26px 30px;
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+  opacity: 0;
+}
+
+.is-flow .bd-live-block {
+  animation: bd-rise 480ms var(--ease-soft) both;
+}
+
+.is-flow .bd-live-block--flow {
+  animation-delay: 260ms;
+}
+
+.is-flow .bd-live-block--use {
+  animation-delay: 620ms;
+}
+
+.bd-live-kicker {
+  margin: 0 0 10px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.18em;
+  color: var(--theme-process);
+}
+
+.bd-live-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.32;
+  color: var(--text);
+}
+
+.bd-live-sub {
+  margin: 6px 0 0;
+  font-size: 23px;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+/* 流程脉冲：业务一动就有变化 */
+
+.bd-flow-line {
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  bottom: 18px;
+  height: 3px;
+  background: var(--rule);
+  overflow: hidden;
+}
+
+.is-flow .bd-flow-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34%;
+  height: 100%;
+  background: var(--theme-process);
+  animation: bd-sweep 2.6s linear 1s infinite;
+}
+
+/* ── 底部回答条 ────────────────────────────────────────── */
+
+.bd-answer {
+  flex: none;
+  position: relative;
+  height: 132px;
+}
+
+.bd-answer-reserve {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-answer .bd-answer-reserve {
+  opacity: 0;
+}
+
+.bd-answer-plate {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  padding: 0 40px;
+  background: var(--surface-2);
+  border: 3px solid var(--text);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.is-answer .bd-answer-plate {
+  animation: bd-answer-in 520ms var(--ease-soft) 140ms both;
+}
+
+.bd-answer-lead {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  color: var(--theme-warning);
+}
+
+.bd-answer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.bd-answer-list li {
+  position: relative;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--text);
+  opacity: 0;
+}
+
+.is-answer .bd-answer-list li {
+  animation: bd-rise 460ms var(--ease-soft) both;
+}
+
+.is-answer .bd-answer-list li:nth-child(1) {
+  animation-delay: 360ms;
+}
+
+.is-answer .bd-answer-list li:nth-child(2) {
+  animation-delay: 600ms;
+}
+
+.is-answer .bd-answer-list li:nth-child(3) {
+  animation-delay: 840ms;
+}
+
+.bd-answer-list li + li::before {
+  content: "";
+  position: absolute;
+  left: -46px;
+  top: 50%;
+  width: 22px;
+  height: 0;
+  border-top: 2px dashed var(--rule);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes bd-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bd-case-in {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bd-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes bd-track-solid {
+  from {
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--rule) 0 10px,
+      transparent 10px 20px
+    );
+  }
+  to {
+    background: var(--theme-process);
+  }
+}
+
+@keyframes bd-sweep {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(320%);
+  }
+}
+
+@keyframes bd-answer-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

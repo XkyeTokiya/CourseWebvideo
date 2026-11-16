@@ -2,7 +2,7 @@
   "episode_id": "episode-22",
   "validation_profile": "visual-rough-v4",
   "schema_version": "courseplay-visual-rough/v4",
-  "status": "draft",
+  "status": "approved",
   "validation_summary": {
     "pages": [
       {
@@ -456,8 +456,8 @@
   "errors": [],
   "failures": [],
   "input_integrity": {
-    "a_page_sha256": "38a52599e1681c6369a428ac0f24ab64ef8a3cae3d287f0da7b7d5b6199aa6e3",
-    "visual_rough_sha256": "b2fb81033d1d7f0d693fbcec11590a80e7c80c5658c091d9718c3924a05ac7df",
+    "a_page_sha256": "9a7d79e4deebabe2857e54fd4e616cc3a67e73b926bc4665e77dd14b4ba24e2b",
+    "visual_rough_sha256": "736917883ef145d083d17bc8f8f596a8f778e51d4412027be0ec73d93f7413c0",
     "recipe_registry_sha256": "697ed613616ec9ac5325a38544fe4ac9c8fcf6b3ab5439e614e7a7293b93ef2e"
   }
 }

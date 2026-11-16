@@ -1,0 +1,587 @@
+/* 01-a001 · 标题与开场问题（outline §1 · S-A001 · time-anchor-opening）
+   mechanism: premise-to-question — 维修记录单持续作前提；四名词条目在拍 2
+   由空槽填充为等权并列并打上否定标记；判断入口条在拍 3 底部收束。
+   R001 由记录区与判断入口区的上下排布承载。prefix: rq- */
+
+.rq-scene {
+  gap: 22px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.rq-head {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rq-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+  animation: rq-rise 560ms var(--ease-soft) backwards;
+}
+
+.rq-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.rq-head-rule {
+  transform-origin: left center;
+  animation: rq-grow 720ms var(--ease-soft) 200ms backwards;
+}
+
+/* ── 主区 ───────────────────────────────────────────────── */
+
+.rq-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 720px) minmax(0, 1fr);
+  gap: 68px;
+  align-items: center;
+}
+
+/* 左：现场图铺底，记录单叠压其右下 */
+
+.rq-left {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.rq-photo {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 -104px;
+  overflow: hidden;
+  border: 3px solid var(--text);
+  aspect-ratio: 16 / 9;
+  animation: rq-rise 620ms var(--ease-soft) 120ms backwards;
+}
+
+.rq-photo-shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rq-photo-cap {
+  position: absolute;
+  inset: 0 0 auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  background: var(--surface-2);
+  border-bottom: 2px dashed var(--rule);
+}
+
+.rq-photo-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.rq-photo-missing {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+/* 记录单：匿名轮廓，只呈现"设备故障—维修记录"两行场景文字 */
+
+.rq-record {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 0 88px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px 18px;
+  background: var(--surface-2);
+  border: 3px solid var(--text);
+  box-shadow: 10px 11px 0 var(--theme-offset-shadow);
+  animation: rq-sheet-in 640ms var(--ease-soft) 320ms backwards;
+}
+
+.rq-record-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--text);
+}
+
+.rq-record-title {
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.rq-record-stamp {
+  flex: none;
+  padding: 5px 15px;
+  border: 3px solid var(--theme-warning);
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--theme-warning);
+  transform: rotate(-4deg);
+  animation: rq-stamp 520ms var(--ease-overshoot) 720ms backwards;
+}
+
+.rq-record-body {
+  display: flex;
+  flex-direction: column;
+  padding: 2px 0 4px;
+}
+
+.rq-record-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 18px 0;
+  border-bottom: 1px dashed var(--rule);
+}
+
+.rq-record-label {
+  flex: none;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.rq-record-line {
+  flex: 1;
+  height: 14px;
+  background: var(--surface-3);
+  border-bottom: 2px solid var(--rule);
+}
+
+.rq-record-lines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rq-record-lines i {
+  display: block;
+  height: 13px;
+  background: var(--surface-3);
+  border-bottom: 2px solid var(--rule);
+}
+
+.rq-record-lines i:first-child {
+  width: 92%;
+}
+
+.rq-record-lines i:last-child {
+  width: 58%;
+}
+
+.rq-record-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 14px;
+}
+
+.rq-record-rule {
+  flex: 1;
+  height: 0;
+  border-top: 2px dashed var(--rule);
+}
+
+.rq-record-mark {
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+/* ── 右栏：悬置问句 + 四名词映射 + 否定标记 ─────────────── */
+
+.rq-right {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  opacity: 0;
+}
+
+.is-terms .rq-right {
+  animation: rq-fade 420ms var(--ease-soft) both;
+}
+
+.rq-question {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rq-question-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.rq-question-hero em {
+  font-style: normal;
+  color: var(--theme-warning);
+}
+
+.rq-question-sub {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+/* 映射区：一条竖向记录轴，四个名词挂在同一轴上 */
+
+.rq-map {
+  position: relative;
+  padding-left: 46px;
+}
+
+.rq-spine {
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  bottom: 14px;
+  width: 2px;
+  background: var(--theme-warning);
+  transform-origin: top center;
+  transform: scaleY(0);
+}
+
+.is-terms .rq-spine {
+  animation: rq-draw-y 620ms var(--ease-soft) 240ms both;
+}
+
+.rq-terms {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rq-term {
+  position: relative;
+  min-height: 76px;
+  display: grid;
+  grid-template-columns: 58px 1fr auto;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 22px;
+  background: transparent;
+  border: 2px dashed var(--rule);
+  box-shadow: none;
+  transition: background 420ms var(--ease-soft), border-color 420ms var(--ease-soft);
+}
+
+.is-terms .rq-term {
+  background: var(--surface-2);
+  border: 2px solid var(--text);
+  box-shadow: 5px 6px 0 var(--theme-offset-shadow);
+  animation: rq-term-in 440ms var(--ease-soft) both;
+  animation-delay: calc(var(--rq-i) * 150ms);
+}
+
+.rq-term::before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  width: 30px;
+  height: 2px;
+  background: var(--theme-warning);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.is-terms .rq-term::before {
+  animation: rq-grow 300ms var(--ease-soft) both;
+  animation-delay: calc(380ms + var(--rq-i) * 150ms);
+}
+
+.rq-term-no {
+  font-family: var(--font-mono);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--text-mute);
+}
+
+.rq-term-name {
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  white-space: nowrap;
+  color: var(--text);
+}
+
+.rq-term-verdict {
+  justify-self: end;
+  padding: 5px 14px;
+  border: 2px dashed var(--rule);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  color: var(--text-mute);
+}
+
+/* 填充动作：名词逐个写上 */
+
+.is-terms .rq-term .rq-term-name {
+  animation: rq-write 420ms var(--ease-soft) both;
+  animation-delay: calc(340ms + var(--rq-i) * 150ms);
+}
+
+.rq-negation {
+  margin: 0;
+  align-self: flex-start;
+  padding: 10px 20px;
+  border: 2px solid var(--theme-warning);
+  background: var(--theme-warning-surface);
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--text);
+  opacity: 0;
+}
+
+.is-terms .rq-negation {
+  animation: rq-stamp 520ms var(--ease-overshoot) 900ms both;
+}
+
+.rq-negation em {
+  font-style: normal;
+  padding: 0 6px;
+  color: var(--theme-danger);
+}
+
+/* ── 判断入口条 ────────────────────────────────────────── */
+
+.rq-entry {
+  flex: none;
+  position: relative;
+  height: 172px;
+}
+
+.rq-entry-reserve {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.22em;
+  color: var(--text-faint);
+  opacity: 1;
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-entry .rq-entry-reserve {
+  opacity: 0;
+}
+
+.rq-entry-plate {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  gap: 50px;
+  align-items: center;
+  padding: 0 44px;
+  background: var(--theme-process-surface);
+  border: 3px solid var(--theme-process);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.is-entry .rq-entry-plate {
+  animation: rq-plate-in 520ms var(--ease-soft) 140ms both;
+}
+
+.rq-entry-cues {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-right: 44px;
+  border-right: 2px dashed var(--rule);
+}
+
+.rq-cue {
+  position: relative;
+  margin: 0;
+  padding: 2px 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.rq-cue-text {
+  position: relative;
+  z-index: 2;
+}
+
+.rq-cue-bar {
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: 50%;
+  height: 3px;
+  background: var(--theme-danger);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.is-entry .rq-cue-bar {
+  animation: rq-grow 420ms var(--ease-soft) 460ms both;
+}
+
+.is-entry .rq-cue--second .rq-cue-bar {
+  animation-delay: 820ms;
+}
+
+.rq-entry-ask {
+  min-width: 0;
+}
+
+.rq-entry-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.34;
+  color: var(--text);
+}
+
+.rq-entry-kicker {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: var(--theme-process);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes rq-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rq-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rq-draw-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes rq-sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px) rotate(-1.2deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rq-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.26);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rq-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rq-term-in {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rq-write {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rq-plate-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

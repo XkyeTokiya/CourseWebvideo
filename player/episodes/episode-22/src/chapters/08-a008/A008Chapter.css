@@ -1,0 +1,427 @@
+/* 08-a008 · 元数据与数据字典的范围边界（outline §8 · S-A008 ·
+   split-compare-with-pivot）
+   mechanism: compare-and-reweight — 左右两区空间持续存在，中部判据卡先给出
+   共同项、再把权重转到范围差异；右区内部保持两层并列，不用轮播或整体重排。
+   R008 由判据卡与左区范围卡的相邻位置承载；R009 由右区两层并排承载。prefix: rng- */
+
+.rng-scene {
+  gap: 18px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.rng-head {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.rng-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+  animation: rng-rise 520ms var(--ease-soft) backwards;
+}
+
+.rng-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.rng-head-rule {
+  transform-origin: left center;
+  animation: rng-grow 700ms var(--ease-soft) 160ms backwards;
+}
+
+/* ── 三区骨架：左 / 中 / 右 ─────────────────────────────── */
+
+.rng-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* 左右两区：位置在第 1 拍就定好，内容后落 */
+
+.rng-side {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 26px 26px 28px;
+  border: 3px solid var(--text);
+  transition: opacity 460ms var(--ease-soft);
+}
+
+.rng-side--meta {
+  background: var(--theme-cool-surface);
+  border-style: dashed;
+  border-color: var(--rule);
+  box-shadow: none;
+  transition: border-color 420ms var(--ease-soft),
+    background 420ms var(--ease-soft), box-shadow 420ms var(--ease-soft),
+    opacity 460ms var(--ease-soft);
+}
+
+.is-split .rng-side--meta {
+  border-style: solid;
+  border-color: var(--theme-structural);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+}
+
+.rng-side--dict {
+  background: var(--surface-2);
+  border-style: dashed;
+  border-color: var(--rule);
+  box-shadow: none;
+  transition: border-color 420ms var(--ease-soft),
+    background 420ms var(--ease-soft), box-shadow 420ms var(--ease-soft),
+    opacity 460ms var(--ease-soft);
+}
+
+.is-split .rng-side--dict {
+  border-style: solid;
+  border-color: var(--theme-process);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+}
+
+.is-capacity .rng-side--meta {
+  opacity: 0.58;
+}
+
+.rng-side-head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rng-side-name {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.rng-side-tag {
+  align-self: flex-start;
+  padding: 4px 12px;
+  border: 2px solid currentColor;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+.rng-side--meta .rng-side-tag {
+  color: var(--theme-structural);
+}
+
+.rng-side--dict .rng-side-tag {
+  color: var(--theme-process);
+}
+
+/* 左区：四类范围 */
+
+.rng-fields {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 14px;
+}
+
+.rng-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  text-align: center;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-structural);
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--text-faint);
+  background: transparent;
+  border-style: dashed;
+  border-color: var(--rule);
+  transition: border-color 380ms var(--ease-soft), background 380ms var(--ease-soft),
+    color 380ms var(--ease-soft);
+}
+
+.is-split .rng-field {
+  color: var(--text);
+  background: var(--surface-2);
+  border-style: solid;
+  border-color: var(--theme-structural);
+  transition-delay: calc(var(--rng-i) * 90ms);
+}
+
+.rng-side-note {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  transition: color 380ms var(--ease-soft);
+}
+
+.is-split .rng-side-note {
+  color: var(--text-mute);
+}
+
+/* ── 中部判据卡 ─────────────────────────────────────────── */
+
+.rng-pivot {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 20px 22px;
+  background: var(--surface-2);
+  border: 3px solid var(--text);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  animation: rng-rise 520ms var(--ease-soft) 260ms backwards;
+}
+
+.rng-pivot-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  color: var(--theme-warning);
+}
+
+.rng-pivot-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.34;
+  color: var(--text);
+}
+
+.rng-pivot-hero em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.rng-shared {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rng-shared-item {
+  padding: 11px 14px;
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--text);
+  opacity: 0;
+  animation: rng-shared-in 380ms var(--ease-soft) both;
+  animation-delay: calc(420ms + var(--rng-s) * 120ms);
+}
+
+/* 分支线：共同项向两侧展开 */
+
+.rng-branches {
+  position: relative;
+  flex: 1;
+  min-height: 28px;
+}
+
+.rng-branch {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-top: 2px dashed var(--rule);
+}
+
+.rng-branch--left {
+  left: -12px;
+  right: 50%;
+  border-left: 2px dashed var(--rule);
+  opacity: 0;
+  transition: opacity 420ms var(--ease-soft) 200ms;
+}
+
+.rng-branch--right {
+  left: 50%;
+  right: -12px;
+  border-right: 2px dashed var(--rule);
+  opacity: 0;
+  transition: opacity 420ms var(--ease-soft) 260ms;
+}
+
+.is-split .rng-branch {
+  opacity: 1;
+}
+
+.is-capacity .rng-branch {
+  opacity: 0.3;
+}
+
+/* ── 右区：范围层 + 承载边界层 ──────────────────────────── */
+
+.rng-dict-layer {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 20px 20px;
+  background: var(--theme-process-surface);
+  border: 2px solid var(--theme-process);
+}
+
+.rng-dict-rows {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rng-dict-row {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background: transparent;
+  border: 2px dashed var(--rule);
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--text-faint);
+  transition: border-color 380ms var(--ease-soft), background 380ms var(--ease-soft),
+    color 380ms var(--ease-soft);
+}
+
+.is-split .rng-dict-row {
+  background: var(--surface-2);
+  border-style: solid;
+  border-color: var(--theme-process);
+  color: var(--text);
+}
+
+.rng-dict-kicker,
+.rng-capacity-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.rng-capacity {
+  padding: 18px 20px 20px;
+  background: transparent;
+  border: 2px dashed var(--rule);
+  transition: border-color 420ms var(--ease-soft), background 420ms var(--ease-soft);
+}
+
+.rng-capacity-kicker,
+.rng-capacity-hero,
+.rng-capacity-note {
+  opacity: 0.3;
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-capacity .rng-capacity {
+  background: var(--theme-warning-surface);
+  border-style: solid;
+  border-color: var(--theme-warning);
+}
+
+.is-capacity .rng-capacity-kicker,
+.is-capacity .rng-capacity-hero,
+.is-capacity .rng-capacity-note {
+  opacity: 1;
+}
+
+.rng-capacity-hero {
+  margin: 6px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 1.36;
+  color: var(--text);
+}
+
+.rng-capacity-hero em {
+  font-style: normal;
+  padding: 0 4px;
+  background: var(--theme-warning);
+  color: var(--surface);
+}
+
+.rng-capacity-note {
+  margin: 8px 0 0;
+  font-size: 21px;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+/* 拍 3 判据卡降权 */
+
+.rng-pivot {
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.is-capacity .rng-pivot {
+  opacity: 0.55;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes rng-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rng-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rng-shared-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

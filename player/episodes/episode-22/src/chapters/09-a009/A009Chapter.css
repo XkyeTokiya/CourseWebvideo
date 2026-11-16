@@ -1,0 +1,208 @@
+/* 09-a009 · 四种职责并排（outline §9 · S-A009 ·
+   layered-bands-with-side-notes）
+   mechanism: equal-weight-accumulation — 四条问句带等权落位、不设选中项，也不
+   排先后；定位卡在窄栏最后收束。R010 由四问文字带与职责定位卡的相对位置承载。
+   prefix: qt- */
+
+.qt-scene {
+  gap: 18px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.qt-head {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+}
+
+.qt-headline {
+  flex: none;
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+  animation: qt-rise 520ms var(--ease-soft) backwards;
+}
+
+.qt-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.qt-head-rule {
+  flex: 1;
+  transform-origin: left center;
+  animation: qt-grow 700ms var(--ease-soft) 160ms backwards;
+}
+
+/* ── 主体：四条带 + 右侧定位卡 ──────────────────────────── */
+
+.qt-body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 372px;
+  gap: 32px;
+}
+
+.qt-bands {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 四带等宽等权：不带选中态、不带先后标记 */
+
+.qt-band {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  padding: 0 28px;
+  background: var(--surface-2);
+  border: 3px solid var(--text);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  animation: qt-band-in 460ms var(--ease-soft) both;
+  animation-delay: calc(240ms + var(--qt-i) * 150ms);
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.is-framed .qt-band {
+  opacity: 0.66;
+}
+
+.qt-band-no {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--theme-warning);
+}
+
+.qt-band-q {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1.34;
+  color: var(--text);
+}
+
+/* 右侧：职责定位卡 */
+
+.qt-side {
+  position: relative;
+  min-width: 0;
+}
+
+.qt-side-reserve {
+  position: absolute;
+  inset: 0;
+  border: 2px dashed var(--rule);
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.is-framed .qt-side-reserve {
+  opacity: 0;
+}
+
+.qt-side-plate {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 26px 26px 28px;
+  background: var(--theme-structural);
+  border: 3px solid var(--text);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.is-framed .qt-side-plate {
+  animation: qt-plate-in 520ms var(--ease-soft) 120ms both;
+}
+
+.qt-side-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.18em;
+  color: var(--theme-warning);
+}
+
+.qt-side-hero {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.34;
+  color: var(--surface);
+}
+
+.qt-side-hero em {
+  font-style: normal;
+  color: var(--theme-warning);
+}
+
+.qt-side-note {
+  margin: 0;
+  padding-top: 14px;
+  border-top: 2px solid rgba(255, 255, 255, 0.28);
+  font-size: 23px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes qt-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes qt-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes qt-band-in {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes qt-plate-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

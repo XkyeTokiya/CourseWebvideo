@@ -1,0 +1,455 @@
+/* 07-a007 · 数据字典（outline §7 · S-A007 · layered-bands-with-side-notes）
+   mechanism: ordered-progression — 范围带与定义带构成有方向的上下层级，先界定
+   "数据库之内"，再把表、字段、类型作为被定义对象；服务对象、手册比喻与回答句
+   沿右侧窄栏承接。R007 由定义文字带与服务卡的上下层级承载。prefix: dd- */
+
+.dd-scene {
+  gap: 18px;
+}
+
+/* ── 标题区 ─────────────────────────────────────────────── */
+
+.dd-head {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.dd-headline {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+  animation: dd-rise 520ms var(--ease-soft) backwards;
+}
+
+.dd-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.dd-head-rule {
+  transform-origin: left center;
+  animation: dd-grow 700ms var(--ease-soft) 160ms backwards;
+}
+
+/* ── 主体 ───────────────────────────────────────────────── */
+
+.dd-body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.28fr) minmax(0, 1fr);
+  gap: 34px;
+  align-items: stretch;
+}
+
+/* 左：范围带 → 定义带 */
+
+.dd-bands {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0;
+  padding-bottom: 8px;
+}
+
+.dd-band {
+  position: relative;
+  padding: 22px 26px 24px;
+  background: var(--surface-2);
+  border: 3px solid var(--text);
+  box-shadow: 8px 9px 0 var(--theme-offset-shadow);
+}
+
+.dd-band--scope {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 208px;
+  animation: dd-band-in 500ms var(--ease-soft) 260ms backwards;
+}
+
+.dd-band--define {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: var(--theme-cool-surface);
+  animation: dd-band-in 500ms var(--ease-soft) 620ms backwards;
+}
+
+.dd-band-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.dd-band-idx {
+  font-family: var(--font-mono);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--theme-warning);
+}
+
+.dd-band--define .dd-band-idx {
+  color: var(--theme-structural);
+}
+
+.dd-band-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.dd-band-hero {
+  margin: 12px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 1.26;
+  color: var(--text);
+}
+
+.dd-band-hero em {
+  font-style: normal;
+  padding: 0 6px;
+  background: var(--theme-warning);
+  color: var(--surface);
+}
+
+/* 数据库边界：范围带底部的实线闸门 */
+
+.dd-fence {
+  margin-top: auto;
+  position: relative;
+  height: 26px;
+  border-left: 3px solid var(--text);
+  border-right: 3px solid var(--text);
+}
+
+.dd-fence::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--text);
+  transform-origin: left center;
+  animation: dd-grow 620ms var(--ease-soft) 520ms backwards;
+}
+
+.dd-fence-label {
+  position: absolute;
+  left: 50%;
+  top: 9px;
+  transform: translateX(-50%);
+  padding: 0 10px;
+  background: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+/* 方向箭头：范围 → 定义 */
+
+.dd-arrow {
+  position: relative;
+  flex: none;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+}
+
+.dd-arrow-line {
+  width: 3px;
+  height: 100%;
+  background: var(--text);
+  transform-origin: top center;
+  animation: dd-grow-y 420ms var(--ease-soft) 760ms backwards;
+}
+
+.dd-arrow-tip {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 14px solid var(--text);
+  animation: dd-rise 320ms var(--ease-soft) 1080ms backwards;
+}
+
+/* 定义带：三类被定义对象 */
+
+.dd-elements {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dd-element {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 26px;
+  background: var(--surface-2);
+  border: 2px solid var(--theme-structural);
+  border-left-width: 10px;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--text);
+  opacity: 0;
+  animation: dd-element-in 400ms var(--ease-soft) both;
+  animation-delay: calc(880ms + var(--dd-i) * 120ms);
+}
+
+.dd-band-note {
+  flex: none;
+  margin: 18px 0 0;
+  padding-top: 18px;
+  padding-top: 16px;
+  border-top: 2px solid var(--theme-structural);
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* 右：服务对象 → 手册比喻 → 回答句 */
+
+.dd-side {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dd-note {
+  padding: 18px 22px 20px;
+  background: var(--surface-2);
+  border-left: 8px solid var(--rule);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+}
+
+.dd-note--served {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border-left: 8px solid var(--rule);
+  background: transparent;
+  box-shadow: none;
+  outline: 2px dashed var(--rule);
+  outline-offset: -2px;
+  transition: background 420ms var(--ease-soft), box-shadow 420ms var(--ease-soft),
+    outline-color 420ms var(--ease-soft), border-color 420ms var(--ease-soft);
+}
+
+.is-served .dd-note--served {
+  background: var(--surface-2);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  border-left-color: var(--theme-structural);
+  outline-color: transparent;
+}
+
+.dd-note--served .dd-note-kicker,
+.dd-note--served .dd-note-hero,
+.dd-note--served .dd-note-list {
+  opacity: 0;
+  transition: opacity 400ms var(--ease-soft);
+}
+
+.is-served .dd-note--served .dd-note-kicker,
+.is-served .dd-note--served .dd-note-hero,
+.is-served .dd-note--served .dd-note-list {
+  opacity: 1;
+}
+
+.dd-note--manual,
+.dd-note--answer {
+  flex: 0 0 auto;
+  border-left-color: var(--rule);
+  background: transparent;
+  box-shadow: none;
+  outline: 2px dashed var(--rule);
+  outline-offset: -2px;
+  transition: background 420ms var(--ease-soft), box-shadow 420ms var(--ease-soft),
+    border-color 420ms var(--ease-soft), outline-color 420ms var(--ease-soft);
+}
+
+.dd-note--manual .dd-note-kicker,
+.dd-note--manual .dd-note-hero,
+.dd-note--answer .dd-note-kicker,
+.dd-note--answer .dd-note-hero {
+  opacity: 0;
+  transition: opacity 400ms var(--ease-soft);
+}
+
+.is-closed .dd-note--manual {
+  background: var(--surface-2);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  border-left-color: var(--theme-warning);
+  outline-color: transparent;
+}
+
+.is-closed .dd-note--manual .dd-note-kicker,
+.is-closed .dd-note--manual .dd-note-hero {
+  opacity: 1;
+}
+
+.is-closed .dd-note--answer {
+  background: var(--text);
+  box-shadow: 4px 5px 0 var(--theme-offset-shadow);
+  border-left-color: var(--theme-warning);
+  outline-color: transparent;
+}
+
+.is-closed .dd-note--answer .dd-note-kicker,
+.is-closed .dd-note--answer .dd-note-hero {
+  opacity: 1;
+}
+
+.dd-note-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.dd-note--answer .dd-note-kicker {
+  color: var(--theme-warning);
+}
+
+.dd-note-hero {
+  margin: 10px 0 0;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.36;
+  color: var(--text);
+}
+
+.dd-note--answer .dd-note-hero {
+  color: var(--surface);
+}
+
+.dd-note-hero em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.dd-note--answer .dd-note-hero em {
+  color: var(--theme-warning);
+}
+
+.dd-note-list {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: 8px;
+}
+
+.dd-note-list li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 22px;
+  background: var(--theme-cool-surface);
+  border-left: 5px solid var(--theme-structural);
+  font-size: 23px;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.dd-note-list li::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  width: 8px;
+  height: 2px;
+  background: var(--theme-structural);
+}
+
+/* 拍 3 降权：左侧两条带保留但不抢焦点 */
+
+.is-closed .dd-bands {
+  opacity: 0.68;
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.dd-bands {
+  transition: opacity 480ms var(--ease-soft);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes dd-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dd-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes dd-grow-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes dd-band-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dd-element-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
