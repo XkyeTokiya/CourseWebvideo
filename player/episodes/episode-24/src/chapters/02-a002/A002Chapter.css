@@ -1,0 +1,428 @@
+/* 02-a002 · 定义与形态（4 steps · ~42s）
+   mechanism: cumulative-assembly — 左区定义句先落位，中区两族形态卡与右区边界说明依次补齐；
+   已落位内容保持可见并弱化，不整体重排。prefix: a2- */
+
+.a2-scene {
+  gap: 26px;
+}
+
+/* ── 标题区 ───────────────────────────────────────────── */
+
+.a2-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.a2-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  animation: a2-fade 480ms var(--ease-soft) backwards;
+}
+
+.a2-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.12;
+  color: var(--text);
+  animation: a2-rise 560ms var(--ease-soft) 90ms backwards;
+}
+
+.a2-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* ── 主区：左定义 / 中形态 / 右边界 ───────────────────── */
+
+.a2-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 500px 640px 1fr;
+  gap: 32px;
+  align-items: stretch;
+}
+
+/* 左：定义卡 */
+
+.a2-def {
+  align-self: center;
+  padding: 34px 38px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  transition: opacity 620ms var(--ease-soft);
+  animation: a2-rise 620ms var(--ease-soft) 160ms backwards;
+}
+
+.a2-tag {
+  margin: 0;
+  align-self: flex-start;
+  padding: 6px 16px;
+  border: 2px solid var(--text);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.16em;
+  color: var(--text);
+}
+
+.a2-def-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 35px;
+  font-weight: 700;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.a2-def-text strong {
+  font-weight: 900;
+  color: var(--text);
+}
+
+.a2-def-rule {
+  width: 180px;
+  transform-origin: left center;
+  animation: a2-grow 560ms var(--ease-soft) 620ms backwards;
+}
+
+/* 中：两族形态卡 */
+
+.a2-forms {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  transition: opacity 620ms var(--ease-soft);
+}
+
+.a2-form {
+  padding: 24px 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  opacity: 0;
+}
+
+.a2-scene.is-forms .a2-form {
+  animation: a2-rise 560ms var(--ease-overshoot) both;
+  animation-delay: calc(160ms + var(--a2-f) * 180ms);
+}
+
+.a2-form-line {
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.a2-form-line strong {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+/* 样本 A：整齐的表格 */
+
+.a2-spec-table {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.a2-cell {
+  height: 34px;
+  border: 2px solid var(--rule);
+  border-radius: 6px;
+  background: var(--surface-2);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+}
+
+.a2-scene.is-forms .a2-cell {
+  animation: a2-cell-in 360ms var(--ease-overshoot) both;
+  animation-delay: calc(420ms + var(--a2-i) * 45ms);
+}
+
+.a2-cell b {
+  display: block;
+  width: 58%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--text-2);
+  opacity: 0.7;
+}
+
+/* 样本 B：没那么规整的日志 */
+
+.a2-spec-log {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 14px 16px;
+  border: 2px dashed var(--rule);
+  border-radius: 10px;
+}
+
+.a2-log-line {
+  display: block;
+  height: 10px;
+  opacity: 0;
+}
+
+.a2-log-line b {
+  display: block;
+  height: 100%;
+  border-radius: 5px;
+  background: var(--rule);
+}
+
+.a2-scene.is-forms .a2-log-line {
+  animation: a2-log-in 380ms var(--ease-soft) both;
+  animation-delay: calc(560ms + var(--a2-i) * 130ms);
+}
+
+/* 右：边界说明（两段，各自占位） */
+
+.a2-limits {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+.a2-limit-slot {
+  position: relative;
+}
+
+.a2-limit {
+  padding: 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+}
+
+.a2-scene.is-limit .a2-limit-org {
+  animation: a2-rise 520ms var(--ease-soft) 140ms both;
+}
+
+.a2-scene.is-gap .a2-limit-gap {
+  animation: a2-rise 520ms var(--ease-soft) 140ms both;
+}
+
+.a2-limit-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.a2-limit-line {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.a2-limit-line strong {
+  font-weight: 900;
+  color: var(--text);
+}
+
+.a2-limit-sub {
+  margin: 2px 0 0;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-2);
+}
+
+.a2-limit-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.a2-chip {
+  padding: 6px 14px;
+  border: 2px dashed var(--rule);
+  border-radius: 8px;
+  font-size: 21px;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.a2-scene.is-limit .a2-chip {
+  animation: a2-chip-in 420ms var(--ease-overshoot) both;
+  animation-delay: calc(440ms + var(--a2-c) * 130ms);
+}
+
+/* 距离示意图（标尺 + 两plate） */
+
+.a2-gap-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.a2-gap-plate {
+  padding: 8px 18px;
+  border: 2px solid var(--text);
+  border-radius: 10px;
+  background: var(--surface-2);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.a2-dim {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-left: 24px;
+}
+
+.a2-dim-seg {
+  width: 3px;
+  height: 42px;
+  background: var(--theme-warning);
+  border-radius: 2px;
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 460ms var(--ease-soft);
+}
+
+.a2-scene.is-gap .a2-dim-seg {
+  transform: scaleY(1);
+  transition-delay: 240ms;
+}
+
+.a2-dim-label {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--theme-warning);
+  opacity: 0;
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.a2-scene.is-gap .a2-dim-label {
+  opacity: 1;
+  transition-delay: 560ms;
+}
+
+/* ── 未落位区域的虚线占位 ─────────────────────────────── */
+
+.a2-ghost {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.a2-ghost.is-off {
+  opacity: 0;
+}
+
+.a2-forms-ghost,
+.a2-limit-ghost {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* ── 边界内容落位后，已落位区轻微弱化 ─────────────────── */
+
+.a2-scene.is-limit .a2-def,
+.a2-scene.is-limit .a2-forms {
+  opacity: 0.85;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes a2-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes a2-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a2-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes a2-cell-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a2-log-in {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a2-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

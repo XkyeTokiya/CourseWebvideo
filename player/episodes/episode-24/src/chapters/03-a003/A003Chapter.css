@@ -1,0 +1,466 @@
+/* 03-a003 · 价值释放与特性（4 steps · ~36s）
+   mechanism: equal-weight-accumulation — 释放条件带先落位，七项特性依次补齐并保持等权；
+   乘数效应卡原位展开说明而不产生当前选中项，底部判断条由特性区收束而来。prefix: a3- */
+
+.a3-scene {
+  gap: 26px;
+}
+
+/* ── 标题区 ───────────────────────────────────────────── */
+
+.a3-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.a3-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  animation: a3-fade 480ms var(--ease-soft) backwards;
+}
+
+.a3-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.12;
+  color: var(--text);
+  animation: a3-rise 560ms var(--ease-soft) 90ms backwards;
+}
+
+.a3-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* ── 释放带：过程轨 + 条件行（拍 1 落位） ─────────────── */
+
+.a3-release {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: opacity 620ms var(--ease-soft);
+}
+
+.a3-rail {
+  display: flex;
+  align-items: center;
+}
+
+.a3-node {
+  flex: none;
+  padding: 10px 24px;
+  border: 2px solid var(--text);
+  border-radius: 10px;
+  background: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--text);
+  animation: a3-node-in 420ms var(--ease-soft) both;
+  animation-delay: calc(240ms + var(--a3-i) * 260ms);
+}
+
+.a3-seg {
+  position: relative;
+  flex: 1;
+  height: 6px;
+  margin: 0 12px;
+}
+
+.a3-seg::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  right: 0;
+  border-top: 2px dashed var(--rule);
+}
+
+.a3-seg::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: a3-seg-fill 480ms var(--ease-soft) both;
+  animation-delay: calc(460ms + var(--a3-i) * 260ms);
+}
+
+.a3-cond {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  animation: a3-rise 520ms var(--ease-soft) 700ms backwards;
+}
+
+.a3-cond-tag {
+  flex: none;
+  padding: 5px 14px;
+  border: 2px solid var(--text);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  color: var(--text);
+}
+
+.a3-cond-text {
+  margin: 0;
+  font-size: 26px;
+  color: var(--text-2);
+}
+
+.a3-cond-text strong {
+  font-weight: 900;
+  color: var(--text);
+}
+
+.a3-cond-not {
+  font-size: 23px;
+  color: var(--text-mute);
+}
+
+.a3-iso {
+  position: relative;
+  padding: 6px 16px;
+  border: 2px solid var(--theme-warning);
+  border-radius: 8px;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--theme-warning);
+}
+
+.a3-iso::after {
+  content: "";
+  position: absolute;
+  left: -6px;
+  right: -6px;
+  top: 48%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--theme-warning);
+  transform: rotate(-1.5deg) scaleX(0);
+  transform-origin: left center;
+  animation: a3-strike 460ms var(--ease-soft) both;
+  animation-delay: 1150ms;
+}
+
+/* ── 特性区（拍 2 落位、拍 3 展开乘数效应） ───────────── */
+
+.a3-features {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: opacity 620ms var(--ease-soft);
+}
+
+.a3-feat-band {
+  padding: 30px 38px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0;
+}
+
+.a3-scene.is-features .a3-feat-band {
+  animation: a3-band-in 520ms var(--ease-soft) both;
+}
+
+.a3-feat-row {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.a3-tok {
+  opacity: 0;
+}
+
+.a3-scene.is-features .a3-tok {
+  animation: a3-tok-in 380ms var(--ease-overshoot) both;
+  animation-delay: calc(320ms + var(--a3-i) * 90ms);
+}
+
+.a3-comma {
+  opacity: 0;
+  color: var(--text-mute);
+}
+
+.a3-scene.is-features .a3-comma {
+  animation: a3-tok-in 300ms var(--ease-soft) both;
+  animation-delay: calc(360ms + var(--a3-i) * 90ms);
+}
+
+/* 乘数效应：原位展开框 + 说明条（不产生选中态） */
+
+.a3-mult {
+  position: relative;
+}
+
+.a3-mult::after {
+  content: "";
+  position: absolute;
+  inset: -7px -16px;
+  border: 3px dashed var(--accent);
+  border-radius: 12px;
+  opacity: 0;
+  transform: scale(0.72);
+  transition: opacity 380ms var(--ease-soft), transform 380ms var(--ease-overshoot);
+}
+
+.a3-mult.is-on::after {
+  opacity: 1;
+  transform: none;
+  transition-delay: 180ms;
+}
+
+.a3-mult-slot {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 460ms var(--ease-soft), opacity 320ms var(--ease-soft);
+}
+
+.a3-mult-clip {
+  overflow: hidden;
+}
+
+.a3-scene.is-mult .a3-mult-slot {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition-delay: 360ms, 420ms;
+}
+
+.a3-mult-note {
+  margin-top: 16px;
+  padding: 18px 28px;
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  background: var(--theme-process-surface);
+}
+
+.a3-mult-cap {
+  margin: 0;
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+
+.a3-mult-text {
+  margin: 0;
+  font-size: 25px;
+  color: var(--text);
+}
+
+/* ── 方向判断条（拍 4） ───────────────────────────────── */
+
+.a3-footer {
+  position: relative;
+  flex: none;
+  height: 150px;
+}
+
+.a3-take-plate {
+  position: absolute;
+  inset: 0;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 520ms var(--ease-soft), transform 520ms var(--ease-soft);
+}
+
+.a3-scene.is-take .a3-take-plate {
+  opacity: 1;
+  transform: none;
+  transition-delay: 160ms;
+}
+
+.a3-scene.is-take .a3-take-ghost {
+  opacity: 0;
+}
+
+.a3-take-lead {
+  margin: 0;
+  font-size: 24px;
+  color: var(--text-mute);
+}
+
+.a3-take-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.a3-take-line em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.a3-take-sep {
+  margin: 0 14px;
+  color: var(--rule);
+  font-weight: 400;
+}
+
+.a3-strike {
+  position: relative;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text-2);
+}
+
+.a3-strike::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: 54%;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--theme-warning);
+  transform: rotate(-1.3deg) scaleX(0);
+  transform-origin: left center;
+  transition: transform 460ms var(--ease-soft);
+}
+
+.a3-scene.is-take .a3-strike::after {
+  transform: rotate(-1.3deg) scaleX(1);
+  transition-delay: 620ms;
+}
+
+/* ── 方向收束时弱化已落位内容 ─────────────────────────── */
+
+.a3-scene[data-state="direction-bounded"] .a3-release,
+.a3-scene[data-state="direction-bounded"] .a3-features {
+  opacity: 0.58;
+}
+
+/* ── 未落位区域的虚线占位 ─────────────────────────────── */
+
+.a3-ghost {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.a3-ghost.is-off {
+  opacity: 0;
+}
+
+.a3-feat-ghost,
+.a3-take-ghost {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes a3-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes a3-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a3-node-in {
+  from {
+    opacity: 0.35;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a3-seg-fill {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes a3-strike {
+  to {
+    transform: rotate(-1.5deg) scaleX(1);
+  }
+}
+
+@keyframes a3-band-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a3-tok-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,371 @@
+/* 09-a009 · 总结：三个问题与一层基础（5 steps · ~65s）· v2.1 结论带 + 三问 + 收束带
+   mechanism: anchor-and-context — 回扣图与三问同排，分工/基础/治理三条全宽带自上而下展开，
+   末段治理边界收束并弱化前段。prefix: a9- */
+
+.a9-scene {
+  gap: 18px;
+}
+
+/* ── 标题区 ───────────────────────────────────────────── */
+
+.a9-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.a9-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  animation: a9-fade 480ms var(--ease-soft) backwards;
+}
+
+.a9-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 1.12;
+  color: var(--text);
+  animation: a9-rise 560ms var(--ease-soft) 80ms backwards;
+}
+
+.a9-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* ── 结论带（全宽） ───────────────────────────────────── */
+
+.a9-lead-band {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 2px 2px 14px;
+  border-bottom: 2px dashed var(--rule);
+  animation: a9-rise 560ms var(--ease-soft) 150ms backwards;
+  transition: opacity 620ms var(--ease-soft);
+}
+
+.a9-lead-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.a9-lead-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.a9-lead-sub {
+  margin: 0;
+  font-size: 23px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* ── 中段：回扣图 + 三问 ──────────────────────────────── */
+
+.a9-mid {
+  flex: none;
+  display: grid;
+  grid-template-columns: 580px 1fr;
+  gap: 44px;
+  align-items: center;
+  transition: opacity 620ms var(--ease-soft);
+}
+
+.a9-media {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.a9-photo-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.a9-photo {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 3px solid var(--text);
+  animation: a9-rise 620ms var(--ease-soft) 160ms backwards;
+}
+
+.a9-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.a9-photo-tag {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  padding: 6px 14px;
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.08em;
+  color: var(--theme-warning);
+}
+
+.a9-media-cap {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+  animation: a9-fade 480ms var(--ease-soft) 420ms backwards;
+}
+
+/* 三问面板 */
+
+.a9-q-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 240px;
+}
+
+.a9-questions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.a9-questions li {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  opacity: 0;
+}
+
+.a9-scene.is-q .a9-questions li {
+  animation: a9-rise 460ms var(--ease-soft) both;
+  animation-delay: calc(120ms + var(--a9-i) * 130ms);
+}
+
+.a9-q-idx {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.a9-q-text {
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+/* ── 三条全宽带：分工 / 基础关系 / 治理边界 ───────────── */
+
+.a9-division,
+.a9-found,
+.a9-gov {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 460ms var(--ease-soft), opacity 320ms var(--ease-soft);
+}
+
+.a9-band-clip {
+  overflow: hidden;
+}
+
+.a9-scene.is-div .a9-division {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition-delay: 100ms, 160ms;
+}
+
+.a9-scene.is-found .a9-found {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition-delay: 100ms, 160ms;
+}
+
+.a9-scene.is-gov .a9-gov {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition-delay: 100ms, 160ms;
+}
+
+/* 分工带 */
+
+.a9-div-inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 14px 30px;
+  border: 2px solid var(--rule);
+  border-radius: var(--r-card);
+  background: var(--surface-3);
+}
+
+.a9-div-row {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-size: 25px;
+  color: var(--text-2);
+}
+
+.a9-div-key {
+  flex: none;
+  padding: 4px 13px;
+  border: 2px solid var(--text);
+  border-radius: 7px;
+  background: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+
+.a9-div-sep {
+  width: 2px;
+  height: 30px;
+  background: var(--rule);
+}
+
+/* 基础关系带 */
+
+.a9-found-inner {
+  display: flex;
+  align-items: baseline;
+  gap: 28px;
+  padding: 14px 30px 14px 26px;
+  border-left: 5px solid var(--accent);
+  border-radius: 0 12px 12px 0;
+  background: var(--theme-process-surface);
+}
+
+.a9-found-text {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.a9-found-line {
+  margin: 0;
+  flex: none;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.a9-found-line strong {
+  font-weight: 900;
+  color: var(--accent);
+}
+
+/* 治理边界带 */
+
+.a9-gov-inner {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  padding: 18px 2px 0;
+  border-top: 2px dashed var(--rule);
+}
+
+.a9-gov-cap {
+  margin: 0;
+  flex: none;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.a9-gov-text {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+/* ── 治理落位后，前段弱化 ─────────────────────────────── */
+
+.a9-scene.is-gov .a9-lead-band,
+.a9-scene.is-gov .a9-mid {
+  opacity: 0.55;
+}
+
+.a9-scene.is-gov .a9-division,
+.a9-scene.is-gov .a9-found {
+  opacity: 0.5;
+}
+
+/* ── 虚线占位 ─────────────────────────────────────────── */
+
+.a9-q-ghost {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+  pointer-events: none;
+  transition: opacity 460ms var(--ease-soft);
+}
+
+.a9-q-ghost.is-off {
+  opacity: 0;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes a9-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes a9-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

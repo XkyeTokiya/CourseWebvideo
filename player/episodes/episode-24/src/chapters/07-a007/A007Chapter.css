@@ -1,0 +1,230 @@
+/* 07-a007 · 质量异常回查例（3 steps · ~29s）· v2 现场图 + 时间线轨道（随步展开）
+   mechanism: persistent-media-reading — 现场图常驻，回查步骤沿图侧时间线逐节点展开，
+   边界作为第三节点以批注块收束。prefix: a7- */
+
+.a7-scene {
+  gap: 22px;
+}
+
+/* ── 标题区 ───────────────────────────────────────────── */
+
+.a7-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.a7-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  animation: a7-fade 480ms var(--ease-soft) backwards;
+}
+
+.a7-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 1.12;
+  color: var(--text);
+  animation: a7-rise 560ms var(--ease-soft) 80ms backwards;
+}
+
+/* ── 主区：图片 + 时间线轨道 ──────────────────────────── */
+
+.a7-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 640px 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.a7-media {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.a7-photo-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.a7-photo {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 3px solid var(--text);
+  animation: a7-rise 620ms var(--ease-soft) 140ms backwards;
+}
+
+.a7-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.a7-photo-tag {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  padding: 6px 14px;
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.08em;
+  color: var(--theme-warning);
+}
+
+.a7-media-cap {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+  animation: a7-fade 480ms var(--ease-soft) 420ms backwards;
+}
+
+/* 时间线轨道：随步骤向下生长 */
+
+.a7-rail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 0 36px;
+}
+
+.a7-rail::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  bottom: 6px;
+  border-left: 2px dashed var(--text-mute);
+}
+
+.a7-step {
+  position: relative;
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 460ms var(--ease-soft), opacity 320ms var(--ease-soft);
+}
+
+.a7-step.is-on {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition-delay: 100ms, 140ms;
+}
+
+.a7-step-clip {
+  overflow: hidden;
+}
+
+.a7-step-body {
+  padding-bottom: 40px;
+}
+
+.a7-step:last-child .a7-step-body {
+  padding-bottom: 8px;
+}
+
+.a7-node {
+  position: absolute;
+  left: -36px;
+  top: 6px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 3px solid var(--rule);
+  background: var(--surface);
+  opacity: 0;
+  transition: opacity 320ms var(--ease-soft), border-color 420ms var(--ease-soft),
+    background 420ms var(--ease-soft), box-shadow 420ms var(--ease-soft);
+}
+
+.a7-step.is-on .a7-node {
+  opacity: 1;
+  border-color: var(--text);
+  background: var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-soft);
+}
+
+.a7-step--boundary.is-on .a7-node {
+  border-color: var(--theme-warning);
+  background: var(--theme-warning);
+  box-shadow: 0 0 0 5px var(--theme-warning-surface);
+}
+
+.a7-scene.is-boundary .a7-step:not(.a7-step--boundary) {
+  opacity: 0.58;
+}
+
+.a7-step-cap {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.a7-step--boundary .a7-step-cap {
+  color: var(--theme-warning);
+}
+
+.a7-step-text {
+  margin: 0;
+  font-size: 29px;
+  font-weight: 800;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* 边界批注块 */
+
+.a7-step--boundary .a7-step-body {
+  margin-top: 4px;
+  padding: 16px 20px;
+  background: var(--theme-warning-surface);
+  border-left: 4px solid var(--theme-warning);
+  border-radius: 0 10px 10px 0;
+}
+
+.a7-boundary-text {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes a7-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes a7-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,262 @@
+/* 08-a008 · 标识体系的能力边界（4 steps · ~41s）· v2.1 双栏+判断带整体居中
+   mechanism: equal-weight-accumulation — 双栏与判断带作为一个整体垂直居中，
+   卡片高度随内容收紧，内部 space-between 分布；判断带直接随附于双栏之下。prefix: a8- */
+
+.a8-scene {
+  gap: 20px;
+}
+
+/* ── 标题区 ───────────────────────────────────────────── */
+
+.a8-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.a8-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  animation: a8-fade 480ms var(--ease-soft) backwards;
+}
+
+.a8-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 1.12;
+  color: var(--text);
+  animation: a8-rise 560ms var(--ease-soft) 80ms backwards;
+}
+
+.a8-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* ── 主体组合：双栏 + 判断带整体居中 ──────────────────── */
+
+.a8-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.a8-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: stretch;
+  transition: opacity 620ms var(--ease-soft);
+}
+
+.a8-col {
+  padding: 30px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.a8-main > .a8-col {
+  animation: a8-rise 560ms var(--ease-soft) 150ms backwards;
+}
+
+.a8-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.a8-claim {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.a8-claim strong {
+  font-weight: 900;
+}
+
+.a8-sub {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+
+/* 治理机制（拍 2） */
+
+.a8-mech {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+}
+
+.a8-scene.is-mech .a8-mech {
+  animation: a8-rise 460ms var(--ease-soft) 100ms both;
+}
+
+.a8-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.a8-chip {
+  padding: 7px 16px;
+  border: 2px solid var(--text);
+  border-radius: 8px;
+  background: var(--surface-2);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--text);
+  opacity: 0;
+}
+
+.a8-scene.is-mech .a8-chip {
+  animation: a8-pop 380ms var(--ease-overshoot) both;
+  animation-delay: calc(280ms + var(--a8-i) * 110ms);
+}
+
+.a8-mech-cap {
+  margin: 0;
+  font-size: 22px;
+  color: var(--text-2);
+}
+
+/* 制度边界（拍 3） */
+
+.a8-right {
+  position: relative;
+  display: flex;
+}
+
+.a8-inst {
+  flex: 1;
+  opacity: 0;
+}
+
+.a8-scene.is-inst .a8-inst {
+  animation: a8-rise 520ms var(--ease-soft) 120ms both;
+}
+
+/* ── 判断带（拍 4） ───────────────────────────────────── */
+
+.a8-thesis {
+  position: relative;
+  flex: none;
+  height: 112px;
+}
+
+.a8-thesis-plate {
+  position: absolute;
+  inset: 0;
+  padding: 0 36px;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 520ms var(--ease-soft), transform 520ms var(--ease-soft);
+}
+
+.a8-scene.is-thesis .a8-thesis-plate {
+  opacity: 1;
+  transform: none;
+  transition-delay: 140ms;
+}
+
+.a8-thesis-text {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+/* ── 未落位区域的虚线占位 ─────────────────────────────── */
+
+.a8-ghost {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 460ms var(--ease-soft);
+}
+
+.a8-ghost.is-off {
+  opacity: 0;
+}
+
+.a8-inst-ghost,
+.a8-thesis-ghost {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* ── 判断落位后两栏弱化 ───────────────────────────────── */
+
+.a8-scene.is-thesis .a8-main {
+  opacity: 0.6;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes a8-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes a8-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a8-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,88 @@
+import type { ChapterDef } from "../../../src/shared/presentation-runtime/registry/types";
+import Cover from "./chapters/00-cover/Cover";
+import { narrations as coverNarrations } from "./chapters/00-cover/narrations";
+import A001Chapter from "./chapters/01-a001/A001Chapter";
+import { narrations as a001Narrations } from "./chapters/01-a001/narrations";
+import A002Chapter from "./chapters/02-a002/A002Chapter";
+import { narrations as a002Narrations } from "./chapters/02-a002/narrations";
+import A003Chapter from "./chapters/03-a003/A003Chapter";
+import { narrations as a003Narrations } from "./chapters/03-a003/narrations";
+import A004Chapter from "./chapters/04-a004/A004Chapter";
+import { narrations as a004Narrations } from "./chapters/04-a004/narrations";
+import A005Chapter from "./chapters/05-a005/A005Chapter";
+import { narrations as a005Narrations } from "./chapters/05-a005/narrations";
+import A006Chapter from "./chapters/06-a006/A006Chapter";
+import { narrations as a006Narrations } from "./chapters/06-a006/narrations";
+import A007Chapter from "./chapters/07-a007/A007Chapter";
+import { narrations as a007Narrations } from "./chapters/07-a007/narrations";
+import A008Chapter from "./chapters/08-a008/A008Chapter";
+import { narrations as a008Narrations } from "./chapters/08-a008/narrations";
+import A009Chapter from "./chapters/09-a009/A009Chapter";
+import { narrations as a009Narrations } from "./chapters/09-a009/narrations";
+
+export const id = "episode-24";
+export const title = "数据要素与标识体系";
+
+export const CHAPTERS: ChapterDef[] = [
+  {
+    id: "cover",
+    title: "封面",
+    narrations: coverNarrations,
+    stepDurationsMs: [15000],
+    Component: Cover,
+  },
+  {
+    id: "01-a001",
+    title: "标题与开场问题",
+    narrations: a001Narrations,
+    Component: A001Chapter,
+  },
+  {
+    id: "02-a002",
+    title: "定义与形态",
+    narrations: a002Narrations,
+    Component: A002Chapter,
+  },
+  {
+    id: "03-a003",
+    title: "价值释放与特性",
+    narrations: a003Narrations,
+    Component: A003Chapter,
+  },
+  {
+    id: "04-a004",
+    title: "对象身份与标识编码",
+    narrations: a004Narrations,
+    Component: A004Chapter,
+  },
+  {
+    id: "05-a005",
+    title: "标识与解析分工",
+    narrations: a005Narrations,
+    Component: A005Chapter,
+  },
+  {
+    id: "06-a006",
+    title: "关联锚点与两层能力",
+    narrations: a006Narrations,
+    Component: A006Chapter,
+  },
+  {
+    id: "07-a007",
+    title: "质量异常回查例",
+    narrations: a007Narrations,
+    Component: A007Chapter,
+  },
+  {
+    id: "08-a008",
+    title: "标识体系的能力边界",
+    narrations: a008Narrations,
+    Component: A008Chapter,
+  },
+  {
+    id: "09-a009",
+    title: "总结：三个问题与一层基础",
+    narrations: a009Narrations,
+    Component: A009Chapter,
+  },
+];

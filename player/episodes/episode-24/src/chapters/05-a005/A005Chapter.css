@@ -1,0 +1,624 @@
+/* 05-a005 · 标识与解析分工（4 steps · ~38s）
+   mechanism: ordered-progression — 解析引入、分工说明、服务基础沿固定轨道依次推进，
+   前段保持可见并弱化为已完成；末态为互通共享与规范化理解的基础卡。prefix: a5- */
+
+.a5-scene {
+  gap: 20px;
+}
+
+/* ── 标题区 ───────────────────────────────────────────── */
+
+.a5-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.a5-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  animation: a5-fade 480ms var(--ease-soft) backwards;
+}
+
+.a5-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.12;
+  color: var(--text);
+  animation: a5-rise 560ms var(--ease-soft) 90ms backwards;
+}
+
+.a5-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* ── 引入带：身份 → 相关信息（拍 1） ──────────────────── */
+
+.a5-handoff {
+  flex: none;
+  display: grid;
+  grid-template-columns: 168px 1fr 168px;
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 6px 28px;
+  padding: 14px 30px 12px;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  transition: opacity 620ms var(--ease-soft);
+  animation: a5-rise 560ms var(--ease-soft) 160ms backwards;
+}
+
+.a5-hand-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+}
+
+.a5-hand-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.a5-mini-plate {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 16px;
+  border: 2.5px solid var(--text);
+  border-radius: 10px;
+  background: var(--surface-2);
+}
+
+.a5-mini-plate i {
+  display: block;
+  width: 9px;
+  height: 26px;
+  border-radius: 2px;
+  background: var(--text);
+}
+
+.a5-mini-plate i:nth-child(2) {
+  width: 5px;
+}
+
+.a5-mini-plate i:nth-child(3) {
+  width: 13px;
+}
+
+.a5-mini-plate i:nth-child(4) {
+  width: 8px;
+}
+
+.a5-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 14px;
+  border: 2.5px dashed var(--rule);
+  border-radius: 10px;
+}
+
+.a5-info i {
+  display: block;
+  height: 7px;
+  border-radius: 4px;
+  background: var(--rule);
+}
+
+.a5-info i:nth-child(1) {
+  width: 74%;
+}
+
+.a5-info i:nth-child(2) {
+  width: 92%;
+}
+
+.a5-info i:nth-child(3) {
+  width: 56%;
+}
+
+.a5-route {
+  display: block;
+  width: 100%;
+  height: 84px;
+}
+
+.a5-route-path {
+  fill: none;
+  stroke: var(--text-mute);
+  stroke-width: 2.5;
+  stroke-dasharray: 7 8;
+  opacity: 0;
+  animation: a5-fade 420ms var(--ease-soft) 420ms forwards;
+}
+
+.a5-route-head {
+  fill: none;
+  stroke: var(--text-mute);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  animation: a5-fade 320ms var(--ease-soft) 900ms forwards;
+}
+
+.a5-route-start {
+  fill: var(--accent);
+  opacity: 0;
+  animation: a5-fade 320ms var(--ease-soft) 300ms forwards;
+}
+
+.a5-route-ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: a5-draw 700ms var(--ease-soft) 760ms forwards;
+}
+
+.a5-route-ring-in {
+  animation-delay: 1040ms;
+}
+
+.a5-route-dot {
+  fill: var(--accent);
+  opacity: 0;
+  animation: a5-fade 300ms var(--ease-soft) 1300ms forwards;
+}
+
+.a5-runner {
+  fill: var(--accent);
+  opacity: 0;
+  animation: a5-run 1200ms var(--ease-soft) 560ms both;
+}
+
+.a5-hand-note {
+  grid-column: 1 / -1;
+  margin: 2px 0 0;
+  text-align: center;
+  font-size: 22px;
+  color: var(--text-2);
+}
+
+.a5-hand-note strong {
+  color: var(--text);
+  font-weight: 900;
+}
+
+/* ── 分工条（拍 2） ───────────────────────────────────── */
+
+.a5-division {
+  position: relative;
+  flex: none;
+  display: grid;
+  grid-template-columns: 1fr 132px 1.12fr;
+  align-items: stretch;
+  transition: opacity 620ms var(--ease-soft);
+}
+
+.a5-role {
+  padding: 20px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  opacity: 0;
+}
+
+.a5-scene.is-division .a5-role {
+  animation: a5-rise 520ms var(--ease-soft) both;
+  animation-delay: calc(160ms + var(--a5-r) * 160ms);
+}
+
+.a5-role-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.a5-role-name {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.a5-glyph {
+  display: block;
+  width: 96px;
+  height: 46px;
+}
+
+.a5-glyph-tag {
+  fill: var(--surface-2);
+  stroke: var(--text);
+  stroke-width: 2.5;
+}
+
+.a5-glyph-hole {
+  fill: var(--accent);
+}
+
+.a5-glyph line {
+  stroke: var(--text-mute);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.a5-glyph-path {
+  fill: none;
+  stroke: var(--text-mute);
+  stroke-width: 2.5;
+  stroke-dasharray: 6 6;
+}
+
+.a5-glyph-ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+
+.a5-glyph-dot {
+  fill: var(--accent);
+}
+
+.a5-glyph-arrow {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.a5-role-answer {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.a5-role-answer strong {
+  color: var(--text);
+  font-weight: 900;
+}
+
+.a5-role-answer-long {
+  font-size: 24px;
+}
+
+.a5-joint {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.a5-joint-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  border-top: 2px solid var(--rule);
+  transform: scaleX(0);
+  transform-origin: center;
+}
+
+.a5-scene.is-division .a5-joint-line {
+  animation: a5-grow 460ms var(--ease-soft) 360ms both;
+}
+
+.a5-joint-chip {
+  position: relative;
+  z-index: 1;
+  padding: 5px 12px;
+  border: 2px solid var(--text);
+  border-radius: 8px;
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  opacity: 0;
+}
+
+.a5-scene.is-division .a5-joint-chip {
+  animation: a5-pop 380ms var(--ease-overshoot) 700ms both;
+}
+
+/* ── 服务基础带（拍 3） ───────────────────────────────── */
+
+.a5-base {
+  position: relative;
+  flex: none;
+  transition: opacity 620ms var(--ease-soft);
+}
+
+.a5-base-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.a5-base-band {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 18px 28px;
+  border: 3px solid var(--rule);
+  border-radius: 14px;
+  background-color: var(--surface);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0 14px,
+    var(--theme-grid-line) 14px 28px
+  );
+  opacity: 0;
+  transition: border-color 520ms var(--ease-soft), box-shadow 520ms var(--ease-soft);
+}
+
+.a5-scene.is-base .a5-base-band {
+  animation: a5-rise 520ms var(--ease-soft) 140ms both;
+}
+
+.a5-scene.is-result .a5-base-band {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.a5-base-name {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  letter-spacing: 0.12em;
+  color: var(--text);
+}
+
+.a5-supports {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.a5-support {
+  padding: 7px 16px;
+  border: 2px solid var(--text);
+  border-radius: 9px;
+  background: var(--surface-2);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--text);
+  opacity: 0;
+}
+
+.a5-scene.is-base .a5-support {
+  animation: a5-pop 380ms var(--ease-overshoot) both;
+  animation-delay: calc(440ms + var(--a5-s) * 130ms);
+}
+
+.a5-gov {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 6px 0 8px;
+  border-top: 2px dashed var(--rule);
+  font-size: 22px;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.a5-scene.is-base .a5-gov {
+  animation: a5-fade 420ms var(--ease-soft) 800ms both;
+}
+
+.a5-gov-cap {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.14em;
+  color: var(--theme-warning);
+}
+
+/* ── 末态：互通共享基础卡（拍 4） ─────────────────────── */
+
+.a5-result {
+  position: relative;
+  flex: none;
+  height: 128px;
+}
+
+.a5-result-plate {
+  position: absolute;
+  inset: 0;
+  padding: 18px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 520ms var(--ease-soft), transform 520ms var(--ease-soft);
+}
+
+.a5-scene.is-result .a5-result-plate {
+  opacity: 1;
+  transform: none;
+  transition-delay: 160ms;
+}
+
+.a5-result-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.a5-result-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.a5-res {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display-cn);
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.a5-res-svg {
+  width: 32px;
+  height: 32px;
+  flex: none;
+}
+
+.a5-res-svg circle {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+
+.a5-res-svg path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.a5-res-sep {
+  width: 2px;
+  height: 34px;
+  background: var(--rule);
+}
+
+/* ── 未落位区域的虚线占位 ─────────────────────────────── */
+
+.a5-ghost {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.a5-ghost.is-off {
+  opacity: 0;
+}
+
+.a5-div-ghost,
+.a5-base-ghost,
+.a5-result-ghost {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* ── 前段已完成后逐步弱化 ─────────────────────────────── */
+
+.a5-scene.is-division .a5-handoff {
+  opacity: 0.62;
+}
+
+.a5-scene.is-base .a5-handoff {
+  opacity: 0.48;
+}
+
+.a5-scene.is-base .a5-division {
+  opacity: 0.62;
+}
+
+.a5-scene.is-result .a5-division {
+  opacity: 0.5;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes a5-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes a5-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a5-grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes a5-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a5-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes a5-run {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  88% {
+    transform: translateX(308px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(308px);
+    opacity: 0;
+  }
+}

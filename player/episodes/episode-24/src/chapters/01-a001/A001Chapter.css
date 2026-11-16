@@ -1,0 +1,568 @@
+/* 01-a001 · 标题与开场问题（4 steps · ~42s）
+   mechanism: premise-to-question — 共享前提先落位，同一台设备的三套记录与名称编号错位逐拍展开，
+   记录核对区成为焦点后由问题收束条接管。prefix: a1- */
+
+.a1-scene {
+  gap: 26px;
+}
+
+/* ── 标题区 ───────────────────────────────────────────── */
+
+.a1-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.a1-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  animation: a1-fade 480ms var(--ease-soft) backwards;
+}
+
+.a1-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.12;
+  color: var(--text);
+  animation: a1-rise 560ms var(--ease-soft) 90ms backwards;
+}
+
+.a1-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* ── 共享前提带（拍 1 落位，持续保留） ───────────────── */
+
+.a1-premise {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 18px 30px;
+  background: var(--surface-3);
+  border: 2px solid var(--rule);
+  border-radius: var(--r-card);
+  transition: opacity 620ms var(--ease-soft);
+  animation: a1-rise 560ms var(--ease-soft) 200ms backwards;
+}
+
+.a1-premise-tag {
+  margin: 0;
+  flex: none;
+  padding: 6px 16px;
+  border: 2px solid var(--text);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.14em;
+  color: var(--text);
+}
+
+.a1-premise-text {
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.4;
+  color: var(--text-2);
+}
+
+.a1-premise-text strong {
+  font-weight: 900;
+  color: var(--text);
+}
+
+.a1-range {
+  margin-left: auto;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.a1-range-cap {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+}
+
+.a1-range-node {
+  padding: 5px 14px;
+  border: 2px dashed var(--rule);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text);
+}
+
+.a1-range-line {
+  position: relative;
+  width: 200px;
+  height: 0;
+  border-top: 2px dashed var(--rule);
+  transform-origin: left center;
+  animation: a1-grow 760ms var(--ease-soft) 640ms backwards;
+}
+
+.a1-range-dot {
+  position: absolute;
+  top: -7px;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+  opacity: 0;
+  animation: a1-travel 920ms var(--ease-soft) 980ms both;
+}
+
+/* ── 主区：左现场图 / 右三套记录核对 ─────────────────── */
+
+.a1-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 700px 1fr;
+  gap: 44px;
+  align-items: stretch;
+  transition: opacity 620ms var(--ease-soft);
+}
+
+.a1-media {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.a1-photo-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.a1-photo {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 3px solid var(--text);
+  opacity: 0;
+}
+
+.a1-scene.is-records .a1-photo {
+  animation: a1-rise 620ms var(--ease-soft) 120ms both;
+}
+
+.a1-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.a1-photo-tag {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  padding: 6px 14px;
+  background: var(--theme-warning-surface);
+  border: 2px solid var(--theme-warning);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.08em;
+  color: var(--theme-warning);
+}
+
+.a1-device {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  opacity: 0;
+}
+
+.a1-scene.is-records .a1-device {
+  animation: a1-rise 560ms var(--ease-soft) 500ms both;
+}
+
+.a1-device-name {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.a1-device-sub {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+
+/* ── 未落位区域的虚线占位 ─────────────────────────────── */
+
+.a1-ghost {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.a1-ghost.is-off {
+  opacity: 0;
+}
+
+.a1-media-ghost,
+.a1-records-ghost {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* ── 右：三套记录核对区 ───────────────────────────────── */
+
+.a1-records {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.a1-compare {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  display: grid;
+  grid-template-columns: 1fr 56px 1fr 56px 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.a1-card {
+  padding: 22px 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+}
+
+.a1-scene.is-records .a1-card {
+  animation: a1-card-in 560ms var(--ease-overshoot) both;
+  animation-delay: calc(260ms + var(--a1-i) * 170ms);
+}
+
+.a1-sys {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.a1-rec {
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+/* 名称 / 编号行：拍 3 原位展开 */
+
+.a1-token-row {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 460ms var(--ease-soft), opacity 320ms var(--ease-soft);
+}
+
+.a1-token-row > div {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.a1-scene.is-mismatch .a1-token-row {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition-delay: 120ms, 180ms;
+}
+
+.a1-token-rule {
+  margin-top: 4px;
+}
+
+.a1-cells {
+  display: flex;
+  gap: 8px;
+}
+
+.a1-cell {
+  width: 34px;
+  height: 38px;
+  border: 2px solid var(--text);
+  border-radius: 6px;
+  background: var(--surface-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  opacity: 0;
+}
+
+.a1-scene.is-mismatch .a1-cell {
+  animation: a1-cell-in 380ms var(--ease-overshoot) both;
+  animation-delay: calc(320ms + var(--a1-i) * 150ms);
+}
+
+.a1-cell b {
+  display: block;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--text);
+}
+
+.a1-cell b:first-child {
+  width: 18px;
+}
+
+.a1-cell b:last-child {
+  width: 10px;
+}
+
+.a1-token-cap {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+}
+
+.a1-neq {
+  align-self: end;
+  margin-bottom: 32px;
+  justify-self: center;
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--theme-warning);
+  opacity: 0;
+}
+
+.a1-scene.is-mismatch .a1-neq {
+  animation: a1-pop 420ms var(--ease-overshoot) both;
+  animation-delay: calc(560ms + var(--a1-i) * 170ms);
+}
+
+.a1-caption {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  text-align: center;
+  font-size: 25px;
+  color: var(--text-2);
+  opacity: 0;
+}
+
+.a1-scene.is-mismatch .a1-caption {
+  animation: a1-rise 520ms var(--ease-soft) both;
+  animation-delay: 760ms;
+}
+
+.a1-bad {
+  position: relative;
+  font-style: normal;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.a1-bad::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  bottom: -7px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--theme-warning);
+  transform: rotate(-1.2deg) scaleX(0);
+  transform-origin: left center;
+  transition: transform 420ms var(--ease-soft);
+}
+
+.a1-scene.is-mismatch .a1-bad::after {
+  transform: rotate(-1.2deg) scaleX(1);
+  transition-delay: 1000ms;
+}
+
+/* ── 问题收束条（拍 4） ───────────────────────────────── */
+
+.a1-footer {
+  position: relative;
+  flex: none;
+  height: 150px;
+}
+
+.a1-q-ghost {
+  position: absolute;
+  inset: 0;
+}
+
+.a1-scene.is-question .a1-q-ghost {
+  opacity: 0;
+}
+
+.a1-q-plate {
+  position: absolute;
+  inset: 0;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 520ms var(--ease-soft), transform 520ms var(--ease-soft);
+}
+
+.a1-scene.is-question .a1-q-plate {
+  opacity: 1;
+  transform: none;
+  transition-delay: 160ms;
+}
+
+.a1-q-lead {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.4;
+  color: var(--text-2);
+}
+
+.a1-q-line {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 1.34;
+  color: var(--text);
+}
+
+.a1-slot {
+  display: inline-block;
+  padding: 0 18px 2px;
+  margin: 0 2px 0 6px;
+  border: 3px dashed var(--theme-warning);
+  border-radius: 12px;
+}
+
+/* ── 问题收束时弱化已落位内容 ─────────────────────────── */
+
+.a1-scene[data-state="identity-question"] .a1-main,
+.a1-scene[data-state="identity-question"] .a1-premise {
+  opacity: 0.58;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes a1-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes a1-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a1-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a1-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes a1-travel {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  88% {
+    left: calc(100% - 12px);
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 12px);
+    opacity: 1;
+  }
+}
+
+@keyframes a1-cell-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a1-pop {
+  0% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}

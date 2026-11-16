@@ -1,0 +1,380 @@
+/* 06-a006 · 关联锚点与两层能力（6 steps · ~51s）· v2 全宽分层带
+   mechanism: ordered-progression — 条件带自上而下补齐，两层能力以行槽形式占位并原位落位，
+   目标条收束；整页纵向分层，无独立空列。prefix: a6- */
+
+.a6-scene {
+  gap: 18px;
+}
+
+/* ── 标题区 ───────────────────────────────────────────── */
+
+.a6-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.a6-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  animation: a6-fade 480ms var(--ease-soft) backwards;
+}
+
+.a6-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 1.12;
+  color: var(--text);
+  animation: a6-rise 560ms var(--ease-soft) 80ms backwards;
+}
+
+.a6-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* ── 条件带（全宽） ───────────────────────────────────── */
+
+.a6-cond {
+  flex: none;
+  padding: 24px 32px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: opacity 620ms var(--ease-soft);
+  animation: a6-rise 560ms var(--ease-soft) 150ms backwards;
+}
+
+.a6-cond-top {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.a6-cap {
+  margin: 0;
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.a6-anchor {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 18px;
+  border: 2px solid var(--text);
+  border-radius: 10px;
+  background: var(--surface-2);
+}
+
+.a6-anchor-glyph {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  background: var(--accent);
+  transform: rotate(45deg);
+}
+
+.a6-anchor-name {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.a6-tie {
+  flex: 1;
+  min-width: 30px;
+  border-top: 2px dashed var(--text-faint);
+  opacity: 0.55;
+  transition: opacity 420ms var(--ease-soft);
+}
+
+.a6-scene.is-records .a6-tie {
+  opacity: 1;
+  transition-delay: 160ms;
+}
+
+.a6-records {
+  flex: none;
+  display: flex;
+  gap: 12px;
+}
+
+.a6-record {
+  padding: 8px 18px;
+  border: 2px dashed var(--rule);
+  border-radius: 9px;
+  background: transparent;
+  font-size: 22px;
+  font-weight: 700;
+  color: transparent;
+  transition: color 300ms var(--ease-soft), border-color 300ms var(--ease-soft),
+    background 300ms var(--ease-soft);
+}
+
+.a6-scene.is-records .a6-record {
+  border-style: solid;
+  border-color: var(--text);
+  background: var(--surface-2);
+  color: var(--text);
+  animation: a6-pop 420ms var(--ease-overshoot) both;
+  animation-delay: calc(200ms + var(--a6-i) * 120ms);
+}
+
+/* 折叠区：说明与连续性 */
+
+.a6-collapsible {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 460ms var(--ease-soft), opacity 320ms var(--ease-soft);
+}
+
+.a6-collapsible-clip {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.a6-scene.is-records .a6-notes-wrap {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition-delay: 120ms, 180ms;
+}
+
+.a6-scene.is-continuity .a6-cont-wrap {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition-delay: 120ms, 180ms;
+}
+
+.a6-note {
+  margin: 0 0 0 2px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.a6-note-sub {
+  margin: 0 0 0 2px;
+  font-size: 21px;
+  color: var(--text-mute);
+}
+
+.a6-continuity {
+  margin: 0;
+  padding-top: 14px;
+  border-top: 2px dashed var(--rule);
+  font-size: 25px;
+  color: var(--text-2);
+}
+
+.a6-continuity strong {
+  font-weight: 900;
+  color: var(--text);
+}
+
+/* ── 两层能力：全宽行槽 ───────────────────────────────── */
+
+.a6-layers {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: opacity 620ms var(--ease-soft);
+}
+
+.a6-layer {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 104px;
+  padding: 0 30px;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  transition: border-color 420ms var(--ease-soft), background 420ms var(--ease-soft),
+    box-shadow 420ms var(--ease-soft);
+}
+
+.a6-idx {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--text-faint);
+  transition: color 420ms var(--ease-soft);
+}
+
+.a6-layer-ghost {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+  transition: opacity 300ms var(--ease-soft);
+}
+
+.a6-layer-body {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  opacity: 0;
+}
+
+.a6-layer-cap {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.a6-layer-text {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.a6-layer.is-on {
+  border-color: transparent;
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+.a6-layer.is-on .a6-idx {
+  color: var(--text);
+}
+
+.a6-layer.is-on .a6-layer-ghost {
+  opacity: 0;
+}
+
+.a6-layer.is-on .a6-layer-body {
+  animation: a6-rise 480ms var(--ease-soft) 120ms both;
+}
+
+/* ── 目标条（全宽收束） ───────────────────────────────── */
+
+.a6-goal {
+  position: relative;
+  flex: none;
+  height: 96px;
+}
+
+.a6-goal-slot {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+  transition: opacity 400ms var(--ease-soft);
+}
+
+.a6-goal.is-on .a6-goal-slot {
+  opacity: 0;
+}
+
+.a6-goal-plate {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 0 32px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 520ms var(--ease-soft), transform 520ms var(--ease-soft);
+}
+
+.a6-goal.is-on .a6-goal-plate {
+  opacity: 1;
+  transform: none;
+  transition-delay: 140ms;
+}
+
+.a6-goal-cap {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.a6-goal-text {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+/* ── 前段弱化 ─────────────────────────────────────────── */
+
+.a6-scene.is-layer1 .a6-cond {
+  opacity: 0.72;
+}
+
+.a6-scene.is-goal .a6-cond {
+  opacity: 0.55;
+}
+
+.a6-scene.is-goal .a6-layers {
+  opacity: 0.65;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes a6-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes a6-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a6-pop {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.92);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}

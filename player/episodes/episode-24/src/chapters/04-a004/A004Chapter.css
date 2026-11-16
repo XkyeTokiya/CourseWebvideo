@@ -1,0 +1,605 @@
+/* 04-a004 · 对象身份与标识编码（4 steps · ~41s）
+   mechanism: premise-to-question — 流动确认带建立前提，两问条并列落位，
+   视觉中心随后转入身份卡：标识编码定义到位、非容器边界收束。prefix: a4- */
+
+.a4-scene {
+  gap: 22px;
+}
+
+/* ── 标题区 ───────────────────────────────────────────── */
+
+.a4-head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.a4-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  animation: a4-fade 480ms var(--ease-soft) backwards;
+}
+
+.a4-title {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.12;
+  color: var(--text);
+  animation: a4-rise 560ms var(--ease-soft) 90ms backwards;
+}
+
+.a4-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* ── 流动确认带（拍 1） ───────────────────────────────── */
+
+.a4-flow {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 14px 26px;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  transition: opacity 620ms var(--ease-soft);
+  animation: a4-rise 560ms var(--ease-soft) 180ms backwards;
+}
+
+.a4-flow-cap {
+  margin: 0;
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+.a4-flow-track {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.a4-domain {
+  flex: none;
+  padding: 7px 22px;
+  border: 2px solid var(--text);
+  border-radius: 10px;
+  background: var(--surface-2);
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--text);
+  opacity: 0;
+  animation: a4-pop 420ms var(--ease-overshoot) both;
+  animation-delay: calc(340ms + var(--a4-d) * 170ms);
+}
+
+.a4-link {
+  position: relative;
+  flex: none;
+  width: var(--a4-w, 64px);
+  height: 16px;
+  margin: 0 10px;
+  opacity: 0;
+  animation: a4-fade 320ms var(--ease-soft) both;
+  animation-delay: calc(380ms + var(--a4-l) * 170ms);
+}
+
+.a4-link-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 7px;
+  border-top: 2px solid var(--rule);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: a4-grow 440ms var(--ease-soft) both;
+  animation-delay: calc(420ms + var(--a4-l) * 170ms);
+}
+
+.a4-link-tick {
+  position: absolute;
+  left: 0;
+  top: 1px;
+  bottom: 1px;
+  width: 2px;
+  background: var(--rule);
+}
+
+.a4-link-tick-r {
+  left: auto;
+  right: 0;
+}
+
+.a4-flow-chip {
+  margin: 0;
+  flex: none;
+  padding: 7px 16px;
+  border: 2px solid var(--text);
+  border-radius: 9px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  opacity: 0;
+  animation: a4-pop 400ms var(--ease-overshoot) 900ms both;
+}
+
+/* ── 主区：两问 + 身份卡 ──────────────────────────────── */
+
+.a4-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 26px;
+  align-items: stretch;
+}
+
+/* 两问 */
+
+.a4-questions {
+  position: relative;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  transition: opacity 620ms var(--ease-soft);
+}
+
+.a4-qcard {
+  padding: 24px 24px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  opacity: 0;
+}
+
+.a4-scene.is-questions .a4-qcard {
+  animation: a4-rise 560ms var(--ease-overshoot) both;
+  animation-delay: calc(160ms + var(--a4-q) * 180ms);
+}
+
+.a4-qtext {
+  margin: 0;
+  font-family: var(--font-display-cn);
+  font-size: 29px;
+  font-weight: 900;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+/* SVG 示意 */
+
+.a4-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.a4-svg-sheet rect {
+  fill: var(--surface-2);
+  stroke: var(--text);
+  stroke-width: 2.5;
+}
+
+.a4-svg-sheet line {
+  stroke: var(--rule);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.a4-svg-tag {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.08em;
+  fill: var(--text-mute);
+}
+
+.a4-svg-label {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 700;
+  fill: var(--text);
+}
+
+.a4-svg-branch {
+  fill: none;
+  stroke: var(--text-mute);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.a4-scene.is-questions .a4-svg-branch {
+  animation: a4-draw 520ms var(--ease-soft) both;
+  animation-delay: calc(700ms + var(--a4-b) * 150ms);
+}
+
+.a4-svg-target rect {
+  fill: var(--surface-2);
+  stroke: var(--text);
+  stroke-width: 2.5;
+}
+
+.a4-svg-target line {
+  stroke: var(--rule);
+  stroke-width: 3;
+}
+
+.a4-svg-target circle {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+
+.a4-svg-q {
+  font-family: var(--font-display-en);
+  font-size: 34px;
+  font-weight: 900;
+  fill: var(--theme-warning);
+  opacity: 0;
+}
+
+.a4-scene.is-questions .a4-svg-q {
+  animation: a4-pop 380ms var(--ease-overshoot) both;
+  animation-delay: 1150ms;
+}
+
+.a4-svg-node circle {
+  fill: var(--surface-3);
+  stroke: var(--text);
+  stroke-width: 2.5;
+}
+
+.a4-svg-node text {
+  font-family: var(--font-display-cn);
+  font-size: 19px;
+  font-weight: 900;
+  fill: var(--text);
+}
+
+.a4-svg-node-ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.a4-scene.is-questions .a4-svg-node-ring {
+  animation: a4-draw 560ms var(--ease-soft) both;
+  animation-delay: 1050ms;
+}
+
+/* 身份侧卡 */
+
+.a4-side {
+  position: relative;
+  min-width: 0;
+  display: flex;
+}
+
+.a4-side-card {
+  flex: 1;
+  padding: 28px 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0;
+}
+
+.a4-scene.is-code .a4-side-card {
+  animation: a4-rise 560ms var(--ease-soft) 140ms both;
+}
+
+.a4-side-cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.16em;
+  color: var(--text-mute);
+}
+
+/* 身份牌 */
+
+.a4-plate {
+  position: relative;
+  padding: 26px 30px 18px;
+  border: 3px solid var(--text);
+  border-radius: 14px;
+  background: var(--surface-2);
+}
+
+.a4-screw {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--rule);
+}
+
+.a4-screw-tl {
+  top: 10px;
+  left: 12px;
+}
+
+.a4-screw-tr {
+  top: 10px;
+  right: 12px;
+}
+
+.a4-screw-bl {
+  bottom: 10px;
+  left: 12px;
+}
+
+.a4-screw-br {
+  bottom: 10px;
+  right: 12px;
+}
+
+.a4-cells {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 14px 0 16px;
+}
+
+.a4-cells i {
+  display: block;
+  height: 46px;
+  border-radius: 3px;
+  background: var(--text);
+  opacity: 0;
+  transform: scaleY(0.4);
+}
+
+.a4-scene.is-code .a4-cells i {
+  animation: a4-cell-in 360ms var(--ease-soft) both;
+  animation-delay: calc(380ms + var(--a4-c) * 70ms);
+}
+
+.a4-plate-cap {
+  display: block;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  color: var(--text-mute);
+}
+
+.a4-seal {
+  position: absolute;
+  right: -12px;
+  top: -16px;
+  padding: 6px 14px;
+  border: 3px solid var(--accent);
+  border-radius: 10px;
+  background: var(--theme-process-surface);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  transform: rotate(-6deg);
+  opacity: 0;
+}
+
+.a4-scene.is-code .a4-seal {
+  animation: a4-stamp 420ms var(--ease-overshoot) 1020ms both;
+}
+
+.a4-def {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+/* 非容器边界（拍 4 展开） */
+
+.a4-boundary {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  margin-top: auto;
+  transition: grid-template-rows 460ms var(--ease-soft), opacity 320ms var(--ease-soft);
+}
+
+.a4-boundary-clip {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.a4-boundary.is-on {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition-delay: 160ms, 220ms;
+}
+
+.a4-boundary-rule {
+  margin-top: 4px;
+}
+
+.a4-boundary-text {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.a4-outside {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.a4-data {
+  padding: 6px 14px;
+  border: 2px dashed var(--theme-warning);
+  border-radius: 8px;
+  font-size: 20px;
+  color: var(--theme-warning);
+  opacity: 0;
+}
+
+.a4-scene.is-container .a4-data {
+  animation: a4-pop 380ms var(--ease-overshoot) both;
+  animation-delay: calc(520ms + var(--a4-x) * 110ms);
+}
+
+.a4-noin {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  color: var(--theme-warning);
+  opacity: 0;
+}
+
+.a4-noin svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--theme-warning);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.a4-scene.is-container .a4-noin {
+  animation: a4-fade 380ms var(--ease-soft) both;
+  animation-delay: 980ms;
+}
+
+/* ── 未落位区域的虚线占位 ─────────────────────────────── */
+
+.a4-ghost {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 480ms var(--ease-soft);
+}
+
+.a4-ghost.is-off {
+  opacity: 0;
+}
+
+.a4-q-ghost,
+.a4-side-ghost {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* ── 身份卡落位后，两问与流动带轻微弱化 ───────────────── */
+
+.a4-scene.is-code .a4-questions {
+  opacity: 0.78;
+}
+
+.a4-scene.is-code .a4-flow {
+  opacity: 0.88;
+}
+
+/* ── keyframes ────────────────────────────────────────── */
+
+@keyframes a4-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes a4-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a4-grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes a4-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a4-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes a4-cell-in {
+  from {
+    opacity: 0;
+    transform: scaleY(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a4-stamp {
+  0% {
+    opacity: 0;
+    transform: rotate(-6deg) scale(1.5);
+  }
+  60% {
+    opacity: 1;
+    transform: rotate(-6deg) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-6deg) scale(1);
+  }
+}
