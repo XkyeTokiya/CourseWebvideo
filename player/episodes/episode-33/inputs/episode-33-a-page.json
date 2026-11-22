@@ -1,0 +1,1737 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-33",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 33 集标题、来源范围、前置关系与相邻边界",
+   "source_locator": "已确认课程架构，Episode Architecture 第 33 集及第 33–36 集责任",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围、去重与收束"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "被动标识载体通常附着于设备、物料、半成品或成品表面，需要扫描枪、手机、PDA 等识读设备读取，再由后续系统处理",
+   "source_locator": "主教材，4.1.1 首段",
+   "verification_status": "not applicable",
+   "allowed_use": "建立两类码的共同被动载体边界"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "一维条形码只在一个方向表达信息，由条与空的组合表示数字、字符和符号信息",
+   "source_locator": "主教材，4.1.1“1. 条形码”首段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释一维结构与容量受限的来源"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "一维条形码成本低、标签易制作、设备操作直接，广泛用于零售、图书、邮政和仓储物流；局限包括数据容量有限、易受损和安全性不足",
+   "source_locator": "主教材，4.1.1“1. 条形码”第二、三段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释方案简洁性、常见场景与局限"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "二维码在二维平面记录信息，相比一维条形码具有更高容量；比较只能是相对的定性结论",
+   "source_locator": "主教材，4.1.1“2. 二维码”首段",
+   "verification_status": "not applicable",
+   "allowed_use": "进行定性容量比较"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "二维码可分为堆叠式和矩阵式两类结构；具体容量与纠错表现随所选码制及设置变化",
+   "source_locator": "主教材，4.1.1“2. 二维码”类型说明",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "只解释两类结构差异，不教授码制规范"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "二维码可用于生产任务与数据绑定、物料入出库与投放确认、质量数据获取、设备维护记录",
+   "source_locator": "主教材，4.1.1“2. 二维码”工业场景段落",
+   "verification_status": "not applicable",
+   "allowed_use": "组织生产、物料、质量和维护四类场景"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "二维码仍受容量限制，识读可能受速度、光照、污染、表面损伤等因素影响；容量更高不等于任何现场都更容易读",
+   "source_locator": "主教材，4.1.1“2. 二维码”局限性段落",
+   "verification_status": "not applicable",
+   "allowed_use": "保护“二维码并非无条件更优”的结论"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "教材表 4-2 将一维码和二维码都归为低成本、存储有限、保密性低的被动载体；单次识读数量以现稿已核实口径为准",
+   "source_locator": "主教材，4.1.1 表 4-2“被动标识载体特征对比”",
+   "verification_status": "not applicable",
+   "allowed_use": "建立共同特征和与主动系统的边界"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "“共同边界→结构方向→容量相对关系→识读动作→业务任务→现场验证”的选择路径",
+   "source_locator": "本任务包教学组织（E002–E009）",
+   "verification_status": "not applicable",
+   "allowed_use": "组织讲稿、分镜和确定性比较图"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "收货工位在有限标签位上选择一维码或二维码的教学情境",
+   "source_locator": "本任务包教学设计，讲稿 N001、N011–N014",
+   "verification_status": "not applicable",
+   "allowed_use": "让比较落到工业任务"
+  },
+  {
+   "evidence_id": "E012",
+   "claim_or_asset": "部分扫码设备经配置可在一次扫描中捕获多个可见条码；多个码可能属于同一物品或不同物品，关联取决于现场与系统处理",
+   "source_locator": "Zebra DataWedge 多码扫描说明（https://techdocs.zebra.com/datawedge/11-1/guide/input/barcode/）；GS1 2D in retail 指南（https://ref.gs1.org/guidelines/2d-in-retail/1.1.0/）",
+   "verification_status": "verified",
+   "allowed_use": "把逐件扫描限定为常见做法，不把单码读取作为无条件结论"
+  },
+  {
+   "evidence_id": "E013",
+   "claim_or_asset": "QR Code 是二维码中的一种；二维码相对容量更高为定性结论，矩阵式纠错能力不作为必然更强的断言",
+   "source_locator": "GS1 对二维码类型的说明（https://support.gs1.org/support/solutions/articles/43000756000-what-is-the-difference-between-2d-barcode-options-）；GS1 2D in retail 指南",
+   "verification_status": "verified",
+   "allowed_use": "限定术语关系与相对比较强度"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "假设你站在一个收货工位前，一件货刚送到。同一件货，面前有两种标识方式可选：一种是沿一个方向记录信息的一维条形码（Bar Code），另一种是在平面上分布信息的二维码，常见的快速响应码（Quick Response Code，QR Code）是其中一种。两种都能贴，可标签位只有一个，手里的识读设备也只支持其中一种。那这个码，到底选哪种？\n\n很多人第一反应是：二维码是新东西，一定比一维码好。可这件事没那么简单。今天我们就从容量、识读动作和现场任务三个角度，把这个问题拆开讲清楚。\n\n",
+   "teaching_purpose": "用收货工位情境提出两类码的选择问题，排除“新的一定更好”，给出容量、识读动作和现场任务三条比较线。",
+   "single_message": "同一件货可以贴一维码也可以贴二维码；选择不能只看新旧。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "同一件货，选一维码还是二维码？",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E011"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "收货工位：同一件货，只有一个可用标签位",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "一维条形码：沿一个方向记录信息",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "二维码：在二维平面分布信息，QR Code 是常见的一种",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005",
+         "E013"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "现场已有的识读设备只支持其中一种码",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "从容量、识读动作、现场任务三个角度比较",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "同一对象与单一标签位",
+     "to": "G002",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R002",
+     "from": "G002",
+     "relation": "候选码面引出比较框架",
+     "to": "G004",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "画面不出现可扫描码图或真实编码数据",
+     "evidence_refs": [
+      "E003",
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，尚未接触两类码的区别",
+   "exit_condition": "观众能说出同一件货面临两种码面，需要从三条线比较",
+   "timing": {
+    "char_equivalent": 194.0,
+    "min_seconds": 49,
+    "target_seconds": 51,
+    "max_seconds": 53,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "先弄清一个前提。在工业互联网里，标识编码是一个对象在系统中的身份编码。一维码和二维码做的事，就是把这段编码附着到设备、物料、半成品或者成品的表面。但要注意，这两类码本身都不负责联网，它们不是独立运行的信息系统。它们都需要识读设备介入，比如扫描枪、手机，或者个人数字助理（Personal Digital Assistant，PDA）。设备把码读出来，再交给后面的系统处理。码面是对象的入口，不是信息系统的本体。\n\n",
+   "teaching_purpose": "建立共同前提：标识编码是对象身份编码；两类码把编码附着到对象表面；码面是入口，不是信息系统。",
+   "single_message": "两类码都只是把身份编码带到对象表面的被动入口。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S007",
+     "guidance_text": "两类码都是被动入口",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "工业互联网标识编码：一个对象在系统中的身份编码",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "两类码把这段编码附着到设备、物料、半成品或成品表面",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "码本身不负责联网，不是独立运行的信息系统",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "需要扫描枪、手机或 PDA 等识读设备读取，再交给后续系统",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "码面是对象入口，不是信息系统本身",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G005",
+     "relation": "身份锚点由两类码共同承载",
+     "to": "G006",
+     "direction": "same-anchor"
+    },
+    {
+     "relation_id": "R004",
+     "from": "G006",
+     "relation": "附着与读取保持被动路径",
+     "to": "G007",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R005",
+     "from": "G007",
+     "relation": "读取之后仍不改变信息系统边界",
+     "to": "G008",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "不展开编码规则、网络协议或解析机制",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受本集的选择问题",
+   "exit_condition": "观众能说出两类码共同承载身份编码、都不联网、都需要识读设备",
+   "timing": {
+    "char_equivalent": 168.5,
+    "min_seconds": 43,
+    "target_seconds": 44,
+    "max_seconds": 46,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "在这个前提下，一维码和二维码共享同一条边界：它们都属于被动标识载体，都得靠识读设备去读；存储容量都有限；常见做法是逐件扫描，但一次能读几个码还取决于设备和配置；码面本身通常不提供保密机制；标签成本也通常较低。明白这一层，我们再分开看。\n\n",
+   "teaching_purpose": "归纳两类码的共同边界：被动载体、容量有限、逐件扫描常见但多码捕获取决于设备、保密机制通常不提供、成本通常较低。",
+   "single_message": "共同边界把比较拉回设备、现场与任务。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S013",
+     "guidance_text": "共同边界：被动载体、容量有限",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "都属于被动标识载体，都要靠识读设备读取",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "存储容量都有限",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "常见做法是逐件扫描；一次能读几个码取决于设备与配置",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "码面本身通常不提供保密机制；标签成本通常较低",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G009",
+     "relation": "被动读取落到设备条件",
+     "to": "G011",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R007",
+     "from": "G010",
+     "relation": "容量与成本保密同属共同边界",
+     "to": "G012",
+     "direction": "same-boundary"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不把容量、成本或保密转换为数值、评分或性能排名",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解两类码的被动入口定位",
+   "exit_condition": "观众能列出两类码的共同边界，并知道读取数量要看设备",
+   "timing": {
+    "char_equivalent": 106.0,
+    "min_seconds": 27,
+    "target_seconds": 28,
+    "max_seconds": 29,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A002",
+    "A003"
+   ],
+   "nx": "先说一维码。它只沿着一个方向表达信息，用不同宽度、不同间隔的条和空，组成可识读的图形。成本低，标签容易制作，设备操作直接，所以在零售、图书、邮政、仓储物流这些成熟的逐件识读场景里，长期在用。",
+   "teaching_purpose": "解释一维码的单向结构、使用优势与典型逐件识读场景。",
+   "single_message": "一维码用条与空在一个方向上表达信息，简单场景长期在用。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S018",
+     "guidance_text": "一维码：一个方向上的条与空",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "一维码只沿一个方向表达信息",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "不同宽度与间隔的条、空组成可识读图形",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "成本低、标签易制作、设备操作直接",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "零售、图书、邮政、仓储物流等成熟逐件识读场景",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G013",
+     "relation": "方向决定结构",
+     "to": "G014",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R009",
+     "from": "G015",
+     "relation": "优势支撑成熟场景",
+     "to": "G016",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "只表现方向与相对密度，不承载可读数据或真实码图",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受两类码的共同边界",
+   "exit_condition": "观众能说出一个方向、条与空、成本低与典型场景",
+   "timing": {
+    "char_equivalent": 82.0,
+    "min_seconds": 21,
+    "target_seconds": 21,
+    "max_seconds": 23,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "它的局限也很明显：数据容量有限，码面一旦受损就会影响读取，安全性不足。所以，当任务只需要给对象一个简洁的标识入口，而现场又已经有一维识读设备可以复用，一维码就能让方案保持简单。反过来，如果还有更多的信息想装进去，就不要硬往有限的码面上塞，一维码装不下那么多。\n\n",
+   "teaching_purpose": "说明一维码的局限，明确它的适用边界与不能承担的信息需求。",
+   "single_message": "一维码适合简单身份入口，不能承担更多信息。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S023",
+     "guidance_text": "一维码的边界：简单入口，装不下更多",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "局限：容量有限、码面受损影响读取、安全性不足",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "任务只需简单入口、现场已有一维设备可复用时，方案简洁",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "更多信息不要硬塞进有限码面",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R010",
+     "from": "G017",
+     "relation": "局限划出适用条件",
+     "to": "G018",
+     "direction": "contrast"
+    },
+    {
+     "relation_id": "R011",
+     "from": "G018",
+     "relation": "适用条件引出反例",
+     "to": "G019",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不给出容量数值或可扫描码样",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解一维码的结构与优势",
+   "exit_condition": "观众能说出一维码的局限和适用条件",
+   "timing": {
+    "char_equivalent": 117.0,
+    "min_seconds": 30,
+    "target_seconds": 31,
+    "max_seconds": 32,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "那二维码呢？二维码把信息分布到二维平面来记录，分两类结构：堆叠式，就是由多行短的一维码组合而成；矩阵式，用黑白模块在平面上的分布来编码。跟一维码相比，二维码通常能在有限的面积内容纳更多信息，一些码制还具备纠错能力；具体容量和纠错表现要看所选码制及其设置。\n\n",
+   "teaching_purpose": "解释二维码的二维平面记录与堆叠式、矩阵式两类结构，并给出相对容量的定性结论。",
+   "single_message": "二维码在二维平面记录信息，相对容量更高只是定性判断。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S027",
+     "guidance_text": "二维码：二维平面与两类结构",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "二维码把信息分布到二维平面记录",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "堆叠式：多行短的一维码组合而成",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "矩阵式：黑白模块在平面上的分布编码",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "相对一维码通常能容纳更多信息；一些码制具备纠错能力，具体看码制与设置",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005",
+         "E006",
+         "E013"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G020",
+     "relation": "二维平面的一种组织方式",
+     "to": "G021",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R013",
+     "from": "G020",
+     "relation": "二维平面的另一种组织方式",
+     "to": "G022",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R014",
+     "from": "G022",
+     "relation": "结构差异转到容量定性",
+     "to": "G023",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不出现码制规范、定位图形或容量数值",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解一维码的结构与边界",
+   "exit_condition": "观众能区分堆叠式与矩阵式，并知道相对容量只是定性结论",
+   "timing": {
+    "char_equivalent": 116.0,
+    "min_seconds": 29,
+    "target_seconds": 30,
+    "max_seconds": 32,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "但这里要留神，这种比较永远是相对的。码制不同、尺寸不同、纠错设置不同，容量都会跟着变，不存在一个适用于所有情况的统一数值。可靠的说法是：当同一项任务需要更高的信息密度时，二维码通常比一维码留出更大的余量。\n\n",
+   "teaching_purpose": "把容量比较限定为相对判断：码制、尺寸、纠错设置都会改变容量，不存在统一数值。",
+   "single_message": "容量比较没有统一数值，只能保留定性余量。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S032",
+     "guidance_text": "容量比较只能是相对的",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "码制、尺寸、纠错设置不同，容量随之变化",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "不存在适用于所有情况的统一数值",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "需要更高信息密度时，二维码通常留出更大余量",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R015",
+     "from": "G024",
+     "relation": "变量存在排除统一数值",
+     "to": "G025",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R016",
+     "from": "G025",
+     "relation": "限定之后保留可用结论",
+     "to": "G026",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不列容量排行榜、不给精确数值",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受二维码相对容量更高",
+   "exit_condition": "观众能说出比较的相对性与可用结论",
+   "timing": {
+    "char_equivalent": 92.0,
+    "min_seconds": 23,
+    "target_seconds": 24,
+    "max_seconds": 26,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A006",
+    "A007"
+   ],
+   "nx": "不过，容量更高，不等于在任何现场都更容易读，更不等于要把工艺参数、质量记录、维护历史全都写进码面。把这件事说透：被动标识载体的定位，是承载标识编码，作为对象的一个稳定入口。具体信息要在识读之后解析，在后续环节取得。把入口和不断变化的业务数据分开，通常更便于维护。码面不替代业务系统。\n\n",
+   "teaching_purpose": "约束容量的用法：容量更高不等于现场更好读或把业务数据全写进码面；入口与业务数据分离。",
+   "single_message": "码面是稳定入口，不承担业务数据仓库的角色。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S036",
+     "guidance_text": "容量不是数据仓库",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "容量更高不等于在任何现场都更容易读",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "也不等于把工艺参数、质量记录、维护历史全写进码面",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007",
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G029",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "被动标识载体承载编码、作为对象的稳定入口；具体信息在识读解析后取得",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G030",
+      "items": [
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "入口与业务数据分开更便于维护；码面不替代业务系统",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R017",
+     "from": "G027",
+     "relation": "两个“不等于”共同约束容量用法",
+     "to": "G028",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R018",
+     "from": "G028",
+     "relation": "约束引出入口定位",
+     "to": "G029",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R019",
+     "from": "G029",
+     "relation": "入口定位保护系统边界",
+     "to": "G030",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不把码面画成数据库、业务系统容器或联网载体",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解容量比较的相对性",
+   "exit_condition": "观众能说出码面只承担稳定入口",
+   "timing": {
+    "char_equivalent": 126.0,
+    "min_seconds": 32,
+    "target_seconds": 33,
+    "max_seconds": 35,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "再看识读这个环节。两类码都需要识读设备获取可见的码面信息。很多工位采用逐件扫描；也有设备经过相应配置，可以在一次扫描中捕获多个可见条码。多个码可能属于同一件物品，也可能对应不同物品，能否准确关联到对象仍要看现场布置和系统处理。\n\n",
+   "teaching_purpose": "比较共同的识读动作，说明逐件扫描是常见做法、多码捕获取决于设备，多码不等于自动对应多个对象。",
+   "single_message": "识读数量取决于设备与配置，多码不等于自动对应对象。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S041",
+     "guidance_text": "识读动作：设备对准码面",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G031",
+      "items": [
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "两类码都需要识读设备获取可见的码面信息",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G032",
+      "items": [
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "很多工位采用逐件扫描",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G033",
+      "items": [
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "部分设备经配置可在一次扫描中捕获多个可见条码",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G034",
+      "items": [
+       {
+        "screen_item_id": "S045",
+        "guidance_text": "多个码可能属于同一物品，也可能对应不同物品；准确关联看现场布置与系统处理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R020",
+     "from": "G031",
+     "relation": "共同动作的常见方式",
+     "to": "G032",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R021",
+     "from": "G033",
+     "relation": "多码捕获不自动等于对象对应",
+     "to": "G034",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不展示可读码图、扫描结果界面或成功率数字",
+     "evidence_refs": [
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解码面作为稳定入口的定位",
+   "exit_condition": "观众能说出逐件扫描与多码捕获的条件及关联风险",
+   "timing": {
+    "char_equivalent": 105.0,
+    "min_seconds": 27,
+    "target_seconds": 27,
+    "max_seconds": 29,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A009"
+   ],
+   "nx": "就算二维码能用手机或 PDA 在生产现场读出来，识读稳定性也仍然受现场条件牵制。高速产线里，扫描的速度和稳定性能不能跟上；光照、污染、表面损伤会不会造成失败或者延误，都要打问号。一维码同样怕这些损伤。所以比较识读，不能只盯着码的形状，还要看现有设备支不支持，操作员怎么对准，节拍允不允许逐件扫描，码面能不能一直保持清晰。\n\n",
+   "teaching_purpose": "把识读比较落到现场条件与操作动作：速度、光照、污染、表面损伤，以及设备、对准、节拍和清晰度。",
+   "single_message": "识读比较不能只看码形，还要看现场、设备与动作。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S046",
+     "guidance_text": "识读稳定性取决于现场条件",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G035",
+      "items": [
+       {
+        "screen_item_id": "S047",
+        "guidance_text": "手机或 PDA 可在现场识读，但稳定性受条件牵制",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G036",
+      "items": [
+       {
+        "screen_item_id": "S048",
+        "guidance_text": "高速节拍、光照、污染、表面损伤都可能造成失败或延误",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G037",
+      "items": [
+       {
+        "screen_item_id": "S049",
+        "guidance_text": "一维码同样易受损",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G038",
+      "items": [
+       {
+        "screen_item_id": "S050",
+        "guidance_text": "还要看设备支持、操作员对准、节拍是否允许逐件扫描、码面能否保持清晰",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R022",
+     "from": "G035",
+     "relation": "稳定性条件具体化",
+     "to": "G036",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R023",
+     "from": "G036",
+     "relation": "现场条件转成比较清单",
+     "to": "G038",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R024",
+     "from": "G037",
+     "relation": "一维码同受现场条件约束",
+     "to": "G038",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不用成功率、速度数值或设备品牌作比较",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解识读动作的常见方式",
+   "exit_condition": "观众能说出比较识读时需要同时核对的现场条件",
+   "timing": {
+    "char_equivalent": 141.5,
+    "min_seconds": 36,
+    "target_seconds": 37,
+    "max_seconds": 39,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A011",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "具体到工业任务，有几类场景很常见。生产管理里，二维码可以附着在设备、原材料、半成品和成品上，支持任务领取和相关信息绑定。物料管理里，扫码确认入库、出库、库存和上线投放的位置。质量管理里，操作员扫码，把质检结果和质量参数关联起来。维护保养里，维护人员通过设备上的标识，查找维护历史、保养日期和维修记录。\n\n",
+   "teaching_purpose": "把教材四类工业任务映射到二维码的关联能力：生产、物料、质量、维护。",
+   "single_message": "四类任务的共同点是对象身份与现场动作可靠对应。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S051",
+     "guidance_text": "四类工业任务：对象身份与现场动作",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G039",
+      "items": [
+       {
+        "screen_item_id": "S052",
+        "guidance_text": "生产管理：二维码附着设备、原材料、半成品、成品，支持任务领取与信息绑定",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G040",
+      "items": [
+       {
+        "screen_item_id": "S053",
+        "guidance_text": "物料管理：扫码确认入库、出库、库存和上线投放位置",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G041",
+      "items": [
+       {
+        "screen_item_id": "S054",
+        "guidance_text": "质量管理：扫码关联质检结果和质量参数",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G042",
+      "items": [
+       {
+        "screen_item_id": "S055",
+        "guidance_text": "维护保养：通过设备标识查找维护历史、保养日期和维修记录",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R025",
+     "from": "G039",
+     "relation": "生产与物料两类现场任务并列",
+     "to": "G040",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R026",
+     "from": "G041",
+     "relation": "质量与维护两类现场任务并列",
+     "to": "G042",
+     "direction": "parallel"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "不设计软件界面、业务字段、维护结论或管理成效数字",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解识读动作与现场条件",
+   "exit_condition": "观众能说出四类任务各自的对象与扫码动作",
+   "timing": {
+    "char_equivalent": 132.0,
+    "min_seconds": 33,
+    "target_seconds": 34,
+    "max_seconds": 36,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A012",
+   "callback_a_ids": [
+    "A011"
+   ],
+   "nx": "支撑这几类任务的判断依据是同一句话：对象身份能和现场动作可靠对应，就够了，而不是码越复杂越好。二维码较高的信息密度适合这些关联任务，但真正的业务记录仍由后续系统管理，码面替代不了质量系统，也替代不了维护系统。\n\n",
+   "teaching_purpose": "收束四类任务的判断标准：对象身份与现场动作可靠对应；码越复杂不越好；业务记录由后续系统管理。",
+   "single_message": "码越复杂不越好；码面不替代业务系统。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S056",
+     "guidance_text": "判断依据：不是码越复杂越好",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G043",
+      "items": [
+       {
+        "screen_item_id": "S057",
+        "guidance_text": "判断依据：对象身份能和现场动作可靠对应",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007",
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G044",
+      "items": [
+       {
+        "screen_item_id": "S058",
+        "guidance_text": "二维码较高的信息密度适合这些关联任务",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G045",
+      "items": [
+       {
+        "screen_item_id": "S059",
+        "guidance_text": "真正的业务记录仍由后续系统管理；码面替代不了质量系统和维护系统",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R027",
+     "from": "G043",
+     "relation": "依据决定密度适配",
+     "to": "G044",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R028",
+     "from": "G044",
+     "relation": "适配不越过系统边界",
+     "to": "G045",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C012",
+     "instruction": "不虚构业务结果、实时指标或质量与维护结论",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解四类工业任务",
+   "exit_condition": "观众能说出判断依据与码面不替代业务系统",
+   "timing": {
+    "char_equivalent": 96.0,
+    "min_seconds": 24,
+    "target_seconds": 25,
+    "max_seconds": 27,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A013",
+   "callback_a_ids": [
+    "A003",
+    "A009"
+   ],
+   "nx": "那现场到底怎么选？可以按四步走。先确定任务的性质，是只需要一个简洁的身份入口，还是确实需要更高的信息密度。然后检查现场已有的识读设备，一维的，还是二维的。接着确认读取方式，是逐件扫描，还是需要设备在一次扫描中捕获多个可见码，并核对码与对象的对应关系。做到这几点之后别急着定，还要到真实的光照、节拍和表面状态里去验证一遍。前两步帮你圈出候选，后两步才决定候选能不能真正落地。\n\n",
+   "teaching_purpose": "形成四步初选：任务信息需求、已有设备、读取方式与对象对应、真实现场验证；前两步圈候选，后两步定落地。",
+   "single_message": "前两步圈候选，后两步决定能否落地。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S060",
+     "guidance_text": "四步初选与现场验证",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G046",
+      "items": [
+       {
+        "screen_item_id": "S061",
+        "guidance_text": "第一步：任务只需简洁身份入口，还是需要更高信息密度",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G047",
+      "items": [
+       {
+        "screen_item_id": "S062",
+        "guidance_text": "第二步：现场已有一维还是二维识读设备",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G048",
+      "items": [
+       {
+        "screen_item_id": "S063",
+        "guidance_text": "第三步：逐件扫描还是设备多码捕获，并核对码与对象的对应关系",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G049",
+      "items": [
+       {
+        "screen_item_id": "S064",
+        "guidance_text": "第四步：在真实光照、节拍和表面状态下验证",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R029",
+     "from": "G046",
+     "relation": "任务需求先圈定候选",
+     "to": "G047",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R030",
+     "from": "G047",
+     "relation": "候选在读取方式上收敛",
+     "to": "G048",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R031",
+     "from": "G048",
+     "relation": "候选交由现场验证",
+     "to": "G049",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C013",
+     "instruction": "不给出评分、阈值、权重或唯一正确答案",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解四类任务与判断依据",
+   "exit_condition": "观众能复述四步初选及前后两步各自的作用",
+   "timing": {
+    "char_equivalent": 169.0,
+    "min_seconds": 43,
+    "target_seconds": 44,
+    "max_seconds": 47,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A014",
+   "callback_a_ids": [
+    "A001",
+    "A013"
+   ],
+   "nx": "回到开头那个收货工位。同一件货，一维码贴得，二维码也贴得，到底选哪种？\n\n答案不是看谁更新，而是看分工。信息需求比较简单、现有一维识读链又能复用的时候，一维码足以让方案保持简洁；需要更高信息密度、而且能稳定完成二维识读的时候，可以优先考虑二维码。两条路，都受码面、设备和现场条件的约束。\n\n",
+   "teaching_purpose": "回到收货工位情境，给出两类码的有边界选择：按任务分工与现场条件决定。",
+   "single_message": "选择看任务分工与现场条件，不看新旧。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S065",
+     "guidance_text": "回到收货工位：按任务分工选",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E011"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G050",
+      "items": [
+       {
+        "screen_item_id": "S066",
+        "guidance_text": "回到同一件货：一维码贴得，二维码也贴得",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G051",
+      "items": [
+       {
+        "screen_item_id": "S067",
+        "guidance_text": "信息需求简单、现有一维识读链可复用时，一维码保持方案简洁",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001",
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G052",
+      "items": [
+       {
+        "screen_item_id": "S068",
+        "guidance_text": "需要更高信息密度、并能稳定完成二维识读时，可优先考虑二维码",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005",
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G053",
+      "items": [
+       {
+        "screen_item_id": "S069",
+        "guidance_text": "两条路都受码面、设备和现场条件约束",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R032",
+     "from": "G050",
+     "relation": "同一情境落到一维条件",
+     "to": "G051",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R033",
+     "from": "G050",
+     "relation": "同一情境落到二维条件",
+     "to": "G052",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R034",
+     "from": "G052",
+     "relation": "两类条件共同受现场约束",
+     "to": "G053",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C014",
+     "instruction": "不出现可扫描码图、真实业务记录或企业标识",
+     "evidence_refs": [
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握四步初选",
+   "exit_condition": "观众能按任务与现场条件说出有边界的选择",
+   "timing": {
+    "char_equivalent": 125.0,
+    "min_seconds": 32,
+    "target_seconds": 33,
+    "max_seconds": 35,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A015",
+   "callback_a_ids": [
+    "A001",
+    "A014"
+   ],
+   "nx": "把两类码摆在一起，共同规律也清楚了：它们都是被动标识载体，都需要识读设备介入，容量都有限；逐件或多码读取则要看设备与现场配置。所以选择的终点不是哪种码更先进，而是哪种方案能让对象身份被稳定、低成本地读出来。外观更复杂的图形并不自带优势，适合现场的识读方案，才是真正的答案。",
+   "teaching_purpose": "收束两类码的共同规律与选择的真正终点：稳定、低成本地读出对象身份，而不是追求更先进的图形。",
+   "single_message": "选择适合现场的方案，而不是更先进的图形。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S070",
+     "guidance_text": "选择的终点：稳定、低成本读出对象身份",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G054",
+      "items": [
+       {
+        "screen_item_id": "S071",
+        "guidance_text": "共同规律：被动载体、需识读设备、容量有限；逐件或多码看设备与现场配置",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G055",
+      "items": [
+       {
+        "screen_item_id": "S072",
+        "guidance_text": "终点不是哪种码更先进，而是哪种方案能让对象身份被稳定、低成本读出来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001",
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G056",
+      "items": [
+       {
+        "screen_item_id": "S073",
+        "guidance_text": "外观更复杂的图形不自带优势；适合现场的识读方案才是答案",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R035",
+     "from": "G054",
+     "relation": "共同规律导出选择终点",
+     "to": "G055",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R036",
+     "from": "G055",
+     "relation": "终点排除外观判断",
+     "to": "G056",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C015",
+     "instruction": "不比较码制优劣、不给评分或排名",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看到两类码的选择条件",
+   "exit_condition": "观众能复述选择的终点是稳定、低成本读出对象身份",
+   "timing": {
+    "char_equivalent": 124.0,
+    "min_seconds": 31,
+    "target_seconds": 32,
+    "max_seconds": 34,
+    "short_page_reason": null
+   }
+  }
+ ]
+}
