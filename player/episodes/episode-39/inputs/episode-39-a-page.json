@@ -1,0 +1,955 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-39",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 39 集边界、注册/上报/查询责任、前置关系与相邻分集边界",
+   "source_locator": "冻结任务包 E001；已确认课程架构 Episode Architecture 第 37–42 集及第 6 节去重规则",
+   "verification_status": "not applicable",
+   "allowed_use": "控制本集边界、去重与下游关系"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "注册前预写唯一序列号、标识前缀预写号，以及由证书颁发机构（Certificate Authority，CA）签发的安全认证证书",
+   "source_locator": "冻结任务包 E002；主教材 4.2.2 首段；docs/episode-33-51-content-accuracy-review.md 第 39 期第 1 条（CA 口径修正）",
+   "verification_status": "verified",
+   "allowed_use": "说明注册所需的预置身份材料；不扩展证书格式、签发机构细节、密钥算法或字段"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "首次上电激活时载体向安全接入管控平台传送序列号、接入 IP 等信息并发起 CA 身份认证",
+   "source_locator": "冻结任务包 E003；主教材 4.2.2“主动标识注册流程”首段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释首次接入与认证门槛；IP 仅保留抽象概念，不给具体地址"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "安全接入管控平台以数据库预存的身份信息和设备信息进行身份匹配认证；通过进入注册，不通过注册链路终止",
+   "source_locator": "冻结任务包 E004；主教材 4.2.2 首段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释认证的匹配逻辑；不画数据库表、接口、阈值或自动处置"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "认证通过后企业节点向二级节点发起标识注册申请；认证确认能否进入、注册决定获得什么工业标识，职责前后相接但不同",
+   "source_locator": "冻结任务包 E005；主教材 4.2.2 首段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释注册请求的角色关系与职责区分；不扩展节点部署拓扑、协议、字段或审批流程"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "下发标识回传并写入载体，补写预存标识前缀预写号，形成唯一工业互联网设备标识与完整身份锚点",
+   "source_locator": "冻结任务包 E006；主教材 4.2.2 首段及图 4-21 文字说明",
+   "verification_status": "not applicable",
+   "allowed_use": "解释“注册完成”的可见结果；不虚构具体标识值、编码规则或写入接口"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "注册完成后再认证与安全传输机制；认证时机与传输路径由具体方案决定，可以在每次上报前重新认证或在有效已认证会话内上报多次",
+   "source_locator": "冻结任务包 E007；主教材 4.2.2“数据上报”段落；docs/episode-33-51-content-accuracy-review.md 第 39 期第 4 条",
+   "verification_status": "verified",
+   "allowed_use": "建立上报前认证与安全传输的方案化关系；不讲安全芯片型号、算法、通道协议或加密参数"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "上报时主动标识号前缀与数据一同送出，前缀帮助识别数据所属的标识范围；区分具体设备或数据对象还需要完整标识及系统约定关联关系，不能只凭前缀认定唯一",
+   "source_locator": "冻结任务包 E008；主教材 4.2.2“数据上报”段落；docs/episode-33-51-content-accuracy-review.md 第 39 期第 5 条",
+   "verification_status": "verified",
+   "allowed_use": "解释身份标注进入数据记录的边界；不设计字段表、数据格式、协议名、时间戳或设备指标"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "客户先对数据标识发起解析；在系统集成方案中解析结果可为后续系统提供定位信息，由相应应用按授权取得和呈现业务数据；组件与呈现方式由部署决定",
+   "source_locator": "冻结任务包 E009；主教材 4.2.2 查询解析段落及图 4-22 文字说明；docs/episode-33-51-content-accuracy-review.md 第 39 期第 6 条",
+   "verification_status": "verified",
+   "allowed_use": "解释查询解析主干与方案差异；不虚构协议名、部署位置、接口字段、缓存、数据库或权限流程"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "完整教学流程合成：预置身份→首次认证→企业/二级节点注册→标识回写→再次认证→安全上报→解析查询；三状态区分与同一标识锚点",
+   "source_locator": "冻结任务包 E011（基于 E002–E009 的组织）",
+   "verification_status": "not applicable",
+   "allowed_use": "组织讲稿、语义分镜与确定性流程图；不是教材额外标准流程"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "2026-11-17 内容准确性核查第 39 期工作稿修正记录：CA 口径、认证时机、前缀唯一性与 ID-HUB 路径的保守化",
+   "source_locator": "docs/episode-33-51-content-accuracy-review.md 第 39 期；accuracy-2026-11-17.diff；accuracy-2026-11-17.json",
+   "verification_status": "verified",
+   "allowed_use": "覆盖验收追溯；证明现稿与任务包差异已记录，不替代任务包"
+  },
+  {
+   "evidence_id": "E012",
+   "claim_or_asset": "以匿名工业设备与数据记录为对象的通用流程教学情境",
+   "source_locator": "冻结任务包 E012（本任务包教学设计，讲稿 N001、N002、N012）",
+   "verification_status": "not applicable",
+   "allowed_use": "让抽象流程可视化；不冒充真实企业现场或注册结果"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "一台刚领出来的主动标识载体，第一次装到设备上，头一回来报到，系统凭什么认它？它自己又是怎么一步步拿到一个完整的工业标识，再把设备数据安全地送到业务云平台，让客户随手就能查到？今天我们把这条流程从头到尾走一遍。\n\n",
+   "teaching_purpose": "用一台刚装上设备的主动标识载体提出系统认证、标识获得和数据查询三个问题，交代本集流程主线。",
+   "single_message": "本集要回答主动标识从首次报到到数据可查询的整条流程。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "主动标识的注册与数据上报：一条流程",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "一台刚领出来的主动标识载体第一次装到设备上，准备报到",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "系统凭什么认它？它怎样拿到完整的工业标识？设备数据又怎样送到业务云平台供查询？",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "本集把预置身份、认证、注册、上报和查询串成一条流程",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "首次装设备引出三个待答问题",
+     "to": "G002",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R002",
+     "from": "G002",
+     "relation": "问题链确定本集讲解路线",
+     "to": "G003",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "不虚构具体企业、设备型号、注册结果或查询数据；不展开接口、字段或密钥内容",
+     "evidence_refs": [
+      "E001",
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，已知主动载体可嵌入设备并联网",
+   "exit_condition": "观众能说出本集要澄清的三个问题",
+   "timing": {
+    "char_equivalent": 96.0,
+    "min_seconds": 24,
+    "target_seconds": 25,
+    "max_seconds": 27,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "我们以一种预置证书并经企业节点注册的方案为例。先说载体的出生准备。它装进设备之前，身上已经预置了三样东西：一个唯一的序列号、一个标识前缀预写号，还有一张由证书颁发机构（Certificate Authority，简称 CA）签发的安全认证证书。这三样就是它第一次见人时亮出来的身份证明。在这个例子里，载体或其应用利用自身或配套终端的通信能力，按预先配置主动发起身份交互，不需要人工扫码。\n\n",
+   "teaching_purpose": "说明注册前的三样预置身份材料，以及载体为何不需要人工扫码即可主动发起身份交互。",
+   "single_message": "预置材料给出首次接入的身份，载体因此可以主动发起交互。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S005",
+     "guidance_text": "预置身份与主动发起",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "以一种预置证书并经企业节点注册的方案为例",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001",
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "装进设备前预置三样材料：唯一序列号、标识前缀预写号、由证书颁发机构签发的安全认证证书",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "三样材料是首次接入时说明身份的预置材料，不是业务数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "载体或其应用利用自身或配套终端的通信能力，按预先配置主动发起身份交互，不需要人工扫码",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002",
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G004",
+     "relation": "预置材料构成首次接入的身份证明",
+     "to": "G005",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R004",
+     "from": "G005",
+     "relation": "有预置身份才可主动发起交互",
+     "to": "G006",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "不展开证书格式、签发机构细节、密钥算法或请求字段；不虚构标识值",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受本集的问题链",
+   "exit_condition": "观众能说出三样预置材料，以及主动发起不需要人工扫码",
+   "timing": {
+    "char_equivalent": 165.0,
+    "min_seconds": 42,
+    "target_seconds": 43,
+    "max_seconds": 45,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "那它主动发起之后，系统怎么判断它有没有资格进门？这里立着一道认证门槛。载体首次上电激活，会向安全接入管控平台传送自己的序列号、接入 IP 这些信息，并发起 CA 身份认证。平台这边不靠猜，而是拿数据库里预存的身份信息和设备信息，跟眼前这次接入做匹配。匹配通过，才允许进入下一步的标识注册；匹配不通过，注册这条路就到头了。所以认证是进入注册的门槛。载体从一块嵌在设备里的部件，变成能被平台识别、承认的接入主体，靠的就是这道认证。\n\n",
+   "teaching_purpose": "解释首次上电的发送、平台匹配与门槛结果，明确认证是进入注册的前置条件。",
+   "single_message": "认证用预存信息匹配本次接入，匹配通过才能进入注册。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S010",
+     "guidance_text": "首次上电的认证门槛",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "载体首次上电激活，向安全接入管控平台传送序列号、接入 IP 等信息，并发起 CA 身份认证",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "平台用数据库中预存的身份信息和设备信息，与本次接入做匹配认证",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "匹配通过才允许进入标识注册；不通过，注册链路不能继续",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "认证是进入注册的门槛，也让载体成为平台可识别的接入主体",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R005",
+     "from": "G007",
+     "relation": "先发送接入信息再进入匹配",
+     "to": "G008",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R006",
+     "from": "G008",
+     "relation": "匹配结果决定能否进入注册",
+     "to": "G009",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不显示具体 IP、请求字段、认证协议、阈值或自动处置结果",
+     "evidence_refs": [
+      "E003",
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解预置身份材料",
+   "exit_condition": "观众能说出认证的发送、匹配与门槛作用",
+   "timing": {
+    "char_equivalent": 188.0,
+    "min_seconds": 47,
+    "target_seconds": 49,
+    "max_seconds": 52,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "这里要分清两件事。认证确认的是这个设备能不能进来，注册体系要决定的，是它应该获得一个什么样的工业标识。两件事一前一后，各有各的职责，不能混在一起。认证通过了，并不等于标识已经注册完成。接下来，由企业节点向二级节点发起标识注册申请。申请完成后，下发的标识会回传并写进载体，把预存的标识前缀预写号补写完整。到这一步，载体才拿到一个唯一的工业互联网设备标识。换句话说，首次接入时那个预置的身份，到这里变成了标识体系里真正可用的完整身份锚点。\n\n",
+   "teaching_purpose": "区分认证与注册的职责，解释企业节点向二级节点申请注册以及标识回写补全身份的结果。",
+   "single_message": "认证通过只是进门，注册回写才补全工业标识。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S015",
+     "guidance_text": "认证之后：申请注册与标识回写",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "认证确认这个设备能不能进来；注册体系决定它应该获得什么样的工业标识",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "认证通过不等于标识已经注册完成",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "企业节点向二级节点发起标识注册申请",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "下发的标识回传并写进载体，把预存的标识前缀预写号补写完整",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "载体获得唯一的工业互联网设备标识",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "预置身份成为标识体系中完整可用的身份锚点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G010",
+     "relation": "职责区分之后进入注册申请",
+     "to": "G011",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R008",
+     "from": "G011",
+     "relation": "申请完成后回写并补全身份",
+     "to": "G012",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不虚构具体标识值、编码规则、写入接口或审批流程；不画完整节点拓扑",
+     "evidence_refs": [
+      "E005",
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解首次认证的门槛作用",
+   "exit_condition": "观众能区分认证与注册，并说出申请与回写结果",
+   "timing": {
+    "char_equivalent": 198.0,
+    "min_seconds": 50,
+    "target_seconds": 52,
+    "max_seconds": 54,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "不过，注册完成并不等于流程收工。载体开始采集数据后，上报过程仍需要相应的身份认证和安全传输机制。具体方案可以在每次上报前重新认证，也可以在有效的已认证会话内上报多次；认证时机和传输路径要看实际设计。注册解决的是标识如何建立，认证和安全传输则保护后续通信。\n\n",
+   "teaching_purpose": "说明注册完成后上报仍需身份认证与安全传输，并明确认证时机与传输路径由具体方案决定。",
+   "single_message": "注册完成不等于流程结束，后续上报仍要认证与安全传输。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S022",
+     "guidance_text": "注册完成之后：再次认证与安全传输",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "注册完成并不等于流程收工",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "载体采集数据后，上报过程仍需要相应的身份认证和安全传输机制",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "具体方案可以在每次上报前重新认证，也可以在有效的已认证会话内上报多次",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007",
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "认证时机和传输路径要看实际设计",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "注册解决标识如何建立，认证和安全传输则保护后续通信",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R009",
+     "from": "G013",
+     "relation": "流程未结束引出认证时机问题",
+     "to": "G014",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R010",
+     "from": "G014",
+     "relation": "方案差异收束到职责分界",
+     "to": "G015",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不讲安全芯片型号、算法、通道协议或加密参数；不把认证时机写成唯一实现；不补未给出的安全芯片路径",
+     "evidence_refs": [
+      "E007",
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解注册完成与标识回写",
+   "exit_condition": "观众能说出注册与后续认证、安全传输的职责分界，并知道时机取决于方案",
+   "timing": {
+    "char_equivalent": 118.0,
+    "min_seconds": 30,
+    "target_seconds": 31,
+    "max_seconds": 33,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "送到业务云平台的数据本身也有讲究。如果方案把主动标识号的前缀与数据一起送出，前缀可以帮助识别数据所属的标识范围；要区分具体设备或数据对象，还需要完整标识以及系统约定的关联关系，不能只凭前缀就认定数据具有唯一标识。\n\n",
+   "teaching_purpose": "解释前缀与数据一同送出时的作用范围，并划出前缀不能单独证明唯一标识的边界。",
+   "single_message": "前缀标注标识范围，但要区分对象仍需完整标识与关联关系。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S028",
+     "guidance_text": "前缀与数据：身份标注的边界",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "如果方案把主动标识号的前缀与数据一起送出",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "前缀可以帮助识别数据所属的标识范围",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "要区分具体设备或数据对象，还需要完整标识以及系统约定的关联关系",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "不能只凭前缀就认定数据具有唯一标识",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G016",
+     "relation": "前缀随数据送出引出标注作用",
+     "to": "G017",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R012",
+     "from": "G017",
+     "relation": "标注作用限定在标识范围，不构成唯一性证明",
+     "to": "G018",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不设计请求字段、数据格式、协议名、时间戳、地理位置或设备指标",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解上报前的认证与安全传输",
+   "exit_condition": "观众能说出前缀的作用范围与唯一性边界",
+   "timing": {
+    "char_equivalent": 100.0,
+    "min_seconds": 25,
+    "target_seconds": 26,
+    "max_seconds": 28,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "再看客户这一侧。客户想查数据，第一步是对数据标识发起解析，把标识体系里的身份关系，接回到业务数据上来。查询这件事，从找一串值，变成了按标识找到对应的那一个数据对象。在一种系统集成方案里，解析结果可以为后续系统提供定位信息，再由相应应用按授权取得和呈现业务数据。由哪个组件负责接口适配、数据如何呈现，要看实际部署。\n\n",
+   "teaching_purpose": "解释客户查询先对数据标识发起解析，查询从找值变成按标识定位数据对象，并交代方案差异。",
+   "single_message": "查询先解析数据标识，按标识定位业务数据；组件与呈现方式取决于方案。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S033",
+     "guidance_text": "客户查询：从标识到业务数据",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "客户想查数据，第一步是对数据标识发起解析",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "解析把标识体系里的身份关系接回业务数据；查询从找一串值，变成按标识找到对应的数据对象",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "在一种系统集成方案里，解析结果可以为后续系统提供定位信息，再由相应应用按授权取得和呈现业务数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009",
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "由哪个组件负责接口适配、数据如何呈现，要看实际部署",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R013",
+     "from": "G019",
+     "relation": "发起解析带来查询方式变化",
+     "to": "G020",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R014",
+     "from": "G020",
+     "relation": "数据对象定位落到具体方案路径",
+     "to": "G021",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不虚构协议名、部署位置、接口字段、缓存、数据库或权限流程",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解前缀与数据的关系",
+   "exit_condition": "观众能说出解析的起点、查询方式的变化与方案差异",
+   "timing": {
+    "char_equivalent": 142.0,
+    "min_seconds": 36,
+    "target_seconds": 37,
+    "max_seconds": 39,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A001",
+    "A007"
+   ],
+   "nx": "回到开头那台刚上电的载体。把它从头走到尾，分工很清楚：认证门槛判断能不能进，企业节点和二级节点负责注册、把标识补全，载体在注册之后继续通过方案规定的认证和安全传输保护数据上报，客户再凭数据标识发起解析，从业务云平台拿到数据。把这些串起来看，一条规律就浮出来了：从预置身份、注册补全身份，到数据带着身份上报、查询按身份取数，整条链路始终牵着的，是同一个标识锚点。还要记住一个核心判断：注册完成、数据已上报、客户已查到数据，是三个相互衔接却并不相同的状态。注册完成的那一刻，数据还未必可用。想明白这一层，主动标识这条流程的骨架，也就立住了。",
+   "teaching_purpose": "回放整条链路的分工，收束同一标识锚点，并明确注册完成、数据上报、客户查询三个状态的区别与范围边界。",
+   "single_message": "三个状态相互衔接但不同，整条链路共用同一个标识锚点。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S038",
+     "guidance_text": "三个状态与同一个标识锚点",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "认证门槛判断能不能进；企业节点和二级节点负责注册、把标识补全；载体继续按方案认证和安全传输；客户再凭数据标识解析取数",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "从预置身份、注册补全，到数据带身份上报、查询按身份取数，整条链路始终是同一个标识锚点",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "注册完成、数据已上报、客户已查到数据，是三个相互衔接却并不相同的状态",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "注册完成的那一刻，数据还未必可用",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "本集只解释这条机制链，不展开接口字段、密钥内容、算法实现或平台分层",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001",
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R015",
+     "from": "G022",
+     "relation": "分工回顾收束到三个状态",
+     "to": "G023",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R016",
+     "from": "G023",
+     "relation": "状态边界之外是尚不展开的范围",
+     "to": "G024",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不预告下一集或平台分层；不使用仪表盘、成功率或自动控制",
+     "evidence_refs": [
+      "E001",
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看到完整查询链路",
+   "exit_condition": "观众能区分三个状态，并复述同一标识锚点贯穿整条流程",
+   "timing": {
+    "char_equivalent": 241.0,
+    "min_seconds": 61,
+    "target_seconds": 63,
+    "max_seconds": 66,
+    "short_page_reason": null
+   }
+  }
+ ]
+}
