@@ -1,0 +1,890 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-49",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 49 集范围、相邻边界与去重要求（第 47–48 集承接、第 50–51 集边界）",
+   "source_locator": "已确认课程架构，Episode Architecture 第 47–51 集",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围、去重与收束"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "匿名制造企业接入企业已有数据并让业务应用找到标识数据的教学情境",
+   "source_locator": "本任务包教学设计，讲稿 N001–N002、M001",
+   "verification_status": "not applicable",
+   "allowed_use": "引入“接数据、管标识、撑应用”问题；不冒充真实客户或部署"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "主教材：IDHub 支持数字资产管理、可信溯源、电子存证等典型应用，并提供数据接入、标准定义、数据对接、数据管理、安全保障、应用集成方向",
+   "source_locator": "主教材，5.2.3“1.IDHub”首段",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "仅作任务包待协调对照，不进入可见槽位（C01/G01）"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "主教材：社区版面向中小企业或开发者，提供标识注册、解析、运营统计核心能力，套件模式、轻量化部署",
+   "source_locator": "主教材，5.2.3 社区版段落",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "仅作任务包待协调对照，不进入可见槽位（C01）"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "主教材：标准版在社区版上新增企业元数据、数据权限、数据连接、数据关联服务",
+   "source_locator": "主教材，5.2.3 标准版段落",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "仅作任务包待协调对照，不进入可见槽位（C01）"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "主教材：标准版底层通过数据连接中间件 IDLink 接入企业数据，中层标识内核提供标准化/安全/关联支撑",
+   "source_locator": "主教材，5.2.3 标准版段落",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "仅作任务包待协调对照，不进入可见槽位（C01）"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "主教材：高层应用集成工具包使应用更易集成，支撑标识应用落地",
+   "source_locator": "主教材，5.2.3 标准版段落",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "仅作任务包待协调对照，不进入可见槽位（C01/G01）"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "主教材图5-1“基础设施—核心服务—配套管理”分层语义与图5-2“数据连接—标识内核—应用集成”主干；new/upgrade 标签不作现行结论",
+   "source_locator": "教材图5-1、图5-2",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "仅作结构核对与静默边界，不进入可见槽位（C01）"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "IDHub 标准接口提供身份认证、标识操作与数据管理等接口，应用按接口文档配合调用",
+   "source_locator": "泰尔英福 IDHub 标准接口介绍：https://snms.teleinfo.cn/zst-docs/idhub/standard/api-introduce",
+   "verification_status": "verified",
+   "allowed_use": "支撑标准接口功能视角的总起与观察点"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "应用先完成身份认证并获取令牌，再携带令牌调用标识相关接口",
+   "source_locator": "泰尔英福 IDHub 标准接口介绍与标识操作文档：https://snms.teleinfo.cn/zst-docs/idhub/standard/api-introduce；https://snms.teleinfo.cn/zst-docs/idhub/standard/handle",
+   "verification_status": "verified",
+   "allowed_use": "支撑身份认证环节；不补协议、字段或时序"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "标准接口提供元数据与标识操作：数据模板定义标识数据模型，注册标识时按模型录入相应数据",
+   "source_locator": "泰尔英福 IDHub 标识操作文档：https://snms.teleinfo.cn/zst-docs/idhub/standard/handle",
+   "verification_status": "verified",
+   "allowed_use": "支撑标识组织环节；不补字段、存储结构或模板清单"
+  },
+  {
+   "evidence_id": "E012",
+   "claim_or_asset": "数据权限接口用于管理相关访问权限，文件处理接口承接相应的文件操作",
+   "source_locator": "泰尔英福 IDHub 数据权限文档：https://snms.teleinfo.cn/zst-docs/idhub/standard/data-auth",
+   "verification_status": "verified",
+   "allowed_use": "支撑权限与文件处理环节；不补权限模型、角色或文件格式"
+  },
+  {
+   "evidence_id": "E013",
+   "claim_or_asset": "具体接入过程随产品版本与服务配置不同，企业接入需结合所用产品版本核对接口与集成条件",
+   "source_locator": "泰尔英福 IDHub 产品页：https://teleinfo.cn/product_1/1851822053456556032.html；docs/episode-33-51-content-accuracy-review.md「第 49 期」",
+   "verification_status": "verified",
+   "allowed_use": "支撑版本与集成条件边界；不承诺当前版本能力或授权状态"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "一个企业节点要真正支撑生产，光有一个标识注册的入口是不够的。它还得接上企业自己已有的数据，让这些标识数据能够被治理，并且让业务应用能找到它们。这些能力靠什么组织起来？这就是我们要解决的问题。\n\n",
+   "teaching_purpose": "提出本集问题：企业节点不能只做标识注册入口，还要接入企业已有数据、让标识数据可治理，并让业务应用找到标识数据。",
+   "single_message": "企业节点要服务生产，必须接数据、管标识、让应用找得到标识数据。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "接数据、管标识、撑应用",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "接上企业已有的数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002",
+         "E001"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "让标识数据能够被治理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "让业务应用能找到标识数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "数据接入是治理的前提",
+     "to": "G002",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R002",
+     "from": "G002",
+     "relation": "治理之后应用才能找到",
+     "to": "G003",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "不使用具体企业名称、客户案例或上线证明；教学情境不冒充真实部署",
+     "evidence_refs": [
+      "E001",
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始本集，尚未接触企业节点产品能力",
+   "exit_condition": "观众能说出企业节点要接数据、管标识、支撑应用三件事",
+   "timing": {
+    "char_equivalent": 88.0,
+    "min_seconds": 22,
+    "target_seconds": 23,
+    "max_seconds": 24,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "IDHub 是面向企业节点的产品。要理解它怎样支撑业务，可以从公开的标准接口入手，看身份认证、标识操作以及数据管理怎样配合。这个视角呈现的是接口与功能的关系。\n\n",
+   "teaching_purpose": "说明理解 IDHub 怎样支撑业务的视角：从公开标准接口入手，看身份认证、标识操作与数据管理怎样配合，只讲功能关系。",
+   "single_message": "从标准接口看功能关系，是理解 IDHub 支撑业务的方式。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S005",
+     "guidance_text": "从标准接口看功能关系",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "IDHub 是面向企业节点的产品",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "看身份认证、标识操作与数据管理怎样配合",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G004",
+     "relation": "产品定位引出接口视角",
+     "to": "G005",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "不出现社区版/标准版继承关系与 IDLink→标识内核→应用集成三层架构断言；该口径与冻结任务包不一致，任务包待协调",
+     "evidence_refs": [
+      "E004",
+      "E005",
+      "E006",
+      "E007",
+      "E008"
+     ]
+    },
+    {
+     "constraint_id": "C003",
+     "instruction": "不出现具体 API、SDK、数据库、协议、版本号或部署数量",
+     "evidence_refs": [
+      "E008",
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道企业节点要接数据、管标识、支撑应用",
+   "exit_condition": "观众能说出本集从标准接口功能关系入手",
+   "timing": {
+    "char_equivalent": 69.5,
+    "min_seconds": 18,
+    "target_seconds": 18,
+    "max_seconds": 19,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "先看应用怎样取得调用资格。IDHub 的标准接口提供身份认证，应用获取令牌后，再携带令牌调用标识相关接口。这样，接入应用和标识操作之间就有了明确的身份环节。\n\n",
+   "teaching_purpose": "说明应用接入时的身份环节：应用获取令牌，再携带令牌调用标识相关接口。",
+   "single_message": "身份认证让应用在调用标识接口前先取得调用资格。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S008",
+     "guidance_text": "先取得调用资格",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "应用获取令牌",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "携带令牌调用标识相关接口",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G006",
+     "relation": "取得资格之后才进入调用",
+     "to": "G007",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不出现认证协议、令牌字段、签名算法或调用时序",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解标准接口功能视角",
+   "exit_condition": "观众能说出应用先取得令牌再调用标识接口",
+   "timing": {
+    "char_equivalent": 68.5,
+    "min_seconds": 18,
+    "target_seconds": 18,
+    "max_seconds": 19,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "再看标识如何组织。标准接口提供元数据和标识操作：数据模板用于定义标识的数据模型，注册标识时再按模型录入相应数据。标识不是孤立的一串字符，它需要和描述对象的数据建立对应关系。\n\n",
+   "teaching_purpose": "说明标准接口怎样组织标识：数据模板定义数据模型，注册标识时按模型录入数据，标识与描述对象的数据建立对应关系。",
+   "single_message": "数据模板先定义模型，注册标识时再按模型录入数据。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S011",
+     "guidance_text": "标识与描述对象的数据对应",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "数据模板定义标识的数据模型",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "注册标识时按模型录入相应数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "标识与描述对象的数据建立对应关系",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R005",
+     "from": "G008",
+     "relation": "模板先于注册录入",
+     "to": "G009",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R006",
+     "from": "G009",
+     "relation": "录入形成对象对应",
+     "to": "G010",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不出现数据字段、数据库表、模板字段清单或存储结构",
+     "evidence_refs": [
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道身份认证环节",
+   "exit_condition": "观众能说出数据模板与标识注册的数据关系",
+   "timing": {
+    "char_equivalent": 80.0,
+    "min_seconds": 20,
+    "target_seconds": 21,
+    "max_seconds": 22,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "接下来是数据权限和文件处理。数据权限接口用于管理相关访问权限，文件处理接口承接相应的文件操作。应用集成时，需要分别考虑谁可以调用、处理什么数据，以及怎样与企业已有系统配合。\n\n",
+   "teaching_purpose": "说明数据权限接口与文件处理接口的作用，以及应用集成时要考虑与企业已有系统配合。",
+   "single_message": "数据权限管访问权限，文件处理管文件操作；集成时要考虑与企业已有系统配合。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S015",
+     "guidance_text": "谁可以调用、处理什么数据",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "数据权限接口管理相关访问权限",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "文件处理接口承接相应文件操作",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "应用集成时要考虑谁可以调用、处理什么数据，以及怎样与企业已有系统配合",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012",
+         "E013"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G011",
+     "relation": "权限与文件处理并列服务于数据管理",
+     "to": "G012",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不出现权限模型、角色清单、文件格式或目录结构",
+     "evidence_refs": [
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解标识组织环节",
+   "exit_condition": "观众能说出数据权限与文件处理各自管什么",
+   "timing": {
+    "char_equivalent": 79.0,
+    "min_seconds": 20,
+    "target_seconds": 21,
+    "max_seconds": 22,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "把这些功能连起来，可以顺着一个示例理解：先完成接入准备，再建立数据模板、注册标识；业务应用通过身份认证后，按需要调用标识和数据相关接口。具体接入过程会随产品版本和服务配置不同。\n\n",
+   "teaching_purpose": "用示例把功能连起来：接入准备、建立数据模板、注册标识，业务应用通过身份认证后按需调用标识与数据接口。",
+   "single_message": "沿示例看清接口顺序：先接入准备与建模，认证后再调用。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S019",
+     "guidance_text": "沿一个示例串起接口",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "接入准备 → 建立数据模板 → 注册标识",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011",
+         "E013"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "业务应用通过身份认证后按需调用标识和数据相关接口",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010",
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G014",
+     "relation": "准备与建模在前，调用在后",
+     "to": "G015",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "示例不作操作教程；不写命令行、菜单、截图或具体步骤",
+     "evidence_refs": [
+      "E001",
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解身份认证、标识组织、权限与文件处理",
+   "exit_condition": "观众能按示例顺序说出接口配合关系",
+   "timing": {
+    "char_equivalent": 80.0,
+    "min_seconds": 20,
+    "target_seconds": 21,
+    "max_seconds": 22,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "从功能上看，身份认证解决的是调用方是谁，模板和标识操作负责组织标识数据，数据权限与文件处理接口服务于相关管理操作。它们是理解产品能力的几个观察点。\n\n",
+   "teaching_purpose": "收束功能观察点：身份认证解决的是调用方是谁，模板与标识操作组织标识数据，数据权限与文件处理接口服务管理操作。",
+   "single_message": "四个方向构成理解产品能力的观察点。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S022",
+     "guidance_text": "几个观察点",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "身份认证解决的是调用方是谁",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "模板与标识操作负责组织标识数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "数据权限与文件处理接口服务于相关管理操作",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R009",
+     "from": "G016",
+     "relation": "先确认调用方，再组织数据",
+     "to": "G017",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R010",
+     "from": "G017",
+     "relation": "数据组织与权限管理配合",
+     "to": "G018",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不把观察点写成内部组件清单或部署方式断言；架构口径与任务包不一致，任务包待协调",
+     "evidence_refs": [
+      "E006",
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看完各接口环节",
+   "exit_condition": "观众能复述身份认证、标识操作、数据权限与文件处理的作用",
+   "timing": {
+    "char_equivalent": 68.0,
+    "min_seconds": 17,
+    "target_seconds": 18,
+    "max_seconds": 19,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "对企业来说，关键是根据所需的标识操作和数据管理能力，确认已有应用怎样接入，并结合所用产品版本核对接口与集成条件。\n\n",
+   "teaching_purpose": "落到企业接入：按所需的标识操作和数据管理能力确认已有应用怎样接入，并结合所用产品版本核对接口与集成条件。",
+   "single_message": "企业接入要按能力需求确认方式，再结合所用版本核对接口与集成条件。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S026",
+     "guidance_text": "按能力与版本核对接入",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "按所需的标识操作与数据管理能力确认已有应用怎样接入",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "结合所用产品版本核对接口与集成条件",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G019",
+     "relation": "能力需求先于版本核对",
+     "to": "G020",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不替企业作建设或购买决策；不承诺当前版本能力、授权状态或部署条件",
+     "evidence_refs": [
+      "E001",
+      "E013"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解功能观察点",
+   "exit_condition": "观众能说出企业接入要先确认能力需求，再核对版本与集成条件",
+   "timing": {
+    "char_equivalent": 52.0,
+    "min_seconds": 13,
+    "target_seconds": 14,
+    "max_seconds": 15,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "回到开头的问题。企业节点要服务生产，就必须接数据、管标识、撑应用。以 IDHub 标准接口为例，应用先完成身份认证，再调用标识操作；数据模板、数据权限和文件处理等接口为相关数据管理提供支持。企业接入时，还要把具体版本、业务需求和实际部署一起纳入核对。",
+   "teaching_purpose": "收束：以 IDHub 标准接口为例回扣身份认证、标识操作与数据管理支持，并再次提示企业接入要结合版本、需求与部署核对。",
+   "single_message": "企业节点要靠接口能力接数据、管标识、撑应用，接入条件需结合版本与部署核对。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S029",
+     "guidance_text": "接数据、管标识、撑应用",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "应用先完成身份认证，再调用标识操作",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010",
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "数据模板、数据权限和文件处理等接口为数据管理提供支持",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "企业接入要结合具体版本、业务需求和实际部署核对",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G021",
+     "relation": "接口能力补足数据管理",
+     "to": "G022",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R013",
+     "from": "G022",
+     "relation": "能力落到企业接入条件",
+     "to": "G023",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不预告自建/托管、前缀申请等后续集内容；不替代企业决策",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看完标准接口功能与接入核对",
+   "exit_condition": "观众能复述接数据、管标识、撑应用与版本核对",
+   "timing": {
+    "char_equivalent": 107.5,
+    "min_seconds": 27,
+    "target_seconds": 28,
+    "max_seconds": 30,
+    "short_page_reason": null
+   }
+  }
+ ]
+}
