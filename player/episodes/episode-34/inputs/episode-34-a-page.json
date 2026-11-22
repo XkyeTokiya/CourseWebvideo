@@ -1,0 +1,1834 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-34",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 34 集标题、来源范围、前置关系与相邻边界",
+   "source_locator": "已确认课程架构，Episode Architecture 第 33–37 集及全局去重规则第 8 条",
+   "verification_status": "not applicable",
+   "allowed_use": "控制单集范围、去重与收束"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "RFID 是以无线电讯号识别特定对象并读写相关数据的非接触式自动识别技术，不需要机械或光学接触",
+   "source_locator": "主教材，4.1.1“3. 射频识别”首段",
+   "verification_status": "not applicable",
+   "allowed_use": "建立非接触识别与读写定义边界"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "RFID 系统通常由电子标签、读写器和计算机系统三部分组成；标签随对象移动并承载数据，读写器负责通信，计算机或控制系统接收处理数据",
+   "source_locator": "主教材，4.1.1“3. 射频识别”第二段",
+   "verification_status": "not applicable",
+   "allowed_use": "建立三组件分工与完整识别链"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "标签通常由芯片和天线组成；芯片存储数据并处理信号，天线接收和发射射频信号",
+   "source_locator": "主教材，4.1.1“3. 射频识别”第二段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释标签的教材级职责，禁止虚构内部构造"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "主动标签内置电池并可主动发送信号；被动标签不具备电源（教材二分类概括）",
+   "source_locator": "主教材，4.1.1“3. 射频识别”第二段",
+   "verification_status": "not applicable",
+   "allowed_use": "说明两类标签的电源差异；与 E012 已核实分类并列使用"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "读写器发出射频信号，标签进入区域后被触发并发送已存数据或按指令改写；读写器接收或发送数据，并连接计算机或控制系统完成读取、传输和处理",
+   "source_locator": "主教材，4.1.1“3. 射频识别”第二段",
+   "verification_status": "not applicable",
+   "allowed_use": "构成本集核心读写机制链"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "教材概括 RFID 可识别高速运动对象、可同时识别多个标签，并具有操作方便、信息存储量大、可读写、可重复使用等特点",
+   "source_locator": "主教材，图 4-2 后首段及表 4-2",
+   "verification_status": "not applicable",
+   "allowed_use": "解释批量读取与能力方向概括，不转为固定数量或性能保证"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "RFID 成本相对较高，尤其大批量应用；抗干扰能力一般；保密性一方面有较好评价，另一方面存在非法读取、恶意篡改、隐私与安全风险",
+   "source_locator": "主教材，图 4-2 后首段及表 4-2",
+   "verification_status": "not applicable",
+   "allowed_use": "建立能力边界与风险，不使用天然安全结论"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "教材列举智能仓库、物流运输、防伪识别、工业品溯源等制造业典型应用模式",
+   "source_locator": "主教材，图 4-2 后首段",
+   "verification_status": "not applicable",
+   "allowed_use": "用于场景列举与机制落点，不声称普及率或效果"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "4.1.2 将 RFID 与一维码、二维码共同列为被动载体候选，选型受行业、产品形态、污浊物、载体大小与成本等因素影响",
+   "source_locator": "主教材，4.1.2“标识载体选型”首段及后续场景问题",
+   "verification_status": "not applicable",
+   "allowed_use": "只声明第 35 集边界与本集收束，不代替选型"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "教材图 4-2 显示 RFID 读写器、计算机、RFID 标签和天线之间的概括关系",
+   "source_locator": "教材 RFID 工作原理图，图 4-2“RFID 工作原理图”",
+   "verification_status": "not applicable",
+   "allowed_use": "原图证据锚点与忠实语义重绘依据"
+  },
+  {
+   "evidence_id": "E012",
+   "claim_or_asset": "标签可按供电与通信方式区分：主动标签自带电源并可主动发送信号；无源被动标签从读写器射频信号获取能量后响应；电池辅助被动标签由电池为芯片或传感器供电，通信仍由读写器信号触发",
+   "source_locator": "GS1 主动、被动及电池辅助标签说明（https://support.gs1.org/support/solutions/articles/43000733398-what-is-the-difference-between-passive-and-active-tags-）",
+   "verification_status": "verified",
+   "allowed_use": "按已核实口径限定供电分类，替代“被动标签无电源”的绝对二分类"
+  },
+  {
+   "evidence_id": "E013",
+   "claim_or_asset": "多标签读取需要相应协议与多标签处理能力，同一范围内有多个标签不保证一次读全；实际效果取决于标签、设备、配置与现场条件；写入与存储能力取决于标签类型和访问条件",
+   "source_locator": "GS1 LLRP 标签选通说明（https://ref.gs1.org/standards/llrp/）；GS1 标签数据写入与保护说明（https://support.gs1.org/support/solutions/articles/43000734151-how-is-data-written-to-and-secured-on-an-rain-rfid-tag-）",
+   "verification_status": "verified",
+   "allowed_use": "限定多标签读取、写入与容量能力，不转写为性能保证"
+  },
+  {
+   "evidence_id": "E014",
+   "claim_or_asset": "一批贴有抽象 RFID 标签的周转箱经过通用仓储识读区的教学情境",
+   "source_locator": "本任务包教学设计，E013／讲稿 N001、媒体 M001",
+   "verification_status": "not applicable",
+   "allowed_use": "让非接触与批量识别问题具体化，不冒充真实项目或读取结果"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "仓库里进了一批货，一箱一箱码在拖车上。如果要给每箱都登记，让工作人员一件一件凑上去扫，几百件下来，人累，时间也拖。有没有一种办法，让货物经过某个区域就被自动认出来，而且一次能认下一批？\n\n",
+   "teaching_purpose": "用仓储周转箱情境提出“不逐件对准怎样认出对象”与“一次识读怎样获得多个标签”两个问题。",
+   "single_message": "本集从两个问题开始：能不能不靠接触识别，能不能一次识读一批。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "一批货，能不能自己“报到”？",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E014"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "通用仓储通道，多个周转箱码放在拖车上",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E014"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "逐箱登记要一件一件凑上去扫，几百件下来费时费力",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E014"
+        ]
+       },
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "让货物经过识读区域就被自动认出，而且一次认下一批",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E014"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "问题一：为什么不用接触就能识别对象？",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E014"
+        ]
+       },
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "问题二：为什么一次识读能拿到多个标签的内容？",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E014"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "情境落到待登记的货物",
+     "to": "G002",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R002",
+     "from": "G002",
+     "relation": "登记压力引出两个问题",
+     "to": "G003",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "不声明情境真实性；画面不出现可读标签、品牌、读取数量或读取结果；不提前给出三组件答案",
+     "evidence_refs": [
+      "E014",
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，尚未接触 RFID 机制",
+   "exit_condition": "观众能说出两个待解问题：为什么能非接触识别、为什么能一次识读多个标签",
+   "timing": {
+    "char_equivalent": 82.0,
+    "min_seconds": 21,
+    "target_seconds": 21,
+    "max_seconds": 23,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "有的。答案藏在一个词里：射频识别（Radio Frequency Identification，简称 RFID）。它是一种非接触式自动识别技术。那它是怎么做到的？我们一步步看。\n\n",
+   "teaching_purpose": "给出 RFID 的完整术语与“非接触式自动识别技术”定位，并把观众带向机制解释。",
+   "single_message": "答案就是射频识别（RFID），一种非接触式自动识别技术。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S007",
+     "guidance_text": "答案：射频识别（RFID）",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "射频识别（Radio Frequency Identification，简称 RFID）",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "一种非接触式自动识别技术",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "它靠什么做到非接触识别，是接下来要展开的机制",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G004",
+     "relation": "术语指向技术定位",
+     "to": "G005",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R004",
+     "from": "G005",
+     "relation": "定位引出机制问题",
+     "to": "G006",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "英文全称只作术语对照，不扩写为产品名称、品牌或型号",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看到一批货物需要被自动识别",
+   "exit_condition": "观众能说出 RFID 的全称与“非接触式自动识别技术”的定位",
+   "timing": {
+    "char_equivalent": 60.0,
+    "min_seconds": 15,
+    "target_seconds": 16,
+    "max_seconds": 17,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "先说清楚它是什么。射频识别通过无线电讯号识别特定目标对象，并读取标签数据；部分标签还支持写入。整个过程里，识别系统和目标对象之间不需要建立机械接触，也不需要光学接触。不靠碰，不靠看，靠的是无线电讯号在空中传递。\n\n",
+   "teaching_purpose": "把 RFID 的定义落到“无线电讯号识别对象并读写标签数据，不需要机械或光学接触”。",
+   "single_message": "RFID 用无线电讯号识别对象，不靠机械接触也不靠光学接触。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S011",
+     "guidance_text": "不靠碰，不靠看，靠无线电讯号",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "通过无线电讯号识别特定目标对象",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "读取标签数据；部分标签还支持写入",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "识别系统与目标对象之间不需要机械接触",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "也不需要光学接触",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "不靠碰，不靠看，靠的是无线电讯号在空中传递",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R005",
+     "from": "G007",
+     "relation": "识别关系由无线电讯号承载",
+     "to": "G008",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R006",
+     "from": "G008",
+     "relation": "两种接触被排除后落到信号传递",
+     "to": "G009",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不出现频段、距离、波形或协议；不把无线电讯号画成具体设备的发射形态",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经知道 RFID 是一种非接触式自动识别技术",
+   "exit_condition": "观众能说出 RFID 靠无线电讯号识别对象并读取标签数据，不需要机械或光学接触",
+   "timing": {
+    "char_equivalent": 95.0,
+    "min_seconds": 24,
+    "target_seconds": 25,
+    "max_seconds": 26,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "这里要把“非接触”这三个字理解准。它只排除了机械接触和光学接触，不等于能在无限远的距离上读，也不等于有任何遮挡都能读，更不代表在任何环境条件下都一样稳定。非接触是一种识别方式的特点，不是万能的性能保证。\n\n",
+   "teaching_purpose": "限定“非接触”的含义：只排除两种接触，不对距离、遮挡与环境稳定性作保证。",
+   "single_message": "非接触不等于无限距离、任意遮挡或全环境稳定。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S017",
+     "guidance_text": "“非接触”不是万能保证",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "“非接触”只排除机械接触和光学接触",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "不等于能在无限远的距离上读",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "不等于有任何遮挡都能读",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "不代表在任何环境条件下都一样稳定",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "非接触是一种识别方式的特点，不是万能的性能保证",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G010",
+     "relation": "已证实边界与未声明能力对照",
+     "to": "G011",
+     "direction": "contrast"
+    },
+    {
+     "relation_id": "R008",
+     "from": "G011",
+     "relation": "有限定后才回到方式特点",
+     "to": "G012",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不把未声明的距离、遮挡和稳定性画成性能结论、等级或参数",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解 RFID 的基本定义",
+   "exit_condition": "观众能说出非接触排除了什么，又不保证什么",
+   "timing": {
+    "char_equivalent": 92.0,
+    "min_seconds": 23,
+    "target_seconds": 24,
+    "max_seconds": 26,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "一套 RFID 系统通常由三个部分组成：电子标签、读写器、计算机系统。分工很清晰。电子标签附着在被识别对象上，承载用于识别对象的标识或必要数据；读写器负责和标签通信，发出讯号、接收回应；计算机或控制系统负责把读写器送来的数据接住，完成传输和处理。三个部分缺一个，这条识别链路就不完整。\n\n",
+   "teaching_purpose": "建立电子标签、读写器、计算机系统三部分的分工，并强调三者共同构成完整识别链。",
+   "single_message": "RFID 由标签、读写器和计算机系统三部分组成，缺一不可。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S023",
+     "guidance_text": "三个部分，各管一段",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "电子标签（Tag）：附着在被识别对象上，承载标识或必要数据",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "读写器（Reader）：与标签通信，发出讯号、接收回应",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "计算机系统（Computer System）：接收数据，完成传输和处理",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "三个部分缺一个，这条识别链路就不完整",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R009",
+     "from": "G013",
+     "relation": "三部分共同支撑识别链",
+     "to": "G014",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不新增第四个系统层级；天线只在标签职责与无线链路中表达",
+     "evidence_refs": [
+      "E003",
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解非接触边界",
+   "exit_condition": "观众能说出三部分各自负责什么，并知道缺一不可",
+   "timing": {
+    "char_equivalent": 124.0,
+    "min_seconds": 31,
+    "target_seconds": 32,
+    "max_seconds": 34,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "电子标签通常由芯片和天线组成。芯片负责存储数据、处理信号，天线负责接收和发射射频信号。打个比方，芯片像标签的记忆和大脑，天线像标签对外说话的耳朵和嘴。标签可以按供电和通信方式区分。主动标签通常自带电源，可以主动发送信号；常见的无源被动标签从读写器的射频信号获取能量，再作出响应。另外也有电池辅助的被动标签：电池用于芯片或传感器供电，通信仍由读写器的信号触发。\n\n",
+   "teaching_purpose": "解释标签由芯片和天线组成，并按供电与通信方式区分主动、无源被动和电池辅助被动标签。",
+   "single_message": "标签的职责由芯片和天线承担，供电方式决定它怎样被触发和响应。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S028",
+     "guidance_text": "标签：芯片、天线和三种供电方式",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004",
+      "E012"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "芯片：存储数据、处理信号",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "天线：接收和发射射频信号",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "打比方：芯片像记忆和大脑，天线像对外的耳朵和嘴",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "主动标签：通常自带电源，可以主动发送信号",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005",
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "无源被动标签：从读写器的射频信号获取能量，再作出响应",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "电池辅助被动标签：电池为芯片或传感器供电，通信仍由读写器信号触发",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "按供电和通信方式区分，是标签自身的分类差异",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R010",
+     "from": "G015",
+     "relation": "职责级结构类比",
+     "to": "G016",
+     "direction": "same-anchor"
+    },
+    {
+     "relation_id": "R011",
+     "from": "G015",
+     "relation": "结构之后区分供电方式",
+     "to": "G017",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R012",
+     "from": "G017",
+     "relation": "三种供电方式同属标签自身分类",
+     "to": "G018",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不画芯片剖面、天线线圈、电池结构或设备内部模块；不把主动标签关联到工业互联网主动标识载体",
+     "evidence_refs": [
+      "E004",
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经知道标签是三组件之一",
+   "exit_condition": "观众能说出芯片与天线职责，以及主动、无源被动、电池辅助被动的供电差异",
+   "timing": {
+    "char_equivalent": 164.0,
+    "min_seconds": 41,
+    "target_seconds": 43,
+    "max_seconds": 45,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "以读写器发起的读取为例：读写器发出射频信号，携带兼容标签的对象进入作用区域后，标签被触发，作出响应。整个交互过程都依靠无线电讯号，不需要像光学识读那样，把某个可见的图案对准镜头去扫。\n\n",
+   "teaching_purpose": "说明读取由读写器信号发起，标签进入作用区域后被触发响应，交互全程依靠无线电讯号。",
+   "single_message": "读取由读写器发起，标签在作用区域被触发后响应。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S036",
+     "guidance_text": "一次读取怎么开始",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "读取从读写器发起：读写器发出射频信号",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "携带兼容标签的对象进入作用区域",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "标签被触发，作出响应",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "不需要像光学识读那样把可见图案对准镜头去扫",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R013",
+     "from": "G019",
+     "relation": "信号发起后进入作用区域",
+     "to": "G020",
+     "direction": "trigger"
+    },
+    {
+     "relation_id": "R014",
+     "from": "G020",
+     "relation": "与光学识读动作对照",
+     "to": "G021",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不把“兼容标签”扩写为具体协议、频段或设备型号；不画波形或距离标注",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经知道标签的职责与供电差异",
+   "exit_condition": "观众能说出读取由读写器信号发起、标签进入区域后被触发响应",
+   "timing": {
+    "char_equivalent": 83.0,
+    "min_seconds": 21,
+    "target_seconds": 22,
+    "max_seconds": 23,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "标签的响应有两个方向。一个方向，把已经存储的数据发给读写器；另一个方向，如果标签支持写入，并且权限允许，就可以根据读写器发来的指令改写存储的数据。能否写入要看标签类型和访问条件。识别和读写，是同一条无线交互链上的不同方向，不是两件各管各的事。\n\n",
+   "teaching_purpose": "展开标签响应的两个方向：发送已存数据与按指令改写，并限定写入条件；说明二者不是孤立能力。",
+   "single_message": "识别与读写是同一条无线交互链上的两个方向，写入还有条件。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S041",
+     "guidance_text": "读写，是同一链上的两个方向",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "方向一：把已经存储的数据发给读写器",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "方向二：标签支持写入且权限允许时，按读写器指令改写存储的数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "能否写入要看标签类型和访问条件",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S045",
+        "guidance_text": "识别和读写，是同一条无线交互链上的不同方向",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R015",
+     "from": "G022",
+     "relation": "两个方向并列",
+     "to": "G023",
+     "direction": "two-direction"
+    },
+    {
+     "relation_id": "R016",
+     "from": "G023",
+     "relation": "两个方向回到同一条交互链",
+     "to": "G024",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不承诺所有标签都可写；不画写入字段、数据结构或权限模型",
+     "evidence_refs": [
+      "E006",
+      "E013"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解一次读取怎样被触发",
+   "exit_condition": "观众能区分读取与写入两个方向，并知道写入受标签类型和访问条件限制",
+   "timing": {
+    "char_equivalent": 110.0,
+    "min_seconds": 28,
+    "target_seconds": 29,
+    "max_seconds": 30,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "读写器拿到数据后，把它交给连接的计算机或控制系统，完成读取、传输和处理。到这里，对象、标签、读写器、计算机系统就连成了一次完整的识别。识别结果来自对象身上携带的标签，并不是系统凭空判断出来的。\n\n",
+   "teaching_purpose": "说明读写器取得的数据交给计算机或控制系统处理，并收束到“识别结果来自对象携带的标签”。",
+   "single_message": "数据交给计算机或控制系统，识别结果来自对象携带的标签。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S046",
+     "guidance_text": "数据交到哪里，结果从哪来",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S047",
+        "guidance_text": "读写器拿到数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S048",
+        "guidance_text": "交给连接的计算机或控制系统，完成读取、传输和处理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S049",
+        "guidance_text": "对象、标签、读写器和计算机系统连成一次完整识别",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S050",
+        "guidance_text": "识别结果来自对象携带的标签，不是系统凭空判断",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R017",
+     "from": "G025",
+     "relation": "数据处理完成后形成完整识别",
+     "to": "G026",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R018",
+     "from": "G026",
+     "relation": "完整识别与结果来源共同约束识别结论",
+     "to": "G025",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不画数据库、内部模块或协议时序",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经知道读写两个方向",
+   "exit_condition": "观众能说出数据交给计算机或控制系统，识别结果来自标签而不是系统臆测",
+   "timing": {
+    "char_equivalent": 85.0,
+    "min_seconds": 22,
+    "target_seconds": 22,
+    "max_seconds": 24,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A009"
+   ],
+   "nx": "把整条主线串起来：对象携带标签，读写器通过无线电讯号与标签建立交互，标签返回已存数据；支持写入时可按指令改写；读写器把数据交给计算机或控制系统，形成单个或多个标签的识别结果。\n\n",
+   "teaching_purpose": "把单次识别的各环节串成主线：对象携带标签、读写器建立交互、标签返回或改写、数据交给计算机系统、形成识别结果。",
+   "single_message": "对象—标签—读写器—计算机系统—识别结果，构成完整主线。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S051",
+     "guidance_text": "一条完整的识别链",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S052",
+        "guidance_text": "对象携带标签",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S053",
+        "guidance_text": "读写器通过无线电讯号与标签建立交互",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S054",
+        "guidance_text": "标签返回已存数据；支持写入时可按指令改写",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G029",
+      "items": [
+       {
+        "screen_item_id": "S055",
+        "guidance_text": "读写器把数据交给计算机或控制系统",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S056",
+        "guidance_text": "形成单个或多个标签的识别结果",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R019",
+     "from": "G027",
+     "relation": "对象标签进入无线交互",
+     "to": "G028",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R020",
+     "from": "G028",
+     "relation": "交互结果交给计算机系统",
+     "to": "G029",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不把主线画成协议握手、缓存或控制闭环；不重述前置分集的码制与光学原理",
+     "evidence_refs": [
+      "E006",
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经看完单次识别的各个环节",
+   "exit_condition": "观众能按顺序复述对象—标签—读写器—计算机系统—识别结果的主线",
+   "timing": {
+    "char_equivalent": 80.0,
+    "min_seconds": 20,
+    "target_seconds": 21,
+    "max_seconds": 22,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A011",
+   "callback_a_ids": [
+    "A010"
+   ],
+   "nx": "那同一识读区域里出现多个标签时，怎样在一次识读过程中获取一批标签的信息？在支持相应协议和多标签处理的系统里，读写器可以对区域内的标签逐个识别并汇总结果，不需要操作员一件一件对准。但多个标签处在同一范围内，并不保证所有 RFID 系统都能一次读全；实际效果还要看标签、设备、配置和现场条件。\n\n",
+   "teaching_purpose": "解释多标签读取：需要相应协议与多标签处理能力，可在一次识读中汇总结果，但不保证全部读出。",
+   "single_message": "多标签读取有条件：看协议、设备和多标签处理能力，也看现场条件。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S057",
+     "guidance_text": "一次识读，多个标签",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007",
+      "E013"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G030",
+      "items": [
+       {
+        "screen_item_id": "S058",
+        "guidance_text": "同一识读区域里出现多个标签，怎样在一次识读中拿到一批信息",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G031",
+      "items": [
+       {
+        "screen_item_id": "S059",
+        "guidance_text": "支持相应协议和多标签处理的系统，可以逐个识别并汇总结果",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       },
+       {
+        "screen_item_id": "S060",
+        "guidance_text": "不需要操作员一件一件对准",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G032",
+      "items": [
+       {
+        "screen_item_id": "S061",
+        "guidance_text": "同一范围内有多个标签，不保证所有 RFID 系统都能一次读全",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       },
+       {
+        "screen_item_id": "S062",
+        "guidance_text": "实际效果还要看标签、设备、配置和现场条件",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R021",
+     "from": "G030",
+     "relation": "问题导向条件化能力",
+     "to": "G031",
+     "direction": "conditional"
+    },
+    {
+     "relation_id": "R022",
+     "from": "G031",
+     "relation": "能力之后保留不保证边界",
+     "to": "G032",
+     "direction": "boundary"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "不出现读取数量、速率、成功率或防碰撞算法；不承诺全部标签都能读全",
+     "evidence_refs": [
+      "E013"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经理解单个标签的识别主线",
+   "exit_condition": "观众能说出多标签读取需要什么条件，并知道不保证一次读全",
+   "timing": {
+    "char_equivalent": 130.0,
+    "min_seconds": 33,
+    "target_seconds": 34,
+    "max_seconds": 36,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A012",
+   "callback_a_ids": [
+    "A011"
+   ],
+   "nx": "一些 RFID 系统还可以识别高速运动中的对象；部分标签支持写入和重复使用，存储容量也因标签而异。这些能力都要结合设备、对象和环境条件判断。\n\n",
+   "teaching_purpose": "补充高速运动对象、部分标签可写与可重复使用、容量因标签而异等能力方向，并统一收回到条件判断。",
+   "single_message": "这些是能力方向，不是脱离条件的性能保证。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S063",
+     "guidance_text": "还能做什么，要看条件",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007",
+      "E013"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G033",
+      "items": [
+       {
+        "screen_item_id": "S064",
+        "guidance_text": "一些 RFID 系统可以识别高速运动中的对象",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G034",
+      "items": [
+       {
+        "screen_item_id": "S065",
+        "guidance_text": "部分标签支持写入和重复使用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S066",
+        "guidance_text": "存储容量因标签而异",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G035",
+      "items": [
+       {
+        "screen_item_id": "S067",
+        "guidance_text": "这些能力都要结合设备、对象和环境条件判断",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R023",
+     "from": "G033",
+     "relation": "能力方向并列",
+     "to": "G034",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R024",
+     "from": "G034",
+     "relation": "能力方向回到条件判断",
+     "to": "G035",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C012",
+     "instruction": "不出现容量数值、速率或效率倍数；不把能力概括写成性能保证",
+     "evidence_refs": [
+      "E007",
+      "E013"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经理解多标签读取的条件",
+   "exit_condition": "观众能说出高速运动、可写、可重复使用和容量差异都是受条件约束的能力方向",
+   "timing": {
+    "char_equivalent": 61.0,
+    "min_seconds": 16,
+    "target_seconds": 16,
+    "max_seconds": 17,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A013",
+   "callback_a_ids": [
+    "A012"
+   ],
+   "nx": "能力说完了，约束也要摆出来一起看。RFID 的成本相对较高，大批量应用的时候，这笔成本尤其要算清楚；它的抗干扰能力一般，具体场景的环境条件会直接影响使用效果。保密性上，它一方面有较好的评价，另一方面，信息确实存在被非法读取、恶意篡改以及隐私安全的风险。所以它不能被当成天然安全、绝对保密，访问控制和防护措施到底管不管用，要在具体方案里验证。这些约束不是小事，它们决定了一个场合能不能把 RFID 用起来、用得好。\n\n",
+   "teaching_purpose": "把成本、抗干扰与保密性风险三类约束与能力并列呈现，避免把保密性的正面评价说成天然安全。",
+   "single_message": "能力越强，成本、干扰与安全约束越要一起看。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S068",
+     "guidance_text": "能力越强，约束越要一起看",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G036",
+      "items": [
+       {
+        "screen_item_id": "S069",
+        "guidance_text": "成本相对较高，大批量应用时尤其要算清楚",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S070",
+        "guidance_text": "抗干扰能力一般，环境条件会直接影响使用效果",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G037",
+      "items": [
+       {
+        "screen_item_id": "S071",
+        "guidance_text": "保密性方面有较好的评价",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S072",
+        "guidance_text": "信息确实存在被非法读取、恶意篡改以及隐私安全的风险",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G038",
+      "items": [
+       {
+        "screen_item_id": "S073",
+        "guidance_text": "不能把 RFID 当成天然安全、绝对保密",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S074",
+        "guidance_text": "访问控制和防护措施管不管用，要在具体方案里验证",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R025",
+     "from": "G036",
+     "relation": "成本干扰约束与保密风险并列",
+     "to": "G037",
+     "direction": "contrast"
+    },
+    {
+     "relation_id": "R026",
+     "from": "G037",
+     "relation": "风险之后回到方案验证",
+     "to": "G038",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C013",
+     "instruction": "不画安全等级仪表盘或风险百分比；不宣称 RFID 天然安全或绝对保密",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经了解 RFID 的能力方向",
+   "exit_condition": "观众能说出成本、干扰与保密风险三类约束，并知道防护要在具体方案中验证",
+   "timing": {
+    "char_equivalent": 180.0,
+    "min_seconds": 45,
+    "target_seconds": 47,
+    "max_seconds": 50,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A014",
+   "callback_a_ids": [
+    "A010"
+   ],
+   "nx": "RFID 在制造业的典型应用，包括智能仓库、物流运输、防伪识别和工业品溯源。这些场景说明机制落在了哪里，但一个场景到底该不该采用 RFID，还是要回到真实场景中的成本、干扰、环境和安全约束来判断。\n\n",
+   "teaching_purpose": "列举教材中的四类制造业应用模式，并强调场景只是机制落点，是否采用仍要回到约束判断。",
+   "single_message": "场景说明机制落在哪里，但不能代替采用判断。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S075",
+     "guidance_text": "制造业里的典型落点",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G039",
+      "items": [
+       {
+        "screen_item_id": "S076",
+        "guidance_text": "智能仓库",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S077",
+        "guidance_text": "物流运输",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S078",
+        "guidance_text": "防伪识别",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S079",
+        "guidance_text": "工业品溯源",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G040",
+      "items": [
+       {
+        "screen_item_id": "S080",
+        "guidance_text": "这些场景说明机制落在了哪里",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S081",
+        "guidance_text": "是否采用仍要回到成本、干扰、环境和安全约束判断",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008",
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R027",
+     "from": "G039",
+     "relation": "场景列举与采用判断对照",
+     "to": "G040",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C014",
+     "instruction": "场景只作教材列举，不出现普及率、市场规模、行业排名或效果数据；不给出选型结论",
+     "evidence_refs": [
+      "E009",
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经理解 RFID 的能力与约束",
+   "exit_condition": "观众能列举四类制造业场景，并知道场景不等于选型结论",
+   "timing": {
+    "char_equivalent": 83.0,
+    "min_seconds": 21,
+    "target_seconds": 22,
+    "max_seconds": 23,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A015",
+   "callback_a_ids": [
+    "A001",
+    "A005"
+   ],
+   "nx": "回到开头那一批货。要让它们经过区域就被认出来，一次能认下一批，依靠的是三个部分各管一段：电子标签附着在对象上，携带标识或必要数据；读写器通过无线电讯号与标签交互，按方案发起读取或接收标签信号；计算机或控制系统接住数据，完成读取、传输和处理。三个部分合起来，才是一条完整的识别链路。\n\n",
+   "teaching_purpose": "回到开头的货物，把非接触识别与批量识别的能力对应到三部分的各自职责，强调合起来才完整。",
+   "single_message": "回到那批货：三个部分各管一段，合起来才是完整识别链路。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S082",
+     "guidance_text": "回到那批货：三个部分各管一段",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G041",
+      "items": [
+       {
+        "screen_item_id": "S083",
+        "guidance_text": "电子标签附着在对象上，携带标识或必要数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G042",
+      "items": [
+       {
+        "screen_item_id": "S084",
+        "guidance_text": "读写器通过无线电讯号与标签交互，按方案发起读取或接收标签信号",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G043",
+      "items": [
+       {
+        "screen_item_id": "S085",
+        "guidance_text": "计算机或控制系统接住数据，完成读取、传输和处理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G044",
+      "items": [
+       {
+        "screen_item_id": "S086",
+        "guidance_text": "三个部分合起来，才是一条完整的识别链路",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R028",
+     "from": "G041",
+     "relation": "对象侧职责进入无线交互",
+     "to": "G042",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R029",
+     "from": "G042",
+     "relation": "交互数据交给计算机系统",
+     "to": "G043",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R030",
+     "from": "G043",
+     "relation": "三部分共同闭合识别链路",
+     "to": "G044",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C015",
+     "instruction": "不把“各管一段”画成协议时序或数据流细节",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经看过制造业场景落点",
+   "exit_condition": "观众能把三部分职责对应回开头的货物识别问题",
+   "timing": {
+    "char_equivalent": 127.0,
+    "min_seconds": 32,
+    "target_seconds": 33,
+    "max_seconds": 35,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A016",
+   "callback_a_ids": [
+    "A010"
+   ],
+   "nx": "共同规律也很清楚：识别不靠机械接触，不靠光学接触，靠的是无线电讯号；支持多标签处理的系统可以在同一区域内连续识别多个标签。核心判断是，RFID 能实现非接触识别；能否批量读取以及实际效果，还取决于协议、设备、标签、环境和安全条件。",
+   "teaching_purpose": "收束全篇：给出共同规律与核心判断，明确非接触识别可实现而批量读取与效果取决于条件。",
+   "single_message": "非接触识别成立；批量读取与效果要看协议、设备、标签、环境和安全条件。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S087",
+     "guidance_text": "共同规律与核心判断",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002",
+      "E013"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G045",
+      "items": [
+       {
+        "screen_item_id": "S088",
+        "guidance_text": "识别不靠机械接触，不靠光学接触，靠的是无线电讯号",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S089",
+        "guidance_text": "支持多标签处理的系统可以在同一区域内连续识别多个标签",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G046",
+      "items": [
+       {
+        "screen_item_id": "S090",
+        "guidance_text": "RFID 能实现非接触识别",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S091",
+        "guidance_text": "能否批量读取以及实际效果，取决于协议、设备、标签、环境和安全条件",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R031",
+     "from": "G045",
+     "relation": "规律收束到核心判断",
+     "to": "G046",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C016",
+     "instruction": "不预告后续分集内容；不把核心判断收束为无条件的性能承诺",
+     "evidence_refs": [
+      "E001",
+      "E013"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经理解完整识别链、多标签条件与约束",
+   "exit_condition": "观众能说出共同规律与核心判断，并知道批量效果取决于条件",
+   "timing": {
+    "char_equivalent": 100.0,
+    "min_seconds": 25,
+    "target_seconds": 26,
+    "max_seconds": 28,
+    "short_page_reason": null
+   }
+  }
+ ]
+}
