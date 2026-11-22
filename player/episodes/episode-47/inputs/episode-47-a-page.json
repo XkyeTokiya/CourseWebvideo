@@ -1,0 +1,1076 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-47",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 47 集范围、前置关系与五项功能的全局去重边界",
+   "source_locator": "确认版课程架构，Episode Architecture 第 47 集及第 28–32、48–51 集责任",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围、叙事顺序和下游边界"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "企业节点向二级节点提交注册申请；注册把产品、设备等对象信息与标识编码关联并存储，支持注册、变更、删除、查询和运营统计管理",
+   "source_locator": "主教材 5.2.1“1. 标识注册”前两段",
+   "verification_status": "not applicable",
+   "allowed_use": "定义注册功能职责"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "企业节点应支持 VAA、GS1、Handle、OID、Ecode 中至少一种；采用私有标识时应支持私有标识与公共标识的翻译和映射",
+   "source_locator": "主教材 5.2.1“1. 标识注册”末段",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "只说明兼容边界"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "标识解析通过唯一标识码定位关联数据存储位置，映射物品 ID 到实际数据存储节点；可与企业内部业务云平台对接；应支持接入认证",
+   "source_locator": "主教材 5.2.1“2. 标识解析”",
+   "verification_status": "not applicable",
+   "allowed_use": "解释解析作用和安全边界"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "业务管理按企业需要模块化扩展，也可在原有企业信息系统中通过中间件集成并持续迭代",
+   "source_locator": "主教材 5.2.1“3. 业务管理”",
+   "verification_status": "not applicable",
+   "allowed_use": "说明业务功能可配置边界"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "数据管理覆盖标识注册信息、解析日志、解析统计量；可支持元数据管理、主数据上报及与企业大数据存储、治理、分析结合",
+   "source_locator": "主教材 5.2.1“4. 数据管理”",
+   "verification_status": "not applicable",
+   "allowed_use": "说明数据管理职责；同步细节归后续课程"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "运行监测实时观察企业节点状态；接受国家顶级节点和二级节点监测，及时上报解析运行日志、运行状态、安全状态和异常情况；依据态势分析维护优化",
+   "source_locator": "主教材 5.2.1“5. 运行监测”前两段",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "监测、报告与维护关系"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "教材 5.2.1 末段所引运行监测相关技术要求标准名称及编号",
+   "source_locator": "主教材 5.2.1“5. 运行监测”末段",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "仅登记动态核验风险，不进入口播"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "“注册建立身份—解析定位数据—业务承接场景—数据形成治理底座—监测反馈运行状态”的五功能关系",
+   "source_locator": "基于 E002–E007 的教学组织",
+   "verification_status": "not applicable",
+   "allowed_use": "构成关系图与讲解结构"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "匿名企业节点面对一个待注册工业对象的教学情境",
+   "source_locator": "本任务包教学设计",
+   "verification_status": "not applicable",
+   "allowed_use": "把抽象功能落到企业现场问题"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "一家企业要把生产设备和产品接进标识解析体系，最先想到的往往是：去申请一批标识编码。好像编码到手，产品就算进了体系。可真到用的时候，问题一个一个冒出来。设备的相关数据存在哪儿，怎么查？业务系统用不用得上这个编码？注册、解析一路产生的记录，谁来管？节点今天是不是正常，出了问题有谁知道？一个编码回答不了这些问题。",
+   "teaching_purpose": "用企业接入标识解析体系的情境指出“申请编码”不等于可工作的节点，提出五个功能问题。",
+   "single_message": "编码只是起点，企业节点要回答五个功能问题。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "有编码，不等于有可工作的节点",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009",
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "企业准备把生产设备和产品接入标识解析体系",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "最容易先想到的是申请一批标识编码",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002",
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "真问题是对象登记、数据查找、业务使用、记录治理与运行状态",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G002",
+     "relation": "从编码入口转向功能问题",
+     "to": "G003",
+     "direction": "pivot"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "场景图不出现可读编码、品牌或软件界面",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，尚未接触五项功能",
+   "exit_condition": "观众能说出企业接入不只是申请编码，还要回答五个问题",
+   "timing": {
+    "char_equivalent": 138.0,
+    "min_seconds": 35,
+    "target_seconds": 36,
+    "max_seconds": 38,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "所以企业节点不只是指一个注册入口，它要把对象身份、查询路径、业务应用、数据治理、运行状态这几件事，组织成一整套能持续工作的功能体系。这几件事怎么分工、怎么衔接，我们一件一件来看。\n\n先说企业节点的位置。它是企业这一侧的接入边界：企业内部的标识数据和业务应用，都要通过它接进整个标识解析体系。企业要建节点，需要向所属的二级节点提交注册申请。这里要先划一道线：企业节点不是万能平台，不是拿来替代企业里已有的 ERP、MES 或者其他业务系统的。它的职责，就是把标识这件事做扎实。\n\n",
+   "teaching_purpose": "交代企业节点的最小定位：企业内部接入边界、向所属二级节点提交注册申请，并划清不替代业务系统的边界。",
+   "single_message": "企业节点负责标识接入，不替代企业已有业务系统。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S005",
+     "guidance_text": "企业节点：企业内部的功能边界",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "企业节点是企业内部标识数据与业务应用的接入边界",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "企业建节点需向所属二级节点提交注册申请",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "不是替代 ERP、MES 的万能平台，职责是把标识做扎实",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002",
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R002",
+     "from": "G004",
+     "relation": "接入边界与业务系统边界对照",
+     "to": "G006",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "不展开完整注册流程、递归解析或端到端业务闭环",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看到“有编码不等于可工作节点”",
+   "exit_condition": "观众能说出企业节点的功能边界与注册申请关系",
+   "timing": {
+    "char_equivalent": 208.0,
+    "min_seconds": 52,
+    "target_seconds": 54,
+    "max_seconds": 57,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "真正的起点是标识注册。设备、产品要进来，第一步是登记身份：把对象的信息和分配给它的标识编码关联起来，存进节点。不过这可不是填一次编码就结束。对象的情况会变，位置挪了、型号改了，还要查、要改、要做统计。所以注册带着一批管理动作，变更、删除、查询、运营统计，从建立管到退役，合起来叫注册生命周期管理。兼容性上还有一条边界：企业节点应当支持标识体系中至少一种公共标识；如果企业自己用了私有标识，也得支持私有标识和公共标识之间的翻译和映射，两边的数据才能相互认得。\n\n",
+   "teaching_purpose": "解释标识注册的对象关联、注册生命周期动作，以及至少一种公共标识与私有/公共标识翻译映射的兼容边界。",
+   "single_message": "注册建立对象与编码的关联，并贯穿整个生命周期。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S009",
+     "guidance_text": "标识注册：建立对象与编码的关联",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "把设备、产品等对象信息与标识编码关联并存储",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "注册、变更、删除、查询、运营统计构成注册生命周期管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "至少支持一种公共标识；私有标识与公共标识可翻译映射",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G007",
+     "relation": "身份关联后进入生命周期管理",
+     "to": "G008",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R004",
+     "from": "G008",
+     "relation": "生命周期之外的兼容边界",
+     "to": "G009",
+     "direction": "context"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不展示具体编码结构、申请界面或五类体系内部结构",
+     "evidence_refs": [
+      "E002",
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道企业节点的功能边界",
+   "exit_condition": "观众能说出注册关联什么、生命周期包含哪些动作、兼容边界是什么",
+   "timing": {
+    "char_equivalent": 203.0,
+    "min_seconds": 51,
+    "target_seconds": 53,
+    "max_seconds": 56,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "登记好身份，下一个问题：编码关联的数据在哪儿？这就是标识解析。解析靠唯一标识码，把物品的标识映射到存放数据的实际位置，也就是具体的数据存储节点。这里要特别讲清楚：解析的重点是找到关联数据的位置，不是把所有数据搬进企业节点。数据还留在原来的系统里，解析负责告诉你要上哪儿找。同时，企业节点可以和企业内部业务云平台对接，让统一标识成为业务互联互通的入口；出于安全可信的要求，解析环节要支持接入认证，也就是进来查数据之前，先验证一下身份。\n\n",
+   "teaching_purpose": "解释标识解析把编码映射到数据存储位置、只定位不搬移数据，以及业务云平台对接与接入认证边界。",
+   "single_message": "解析负责找到数据位置，不负责把数据搬进来。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S013",
+     "guidance_text": "标识解析：把编码指向数据位置",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "唯一标识码把物品 ID 映射到实际数据存储节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "解析只定位关联数据位置，不把数据搬进企业节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "可对接企业内部业务云平台；解析应支持接入认证",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R005",
+     "from": "G010",
+     "relation": "定位而非搬移的边界对照",
+     "to": "G011",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不补 IP、URL、字段、协议或认证实现",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解注册建立的身份关联",
+   "exit_condition": "观众能说出解析的映射作用、数据位置边界与认证要求",
+   "timing": {
+    "char_equivalent": 197.0,
+    "min_seconds": 50,
+    "target_seconds": 51,
+    "max_seconds": 54,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "编码能查到数据了，业务到底怎么用它？这就要靠业务管理。每家企业的流程不一样，业务管理按企业自己的需要，模块化地扩展业务功能；不想动原有系统也行，通过中间件把标识能力接到现有的信息系统里，再一步步迭代。中间件可以理解成搭在原有系统和标识能力之间的一层衔接程序。业务管理的价值，是给出标识能力和业务场景之间的连接边界。注意，它不规定所有企业用同一套模块，企业接哪些场景，自己决定。\n\n",
+   "teaching_purpose": "解释业务管理的模块化扩展与中间件集成两条路径，以及标识能力与业务场景的连接边界。",
+   "single_message": "业务管理按企业需要承接场景，不规定统一模块。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S017",
+     "guidance_text": "业务管理：两条承接路径",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "按企业需要模块化扩展业务功能",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "通过中间件接入原有信息系统并持续迭代",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "提供标识能力与业务场景的连接边界，不规定统一模块",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G013",
+     "relation": "两条承接路径对照",
+     "to": "G014",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不列产品模块、界面或性能指标",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道解析能定位关联数据",
+   "exit_condition": "观众能说出业务管理的两条路径与连接边界",
+   "timing": {
+    "char_equivalent": 172.0,
+    "min_seconds": 43,
+    "target_seconds": 45,
+    "max_seconds": 47,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "注册和解析一路跑下来，会不断产生记录：注册信息、解析日志、解析统计量。记录堆着没人管，就会越来越乱。数据管理就是管这些记录的：它覆盖标识注册信息、解析日志和解析统计量，还能支持元数据管理和主数据上报，也可以和企业的大数据存储、治理、分析结合使用。元数据，就是描述数据本身的数据；主数据，就是企业里最基础、各处都会用到的那一类数据。数据管理回答的是：记录可不可用、可不可查、可不可治理。\n\n",
+   "teaching_purpose": "解释数据管理覆盖的记录类型、元数据与主数据能力，以及记录可用、可查、可治理的判断。",
+   "single_message": "数据管理治理注册与解析产生的记录。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S021",
+     "guidance_text": "数据管理：让记录可查可治理",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "注册与解析持续产生注册信息、解析日志、解析统计量",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "支持元数据管理、主数据上报，并可与企业大数据存储、治理、分析结合",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "数据管理回答记录是否可用、可查、可治理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G016",
+     "relation": "记录对象到治理能力的递进",
+     "to": "G017",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不展开第 48 集数据同步类型、周期、协议或字段",
+     "evidence_refs": [
+      "E006",
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解业务管理的承接方式",
+   "exit_condition": "观众能说出数据管理的记录范围与治理目标",
+   "timing": {
+    "char_equivalent": 169.0,
+    "min_seconds": 43,
+    "target_seconds": 44,
+    "max_seconds": 47,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "再看一层，节点本身得是健康的。运行监测实时观察企业节点的运行状态，回答的正是这个问题：节点现在运转正常不正常。企业节点要接受国家顶级节点和二级节点的监测，并及时上报解析运行日志、运行状态、安全状态和异常情况。企业再根据运行态势的分析结果及时维护和优化，整套标识解析体系要高效、稳定、安全地运行，靠的就是这一层持续的观察和反馈。\n\n",
+   "teaching_purpose": "解释运行监测的实时状态观察、接受上级节点监测与信息上报、以及维护优化关系。",
+   "single_message": "运行监测持续观察状态并上报，形成维护反馈。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S025",
+     "guidance_text": "运行监测：观察状态并反馈",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "实时观察企业节点运行状态",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "接受国家顶级节点和二级节点监测，及时上报日志、状态与异常",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "依据运行态势分析维护优化，保障体系稳定运行",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G019",
+     "relation": "状态观察进入监测与上报",
+     "to": "G020",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R009",
+     "from": "G020",
+     "relation": "上报后进入维护优化",
+     "to": "G021",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不写监测阈值、SLA、标准编号或当前标准状态",
+     "evidence_refs": [
+      "E007",
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解数据管理治理的记录",
+   "exit_condition": "观众能说出监测、上报与维护优化的关系",
+   "timing": {
+    "char_equivalent": 149.0,
+    "min_seconds": 38,
+    "target_seconds": 39,
+    "max_seconds": 41,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "把这五件事摆在一起看，它们其实是同一条链。注册先建立身份关联，解析把编码引向数据的位置，业务管理把标识送进真实场景，数据管理治理一路产生的记录，运行监测站在外面看整条链转得正不正常。它们是相互衔接的职责，不是五个孤立的菜单。",
+   "teaching_purpose": "把五项功能放回同一个对象链，说明它们相互衔接而不是五个孤立菜单。",
+   "single_message": "五项功能围绕同一对象连成职责链。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S029",
+     "guidance_text": "五项功能是一条链",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "五项功能围绕同一个对象连成一条链",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "注册→解析→业务管理→数据管理→运行监测的职责衔接",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "相互衔接的职责，不是五个孤立的菜单",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R010",
+     "from": "G023",
+     "relation": "链式衔接到非孤立菜单",
+     "to": "G024",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不把关系画成固定接口时序或自动动作",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看完五项功能各自的职责",
+   "exit_condition": "观众能说出五项功能如何串成一条链",
+   "timing": {
+    "char_equivalent": 103.0,
+    "min_seconds": 26,
+    "target_seconds": 27,
+    "max_seconds": 29,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "只做注册远远不够：没有解析，编码找不到数据，成不了一个入口；没有业务管理，标识进不了真实流程；没有数据管理，记录既难维护也难分析；没有运行监测，出了问题没人及时知道。反过来，判断一个企业节点的功能全不全，可以沿着五个问题自查：对象的身份能不能注册维护，标识能不能解析到关联数据，业务有没有承接方式，记录是不是一直在治理，运行状态有没有被持续监测反馈。\n\n",
+   "teaching_purpose": "用缺项解释说明五项功能不可省略，并给出五个功能完整性的检查问题与框架边界。",
+   "single_message": "五项缺一不可，可用五个问题自查。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S033",
+     "guidance_text": "少一环，链条就断",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "只做注册不够：缺解析、业务、数据或监测都会出现断点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "可用五个问题检查功能是否完整",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "该框架来自职责关系，不等同产品认证清单",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001",
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G025",
+     "relation": "缺项解释转向自查框架",
+     "to": "G026",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不声称产品认证或统一功能清单",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解五项功能的职责链",
+   "exit_condition": "观众能用五个问题检查功能完整性",
+   "timing": {
+    "char_equivalent": 157.0,
+    "min_seconds": 40,
+    "target_seconds": 41,
+    "max_seconds": 43,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "还要把边界划清楚。这五项功能构成企业节点的功能框架，但它不等于某个统一的产品界面，不等于某一版产品，也不等于一张固定的企业功能清单。这一集回答的，是企业节点要承担哪些职责。\n\n",
+   "teaching_purpose": "划清功能框架与产品形态的边界，说明本集回答的是职责问题。",
+   "single_message": "功能框架是职责边界，不是产品界面或固定清单。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S037",
+     "guidance_text": "功能框架不等于产品清单",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "五项功能构成企业节点的功能框架",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001",
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G029",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "不等于统一产品界面、某一版产品或固定企业功能清单",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G030",
+      "items": [
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "本集回答企业节点要承担哪些职责",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G028",
+     "relation": "功能框架与产品形态对照",
+     "to": "G029",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不进入 IDHub、建设模式、安装部署或前缀申请",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解五项功能的自查框架",
+   "exit_condition": "观众能区分功能框架与产品形态",
+   "timing": {
+    "char_equivalent": 79.0,
+    "min_seconds": 20,
+    "target_seconds": 21,
+    "max_seconds": 22,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A011",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "本期总结。回到开头的那台设备。它真正进入标识解析体系，靠的不是一个编码，而是一条链：注册给它建立身份关联，解析把编码引向数据的位置，业务管理让标识落进真实的业务环节，数据管理把一路产生的记录管起来，运行监测盯住整条链是不是正常。五件事分工不同，却咬合成一个整体。共同规律是：它们都围绕同一个对象，从身份建立一路支撑到运行反馈，少一环，链条就断。核心判断是：这五项功能是企业节点的功能框架，也是它的职责边界；而这个框架不等于某一个产品界面，也不等于一张固定的功能清单。",
+   "teaching_purpose": "回扣开场设备，以功能链与职责边界收束全片。",
+   "single_message": "五项功能合成一条可管理的功能链，也是职责边界。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S041",
+     "guidance_text": "功能链与职责边界",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G031",
+      "items": [
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "回到开头的设备：进入体系靠的是一条链，不是一个编码",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009",
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G032",
+      "items": [
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "五项分工不同却咬合为整体，从身份建立支撑到运行反馈",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G033",
+      "items": [
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "功能框架也是职责边界，不等于产品界面或固定清单",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001",
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R013",
+     "from": "G031",
+     "relation": "回扣后收束为整体",
+     "to": "G032",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R014",
+     "from": "G032",
+     "relation": "整体判断落到边界",
+     "to": "G033",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "不预告下一集、不展开数据同步内容",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看完边界说明",
+   "exit_condition": "观众能复述五项功能是一条链，以及框架即职责边界",
+   "timing": {
+    "char_equivalent": 211.0,
+    "min_seconds": 53,
+    "target_seconds": 55,
+    "max_seconds": 58,
+    "short_page_reason": null
+   }
+  }
+ ]
+}
