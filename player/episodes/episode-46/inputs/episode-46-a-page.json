@@ -1,0 +1,1173 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-46",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 46 集标题、前置关系、相邻分集边界与时长位置；本集为任务 5.1 的收束环",
+   "source_locator": "已确认课程架构，Episode Architecture 第 43–47 集",
+   "verification_status": "not applicable",
+   "allowed_use": "控制单集范围、去重与收束"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "二级节点应加强自身系统安全能力和管理制度，提升综合安全防护能力",
+   "source_locator": "主教材，5.1.2“4. 安全保障”导语",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "建立六层主线；不改写为当前合规结论"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "基础设施安全：主机、存储、云、身份认证与访问控制、防病毒；支持企业节点和标识查询客户端认证、访问控制和权限管理",
+   "source_locator": "主教材，5.1.2“4.(1) 基础设施安全防护”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释第一层对象与责任；不补设备型号、身份协议或阈值"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "网络安全：网络与边界划分隔离、访问控制、机密性/完整性、异常监测、入侵防范、防DDoS；按业务划分安全域并采用隔离、防火墙、入侵检测和入侵防御",
+   "source_locator": "主教材，5.1.2“4.(2) 网络安全防护”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释第二层边界和防护面；不描述攻击步骤、漏洞或设备品牌"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "应用安全：访问控制、攻击/入侵防范、行为管控、协议安全、API安全；用户和终端身份认证鉴别，保证身份标识唯一",
+   "source_locator": "主教材，5.1.2“4.(3) 应用安全防护”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释第三层应用与身份；不新增接口字段、算法或漏洞"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "数据安全：分级分类、脱敏加密、完整性、备份恢复、安全销毁；具备备份能力并按要求托管至国家顶级节点",
+   "source_locator": "主教材，5.1.2“4.(4) 数据安全防护”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释第四层数据全生命周期；不补密钥、RTO/RPO、保留期限或当前托管状态"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "安全管理：制度、机构和人员、安全建设与管理、安全运维；网络安全部门/专职人员/制度、应急处置预案；异常或突发网络安全事件及时上报主管部门",
+   "source_locator": "主教材，5.1.2“4.(5) 安全管理要求”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释第五层治理与响应；不声称主管部门、报告时限或现行制度"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "自建机房的物理和环境安全：物理访问、防盗窃/破坏、防雷、防火、防水防潮、电磁防护；授权、出入登记、视频监控、线路和周边巡查、人员登记及巡查记录",
+   "source_locator": "主教材，5.1.2“4.(6) 物理和环境安全”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释第六层自建机房的措施与现场管理；不引入机房等级或委托方责任分界"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "六层从设备、边界、应用、数据、治理到机房环境的覆盖关系与层间支撑关系",
+   "source_locator": "教学性综合，E003–E008",
+   "verification_status": "not applicable",
+   "allowed_use": "组织讲稿和确定性分层图；不是教材新增控制项"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "通用二级节点安全评审会议情境",
+   "source_locator": "本任务包教学设计 N001、N014",
+   "verification_status": "not applicable",
+   "allowed_use": "引出六层问题与收束；明示为教学情境，不代表真实项目"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "委托部署时也要落实相应物理与环境防护，并由相关各方明确实际执行与责任边界；2021 年导则只明确自建机房的具体要求",
+   "source_locator": "docs/episode-33-51-content-accuracy-review.md 第 46 期（2026-11-17）；工业互联网标识解析二级节点建设导则（2021年）第 12 节；工信部工业互联网安全分类分级管理办法",
+   "verification_status": "verified",
+   "allowed_use": "支持物理与环境层的适用条件与执行/责任边界表述；不推导具体法律义务或责任分配"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "设想一次安全评审。评审的人到你这里，看过部署的防火墙，也看过服务器上的防病毒软件，然后问了一句：单靠这些，你的二级节点算安全了吗？这个问题不太好回答。因为节点的安全保障，从来不是某一件设备，也不是一张检查表。它同时表现在六个层面：基础设施、网络、应用、数据、安全管理、物理与环境。一次评审要下结论，不能只凭一两件防护产品，得看这六个层面是不是都得到了覆盖。\n\n",
+   "teaching_purpose": "用一次安全评审情境建立主问题：安全保障不是单个设备或一张检查表，而是六个层面。",
+   "single_message": "安全评审要看六个层面是否都被覆盖，不能只凭一两件防护产品。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "六个安全层面：安全保障不是一件设备",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "安全评审情境：已经部署防火墙与防病毒软件",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "六个层面：基础设施、网络、应用、数据、安全管理、物理与环境",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "评审结论取决于六个层面是否都得到覆盖",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "由评审问题引出六层覆盖",
+     "to": "G002",
+     "direction": "pivot"
+    },
+    {
+     "relation_id": "R002",
+     "from": "G002",
+     "relation": "覆盖关系决定结论条件",
+     "to": "G003",
+     "direction": "determine"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "不把评审情境写成真实项目、真实企业或真实事件",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    {
+     "constraint_id": "C002",
+     "instruction": "不作当前合规结论或安全等级判断",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，尚未接触六层安全面",
+   "exit_condition": "观众知道本集按基础设施、网络、应用、数据、安全管理、物理与环境六层展开",
+   "timing": {
+    "char_equivalent": 157.0,
+    "min_seconds": 40,
+    "target_seconds": 41,
+    "max_seconds": 43,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "先说基础设施层。承载节点服务的是主机、存储和云。这一层需要的控制，是身份认证与访问控制，还有防病毒。它的责任有两部分：一是保护承载着节点服务的基础设施本身；二是为企业节点、为来查询标识的客户端，提供身份认证、访问控制和权限管理。两件事落到一句话：谁能够接进来、接进来以后能访问什么，都要在基础设施的边界上定清楚。\n\n",
+   "teaching_purpose": "解释基础设施层的承载对象、控制面与双重责任。",
+   "single_message": "基础设施既要保护自身承载，也要管好企业节点与查询客户端的身份和权限。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S005",
+     "guidance_text": "基础设施：承载与身份权限",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "承载对象：主机、存储、云",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "控制：身份认证与访问控制、防病毒",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "责任：保护承载节点服务的基础设施",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "责任：为企业节点与标识查询客户端提供身份认证、访问控制与权限管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "基础设施边界：谁能接入、能访问什么",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G004",
+     "relation": "承载底座上的控制面",
+     "to": "G005",
+     "direction": "context"
+    },
+    {
+     "relation_id": "R004",
+     "from": "G005",
+     "relation": "控制能力落到外部主体",
+     "to": "G007",
+     "direction": "extend"
+    },
+    {
+     "relation_id": "R005",
+     "from": "G006",
+     "relation": "责任收束到边界",
+     "to": "G008",
+     "direction": "determine"
+    },
+    {
+     "relation_id": "R006",
+     "from": "G007",
+     "relation": "责任收束到边界",
+     "to": "G008",
+     "direction": "determine"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不补设备型号、账号体系、权限字段或认证协议",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经知道六层覆盖关系",
+   "exit_condition": "观众能说出基础设施的承载对象、控制面以及“谁能接入、能访问什么”的责任边界",
+   "timing": {
+    "char_equivalent": 140.0,
+    "min_seconds": 35,
+    "target_seconds": 37,
+    "max_seconds": 39,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [],
+   "nx": "网络层要按业务特点划分安全域。所谓安全域，就是把不同业务分隔开来、各自独立的安全区域。区域之间、网络与边界之间，要建立必要的隔离和访问控制；同时还要关注通信的机密性和完整性，要做异常监测，要有入侵防范，要能应对分布式拒绝服务攻击。简单说，就是防止大量请求一下子涌过来，把服务压垮。这一层常见的手段，是防火墙、入侵检测、入侵防御这类设备。防火墙负责把不该进网络的挡在外面；入侵检测负责盯住可疑行为；入侵防御更进一步，发现的同时直接拦下。\n\n",
+   "teaching_purpose": "解释网络层的安全域划分、边界隔离与监测防护面。",
+   "single_message": "网络层按业务划分安全域，在边界上做隔离、监测与入侵防范。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S011",
+     "guidance_text": "网络：安全域、边界与检测防护",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "按业务特点划分安全域",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "域间与网络边界：必要的隔离与访问控制",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "通信机密性与完整性、异常监测、入侵防范、防 DDoS",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "代表手段：防火墙、入侵检测、入侵防御",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G009",
+     "relation": "安全域划分带来边界控制",
+     "to": "G010",
+     "direction": "sequence"
+    },
+    {
+     "relation_id": "R008",
+     "from": "G010",
+     "relation": "边界之上叠加监测与防护",
+     "to": "G011",
+     "direction": "accumulate"
+    },
+    {
+     "relation_id": "R009",
+     "from": "G011",
+     "relation": "防护面由代表手段承载",
+     "to": "G012",
+     "direction": "support"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不画攻击路径、不写漏洞编号或流量阈值",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    {
+     "constraint_id": "C005",
+     "instruction": "不评估防护效果、不给出通过结论",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经了解基础设施层",
+   "exit_condition": "观众能说出安全域、边界隔离以及监测与防护手段各自回答什么",
+   "timing": {
+    "char_equivalent": 195.0,
+    "min_seconds": 49,
+    "target_seconds": 51,
+    "max_seconds": 54,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [],
+   "nx": "跨过网络的边界，真正给使用者提供服务的，是应用这一层。标识解析系统以及相关的应用，要覆盖访问控制、攻击防范、入侵防范、行为管控、协议安全和接口安全。对用户和终端，要做身份认证与鉴别，确保每一个身份标识都是唯一的。网络边界再严密，到了具体应用，照样要确认来访问的人是谁，约束他能做什么，还要保护应用对外的接口。接口，就是应用对外提供服务、和别的系统打交道的通道。\n\n",
+   "teaching_purpose": "解释应用层的控制项、用户与终端认证以及接口保护。",
+   "single_message": "网络边界之后，应用仍要认证主体、约束行为并保护接口。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S016",
+     "guidance_text": "应用：主体、行为与接口",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "控制项：访问控制、攻击防范、入侵防范、行为管控、协议安全、API 安全",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "用户与终端：身份认证与鉴别，身份标识唯一",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "网络边界之后：验证主体、约束行为、保护接口",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R010",
+     "from": "G013",
+     "relation": "控制项落到主体身份",
+     "to": "G014",
+     "direction": "apply"
+    },
+    {
+     "relation_id": "R011",
+     "from": "G014",
+     "relation": "由主体认证推进到行为与接口约束",
+     "to": "G015",
+     "direction": "sequence"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不新增 API 字段、协议版本、算法或软件界面",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经了解网络层的边界防护",
+   "exit_condition": "观众能说出应用层控制项、身份唯一性要求与接口保护",
+   "timing": {
+    "char_equivalent": 160.0,
+    "min_seconds": 40,
+    "target_seconds": 42,
+    "max_seconds": 44,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [],
+   "nx": "再往下是数据层。数据要按照生命周期来管：先分级分类，敏感程度不同的数据分开对待；再按级别做脱敏和加密；脱敏，就是把敏感信息处理成看不出原样的形式；要保证数据的完整性；要有备份和恢复的能力；到了该销毁的时候，要安全销毁。另外，节点应当具备数据备份能力，并按要求把数据托管到国家顶级节点，这样即使本地出问题，节点的运行也还有依托。\n\n",
+   "teaching_purpose": "按生命周期解释数据层的分级分类、脱敏加密、备份恢复与安全销毁，以及托管关系。",
+   "single_message": "数据从分级分类到安全销毁都有对应控制，并按要求备份与托管。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S020",
+     "guidance_text": "数据：全生命周期控制面",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "分级分类：敏感程度不同的数据分开对待",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "脱敏与加密、完整性保护",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "备份与恢复、安全销毁",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "备份能力＋按要求托管至国家顶级节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G016",
+     "relation": "分类决定保护方式",
+     "to": "G017",
+     "direction": "sequence"
+    },
+    {
+     "relation_id": "R013",
+     "from": "G017",
+     "relation": "保护推进到备份与销毁",
+     "to": "G018",
+     "direction": "sequence"
+    },
+    {
+     "relation_id": "R014",
+     "from": "G018",
+     "relation": "备份延伸出托管关系",
+     "to": "G019",
+     "direction": "extend"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不补备份频率、恢复时间指标、加密算法或密钥管理",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    {
+     "constraint_id": "C008",
+     "instruction": "不推断当前托管状态",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经了解应用层控制",
+   "exit_condition": "观众能按生命周期复述数据控制面与托管关系",
+   "timing": {
+    "char_equivalent": 147.0,
+    "min_seconds": 37,
+    "target_seconds": 38,
+    "max_seconds": 41,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [],
+   "nx": "技术上的控制到位了，还得有人长期负责，这就是安全管理层。这一层回答的是：由谁持续负责。它包含安全制度、安全机构与人员、安全建设管理、安全运维。节点应当设立网络安全部门，配置专职人员，备好应急处置预案。一旦出现异常或者突发的网络安全事件，应当及时上报相关主管部门。\n\n",
+   "teaching_purpose": "解释安全管理层回答“由谁持续负责”以及制度、人员、运维、预案与上报。",
+   "single_message": "技术控制之后，还需要制度、人员与预案把责任长期接住。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S025",
+     "guidance_text": "安全管理：由谁持续负责",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "制度、机构与人员、安全建设管理、安全运维",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "网络安全部门、专职人员、应急处置预案",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "异常或突发网络安全事件的及时上报",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R015",
+     "from": "G020",
+     "relation": "治理环节形成责任岗位与预案",
+     "to": "G021",
+     "direction": "sequence"
+    },
+    {
+     "relation_id": "R016",
+     "from": "G021",
+     "relation": "预案承接事件上报",
+     "to": "G022",
+     "direction": "support"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不写主管部门名称、事件分级、报告时限或岗位数量",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经了解数据层控制",
+   "exit_condition": "观众能说出安全管理层的治理维度与上报动作",
+   "timing": {
+    "char_equivalent": 117.0,
+    "min_seconds": 30,
+    "target_seconds": 31,
+    "max_seconds": 32,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [],
+   "nx": "剩下的一层，是物理与环境。自建机房时，节点方需要落实相应的物理与环境防护；采用委托部署时，也要落实相应防护，并由相关各方明确实际执行和责任边界。自建机房的防护，包括物理访问控制、防盗窃与防破坏、防雷击、防火、防水防潮、电磁防护。现场管理上，要控制区域的访问授权，人员出入要登记，要有视频监控，要巡查通信线路和周边环境，人员登记和巡查过程都要留下记录。\n\n",
+   "teaching_purpose": "解释物理与环境层的适用条件：自建与委托部署都要落实防护，执行与责任边界由相关各方明确。",
+   "single_message": "自建机房与委托部署都要落实物理与环境防护，相关各方要明确执行与责任边界。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S029",
+     "guidance_text": "物理与环境：机房等承载设施的现场条件",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008",
+      "E011"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "自建机房：节点方落实物理与环境防护",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "委托部署：也要落实相应防护，并明确执行与责任边界",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "防护项：物理访问控制、防盗窃与防破坏、防雷击、防火、防水防潮、电磁防护",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "现场管理：访问授权、出入登记、视频监控、线路与周边巡查、记录",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R017",
+     "from": "G023",
+     "relation": "部署条件分支下的防护落实",
+     "to": "G024",
+     "direction": "branch"
+    },
+    {
+     "relation_id": "R018",
+     "from": "G023",
+     "relation": "自建机房的防护项",
+     "to": "G025",
+     "direction": "apply"
+    },
+    {
+     "relation_id": "R019",
+     "from": "G025",
+     "relation": "防护项落到现场管理",
+     "to": "G026",
+     "direction": "extend"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不把现场执行表述为主体责任分配或具体法律义务，不与第 43 集主体责任混同",
+     "evidence_refs": [
+      "E001",
+      "E011"
+     ]
+    },
+    {
+     "constraint_id": "C011",
+     "instruction": "委托部署不写成无需防护，也不写成责任全归某一方",
+     "evidence_refs": [
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经了解安全管理层",
+   "exit_condition": "观众能区分自建与委托部署下的防护落实与边界明确，不把委托部署理解为无需防护",
+   "timing": {
+    "char_equivalent": 155.0,
+    "min_seconds": 39,
+    "target_seconds": 40,
+    "max_seconds": 43,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [],
+   "nx": "六个层面到这里就齐了。它们不是一条从外到内打进节点的攻击路线，而是覆盖同一个节点的六块并列责任面。基础设施管承载和权限，网络管边界和隔离，应用管身份和行为，数据管生命周期，安全管理管制度和响应，物理与环境管机房等承载设施的现场条件。六个层面，每一层都要有对应的管理或技术证据，任何一个层面，都不能用单个设备去替代。\n\n",
+   "teaching_purpose": "把六层放回同一节点，说明它们是并列责任面而不是攻击路线。",
+   "single_message": "六层并列覆盖同一节点，每层都要有证据，不能用单个设备替代。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S034",
+     "guidance_text": "六层并列覆盖同一节点",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "不是从外到内的攻击路线，是六块并列责任面",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "分工：承载与权限、边界与隔离、身份与行为、生命周期、制度与响应、机房现场条件",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G029",
+      "items": [
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "每层要有管理或技术证据，不能用单个设备替代",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R020",
+     "from": "G027",
+     "relation": "并列覆盖关系展开为六层分工",
+     "to": "G028",
+     "direction": "expand"
+    },
+    {
+     "relation_id": "R021",
+     "from": "G028",
+     "relation": "分工落到证据要求",
+     "to": "G029",
+     "direction": "determine"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C012",
+     "instruction": "不画攻击路径或事件时序",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经逐层了解六层内容",
+   "exit_condition": "观众能说出六层并列覆盖关系与各层分工",
+   "timing": {
+    "char_equivalent": 144.0,
+    "min_seconds": 36,
+    "target_seconds": 38,
+    "max_seconds": 40,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [],
+   "nx": "六层之间还存在一种支撑关系。基础设施和网络，是应用控制的承载；身份认证和数据完整性，支撑着备份的可信基础；制度、人员和应急预案，承接异常的处置；如果采用自建机房，物理环境又成了前面这些控制共同的承载前提。\n\n",
+   "teaching_purpose": "说明六层之间的支撑关系，强调它是条目组织关系而非事件因果。",
+   "single_message": "六层之间存在承载、可信基础与处置承接的支撑关系。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S038",
+     "guidance_text": "层间支撑关系",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G030",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "基础设施与网络，是应用控制的承载",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G031",
+      "items": [
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "身份认证与数据完整性，支撑备份的可信基础",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G032",
+      "items": [
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "制度、人员与预案承接异常处置；自建机房时物理环境是承载前提",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R022",
+     "from": "G030",
+     "relation": "承载与处置承接关系",
+     "to": "G032",
+     "direction": "support"
+    },
+    {
+     "relation_id": "R023",
+     "from": "G031",
+     "relation": "可信基础支撑关系",
+     "to": "G032",
+     "direction": "support"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C013",
+     "instruction": "支撑关系是条目组织关系，不是事件因果推演",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经理解六层并列覆盖",
+   "exit_condition": "观众能说出至少三组层间支撑关系并知道它不是攻击时序",
+   "timing": {
+    "char_equivalent": 92.0,
+    "min_seconds": 23,
+    "target_seconds": 24,
+    "max_seconds": 26,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "回到开头那次安全评审。要判断二级节点的安全防护成不成立，可以围绕六个问题去取证：基础设施的身份和权限，网络安全域和监测，应用的主体认证和接口保护，数据从分级分类到安全销毁，管理层的制度、人员、运维和预案，还有机房等承载设施的访问与巡查记录。六层各有各的分工，共同支撑节点的安全稳定运行。判断的标准，是层面完整、责任清楚、证据可以回查、版本边界清晰。把六个层面逐项建立起防护和管理的证据，才能真正把提升综合安全防护能力落实为可以检查、可以追责的安全面。",
+   "teaching_purpose": "回到安全评审，给出六问取证框架、判断标准与模块收束。",
+   "single_message": "围绕六个问题取证，用“层面完整、责任清楚、证据可回查、版本边界清晰”判断安全面是否成立。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S042",
+     "guidance_text": "六问取证、判断标准与收束",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001",
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G033",
+      "items": [
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "六问：基础设施身份权限、网络安全域与监测、应用主体认证与接口保护、数据分类到销毁、管理制度人员运维预案、机房等承载设施访问与巡查记录",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E004",
+         "E005",
+         "E006",
+         "E007",
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G034",
+      "items": [
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "判断标准：层面完整、责任清楚、证据可以回查、版本边界清晰",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G035",
+      "items": [
+       {
+        "screen_item_id": "S045",
+        "guidance_text": "六层共同支撑节点安全稳定运行；六项证据齐备才形成可检查的安全面",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002",
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R024",
+     "from": "G033",
+     "relation": "六问取证落到判断标准",
+     "to": "G034",
+     "direction": "sequence"
+    },
+    {
+     "relation_id": "R025",
+     "from": "G034",
+     "relation": "标准收束为最终结论",
+     "to": "G035",
+     "direction": "conclude"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C014",
+     "instruction": "取证框架不是要求学习者完成的检查表或练习",
+     "evidence_refs": [
+      "E010",
+      "E001"
+     ]
+    },
+    {
+     "constraint_id": "C015",
+     "instruction": "不作当前合规结论，不给通过结论或能力评级",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    {
+     "constraint_id": "C016",
+     "instruction": "不展开第 44／45／47 集相邻内容，不预告下一集",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经掌握六层内容与覆盖关系",
+   "exit_condition": "观众能按六问取证并说明判断标准；理解安全是责任覆盖而非当前合规承诺",
+   "timing": {
+    "char_equivalent": 204.0,
+    "min_seconds": 51,
+    "target_seconds": 53,
+    "max_seconds": 56,
+    "short_page_reason": null
+   }
+  }
+ ]
+}
