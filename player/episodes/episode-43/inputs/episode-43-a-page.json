@@ -1,0 +1,1588 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-43",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 43 集课程位置、先修关系与与第 44–46、50 集的责任边界",
+   "source_locator": "确认版课程架构，Episode Architecture 第 29、43–46、50 集",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围、去重与叙事顺序"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "《工业互联网标识解析二级节点建设导则（2021 年）》为教材所述二级节点建设指导来源",
+   "source_locator": "主教材，知识准备 5.1.1“二级节点建设”导语",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "说明本集采用教材的 dated guidance 口径"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "二级节点建设有单企业牵头建设和多企业协作共建两种建设模式",
+   "source_locator": "主教材，5.1.1“1. 建设模式要求”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释建设主体与协作关系"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "单企业牵头模式由行业龙头企业建设；其行业典型性、领导力和上下游影响力有助于理解需求并推动应用",
+   "source_locator": "主教材，5.1.1“1. 建设模式要求”（1）",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "支持单一牵头者的适用条件"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "行业集中度较低、缺乏龙头企业时，可由多家企业或机构组建联合体共建，也可由行业协会等有公信力的第三方组织；该模式要求密切协同",
+   "source_locator": "主教材，5.1.1“1. 建设模式要求”（2）",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "支持多方共建的适用条件"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "导则规定二级节点责任主体必须是独立法人单位",
+   "source_locator": "主教材，5.1.1“1. 建设模式要求”末段；教材转述的 2021 年导则口径",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "保护责任主体边界"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "二级节点可采用自建部署或委托部署；资源应满足未来一定时期业务发展并支持弹性扩展",
+   "source_locator": "主教材，5.1.1“5. 部署模式”首段",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "建立部署方式比较维度"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "自建部署由责任主体依托自有资源自行建设，包括租用云资源模式建设",
+   "source_locator": "主教材，5.1.1“5. 部署模式”第一条",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释“自建”不等于必须自有机房"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "委托部署由二级节点责任主体委托国家顶级节点运行机构部署，并提供运行支撑",
+   "source_locator": "主教材，5.1.1“5. 部署模式”第二条",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释责任主体与部署支撑者的分离"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "建设主体回答“谁承担组织与责任”，部署模式回答“资源由谁建设、谁提供运行支撑”；两者可以组合选择",
+   "source_locator": "本任务包教学组织（E003–E009）",
+   "verification_status": "not applicable",
+   "allowed_use": "形成比较与组合判断"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "匿名行业联合讨论与两种部署的教学场景",
+   "source_locator": "本任务包教学设计，讲稿 N001、N010–N011",
+   "verification_status": "not applicable",
+   "allowed_use": "把抽象组织选择落到可视化场景"
+  },
+  {
+   "evidence_id": "E012",
+   "claim_or_asset": "二级节点在工业互联网标识解析体系中起承上启下作用，向上与国家顶级节点对接，向下与企业节点对接；建设面向一个行业",
+   "source_locator": "主教材，5.1.1“3. 接口要求”首段；5.1 任务描述段",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "仅用于一句话自足背景定位"
+  },
+  {
+   "evidence_id": "E013",
+   "claim_or_asset": "工业互联网产业联盟 2021 年建设导则第 10.2 节：二级节点责任主体应为独立法人单位；该表述为历史导则口径",
+   "source_locator": "https://www.aii-alliance.org/uploads/1/20211231/011075df802418ee7629a95a35e74f90.pdf（第 10.2 节）",
+   "verification_status": "verified",
+   "allowed_use": "支持责任主体边界的历史导则时点限定，不扩展为当前法律意见或审批结论"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "一个行业准备建二级节点，第一次开会，大家最容易争的是什么？系统、设备、数据。可真正该先拍板的，是另外两件事：这个节点由谁牵头去建，又由谁出资源把它建起来、跑起来。这两件事不先理清楚，后面的技术方案很容易把责任边界和部署方式搅成一团。这一期，就把这两件事讲明白。\n\n",
+   "teaching_purpose": "用行业第一次开会的情境提出两个组织问题，并说明不先分开就会让责任边界与部署方式混在一起。",
+   "single_message": "建设二级节点，先分开“谁牵头”和“谁部署”这两件事。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "先拍板的两件事：谁牵头、谁部署",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "行业第一次开会，最容易争的是系统、设备、数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "真正先定的是两件事：谁牵头建设，谁出资源建起来、跑起来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "两件事不分开，后续技术方案容易把责任边界与部署方式搅在一起",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G002",
+     "relation": "先分开两件事再进入技术方案",
+     "to": "G003",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "场景图不出现可读文字、企业名称、审批文件或技术指标",
+     "evidence_refs": [
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，尚未接触建设主体与部署模式",
+   "exit_condition": "观众能说出本集先要回答的是谁牵头、谁部署两件事",
+   "timing": {
+    "char_equivalent": 115.0,
+    "min_seconds": 29,
+    "target_seconds": 30,
+    "max_seconds": 32,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "先交代一句它的位置：二级节点面向一个行业建设，在标识解析体系里承上启下，向上对接国家顶级节点，向下服务这个行业里的企业节点。它是这个行业自己的服务节点。有了这个底子，我们再看建它的两件事。\n\n",
+   "teaching_purpose": "用一句话建立二级节点的体系定位，说明它是面向一个行业、承上启下的服务节点，不展开架构与功能体系。",
+   "single_message": "二级节点是行业自己的服务节点，位置只作背景。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S005",
+     "guidance_text": "一个行业自己的服务节点",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E012"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "二级节点面向一个行业建设",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "向上对接国家顶级节点，向下服务本行业企业节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "这层定位只作一句话背景，接着看建它的两件事",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R002",
+     "from": "G004",
+     "relation": "同一节点锚点连接上下两端",
+     "to": "G005",
+     "direction": "same-anchor"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "定位不扩展为总体架构、管理体系、功能体系或接口要求",
+     "evidence_refs": [
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道本集先谈两件组织问题",
+   "exit_condition": "观众能说出二级节点的行业服务定位与上下对接关系",
+   "timing": {
+    "char_equivalent": 86.0,
+    "min_seconds": 22,
+    "target_seconds": 22,
+    "max_seconds": 24,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "第一件事：谁来牵头建设。这对应的是建设主体，也叫建设模式。它回答的是，谁组织建设、谁去协调整个行业的需求。注意，它不回答设备放在哪里。\n\n",
+   "teaching_purpose": "澄清建设主体的职责范围：回答组织与行业协调，不回答设备位置，并标出它是第一条决策轴线。",
+   "single_message": "建设主体管组织与协调，不管设备放在哪里。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S009",
+     "guidance_text": "建设模式：回答谁组织、谁协调",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003",
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "建设主体也叫建设模式：谁组织建设、谁协调行业需求",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "它不回答设备放在哪里",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "这是本集第一条决策轴线",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G007",
+     "relation": "职责边界对照",
+     "to": "G008",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不把建设模式与部署方式合并呈现",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看到二级节点的行业定位",
+   "exit_condition": "观众能区分建设主体回答什么、不回答什么",
+   "timing": {
+    "char_equivalent": 58.0,
+    "min_seconds": 15,
+    "target_seconds": 15,
+    "max_seconds": 16,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "建设模式分两种。一种叫单企业牵头建设，由一家行业龙头企业来建这个二级节点。龙头企业最了解行业痛点，能代表行业需求，也有能力推动上下游一起协同，让标识应用从某家企业的单点项目，推进成整个行业的事。判断它够不够格当这个牵头者，看的是组织能力和行业影响力：能不能代表需求、能不能持续协调伙伴、愿不愿承担建设责任。行业里存在这样一个能扛起责任的牵头者，这种模式就成立。\n\n",
+   "teaching_purpose": "解释单企业牵头建设的定义、龙头带动的理由，以及判断牵头者是否成立的三个组织条件。",
+   "single_message": "有能代表需求、持续协调并承担责任的龙头，单企业牵头才成立。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S013",
+     "guidance_text": "单企业牵头：行业龙头带动的条件",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "单企业牵头建设：由一家行业龙头企业建设二级节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "龙头企业了解行业痛点，能代表需求并推动上下游协同",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "判断牵头者看组织能力与行业影响力：代表需求、持续协调、承担建设责任",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "行业里有能扛起责任的牵头者，这种模式成立",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G011",
+     "relation": "由理由进入资格判断",
+     "to": "G012",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R005",
+     "from": "G012",
+     "relation": "条件满足后模式成立",
+     "to": "G013",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不点名现实企业或行业，不虚构龙头名单与资格认定",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道建设主体是第一条轴线",
+   "exit_condition": "观众能说出单企业牵头适用于什么样的组织条件",
+   "timing": {
+    "char_equivalent": 165.0,
+    "min_seconds": 42,
+    "target_seconds": 43,
+    "max_seconds": 45,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "另一种叫多企业协作共建。多家企业或者机构组建联合体，一起来建；行业协会这类在行业内有公信力的第三方机构，也可以牵头组织。这种模式适用于什么情况？行业集中度比较低、找不出明显的龙头，也就是在行业层面找不到能承担责任的单一牵头者。这里要强调一句：多企业共建，关键不是把参与者简单相加，人凑得再多也不算数，多方密切协同、形成合力，才是共建。\n\n",
+   "teaching_purpose": "解释多企业协作共建的组成方式、可牵头的第三方、适用组织条件，以及协同合力的关键前提。",
+   "single_message": "缺龙头的行业可以联合体或公信力第三方组织，关键在协同合力。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S018",
+     "guidance_text": "多企业协作共建：联合体与公信力第三方",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "多企业协作共建：多家企业或机构组建联合体共同建设",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "行业协会等有公信力的第三方机构也可牵头组织",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "适用于集中度低、找不到能承担责任的单一牵头者的行业",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "关键不是简单相加，而是多方密切协同、形成合力",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G016",
+     "relation": "条件成立后以协同合力收束",
+     "to": "G017",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不出现协会名称、成员数量或地域指向",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解单企业牵头的适用条件",
+   "exit_condition": "观众能说出多企业协作共建的适用条件与关键前提",
+   "timing": {
+    "char_equivalent": 151.0,
+    "min_seconds": 38,
+    "target_seconds": 39,
+    "max_seconds": 42,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A004",
+    "A005"
+   ],
+   "nx": "还要区分牵头协同与最终责任主体。以二零二一年的《工业互联网标识解析二级节点建设导则》为例，二级节点责任主体应是独立法人单位；多方可以协作建设，但需要明确由谁承担主体责任。\n\n",
+   "teaching_purpose": "区分牵头协同与最终责任主体，并给出 2021 年导则口径的独立法人单位要求，保留历史时点限定。",
+   "single_message": "协作可以多方参与，最终责任主体要是独立法人单位。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S023",
+     "guidance_text": "责任主体：独立法人单位的时点口径",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006",
+      "E013"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "牵头协同与最终责任主体不是同一件事",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "2021 年导则口径：责任主体应是独立法人单位",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002",
+         "E006",
+         "E013"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "多方可以协作建设，但最终责任主体要明确",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G018",
+     "relation": "区分后落到责任主体",
+     "to": "G020",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R008",
+     "from": "G019",
+     "relation": "历史导则时点限定支撑责任要求",
+     "to": "G020",
+     "direction": "support"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不写成当前法律意见或 2026 年现状；不补法律条文、审批机关、备案期限或责任变更流程",
+     "evidence_refs": [
+      "E002",
+      "E006",
+      "E013"
+     ]
+    }
+   ],
+   "entry_condition": "观众已了解两种建设模式",
+   "exit_condition": "观众能区分协同过程与最终责任主体，并知道该要求来自 2021 年导则口径",
+   "timing": {
+    "char_equivalent": 78.0,
+    "min_seconds": 20,
+    "target_seconds": 20,
+    "max_seconds": 22,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "第一件事有了答案：谁来牵头。接下来第二件事：资源由谁来出、谁来支撑运行。这对应的是部署模式。它回答的是，依托什么资源把系统部署起来，谁来提供后续的运行支撑。\n\n",
+   "teaching_purpose": "从建设主体过渡到第二条轴线，明确部署模式回答资源依托与运行支撑。",
+   "single_message": "第二件事问资源与运行支撑，对应部署模式。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S027",
+     "guidance_text": "部署模式：资源依托与运行支撑",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007",
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "第一件事已有答案：谁来牵头",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "第二件事：资源由谁出、谁来支撑运行",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007",
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "部署模式回答依托什么资源部署、谁提供运行支撑",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R009",
+     "from": "G021",
+     "relation": "从建设模式转入部署模式",
+     "to": "G022",
+     "direction": "pivot"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不把部署模式与建设模式混成同一选项",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看到建设模式与责任主体的边界",
+   "exit_condition": "观众能说出部署模式回答的两个问题",
+   "timing": {
+    "char_equivalent": 69.0,
+    "min_seconds": 18,
+    "target_seconds": 18,
+    "max_seconds": 19,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "部署模式也分两种。一种叫自建部署，由二级节点的责任主体依托自有资源自己建。这里要先澄清一个常见的误会：自有资源，不等于必须自己建机房。责任主体自己租用云资源，同样属于自建这条路径。判断点不在有没有机房，而在责任主体能不能组织起资源、控制建设过程，并且具备承担后续运行支撑的能力。\n\n",
+   "teaching_purpose": "解释自建部署的定义，澄清自有资源不等于自建机房，并给出资源组织、控制与运行支撑的判断点。",
+   "single_message": "自建看的是资源与支撑能力，不是有没有机房。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S031",
+     "guidance_text": "自建部署：自有资源不等于自建机房",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "自建部署：责任主体依托自有资源自行建设",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "自有资源不等于必须自建机房，租用云资源同属自建路径",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "判断点在资源组织、过程控制与后续运行支撑能力",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008",
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R010",
+     "from": "G024",
+     "relation": "由定义澄清常见误会",
+     "to": "G025",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R011",
+     "from": "G025",
+     "relation": "澄清后进入判断点",
+     "to": "G026",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不指定云厂商、机柜架构、网络拓扑或产品界面",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道部署模式回答资源与运行支撑",
+   "exit_condition": "观众能判断自建部署的关键不在有没有机房",
+   "timing": {
+    "char_equivalent": 127.0,
+    "min_seconds": 32,
+    "target_seconds": 33,
+    "max_seconds": 35,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "另一种叫委托部署。责任主体把部署交给谁来干？国家顶级节点运行机构。责任主体委托这家机构进行部署，并接受它提供的运行支撑。要特别说明，部署和支撑虽然由专业机构承担，但二级节点仍然属于责任主体。委托改变的是分工，不是责任；责任主体不会因为委托，就变成部署机构。\n\n",
+   "teaching_purpose": "解释委托部署的对象与分工，并强调责任主体不因委托而转移。",
+   "single_message": "委托把部署与支撑分出去，责任仍留在责任主体。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S035",
+     "guidance_text": "委托部署：分工改变，责任不转移",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "委托部署：委托国家顶级节点运行机构部署",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "部署与运行支撑由专业机构承担",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G029",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "二级节点仍属责任主体；委托改变分工，不改变责任",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G027",
+     "relation": "委托形成分工",
+     "to": "G028",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R013",
+     "from": "G028",
+     "relation": "分工不改变责任归属",
+     "to": "G029",
+     "direction": "pivot"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不虚构当前运行机构名称、协议、费用或 SLA",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解自建部署的判断点",
+   "exit_condition": "观众能说出委托部署分工与责任主体的关系",
+   "timing": {
+    "char_equivalent": 116.0,
+    "min_seconds": 29,
+    "target_seconds": 30,
+    "max_seconds": 32,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A008",
+    "A009"
+   ],
+   "nx": "两种部署模式，有一些共同点。不管自建还是委托，都要面向未来一定时期的业务发展需要，也都要能支持弹性扩展；两者之间也不存在对错，只看适不适合你当前的责任和资源条件。两条路的分界，是责任归属和资源依托方式，不是设备放在哪里：自建不等于必须自有机房，委托不等于把责任交了出去。\n\n",
+   "teaching_purpose": "收拢两种部署模式的共同条件与选择口径，明确分界是责任归属与资源依托方式。",
+   "single_message": "自建与委托无对错，分界在责任与资源，不在设备位置。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S039",
+     "guidance_text": "共同条件：分界在责任与资源方式",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007",
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G030",
+      "items": [
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "自建与委托都要面向未来一定时期业务发展，支持弹性扩展",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G031",
+      "items": [
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "两种方式没有对错，只看是否适合当前责任与资源条件",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G032",
+      "items": [
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "分界是责任归属与资源依托方式，不是设备放在哪里",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007",
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G033",
+      "items": [
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "自建不等于必须自有机房，委托不等于责任转移",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008",
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R014",
+     "from": "G030",
+     "relation": "共同条件之上作适合性判断",
+     "to": "G031",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R015",
+     "from": "G031",
+     "relation": "判断落到分界",
+     "to": "G032",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不给成本、性能或成功率排序",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解自建与委托两种部署",
+   "exit_condition": "观众能说出两种部署的共同条件与分界",
+   "timing": {
+    "char_equivalent": 123.0,
+    "min_seconds": 31,
+    "target_seconds": 32,
+    "max_seconds": 34,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A011",
+   "callback_a_ids": [
+    "A010"
+   ],
+   "nx": "两个问题都讲完了，怎么合起来用？记住一个顺序：先用行业结构决定建设主体，再用资源控制和运行支撑决定部署模式。把这个顺序拆开，就是四个判断问题。前两个看行业结构：行业里有没有能代表需求的牵头者？参与各方能不能形成稳定协同？后两个看资源与支撑：责任主体想留下多少建设控制权？有没有持续的资源和人力做运行支撑？这四个问题只用于组织层面的判断，不会得出成本或者性能方面的排名结论。\n\n",
+   "teaching_purpose": "把决策顺序拆成四个组织判断问题，并标明两问看行业结构、两问看资源与支撑，同时限定判断边界。",
+   "single_message": "用四个问题组织判断：两问行业结构，两问资源与支撑。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S044",
+     "guidance_text": "四个判断问题：两问结构，两问资源",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G034",
+      "items": [
+       {
+        "screen_item_id": "S045",
+        "guidance_text": "先行业结构定建设主体，再资源与支撑定部署模式",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G035",
+      "items": [
+       {
+        "screen_item_id": "S046",
+        "guidance_text": "前两问看行业结构：能否代表需求、能否形成稳定协同",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010",
+         "E004",
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G036",
+      "items": [
+       {
+        "screen_item_id": "S047",
+        "guidance_text": "后两问看资源与支撑：想留多少控制权、有无持续资源人力",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010",
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G037",
+      "items": [
+       {
+        "screen_item_id": "S048",
+        "guidance_text": "四问只用于组织判断，不产出成本或性能排名",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R016",
+     "from": "G035",
+     "relation": "两维度并列",
+     "to": "G036",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R017",
+     "from": "G034",
+     "relation": "顺序先于判断",
+     "to": "G035",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "不补写成本、性能、成功率数据或排名",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道两种部署模式与共同条件",
+   "exit_condition": "观众能复述四个判断问题及其两个维度",
+   "timing": {
+    "char_equivalent": 171.0,
+    "min_seconds": 43,
+    "target_seconds": 45,
+    "max_seconds": 47,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A012",
+   "callback_a_ids": [
+    "A011"
+   ],
+   "nx": "配合这个顺序，实际组合是这样的。行业里龙头明确，就先把单企业牵头和多企业协作共建之间的选择做完，再在自建和委托之间做第二次选择。行业里缺龙头，就先处理联合体或公信力第三方的协同和责任安排，再比较部署方式。\n\n",
+   "teaching_purpose": "用两种组织条件说明组合顺序：先完成建设主体选择，再选择部署方式。",
+   "single_message": "组合有先后：先落责任主体，再谈资源部署。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S049",
+     "guidance_text": "组合顺序：先定责任主体，再谈资源部署",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010",
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G038",
+      "items": [
+       {
+        "screen_item_id": "S050",
+        "guidance_text": "龙头明确：先做建设模式选择，再做部署选择",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G039",
+      "items": [
+       {
+        "screen_item_id": "S051",
+        "guidance_text": "缺龙头：先处理协同与责任安排，再比较部署方式",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005",
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G040",
+      "items": [
+       {
+        "screen_item_id": "S052",
+        "guidance_text": "关键顺序：先把责任主体落下来，再谈资源部署",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010",
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R018",
+     "from": "G038",
+     "relation": "两种组织条件下的分路径",
+     "to": "G039",
+     "direction": "contrast"
+    },
+    {
+     "relation_id": "R019",
+     "from": "G039",
+     "relation": "分路径落到顺序判断",
+     "to": "G040",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C012",
+     "instruction": "示例只作组合思路，不作现实企业或行业认定",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已掌握四个判断问题",
+   "exit_condition": "观众能说出两种组织条件下的组合顺序",
+   "timing": {
+    "char_equivalent": 94.0,
+    "min_seconds": 24,
+    "target_seconds": 25,
+    "max_seconds": 26,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A013",
+   "callback_a_ids": [
+    "A003",
+    "A007"
+   ],
+   "nx": "到这里，把两条线再理一遍。建设模式解决的是协同关系：谁组织、谁协调、谁承担。部署模式解决的是落地分工：资源从哪来、谁来支撑运行。这两条线各自成立，可以分别选择再组合出方案，不能把“谁牵头”和“怎么部署”压缩成一个选项，也不能把它们并成一条。\n\n",
+   "teaching_purpose": "收束两条轴线的分工与正交关系，强调各自成立、可组合、不能压缩或合并。",
+   "single_message": "建设模式与部署模式各自成立，可以组合，不能合并。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S053",
+     "guidance_text": "两条轴线：各自成立，不能合并",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G041",
+      "items": [
+       {
+        "screen_item_id": "S054",
+        "guidance_text": "两条线各自成立，可以分别选择再组合出方案",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G042",
+      "items": [
+       {
+        "screen_item_id": "S055",
+        "guidance_text": "建设模式解决协同关系：谁组织、谁协调、谁承担",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G043",
+      "items": [
+       {
+        "screen_item_id": "S056",
+        "guidance_text": "部署模式解决落地分工：资源从哪来、谁来支撑运行",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G044",
+      "items": [
+       {
+        "screen_item_id": "S057",
+        "guidance_text": "不能把谁牵头与怎么部署压缩成一个选项，也不能并成一条",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R020",
+     "from": "G042",
+     "relation": "两轴分工对照",
+     "to": "G043",
+     "direction": "contrast"
+    },
+    {
+     "relation_id": "R021",
+     "from": "G041",
+     "relation": "组合前提先于并线禁止",
+     "to": "G044",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C013",
+     "instruction": "不把两轴合并为单一流程或单一选项",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看过建设模式与部署模式两组内容",
+   "exit_condition": "观众能说清两轴的各自职责与不可合并关系",
+   "timing": {
+    "char_equivalent": 103.0,
+    "min_seconds": 26,
+    "target_seconds": 27,
+    "max_seconds": 29,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A014",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "回到开头的那个会议。一个行业要建二级节点，最先拍板的两件事：谁牵头建设，谁来支撑运行。建设模式给出前一半的答案：有龙头，就单企业牵头；行业太分散、没有龙头，就多企业协作共建，让行业协会这类有公信力的第三方来组织。部署模式给出后一半的答案：资源自己组织得起来、控制得住、也撑得下去，就自建，租云资源也算自建；想交给专业机构，就委托国家顶级节点运行机构部署，分工出去了，责任还在自己身上。\n\n",
+   "teaching_purpose": "回扣开场会议，把建设模式与部署模式的答案合起来，并重申责任主体仍在责任主体身上。",
+   "single_message": "两件事各有答案，分工之后责任主体不变。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S058",
+     "guidance_text": "回到开场：两件事各有答案",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G045",
+      "items": [
+       {
+        "screen_item_id": "S059",
+        "guidance_text": "回到开场会议：最先拍板的是谁牵头、谁来支撑运行",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G046",
+      "items": [
+       {
+        "screen_item_id": "S060",
+        "guidance_text": "建设模式答案：有龙头单企业牵头，缺龙头多企业协作共建",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G047",
+      "items": [
+       {
+        "screen_item_id": "S061",
+        "guidance_text": "部署模式答案：资源自控可自建（含租云），否则委托运行机构",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008",
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G048",
+      "items": [
+       {
+        "screen_item_id": "S062",
+        "guidance_text": "分工出去了，责任还在责任主体身上",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R022",
+     "from": "G046",
+     "relation": "两条答案并列",
+     "to": "G047",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R023",
+     "from": "G047",
+     "relation": "部署答案回到责任",
+     "to": "G048",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C014",
+     "instruction": "不重复展开技术、运营或安全内容",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解两条轴线的组合关系",
+   "exit_condition": "观众能用两句话回答开场提出的两件事",
+   "timing": {
+    "char_equivalent": 170.0,
+    "min_seconds": 43,
+    "target_seconds": 44,
+    "max_seconds": 47,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A015",
+   "callback_a_ids": [
+    "A014"
+   ],
+   "nx": "两条线的共同规律是：先问行业里有没有能承担责任的牵头者，再问责任主体有没有资源和能力把它支撑起来。一个管协同，一个管落地，谁也不能替代谁，合起来才是一份完整的建设判断。",
+   "teaching_purpose": "提炼两条决策线的共同规律，以完整建设判断收束全片。",
+   "single_message": "先问牵头者、再问支撑能力，两条线合起来才是完整判断。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S063",
+     "guidance_text": "共同规律：先问牵头者，再问支撑能力",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G049",
+      "items": [
+       {
+        "screen_item_id": "S064",
+        "guidance_text": "先问行业里有没有能承担责任的牵头者，再问有没有资源和能力支撑",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G050",
+      "items": [
+       {
+        "screen_item_id": "S065",
+        "guidance_text": "一个管协同，一个管落地，谁也不能替代谁",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G051",
+      "items": [
+       {
+        "screen_item_id": "S066",
+        "guidance_text": "合起来才是一份完整的建设判断",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R024",
+     "from": "G049",
+     "relation": "从问题到分工",
+     "to": "G050",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R025",
+     "from": "G050",
+     "relation": "分工合成完整判断",
+     "to": "G051",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C015",
+     "instruction": "不新增成本、性能或审批结论",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看完两条轴线的答案",
+   "exit_condition": "观众能复述先定牵头者、再看资源支撑的共同规律",
+   "timing": {
+    "char_equivalent": 77.0,
+    "min_seconds": 20,
+    "target_seconds": 20,
+    "max_seconds": 21,
+    "short_page_reason": null
+   }
+  }
+ ]
+}

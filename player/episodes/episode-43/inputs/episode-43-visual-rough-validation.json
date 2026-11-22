@@ -1,0 +1,572 @@
+{
+  "episode_id": "episode-43",
+  "validation_profile": "visual-rough-v4",
+  "schema_version": "courseplay-visual-rough/v4",
+  "status": "approved",
+  "validation_summary": {
+    "pages": [
+      {
+        "a_id": "A001",
+        "source": {
+          "S": [
+            "S001",
+            "S002",
+            "S003",
+            "S004"
+          ],
+          "G": [
+            "G001",
+            "G002",
+            "G003"
+          ],
+          "R": [
+            "R001"
+          ]
+        },
+        "recipe": {
+          "requested": "time-anchor-opening",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 2,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M001"
+        }
+      },
+      {
+        "a_id": "A002",
+        "source": {
+          "S": [
+            "S005",
+            "S006",
+            "S007",
+            "S008"
+          ],
+          "G": [
+            "G004",
+            "G005",
+            "G006"
+          ],
+          "R": [
+            "R002"
+          ]
+        },
+        "recipe": {
+          "requested": "common-anchor-association-groups",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A003",
+        "source": {
+          "S": [
+            "S009",
+            "S010",
+            "S011",
+            "S012"
+          ],
+          "G": [
+            "G007",
+            "G008",
+            "G009"
+          ],
+          "R": [
+            "R003"
+          ]
+        },
+        "recipe": {
+          "requested": "split-compare-with-thesis",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A004",
+        "source": {
+          "S": [
+            "S013",
+            "S014",
+            "S015",
+            "S016",
+            "S017"
+          ],
+          "G": [
+            "G010",
+            "G011",
+            "G012",
+            "G013"
+          ],
+          "R": [
+            "R004",
+            "R005"
+          ]
+        },
+        "recipe": {
+          "requested": "issue-cards-with-image",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M002"
+        }
+      },
+      {
+        "a_id": "A005",
+        "source": {
+          "S": [
+            "S018",
+            "S019",
+            "S020",
+            "S021",
+            "S022"
+          ],
+          "G": [
+            "G014",
+            "G015",
+            "G016",
+            "G017"
+          ],
+          "R": [
+            "R006"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-insight-rail",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M003"
+        }
+      },
+      {
+        "a_id": "A006",
+        "source": {
+          "S": [
+            "S023",
+            "S024",
+            "S025",
+            "S026"
+          ],
+          "G": [
+            "G018",
+            "G019",
+            "G020"
+          ],
+          "R": [
+            "R007",
+            "R008"
+          ]
+        },
+        "recipe": {
+          "requested": "evidence-cards-with-provenance-boundary",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A007",
+        "source": {
+          "S": [
+            "S027",
+            "S028",
+            "S029",
+            "S030"
+          ],
+          "G": [
+            "G021",
+            "G022",
+            "G023"
+          ],
+          "R": [
+            "R009"
+          ]
+        },
+        "recipe": {
+          "requested": "split-compare-with-pivot",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A008",
+        "source": {
+          "S": [
+            "S031",
+            "S032",
+            "S033",
+            "S034"
+          ],
+          "G": [
+            "G024",
+            "G025",
+            "G026"
+          ],
+          "R": [
+            "R010",
+            "R011"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-reading-notes",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M004"
+        }
+      },
+      {
+        "a_id": "A009",
+        "source": {
+          "S": [
+            "S035",
+            "S036",
+            "S037",
+            "S038"
+          ],
+          "G": [
+            "G027",
+            "G028",
+            "G029"
+          ],
+          "R": [
+            "R012",
+            "R013"
+          ]
+        },
+        "recipe": {
+          "requested": "split-compare-with-thesis",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A010",
+        "source": {
+          "S": [
+            "S039",
+            "S040",
+            "S041",
+            "S042",
+            "S043"
+          ],
+          "G": [
+            "G030",
+            "G031",
+            "G032",
+            "G033"
+          ],
+          "R": [
+            "R014",
+            "R015"
+          ]
+        },
+        "recipe": {
+          "requested": "condition-key-goal",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A011",
+        "source": {
+          "S": [
+            "S044",
+            "S045",
+            "S046",
+            "S047",
+            "S048"
+          ],
+          "G": [
+            "G034",
+            "G035",
+            "G036",
+            "G037"
+          ],
+          "R": [
+            "R016",
+            "R017"
+          ]
+        },
+        "recipe": {
+          "requested": "parallel-cards-with-takeaway",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 4,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A012",
+        "source": {
+          "S": [
+            "S049",
+            "S050",
+            "S051",
+            "S052"
+          ],
+          "G": [
+            "G038",
+            "G039",
+            "G040"
+          ],
+          "R": [
+            "R018",
+            "R019"
+          ]
+        },
+        "recipe": {
+          "requested": "split-compare-with-pivot",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A013",
+        "source": {
+          "S": [
+            "S053",
+            "S054",
+            "S055",
+            "S056",
+            "S057"
+          ],
+          "G": [
+            "G041",
+            "G042",
+            "G043",
+            "G044"
+          ],
+          "R": [
+            "R020",
+            "R021"
+          ]
+        },
+        "recipe": {
+          "requested": "common-anchor-association-groups",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 4,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A014",
+        "source": {
+          "S": [
+            "S058",
+            "S059",
+            "S060",
+            "S061",
+            "S062"
+          ],
+          "G": [
+            "G045",
+            "G046",
+            "G047",
+            "G048"
+          ],
+          "R": [
+            "R022",
+            "R023"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-summary-rail",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M005"
+        }
+      },
+      {
+        "a_id": "A015",
+        "source": {
+          "S": [
+            "S063",
+            "S064",
+            "S065",
+            "S066"
+          ],
+          "G": [
+            "G049",
+            "G050",
+            "G051"
+          ],
+          "R": [
+            "R024",
+            "R025"
+          ]
+        },
+        "recipe": {
+          "requested": "parallel-cards-self-contained",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      }
+    ]
+  },
+  "image_allocation": {
+    "required_page_count": 5,
+    "assigned_page_count": 5
+  },
+  "logic_diagrams": {
+    "page_limit": 0,
+    "assigned_page_count": 0
+  },
+  "errors": [],
+  "failures": [],
+  "input_integrity": {
+    "a_page_sha256": "322725508a12eae5fa8d734a11b146f2a62c16d18436f0c3b406ca9341b5402e",
+    "visual_rough_sha256": "375adfe8ca425c71c5b81c941afff52d41bc3d677f89f7f78a44d37d0cab77bc",
+    "recipe_registry_sha256": "697ed613616ec9ac5325a38544fe4ac9c8fcf6b3ab5439e614e7a7293b93ef2e"
+  }
+}
