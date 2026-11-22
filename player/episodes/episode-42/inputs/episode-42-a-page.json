@@ -1,0 +1,1684 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-42",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 42 集标题、课程位置、前置知识与相邻分集边界；本集为模块四收束集",
+   "source_locator": "已确认课程架构，Episode Architecture 第 37–42 集",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围、去重与模块收束"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "主动标识可承载工业互联网标识编码及必要安全材料，提供较丰富数据并覆盖更广行业",
+   "source_locator": "主教材，4.2.3“主动标识行业应用”首段",
+   "verification_status": "not applicable",
+   "allowed_use": "建立选择前提；不将“更高质量”改写为量化性能"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "热力场景：室内温控面板、室内热计量表、电磁阀；载体为终端内 UICC；动作为温度与供热数据采集、暖气管线压力开关控制调节、仪表远程计量检定",
+   "source_locator": "主教材，4.2.3 行业应用“热力行业”",
+   "verification_status": "not applicable",
+   "allowed_use": "场景比较；不扩展供热效果或安全数字"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "燃气场景：入户燃气表；载体为终端内安全芯片；动作为数据采集、远程抄表、安全监管、全生命周期管理",
+   "source_locator": "主教材，4.2.3 行业应用“燃气行业”",
+   "verification_status": "not applicable",
+   "allowed_use": "场景比较；“确保安全运营”保留为应用目标，不作现实保证"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "装备制造场景：大型装备；载体为装备内通信模组；动作为设备数据远程采集、在线监控、作业状态和地理位置信息查询",
+   "source_locator": "主教材，4.2.3 行业应用“装备制造行业”",
+   "verification_status": "not applicable",
+   "allowed_use": "场景比较；不声称真实部署或定位精度"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "智能模具场景：智能模具装备；载体为通信模组；动作为生产作业情况实时监测",
+   "source_locator": "主教材，4.2.3 行业应用“智能模具”",
+   "verification_status": "not applicable",
+   "allowed_use": "场景比较；不重复体系认知模块智能模具案例结果"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "数控机床场景：数控机床生产设备；载体为设备内安全芯片；动作为加工作业数据在线采集、运行监测、设备资产管理",
+   "source_locator": "主教材，4.2.3 行业应用“数控机床”",
+   "verification_status": "not applicable",
+   "allowed_use": "场景比较；不补充加工精度、停机率或安全指标"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "五类场景比较维度：对象、主动载体、主要数据/动作、管理目的",
+   "source_locator": "主教材，4.2.3 行业应用段落的忠实整理",
+   "verification_status": "not applicable",
+   "allowed_use": "比较矩阵与选择路径；不新增节点或维度"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "教材列出 2024 年部署量与 2026 年行动计划目标",
+   "source_locator": "主教材，4.2.3 行业应用段落",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "仅记录动态风险，不进入本集当前性结论，不复述具体数字"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "匿名“需要持续采集/远程管理的设备”作为选择维度说明情境",
+   "source_locator": "本任务包教学设计 N001、N012",
+   "verification_status": "not applicable",
+   "allowed_use": "连接比较维度；不是现实企业案例，不要求学习者作答"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "UICC 的联网承载依赖所在终端；主动标识载体可通过自身或所在终端的通信能力发起连接",
+   "source_locator": "ETSI TS 102 223 V18.1.0；GSMA IoT SAFE（2026-11-17 事实修正依据）",
+   "verification_status": "verified",
+   "allowed_use": "支持热力场景 UICC 联网口径；不扩展协议栈或终端结构"
+  },
+  {
+   "evidence_id": "E012",
+   "claim_or_asset": "是否需要持续采集、远程管理须按实际场景判断，不能把所有条件当作主动标识的普遍门槛",
+   "source_locator": "docs/episode-33-51-content-accuracy-review.md 第 42 期（2026-11-17）；accuracy-2026-11-17.diff",
+   "verification_status": "verified",
+   "allowed_use": "约束维度与三步路径口径；不作为新增事实来源"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "主动标识载体能嵌入设备，通过自身或所在终端的通信能力主动发起连接，还能承载标识和安全材料。这样的载体，到底该用在哪儿？是不是所有行业都适合？换个行业，是不是就得换一套办法？今天我们就把这个问题讲清楚。\n\n",
+   "teaching_purpose": "用开场设问建立本集问题：主动标识载体到底该用在哪儿，是否所有行业都适合。",
+   "single_message": "主动标识的适用边界不是行业清单，而要回到对象与需求判断。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "主动标识适合哪些行业场景",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "主动标识载体：嵌入设备，可经自身或所在终端主动发起连接",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "承载标识与安全材料",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "设问：用在哪？是否所有行业都适合？换行业是否换办法？",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001",
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "载体能力引出适用边界问题",
+     "to": "G002",
+     "direction": "pivot"
+    }
+   ],
+   "silent_constraints": [],
+   "entry_condition": "观众已学完主动载体、注册上报与服务架构，知道主动载体能发起连接",
+   "exit_condition": "观众带着“主动标识的适用边界”这一问题进入本集",
+   "timing": {
+    "char_equivalent": 91.0,
+    "min_seconds": 23,
+    "target_seconds": 24,
+    "max_seconds": 25,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "先不急着数行业，我们想一个更实在的选型问题。面对一个具体的工业对象，你什么时候需要主动标识，什么时候用被动载体就够用了？\n\n先说判断的方向。一个对象适不适合主动标识，不能只看它属于哪个行业。行业名称只是入口，真正要问的有三件事。\n\n",
+   "teaching_purpose": "把“数行业”换成具体对象的选型问题，并锁定三个判断维度。",
+   "single_message": "先问这个对象需不需要主动标识，再看三件事。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S005",
+     "guidance_text": "先问选型问题，不先数行业",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "面对具体工业对象：什么时候需要主动标识，什么时候被动载体够用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "只做近距离读取时，被动载体也可能够用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "三件事：对象类型、主动连接需求、数据与管理动作",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R002",
+     "from": "G003",
+     "relation": "由选型问题引出三个维度",
+     "to": "G005",
+     "direction": "pivot"
+    },
+    {
+     "relation_id": "R003",
+     "from": "G004",
+     "relation": "边界条件约束维度判断",
+     "to": "G005",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "不把行业名称或“更先进”当作充分选择依据",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众带着适用边界问题进入本集",
+   "exit_condition": "观众知道判断依据不是行业名称，而是对象、连接需求与数据/管理动作",
+   "timing": {
+    "char_equivalent": 102.0,
+    "min_seconds": 26,
+    "target_seconds": 27,
+    "max_seconds": 28,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [],
+   "nx": "第一件，对象是什么类型的设备。是表计、阀门、大型装备，还是生产设备。这决定了载体装在哪里，管的又是什么东西。\n\n",
+   "teaching_purpose": "展开维度一：先看对象是什么类型的设备。",
+   "single_message": "对象类型决定载体装在哪里、管的是什么。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S009",
+     "guidance_text": "维度一：对象类型",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "对象：表计、阀门、大型装备、生产设备",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "决定载体装在哪里、管的是什么",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G006",
+     "relation": "对象类型决定载体位置与管理内容",
+     "to": "G007",
+     "direction": "determine"
+    }
+   ],
+   "silent_constraints": [],
+   "entry_condition": "观众已经知道要从三个维度判断",
+   "exit_condition": "观众能说出维度一要看对象类型，并影响载体位置与管理内容",
+   "timing": {
+    "char_equivalent": 46.0,
+    "min_seconds": 12,
+    "target_seconds": 12,
+    "max_seconds": 13,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [],
+   "nx": "第二件，这个对象需不需要自己联网。它是不是要主动发起连接，把数据持续带回来。\n\n第三件，数据拿回来干什么用。是用于采集、抄表，还是在线监控、实时监测，或者资产管理。\n\n",
+   "teaching_purpose": "展开维度二与维度三：连接需求与数据用途。",
+   "single_message": "要不要联网、数据拿来干什么，是另外两件事。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S012",
+     "guidance_text": "维度二与维度三：连接需求、数据用途",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "维度二：是否需要主动发起连接并把数据带回来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008",
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "维度三：数据用于采集、抄表、在线监控、实时监测或资产管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R005",
+     "from": "G008",
+     "relation": "两个维度并列判断",
+     "to": "G009",
+     "direction": "parallel"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "不把持续采集当作普遍门槛；按实际场景判断采集需求与频率",
+     "evidence_refs": [
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经知道维度一的对象类型",
+   "exit_condition": "观众能说出连接需求与数据用途两个维度",
+   "timing": {
+    "char_equivalent": 69.0,
+    "min_seconds": 18,
+    "target_seconds": 18,
+    "max_seconds": 19,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A003",
+    "A004"
+   ],
+   "nx": "把这三件事放在一起，才能判断主动连接是否适合现场。如果只是近距离读取，采用被动载体也可能够用；如果需要主动通信，则要结合设备、数据和管理需求选择方案。主动标识还能承载工业互联网标识编码和必要的安全材料。\n\n",
+   "teaching_purpose": "把三个维度合成一次现场适用性判断，并补上主动标识的承载前提。",
+   "single_message": "三件事放在一起，才谈得上主动连接是否适合现场。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S015",
+     "guidance_text": "三件事放在一起判断",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "近距离读取：被动载体可能够用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "需要主动通信：结合设备、数据与管理需求选方案",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "主动标识：承载工业互联网标识编码与必要安全材料",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G010",
+     "relation": "按现场条件分叉选择",
+     "to": "G011",
+     "direction": "contrast"
+    },
+    {
+     "relation_id": "R007",
+     "from": "G011",
+     "relation": "选择时的承载前提",
+     "to": "G012",
+     "direction": "context"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不把三个维度同时成立写成普遍门槛",
+     "evidence_refs": [
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经掌握三个判断维度",
+   "exit_condition": "观众能把对象、连接与数据/管理动作合成一次适用性判断",
+   "timing": {
+    "char_equivalent": 93.0,
+    "min_seconds": 24,
+    "target_seconds": 24,
+    "max_seconds": 26,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "我们拿五类场景来走一遍这套思路。\n\n先看热力和燃气。热力行业里，对象主要是室内的温控面板、热计量表，还有电磁阀。载体是终端里的通用集成电路卡，英文叫 Universal Integrated Circuit Card，缩写就是 UICC。动作包括温度与供热数据的采集、暖气管线压力开关的控制调节，还有仪表的远程计量检定。你会发现，热力场景里，表计和执行部件都需要持续连接、远程管理。\n\n",
+   "teaching_purpose": "进入五类场景比较，先讲热力行业的对象、载体与动作。",
+   "single_message": "热力场景：终端内 UICC 承载表计与执行部件的采集、调节和远程检定。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S019",
+     "guidance_text": "热力：对象—UICC—动作",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "五类场景：热力、燃气、装备制造、智能模具、数控机床",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "对象：温控面板、热计量表、电磁阀",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "UICC（通用集成电路卡）",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003",
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "载体位于终端内",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "动作：温度与供热数据采集、暖气管线压力开关控制调节、仪表远程计量检定",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "表计与执行部件都需要持续连接与远程管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G014",
+     "relation": "对象由终端内载体承载",
+     "to": "G015",
+     "direction": "attach"
+    },
+    {
+     "relation_id": "R009",
+     "from": "G015",
+     "relation": "载体承载采集、调节与检定动作",
+     "to": "G016",
+     "direction": "carry"
+    },
+    {
+     "relation_id": "R010",
+     "from": "G016",
+     "relation": "动作共同指向持续连接与远程管理",
+     "to": "G017",
+     "direction": "converge"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "UICC 的联网承载依赖所在终端，不写成载体自身独立联网",
+     "evidence_refs": [
+      "E011"
+     ]
+    },
+    {
+     "constraint_id": "C005",
+     "instruction": "不扩展供热效果或安全数字",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经具备三个判断维度",
+   "exit_condition": "观众能复述热力场景的对象、载体与动作，并理解其持续连接需求",
+   "timing": {
+    "char_equivalent": 151.0,
+    "min_seconds": 38,
+    "target_seconds": 39,
+    "max_seconds": 42,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [],
+   "nx": "燃气行业呢，对象集中在入户燃气表。载体是终端里的安全芯片。动作是燃气表具的数据采集、远程抄表，还有安全监管和全生命周期管理。跟热力比，燃气更突出的，是表具身份的持续管理和整条监管链路。\n\n",
+   "teaching_purpose": "讲燃气行业的对象、载体与动作，并与热力对照出差异。",
+   "single_message": "燃气场景：终端内安全芯片承载表具采集、抄表、安全监管与全生命周期管理。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S026",
+     "guidance_text": "燃气：对象—安全芯片—动作",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "对象：入户燃气表",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "终端内安全芯片",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "动作：数据采集、远程抄表、安全监管、全生命周期管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "与热力相比：表具身份的持续管理与监管链路更突出",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G018",
+     "relation": "对象由终端内载体承载",
+     "to": "G019",
+     "direction": "attach"
+    },
+    {
+     "relation_id": "R012",
+     "from": "G019",
+     "relation": "载体承载四类动作",
+     "to": "G020",
+     "direction": "carry"
+    },
+    {
+     "relation_id": "R013",
+     "from": "G020",
+     "relation": "与热力对照出监管差异",
+     "to": "G021",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "只复述应用目标，不扩展为现实项目安全保证或量化成效",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经看过热力场景",
+   "exit_condition": "观众能说出燃气场景的对象、载体、动作及其与热力的差异",
+   "timing": {
+    "char_equivalent": 83.0,
+    "min_seconds": 21,
+    "target_seconds": 22,
+    "max_seconds": 23,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A006",
+    "A007"
+   ],
+   "nx": "热力和燃气有这样的共同选择逻辑。对象都是分散的表计或阀门，数据要主动回传，一部分动作还涉及远程调节、检定或监管。请记住，主动载体出现在这两个行业，不是因为“热力”“燃气”这两个行业标签够响亮，而是因为现场对象需要持续在线，身份还需要可管理。\n\n",
+   "teaching_purpose": "从前两个场景抽象出共同选择逻辑：分散对象、主动回传、远程管理。",
+   "single_message": "主动载体出现的原因不是行业标签，而是现场对象需要持续在线、身份可管理。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S031",
+     "guidance_text": "共同逻辑：分散对象、主动回传、远程管理",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "对象：分散的表计或阀门",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "数据：需要主动回传",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "动作：部分涉及远程调节、检定或监管",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "原因：现场对象需要持续在线、身份可管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R014",
+     "from": "G022",
+     "relation": "分散对象带来回传需求",
+     "to": "G023",
+     "direction": "cause"
+    },
+    {
+     "relation_id": "R015",
+     "from": "G023",
+     "relation": "回传与远程动作叠加",
+     "to": "G024",
+     "direction": "accumulate"
+    },
+    {
+     "relation_id": "R016",
+     "from": "G025",
+     "relation": "共同逻辑归因",
+     "to": "G024",
+     "direction": "attribute"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不把行业标签当作选择理由",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经看完热力与燃气两个场景",
+   "exit_condition": "观众能用三个条件解释热力与燃气为什么都选用主动载体",
+   "timing": {
+    "char_equivalent": 106.0,
+    "min_seconds": 27,
+    "target_seconds": 28,
+    "max_seconds": 29,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [],
+   "nx": "再看装备制造和智能模具。装备制造行业的对象是大型装备，载体是装备里的通信模组。主要的动作是设备数据的远程采集和在线监控，还能向业主提供装备作业状态、地理位置信息的查询。你注意，这里的重点已经从“抄表”变成了“设备状态和位置可查询”。\n\n",
+   "teaching_purpose": "讲装备制造行业：大型装备、通信模组与远程采集、状态位置查询。",
+   "single_message": "装备制造的重点从“抄表”转向“设备状态和位置可查询”。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S036",
+     "guidance_text": "装备制造：大型装备与通信模组",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "对象：大型装备",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "装备内通信模组",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "动作：设备数据远程采集、在线监控",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G029",
+      "items": [
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "向业主提供装备作业状态与地理位置信息查询",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G030",
+      "items": [
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "重点从“抄表”转向“状态和位置可查询”",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R017",
+     "from": "G026",
+     "relation": "对象由装备内载体承载",
+     "to": "G027",
+     "direction": "attach"
+    },
+    {
+     "relation_id": "R018",
+     "from": "G027",
+     "relation": "载体承载远程采集与监控",
+     "to": "G028",
+     "direction": "carry"
+    },
+    {
+     "relation_id": "R019",
+     "from": "G028",
+     "relation": "重点转向状态与位置查询",
+     "to": "G030",
+     "direction": "shift"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不涉及定位精度或真实部署范围",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经理解热力与燃气的共同逻辑",
+   "exit_condition": "观众能说出装备制造场景的对象、载体、动作与重点变化",
+   "timing": {
+    "char_equivalent": 104.0,
+    "min_seconds": 26,
+    "target_seconds": 27,
+    "max_seconds": 29,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [],
+   "nx": "智能模具行业，对象是智能模具装备，载体同样是通信模组，动作是对生产作业情况进行实时监测。它跟大型装备的差别，不在于换了一套标识原理，而在于被监测的对象不同，生产作业的粒度也不同。\n\n",
+   "teaching_purpose": "讲智能模具行业，并区分它与大型装备的差别在对象与作业粒度。",
+   "single_message": "同用通信模组，智能模具的重点是生产作业的实时监测。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S042",
+     "guidance_text": "智能模具：作业实时监测",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G031",
+      "items": [
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "对象：智能模具装备",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G032",
+      "items": [
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "载体：通信模组",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G033",
+      "items": [
+       {
+        "screen_item_id": "S045",
+        "guidance_text": "动作：生产作业情况实时监测",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G034",
+      "items": [
+       {
+        "screen_item_id": "S046",
+        "guidance_text": "与大型装备的差别：被监测对象与作业粒度不同，不是标识原理更换",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R020",
+     "from": "G031",
+     "relation": "对象由通信模组承载",
+     "to": "G032",
+     "direction": "attach"
+    },
+    {
+     "relation_id": "R021",
+     "from": "G032",
+     "relation": "载体承载实时监测",
+     "to": "G033",
+     "direction": "carry"
+    },
+    {
+     "relation_id": "R022",
+     "from": "G034",
+     "relation": "以差别保护监测粒度",
+     "to": "G033",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不重复体系认知模块智能模具企业案例及其成效",
+     "evidence_refs": [
+      "E006",
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经看过装备制造场景",
+   "exit_condition": "观众能区分智能模具与大型装备的对象和监测粒度差异",
+   "timing": {
+    "char_equivalent": 81.0,
+    "min_seconds": 21,
+    "target_seconds": 21,
+    "max_seconds": 23,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A011",
+   "callback_a_ids": [],
+   "nx": "转到数控机床。对象是数控机床这种生产设备，载体是设备里的安全芯片。需求有三类：机床加工作业数据的在线采集、运行监测，还有设备资产管理。跟智能模具比，数控机床更强调加工数据、运行状态和资产台账一起抓。所以选的时候要看管理目标是不是覆盖这三类信息，而不是只看设备名称。\n\n",
+   "teaching_purpose": "讲数控机床行业：安全芯片承载加工数据、运行监测与资产管理三类目标。",
+   "single_message": "数控机床要看管理目标是否同时覆盖加工数据、运行状态与资产台账。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S047",
+     "guidance_text": "数控机床：三类管理目标",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G035",
+      "items": [
+       {
+        "screen_item_id": "S048",
+        "guidance_text": "对象：数控机床生产设备",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G036",
+      "items": [
+       {
+        "screen_item_id": "S049",
+        "guidance_text": "设备内安全芯片",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G037",
+      "items": [
+       {
+        "screen_item_id": "S050",
+        "guidance_text": "机床加工作业数据在线采集",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S051",
+        "guidance_text": "运行监测",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S052",
+        "guidance_text": "设备资产管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G038",
+      "items": [
+       {
+        "screen_item_id": "S053",
+        "guidance_text": "与智能模具相比：加工数据、运行状态与资产台账同时强调",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R023",
+     "from": "G035",
+     "relation": "对象由设备内载体承载",
+     "to": "G036",
+     "direction": "attach"
+    },
+    {
+     "relation_id": "R024",
+     "from": "G036",
+     "relation": "载体承载三类目标",
+     "to": "G037",
+     "direction": "carry"
+    },
+    {
+     "relation_id": "R025",
+     "from": "G037",
+     "relation": "三类目标合成管理目标判断",
+     "to": "G038",
+     "direction": "converge"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不补充加工精度、停机率或安全指标",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经看过智能模具场景",
+   "exit_condition": "观众能说出数控机床的三类需求与载体，并理解选择看管理目标而非设备名称",
+   "timing": {
+    "char_equivalent": 120.0,
+    "min_seconds": 30,
+    "target_seconds": 31,
+    "max_seconds": 33,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A012",
+   "callback_a_ids": [
+    "A009",
+    "A010",
+    "A011"
+   ],
+   "nx": "现在把五类场景摆到一起看。热力用 UICC，对应温控、计量、阀门调节这类动作；燃气用安全芯片，对应抄表、监管、全生命周期管理；大型装备用通信模组，对应远程采集、在线监控、状态与位置查询；智能模具也用通信模组，对应作业的实时监测；数控机床用安全芯片，对应加工数据、运行监测、资产管理。\n\n",
+   "teaching_purpose": "把五类场景汇总成对象—载体—动作矩阵。",
+   "single_message": "五类场景是五种不同的对象、载体与动作组合。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S054",
+     "guidance_text": "五类场景矩阵：对象、载体、动作",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G039",
+      "items": [
+       {
+        "screen_item_id": "S055",
+        "guidance_text": "热力：UICC，对应温控、计量、阀门调节",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G040",
+      "items": [
+       {
+        "screen_item_id": "S056",
+        "guidance_text": "燃气：安全芯片，对应抄表、监管、全生命周期管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G041",
+      "items": [
+       {
+        "screen_item_id": "S057",
+        "guidance_text": "大型装备：通信模组，对应远程采集、在线监控、状态与位置查询",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005",
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G042",
+      "items": [
+       {
+        "screen_item_id": "S058",
+        "guidance_text": "智能模具：通信模组，对应作业实时监测",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G043",
+      "items": [
+       {
+        "screen_item_id": "S059",
+        "guidance_text": "数控机床：安全芯片，对应加工数据、运行监测、资产管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007",
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R026",
+     "from": "G039",
+     "relation": "载体搭配不可互换",
+     "to": "G040",
+     "direction": "contrast"
+    },
+    {
+     "relation_id": "R027",
+     "from": "G041",
+     "relation": "同载体、对象与作业粒度不同",
+     "to": "G042",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "五类对象与教材指定载体必须成对出现，不得互换",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    {
+     "constraint_id": "C012",
+     "instruction": "不新增成本、准确率、可靠性、节能率、回报期维度",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经逐类看完五个行业场景",
+   "exit_condition": "观众能按矩阵复述五类场景的对象、载体与动作对应关系",
+   "timing": {
+    "char_equivalent": 119.0,
+    "min_seconds": 30,
+    "target_seconds": 31,
+    "max_seconds": 33,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A013",
+   "callback_a_ids": [],
+   "nx": "这里面有一点要特别记住。在这些例子中，UICC、安全芯片、通信模组分别对应不同的对象和应用模式，不能把例子里的搭配随意互换。还有，“采集”“监测”“控制”“管理”这四个词也不是同义词，它们对应的是完全不同的动作，不能混着用。\n\n",
+   "teaching_purpose": "强调载体搭配与动作词不能混用，保护矩阵差异。",
+   "single_message": "载体搭配不能互换，采集、监测、控制、管理也不是同义词。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S060",
+     "guidance_text": "不能随意互换搭配",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G044",
+      "items": [
+       {
+        "screen_item_id": "S061",
+        "guidance_text": "UICC、安全芯片、通信模组分别对应不同对象与应用模式",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E004",
+         "E005",
+         "E006",
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G045",
+      "items": [
+       {
+        "screen_item_id": "S062",
+        "guidance_text": "“采集”“监测”“控制”“管理”不是同义词",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R028",
+     "from": "G044",
+     "relation": "差异保护",
+     "to": "G045",
+     "direction": "protect"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C013",
+     "instruction": "示例中的搭配只作示例，不升级为已核验部署事实",
+     "evidence_refs": [
+      "E012",
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经看到五类场景矩阵",
+   "exit_condition": "观众能指出载体搭配不可互换，并区分四类动作词",
+   "timing": {
+    "char_equivalent": 92.0,
+    "min_seconds": 23,
+    "target_seconds": 24,
+    "max_seconds": 26,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A014",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "回到开场那个问题，主动标识到底适合什么样的场景。选的时候走三步就行。第一步，确认设备是否需要主动联网。第二步，确认需要采集什么数据以及采集频率。第三步，确认有没有远程监控、调节、检定或者资产管理的动作。这三步在业务需求里都能找到依据时，主动标识才有明确的适配理由。反过来，如果对象只需要一次性、近距离的读取，那就算顶着再显眼的行业名，也不该硬把被动载体换成主动的。\n\n",
+   "teaching_purpose": "把选择过程压缩成三步路径，并给出反向边界。",
+   "single_message": "先看联网，再看采集什么数据与频率，最后看远程管理动作。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S063",
+     "guidance_text": "三步选择路径",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G046",
+      "items": [
+       {
+        "screen_item_id": "S064",
+        "guidance_text": "第一步：确认设备是否需要主动联网",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G047",
+      "items": [
+       {
+        "screen_item_id": "S065",
+        "guidance_text": "第二步：确认需要采集什么数据以及采集频率",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G048",
+      "items": [
+       {
+        "screen_item_id": "S066",
+        "guidance_text": "第三步：确认是否存在远程监控、调节、检定或资产管理动作",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G049",
+      "items": [
+       {
+        "screen_item_id": "S067",
+        "guidance_text": "三步都能在业务需求中找到依据，主动标识才有明确适配理由",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G050",
+      "items": [
+       {
+        "screen_item_id": "S068",
+        "guidance_text": "只需一次性、近距离读取：不因行业名强行更换主动载体",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010",
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R029",
+     "from": "G046",
+     "relation": "顺序推进",
+     "to": "G047",
+     "direction": "sequence"
+    },
+    {
+     "relation_id": "R030",
+     "from": "G047",
+     "relation": "顺序推进",
+     "to": "G048",
+     "direction": "sequence"
+    },
+    {
+     "relation_id": "R031",
+     "from": "G048",
+     "relation": "三步合成适配理由",
+     "to": "G049",
+     "direction": "converge"
+    },
+    {
+     "relation_id": "R032",
+     "from": "G049",
+     "relation": "反向边界",
+     "to": "G050",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C014",
+     "instruction": "不把三步写成标准选型公式，不替代现场验证",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经掌握五类场景的对应关系",
+   "exit_condition": "观众能按三步路径判断一个对象是否适合主动标识",
+   "timing": {
+    "char_equivalent": 164.0,
+    "min_seconds": 41,
+    "target_seconds": 43,
+    "max_seconds": 45,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A015",
+   "callback_a_ids": [
+    "A014"
+   ],
+   "nx": "整个模块四的主线，到这里就收拢了。你会发现，同一套主动载体机制，因为对象和管理动作不同，落到了热力、燃气、装备制造、智能模具、数控机床这些完全不一样的行业里。判断的依据从来不是行业名称本身，而是对象要不要主动联网、需要什么数据、要不要远程管理。记住了这一条，以后不管面对哪个行业的设备，你都能自己判断，主动标识到底适不适合它。",
+   "teaching_purpose": "回到开场问题，收束模块四主线：判断依据是需求而不是行业名称。",
+   "single_message": "同一套主动载体机制因对象与管理动作不同落到五类行业；依据是联网、数据与远程管理需求。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S069",
+     "guidance_text": "模块四收束：依据是需求，不是行业名称",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G051",
+      "items": [
+       {
+        "screen_item_id": "S070",
+        "guidance_text": "同一套主动载体机制，因对象与管理动作不同落到五类行业",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001",
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G052",
+      "items": [
+       {
+        "screen_item_id": "S071",
+        "guidance_text": "判断依据：要不要主动联网、需要什么数据、要不要远程管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G053",
+      "items": [
+       {
+        "screen_item_id": "S072",
+        "guidance_text": "模块四主线：载体形态、注册与上报、服务与安全角色、行业选择",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R033",
+     "from": "G051",
+     "relation": "归因到需求而非行业名称",
+     "to": "G052",
+     "direction": "attribute"
+    },
+    {
+     "relation_id": "R034",
+     "from": "G053",
+     "relation": "模块主线收束到行业选择",
+     "to": "G051",
+     "direction": "close"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C015",
+     "instruction": "不预告相邻主题，不扩展协议、算法、平台建设与企业实施",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经掌握三步选择路径",
+   "exit_condition": "观众能独立判断一个行业设备是否适合主动标识，并完成模块四主线收束",
+   "timing": {
+    "char_equivalent": 145.0,
+    "min_seconds": 37,
+    "target_seconds": 38,
+    "max_seconds": 40,
+    "short_page_reason": null
+   }
+  }
+ ]
+}
