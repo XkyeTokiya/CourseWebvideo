@@ -1,0 +1,1569 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-48",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 48 集责任、前置与后续边界",
+   "source_locator": "已确认课程架构，Episode Architecture 第 48 集及第 22–25、47、49–51 集责任",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围、顺序和去重"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "企业节点数据管理包括标识注册管理、业务数据管理、元数据及元数据库管理、数据同步",
+   "source_locator": "主教材，5.2.2 导语",
+   "verification_status": "not applicable",
+   "allowed_use": "建立本集问题和四类治理前提"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "注册数据应正确、安全、实时更新维护，并按要求向二级节点同步企业基本信息和企业标识前缀等更新信息",
+   "source_locator": "主教材，5.2.2“1. 标识注册管理”",
+   "verification_status": "not applicable",
+   "allowed_use": "解释注册数据治理与上报方向"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "业务数据应正确、安全、有效管理和分析，包括用户信息、权限数据、解析服务数据、日志数据等",
+   "source_locator": "主教材，5.2.2“2. 业务数据管理”",
+   "verification_status": "not applicable",
+   "allowed_use": "解释业务数据治理范围"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "企业节点从二级节点同步国家顶级节点发布的核心/行业元数据，可按需扩展行业元数据项并申请更新；依据核心元数据形成对象主数据",
+   "source_locator": "主教材，5.2.2“3. 元数据及元数据库”",
+   "verification_status": "not applicable",
+   "allowed_use": "解释元数据来源、扩展和主数据形成"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "数据同步是保证标识体系可用性的必要工作；企业节点向二级节点同步注册、统计、元数据、主数据等，具体要求遵循教材列出的对接协议和技术要求",
+   "source_locator": "主教材，5.2.2“4. 数据同步”总则",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "标记同步责任和动态核验风险"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "注册数据：自身注册信息定期同步；变更时实时向二级节点申请，审核后由二级节点向国家顶级节点同步",
+   "source_locator": "主教材，5.2.2“4.(1) 注册数据同步”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释变更与审核/转发关系"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "统计数据：按要求上报标识注册量、标识解析量及统计分析结果到二级节点",
+   "source_locator": "主教材，5.2.2“4.(2) 统计数据同步”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "说明统计类上报内容"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "元数据同步：企业节点与二级节点建立机制，同步更新核心元数据和行业元数据",
+   "source_locator": "主教材，5.2.2“4.(3) 元数据同步”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "说明元数据更新关系"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "主数据可按国家相关要求和业务需求上报，可直接到国家顶级节点，也可先到二级节点再上报；应按核心元数据格式填报",
+   "source_locator": "主教材，5.2.2“4.(4) 主数据同步”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "说明两条上报路径和格式边界"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "运行监测数据包括统计类数据和异常报告类数据；统计类包括注册和解析响应时延等，异常报告说明系统异常并需及时上报",
+   "source_locator": "主教材，5.2.2“4.(5) 运行监测数据同步”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "说明运行数据分类和及时报告责任"
+  },
+  {
+   "evidence_id": "E012",
+   "claim_or_asset": "业务数据应周期性向二级节点上报，主要指与标识应用相关的内容",
+   "source_locator": "主教材，5.2.2“4.(6) 业务数据同步”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "说明业务数据上报边界"
+  },
+  {
+   "evidence_id": "E013",
+   "claim_or_asset": "“治理前提—元数据形成主数据—六类同步—上级节点接收/审核/转发”的教学关系",
+   "source_locator": "本任务包基于 E002–E012 的组织",
+   "verification_status": "not applicable",
+   "allowed_use": "构成流程图和讲稿"
+  },
+  {
+   "evidence_id": "E014",
+   "claim_or_asset": "匿名企业节点维护一个标识对象记录的教学情境",
+   "source_locator": "本任务包教学设计，讲稿 N001–N002",
+   "verification_status": "not applicable",
+   "allowed_use": "将抽象责任落到通用企业现场"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "一件商品刚进厂，就在标识解析体系里登记了一个属于自己的编码。登记完成，这条记录就进了企业节点的系统。这时候很容易松一口气：数据都在了，任务完成了吧？\n\n今天我们要说的，恰恰是从这里开始的。有数据，不等于数据能被持续治理。企业节点里已有的标识注册记录、业务记录，如果不正确、不安全、没法持续维护，那它们就只是躺在系统里的内容，撑不起整个标识体系的运转。\n\n那么，数据要从“进了系统”变成“可以管理、可以上报、可以回查”，中间要过哪些关口？企业节点和上一级节点之间，又是怎么分工的？我们就沿着这件商品的记录，把这条链完整走一遍。\n\n",
+   "teaching_purpose": "用匿名商品记录提出“有数据不等于可治理”，把问题收束为可管理、可上报、可回查三条追问。",
+   "single_message": "有数据不等于可治理，先看数据能否持续维护、上报和回查。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "有数据，不等于可治理",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "匿名商品记录进入企业节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E014"
+        ]
+       },
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "登记完成不等于治理完成",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E014",
+         "E001"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "注册记录与业务记录需正确、安全、可持续维护",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002",
+         "E014"
+        ]
+       },
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "否则只是躺在系统里的内容",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E014"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "可管理、可上报、可回查",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       },
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "企业节点与上级节点的分工",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "场景引出治理问题",
+     "to": "G002",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R002",
+     "from": "G002",
+     "relation": "问题转成三条追问",
+     "to": "G003",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "不声称真实企业、产品界面或当前节点能力；不出现接口字段",
+     "evidence_refs": [
+      "E001",
+      "E014"
+     ]
+    }
+   ],
+   "entry_condition": "观众已了解企业节点五项核心功能",
+   "exit_condition": "观众能说出“有数据不等于可治理”及可管理、可上报、可回查三条追问",
+   "timing": {
+    "char_equivalent": 227.0,
+    "min_seconds": 57,
+    "target_seconds": 59,
+    "max_seconds": 62,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "先看企业节点自己的数据管理。它一共分四块：标识注册管理、业务数据管理、元数据及元数据库管理，还有数据同步。这个顺序其实有讲究，先把注册和业务这两类基础数据弄对，再谈往后上报的事。\n\n",
+   "teaching_purpose": "列出企业节点数据管理的四块内容，并说明先治理注册与业务数据、再谈上报的顺序。",
+   "single_message": "四块管理有先后：先治理基础数据，再向外同步。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S008",
+     "guidance_text": "数据管理的四块内容",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "标识注册管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "业务数据管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "元数据及元数据库管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "数据同步",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "先治理注册与业务两类基础数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002",
+         "E013"
+        ]
+       },
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "再按责任向上同步",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G004",
+     "relation": "四块管理落到先后顺序",
+     "to": "G005",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "不增加教材未列的数据域或产品模块",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已见过治理问题",
+   "exit_condition": "观众能列出四类管理并说出先后顺序",
+   "timing": {
+    "char_equivalent": 80.0,
+    "min_seconds": 20,
+    "target_seconds": 21,
+    "max_seconds": 22,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "注册数据，就是标识注册时留下的记录。它要求正确、安全、实时更新维护，更新内容包括企业基本信息、企业标识前缀。放到日常操作里，注册信息是定期同步的；但一旦发生变更，就要实时向二级节点申请提交，由二级节点审核通过之后，再由二级节点向国家顶级节点同步上去。所以这里其实是两段接力：企业节点先把变更交给二级节点，二级节点审核后，继续往上送。\n\n",
+   "teaching_purpose": "说明注册数据的维护要求、更新内容，以及定期同步与变更实时申请、二级审核后上行的路径。",
+   "single_message": "注册数据先保证正确安全，再按定期与变更两条节奏上行。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S015",
+     "guidance_text": "注册数据：先维护，再上行",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "正确、安全、实时更新维护",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "更新企业基本信息与企业标识前缀",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "注册信息定期同步",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "变更时实时申请提交",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "二级节点审核后上行国家顶级节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "只适用于注册变更路径",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G006",
+     "relation": "维护要求引出两种同步节奏",
+     "to": "G007",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R005",
+     "from": "G007",
+     "relation": "变更申请进入审核上行",
+     "to": "G008",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不补时间、字段、冲突规则或审核时限",
+     "evidence_refs": [
+      "E003",
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道四块管理",
+   "exit_condition": "观众能说出注册数据的维护要求与上行路径",
+   "timing": {
+    "char_equivalent": 149.0,
+    "min_seconds": 38,
+    "target_seconds": 39,
+    "max_seconds": 41,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "业务数据是另一类基础。它同样要保障正确和安全，还得能支撑日常的管理和分析。范围包括用户信息、权限数据、解析服务数据、日志数据这类内容。具体要管理哪些，跟着当期要求走，不是一份固定不变的字段清单。\n\n到这里，注册和业务两类数据有了正确的底座，接下来该说元数据和主数据了。\n\n",
+   "teaching_purpose": "说明业务数据的治理要求与教材示例范围，明确示例不构成固定字段清单。",
+   "single_message": "业务数据要正确安全、可管理分析，但示例不是固定字段表。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S022",
+     "guidance_text": "业务数据的范围与边界",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "正确、安全，支持管理与分析",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "用户信息",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "权限数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "解析服务数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "日志数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "示例不是固定字段清单",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "具体内容随当期要求",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G009",
+     "relation": "要求落到示例范围",
+     "to": "G010",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R007",
+     "from": "G010",
+     "relation": "示例再收边界",
+     "to": "G011",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不扩展为完整字段表或固定产品模块",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看过注册数据管理",
+   "exit_condition": "观众能说出业务数据要求与示例边界",
+   "timing": {
+    "char_equivalent": 119.0,
+    "min_seconds": 30,
+    "target_seconds": 31,
+    "max_seconds": 33,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "在企业节点的数据管理中，元数据规定登记对象时要记录哪些维度，主数据承载依据这些维度组织的对象基础信息。例如，元数据可以列出名称、类型和批次，企业再按要求填写相应信息。\n\n企业节点用的核心元数据和行业元数据从哪来？是国家顶级节点发布的，企业节点从二级节点同步下来。行业里有特殊需要，还可以按需扩展行业元数据的数据项，并申请更新。然后，企业依据核心元数据填写对象的基础属性，形成主数据。\n\n",
+   "teaching_purpose": "区分元数据的描述框架角色与主数据的对象基础信息角色，并说明元数据来源、扩展与主数据形成关系。",
+   "single_message": "元数据是描述框架，主数据是依框架形成的对象基础信息。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S030",
+     "guidance_text": "元数据搭框架，主数据填内容",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "元数据规定登记对象时要记录哪些维度",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "主数据承载依据这些维度组织的对象基础信息",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "核心与行业元数据来自国家顶级节点发布",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "企业节点从二级节点同步",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "可按需扩展行业元数据项并申请更新",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "依据核心元数据填写对象基础属性，形成主数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G012",
+     "relation": "框架与对象信息分层",
+     "to": "G013",
+     "direction": "contrast"
+    },
+    {
+     "relation_id": "R009",
+     "from": "G014",
+     "relation": "上级元数据经企业填写形成主数据",
+     "to": "G013",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不展开完整数据概念与模型；不虚构字段、版本或审批规则",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解注册与业务数据的治理",
+   "exit_condition": "观众能区分元数据与主数据并说出形成关系",
+   "timing": {
+    "char_equivalent": 173.0,
+    "min_seconds": 44,
+    "target_seconds": 45,
+    "max_seconds": 48,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A004",
+    "A005"
+   ],
+   "nx": "数据在自己手里理顺了，下一步就是往外同步。为什么要同步？因为数据同步是保证标识体系可用的必要工作。一个节点的数据只在本地转圈，整个体系就是断的。企业节点向二级节点等上级节点同步的数据一共六类：注册数据、统计数据、元数据、主数据、运行监测数据、业务数据。每一类的方向和节奏不完全一样，具体怎么报，遵循相应的对接协议和技术要求。我们用那件商品，把这六类一件一件过一遍。\n\n",
+   "teaching_purpose": "说明数据同步的必要性，列出六类同步对象，并把责任关系与协议接口实现分开。",
+   "single_message": "六类数据同步是可用性所需的责任关系，不等于已核验接口实现。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S037",
+     "guidance_text": "六类数据为什么要往外同步",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "数据同步是保证标识体系可用的必要工作",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "注册数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "统计数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "元数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "主数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "运行监测数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "业务数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S045",
+        "guidance_text": "遵循相应的对接协议和技术要求",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S046",
+        "guidance_text": "只讲责任关系，不把协议当作已核验接口实现",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E013"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R010",
+     "from": "G015",
+     "relation": "必要性落到六类对象",
+     "to": "G016",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R011",
+     "from": "G016",
+     "relation": "对象分流后收边界",
+     "to": "G017",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不出现协议报文、接口字段、同步频率或虚构产品能力",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解元数据与主数据关系",
+   "exit_condition": "观众能列出六类同步并说出“责任关系不等于接口实现”",
+   "timing": {
+    "char_equivalent": 164.0,
+    "min_seconds": 41,
+    "target_seconds": 43,
+    "max_seconds": 45,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "注册数据同步，平时定期同步；变更时实时申请提交，经二级节点审核之后，由二级节点上行到国家顶级节点。\n\n统计数据同步，是按要求向二级节点上报标识注册量、标识解析量以及统计分析的结果。这里要拎清楚：注册量、解析量，是统计对象，反映体系里发生了什么，不代表当前平台的口径，也不是什么质量达标线。\n\n",
+   "teaching_purpose": "解释注册数据与统计数据两类上行：注册关注身份与变更，统计关注注册量、解析量和分析结果。",
+   "single_message": "注册同步身份变更，统计同步数量与分析结果。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S047",
+     "guidance_text": "注册与统计：身份和数量的上行",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S048",
+        "guidance_text": "注册数据定期同步",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S049",
+        "guidance_text": "变更实时申请并审核上行",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S050",
+        "guidance_text": "统计数据按要求上报二级节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S051",
+        "guidance_text": "注册量、解析量及分析结果",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S052",
+        "guidance_text": "统计对象不代表当前平台口径或质量达标线",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G018",
+     "relation": "身份同步与统计上报并列",
+     "to": "G019",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R013",
+     "from": "G019",
+     "relation": "统计对象收边界",
+     "to": "G020",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不增加指标口径、质量阈值或上报频率数值",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解六类同步总则",
+   "exit_condition": "观众能说出注册与统计两类同步的对象和边界",
+   "timing": {
+    "char_equivalent": 127.0,
+    "min_seconds": 32,
+    "target_seconds": 33,
+    "max_seconds": 35,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "元数据同步，是企业节点和二级节点之间建立起更新机制，核心元数据、行业元数据一起更新。这样框架层的变动，两边能保持一致。\n\n主数据同步，是按国家相关要求和业务需求上报。它的路径有两条：一条直接上报到国家顶级节点，另一条先到二级节点，再由二级节点上报。两条路径是并列的，没有说哪一条是唯一的、优先的。填报的时候，按核心元数据的格式来。\n\n",
+   "teaching_purpose": "解释元数据更新机制与主数据两条并列上报路径，并保留核心元数据格式这一边界。",
+   "single_message": "元数据更新成机制，主数据上报有两条并列路径。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S053",
+     "guidance_text": "元数据与主数据的同步路径",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S054",
+        "guidance_text": "企业节点与二级节点建立更新机制",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S055",
+        "guidance_text": "核心与行业元数据一起更新",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S056",
+        "guidance_text": "主数据按国家要求和业务需求上报",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S057",
+        "guidance_text": "直达国家顶级节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S058",
+        "guidance_text": "或先到二级节点再上报",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S059",
+        "guidance_text": "两条路径并列，不唯一、不优先",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S060",
+        "guidance_text": "按核心元数据格式填报",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R014",
+     "from": "G021",
+     "relation": "元数据更新后主数据按路径上报",
+     "to": "G022",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R015",
+     "from": "G022",
+     "relation": "路径并列并收格式边界",
+     "to": "G023",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不展开字段表、校验规则或冲突处理",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解元数据与主数据的分层",
+   "exit_condition": "观众能说出元数据更新机制与主数据两条路径",
+   "timing": {
+    "char_equivalent": 146.0,
+    "min_seconds": 37,
+    "target_seconds": 38,
+    "max_seconds": 40,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "运行监测数据同步，要报给二级节点，也要报给国家顶级节点，分两类。一类是统计类，可以包括注册响应时延、解析响应时延这样的例子。另一类是异常报告类，说明系统出了什么异常，这一类讲究及时，发现问题要尽快上报。\n\n业务数据同步，是周期性向二级节点上报，内容主要和标识应用相关。这里的“周期性”就按它字面的意思理解，不换算成每天、每小时，也不是实时的流水。\n\n",
+   "teaching_purpose": "解释运行监测与业务数据两类同步：运行监测分统计与异常报告，业务数据周期性上报，并保留示例与节奏限定。",
+   "single_message": "运行监测报状态与异常，业务数据按周期报应用内容。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S061",
+     "guidance_text": "运行监测与业务数据的反馈",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E011"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S062",
+        "guidance_text": "运行监测报二级节点和国家顶级节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S063",
+        "guidance_text": "统计类与异常报告类",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S064",
+        "guidance_text": "注册、解析响应时延只是示例",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S065",
+        "guidance_text": "异常需及时上报",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S066",
+        "guidance_text": "业务数据周期性上报二级节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S067",
+        "guidance_text": "主要是与标识应用相关的内容",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S068",
+        "guidance_text": "时延不设阈值、告警等级或性能指标",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S069",
+        "guidance_text": "周期性不换算成日、小时或实时流",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R016",
+     "from": "G024",
+     "relation": "两类限定共同收边界",
+     "to": "G026",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R017",
+     "from": "G025",
+     "relation": "业务节奏同样收边界",
+     "to": "G026",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不画阈值、告警等级、性能曲线或虚构仪表盘",
+     "evidence_refs": [
+      "E011",
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解前四类同步",
+   "exit_condition": "观众能说出运行监测两类内容与业务数据的周期限定",
+   "timing": {
+    "char_equivalent": 151.0,
+    "min_seconds": 38,
+    "target_seconds": 39,
+    "max_seconds": 42,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A007",
+    "A008"
+   ],
+   "nx": "六类数据走完，还有三点边界要记牢。审核和转发这个关系，只在注册变更这一条路径上成立：企业节点申请，二级节点审核，再上行到国家顶级节点。不能一看到上报两个字，就以为所有数据都过同一道审核、同一套转发。主数据的两条路径并列存在，到达国家顶级节点的那一条，不代表它就是唯一实现，也不代表它是优先实现。最关键的一点是：同步这件事，是治理的责任链。它规定数据内容往哪走、谁负责、按什么节奏管，但它不等于一套已经核验过的接口实现。数据的内容、方向、责任，和接口实现，是两回事。\n\n",
+   "teaching_purpose": "用三条边界收束六类同步：审核转发只限注册变更、主数据两条路径并列、责任链不等于接口实现。",
+   "single_message": "三条边界把责任关系与接口实现分开。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S070",
+     "guidance_text": "三条不能越过的边界",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E013"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S071",
+        "guidance_text": "审核与转发只适用注册变更路径",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007",
+         "E013"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S072",
+        "guidance_text": "主数据两条路径并列，不唯一、不优先",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G029",
+      "items": [
+       {
+        "screen_item_id": "S073",
+        "guidance_text": "同步是治理责任链",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       },
+       {
+        "screen_item_id": "S074",
+        "guidance_text": "内容、方向、责任不等于已核验接口实现",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E013"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R018",
+     "from": "G027",
+     "relation": "审核边界与路径边界并列",
+     "to": "G028",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R019",
+     "from": "G028",
+     "relation": "两条边界共同落到责任链区分",
+     "to": "G029",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不把责任关系写成产品认证、质量评分或当前能力判断",
+     "evidence_refs": [
+      "E013"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看过六类同步",
+   "exit_condition": "观众能说出三条边界各自限制什么",
+   "timing": {
+    "char_equivalent": 206.0,
+    "min_seconds": 52,
+    "target_seconds": 54,
+    "max_seconds": 57,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A011",
+   "callback_a_ids": [
+    "A010"
+   ],
+   "nx": "那怎么检验自己有没有把数据管住？可以沿四个问题自查：注册和业务数据，是不是在正确、安全地维护？核心元数据和行业元数据，有没有更新机制？主数据，是不是按核心元数据格式形成的，并且走上了上报路径？统计、异常、业务这几类数据，是不是按要求同步了？四个问题都能答得上，治理这条链才算立住。\n\n",
+   "teaching_purpose": "用四个问题给出企业节点数据治理的自查面，不把它变成产品认证或评分表。",
+   "single_message": "四个问题答得上，治理链才算立住。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S075",
+     "guidance_text": "四个问题自查数据治理",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E013"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G030",
+      "items": [
+       {
+        "screen_item_id": "S076",
+        "guidance_text": "注册和业务数据是否在正确、安全地维护",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013",
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S077",
+        "guidance_text": "核心和行业元数据是否有更新机制",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013",
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S078",
+        "guidance_text": "主数据是否按核心元数据格式形成并走上报路径",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013",
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S079",
+        "guidance_text": "统计、异常和业务数据是否按要求同步",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G031",
+      "items": [
+       {
+        "screen_item_id": "S080",
+        "guidance_text": "四问对应治理责任链的自查面",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R020",
+     "from": "G030",
+     "relation": "四问收束为自查面",
+     "to": "G031",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "不变成产品认证清单、评分表或当前能力判断",
+     "evidence_refs": [
+      "E013"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看过三条边界",
+   "exit_condition": "观众能复述四个自查问题",
+   "timing": {
+    "char_equivalent": 124.0,
+    "min_seconds": 31,
+    "target_seconds": 32,
+    "max_seconds": 34,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A012",
+   "callback_a_ids": [
+    "A001",
+    "A003",
+    "A006",
+    "A011"
+   ],
+   "nx": "回到开场那件商品。它从登记一个编码开始，注册数据、业务数据先保证正确、安全、可持续维护；元数据搭好了描述框架，主数据把对象的属性填进去；然后六类数据，各按各的方向和节奏，分流到二级节点、国家顶级节点这些对应的上级节点。整条链的分工很清楚：企业节点管好自己的两类基础数据，并向上同步；二级节点负责接收，在注册变更这条特定路径上承担审核；数据按各自的方向向上流动，最终汇到对应的上级节点。\n\n把它们放到一起看待，共同规律就出来了：先治理，后上报；方向清楚，责任才清楚。六类数据的对象不同、责任不同，但都在为同一个目标服务，就是标识体系的可用性。而贯穿始终的核心判断是，把数据的内容、方向和责任，跟接口实现严格分开。数据同步是治理的责任链，不是一套已经核验过的接口。认清这一点，企业节点的数据管理才算真正上了正轨。",
+   "teaching_purpose": "回到匿名商品记录，收束六类同步与节点分工，提炼“先治理、后上报”和“责任与接口实现分开”的核心判断。",
+   "single_message": "回到商品：先治理后上报，责任链不等于接口实现。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S081",
+     "guidance_text": "回到那件商品：先治理，后上报",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E013"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G032",
+      "items": [
+       {
+        "screen_item_id": "S082",
+        "guidance_text": "注册、业务数据先保证正确、安全、可持续维护",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       },
+       {
+        "screen_item_id": "S083",
+        "guidance_text": "元数据搭描述框架，主数据填对象基础属性",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       },
+       {
+        "screen_item_id": "S084",
+        "guidance_text": "六类数据按方向分流到相应上级节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G033",
+      "items": [
+       {
+        "screen_item_id": "S085",
+        "guidance_text": "企业节点维护基础数据并向上同步",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       },
+       {
+        "screen_item_id": "S086",
+        "guidance_text": "二级节点接收，注册变更路径承担审核",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013",
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G034",
+      "items": [
+       {
+        "screen_item_id": "S087",
+        "guidance_text": "先治理，后上报",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       },
+       {
+        "screen_item_id": "S088",
+        "guidance_text": "六类共同服务标识体系可用性",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E013"
+        ]
+       },
+       {
+        "screen_item_id": "S089",
+        "guidance_text": "内容、方向、责任与接口实现严格分开",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E013"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R021",
+     "from": "G032",
+     "relation": "回扣商品落到分工",
+     "to": "G033",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R022",
+     "from": "G033",
+     "relation": "分工提炼共同规律与核心判断",
+     "to": "G034",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C012",
+     "instruction": "不总结为产品能力、接口实现或质量评分；不预告相邻分集",
+     "evidence_refs": [
+      "E001",
+      "E013"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看过六类同步与自查问题",
+   "exit_condition": "观众能复述先治理后上报、责任与接口实现分开的核心判断",
+   "timing": {
+    "char_equivalent": 315.0,
+    "min_seconds": 79,
+    "target_seconds": 82,
+    "max_seconds": 86,
+    "short_page_reason": null
+   }
+  }
+ ]
+}

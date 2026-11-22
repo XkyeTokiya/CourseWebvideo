@@ -1,0 +1,494 @@
+{
+  "episode_id": "episode-48",
+  "validation_profile": "visual-rough-v4",
+  "schema_version": "courseplay-visual-rough/v4",
+  "status": "approved",
+  "validation_summary": {
+    "pages": [
+      {
+        "a_id": "A001",
+        "source": {
+          "S": [
+            "S001",
+            "S002",
+            "S003",
+            "S004",
+            "S005",
+            "S006",
+            "S007"
+          ],
+          "G": [
+            "G001",
+            "G002",
+            "G003"
+          ],
+          "R": [
+            "R001",
+            "R002"
+          ]
+        },
+        "recipe": {
+          "requested": "time-anchor-opening",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M001"
+        }
+      },
+      {
+        "a_id": "A002",
+        "source": {
+          "S": [
+            "S008",
+            "S009",
+            "S010",
+            "S011",
+            "S012",
+            "S013",
+            "S014"
+          ],
+          "G": [
+            "G004",
+            "G005"
+          ],
+          "R": [
+            "R003"
+          ]
+        },
+        "recipe": {
+          "requested": "layered-bands-with-side-notes",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 2,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A003",
+        "source": {
+          "S": [
+            "S015",
+            "S016",
+            "S017",
+            "S018",
+            "S019",
+            "S020",
+            "S021"
+          ],
+          "G": [
+            "G006",
+            "G007",
+            "G008"
+          ],
+          "R": [
+            "R004",
+            "R005"
+          ]
+        },
+        "recipe": {
+          "requested": "issue-cards-with-image",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M002"
+        }
+      },
+      {
+        "a_id": "A004",
+        "source": {
+          "S": [
+            "S022",
+            "S023",
+            "S024",
+            "S025",
+            "S026",
+            "S027",
+            "S028",
+            "S029"
+          ],
+          "G": [
+            "G009",
+            "G010",
+            "G011"
+          ],
+          "R": [
+            "R006",
+            "R007"
+          ]
+        },
+        "recipe": {
+          "requested": "parallel-cards-with-takeaway",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A005",
+        "source": {
+          "S": [
+            "S030",
+            "S031",
+            "S032",
+            "S033",
+            "S034",
+            "S035",
+            "S036"
+          ],
+          "G": [
+            "G012",
+            "G013",
+            "G014"
+          ],
+          "R": [
+            "R008",
+            "R009"
+          ]
+        },
+        "recipe": {
+          "requested": "split-compare-with-thesis",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A006",
+        "source": {
+          "S": [
+            "S037",
+            "S038",
+            "S039",
+            "S040",
+            "S041",
+            "S042",
+            "S043",
+            "S044",
+            "S045",
+            "S046"
+          ],
+          "G": [
+            "G015",
+            "G016",
+            "G017"
+          ],
+          "R": [
+            "R010",
+            "R011"
+          ]
+        },
+        "recipe": {
+          "requested": "common-anchor-association-groups",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A007",
+        "source": {
+          "S": [
+            "S047",
+            "S048",
+            "S049",
+            "S050",
+            "S051",
+            "S052"
+          ],
+          "G": [
+            "G018",
+            "G019",
+            "G020"
+          ],
+          "R": [
+            "R012",
+            "R013"
+          ]
+        },
+        "recipe": {
+          "requested": "linear-steps-with-takeaway",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A008",
+        "source": {
+          "S": [
+            "S053",
+            "S054",
+            "S055",
+            "S056",
+            "S057",
+            "S058",
+            "S059",
+            "S060"
+          ],
+          "G": [
+            "G021",
+            "G022",
+            "G023"
+          ],
+          "R": [
+            "R014",
+            "R015"
+          ]
+        },
+        "recipe": {
+          "requested": "scope-responsibility-ledger",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A009",
+        "source": {
+          "S": [
+            "S061",
+            "S062",
+            "S063",
+            "S064",
+            "S065",
+            "S066",
+            "S067",
+            "S068",
+            "S069"
+          ],
+          "G": [
+            "G024",
+            "G025",
+            "G026"
+          ],
+          "R": [
+            "R016",
+            "R017"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-summary-rail",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M003"
+        }
+      },
+      {
+        "a_id": "A010",
+        "source": {
+          "S": [
+            "S070",
+            "S071",
+            "S072",
+            "S073",
+            "S074"
+          ],
+          "G": [
+            "G027",
+            "G028",
+            "G029"
+          ],
+          "R": [
+            "R018",
+            "R019"
+          ]
+        },
+        "recipe": {
+          "requested": "parallel-cards-with-takeaway",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A011",
+        "source": {
+          "S": [
+            "S075",
+            "S076",
+            "S077",
+            "S078",
+            "S079",
+            "S080"
+          ],
+          "G": [
+            "G030",
+            "G031"
+          ],
+          "R": [
+            "R020"
+          ]
+        },
+        "recipe": {
+          "requested": "layered-bands-with-side-notes",
+          "eligible": true,
+          "content_unit_range": [
+            2,
+            3
+          ]
+        },
+        "content_units": {
+          "count": 2,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": false,
+          "binding": null
+        }
+      },
+      {
+        "a_id": "A012",
+        "source": {
+          "S": [
+            "S081",
+            "S082",
+            "S083",
+            "S084",
+            "S085",
+            "S086",
+            "S087",
+            "S088",
+            "S089"
+          ],
+          "G": [
+            "G032",
+            "G033",
+            "G034"
+          ],
+          "R": [
+            "R021",
+            "R022"
+          ]
+        },
+        "recipe": {
+          "requested": "image-with-summary-rail",
+          "eligible": true,
+          "content_unit_range": [
+            3,
+            4
+          ]
+        },
+        "content_units": {
+          "count": 3,
+          "uncovered_groups": []
+        },
+        "media": {
+          "required_by_recipe": true,
+          "binding": "M004"
+        }
+      }
+    ]
+  },
+  "image_allocation": {
+    "required_page_count": 4,
+    "assigned_page_count": 4
+  },
+  "logic_diagrams": {
+    "page_limit": 0,
+    "assigned_page_count": 0
+  },
+  "errors": [],
+  "failures": [],
+  "input_integrity": {
+    "a_page_sha256": "56a8e3ce7678cfd6dcd41c9fce19a553fd5c49210e29aa3917518d3a642fab81",
+    "visual_rough_sha256": "afbde2f576f6e877362a1201b240b6c07cf5ce141b023aa58cbf6da139908cc3",
+    "recipe_registry_sha256": "697ed613616ec9ac5325a38544fe4ac9c8fcf6b3ab5439e614e7a7293b93ef2e"
+  }
+}
