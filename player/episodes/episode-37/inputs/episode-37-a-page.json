@@ -1,0 +1,1446 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-37",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 37 集标题、前置关系与第 34、38–42 集分集边界",
+   "source_locator": "已确认课程架构，Episode Architecture 第 37 集及第 34、38–42 集责任",
+   "verification_status": "not applicable",
+   "allowed_use": "控制单集范围、去重与收束"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "终端身份认证、异构设备互联、数据易被篡改或泄漏是工业应用典型痛点",
+   "source_locator": "主教材，4.2.1“在当前的工业应用中，通常面临如下典型问题”",
+   "verification_status": "not applicable",
+   "allowed_use": "开篇问题情境与需求背景"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "主动标识载体可嵌入工业设备，承载工业互联网标识编码及必要的安全证书、算法和密钥，具备联网通信功能，可主动向标识解析服务节点或标识数据应用平台发起连接，无需标识读写设备触发",
+   "source_locator": "主教材，4.2.1“按照工业互联网产业联盟给出的定义”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "定义与主动/被动边界；不补版本或现行标准状态"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "主动载体四项特征：嵌入设备内部；主动发起解析请求并支持承载标识信息远程增删改查；安全区域存储必要证书/算法/密钥并支持加密传输与接入认证；具备防震动、防潮湿、防摩擦、防篡改特性",
+   "source_locator": "主教材，4.2.1“主动标识载体的主要特征有”",
+   "verification_status": "not applicable",
+   "allowed_use": "解释主动能力、安全能力和工业环境适应性；远程增删改查保持教材能力表述，不设计接口"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "图4-17列出 UICC、MCU、通信模组、通信终端等主动标识载体类型",
+   "source_locator": "教材图4-17“常见的主动标识载体类型”",
+   "verification_status": "not applicable",
+   "allowed_use": "说明 UICC 是多类载体之一；不把图示当作具体产品型号或内部结构证据"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "UICC 是全球移动通信系统中使用的智能卡，可存储用户信息、鉴权密钥、短消息、付费方式，并可包含 SIM/USIM/ISIM 等电信应用以及电子签名认证、电子钱包等非电信逻辑应用",
+   "source_locator": "主教材，4.2.1“1. 通用集成电路卡（UICC）”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "UICC 基础定义与卡应用范围；不讲运营商业务、卡规格或密钥实现"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "图4-18以 UICC 为容器，示意 SIM/USIM/ISIM/其他应用、卡属性与操作系统，并连接 GSM、UMTS/E-UTRAN、IMS、其他接入网标签",
+   "source_locator": "教材图4-18“UICC及其卡应用”",
+   "verification_status": "not applicable",
+   "allowed_use": "忠实重绘 UICC 卡应用层关系；不把标签解释为频段、协议参数或部署要求"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "将工业互联网标识解析系统接入能力封装为 UICC 卡应用，有利于规模化使用和工业终端安全接入；工业标识相关应用可打包成工业标识应用，部署在 UICC 卡应用区",
+   "source_locator": "主教材，4.2.1 UICC 末两段",
+   "verification_status": "not applicable",
+   "allowed_use": "解释 UICC 与工业标识应用的关系；“有利于”是教材判断，不承诺规模或安全结果"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "“嵌入—身份/安全材料—主动连接—可管理—环境适应”的主动载体五节点解释链",
+   "source_locator": "本任务包教学组织（E003–E004）",
+   "verification_status": "not applicable",
+   "allowed_use": "组织讲稿、分镜和确定性信息图；不是新增硬件结构或协议流程"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "工业现场设备上电后无需手持读写器即可建立身份连接的教学情境",
+   "source_locator": "本任务包教学设计，讲稿 N001、N004",
+   "verification_status": "not applicable",
+   "allowed_use": "让“主动”概念具体化；明示为解释性情境，不冒充教材实拍或注册结果"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "UICC 卡应用区与工业标识应用的关系重绘",
+   "source_locator": "E006–E008、教材图4-18“UICC及其卡应用”",
+   "verification_status": "read-complete",
+   "allowed_use": "支持卡应用区关系重绘，只画教材明确的应用层关系，不虚构芯片内部或算法细节"
+  },
+  {
+   "evidence_id": "E012",
+   "claim_or_asset": "UICC 卡应用通过卡与终端之间的接口同终端协作；需要联网时，由终端中的通信部件提供网络承载；UICC 不是完整终端",
+   "source_locator": "ETSI TS 102 223 V18.1.0（OPEN CHANNEL）：https://www.etsi.org/deliver/etsi_ts/102200_102299/102223/18.01.00_60/ts_102223v180100p.pdf",
+   "verification_status": "verified",
+   "allowed_use": "限定主动能力与联网承载口径；任务包“自身联网”概括待协调（C01）"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "先想象一个工业现场。一台设备接上了网络，系统要管它、调度它、跟它交换数据。这时候冒出来的第一个问题，不是网通不通，而是这个终端到底是谁。如果连这是谁都说不清楚，后面的认证、互联、数据安全，全都无从谈起。\n\n围绕这个问题，工业应用里的典型麻烦，大致可以归成三类。身份要能被认证，系统得确认对面确实是它自己，而不是冒充的。异构设备要能互联，不同厂商、不同型号的设备，得能互相通上话。数据要尽量避免被篡改、被泄漏。主动标识载体，就是围绕这三类问题出现的一类载体。\n\n",
+   "teaching_purpose": "用工业现场的身份问题引出主动标识载体，并给出身份认证、异构互联、数据安全三类痛点。",
+   "single_message": "工业现场先要回答“这个终端是谁”；主动标识载体围绕身份、互联、安全三类问题出现。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "这个终端到底是谁？",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "工业设备接入网络，系统要管理、调度并交换数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "身份认证：确认对面确实是它自己",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "异构互联：不同厂商、型号的设备能互相通信",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "数据安全：尽量避免被篡改、被泄漏",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "主动标识载体：围绕这三类问题出现的一类载体",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "身份问题分出三类现场问题",
+     "to": "G002",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R002",
+     "from": "G002",
+     "relation": "三类问题引出主动标识载体",
+     "to": "G003",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "不把三类问题扩写成行业统计、部署量或具体企业案例",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    {
+     "constraint_id": "C002",
+     "instruction": "不出现真实企业名称、设备型号、注册结果或认证结果",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，尚未接触主动标识载体",
+   "exit_condition": "观众能说出工业现场的三类问题，并知道本集要讲主动标识载体",
+   "timing": {
+    "char_equivalent": 199.0,
+    "min_seconds": 50,
+    "target_seconds": 52,
+    "max_seconds": 55,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "在讲它之前，先看一眼我们熟悉的被动那一面。条码、二维码，或者 RFID 标签，通常都由读写设备来触发。读写设备读到了标识，系统才继续往下处理。这里要说清楚一句，\"被动\"讲的是连接动作依赖外部读取，不是说这些载体里没有信息。它们里面当然有信息，只是不会自己开口。\n\n",
+   "teaching_purpose": "回顾被动载体依赖外部读写设备触发的边界，明确“被动”说的是触发方式，不是载体没有信息。",
+   "single_message": "被动载体靠读写设备触发；“被动”指连接动作依赖外部读取。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S007",
+     "guidance_text": "被动：等读写设备来触发",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "条码、二维码、RFID 标签等常见被动载体",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "读写设备读到标识，系统才继续处理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "“被动”指连接动作依赖外部读取",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "不代表载体里没有信息",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G004",
+     "relation": "触发路径决定被动属性",
+     "to": "G005",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不重讲第 34 集 RFID 识读机制，不展开读写器协议、频段或产品细节",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道本集讨论主动标识载体",
+   "exit_condition": "观众能区分“被动”是触发方式，不是信息有无",
+   "timing": {
+    "char_equivalent": 112.0,
+    "min_seconds": 28,
+    "target_seconds": 29,
+    "max_seconds": 31,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "主动载体就不一样了。它可以嵌入工业设备内部，承载工业互联网标识编码，也承载必要的安全证书、算法和密钥。它可以通过自身或配套终端的通信能力，主动向标识解析服务节点或标识数据应用平台发起连接，不需要标识读写设备来触发。\n\n",
+   "teaching_purpose": "给出主动标识载体定义：嵌入设备、承载编码与安全材料、通过自身或配套终端通信能力主动发起连接。",
+   "single_message": "主动标识载体嵌入设备内部，承载标识与安全材料，并能主动向解析服务或数据平台发起连接。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S012",
+     "guidance_text": "主动标识载体：嵌入、承载、主动连接",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "嵌入工业设备内部",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "承载工业互联网标识编码",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "承载必要的安全证书、算法和密钥",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "通过自身或配套终端的通信能力发起连接",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "面向标识解析服务节点或标识数据应用平台",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "不需要标识读写设备触发",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G006",
+     "relation": "承载内容与主动连接共同构成定义",
+     "to": "G007",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不把载体或卡描述成完整终端，不展开通信模组与终端内部组成",
+     "evidence_refs": [
+      "E003",
+      "E012"
+     ]
+    },
+    {
+     "constraint_id": "C005",
+     "instruction": "不承诺具体注册、接入或认证结果",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已回顾被动触发方式",
+   "exit_condition": "观众能复述主动载体的嵌入、承载与主动连接三个要点",
+   "timing": {
+    "char_equivalent": 99.0,
+    "min_seconds": 25,
+    "target_seconds": 26,
+    "max_seconds": 27,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "这里\"主动\"两个字要摆正。它说的是载体或其应用具备主动发起通信请求的能力；具体联网承载可能由所在终端提供，这也不等于载体已经完成了注册。会不会主动发起连接，和有没有完成注册，是两件事。\n\n",
+   "teaching_purpose": "校正“主动”的含义：主动是发起通信请求的能力，具体联网承载可能由终端提供，且不等于已经完成注册。",
+   "single_message": "主动指载体或其应用能主动发起通信请求；联网承载可能由终端提供，主动能力不等于已注册。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S019",
+     "guidance_text": "“主动”不等于完整联网，也不等于已注册",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003",
+      "E012"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "主动：载体或其应用具备主动发起通信请求的能力",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "联网承载：可能由所在终端提供",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "主动能力 ≠ 已完成标识注册",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R005",
+     "from": "G008",
+     "relation": "发起请求与联网承载分工不同",
+     "to": "G009",
+     "direction": "contrast"
+    },
+    {
+     "relation_id": "R006",
+     "from": "G009",
+     "relation": "分工不改变注册状态边界",
+     "to": "G010",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不把主动能力扩大为自动注册、自动判责或持续在线",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    {
+     "constraint_id": "C007",
+     "instruction": "不展开注册流程、接口或认证结果",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已听到主动标识载体定义",
+   "exit_condition": "观众能说出主动能力、联网承载与注册状态是不同事项",
+   "timing": {
+    "char_equivalent": 84.0,
+    "min_seconds": 21,
+    "target_seconds": 22,
+    "max_seconds": 23,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "这样的载体有四个特征，我们一条一条看。它嵌入工业设备内部，不容易被盗取，也不容易被误安装。它能主动发起解析请求，还支持对承载的标识及相关信息做远程增删改查，也就是说，标识信息挂在设备上，也还能在远端更新和管理。它配备一个安全区域，用来存放必要的证书、算法和密钥，支持工业标识及相关数据的加密传输，也支持接入认证。它还能适应复杂的工业环境，防震动、防潮湿、防摩擦、防篡改，安在车间里、户外设备上，都顶得住。\n\n",
+   "teaching_purpose": "解释主动载体四项特征：嵌入不易盗取误装、可主动解析与远程管理、安全区域、工业环境适应。",
+   "single_message": "四项特征分别对应嵌入、可管理、安全与现场适应，且不推导实现细节。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S023",
+     "guidance_text": "四项特征：嵌入、远程管理、安全、环境",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "嵌入设备内部，不易被盗取、误安装",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "主动发起解析请求，支持对承载标识及相关信息远程增删改查",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "安全区域：存放必要证书、算法和密钥，支持加密传输与接入认证",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "适应复杂工业环境：防震动、防潮湿、防摩擦、防篡改",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G011",
+     "relation": "嵌入之后才谈远程管理",
+     "to": "G012",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R008",
+     "from": "G013",
+     "relation": "安全能力与环境适应共同支撑现场可用",
+     "to": "G014",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不设计接口，不显示密钥、通过率或安全等级结论",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    {
+     "constraint_id": "C009",
+     "instruction": "不把远程增删改查说成任何平台默认开放的能力",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知主动载体定义",
+   "exit_condition": "观众能说出四项特征及其边界",
+   "timing": {
+    "char_equivalent": 179.0,
+    "min_seconds": 45,
+    "target_seconds": 47,
+    "max_seconds": 49,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "那么主动载体都有哪些样子？常见的类型有通用集成电路卡，英文是 Universal Integrated Circuit Card，缩写就是 UICC，此外还有通信模组、微控制单元、通信终端。这次我们重点认识 UICC。要理解它，最要紧的是先把两个容易混的词拆开，一个叫\"卡应用\"，一个叫\"工业标识应用\"。\n\n",
+   "teaching_purpose": "列出主动载体类型并聚焦 UICC，提前拆开“卡应用”与“工业标识应用”两个容易混淆的概念。",
+   "single_message": "UICC 是主动载体类型之一；理解它要先分开“卡应用”和“工业标识应用”。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S028",
+     "guidance_text": "主动载体的类型：先聚焦 UICC",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "常见类型：UICC、通信模组、微控制单元、通信终端",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "UICC（通用集成电路卡，Universal Integrated Circuit Card）",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "卡应用：UICC 内部承载应用的位置",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "工业标识应用：封装工业互联网标识接入能力的卡应用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R009",
+     "from": "G015",
+     "relation": "从类型列表中聚焦 UICC",
+     "to": "G016",
+     "direction": "pivot"
+    },
+    {
+     "relation_id": "R010",
+     "from": "G016",
+     "relation": "UICC 内部区分卡应用与工业标识应用",
+     "to": "G017",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不讲通信模组、MCU、终端的内部结构或产品规格（留给第 38 集）",
+     "evidence_refs": [
+      "E001",
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知主动载体定义与四项特征",
+   "exit_condition": "观众能说出 UICC 是类型之一，并知道要区分卡应用与工业标识应用",
+   "timing": {
+    "char_equivalent": 113.0,
+    "min_seconds": 29,
+    "target_seconds": 29,
+    "max_seconds": 31,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "先看 UICC 本身。它是用在全球移动通信系统里的智能卡，能够存储用户信息、鉴权密钥、短消息、付费方式这些卡信息，大致可以概括成\"用户与鉴权等卡信息\"。它里面可以包含 SIM、USIM、ISIM 这些电信应用，也可以包含电子签名认证、电子钱包这类非电信的逻辑应用。SIM 是用户标识模块，USIM 是通用用户标识模块，ISIM 是 IP 多媒体业务标识模块，它们都是 UICC 里承载的具体应用。\n\n",
+   "teaching_purpose": "给出 UICC 定义与卡应用范围，并保留“UICC 是承载应用的卡、不是完整终端”的边界。",
+   "single_message": "UICC 是全球移动通信系统的智能卡，承载 SIM/USIM/ISIM 等应用，但本身不是完整终端。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S033",
+     "guidance_text": "UICC：承载卡应用的智能卡",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "全球移动通信系统中的智能卡",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "存储用户信息、鉴权密钥、短消息、付费方式等卡信息",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "可概括为“用户与鉴权等卡信息”",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "电信应用：SIM、USIM、ISIM",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "非电信逻辑应用：电子签名认证、电子钱包等",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "SIM 用户标识模块；USIM 通用用户标识模块；ISIM IP 多媒体业务标识模块",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G018",
+     "relation": "智能卡定义落到卡信息",
+     "to": "G019",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R012",
+     "from": "G020",
+     "relation": "卡应用列举回到全称解释",
+     "to": "G021",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "不展开运营商业务、卡规格或密钥实现",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    {
+     "constraint_id": "C012",
+     "instruction": "不把 UICC 说成完整终端",
+     "evidence_refs": [
+      "E006",
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道 UICC 是主动载体类型之一",
+   "exit_condition": "观众能说出 UICC 是智能卡、卡应用范围以及它不是完整终端",
+   "timing": {
+    "char_equivalent": 154.0,
+    "min_seconds": 39,
+    "target_seconds": 40,
+    "max_seconds": 42,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "这里要立住一个边界：UICC 是承载应用的卡载体，它本身不是一台完整的终端。把它想成一个容器，会好懂很多。\n\n容器里面装什么呢？装着 SIM、USIM、ISIM 这些卡应用，还有卡属性、操作系统。卡应用通过卡与终端之间的接口同终端协作；需要联网时，由终端中的通信部件提供网络承载。注意，这是应用与终端的协作关系，不是芯片内部的电路结构。\n\n",
+   "teaching_purpose": "用容器关系解释 UICC 卡载体边界：内含卡应用、卡属性与操作系统；卡应用经卡与终端接口协作，联网由终端提供承载。",
+   "single_message": "UICC 是容器；卡应用与终端协作，联网承载由终端提供，不是芯片内部电路。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S040",
+     "guidance_text": "UICC 是容器：应用与终端协作",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007",
+      "E012"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "UICC 是承载应用的卡载体，不是完整终端",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "容器内：SIM/USIM/ISIM 等卡应用，以及卡属性与操作系统",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "卡应用通过卡与终端之间的接口同终端协作",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007",
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "需要联网时，由终端中的通信部件提供网络承载",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R013",
+     "from": "G022",
+     "relation": "容器边界决定内容关系",
+     "to": "G023",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R014",
+     "from": "G023",
+     "relation": "卡应用与终端协作，而非芯片内部电路",
+     "to": "G024",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C013",
+     "instruction": "不把关系画成芯片内部电路、频段或协议参数",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    {
+     "constraint_id": "C014",
+     "instruction": "不把联网承载说成由卡独立完成",
+     "evidence_refs": [
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道 UICC 定义与卡应用范围",
+   "exit_condition": "观众能说出 UICC 是容器、卡应用与终端协作、联网承载由终端提供",
+   "timing": {
+    "char_equivalent": 138.5,
+    "min_seconds": 35,
+    "target_seconds": 36,
+    "max_seconds": 38,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "现在把工业标识应用放进去。工业互联网标识的接入能力，可以封装成 UICC 的一种卡应用。把工业标识相关的应用打包成\"工业标识应用\"，部署在 UICC 的卡应用区。这样，这张卡就能承载标识和安全材料；卡应用可以通过终端接口发起通信请求，由终端提供联网承载。\n\n",
+   "teaching_purpose": "说明工业标识应用作为 UICC 卡应用部署在卡应用区，使卡承载标识与安全材料，并可经终端发起通信请求。",
+   "single_message": "工业标识应用可部署在 UICC 卡应用区，由卡承载标识与安全材料，经终端发起通信请求。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S045",
+     "guidance_text": "把工业标识应用放进卡应用区",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S046",
+        "guidance_text": "工业互联网标识接入能力可封装为 UICC 的一种卡应用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S047",
+        "guidance_text": "工业标识应用部署在 UICC 卡应用区",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S048",
+        "guidance_text": "卡承载标识与安全材料；卡应用可经终端接口发起通信请求，终端提供联网承载",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008",
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R015",
+     "from": "G025",
+     "relation": "封装后部署到卡应用区",
+     "to": "G026",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R016",
+     "from": "G026",
+     "relation": "部署位置带来承载与通信能力",
+     "to": "G027",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C015",
+     "instruction": "不承诺规模化使用或安全接入结果",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    {
+     "constraint_id": "C016",
+     "instruction": "不展开注册、上报与数据平台接口",
+     "evidence_refs": [
+      "E001",
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解 UICC 容器关系",
+   "exit_condition": "观众能说出工业标识应用部署位置及其承载、通信方式",
+   "timing": {
+    "char_equivalent": 109.0,
+    "min_seconds": 28,
+    "target_seconds": 28,
+    "max_seconds": 30,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A009"
+   ],
+   "nx": "把整条链串起来看。工业设备内部嵌入主动载体。主动载体承载标识和安全材料。它通过自身或所在终端的通信能力，连接解析服务或数据平台。平台提供业务入口。UICC 就处在\"载体\"这一层，卡应用区是承载工业标识应用的位置，它不是解析节点。\n\n",
+   "teaching_purpose": "把 UICC 放回设备—载体—服务/平台—业务入口四层链，明确它位于载体层，卡应用区不是解析节点。",
+   "single_message": "UICC 位于设备到平台这条链的载体层，卡应用区不是解析节点。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S049",
+     "guidance_text": "四层链：设备—载体—服务/平台—业务入口",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S050",
+        "guidance_text": "工业设备内部嵌入主动载体",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G029",
+      "items": [
+       {
+        "screen_item_id": "S051",
+        "guidance_text": "主动载体承载标识和安全材料",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G030",
+      "items": [
+       {
+        "screen_item_id": "S052",
+        "guidance_text": "通过自身或所在终端的通信能力连接解析服务或数据平台",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G031",
+      "items": [
+       {
+        "screen_item_id": "S053",
+        "guidance_text": "平台提供业务入口；UICC 处在载体层，卡应用区不是解析节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R017",
+     "from": "G028",
+     "relation": "设备内嵌载体",
+     "to": "G029",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R018",
+     "from": "G029",
+     "relation": "承载之后发起连接",
+     "to": "G030",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R019",
+     "from": "G030",
+     "relation": "连接进入业务入口",
+     "to": "G031",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C017",
+     "instruction": "不画注册、上报时序、协议或数据库节点",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    {
+     "constraint_id": "C018",
+     "instruction": "不把 UICC 画成解析节点或业务数据库",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知工业标识应用部署位置",
+   "exit_condition": "观众能把 UICC 定位到载体层，并说明卡应用区不是解析节点",
+   "timing": {
+    "char_equivalent": 101.0,
+    "min_seconds": 26,
+    "target_seconds": 26,
+    "max_seconds": 28,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A011",
+   "callback_a_ids": [
+    "A010"
+   ],
+   "nx": "再立几个边界。判断一个载体是主动还是被动，可以问一个问题：在没有外部读写设备触发的情况下，载体或其应用能不能按设计主动发起通信请求？能，就符合主动能力；不能，它就仍然属于需要外部触发的被动读取。这个判断不是为了分谁更好，而是确认眼前的场景需要哪种连接方式。还有三条要记牢：UICC 不是通信模组，也不是完整终端；主动能力不等于已经完成标识注册；安全区域承载的是必要的安全材料，至于密码算法、密钥长度、安全等级这些，我们不做额外推导。\n\n",
+   "teaching_purpose": "用“无外部读写设备时能否主动发起通信请求”判别主动/被动，并立住 UICC 边界、注册状态与安全材料三条边界。",
+   "single_message": "判别看能否无外部触发主动发起请求；UICC 不是模组或完整终端、主动能力不等于已注册、安全材料不推导算法细节。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S054",
+     "guidance_text": "判别与三条边界",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G032",
+      "items": [
+       {
+        "screen_item_id": "S055",
+        "guidance_text": "判别问题：无外部读写设备触发时，载体或其应用能否按设计主动发起通信请求？",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G033",
+      "items": [
+       {
+        "screen_item_id": "S056",
+        "guidance_text": "能：符合主动能力；不能：仍需外部触发的被动读取",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G034",
+      "items": [
+       {
+        "screen_item_id": "S057",
+        "guidance_text": "UICC 不是通信模组，也不是完整终端",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S058",
+        "guidance_text": "主动能力不等于已完成标识注册",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S059",
+        "guidance_text": "安全区域承载必要材料，不推导密码算法、密钥长度、安全等级",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R020",
+     "from": "G032",
+     "relation": "判别问题给出两类结果",
+     "to": "G033",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R021",
+     "from": "G033",
+     "relation": "判别之后仍需守住三条边界",
+     "to": "G034",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C019",
+     "instruction": "不把判别写成主动优于被动或优劣比较",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    {
+     "constraint_id": "C020",
+     "instruction": "不补充密码算法、密钥长度或安全等级结论",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看到端到端四层链",
+   "exit_condition": "观众能用判别问题区分主动/被动，并说出三条边界",
+   "timing": {
+    "char_equivalent": 193.0,
+    "min_seconds": 49,
+    "target_seconds": 50,
+    "max_seconds": 53,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A012",
+   "callback_a_ids": [
+    "A011"
+   ],
+   "nx": "回到开场那句疑问，现场的终端到底是谁。被动载体靠外部读写设备触发，主动载体或其应用通过自身或配套终端的通信能力发起连接，把身份和安全材料带进设备内部，这两种载体，各自对应一种连接方式。而 UICC，是其中一种能装下工业标识应用的卡载体，它在卡应用区里承载应用，处在设备到平台这条链的载体层。它负责承载应用和安全材料，并可通过终端主动发起通信请求。它既不是完整终端，也不是通信模组，更不是注册平台，主动能力也不等于注册已经完成。把这几条边界立住，主动载体这一环，就在这条链上站住了。",
+   "teaching_purpose": "回到开场疑问，收束两类载体的连接方式与 UICC 的载体层定位。",
+   "single_message": "被动靠外部触发、主动靠自身或终端通信能力发起连接；UICC 是承载工业标识应用的卡载体。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S060",
+     "guidance_text": "回到开场：两种连接方式，一种卡载体",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003",
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G035",
+      "items": [
+       {
+        "screen_item_id": "S061",
+        "guidance_text": "被动载体：靠外部读写设备触发",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S062",
+        "guidance_text": "主动载体或其应用：通过自身或配套终端通信能力发起连接",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G036",
+      "items": [
+       {
+        "screen_item_id": "S063",
+        "guidance_text": "身份与安全材料进入设备内部，两种连接方式各自成立",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G037",
+      "items": [
+       {
+        "screen_item_id": "S064",
+        "guidance_text": "UICC：承载工业标识应用的卡载体，处在载体层",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008",
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S065",
+        "guidance_text": "不是完整终端、不是通信模组、不是注册平台",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R022",
+     "from": "G035",
+     "relation": "两种连接方式共同完成身份承载",
+     "to": "G036",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R023",
+     "from": "G036",
+     "relation": "UICC 定位收束到载体层",
+     "to": "G037",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C021",
+     "instruction": "不预告第 38–42 集内容",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已完成判别与边界梳理",
+   "exit_condition": "观众能复述两类连接方式与 UICC 的载体层定位",
+   "timing": {
+    "char_equivalent": 217.0,
+    "min_seconds": 55,
+    "target_seconds": 57,
+    "max_seconds": 60,
+    "short_page_reason": null
+   }
+  }
+ ]
+}
