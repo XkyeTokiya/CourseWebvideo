@@ -1,0 +1,1242 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-44",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 44 集标题、前置关系、相邻边界与时长目标",
+   "source_locator": "已确认课程架构，Episode Architecture 第 43–46 集",
+   "verification_status": "not applicable",
+   "allowed_use": "控制单集范围、去重与收束"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "二级节点管理标识注册数据、标识业务数据、系统运行数据；按所服务行业特点定义元数据并建立元数据库",
+   "source_locator": "主教材，5.1.1“2. 数据管理要求”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释数据底线与数据同步对象；不新增数据字段或存储表"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "企业节点依据元数据提供标识对象属性值；按托管协议将核心数据上传至国家顶级节点（灾备节点），可为应急接管提供支持；上下级数据与运行状态保持同步",
+   "source_locator": "主教材，5.1.1“2. 数据管理要求”；2021 年建设导则第 9、10.3–10.5 节（https://www.aii-alliance.org/uploads/1/20211231/011075df802418ee7629a95a35e74f90.pdf）",
+   "verification_status": "verified",
+   "allowed_use": "说明元数据约束、同步关系与灾备托管；不展开备份频率、加密算法或灾备 RTO"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "向国家顶级节点对接：提交对接申请、同步三类数据、接受运行监测、必要时由上级实施业务应急接管；四类对接角色并列",
+   "source_locator": "主教材，5.1.1“3. 接口要求—国家顶级节点对接要求”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "组成上行接口验收链；“应急接管”只按责任关系呈现"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "递归节点一侧：支持递归解析请求，及时响应并返回解析信息；VAA、GS1、Handle、OID、Ecode 只作协议族名称",
+   "source_locator": "主教材，5.1.1“3. 接口要求—递归节点对接要求”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "组成递归解析接口边界；不虚构协议版本、报文格式或时延"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "企业节点一侧：支持接入并制定必要接入管理规范；数据同步、服务状态监测、按要求向国家顶级节点上报企业节点信息",
+   "source_locator": "主教材，5.1.1“3. 接口要求—企业节点对接要求”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "组成下行接口验收链；不扩写接入审批、心跳字段或监控产品"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "向标识注册管理机构提交责任主体基本信息、所属行业、联系人等必要注册信息",
+   "source_locator": "主教材，5.1.1“3. 接口要求—标识注册管理机构对接要求”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "说明管理机构对接输入；不补充表单字段或在线入口"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "解析能力至少达到节点历史解析峰值 3 倍；基本带宽满足 1 万 QPS 并具备 2–3 倍冗余；系统、存储、网络高可用，整体可用性达到 99.99%；支持负载均衡与按注册/解析数量扩容",
+   "source_locator": "主教材，5.1.1“4. 性能要求”；2021 年建设导则第 10.3–10.5 节",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "仅作 2021 年导则典型指标展示；不得改写为当前强制标准、行业平均或验收结论"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "自建或委托部署；带宽、存储、计算资源满足未来一定时期业务发展并支持弹性扩展",
+   "source_locator": "主教材，5.1.1“5. 部署模式”",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释资源与部署边界；第 43 集已讲模式定义，本集只讲资源验收"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "“数据对象—上行/递归/下行接口—容量冗余—弹性部署”的四层技术验收链",
+   "source_locator": "本任务包教学组织（E002–E009）",
+   "verification_status": "not applicable",
+   "allowed_use": "组织讲稿、确定性信息图与验证项"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "二级节点上线前技术验收的教学情境",
+   "source_locator": "本任务包教学设计，讲稿 N001、N014",
+   "verification_status": "not applicable",
+   "allowed_use": "让抽象指标落到验收问题；仅作教学情境，不冒充真实项目"
+  },
+  {
+   "evidence_id": "E012",
+   "claim_or_asset": "2021 年建设导则：递归通信支持列举体系中至少一种；四类接口为并列关系；核心数据按托管协议上传至国家顶级节点（灾备节点）",
+   "source_locator": "2021 年建设导则第 9、10.3–10.5 节（https://www.aii-alliance.org/uploads/1/20211231/011075df802418ee7629a95a35e74f90.pdf）；docs/episode-33-51-content-accuracy-review.md「第 44 期」",
+   "verification_status": "verified",
+   "allowed_use": "以已核实一手资料口径纠正任务包表述；任务包待协调（C01/C02/C04）"
+  },
+  {
+   "evidence_id": "E013",
+   "claim_or_asset": "全国标准信息公共服务平台登记 YD/T 6122-2024 为现行推荐性行业标准（2025-04-01 实施）；未取得全文，不认定其指标、替代关系或强制性",
+   "source_locator": "https://std.samr.gov.cn/hb/search/stdHBDetailed?id=2F7B4471A6DBF3B1E06397BE0A0A6557；docs/episode-33-51-content-accuracy-review.md「第 44 期」限制与后续",
+   "verification_status": "verified",
+   "allowed_use": "仅用于版本边界静默约束；不进入口播与可见槽位，不出现标准编号"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "很多人以为，二级节点建设就是选好模式、把一套解析软件部署上去，系统能跑就算建成了。其实真正决定它能不能接入、能不能持续服务的，是四件更麻烦的事：它要管哪些数据，跟哪些角色对接，拿什么证明容量和可用性够用，还有将来业务变大了资源能不能跟着扩。今天我们就顺着这四个问题，一条一条看清楚。\n\n",
+   "teaching_purpose": "把验收问题从“买多少服务器、系统能不能跑”转到数据、接口、性能、部署四问，并说明二级节点承上启下的位置与四问的关系。",
+   "single_message": "二级节点能不能接入、能不能持续服务，要先回答数据、接口、性能、部署四个问题。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "二级节点建设要验收哪四件事？",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "二级节点不是“部署一套解析软件、系统能跑”就算建成",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010",
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "数据：要管哪些数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "接口：要跟哪些角色对接",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "性能：拿什么证明容量和可用性够用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "部署：业务变大后资源能不能跟着扩展",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "二级节点承上启下：向上对接国家顶级节点，向下连接企业节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E001",
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "本集沿四问逐项展开，并把每层要求落成可复核的问题",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "用四问替代“能跑即建成”",
+     "to": "G002",
+     "direction": "pivot"
+    },
+    {
+     "relation_id": "R002",
+     "from": "G002",
+     "relation": "四问对应承上启下的两端",
+     "to": "G003",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R003",
+     "from": "G003",
+     "relation": "四问串成本集主线",
+     "to": "G004",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "不把“系统已经上线”当作建成或验收依据；不出现验收通过结论、通过率或评分",
+     "evidence_refs": [
+      "E001",
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看过第 43 集的牵头主体与部署模式结论，开始本集",
+   "exit_condition": "观众能说出建设验收要回答的四个问题",
+   "timing": {
+    "char_equivalent": 128.0,
+    "min_seconds": 32,
+    "target_seconds": 33,
+    "max_seconds": 35,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "先说数据。二级节点手上要管的不是一类数据，而是三类：标识注册数据、标识业务数据，还有系统运行数据。注册和业务这两类比较好理解，一个管标识本身，一个管标识对应的业务对象；系统运行数据是节点自己的运行记录。光有数据还不够，还要按所服务行业的特点来定义元数据，建起元数据库。企业节点依据这套元数据，提供标识对象对应的属性值。",
+   "teaching_purpose": "说明二级节点管理的第一层对象：三类数据，以及按行业特点定义的元数据、元数据库如何约束企业节点提供的属性值。",
+   "single_message": "二级节点的数据底座由三类数据和一套元数据定义构成。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S009",
+     "guidance_text": "数据底座：三类数据加一套元数据",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "标识注册数据：管标识本身",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "标识业务数据：管标识对应的业务对象",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "系统运行数据：节点自己的运行记录",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "按所服务行业的特点定义元数据，建起元数据库",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "企业节点依据这套元数据，提供标识对象对应的属性值",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G005",
+     "relation": "三类数据之上叠加元数据定义",
+     "to": "G006",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R005",
+     "from": "G006",
+     "relation": "元数据约束企业节点提供的属性值",
+     "to": "G007",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "不新增数据字段、存储表、消息队列或数据库产品",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受四问框架，进入第一问数据",
+   "exit_condition": "观众能说出三类数据，并解释元数据、元数据库与企业节点属性值的关系",
+   "timing": {
+    "char_equivalent": 144.0,
+    "min_seconds": 36,
+    "target_seconds": 38,
+    "max_seconds": 40,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "这里有个责任边界要记清楚：二级节点管理的是标识数据及其元数据，不是把所有的业务系统都搬进来。数据还要流动起来，二级节点跟上级、下级之间的数据和运行状态要保持同步，做到准确、一致。其中，按托管协议向国家顶级节点（灾备节点）上传核心数据，可以为应急接管提供支持。\n\n",
+   "teaching_purpose": "划定数据管理的责任边界，说明上下级数据与运行状态的同步要求，以及核心数据按托管协议上传至作为灾备的国家顶级节点。",
+   "single_message": "二级节点管的是标识数据及其元数据，不是搬走全部业务系统；核心数据按托管协议上传灾备。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S015",
+     "guidance_text": "数据能管住，还要能同步",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "责任边界：管理标识数据及其元数据，不是把全部业务系统都搬进来",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "与上级、下级之间：数据和运行状态保持同步，做到准确、一致",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "核心数据：按托管协议上传至国家顶级节点（灾备节点），为应急接管提供支持",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G008",
+     "relation": "边界之内才谈数据同步",
+     "to": "G009",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R007",
+     "from": "G009",
+     "relation": "托管上传是同步关系中的灾备要求",
+     "to": "G010",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不描述备份频率、加密算法、灾备 RTO/RPO 或应急接管触发条件",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经知道三类数据与元数据的关系",
+   "exit_condition": "观众能说出数据责任边界、同步对象，以及核心数据的托管去向",
+   "timing": {
+    "char_equivalent": 116.0,
+    "min_seconds": 29,
+    "target_seconds": 30,
+    "max_seconds": 32,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "然后是接口。二级节点要跟四类角色对接。向上这一头是国家顶级节点：先提交对接申请，再同步标识注册数据、标识业务数据和系统运行数据，同时接受对方的运行监测；必要的时候，由国家顶级节点实施业务应急接管。这里讲的是责任关系和服务连续性，不是某个软件页面上点几个按钮。",
+   "teaching_purpose": "说明四类对接角色中的上行一侧：对国家顶级节点的申请、同步、运行监测与必要时应急接管，强调这是责任关系而非界面操作。",
+   "single_message": "国家顶级节点这一侧的四项对接动作，描述的是责任关系与服务连续性。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S019",
+     "guidance_text": "向上对接国家顶级节点",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "四类对接角色：国家顶级节点、递归节点、企业节点、标识注册管理机构",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "申请：先提交对接申请",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "同步：标识注册数据、标识业务数据和系统运行数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "监测：接受国家顶级节点的运行监测",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "接管：必要的时候，由国家顶级节点实施业务应急接管",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "这几项描述的是责任关系和服务连续性，不是界面操作",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G011",
+     "relation": "四类角色中的上行一侧",
+     "to": "G012",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R009",
+     "from": "G012",
+     "relation": "四项动作共同解释责任关系",
+     "to": "G013",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不绘制软件界面或按钮流程；应急接管不写成触发条件、必然故障或自动按钮",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解数据底座与数据同步边界",
+   "exit_condition": "观众能按申请、同步、监测、必要时接管的顺序说出上行对接要求",
+   "timing": {
+    "char_equivalent": 118.0,
+    "min_seconds": 30,
+    "target_seconds": 31,
+    "max_seconds": 33,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "向递归节点一侧，二级节点要支持递归解析请求，及时响应并返回解析信息。二零二一年的《工业互联网标识解析二级节点建设导则》列出了 VAA、GS1、Handle、OID、Ecode 等标识体系，要求二级节点与递归节点通信时支持其中至少一种。",
+   "teaching_purpose": "说明递归节点一侧的请求—响应关系，以及 2021 年建设导则对列举标识体系“支持其中至少一种”的协议要求。",
+   "single_message": "递归侧要能响应请求并返回解析信息；列举标识体系按 2021 年导则支持其中至少一种。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S026",
+     "guidance_text": "递归节点：请求与响应",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "递归节点请求：二级节点支持递归解析请求，及时响应",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "响应：返回解析信息",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "2021 年建设导则列举 VAA、GS1、Handle、OID、Ecode 等标识体系，要求通信时支持其中至少一种",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R010",
+     "from": "G014",
+     "relation": "请求—响应方向",
+     "to": "G015",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R011",
+     "from": "G015",
+     "relation": "协议要求落在通信能力上",
+     "to": "G016",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不出现协议版本、报文字段、报文样例、认证头或时延数字；五类名称只作协议族名称",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经知道上行对接的责任关系",
+   "exit_condition": "观众能说出递归侧的请求与响应关系，以及“至少一种”的协议要求",
+   "timing": {
+    "char_equivalent": 94.0,
+    "min_seconds": 24,
+    "target_seconds": 25,
+    "max_seconds": 26,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "向企业节点一侧，要支持企业节点接入，也要制定必要的接入管理规范。跟企业节点做数据同步，监测它们的服务状态，还要按要求向国家顶级节点上报企业节点信息。另外还有一条向外的通道，是向标识注册管理机构提交注册信息，比如责任主体基本信息、所属行业、联系人。这四类接口分别对应上级对接、递归查询、企业接入和注册管理四种关系，建设和验收时要逐项核对。\n\n",
+   "teaching_purpose": "说明企业节点一侧的接入、同步、监测、上报动作与向标识注册管理机构的注册信息提交，收束四类接口的并列覆盖要求。",
+   "single_message": "企业侧要做接入与运行管理，注册管理机构侧要提交必要信息；四类接口并列，逐项核对覆盖。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S030",
+     "guidance_text": "企业节点与注册管理机构",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "企业节点接入：支持接入并制定必要的接入管理规范",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "企业侧运行：数据同步、服务状态监测、按要求向国家顶级节点上报企业节点信息",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "注册管理机构：提交责任主体基本信息、所属行业、联系人等必要注册信息",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "四类接口并列：上级对接、递归查询、企业接入、注册管理，建设和验收逐项核对",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010",
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G017",
+     "relation": "接入之后进入运行管理",
+     "to": "G018",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R013",
+     "from": "G018",
+     "relation": "企业侧运行管理与注册信息提交是并列的外部关系",
+     "to": "G019",
+     "direction": "contrast"
+    },
+    {
+     "relation_id": "R014",
+     "from": "G019",
+     "relation": "四类接口收束为并列覆盖要求",
+     "to": "G020",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不扩写接入审批、心跳字段、监控产品或表单入口；不描述调用时序",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解上行与递归两侧的接口要求",
+   "exit_condition": "观众能说出企业侧四类动作与注册管理机构对接，并理解四类接口并列覆盖",
+   "timing": {
+    "char_equivalent": 153.0,
+    "min_seconds": 39,
+    "target_seconds": 40,
+    "max_seconds": 42,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "数据管得住、接口能通了，还要看性能撑不撑得住。还是那份二零二一年的导则，它列出过一组性能指标：解析能力至少达到节点历史解析峰值的3倍；基本带宽在满足1万QPS标识解析的基础上，还要有2到3倍的冗余；系统、存储和网络都要具备高可用性，整体可用性要达到99.99%。实际建设时，要依据适用的标准和验收要求确定指标。",
+   "teaching_purpose": "给出 2021 年建设导则的四项性能指标，并把指标归到该版本导则的典型指标，提示实际建设按适用标准与验收要求确定。",
+   "single_message": "四项指标是 2021 年导则列出的典型指标，实际建设要按适用标准与验收要求确定。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S035",
+     "guidance_text": "性能验收的典型指标",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "解析能力：至少达到节点历史解析峰值的 3 倍",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "带宽：在满足 1 万 QPS 标识解析的基础上，具备 2–3 倍冗余",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "可用性：系统、存储、网络高可用，整体可用性达到 99.99%",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "指标归属：2021 年建设导则列出的典型指标；实际建设依据适用的标准和验收要求确定指标",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008",
+         "E012"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R015",
+     "from": "G021",
+     "relation": "解析能力与带宽冗余共同支撑容量",
+     "to": "G022",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R016",
+     "from": "G023",
+     "relation": "可用性指标与版本归属同屏交代",
+     "to": "G024",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不使用监控仪表盘、趋势曲线、当前节点数量或当前实时值；不把指标写成当前强制阈值、行业平均或项目承诺；不出现标准编号",
+     "evidence_refs": [
+      "E008",
+      "E013"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解四类接口的覆盖要求",
+   "exit_condition": "观众能说出四项指标，并知道它们属于 2021 年导则的典型指标",
+   "timing": {
+    "char_equivalent": 135.5,
+    "min_seconds": 34,
+    "target_seconds": 35,
+    "max_seconds": 37,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "比起背数字，更要理解数字背后的机制：用历史解析峰值来估算解析能力，因为峰值代表了节点真实经受过的最大压力；用带宽冗余来抵抗流量波动，高峰来临时不至于被挤爆；用系统、存储、网络的整体可用性来保护服务连续性，任何一环出故障，服务都可能中断。再往远了看，数据库硬盘容量可以根据注册和解析数量扩容，注册与解析系统支持负载均衡，网络带宽、服务器计算和数据存储都能按实际情况扩展。\n\n",
+   "teaching_purpose": "解释四项指标背后的估算、冗余与可用性保护机制，并说明数据库、负载均衡与带宽/计算/存储的扩展路径。",
+   "single_message": "指标背后的机制是峰值估算、冗余抗波动、整体可用性保连续；容量不足时按注册与解析数量扩展。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S040",
+     "guidance_text": "指标背后的机制与扩展路径",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "用历史解析峰值估算解析能力：峰值代表节点真实经受过的最大压力",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "用带宽冗余抵抗流量波动：高峰来临不至于被挤爆",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "用系统、存储、网络的整体可用性保护服务连续性",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "数据库硬盘按注册与解析数量扩容",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008",
+         "E009"
+        ]
+       },
+       {
+        "screen_item_id": "S045",
+        "guidance_text": "注册与解析系统支持负载均衡",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S046",
+        "guidance_text": "网络带宽、服务器计算与数据存储按实际情况扩展",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R017",
+     "from": "G025",
+     "relation": "三项机制共同支撑容量与连续性",
+     "to": "G026",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R018",
+     "from": "G027",
+     "relation": "机制落到可扩展的工程路径",
+     "to": "G028",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不画厂商架构图、集群规模、扩容触发点或负载测试方法",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经知道四项指标与 2021 年导则归属",
+   "exit_condition": "观众能解释峰值估算、带宽冗余、整体可用性三项机制，并说出扩展路径",
+   "timing": {
+    "char_equivalent": 168.0,
+    "min_seconds": 42,
+    "target_seconds": 44,
+    "max_seconds": 46,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "部署这一块，二级节点可以自建，也可以委托部署。自建依托责任主体的自有或租用云资源，委托部署由国家顶级节点运行机构提供部署和运行支撑。不管选哪一种，带宽、存储、计算资源都要满足未来一定时期的业务发展需求，并且支持弹性扩展。\n\n",
+   "teaching_purpose": "说明自建与委托两种部署方式的责任分工，以及两种方式共同的资源要求与弹性扩展承诺。",
+   "single_message": "自建靠自有或租用云资源，委托靠国家顶级节点运行机构；两种方式都要满足未来业务并弹性扩展。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S047",
+     "guidance_text": "部署方式不同，资源要求相同",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G029",
+      "items": [
+       {
+        "screen_item_id": "S048",
+        "guidance_text": "自建部署：责任主体依托自有或租用云资源建设",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G030",
+      "items": [
+       {
+        "screen_item_id": "S049",
+        "guidance_text": "委托部署：国家顶级节点运行机构提供部署和运行支撑",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G031",
+      "items": [
+       {
+        "screen_item_id": "S050",
+        "guidance_text": "共同要求：带宽、存储、计算满足未来一定时期业务发展，支持弹性扩展",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R019",
+     "from": "G029",
+     "relation": "两种部署的责任分工不同",
+     "to": "G030",
+     "direction": "contrast"
+    },
+    {
+     "relation_id": "R020",
+     "from": "G030",
+     "relation": "两种方式受同一资源要求约束",
+     "to": "G031",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不指定云厂商、服务器品牌、容器编排或网络拓扑；不重复第 43 集的牵头主体论证",
+     "evidence_refs": [
+      "E009",
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经理解性能与扩展路径",
+   "exit_condition": "观众能区分自建与委托的责任分工，并说出共同的资源要求",
+   "timing": {
+    "char_equivalent": 100.0,
+    "min_seconds": 25,
+    "target_seconds": 26,
+    "max_seconds": 28,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A009"
+   ],
+   "nx": "回到开头的问题。二级节点建设的技术底线，不是组件越多越好，而是每一块都能回到可复核的问题上：数据能不能管理、能不能同步；四类角色的接口是不是全覆盖；性能是不是留足冗余；部署资源是不是承诺可扩展。把这四层都落到证据上，二级节点才算真正稳住上下两头，建设方案也才从能运行，走向可验收、可持续演进。",
+   "teaching_purpose": "按数据、接口、性能、部署四层复盘验收证据要求，收束技术底线结论：四层同时落到证据上，才从能运行走向可验收、可持续演进。",
+   "single_message": "四层要求同时落到证据上，建设方案才从能运行走向可验收、可持续演进。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S051",
+     "guidance_text": "四层技术验收清单",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G032",
+      "items": [
+       {
+        "screen_item_id": "S052",
+        "guidance_text": "数据：能不能管理、能不能同步",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002",
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G033",
+      "items": [
+       {
+        "screen_item_id": "S053",
+        "guidance_text": "接口：四类角色是不是全覆盖",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G034",
+      "items": [
+       {
+        "screen_item_id": "S054",
+        "guidance_text": "性能：是不是留足冗余",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G035",
+      "items": [
+       {
+        "screen_item_id": "S055",
+        "guidance_text": "部署：资源是不是承诺可扩展",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G036",
+      "items": [
+       {
+        "screen_item_id": "S056",
+        "guidance_text": "四层同时落到证据上，才从“能运行”走向“可验收、可持续演进”",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R021",
+     "from": "G032",
+     "relation": "四层按验收顺序复盘",
+     "to": "G033",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R022",
+     "from": "G034",
+     "relation": "四层同时成立才构成技术底线",
+     "to": "G035",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R023",
+     "from": "G035",
+     "relation": "四层证据汇成收束结论",
+     "to": "G036",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不出现验收通过率、评分或仪表盘；不预告运营与安全的具体内容，分集边界只作静默约束",
+     "evidence_refs": [
+      "E001",
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看完数据、接口、性能与部署四问",
+   "exit_condition": "观众能复述四层验收问题，并理解“能运行不等于可验收”",
+   "timing": {
+    "char_equivalent": 132.0,
+    "min_seconds": 33,
+    "target_seconds": 34,
+    "max_seconds": 36,
+    "short_page_reason": null
+   }
+  }
+ ]
+}
