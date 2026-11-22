@@ -1,0 +1,1710 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-40",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 40 集标题、课程位置、前置关系与相邻边界",
+   "source_locator": "已确认课程架构，Episode Architecture 第 37–42 集及全局职责规则",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围、去重和时长"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "主动标识载体嵌入工业设备、承载工业 ID 与安全能力、具备联网通信并可主动连接",
+   "source_locator": "主教材，4.2.1“主动标识载体”定义与主要特征",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "只作前置回顾和载体职责解释，不展开算法与密钥实现"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "4.2.2 的注册、数据上报与查询流程是服务架构中的业务动作前置",
+   "source_locator": "主教材，4.2.2“主动标识注册流程”全文",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "只用于定位已学动作与分层衔接，不重复逐步流程"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "终端设备负责感知数据，主动标识载体与终端关联并向上对接，服务层完成安全认证、数据传输、应用构建和用户查询服务",
+   "source_locator": "主教材，4.2.3“主动标识载体服务架构”及图 4-23 引导段",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "作为本集核心架构主张，按教材概览表达"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "终端设备层包含生产设备、传感设备、仪器仪表、监控设备；图中标出数据采集、通信和反向控制",
+   "source_locator": "主教材，4.2.3 图 4-23 及架构文字",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "支持终端层语义分镜与协作关系，不增加未列出的设备或控制协议"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "主动标识载体位于终端与上层服务之间，承担工业 ID 关联与安全能力承载",
+   "source_locator": "主教材，4.2.1 定义/特征；4.2.3 图 4-23",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "支持载体层对象关系，不虚构芯片内部连线、厂商或型号"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "图 4-23 上层服务包括安全认证服务、标识服务平台、业务云平台；图中另示国家顶级节点",
+   "source_locator": "主教材，4.2.3 图 4-23",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "支持分层架构全景；图示位置不等于当前部署拓扑或接口时序"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "标识服务平台图示能力：标识注册、标识管理、设备管理、用户管理、权限管理、元数据管理、统计分析、数据托管",
+   "source_locator": "主教材，4.2.3 图 4-23",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释平台职责集合，不补充数据库、微服务或 SLA"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "图 4-23 标出 MQTT、COAP 等通信标注，并将通信、安全、国密算法、反向控制置于架构关系中",
+   "source_locator": "主教材，4.2.3 图 4-23",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "作为教材图示的协议/能力标注，不声称版本、端口、实现或当前使用状态"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "“终端采集/控制→载体身份与安全→服务平台治理与解析支撑→业务云应用呈现”的教学解释链",
+   "source_locator": "本任务包基于 E004–E009 的教学组织",
+   "verification_status": "not applicable",
+   "allowed_use": "组织口播和确定性技术图，不是接口时序或部署蓝图"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "通用工业现场终端采集与平台协作的纪实情境",
+   "source_locator": "本任务包教学设计，讲稿 N001、N002；媒体 M001",
+   "verification_status": "not applicable",
+   "allowed_use": "让分层问题具体化，不冒充教材现场或真实企业"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "一台设备放在工业现场，从开机起，就在不停地产出现场数据。温度、压力这些数据，一直在往外冒。可是，把数据采下来，只是整个链条的起点。采完之后还有一连串的事：设备要接入服务，得先向服务侧证明自己是谁；数据要安全地送到服务侧；用户拿着一个标识，还得能查到对应的业务信息。",
+   "teaching_purpose": "用通用工业现场提出采集之后的三重需求：身份证明、安全传输与按标识查询。",
+   "single_message": "采集只是起点，后面还有身份、传输和查询三件事。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "现场数据之后，还差什么？",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E011"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "通用工业现场的一台设备持续产出现场数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "温度、压力等现场数据不断往外冒",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "采集数据只是整个链条的起点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "设备接入服务，要先向服务侧证明自己是谁",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S006",
+        "guidance_text": "数据要安全地送到服务侧",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "用户拿着标识，还要能查到对应的业务信息",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "现场数据引出链条起点",
+     "to": "G002",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R002",
+     "from": "G002",
+     "relation": "起点之后列出三重需求",
+     "to": "G003",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "不声明情境真实性；不出现真实企业、设备身份、可读数据或平台架构",
+     "evidence_refs": [
+      "E011",
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，尚未接触服务架构",
+   "exit_condition": "观众能说出采集之后还有身份、传输、查询三件事",
+   "timing": {
+    "char_equivalent": 117.0,
+    "min_seconds": 30,
+    "target_seconds": 31,
+    "max_seconds": 32,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "这几件事，一台只管采集的终端本身接不住，需要不同角色分工接手。在主动标识服务架构里，终端、主动标识载体、标识服务平台、业务云平台和国家顶级节点，各自干什么？数据和请求又怎么在它们之间流动、配合？这套架构把感知现场和身份可信分开安排，再用层层协作连起来。下面我们就顺着这条线索，把每一层讲清楚。\n\n",
+   "teaching_purpose": "说明单靠采集终端接不住后续动作，引出服务架构的分层协作与总问题。",
+   "single_message": "采集终端接不住全部事情，要看各层角色怎样分工。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S008",
+     "guidance_text": "这套架构回答什么？",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "这几件事，一台只管采集的终端本身接不住，需要不同角色分工接手",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "终端、主动标识载体、标识服务平台、业务云平台和国家顶级节点各自干什么",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "数据和请求又怎么在它们之间流动、配合",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "这套架构把感知现场和身份可信分开安排，再用层层协作连起来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G004",
+     "relation": "接不住的问题导向角色分工",
+     "to": "G005",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R004",
+     "from": "G005",
+     "relation": "角色分工回到分层协作线索",
+     "to": "G006",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "不把架构画成产品清单、部署图或完整接口时序；不出现厂商、型号、节点数量或城市",
+     "evidence_refs": [
+      "E004",
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看到现场的三重需求",
+   "exit_condition": "观众能说出本集要解释哪些层、以及感知与身份可信的分工线索",
+   "timing": {
+    "char_equivalent": 131.0,
+    "min_seconds": 33,
+    "target_seconds": 34,
+    "max_seconds": 36,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "先从最贴近现场的一层说起，终端设备层。终端设备层包括生产设备、传感设备、仪器仪表、监控设备四类，负责感知现场状态，对应数据采集、通信和反向控制三件事。",
+   "teaching_purpose": "解释终端设备层的四类设备与三项架构职责：感知现场、数据采集、通信与反向控制。",
+   "single_message": "终端设备层包含四类设备，承担采集、通信和反向控制。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S013",
+     "guidance_text": "终端设备层：感知现场",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "最贴近现场的一层：终端设备层",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "生产设备",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "传感设备",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "仪器仪表",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "监控设备",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "负责感知现场状态",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "数据采集",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "通信",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "反向控制",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R005",
+     "from": "G007",
+     "relation": "层定位落到四类设备",
+     "to": "G008",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R006",
+     "from": "G008",
+     "relation": "设备对象对应三类架构动作",
+     "to": "G009",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "终端设备层只使用教材列出的四类设备；不添加摄像头云台、PLC、网关、数据库等未支持节点",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经知道本集要看分层协作",
+   "exit_condition": "观众能列举四类终端设备，并说出数据采集、通信和反向控制三项职责",
+   "timing": {
+    "char_equivalent": 66.0,
+    "min_seconds": 17,
+    "target_seconds": 17,
+    "max_seconds": 18,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "反向控制，就是架构给服务侧留了一条回到设备的通道，服务不止收数据，必要时还能向设备下发业务控制。终端是业务动作真正发生的地方，它不等于服务平台。打个比方，终端像站在现场一线的执行者，服务相关的事情，由后方的不同楼层分别处理。\n\n",
+   "teaching_purpose": "解释反向控制的架构含义，并划清终端与服务平台的区别。",
+   "single_message": "终端负责现场动作，也会接受反向控制，但它不等于服务平台。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S023",
+     "guidance_text": "终端不等于服务平台",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "反向控制是架构给服务侧留的回到设备的通道，服务不止收数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005",
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "终端是业务动作真正发生的地方，不等于服务平台",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "打比方：终端像现场一线的执行者，服务相关的事情由后方不同楼层处理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G010",
+     "relation": "反向控制说明终端侧的服务关系",
+     "to": "G011",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R008",
+     "from": "G011",
+     "relation": "执行者定位由后方分层承接",
+     "to": "G012",
+     "direction": "same-anchor"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "反向控制只作架构方向，不显示控制指令、审批机制或执行结果",
+     "evidence_refs": [
+      "E005",
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经知道终端设备层的三项职责",
+   "exit_condition": "观众能说出终端负责现场动作、也接受反向控制，但不等于服务平台",
+   "timing": {
+    "char_equivalent": 102.0,
+    "min_seconds": 26,
+    "target_seconds": 27,
+    "max_seconds": 28,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "再往上一层，是主动标识载体。它和终端设备关联在一起，设备的身份，也就是工业互联网标识，由载体来承载。载体能主动联网，也带着安全能力。",
+   "teaching_purpose": "说明主动标识载体与终端关联，承载工业互联网标识，并具备主动联网与安全能力。",
+   "single_message": "载体把设备身份和联网、安全能力带在身上。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S027",
+     "guidance_text": "载体：设备的身份关联点",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "主动标识载体与终端设备关联在一起",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "设备的身份，也就是工业互联网标识，由载体来承载",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002",
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "载体能主动联网",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "也带着安全能力",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R009",
+     "from": "G013",
+     "relation": "关联关系落到工业互联网标识",
+     "to": "G014",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R010",
+     "from": "G014",
+     "relation": "身份之后接上联网与安全能力",
+     "to": "G015",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不画真实芯片结构、证书、密钥或厂商型号；不展开算法实现",
+     "evidence_refs": [
+      "E002",
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经知道终端层负责现场动作",
+   "exit_condition": "观众能说出载体与终端关联、承载工业互联网标识，并具备主动联网与安全能力",
+   "timing": {
+    "char_equivalent": 58.0,
+    "min_seconds": 15,
+    "target_seconds": 15,
+    "max_seconds": 16,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "它的作用，是让设备对象、标识身份和上层服务始终对得上号。可以把它想成设备随身带的身份凭证，走到哪里都能证明自己是谁。但要注意，载体只是身份与安全的关联点，不是把所有业务数据都装进去的仓库。\n\n",
+   "teaching_purpose": "说明载体的作用是维持对象、身份与上层服务的关联，并限定它不是业务数据仓库。",
+   "single_message": "载体是身份与安全的关联点，不是业务数据仓库。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S032",
+     "guidance_text": "载体不是数据仓库",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "作用是让设备对象、标识身份和上层服务始终对得上号",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "可以把它想成设备随身带的身份凭证",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "载体只是身份与安全的关联点，不是把所有业务数据都装进去的仓库",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G016",
+     "relation": "关联职责由身份凭证类比承接",
+     "to": "G017",
+     "direction": "same-anchor"
+    },
+    {
+     "relation_id": "R012",
+     "from": "G017",
+     "relation": "凭证不是数据存储，收束到边界",
+     "to": "G018",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不把载体画成数据库、证书库或密钥容器；不出现可读证书与数据内容",
+     "evidence_refs": [
+      "E002",
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经知道载体承载标识与安全能力",
+   "exit_condition": "观众能说出载体的关联作用，并知道它不是业务数据仓库",
+   "timing": {
+    "char_equivalent": 86.0,
+    "min_seconds": 22,
+    "target_seconds": 22,
+    "max_seconds": 24,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "再往上，是一组服务角色。设备要接入服务，先得证明自己可信，这件事由安全认证服务来解决。标识服务平台，承接与标识、设备、用户相关的注册和管理。业务云平台，面向具体应用，把数据组织好、呈现出来。",
+   "teaching_purpose": "建立安全认证服务、标识服务平台与业务云平台三个上层角色的职责分工。",
+   "single_message": "认证、治理、应用三层各有分工，彼此衔接。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S036",
+     "guidance_text": "上层服务各管一段",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "设备要接入服务先证明自己可信，由安全认证服务解决",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007",
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "标识服务平台承接与标识、设备、用户相关的注册和管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007",
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "业务云平台面向具体应用，把数据组织好、呈现出来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R013",
+     "from": "G019",
+     "relation": "接入可信之后进入标识治理",
+     "to": "G020",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R014",
+     "from": "G020",
+     "relation": "治理之后面向应用组织呈现",
+     "to": "G021",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不把三者写成某个当前产品的固定组件清单；不补算法、接口或平台实现",
+     "evidence_refs": [
+      "E007",
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经知道载体在终端与上层之间",
+   "exit_condition": "观众能说出安全认证服务、标识服务平台和业务云平台各自负责什么",
+   "timing": {
+    "char_equivalent": 82.0,
+    "min_seconds": 21,
+    "target_seconds": 21,
+    "max_seconds": 23,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "体系最上层是国家顶级节点，它为标识提供寻址位置。寻址听起来专业，其实就是给标识安排一个可定位、可查询的位置。节点处在最上层，和下面的服务保持体系上的关系。\n\n",
+   "teaching_purpose": "说明国家顶级节点在教材架构中的上层位置与寻址关系，并限定为体系关系而非部署拓扑。",
+   "single_message": "国家顶级节点处于体系上层，提供标识的寻址位置。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S040",
+     "guidance_text": "顶层节点的位置",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "体系最上层是国家顶级节点，它为标识提供寻址位置",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007",
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "寻址就是给标识安排一个可定位、可查询的位置",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "节点处在最上层，和下面的服务保持体系上的关系",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R015",
+     "from": "G022",
+     "relation": "上层位置对应寻址含义",
+     "to": "G023",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R016",
+     "from": "G023",
+     "relation": "寻址关系回到体系上下关系",
+     "to": "G024",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不出现节点数量、城市、部署规模或运行状态；不把图示位置扩写成现实部署拓扑",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经知道三个上层服务角色的分工",
+   "exit_condition": "观众能说出国家顶级节点在体系上层提供寻址位置，且不等于现实部署",
+   "timing": {
+    "char_equivalent": 70.0,
+    "min_seconds": 18,
+    "target_seconds": 18,
+    "max_seconds": 20,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "四层的职责定下来，关键就看它们怎么配合。配合有三个方向，数据、查询、控制。数据方向，现场数据先由终端采集，经过载体提供的身份与安全关联，进入服务侧，再由业务云平台组织成应用能用的形式。查询方向，用户按标识发起请求，服务侧依据标识与数据的对应关系，把相应的数据定位出来。",
+   "teaching_purpose": "展开数据方向与查询方向，说明现场数据如何进入服务侧、用户如何按标识取回数据。",
+   "single_message": "数据上行与查询回路是两条不同的协作方向。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S044",
+     "guidance_text": "数据与查询怎么走",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S045",
+        "guidance_text": "四层职责定下来，配合有三个方向：数据、查询、控制",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S046",
+        "guidance_text": "数据方向：现场数据先由终端采集，经载体身份与安全关联进入服务侧，再由业务云平台组织成应用可用的形式",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S047",
+        "guidance_text": "查询方向：用户按标识发起请求，服务侧依据标识与数据的对应关系定位数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R017",
+     "from": "G025",
+     "relation": "先总述三个方向",
+     "to": "G026",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R018",
+     "from": "G026",
+     "relation": "数据方向与查询方向并列",
+     "to": "G027",
+     "direction": "parallel"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不画具体接口、消息格式、字段或时序编号",
+     "evidence_refs": [
+      "E004",
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经认识各层角色与顶层节点位置",
+   "exit_condition": "观众能说出数据上行与查询回路各自经过哪些层",
+   "timing": {
+    "char_equivalent": 119.0,
+    "min_seconds": 30,
+    "target_seconds": 31,
+    "max_seconds": 33,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A009"
+   ],
+   "nx": "控制方向，就是架构里留的反向控制，服务侧能面向设备发起业务控制，说明服务不只是向上收数据。三个方向有一个共同点，都挂在同一个身份锚点上，都靠同一个标识身份对号入座。还要记住，数据不一定都存放在载体里，身份锚点和数据存放是两码事。\n\n",
+   "teaching_purpose": "补出控制方向，并把三个方向收束到同一身份锚点，澄清身份锚点与数据存放不是一回事。",
+   "single_message": "数据、查询、控制共享同一个身份锚点，但数据不一定存在载体里。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S048",
+     "guidance_text": "三个方向，一个身份锚点",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S049",
+        "guidance_text": "控制方向是架构保留的反向控制：服务侧能面向设备发起业务控制，说明服务不只是向上收数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005",
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G029",
+      "items": [
+       {
+        "screen_item_id": "S050",
+        "guidance_text": "三个方向有一个共同点：都挂在同一个身份锚点上",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G030",
+      "items": [
+       {
+        "screen_item_id": "S051",
+        "guidance_text": "数据不一定都存放在载体里，身份锚点和数据存放是两码事",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R019",
+     "from": "G028",
+     "relation": "控制方向汇入同一锚点",
+     "to": "G029",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R020",
+     "from": "G029",
+     "relation": "同一锚点不等于同一存放位置",
+     "to": "G030",
+     "direction": "boundary"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不展开控制指令、审批机制或自动化策略；不把反向控制写成当前产品承诺",
+     "evidence_refs": [
+      "E005",
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经看过数据与查询方向",
+   "exit_condition": "观众能说出控制方向的存在，并知道三个方向共享身份锚点而数据存放可分离",
+   "timing": {
+    "char_equivalent": 104.0,
+    "min_seconds": 26,
+    "target_seconds": 27,
+    "max_seconds": 29,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A011",
+   "callback_a_ids": [
+    "A010"
+   ],
+   "nx": "层与层之间的来往，靠通信来完成。架构里用 MQTT、COAP 这样的标签来标注通信，也就是标明数据和控制信息在哪些层之间走动。通信不是一条线，它同时要兼顾消息传输、可信接入和控制回路。\n\n",
+   "teaching_purpose": "说明通信是跨层协作的通道，教材图示以 MQTT、COAP 等标签标注，并同时考虑传输、可信接入与控制回路。",
+   "single_message": "通信是跨层通道，教材用标签标注走向，但不指定实现。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S052",
+     "guidance_text": "跨层协作的通道",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G031",
+      "items": [
+       {
+        "screen_item_id": "S053",
+        "guidance_text": "层与层之间的来往，靠通信来完成",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G032",
+      "items": [
+       {
+        "screen_item_id": "S054",
+        "guidance_text": "架构用 MQTT、COAP 这样的标签标注通信，标明数据和控制信息在哪些层之间走动",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G033",
+      "items": [
+       {
+        "screen_item_id": "S055",
+        "guidance_text": "通信不是一条线，它同时要兼顾消息传输、可信接入和控制回路",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R021",
+     "from": "G031",
+     "relation": "通道由教材标签标注走向",
+     "to": "G032",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R022",
+     "from": "G032",
+     "relation": "标签之后收束到三类考虑",
+     "to": "G033",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "MQTT、COAP 只作教材图示通信标签，不声称版本、端口、认证方式、消息字段或使用率",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经理解三个协作方向",
+   "exit_condition": "观众能说出通信是跨层通道，并知道协议名称只是图示标签",
+   "timing": {
+    "char_equivalent": 78.0,
+    "min_seconds": 20,
+    "target_seconds": 20,
+    "max_seconds": 22,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A012",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "再看标识服务平台本身管哪些事？标识注册、标识管理、设备管理、用户管理、权限管理、元数据管理、统计分析和数据托管，一共八个方面。条目不少，但它们不是八个互不相干的产品，而是围绕身份、设备、用户和数据服务的一组能力。\n\n",
+   "teaching_purpose": "列出标识服务平台的八项教材能力，并说明它们是一组能力集合而非八个孤立产品。",
+   "single_message": "八项能力围绕身份、设备、用户和数据服务组成一组，而不是八个产品。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S056",
+     "guidance_text": "平台能力不是八个孤岛",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G034",
+      "items": [
+       {
+        "screen_item_id": "S057",
+        "guidance_text": "标识服务平台本身管哪些事",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G035",
+      "items": [
+       {
+        "screen_item_id": "S058",
+        "guidance_text": "标识注册",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S059",
+        "guidance_text": "标识管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S060",
+        "guidance_text": "设备管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S061",
+        "guidance_text": "用户管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S062",
+        "guidance_text": "权限管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S063",
+        "guidance_text": "元数据管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S064",
+        "guidance_text": "统计分析",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S065",
+        "guidance_text": "数据托管",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G036",
+      "items": [
+       {
+        "screen_item_id": "S066",
+        "guidance_text": "不是八个互不相干的产品，而是围绕身份、设备、用户和数据服务的一组能力",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R023",
+     "from": "G034",
+     "relation": "能力列举回应平台职责问题",
+     "to": "G035",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R024",
+     "from": "G035",
+     "relation": "八项能力归为能力集合",
+     "to": "G036",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C012",
+     "instruction": "只使用教材八项能力标签；不补充数据库、缓存、消息队列、微服务、容器、SLA、权限规则或性能阈值",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经理解通信通道与上层角色",
+   "exit_condition": "观众能说出八项能力，并知道它们是一组能力集合",
+   "timing": {
+    "char_equivalent": 92.0,
+    "min_seconds": 23,
+    "target_seconds": 24,
+    "max_seconds": 26,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A013",
+   "callback_a_ids": [
+    "A012"
+   ],
+   "nx": "再看这些动作落在哪里。前面学过的认证、注册、上报、查询，都能在这套架构里找到归宿。设备接入时的身份核验，由安全认证服务参与；注册的动作，由标识注册能力接住；上报和查询，标识服务平台负责身份与解析的支撑，业务云平台在应用一侧承接数据的使用。这是把已有的动作对应到各自的职责层，并不是要重新设计接口的先后顺序。\n\n",
+   "teaching_purpose": "把第 39 集的认证、注册、上报、查询动作映射到各职责层，并声明这是映射而非新接口时序。",
+   "single_message": "已有动作可以落到职责层，但这不是重新设计接口顺序。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S067",
+     "guidance_text": "已有动作落在哪一层",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G037",
+      "items": [
+       {
+        "screen_item_id": "S068",
+        "guidance_text": "前面学过的认证、注册、上报、查询，都能在这套架构里找到归宿",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S069",
+        "guidance_text": "接入核验由安全认证服务参与，注册由标识注册能力接住，上报与查询由标识服务平台支撑、业务云平台承接应用侧使用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G038",
+      "items": [
+       {
+        "screen_item_id": "S070",
+        "guidance_text": "这是把已有动作对应到职责层",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G039",
+      "items": [
+       {
+        "screen_item_id": "S071",
+        "guidance_text": "并不是要重新设计接口的先后顺序",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R025",
+     "from": "G037",
+     "relation": "动作映射成立后说明映射性质",
+     "to": "G038",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R026",
+     "from": "G038",
+     "relation": "映射不等于新时序",
+     "to": "G039",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C013",
+     "instruction": "不重演注册、认证、回写、上报和查询流程；不新增接口字段、协议调用或时序编号",
+     "evidence_refs": [
+      "E003",
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经理解平台能力集合",
+   "exit_condition": "观众能说出四类动作各自落在哪一层，并知道这不是新的接口时序",
+   "timing": {
+    "char_equivalent": 138.0,
+    "min_seconds": 35,
+    "target_seconds": 36,
+    "max_seconds": 38,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A014",
+   "callback_a_ids": [
+    "A001",
+    "A013"
+   ],
+   "nx": "回到开场的问题。采集数据只是起点，真正接住后面一连串事的，是这条分层职责链。分工层面，终端负责采集与控制，载体把设备身份和安全能力带在身上，服务平台负责标识、设备、用户的注册与管理，业务云平台负责应用一侧的组织与呈现，国家顶级节点在最上层提供寻址位置。规律是什么？",
+   "teaching_purpose": "回扣开场问题，按分工回顾各层职责，并提出“每层只解决一类问题”的规律追问。",
+   "single_message": "回到那批数据：分层职责链各管一段，规律是什么？",
+   "screen": {
+    "title": {
+     "screen_item_id": "S072",
+     "guidance_text": "回到开场的问题",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G040",
+      "items": [
+       {
+        "screen_item_id": "S073",
+        "guidance_text": "回到开场的问题：采集数据只是起点，真正接住后面一连串事的是分层职责链",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G041",
+      "items": [
+       {
+        "screen_item_id": "S074",
+        "guidance_text": "终端负责采集与控制",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S075",
+        "guidance_text": "载体把设备身份和安全能力带在身上",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S076",
+        "guidance_text": "服务平台负责注册与管理，业务云负责应用组织与呈现，国家顶级节点提供上层寻址位置",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G042",
+      "items": [
+       {
+        "screen_item_id": "S077",
+        "guidance_text": "规律是什么：每一层只解决一类问题",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R027",
+     "from": "G040",
+     "relation": "回扣之后按层回顾分工",
+     "to": "G041",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R028",
+     "from": "G041",
+     "relation": "分工回顾引出规律追问",
+     "to": "G042",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C014",
+     "instruction": "不把回顾写成部署清单；不出现节点数量、平台产品或行业成效",
+     "evidence_refs": [
+      "E007",
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经看过动作落位",
+   "exit_condition": "观众能按层复述分工，并知道本集要收束的规律问题",
+   "timing": {
+    "char_equivalent": 119.0,
+    "min_seconds": 30,
+    "target_seconds": 31,
+    "max_seconds": 33,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A015",
+   "callback_a_ids": [
+    "A010",
+    "A014"
+   ],
+   "nx": "每一层只解决一类问题，感知归感知，身份归身份，治理归治理，应用归应用。单看任何一层，都撑不起完整的服务，只有跨层协作，才形成一条可查询、可管理的职责链。数据、查询、控制三个方向，也都在同一个身份锚点上汇合。再强调一遍，我们说到的每一层，都是服务架构里的职责关系，不等于哪家产品的部署清单。",
+   "teaching_purpose": "收束全篇：每层解决一类问题，跨层协作形成职责链，三方向在同一身份锚点汇合，并限定为服务架构职责关系。",
+   "single_message": "分层协作形成职责链，这是服务架构，不是产品部署清单。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S078",
+     "guidance_text": "分层协作，不是部署清单",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G043",
+      "items": [
+       {
+        "screen_item_id": "S079",
+        "guidance_text": "感知归感知，身份归身份，治理归治理，应用归应用",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G044",
+      "items": [
+       {
+        "screen_item_id": "S080",
+        "guidance_text": "单看任何一层都撑不起完整的服务，跨层协作才形成可查询、可管理的职责链",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S081",
+        "guidance_text": "数据、查询、控制三个方向，也都在同一个身份锚点上汇合",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G045",
+      "items": [
+       {
+        "screen_item_id": "S082",
+        "guidance_text": "这里说的每一层，都是服务架构里的职责关系，不等于哪家产品的部署清单",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004",
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R029",
+     "from": "G043",
+     "relation": "各层分工汇入跨层职责链",
+     "to": "G044",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R030",
+     "from": "G044",
+     "relation": "职责链不等于产品部署",
+     "to": "G045",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C015",
+     "instruction": "不把收束写成当前产品、部署图或现行状态；不预告第 41 集算法内容；架构重绘须标注教材图 4-23 来源",
+     "evidence_refs": [
+      "E004",
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已经回顾各层分工与规律问题",
+   "exit_condition": "观众能说出分层协作的职责链与边界，并知道这是服务架构而非部署清单",
+   "timing": {
+    "char_equivalent": 126.0,
+    "min_seconds": 32,
+    "target_seconds": 33,
+    "max_seconds": 35,
+    "short_page_reason": null
+   }
+  }
+ ]
+}
