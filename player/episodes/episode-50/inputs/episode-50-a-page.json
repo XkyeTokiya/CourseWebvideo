@@ -1,0 +1,1170 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-50",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 50 集责任、前置、后续与边界",
+   "source_locator": "已确认课程架构，Episode Architecture 第 50 集及第 47–51 集责任",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围、顺序和去重"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "企业可根据自身需求与条件资源选择自建或托管两种模式",
+   "source_locator": "主教材，5.2.3“企业节点建设模式”导语",
+   "verification_status": "not applicable",
+   "allowed_use": "建立比较问题；不补充教材未列的决策维度"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "自建依托企业自有资源；带宽、存储、计算应满足未来一定时期业务发展需求并支持弹性扩展",
+   "source_locator": "主教材，5.2.3“1. 自建模式”",
+   "verification_status": "not applicable",
+   "allowed_use": "解释自建资源责任；不转换为容量、成本或性能阈值"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "教材给出自建模式下下载 IDHub 安装包后可部署使用标识服务的流程节点",
+   "source_locator": "主教材，5.2.3“1. 自建模式”末句",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "仅作为教材流程节点；不提供下载地址、安装命令或当前产品能力结论"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "托管将标识解析相关数据和服务托管到二级节点；受托部署单位有义务加强企业节点数据管理、保障企业合法权益",
+   "source_locator": "主教材，5.2.3“2. 托管模式”前句",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释托管关系与责任；不扩展为法律、合规或 SLA 承诺"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "托管模式下企业向二级节点进行托管申请，经二级管理员审核后即可使用企业节点标识服务",
+   "source_locator": "主教材，5.2.3“2. 托管模式”后句",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释托管流程；不补审核时限、字段、通过标准或代理服务器细节"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "图 5-3 两个并列页签展示自建和托管各三步流程",
+   "source_locator": "教材图 5-3“企业节点建设的两种模式”",
+   "verification_status": "not applicable",
+   "allowed_use": "作为流程关系和视觉顺序核对；图中文字不等于当前界面或标准流程"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "“资源条件—服务归属—流程责任—下一步边界”的比较框架",
+   "source_locator": "E002–E007 的教学组织",
+   "verification_status": "not applicable",
+   "allowed_use": "组织讲稿、比较图和分镜；不是教材固定决策矩阵"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "匿名制造企业评估两种模式的开场情境",
+   "source_locator": "本任务包教学设计，讲稿 N001–N002",
+   "verification_status": "not applicable",
+   "allowed_use": "将抽象选择落到资源与责任问题；明示为教学情境，不冒充真实企业案例"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "自建/托管模式比较图的确定性重绘方案",
+   "source_locator": "本任务包视觉组织",
+   "verification_status": "not applicable",
+   "allowed_use": "仅重绘教材已支持的节点、步骤与边界；不以生成式图片补出报价、SLA、合规或产品能力"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "企业节点委托部署可由具备对应服务能力的二级节点或国家顶级节点承接；公开资料不足以证明所有版本均一键部署，自建安装步骤取决于所用版本与部署环境",
+   "source_locator": "2021 年建设导则第 10.5.4 节（https://www.aii-alliance.org/uploads/1/20211231/011075df802418ee7629a95a35e74f90.pdf）；IDHub 标准接口准备工作（https://snms.teleinfo.cn/zst-docs/idhub/standard/api-introduce）",
+   "verification_status": "verified",
+   "allowed_use": "限定托管承接方与自建流程口径；任务包具体部署步骤与 Brief 相关表述待协调（C01），不宣称当前产品能力"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "一家企业已经拿定主意，要建设自己的企业节点。可主意一定，马上又碰到一个岔路口：这套节点是自己来建，还是托给别人来管？自己建，带宽、存储、计算这些家底都得自己张罗；托管的话，又要把数据和相关的服务托付出去。两边都有道理，也都有要掂量的事情。那这个选择到底怎么做？\n\n",
+   "teaching_purpose": "用匿名企业的岔路口情境提出自建与托管两种建设模式。",
+   "single_message": "企业节点可以自己建，也可以托给别人管，两条路各有要掂量的事。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "企业节点：自己建，还是托给别人管",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "企业已拿定主意建设自己的企业节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "自建：带宽、存储、计算等家底自己张罗",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002",
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "托管：把数据和相关服务托付出去",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002",
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "两边都有道理，也都有要掂量的事情",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "岔路口分成两条建设路径",
+     "to": "G002",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R002",
+     "from": "G002",
+     "relation": "两条路径各有条件",
+     "to": "G003",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "不把匿名企业写成真实企业案例或实施建议",
+     "evidence_refs": [
+      "E009"
+     ]
+    },
+    {
+     "constraint_id": "C002",
+     "instruction": "不出现价格、SLA、合规结论或产品界面",
+     "evidence_refs": [
+      "E002",
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，尚未比较两种模式",
+   "exit_condition": "观众能说出自建与托管两条岔路",
+   "timing": {
+    "char_equivalent": 115.0,
+    "min_seconds": 29,
+    "target_seconds": 30,
+    "max_seconds": 32,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "先说清楚，选择的关键不在哪个模式听起来更省事，而在三个归属问题：节点要用的资源放在哪里？标识解析相关的服务由谁来承载？日常管理由谁来完成？这三件事想不清楚，选择就没有落脚点。\n\n",
+   "teaching_purpose": "给出资源、服务承载与日常管理三个归属问题，作为比较两种模式的前提。",
+   "single_message": "先回答资源、服务承载与管理三个归属问题，选择才有落脚点。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S006",
+     "guidance_text": "三个归属问题先想清楚",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "资源放在哪里？",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002",
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "服务由谁承载？",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002",
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "日常管理由谁完成？",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002",
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "三件事想不清楚，选择就没有落脚点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G004",
+     "relation": "三问构成模式选择的前提",
+     "to": "G005",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不补充教材未列出的决策维度",
+     "evidence_refs": [
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看到两条建设路径",
+   "exit_condition": "观众能复述三个归属问题",
+   "timing": {
+    "char_equivalent": 79.0,
+    "min_seconds": 20,
+    "target_seconds": 21,
+    "max_seconds": 22,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "顺着这三个问题，还有两个条件要先对一下。一个是企业是不是已经准备好用于节点的自有资源；另一个是企业是不是需要把标识解析相关的数据和服务交给具备相应能力的机构托管。一个看自己有没有储备，一个看自己愿不愿意放出去，两者合起来，才决定走哪条路。\n\n",
+   "teaching_purpose": "给出自有资源储备与是否交托两个条件，二者共同指向模式选择。",
+   "single_message": "有没有自有资源、愿不愿意交出去，两个条件合起来决定路径。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S011",
+     "guidance_text": "两个条件：有没有储备，愿不愿意交出去",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "企业是否已准备好用于节点的自有资源",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "是否需要把标识解析相关数据和服务交给具备相应能力的机构托管",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005",
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "一个看储备，一个看意愿，合起来决定走哪条路",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G006",
+     "relation": "储备条件导向自建或托管判断",
+     "to": "G008",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R005",
+     "from": "G007",
+     "relation": "交托条件与储备条件共同收束",
+     "to": "G008",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不把托管承接方限定为某一类机构（C01 口径）",
+     "evidence_refs": [
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知三个归属问题",
+   "exit_condition": "观众能说出两个条件及其作用",
+   "timing": {
+    "char_equivalent": 111.0,
+    "min_seconds": 28,
+    "target_seconds": 29,
+    "max_seconds": 31,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "先讲自建模式。自建，就是企业依托自己的资源来建设企业节点。自有资源至少包括三类：带宽、存储、计算。它们不是够用就行，而是要能满足未来一定时期的业务发展需求，并且支持弹性扩展。这个要求是方向性的，不是某个具体的数字。业务增长的时候，带宽跟不跟得上，存储够不够扩，计算能不能顶上去，这些是自建要持续面对的问题。所以自建，是一份资源上的安排，也是一份持续建设的责任，不是装个软件那么简单。\n\n",
+   "teaching_purpose": "解释自建模式的资源类型、未来需求与弹性扩展方向，以及持续建设责任。",
+   "single_message": "自建首先是把带宽、存储、计算等自有资源安排好并持续建设。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S015",
+     "guidance_text": "自建：资源与持续建设责任",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "带宽、存储、计算三类自有资源",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "满足未来一定时期的业务发展需求",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "支持弹性扩展",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "方向性要求，不是具体数字",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "自建是资源安排与持续建设责任，不是装个软件",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G009",
+     "relation": "资源要求落到持续建设责任",
+     "to": "G010",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不折算为容量、扩容时间或性能阈值",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知两个选择条件",
+   "exit_condition": "观众能说出自建的三类资源与方向性要求",
+   "timing": {
+    "char_equivalent": 170.0,
+    "min_seconds": 43,
+    "target_seconds": 44,
+    "max_seconds": 47,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "自建的流程从企业前缀申请开始。申请之后进入部署阶段，企业根据选用的软件版本和部署环境完成安装、配置及节点对接，具备相应条件后再使用标识服务。这也就是说，自建这条路径要考虑前缀申请、企业节点部署、系统配置和对接；具体安装步骤由所用产品和部署方案决定。\n\n",
+   "teaching_purpose": "说明自建流程从前缀申请到部署、配置与对接，具体步骤取决于产品与方案。",
+   "single_message": "自建从前缀申请开始，按版本与部署环境完成安装配置对接后使用服务。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S021",
+     "guidance_text": "自建流程：申请、部署、配置与对接",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "从企业前缀申请开始",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "按选用的软件版本和部署环境完成安装、配置及节点对接",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "具备相应条件后再使用标识服务",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "具体安装步骤由产品与部署方案决定",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E011"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R007",
+     "from": "G011",
+     "relation": "流程节点依产品与部署方案落地",
+     "to": "G012",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不提供下载地址、安装命令或当前产品能力结论",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    {
+     "constraint_id": "C007",
+     "instruction": "不把“一键部署”写成普遍能力（C01 口径）",
+     "evidence_refs": [
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知自建的资源前提",
+   "exit_condition": "观众能说出自建流程的关键节点与版本条件",
+   "timing": {
+    "char_equivalent": 114.0,
+    "min_seconds": 29,
+    "target_seconds": 30,
+    "max_seconds": 32,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "再讲托管模式。托管，就是企业把企业节点相关的数据和服务，交给具备相应服务能力的机构承载。例如，二级节点或国家顶级节点都可能提供委托部署服务。托付不等于放手。受托部署单位，有义务加强企业节点的数据管理，保障企业的合法权益。所以托管改变的是服务由谁承载、管理关系怎么摆，企业自己那份数据治理的责任，一点都不能少。\n\n",
+   "teaching_purpose": "解释托管模式的数据与服务承载关系、可能的承接方与受托单位的数据管理义务。",
+   "single_message": "托管把数据和服务交给具备能力的机构承载，但企业的数据治理责任不减少。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S026",
+     "guidance_text": "托管：交给具备能力的机构承载",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "企业节点相关的数据和服务交给具备相应服务能力的机构承载",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005",
+         "E011"
+        ]
+       },
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "二级节点或国家顶级节点都可能提供委托部署服务",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "受托部署单位应加强企业节点数据管理、保障企业合法权益",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "企业自身的数据治理责任不减少",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G013",
+     "relation": "托付不转移企业数据治理责任",
+     "to": "G014",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不扩写为法律、合规或 SLA 承诺",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知自建流程",
+   "exit_condition": "观众能说出托管关系与受托单位义务",
+   "timing": {
+    "char_equivalent": 140.0,
+    "min_seconds": 35,
+    "target_seconds": 37,
+    "max_seconds": 39,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "托管的流程，同样从企业前缀申请开始。以向二级节点申请托管为例，企业提交申请，由相应管理员审核，通过后再按服务要求使用标识服务。不同服务的承接方、申请条件和审核流程，需要按实际提供方的要求确认。\n\n",
+   "teaching_purpose": "说明托管流程的申请、审核与使用，以及承接方与条件的确认要求。",
+   "single_message": "托管同样从前缀申请开始，提交申请并经审核后按服务要求使用。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S031",
+     "guidance_text": "托管流程：申请、审核、按服务要求使用",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "同样从企业前缀申请开始",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "以向二级节点申请托管为例：提交申请、相应管理员审核",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "通过后按服务要求使用标识服务",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "承接方、申请条件和审核流程按实际提供方确认",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E011"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R009",
+     "from": "G015",
+     "relation": "审核通过后进入服务使用",
+     "to": "G016",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不补审核时限、字段、通过标准或代理服务器实现",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知托管关系",
+   "exit_condition": "观众能说出托管流程与确认要求",
+   "timing": {
+    "char_equivalent": 87.0,
+    "min_seconds": 22,
+    "target_seconds": 23,
+    "max_seconds": 24,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "把两条路放到一起看，起点是一样的，都从企业前缀申请开始。从第二步起，责任开始分叉。自建这一侧，走进企业内部，自己部署节点，面对资源扩展和系统配置；托管这一侧，走进与相应服务提供方的托管关系，提交申请并按要求配合审核。\n\n",
+   "teaching_purpose": "并列两条流程，指出起点相同而从第二步起责任分叉。",
+   "single_message": "两条路同一起点，第二步起分叉成企业内部部署与托管关系。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S036",
+     "guidance_text": "起点相同，第二步责任分叉",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "两条路都从企业前缀申请开始",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "自建：走进企业内部，自己部署节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "托管：走进与相应服务提供方的托管关系",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005",
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R010",
+     "from": "G017",
+     "relation": "同一起点分出两种责任",
+     "to": "G018",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不把分叉写成优劣比较或推荐结论",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知两条流程",
+   "exit_condition": "观众能说出两条路的同一起点与分叉点",
+   "timing": {
+    "char_equivalent": 96.0,
+    "min_seconds": 24,
+    "target_seconds": 25,
+    "max_seconds": 27,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "要比较两个模式，可以先看资源放在哪。自建依托企业自有资源，托管把相关数据和服务交给受托方承载。再看服务由谁承载。自建在企业侧完成节点部署，托管由受托部署单位承载相关服务。接着看管理动作落在哪边。自建要面对资源扩展和系统配置，托管要完成申请并按服务要求配合审核。还有一层，是下一步的边界。两种模式，都不能替企业决定企业前缀申请的当期入口。\n\n",
+   "teaching_purpose": "用资源、服务承载、管理动作与下一步边界四个维度并列比较两种模式。",
+   "single_message": "四个维度并列看差异，不形成优劣排名。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S040",
+     "guidance_text": "四维比较：资源、承载、管理、边界",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "资源放在哪：自有资源 vs 交给受托方承载",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "服务由谁承载：企业侧部署 vs 受托单位承载",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "管理动作落在哪边：资源扩展与系统配置 vs 申请与配合审核",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "下一步边界：都不能替企业决定前缀申请当期入口",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G019",
+     "relation": "四维并列读差异",
+     "to": "G020",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "不输出价格、SLA、合规结论或排名",
+     "evidence_refs": [
+      "E008",
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看到两条流程的分叉",
+   "exit_condition": "观众能用四个维度读出模式差异",
+   "timing": {
+    "char_equivalent": 154.0,
+    "min_seconds": 39,
+    "target_seconds": 40,
+    "max_seconds": 42,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A009"
+   ],
+   "nx": "那到底怎么选？回到开头那家企业。模式选择不能脱离场景自动得出唯一答案，决定之前，至少先核对四件事：企业能不能提供自有资源，并且持续维护下去；未来业务是不是需要弹性扩展；标识解析的数据和服务，到底由谁来承载；企业能不能按要求完成申请、配置，或者配合审核。这四个问题，是用来读懂模式差异的，不会凭空给出唯一答案。自建和托管，实质差别在于资源、承载和管理责任放在哪一边，不是谁强谁弱、谁贵谁便宜的排名。比较的起点，只能是企业真实拿得出的资源、担得起的责任。\n\n",
+   "teaching_purpose": "用四个核对问题收束选择边界：不脱离场景给唯一答案，也不做优劣排名。",
+   "single_message": "四问帮助读懂差异，但不会自动给出脱离场景的唯一答案。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S045",
+     "guidance_text": "四问核对，不给出脱离场景的唯一答案",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S046",
+        "guidance_text": "能否提供并持续维护自有资源",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S047",
+        "guidance_text": "未来业务是否需要弹性扩展",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S048",
+        "guidance_text": "谁来承载标识解析数据和服务",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S049",
+        "guidance_text": "能否完成申请、配置或配合审核",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S050",
+        "guidance_text": "四问用于读懂差异；实质差别在资源、承载与管理责任，不是优劣排名",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G021",
+     "relation": "四问并列核对",
+     "to": "G022",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R013",
+     "from": "G022",
+     "relation": "核对回到模式边界",
+     "to": "G023",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C012",
+     "instruction": "不输出唯一推荐或虚构排名",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    {
+     "constraint_id": "C013",
+     "instruction": "不替企业决定前缀申请入口",
+     "evidence_refs": [
+      "E001",
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解四个比较维度",
+   "exit_condition": "观众能说出四个核对问题及其边界",
+   "timing": {
+    "char_equivalent": 201.0,
+    "min_seconds": 51,
+    "target_seconds": 52,
+    "max_seconds": 55,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A011",
+   "callback_a_ids": [
+    "A010"
+   ],
+   "nx": "回到开场那家站在岔路口的企业。今天把两条路都走了个遍。自建这条路，资源放在企业自己手里，带宽、存储、计算要支撑未来一定时期的业务发展，还要能弹性扩展，流程由系统配置收尾。托管这条路，数据和服务交给受托方承载，受托部署单位应加强数据管理、保障企业权益；企业按照服务提供方要求完成托管申请和审核。两条路分工不同，但指向同一个规律：建设和运营的每一步，都要落在资源的安排和责任的承接上，没有一步可以悬空。所以模式怎么选，依据是企业自己的资源条件和当期的正式要求。",
+   "teaching_purpose": "回扣开场企业，收束自建与托管各自落在资源与责任上的差别。",
+   "single_message": "自建与托管的分工落在资源与责任上，选择依据企业条件与当期正式要求。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S051",
+     "guidance_text": "两条路，各自落在资源与责任上",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S052",
+        "guidance_text": "自建：资源在企业手里，面向未来与弹性扩展",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S053",
+        "guidance_text": "托管：数据和服务由受托方承载，企业按要求完成申请和审核",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005",
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S054",
+        "guidance_text": "共同规律：每一步都落在资源安排与责任承接上",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S055",
+        "guidance_text": "依据是企业资源条件与当期正式要求",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R014",
+     "from": "G024",
+     "relation": "两条路汇成共同规律",
+     "to": "G026",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R015",
+     "from": "G025",
+     "relation": "托管责任同样落在共同规律",
+     "to": "G026",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C014",
+     "instruction": "不预告第 51 集具体入口或界面",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已完成四问核对",
+   "exit_condition": "观众能复述两条路在资源与责任上的分工",
+   "timing": {
+    "char_equivalent": 207.0,
+    "min_seconds": 52,
+    "target_seconds": 54,
+    "max_seconds": 57,
+    "short_page_reason": null
+   }
+  }
+ ]
+}
