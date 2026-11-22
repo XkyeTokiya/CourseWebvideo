@@ -1,0 +1,1424 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-38",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 38 集边界、前后集关系与收束范围",
+   "source_locator": "冻结任务包 E001；course-video-architecture.md 第 4 节模块四 episode 38 行",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围、去重与收束，不作硬件事实来源"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "工业现场身份认证、异构设备互通和数据安全问题；标签可承载身份入口，但配套识读设备、应用系统与安全机制仍需配合",
+   "source_locator": "冻结任务包 E002（4.2.1 第 59–65 行）；docs/episode-33-51-content-accuracy-review.md 第 38 期第 1 条",
+   "verification_status": "verified",
+   "allowed_use": "问题引入、标签边界与承载动因；不作 2026 现状统计"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "主动标识载体定义、通信模组与通信终端例项及四项特征；可嵌入设备、承载标识编码与安全材料、主动联网、无需外部读写设备触发",
+   "source_locator": "冻结任务包 E003；4.2 主动标识载体.md 4.2.1 第 65–76 行，图 4-17",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "建立概念边界与承载能力；不复讲 UICC 细节"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "通信模组三单元、主功能模块常见功能与承载关系；具体划分取决于模组设计；工业标识应用与密钥的存放位置需按具体方案判断",
+   "source_locator": "冻结任务包 E004；4.2 主动标识载体.md 4.2.1 第 88–120 行，图 4-19；docs/episode-33-51-content-accuracy-review.md 第 38 期第 2、3 条",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释通信模组连接能力与承载关系；不外推内部电路、频段、协议或厂商参数"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "工业互联网终端连接感知延伸层和网络层，承担采集／汇聚、预处理、加密、控制、数据传输；兼具网络端节点与行业应用角色",
+   "source_locator": "冻结任务包 E005；4.2 主动标识载体.md 4.2.1 第 122–124 行，图 4-20",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "解释终端在工业数据路径中的角色；不扩写具体算法或网络栈"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "终端五类模块：主控、数据接入、网络接入、电源、外设接口及其职责",
+   "source_locator": "冻结任务包 E006；4.2 主动标识载体.md 4.2.1 第 124–136 行，图 4-20",
+   "verification_status": "not verified—version unspecified",
+   "allowed_use": "建立终端模块职责关系；不补内部器件"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "移动终端／固定终端分类及教材例示；固定终端也可以使用蜂窝网络，联网方式取决于通信能力与现场条件",
+   "source_locator": "冻结任务包 E007；4.2 主动标识载体.md 4.2.1 第 138 行；docs/episode-33-51-content-accuracy-review.md 第 38 期第 3 条",
+   "verification_status": "verified",
+   "allowed_use": "作为定性分类和连接条件提示；不作当前制式或性能结论"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "“终端采集／控制—通信模组连接—工业 ID 锚定对象—网络”的承载关系，数据沿对象—终端—模组—网络流动",
+   "source_locator": "冻结任务包 E008（E004–E006 忠实语义合成，本包语义图 M004/M005）",
+   "verification_status": "not applicable",
+   "allowed_use": "教学关系图；每个节点和边限于 E004–E006，禁止虚构硬件结构、频段、接口或厂商参数"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "安全元件技术可在受保护区域承载应用与密钥材料，具体实现取决于方案",
+   "source_locator": "ETSI 安全元件技术组（https://www.etsi.org/technical-groups/set/）；GSMA IoT SAFE（https://www.gsma.com/solutions-and-impact/technologies/internet-of-things/iot-safe/）",
+   "verification_status": "verified",
+   "allowed_use": "支持“受保护区域或 UICC 等安全元件”的存放口径，不假设具体产品方案"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "固定安装设备也可以使用蜂窝网络，设备类型与固定无线接入不按移动性限定单一联网方式",
+   "source_locator": "GSMA 设备类型与固定无线接入（https://imeidb.gsma.com/imei/loginpage）",
+   "verification_status": "verified",
+   "allowed_use": "限定“能否使用某种网络取决于通信能力与现场条件”的判断"
+  },
+  {
+   "evidence_id": "E011",
+   "claim_or_asset": "条码与标签可作为对象标识入口，但标识稳定对应还取决于标识分配、绑定和管理",
+   "source_locator": "GS1 条码与标识说明（https://asset.gs1.org/standards/barcodes）",
+   "verification_status": "verified",
+   "allowed_use": "支持标签入口定位与核心判断的边界陈述"
+  },
+  {
+   "evidence_id": "E012",
+   "claim_or_asset": "2026-11-17 内容准确性核查第 38 期工作稿修正记录：标签入口、密钥承载位置、固定终端联网、模组组成强度与核心判断",
+   "source_locator": "docs/episode-33-51-content-accuracy-review.md 第 38 期；accuracy-2026-11-17.diff；accuracy-2026-11-17.json",
+   "verification_status": "verified",
+   "allowed_use": "覆盖验收追溯；证明现稿与任务包差异已记录，不替代任务包"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "先想一个问题。一台设备装上传感器，温度、压力、位置，什么数据都能采到。可这些数据自己知道，是从哪台设备来的吗？不知道。数据不会主动开口，它不会告诉你它属于谁。想让数据有明确的归属，就得先给设备一个身份，这个身份就是工业ID。工业ID是工业对象在系统里的身份锚点，作用说白了就一条：让后面产生的每一条数据，都能持续关联到同一个明确的工业对象。\n\n",
+   "teaching_purpose": "用“数据不知道自己来自谁”的问题引出工业ID的身份锚点作用，建立本集讨论对象。",
+   "single_message": "设备能采数据，但数据要持续关联到明确对象，就得先有工业ID。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "数据知道自己来自哪台设备吗？",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "设备装上传感器，温度、压力、位置等数据可以被采到",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "数据本身不会主动说明自己属于哪台设备、哪个人",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "工业ID：工业对象在系统中的身份锚点",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "工业ID让后续产生的每一条数据都能持续关联到同一个明确的工业对象",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "采集动作本身不产生对象归属",
+     "to": "G002",
+     "direction": "contrast"
+    },
+    {
+     "relation_id": "R002",
+     "from": "G002",
+     "relation": "归属问题引出身份锚点",
+     "to": "G003",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "不虚构具体设备、传感器类型或现场数据值；不展开编码规则、注册或解析机制",
+     "evidence_refs": [
+      "E001",
+      "E002"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，尚未接触主动标识载体概念",
+   "exit_condition": "观众能说出数据需要身份锚点，才能持续关联到明确的工业对象",
+   "timing": {
+    "char_equivalent": 150.0,
+    "min_seconds": 38,
+    "target_seconds": 39,
+    "max_seconds": 41,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "可身份放在哪儿，很讲究。如果只印在一张标签上、贴在设备表面，一台两台还应付得了。真到一个现场，设备越来越多，型号不同、厂商不同，系统之间还要互相交换数据，这时候会同时冒出三类问题：能不能认证这些设备的身份，跨系统之间怎么交互协作，数据安全怎么保证。标签可以承载身份入口，但设备身份认证、跨系统交互和数据安全，还需要识读设备、应用系统及相应安全机制配合。对于需要主动通信的设备，工业ID也可以与通信模组或工业互联网终端关联起来。接下来，我们就把两样东西各管什么、怎么把工业ID担起来，一点一点弄清楚。\n\n",
+   "teaching_purpose": "说明标签的入口作用与边界，并带出主动通信设备可把工业ID关联到通信模组或终端。",
+   "single_message": "标签能承载身份入口，但不能单独解决认证、跨系统交互和安全问题。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S006",
+     "guidance_text": "标签能承载身份入口，但还不够",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "只把身份印在标签上、贴在设备表面，设备一多就难以应付",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "设备型号和厂商不同、系统之间还要交换数据时，会同时出现身份认证、跨系统交互和数据安全三类问题",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "标签可以承载身份入口；设备身份认证、跨系统交互和数据安全还需要识读设备、应用系统及相应安全机制配合",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002",
+         "E011"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "对于需要主动通信的设备，工业ID也可以与通信模组或工业互联网终端关联起来",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G004",
+     "relation": "设备与系统规模扩大暴露问题",
+     "to": "G005",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R004",
+     "from": "G005",
+     "relation": "三类问题需要配套机制",
+     "to": "G006",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R005",
+     "from": "G006",
+     "relation": "入口与配套机制之后转入主动承载",
+     "to": "G007",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "不把标签说成完全无用，也不承诺标签单独完成认证或安全；不虚构系统架构或部署规模",
+     "evidence_refs": [
+      "E002",
+      "E011"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解数据需要身份锚点",
+   "exit_condition": "观众能说出标签的入口作用，以及三类问题需要识读设备、应用系统和安全机制配合",
+   "timing": {
+    "char_equivalent": 222.0,
+    "min_seconds": 56,
+    "target_seconds": 58,
+    "max_seconds": 61,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "通信模组和终端，凭什么能接住工业ID？因为它们都属于同一类载体，叫主动标识载体。这类载体的定义不复杂：它能嵌进工业设备内部，里面装着工业互联网标识编码，还专门留着地方放安全证书、算法和密钥这类材料。它能通过自身或配套终端的通信能力，主动向标识解析服务节点或标识数据应用平台发起连接，不必等着外部读写设备来触发。通信模组和通信终端，就是它的两个例子。\n\n",
+   "teaching_purpose": "给出主动标识载体的定义与两个例项，说明它和贴附式标签的触发方式不同。",
+   "single_message": "主动标识载体嵌入设备、承载标识与安全材料，并能主动发起连接。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S011",
+     "guidance_text": "主动标识载体：嵌入设备、主动联网",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "可以嵌入工业设备内部，承载工业互联网标识编码以及必要的安全证书、算法和密钥",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       },
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "具备联网通信能力，能主动向标识解析服务节点或标识数据应用平台发起连接",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "不必等待外部读写设备来触发",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "通信模组和通信终端都是主动标识载体的例项",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G008",
+     "relation": "承载与连接能力同时成立",
+     "to": "G009",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R007",
+     "from": "G009",
+     "relation": "定义落到具体例项",
+     "to": "G010",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不展开 UICC 卡应用、注册、认证或解析流程；不虚构具体协议或制式",
+     "evidence_refs": [
+      "E001",
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已接受标签作为入口的边界",
+   "exit_condition": "观众能说出主动标识载体的定义要点，并知道通信模组与通信终端是例项",
+   "timing": {
+    "char_equivalent": 159.0,
+    "min_seconds": 40,
+    "target_seconds": 41,
+    "max_seconds": 44,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "主动标识载体有四个特征：嵌入设备内部后不容易被盗取或误装；能主动联网并远程管理标识及相关信息；安全区域支持加密传输和接入认证；还能适应震动、潮湿、摩擦和篡改等工业环境。\n\n",
+   "teaching_purpose": "用四项特征说明主动标识载体适合工业现场，四项并列、逐项可读。",
+   "single_message": "嵌入、联网管理、安全区域和环境适应，共同构成主动标识载体的现场适配能力。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S016",
+     "guidance_text": "主动标识载体的四个特征",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E003"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "嵌入设备内部，降低被盗取或误安装的可能",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "能主动联网，支持远程管理所承载的标识及相关信息",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S019",
+        "guidance_text": "安全区域支持加密传输与接入认证",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "面向震动、潮湿、摩擦和篡改等复杂工业环境",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G011",
+     "relation": "嵌入之后才能联网与远程管理",
+     "to": "G012",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R009",
+     "from": "G012",
+     "relation": "联网管理需要安全区域支撑",
+     "to": "G013",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R010",
+     "from": "G013",
+     "relation": "安全与嵌入共同面向复杂环境",
+     "to": "G014",
+     "direction": "parallel"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不把四项特征扩写成产品规格、认证等级或环境参数",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解主动标识载体的定义与例项",
+   "exit_condition": "观众能复述四项特征，并知道它们针对工业现场条件",
+   "timing": {
+    "char_equivalent": 77.0,
+    "min_seconds": 20,
+    "target_seconds": 20,
+    "max_seconds": 21,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "先说通信模组。它不是一张孤立的标签，而是一组功能单元，任务是替工业对象把网络接上。可以从几类功能认识它：主功能模块处理核心信号与协议；天线接口单元连接射频天线；功能接口单元与终端主板交换信号。主功能模块常见的功能还包括基带处理、射频通信和电源管理；具体划分取决于模组设计。天线接口单元通过射频天线接口把天线挂上去，功能接口单元接住终端主板，信号从这儿进进出出。\n\n",
+   "teaching_purpose": "解释通信模组的功能单元划分、主功能模块常见功能与两类接口的连接关系。",
+   "single_message": "通信模组用功能单元和接口把工业对象接入网络。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S021",
+     "guidance_text": "通信模组：把工业对象接入网络的一组功能单元",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "通信模组不是孤立标签，而是替工业对象接入网络的一组功能单元",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "主功能模块处理核心信号与协议",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "天线接口单元连接射频天线",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "功能接口单元与终端主板交换信号",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "主功能模块常见的功能还包括基带处理、射频通信和电源管理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "具体划分取决于模组设计",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "天线接口单元通过射频天线接口连接天线；功能接口单元与终端主板连接，提供信号输入输出",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G015",
+     "relation": "定位落到三类功能单元",
+     "to": "G016",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R012",
+     "from": "G016",
+     "relation": "主功能模块进一步展开常见功能",
+     "to": "G017",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R013",
+     "from": "G017",
+     "relation": "功能划分之外保留接口连接边界",
+     "to": "G018",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不画成固定电路或厂商规格；不补内部走线、频段、接口型号或芯片参数",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解主动标识载体的概念与特征",
+   "exit_condition": "观众能说出三类功能单元及两类接口各连接什么",
+   "timing": {
+    "char_equivalent": 166.0,
+    "min_seconds": 42,
+    "target_seconds": 43,
+    "max_seconds": 46,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A004",
+    "A005"
+   ],
+   "nx": "真正关键的是存放位置。工业标识应用和密钥放在哪里，要看具体方案：可以使用模组内受保护的区域，也可以使用 UICC 等安全元件。Applet 可以理解为运行在相应载体上的应用程序；密钥需要由相应的安全机制保护，不能笼统地认为都存放在模组的 MCU 上。这么一放，通信模组一边替设备接入外部网络，一边把工业ID安放在跟设备紧密相连的功能单元里。到这一步，工业ID就不再只是贴在设备表面的字符，而是设备通信过程中的身份锚点，设备走到哪儿，这个身份就跟到哪儿。\n\n",
+   "teaching_purpose": "说明工业标识应用与密钥的存放要看具体方案，澄清 MCU 承载的边界，再回到工业ID的身份锚定。",
+   "single_message": "承载位置取决于方案；工业ID被放在与设备紧密相连的功能单元里。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S029",
+     "guidance_text": "工业标识应用和密钥放在哪里",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "工业标识应用和密钥放在哪里，要看具体方案",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "可以使用模组内受保护的区域，也可以使用 UICC 等安全元件",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E009",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "Applet 可以理解为运行在相应载体上的应用程序",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S033",
+        "guidance_text": "密钥需要由相应的安全机制保护，不能笼统地认为都存放在模组的 MCU 上",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "通信模组一边替设备接入外部网络，一边把工业ID安放在与设备紧密相连的功能单元里",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "工业ID成为设备通信过程中的身份锚点，身份跟着设备走",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R014",
+     "from": "G019",
+     "relation": "存放位置涉及运行在载体上的应用",
+     "to": "G020",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R015",
+     "from": "G020",
+     "relation": "应用与密钥都受安全机制约束",
+     "to": "G021",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R016",
+     "from": "G021",
+     "relation": "边界澄清后回到承载与身份锚定",
+     "to": "G022",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不假设具体工业标识产品采用哪一种安全元件；不展开 UICC 卡应用或密钥生成流程",
+     "evidence_refs": [
+      "E004",
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解通信模组的单元与接口",
+   "exit_condition": "观众能说出承载位置取决于方案，并知道工业ID被安放在设备附近的功能单元里",
+   "timing": {
+    "char_equivalent": 196.5,
+    "min_seconds": 50,
+    "target_seconds": 51,
+    "max_seconds": 54,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "不过，光有模组还不够。模组管连接，现场的这份数据谁来取？这就轮到工业互联网终端。终端是连接感知延伸层和网络层的设备，负责把数据采集上来、汇聚起来，再往网络那边送。从通信的角度看，它是网络的一个端节点；从行业应用的角度看，它还得干行业真正需要的活。所以终端的模样五花八门，功能差别也很大。终端要干的事有五件：采集或汇聚现场数据、预处理、加密、控制、数据传输。这里的分工要看清：终端面对的，是设备和现场过程；通信模组面对的，是连接和协议处理。两下一配合，一个工业对象的状态，才能变成既能传递、又能跟身份挂上钩的数据。\n\n",
+   "teaching_purpose": "解释终端的定义、双重角色与五项任务，并与通信模组的分工对照。",
+   "single_message": "终端面向现场数据与行业功能，模组面向连接与协议处理。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S036",
+     "guidance_text": "工业互联网终端：采集、处理与控制现场数据",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "终端连接感知延伸层和网络层，负责采集、汇聚并向网络发送数据",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "从通信角度是网络端节点；从行业应用角度还要提供行业需要的功能，所以外形和功能差异很大",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "五项任务：采集或汇聚现场数据、预处理、加密、控制、数据传输",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "终端面对设备与现场过程；通信模组面对连接与协议处理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "两者配合，工业对象的状态才能变成可传递、可关联的数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R017",
+     "from": "G023",
+     "relation": "定义展开为通信与行业双重角色",
+     "to": "G024",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R018",
+     "from": "G024",
+     "relation": "角色落成五项任务",
+     "to": "G025",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R019",
+     "from": "G025",
+     "relation": "任务对照引出与模组的分工",
+     "to": "G026",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不展开具体算法、网络栈、行业方案或成效数字",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解通信模组的连接角色",
+   "exit_condition": "观众能说出终端面对的现场职责，以及它与通信模组如何配合",
+   "timing": {
+    "char_equivalent": 226.0,
+    "min_seconds": 57,
+    "target_seconds": 59,
+    "max_seconds": 62,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "终端内部按职责分成五类模块。主控模块，组织终端整体功能。数据接入模块，面对现场数据。网络接入模块，连接网络那一侧。电源模块，保障供电。外设接口模块，连接外部设备。\n\n",
+   "teaching_purpose": "按职责并列说明终端的五类模块，只保留职责关系。",
+   "single_message": "五类模块各担一段职责，共同支撑终端的现场功能。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S042",
+     "guidance_text": "终端按职责分成五类模块",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "主控模块组织终端整体功能",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "数据接入模块面对现场数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G029",
+      "items": [
+       {
+        "screen_item_id": "S045",
+        "guidance_text": "网络接入模块连接网络那一侧",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G030",
+      "items": [
+       {
+        "screen_item_id": "S046",
+        "guidance_text": "电源模块保障供电",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S047",
+        "guidance_text": "外设接口模块连接外部设备",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R020",
+     "from": "G027",
+     "relation": "组织功能与数据接入并列",
+     "to": "G028",
+     "direction": "parallel"
+    },
+    {
+     "relation_id": "R021",
+     "from": "G029",
+     "relation": "网络连接与供电、外设并列",
+     "to": "G030",
+     "direction": "parallel"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "只讲职责关系，不虚构内部器件、电路或产品结构",
+     "evidence_refs": [
+      "E006"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解终端面向现场数据的职责",
+   "exit_condition": "观众能说出五类模块各自承担什么职责",
+   "timing": {
+    "char_equivalent": 70.0,
+    "min_seconds": 18,
+    "target_seconds": 18,
+    "max_seconds": 20,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "终端按使用位置可以分成移动和固定两类。移动工程设备可以通过蜂窝网络通信；固定监控设备也可以使用蜂窝网络，或者采用有线、近距离无线等方式。能否使用某种网络，取决于终端的通信能力和现场条件，不能仅凭它是否移动来判断。\n\n",
+   "teaching_purpose": "给出移动／固定分类与两类例示，并把联网方式限定为通信能力与现场条件。",
+   "single_message": "移动或固定只是分类，用哪种网络要看通信能力与现场条件。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S048",
+     "guidance_text": "移动还是固定，不等于联网方式",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G031",
+      "items": [
+       {
+        "screen_item_id": "S049",
+        "guidance_text": "终端按使用位置可以分成移动和固定两类",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007",
+         "E012"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G032",
+      "items": [
+       {
+        "screen_item_id": "S050",
+        "guidance_text": "移动工程设备可以通过蜂窝网络通信",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S051",
+        "guidance_text": "固定监控设备也可以使用蜂窝网络，或者采用有线、近距离无线等方式",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007",
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G033",
+      "items": [
+       {
+        "screen_item_id": "S052",
+        "guidance_text": "能否使用某种网络，取决于终端的通信能力和现场条件",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007",
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S053",
+        "guidance_text": "不能仅凭它是否移动来判断",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007",
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R022",
+     "from": "G031",
+     "relation": "分类落到两类例示",
+     "to": "G032",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R023",
+     "from": "G032",
+     "relation": "例示引出联网条件判断",
+     "to": "G033",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不作制式与性能比较；不声称当前覆盖、产品性能或部署规模",
+     "evidence_refs": [
+      "E001",
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解终端的模块职责",
+   "exit_condition": "观众能说出分类只用于理解连接条件，联网方式取决于终端能力与现场条件",
+   "timing": {
+    "char_equivalent": 98.0,
+    "min_seconds": 25,
+    "target_seconds": 26,
+    "max_seconds": 27,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A006",
+    "A009"
+   ],
+   "nx": "到这里，整条链就齐了：终端连着现场，负责采集和预处理数据；通信模组嵌在终端或设备里，负责联网和协议处理；工业ID由承载单元保存，锚定住那个明确的工业对象。数据顺着对象、终端、模组、网络这条线往外流，从采集到传输，身份始终跟着对象走。\n\n",
+   "teaching_purpose": "把终端、模组与工业ID合成为对象—终端—模组—网络的承载链，说明身份跟随对象。",
+   "single_message": "数据从对象经终端、模组到网络，身份始终跟着对象走。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S054",
+     "guidance_text": "对象—终端—模组—网络：身份始终跟着对象",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G034",
+      "items": [
+       {
+        "screen_item_id": "S055",
+        "guidance_text": "终端连着现场，负责采集和预处理数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G035",
+      "items": [
+       {
+        "screen_item_id": "S056",
+        "guidance_text": "通信模组嵌在终端或设备里，负责联网和协议处理",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G036",
+      "items": [
+       {
+        "screen_item_id": "S057",
+        "guidance_text": "工业ID由承载单元保存，锚定明确的工业对象",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G037",
+      "items": [
+       {
+        "screen_item_id": "S058",
+        "guidance_text": "数据沿对象、终端、模组、网络这条线向外流，身份始终跟着对象走",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R024",
+     "from": "G034",
+     "relation": "现场采集交给连接与协议处理",
+     "to": "G035",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R025",
+     "from": "G035",
+     "relation": "连接动作锚定到对象身份",
+     "to": "G036",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R026",
+     "from": "G036",
+     "relation": "身份跟随数据流动方向",
+     "to": "G037",
+     "direction": "same-anchor"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不虚构硬件内部结构、频段、接口电气或厂商参数；不添加注册／解析节点",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解终端的分类与联网条件",
+   "exit_condition": "观众能按对象—终端—模组—网络的顺序说出承载链，并知道身份跟随对象",
+   "timing": {
+    "char_equivalent": 101.0,
+    "min_seconds": 26,
+    "target_seconds": 26,
+    "max_seconds": 28,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A011",
+   "callback_a_ids": [
+    "A001",
+    "A010"
+   ],
+   "nx": "本期总结。回到开场的问题：在需要设备主动通信的场景下，工业ID怎样与通信能力配合？答案现在清楚了。设备能采到数据，不代表数据知道自己来自谁；要让数据有归属，就得有人把工业ID稳稳承载起来，并且跟着设备一路传出去。这件事是分工完成的三段活：通信模组提供联网和协议处理的能力，让身份连得上、传得动；工业互联网终端守住现场这一头，数据采得到、预处理得好、还能控制得住；工业ID自己，把这两头的动作逐一锚定到明确的工业对象上。再把这三段活放到一起看，共同规律是各管一段、彼此咬合，一个管连接，一个管现场，一个管归属，谁也不能缺。核心判断是这样的：工业ID能否稳定对应具体对象，取决于标识分配、绑定和管理；需要主动通信时，模组和终端可以配合完成连接。",
+   "teaching_purpose": "回到开场问题，收束三段分工与共同规律，并给出有边界条件的核心判断。",
+   "single_message": "三个角色各管一段；身份稳定对应还取决于标识分配、绑定和管理。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S059",
+     "guidance_text": "三个角色，各管一段",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G038",
+      "items": [
+       {
+        "screen_item_id": "S060",
+        "guidance_text": "设备能采到数据，不代表数据知道自己来自谁",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G039",
+      "items": [
+       {
+        "screen_item_id": "S061",
+        "guidance_text": "通信模组提供联网和协议处理的能力，让身份连得上、传得动",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       },
+       {
+        "screen_item_id": "S062",
+        "guidance_text": "工业互联网终端守住现场，把数据采得到、预处理得好、还能控制得住",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S063",
+        "guidance_text": "工业ID把两头的动作锚定到明确的工业对象上",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G040",
+      "items": [
+       {
+        "screen_item_id": "S064",
+        "guidance_text": "共同规律是各管一段、彼此咬合：一个管连接，一个管现场，一个管归属",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E001",
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G041",
+      "items": [
+       {
+        "screen_item_id": "S065",
+        "guidance_text": "工业ID能否稳定对应具体对象，取决于标识分配、绑定和管理",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E011",
+         "E012"
+        ]
+       },
+       {
+        "screen_item_id": "S066",
+        "guidance_text": "需要主动通信时，模组和终端可以配合完成连接",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E012",
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R027",
+     "from": "G038",
+     "relation": "回扣问题引出三段分工",
+     "to": "G039",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R028",
+     "from": "G039",
+     "relation": "三段分工合成共同规律",
+     "to": "G040",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R029",
+     "from": "G040",
+     "relation": "共同规律收束为核心判断",
+     "to": "G041",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "不预告下一集或注册流程；不把三段分工扩成产品承诺或行业结论",
+     "evidence_refs": [
+      "E001",
+      "E012"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看到完整的承载链",
+   "exit_condition": "观众能说出三个角色各自负责什么，以及工业ID稳定对应对象的边界条件",
+   "timing": {
+    "char_equivalent": 283.0,
+    "min_seconds": 71,
+    "target_seconds": 74,
+    "max_seconds": 78,
+    "short_page_reason": null
+   }
+  }
+ ]
+}
