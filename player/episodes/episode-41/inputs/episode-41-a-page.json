@@ -1,0 +1,1118 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-41",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 41 集的角色比较责任、前置关系与第 40–42 集相邻边界",
+   "source_locator": "已确认课程架构，模块四第 40–42 集与去重规则",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围与叙事"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "终端设备负责感知数据，主动标识载体与终端关联并向上对接标识服务平台",
+   "source_locator": "主教材，4.2.3“主动标识载体服务架构”图 4-23 前正文",
+   "verification_status": "not applicable",
+   "allowed_use": "提供角色比较的架构语境；不补充部署拓扑、接口或协议"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "服务架构列出安全认证、数据传输和应用构建等安全相关职责",
+   "source_locator": "主教材，4.2.3“主动标识载体服务架构”正文及图 4-23",
+   "verification_status": "not applicable",
+   "allowed_use": "说明算法角色所服务的业务目标；不将职责改写为具体实现"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "教材将 SM1 描述为对称加密算法，主要用于数据加密",
+   "source_locator": "主教材，4.2.3“（1）SM1 加密算法”",
+   "verification_status": "not applicable",
+   "allowed_use": "形成 SM1 的高层数据保护角色；不写密钥值、参数、轮函数或实现方式"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "教材将 SM2 描述为 ECC 椭圆曲线公钥密码算法，属于非对称密码，适用于数字签名、密钥交换等场景",
+   "source_locator": "主教材，4.2.3“（2）SM2 加密算法”",
+   "verification_status": "not applicable",
+   "allowed_use": "形成 SM2 的身份/会话协作角色；不推导椭圆曲线、参数、密钥对或协议步骤"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "SM1 更靠近数据内容保护，SM2 更靠近身份鉴别、会话协商与签名协作",
+   "source_locator": "E003–E005 的忠实教学组织",
+   "verification_status": "not applicable",
+   "allowed_use": "组织概念边界与对照图；是角色层综合，不声称教材给出具体部署清单"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "同一主动标识链路可以同时需要“保护数据内容”和“确认通信/会话参与者”两类安全职责",
+   "source_locator": "E002–E005 的教学抽象",
+   "verification_status": "not applicable",
+   "allowed_use": "解释为何比较两个算法角色；不引入新的安全目标、威胁或算法"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "SM1/SM2 的比较应停留在服务架构角色，不等同于接口调用顺序或密码实现教程",
+   "source_locator": "E001、E003–E005",
+   "verification_status": "not applicable",
+   "allowed_use": "约束视觉和下游表达；角色关系不是协议时序"
+  },
+  {
+   "evidence_id": "E009",
+   "claim_or_asset": "匿名工业设备上报一条数据时，先确认通信主体，再保护数据内容的教学情境",
+   "source_locator": "本任务包教学设计，讲稿 N001、N006",
+   "verification_status": "not applicable",
+   "allowed_use": "帮助理解抽象角色；明示为教学情境，不冒充教材项目或真实部署"
+  },
+  {
+   "evidence_id": "E010",
+   "claim_or_asset": "SM1 对称加密提供机密性，但加密本身不自动提供完整性或来源真实性；发现内容被改动需要数字签名、消息认证码或认证加密等机制；SM2 数字签名在可信公钥等条件得到保证时可用于确认来源并发现改动，是否用于密钥交换依具体方案",
+   "source_locator": "NIST 保密模式与认证说明（https://csrc.nist.gov/projects/block-cipher-techniques/bcm/authentication-for-confidentiality-modes）；国家密码管理局 SM2 数字签名算法标准（https://oscca.gov.cn/sca/xxgk/2010-12/17/1002386/files/b791a9f908bb4803875ab6aeeb7b4e03.pdf）",
+   "verification_status": "verified",
+   "allowed_use": "限定机密性与完整性的能力边界；任务包与 Brief 的完整性机制范围待协调（C01），不宣称特定产品实现"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "车间角落里有一台设备，它要往上报一条数据。这条数据先交给主动标识载体，再向上对接标识服务平台，随后在业务云平台这一层起作用。可就在数据刚要离开发送方的时候，平台心里其实悬着两件事：正在跟我通信的到底是谁？内容发出去之后，会不会被无关的人读走、甚至改掉？前一个问的是身份，后一个问的是内容。这两件事听起来都叫\"安全\"，在设计里需要分别考虑。今天我们就顺着这条上报链，把两个角色分别放进去看看：一个是 SM1 对称加密算法，一个是 SM2 非对称密码算法。\n\n",
+   "teaching_purpose": "用匿名设备上报情境提出身份与内容两类安全问题，并把 SM1 与 SM2 作为两个待区分的角色引入。",
+   "single_message": "一条数据上路，先分两件事：确认通信的是谁，护住传输的内容。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "一条数据上路，先分清两类问题",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007",
+      "E009"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "匿名工业设备向上报一条业务数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "问题一：正在通信的到底是谁？",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "问题二：内容会不会被读走、甚至改掉？",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "两个角色：SM1 对称加密算法 / SM2 非对称密码算法",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004",
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "数据上路先分身份与内容两条问题线",
+     "to": "G002",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R002",
+     "from": "G002",
+     "relation": "两类问题引出两个算法角色",
+     "to": "G003",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "不展示算法内部结构、参数、密钥或威胁细节",
+     "evidence_refs": [
+      "E008",
+      "E010"
+     ]
+    },
+    {
+     "constraint_id": "C002",
+     "instruction": "不把匿名设备情境写成真实企业、教材项目或安全验证结果",
+     "evidence_refs": [
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始观看本集，尚未区分两类安全角色",
+   "exit_condition": "观众能说出身份与内容两类问题，并知道本集要比较 SM1 与 SM2",
+   "timing": {
+    "char_equivalent": 199.0,
+    "min_seconds": 50,
+    "target_seconds": 52,
+    "max_seconds": 55,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "先看清这条链路本身。终端设备负责感知数据，主动标识载体跟终端关联在一起，向上对接标识服务平台和业务云平台。平台在这一路上要处理的，不是一件事，而是几类不同的安全相关职责，比如对通信对象做认证、保护传输中的数据，还有后端的应用构建。\n\n",
+   "teaching_purpose": "把讨论放回主动标识服务架构，给出终端—载体—平台的对象关系与安全认证、数据传输、应用构建三类职责。",
+   "single_message": "先在服务架构里定位业务对象与三类安全相关职责，再谈算法角色。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S006",
+     "guidance_text": "把角色放回主动标识服务架构",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E002"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "终端设备感知数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "主动标识载体与终端关联，向上对接标识服务平台和业务云平台",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "安全认证、数据传输、应用构建是服务架构中的不同职责",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R003",
+     "from": "G004",
+     "relation": "业务对象关系给出安全职责的位置",
+     "to": "G005",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C003",
+     "instruction": "不复刻完整平台分层、部署拓扑、接口或协议",
+     "evidence_refs": [
+      "E002",
+      "E003"
+     ]
+    },
+    {
+     "constraint_id": "C004",
+     "instruction": "不把职责改写成具体实现方案",
+     "evidence_refs": [
+      "E003"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知本集要区分两类安全角色",
+   "exit_condition": "观众能说出终端—载体—平台关系及三类安全相关职责",
+   "timing": {
+    "char_equivalent": 105.0,
+    "min_seconds": 27,
+    "target_seconds": 27,
+    "max_seconds": 29,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "同时出现 SM1 和 SM2 这两个名字，价值不在于记住名字，而在于帮你看清两者分别靠近哪一类职责。SM1 是国密对称加密算法，主要用于数据加密，它代表的是数据内容保护这个角色。怎么看它？盯着数据本身。一条内容已经定下来要发送了，SM1 对称加密可以保护它在传输和存储环节中的机密性，降低被无关的人读走的风险。",
+   "teaching_purpose": "说明 SM1 的对称加密定位，并以其“数据内容保护”角色解释传输与存储环节的机密性作用。",
+   "single_message": "SM1 是对称加密角色，观察入口是数据本身，守护的是内容机密性。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S010",
+     "guidance_text": "SM1：把数据内容保护起来",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S011",
+        "guidance_text": "SM1 是国密对称加密算法，主要用于数据加密",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "观察入口：数据本身",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "传输和存储环节的机密性保护，降低被无关的人读走的风险",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G006",
+     "relation": "对称加密角色落到数据本身",
+     "to": "G007",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不写密钥值、参数、轮函数或实现方式",
+     "evidence_refs": [
+      "E004",
+      "E008"
+     ]
+    },
+    {
+     "constraint_id": "C006",
+     "instruction": "不把机密性保护扩写为完整性、来源真实性或认证结果的结论",
+     "evidence_refs": [
+      "E010"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看到服务架构中的安全职责",
+   "exit_condition": "观众能说出 SM1 的角色是数据内容保护与机密性",
+   "timing": {
+    "char_equivalent": 132.0,
+    "min_seconds": 33,
+    "target_seconds": 34,
+    "max_seconds": 36,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "还要强调一点，这个角色没有唯一的固定部署位置，它可以落在主动载体的数据传输路径上，也可以由具备安全能力的芯片或设备部件来承担。我们只认它\"保护内容\"这层职责，不要把它想象成某个固定的接口调用或设备配置。\n\n",
+   "teaching_purpose": "说明 SM1 角色的部署位置不唯一，能力可落在载体数据路径或安全部件上，同时立住“只认数据保护职责”的边界。",
+   "single_message": "SM1 的部署位置可变，但它只承担数据内容保护这一层职责。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S014",
+     "guidance_text": "SM1 没有唯一的固定部署位置",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E004",
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S015",
+        "guidance_text": "可落在主动载体的数据传输路径上",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "也可由具备安全能力的芯片或设备部件承担",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "只认“保护内容”这层职责",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "不写成固定接口调用或设备配置",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R005",
+     "from": "G008",
+     "relation": "部署位置可变，职责边界不变",
+     "to": "G009",
+     "direction": "contrast"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C007",
+     "instruction": "不声称某个产品的固定部署位置",
+     "evidence_refs": [
+      "E004",
+      "E006"
+     ]
+    },
+    {
+     "constraint_id": "C008",
+     "instruction": "不引入接口字段或设备配置细节",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知 SM1 的数据保护角色",
+   "exit_condition": "观众能说出 SM1 的部署位置可灵活，但不可写成固定接口或配置",
+   "timing": {
+    "char_equivalent": 94.0,
+    "min_seconds": 24,
+    "target_seconds": 25,
+    "max_seconds": 26,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "再看 SM2。SM2 是 ECC 椭圆曲线公钥密码算法，属于非对称密码，可用于身份鉴别、数字签名和密钥交换等环节。比如，在可信公钥等条件得到保证时，验证 SM2 数字签名可以帮助确认数据的来源并发现数据是否被改动；是否使用 SM2 进行密钥交换，要看具体方案。至于算法内部怎么算，那不是咱们这条链路要操心的事。\n\n",
+   "teaching_purpose": "说明 SM2 的非对称密码定位与其身份鉴别、数字签名、密钥交换等协作环节，并保留使用条件。",
+   "single_message": "SM2 是非对称密码角色，用于身份鉴别、数字签名和密钥交换等环节，具体使用依方案。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S019",
+     "guidance_text": "SM2：非对称密码的身份与协作角色",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "SM2 是 ECC 椭圆曲线公钥密码算法，属于非对称密码",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "可用于身份鉴别、数字签名和密钥交换等环节",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "可信公钥条件得到保证时，可用数字签名确认来源并发现改动",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S023",
+        "guidance_text": "是否使用 SM2 进行密钥交换，要看具体方案",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005",
+         "E010"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G010",
+     "relation": "非对称能力对应身份与会话环节",
+     "to": "G011",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R007",
+     "from": "G011",
+     "relation": "具体使用依方案与信任条件",
+     "to": "G012",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不显示曲线、参数、密钥对、证书或协议步骤",
+     "evidence_refs": [
+      "E005",
+      "E008"
+     ]
+    },
+    {
+     "constraint_id": "C010",
+     "instruction": "不把身份鉴别扩写为完整注册或认证结果",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知 SM1 的数据保护角色",
+   "exit_condition": "观众能说出 SM2 的非对称协作角色及其使用条件",
+   "timing": {
+    "char_equivalent": 127.5,
+    "min_seconds": 32,
+    "target_seconds": 33,
+    "max_seconds": 35,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "现在把两个角色放回同一条上报链。设备的数据要往前走，一种方案可能先确认正在通信的主体是谁，再保护要传出的业务内容。这些事关注的点不一样，却可以在同一条链上配合起来。",
+   "teaching_purpose": "把两个角色放回同一条上报链，说明“先确认主体、再保护内容”的职责依赖与配合关系。",
+   "single_message": "身份确认与内容保护关注点不同，但可以在同一条上报链上配合。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S024",
+     "guidance_text": "一条上报链上的先后分工",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "一种方案可能先确认通信主体，再保护要传出的业务内容",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007",
+         "E009"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "关注点不同，但可以在同一条链上配合",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G013",
+     "relation": "职责依赖不是接口时序",
+     "to": "G014",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "不把先确认后保护的顺序写成接口时序或固定协议流程",
+     "evidence_refs": [
+      "E008",
+      "E009"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知 SM1 与 SM2 各自角色",
+   "exit_condition": "观众能说出两类职责可以在同一链上配合，且不是接口时序",
+   "timing": {
+    "char_equivalent": 76.0,
+    "min_seconds": 19,
+    "target_seconds": 20,
+    "max_seconds": 21,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "对称加密可以保护内容不被未授权者读懂，但加密本身不自动证明内容没有被改动。完整性和来源真实性还需要数字签名、消息认证码或认证加密等适当机制；具体采用哪种，要看方案。SM2 数字签名是其中一种可用手段。架构里常说的\"安全认证\"，更接近身份和信任的建立；\"数据传输\"，更接近数据的安全传送。这只是一种语义上的对应，不是说某一种算法只能出现在某一个模块里。\n\n",
+   "teaching_purpose": "区分机密性保护与完整性/来源真实性，说明后者需要相应认证机制，并回到安全认证与数据传输的语义对应。",
+   "single_message": "加密保护内容机密性，但不自动证明内容未被改动；完整性需要相应机制。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S027",
+     "guidance_text": "加密保护内容，不等于证明内容没被改动",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S028",
+        "guidance_text": "对称加密保护内容不被未授权者读懂",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "但加密本身不自动证明内容没有被改动",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "完整性和来源真实性需要数字签名、消息认证码或认证加密等适当机制",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       },
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "具体采用哪种，要看方案",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "“安全认证”更接近身份和信任建立；“数据传输”更接近数据安全传送",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003",
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R009",
+     "from": "G015",
+     "relation": "机密性边界之外补完整性机制",
+     "to": "G016",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R010",
+     "from": "G016",
+     "relation": "机制选择回到架构职责的语义对应",
+     "to": "G017",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C012",
+     "instruction": "不宣称特定产品实现、参数或合规结论",
+     "evidence_refs": [
+      "E010"
+     ]
+    },
+    {
+     "constraint_id": "C013",
+     "instruction": "不把机制名称写成协议、接口或部署要求",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知两类角色的分工",
+   "exit_condition": "观众能区分机密性保护与完整性/来源真实性所需的不同机制",
+   "timing": {
+    "char_equivalent": 157.5,
+    "min_seconds": 40,
+    "target_seconds": 41,
+    "max_seconds": 43,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "这里要拦一下：比较这两个角色，不能拿\"谁更安全\"来排座次。它们的密码能力和应用方式不同，一句笼统的\"谁更安全\"盖不住具体方案的设计。SM2 能用于会话协商，不等于它就是完整的注册接口；SM1 用于数据加密，也不等于它就定义了什么固定格式的数据内容。谁也不替代谁。\n\n",
+   "teaching_purpose": "说明比较两个角色不能退化为“谁更安全”的优劣排序，并排除把算法扩写成注册接口或固定数据格式的误读。",
+   "single_message": "两个角色能力与应用方式不同，不能用“谁更安全”排座次，也不能互相替代。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S033",
+     "guidance_text": "不拿“谁更安全”排座次",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E006"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "两个角色的密码能力和应用方式不同",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       },
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "笼统的“谁更安全”盖不住具体方案的设计",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S036",
+        "guidance_text": "SM2 能用于会话协商，不等于完整的注册接口",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "SM1 用于数据加密，不等于定义了固定格式的数据内容",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "谁也不替代谁",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R011",
+     "from": "G018",
+     "relation": "不能优劣排序，也不能互相替代",
+     "to": "G019",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C014",
+     "instruction": "不给出安全强度、性能或适用标准排序",
+     "evidence_refs": [
+      "E006",
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已看到两类角色在同一链路中的配合",
+   "exit_condition": "观众能说明为什么不能用优劣排序替代角色比较",
+   "timing": {
+    "char_equivalent": 114.0,
+    "min_seconds": 29,
+    "target_seconds": 30,
+    "max_seconds": 32,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "还有一个容易跑偏的地方要拉回来：SM1 和 SM2 在服务链里是安全能力的角色，不是新的业务节点，不是替代业务平台的中心数据库，更不会凭空生成数据。它们的能力要附着在相应职责旁边去理解，把它们当作\"这条链路里保护内容、确认身份的两类能力\"来理解就好。\n\n",
+   "teaching_purpose": "防止把算法误读为业务节点：SM1 与 SM2 是贴附在职责旁的安全能力，不是新节点、中心数据库或数据生成者。",
+   "single_message": "算法是贴附在职责旁的安全能力，不是业务节点、中心数据库或数据来源。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S039",
+     "guidance_text": "算法是能力角色，不是业务节点",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E008"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "SM1 与 SM2 在服务链里是安全能力角色",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S041",
+        "guidance_text": "不是新的业务节点",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S042",
+        "guidance_text": "不是替代业务平台的中心数据库",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S043",
+        "guidance_text": "更不会凭空生成数据",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S044",
+        "guidance_text": "能力附着在相应职责旁边理解",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E008"
+        ]
+       },
+       {
+        "screen_item_id": "S045",
+        "guidance_text": "两类能力：保护内容、确认身份",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G020",
+     "relation": "角色不等于业务对象",
+     "to": "G021",
+     "direction": "contrast"
+    },
+    {
+     "relation_id": "R013",
+     "from": "G021",
+     "relation": "能力贴回职责",
+     "to": "G022",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C015",
+     "instruction": "不画中心数据库、接口箭头或凭空生成数据的黑盒结构",
+     "evidence_refs": [
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知不能拿优劣排序替代比较",
+   "exit_condition": "观众能把算法当作能力标签，而不是业务节点",
+   "timing": {
+    "char_equivalent": 110.0,
+    "min_seconds": 28,
+    "target_seconds": 29,
+    "max_seconds": 30,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A010",
+   "callback_a_ids": [
+    "A009"
+   ],
+   "nx": "回到开场那台设备。一条数据上路，平台真正要防的就是两件事：确认通信的是谁，护住传输的内容。SM1 和 SM2 的分工恰好接住这两件事。SM1 对称加密可以保护数据的机密性；SM2 非对称密码可用于数字签名、身份鉴别或密钥交换。要发现内容被篡改，还需要相应的完整性认证机制。具体采用哪些机制、如何配合，取决于实际方案。把它们放在一起看，共同的规律是：主动标识的安全不是靠一个算法包办，而是让不同类型的密码能力各自落位、互相配合。以后再看任何一条安全链路，都可以先问自己一句：这件事管的到底是身份，还是内容？",
+   "teaching_purpose": "回到开场设备，收束身份与内容两件事、SM1/SM2 的角色分工与共同规律。",
+   "single_message": "身份与内容两件事分别由两类密码能力接住；安全靠能力各自落位、互相配合。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S046",
+     "guidance_text": "身份与内容：两类能力各自落位",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S047",
+        "guidance_text": "确认通信的是谁；护住传输的内容",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S048",
+        "guidance_text": "SM1 保护机密性；SM2 用于数字签名、身份鉴别或密钥交换",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E005"
+        ]
+       },
+       {
+        "screen_item_id": "S049",
+        "guidance_text": "发现篡改需要完整性认证机制，具体配合取决于方案",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E010"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S050",
+        "guidance_text": "安全不是靠一个算法包办，而是不同密码能力各自落位、互相配合",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E006",
+         "E008"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R014",
+     "from": "G023",
+     "relation": "两件事分别由两类能力接住",
+     "to": "G024",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R015",
+     "from": "G024",
+     "relation": "分工汇成共同规律",
+     "to": "G025",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C016",
+     "instruction": "不把收束扩写成标准状态、部署量或行业数字",
+     "evidence_refs": [
+      "E001",
+      "E008"
+     ]
+    },
+    {
+     "constraint_id": "C017",
+     "instruction": "不预告下一集的具体行业场景细节",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已完成角色比较与边界梳理",
+   "exit_condition": "观众能复述身份与内容两件事及两类能力的各自落位",
+   "timing": {
+    "char_equivalent": 218.0,
+    "min_seconds": 55,
+    "target_seconds": 57,
+    "max_seconds": 60,
+    "short_page_reason": null
+   }
+  }
+ ]
+}
