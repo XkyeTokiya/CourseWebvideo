@@ -1,0 +1,979 @@
+{
+ "schema_version": "courseplay-a-page/v6",
+ "document_kind": "production",
+ "episode_id": "episode-51",
+ "approved_text": "approved-spoken-text.txt",
+ "timing_model": {
+  "han_weight": 1,
+  "fullwidth_punctuation_weight": 0,
+  "other_non_whitespace_weight": 0.5,
+  "chars_per_minute": {
+   "minimum": 220,
+   "target": 230,
+   "maximum": 240
+  }
+ },
+ "evidence_catalog": [
+  {
+   "evidence_id": "E001",
+   "claim_or_asset": "第 51 集范围、课程位置、前置与相邻边界（BMS/SNMS/ENMS、IDHub、托管自建、License 均不展开）",
+   "source_locator": "已确认课程架构，第 30、47–51 集责任表",
+   "verification_status": "not applicable",
+   "allowed_use": "控制范围与去重"
+  },
+  {
+   "evidence_id": "E002",
+   "claim_or_asset": "企业可向所属二级节点单位申请企业前缀，也可通过教材列出的相关服务渠道申请；渠道只说明责任归属与进入方向",
+   "source_locator": "主教材，5.2.3“企业前缀申请方式”",
+   "verification_status": "not applicable",
+   "allowed_use": "解释渠道分层；不把教材渠道名称、二维码或页面当当前入口"
+  },
+  {
+   "evidence_id": "E003",
+   "claim_or_asset": "申请流程以前置注册企业账号开始；教学材料不提供实际操作账号",
+   "source_locator": "主教材，任务实施“企业前缀申请”（1）",
+   "verification_status": "not applicable",
+   "allowed_use": "解释访问前置与安全边界；不声称任何账号、密码或认证方式"
+  },
+  {
+   "evidence_id": "E004",
+   "claim_or_asset": "申请准备按单位信息、法人信息、联系人信息分组，并要求三组信息相互对应",
+   "source_locator": "主教材，任务实施（2）；图 5-6",
+   "verification_status": "not applicable",
+   "allowed_use": "解释准备与完整性校验；只讲信息类别，不复制字段名或必填规则"
+  },
+  {
+   "evidence_id": "E005",
+   "claim_or_asset": "自编码企业前缀属于单位信息，需由有权承接方认可并与企业名称、申请主体一致；管理员审核信息无误并审核通过即完成申请",
+   "source_locator": "主教材，第 165–169 行",
+   "verification_status": "not applicable",
+   "allowed_use": "解释前缀一致性检查与完成条件；不复述示例字符串、不推断格式或审核时限"
+  },
+  {
+   "evidence_id": "E006",
+   "claim_or_asset": "教材图 5-4 至图 5-6 展示渠道进入、注册前置与资质信息准备的先后关系，属历史教学示意",
+   "source_locator": "教材图 5-4 左图–教材图 5-6",
+   "verification_status": "not applicable",
+   "allowed_use": "构造流程语义与证据锚点；原图不作当前界面截图"
+  },
+  {
+   "evidence_id": "E007",
+   "claim_or_asset": "“授权渠道→信息准备→一致性校验→提交→管理员审核→审核通过”的教学主链与提交前四项核对",
+   "source_locator": "基于 E002–E006 的教学组织（read-complete）",
+   "verification_status": "not applicable",
+   "allowed_use": "组织讲稿、分镜与确定性流程图；不增加教材未出现的步骤"
+  },
+  {
+   "evidence_id": "E008",
+   "claim_or_asset": "一家制造企业准备接入标识体系并申请企业前缀的通用教学情境",
+   "source_locator": "本任务包教学设计，讲稿 N001",
+   "verification_status": "not applicable",
+   "allowed_use": "引出信息准备问题；不冒充真实企业事件或申请记录"
+  }
+ ],
+ "pages": [
+  {
+   "a_id": "A001",
+   "callback_a_ids": [],
+   "nx": "一家制造企业要接入工业互联网标识解析，得先拥有一个属于自己的企业前缀。这个前缀标识的，就是企业这个申请主体。可真正走到申请环节，很多企业会犯迷糊：该找谁申请？要准备什么信息？怎么才算办成？这三件事没理清，后面就容易来回折腾。这节课，我们就跟着一家制造企业的申请过程，把企业前缀申请从头走到尾，看清每一步该由谁来负责。\n\n",
+   "teaching_purpose": "用通用制造企业情境提出企业前缀申请的三个问题：该找谁申请、要准备什么信息、怎样才算办成。",
+   "single_message": "企业前缀标识申请主体；申请前先理清找谁、准备什么、怎样算完成。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S001",
+     "guidance_text": "申请前先问三件事",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E001"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G001",
+      "items": [
+       {
+        "screen_item_id": "S002",
+        "guidance_text": "企业前缀标识的，就是企业这个申请主体",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005",
+         "E008"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G002",
+      "items": [
+       {
+        "screen_item_id": "S003",
+        "guidance_text": "该找谁申请",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S004",
+        "guidance_text": "要准备什么信息",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       },
+       {
+        "screen_item_id": "S005",
+        "guidance_text": "怎么才算办成",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R001",
+     "from": "G001",
+     "relation": "主体明确才谈三问",
+     "to": "G002",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C001",
+     "instruction": "不出现真实入口、二维码、平台名称、账号或页面；教学情境不冒充真实企业申请记录",
+     "evidence_refs": [
+      "E001",
+      "E008"
+     ]
+    }
+   ],
+   "entry_condition": "观众开始本集，尚未接触前缀申请流程",
+   "exit_condition": "观众能说出申请前要理清的三个问题",
+   "timing": {
+    "char_equivalent": 143.0,
+    "min_seconds": 36,
+    "target_seconds": 37,
+    "max_seconds": 39,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A002",
+   "callback_a_ids": [
+    "A001"
+   ],
+   "nx": "先说从哪里进入。申请企业前缀，不是随手找个入口就能递进去，它有明确的责任指向：企业可以向自己所属的二级节点单位提出申请，也可以通过相关的服务渠道来提交。这里要留意的是渠道背后的责任归属和申请方向。\n\n正式提出申请之前，还有一个前置环节：企业账号要先注册好。这一步做在前面，后面的申请才有依托。注册只是申请的前置条件。\n\n",
+   "teaching_purpose": "说明申请可以向所属二级节点单位或相关服务渠道提出，渠道指责任归属与进入方向，并说明账号注册是正式申请的前置环节。",
+   "single_message": "申请有明确的责任方向；账号注册只是前置条件。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S006",
+     "guidance_text": "渠道方向与账号前置",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G003",
+      "items": [
+       {
+        "screen_item_id": "S007",
+        "guidance_text": "向所属二级节点单位提出申请",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       },
+       {
+        "screen_item_id": "S008",
+        "guidance_text": "也可以通过相关服务渠道提交",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G004",
+      "items": [
+       {
+        "screen_item_id": "S009",
+        "guidance_text": "渠道背后的责任归属与申请方向",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E002"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G005",
+      "items": [
+       {
+        "screen_item_id": "S010",
+        "guidance_text": "企业账号注册是正式申请的前置环节",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E003"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R002",
+     "from": "G003",
+     "relation": "渠道先于前置环节",
+     "to": "G004",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R003",
+     "from": "G004",
+     "relation": "前置条件之后才进入正式申请",
+     "to": "G005",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C002",
+     "instruction": "不出现网址、二维码、平台产品名、账号、密码或登录凭据",
+     "evidence_refs": [
+      "E002",
+      "E003"
+     ]
+    },
+    {
+     "constraint_id": "C003",
+     "instruction": "不展开 BMS/SNMS/ENMS 层级机制",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道申请前要理清三个问题",
+   "exit_condition": "观众能说出申请渠道的责任方向与账号前置",
+   "timing": {
+    "char_equivalent": 143.0,
+    "min_seconds": 36,
+    "target_seconds": 37,
+    "max_seconds": 39,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A003",
+   "callback_a_ids": [
+    "A002"
+   ],
+   "nx": "接下来是准备信息。申请要用到的信息分成三类：单位信息、法人信息、联系人信息。单位信息回答的是谁在申请；法人信息回答的是谁为申请负责；联系人信息回答的是申请之后有事能找谁。\n\n",
+   "teaching_purpose": "解释申请信息按单位信息、法人信息、联系人信息三类整理，并说明每类回答的问题。",
+   "single_message": "单位信息回答谁在申请，法人信息回答谁为申请负责，联系人信息回答申请之后有事找谁。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S011",
+     "guidance_text": "三类信息怎么备",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G006",
+      "items": [
+       {
+        "screen_item_id": "S012",
+        "guidance_text": "单位信息：回答谁在申请",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G007",
+      "items": [
+       {
+        "screen_item_id": "S013",
+        "guidance_text": "法人信息：回答谁为申请负责",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G008",
+      "items": [
+       {
+        "screen_item_id": "S014",
+        "guidance_text": "联系人信息：回答申请之后有事能找谁",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R004",
+     "from": "G006",
+     "relation": "三类信息共同指向申请主体",
+     "to": "G007",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R005",
+     "from": "G007",
+     "relation": "联系人信息承接后续沟通",
+     "to": "G008",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C004",
+     "instruction": "不衍生字段清单、必填规则、文件格式或示例值",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解渠道与前置环节",
+   "exit_condition": "观众能说出三类信息各自回答的问题",
+   "timing": {
+    "char_equivalent": 77.0,
+    "min_seconds": 20,
+    "target_seconds": 20,
+    "max_seconds": 21,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A004",
+   "callback_a_ids": [
+    "A003"
+   ],
+   "nx": "这三类信息不是各填各的就算完，它们必须彼此对应：申请主体、责任人、联系路径对应得上，而且三类信息指向同一个申请主体。打个比方，单位是这套申请的招牌，法人是招牌下的负责人，联系人是实际能接电话的那个人。三者对不上，申请在审核时就会站不住。\n\n",
+   "teaching_purpose": "说明三类信息必须彼此对应，申请主体、责任人和联系路径要对应得上，并指向同一个申请主体。",
+   "single_message": "三类信息不是各填各的，必须彼此对应并指向同一个申请主体。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S015",
+     "guidance_text": "三类信息要对应",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G009",
+      "items": [
+       {
+        "screen_item_id": "S016",
+        "guidance_text": "三类信息必须彼此对应",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G010",
+      "items": [
+       {
+        "screen_item_id": "S017",
+        "guidance_text": "申请主体、责任人、联系路径要对应得上",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G011",
+      "items": [
+       {
+        "screen_item_id": "S018",
+        "guidance_text": "三类信息指向同一个申请主体",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R006",
+     "from": "G009",
+     "relation": "对应关系先落在主体上",
+     "to": "G010",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R007",
+     "from": "G010",
+     "relation": "最终回到同一申请主体",
+     "to": "G011",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C005",
+     "instruction": "不使用真实证件号、联系方式、企业名称或个人隐私信息",
+     "evidence_refs": [
+      "E004"
+     ]
+    }
+   ],
+   "entry_condition": "观众已知道三类信息的内容",
+   "exit_condition": "观众能说出三类信息要彼此对应并指向同一主体",
+   "timing": {
+    "char_equivalent": 106.0,
+    "min_seconds": 27,
+    "target_seconds": 28,
+    "max_seconds": 29,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A005",
+   "callback_a_ids": [
+    "A004"
+   ],
+   "nx": "信息备齐后，进入校验环节。校验要分开来看。先看证明材料，是不是来自授权来源，够不够清楚、能不能核对得上。再看联系人，是不是真能承担申请之后的沟通。还有企业的自编码前缀，也就是企业自己编的前缀。它属于主体信息，要得到有权承接方的认可，还要和企业名称、申请主体保持一致，彼此不能矛盾。\n\n",
+   "teaching_purpose": "解释校验的三项重点：证明材料来自授权来源且可核对、联系人能承担后续沟通、自编码前缀的归属与一致性。",
+   "single_message": "校验看证明材料、联系人和自编码前缀三处。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S019",
+     "guidance_text": "校验审什么",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G012",
+      "items": [
+       {
+        "screen_item_id": "S020",
+        "guidance_text": "证明材料来自授权来源，清晰、可核对",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G013",
+      "items": [
+       {
+        "screen_item_id": "S021",
+        "guidance_text": "联系人能承担申请之后的沟通",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G014",
+      "items": [
+       {
+        "screen_item_id": "S022",
+        "guidance_text": "自编码前缀属于主体信息，由有权承接方认可，并与企业名称、申请主体保持一致",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R008",
+     "from": "G012",
+     "relation": "三项校验共同支撑一致性",
+     "to": "G013",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R009",
+     "from": "G013",
+     "relation": "前缀归属回到主体关系",
+     "to": "G014",
+     "direction": "convergent"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C006",
+     "instruction": "不复述前缀示例字符串，不推断当前格式、长度或校验算法",
+     "evidence_refs": [
+      "E005"
+     ]
+    },
+    {
+     "constraint_id": "C007",
+     "instruction": "不给出必填清单、文件大小、认证方式或补件规则",
+     "evidence_refs": [
+      "E005"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解三类信息的关系",
+   "exit_condition": "观众能说出校验的三项重点",
+   "timing": {
+    "char_equivalent": 124.0,
+    "min_seconds": 31,
+    "target_seconds": 32,
+    "max_seconds": 34,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A006",
+   "callback_a_ids": [
+    "A005"
+   ],
+   "nx": "所以提交之前，企业至少要完成四项核对：申请主体保持一致，三类信息完整，材料可以核验，自编码前缀和主体之间的关系一致。这四项都过了，才往下走。\n\n",
+   "teaching_purpose": "说明提交前企业至少完成的四项核对：申请主体一致、三类信息完整、材料可核验、自编码前缀与主体关系一致。",
+   "single_message": "四项核对都通过，才进入提交。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S023",
+     "guidance_text": "提交前的四项核对",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G015",
+      "items": [
+       {
+        "screen_item_id": "S024",
+        "guidance_text": "申请主体保持一致",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G016",
+      "items": [
+       {
+        "screen_item_id": "S025",
+        "guidance_text": "三类信息完整",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G017",
+      "items": [
+       {
+        "screen_item_id": "S026",
+        "guidance_text": "材料可以核验",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G018",
+      "items": [
+       {
+        "screen_item_id": "S027",
+        "guidance_text": "自编码前缀与主体的关系一致",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R010",
+     "from": "G015",
+     "relation": "四项核对逐项通过",
+     "to": "G016",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R011",
+     "from": "G016",
+     "relation": "核对完成才进入提交",
+     "to": "G017",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C008",
+     "instruction": "不增加审批分数、自动校验接口或成功率指标",
+     "evidence_refs": [
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解校验重点",
+   "exit_condition": "观众能复述提交前的四项核对",
+   "timing": {
+    "char_equivalent": 62.0,
+    "min_seconds": 16,
+    "target_seconds": 16,
+    "max_seconds": 17,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A007",
+   "callback_a_ids": [
+    "A006"
+   ],
+   "nx": "核对完成，企业才正式提交。提交这个动作意味着什么？它表示责任从企业这一侧交接给平台管理员。交出去之后，企业准备阶段的职责就算完成，接下来的处理由管理员负责。所以提交并不表示前缀即时生效，不是递进去就能用了。\n\n“提交”和“审核通过”是两个必须分开的节点。很多企业在这里误会，以为申请递进去就算办成了。实际上，申请要经过平台管理员的审核，信息无误、审核通过之后，整个申请才算完成。\n\n",
+   "teaching_purpose": "区分提交与审核通过：提交表示责任从企业交接给平台管理员，不表示前缀即时生效；管理员审核信息无误并审核通过后申请才完成。",
+   "single_message": "提交是责任交接，审核通过才是完成。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S028",
+     "guidance_text": "提交与审核通过",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G019",
+      "items": [
+       {
+        "screen_item_id": "S029",
+        "guidance_text": "提交：责任从企业交接给平台管理员",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005",
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G020",
+      "items": [
+       {
+        "screen_item_id": "S030",
+        "guidance_text": "提交不表示前缀即时生效",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G021",
+      "items": [
+       {
+        "screen_item_id": "S031",
+        "guidance_text": "“提交”与“审核通过”是两个必须分开的节点",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G022",
+      "items": [
+       {
+        "screen_item_id": "S032",
+        "guidance_text": "管理员审核信息无误并审核通过，申请才算完成",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E005"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R012",
+     "from": "G019",
+     "relation": "提交进入审核责任",
+     "to": "G020",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R013",
+     "from": "G020",
+     "relation": "两个节点不可混同",
+     "to": "G021",
+     "direction": "contrast"
+    },
+    {
+     "relation_id": "R014",
+     "from": "G021",
+     "relation": "审核通过标记完成",
+     "to": "G022",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C009",
+     "instruction": "不暗示自动审核、审核时限、成功率、补件规则或申请结果承诺；不显示状态徽章或计时器",
+     "evidence_refs": [
+      "E005",
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解四项核对",
+   "exit_condition": "观众能区分提交与审核通过两个节点",
+   "timing": {
+    "char_equivalent": 166.0,
+    "min_seconds": 42,
+    "target_seconds": 43,
+    "max_seconds": 46,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A008",
+   "callback_a_ids": [
+    "A007"
+   ],
+   "nx": "到这儿，整条申请链就能复述了：从授权的渠道进入，到准备信息，到一致性校验，再到提交，然后是管理员审核，审核通过。沿着这条链，企业随时能判断自己走到了哪一步：卡在信息上，就是准备和校验还没做完；已经递出去，就还在等审核。\n\n",
+   "teaching_purpose": "把流程压缩为一条确定性申请链，并说明企业可沿链判断自己走到了哪一步。",
+   "single_message": "授权渠道→准备→校验→提交→审核→审核通过，是一条可复述的链。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S033",
+     "guidance_text": "一条可复述的申请链",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G023",
+      "items": [
+       {
+        "screen_item_id": "S034",
+        "guidance_text": "授权渠道→信息准备→一致性校验→提交→管理员审核→审核通过",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G024",
+      "items": [
+       {
+        "screen_item_id": "S035",
+        "guidance_text": "沿链判断：卡在信息上就是准备与校验未完成，已提交就还在等审核",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R015",
+     "from": "G023",
+     "relation": "按链回查当前位置",
+     "to": "G024",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C010",
+     "instruction": "不插入教材未出现的接口、状态或时限",
+     "evidence_refs": [
+      "E006",
+      "E007"
+     ]
+    }
+   ],
+   "entry_condition": "观众已理解提交与审核的关系",
+   "exit_condition": "观众能复述六段申请链并定位当前进度",
+   "timing": {
+    "char_equivalent": 95.0,
+    "min_seconds": 24,
+    "target_seconds": 25,
+    "max_seconds": 26,
+    "short_page_reason": null
+   }
+  },
+  {
+   "a_id": "A009",
+   "callback_a_ids": [
+    "A008"
+   ],
+   "nx": "审核通过之后，申请这件大事才告一段落，企业才进入前缀使用和后续的企业节点运营。前面的所有环节，都是为了拿到这个使用资格。\n\n本期总结。回到开场那家制造企业。它申请企业前缀，从头到尾做了三件事：备齐单位、法人、联系人三类信息；让自编码前缀和申请主体做一致性校验；提交给平台管理员，等审核通过。这三件事有个共同点：每一环都有人负责，信息准备由企业负责，审核通过由管理员负责，两边各司其职，责任交接清楚，申请才立得住。核心判断很明确：提交不等于办成，审核通过才算完成。在那之前，企业都还没有真正拿到使用的资格。",
+   "teaching_purpose": "收束：审核通过后进入前缀使用与企业节点运营；回扣企业准备与管理审核的责任分工，确认提交不等于办成。",
+   "single_message": "审核通过才拿到使用资格；企业准备、管理员审核，责任交接清楚。",
+   "screen": {
+    "title": {
+     "screen_item_id": "S036",
+     "guidance_text": "审核之后做什么",
+     "usage_policy": "reference",
+     "evidence_refs": [
+      "E007"
+     ]
+    },
+    "groups": [
+     {
+      "group_id": "G025",
+      "items": [
+       {
+        "screen_item_id": "S037",
+        "guidance_text": "审核通过后进入前缀使用与企业节点运营",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G026",
+      "items": [
+       {
+        "screen_item_id": "S038",
+        "guidance_text": "三件事：备齐三类信息；让自编码前缀与申请主体做一致性校验；提交并等审核通过",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E004",
+         "E005"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G027",
+      "items": [
+       {
+        "screen_item_id": "S039",
+        "guidance_text": "信息准备由企业负责，审核通过由管理员负责",
+        "usage_policy": "reference",
+        "evidence_refs": [
+         "E007"
+        ]
+       }
+      ]
+     },
+     {
+      "group_id": "G028",
+      "items": [
+       {
+        "screen_item_id": "S040",
+        "guidance_text": "提交不等于办成，审核通过才算完成",
+        "usage_policy": "exact",
+        "evidence_refs": [
+         "E005",
+         "E007"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "protected_relations": [
+    {
+     "relation_id": "R016",
+     "from": "G025",
+     "relation": "三件事回扣整条链",
+     "to": "G026",
+     "direction": "forward"
+    },
+    {
+     "relation_id": "R017",
+     "from": "G026",
+     "relation": "责任分工支撑完成判断",
+     "to": "G027",
+     "direction": "convergent"
+    },
+    {
+     "relation_id": "R018",
+     "from": "G027",
+     "relation": "结论收束全片",
+     "to": "G028",
+     "direction": "forward"
+    }
+   ],
+   "silent_constraints": [
+    {
+     "constraint_id": "C011",
+     "instruction": "不预告托管、自建、IDHub、License 或部署配置；不增加下一步实操或练习",
+     "evidence_refs": [
+      "E001"
+     ]
+    }
+   ],
+   "entry_condition": "观众已复述完整申请链",
+   "exit_condition": "观众能说出审核通过后的去向与责任分工",
+   "timing": {
+    "char_equivalent": 223.0,
+    "min_seconds": 56,
+    "target_seconds": 58,
+    "max_seconds": 61,
+    "short_page_reason": null
+   }
+  }
+ ]
+}
