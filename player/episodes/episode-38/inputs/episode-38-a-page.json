@@ -322,15 +322,16 @@
    "callback_a_ids": [
     "A002"
    ],
-   "nx": "通信模组和终端，凭什么能接住工业ID？因为它们都属于同一类载体，叫主动标识载体。这类载体的定义不复杂：它能嵌进工业设备内部，里面装着工业互联网标识编码，还专门留着地方放安全证书、算法和密钥这类材料。它能通过自身或配套终端的通信能力，主动向标识解析服务节点或标识数据应用平台发起连接，不必等着外部读写设备来触发。通信模组和通信终端，就是它的两个例子。\n\n",
-   "teaching_purpose": "给出主动标识载体的定义与两个例项，说明它和贴附式标签的触发方式不同。",
-   "single_message": "主动标识载体嵌入设备、承载标识与安全材料，并能主动发起连接。",
+   "nx": "通信模组和终端，凭什么能接住工业ID？因为它们都属于同一类载体，叫主动标识载体——上一集已经讲清了它的定义和四项特征，这里不再重复，",
+   "teaching_purpose": "承接上一集的主动标识载体概念，说明本集不复述定义与四项特征，转入模组与终端的承载用法。",
+   "single_message": "通信模组和终端同属主动标识载体；定义与四项特征上一集已讲清，这里不再重复。",
    "screen": {
     "title": {
      "screen_item_id": "S011",
-     "guidance_text": "主动标识载体：嵌入设备、主动联网",
+     "guidance_text": "主动标识载体：定义与四项特征不再重复",
      "usage_policy": "reference",
      "evidence_refs": [
+      "E001",
       "E003"
      ]
     },
@@ -340,7 +341,7 @@
       "items": [
        {
         "screen_item_id": "S012",
-        "guidance_text": "可以嵌入工业设备内部，承载工业互联网标识编码以及必要的安全证书、算法和密钥",
+        "guidance_text": "通信模组和通信终端都属于同一类载体",
         "usage_policy": "reference",
         "evidence_refs": [
          "E003"
@@ -348,8 +349,8 @@
        },
        {
         "screen_item_id": "S013",
-        "guidance_text": "具备联网通信能力，能主动向标识解析服务节点或标识数据应用平台发起连接",
-        "usage_policy": "exact",
+        "guidance_text": "这类载体叫主动标识载体",
+        "usage_policy": "reference",
         "evidence_refs": [
          "E003"
         ]
@@ -361,9 +362,10 @@
       "items": [
        {
         "screen_item_id": "S014",
-        "guidance_text": "不必等待外部读写设备来触发",
-        "usage_policy": "exact",
+        "guidance_text": "上一集已经讲清了主动标识载体的定义和四项特征",
+        "usage_policy": "reference",
         "evidence_refs": [
+         "E001",
          "E003"
         ]
        }
@@ -374,9 +376,10 @@
       "items": [
        {
         "screen_item_id": "S015",
-        "guidance_text": "通信模组和通信终端都是主动标识载体的例项",
+        "guidance_text": "不复述定义与四项特征，直接进入承载用法",
         "usage_policy": "reference",
         "evidence_refs": [
+         "E001",
          "E003"
         ]
        }
@@ -388,14 +391,14 @@
     {
      "relation_id": "R006",
      "from": "G008",
-     "relation": "承载与连接能力同时成立",
+     "relation": "同一类载体承接上一集概念",
      "to": "G009",
      "direction": "forward"
     },
     {
      "relation_id": "R007",
      "from": "G009",
-     "relation": "定义落到具体例项",
+     "relation": "已讲清则不再重复，转入承载用法",
      "to": "G010",
      "direction": "forward"
     }
@@ -403,20 +406,20 @@
    "silent_constraints": [
     {
      "constraint_id": "C003",
-     "instruction": "不展开 UICC 卡应用、注册、认证或解析流程；不虚构具体协议或制式",
+     "instruction": "不复述定义与四项特征；不展开 UICC 卡应用、注册、认证或解析流程",
      "evidence_refs": [
       "E001",
       "E003"
      ]
     }
    ],
-   "entry_condition": "观众已接受标签作为入口的边界",
-   "exit_condition": "观众能说出主动标识载体的定义要点，并知道通信模组与通信终端是例项",
+   "entry_condition": "观众已接受标签作为入口的边界，并已从上一集知道主动标识载体的定义与四项特征",
+   "exit_condition": "观众知道本集不再复述定义与四项特征，将直接看模组与终端怎么承载",
    "timing": {
-    "char_equivalent": 159.0,
-    "min_seconds": 40,
-    "target_seconds": 41,
-    "max_seconds": 44,
+    "char_equivalent": 58.0,
+    "min_seconds": 15,
+    "target_seconds": 15,
+    "max_seconds": 16,
     "short_page_reason": null
    }
   },
@@ -425,16 +428,17 @@
    "callback_a_ids": [
     "A003"
    ],
-   "nx": "主动标识载体有四个特征：嵌入设备内部后不容易被盗取或误装；能主动联网并远程管理标识及相关信息；安全区域支持加密传输和接入认证；还能适应震动、潮湿、摩擦和篡改等工业环境。\n\n",
-   "teaching_purpose": "用四项特征说明主动标识载体适合工业现场，四项并列、逐项可读。",
-   "single_message": "嵌入、联网管理、安全区域和环境适应，共同构成主动标识载体的现场适配能力。",
+   "nx": "只看它怎么被模组装下、由终端用起来。通信模组和通信终端，就是它的两个例子。\n\n",
+   "teaching_purpose": "从定义承接转入承载用法，说明模组装下、终端用起来，并点明二者是两个例项。",
+   "single_message": "不复述定义，只看模组如何装下、终端如何用起来；二者都是主动标识载体的例项。",
    "screen": {
     "title": {
      "screen_item_id": "S016",
-     "guidance_text": "主动标识载体的四个特征",
+     "guidance_text": "只看模组怎么装下、终端怎么用起来",
      "usage_policy": "reference",
      "evidence_refs": [
-      "E003"
+      "E004",
+      "E005"
      ]
     },
     "groups": [
@@ -443,10 +447,10 @@
       "items": [
        {
         "screen_item_id": "S017",
-        "guidance_text": "嵌入设备内部，降低被盗取或误安装的可能",
+        "guidance_text": "模组把主动标识载体装进设备",
         "usage_policy": "reference",
         "evidence_refs": [
-         "E003"
+         "E004"
         ]
        }
       ]
@@ -456,10 +460,10 @@
       "items": [
        {
         "screen_item_id": "S018",
-        "guidance_text": "能主动联网，支持远程管理所承载的标识及相关信息",
+        "guidance_text": "终端把主动标识载体用起来",
         "usage_policy": "reference",
         "evidence_refs": [
-         "E003"
+         "E005"
         ]
        }
       ]
@@ -469,8 +473,8 @@
       "items": [
        {
         "screen_item_id": "S019",
-        "guidance_text": "安全区域支持加密传输与接入认证",
-        "usage_policy": "exact",
+        "guidance_text": "通信模组是主动标识载体的例项",
+        "usage_policy": "reference",
         "evidence_refs": [
          "E003"
         ]
@@ -482,7 +486,7 @@
       "items": [
        {
         "screen_item_id": "S020",
-        "guidance_text": "面向震动、潮湿、摩擦和篡改等复杂工业环境",
+        "guidance_text": "通信终端也是主动标识载体的例项",
         "usage_policy": "reference",
         "evidence_refs": [
          "E003"
@@ -496,21 +500,21 @@
     {
      "relation_id": "R008",
      "from": "G011",
-     "relation": "嵌入之后才能联网与远程管理",
+     "relation": "装下之后由终端用起来",
      "to": "G012",
      "direction": "forward"
     },
     {
      "relation_id": "R009",
      "from": "G012",
-     "relation": "联网管理需要安全区域支撑",
+     "relation": "承载用法落到具体例项",
      "to": "G013",
-     "direction": "parallel"
+     "direction": "forward"
     },
     {
      "relation_id": "R010",
      "from": "G013",
-     "relation": "安全与嵌入共同面向复杂环境",
+     "relation": "两个例项并列",
      "to": "G014",
      "direction": "parallel"
     }
@@ -518,19 +522,21 @@
    "silent_constraints": [
     {
      "constraint_id": "C004",
-     "instruction": "不把四项特征扩写成产品规格、认证等级或环境参数",
+     "instruction": "不展开模组或终端内部结构；不复述定义与四项特征",
      "evidence_refs": [
-      "E003"
+      "E001",
+      "E003",
+      "E004"
      ]
     }
    ],
-   "entry_condition": "观众已理解主动标识载体的定义与例项",
-   "exit_condition": "观众能复述四项特征，并知道它们针对工业现场条件",
+   "entry_condition": "观众已知本集不复述定义与四项特征",
+   "exit_condition": "观众能说出模组装下、终端用起来两个动作，并知道二者是主动标识载体的例项",
    "timing": {
-    "char_equivalent": 77.0,
-    "min_seconds": 20,
-    "target_seconds": 20,
-    "max_seconds": 21,
+    "char_equivalent": 33.0,
+    "min_seconds": 9,
+    "target_seconds": 9,
+    "max_seconds": 9,
     "short_page_reason": null
    }
   },

@@ -3,7 +3,7 @@ schema_version: courseplay-visual-rough/v4
 document_kind: production
 episode_id: episode-38
 source_a_page: episode-38-a-page.json
-source_a_page_sha256: af755e2b01bfe426b78b07acf9462d9e652a1fb3b8b1723244f099491d35acab
+source_a_page_sha256: e080dc40ca67948b506e656538749182c7042e7dcf096e6b64e501e8a83be4d9
 status: approved
 image_required_page_fraction: 1/3
 logic_diagram_page_limit: 0
@@ -74,9 +74,9 @@ logic_diagram_page_limit: 0
 - `[R004]`：由三类问题条旁并列的配套机制条承载
 - `[R005]`：由配套机制条到主动关联条的顺序下沉承载
 
-## A003｜主动载体的定义
+## A003｜承接主动载体，不复述定义
 
-- **内容角色**：概念定义与例项
+- **内容角色**：概念承接与不重复范围
 - **页面配方**：`common-anchor-association-groups`
 - **论点标题**：`S011`
 - **辅助句**：`S014`
@@ -101,12 +101,12 @@ logic_diagram_page_limit: 0
 
 ### 关系保真
 
-- `[R006]`：由承载与联网两组语义在共同定义区内的相邻围合承载
-- `[R007]`：由定义区外围的例项标签带承载
+- `[R006]`：由共同载体条与「上一集已讲清」承接条的纵向阅读顺序承载
+- `[R007]`：由承接条到「不复述、直接进入承载用法」范围条的收束承载
 
-## A004｜四项现场特征
+## A004｜承载用法与两个例项
 
-- **内容角色**：特征并列
+- **内容角色**：承载用法与例项
 - **页面配方**：`parallel-cards-self-contained`
 - **论点标题**：`S016`
 - **辅助句**：`none`
@@ -133,9 +133,9 @@ logic_diagram_page_limit: 0
 
 ### 关系保真
 
-- `[R008]`：由嵌入特征卡与联网管理卡的相邻顺序卡承载
-- `[R009]`：由联网管理卡与安全区域卡的等权并列卡承载
-- `[R010]`：由安全区域卡与环境适应卡的等权并列卡承载
+- `[R008]`：由「模组装下」卡到「终端用起来」卡的顺序卡承载
+- `[R009]`：由「用起来」卡到例项标签带的转入承载
+- `[R010]`：由模组例项与通信终端例项的等权并列带承载
 
 ## A005｜模组的功能单元
 
