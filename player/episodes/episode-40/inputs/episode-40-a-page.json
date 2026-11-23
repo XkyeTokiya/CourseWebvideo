@@ -558,7 +558,7 @@
    "callback_a_ids": [
     "A004"
    ],
-   "nx": "再往上一层，是主动标识载体。它和终端设备关联在一起，设备的身份，也就是工业互联网标识，由载体来承载。载体能主动联网，也带着安全能力。",
+   "nx": "再往上一层，是主动标识载体。它和终端设备关联在一起，设备的身份，也就是工业互联网标识，由载体来承载。载体或其应用能主动发起连接，联网承载可由终端提供，也承载安全材料。",
    "teaching_purpose": "说明主动标识载体与终端关联，承载工业互联网标识，并具备主动联网与安全能力。",
    "single_message": "载体把设备身份和联网、安全能力带在身上。",
    "screen": {
@@ -650,10 +650,10 @@
    "entry_condition": "观众已经知道终端层负责现场动作",
    "exit_condition": "观众能说出载体与终端关联、承载工业互联网标识，并具备主动联网与安全能力",
    "timing": {
-    "char_equivalent": 58.0,
-    "min_seconds": 15,
-    "target_seconds": 15,
-    "max_seconds": 16,
+    "char_equivalent": 74.0,
+    "min_seconds": 19,
+    "target_seconds": 19,
+    "max_seconds": 21,
     "short_page_reason": null
    }
   },
@@ -1144,7 +1144,7 @@
    "callback_a_ids": [
     "A010"
    ],
-   "nx": "层与层之间的来往，靠通信来完成。架构里用 MQTT、COAP 这样的标签来标注通信，也就是标明数据和控制信息在哪些层之间走动。通信不是一条线，它同时要兼顾消息传输、可信接入和控制回路。\n\n",
+   "nx": "层与层之间的来往，靠通信来完成。层与层之间通过 MQTT、CoAP 这类协议通信，数据和控制信息就在这些层之间流动。通信不是一条线，它同时要兼顾消息传输、可信接入和控制回路。\n\n",
    "teaching_purpose": "说明通信是跨层协作的通道，教材图示以 MQTT、COAP 等标签标注，并同时考虑传输、可信接入与控制回路。",
    "single_message": "通信是跨层通道，教材用标签标注走向，但不指定实现。",
    "screen": {
@@ -1226,10 +1226,10 @@
    "entry_condition": "观众已经理解三个协作方向",
    "exit_condition": "观众能说出通信是跨层通道，并知道协议名称只是图示标签",
    "timing": {
-    "char_equivalent": 78.0,
-    "min_seconds": 20,
-    "target_seconds": 20,
-    "max_seconds": 22,
+    "char_equivalent": 73.0,
+    "min_seconds": 19,
+    "target_seconds": 19,
+    "max_seconds": 20,
     "short_page_reason": null
    }
   },
