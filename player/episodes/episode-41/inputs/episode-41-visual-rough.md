@@ -3,7 +3,7 @@ schema_version: courseplay-visual-rough/v4
 document_kind: production
 episode_id: episode-41
 source_a_page: episode-41-a-page.json
-source_a_page_sha256: 18f992aead04e788f8a8475eb0d34b44c8eabbfb51795a772c32b52dc41ad900
+source_a_page_sha256: 62afa6f376c7ca3b5e5462eb70f826f86f4ee95a88458e4c4191b59543c976cf
 status: approved
 image_required_page_fraction: 1/3
 logic_diagram_page_limit: 0

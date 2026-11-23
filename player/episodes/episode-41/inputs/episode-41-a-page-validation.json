@@ -22,7 +22,7 @@
   },
   "input_integrity": {
     "task_package_sha256": "758c70eefa2e9d2f0b08f2069be21e4a12b64a3c3ba4cec8de4a5023bc949667",
-    "approved_text_sha256": "443d410485143f13a11ac745413baab5bef22735b5dde2ee2ae0fc59b92bac1b",
-    "a_page_sha256": "18f992aead04e788f8a8475eb0d34b44c8eabbfb51795a772c32b52dc41ad900"
+    "approved_text_sha256": "c9f8e042daa8f4a777595475abae3e0def1300df78b19be03bf4feb8d0aefaf3",
+    "a_page_sha256": "62afa6f376c7ca3b5e5462eb70f826f86f4ee95a88458e4c4191b59543c976cf"
   }
 }
