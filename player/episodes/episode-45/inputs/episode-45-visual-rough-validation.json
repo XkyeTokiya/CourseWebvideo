@@ -418,8 +418,8 @@
   "errors": [],
   "failures": [],
   "input_integrity": {
-    "a_page_sha256": "2de35d41355c0221b529f30e718f9a856bf9b36cf577123593eee2aeb5003494",
-    "visual_rough_sha256": "6f66d13edd8140934e8a03447ad2bfec8dbe25f51a9161e92cf0daa3bbe84cdb",
+    "a_page_sha256": "a0febc978762aaa803ac174cb676ba17c5ca23d2d25a8605168cd63bacaaa712",
+    "visual_rough_sha256": "042561a02bd10b48a8cec0ce6e06c84c9ed75248c3ea9d28ca45c2c9a6597ff1",
     "recipe_registry_sha256": "697ed613616ec9ac5325a38544fe4ac9c8fcf6b3ab5439e614e7a7293b93ef2e"
   }
 }
